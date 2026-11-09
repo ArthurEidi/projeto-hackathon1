@@ -90,3 +90,12 @@ export function IconUnidade({ icone, size = 28, color = "currentColor" }: P & { 
   if (!icone || icone === "cone") return <IconCone size={size} color={color} />;
   return <>{DESENHOS[icone](size, color)}</>;
 }
+
+/** Seta do acordeão: aponta para baixo fechada e gira para cima quando aberta. */
+export function IconSeta({ aberta, size = 22, color = "currentColor" }: P & { aberta: boolean }) {
+  return (
+    <svg {...base(size)} stroke={color} className={`seta${aberta ? " seta--aberta" : ""}`}>
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}

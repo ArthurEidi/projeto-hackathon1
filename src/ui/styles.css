@@ -652,31 +652,86 @@ button {
   --c-text: #ffffff;
 }
 .sector {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
+}
+/* Cabeçalhos do acordeão: botão de linha inteira, seta à direita. */
+.sector__head,
+.unit__head {
+  appearance: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.sector__head {
+  padding: 14px 16px;
+  border: 2px solid var(--line);
+  border-bottom-width: 4px;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.sector__head:hover {
+  border-color: var(--line-dark);
+}
+.sector__head:focus-visible,
+.unit__head:focus-visible {
+  outline: 3px solid var(--h);
+  outline-offset: 2px;
+}
+.sector__text,
+.unit__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 .sector__title {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--ink);
+}
+.sector__sub,
+.unit__sub {
   font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-weight: 700;
   color: var(--muted);
-  margin: 0 0 10px;
+}
+.sector__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0 4px 12px;
+  border-left: 3px solid var(--line);
+  margin: 8px 0 0 14px;
+}
+.seta {
+  flex: none;
+  color: var(--muted);
+  transition: transform 160ms ease-out;
+}
+.seta--aberta {
+  transform: rotate(180deg);
 }
 .unit {
   border: 2px solid var(--line);
   border-bottom-width: 4px;
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 12px 14px;
 }
-.unit__head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
+.unit--aberta .path {
+  margin-top: 16px;
 }
 .unit__badge {
-  width: 44px;
-  height: 44px;
+  flex: none;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
   background: var(--g);
   border: 2px solid var(--g-dark);
@@ -684,15 +739,13 @@ button {
   display: grid;
   place-items: center;
 }
-.unit__title {
-  font-size: 22px;
-  font-weight: 900;
-  margin: 0;
+.unit__badge--off {
+  background: var(--line-dark);
+  border-color: var(--muted);
 }
-.unit__sub {
-  font-size: 14px;
-  color: var(--muted);
-  margin: 0;
+.unit__title {
+  font-size: 17px;
+  font-weight: 900;
 }
 .path {
   display: flex;
