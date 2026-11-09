@@ -52,11 +52,12 @@ export function questoesDaEtapa(treino: TreinoData, etapa: Etapa): Questao[] {
   return treino.vestibular;
 }
 
-/** "UFSC 2004 · adaptada" */
+/** "ENEM 2014 PPL (adaptada)": deixa claro que o enunciado não é o texto literal da banca. */
 export function rotuloFonte(q: Questao): string | null {
   if (!q.fonte) return null;
-  const { banca, ano, adaptada } = q.fonte;
-  return [ano ? `${banca} ${ano}` : banca, adaptada ? "adaptada" : null].filter(Boolean).join(" · ");
+  const { banca, ano, edicao, adaptada } = q.fonte;
+  const base = [banca, ano, edicao].filter((x) => x !== undefined && x !== "").join(" ");
+  return adaptada ? `${base} (adaptada)` : base;
 }
 
 interface TreinoProps {

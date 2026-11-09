@@ -191,9 +191,9 @@ Quantidades **fixas** (constantes `TREINO_*` em `schema.ts`): `faceis` 4, `media
   "options": [ { "id": "a10", "label": "10", "correct": true, "feedback": "..." } ] }  // 2–4 opções (vestibular: 2–5), 1 correta
 ```
 
-Questão de vestibular exige `fonte`:
+Questão de vestibular exige `fonte`. Na tela aparece "UFSC 2004 (adaptada)" / "ENEM 2014 PPL (adaptada)": quando o enunciado não é o texto literal da banca, `adaptada` **tem** que ser `true`.
 ```jsonc
-"fonte": { "banca": "UFSC", "ano": 2004, "adaptada": true,
+"fonte": { "banca": "UFSC", "ano": 2004, "edicao": "PPL" /* opcional */, "adaptada": true,
            "adaptacao": "O que mudou (obrigatório se adaptada).",
            "urls": ["https://..."] }       // ≥ 1 URL válida
 ```

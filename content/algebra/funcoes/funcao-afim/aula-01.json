@@ -373,8 +373,9 @@
         "fonte": {
           "banca": "ENEM",
           "ano": 2014,
+          "edicao": "PPL",
           "adaptada": true,
-          "adaptacao": "Prova PPL, questão 159: enunciado resumido, mantidas as alternativas e o gabarito (0,13).",
+          "adaptacao": "Questão 159: enunciado resumido, mantidas as alternativas e o gabarito (0,13).",
           "urls": ["https://plataformaassaad.com.br/?p=27879"]
         },
         "options": [

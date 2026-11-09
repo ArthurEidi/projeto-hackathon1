@@ -163,6 +163,8 @@ const Questao = QuestaoBase.superRefine(opcoesValidas);
 const Fonte = z.object({
   banca: z.string().min(2),
   ano: z.number().int().min(1990).optional(),
+  /** Aplicação ou fase da prova, mostrada depois do ano (ex.: "PPL", "2ª fase"). */
+  edicao: z.string().min(1).optional(),
   /** true quando o enunciado, a pergunta ou as alternativas foram adaptados para o app. */
   adaptada: z.boolean(),
   /** O que mudou em relação à prova original (obrigatório se adaptada). */
