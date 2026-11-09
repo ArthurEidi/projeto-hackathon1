@@ -3,19 +3,20 @@ import type { ConceptLockStep } from "../engine/schema";
 import { Dica } from "../ui/Dica";
 import { TactileButton } from "../ui/Tactile";
 import type { Rect } from "../widgets/canvas";
-import { figureParams, type Magnitude } from "../widgets/params";
+import type { Marca } from "../ui/marcas";
+import { figureParams } from "../widgets/params";
 import { figures } from "../widgets/registry";
 import { duvidaLiberada, StepLayout } from "./StepLayout";
 import type { StepProps } from "./types";
 
 export function ConceptLock({ step, onNext }: StepProps<ConceptLockStep>) {
   const Figure = figures[step.figure.widget];
-  const [active, setActive] = useState<Magnitude | null>(null);
+  const [active, setActive] = useState<Marca | null>(null);
   const formulaRef = useRef<HTMLDivElement>(null);
-  const [dica, setDica] = useState<{ key: Magnitude; alvo: Rect; largura: number } | null>(null);
+  const [dica, setDica] = useState<{ key: Marca; alvo: Rect; largura: number } | null>(null);
 
   // Posição do botão dentro da fórmula, para a dica apontar para ele.
-  const medir = (key: Magnitude, el: HTMLElement) => {
+  const medir = (key: Marca, el: HTMLElement) => {
     const box = formulaRef.current!.getBoundingClientRect();
     const b = el.getBoundingClientRect();
     return { key, alvo: { x: b.left - box.left, y: b.top - box.top, w: b.width, h: b.height }, largura: box.width };

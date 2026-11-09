@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { preloadSprites, spritesDaAula } from "../characters/sprites";
 import { ConviteTreino, Treino } from "../treino/Treino";
+import { GlossarioProvider } from "../ui/GlossarioContext";
 import { IconClose } from "../ui/Icons";
 import { ProgressBar } from "../ui/Tactile";
 import { markComplete } from "./progress";
@@ -28,10 +29,17 @@ export function LessonPlayer({ lesson, aulaKey, onExit }: LessonPlayerProps) {
   };
 
   // Depois da aula, o Paco convida para o treino; "Agora não" volta direto para a trilha.
-  if (treinando) return <Treino treino={lesson.treino} onSair={onExit} />;
+  // O glossário da aula vale para as dicas dos passos e das figuras do treino.
+  if (treinando) {
+    return (
+      <GlossarioProvider glossario={lesson.glossario}>
+        <Treino treino={lesson.treino} onSair={onExit} />
+      </GlossarioProvider>
+    );
+  }
 
   return (
-    <>
+    <GlossarioProvider glossario={lesson.glossario}>
       <header className="lesson-header">
         <button type="button" className="icon-btn" aria-label="Sair da aula" onClick={onExit}>
           <IconClose />
@@ -43,6 +51,6 @@ export function LessonPlayer({ lesson, aulaKey, onExit }: LessonPlayerProps) {
       ) : (
         <StepRenderer key={step.id} step={step} onNext={next} />
       )}
-    </>
+    </GlossarioProvider>
   );
 }

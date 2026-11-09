@@ -28,6 +28,21 @@ export const palette = {
   gTint: "#F9DDEA",
   gTintStrong: "#F2BCD4",
 
+  // Cores semânticas genéricas (c1..c4) para os demais capítulos. c1..c3 repetem as do cone,
+  // para o app manter uma só família de cores; c4 completa com um violeta.
+  c1: "#1C8BE0",
+  c1Dark: "#136AAD",
+  c1Tint: "#DCEEFC",
+  c2: "#F28C00",
+  c2Dark: "#C06F00",
+  c2Tint: "#FDEBD1",
+  c3: "#D62F7A",
+  c3Dark: "#A8225F",
+  c3Tint: "#F9DDEA",
+  c4: "#7B4FD6",
+  c4Dark: "#5B36A8",
+  c4Tint: "#ECE4FB",
+
   // Balão da Tati: tom do moletom dela, claro o bastante para não parecer erro.
   tati: "#C8452F",
   tatiLine: "#F2C2B5",

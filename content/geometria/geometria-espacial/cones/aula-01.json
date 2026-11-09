@@ -220,6 +220,7 @@
       {
         "id": "diametro-10-8",
         "prompt": "Um cone tem geratriz 10 e altura 8. Quanto mede o diâmetro da base?",
+        "fala": "Desenhar o triângulo no papel ajuda bastante.",
         "figure": {
           "widget": "cone_figure",
           "params": { "h": 4, "r": 3, "labels": { "h": "8", "r": "?", "g": "10" }, "view": "cone" }
@@ -234,6 +235,7 @@
       {
         "id": "geratriz-3-3",
         "prompt": "Num cone, a altura e o raio medem 3. Quanto mede a geratriz?",
+        "fala": "Nem sempre a resposta é um número inteiro.",
         "options": [
           { "id": "a6", "label": "6", "correct": false, "feedback": "Você somou os lados. Somam-se os quadrados: 9 + 9 = 18, e g = √18 = 3√2." },
           { "id": "a3raiz2", "label": "3√2", "correct": true, "feedback": "Certo. g² = 9 + 9 = 18, e √18 = 3√2, um pouco mais que 4." },
@@ -244,6 +246,7 @@
       {
         "id": "altura-5-5raiz2",
         "prompt": "Um cone tem raio 5 e geratriz 5√2. Quanto mede a altura?",
+        "fala": "Lembre qual é o maior lado do triângulo.",
         "options": [
           { "id": "a5raiz3", "label": "5√3", "correct": false, "feedback": "Você somou 50 + 25. A geratriz é o maior lado, então h² = 50 − 25 = 25 e h = 5." },
           { "id": "a25", "label": "25", "correct": false, "feedback": "25 é h², a área do quadrado. Falta a raiz: h = 5." },
@@ -254,6 +257,7 @@
       {
         "id": "dois-cones",
         "prompt": "Dois cones têm altura 12, um com raio 5 e outro com raio 9. Quanto a geratriz do segundo é maior?",
+        "fala": "Última. Calcule uma geratriz de cada vez.",
         "options": [
           { "id": "a4", "label": "4", "correct": false, "feedback": "4 é a diferença dos raios. As geratrizes medem 13 e 15, então a diferença é 2." },
           { "id": "a2", "label": "2", "correct": true, "feedback": "Exato. √(144 + 25) = 13, √(144 + 81) = 15, e 15 − 13 = 2." },

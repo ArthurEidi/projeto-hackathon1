@@ -1,5 +1,6 @@
 // Contrato JSON das aulas. O motor só conhece estes 4 tipos de passo.
 import { z } from "zod";
+import { CorTraco, Marca, MARCAS_DO_CONE } from "../ui/marcas";
 import { figureIds, figureParams, widgetIds, widgetParams } from "../widgets/params";
 
 const Id = z.string().regex(/^[a-z0-9-]+$/, "use apenas a-z, 0-9 e hífen");
@@ -23,10 +24,14 @@ const SliderControl = z.object({
   step: z.number().positive().default(1),
   initial: z.number(),
   unit: z.string().default(""),
-  color: z.enum(["h", "r", "g", "ink"]).default("ink"),
+  /** Cor do slider: uma marca (h, r, g, c1..c4) ou "ink". */
+  color: CorTraco.default("ink"),
 });
 
-const CompleteWhen = z.object({ metric: z.string(), gte: z.number() });
+/** Conclui quando a métrica fica >= gte e/ou <= lte (ex.: levar o slider "a" para -1: lte -1). */
+const CompleteWhen = z
+  .object({ metric: z.string(), gte: z.number().optional(), lte: z.number().optional() })
+  .refine((c) => c.gte !== undefined || c.lte !== undefined, "complete_when precisa de gte ou lte");
 
 // Dúvida da Tati: ela pergunta o que o aluno provavelmente pensaria, e o Paco responde.
 // "fim" espera o passo ser concluído (giro completo, vídeo assistido, resposta certa).
@@ -96,18 +101,27 @@ const MicroChallengeStep = z
 const FormulaToken = z.object({
   text: z.string(),
   sup: z.string().optional(),
-  ref: z.enum(["h", "r", "g"]).optional(),
+  /** Marca que a letra acende na figura (a figura precisa aceitar "highlight"). */
+  ref: Marca.optional(),
 });
 
-const ConceptLockStep = z.object({
-  id: Id,
-  type: z.literal("concept_lock"),
-  figure: Figure,
-  formula: z.array(FormulaToken).min(1),
-  definitions: z.array(z.object({ term: z.string(), text: Line })).max(3),
-  lines: z.object({ intro: Line, hint: Line }),
-  duvida: DuvidaInicio.optional(),
-});
+const ConceptLockStep = z
+  .object({
+    id: Id,
+    type: z.literal("concept_lock"),
+    figure: Figure,
+    formula: z.array(FormulaToken).min(1),
+    definitions: z.array(z.object({ term: z.string(), text: Line })).max(3),
+    lines: z.object({ intro: Line, hint: Line }),
+    duvida: DuvidaInicio.optional(),
+  })
+  .superRefine((s, ctx) => {
+    // Tocar numa letra põe a marca dela em "highlight" na figura: precisa ser um estado válido.
+    for (const ref of new Set(s.formula.flatMap((t) => (t.ref ? [t.ref] : [])))) {
+      const r = figureParams[s.figure.widget].safeParse({ ...s.figure.params, highlight: [ref] });
+      if (!r.success) ctx.addIssue({ code: "custom", message: `figura não aceita highlight "${ref}": ${r.error.message}` });
+    }
+  });
 
 export const Step = z.discriminatedUnion("type", [
   InteractiveCanvasStep,
@@ -183,6 +197,9 @@ const Treino = z.object({
   vestibular: z.array(QuestaoVestibular).length(TREINO_VESTIBULAR),
 });
 
+/** Significado das marcas c1..c4 nesta aula (h, r, g já vêm do glossário padrão do cone). */
+const Glossario = z.partialRecord(Marca, z.object({ nome: z.string().min(1), resumo: Line }));
+
 export const Lesson = z
   .object({
     id: z.string(),
@@ -191,10 +208,19 @@ export const Lesson = z
     subtitulo: z.string(),
     caminho: z.object({ pilar: z.string(), setor: z.string(), unidade: z.string() }),
     outro: Line,
+    glossario: Glossario.optional(),
     steps: z.array(Step).min(1),
     treino: Treino,
   })
   .superRefine((l, ctx) => {
+    for (const s of l.steps) {
+      if (s.type !== "concept_lock") continue;
+      for (const t of s.formula) {
+        if (t.ref && !MARCAS_DO_CONE.includes(t.ref) && !l.glossario?.[t.ref]) {
+          ctx.addIssue({ code: "custom", message: `fórmula usa a marca "${t.ref}" sem entrada em "glossario"` });
+        }
+      }
+    }
     const ids = Object.values(l.treino)
       .flat()
       .map((q) => q.id);
@@ -208,7 +234,12 @@ const AulaRef = z.object({
   subtitulo: z.string(),
   arquivo: z.string().nullable(),
 });
-const Unidade = z.object({ id: Id, titulo: z.string(), aulas: z.array(AulaRef) });
+/** Ícone da unidade na trilha (ver src/ui/Icons.tsx). Sem ele, cone. */
+export const ICONES = [
+  "cone", "reta", "parabola", "curva", "onda", "conjunto", "triangulo", "circulo",
+  "cubo", "barras", "matriz", "porcento", "dado", "sequencia", "complexo",
+] as const;
+const Unidade = z.object({ id: Id, titulo: z.string(), icone: z.enum(ICONES).optional(), aulas: z.array(AulaRef) });
 const Setor = z.object({ id: Id, titulo: z.string(), unidades: z.array(Unidade) });
 const Pilar = z.object({ id: Id, titulo: z.string(), setores: z.array(Setor) });
 export const Taxonomy = z.object({ pilares: z.array(Pilar).length(3) });
@@ -216,6 +247,7 @@ export const Taxonomy = z.object({ pilares: z.array(Pilar).length(3) });
 export type Step = z.output<typeof Step>;
 export type Lesson = z.output<typeof Lesson>;
 export type Taxonomy = z.output<typeof Taxonomy>;
+export type Icone = (typeof ICONES)[number];
 export type InteractiveCanvasStep = z.output<typeof InteractiveCanvasStep>;
 export type ManimVideoStep = z.output<typeof ManimVideoStep>;
 export type MicroChallengeStep = z.output<typeof MicroChallengeStep>;
@@ -229,6 +261,9 @@ export type Questao = z.output<typeof Questao> & { fonte?: z.output<typeof Fonte
 /** Todas as falas visíveis ao aluno, com o caminho de cada uma, para o lint de texto. */
 export function collectLines(lesson: Lesson): { path: string; text: string }[] {
   const out: { path: string; text: string }[] = [{ path: "outro", text: lesson.outro }];
+  for (const [k, v] of Object.entries(lesson.glossario ?? {})) {
+    if (v) out.push({ path: `glossario.${k}`, text: `${v.nome}: ${v.resumo}` });
+  }
   lesson.steps.forEach((s, i) => {
     const p = `steps[${i}:${s.id}]`;
     for (const [k, v] of Object.entries(s.lines)) out.push({ path: `${p}.lines.${k}`, text: v });

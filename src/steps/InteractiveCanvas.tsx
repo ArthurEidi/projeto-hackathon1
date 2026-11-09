@@ -2,14 +2,12 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { isComplete, type Metrics } from "../engine/completion";
 import type { InteractiveCanvasStep } from "../engine/schema";
 import type { PacoHumor } from "../characters/sprites";
-import { palette } from "../ui/palette";
+import { corDoTraco } from "../ui/marcas";
 import { Slider } from "../ui/Slider";
 import { TactileButton } from "../ui/Tactile";
 import { widgets } from "../widgets/registry";
 import { duvidaLiberada, StepLayout } from "./StepLayout";
 import type { StepProps } from "./types";
-
-const sliderColor = { h: palette.h, r: palette.r, g: palette.g, ink: palette.ink2 } as const;
 
 export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasStep>) {
   const Widget = widgets[step.widget];
@@ -60,7 +58,7 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
           step={c.step}
           unit={c.unit}
           value={controls[c.id]}
-          color={sliderColor[c.color]}
+          color={corDoTraco(c.color).main}
           onChange={(v) => {
             setInteracted(true);
             setControls((s) => ({ ...s, [c.id]: v }));

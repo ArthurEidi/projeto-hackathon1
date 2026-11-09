@@ -3,7 +3,7 @@ import { BoasVindas, jaViuBoasVindas, SaudacaoPaco } from "./characters/BoasVind
 import { listAulas, taxonomy } from "./engine/content";
 import { MATERIA_COM_CONTEUDO, MATERIAS, spriteMateria } from "./engine/materias";
 import { getProgress } from "./engine/progress";
-import { IconCheck, IconCone, IconLock } from "./ui/Icons";
+import { IconCheck, IconLock, IconUnidade } from "./ui/Icons";
 import { TactileButton } from "./ui/Tactile";
 
 /** Trilha: Pilar > Setor > Unidade > Aula. */
@@ -67,11 +67,11 @@ export function Home({ onOpen }: { onOpen: (key: string) => void }) {
                 <div key={u.id} className="unit">
                   <div className="unit__head">
                     <div className="unit__badge">
-                      <IconCone color="#FFFFFF" size={26} />
+                      <IconUnidade icone={u.icone} color="#FFFFFF" size={26} />
                     </div>
                     <div>
                       <p className="unit__title">{u.titulo}</p>
-                      <p className="unit__sub">{u.aulas.length} aulas</p>
+                      <p className="unit__sub">{u.aulas.length === 1 ? "1 aula" : `${u.aulas.length} aulas`}</p>
                     </div>
                   </div>
                   <div className="path">
@@ -90,7 +90,7 @@ export function Home({ onOpen }: { onOpen: (key: string) => void }) {
                             aria-label={`Aula ${a.numero}: ${a.titulo}`}
                             onClick={() => onOpen(key)}
                           >
-                            {done ? <IconCheck color="#FFFFFF" /> : unlocked ? <IconCone color="#FFFFFF" /> : <IconLock />}
+                            {done ? <IconCheck color="#FFFFFF" /> : unlocked ? <IconUnidade icone={u.icone} color="#FFFFFF" /> : <IconLock />}
                           </TactileButton>
                           <div className="node__text">
                             <span className="node__label">

@@ -1,6 +1,8 @@
 // Contratos de parâmetros dos widgets. Arquivo sem React: é usado pelo schema da aula,
 // pelo lint de conteúdo (Node) e pelos próprios widgets.
+// Capítulos novos: schemas em src/widgets/<unidade>/params.ts, espalhados aqui (...capitulo.widgetParams).
 import { z } from "zod";
+import * as common from "./common/params";
 
 const ConeDims = z.object({
   h: z.number().positive(),
@@ -13,6 +15,7 @@ export type Magnitude = z.infer<typeof Magnitude>;
 export const widgetParams = {
   revolution: ConeDims,
   generatrix: ConeDims,
+  ...common.widgetParams,
 } as const;
 
 export type WidgetId = keyof typeof widgetParams;
@@ -29,6 +32,7 @@ export type ConeFigureState = z.output<typeof ConeFigureState>;
 
 export const figureParams = {
   cone_figure: ConeFigureState,
+  ...common.figureParams,
 } as const;
 
 export type FigureId = keyof typeof figureParams;

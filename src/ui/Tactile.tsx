@@ -1,6 +1,8 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "danger" | "h" | "r" | "g";
+import type { Marca } from "./marcas";
+
+type Variant = "primary" | "secondary" | "danger" | Marca;
 
 interface TactileButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;

@@ -1,0 +1,445 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Reta Viva",
+  "subtitulo": "Inclinação, deslocamento e raiz",
+  "caminho": { "pilar": "algebra", "setor": "funcoes", "unidade": "funcao-afim" },
+  "outro": "Você montou a máquina f(x) = ax + b: a decide a inclinação, b o ponto de partida, e a raiz é onde a saída zera.",
+  "glossario": {
+    "c1": { "nome": "Coeficiente a", "resumo": "Quanto a saída muda quando a entrada anda 1." },
+    "c2": { "nome": "Coeficiente b", "resumo": "A saída quando a entrada é zero: onde a reta corta o eixo y." },
+    "c3": { "nome": "Gráfico de f", "resumo": "Todos os pontos (x, f(x)) que a máquina produz." },
+    "c4": { "nome": "Raiz", "resumo": "Entrada que faz a saída valer zero." }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [{ "tipo": "afim", "a": 1, "b": 0, "cor": "c3", "rotulo": "y = x" }],
+        "ponto": { "x": 1, "passo": 0.5 },
+        "marcar": { "quadrantes": true }
+      },
+      "lines": {
+        "intro": "Esta máquina devolve a entrada sem mexer: f(x) = x. Arraste o ponto para os dois lados e veja onde a saída vai parar.",
+        "done": "Entrada 3, saída 3; entrada −2, saída −2. Sem nada agindo, a máquina desenha a diagonal."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda função vira uma reta assim?",
+        "resposta": "Não: existem parábolas, exponenciais e muitas outras. Hoje ficamos nas retas, as funções afins."
+      },
+      "complete_when": { "metric": "quadrantes", "gte": 2 }
+    },
+    {
+      "id": "somar-b",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" },
+          { "tipo": "afim", "a": 1, "b": "$b", "cor": "c3" }
+        ],
+        "marcar": { "interceptoY": true }
+      },
+      "controls": [{ "id": "b", "label": "Soma b", "min": -4, "max": 4, "step": 1, "initial": 0, "color": "c2" }],
+      "lines": {
+        "intro": "Agora a máquina soma b no fim. Antes de mexer: com b = 2, a reta vai girar ou só subir?",
+        "done": "Só subiu. Cada saída ganhou 2, então a reta inteira subiu 2 sem mudar a inclinação."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E com b negativo?",
+        "resposta": "A reta inteira desce. Com x = 0 a saída é exatamente b, por isso é ali que a reta corta o eixo y."
+      },
+      "complete_when": { "metric": "b", "gte": 2 }
+    },
+    {
+      "id": "multiplicar-a",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" },
+          { "tipo": "afim", "a": "$a", "b": 0, "cor": "c3" }
+        ],
+        "triangulo": { "curva": 1, "x": 0, "cor": "c1" }
+      },
+      "controls": [{ "id": "a", "label": "Multiplica por a", "min": -4, "max": 4, "step": 1, "initial": 1, "color": "c1" }],
+      "lines": {
+        "intro": "Agora a entrada é multiplicada por a. Leve a até 2: andando 1 para a direita, quanto a saída sobe?",
+        "done": "Sobe 2 a cada passo de 1, em qualquer lugar. Como a subida por passo nunca muda, o desenho só pode ser reto."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que não sai uma curva?",
+        "resposta": "Curva seria a subida mudar no caminho. Aqui todo passo de 1 soma o mesmo a, então a inclinação é constante."
+      },
+      "complete_when": { "metric": "a", "gte": 2 }
+    },
+    {
+      "id": "a-negativo",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" },
+          { "tipo": "afim", "a": "$a", "b": 0, "cor": "c3" }
+        ],
+        "triangulo": { "curva": 1, "x": 0, "cor": "c1" }
+      },
+      "controls": [{ "id": "a", "label": "Multiplica por a", "min": -4, "max": 4, "step": 1, "initial": 2, "color": "c1" }],
+      "lines": {
+        "intro": "Faça uma previsão antes de mexer: com a = −1, a reta sobe ou desce para a direita? Depois leve a até −1.",
+        "done": "Desce. Entrada positiva vezes número negativo dá saída negativa, então andar para a direita derruba a saída."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a for zero?",
+        "resposta": "Aí toda entrada vira zero antes de somar b. A saída fica constante e a reta deita."
+      },
+      "complete_when": { "metric": "a", "lte": -1 }
+    },
+    {
+      "id": "achar-raiz",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [{ "tipo": "afim", "a": -1, "b": 2, "cor": "c3", "rotulo": "f(x) = −x + 2" }],
+        "ponto": { "x": -2, "passo": 0.5 },
+        "marcar": { "quadrantes": true }
+      },
+      "lines": {
+        "intro": "Em f(x) = −x + 2, para qual entrada a saída vale zero? Arraste o ponto até descobrir.",
+        "done": "Em x = 2 a saída é zero, pois −2 + 2 = 0. Essa entrada se chama raiz, e é onde a reta cruza o eixo x."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda reta tem raiz?",
+        "resposta": "Se a não for zero, tem exatamente uma. A reta deitada y = 5 nunca encosta no eixo x."
+      },
+      "complete_when": { "metric": "na_raiz", "gte": 1 }
+    },
+    {
+      "id": "duas-maquinas",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "afim", "a": 1, "b": 0, "cor": "c3", "rotulo": "f(x) = x" },
+          { "tipo": "afim", "a": 2, "b": 1, "cor": "ink", "rotulo": "g(x) = 2x + 1" }
+        ],
+        "ponto": { "curva": 0, "x": 2, "passo": 0.5 }
+      },
+      "lines": {
+        "intro": "Duas máquinas: f(x) = x e g(x) = 2x + 1. Arraste o ponto por f e ache a entrada em que as duas dão a mesma saída.",
+        "done": "Em x = −1, as duas devolvem −1. No gráfico, mesma entrada com mesma saída é o ponto onde as retas se cruzam."
+      },
+      "complete_when": { "metric": "no_encontro", "gte": 1 }
+    },
+    {
+      "id": "desafio-raiz",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": { "curvas": [{ "tipo": "afim", "a": -2, "b": 4, "cor": "c3", "rotulo": "f(x) = −2x + 4" }] }
+      },
+      "prompt": "Em f(x) = −2x + 4, em que valor de x a reta cruza o eixo x?",
+      "lines": { "intro": "Agora sem arrastar: leia a lei da função e pense em qual entrada zera a saída." },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Dá para achar a raiz sem desenhar?",
+        "resposta": "Dá: peça saída zero e resolva ax + b = 0. Com a diferente de zero, a raiz é x = −b/a."
+      },
+      "options": [
+        {
+          "id": "a4",
+          "label": "4",
+          "correct": false,
+          "feedback": "4 é a saída em x = 0, onde a reta corta o eixo y. No eixo x quem vale zero é a saída.",
+          "figure": { "marcar": { "interceptoY": true }, "highlight": ["c2"] }
+        },
+        {
+          "id": "am2",
+          "label": "−2",
+          "correct": false,
+          "feedback": "−2 é o a: a reta desce 2 a cada passo. Para a raiz, peça saída zero: −2x + 4 = 0.",
+          "figure": { "triangulo": { "x": 0, "cor": "c1" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "a2",
+          "label": "2",
+          "correct": true,
+          "feedback": "Exato. −2·2 + 4 = 0: a entrada 2 zera a saída.",
+          "figure": { "marcar": { "raizes": true }, "highlight": ["c4"] }
+        },
+        {
+          "id": "a0",
+          "label": "0",
+          "correct": false,
+          "feedback": "Com x = 0 a saída é 4, não zero. A raiz é a entrada que zera a saída.",
+          "figure": { "ponto": { "x": 0 } }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [{ "tipo": "afim", "a": 2, "b": 1, "cor": "c3", "rotulo": "f(x) = 2x + 1" }],
+          "triangulo": { "x": 0, "cor": "c1" },
+          "marcar": { "interceptoY": true, "raizes": true }
+        }
+      },
+      "formula": [
+        { "text": "f(x)", "ref": "c3" },
+        { "text": "=" },
+        { "text": "a", "ref": "c1" },
+        { "text": "x" },
+        { "text": "+" },
+        { "text": "b", "ref": "c2" }
+      ],
+      "definitions": [
+        { "term": "Função afim", "text": "f(x) = ax + b, com a e b reais; o gráfico é sempre uma reta." },
+        { "term": "Raiz", "text": "entrada que zera a saída; com a diferente de zero, x = −b/a." },
+        { "term": "Sinal de a", "text": "com a > 0 a reta sobe, com a < 0 desce e com a = 0 fica deitada." }
+      ],
+      "lines": {
+        "intro": "A máquina multiplica a entrada por a e depois soma b. Por isso a dita o ritmo da reta e b, o ponto de partida.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f-de-zero",
+        "prompt": "Em f(x) = 2x + 1, quanto vale f(0)?",
+        "options": [
+          { "id": "a0", "label": "0", "correct": false, "feedback": "Com x = 0 o termo 2x some, mas o b fica. f(0) = 1." },
+          { "id": "a1", "label": "1", "correct": true, "feedback": "Isso. Com entrada zero, sobra só o ponto de partida b." },
+          { "id": "a2", "label": "2", "correct": false, "feedback": "2 é o a, que multiplica a entrada. Com x = 0 sobra b: f(0) = 1." },
+          { "id": "a3", "label": "3", "correct": false, "feedback": "3 é f(1). Com x = 0 o 2x some, e f(0) = 1." }
+        ]
+      },
+      {
+        "id": "passo-de-um",
+        "prompt": "Em f(x) = 3x, se a entrada aumenta 1, quanto muda a saída?",
+        "options": [
+          { "id": "am3", "label": "−3", "correct": false, "feedback": "Com a positivo a saída sobe. Ela muda +3 a cada passo de 1." },
+          { "id": "a1", "label": "1", "correct": false, "feedback": "A entrada muda 1, mas a saída muda a vezes isso. Com a = 3, muda 3." },
+          { "id": "a3", "label": "3", "correct": true, "feedback": "Exato. É o triângulo da aula: andando 1, sobe a." },
+          { "id": "depende", "label": "Depende de x", "correct": false, "feedback": "Na reta não depende: todo passo de 1 muda a saída em a. Aqui, sempre 3." }
+        ]
+      },
+      {
+        "id": "decrescente",
+        "prompt": "Qual destas funções é decrescente?",
+        "options": [
+          { "id": "f4x1", "label": "f(x) = 4x + 1", "correct": false, "feedback": "Com a = 4 a reta sobe. A decrescente é f(x) = −3x + 2, com a negativo." },
+          { "id": "fx7", "label": "f(x) = x − 7", "correct": false, "feedback": "O −7 só desloca a reta para baixo; com a = 1 ela ainda sobe. A decrescente é −3x + 2." },
+          { "id": "fm3x2", "label": "f(x) = −3x + 2", "correct": true, "feedback": "Isso. Com a = −3, cada passo para a direita derruba a saída em 3." },
+          { "id": "f8", "label": "f(x) = 8", "correct": false, "feedback": "f(x) = 8 é constante: não sobe nem desce. A decrescente é −3x + 2." }
+        ]
+      },
+      {
+        "id": "trocar-b",
+        "prompt": "O que acontece com a reta ao trocar f(x) = x + 2 por g(x) = x − 1?",
+        "figure": {
+          "widget": "plano_figura",
+          "params": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 2, "cor": "c3", "rotulo": "f" },
+              { "tipo": "afim", "a": 1, "b": -1, "cor": "ink", "rotulo": "g" }
+            ]
+          }
+        },
+        "options": [
+          { "id": "gira", "label": "Gira em torno da origem", "correct": false, "feedback": "Girar seria mudar o a, que continua 1. Só o b mudou, de 2 para −1: a reta desce 3." },
+          { "id": "desce3", "label": "Desce 3, sem girar", "correct": true, "feedback": "Exato. b caiu de 2 para −1, então toda saída perdeu 3 e a inclinação ficou igual." },
+          { "id": "sobe3", "label": "Sobe 3, sem girar", "correct": false, "feedback": "O b diminuiu, de 2 para −1. A reta desce 3, sem girar." },
+          { "id": "igual", "label": "Fica igual", "correct": false, "feedback": "Mesma inclinação não é mesma reta: b foi de 2 para −1, e a reta desceu 3." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "raiz-3x-6",
+        "prompt": "Em f(x) = 3x − 6, qual é a raiz?",
+        "figure": {
+          "widget": "plano_figura",
+          "params": { "curvas": [{ "tipo": "afim", "a": 3, "b": -6, "cor": "c3", "rotulo": "f(x) = 3x − 6" }], "y": [-7, 3] }
+        },
+        "options": [
+          { "id": "am6", "label": "−6", "correct": false, "feedback": "−6 é f(0), onde a reta corta o eixo y. A raiz pede saída zero: 3x − 6 = 0, x = 2." },
+          { "id": "a3", "label": "3", "correct": false, "feedback": "3 é o a. Para a raiz, resolva 3x − 6 = 0: x = 2." },
+          { "id": "a2", "label": "2", "correct": true, "feedback": "Certo. 3·2 − 6 = 0, então a reta cruza o eixo x em 2." },
+          { "id": "am2", "label": "−2", "correct": false, "feedback": "Cuidado com o sinal: 3x = 6, então x = 2, não −2." }
+        ]
+      },
+      {
+        "id": "constante-5",
+        "prompt": "Quantas raízes reais tem f(x) = 0x + 5?",
+        "options": [
+          { "id": "nenhuma", "label": "Nenhuma", "correct": true, "feedback": "Isso. A reta deitada em y = 5 nunca encosta no eixo x." },
+          { "id": "uma", "label": "Uma", "correct": false, "feedback": "Com a = 0 a saída é sempre 5 e nunca zera. Não há raiz." },
+          { "id": "duas", "label": "Duas", "correct": false, "feedback": "Uma reta não cruza o eixo x duas vezes. Aqui a saída é sempre 5: nenhuma raiz." },
+          { "id": "infinitas", "label": "Infinitas", "correct": false, "feedback": "Infinitas seria se a saída fosse sempre 0. Ela é sempre 5, então não há raiz." }
+        ]
+      },
+      {
+        "id": "lei-do-grafico",
+        "prompt": "A reta do gráfico passa por (0; 1) e (1; 3). Qual é a lei da função?",
+        "figure": {
+          "widget": "plano_figura",
+          "params": {
+            "curvas": [{ "tipo": "afim", "a": 2, "b": 1, "cor": "c3" }],
+            "ponto": { "x": 1 },
+            "marcar": { "interceptoY": true }
+          }
+        },
+        "options": [
+          { "id": "f2x1", "label": "f(x) = 2x + 1", "correct": true, "feedback": "Exato. Corta o eixo y em 1, então b = 1; andando 1 sobe 2, então a = 2." },
+          { "id": "fx3", "label": "f(x) = x + 3", "correct": false, "feedback": "Assim f(0) seria 3, mas a reta corta o eixo y em 1. Saindo de 1 e subindo 2 por passo: f(x) = 2x + 1." },
+          { "id": "f3x1", "label": "f(x) = 3x + 1", "correct": false, "feedback": "3 é a saída em x = 1, não a subida. De 1 para 3 a saída sobe 2: f(x) = 2x + 1." },
+          { "id": "fx2", "label": "f(x) = x + 2", "correct": false, "feedback": "Com a = 1 a reta subiria 1 por passo, mas ela sobe 2. A lei é f(x) = 2x + 1." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "duas-maquinas",
+        "prompt": "Para qual entrada f(x) = x e g(x) = 2x + 1 dão a mesma saída?",
+        "options": [
+          { "id": "am1", "label": "−1", "correct": true, "feedback": "Isso. f(−1) = −1 e g(−1) = −2 + 1 = −1." },
+          { "id": "a1", "label": "1", "correct": false, "feedback": "Com x = 1, f dá 1 e g dá 3. Resolvendo x = 2x + 1, sai x = −1." },
+          { "id": "a0", "label": "0", "correct": false, "feedback": "Com x = 0, f dá 0 e g dá 1. As saídas coincidem em x = −1." },
+          { "id": "nunca", "label": "Nunca", "correct": false, "feedback": "As inclinações são diferentes, então as retas se cruzam. x = 2x + 1 dá x = −1." }
+        ]
+      },
+      {
+        "id": "zero-zero",
+        "prompt": "Quantas raízes reais tem f(x) = 0x + 0?",
+        "fala": "Pense no que essa máquina faz com qualquer entrada.",
+        "options": [
+          { "id": "nenhuma", "label": "Nenhuma", "correct": false, "feedback": "Aqui a saída é 0 para toda entrada. Então todo x é raiz: infinitas." },
+          { "id": "uma", "label": "Uma", "correct": false, "feedback": "Uma raiz só acontece com a diferente de zero. Com a = b = 0, todo x zera a saída: infinitas." },
+          { "id": "duas", "label": "Duas", "correct": false, "feedback": "A reta é o próprio eixo x. Todo x é raiz: infinitas." },
+          { "id": "infinitas", "label": "Infinitas", "correct": true, "feedback": "Exato. A reta coincide com o eixo x, então qualquer entrada zera a saída." }
+        ]
+      },
+      {
+        "id": "dois-pontos",
+        "prompt": "Uma reta passa por (1; 5) e (3; 9). Quanto vale f(0)?",
+        "fala": "Primeiro descubra quanto a reta sobe a cada passo de 1.",
+        "options": [
+          { "id": "a2", "label": "2", "correct": false, "feedback": "2 é a subida por passo: 4 em 2 passos. Voltando um passo de (1; 5), f(0) = 5 − 2 = 3." },
+          { "id": "a5", "label": "5", "correct": false, "feedback": "5 é f(1). Voltando um passo, a saída perde a = 2: f(0) = 3." },
+          { "id": "a4", "label": "4", "correct": false, "feedback": "4 é a subida total, em 2 passos. Por passo são 2, e f(0) = 5 − 2 = 3." },
+          { "id": "a3", "label": "3", "correct": true, "feedback": "Certo. Sobe 2 por passo, então de x = 1 para x = 0 a saída cai 2: f(0) = 3." }
+        ]
+      },
+      {
+        "id": "taxi",
+        "prompt": "Um táxi cobra R$ 5 fixos mais R$ 2 por km. Quanto custa uma corrida de 10 km?",
+        "fala": "Aqui x é distância, então o modelo só vale para x maior ou igual a zero.",
+        "options": [
+          { "id": "r25", "label": "R$ 25", "correct": true, "feedback": "Exato. f(x) = 2x + 5, e f(10) = 20 + 5 = 25." },
+          { "id": "r20", "label": "R$ 20", "correct": false, "feedback": "Faltou a parte fixa. f(x) = 2x + 5, então f(10) = 20 + 5 = 25." },
+          { "id": "r52", "label": "R$ 52", "correct": false, "feedback": "Você trocou os papéis: 5 por km e 2 fixos. O certo é 2·10 + 5 = 25." },
+          { "id": "r17", "label": "R$ 17", "correct": false, "feedback": "Somar 10 + 2 + 5 não usa o preço por km. São 2 reais a cada km: 2·10 + 5 = 25." }
+        ]
+      },
+      {
+        "id": "raiz-por-pontos",
+        "prompt": "Uma função afim tem f(1) = 1 e f(3) = −3. Qual é a raiz?",
+        "fala": "Última. Ache a, depois b, e só então a raiz.",
+        "options": [
+          { "id": "am2", "label": "−2", "correct": false, "feedback": "−2 é o a: cai 4 em 2 passos. Com b = 3, a raiz sai de −2x + 3 = 0: x = 3/2." },
+          { "id": "a3", "label": "3", "correct": false, "feedback": "3 é o b, o valor de f(0). A raiz pede −2x + 3 = 0, então x = 3/2." },
+          { "id": "a3m2", "label": "−3/2", "correct": false, "feedback": "Cuidado com o sinal: −2x + 3 = 0 dá x = 3/2, positivo." },
+          { "id": "a3d2", "label": "3/2", "correct": true, "feedback": "Isso. a = −2, b = 3, e −2x + 3 = 0 dá x = 3/2." }
+        ]
+      }
+    ],
+    "vestibular": [
+      {
+        "id": "enem-2014-taxi",
+        "prompt": "Táxi A: R$ 3,45 fixos + R$ 2,05 por km; táxi B: R$ 3,60 + R$ 1,90 por km. Em 6 km, qual a diferença entre os custos médios por km?",
+        "fala": "Custo médio por km é o total da corrida dividido pelos km rodados.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2014,
+          "adaptada": true,
+          "adaptacao": "Prova PPL, questão 159: enunciado resumido, mantidas as alternativas e o gabarito (0,13).",
+          "urls": ["https://plataformaassaad.com.br/?p=27879"]
+        },
+        "options": [
+          { "id": "a075", "label": "0,75", "correct": false, "feedback": "0,75 é a diferença dos totais, 15,75 − 15,00. Por km divide-se por 6: 2,625 − 2,50 ≈ 0,13." },
+          { "id": "a045", "label": "0,45", "correct": false, "feedback": "Os custos médios são 15,75 ÷ 6 = 2,625 e 15,00 ÷ 6 = 2,50. A diferença é cerca de 0,13." },
+          { "id": "a038", "label": "0,38", "correct": false, "feedback": "Confira os totais: A dá 15,75 e B dá 15,00. Por km: 2,625 − 2,50 ≈ 0,13." },
+          { "id": "a033", "label": "0,33", "correct": false, "feedback": "A diferença por km é a dos totais dividida por 6: 0,75 ÷ 6 ≈ 0,13." },
+          { "id": "a013", "label": "0,13", "correct": true, "feedback": "Exato. A custa 15,75 e B 15,00; por km, 2,625 − 2,50 = 0,125 ≈ 0,13." }
+        ]
+      },
+      {
+        "id": "cefetmg-2015-taxi",
+        "prompt": "Um táxi cobra R$ 5,00 por corrida mais R$ 2,00 por km e arrecadou R$ 410,00 em 10 corridas. Qual a média de km por corrida?",
+        "fala": "Cada corrida paga a parte fixa: são 10 vezes R$ 5,00.",
+        "fonte": {
+          "banca": "Cefet-MG",
+          "ano": 2015,
+          "adaptada": true,
+          "adaptacao": "Enunciado resumido; alternativas e gabarito (18) mantidos.",
+          "urls": ["https://www.todamateria.com.br/exercicios-de-funcao-afim/"]
+        },
+        "options": [
+          { "id": "a14", "label": "14", "correct": false, "feedback": "As 10 corridas pagam 50 de parte fixa; sobram 360, que são 180 km. Em média, 18 km." },
+          { "id": "a16", "label": "16", "correct": false, "feedback": "Tire os 10 × 5 = 50 fixos: 360 ÷ 2 = 180 km no total, ou 18 km por corrida." },
+          { "id": "a18", "label": "18", "correct": true, "feedback": "Isso. 410 − 50 = 360, que dá 180 km em 10 corridas: 18 km cada." },
+          { "id": "a20", "label": "20", "correct": false, "feedback": "Perto de 20 sai quando se ignora a parte fixa. Sem os 50 fixos, são 18 km por corrida." }
+        ]
+      },
+      {
+        "id": "enem-2012-equilibrio",
+        "prompt": "A oferta de um produto é QO = −20 + 4P e a demanda é QD = 46 − 2P, sendo P o preço. Qual é o preço de equilíbrio, em que QO = QD?",
+        "fala": "Equilíbrio é onde as duas retas se cruzam, como as máquinas da aula.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Enunciado resumido, sem o texto de contexto; alternativas e gabarito (11) mantidos.",
+          "urls": ["https://www.todamateria.com.br/exercicios-de-funcao-afim/"]
+        },
+        "options": [
+          { "id": "a5", "label": "5", "correct": false, "feedback": "Com P = 5, a oferta é 0 e a demanda é 36. Igualando: 6P = 66, P = 11." },
+          { "id": "a11", "label": "11", "correct": true, "feedback": "Exato. 6P = 66 dá P = 11, e as duas quantidades valem 24: é onde as retas se cruzam." },
+          { "id": "a13", "label": "13", "correct": false, "feedback": "Com P = 13, a oferta (32) passa a demanda (20). Igualando: 6P = 66, P = 11." },
+          { "id": "a23", "label": "23", "correct": false, "feedback": "Igualando −20 + 4P = 46 − 2P sai 6P = 66, P = 11. Nesse preço as duas quantidades valem 24." },
+          { "id": "a33", "label": "33", "correct": false, "feedback": "33 é 66 ÷ 2, esquecendo o 4P. Juntando 4P + 2P = 6P, fica P = 11." }
+        ]
+      },
+      {
+        "id": "unicamp-2016-simetria",
+        "prompt": "Seja f(x) = ax + b, com f(4) = 2. Quanto vale f(f(3) + f(5))?",
+        "fala": "Última. Some f(3) e f(5) e compare com f(4).",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2016,
+          "adaptada": true,
+          "adaptacao": "Enunciado reescrito em uma linha; alternativas e gabarito (2) mantidos.",
+          "urls": ["https://www.todamateria.com.br/exercicios-de-funcao-afim/"]
+        },
+        "options": [
+          { "id": "a5", "label": "5", "correct": false, "feedback": "Não precisa achar a e b: f(3) + f(5) = 8a + 2b = 2·f(4) = 4, e f(4) = 2." },
+          { "id": "a4", "label": "4", "correct": false, "feedback": "4 é f(3) + f(5), que vale 2·f(4). Falta aplicar f: f(4) = 2." },
+          { "id": "a3", "label": "3", "correct": false, "feedback": "f(3) + f(5) = 8a + 2b = 2·(4a + b) = 4. Então a resposta é f(4) = 2." },
+          { "id": "a2", "label": "2", "correct": true, "feedback": "Isso. 3 e 5 ficam à mesma distância de 4, então f(3) + f(5) = 2·f(4) = 4, e f(4) = 2." }
+        ]
+      }
+    ]
+  }
+}

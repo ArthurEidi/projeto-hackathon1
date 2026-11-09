@@ -39,15 +39,15 @@ export const FALA_PERGUNTA: Record<Etapa, string[]> = {
   ],
   desafio: [
     "Estas pedem um passo a mais. Leia com calma.",
-    "Desenhar o triângulo no papel ajuda bastante.",
+    "Um rascunho no papel ajuda bastante.",
     "Nem sempre a resposta é um número inteiro.",
-    "Lembre qual é o maior lado do triângulo.",
-    "Última. Calcule uma geratriz de cada vez.",
+    "Se travar, lembre do que você viu acontecer na aula.",
+    "Última. Faça uma conta de cada vez.",
   ],
   vestibular: [
     "Agora são questões que já caíram em vestibulares. Você já tem tudo o que precisa.",
     "Leia o enunciado inteiro antes de escolher.",
-    "Separe os dados e desenhe o triângulo.",
+    "Separe os dados antes de fazer contas.",
     "Última. Esta pede um pouco mais de conta.",
   ],
 };

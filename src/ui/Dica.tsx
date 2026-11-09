@@ -1,8 +1,9 @@
 // Dica discreta com setinha: nome da grandeza e um resumo de uma frase.
 // Posicionada em coordenadas do contêiner (que precisa ser position: relative).
+// Sem entrada no glossário da aula, não mostra nada.
 import type { Rect } from "../widgets/canvas";
-import type { Magnitude } from "../widgets/params";
-import { GLOSSARIO } from "./glossario";
+import { useGlossario } from "./GlossarioContext";
+import type { Marca } from "./marcas";
 
 const LARGURA = 200;
 const MARGEM = 6;
@@ -10,7 +11,7 @@ const MARGEM = 6;
 const ESPACO_ACIMA = 74;
 
 interface DicaProps {
-  termo: Magnitude;
+  termo: Marca;
   alvo: Rect;
   largura: number;
   /** Força o lado; sem isso, fica acima quando há espaço. */
@@ -18,7 +19,9 @@ interface DicaProps {
 }
 
 export function Dica({ termo, alvo, largura, lado }: DicaProps) {
-  const { nome, resumo } = GLOSSARIO[termo];
+  const entrada = useGlossario()[termo];
+  if (!entrada) return null;
+  const { nome, resumo } = entrada;
   const w = Math.min(LARGURA, largura - 2 * MARGEM);
   const cx = alvo.x + alvo.w / 2;
   const left = Math.max(MARGEM, Math.min(cx - w / 2, largura - w - MARGEM));

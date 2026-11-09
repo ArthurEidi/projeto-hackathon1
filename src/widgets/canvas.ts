@@ -1,12 +1,12 @@
 // Hook de canvas com nitidez em telas de alta densidade e primitivas de desenho chapado.
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { palette as c } from "../ui/palette";
-import type { Magnitude } from "./params";
+import type { Marca } from "../ui/marcas";
 
 export type Pt = { x: number; y: number };
 export type Rect = { x: number; y: number; w: number; h: number };
 /** Área de um rótulo desenhado no canvas, para a dica ao passar o mouse. */
-export type Hit = Rect & { key: Magnitude };
+export type Hit = Rect & { key: Marca };
 export type DrawFn = (ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[]) => void;
 
 const TOQUE_MS = 2600;

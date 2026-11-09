@@ -1,18 +1,502 @@
 {
   "pilares": [
-    { "id": "aritmetica", "titulo": "Aritmética", "setores": [] },
-    { "id": "algebra", "titulo": "Álgebra", "setores": [] },
+    {
+      "id": "aritmetica",
+      "titulo": "Aritmética",
+      "setores": [
+        {
+          "id": "conjuntos",
+          "titulo": "Conjuntos",
+          "unidades": [
+            {
+              "id": "conjuntos-e-intervalos",
+              "titulo": "Conjuntos e Intervalos",
+              "icone": "conjunto",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Quem Está Dentro",
+                  "subtitulo": "Pertinência, união e interseção",
+                  "arquivo": null
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "Pedaços da Reta",
+                  "subtitulo": "Intervalos na reta numérica",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "proporcionalidade",
+          "titulo": "Proporção e Finanças",
+          "unidades": [
+            {
+              "id": "razao-proporcao-porcentagem",
+              "titulo": "Razão, Proporção e Porcentagem",
+              "icone": "porcento",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Comparar por Divisão",
+                  "subtitulo": "Razão e proporção",
+                  "arquivo": null
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "De Cada Cem",
+                  "subtitulo": "Porcentagem e variação percentual",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "matematica-financeira",
+              "titulo": "Matemática Financeira",
+              "icone": "porcento",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Juro Sobre Juro",
+                  "subtitulo": "Juros simples e compostos",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "contagem-probabilidade",
+          "titulo": "Contagem e Probabilidade",
+          "unidades": [
+            {
+              "id": "analise-combinatoria",
+              "titulo": "Análise Combinatória",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Árvore de Escolhas",
+                  "subtitulo": "Princípio fundamental da contagem",
+                  "arquivo": null
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "Ordem Importa?",
+                  "subtitulo": "Permutação, arranjo e combinação",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "probabilidade",
+              "titulo": "Probabilidade",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Casos que Contam",
+                  "subtitulo": "Probabilidade clássica",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "estatistica",
+          "titulo": "Estatística",
+          "unidades": [
+            {
+              "id": "estatistica",
+              "titulo": "Estatística",
+              "icone": "barras",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Centro dos Dados",
+                  "subtitulo": "Média, moda e mediana",
+                  "arquivo": null
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "Quanto Espalha",
+                  "subtitulo": "Dispersão e desvio padrão",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "algebra",
+      "titulo": "Álgebra",
+      "setores": [
+        {
+          "id": "funcoes",
+          "titulo": "Funções",
+          "unidades": [
+            {
+              "id": "introducao-a-funcoes",
+              "titulo": "Introdução às Funções",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Máquina de Saídas",
+                  "subtitulo": "Entrada, regra e saída",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "funcao-afim",
+              "titulo": "Função Afim",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Reta Viva",
+                  "subtitulo": "Inclinação, deslocamento e raiz",
+                  "arquivo": "algebra/funcoes/funcao-afim/aula-01.json"
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "Retas que se Cruzam",
+                  "subtitulo": "Interseções e inequações",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "funcao-quadratica",
+              "titulo": "Função Quadrática",
+              "icone": "parabola",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Reta que Dobra",
+                  "subtitulo": "Parábola, concavidade e vértice",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "funcao-modular",
+              "titulo": "Função Modular",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Distância Até o Zero",
+                  "subtitulo": "Módulo e o gráfico em V",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "funcao-exponencial",
+              "titulo": "Função Exponencial",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Multiplicar a Cada Passo",
+                  "subtitulo": "Crescimento e decaimento exponencial",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "logaritmos",
+              "titulo": "Logaritmos",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Pergunta Inversa",
+                  "subtitulo": "Logaritmo como expoente procurado",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sequencias",
+          "titulo": "Sequências",
+          "unidades": [
+            {
+              "id": "sequencias-pa-pg",
+              "titulo": "Progressões (PA e PG)",
+              "icone": "sequencia",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Degraus Iguais",
+                  "subtitulo": "Progressão aritmética",
+                  "arquivo": null
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "Degraus que Multiplicam",
+                  "subtitulo": "Progressão geométrica",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "matrizes-e-sistemas",
+          "titulo": "Matrizes e Sistemas",
+          "unidades": [
+            {
+              "id": "matrizes-determinantes-sistemas",
+              "titulo": "Matrizes, Determinantes e Sistemas",
+              "icone": "matriz",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Tabelas que Operam",
+                  "subtitulo": "Matrizes e suas operações",
+                  "arquivo": null
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "Retas que se Encontram",
+                  "subtitulo": "Sistemas lineares",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "polinomios-e-complexos",
+          "titulo": "Polinômios e Complexos",
+          "unidades": [
+            {
+              "id": "polinomios",
+              "titulo": "Polinômios",
+              "icone": "parabola",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Somas de Potências",
+                  "subtitulo": "Grau, raízes e divisão",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "numeros-complexos",
+              "titulo": "Números Complexos",
+              "icone": "complexo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Girar no Plano",
+                  "subtitulo": "A unidade imaginária e o plano complexo",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "geometria",
       "titulo": "Geometria",
       "setores": [
         {
+          "id": "geometria-plana",
+          "titulo": "Geometria Plana",
+          "unidades": [
+            {
+              "id": "angulos-e-triangulos",
+              "titulo": "Ângulos e Triângulos",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Soma que Não Muda",
+                  "subtitulo": "Ângulos internos do triângulo",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "semelhanca-e-pitagoras",
+              "titulo": "Semelhança e Pitágoras",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Quadrados Sobre os Lados",
+                  "subtitulo": "Teorema de Pitágoras",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "areas",
+              "titulo": "Áreas de Figuras Planas",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Contar Quadradinhos",
+                  "subtitulo": "Área de polígonos",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "circunferencia",
+              "titulo": "Circunferência e Círculo",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Quantos Diâmetros Cabem",
+                  "subtitulo": "Comprimento e área do círculo",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "trigonometria",
+          "titulo": "Trigonometria",
+          "unidades": [
+            {
+              "id": "trigonometria-triangulo-retangulo",
+              "titulo": "Trigonometria no Triângulo Retângulo",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Razões que Não Dependem do Tamanho",
+                  "subtitulo": "Seno, cosseno e tangente",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "ciclo-trigonometrico",
+              "titulo": "Ciclo Trigonométrico",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Volta Completa",
+                  "subtitulo": "Ângulos no ciclo e seus sinais",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "funcoes-trigonometricas",
+              "titulo": "Funções Trigonométricas",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Volta que Vira Onda",
+                  "subtitulo": "Gráficos de seno e cosseno",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
           "id": "geometria-espacial",
           "titulo": "Geometria Espacial",
           "unidades": [
             {
+              "id": "prismas",
+              "titulo": "Prismas",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Fatias Iguais",
+                  "subtitulo": "Volume do prisma",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "piramides",
+              "titulo": "Pirâmides",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Um Terço do Prisma",
+                  "subtitulo": "Volume da pirâmide",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "cilindros",
+              "titulo": "Cilindros",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Retângulo que Gira",
+                  "subtitulo": "Cilindro de revolução",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
               "id": "cones",
               "titulo": "Cones",
+              "icone": "cone",
               "aulas": [
                 {
                   "id": "aula-01",
@@ -26,6 +510,75 @@
                   "numero": 2,
                   "titulo": "Abrindo o Cone",
                   "subtitulo": "Planificação da superfície lateral",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "esferas",
+              "titulo": "Esferas",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Semicírculo que Gira",
+                  "subtitulo": "Volume e área da esfera",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "geometria-analitica",
+          "titulo": "Geometria Analítica",
+          "unidades": [
+            {
+              "id": "ponto-e-reta",
+              "titulo": "Ponto e Reta",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Endereços no Plano",
+                  "subtitulo": "Distância e ponto médio",
+                  "arquivo": null
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "A Equação da Reta",
+                  "subtitulo": "Coeficiente angular e equação",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "circunferencia-analitica",
+              "titulo": "Circunferência no Plano",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Todos à Mesma Distância",
+                  "subtitulo": "Equação da circunferência",
+                  "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "conicas",
+              "titulo": "Cônicas",
+              "icone": "parabola",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Cortes no Cone",
+                  "subtitulo": "Elipse, hipérbole e parábola",
                   "arquivo": null
                 }
               ]
