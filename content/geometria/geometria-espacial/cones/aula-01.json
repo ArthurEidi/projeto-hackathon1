@@ -1,0 +1,346 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "O Triângulo que Gira",
+  "subtitulo": "Sólidos de revolução e a geratriz",
+  "caminho": { "pilar": "geometria", "setor": "geometria-espacial", "unidade": "cones" },
+  "outro": "Você girou um triângulo, achou a geratriz e ligou tudo a g² = h² + r².",
+  "steps": [
+    {
+      "id": "girar-triangulo",
+      "type": "interactive_canvas",
+      "widget": "revolution",
+      "params": { "h": 4, "r": 3 },
+      "controls": [
+        { "id": "theta", "label": "Giro", "min": 0, "max": 360, "step": 1, "initial": 0, "unit": "°" }
+      ],
+      "lines": {
+        "intro": "Este triângulo retângulo tem um lado colado no eixo. Arraste o controle para girar o triângulo.",
+        "done": "Uma volta completa. O triângulo plano gerou um sólido."
+      },
+      "complete_when": { "metric": "theta", "gte": 360 }
+    },
+    {
+      "id": "geratriz-constante",
+      "type": "interactive_canvas",
+      "widget": "generatrix",
+      "params": { "h": 4, "r": 3 },
+      "lines": {
+        "intro": "A superfície do cone é feita de cópias da hipotenusa. Arraste o ponto pela borda da base.",
+        "done": "O segmento muda de lugar, mas não de tamanho. Ele se chama geratriz."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Mas qualquer segmento que sai do vértice é geratriz?",
+        "resposta": "Só os que chegam na borda da base. E todos eles medem o mesmo."
+      },
+      "complete_when": { "metric": "arc", "gte": 180 }
+    },
+    {
+      "id": "corte-meridiano",
+      "type": "manim_video",
+      "src": "/videos/cones_aula01_corte.mp4",
+      "poster": "/videos/cones_aula01_corte.png",
+      "scene": "CorteMeridiano",
+      "lines": {
+        "intro": "Observe o que aparece quando o cone é cortado ao longo do eixo.",
+        "done": "O corte revela o triângulo do início. Altura, raio e geratriz formam um triângulo retângulo."
+      }
+    },
+    {
+      "id": "desafio-geratriz",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "cone_figure",
+        "params": { "h": 4, "r": 3, "labels": { "h": "4", "r": "3", "g": "?" }, "view": "cone" }
+      },
+      "prompt": "Um cone tem altura 4 e raio 3. Quanto mede a geratriz?",
+      "lines": { "intro": "Use o triângulo escondido no corte para responder." },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Isso vale para qualquer cone?",
+        "resposta": "Para qualquer cone reto, sim. Altura, raio e geratriz sempre formam um triângulo retângulo."
+      },
+      "options": [
+        {
+          "id": "a7",
+          "label": "7",
+          "correct": false,
+          "feedback": "Você somou altura e raio. A geratriz é a hipotenusa, não a soma dos catetos.",
+          "figure": { "view": "both", "highlight": ["g"] }
+        },
+        {
+          "id": "a5",
+          "label": "5",
+          "correct": true,
+          "feedback": "Exato. 3, 4 e 5 são os lados do triângulo do corte.",
+          "figure": { "view": "both", "highlight": ["h", "r", "g"], "labels": { "h": "4", "r": "3", "g": "5" } }
+        },
+        {
+          "id": "a25",
+          "label": "25",
+          "correct": false,
+          "feedback": "25 é a área do quadrado sobre a geratriz. Falta tirar a raiz.",
+          "figure": { "view": "section", "squares": ["g"], "areas": { "g": "25" } }
+        },
+        {
+          "id": "araiz7",
+          "label": "√7",
+          "correct": false,
+          "feedback": "Você subtraiu os quadrados. A geratriz é o maior lado, então os quadrados se somam.",
+          "figure": {
+            "view": "section",
+            "squares": ["h", "r", "g"],
+            "areas": { "h": "16", "r": "9", "g": "25" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "cone_figure",
+        "params": { "h": 4, "r": 3, "labels": { "h": "h", "r": "r", "g": "g" }, "view": "both" }
+      },
+      "formula": [
+        { "text": "g", "sup": "2", "ref": "g" },
+        { "text": "=" },
+        { "text": "h", "sup": "2", "ref": "h" },
+        { "text": "+" },
+        { "text": "r", "sup": "2", "ref": "r" }
+      ],
+      "definitions": [
+        { "term": "Sólido de revolução", "text": "gerado ao girar uma figura plana em torno de um eixo." },
+        { "term": "Geratriz", "text": "segmento que liga o vértice a qualquer ponto da circunferência da base." }
+      ],
+      "lines": {
+        "intro": "O cone reto nasce de um triângulo retângulo girando. Por isso g² = h² + r².",
+        "hint": "Toque em uma letra para ver o segmento no cone e no corte."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "solido-gerado",
+        "prompt": "Girando um triângulo retângulo em torno de um cateto, que sólido aparece?",
+        "options": [
+          { "id": "cilindro", "label": "Cilindro", "correct": false, "feedback": "O cilindro vem de um retângulo girando. O triângulo retângulo gera um cone." },
+          { "id": "cone", "label": "Cone", "correct": true, "feedback": "Isso. Foi o que você fez no primeiro passo da aula." },
+          { "id": "esfera", "label": "Esfera", "correct": false, "feedback": "A esfera vem de um semicírculo girando. O triângulo retângulo gera um cone." },
+          { "id": "piramide", "label": "Pirâmide", "correct": false, "feedback": "A pirâmide não nasce de um giro, ela tem faces planas. O triângulo girando gera um cone." }
+        ]
+      },
+      {
+        "id": "nome-geratriz",
+        "prompt": "Como se chama o segmento que liga o vértice do cone à borda da base?",
+        "options": [
+          { "id": "altura", "label": "Altura", "correct": false, "feedback": "A altura vai do vértice ao centro da base. O segmento até a borda é a geratriz." },
+          { "id": "raio", "label": "Raio", "correct": false, "feedback": "O raio fica na base, do centro até a borda. O segmento que sai do vértice é a geratriz." },
+          { "id": "geratriz", "label": "Geratriz", "correct": true, "feedback": "Exato. É a hipotenusa do triângulo que girou." },
+          { "id": "diametro", "label": "Diâmetro", "correct": false, "feedback": "O diâmetro atravessa a base de borda a borda. O segmento que sai do vértice é a geratriz." }
+        ]
+      },
+      {
+        "id": "hipotenusa",
+        "prompt": "No triângulo do corte, qual dos três lados é a hipotenusa?",
+        "figure": {
+          "widget": "cone_figure",
+          "params": { "h": 4, "r": 3, "labels": { "h": "h", "r": "r", "g": "g" }, "view": "section" }
+        },
+        "options": [
+          { "id": "h", "label": "h", "correct": false, "feedback": "A altura é um cateto, colado no eixo. A hipotenusa é g, o lado oposto ao ângulo reto." },
+          { "id": "r", "label": "r", "correct": false, "feedback": "O raio é um cateto, deitado na base. A hipotenusa é g, o lado oposto ao ângulo reto." },
+          { "id": "g", "label": "g", "correct": true, "feedback": "Certo. A geratriz fica de frente para o ângulo reto." }
+        ]
+      },
+      {
+        "id": "formula",
+        "prompt": "Qual fórmula liga a geratriz, a altura e o raio?",
+        "options": [
+          { "id": "soma", "label": "g = h + r", "correct": false, "feedback": "Somar os lados não funciona. Quem se soma são os quadrados: g² = h² + r²." },
+          { "id": "pitagoras", "label": "g² = h² + r²", "correct": true, "feedback": "Isso. É Pitágoras no triângulo do corte." },
+          { "id": "subtrai", "label": "g² = h² − r²", "correct": false, "feedback": "A geratriz é o maior lado, então os quadrados se somam: g² = h² + r²." },
+          { "id": "troca", "label": "h² = g² + r²", "correct": false, "feedback": "Assim a altura seria o maior lado. A hipotenusa é g, então g² = h² + r²." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "geratriz-8-6",
+        "prompt": "Um cone tem altura 8 e raio 6. Quanto mede a geratriz?",
+        "figure": {
+          "widget": "cone_figure",
+          "params": { "h": 4, "r": 3, "labels": { "h": "8", "r": "6", "g": "?" }, "view": "cone" }
+        },
+        "options": [
+          { "id": "a14", "label": "14", "correct": false, "feedback": "Você somou altura e raio. Somam-se os quadrados: 64 + 36 = 100, e a raiz dá 10." },
+          { "id": "a100", "label": "100", "correct": false, "feedback": "100 é g², a área do quadrado. Falta tirar a raiz: g = 10." },
+          { "id": "a10", "label": "10", "correct": true, "feedback": "Exato. 64 + 36 = 100, e a raiz de 100 é 10." },
+          { "id": "araiz28", "label": "√28", "correct": false, "feedback": "Você subtraiu os quadrados. Como g é o maior lado, eles se somam: 64 + 36 = 100, g = 10." }
+        ]
+      },
+      {
+        "id": "altura-13-5",
+        "prompt": "Um cone tem geratriz 13 e raio 5. Quanto mede a altura?",
+        "figure": {
+          "widget": "cone_figure",
+          "params": { "h": 12, "r": 5, "labels": { "h": "?", "r": "5", "g": "13" }, "view": "section" }
+        },
+        "options": [
+          { "id": "a12", "label": "12", "correct": true, "feedback": "Certo. 169 − 25 = 144, e a raiz de 144 é 12." },
+          { "id": "a8", "label": "8", "correct": false, "feedback": "Você subtraiu os lados. Subtraem-se os quadrados: 169 − 25 = 144, então h = 12." },
+          { "id": "a18", "label": "18", "correct": false, "feedback": "A altura é cateto, então é menor que 13. Fica h² = 169 − 25 = 144, h = 12." },
+          { "id": "a144", "label": "144", "correct": false, "feedback": "144 é h², a área do quadrado. Falta tirar a raiz: h = 12." }
+        ]
+      },
+      {
+        "id": "outra-geratriz",
+        "prompt": "Num cone, uma geratriz mede 5. Quanto mede outra geratriz, que sai de outro ponto da borda?",
+        "options": [
+          { "id": "igual", "label": "5", "correct": true, "feedback": "Isso. Todas as geratrizes de um cone reto têm o mesmo tamanho." },
+          { "id": "menor", "label": "Menos de 5", "correct": false, "feedback": "Lembra do ponto que você arrastou pela borda? A geratriz mudava de lugar, mas sempre media 5." },
+          { "id": "maior", "label": "Mais de 5", "correct": false, "feedback": "Lembra do ponto que você arrastou pela borda? A geratriz mudava de lugar, mas sempre media 5." },
+          { "id": "depende", "label": "Depende do ponto", "correct": false, "feedback": "No cone reto não depende. Todas as geratrizes medem o mesmo, então essa também mede 5." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "eixo-cateto-menor",
+        "prompt": "Um triângulo retângulo de catetos 5 e 12 gira em torno do cateto de medida 5. Qual é a altura do cone gerado?",
+        "options": [
+          { "id": "a5", "label": "5", "correct": true, "feedback": "Isso. O cateto que fica no eixo vira a altura, e o de 12 vira o raio." },
+          { "id": "a12", "label": "12", "correct": false, "feedback": "O 12 gira em volta do eixo e vira o raio. A altura é o cateto do eixo, que mede 5." },
+          { "id": "a13", "label": "13", "correct": false, "feedback": "13 é a hipotenusa, que vira a geratriz. A altura é o cateto do eixo: 5." },
+          { "id": "a17", "label": "17", "correct": false, "feedback": "Somar os catetos não dá nenhum elemento do cone. A altura é o cateto do eixo: 5." }
+        ]
+      },
+      {
+        "id": "diametro-10-8",
+        "prompt": "Um cone tem geratriz 10 e altura 8. Quanto mede o diâmetro da base?",
+        "figure": {
+          "widget": "cone_figure",
+          "params": { "h": 4, "r": 3, "labels": { "h": "8", "r": "?", "g": "10" }, "view": "cone" }
+        },
+        "options": [
+          { "id": "a6", "label": "6", "correct": false, "feedback": "6 é o raio: 100 − 64 = 36. O diâmetro é o dobro, então mede 12." },
+          { "id": "a12", "label": "12", "correct": true, "feedback": "Exato. O raio dá 6, pois 100 − 64 = 36, e o diâmetro é o dobro." },
+          { "id": "a2raiz41", "label": "2√41", "correct": false, "feedback": "Você somou 100 + 64. A geratriz é o maior lado, então subtrai: r² = 36, r = 6 e o diâmetro é 12." },
+          { "id": "a18", "label": "18", "correct": false, "feedback": "Somar geratriz e altura não funciona. Pitágoras dá r = 6, então o diâmetro é 12." }
+        ]
+      },
+      {
+        "id": "geratriz-3-3",
+        "prompt": "Num cone, a altura e o raio medem 3. Quanto mede a geratriz?",
+        "options": [
+          { "id": "a6", "label": "6", "correct": false, "feedback": "Você somou os lados. Somam-se os quadrados: 9 + 9 = 18, e g = √18 = 3√2." },
+          { "id": "a3raiz2", "label": "3√2", "correct": true, "feedback": "Certo. g² = 9 + 9 = 18, e √18 = 3√2, um pouco mais que 4." },
+          { "id": "a18", "label": "18", "correct": false, "feedback": "18 é g², a área do quadrado. Falta a raiz: g = √18 = 3√2." },
+          { "id": "a9", "label": "9", "correct": false, "feedback": "9 é só um dos quadrados. Some os dois: g² = 18, então g = 3√2." }
+        ]
+      },
+      {
+        "id": "altura-5-5raiz2",
+        "prompt": "Um cone tem raio 5 e geratriz 5√2. Quanto mede a altura?",
+        "options": [
+          { "id": "a5raiz3", "label": "5√3", "correct": false, "feedback": "Você somou 50 + 25. A geratriz é o maior lado, então h² = 50 − 25 = 25 e h = 5." },
+          { "id": "a25", "label": "25", "correct": false, "feedback": "25 é h², a área do quadrado. Falta a raiz: h = 5." },
+          { "id": "a10", "label": "10", "correct": false, "feedback": "Como (5√2)² = 50, fica h² = 50 − 25 = 25. Então h = 5." },
+          { "id": "a5", "label": "5", "correct": true, "feedback": "Isso: (5√2)² = 50, e 50 − 25 = 25. A altura é igual ao raio." }
+        ]
+      },
+      {
+        "id": "dois-cones",
+        "prompt": "Dois cones têm altura 12, um com raio 5 e outro com raio 9. Quanto a geratriz do segundo é maior?",
+        "options": [
+          { "id": "a4", "label": "4", "correct": false, "feedback": "4 é a diferença dos raios. As geratrizes medem 13 e 15, então a diferença é 2." },
+          { "id": "a2", "label": "2", "correct": true, "feedback": "Exato. √(144 + 25) = 13, √(144 + 81) = 15, e 15 − 13 = 2." },
+          { "id": "a15", "label": "15", "correct": false, "feedback": "15 é a geratriz do segundo cone. A do primeiro é 13, então a diferença é 2." },
+          { "id": "a56", "label": "56", "correct": false, "feedback": "56 é a diferença entre os quadrados dos raios. As geratrizes são 13 e 15: diferença 2." }
+        ]
+      }
+    ],
+    "vestibular": [
+      {
+        "id": "ufpr-reservatorio",
+        "prompt": "Um reservatório tem a forma de um cone reto com o vértice embaixo, altura 6 m e raio da base 8 m. Quanto mede a geratriz?",
+        "fala": "Agora são questões que já caíram em vestibulares. Você já tem tudo o que precisa.",
+        "fonte": {
+          "banca": "UFPR",
+          "adaptada": true,
+          "adaptacao": "Original de somatória com 4 afirmações; usamos só a (04), sobre a geratriz, e criamos as alternativas.",
+          "urls": [
+            "https://files.projetomedicina.com.br/wp-content/uploads/site/attachments/article/412/matematica_geometria_espacial_cones_exercicios.pdf"
+          ]
+        },
+        "options": [
+          { "id": "a10", "label": "10 m", "correct": true, "feedback": "Isso: 36 + 64 = 100, então g = 10 m. Na prova, a afirmação (04) era verdadeira." },
+          { "id": "a14", "label": "14 m", "correct": false, "feedback": "Você somou altura e raio. Somam-se os quadrados: 36 + 64 = 100, g = 10 m." },
+          { "id": "a2raiz7", "label": "2√7 m", "correct": false, "feedback": "Você subtraiu os quadrados. A geratriz é o maior lado: 36 + 64 = 100, g = 10 m." },
+          { "id": "a100", "label": "100 m", "correct": false, "feedback": "100 é g². Falta tirar a raiz: g = 10 m." }
+        ]
+      },
+      {
+        "id": "cefetpr-secao-meridiana",
+        "prompt": "O raio da base de um cone reto mede 3 m e o perímetro da sua seção meridiana mede 16 m. Quanto mede a altura do cone?",
+        "fala": "A seção meridiana é o corte pelo eixo: um triângulo de lados g, g e 2r.",
+        "fonte": {
+          "banca": "Cefet-PR",
+          "adaptada": true,
+          "adaptacao": "A prova pedia o volume (12π m³); aqui pedimos a altura, que é o passo que usa Pitágoras.",
+          "urls": [
+            "https://projetoagathaedu.com.br/questoes-vestibular/matematica/geometria-espacial/cone.php",
+            "https://projetoagathaedu.com.br/resolucao-geometria/cone/08-cefet-pr-o-raio-da-base-de-um-cone-circular-reto-mede-3-m-e-o-perimetro-de-sua-secao-meridiana.php"
+          ]
+        },
+        "options": [
+          { "id": "a5", "label": "5 m", "correct": false, "feedback": "5 m é a geratriz, pois 2g + 6 = 16. Falta Pitágoras: h² = 25 − 9 = 16, h = 4 m." },
+          { "id": "a4", "label": "4 m", "correct": true, "feedback": "Certo: 2g + 2·3 = 16 dá g = 5, e h² = 25 − 9 = 16. Então h = 4 m." },
+          { "id": "araiz34", "label": "√34 m", "correct": false, "feedback": "Você somou 25 + 9. A geratriz é o maior lado: h² = 25 − 9 = 16, h = 4 m." },
+          { "id": "a7", "label": "7 m", "correct": false, "feedback": "16 − 9 = 7 mistura perímetro com quadrado. Primeiro ache g = 5, depois h² = 25 − 9, h = 4 m." }
+        ]
+      },
+      {
+        "id": "ufsc-cone-equilatero",
+        "prompt": "Num cone equilátero, a seção meridiana é um triângulo equilátero e a geratriz mede 2√3 cm. Quanto vale a área dessa seção vezes √3?",
+        "fala": "No cone equilátero, a geratriz é igual ao diâmetro da base. Ache a altura primeiro.",
+        "fonte": {
+          "banca": "UFSC",
+          "ano": 2004,
+          "adaptada": true,
+          "adaptacao": "A prova pedia a resposta numérica (a área em cm² vezes √3); aqui criamos alternativas.",
+          "urls": [
+            "https://files.projetomedicina.com.br/wp-content/uploads/site/attachments/article/412/matematica_geometria_espacial_cones_exercicios.pdf",
+            "https://vestibulares.estrategia.com/public/questoes/geratriz-cone32bda5d528/"
+          ]
+        },
+        "options": [
+          { "id": "a3", "label": "3", "correct": false, "feedback": "3 é a altura: r = √3 e h² = 12 − 3 = 9. A área é 2√3 · 3 ÷ 2 = 3√3, e vezes √3 dá 9." },
+          { "id": "a9", "label": "9", "correct": true, "feedback": "Exato: r = √3, h = 3 e a área é 2√3 · 3 ÷ 2 = 3√3. Vezes √3 dá 9." },
+          { "id": "a18", "label": "18", "correct": false, "feedback": "Faltou dividir por 2 na área do triângulo. A área é 3√3, e vezes √3 dá 9." },
+          { "id": "a12", "label": "12", "correct": false, "feedback": "12 é g², o quadrado de 2√3. Com h = 3, a área é 3√3, e vezes √3 dá 9." }
+        ]
+      },
+      {
+        "id": "upe-perimetro-96",
+        "prompt": "A seção meridiana de um cone é um triângulo isósceles de perímetro 96 cm, e a altura do cone é 4/3 do raio. Quanto mede a geratriz?",
+        "fala": "Escreva tudo em função do raio e use o perímetro no fim.",
+        "fonte": {
+          "banca": "UPE",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "A prova seguia cortando o cone e pedia uma razão de áreas laterais; aqui paramos na geratriz.",
+          "urls": ["https://vestibulares.estrategia.com/public/questoes/secca-meridiana-cone-e595f7e99bc/"]
+        },
+        "options": [
+          { "id": "a24", "label": "24 cm", "correct": false, "feedback": "24 cm é a altura. Com h = 4r/3, Pitágoras dá g = 5r/3; e 2g + 2r = 96 leva a r = 18 e g = 30 cm." },
+          { "id": "a18", "label": "18 cm", "correct": false, "feedback": "18 cm é o raio. Como g = 5r/3, a geratriz mede 30 cm." },
+          { "id": "a30", "label": "30 cm", "correct": true, "feedback": "Isso: g = 5r/3, então 2g + 2r = 16r/3 = 96 e r = 18. Logo g = 30 cm." },
+          { "id": "a48", "label": "48 cm", "correct": false, "feedback": "48 é g + r, metade do perímetro. Com g = 5r/3, sai r = 18 e g = 30 cm." }
+        ]
+      }
+    ]
+  }
+}

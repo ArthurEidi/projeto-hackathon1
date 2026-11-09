@@ -1,0 +1,242 @@
+/* Paco e Tati: avatares, balões e conversa. Mesmo estilo tátil do resto do app (cores sólidas, contorno 2px). */
+
+.conversa {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fala {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  animation: fala-in 240ms ease-out;
+}
+.fala--tati {
+  flex-direction: row-reverse;
+}
+
+/* ---------- Avatar ---------- */
+.avatar {
+  flex: none;
+  width: 76px;
+  height: 76px;
+  transform-origin: 50% 100%;
+}
+.fala--compacta .avatar {
+  width: 56px;
+  height: 56px;
+}
+.avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.avatar--idle,
+.avatar--answering,
+.avatar--answered {
+  animation: avatar-respira 3.6s ease-in-out infinite;
+}
+.avatar--happy {
+  animation: avatar-pulo 520ms ease-out 2;
+}
+.avatar--thinking,
+.avatar--asking {
+  animation: avatar-inclina 1.8s ease-in-out infinite;
+}
+.avatar--encouraging {
+  animation: avatar-aceno 900ms ease-in-out 2;
+}
+
+/* ---------- Balão ---------- */
+.bubble {
+  --bubble-line: var(--line);
+  --bubble-bg: var(--bg);
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 2px solid var(--bubble-line);
+  border-radius: var(--radius);
+  background: var(--bubble-bg);
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.fala--compacta .bubble {
+  padding: 9px 12px;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.bubble::before,
+.bubble::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  bottom: 14px;
+  border-style: solid;
+  border-width: 8px 12px 8px 0;
+  border-color: transparent var(--bubble-line) transparent transparent;
+}
+.bubble::after {
+  left: -9px;
+  border-color: transparent var(--bubble-bg) transparent transparent;
+}
+.bubble--tati {
+  --bubble-line: var(--tati-line);
+  --bubble-bg: var(--tati-tint);
+}
+.bubble--tati::before,
+.bubble--tati::after {
+  left: auto;
+  right: -12px;
+  border-width: 8px 0 8px 12px;
+  border-color: transparent transparent transparent var(--bubble-line);
+}
+.bubble--tati::after {
+  right: -9px;
+  border-color: transparent transparent transparent var(--bubble-bg);
+}
+.bubble__nome {
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tati);
+  margin-bottom: 2px;
+}
+.bubble__text {
+  display: block;
+  animation: bubble-in 220ms ease-out;
+}
+.bubble__dots {
+  display: inline-flex;
+  gap: 5px;
+  padding: 4px 0;
+}
+.bubble__dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  animation: dots 1s ease-in-out infinite;
+}
+.bubble__dots i:nth-child(2) {
+  animation-delay: 150ms;
+}
+.bubble__dots i:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+/* ---------- Corpo inteiro (boas-vindas, conclusão) ---------- */
+.corpo {
+  display: block;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.dupla {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+}
+.dupla > img {
+  height: 150px;
+}
+.dupla--festa > img {
+  animation: avatar-pulo 620ms ease-out 3;
+  transform-origin: 50% 100%;
+}
+.dupla--festa > img:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@keyframes fala-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes avatar-respira {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.015, 1.03);
+  }
+}
+@keyframes avatar-pulo {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes avatar-inclina {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+}
+@keyframes avatar-aceno {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(5deg);
+  }
+  60% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes dots {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}

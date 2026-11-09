@@ -1,0 +1,38 @@
+{
+  "pilares": [
+    { "id": "aritmetica", "titulo": "Aritmética", "setores": [] },
+    { "id": "algebra", "titulo": "Álgebra", "setores": [] },
+    {
+      "id": "geometria",
+      "titulo": "Geometria",
+      "setores": [
+        {
+          "id": "geometria-espacial",
+          "titulo": "Geometria Espacial",
+          "unidades": [
+            {
+              "id": "cones",
+              "titulo": "Cones",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Triângulo que Gira",
+                  "subtitulo": "Sólidos de revolução e a geratriz",
+                  "arquivo": "geometria/geometria-espacial/cones/aula-01.json"
+                },
+                {
+                  "id": "aula-02",
+                  "numero": 2,
+                  "titulo": "Abrindo o Cone",
+                  "subtitulo": "Planificação da superfície lateral",
+                  "arquivo": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

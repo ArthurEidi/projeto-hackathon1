@@ -1,0 +1,72 @@
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { isComplete, type Metrics } from "../engine/completion";
+import type { InteractiveCanvasStep } from "../engine/schema";
+import type { PacoHumor } from "../characters/sprites";
+import { palette } from "../ui/palette";
+import { Slider } from "../ui/Slider";
+import { TactileButton } from "../ui/Tactile";
+import { widgets } from "../widgets/registry";
+import { duvidaLiberada, StepLayout } from "./StepLayout";
+import type { StepProps } from "./types";
+
+const sliderColor = { h: palette.h, r: palette.r, g: palette.g, ink: palette.ink2 } as const;
+
+export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasStep>) {
+  const Widget = widgets[step.widget];
+  const [controls, setControls] = useState<Record<string, number>>(() =>
+    Object.fromEntries(step.controls.map((c) => [c.id, c.initial])),
+  );
+  const [widgetMetrics, setWidgetMetrics] = useState<Metrics>({});
+  const [interacted, setInteracted] = useState(false);
+  const [done, setDone] = useState(false);
+
+  const metrics = useMemo(() => ({ ...widgetMetrics, ...controls }), [widgetMetrics, controls]);
+
+  // Uma vez concluído, o passo continua concluído mesmo se o aluno voltar o controle.
+  useEffect(() => {
+    if (!done && isComplete(step.complete_when, metrics)) {
+      setDone(true);
+      navigator.vibrate?.(20);
+    }
+  }, [metrics, done, step.complete_when]);
+
+  const onMetric = useCallback((name: string, value: number) => {
+    setWidgetMetrics((m) => (m[name] === value ? m : { ...m, [name]: value }));
+  }, []);
+  const onInteract = useCallback(() => setInteracted(true), []);
+
+  const paco: PacoHumor = done ? "happy" : interacted ? "thinking" : "idle";
+
+  return (
+    <StepLayout
+      paco={paco}
+      line={done ? step.lines.done : step.lines.intro}
+      duvida={duvidaLiberada(step.duvida, done)}
+      footer={
+        <TactileButton block disabled={!done} onClick={onNext}>
+          Continuar
+        </TactileButton>
+      }
+    >
+      <div className="stage">
+        <Widget params={step.params} controls={controls} onMetric={onMetric} onInteract={onInteract} done={done} />
+      </div>
+      {step.controls.map((c) => (
+        <Slider
+          key={c.id}
+          label={c.label}
+          min={c.min}
+          max={c.max}
+          step={c.step}
+          unit={c.unit}
+          value={controls[c.id]}
+          color={sliderColor[c.color]}
+          onChange={(v) => {
+            setInteracted(true);
+            setControls((s) => ({ ...s, [c.id]: v }));
+          }}
+        />
+      ))}
+    </StepLayout>
+  );
+}
