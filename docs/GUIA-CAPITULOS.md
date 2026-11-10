@@ -432,7 +432,22 @@ Arquivos: `common/params.ts` (schemas), `common/plot2d.ts` (matemática pura, te
 ```
 Métricas: `ponto_x`, `dentro` (1 se o ponto está em algum trecho), `faixa_x`. `distanciaZero` desenha |x| (módulo). Serve para conjuntos, intervalos, inequações e módulo.
 
-### 5.3 `ciclo_trigonometrico` (trigonometria)
+### 5.3 `barras` + `barras_figura` — PRONTOS
+
+Arquivos: `common/barras/params.ts` (schema por `modo`), `calc.ts` (estatística, quartis, sequências, sorteio reprodutível; testado), `desenho.ts`, `BarrasWidget.tsx`, `BarrasFigura.tsx`. Valores numéricos aceitam **expressão com sliders** (`common/expr.ts`, sem `eval`): `"$n"`, `"1/$m"`, `"2*$k"`, `"1+$t/100"`, `"5-$s"`.
+
+| `modo` | Campos principais | Métricas |
+|---|---|---|
+| `categorias` | `categorias: [{nome, valor}]`, `tipo` e `tipos` (chave barras/linha/setores), `eixo_inicio` (`"$eixo"`), `tabela`, `relativa` / `chave_relativa`, `coleta` (botões +1), `comparar: [i, j]` ("B parece X× A"), `acesas` (figura) | `barras_tocadas`, `tipo_linha`, `tipo_setores`, `regua_relativa`, `respostas` |
+| `amostragem` | `populacao: [{nome, pct}]`, `destaque`, `n` (`"$n"`), `vicio: {rotulo, populacao}`, `semente` | `amostra_pct`, `erro`, `vicio_ligado`, `amostras` |
+| `pontos` | `valores` (aceitam `"5-$s"`), `regua`, `passo`, `arrastaveis` (índices), `apoio: "media" \| "arrastavel" \| número`, `mostrar: {mediana, moda, desvios, quadrados, fila, soma_desvios}`, `chaves: ["desvios","quadrados","fila","somar"]`, `tocar_meios`, `grupo_b`, `incognita` | `arrastes`, `equilibrio`, `maior_valor`, `media`, `mediana`, `desvios_ligados`, `quadrados_ligados`, `somou`, `fila_ligada`, `meios_tocados` |
+| `fila` | `valores`, `ordenada` (senão botão "pôr em fila"), `arrastaveis` / `fixos` (`q1 q2 q3`), `caixa` / `chave_caixa`, `maior_arrastavel: {ate, passo}` | `ordenou`, `q1_certo`, `q2_certo`, `q3_certo`, `cortes_certos`, `caixa_desenhada`, `maior_valor`, `atipicos` |
+| `sequencia` | `regra: "pa" \| "pg" \| "recorrencia"` (aₙ₊₁ = q·aₙ + d), `a1`, `d`, `q`, `termos` (N colunas), `n` (`"$n"`: até onde acende), `degraus` (+d / ×q), `acumular` (torre Sₙ), `limite` (a₁/(1 − q)), `fantasma`, `nome`, `casas`, `acesos` (figura) | `termo_n`, `soma_n`, `sinal_trocou`, `barras_tocadas` |
+| `parte_todo` | `partes`, `pintadas` (`"2*$k"`, `"2+$n"`), `todo` (valor do todo), `referencia: {partes, pintadas}`, `mostrar: {fracao, porcento, razao}`, `rotulos: {parte, todo}` | `fracao`, `porcento`, `pintadas`, `partes`, `equivalente` |
+
+Cores por marca em `cor`/`cores` de cada modo (padrões: índice c1, termo c2, d c3, q c4; parte c1, todo c2, % c3, razão c4; apoio c3, mediana c4, desvio c1). Quartis pelo método das metades (1, 3, 4, 6, 8, 9, 12 → 3, 6, 9). Juros: `regra: "pg"`, `q: "1+$t/100"`. A figura aceita os mesmos campos, só números, e `highlight`.
+
+### 5.3b `ciclo_trigonometrico` (trigonometria)
 Ângulo por slider/arraste; projeções seno (vertical) e cosseno (horizontal) coloridas; sombra da função sendo traçada ao lado (liga ciclo ↔ gráfico, pilar 2); quadrantes e sinais (pilar 6, regra de sinais).
 
 ### 5.4 `geometria_plana` (plana, Pitágoras, semelhança, áreas)
@@ -443,7 +458,7 @@ Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer pe
 
 ### 5.6 Menores, mas úteis
 - `grade_resultados` (probabilidade/combinatória): grade de casos possíveis × favoráveis, árvore de escolhas.
-- `barras` (estatística, PA/PG como degraus): barras/histograma com média e mediana arrastáveis.
+- ~~`barras`~~ — pronto (§5.3). Fila de widgets pendentes e prioridade: `docs/WIDGETS-PENDENTES.md`.
 - `transformacao_plano` (matrizes): malha do plano deformada por uma matriz 2×2 com sliders.
 - Hooks: `useArrasto` (ponteiro com captura, como no `GeneratrixWidget`), `useVisitados` (contagem de faixas visitadas → métrica de cobertura, generalizando o `arc`).
 

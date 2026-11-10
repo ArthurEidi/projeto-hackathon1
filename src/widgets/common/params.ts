@@ -1,6 +1,7 @@
 // Contratos dos widgets comuns (plano cartesiano e reta numérica). Sem React: usado no Node.
 import { z } from "zod";
 import { CorTraco, Marca } from "../../ui/marcas";
+import * as barras from "./barras/params";
 
 /** Número fixo ou referência a um slider do passo: "$a" vale o slider de id "a". */
 export const Valor = z.union([z.number(), z.string().regex(/^\$[a-z0-9_]+$/, 'use um número ou "$id" de um slider')]);
@@ -156,9 +157,11 @@ export const RetaFigura = RetaNumerica.superRefine((p, ctx) => {
 export const widgetParams = {
   plano_cartesiano: PlanoCartesiano,
   reta_numerica: RetaNumerica,
+  ...barras.widgetParams,
 } as const;
 
 export const figureParams = {
   plano_figura: PlanoFigura,
   reta_figura: RetaFigura,
+  ...barras.figureParams,
 } as const;
