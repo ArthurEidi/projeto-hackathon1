@@ -444,6 +444,20 @@
                   "arquivo": null
                 }
               ]
+            },
+            {
+              "id": "modelos-periodicos-e-amplitude",
+              "titulo": "Modelagem Periódica",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Domando a Onda",
+                  "subtitulo": "Linha média, amplitude e frequência nos fenômenos cíclicos",
+                  "arquivo": "geometria/trigonometria/modelos-periodicos-e-amplitude/aula-01.json"
+                }
+              ]
             }
           ]
         },

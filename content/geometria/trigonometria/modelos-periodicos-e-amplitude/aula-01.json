@@ -1,0 +1,313 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Domando a Onda",
+  "subtitulo": "Linha média, amplitude e frequência nos fenômenos cíclicos",
+  "caminho": { "pilar": "geometria", "setor": "trigonometria", "unidade": "modelos-periodicos-e-amplitude" },
+  "outro": "Você controlou a linha média D, a amplitude A e o período 2π/B da senoide para modelar fenômenos periódicos do mundo real.",
+  "glossario": {
+    "c1": { "nome": "Linha média D", "resumo": "Altura central da onda: média entre o valor máximo e o mínimo." },
+    "c2": { "nome": "Amplitude |A|", "resumo": "Distância vertical da linha média até o topo ou até o fundo da onda." },
+    "c3": { "nome": "Multiplicador B", "resumo": "Acelera o giro dentro do seno e define o período T = 2π / B." },
+    "c4": { "nome": "Fase C", "resumo": "Deslocamento horizontal que ajusta em que instante o ciclo começa." }
+  },
+  "steps": [
+    {
+      "id": "amplitude-a",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 7],
+        "y": [-4, 4],
+        "curvas": [
+          { "tipo": "seno", "a": 1, "b": 1, "c": 0, "fantasma": true, "rotulo": "y = sen x" },
+          { "tipo": "seno", "a": "$a", "b": 1, "c": 0, "cor": "c2" },
+          { "tipo": "afim", "a": 0, "b": "$a", "cor": "c2", "rotulo": "topo" }
+        ]
+      },
+      "controls": [{ "id": "a", "label": "Amplitude A", "min": 1, "max": 3, "step": 1, "initial": 1, "color": "c2" }],
+      "lines": {
+        "intro": "Com A = 1, a onda vai de −1 a 1 (caso neutro). Leve A até 3: para onde vão o máximo, o mínimo e o período da onda?",
+        "done": "O máximo vai a 3 e o mínimo a −3, mas o período continua 2π. A amplitude |A| só estica a altura da onda."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Onde usamos uma onda ajustável assim na vida real?",
+        "resposta": "Em tudo que se repete: maré, roda-gigante, pressão arterial e temperatura ao longo do ano."
+      },
+      "complete_when": { "metric": "a", "gte": 3 }
+    },
+    {
+      "id": "linha-media-d",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 7],
+        "y": [-3, 7],
+        "curvas": [
+          { "tipo": "seno", "a": 2, "b": 1, "c": 0, "fantasma": true, "rotulo": "y = 2·sen x" },
+          { "tipo": "seno", "a": 2, "b": 1, "c": "$d", "cor": "c2" },
+          { "tipo": "afim", "a": 0, "b": "$d", "cor": "c1", "rotulo": "linha média D" }
+        ]
+      },
+      "controls": [{ "id": "d", "label": "Linha média D", "min": 0, "max": 4, "step": 2, "initial": 0, "color": "c1" }],
+      "lines": {
+        "intro": "A onda 2·sen x oscila entre −2 e 2. Suba a linha média D para 4: quais passam a ser as alturas mínima e máxima?",
+        "done": "Mínimo 4 − 2 = 2 e máximo 4 + 2 = 6. A linha média D fica no meio, a uma distância |A| de cada um."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Dá para somar ondas?",
+        "resposta": "Dá: batimentos e séries de Fourier somam ondas. Aqui ficamos no modelo D + A·sen(Bt + C)."
+      },
+      "complete_when": { "metric": "d", "gte": 4 }
+    },
+    {
+      "id": "periodo-b",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-0.5, 7],
+        "y": [-2, 2],
+        "curvas": [
+          { "tipo": "seno", "a": 1, "b": 1, "c": 0, "fantasma": true, "rotulo": "y = sen x" },
+          { "tipo": "seno", "a": 1, "b": "$b", "c": 0, "cor": "c3" }
+        ]
+      },
+      "controls": [{ "id": "b", "label": "Multiplicador B", "min": 1, "max": 2, "step": 1, "initial": 1, "color": "c3" }],
+      "lines": {
+        "intro": "Com B = 1, uma onda leva 2π para fechar. Dobre B para 2: o período dobra para 4π ou cai pela metade para π?",
+        "done": "Cai pela metade, para π! Multiplicar x por 2 faz o arco girar duas vezes mais rápido, por isso T = 2π / B."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o A na frente do seno for negativo, tipo −3·sen x?",
+        "resposta": "A onda vira de cabeça para baixo, mas a amplitude segue |−3| = 3 e a imagem continua de −3 a 3."
+      },
+      "complete_when": { "metric": "b", "gte": 2 }
+    },
+    {
+      "id": "desafio-roda-gigante",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 26],
+          "y": [-2, 26],
+          "curvas": [
+            { "tipo": "seno", "a": 10, "b": 0.5235987755982988, "c": 12, "cor": "c3", "rotulo": "h(t)" },
+            { "tipo": "afim", "a": 0, "b": 12, "cor": "c1", "rotulo": "D = 12" }
+          ]
+        }
+      },
+      "prompt": "A altura de uma cabine na roda-gigante é h(t) = 12 + 10·sen(πt / 6), em metros. Quais são as alturas máxima e mínima da cabine?",
+      "lines": { "intro": "Olhe para D = 12 e A = 10: some para achar o topo e subtraia para achar a base." },
+      "options": [
+        {
+          "id": "m12e10",
+          "label": "12 m e 10 m",
+          "correct": false,
+          "feedback": "12 é a linha média e 10 é a amplitude. O máximo é 12 + 10 = 22 m e o mínimo é 12 − 10 = 2 m.",
+          "figure": { "highlight": ["c1"] }
+        },
+        {
+          "id": "m22e2",
+          "label": "22 m e 2 m",
+          "correct": true,
+          "feedback": "Isso. Máximo = 12 + 10 = 22 m (sen = 1) e mínimo = 12 − 10 = 2 m (sen = −1).",
+          "figure": { "ponto": { "x": 3, "cor": "c2" }, "highlight": ["c2"] }
+        },
+        {
+          "id": "m10em10",
+          "label": "10 m e −10 m",
+          "correct": false,
+          "feedback": "Faltou somar a linha média 12: máximo 12 + 10 = 22 m e mínimo 12 − 10 = 2 m.",
+          "figure": { "ponto": { "x": 9, "cor": "c2" }, "highlight": ["c2"] }
+        },
+        {
+          "id": "m22e12",
+          "label": "22 m e 12 m",
+          "correct": false,
+          "feedback": "12 m é o meio da roda (sen = 0). No fundo (sen = −1), a altura é 12 − 10 = 2 m.",
+          "figure": { "ponto": { "x": 9, "cor": "c2" }, "highlight": ["c2"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-1, 7],
+          "y": [-1, 7],
+          "curvas": [
+            { "tipo": "seno", "a": 2, "b": 2, "c": 3, "cor": "c3", "rotulo": "f(x)" },
+            { "tipo": "afim", "a": 0, "b": 3, "cor": "c1", "rotulo": "D" },
+            { "tipo": "afim", "a": 0, "b": 5, "cor": "c2" },
+            { "tipo": "afim", "a": 0, "b": 1, "cor": "c2" }
+          ]
+        }
+      },
+      "formula": [
+        { "text": "f(x)" },
+        { "text": "=" },
+        { "text": "D", "ref": "c1" },
+        { "text": "+" },
+        { "text": "A", "ref": "c2" },
+        { "text": "·sen(" },
+        { "text": "B", "ref": "c3" },
+        { "text": "x +" },
+        { "text": "C", "ref": "c4" },
+        { "text": ")" },
+        { "text": ";" },
+        { "text": "T", "ref": "c3" },
+        { "text": "=" },
+        { "text": "2π / B", "ref": "c3" }
+      ],
+      "definitions": [
+        { "term": "Linha média e amplitude", "text": "D = (máx + mín) / 2 e |A| = (máx − mín) / 2." },
+        { "term": "Imagem", "text": "varia de D − |A| (mínimo) até D + |A| (máximo)." },
+        { "term": "Período", "text": "T = 2π / |B| é o tempo de um ciclo completo." }
+      ],
+      "lines": {
+        "intro": "O seno oscila entre −1 e 1 e fecha um ciclo em 2π, por isso a imagem vai de D − |A| a D + |A| e o período vale 2π / B.",
+        "hint": "Toque em cada letra da fórmula para ver o que ela controla na onda."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "maximo-basico",
+        "prompt": "Qual é o valor máximo da função f(x) = 5 + 3·sen x?",
+        "options": [
+          { "id": "m3", "label": "3", "correct": false, "feedback": "3 é apenas a amplitude. Somando a linha média 5, o máximo é 5 + 3 = 8." },
+          { "id": "m8", "label": "8", "correct": true, "feedback": "Certo. Quando sen x = 1, temos f(x) = 5 + 3·1 = 8." },
+          { "id": "m5", "label": "5", "correct": false, "feedback": "5 é a linha média (sen x = 0). No pico (sen x = 1), vale 5 + 3 = 8." },
+          { "id": "m2", "label": "2", "correct": false, "feedback": "2 é o valor mínimo (5 − 3). O valor máximo é 5 + 3 = 8." }
+        ]
+      },
+      {
+        "id": "minimo-basico",
+        "prompt": "E qual é o valor mínimo da mesma função f(x) = 5 + 3·sen x?",
+        "options": [
+          { "id": "nm3", "label": "−3", "correct": false, "feedback": "−3 seria sem o 5. Somando a linha média: 5 − 3 = 2." },
+          { "id": "n5", "label": "5", "correct": false, "feedback": "5 é a linha média. Como o seno desce até −1, o mínimo é 5 − 3 = 2." },
+          { "id": "n2", "label": "2", "correct": true, "feedback": "Isso. Quando sen x = −1, temos f(x) = 5 + 3·(−1) = 2." },
+          { "id": "n8", "label": "8", "correct": false, "feedback": "8 é o máximo. O mínimo ocorre quando sen x = −1: 5 − 3 = 2." }
+        ]
+      },
+      {
+        "id": "periodo-sen-4x",
+        "prompt": "Qual é o período T da função f(x) = sen(4x)?",
+        "options": [
+          { "id": "t8p", "label": "8π", "correct": false, "feedback": "Divida 2π por 4 em vez de multiplicar: T = 2π / 4 = π/2." },
+          { "id": "t4p", "label": "4π", "correct": false, "feedback": "Use T = 2π / B com B = 4: T = 2π / 4 = π/2." },
+          { "id": "tp2", "label": "π/2", "correct": true, "feedback": "Exato. T = 2π / 4 = π/2." },
+          { "id": "t2p", "label": "2π", "correct": false, "feedback": "2π é para sen(1x). Com B = 4, o período encurta para 2π / 4 = π/2." }
+        ]
+      },
+      {
+        "id": "identificar-amplitude",
+        "prompt": "Uma onda varia entre 10 m e 18 m de altura. Qual é a sua linha média D e a sua amplitude A?",
+        "options": [
+          { "id": "d14a8", "label": "D = 14 m e A = 8 m", "correct": false, "feedback": "8 m é a distância total do fundo ao topo. A amplitude é metade: 4 m (e D = 14 m)." },
+          { "id": "d14a4", "label": "D = 14 m e A = 4 m", "correct": true, "feedback": "Certo. O meio entre 10 e 18 é 14 m, e a distância do meio ao topo é 18 − 14 = 4 m." },
+          { "id": "d10a8", "label": "D = 10 m e A = 8 m", "correct": false, "feedback": "10 m é o mínimo. A linha média fica no meio: D = 14 m e A = 4 m." },
+          { "id": "d18a4", "label": "D = 18 m e A = 4 m", "correct": false, "feedback": "18 m é o máximo. A linha média fica em D = 14 m, com A = 4 m." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "amplitude-com-sinal-menos",
+        "prompt": "Qual é o conjunto imagem da função f(x) = 10 − 4·cos(2x)?",
+        "options": [
+          { "id": "i6a10", "label": "[6; 10]", "correct": false, "feedback": "Quando cos(2x) = −1, temos 10 − 4·(−1) = 14. A imagem é [6; 14]." },
+          { "id": "i6a14", "label": "[6; 14]", "correct": true, "feedback": "Isso. Como cos(2x) varia de −1 a 1, f(x) varia entre 10 − 4 = 6 e 10 + 4 = 14." },
+          { "id": "im4a4", "label": "[−4; 4]", "correct": false, "feedback": "Faltou somar a linha média 10: a imagem vai de 10 − 4 = 6 a 10 + 4 = 14." },
+          { "id": "i8a12", "label": "[8; 12]", "correct": false, "feedback": "O 2 dentro de cos(2x) muda só o período; a amplitude é 4, dando [6; 14]." }
+        ]
+      },
+      {
+        "id": "periodo-em-horas",
+        "prompt": "A altura da maré é h(t) = 3 + 2·cos(πt / 6), com t em horas. Qual é o período T dessa maré?",
+        "options": [
+          { "id": "h6", "label": "6 horas", "correct": false, "feedback": "Em t = 6 o arco vale π (meio ciclo). O ciclo completo de 2π leva 12 horas." },
+          { "id": "h3", "label": "3 horas", "correct": false, "feedback": "3 é a altura média. O período é T = 2π / (π/6) = 12 horas." },
+          { "id": "h24", "label": "24 horas", "correct": false, "feedback": "Para πt / 6 atingir 2π, basta t = 12 horas." },
+          { "id": "h12", "label": "12 horas", "correct": true, "feedback": "Certo. T = 2π / (π/6) = 2 · 6 = 12 horas." }
+        ]
+      },
+      {
+        "id": "montar-equacao-temperatura",
+        "prompt": "A temperatura de uma estufa segue T(t) = D + A·sen(Bt), de 15 °C a 25 °C. Quanto valem D e A (com A > 0)?",
+        "options": [
+          { "id": "d15a10", "label": "D = 15 e A = 10", "correct": false, "feedback": "Com D = 15 e A = 10, o mínimo seria 15 − 10 = 5 °C. O certo é D = 20 e A = 5." },
+          { "id": "d20a10", "label": "D = 20 e A = 10", "correct": false, "feedback": "10 °C é a variação total (25 − 15). A amplitude é metade: D = 20 e A = 5." },
+          { "id": "d20a5", "label": "D = 20 e A = 5", "correct": true, "feedback": "Exato. Média D = (15 + 25) / 2 = 20, e amplitude A = 25 − 20 = 5." },
+          { "id": "d25a5", "label": "D = 25 e A = 5", "correct": false, "feedback": "25 é o máximo; a linha média fica no meio: D = 20 e A = 5." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "descobrir-b-pelo-periodo",
+        "prompt": "Uma roda-gigante dá uma volta a cada 40 s (T = 40). No modelo h(t) = D + A·sen(Bt), quanto vale B?",
+        "fala": "Use T = 2π / B e isole B.",
+        "options": [
+          { "id": "bp40", "label": "π/40", "correct": false, "feedback": "A volta completa corresponde a 2π, não a π: B = 2π / 40 = π/20." },
+          { "id": "b40", "label": "40", "correct": false, "feedback": "40 é o período T. O coeficiente B vale 2π / T = π/20." },
+          { "id": "b20p", "label": "20π", "correct": false, "feedback": "Divida 2π por 40: B = 2π / 40 = π/20." },
+          { "id": "bp20", "label": "π/20", "correct": true, "feedback": "Isso. Como T = 2π / B = 40, temos B = 2π / 40 = π/20." }
+        ]
+      },
+      {
+        "id": "instante-de-maximo",
+        "prompt": "Em h(t) = 10 + 6·sen(πt / 4), com t ≥ 0 em segundos, qual é o primeiro instante em que h chega ao máximo, 16?",
+        "fala": "O máximo acontece quando o seno vale 1, isto é, quando o arco vale π/2.",
+        "options": [
+          { "id": "t4", "label": "4 s", "correct": false, "feedback": "Em t = 4 temos sen π = 0 (altura 10). O máximo ocorre em πt / 4 = π/2, ou seja, t = 2 s." },
+          { "id": "t1", "label": "1 s", "correct": false, "feedback": "Em t = 1 o arco é π/4 (45°). Para dar π/2 (90°), precisamos de t = 2 s." },
+          { "id": "t2", "label": "2 s", "correct": true, "feedback": "Certo. O seno vale 1 em π/2: fazendo πt / 4 = π/2, achamos t = 2 s." },
+          { "id": "t8", "label": "8 s", "correct": false, "feedback": "8 s é o período inteiro (volta a 10). O primeiro máximo é em 1/4 do período: t = 2 s." }
+        ]
+      },
+      {
+        "id": "diametro-roda-gigante",
+        "prompt": "Na roda-gigante h(t) = 15 − 13·cos(πt / 10), em metros, qual é o diâmetro da roda e a altura mínima do assento?",
+        "fala": "A amplitude é o raio da roda; o mínimo é a linha média menos a amplitude.",
+        "options": [
+          { "id": "d13h2", "label": "Diâmetro 13 m e base a 2 m", "correct": false, "feedback": "13 m é o raio da roda (a amplitude). O diâmetro é o dobro: 26 m, e a base fica a 2 m." },
+          { "id": "d26h2", "label": "Diâmetro 26 m e base a 2 m", "correct": true, "feedback": "Exato. A amplitude 13 m é o raio (diâmetro 26 m), e o ponto mais baixo é 15 − 13 = 2 m." },
+          { "id": "d26h15", "label": "Diâmetro 26 m e base a 15 m", "correct": false, "feedback": "15 m é a altura do eixo central. A base fica em 15 − 13 = 2 m (diâmetro 26 m)." },
+          { "id": "d30h2", "label": "Diâmetro 30 m e base a 2 m", "correct": false, "feedback": "O raio é a amplitude 13 m, então o diâmetro é 2 · 13 = 26 m e a base está a 2 m." }
+        ]
+      },
+      {
+        "id": "frequencia-batimentos",
+        "prompt": "A pressão num treino é P(t) = 110 + 30·sen(4πt), com t em segundos. Quantos batimentos completos ocorrem em 1 segundo?",
+        "fala": "Ache o período T e veja quantos ciclos cabem em 1 s.",
+        "options": [
+          { "id": "b2", "label": "2 batimentos", "correct": true, "feedback": "Isso. O período é T = 2π / 4π = 0,5 s, então cabem 2 batimentos em 1 segundo." },
+          { "id": "b4", "label": "4 batimentos", "correct": false, "feedback": "Cada ciclo exige 2π radianos: 4π / 2π = 2 batimentos por segundo." },
+          { "id": "b05", "label": "0,5 batimento", "correct": false, "feedback": "0,5 s é a duração de 1 batimento; em 1 segundo ocorrem 2 batimentos." },
+          { "id": "b30", "label": "30 batimentos", "correct": false, "feedback": "30 é a amplitude da pressão. Como T = 2π / 4π = 0,5 s, são 2 batimentos por segundo." }
+        ]
+      },
+      {
+        "id": "modelo-completo-com-fase",
+        "prompt": "Em V(t) = 50 + 20·sen(πt/12 − π/2), em mil litros (0 ≤ t ≤ 24 h), qual é V(0) e em que hora V chega a 70?",
+        "fala": "Para t = 0, lembre que sen(−π/2) = −1; para 70 mil, iguale o seno a 1.",
+        "options": [
+          { "id": "v50t6", "label": "50 mil litros e t = 6 h", "correct": false, "feedback": "Por causa da fase −π/2, em t = 0 temos sen(−π/2) = −1 (30 mil); o máximo é em t = 12 h." },
+          { "id": "v30t6", "label": "30 mil litros e t = 6 h", "correct": false, "feedback": "Em t = 6 h o arco vale 0 (V = 50). O máximo 70 ocorre quando πt/12 − π/2 = π/2, ou seja, t = 12 h." },
+          { "id": "v30t12", "label": "30 mil litros e t = 12 h", "correct": true, "feedback": "Exato. Em t = 0, 50 + 20·(−1) = 30; para 70, πt/12 − π/2 = π/2 dá t = 12 h." },
+          { "id": "v70t12", "label": "70 mil litros e t = 12 h", "correct": false, "feedback": "Em t = 0, sen(−π/2) = −1, então V(0) = 50 − 20 = 30 mil litros (e o máximo é em t = 12 h)." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

@@ -253,3 +253,7 @@ O aluno testa A negativo (que espelha a onda verticalmente, mas mantém a amplit
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** interpretar os parâmetros geométricos de uma roda-gigante (altura do centro D, raio A e tempo de volta T) na função trigonométrica.
 - **Onde procurar:** ENEM, Unesp, UERJ.
+
+---
+**Notas da implementação (JSON):** unidade criada na taxonomia (geometria / trigonometria, ícone `onda`, título "Modelagem Periódica"). Sliders com ids minúsculos (`a`, `d`, `b`: o `$slider` não aceita maiúscula). Panorama (somar ondas/Fourier) como dúvida de `linha-media-d`; a dúvida "onda na vida real" ficou no passo 1; a de A negativo no passo 3. Vestibular `[]`. Linhas de topo/linha média/mínimo são curvas afins a = 0 (não há marcador próprio). Sem correção de gabarito: todas as contas conferidas por teste.
+**Lacunas de widget:** o tipo `seno` é a·sen(b·x) + c, sem fase C (então c4 = Fase não tem elemento no gráfico e nenhum passo mexe em C; só D5 do treino usa fase, em texto); sem chave do período T = 2π/B; linhas de máximo/mínimo/linha média só por curvas afins; o fantasma "y = sen x em [0; 2π]" é limitado só pela janela.
