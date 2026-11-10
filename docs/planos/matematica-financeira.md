@@ -298,3 +298,6 @@ t inteiro não negativo; C≥0 e i por período. Tarifas e contratos ficam fora.
 **Texto**
 - [x] Falas, enunciados e feedbacks curtos, sem emoji ou termos proibidos.
 - [x] Notação e contas foram conferidas.
+
+---
+**Notas da implementação (JSON):** `barras` modo `sequencia` (nome "M"): simples = PA a1 100 d 10; composto = PG a1 100 q 1,1 com o simples como `fantasma`; slider `t` 0..5 mapeado em `n: "1+$t"` (a barra 1 é t = 0, pois o widget indexa de 1). Correções: M2 distrator 65->60 (um período); passo 3 trocou a Tati duplicada por taxa/tempo na mesma unidade; fechamento com Tati nova; passo 3 conclui em t >= 2 (o segundo período) em vez de n >= 5. Vestibular `[]`.

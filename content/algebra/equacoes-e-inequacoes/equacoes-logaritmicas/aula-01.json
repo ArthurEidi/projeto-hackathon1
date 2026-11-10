@@ -1,0 +1,542 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Equações Logarítmicas e Condições de Existência",
+  "subtitulo": "O argumento precisa existir",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "equacoes-logaritmicas"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Argumento x",
+      "resumo": "Valor positivo recebido pelo logaritmo."
+    },
+    "c2": {
+      "nome": "Base b",
+      "resumo": "Base da potência que desfaz o logaritmo."
+    },
+    "c3": {
+      "nome": "Logaritmo",
+      "resumo": "Expoente devolvido pela máquina."
+    },
+    "c4": {
+      "nome": "Solução válida",
+      "resumo": "Entrada válida que produz o valor pedido."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 5],
+        "y": [-3, 3],
+        "curvas": [
+          {
+            "tipo": "logaritmo",
+            "a": 1,
+            "b": 2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "log₂x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro log₂1=0, qual saída aparece em 2? Arraste até lá.",
+        "done": "Sai 1 porque 2¹=2."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Há somas e diferenças de logaritmos; aqui traduzimos para potências e filtramos o domínio."
+      }
+    },
+    {
+      "id": "inverter-potencia",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 5],
+        "y": [-3, 3],
+        "curvas": [
+          {
+            "tipo": "logaritmo",
+            "a": 1,
+            "b": 2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "log₂x"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 2,
+            "cor": "ink",
+            "rotulo": "y = 2"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "passo": 1
+        },
+        "marcar": {
+          "encontro": true
+        },
+        "cores": {
+          "encontro": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Qual argumento produz logaritmo 2? Arraste até 4.",
+        "done": "É 4; por isso log₂x=2 equivale a x=2²."
+      }
+    },
+    {
+      "id": "fronteira-argumento",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 5],
+        "y": [-3, 3],
+        "curvas": [
+          {
+            "tipo": "logaritmo",
+            "a": 1,
+            "b": 2,
+            "c": 0,
+            "transforma": {
+              "a": 1,
+              "b": 1,
+              "h": 1,
+              "k": 0
+            },
+            "cor": "c3",
+            "rotulo": "log₂(x−1)"
+          }
+        ],
+        "ponto": {
+          "curva": null,
+          "x": 3,
+          "passo": 1
+        },
+        "marcar": {
+          "assintota": true
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": 1
+      },
+      "lines": {
+        "intro": "Em log₂(x−1), o argumento aceita x=1? Leve o cursor até a fronteira.",
+        "done": "Não; x−1 precisa ser positivo, por isso o domínio é x>1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Posso juntar logs de argumentos negativos?",
+        "resposta": "Não nos reais; cada log precisa existir antes de aplicar propriedades."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-1, 5],
+          "y": [-2, 3],
+          "curvas": [
+            {
+              "tipo": "logaritmo",
+              "a": 1,
+              "b": 2,
+              "c": 0,
+              "transforma": {
+                "a": 1,
+                "b": 1,
+                "h": 1,
+                "k": 0
+              },
+              "cor": "c3",
+              "rotulo": "log₂(x−1)"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 1,
+              "cor": "ink",
+              "rotulo": "y = 1"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual x resolve log₂(x−1)=1?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "2",
+          "correct": false,
+          "feedback": "Você esqueceu o deslocamento; x−1=2, então x=3.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 2,
+              "cor": "c1"
+            }
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "3",
+          "correct": true,
+          "feedback": "Certo: 3; x−1=2 dá x=3.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 3,
+              "cor": "c4"
+            },
+            "marcar": {
+              "encontro": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-1, 6],
+          "y": [-3, 4],
+          "curvas": [
+            {
+              "tipo": "logaritmo",
+              "a": 1,
+              "b": 2,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "log₂x"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 2,
+              "cor": "ink",
+              "rotulo": "y = 2"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 4,
+            "cor": "c4"
+          },
+          "marcar": {
+            "encontro": true
+          },
+          "cores": {
+            "encontro": "c4"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "log_b",
+          "ref": "c2"
+        },
+        {
+          "text": "("
+        },
+        {
+          "text": "A",
+          "ref": "c1"
+        },
+        {
+          "text": ")"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "c",
+          "ref": "c3"
+        },
+        {
+          "text": " ⇔ A=bᶜ; A>0,b>0,b≠1"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Argumento x",
+          "text": "Valor positivo recebido pelo logaritmo."
+        },
+        {
+          "term": "Logaritmo",
+          "text": "Expoente devolvido pela máquina."
+        },
+        {
+          "term": "Solução válida",
+          "text": "Entrada válida que produz o valor pedido."
+        }
+      ],
+      "lines": {
+        "intro": "O logaritmo devolve um expoente; por isso log_b A=c equivale a A=bᶜ, com base e argumento válidos.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-equacoes-logaritmicas",
+        "prompt": "Quanto vale log₂1?",
+        "options": [
+          {
+            "id": "f1-equacoes-logaritmicas-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você confundiu argumento com expoente. O certo é 0; 2⁰=1."
+          },
+          {
+            "id": "f1-equacoes-logaritmicas-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; 2⁰=1."
+          }
+        ]
+      },
+      {
+        "id": "f2-equacoes-logaritmicas",
+        "prompt": "log₂0 existe nos reais?",
+        "options": [
+          {
+            "id": "f2-equacoes-logaritmicas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 2ˣ nunca é zero."
+          },
+          {
+            "id": "f2-equacoes-logaritmicas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O argumento precisa ser positivo. O certo é Não; 2ˣ nunca é zero."
+          }
+        ]
+      },
+      {
+        "id": "f3-equacoes-logaritmicas",
+        "prompt": "A base do logaritmo pode ser 1?",
+        "options": [
+          {
+            "id": "f3-equacoes-logaritmicas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Base 1 não permite inverter a potência. O certo é Não; 1ˣ=1 sempre."
+          },
+          {
+            "id": "f3-equacoes-logaritmicas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 1ˣ=1 sempre."
+          }
+        ]
+      },
+      {
+        "id": "f4-equacoes-logaritmicas",
+        "prompt": "log₂x=2 equivale a qual potência?",
+        "options": [
+          {
+            "id": "f4-equacoes-logaritmicas-certa",
+            "label": "x=2²",
+            "correct": true,
+            "feedback": "Certo: x=2²; log_b A=c ⇔ A=bᶜ."
+          },
+          {
+            "id": "f4-equacoes-logaritmicas-erro",
+            "label": "x=2·2²",
+            "correct": false,
+            "feedback": "Você acrescentou um fator à definição. O certo é x=2²; log_b A=c ⇔ A=bᶜ."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-equacoes-logaritmicas",
+        "prompt": "Resolva log₂x=3.",
+        "options": [
+          {
+            "id": "m1-equacoes-logaritmicas-erro",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você multiplicou base por expoente. O certo é 8; x=2³=8."
+          },
+          {
+            "id": "m1-equacoes-logaritmicas-certa",
+            "label": "8",
+            "correct": true,
+            "feedback": "Certo: 8; x=2³=8."
+          }
+        ]
+      },
+      {
+        "id": "m2-equacoes-logaritmicas",
+        "prompt": "Resolva log₂(x−1)=1.",
+        "options": [
+          {
+            "id": "m2-equacoes-logaritmicas-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; x−1=2; x=3."
+          },
+          {
+            "id": "m2-equacoes-logaritmicas-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você esqueceu o deslocamento. O certo é 3; x−1=2; x=3."
+          }
+        ]
+      },
+      {
+        "id": "m3-equacoes-logaritmicas",
+        "prompt": "Resolva log₃x=0.",
+        "options": [
+          {
+            "id": "m3-equacoes-logaritmicas-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Expoente zero produz 1, não zero. O certo é 1; x=3⁰=1."
+          },
+          {
+            "id": "m3-equacoes-logaritmicas-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; x=3⁰=1."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-equacoes-logaritmicas",
+        "prompt": "Qual é o domínio de log₂(x−1)+log₂(x+1)?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-equacoes-logaritmicas-certa",
+            "label": "x>1",
+            "correct": true,
+            "feedback": "Certo: x>1; x−1>0 e x+1>0."
+          },
+          {
+            "id": "d1-equacoes-logaritmicas-erro",
+            "label": "x>−1",
+            "correct": false,
+            "feedback": "Você verificou apenas um argumento. O certo é x>1; x−1>0 e x+1>0."
+          }
+        ]
+      },
+      {
+        "id": "d2-equacoes-logaritmicas",
+        "prompt": "Resolva log₂x+log₂(x−1)=1.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-equacoes-logaritmicas-erro",
+            "label": "{−1;2}",
+            "correct": false,
+            "feedback": "Você aceitou argumentos negativos. O certo é {2}; x(x−1)=2; x>1; x=2."
+          },
+          {
+            "id": "d2-equacoes-logaritmicas-certa",
+            "label": "{2}",
+            "correct": true,
+            "feedback": "Certo: {2}; x(x−1)=2; x>1; x=2."
+          }
+        ]
+      },
+      {
+        "id": "d3-equacoes-logaritmicas",
+        "prompt": "Resolva log₄x=0,5.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-equacoes-logaritmicas-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; x=4¹ᐟ²=2."
+          },
+          {
+            "id": "d3-equacoes-logaritmicas-erro",
+            "label": "0,125",
+            "correct": false,
+            "feedback": "Você inverteu a potência. O certo é 2; x=4¹ᐟ²=2."
+          }
+        ]
+      },
+      {
+        "id": "d4-equacoes-logaritmicas",
+        "prompt": "Resolva log₂(x−1)=log₂(3−x).",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-equacoes-logaritmicas-erro",
+            "label": "{1;3}",
+            "correct": false,
+            "feedback": "Você aceitou argumentos zero. O certo é {2}; x−1=3−x; 1<x<3."
+          },
+          {
+            "id": "d4-equacoes-logaritmicas-certa",
+            "label": "{2}",
+            "correct": true,
+            "feedback": "Certo: {2}; x−1=3−x; 1<x<3."
+          }
+        ]
+      },
+      {
+        "id": "d5-equacoes-logaritmicas",
+        "prompt": "Um índice é I=log₂N, com N>0; se I sobe de 1 para 3, N é multiplicado por quanto?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-equacoes-logaritmicas-certa",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: 4; N passa de 2 para 8; 8/2=4."
+          },
+          {
+            "id": "d5-equacoes-logaritmicas-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você confundiu variação do índice com razão das grandezas. O certo é 4; N passa de 2 para 8; 8/2=4."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

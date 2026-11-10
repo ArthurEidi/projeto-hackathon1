@@ -1,0 +1,504 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Equações Polinomiais, Raízes e Multiplicidade",
+  "subtitulo": "Cruzar ou encostar no eixo",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "polinomios-e-complexos",
+    "unidade": "raizes-polinomiais-e-multiplicidade"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Número testado perto da raiz."
+    },
+    "c2": {
+      "nome": "Multiplicidade m",
+      "resumo": "Quantidade de cópias do fator x−r."
+    },
+    "c3": {
+      "nome": "Polinômio P",
+      "resumo": "Produto dos fatores."
+    },
+    "c4": {
+      "nome": "Raiz r",
+      "resumo": "Entrada que anula o polinômio."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 4],
+        "y": [-3, 4],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": -1,
+            "cor": "c3",
+            "rotulo": "P(x) = x − 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1
+        },
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso-base m = 1, a reta cruza a raiz 1? Arraste de 0 até 2.",
+        "done": "Cruza, pois x − 1 troca de negativo para positivo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Raízes podem ser reais ou complexas e repetidas; aqui contamos multiplicidades e observamos o sinal perto de raízes reais."
+      }
+    },
+    {
+      "id": "repetir-fator",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 4],
+        "y": [-2, 5],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": -2,
+            "c": 1,
+            "cor": "c3",
+            "rotulo": "P(x) = (x − 1)²"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": -1,
+            "fantasma": true,
+            "rotulo": "x − 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1
+        },
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Com o fator ao quadrado, o sinal ainda troca? Arraste até 2.",
+        "done": "Não; o quadrado é positivo dos dois lados, por isso a curva só toca o eixo."
+      }
+    },
+    {
+      "id": "potencia-impar",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 4],
+        "y": [-4, 5],
+        "curvas": [
+          {
+            "tipo": "cubica",
+            "a": 1,
+            "b": -3,
+            "c": 3,
+            "d": -1,
+            "cor": "c3",
+            "rotulo": "P(x) = (x − 1)³"
+          },
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": -2,
+            "c": 1,
+            "fantasma": true,
+            "rotulo": "(x − 1)²"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1
+        },
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Com três cópias do fator, o sinal volta a trocar? Arraste até 2.",
+        "done": "Sim; potência ímpar conserva o sinal do fator, por isso a curva cruza o eixo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Se Q também zerar em r?",
+        "resposta": "Então há mais fatores x−r; precisamos contá-los antes de decidir a multiplicidade."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 3],
+          "y": [-4, 10],
+          "curvas": [
+            {
+              "tipo": "cubica",
+              "a": 1,
+              "b": 0,
+              "c": -3,
+              "d": 2,
+              "cor": "c3",
+              "rotulo": "P(x) = (x − 1)²(x + 2)"
+            }
+          ],
+          "marcar": {
+            "raizes": true
+          },
+          "cores": {
+            "raiz": "c4"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Em (x−1)²(x+2), qual raiz tem multiplicidade 2?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "−2",
+          "correct": false,
+          "feedback": "Você confundiu o outro fator; (x−1)² repete a raiz 1 duas vezes."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "1",
+          "correct": true,
+          "feedback": "Certo: 1; O fator x−1 aparece duas vezes."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 3],
+          "y": [-4, 10],
+          "curvas": [
+            {
+              "tipo": "cubica",
+              "a": 1,
+              "b": 0,
+              "c": -3,
+              "d": 2,
+              "cor": "c3",
+              "rotulo": "(x − 1)²(x + 2)"
+            }
+          ],
+          "marcar": {
+            "raizes": true
+          },
+          "cores": {
+            "raiz": "c4"
+          },
+          "ponto": {
+            "curva": 0,
+            "x": 1,
+            "cor": "c4"
+          }
+        }
+      },
+      "formula": [
+        { "text": "P(x)", "ref": "c3" },
+        { "text": " = (x − r)", "ref": "c4" },
+        { "text": "ᵐ", "ref": "c2" },
+        { "text": " · Q(x), Q(r) ≠ 0; m par toca, m ímpar cruza" }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Número testado perto da raiz."
+        },
+        {
+          "term": "Polinômio P",
+          "text": "Produto dos fatores."
+        },
+        {
+          "term": "Raiz r",
+          "text": "Entrada que anula o polinômio."
+        }
+      ],
+      "lines": {
+        "intro": "A paridade decide se o fator muda de sinal; por isso multiplicidade par toca e ímpar cruza o eixo.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-raizes-polinomiais-e-multiplicidade",
+        "prompt": "A raiz 1 de (x−1)² tem multiplicidade quanto?",
+        "options": [
+          {
+            "id": "f1-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você contou apenas a raiz distinta. O certo é 2; Há dois fatores x−1."
+          },
+          {
+            "id": "f1-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; Há dois fatores x−1."
+          }
+        ]
+      },
+      {
+        "id": "f2-raizes-polinomiais-e-multiplicidade",
+        "prompt": "Uma raiz simples costuma cruzar ou tocar sem cruzar o eixo?",
+        "options": [
+          {
+            "id": "f2-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "Cruzar",
+            "correct": true,
+            "feedback": "Certo: Cruzar; m=1 é ímpar."
+          },
+          {
+            "id": "f2-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "Só tocar",
+            "correct": false,
+            "feedback": "Um fator simples muda de sinal. O certo é Cruzar; m=1 é ímpar."
+          }
+        ]
+      },
+      {
+        "id": "f3-raizes-polinomiais-e-multiplicidade",
+        "prompt": "Na raiz de (x−1)², o sinal muda?",
+        "options": [
+          {
+            "id": "f3-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Uma potência par preserva o sinal dos lados. O certo é Não; Quadrado é não negativo."
+          },
+          {
+            "id": "f3-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; Quadrado é não negativo."
+          }
+        ]
+      },
+      {
+        "id": "f4-raizes-polinomiais-e-multiplicidade",
+        "prompt": "Em (x−1)³, a multiplicidade é par ou ímpar?",
+        "options": [
+          {
+            "id": "f4-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "Ímpar",
+            "correct": true,
+            "feedback": "Certo: Ímpar; m=3."
+          },
+          {
+            "id": "f4-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "Par",
+            "correct": false,
+            "feedback": "Você contou apenas dois fatores. O certo é Ímpar; m=3."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-raizes-polinomiais-e-multiplicidade",
+        "prompt": "Quantas raízes reais distintas tem (x−1)²(x+2)?",
+        "options": [
+          {
+            "id": "m1-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você contou multiplicidade como ponto distinto. O certo é 2; Raízes 1 e −2."
+          },
+          {
+            "id": "m1-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; Raízes 1 e −2."
+          }
+        ]
+      },
+      {
+        "id": "m2-raizes-polinomiais-e-multiplicidade",
+        "prompt": "Qual é o grau de (x−1)²(x+2)?",
+        "options": [
+          {
+            "id": "m2-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 2+1=3."
+          },
+          {
+            "id": "m2-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você ignorou o fator linear extra. O certo é 3; 2+1=3."
+          }
+        ]
+      },
+      {
+        "id": "m3-raizes-polinomiais-e-multiplicidade",
+        "prompt": "Qual raiz de (x−2)(x+1)³ é tripla?",
+        "options": [
+          {
+            "id": "m3-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você ligou a potência ao fator errado. O certo é −1; (x+1)³ repete −1 três vezes."
+          },
+          {
+            "id": "m3-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo: −1; (x+1)³ repete −1 três vezes."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-raizes-polinomiais-e-multiplicidade",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Em (2x−1)², qual é a raiz e sua multiplicidade?",
+        "options": [
+          {
+            "id": "d1-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "0,5; multiplicidade 2",
+            "correct": true,
+            "feedback": "Certo: 0,5; multiplicidade 2; 2x−1=0; x=1/2."
+          },
+          {
+            "id": "d1-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "1; multiplicidade 2",
+            "correct": false,
+            "feedback": "Você esqueceu de dividir o coeficiente linear. O certo é 0,5; multiplicidade 2; 2x−1=0; x=1/2."
+          }
+        ]
+      },
+      {
+        "id": "d2-raizes-polinomiais-e-multiplicidade",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Se P=(x−1)²Q e Q=x−1, qual multiplicidade total de 1?",
+        "options": [
+          {
+            "id": "d2-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você não contou o fator dentro de Q. O certo é 3; (x−1)²·(x−1)=(x−1)³."
+          },
+          {
+            "id": "d2-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; (x−1)²·(x−1)=(x−1)³."
+          }
+        ]
+      },
+      {
+        "id": "d3-raizes-polinomiais-e-multiplicidade",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Em C, x²+1 tem quantas raízes contadas com multiplicidade?",
+        "options": [
+          {
+            "id": "d3-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; Raízes i e −i."
+          },
+          {
+            "id": "d3-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você restringiu a contagem aos reais. O certo é 2; Raízes i e −i."
+          }
+        ]
+      },
+      {
+        "id": "d4-raizes-polinomiais-e-multiplicidade",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Ao retirar o fator x−1 de (x−1)(x+2), 1 ainda é raiz?",
+        "options": [
+          {
+            "id": "d4-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Expoente zero retira o fator. O certo é Não; P(1)=1+2=3."
+          },
+          {
+            "id": "d4-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; P(1)=1+2=3."
+          }
+        ]
+      },
+      {
+        "id": "d5-raizes-polinomiais-e-multiplicidade",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "P(x)=(x−1)²(x+2) cruza ou toca cada raiz, e qual é seu sinal em x=0?",
+        "options": [
+          {
+            "id": "d5-raizes-polinomiais-e-multiplicidade-certa",
+            "label": "Cruza −2, toca 1; positivo",
+            "correct": true,
+            "feedback": "Certo: Cruza −2, toca 1; positivo; m(−2)=1; m(1)=2; P(0)=2."
+          },
+          {
+            "id": "d5-raizes-polinomiais-e-multiplicidade-erro",
+            "label": "Toca −2, cruza 1; negativo",
+            "correct": false,
+            "feedback": "Você trocou paridade e sinais. O certo é Cruza −2, toca 1; positivo; m(−2)=1; m(1)=2; P(0)=2."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

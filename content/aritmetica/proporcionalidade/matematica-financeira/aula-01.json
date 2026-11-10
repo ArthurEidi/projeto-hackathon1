@@ -1,0 +1,531 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Juro Sobre Juro",
+  "subtitulo": "Juros simples e compostos",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "proporcionalidade",
+    "unidade": "matematica-financeira"
+  },
+  "outro": "Você comparou parcela fixa e fator reaplicado; os saldos coincidem no primeiro período e se separam depois.",
+  "glossario": {
+    "c1": {
+      "nome": "Capital C",
+      "resumo": "Saldo inicial."
+    },
+    "c2": {
+      "nome": "Taxa i",
+      "resumo": "Fração aplicada em cada período."
+    },
+    "c3": {
+      "nome": "Período t",
+      "resumo": "Número de aplicações da taxa."
+    },
+    "c4": {
+      "nome": "Montante M",
+      "resumo": "Capital mais juros ao final."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 2,
+        "nome": "M",
+        "regra": "pg",
+        "a1": 100,
+        "q": 1,
+        "termos": 6,
+        "n": "1+$t"
+      },
+      "controls": [
+        {
+          "id": "t",
+          "label": "Períodos",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Em t = 0, o saldo já ganhou juros? Avance o tempo e confira; a primeira barra é o instante t = 0.",
+        "done": "Em t = 0, ou com taxa zero, M = C: o saldo fica em 100. Juros só nascem com taxa e tempo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Taxas e descontos aparecem no mesmo modelo?",
+        "resposta": "Usam fatores percentuais; hoje isolamos juros simples e compostos."
+      },
+      "complete_when": {
+        "metric": "t",
+        "gte": 3
+      }
+    },
+    {
+      "id": "contraste-de-regras",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 2,
+        "nome": "M",
+        "regra": "pa",
+        "a1": 100,
+        "d": 10,
+        "termos": 6,
+        "n": "1+$t",
+        "degraus": true
+      },
+      "controls": [
+        {
+          "id": "t",
+          "label": "Períodos",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "R$ 100 a 10% simples rendem quanto no primeiro período? Avance t até 2 e veja cada degrau.",
+        "done": "Rende R$ 10 por período: a base continua sendo o capital inicial. Em t = 2, M = 120."
+      },
+      "complete_when": {
+        "metric": "t",
+        "gte": 2
+      }
+    },
+    {
+      "id": "teste-de-fronteira",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 2,
+        "nome": "M",
+        "regra": "pg",
+        "a1": 100,
+        "q": 1.1,
+        "termos": 6,
+        "n": "1+$t",
+        "fantasma": {
+          "regra": "pa",
+          "a1": 100,
+          "d": 10,
+          "q": 1
+        }
+      },
+      "controls": [
+        {
+          "id": "t",
+          "label": "Períodos",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "No composto, após um período, a taxa incide em 100 ou 110? Leve t até 2 e compare com o simples, em cinza.",
+        "done": "Incide em 110: o segundo juro é 11, não 10. O saldo atualizado vira a nova base."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Dá para misturar taxa por mês com tempo em anos?",
+        "resposta": "Não. Taxa e tempo precisam da mesma unidade, ou o período não bate com a taxa."
+      },
+      "complete_when": {
+        "metric": "t",
+        "gte": 2
+      }
+    },
+    {
+      "id": "micro-desafio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "sequencia",
+          "casas": 2,
+          "nome": "M",
+          "regra": "pg",
+          "a1": 100,
+          "q": 1.1,
+          "termos": 3,
+          "n": 3,
+          "fantasma": {
+            "regra": "pa",
+            "a1": 100,
+            "d": 10,
+            "q": 1
+          }
+        }
+      },
+      "prompt": "R$ 100 a 10% composto por dois períodos. Qual montante?",
+      "lines": {
+        "intro": "Em cada período, a taxa age sobre o saldo do período anterior. Qual resposta a figura sustenta?"
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "R$ 121",
+          "correct": true,
+          "feedback": "Certo. 100·1,1² = 121; o segundo juro incide em 110.",
+          "figure": {
+            "acesos": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "o2",
+          "label": "R$ 120",
+          "correct": false,
+          "feedback": "R$ 120 é simples; composto dá 100·1,1² = 121.",
+          "figure": {
+            "acesos": [
+              2,
+              3
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "sequencia",
+          "casas": 2,
+          "nome": "M",
+          "regra": "pg",
+          "a1": 100,
+          "q": 1.1,
+          "termos": 4,
+          "n": 4,
+          "fantasma": {
+            "regra": "pa",
+            "a1": 100,
+            "d": 10,
+            "q": 1
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "M",
+          "ref": "c4"
+        },
+        {
+          "text": "(simples) ="
+        },
+        {
+          "text": "C",
+          "ref": "c1"
+        },
+        {
+          "text": "(1 +"
+        },
+        {
+          "text": "i",
+          "ref": "c2"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "t",
+          "ref": "c3"
+        },
+        {
+          "text": ")"
+        },
+        {
+          "text": "|"
+        },
+        {
+          "text": "M",
+          "ref": "c4"
+        },
+        {
+          "text": "(composto) ="
+        },
+        {
+          "text": "C",
+          "ref": "c1"
+        },
+        {
+          "text": "(1 +"
+        },
+        {
+          "text": "i",
+          "ref": "c2"
+        },
+        {
+          "text": ")",
+          "sup": "t",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Simples",
+          "text": "a taxa incide no capital inicial."
+        },
+        {
+          "term": "Composto",
+          "text": "a taxa incide no saldo atualizado."
+        },
+        {
+          "term": "Montante",
+          "text": "capital acrescido de juros."
+        }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Por que o composto cresce mais depressa?",
+        "resposta": "O juro de cada período vira capital do próximo: é juro sobre juro."
+      },
+      "lines": {
+        "intro": "No simples a parcela usa C; no composto, 1 + i age sobre o saldo. Por isso as fórmulas diferem.",
+        "hint": "Toque em uma marca para ver a grandeza correspondente nas barras."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "matematica-financeira-f1",
+        "prompt": "Sem períodos transcorridos, quanto vale M se C = 100?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "100",
+            "correct": true,
+            "feedback": "Certo. Com t = 0, M = C = 100."
+          },
+          {
+            "id": "o2",
+            "label": "110",
+            "correct": false,
+            "feedback": "Acrescentou juros antes do tempo. Com t = 0, M = C = 100."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-f2",
+        "prompt": "Quanto é 10% de R$ 100?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 1",
+            "correct": false,
+            "feedback": "Dividiu por 100 duas vezes. 10% de 100 é 0,10 · 100 = R$ 10."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 10",
+            "correct": true,
+            "feedback": "Certo. 0,10 · 100 = 10."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-f3",
+        "prompt": "R$ 100 a 10% simples por 2 períodos. Qual o montante?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 120",
+            "correct": true,
+            "feedback": "Certo. J = 100 · 0,1 · 2 = 20; M = 120."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 121",
+            "correct": false,
+            "feedback": "Usou capitalização composta. No simples, J = 20 e M = R$ 120."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-f4",
+        "prompt": "R$ 100 a 10% composto por 2 períodos. Qual o montante?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 120",
+            "correct": false,
+            "feedback": "Manteve a base inicial em vez de atualizar. Composto: 100 · 1,1² = R$ 121."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 121",
+            "correct": true,
+            "feedback": "Certo. 100 · 1,1² = 121."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "matematica-financeira-m1",
+        "prompt": "R$ 200 rendem 5% simples em um período. Qual o juro?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 5",
+            "correct": false,
+            "feedback": "Confundiu o percentual com valor em reais. 5% de 200 = R$ 10."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 10",
+            "correct": true,
+            "feedback": "Certo. 200 · 0,05 = 10."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-m2",
+        "prompt": "R$ 50 a 20% simples por 3 períodos. Qual o montante?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 80",
+            "correct": true,
+            "feedback": "Certo. J = 50 · 0,2 · 3 = 30; M = 80."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 60",
+            "correct": false,
+            "feedback": "R$ 60 calcula só um período. Com 3 períodos, J = 30 e M = R$ 80."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-m3",
+        "prompt": "R$ 200 a 5% composto por 2 períodos. Qual o montante?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 220",
+            "correct": false,
+            "feedback": "Usou juro simples no segundo período. Composto: 200 · 1,05² = R$ 220,50."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 220,50",
+            "correct": true,
+            "feedback": "Certo. 200 · 1,05² = 220,50."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "matematica-financeira-d1",
+        "prompt": "R$ 100 a 10% composto por 3 períodos. Qual o montante?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 133,10",
+            "correct": true,
+            "feedback": "Certo. 100 · 1,1³ = 133,10."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 130",
+            "correct": false,
+            "feedback": "Somou 10 três vezes na base inicial. Composto: 100 · 1,1³ = R$ 133,10."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-d2",
+        "prompt": "R$ 300 a 4% simples por 5 períodos. Quanto rende de juros?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 12",
+            "correct": false,
+            "feedback": "R$ 12 calcula só um período. Com 5 períodos: 300 · 0,04 · 5 = R$ 60."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 60",
+            "correct": true,
+            "feedback": "Certo. 300 · 0,04 · 5 = 60."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-d3",
+        "prompt": "Um saldo de 100 cresce 10% composto. Qual o juro do segundo período?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 11",
+            "correct": true,
+            "feedback": "Certo. 0,10 · 110 = 11."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 10",
+            "correct": false,
+            "feedback": "Aplicou 10% em 100, não em 110. O juro é 0,10 · 110 = R$ 11."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-d4",
+        "prompt": "Após 2 períodos a 10%, simples e composto diferem quanto, com C = 100?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 0",
+            "correct": false,
+            "feedback": "Só coincidem no primeiro período. Simples 120 e composto 121: diferença R$ 1."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 1",
+            "correct": true,
+            "feedback": "Certo. Simples 120; composto 121; diferença 1."
+          }
+        ]
+      },
+      {
+        "id": "matematica-financeira-d5",
+        "prompt": "R$ 100 perdem 10% do saldo por período. Qual o saldo após 2 períodos?",
+        "fala": "Última. Perder 10% do saldo é multiplicar por 0,9.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 81",
+            "correct": true,
+            "feedback": "Certo. 100 · 0,9² = 81."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 80",
+            "correct": false,
+            "feedback": "Subtraiu R$ 10 fixos em cada etapa. Sobre o saldo: 100 · 0,9² = R$ 81."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

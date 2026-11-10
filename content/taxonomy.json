@@ -66,7 +66,7 @@
                   "numero": 1,
                   "titulo": "Juro Sobre Juro",
                   "subtitulo": "Juros simples e compostos",
-                  "arquivo": null
+                  "arquivo": "aritmetica/proporcionalidade/matematica-financeira/aula-01.json"
                 }
               ]
             }
@@ -416,6 +416,20 @@
                   "titulo": "Somas de Potências",
                   "subtitulo": "Grau, raízes e divisão",
                   "arquivo": "algebra/polinomios-e-complexos/polinomios/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "raizes-polinomiais-e-multiplicidade",
+              "titulo": "Raízes e Multiplicidade",
+              "icone": "parabola",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações Polinomiais, Raízes e Multiplicidade",
+                  "subtitulo": "Cruzar ou encostar no eixo",
+                  "arquivo": "algebra/polinomios-e-complexos/raizes-polinomiais-e-multiplicidade/aula-01.json"
                 }
               ]
             },
