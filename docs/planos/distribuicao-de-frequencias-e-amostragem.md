@@ -262,3 +262,6 @@ Amostra viciada (pesquisa de esporte na porta do estádio) erra mesmo com n gran
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** total a partir de uma porcentagem.
 - **Onde procurar:** ENEM, Fuvest.
+
+---
+**Notas da implementação (JSON):** `barras` modo `categorias` (coleta + chave relativa) e `amostragem` (vício como `vicio.populacao`). Passo 1 começa com as 4 frutas em zero (todo valor vem dos cliques). Vestibular `[]`. Sem correção de gabarito. A conferência visual do widget ainda falta: confirmar que a coleta com total 0 não divide por zero.

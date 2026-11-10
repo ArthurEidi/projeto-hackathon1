@@ -151,6 +151,20 @@
                   "arquivo": "aritmetica/estatistica/leitura-de-tabelas-e-graficos/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "distribuicao-de-frequencias-e-amostragem",
+              "titulo": "Frequências e Amostragem",
+              "icone": "barras",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Cada Resposta Ajeita as Barras",
+                  "subtitulo": "Frequência absoluta, relativa e amostras",
+                  "arquivo": "aritmetica/estatistica/distribuicao-de-frequencias-e-amostragem/aula-01.json"
+                }
+              ]
             }
           ]
         }

@@ -1,0 +1,704 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Cada Resposta Ajeita as Barras",
+  "subtitulo": "Frequência absoluta, relativa e amostras",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "estatistica",
+    "unidade": "distribuicao-de-frequencias-e-amostragem"
+  },
+  "outro": "Você contou respostas, trocou a régua para porcentagens e viu que amostras boas são grandes e sem vício.",
+  "glossario": {
+    "c1": {
+      "nome": "Frequência absoluta",
+      "resumo": "Quantas vezes uma categoria apareceu (f)."
+    },
+    "c2": {
+      "nome": "Total",
+      "resumo": "Quantas respostas existem na tabela (n)."
+    },
+    "c3": {
+      "nome": "Frequência relativa",
+      "resumo": "Fração do total: f dividido por n."
+    },
+    "c4": {
+      "nome": "Amostra",
+      "resumo": "Parte da população que efetivamente respondeu."
+    }
+  },
+  "steps": [
+    {
+      "id": "uma-resposta",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "Maçã",
+            "valor": 0
+          },
+          {
+            "nome": "Banana",
+            "valor": 0
+          },
+          {
+            "nome": "Uva",
+            "valor": 0
+          },
+          {
+            "nome": "Pera",
+            "valor": 0
+          }
+        ],
+        "coleta": true,
+        "relativa": true
+      },
+      "lines": {
+        "intro": "Com uma resposta só, que porcentagem a fruta escolhida tem? Adicione mais respostas e veja as barras se ajeitarem.",
+        "done": "Com uma resposta, uma fruta tinha 100%. Com mais, cada barra mostra a fração do total: a frequência relativa."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E quando os dados são números, como altura?",
+        "resposta": "Aí agrupamos em classes e fazemos histogramas. Hoje ficamos em categorias e amostras."
+      },
+      "complete_when": {
+        "metric": "respostas",
+        "gte": 5
+      }
+    },
+    {
+      "id": "absoluta-relativa",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "Maçã",
+            "valor": 8
+          },
+          {
+            "nome": "Banana",
+            "valor": 6
+          },
+          {
+            "nome": "Uva",
+            "valor": 4
+          },
+          {
+            "nome": "Pera",
+            "valor": 2
+          }
+        ],
+        "chave_relativa": true
+      },
+      "lines": {
+        "intro": "A absoluta conta quantos; a relativa divide pelo total. Troque a régua: a ordem das barras muda?",
+        "done": "Não muda: só a régua. 8 de 20 vira 40%, e todas juntas somam 100%."
+      },
+      "complete_when": {
+        "metric": "regua_relativa",
+        "gte": 1
+      }
+    },
+    {
+      "id": "amostra-cresce",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "amostragem",
+        "populacao": [
+          {
+            "nome": "Azul",
+            "pct": 30
+          },
+          {
+            "nome": "Outras cores",
+            "pct": 70
+          }
+        ],
+        "destaque": 0,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Tamanho da amostra",
+          "min": 10,
+          "max": 200,
+          "step": 10,
+          "initial": 10,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Na cidade, 30% preferem azul, mas só perguntamos a alguns. Aumente a amostra: a porcentagem medida chega perto de 30%?",
+        "done": "Amostras pequenas balançam muito; as grandes ficam perto de 30%. Por isso pesquisas sérias usam amostras grandes."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 150
+      }
+    },
+    {
+      "id": "amostra-viciada",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "amostragem",
+        "populacao": [
+          {
+            "nome": "Futebol",
+            "pct": 30
+          },
+          {
+            "nome": "Vôlei",
+            "pct": 25
+          },
+          {
+            "nome": "Basquete",
+            "pct": 20
+          },
+          {
+            "nome": "Outros",
+            "pct": 25
+          }
+        ],
+        "destaque": 0,
+        "n": 200,
+        "vicio": {
+          "rotulo": "Perguntar só na porta do estádio",
+          "populacao": [
+            70,
+            10,
+            8,
+            12
+          ]
+        }
+      },
+      "lines": {
+        "intro": "E se a pesquisa sobre esporte favorito for feita só na porta de um estádio de futebol? Ligue e compare.",
+        "done": "O futebol dispara mesmo com amostra grande. Amostra viciada erra no método, e tamanho não conserta isso."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então como escolher uma boa amostra?",
+        "resposta": "Sorteando gente de toda a população, para cada grupo ter a sua chance de entrar."
+      },
+      "complete_when": {
+        "metric": "vicio_ligado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-relativa",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "A",
+              "valor": 10
+            },
+            {
+              "nome": "B",
+              "valor": 8
+            },
+            {
+              "nome": "C",
+              "valor": 7
+            }
+          ]
+        }
+      },
+      "prompt": "Numa turma de 25 alunos, 10 tiraram nota A. Qual a frequência relativa da nota A?",
+      "lines": {
+        "intro": "Primeiro descubra o total da turma."
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "40%",
+          "correct": true,
+          "feedback": "Isso. 10 de 25 = 0,4 = 40%.",
+          "figure": {
+            "relativa": true,
+            "acesas": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "o2",
+          "label": "10%",
+          "correct": false,
+          "feedback": "10 é a frequência absoluta. Dividindo por 25: 40%.",
+          "figure": {
+            "acesas": [
+              0
+            ]
+          }
+        },
+        {
+          "id": "o3",
+          "label": "25%",
+          "correct": false,
+          "feedback": "25 é o total. A relativa é 10 ÷ 25 = 40%.",
+          "figure": {
+            "highlight": [
+              "c2"
+            ]
+          }
+        },
+        {
+          "id": "o4",
+          "label": "2,5%",
+          "correct": false,
+          "feedback": "Você dividiu 25 por 10. É 10 ÷ 25 = 40%.",
+          "figure": {
+            "relativa": true,
+            "acesas": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "Maçã",
+              "valor": 8
+            },
+            {
+              "nome": "Banana",
+              "valor": 6
+            },
+            {
+              "nome": "Uva",
+              "valor": 4
+            },
+            {
+              "nome": "Pera",
+              "valor": 2
+            }
+          ],
+          "relativa": true
+        }
+      },
+      "formula": [
+        {
+          "text": "fr",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "f",
+          "ref": "c1"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "n",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "População",
+          "text": "todos sobre quem queremos saber algo."
+        },
+        {
+          "term": "Amostra",
+          "text": "a parte pesquisada; deve ser grande e sem vício."
+        },
+        {
+          "term": "Frequências relativas",
+          "text": "somam 100%."
+        }
+      ],
+      "lines": {
+        "intro": "Dividir todas as contagens pelo mesmo total muda a régua, não a forma. Por isso a relativa compara grupos de tamanhos diferentes.",
+        "hint": "Toque em uma letra para ver o que ela conta no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "contar-azul",
+        "prompt": "Respostas: azul, verde, azul, azul, vermelho. Qual a frequência absoluta de azul?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. Azul aparece 3 vezes."
+          },
+          {
+            "id": "o2",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 é o total de respostas. Azul aparece 3 vezes."
+          },
+          {
+            "id": "o3",
+            "label": "60%",
+            "correct": false,
+            "feedback": "60% é a relativa. A absoluta é a contagem: 3."
+          },
+          {
+            "id": "o4",
+            "label": "1",
+            "correct": false,
+            "feedback": "Azul aparece na 1ª, na 3ª e na 4ª resposta: 3 vezes."
+          }
+        ]
+      },
+      {
+        "id": "relativa-3-de-5",
+        "prompt": "E qual a frequência relativa de azul?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "20%",
+            "correct": false,
+            "feedback": "20% seria 1 de 5. Azul é 3 de 5: 60%."
+          },
+          {
+            "id": "o1",
+            "label": "60%",
+            "correct": true,
+            "feedback": "Certo. 3 de 5."
+          },
+          {
+            "id": "o2",
+            "label": "3%",
+            "correct": false,
+            "feedback": "3 é a contagem. Dividindo por 5: 60%."
+          },
+          {
+            "id": "o3",
+            "label": "30%",
+            "correct": false,
+            "feedback": "3 ÷ 5 = 0,6, ou seja, 60%."
+          }
+        ]
+      },
+      {
+        "id": "o-que-e-amostra",
+        "prompt": "Uma escola tem 5000 alunos e 100 deles responderam a uma pesquisa. Esses 100 são:",
+        "options": [
+          {
+            "id": "o3",
+            "label": "A frequência",
+            "correct": false,
+            "feedback": "Frequência é contagem de respostas. Os 100 são a amostra."
+          },
+          {
+            "id": "o4",
+            "label": "O censo",
+            "correct": false,
+            "feedback": "Censo pergunta a todos. Os 100 são uma amostra."
+          },
+          {
+            "id": "o1",
+            "label": "A amostra",
+            "correct": true,
+            "feedback": "Isso. A população são os 5000."
+          },
+          {
+            "id": "o2",
+            "label": "A população",
+            "correct": false,
+            "feedback": "A população são os 5000. Os 100 que responderam são a amostra."
+          }
+        ]
+      },
+      {
+        "id": "soma-relativas",
+        "prompt": "Quanto dá a soma de todas as frequências relativas de uma tabela?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "O total n",
+            "correct": false,
+            "feedback": "As absolutas somam n. As relativas somam 100%."
+          },
+          {
+            "id": "o3",
+            "label": "Depende",
+            "correct": false,
+            "feedback": "Sempre dá 100%: as frações dividem o mesmo total."
+          },
+          {
+            "id": "o4",
+            "label": "50%",
+            "correct": false,
+            "feedback": "As partes cobrem o total inteiro: 100%."
+          },
+          {
+            "id": "o1",
+            "label": "100%",
+            "correct": true,
+            "feedback": "Certo. Todas as partes formam o total."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "cachorro-45",
+        "prompt": "De 40 pessoas, 18 preferem cachorro. Qual a frequência relativa?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "40%",
+            "correct": false,
+            "feedback": "40 é o total. 18 ÷ 40 = 45%."
+          },
+          {
+            "id": "o1",
+            "label": "45%",
+            "correct": true,
+            "feedback": "Isso. 18 ÷ 40 = 0,45."
+          },
+          {
+            "id": "o2",
+            "label": "18%",
+            "correct": false,
+            "feedback": "18 é a contagem. Sobre 40: 45%."
+          },
+          {
+            "id": "o3",
+            "label": "22%",
+            "correct": false,
+            "feedback": "Divida 18 por 40: 0,45 = 45%."
+          }
+        ]
+      },
+      {
+        "id": "quantos-25",
+        "prompt": "Numa amostra de 80 pessoas, a frequência relativa de \"sim\" foi 25%. Quantas responderam sim?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "32",
+            "correct": false,
+            "feedback": "25% de 80 = 80 ÷ 4 = 20."
+          },
+          {
+            "id": "o4",
+            "label": "55",
+            "correct": false,
+            "feedback": "55 é 80 − 25. A conta é 0,25 · 80 = 20."
+          },
+          {
+            "id": "o1",
+            "label": "20",
+            "correct": true,
+            "feedback": "Certo. Um quarto de 80."
+          },
+          {
+            "id": "o2",
+            "label": "25",
+            "correct": false,
+            "feedback": "25 é a porcentagem. De 80: 20 pessoas."
+          }
+        ]
+      },
+      {
+        "id": "melhor-amostra",
+        "prompt": "Qual amostra representa melhor os alunos de uma escola?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "10 alunos de uma sala",
+            "correct": false,
+            "feedback": "Pequena e de um grupo só. Melhor: 100 sorteados de todas as salas."
+          },
+          {
+            "id": "o3",
+            "label": "100 jogadores do time",
+            "correct": false,
+            "feedback": "Grande, mas viciada: só atletas. Melhor sortear de todas as salas."
+          },
+          {
+            "id": "o4",
+            "label": "5 professores",
+            "correct": false,
+            "feedback": "Nem são alunos. Melhor: 100 sorteados de todas as salas."
+          },
+          {
+            "id": "o1",
+            "label": "100 sorteados de todas as salas",
+            "correct": true,
+            "feedback": "Isso. Grande e sem vício: todos podem entrar."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "acumulada",
+        "prompt": "Notas de 25 alunos: de 0 a 4, 5 alunos; de 5 a 7, 12; de 8 a 10, 8. Quantos tiraram menos de 8?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 são os que tiraram 8 ou mais. Menos de 8: 17."
+          },
+          {
+            "id": "o4",
+            "label": "20",
+            "correct": false,
+            "feedback": "A conta é 5 + 12 = 17."
+          },
+          {
+            "id": "o1",
+            "label": "17",
+            "correct": true,
+            "feedback": "Certo. As duas primeiras classes: 5 + 12."
+          },
+          {
+            "id": "o2",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é só a classe de 5 a 7. Somando a de 0 a 4: 17."
+          }
+        ]
+      },
+      {
+        "id": "ultima-classe",
+        "prompt": "Um histograma tem 3 classes com 4, 6 e 10 pessoas. Que porcentagem está na última classe?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "10%",
+            "correct": false,
+            "feedback": "10 é a contagem. O total é 20: 50%."
+          },
+          {
+            "id": "o3",
+            "label": "33%",
+            "correct": false,
+            "feedback": "As classes não têm o mesmo tamanho. 10 ÷ 20 = 50%."
+          },
+          {
+            "id": "o4",
+            "label": "100%",
+            "correct": false,
+            "feedback": "A última classe é parte do total: 10 de 20, 50%."
+          },
+          {
+            "id": "o1",
+            "label": "50%",
+            "correct": true,
+            "feedback": "Isso. 10 de 20."
+          }
+        ]
+      },
+      {
+        "id": "pesquisa-online",
+        "prompt": "Uma pesquisa sobre uso de internet foi feita só por formulário online. O resultado tende a:",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Superestimar o uso",
+            "correct": true,
+            "feedback": "Isso. Quem não usa internet nem vê o formulário."
+          },
+          {
+            "id": "o2",
+            "label": "Subestimar o uso",
+            "correct": false,
+            "feedback": "Só quem está online responde, então o uso parece maior: superestima."
+          },
+          {
+            "id": "o3",
+            "label": "Acertar, se for grande",
+            "correct": false,
+            "feedback": "Tamanho não conserta vício. O uso será superestimado."
+          },
+          {
+            "id": "o4",
+            "label": "Não ter efeito",
+            "correct": false,
+            "feedback": "O método exclui quem não usa internet: superestima o uso."
+          }
+        ]
+      },
+      {
+        "id": "total-pelo-percentual",
+        "prompt": "Numa pesquisa, 12 pessoas responderam \"não\", o que é 30% do total. Quantas pessoas foram ouvidas?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "3,6",
+            "correct": false,
+            "feedback": "3,6 é 30% de 12. O total é 12 ÷ 0,3 = 40."
+          },
+          {
+            "id": "o1",
+            "label": "40",
+            "correct": true,
+            "feedback": "Certo. Se 12 são 30%, 4 são 10% e o total é 40."
+          },
+          {
+            "id": "o2",
+            "label": "36",
+            "correct": false,
+            "feedback": "36 é 30% de 120. Se 12 é 30%, o total é 12 ÷ 0,3 = 40."
+          },
+          {
+            "id": "o3",
+            "label": "42",
+            "correct": false,
+            "feedback": "12 + 30 = 42 mistura contagem e porcentagem. Total: 40."
+          }
+        ]
+      },
+      {
+        "id": "comparar-turmas",
+        "prompt": "Na turma A, 6 de 20 tocam instrumento; na B, 9 de 45. Em qual a proporção é maior?",
+        "fala": "Última. Turmas de tamanhos diferentes pedem frequência relativa.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Turma A",
+            "correct": true,
+            "feedback": "Isso. 30% contra 20%."
+          },
+          {
+            "id": "o2",
+            "label": "Turma B",
+            "correct": false,
+            "feedback": "B tem mais músicos, 9, mas é 20% da turma. A tem 30%."
+          },
+          {
+            "id": "o3",
+            "label": "Iguais",
+            "correct": false,
+            "feedback": "6/20 = 30% e 9/45 = 20%. A é maior."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
