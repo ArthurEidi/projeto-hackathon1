@@ -69,6 +69,20 @@
                   "arquivo": "aritmetica/proporcionalidade/matematica-financeira/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "taxas-equivalentes-e-inflacao",
+              "titulo": "Taxas Equivalentes e Inflação",
+              "icone": "porcento",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Taxa, Tempo e Valor Real",
+                  "subtitulo": "Equivalência e inflação",
+                  "arquivo": "aritmetica/proporcionalidade/taxas-equivalentes-e-inflacao/aula-01.json"
+                }
+              ]
             }
           ]
         },
@@ -307,6 +321,20 @@
                   "titulo": "Equações com Radicais e Soluções Espúrias",
                   "subtitulo": "A raiz escolhe a altura positiva",
                   "arquivo": "algebra/equacoes-e-inequacoes/equacoes-irracionais/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "equacoes-logaritmicas",
+              "titulo": "Equações Logarítmicas",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações Logarítmicas e Condições de Existência",
+                  "subtitulo": "O argumento precisa existir",
+                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-logaritmicas/aula-01.json"
                 }
               ]
             }

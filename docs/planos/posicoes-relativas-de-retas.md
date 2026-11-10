@@ -128,8 +128,8 @@ A regra m₁ · m₂ = −1 não vale para o par horizontal–vertical (a vertic
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
 | `a1` | 1 | **sim** | "Certo. Elas se cruzam só na origem." |
-| `a0` | 0 | não | "Inclinações diferentes sempre se cruzam: na origem." |
-| `a2` | 2 | não | "Duas retas distintas se cruzam no máximo uma vez." |
+| `a0` | 0 | não | "Inclinações diferentes sempre se cruzam na origem. O certo é 1." |
+| `a2` | 2 | não | "Duas retas distintas se cruzam no máximo em 1 ponto." |
 | `inf` | Infinitos | não | "Infinitos seria se fossem a mesma reta. É 1 ponto." |
 
 #### F3 — `coincidentes-disfarcadas`
@@ -140,8 +140,8 @@ A regra m₁ · m₂ = −1 não vale para o par horizontal–vertical (a vertic
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
 | `inf` | Infinitos | **sim** | "Isso. Dividindo por 2, é a mesma reta." |
-| `a0` | 0 | não | "Simplificada, a segunda é y = 2x + 2: a mesma reta." |
-| `a1` | 1 | não | "Não são retas diferentes: 2y = 4x + 4 é y = 2x + 2." |
+| `a0` | 0 | não | "Simplificada, a segunda é y = 2x + 2: a mesma reta, infinitos pontos." |
+| `a1` | 1 | não | "Não são retas diferentes: 2y = 4x + 4 é y = 2x + 2, infinitos pontos." |
 | `a2` | 2 | não | "É a mesma reta escrita de outro jeito: infinitos pontos." |
 
 #### F4 — `perp-a-1`

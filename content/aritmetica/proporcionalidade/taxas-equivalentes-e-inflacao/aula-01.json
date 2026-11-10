@@ -1,0 +1,509 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Taxa, Tempo e Valor Real",
+  "subtitulo": "Equivalência e inflação",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "proporcionalidade",
+    "unidade": "taxas-equivalentes-e-inflacao"
+  },
+  "outro": "Você alinhou períodos e comparou fatores; taxas e poder de compra exigem a mesma janela.",
+  "glossario": {
+    "c1": {
+      "nome": "Taxa i",
+      "resumo": "Variação proporcional por período."
+    },
+    "c2": {
+      "nome": "Períodos n",
+      "resumo": "Aplicações do fator."
+    },
+    "c3": {
+      "nome": "Fator de preços",
+      "resumo": "Razão entre níveis de preços."
+    },
+    "c4": {
+      "nome": "Valor real",
+      "resumo": "Nominal ajustado pelo poder de compra."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 2,
+        "nome": "M",
+        "regra": "pg",
+        "a1": 100,
+        "q": 1,
+        "termos": 5,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Índice",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com taxa zero, a barra aumenta ou fica igual? Avance o índice e confira.",
+        "done": "Com taxa 0% o fator é 1: o saldo e o poder de compra ficam iguais, 100 em todas as barras."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Como a inflação afeta o valor nominal?",
+        "resposta": "Preços mudam o poder de compra; comparamos fatores no mesmo período."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "contraste-de-regras",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 2,
+        "nome": "M",
+        "regra": "pg",
+        "a1": 100,
+        "q": 1.1,
+        "termos": 5,
+        "n": "1+$t"
+      },
+      "controls": [
+        {
+          "id": "t",
+          "label": "Semestres",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "10% ao semestre por dois semestres dá 20% ou 21%? Leve t até 2; a primeira barra é t = 0.",
+        "done": "Dá 21%: 1,1 aplicado duas vezes produz 1,21, e 100 vira 121."
+      },
+      "complete_when": {
+        "metric": "t",
+        "gte": 2
+      }
+    },
+    {
+      "id": "teste-de-fronteira",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 2,
+        "nome": "M",
+        "regra": "pg",
+        "a1": 100,
+        "q": 1.05,
+        "termos": 5,
+        "n": "1+$t",
+        "fantasma": {
+          "regra": "pa",
+          "a1": 100,
+          "d": 5,
+          "q": 1
+        }
+      },
+      "controls": [
+        {
+          "id": "t",
+          "label": "Trimestres",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "5% ao trimestre vira 20% ao ano? Leve t até 4 trimestres e compare com os 20% diretos, em cinza.",
+        "done": "Não: 1,05⁴ ≈ 1,2155, ou 21,55%. Para comparar taxas, converta ambas para a mesma janela, por fatores."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E o caminho inverso, 12% ao ano em taxa mensal?",
+        "resposta": "Tire a raiz do fator: 1,12^(1/12) − 1 ≈ 0,95% ao mês, não 1%."
+      },
+      "complete_when": {
+        "metric": "t",
+        "gte": 4
+      }
+    },
+    {
+      "id": "micro-desafio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "Salário (nominal)",
+              "valor": 110
+            },
+            {
+              "nome": "Preços",
+              "valor": 105
+            },
+            {
+              "nome": "Valor real",
+              "valor": 104.76
+            }
+          ],
+          "cor": "ink"
+        }
+      },
+      "prompt": "Rendimento nominal de 10% com inflação de 5%. Qual o ganho real exato?",
+      "lines": {
+        "intro": "O ganho real compara fatores, não taxas: divida o fator nominal pelo de preços."
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "≈ 4,76%",
+          "correct": true,
+          "feedback": "Certo. 1,10 ÷ 1,05 − 1 = 1/21 ≈ 4,76%.",
+          "figure": {
+            "acesas": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "o2",
+          "label": "5%",
+          "correct": false,
+          "feedback": "Subtrair dá só uma aproximação; o exato é 1,10 ÷ 1,05 − 1 ≈ 4,76%.",
+          "figure": {
+            "acesas": [
+              0,
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "Salário (nominal)",
+              "valor": 110
+            },
+            {
+              "nome": "Preços",
+              "valor": 105
+            },
+            {
+              "nome": "Valor real",
+              "valor": 104.76
+            }
+          ],
+          "cor": "ink"
+        }
+      },
+      "formula": [
+        {
+          "text": "i",
+          "ref": "c1"
+        },
+        {
+          "text": "equivalente = (1 +"
+        },
+        {
+          "text": "i",
+          "ref": "c1"
+        },
+        {
+          "text": ")",
+          "sup": "n",
+          "ref": "c2"
+        },
+        {
+          "text": "− 1"
+        },
+        {
+          "text": ";"
+        },
+        {
+          "text": "valor real = nominal ÷"
+        },
+        {
+          "text": "fator de preços",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Taxas equivalentes",
+          "text": "geram o mesmo fator no mesmo horizonte."
+        },
+        {
+          "term": "Inflação",
+          "text": "alta do nível de preços."
+        },
+        {
+          "term": "Valor real",
+          "text": "nominal ajustado pelo fator de preços."
+        }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Dá para somar taxas de períodos diferentes?",
+        "resposta": "Não: some fatores multiplicando. 10% ao semestre duas vezes é 1,1², ou 21%, não 20%."
+      },
+      "lines": {
+        "intro": "Taxas equivalentes encadeiam fatores; o valor real divide o fator nominal pelo de preços.",
+        "hint": "Toque em uma marca para ver a grandeza correspondente nas barras."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "taxas-equivalentes-e-inflacao-f1",
+        "prompt": "Uma taxa de 0% por período muda o saldo?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo. O fator é 1 + 0 = 1."
+          },
+          {
+            "id": "o2",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Confundiu taxa zero com aumento. O fator 1 + 0 = 1 não muda o saldo."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-f2",
+        "prompt": "10% ao semestre por dois semestres dá quanto de taxa efetiva?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "20%",
+            "correct": false,
+            "feedback": "Somou sem capitalizar o segundo período. O certo é 1,1² − 1 = 21%."
+          },
+          {
+            "id": "o1",
+            "label": "21%",
+            "correct": true,
+            "feedback": "Certo. 1,1² − 1 = 21%."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-f3",
+        "prompt": "Salário e preços sobem 10%. O poder de compra muda?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Fica igual",
+            "correct": true,
+            "feedback": "Certo. 1,10 ÷ 1,10 = 1."
+          },
+          {
+            "id": "o2",
+            "label": "Sobe 10%",
+            "correct": false,
+            "feedback": "Olhou só o salário nominal. Com preços também em 1,10, o poder fica igual."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-f4",
+        "prompt": "5% ao trimestre por 4 trimestres equivalem a quanto?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "20%",
+            "correct": false,
+            "feedback": "Somou taxas sem composição. O certo é 1,05⁴ − 1 ≈ 21,55%."
+          },
+          {
+            "id": "o1",
+            "label": "21,55%",
+            "correct": true,
+            "feedback": "Certo. 1,05⁴ − 1 ≈ 21,55%."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "taxas-equivalentes-e-inflacao-m1",
+        "prompt": "Uma inflação de 10% leva o índice 100 a quanto?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é o aumento, não o índice final. 100 · 1,10 = 110."
+          },
+          {
+            "id": "o1",
+            "label": "110",
+            "correct": true,
+            "feedback": "Certo. 100 · 1,10 = 110."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-m2",
+        "prompt": "O salário sobe 20% e os preços sobem 10%. Qual é o fator real?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "1,20/1,10 ≈ 1,091",
+            "correct": true,
+            "feedback": "Certo. 1,20 ÷ 1,10 ≈ 1,091."
+          },
+          {
+            "id": "o2",
+            "label": "1,10/1,20",
+            "correct": false,
+            "feedback": "Inverteu salário e preços. O fator real é 1,20 ÷ 1,10 ≈ 1,091."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-m3",
+        "prompt": "Uma taxa mensal de 1% por 2 meses equivale a quanto?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "2%",
+            "correct": false,
+            "feedback": "Somou sem capitalização. O certo é 1,01² − 1 = 2,01%."
+          },
+          {
+            "id": "o1",
+            "label": "2,01%",
+            "correct": true,
+            "feedback": "Certo. 1,01² − 1 = 2,01%."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "taxas-equivalentes-e-inflacao-d1",
+        "prompt": "Você tem R$ 110 nominais e os preços dobraram. Qual o valor real?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 55",
+            "correct": true,
+            "feedback": "Certo. 110 ÷ 2 = 55."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 220",
+            "correct": false,
+            "feedback": "Multiplicou pelo índice em vez de dividir. O valor real é 110 ÷ 2 = R$ 55."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-d2",
+        "prompt": "Uma taxa anual efetiva de 21% equivale a qual taxa semestral?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "10,5%",
+            "correct": false,
+            "feedback": "Dividiu 21% por 2 sem usar fatores. De (1 + i)² = 1,21, i = 10%."
+          },
+          {
+            "id": "o1",
+            "label": "10%",
+            "correct": true,
+            "feedback": "Certo. (1 + i)² = 1,21 dá i = 10%."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-d3",
+        "prompt": "O índice de preços sobe de 120 a 126. Qual a inflação?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "5%",
+            "correct": true,
+            "feedback": "Certo. 6 ÷ 120 = 5%."
+          },
+          {
+            "id": "o2",
+            "label": "6%",
+            "correct": false,
+            "feedback": "Não dividiu o aumento pela base. 6 ÷ 120 = 5%."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-d4",
+        "prompt": "Rendimento nominal de 10% e inflação de 5%. Qual o ganho real exato?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "5%",
+            "correct": false,
+            "feedback": "Subtraiu taxas em vez de dividir fatores. O exato é 1,10 ÷ 1,05 − 1 ≈ 4,76%."
+          },
+          {
+            "id": "o1",
+            "label": "≈ 4,76%",
+            "correct": true,
+            "feedback": "Certo. 1,10 ÷ 1,05 − 1 = 1/21 ≈ 4,76%."
+          }
+        ]
+      },
+      {
+        "id": "taxas-equivalentes-e-inflacao-d5",
+        "prompt": "2% ao mês por 12 meses são exatamente 24% efetivos?",
+        "fala": "Última. Doze fatores de 1,02 se multiplicam.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Não; 1,02¹² − 1",
+            "correct": true,
+            "feedback": "Certo. 1,02¹² − 1 ≈ 26,82%."
+          },
+          {
+            "id": "o2",
+            "label": "Sim; 24%",
+            "correct": false,
+            "feedback": "Confundiu soma com composição. O efetivo é 1,02¹² − 1 ≈ 26,82%."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
