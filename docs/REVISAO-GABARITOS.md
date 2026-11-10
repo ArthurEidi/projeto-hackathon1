@@ -20,20 +20,20 @@ Para cada questão do treino (`fáceis`, `médias`, `desafios`, `vestibular`) e 
 
 ---
 
-## Detalhamento por Setor Auditado
+## Detalhamento por Setor Auditado (conforme CURRICULO.md)
 
 | Setor | Nome do Setor | Arquivos | micro_challenges | Fáceis | Médias | Desafios | Vestibular (Ativas) | Total Ativas | Problemas |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **1** | Aritmética e Fundamentos | 9 | 18 | 36 | 27 | 45 | 0 | 126 | 0 |
-| **2** | Conjuntos e Funções | 10 | 20 | 40 | 30 | 50 | 4 | 144 | 0 |
-| **3** | Exponencial, Logaritmo e Sequências | 16 | 32 | 64 | 48 | 80 | 0 | 224 | 0 |
-| **4** | Combinatória | 4 | 8 | 16 | 12 | 20 | 0 | 56 | 0 |
-| **5** | Probabilidade | 3 | 6 | 12 | 9 | 15 | 0 | 42 | 0 |
-| **6** | Estatística | 3 | 6 | 12 | 9 | 15 | 0 | 42 | 0 |
-| **7** | Matrizes e Determinantes | 4 | 8 | 16 | 12 | 20 | 0 | 56 | 0 |
-| **8** | Sistemas Lineares e Polinômios | 10 | 10 | 40 | 30 | 50 | 10 | 140 | 0 |
-| **9** | Números Complexos | 5 | 5 | 20 | 15 | 25 | 3 | 68 | 0 |
-| **13** | Geometria Analítica | 8 | 8 | 32 | 24 | 40 | 3 | 107 | 0 |
+| **1** | Conjuntos, números, razões e medidas | 9 | 18 | 36 | 27 | 45 | 0 | 126 | 0 |
+| **2** | Funções | 10 | 20 | 40 | 30 | 50 | 4 | 144 | 0 |
+| **3** | Equações e inequações | 16 | 32 | 64 | 48 | 80 | 0 | 224 | 0 |
+| **4** | Sequências | 4 | 8 | 16 | 12 | 20 | 0 | 56 | 0 |
+| **5** | Matemática financeira | 3 | 6 | 12 | 9 | 15 | 0 | 42 | 0 |
+| **6** | Matrizes e sistemas | 3 | 6 | 12 | 9 | 15 | 0 | 42 | 0 |
+| **7** | Polinômios e números complexos | 4 | 8 | 16 | 12 | 20 | 0 | 56 | 0 |
+| **8** | Combinatória e probabilidade | 10 | 10 | 40 | 30 | 50 | 10 | 140 | 0 |
+| **9** | Estatística | 5 | 5 | 20 | 15 | 25 | 3 | 68 | 0 |
+| **13** | Geometria analítica | 8 | 8 | 32 | 24 | 40 | 3 | 107 | 0 |
 | **TOTAL** | — | **72** | **121** | **288** | **216** | **360** | **20** | **1005** | **0** |
 
 *(Nota: Além das 1005 questões ativas com gabarito auditadas, foram identificados 192 itens de vestibular marcados como `PENDENTE-FONTE`, sem tabelas de gabarito para verificação).*
