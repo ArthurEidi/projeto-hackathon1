@@ -172,6 +172,20 @@
                   "arquivo": "aritmetica/estatistica/medidas-de-dispersao/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "quartis-percentis-e-boxplot",
+              "titulo": "Quartis e Boxplot",
+              "icone": "barras",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Cortar a Fila em Quatro",
+                  "subtitulo": "Quartis, percentis e boxplot",
+                  "arquivo": "aritmetica/estatistica/quartis-percentis-e-boxplot/aula-01.json"
+                }
+              ]
             }
           ]
         }

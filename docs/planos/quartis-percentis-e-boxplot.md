@@ -262,3 +262,6 @@ Arrastar o maior valor para longe estica o bigode e não move a caixa. Um valor 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** valor atípico e efeito na mediana × média.
 - **Onde procurar:** Unicamp, Fuvest.
+
+---
+**Notas da implementação (JSON):** `barras` modo `fila` (passo 1 com `arrastaveis: ["q2"]` e fila embaralhada; passo 2 com Q2 fixo; passo 3 com `chave_caixa`; passo 4 com `maior_arrastavel` até 40). Vestibular `[]` (os 4 itens do plano são PENDENTE-FONTE). Sem correção de gabarito.
