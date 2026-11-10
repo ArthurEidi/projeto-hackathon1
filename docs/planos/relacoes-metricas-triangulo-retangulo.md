@@ -64,7 +64,7 @@ Arrastar o vértice reto ao longo do semicírculo de diâmetro `a = 10` mostra q
 - **Pilares:** 5, 6 (dedução de a·h = b·c), 7 (fronteira)
 - **Widget:** WIDGET NOVO: `geometria_plana` — triângulo `3-4-5` (`b = 3, c = 4` em `c4`, `a = 5` em `c1`) que gira para apoiar ora no cateto `4` (altura `3`), ora na hipotenusa `5` (altura `h = 2,4` em `c3`).
 - **Sliders:** `girar_base` · "Apoiar na hipotenusa" · 0..1 · passo 1 · inicial 0 · c3
-- **Paco (abertura):** "No triângulo 3-4-5, a área pelos catetos é (3·4)/2 = 6. Apoiando na hipotenusa 5, a área muda? Gire para achar h!"
+- **Paco (abertura):** "No triângulo 3-4-5, a área pelos catetos é (3·4)/2 = 6; apoiando na hipotenusa 5, a área muda? Gire para achar h!"
 - **Interação do aluno:** gira o triângulo até apoiar na hipotenusa 5 e vê `(5 · h)/2 = (3 · 4)/2 ⇒ 5 · h = 12 ⇒ h = 2,4`.
 - **Conclusão:** `girar_base ≥ 1`
 - **Paco (conclusão):** "O triângulo é o mesmo, então a área não muda: (a · h)/2 = (b · c)/2. Cancelando o 2, fica sempre a · h = b · c!"
@@ -195,7 +195,7 @@ Arrastar o vértice reto ao longo do semicírculo de diâmetro `a = 10` mostra q
 | `h13` | 13 cm | não | "13 cm é a hipotenusa. A altura vale (5 · 12) / 13 = 60/13 cm." |
 
 #### D3 — `diagonal-retangulo-projecao`
-- **Enunciado:** "Em um retângulo de lados 3 cm e 4 cm, traça-se uma diagonal (5 cm) e a perpendicular de um canto até essa diagonal. Quanto mede a menor projeção na diagonal?"
+- **Enunciado:** "Num retângulo 3 cm × 4 cm, traça-se a diagonal (5 cm) e a altura de um canto até ela. Quanto mede a menor projeção na diagonal?"
 - **Conta de conferência:** b² = a · m ⇒ 3² = 5 · m ⇒ m = 9/5 = 1,8 cm
 
 | id | Rótulo | Certa? | Feedback |
@@ -205,7 +205,7 @@ Arrastar o vértice reto ao longo do semicírculo de diâmetro `a = 10` mostra q
 | `m25` | 2,5 cm | não | "Como os lados 3 e 4 são diferentes, a altura não cai no meio: m = 9/5 = 1,8 cm." |
 
 #### D4 — `semicirculo-corda-altura`
-- **Enunciado:** "Um ponto na borda de um semicírculo de diâmetro 10 cm tem sua altura perpendicular ao diâmetro dividindo-o em 1 cm e 9 cm. Quanto mede essa altura?"
+- **Enunciado:** "A altura de um ponto de um semicírculo até o diâmetro divide esse diâmetro em 1 cm e 9 cm. Quanto mede essa altura?"
 - **Conta de conferência:** todo triângulo inscrito no semicírculo é retângulo ⇒ h² = 1 · 9 = 9 ⇒ h = 3 cm
 
 | id | Rótulo | Certa? | Feedback |

@@ -57,7 +57,7 @@ Testar o limite de `d`: para `0 ≤ d < R` a interseção é um círculo; na fro
 - **Paco (abertura):** "A sombra da esfera no chão vale 1 círculo máximo (πR²). Quantas dessas sombras cabem para cobrir a casca 3D inteira da esfera?"
 - **Interação do aluno:** abre a projeção cilíndrica até 100% e vê a área da casca preencher exatamente 4 discos de área `πR²`.
 - **Conclusão:** `abrir_casca ≥ 100`
-- **Paco (conclusão):** "Cabem exatamente 4 círculos máximos: A = 4πR²! E ligando a casca ao centro em pirâmides de altura R, o volume dá (4πR² · R) / 3 = (4/3)πR³."
+- **Paco (conclusão):** "Cabem 4 círculos máximos: A = 4πR²! Ligando a casca ao centro em pirâmides de altura R, o volume dá (4πR²·R)/3 = (4/3)πR³."
 
 ### Passo 3 — `dobrar-raio-oito-esferas`
 - **Tipo:** `interactive_canvas`
@@ -215,7 +215,7 @@ Testar o limite de `d`: para `0 ≤ d < R` a interseção é um círculo; na fro
 | `r4` | 4 cm | não | "Cancelando 4πR² em (4/3)πR³ = 4πR², obtemos R = 3 cm." |
 
 #### D5 — `esferas-no-cilindro-nivel`
-- **Enunciado:** "Três bolas de tênis de raio R = 3 cm cabem empilhadas justas num tubo cilíndrico de raio 3 cm e altura 6R = 18 cm. Que volume do tubo fica VAZIO?"
+- **Enunciado:** "Três bolas de raio R = 3 cm cabem justas num tubo cilíndrico de raio 3 cm e altura 18 cm. Que volume do tubo fica VAZIO?"
 - **Fala do Paco:** "Em cada fatia de altura 2R, a esfera ocupa 2/3 e deixa 1/3 vazio!"
 - **Conta de conferência:** V_tubo = π · 3² · 18 = 162π; 3 esferas = 3 · 36π = 108π; vazio = 162π − 108π = 54π cm³ (1/3 do tubo)
 

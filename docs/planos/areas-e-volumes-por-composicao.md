@@ -79,7 +79,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 
 | id | Rótulo | Certa? | Feedback | A figura muda para… |
 |---|---|---|---|---|
-| `v54p` | 54π m³ | **sim** | "Exato. Cilindro: π·3²·5 = 45π; cone: (π·3²·3)/3 = 9π. Total: 45π + 9π = 54π m³." | destaca 45π no corpo e 9π no telhado |
+| `v54p` | 54π m³ | **sim** | "Exato: cilindro π·3²·5 = 45π e cone (π·3²·3)/3 = 9π, somando 54π m³." | destaca 45π no corpo e 9π no telhado |
 | `v72p` | 72π m³ | não | "Você esqueceu de dividir o volume do cone por 3 (fez 45π + 27π). O certo é 45π + 9π = 54π m³." | mostra o fator 1/3 no cone do topo |
 | `v45p` | 45π m³ | não | "45π m³ é só a parte cilíndrica. Somando o cone de 9π m³, dá 54π m³." | pisca o telhado cônico de 9π m³ |
 | `v36p` | 36π m³ | não | "Você subtraiu 45π − 9π como se fosse buraco. Como o cone está em cima, soma-se: 54π m³." | aponta a seta de soma `45π + 9π` |
@@ -90,7 +90,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 - **Figura:** WIDGET NOVO: `solido_3d_figura` — comparativo de colagem (silo/cápsula) e escavação (bloco cavado) com destaque para as faces ocultas (`c3`) e expostas (`c4`).
 - **Fórmula:** `V = V₁ ± V₂`→c1 · `e` · `A_exposta = ∑ faces externas (sem tampas coladas)`→c4
 - **Definições:** "Volume por composição: soma os sólidos acoplados e subtrai as cavidades escavadas." · "Área de sólidos colados: descarta todas as faces que ficaram escondidas na colagem." · "Área de sólido escavado: perde a tampa onde o furo abriu, mas ganha toda a parede interna da cavidade."
-- **Paco (abertura):** "Faces coladas ficam presas por dentro e cavidades abrem paredes novas; por isso o volume segue soma/subtração direta, mas a área conta apenas a casca exposta."
+- **Paco (abertura):** "Faces coladas ficam ocultas e furos abrem paredes novas; por isso o volume soma ou subtrai, mas a área conta só a casca exposta."
 - **Dica (hint):** "Toque em cada parte da regra para ver o efeito no volume e na pintura externa."
 
 **Frase de encerramento (outro):** "Você combinou cilindros, cones e esferas, descontou tampas ocultas na colagem e viu por que cavar um buraco aumenta a área."
@@ -120,7 +120,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 | `v100` | 100 cm³ | não | "Basta subtrair o volume do furo: 200 − 50 = 150 cm³." |
 
 #### F3 — `faces-dois-cubos-colados`
-- **Enunciado:** "Dois cubos idênticos (6 faces cada) são colados perfeitamente por uma face inteira. Quantas faces quadradas unitárias ficam EXPOSTAS por fora?"
+- **Enunciado:** "Dois cubos idênticos (6 faces cada) são colados por uma face inteira. Quantas faces unitárias ficam EXPOSTAS por fora?"
 - **Conta de conferência:** 6 + 6 − 2 faces coladas = 10 faces expostas
 
 | id | Rótulo | Certa? | Feedback |
@@ -142,7 +142,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 ### Médias
 
 #### M1 — `volume-capsula-por-medidas`
-- **Enunciado:** "Uma cápsula é formada por um cilindro de raio r = 3 mm e comprimento h = 4 mm, fechado por duas semiesferas de raio 3 mm. Qual é o volume total?"
+- **Enunciado:** "Uma cápsula une um cilindro (r = 3 mm, h = 4 mm) a duas semiesferas de raio 3 mm nas pontas. Qual é o volume total?"
 - **Conta de conferência:** V_cil = π·3²·4 = 36π; 2 semiesferas = 1 esfera = (4/3)π·3³ = 36π; Total = 36π + 36π = 72π mm³
 
 | id | Rótulo | Certa? | Feedback |
@@ -162,7 +162,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 | `a42p` | 42π mm² | não | "As 2 semiesferas somam 4π·3² = 36π (não 18π); com a lateral 24π, dá 60π mm²." |
 
 #### M3 — `sorvete-casquinha-mais-bola`
-- **Enunciado:** "Uma casquinha cônica de raio r = 3 cm e altura h = 6 cm está totalmente cheia de sorvete e tem ainda 1 semiesfera de raio 3 cm em cima. Qual o volume de sorvete?"
+- **Enunciado:** "Uma casquinha cônica (r = 3 cm, h = 6 cm) cheia de sorvete traz 1 semiesfera de raio 3 cm no topo. Qual é o volume de sorvete?"
 - **Conta de conferência:** V_cone = (π·9·6)/3 = 18π; V_semiesfera = (2/3)π·27 = 18π; Total = 18π + 18π = 36π cm³
 
 | id | Rótulo | Certa? | Feedback |
@@ -174,7 +174,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 ### Desafios
 
 #### D1 — `area-silo-com-fundo`
-- **Enunciado:** "Um silo apoiado no chão tem corpo cilíndrico (r = 3 m, h = 4 m) e teto cônico (r = 3 m, h = 4 m, geratriz g = 5 m). Qual é a área EXTERNA lateral + teto (sem o piso)?"
+- **Enunciado:** "Um silo tem corpo cilíndrico (r = 3 m, h = 4 m) e teto cônico (r = 3 m, g = 5 m). Qual é a área externa lateral + teto?"
 - **Fala do Paco:** "Some a parede do cilindro (`2πrh`) com o chapéu do cone (`πrg`), sem a tampa do meio!"
 - **Conta de conferência:** A_lat_cil = 2π·3·4 = 24π; A_lat_cone = π·3·5 = 15π; Total = 24π + 15π = 39π m²
 
@@ -185,7 +185,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 | `a36p` | 36π m² | não | "No teto cônico usa-se a geratriz g = 5 (π·3·5 = 15π), não h = 4. Total: 24π + 15π = 39π m²." |
 
 #### D2 — `area-cilindro-com-cone-cavado`
-- **Enunciado:** "De um cilindro maciço (r = 3 cm, h = 4 cm) escava-se no topo um cone de mesmo raio 3 cm e altura 4 cm (g = 5 cm). Qual é a área total da peça resultante?"
+- **Enunciado:** "De um cilindro maciço (r = 3 cm, h = 4 cm) escava-se no topo um cone de raio 3 cm e g = 5 cm. Qual é a área total da peça?"
 - **Conta de conferência:** fundo plano π·3² = 9π + lateral cilíndrica 2π·3·4 = 24π + parede cônica cavada π·3·5 = 15π ⇒ 9π + 24π + 15π = 48π cm²
 
 | id | Rótulo | Certa? | Feedback |
@@ -195,7 +195,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 | `a18p` | 18π cm² | não | "Na área a parede da cavidade SOMA (não subtrai!): 9π + 24π + 15π = 48π cm²." |
 
 #### D3 — `transferir-esfera-para-cilindro`
-- **Enunciado:** "Uma esfera de gelo de raio 3 cm derrete inteira dentro de um copo cilíndrico de raio 3 cm. Qual altura h a água atinge no copo (desprezando mudança de densidade)?"
+- **Enunciado:** "Uma esfera de raio 3 cm derrete inteira dentro de um copo cilíndrico de raio 3 cm. Que altura h o líquido atinge no copo?"
 - **Conta de conferência:** V_esfera = (4/3)π·3³ = 36π = V_cilindro = π·3²·h = 9π·h ⇒ h = 4 cm
 
 | id | Rótulo | Certa? | Feedback |
@@ -205,7 +205,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 | `h6` | 6 cm | não | "6 cm é a altura da bola inteira; como ela ocupa 2/3 daquela faixa, a água fica em 4 cm." |
 
 #### D4 — `tres-cubos-empilhados-area`
-- **Enunciado:** "Três cubos de aresta 2 cm (cada face tem 4 cm²) são colados em fila formando um bloco `2 × 2 × 6`. Qual é a área total externa desse bloco?"
+- **Enunciado:** "Três cubos de aresta 2 cm (face 4 cm²) são colados em fila formando um bloco `2 × 2 × 6`. Qual é a área externa desse bloco?"
 - **Conta de conferência:** cada cubo tem 6 faces; 3 cubos = 18 faces − 4 faces ocultas nas 2 colagens = 14 faces de 4 cm² = 56 cm²
 
 | id | Rótulo | Certa? | Feedback |
@@ -215,7 +215,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 | `a64` | 64 cm² | não | "Cada colagem esconde 2 faces (4 no total): 18 − 4 = 14 faces de 4 cm² = 56 cm²." |
 
 #### D5 — `lapis-cilindro-mais-cone`
-- **Enunciado:** "Um lápis sem apontar é um cilindro de raio 1 cm e comprimento 10 cm (V = 10π). Ao apontar, os últimos 3 cm de comprimento viram um cone de altura 3 cm. Quanto volume foi perdido?"
+- **Enunciado:** "Ao apontar um lápis cilíndrico de raio 1 cm, os últimos 3 cm de comprimento viram um cone de altura 3 cm. Quanto volume saiu?"
 - **Fala do Paco:** "Na faixa de 3 cm da ponta, o cone guarda 1/3 e as aparas levam 2/3!"
 - **Conta de conferência:** o trecho cilíndrico de 3 cm tinha V = π·1²·3 = 3π; o cone ficou com 1π, logo perdeu-se 3π − 1π = 2π cm³
 

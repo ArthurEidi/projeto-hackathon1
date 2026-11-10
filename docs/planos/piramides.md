@@ -187,7 +187,7 @@ Testar o limite de validade do triângulo interno: como `a_p` é hipotenusa de `
 | `a84` | 84 cm² | não | "Você usou h = 4 nas faces em vez de a_p = 5. Com a_p = 5, A_t = 36 + 60 = 96 cm²." |
 
 #### D2 — `aresta-lateral-piramide`
-- **Enunciado:** "Numa pirâmide quadrangular regular de lado da base 6 cm e apótema da face a_p = 4 cm, quanto mede a ARESTA LATERAL l (que vai até a quina)?"
+- **Enunciado:** "Numa pirâmide quadrangular regular de lado da base 6 cm e apótema a_p = 4 cm, quanto mede a ARESTA LATERAL l até a quina?"
 - **Conta de conferência:** na face lateral, l é hipotenusa de a_p = 4 e metade do lado (3) ⇒ l = √(4² + 3²) = 5 cm
 
 | id | Rótulo | Certa? | Feedback |
@@ -217,7 +217,7 @@ Testar o limite de validade do triângulo interno: como `a_p` é hipotenusa de `
 | `k8` | 8 | não | "Multiplicaria por 8 se a altura também dobrasse. Com h fixa, multiplica por 4." |
 
 #### D5 — `octaedro-duas-piramides`
-- **Enunciado:** "Um octaedro é formado colando duas pirâmides quadrangulares iguais base com base (lado 6 cm e altura 4 cm em cada pirâmide). Qual é o volume do octaedro?"
+- **Enunciado:** "Um octaedro une duas pirâmides quadrangulares iguais base com base (lado 6 cm e h = 4 cm em cada). Qual é o seu volume?"
 - **Fala do Paco:** "Calcule o volume de uma pirâmide e multiplique por 2!"
 - **Conta de conferência:** V_1 = (36 · 4)/3 = 48 cm³ ⇒ V_octaedro = 2 · 48 = 96 cm³
 

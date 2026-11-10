@@ -47,7 +47,7 @@ Comparar duas folhas retangulares iguais `A × B` enroladas de dois jeitos difer
 - **Interação do aluno:** gira o retângulo até 360° e vê o rastro circular formar as duas tampas de raio 3 e a parede vertical.
 - **Conclusão:** `giro ≥ 360`
 - **Paco (conclusão):** "Nasce o cilindro reto! Como a largura r = 3 é a mesma de cima a baixo, todas as fatias circulares têm o mesmo raio."
-- **Tati (dúvida):** `fim` — P: "E se cortarmos o cilindro bem pelo meio, de cima a baixo?" / R: "Aparece um retângulo de altura h e base igual ao diâmetro 2r (dois retângulos colados). Quando h = 2r, esse corte é um quadrado e o cilindro se chama equilátero."
+- **Tati (dúvida):** `fim` — P: "E se cortarmos o cilindro bem pelo meio, de cima a baixo?" / R: "Aparece um retângulo de base 2r e altura h; quando h = 2r, esse corte é um quadrado e o cilindro se chama equilátero."
 
 ### Passo 2 — `desenrolar-rotulo`
 - **Tipo:** `interactive_canvas`
@@ -205,7 +205,7 @@ Comparar duas folhas retangulares iguais `A × B` enroladas de dois jeitos difer
 | `l3000` | 3000 L | não | "Com π = 3, r = 1 e h = 2, temos V = 3·1·2 = 6 m³ = 6000 L." |
 
 #### D4 — `cano-oco-coroa`
-- **Enunciado:** "Um tubo cilíndrico de concreto tem raio externo R = 5 cm, furo interno de raio r = 3 cm e comprimento h = 10 cm. Qual é o volume de concreto?"
+- **Enunciado:** "Um tubo de concreto tem raio externo R = 5 cm, furo de raio r = 3 cm e altura h = 10 cm. Qual é o volume de concreto?"
 - **Conta de conferência:** V = π(R² − r²)·h = π(25 − 9)·10 = 16π · 10 = 160π cm³
 
 | id | Rótulo | Certa? | Feedback |
@@ -215,7 +215,7 @@ Comparar duas folhas retangulares iguais `A × B` enroladas de dois jeitos difer
 | `v250p` | 250π cm³ | não | "250π é o cilindro maciço sem descontar o furo de 90π: 250π − 90π = 160π cm³." |
 
 #### D5 — `enrolar-folha-dois-jeitos`
-- **Enunciado:** "Uma folha retangular de largura 6π cm e altura 4 cm é enrolada sem sobrepor para formar a lateral de um cilindro de altura 4 cm (logo 2πr = 6π). Qual é o volume?"
+- **Enunciado:** "Uma folha de largura 6π cm e altura 4 cm é enrolada formando um cilindro de altura 4 cm (2πr = 6π). Qual é o volume?"
 - **Fala do Paco:** "De `2πr = 6π` você descobre o raio `r` na hora!"
 - **Conta de conferência:** 2πr = 6π ⇒ r = 3 cm; V = π · 3² · 4 = 36π cm³
 

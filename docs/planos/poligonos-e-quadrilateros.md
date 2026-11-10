@@ -54,7 +54,7 @@ Arrastar um vértice para dentro até passar de `180°` (polígono côncavo) mos
 - **Pilares:** 2, 5 (contraste S_i cresce × S_e constante), 6 (dedução da volta completa)
 - **Widget:** WIDGET NOVO: `geometria_plana` — pentágono com seus 5 ângulos externos coloridos (`c3`); slider afasta a câmera (encolhe o polígono a um ponto) juntando os 5 setores num círculo perfeito de `360°`.
 - **Sliders:** `encolher` · "Juntar ângulos externos" · 0..100 · passo 25 · inicial 0 · c3
-- **Paco (abertura):** "A soma interna cresce quando n aumenta. E a soma dos ângulos EXTERNOS (as curvas que você faz andando pela borda)? Encolha o polígono para ver!"
+- **Paco (abertura):** "A soma interna cresce com n, mas e a soma dos ângulos EXTERNOS (as curvas ao redor da borda)? Encolha o polígono para ver!"
 - **Interação do aluno:** move o slider até 100% e vê os ângulos externos se encaixarem fechando exatamente 1 volta (`360°`).
 - **Conclusão:** `encolher ≥ 100`
 - **Paco (conclusão):** "Dá sempre 360°, não importa quantos lados tenha! Andar em volta do polígono e voltar ao início é dar exatamente 1 volta completa."
@@ -205,7 +205,7 @@ Arrastar um vértice para dentro até passar de `180°` (polígono côncavo) mos
 | `d18` | 18 | não | "Faltou dividir por 2 para não contar cada diagonal duas vezes: 18 / 2 = 9." |
 
 #### D4 — `area-losango-pelas-diagonais`
-- **Enunciado:** "As diagonais de um losango medem 6 cm e 8 cm e se cortam ao meio a 90° (catetos 3 cm e 4 cm em cada quarto). Quanto mede o LADO desse losango?"
+- **Enunciado:** "As diagonais de um losango medem 6 cm e 8 cm e se cortam ao meio a 90° (catetos 3 cm e 4 cm). Quanto mede o LADO do losango?"
 - **Conta de conferência:** metades das diagonais = 3 cm e 4 cm a 90° ⇒ lado = hipotenusa = √(3² + 4²) = 5 cm
 
 | id | Rótulo | Certa? | Feedback |
@@ -215,7 +215,7 @@ Arrastar um vértice para dentro até passar de `180°` (polígono côncavo) mos
 | `l7` | 7 cm | não | "Não some 3 + 4; aplique Pitágoras nas semidiagonais: √(3² + 4²) = 5 cm." |
 
 #### D5 — `base-media-trapezio`
-- **Enunciado:** "Um trapézio tem base menor b = 6 cm e base maior B = 14 cm. Quanto mede a base média (segmento que une os pontos médios dos lados inclinados)?"
+- **Enunciado:** "Um trapézio tem base menor b = 6 cm e base maior B = 14 cm. Quanto mede sua base média (que une os meios dos lados inclinados)?"
 - **Fala do Paco:** "No meio da altura, a largura é exatamente a média das duas bases!"
 - **Conta de conferência:** B_m = (B + b) / 2 = (14 + 6) / 2 = 10 cm
 

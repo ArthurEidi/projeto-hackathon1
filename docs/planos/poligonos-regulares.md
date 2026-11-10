@@ -67,7 +67,7 @@ Aumentar `n` para `10, 20, 100` mostra que `a_e = 360° / n` se aproxima de `0°
 - **Paco (abertura):** "Três pentágonos regulares (108° cada) juntos num canto somam 324° e deixam um buraco de 36°. Troque para n = 6 (hexágonos): o buraco fecha?"
 - **Interação do aluno:** muda de `n = 5` para `n = 6` e vê 3 hexágonos de `120°` fecharem `360°` sem nenhuma fresta.
 - **Conclusão:** `peca_piso ≥ 6`
-- **Paco (conclusão):** "3 · 120° = 360° cravado! Só ladrilham o plano sozinhos os regulares cujo ângulo interno divide 360°: triângulo (60°), quadrado (90°) e hexágono (120°)."
+- **Paco (conclusão):** "3 · 120° = 360° cravado! Só ladrilham sozinhos os regulares cujo ângulo divide 360°: triângulo (60°), quadrado (90°) e hexágono (120°)."
 - **Tati (dúvida):** `fim` — P: "E se misturarmos octógonos (135°) com quadrados (90°)?" / R: "Aí fecha! 2 octógonos (270°) mais 1 quadrado (90°) somam exatos 360° em cada quina."
 
 ### Passo 4 — `desafio-angulo-octogono`
@@ -90,7 +90,7 @@ Aumentar `n` para `10, 20, 100` mostra que `a_e = 360° / n` se aproxima de `0°
 - **Figura:** WIDGET NOVO: `geometria_plana_figura` — hexágono regular com fatia central `a_c` (`c1`), externo `a_e` (`c2`), interno `a_i` (`c3`) e encontro de 3 hexágonos (`360°` em `c4`).
 - **Fórmula:** `a_e = a_c = 360°/n`→c2 · `,` · `a_i = 180° − a_e`→c3 · `e` · `Ladrilho: k · a_i = 360°`→c4
 - **Definições:** "Ângulo externo e central: dividem a volta de 360° em n partes iguais (360°/n)." · "Ângulo interno do regular: suplementar do externo (180° − 360°/n)." · "Ladrilhamento regular: só ocorre para n = 3 (60°), n = 4 (90°) e n = 6 (120°)."
-- **Paco (abertura):** "Todos os n cantos dividem 360° por igual e o piso exige fechar 360° no vértice; por isso a_e = 360°/n e só 60°, 90° e 120° ladrilham sozinhos."
+- **Paco (abertura):** "Os n cantos dividem 360° por igual e o piso exige fechar 360° no vértice; por isso a_e = 360°/n e só 60°, 90° e 120° ladrilham sós."
 - **Dica (hint):** "Toque em cada ângulo para destacá-lo no polígono e no ladrilho."
 
 **Frase de encerramento (outro):** "Você calculou ângulos regulares pelo atalho do externo, abriu o hexágono em 6 equiláteros e descobriu por que as abelhas usam hexágonos."
@@ -174,7 +174,7 @@ Aumentar `n` para `10, 20, 100` mostra que `a_e = 360° / n` se aproxima de `0°
 ### Desafios
 
 #### D1 — `fresta-entre-tres-pentagonos`
-- **Enunciado:** "Três pentágonos regulares (ângulo interno 108° cada) são encostados num mesmo vértice sobre uma mesa. Qual é o ângulo da fresta vazia que sobra?"
+- **Enunciado:** "Três pentágonos regulares (108° cada) encostam num mesmo vértice sobre uma mesa. Qual é o ângulo da fresta vazia que sobra?"
 - **Fala do Paco:** "Some os três ângulos de 108° e veja quanto falta para fechar a volta de 360°!"
 - **Conta de conferência:** 360° − 3 · 108° = 360° − 324° = 36°
 
@@ -185,7 +185,7 @@ Aumentar `n` para `10, 20, 100` mostra que `a_e = 360° / n` se aproxima de `0°
 | `g54` | 54° | não | "3 · 108° = 324°, e 360° − 324° = 36°." |
 
 #### D2 — `ladrilho-octogonos-e-quadrado`
-- **Enunciado:** "Num piso feito com octógonos regulares (a_i = 135°) e outro polígono regular encaixado entre cada par de octógonos no mesmo vértice, qual é o ângulo interno dessa peça?"
+- **Enunciado:** "Num piso, dois octógonos regulares (a_i = 135° cada) encontram outra peça regular no mesmo vértice. Qual é o ângulo dessa peça?"
 - **Conta de conferência:** 360° − 2 · 135° = 360° − 270° = 90° (um quadrado)
 
 | id | Rótulo | Certa? | Feedback |
@@ -215,7 +215,7 @@ Aumentar `n` para `10, 20, 100` mostra que `a_e = 360° / n` se aproxima de `0°
 | `d18` | 18 cm | não | "A diagonal maior equivale a 2 lados: 2 · 6 = 12 cm." |
 
 #### D5 — `estrela-entre-dois-hexagramas`
-- **Enunciado:** "Dois hexágonos regulares e um triângulo equilátero não cabem juntos num vértice (120°+120°+60°=300°). Qual segundo triângulo equilátero fecha os 360° nesse vértice?"
+- **Enunciado:** "Dois hexágonos regulares (120°) e um triângulo equilátero (60°) somam 300° num vértice. Que peça regular fecha os 360° ali?"
 - **Fala do Paco:** "Quanto falta de 300° para 360°?"
 - **Conta de conferência:** 360° − (120° + 120° + 60°) = 60° ⇒ mais 1 triângulo equilátero (2 hexágonos + 2 triângulos)
 

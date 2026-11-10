@@ -75,7 +75,7 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 - **Pilares:** 2, 6
 - **Figura:** WIDGET NOVO: `solido_3d_figura` — um quadrado `2 × 2` com um triângulo retângulo de base `2` e altura `3` em cima (formando um trapézio retângulo de altura lateral `2` e `5`, e base `2` no eixo).
 - **Paco (abertura):** "Separe a figura em um retângulo mais um triângulo girando juntos!"
-- **Enunciado:** "Girando um retângulo de raio 2 e altura 2 colado a um triângulo de raio 2 e altura 3 em torno do eixo comum, qual sólido composto nasce e qual seu volume?"
+- **Enunciado:** "Um retângulo (r = 2, h = 2) colado a um triângulo (r = 2, h = 3) gira no eixo comum. Que sólido nasce e qual seu volume?"
 
 | id | Rótulo | Certa? | Feedback | A figura muda para… |
 |---|---|---|---|---|
@@ -89,7 +89,7 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 - **Figura:** WIDGET NOVO: `solido_3d_figura` — painel com os perfis geradores (`c2`), o eixo (`c1`), os raios (`c3`) e os sólidos resultantes (`c4`).
 - **Fórmula:** `Retângulo → Cilindro`→c2 · `,` · `Triângulo → Cone`→c2 · `,` · `Afastado → V_ext − V_int`→c4
 - **Definições:** "Lado no eixo: permanece parado e vira a altura h do sólido." · "Lado perpendicular ao eixo: dá a volta de 360° e vira o raio r da base." · "Figura afastada do eixo: gera um sólido vazado (volume externo menos o furo interno)."
-- **Paco (abertura):** "Cada ponto a distância r do eixo desenha um círculo de raio r; por isso o lado no eixo vira altura, o lado perpendicular vira raio e o vão até o eixo vira furo."
+- **Paco (abertura):** "Cada ponto a distância r do eixo traça um círculo; por isso o lado no eixo vira altura, o perpendicular vira raio e o vão vira furo."
 - **Dica (hint):** "Toque em cada transformação para ver o perfil 2D e o sólido 3D."
 
 **Frase de encerramento (outro):** "Você identificou qual sólido nasce de cada figura plana, comparou trocas de eixo e calculou volumes com furo central."
@@ -141,7 +141,7 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 ### Médias
 
 #### M1 — `razao-volumes-trocando-catetos`
-- **Enunciado:** "Um triângulo retângulo de catetos 2 cm e 6 cm gera o volume V₁ ao girar no cateto 6 (r=2) e V₂ ao girar no cateto 2 (r=6). Quanto vale V₂ / V₁?"
+- **Enunciado:** "Um triângulo de catetos 2 cm e 6 cm gera V₁ ao girar no cateto 6 (r=2) e V₂ no cateto 2 (r=6). Quanto vale V₂ / V₁?"
 - **Conta de conferência:** V₁ = (π·4·6)/3 = 8π; V₂ = (π·36·2)/3 = 24π ⇒ V₂ / V₁ = 24π / 8π = 3
 
 | id | Rótulo | Certa? | Feedback |
@@ -151,7 +151,7 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 | `rz9` | 9 | não | "O raio triplica (×9), mas a altura divide por 3 (÷3), resultando em 9 / 3 = 3." |
 
 #### M2 — `retangulo-afastado-do-eixo`
-- **Enunciado:** "Um retângulo de largura 2 cm e altura 4 cm está a 1 cm de distância do eixo de rotação (logo r_int = 1 cm e R_ext = 3 cm). Qual é o volume do anel cilíndrico gerado?"
+- **Enunciado:** "Um retângulo de largura 2 cm e altura 4 cm gira a 1 cm do eixo (r = 1 cm e R = 3 cm). Qual é o volume do tubo gerado?"
 - **Conta de conferência:** V = π(3² − 1²) · 4 = π · 8 · 4 = 32π cm³
 
 | id | Rótulo | Certa? | Feedback |
@@ -184,7 +184,7 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 | `v96p` | 96π cm³ | não | "Faltou dividir por 3 no volume dos cones: 96π / 3 = 32π cm³." |
 
 #### D2 — `triangulo-retangulo-na-hipotenusa`
-- **Enunciado:** "Um triângulo retângulo isósceles de catetos √2 cm e hipotenusa 2 cm gira 360° em torno da HIPOTENUSA (altura relativa à hipotenusa h = 1 cm). Qual é o volume gerado?"
+- **Enunciado:** "Um triângulo retângulo isósceles de hipotenusa 2 cm e altura relativa h = 1 cm gira 360° na HIPOTENUSA. Qual é o volume gerado?"
 - **Conta de conferência:** dois cones de raio r = h = 1 cm e alturas somadas = hipotenusa = 2 cm ⇒ V = (1/3)π · 1² · 2 = 2π/3 cm³
 
 | id | Rótulo | Certa? | Feedback |
@@ -194,7 +194,7 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 | `v43p` | 4π/3 cm³ | não | "Cada cone tem altura 1 (metade da hipotenusa 2), somando 2π/3 cm³." |
 
 #### D3 — `semicirculo-com-furo-cilindrico`
-- **Enunciado:** "De um semicírculo de raio 3 cm retira-se um retângulo central encostado no diâmetro, restando apenas metade de uma esfera de raio 3 cm ao girar 180°. Qual o volume da esfera inteira se girar 360°?"
+- **Enunciado:** "Um semicírculo de raio 3 cm gira 360° em torno do seu diâmetro. Qual é o volume da esfera gerada?"
 - **Conta de conferência:** V = (4/3)π · 3³ = 36π cm³
 
 | id | Rótulo | Certa? | Feedback |
@@ -204,7 +204,7 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 | `v72p` | 72π cm³ | não | "O semicírculo girando 360° forma 1 esfera (não 2): (4/3)π·27 = 36π cm³." |
 
 #### D4 — `quadrado-girando-pela-diagonal`
-- **Enunciado:** "Um quadrado de diagonal 6 cm (e semidiagonal 3 cm) gira 360° em torno de uma de suas DIAGONAIS. Qual é o volume do sólido gerado (dois cones de raio 3 e altura 3)?"
+- **Enunciado:** "Um quadrado de diagonal 6 cm (semidiagonal 3 cm) gira 360° em torno de uma DIAGONAL. Qual é o volume dos 2 cones gerados?"
 - **Conta de conferência:** 2 cones de r = 3 e h = 3 ⇒ 2 · (π · 3² · 3)/3 = 2 · 9π = 18π cm³
 
 | id | Rótulo | Certa? | Feedback |
@@ -214,7 +214,7 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 | `v54p` | 54π cm³ | não | "Faltou dividir por 3 na fórmula dos cones: 54π / 3 = 18π cm³." |
 
 #### D5 — `pappus-guldin-anel-quadrado`
-- **Enunciado:** "Pelo teorema de Pappus, o volume é `Área × comprimento da volta do centro`. Um quadrado de lado 2 cm (área 4 cm²) cujo centro dista d_c = 5 cm do eixo gira 360°. Qual é o volume?"
+- **Enunciado:** "Um quadrado de área 4 cm² cujo centro dista d = 5 cm do eixo gira 360° (volta = 2π·5). Pelo teorema de Pappus, qual é o volume?"
 - **Fala do Paco:** "Multiplique a área 4 pelo comprimento da circunferência de raio 5 (`2π·5`)!"
 - **Conta de conferência:** V = A · (2π · d_c) = 4 · (2π · 5) = 40π cm³
 

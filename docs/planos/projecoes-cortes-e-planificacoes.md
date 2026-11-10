@@ -43,7 +43,7 @@ Testar moldes inválidos mostra a fronteira geométrica: ter 6 quadrados **não 
 - **Pilares:** 1, 2, 3 (caso neutro), 4 (panorama)
 - **Widget:** WIDGET NOVO: `solido_3d` — cubo inicial (caso neutro: 3 sombras quadradas) que alterna para cilindro e pirâmide; câmera trava nas posições Frente (`0°`), Lado (`90°`) e Topo (`90°` vertical) em `c1`. Emite `vistas_visitadas`.
 - **Sliders:** nenhum
-- **Paco (abertura):** "No cubo, frente, topo e lado dão sempre um quadrado. E na pirâmide de base quadrada: o que aparece olhando de cima e de frente? Gire pelas 3 vistas."
+- **Paco (abertura):** "No cubo, as 3 vistas são quadrados; e na pirâmide de base quadrada, o que aparece olhando de cima e de frente? Gire pelas 3 vistas."
 - **Interação do aluno:** visita as vistas frontal, lateral e superior, vendo o triângulo virar um quadrado com um X visto de cima.
 - **Conclusão:** `vistas_visitadas ≥ 3`
 - **Paco (conclusão):** "De frente é triângulo; de cima é o quadrado da base com as 4 arestas encontrando o vértice no centro."
@@ -196,7 +196,7 @@ Testar moldes inválidos mostra a fronteira geométrica: ter 6 quadrados **não 
 | `hex` | Um hexágono | não | "Hexágono exige cortar todas as 6 faces pelo meio do cubo. Na quina é um triângulo." |
 
 #### D3 — `empilhamento-blocos-vistas`
-- **Enunciado:** "Uma pilha de cubos vista de cima mostra 4 quadrados (2×2) e nas vistas frontal e lateral todas as colunas têm altura 2. Quantos cubos há se todas as 4 colunas tiverem altura 2?"
+- **Enunciado:** "Uma pilha de cubos vista de cima forma um quadrado 2×2 (4 colunas), todas com 2 cubos de altura. Quantos cubos há ao todo?"
 - **Conta de conferência:** 4 colunas na base × 2 andares = 8 cubos
 
 | id | Rótulo | Certa? | Feedback |
@@ -216,7 +216,7 @@ Testar moldes inválidos mostra a fronteira geométrica: ter 6 quadrados **não 
 | `pir` | Forma uma pirâmide | não | "Faces quadradas não formam pirâmide; duas abas do mesmo lado se sobrepõem." |
 
 #### D5 — `caminho-formiga-planificacao`
-- **Enunciado:** "Uma formiga vai pelo menor caminho na casca de uma caixa `3×3×6` do canto inferior frontal ao superior traseiro, passando por duas faces `3×3` seguidas. Quanto mede o caminho?"
+- **Enunciado:** "Uma formiga cruza duas faces `3×3` seguidas na casca de um bloco (formando um retângulo `6×3` no molde). Qual é o menor caminho?"
 - **Fala do Paco:** "Abra as duas faces `3×3` num retângulo plano `6×3` e trace a reta!"
 - **Conta de conferência:** retângulo planificado de base 3 + 3 = 6 e altura 3 ⇒ d = √(6² + 3²) = √45 = 3√5
 

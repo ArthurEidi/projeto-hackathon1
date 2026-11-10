@@ -187,7 +187,7 @@ Inclinar a pilha de fatias para o lado (prisma oblíquo / princípio de Cavalier
 | `d15` | 15 cm | não | "Não some 5 + 5 + 5; some os quadrados: √(25 + 25 + 25) = 5√3 cm." |
 
 #### D2 — `caixa-sem-tampa`
-- **Enunciado:** "Uma piscina aberta no topo tem 4 m de comprimento, 3 m de largura e 2 m de profundidade. Qual é a área total azulejada (fundo + 4 paredes)?"
+- **Enunciado:** "Uma piscina sem tampa mede 4 m × 3 m de base e 2 m de profundidade. Qual é a área total azulejada (fundo + 4 paredes)?"
 - **Conta de conferência:** fundo = 4·3 = 12 m²; paredes = 2·(4·2) + 2·(3·2) = 16 + 12 = 28 m²; total = 12 + 28 = 40 m²
 
 | id | Rótulo | Certa? | Feedback |
@@ -207,7 +207,7 @@ Inclinar a pilha de fatias para o lado (prisma oblíquo / princípio de Cavalier
 | `k24` | 2 e 4 | não | "Área é 2D (multiplica por 2² = 4) e volume é 3D (multiplica por 2³ = 8)." |
 
 #### D4 — `prisma-hexagonal-regular`
-- **Enunciado:** "A base de um prisma reto é um hexágono regular composto por 6 triângulos equiláteros de área 4 cm² cada. Se a altura é 5 cm, qual é o volume?"
+- **Enunciado:** "A base de um prisma reto é um hexágono formado por 6 triângulos de área 4 cm² cada. Se a altura é 5 cm, qual é o volume?"
 - **Conta de conferência:** A_b = 6 · 4 = 24 cm²; V = 24 · 5 = 120 cm³
 
 | id | Rótulo | Certa? | Feedback |
@@ -217,7 +217,7 @@ Inclinar a pilha de fatias para o lado (prisma oblíquo / princípio de Cavalier
 | `v40` | 40 cm³ | não | "Não divida por 3 (é prisma). A_b = 24 cm² e V = 24·5 = 120 cm³." |
 
 #### D5 — `nivel-agua-pedra-arquimedes`
-- **Enunciado:** "Um aquário retangular de base 20 cm × 15 cm tem água parcialmente cheia. Ao mergulhar totalmente uma pedra, o nível da água sobe 2 cm. Qual é o volume da pedra?"
+- **Enunciado:** "Num aquário de base 20 cm × 15 cm, mergulhar uma pedra faz a água subir 2 cm. Qual é o volume da pedra?"
 - **Fala do Paco:** "O volume da pedra é exatamente a fatia de água de altura 2 cm que subiu!"
 - **Conta de conferência:** V_pedra = A_b · Δh = (20 · 15) · 2 = 300 · 2 = 600 cm³
 

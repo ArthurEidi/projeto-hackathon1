@@ -68,7 +68,7 @@ Na coroa circular de raios `R` e `r`, quando `r → 0` recuperamos o disco cheio
 - **Interação do aluno:** abre o furo até `r = 3` e vê a área da coroa resultar em `25π − 9π = 16π`.
 - **Conclusão:** `r_int ≥ 3`
 - **Paco (conclusão):** "Sobra 25π − 9π = 16π! A área da coroa é o disco grande menos o pequeno: πR² − πr² = π(R² − r²)."
-- **Tati (dúvida):** `fim` — P: "Posso subtrair os raios antes, fazendo (5 − 3)² = 4?" / R: "Cuidado, nunca! Um disco de raio 2 tem área 4π, bem menor que o anel de 16π. Eleve ao quadrado primeiro: 5² − 3² = 16."
+- **Tati (dúvida):** `fim` — P: "Posso subtrair os raios antes, fazendo (5 − 3)² = 4?" / R: "Nunca: um disco de raio 2 tem área 4π, bem menor que o anel de 16π. Eleve ao quadrado antes: 5² − 3² = 16."
 
 ### Passo 4 — `desafio-setor-90`
 - **Tipo:** `micro_challenge`
@@ -90,7 +90,7 @@ Na coroa circular de raios `R` e `r`, quando `r → 0` recuperamos o disco cheio
 - **Figura:** WIDGET NOVO: `geometria_plana_figura` — círculo aberto em paralelogramo (`πr × r`), setor de ângulo `α` (`c3`) e coroa circular (`c4`).
 - **Fórmula:** `A = π` · `r²`→c1 · `,` · `A_setor = (α/360°)·πr²`→c3 · `e` · `A_coroa = π(R² − r²)`→c4
 - **Definições:** "Área do círculo (πr²): equivale a um retângulo de base πr e altura r." · "Setor circular: fração α/360° da área total do círculo." · "Coroa circular: área do círculo maior menos a área do círculo menor, π(R² − r²)."
-- **Paco (abertura):** "As fatias do círculo montam um retângulo de base πr e altura r; por isso A = πr², o setor pega a fração α/360° e a coroa subtrai os discos."
+- **Paco (abertura):** "As fatias montam um retângulo πr por r; por isso A = πr², o setor usa a fração α/360° e a coroa subtrai os discos."
 - **Dica (hint):** "Toque em cada fórmula para ver o círculo, a fatia do setor ou o anel da coroa."
 
 **Frase de encerramento (outro):** "Você deduziu πr² transformando o círculo num retângulo e calculou áreas de setores e coroas sem decorar regras soltas."
@@ -174,7 +174,7 @@ Na coroa circular de raios `R` e `r`, quando `r → 0` recuperamos o disco cheio
 ### Desafios
 
 #### D1 — `pizza-dobro-do-diametro`
-- **Enunciado:** "Uma pizza pequena tem 20 cm de diâmetro e uma grande tem 40 cm de diâmetro (o dobro). Quantas pizzas pequenas têm a mesma área de 1 pizza grande?"
+- **Enunciado:** "Uma pizza pequena tem 20 cm de diâmetro e a grande tem 40 cm (o dobro). Quantas pequenas têm a mesma área de 1 grande?"
 - **Fala do Paco:** "Dobrar o raio ou o diâmetro multiplica a área por `2²`!"
 - **Conta de conferência:** razão linear k = 40/20 = 2 ⇒ razão das áreas = k² = 2² = 4 pizzas
 
@@ -185,7 +185,7 @@ Na coroa circular de raios `R` e `r`, quando `r → 0` recuperamos o disco cheio
 | `p8` | 8 | não | "8 seria em 3D (volume). Na área plana (πr²), dobrar o raio multiplica por 2² = 4." |
 
 #### D2 — `pista-de-caminhada-Em-volta`
-- **Enunciado:** "Uma piscina circular tem raio r = 4 m e é cercada por uma faixa de piso de 1 m de largura em toda a volta (logo R = 5 m). Qual é a área dessa faixa de piso?"
+- **Enunciado:** "Uma piscina circular de raio r = 4 m é cercada por uma faixa de piso de 1 m de largura (R = 5 m). Qual é a área desse piso?"
 - **Conta de conferência:** R = 4 + 1 = 5 m e r = 4 m ⇒ A_coroa = π(5² − 4²) = π(25 − 16) = 9π m²
 
 | id | Rótulo | Certa? | Feedback |
@@ -195,7 +195,7 @@ Na coroa circular de raios `R` e `r`, quando `r → 0` recuperamos o disco cheio
 | `a25p` | 25π m² | não | "25π m² inclui a piscina lá dentro. Descontando os 16π m² da piscina, sobram 9π m²." |
 
 #### D3 — `quadrado-menos-circulo-inscrito`
-- **Enunciado:** "De uma chapa quadrada de lado 4 cm (área 16 cm²) recorta-se o maior círculo possível (diâmetro 4 cm, raio 2 cm). Qual é a área das sobras nos 4 cantos?"
+- **Enunciado:** "De uma chapa quadrada de lado 4 cm (área 16 cm²) recorta-se o maior círculo possível (raio 2 cm). Qual é a área das sobras?"
 - **Conta de conferência:** A_quadrado − A_círculo = 4² − π · 2² = 16 − 4π cm²
 
 | id | Rótulo | Certa? | Feedback |
@@ -215,7 +215,7 @@ Na coroa circular de raios `R` e `r`, quando `r → 0` recuperamos o disco cheio
 | `g45` | 45° | não | "45° é 1/8 da volta. Para 1/4 da volta (9π em 36π), o ângulo é 90°." |
 
 #### D5 — `area-setor-pelo-arco`
-- **Enunciado:** "Um setor circular funciona como um triângulo curvo de base igual ao arco `L = 5π cm` e altura igual ao raio `r = 4 cm`. Qual é a sua área `(L · r) / 2`?"
+- **Enunciado:** "Um setor circular tem arco `L = 5π cm` e raio `r = 4 cm`. Usando `A = (L · r) / 2`, qual é a sua área?"
 - **Fala do Paco:** "Basta fazer `(arco × raio) / 2`, igualzinho a `(base × altura) / 2`!"
 - **Conta de conferência:** A = (L · r) / 2 = (5π · 4) / 2 = 10π cm²
 

@@ -43,7 +43,7 @@ Testar por que só existem **5 poliedros regulares (Platão)**: para fechar uma 
 - **Pilares:** 1, 2, 3 (caso neutro), 4 (panorama)
 - **Widget:** WIDGET NOVO: `solido_3d` — tetraedro inicial (`V=4` em `c1`, `A=6` em `c2`, `F=4` em `c3`) com placar `V − A + F = 2` (`c4`); seletor avança por pirâmide quadrada, cubo e octaedro. Emite `solidos_vistos`.
 - **Sliders:** nenhum
-- **Paco (abertura):** "No tetraedro, o menor poliedro fechado, faça a conta: 4 vértices menos 6 arestas mais 4 faces dá quanto? Troque de sólido e veja se esse número muda."
+- **Paco (abertura):** "No tetraedro, quanto dá 4 vértices menos 6 arestas mais 4 faces? Troque de sólido e veja se esse resultado muda."
 - **Interação do aluno:** alterna entre os poliedros e vê que `V`, `A` e `F` mudam, mas `V − A + F` crava sempre em `2`.
 - **Conclusão:** `solidos_vistos ≥ 3`
 - **Paco (conclusão):** "4 − 6 + 4 = 2 no tetraedro, e 8 − 12 + 6 = 2 no cubo! Muda tudo, menos o saldo 2."

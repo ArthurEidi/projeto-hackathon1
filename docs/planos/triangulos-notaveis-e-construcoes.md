@@ -54,7 +54,7 @@ No triângulo `30°-60°-90°`, o maior lado é sempre a hipotenusa `L` (oposta 
 - **Pilares:** 2, 5 (45°-45° × 30°-60°), 6 (dedução de L/2 e L√3/2)
 - **Widget:** WIDGET NOVO: `geometria_plana` — triângulo equilátero de lado `L = 6` que é cortado ao meio pela altura vertical `h` (`c3`), destacando o triângulo `30°-60°-90°` de hipotenusa `6`, base `L/2 = 3` (`c2`) e altura `3√3` (`c3`).
 - **Sliders:** `cortar_eq` · "Cortar equilátero ao meio" · 0..1 · passo 1 · inicial 0 · c3
-- **Paco (abertura):** "Cortando o triângulo equilátero de lado 6 bem no meio, o ângulo do topo vira 30°. Quanto mede a metade da base lá embaixo e quanto mede a altura?"
+- **Paco (abertura):** "Cortando o equilátero de lado 6 ao meio, o topo vira 30°. Quanto medem a metade da base lá embaixo e a altura?"
 - **Interação do aluno:** aciona o corte e vê a base dividir-se em `3` e `3` (`L/2`, oposto a `30°`) e Pitágoras calcular `h = √(6² − 3²) = 3√3` (`L√3/2`, oposto a `60°`).
 - **Conclusão:** `cortar_eq ≥ 1`
 - **Paco (conclusão):** "Oposto a 30° mede metade da hipotenusa (L/2 = 3), e oposto a 60° (a altura do equilátero) mede L√3/2 = 3√3!"
@@ -64,7 +64,7 @@ No triângulo `30°-60°-90°`, o maior lado é sempre a hipotenusa `L` (oposta 
 - **Pilares:** 5 (2 pontos × 2 retas), 7 (fronteira r > AB/2)
 - **Widget:** WIDGET NOVO: `geometria_plana` — dois pontos `A` e `B` distantes `6` unidades; dois círculos de compasso de mesmo raio `r` centrados em `A` e `B` crescem com o slider até se cruzarem, traçando a **mediatriz** (`c4`) perpendicular pelo ponto médio.
 - **Sliders:** `raio_compasso` · "Abrir compasso (r)" · 2..5 · passo 1 · inicial 2 · c4
-- **Paco (abertura):** "Com raio r = 2 (menor que metade da distância 6), os círculos em A e B nem se tocam. Aumente r até 5: que reta passa pelos dois cruzamentos?"
+- **Paco (abertura):** "Com raio r = 2 (menor que metade de AB = 6), os círculos nem se tocam. Aumente r até 5: que reta passa pelos cruzamentos?"
 - **Interação do aluno:** abre o compasso até `r = 5` e vê os dois círculos se cruzarem em cima e embaixo, determinando a mediatriz de `AB`.
 - **Conclusão:** `raio_compasso ≥ 5`
 - **Paco (conclusão):** "Nasce a mediatriz! Como os raios a partir de A e B são iguais, todo ponto dessa reta está à mesma distância de A e de B."
@@ -195,7 +195,7 @@ No triângulo `30°-60°-90°`, o maior lado é sempre a hipotenusa `L` (oposta 
 | `l12` | 12 cm | não | "12 cm é 2h, mas é L√3 que vale 12: dividindo por √3, L = 4√3 cm." |
 
 #### D3 — `bissetriz-equidistante-ruas`
-- **Enunciado:** "Um chafariz será construído dentro de uma praça triangular de modo a ficar à MESMA distância das 3 ruas que formam os lados. Onde ele deve ficar?"
+- **Enunciado:** "Um chafariz numa praça triangular deve ficar à MESMA distância das 3 ruas que formam os lados. Onde ele deve ficar?"
 - **Conta de conferência:** ponto equidistante dos 3 lados = encontro das bissetrizes (incentro)
 
 | id | Rótulo | Certa? | Feedback |

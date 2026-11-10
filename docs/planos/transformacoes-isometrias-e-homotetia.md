@@ -90,7 +90,7 @@ Levar a razão da homotetia a `k = 0` mostra a fronteira de colapso: toda a figu
 - **Figura:** WIDGET NOVO: `geometria_plana_figura` — painel comparando reflexão (`c2`), rotação (`c3`) e homotetia de razão `k` (`c4`).
 - **Fórmula:** `Isometrias: L' = L, A' = A`→c1 · `e` · `Homotetia: L' = |k|·L, A' = k²·A`→c4
 - **Definições:** "Isometrias (translação, reflexão, rotação): preservam distâncias, ângulos e áreas (figuras congruentes)." · "Reflexão na reta: cada ponto e sua imagem ficam à mesma distância do espelho e invertem o sentido." · "Homotetia de razão k: preserva ângulos, multiplica comprimentos por |k| e áreas por k²."
-- **Paco (abertura):** "As isometrias mantêm as distâncias entre os pontos e a homotetia estica as duas dimensões por k; por isso isometrias conservam a área e a homotetia multiplica a área por k²."
+- **Paco (abertura):** "Isometrias mantêm as distâncias e a homotetia estica as 2 dimensões por k; por isso isometrias conservam a área e a homotetia usa k²."
 - **Dica (hint):** "Toque em cada transformação para comparar congruência e ampliação."
 
 **Frase de encerramento (outro):** "Você diferenciou translação, rotação e reflexão e viu como a homotetia escala lados por |k| e áreas por k²."
@@ -174,7 +174,7 @@ Levar a razão da homotetia a `k = 0` mostra a fronteira de colapso: toda a figu
 ### Desafios
 
 #### D1 — `duas-reflexoes-paralelas`
-- **Enunciado:** "Refletir uma figura num espelho vertical e depois refletir o resultado num segundo espelho paralelo ao primeiro equivale a qual transformação única?"
+- **Enunciado:** "Refletir uma figura num espelho vertical e depois noutro espelho paralelo ao primeiro equivale a qual transformação única?"
 - **Fala do Paco:** "O 1º espelho inverte o sentido e o 2º desinverte de volta!"
 - **Conta de conferência:** duas reflexões em retas paralelas compõem uma translação (pelo dobro da distância entre os espelhos)
 
