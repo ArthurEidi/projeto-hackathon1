@@ -1,47 +1,342 @@
-# Plano — Matrizes, determinantes e sistemas
+# Plano — Matrizes, determinantes e sistemas lineares 2×2
+
+**Aula:** 1 — Tabelas que Operam · Matrizes e suas operações
+**Caminho:** algebra / matrizes-e-sistemas / matrizes-determinantes-sistemas
+**Pré-requisitos que o aluno já domina:** `funcao-afim`, `equacoes-primeiro-grau`; operações com sinais e leitura de coordenadas.
+
+**Nota editorial:** o currículo reúne este conteúdo em um capítulo; este plano consolida as duas aulas antigas no slug oficial.
 
 ## a) Ancoragem mecânica
-Uma matriz 2×2 é máquina que recebe um vetor `(x,y)` e o transforma em outro vetor por combinações lineares. Duas equações lineares formam, ao mesmo tempo, retas no plano; resolver o sistema é descobrir onde as duas condições entregam a mesma solução. O determinante informa se a transformação preserva área (não nulo) ou amassa o plano numa linha/colapso (zero).
+
+O aluno escolhe um vetor e os coeficientes de uma matriz. A máquina combina as colunas e devolve outro vetor; um sistema pede inverter essa relação.
 
 ## b) Visual de partida
-Palco principal: grade cartesiana com vetores-base e malha transformada. Quatro controles a,b,c,d editam a matriz; arrastar vetor de entrada mostra saída. Aba “sistema” plota duas retas com controles de coeficientes e destaca interseção. Exibir paralelogramo unitário cuja área orientada vira |det A|.
+
+WIDGET NOVO: transformacao_plano — A=I, vetor (x;1) c1, imagem c3 sobreposta; malha e quadrado unitário; emite x.
+Controles: x · Entrada horizontal · −2..2 · passo 1 · inicial 0 · c1.
+A figura aparece antes das expressões; a fala acompanha o gesto descrito no passo 1.
 
 ## c) Caso neutro
-Matriz identidade `[[1,0],[0,1]]`: cada vetor passa sem mudança e a grade permanece. Sistema `x=2`, `y=1` cruza em (2,1), um caso de solução única sem contas grandes.
+
+A identidade I mantém cada vetor e o quadrado unitário; a malha inicial fica fantasma.
 
 ## d) Panorama e recorte
-Situar operações matriciais, determinante, inversa, sistemas lineares e interpretação geométrica. Escopo: matriz 2×2 aplicada a vetor, determinante como fator de área e sistemas 2×2 por interseção/Cramer em exemplos simples. Deixar matrizes maiores e algoritmos extensos para etapa posterior.
+
+Matrizes têm soma, produto e inversa; aqui usamos máquinas 2×2, área e um sistema de duas equações.
 
 ## e) Progressão por contraste
-1. Identidade versus reflexão `diag(−1,1)`: muda uma direção e preserva a outra.
-2. Escala `diag(2,1)`: dobra horizontalmente; área dobra.
-3. Rotação simples `[[0,−1],[1,0]]`: vetor gira 90°; área se conserva.
-4. Matriz com linhas proporcionais: plano cai numa reta e det=0.
-5. Sistemas: retas concorrentes (uma solução), paralelas distintas (nenhuma), coincidentes (infinitas).
+
+1. Referência visual: Arrasta vetor de (0;1) para (2;1), com imagem sobreposta.
+2. Em contraste com a referência: Estica só a malha horizontal; área passa de 1 para 2.
+3. Aprofundamento e fronteiras: Observa (1;1)→(2;1)→(4;1), com cadeia anterior a=1 em muted.
+4. Depois, teste de fronteira: Chega a (2;1), solução de A=[[1,1],[1,−1]], saída (3;1).
 
 ## f) Dedução causal da forma
-As colunas da matriz são destinos dos vetores unitários; qualquer vetor `x e₁+y e₂` vai para a mesma combinação das colunas. O paralelogramo formado por elas tem área orientada `ad−bc`, o determinante. Se as colunas ficam na mesma linha, área zero e a informação de uma direção se perde; não há transformação inversa. Para sistemas, cada equação restringe o ponto a uma reta; solução é a interseção, não um símbolo obtido por ritual.
+
+A primeira coluna é a imagem de (1;0), a segunda de (0;1). Distribuir x e y pelas colunas dá (ax+by;cx+dy); resolver Av=u busca as coordenadas de entrada. A área orientada do paralelogramo é ad−bc.
+
+Fórmula deduzida: A(x;y)=(ax+by;cx+dy); det A=ad−bc.
 
 ## g) Simulação espacial e fronteiras
-Domínio e contradomínio são R². det≠0 dá transformação reversível e sistema com solução única quando associado; det=0 exige olhar as retas: podem ser paralelas ou coincidentes. Distância e ângulo não são preservados por toda matriz; só casos especiais (rotações/reflexões e escalas apropriadas). Evitar afirmar que todo det=0 produz ausência de solução.
 
-## h) Roteiro da lição
+det A=0 indica perda de direção; um sistema associado pode ter nenhuma ou infinitas soluções. Soma de matrizes exige mesma ordem; produto exige dimensões internas iguais.
 
-1. **Fala:** “Se a máquina recebe (2,1) e é a identidade, para onde vai o ponto? Continua em (2,1), porque nada foi alterado.” **Widget §5.6 — `transformacao_plano`:** aluno seleciona matriz identidade e arrasta um vetor de entrada sobre a malha.
-2. **Fala:** “Se dobramos só a coordenada x, (1,2) vira (2,2) ou (2,4)? Vira (2,2); a segunda coordenada permanece.” **Widget §5.6 — `transformacao_plano`:** sliders da diagonal mudam para 2 e 1; a malha estica horizontalmente.
-3. **Fala:** “O quadrado unitário virou uma faixa com que área? Área 2, pois só uma direção dobrou.” **Widget §5.6 — `transformacao_plano`:** mostrar o paralelogramo imagem e indicador da área antes/depois.
-4. **Fala:** “Se as duas colunas da matriz ficam na mesma linha, ainda sobra área no paralelogramo? Não; ele colapsa numa linha e o determinante zera.” **Widget §5.6 — `transformacao_plano`:** aluno arrasta um coeficiente até alinhar as colunas e vê a malha perder uma dimensão.
-5. **Fala:** “No sistema `x+y=3` e `x−y=1`, que ponto satisfaz as duas? (2,1), pois 2+1=3 e 2−1=1.” **Widget §5.1 — `plano_cartesiano`:** traçar as duas retas e mover o marcador até sua interseção.
-6. **Fala:** “Se desloco uma reta para ficar paralela à outra, quantos pontos comuns aparecem? Nenhum, porque elas nunca se encontram.” **Widget §5.1 — `plano_cartesiano`:** aluno move o intercepto de uma reta; o cruzamento sai da janela e as retas ficam paralelas.
-7. **Fala:** “E se as duas retas passam a ocupar exatamente o mesmo traço, quantas soluções há? Infinitas; cada ponto delas satisfaz ambas.” **Widget §5.1 — `plano_cartesiano`:** ajustar os coeficientes até as linhas coincidirem e destacar o conjunto de interseções.
-8. **Fala:** “Determinante zero decide sozinho entre nenhuma e infinitas soluções? Não; precisamos comparar as retas, que podem ser paralelas distintas ou coincidentes.” **Widget §5.6 — `transformacao_plano` + §5.1 — `plano_cartesiano`:** alternar do colapso da transformação ao caso singular do sistema e comparar os dois resultados possíveis.
+## h) Roteiro da aula
 
-## i) Questões pós-lição (6)
-Quatro opções e feedback; gráficos ou vetores devem acompanhar quando o widget estiver disponível.
+**Glossário da aula:**
+| Marca | Nome | Resumo |
+|---|---|---|
+| c1 | Vetor de entrada | Par de coordenadas antes da transformação. |
+| c2 | Matriz A | Tabela que combina as coordenadas de entrada. |
+| c3 | Vetor de saída | Par de coordenadas depois da transformação. |
+| c4 | Determinante | Fator de área orientada da transformação. |
 
-1. **O que a matriz identidade faz a um vetor?** A) Zera B) Gira 90° C) Mantém igual D) Reflete. **Gabarito: C.** Feedback: é o caso em que entrada passa sem alteração.
-2. **A matriz `[[2,0],[0,1]]` envia (1,3) para…** A) (1,6) B) (2,3) C) (2,6) D) (3,1). **Gabarito: B.** Feedback: dobra a coordenada x e mantém y.
-3. **Qual é o determinante de `[[2,0],[0,3]]`?** A) 5 B) 6 C) 1 D) 0. **Gabarito: B.** Feedback: `ad−bc=2·3−0=6`, fator de área.
-4. **As retas `x+y=3` e `x−y=1` se cruzam em…** A) (1,2) B) (2,1) C) (3,1) D) (0,3). **Gabarito: B.** Feedback: 2+1=3 e 2−1=1.
-5. **Se duas retas distintas são paralelas, o sistema tem…** A) uma solução B) nenhuma C) infinitas D) sempre solução (0,0). **Gabarito: B.** Feedback: não há ponto que pertença às duas ao mesmo tempo.
-6. **O determinante zero garante que o sistema não tem solução?** A) Sim, sempre B) Não; pode ter nenhuma ou infinitas C) Garante uma solução D) Só se os coeficientes forem positivos. **Gabarito: B.** Feedback: retas paralelas distintas não cruzam; coincidentes compartilham todos os pontos.
+**Convenções visuais:** c1 azul, c2 laranja, c3 rosa e c4 violeta; eixos em ink e referências em muted.
+Cada letra tocável destaca somente a grandeza correspondente; dicas usam o texto do glossário.
+Nos widgets novos, a figura homônima é a versão estática, com os mesmos parâmetros e destaques; treino não reage à resposta.
+
+### Passo 1 — `caso-neutro`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 1 (máquina), 2 (visual), 3 (caso neutro), 4 (panorama)
+- **Widget:** WIDGET NOVO: transformacao_plano — A=I, vetor (x;1) c1, imagem c3 sobreposta; malha e quadrado unitário; emite x.
+- **Sliders:** x · Entrada horizontal · −2..2 · passo 1 · inicial 0 · c1
+- **Paco (abertura):** "No caso neutro A=I, o vetor muda? Leve x até 2."
+- **Interação do aluno:** Arrasta vetor de (0;1) para (2;1), com imagem sobreposta.
+- **Conclusão:** `x ≥ 2`
+- **Paco (conclusão):** "Não; cada coluna da identidade preserva sua direção."
+- **Tati (dúvida):** `fim` — P: "Esse assunto tem outras versões?" / R: "Matrizes têm soma, produto e inversa; aqui usamos máquinas 2×2, área e um sistema de duas equações."
+
+### Passo 2 — `esticar-coluna`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 2 (visual), 5 (contraste), 6 (dedução)
+- **Widget:** WIDGET NOVO: transformacao_plano — A=diag(a;1) c2; vetor (1;1) c1, imagem (a;1) c3; quadrado imagem e det em c4; identidade fantasma; emite a.
+- **Sliders:** a · Escala horizontal · 0..2 · passo 1 · inicial 1 · c2
+- **Paco (abertura):** "Se a primeira coluna dobrar, a altura também dobra? Leve a a 2."
+- **Interação do aluno:** Estica só a malha horizontal; área passa de 1 para 2.
+- **Conclusão:** `a ≥ 2`
+- **Paco (conclusão):** "Não; só x dobra, por isso (1;1) vira (2;1) e a área dobra."
+
+### Passo 3 — `compor-maquinas`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 5 (contraste), 6 (causa), 7 (fronteira)
+- **Widget:** WIDGET NOVO: transformacao_plano — B=[[1,1],[0,1]], A=diag(a;1), vetor v=(1;1), três painéis v, Bv e A(Bv); vetores c1,c3, matrizes c2; emite a.
+- **Sliders:** a · Escala após B · 1..2 · passo 1 · inicial 1 · c2
+- **Paco (abertura):** "B soma y ao x; se A dobrar o x depois disso, (1;1) chega onde? Leve a a 2."
+- **Interação do aluno:** Observa (1;1)→(2;1)→(4;1), com cadeia anterior a=1 em muted.
+- **Conclusão:** `a ≥ 2`
+- **Paco (conclusão):** "Chega a (4;1); o produto AB aplica B primeiro e A depois, por isso a ordem importa."
+- **Tati (dúvida):** `fim` — P: "Como se somam matrizes da mesma ordem?" / R: "Entrada por entrada; por exemplo, I+diag(2;3)=diag(3;4)."
+
+### Passo 4 — `resolver-sistema`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 1, 2, 5, 6, 7
+- **Widget:** plano_cartesiano — afins y=−x+3,c3 e y=x−1,ink; ponto curva 0,x=0,passo 1; encontro c1; janela −1..4.
+- **Sliders:** nenhum
+- **Paco (abertura):** "Qual entrada satisfaz x+y=3 e x−y=1? Arraste até o encontro."
+- **Interação do aluno:** Chega a (2;1), solução de A=[[1,1],[1,−1]], saída (3;1).
+- **Conclusão:** `no_encontro ≥ 1`
+- **Paco (conclusão):** "É (2;1), pois 2+1=3 e 2−1=1; as duas condições valem juntas."
+- **Tati (dúvida):** `fim` — P: "Determinante zero significa nenhuma solução?" / R: "Não; também pode haver infinitas, se as condições forem dependentes e compatíveis."
+
+### Passo 5 — `conferir-previsao`
+- **Tipo:** `micro_challenge`
+- **Pilares:** 2, 6, 7
+- **Figura:** WIDGET NOVO: transformacao-figura — A=diag(2;1), vetor (1;3), imagem (2;3), malha identidade fantasma e área 2 em c4.
+- **Paco (abertura):** "Que previsão você faz ao comparar a figura com as condições do problema?"
+- **Enunciado:** "A=diag(2;1) leva (1;3) a qual vetor?"
+
+| id | Rótulo | Certa? | Feedback | A figura muda para… |
+|---|---|---|---|---|
+| `micro-erro` | (2;6) | não | "Você dobrou as duas direções; só x dobra, então a imagem é (2;3)." | Desenha (2;6) em muted e a imagem real (2;3) c3. |
+| `micro-acerto` | (2;3) | **sim** | "Certo: (2;3); (2·1;1·3)=(2;3)." | Destaca vetor (2;3) c3 e a primeira coluna c2. |
+
+### Passo 6 — `fechamento`
+- **Tipo:** `concept_lock`
+- **Pilares:** 6 (+ resumo de 1 a 7)
+- **Figura:** WIDGET NOVO: transformacao-figura — A=diag(2;1) em c2, entrada (1;3) c1, saída (2;3) c3, colunas (2;0),(0;1), det=2 c4.
+- **Fórmula:** `A`→c2 · `(x;y)`→c1 · `=(ax+by;cx+dy)`→c3 · `; det A`→c4 · `=ad−bc`
+- **Definições:**
+  - "Vetor de entrada: Par de coordenadas antes da transformação."
+  - "Vetor de saída: Par de coordenadas depois da transformação."
+  - "Determinante: Fator de área orientada da transformação."
+- **Paco (abertura):** "Cada coluna move uma direção; por isso a imagem é a combinação das colunas com pesos x e y."
+- **Dica (hint):** "Toque em uma letra para ver o que ela faz no gráfico."
+
+**Frase de encerramento (outro):** "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra."
+
+## i) Treino pós-aula
+
+As 12 questões autorais estão prontas para tradução; os quatro espaços de vestibular seguem a exceção de fonte do modelo.
+
+### Fáceis
+
+#### F1 — `f1-matrizes-determinantes-sistemas`
+- **Enunciado:** "O que a matriz identidade faz a um vetor?"
+- **Figura:** nenhuma
+- **Conta de conferência:** I·v=v.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f1-matrizes-determinantes-sistemas-erro` | Zera | não | "Você confundiu identidade com matriz nula. O certo é Mantém; I·v=v." |
+| `f1-matrizes-determinantes-sistemas-certa` | Mantém | **sim** | "Certo: Mantém; I·v=v." |
+
+#### F2 — `f2-matrizes-determinantes-sistemas`
+- **Enunciado:** "Na matriz A, a primeira coluna é imagem de qual vetor?"
+- **Figura:** nenhuma
+- **Conta de conferência:** A(1;0)=coluna 1.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f2-matrizes-determinantes-sistemas-certa` | (1;0) | **sim** | "Certo: (1;0); A(1;0)=coluna 1." |
+| `f2-matrizes-determinantes-sistemas-erro` | (0;1) | não | "Você trocou as colunas. O certo é (1;0); A(1;0)=coluna 1." |
+
+#### F3 — `f3-matrizes-determinantes-sistemas`
+- **Enunciado:** "diag(2;1) dobra qual coordenada?"
+- **Figura:** nenhuma
+- **Conta de conferência:** (x;y)→(2x;y).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f3-matrizes-determinantes-sistemas-erro` | y | não | "Você trocou as posições da diagonal. O certo é x; (x;y)→(2x;y)." |
+| `f3-matrizes-determinantes-sistemas-certa` | x | **sim** | "Certo: x; (x;y)→(2x;y)." |
+
+#### F4 — `f4-matrizes-determinantes-sistemas`
+- **Enunciado:** "Duas retas paralelas distintas têm quantos pontos comuns?"
+- **Figura:** nenhuma
+- **Conta de conferência:** Não há interseção.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f4-matrizes-determinantes-sistemas-certa` | 0 | **sim** | "Certo: 0; Não há interseção." |
+| `f4-matrizes-determinantes-sistemas-erro` | Infinitos | não | "Você confundiu paralelas distintas com coincidentes. O certo é 0; Não há interseção." |
+
+### Médias
+
+#### M1 — `m1-matrizes-determinantes-sistemas`
+- **Enunciado:** "A=diag(2;1) envia (1;3) a qual vetor?"
+- **Figura:** nenhuma
+- **Conta de conferência:** (2·1;1·3)=(2;3).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m1-matrizes-determinantes-sistemas-erro` | (2;6) | não | "Você dobrou também a segunda coordenada. O certo é (2;3); (2·1;1·3)=(2;3)." |
+| `m1-matrizes-determinantes-sistemas-certa` | (2;3) | **sim** | "Certo: (2;3); (2·1;1·3)=(2;3)." |
+
+#### M2 — `m2-matrizes-determinantes-sistemas`
+- **Enunciado:** "Qual det de diag(2;3)?"
+- **Figura:** nenhuma
+- **Conta de conferência:** 2·3−0=6.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m2-matrizes-determinantes-sistemas-certa` | 6 | **sim** | "Certo: 6; 2·3−0=6." |
+| `m2-matrizes-determinantes-sistemas-erro` | 5 | não | "Você somou os fatores de área. O certo é 6; 2·3−0=6." |
+
+#### M3 — `m3-matrizes-determinantes-sistemas`
+- **Enunciado:** "Resolva x+y=3 e x−y=1."
+- **Figura:** nenhuma
+- **Conta de conferência:** 2x=4; x=2; y=1.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m3-matrizes-determinantes-sistemas-erro` | (1;2) | não | "Você trocou x e y. O certo é (2;1); 2x=4; x=2; y=1." |
+| `m3-matrizes-determinantes-sistemas-certa` | (2;1) | **sim** | "Certo: (2;1); 2x=4; x=2; y=1." |
+
+### Desafios
+
+#### D1 — `d1-matrizes-determinantes-sistemas`
+- **Enunciado:** "Qual entrada gera (1;1) por diag(2;1)?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** 2x=1; y=1.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d1-matrizes-determinantes-sistemas-certa` | (0,5;1) | **sim** | "Certo: (0,5;1); 2x=1; y=1." |
+| `d1-matrizes-determinantes-sistemas-erro` | (2;1) | não | "Você aplicou a matriz em vez de desfazê-la. O certo é (0,5;1); 2x=1; y=1." |
+
+#### D2 — `d2-matrizes-determinantes-sistemas`
+- **Enunciado:** "det A=0 garante sistema sem solução?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** x+y=2 e 2x+2y=4 têm infinitas.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d2-matrizes-determinantes-sistemas-erro` | Sim | não | "Sistemas singulares também podem ser compatíveis. O certo é Não; x+y=2 e 2x+2y=4 têm infinitas." |
+| `d2-matrizes-determinantes-sistemas-certa` | Não | **sim** | "Certo: Não; x+y=2 e 2x+2y=4 têm infinitas." |
+
+#### D3 — `d3-matrizes-determinantes-sistemas`
+- **Enunciado:** "Qual produto resulta de [[1,1],[0,1]] aplicado a (1;2)?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** (1+2;2)=(3;2).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d3-matrizes-determinantes-sistemas-certa` | (3;2) | **sim** | "Certo: (3;2); (1+2;2)=(3;2)." |
+| `d3-matrizes-determinantes-sistemas-erro` | (1;3) | não | "Você trocou as linhas no cálculo. O certo é (3;2); (1+2;2)=(3;2)." |
+
+#### D4 — `d4-matrizes-determinantes-sistemas`
+- **Enunciado:** "A soma de [[1,0],[0,1]] e [[2,0],[0,3]] é qual?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** 1+2=3; 1+3=4.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d4-matrizes-determinantes-sistemas-erro` | diag(2;3) | não | "Você multiplicou diagonais em vez de somar entradas. O certo é diag(3;4); 1+2=3; 1+3=4." |
+| `d4-matrizes-determinantes-sistemas-certa` | diag(3;4) | **sim** | "Certo: diag(3;4); 1+2=3; 1+3=4." |
+
+#### D5 — `d5-matrizes-determinantes-sistemas`
+- **Enunciado:** "Se A=diag(2;1) e B=[[1,1],[0,1]], quanto é A(B(1;1))?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** B(1;1)=(2;1); A(2;1)=(4;1).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d5-matrizes-determinantes-sistemas-certa` | (4;1) | **sim** | "Certo: (4;1); B(1;1)=(2;1); A(2;1)=(4;1)." |
+| `d5-matrizes-determinantes-sistemas-erro` | (3;1) | não | "Você inverteu a ordem das máquinas. O certo é (4;1); B(1;1)=(2;1); A(2;1)=(4;1)." |
+
+### Vestibular
+
+#### V1 — `v1-matrizes-determinantes-sistemas`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema matrizes, determinantes e sistemas lineares 2×2.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+#### V2 — `v2-matrizes-determinantes-sistemas`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Aplicação direta em contexto, no tema matrizes, determinantes e sistemas lineares 2×2.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+#### V3 — `v3-matrizes-determinantes-sistemas`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema matrizes, determinantes e sistemas lineares 2×2.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+#### V4 — `v4-matrizes-determinantes-sistemas`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema matrizes, determinantes e sistemas lineares 2×2.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+---
+
+# Checklist de qualidade (marque tudo antes de entregar o plano)
+
+**Método (METODO.md)**
+- [x] Os 7 pilares a)–g) estão escritos **e** cada um aparece em pelo menos um passo (linha "Pilares").
+- [x] A aula abre com a figura viva (passo `interactive_canvas`), não com fórmula nem definição.
+- [x] O caso neutro aparece na tela e é **nomeado numa fala**.
+- [x] O panorama ocupa uma única fala (em geral a dúvida da Tati) e o recorte fica claro.
+- [x] O contraste mostra o "antes" na tela (curva fantasma ou valor de referência).
+- [x] A fórmula do fechamento foi **deduzida** antes (há uma fala com "por isso" ou "como … então").
+- [x] Há teste de fronteira: quadrantes, 0/1/infinitas soluções, domínio ou restrição real.
+
+**Roteiro**
+- [x] De 4 a 8 passos; 1º é `interactive_canvas`, último é `concept_lock`, há pelo menos um `micro_challenge`.
+- [x] Toda abertura pergunta ou pede previsão; toda conclusão responde com o porquê.
+- [x] Cada passo interativo tem conclusão com métrica existente e alcançável (valor inicial não cumpre; arraste com passo que acerta o valor exato).
+- [x] No desafio, cada opção errada tem feedback que diagnostica o erro e uma mudança de figura que mostra o erro.
+- [x] Toda marca c1..c4 usada tem linha no glossário; o que não tem significado é `ink`/`muted`.
+- [x] Widget inexistente está marcado como **WIDGET NOVO** com o que desenha, o que o aluno manipula e a métrica.
+
+**Treino**
+- [x] Exatamente 4 fáceis, 3 médias, 5 desafios, 4 vestibular; ids únicos, minúsculos, com hífen.
+- [ ] Cada questão tem exatamente 1 opção certa e 2 a 4 opções (vestibular 2 a 5).
+- [ ] Todo feedback de opção errada **contém a resposta certa**.
+- [ ] Cada distrator corresponde a um erro típico nomeado no feedback.
+- [ ] Toda questão tem conta de conferência, e a conta bate com o gabarito.
+- [ ] Vestibular: questões reais, conferidas na URL, fonte "Banca Ano (adaptada)", adaptação descrita, fala do Paco presente.
+
+**Texto**
+- [x] Toda fala, enunciado e feedback com ≤ 140 caracteres e ≤ 2 frases; sem emoji; sem termos proibidos.
+- [x] Números pequenos, de cabeça; notação do app (−, vírgula decimal, ·, ², (x; y)).
+
+
+**Ressalva do checklist:** os cinco itens em aberto dependem somente das quatro fontes de vestibular; nas 12 autorais, alternativas, diagnósticos e contas estão preenchidos.

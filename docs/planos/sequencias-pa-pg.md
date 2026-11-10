@@ -1,47 +1,300 @@
-# Plano — Sequências: PA e PG
+# Plano — Sequências, PA e PG
+
+**Aula:** 1 — Degraus que Somam e Multiplicam · Progressões aritmética e geométrica
+**Caminho:** algebra / sequencias / sequencias-pa-pg
+**Pré-requisitos que o aluno já domina:** Função como entrada e índice; operações com inteiros e frações simples
 
 ## a) Ancoragem mecânica
-Sequência é máquina indexada: `n → termo a_n`. Na PA, cada avanço soma a mesma diferença d: `a_{n+1}=a_n+d`. Na PG, cada avanço multiplica pela mesma razão q: `a_{n+1}=q·a_n`. O índice n é o passo; o termo é a quantidade naquele passo.
+
+A entrada independente é o índice inteiro n; a saída dependente é o termo aₙ. A PA soma d a cada passo; a PG multiplica o termo atual por q.
 
 ## b) Visual de partida
-Palco: pontos em grade discreta (n inteiro positivo no eixo horizontal, a_n no vertical), com fita numérica e tabela. Sliders para primeiro termo a₁, diferença d e razão q; alternador PA/PG. Avançar n anima soma ou multiplicação repetida. Não desenhar curva contínua como se houvesse termos entre índices.
+
+Barras discretas mostram termos nos índices 1–5; controles mudam a₁, d ou q e alternam PA/PG. Não ligamos índices intermediários.
 
 ## c) Caso neutro
-PA com d=0: `4,4,4,4…`, sem mudança por passo. PG com q=1: `4,4,4,4…`, mesmo resultado por mecanismo multiplicativo neutro. Usar a mesma sequência constante para contrastar duas causas diferentes.
+
+Na PA d=0 e na PG q=1, 4,4,4,… fica parada; depois mudamos uma regra por vez.
 
 ## d) Panorama e recorte
-Situar regra recursiva e explícita, termo geral, soma finita e padrões. Escopo: identificar PA/PG, avançar termos, termo geral e crescimento/decrescimento em casos simples. Deixar somas extensas e demonstrações formais para além desta primeira unidade.
+
+Há também recorrências e somatórios. Aqui identificamos PA/PG e avançamos termos; somas ficam para os capítulos seguintes.
 
 ## e) Progressão por contraste
-1. PA soma `+2`: 1,3,5,7; diferenças constantes.
-2. PG multiplica `×2`: 1,2,4,8; quocientes constantes.
-3. Comparar PA e PG iniciadas em 4 com d=0 e q=1: mesma aparência, regra interna distinta.
-4. Testar d negativo e q entre 0 e 1; mostrar queda.
-5. Usar q<0 para alternância de sinal, destacando que tamanho escala por |q|.
+
+1. PA 1,3,5,7 soma 2: diferenças iguais.
+2. PG 1,2,4,8 multiplica por 2: quocientes iguais.
+3. d=0 e q=1 dão constante por mecanismos distintos.
+4. d<0 faz PA descer; q<0 alterna sinais.
 
 ## f) Dedução causal da forma
-Na PA, a diferença entre passos não muda: depois de n−1 avanços, `a_n=a₁+(n−1)d`; a forma é linear em n. Na PG, cada passo reaplica q: `a_n=a₁q^(n−1)`. A PG muda de ritmo porque a mudança absoluta depende do termo atual; a PA não. Os dois termos “constantes” d e q têm papéis diferentes: aditivo versus multiplicativo.
+
+PA: aₙ=a₁+(n−1)d, pois somamos d n−1 vezes. PG: aₙ=a₁qⁿ⁻¹, pois reaplicamos q.
 
 ## g) Simulação espacial e fronteiras
-Índices são naturais positivos (ou começar em n=0 somente se convenção explicitamente declarada). Os pontos da sequência não preenchem uma curva contínua. PA com d>0 sobe; d<0 desce. PG: q>1 cresce em módulo para |q|>1; 0<q<1 decai; q<0 alterna; q=0 zera após primeiro passo. Lembrar que PG com termo inicial zero permanece zero.
 
-## h) Roteiro da lição
+n é inteiro positivo. Teste d=0, q=1, q=0, q<0 e a₁=0; com a₁=0, toda PG fica zero.
 
-1. **Fala:** “Na sequência 1,3,5,7, qual mudança se repete entre vizinhos? Soma 2; essa máquina é aditiva.” **Widget §5.1 — `plano_cartesiano` (família `pontos`):** aluno avança o índice n e vê cada termo aparecer como ponto discreto.
-2. **Fala:** “Se começamos em 1 e damos quatro passos de +2, o quinto termo é 7 ou 9? É 9: 1→3→5→7→9.” **Widget §5.1 — `plano_cartesiano`:** avançar o controle de n até 5 e comparar pontos, sem ligar por curva contínua.
-3. **Fala:** “Agora olhe 1,2,4,8: o que se repete, soma 1 ou multiplica por 2? Multiplica por 2.” **Widget §5.1 — `plano_cartesiano` (família `pontos`):** alternar para PG e avançar os termos no mesmo eixo.
-4. **Fala:** “Depois de 1,2,4, qual vem: 6 ou 8? Vem 8, porque a máquina multiplica o termo atual por 2.” **Widget §5.6 — `barras`:** aluno dá um passo e vê a altura da barra dobrar de 4 para 8.
-5. **Fala:** “Uma PA com d=0 e uma PG com q=1 mudam o termo? Não; ambas mostram 4,4,4, embora uma some zero e outra multiplique por um.” **Widget §5.1 — `plano_cartesiano`:** alternar PA/PG mantendo os mesmos pontos; destacar a regra ativa.
-6. **Fala:** “Se a PA começa em 4 e d=−1, quais são os próximos termos? 3 e 2, pois cada passo subtrai 1.” **Widget §5.1 — `plano_cartesiano`:** slider d vai a −1 e o aluno percorre n=1,2,3.
-7. **Fala:** “Se a PG começa em 16 e q=1/2, qual é o terceiro termo? 4, porque fazemos 16→8→4.” **Widget §5.6 — `barras`:** reduzir a razão pela metade a cada avanço e observar as barras encolherem.
-8. **Fala:** “O gráfico de uma sequência contém valores para todos os n entre 1 e 5? Não; n só assume índices inteiros permitidos, então vemos pontos separados.” **Widget §5.1 — `plano_cartesiano`:** alternar pontos discretos e uma curva de referência fantasma para deixar visível a diferença.
+## h) Roteiro da aula
 
-## i) Questões pós-lição (6)
-Quatro alternativas; feedback distingue soma constante de razão constante.
+**Glossário da aula:**
 
-1. **Qual é o próximo termo da PA `2,5,8,…`?** A) 10 B) 11 C) 13 D) 16. **Gabarito: B.** Feedback: cada passo soma 3.
-2. **Qual é o próximo termo da PG `3,6,12,…`?** A) 15 B) 18 C) 24 D) 36. **Gabarito: C.** Feedback: cada termo é multiplicado por 2.
-3. **Na PA com a₁=4 e d=2, quanto é a₄?** A) 8 B) 10 C) 12 D) 14. **Gabarito: B.** Feedback: três avanços: 4+3·2=10.
-4. **Na PG com a₁=2 e q=3, quanto é a₃?** A) 6 B) 8 C) 18 D) 27. **Gabarito: C.** Feedback: dois avanços multiplicativos: 2·3²=18.
-5. **Qual sequência é PA?** A) 2,4,8,16 B) 7,5,3,1 C) 1,2,4,7 D) 3,6,18,72. **Gabarito: B.** Feedback: as diferenças são sempre −2.
-6. **Uma PG começa em 16 e tem q=1/2. Qual é o 4º termo?** A) 8 B) 4 C) 2 D) 1. **Gabarito: C.** Feedback: três passos: 16→8→4→2.
+| Marca | Nome | Resumo (1 frase) |
+|---|---|---|
+| c1 | Índice n | Posição inteira que escolhe o termo. |
+| c2 | Termo aₙ | Valor da sequência na posição n. |
+| c3 | Diferença d | Parcela somada em cada avanço da PA. |
+| c4 | Razão q | Fator de cada avanço da PG. |
+
+### Passo 1 — `caso-neutro`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 1 (mecanismo), 2 (visual), 3 (neutro), 4 (panorama)
+- **Widget:** WIDGET NOVO: barras — desenha cinco colunas nos índices 1–5; o controle de regra altera alturas, sem ligar índices intermediários; métrica `n`.
+- **Sliders:** `n` · “Índice” · 1..5 · passo 1 · inicial 1 · c1.
+- **Paco (abertura):** “Com d=0 ou q=1, a próxima barra muda ou fica igual? Avance e confira.”
+- **Interação do aluno:** arrasta n de 1 a 4; cada coluna mostra o termo e as anteriores ficam visíveis.
+- **Conclusão:** `n ≥ 4`
+- **Paco (conclusão):** “O caso neutro mantém o valor; as barras ficam na mesma altura.”
+- **Tati (dúvida):** `fim` — P: “Há outras ideias além de PA e PG?” / R: “Sim. Hoje comparamos essas duas regras; as demais vêm depois.”
+
+### Passo 2 — `contraste-de-regras`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 1 (entrada/saída), 2 (visual), 5 (contraste), 6 (dedução)
+- **Widget:** WIDGET NOVO: barras — desenha a PA discreta e atualiza cada termo ao mudar d; métrica `d`.
+- **Sliders:** `d` · “Diferença da PA” · −2..4 · passo 1 · inicial 0 · c3.
+- **Paco (abertura):** “Na PA 1,3,5, quanto sobe por passo? Ajuste d.”
+- **Interação do aluno:** move o controle; compara a barra nova com a referência anterior.
+- **Conclusão:** `d ≥ 2`
+- **Paco (conclusão):** “Com d=2, cada passo soma 2; na PG o avanço multiplica.”
+
+### Passo 3 — `teste-de-fronteira`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 5 (contraste), 7 (fronteira)
+- **Widget:** WIDGET NOVO: barras — exibe termos discretos e a fronteira; aluno avança o índice ou ajusta a razão; métrica `n`.
+- **Sliders:** `n` · “Índice” · 1..6 · passo 1 · inicial 1 · c1.
+- **Paco (abertura):** “Se q=−1, a PG mantém sinal ou alterna? Avance até n=5.”
+- **Interação do aluno:** avança n; figura destaca quando a condição deixa de valer ou requer mais dados iniciais.
+- **Conclusão:** `n ≥ 5`
+- **Paco (conclusão):** “Os sinais alternam e o módulo permanece.”
+- **Tati (dúvida):** `fim` — P: “Se q=−1, a PG mantém sinal ou alterna? Avance até n=5.” / R: “Os sinais alternam e o módulo permanece.”
+
+### Passo 4 — `micro-desafio`
+- **Tipo:** `micro_challenge`
+- **Pilares:** 5 (contraste), 6 (dedução), 7 (fronteira)
+- **Figura:** WIDGET NOVO: barras — estado inicial mostra parcelas e regra; cada opção atualiza destaque, total e erro típico; métrica: resposta certa.
+- **Paco (abertura):** “Na PA 1,3,5, quanto sobe por passo? Ajuste d.”
+- **Enunciado:** “PA a₁=4,d=−2. Determine a₅.”
+
+| id | Rótulo | Certa? | Feedback | A figura muda para… |
+|---|---|---|---|---|
+| `acerto` | −4 | **sim** | “Certo. Quatro passos dão 4−8=−4.” | Destaca quatro passos descendentes até −4. |
+| `erro` | −6 | não | “Contou cinco avanços; são quatro, então a₅=−4.” | Mostra cinco passos e apaga o avanço extra. |
+
+### Passo 5 — `fechamento`
+- **Tipo:** `concept_lock`
+- **Pilares:** 1–7 (síntese)
+- **Figura:** WIDGET NOVO: barras — mantém os valores-base e a regra; tocar uma marca destaca a grandeza correspondente.
+- **Fórmula:** aₙ=a₁+(n−1)d  |  aₙ=a₁·qⁿ⁻¹
+- **Marcas da fórmula:** c1→n; c2→aₙ; c3→d; c4→q.
+- **Definições:**
+  - “PA: diferença entre vizinhos constante.”
+  - “PG: quociente entre vizinhos constante.”
+  - “n: índice inteiro positivo.”
+- **Paco (abertura):** “PA soma diferença fixa; PG reaplica razão fixa. Por isso seus termos obedecem regras diferentes.”
+- **Dica (hint):** “Toque em uma marca para ver a grandeza correspondente nas barras.”
+- **Tati (dúvida):** `início` — P: “O que determina a saída?” / R: “A entrada e a regra de avanço determinam cada termo.”
+
+**Frase de encerramento (outro):** “Você comparou soma fixa e fator fixo; por isso PA e PG avançam por mecanismos diferentes.”
+
+## i) Treino pós-aula
+
+### Fáceis
+
+#### F1 — `sequencias-pa-pg-f1`
+- **Enunciado:** “Próximo termo da PA 2,5,8?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** d=3; 8+3=11.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-f1-a` | 11 | **sim** | “Certo. d=3; 8+3=11.” |
+| `sequencias-pa-pg-f1-b` | 10 | não | “Somou 2, não 3. Resposta: 11; d=3; 8+3=11.” |
+
+#### F2 — `sequencias-pa-pg-f2`
+- **Enunciado:** “Próximo termo da PG 3,6,12?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** q=2; 12·2=24.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-f2-a` | 24 | **sim** | “Certo. q=2; 12·2=24.” |
+| `sequencias-pa-pg-f2-b` | 18 | não | “Somou 6 em vez de multiplicar por 2. Resposta: 24; q=2; 12·2=24.” |
+
+#### F3 — `sequencias-pa-pg-f3`
+- **Enunciado:** “PA a₁=4,d=2; quanto vale a₄?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 4+3·2=10.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-f3-a` | 10 | **sim** | “Certo. 4+3·2=10.” |
+| `sequencias-pa-pg-f3-b` | 12 | não | “Contou quatro avanços, mas são três. Resposta: 10; 4+3·2=10.” |
+
+#### F4 — `sequencias-pa-pg-f4`
+- **Enunciado:** “PG a₁=2,q=3; quanto vale a₃?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 2·3²=18.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-f4-a` | 18 | **sim** | “Certo. 2·3²=18.” |
+| `sequencias-pa-pg-f4-b` | 6 | não | “Parou no segundo termo. Resposta: 18; 2·3²=18.” |
+
+### Médias
+
+#### M1 — `sequencias-pa-pg-m1`
+- **Enunciado:** “7,5,3,1 é PA? Qual d?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 5−7=−2 e 3−5=−2.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-m1-a` | Sim, −2 | **sim** | “Certo. 5−7=−2 e 3−5=−2.” |
+| `sequencias-pa-pg-m1-b` | Sim, 2 | não | “Leu a queda como positiva. Resposta: Sim, −2; 5−7=−2 e 3−5=−2.” |
+
+#### M2 — `sequencias-pa-pg-m2`
+- **Enunciado:** “PG a₁=16,q=1/2; quanto vale a₄?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 16→8→4→2.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-m2-a` | 2 | **sim** | “Certo. 16→8→4→2.” |
+| `sequencias-pa-pg-m2-b` | 4 | não | “Fez dois avanços; são três. Resposta: 2; 16→8→4→2.” |
+
+#### M3 — `sequencias-pa-pg-m3`
+- **Enunciado:** “PA a₁=3,d=4; qual é a₆?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 3+5·4=23.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-m3-a` | 23 | **sim** | “Certo. 3+5·4=23.” |
+| `sequencias-pa-pg-m3-b` | 24 | não | “Somou seis vezes em vez de cinco. Resposta: 23; 3+5·4=23.” |
+
+### Desafios
+
+#### D1 — `sequencias-pa-pg-d1`
+- **Enunciado:** “PG a₁=5,q=−2; qual é a₄?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 5·(−2)³=−40.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-d1-a` | −40 | **sim** | “Certo. 5·(−2)³=−40.” |
+| `sequencias-pa-pg-d1-b` | 40 | não | “Ignorou o sinal da razão. Resposta: −40; 5·(−2)³=−40.” |
+
+#### D2 — `sequencias-pa-pg-d2`
+- **Enunciado:** “4,4,4,… pode ser PA e PG?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** Diferença 0; quociente 1.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-d2-a` | Sim: d=0 e q=1 | **sim** | “Certo. Diferença 0; quociente 1.” |
+| `sequencias-pa-pg-d2-b` | Não, só PA | não | “Supôs uma única regra para o mesmo padrão. Resposta: Sim: d=0 e q=1; Diferença 0; quociente 1.” |
+
+#### D3 — `sequencias-pa-pg-d3`
+- **Enunciado:** “PA a₁=10,d=−3; em qual n o termo é 1?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 10+(n−1)(−3)=1; n=4.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-d3-a` | 4 | **sim** | “Certo. 10+(n−1)(−3)=1; n=4.” |
+| `sequencias-pa-pg-d3-b` | 3 | não | “Contou dois, não três, avanços. Resposta: 4; 10+(n−1)(−3)=1; n=4.” |
+
+#### D4 — `sequencias-pa-pg-d4`
+- **Enunciado:** “PG a₁=81,q=1/3; quanto vale a₅?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 81→27→9→3→1.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-d4-a` | 1 | **sim** | “Certo. 81→27→9→3→1.” |
+| `sequencias-pa-pg-d4-b` | 3 | não | “Errou a quarta divisão por 3. Resposta: 1; 81→27→9→3→1.” |
+
+#### D5 — `sequencias-pa-pg-d5`
+- **Enunciado:** “PA começa 2,d=0; PG começa 2,q=0. Termos 1–3?”
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** PA soma zero; PG multiplica por zero.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sequencias-pa-pg-d5-a` | PA: 2,2,2; PG: 2,0,0 | **sim** | “Certo. PA soma zero; PG multiplica por zero.” |
+| `sequencias-pa-pg-d5-b` | Ambas 2,2,2 | não | “Tratou q=0 como q=1. Resposta: PA: 2,2,2; PG: 2,0,0; PA soma zero; PG multiplica por zero.” |
+
+### Vestibular
+
+> PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
+
+#### V1 — `pendente-fonte-sequencias-pa-pg-v1`
+- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
+- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
+- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
+- **Conta de conferência:** PENDENTE-FONTE.
+- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+
+#### V2 — `pendente-fonte-sequencias-pa-pg-v2`
+- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
+- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
+- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
+- **Conta de conferência:** PENDENTE-FONTE.
+- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+
+#### V3 — `pendente-fonte-sequencias-pa-pg-v3`
+- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
+- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
+- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
+- **Conta de conferência:** PENDENTE-FONTE.
+- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+
+#### V4 — `pendente-fonte-sequencias-pa-pg-v4`
+- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
+- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
+- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
+- **Conta de conferência:** PENDENTE-FONTE.
+- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+
+---
+
+# Checklist de qualidade (marque tudo antes de entregar o plano)
+
+**Método (METODO.md)**
+- [x] Os pilares a)–g) estão escritos e cada um aparece em pelo menos um passo.
+- [x] A aula abre com figura viva, não com fórmula.
+- [x] O caso base aparece na tela e é nomeado em fala.
+- [x] Panorama e recorte aparecem em fala.
+- [x] O contraste mantém referência visual anterior.
+- [x] A regra é deduzida antes da fórmula de fechamento.
+- [x] O roteiro testa uma fronteira do capítulo.
+
+**Roteiro**
+- [x] Cinco passos; primeiro `interactive_canvas`, inclui `micro_challenge`, último `concept_lock`.
+- [x] Aberturas perguntam ou pedem previsão; conclusões explicam.
+- [x] Métricas são alcançáveis e não cumpridas inicialmente.
+- [x] Opções do desafio têm feedback e mudança visual.
+- [x] Marcas c1–c4 têm glossário.
+- [x] WIDGET NOVO: barras descreve desenho, manipulação e métrica.
+
+**Treino**
+- [x] Há 4 fáceis, 3 médias, 5 desafios e 4 vagas vestibulares pendentes.
+- [x] Questões autorais têm duas opções e exatamente uma correta.
+- [x] Feedback de toda opção errada informa resposta e conta.
+- [x] Cada questão autoral tem conta conferida e erro diagnosticado.
+- [ ] Quatro questões reais de vestibular verificadas; PENDENTE-FONTE.
+- [ ] Testes automatizados de implementação; escopo é planejamento.
+
+**Texto**
+- [x] Falas, enunciados e feedbacks curtos, sem emoji ou termos proibidos.
+- [x] Notação e contas foram conferidas.

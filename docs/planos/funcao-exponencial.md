@@ -1,46 +1,302 @@
 # Plano — Função exponencial
 
+**Aula:** 1 — Multiplicar a Cada Passo · Crescimento e decaimento exponencial
+**Caminho:** algebra / funcoes / funcao-exponencial
+**Pré-requisitos que o aluno já domina:** potencias-e-radicais, introducao-a-funcoes
+
 ## a) Ancoragem mecânica
-A máquina exponencial `f(x)=a^x` usa x como número de repetições do mesmo fator a. Um passo à direita multiplica a saída por a; um passo à esquerda divide por a. Em aplicações de tempo, a é o fator por período, não a quantidade somada.
+
+A entrada x conta passos de multiplicação; a base b é o fator repetido e a saída f(x)=bˣ é a quantidade acumulada. b>1 cresce; 0<b<1 encolhe.
 
 ## b) Visual de partida
-Palco: gráfico cartesiano com slider de base a (faixa positiva) e entrada x arrastável; tabela mostra potências sucessivas. Uma sequência de blocos representa multiplicações repetidas: a cada passo, a altura/quantidade é multiplicada pelo mesmo fator. Marcar a=1 e x=0 como referências.
+
+Plano_cartesiano com y=bˣ, tabela e ponto arrastável. Slider b vai de 0,5 a 3 em passos 0,5; y=1 e reta y=x ficam como referências.
 
 ## c) Caso neutro
-Base a=1 produz `1^x=1`: repetir um fator neutro não muda a quantidade, reta horizontal y=1. No eixo, `a^0=1` para qualquer a>0: zero passos deixa a quantidade inicial intacta. Mostrar ambas as neutralidades e não confundi-las.
+
+Há dois casos neutros: x=0 dá b⁰=1; b=1 dá 1ˣ=1. Começamos em b=2,x=0 e depois comparamos os casos.
 
 ## d) Panorama e recorte
-Situar crescimento, decaimento, juros compostos e inversão por logaritmo. Escopo: `a^x`, a>0, casos a>1 e 0<a<1, leitura de propriedades e domínio/imagem. Deixar equações exponenciais complexas e crescimento contínuo e para o cálculo avançado.
+
+A exponencial descreve fatores repetidos, crescimento e decaimento; sua inversa é o logaritmo. Aqui estudamos bˣ, b>0, sem equações avançadas.
 
 ## e) Progressão por contraste
-1. `1^x`: nada muda; referência neutra.
-2. Base 2: cada passo dobra; base 1/2: cada passo reduz à metade.
-3. Comparar `2^x` e `2x`: potência dobra repetidamente; regra linear soma sempre 2.
-4. Variar a pela marca 1: acima cresce para a direita, entre 0 e 1 decresce.
+
+1. A reta y=x cresce por soma constante; y=2ˣ cresce por multiplicação.
+2. Para b>1 cada passo multiplica por mais de 1; para 0<b<1 a saída diminui.
+3. A curva passa por (0;1), pois zero passos deixam o fator neutro.
+4. b=1 produz linha constante e perde a inversa; b≤0 não serve no domínio real geral.
 
 ## f) Dedução causal da forma
-Para x inteiro positivo, `a^x` é a multiplicação `a·a·…`; cada avanço repete a mesma causa multiplicativa. Para x=0, a saída deve ser 1 para preservar a regra de dividir por a ao voltar um passo. Expoentes negativos são passos para trás: `a^(−n)=1/a^n`. A curva cresce se o fator de cada passo supera 1 e decresce se fica entre 0 e 1.
+
+Para expoentes inteiros positivos, bˣ repete multiplicação por b; avançar uma unidade multiplica por b. Voltando, divide por b, então b⁰=1 e b⁻ⁿ=1/bⁿ. A curva cresce se b>1 e decresce se 0<b<1.
 
 ## g) Simulação espacial e fronteiras
-Domínio real: todos os x quando a>0. Saídas sempre positivas; imagem `(0,∞)` se a≠1, e `{1}` se a=1. A curva aproxima o eixo x sem tocá-lo. A base não pode ser zero ou negativa no modelo real geral; a=1 não tem inversa porque todas as entradas dão a mesma saída. Destacar referência x=0, y=1.
 
-## h) Roteiro da lição
+Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {1}. Bases 0 e negativas não servem como exponenciais reais para todo x.
 
-1. **Fala:** “Começamos com uma unidade e fator 1 por etapa: quanto fica depois de três etapas? Continua 1, pois multiplicar por 1 não altera.” **Widget §5.1 — `plano_cartesiano`:** slider da base em 1; aluno avança x=0,1,2,3 e vê a reta horizontal y=1.
-2. **Fala:** “Agora cada etapa dobra: partindo de 1, quais são os próximos dois saldos? 2 e 4, porque repetimos a multiplicação por 2.” **Widget §5.1 — `plano_cartesiano`:** trocar a para 2 e mover o marcador por x=0,1,2, lendo pontos e tabela.
-3. **Fala:** “A saída cresce por somar 2 a cada passo? Não; ela dobra, então de 4 vai para 8, uma mudança cada vez maior.” **Widget §5.1 — `plano_cartesiano`:** comparar `2^x` com a reta fantasma 2x; percorrer os pontos inteiros.
-4. **Fala:** “Com fator 1/2, 1 vira 1/2 e depois 1/4; isso é crescimento ou decaimento? Decaimento, porque cada passo encolhe.” **Widget §5.1 — `plano_cartesiano`:** mover a para 1/2 e seguir x=0,1,2 no gráfico.
-5. **Fala:** “Voltando um passo a partir de 1 em `2^x`, quanto era antes? 1/2, pois desfazer multiplicar por 2 é dividir por 2.” **Widget §5.1 — `plano_cartesiano`:** arrastar x de 0 a −1 e exibir o rastro e a tabela de potências.
-6. **Fala:** “A curva `2^x` chega a zero em algum x? Não; as saídas ficam positivas e se aproximam do eixo sem tocá-lo.” **Widget §5.1 — `plano_cartesiano`:** afastar a janela para x negativo e destacar a assíntota y=0.
-7. **Fala:** “O que acontece exatamente quando x=0, qualquer que seja a base positiva? Sai 1: zero etapas deixam o fator acumulado neutro.” **Widget §5.1 — `plano_cartesiano`:** variar a entre 1/2, 1 e 2 e observar todas passarem por (0,1).
-8. **Fala:** “Uma quantidade inicial 5 que triplica duas vezes chega a 15 ou 45? A 45: primeiro 15, depois 45, porque cada etapa multiplica o saldo atual.” **Widget §5.6 — `barras`:** animar barras por etapa 5→15→45; o aluno avança a contagem e compara os saltos.
+## h) Roteiro da aula
 
-## i) Questões pós-lição (6)
-Quatro alternativas por pergunta; feedback corrige confusão entre crescimento aditivo e multiplicativo.
+**Glossário da aula:**
+| Marca | Nome | Resumo (1 frase) |
+|---|---|---|
+| c1 | Expoente x | Número de passos que repete o fator da base. |
+| c2 | Saída bˣ | Quantidade acumulada após os passos indicados. |
+| c3 | Base b | Fator repetido; acima de 1 cresce, entre 0 e 1 decai. |
+| c4 | Nível unitário | Todas as curvas passam por (0;1), pois b⁰=1. |
 
-1. **Quanto vale `2^0`?** A) 0 B) 1 C) 2 D) −2. **Gabarito: B.** Feedback: zero repetições deixa o fator acumulado neutro em 1.
-2. **Em `2^x`, a saída dobra quando x…** A) diminui 1 B) aumenta 1 C) dobra D) vira zero. **Gabarito: B.** Feedback: um passo novo multiplica por 2.
-3. **Quanto vale `2^(−2)`?** A) −4 B) 1/4 C) 4 D) −1/4. **Gabarito: B.** Feedback: dois passos para trás dividem por 2 duas vezes.
-4. **Qual base gera decaimento quando x aumenta?** A) 3 B) 2 C) 1/2 D) 1. **Gabarito: C.** Feedback: fator entre zero e um encolhe a cada passo.
-5. **Qual frase vale para `f(x)=3^x` em x real?** A) Pode sair zero B) Só aceita x positivo C) A saída é sempre positiva D) A saída é sempre maior que 3. **Gabarito: C.** Feedback: potência de base positiva nunca cruza nem toca zero.
-6. **Uma cultura começa com 5 células e triplica a cada etapa. Quantas após 2 etapas?** A) 11 B) 15 C) 30 D) 45. **Gabarito: D.** Feedback: são duas multiplicações por 3: 5→15→45.
+### Passo 1 — `expoente-zero`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 1 (máquina), 2 (visual), 3 (caso neutro), 4 (panorama)
+- **Widget:** `plano_cartesiano` — Mostra y=2ˣ, reta y=x fantasma e (0;1).
+- **Sliders:** nenhum
+- **Paco (abertura):** "Que saída prevê no caso neutro? b=2,x=0; qual é a saída?"
+- **Interação do aluno:** Arraste até x=2 e leia as saídas sucessivas.
+- **Conclusão:** `ponto_x ≥ 2`
+- **Paco (conclusão):** "Em x=2 a saída é 4; cada passo duplica."
+- **Tati (dúvida):** `fim` — P: "Toda exponencial cresce?" / R: "Não; bases entre zero e um fazem a saída decair."
+
+### Passo 2 — `base-cresce`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 5 (contraste), 6 (causa)
+- **Widget:** `plano_cartesiano` — Compara y=2ˣ com curva ativa; slider b.
+- **Sliders:** `b` · Base · 0,5..3 · passo 0,5 · inicial 1 · c3
+- **Paco (abertura):** "Que efeito tem multiplicar por 2 a cada passo?"
+- **Interação do aluno:** Ajuste b=2 e observe saídas em x=1,2,3.
+- **Conclusão:** `b ≥ 2`
+- **Paco (conclusão):** "A cada passo a saída se multiplica por 2."
+
+### Passo 3 — `base-decai`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 7 (simulação e fronteira)
+- **Widget:** `plano_cartesiano` — Compara y=2ˣ fantasma e y=bˣ ativa.
+- **Sliders:** `b` · Base · 0,5..3 · passo 0,5 · inicial 2 · c3
+- **Paco (abertura):** "O que muda quando a base passa a 0,5?"
+- **Interação do aluno:** Leve b a 0,5; veja (0;1), (1;0,5), (2;0,25).
+- **Conclusão:** `b ≤ 0,5`
+- **Paco (conclusão):** "Fator entre zero e um reduz a saída a cada passo."
+
+### Passo 4 — `desafio-fronteira`
+- **Tipo:** `micro_challenge`
+- **Pilares:** 1 (máquina), 2 (leitura visual), 6 (dedução), 7 (fronteira)
+- **Figura:** `plano_figura` — y=2ˣ com pontos x=0,1,2
+- **Paco (abertura):** "Qual resposta a figura sustenta?"
+- **Enunciado:** "Quanto vale 2⁻²?"
+- **Interação do aluno:** escolha; a figura responde a cada opção e revela o raciocínio.
+| id | Rótulo | Certa? | Feedback | A figura muda para… |
+|---|---|---|---|---|
+| `erro` | −4 | não | "Trata expoente negativo como sinal da saída; 2⁻²=1/2²=1/4." | Destaca o sinal errado e mostra o recíproco correto 1/4. |
+| `certa` | 1/4 | **sim** | "2⁻²=1/2²=1/4." | marca a resposta no gráfico. |
+- **Paco (conclusão):** "2⁻²=1/2²=1/4."
+- **Tati (dúvida):** `fim` — P: "E se a entrada estiver na fronteira?" / R: "A condição do domínio decide se o ponto entra e qual regra vale."
+
+### Passo 5 — `fechamento`
+- **Tipo:** `concept_lock`
+- **Pilares:** 1 (máquina), 2 (visual), 3 (caso neutro), 5 (contraste), 6 (dedução), 7 (fronteiras)
+- **Figura:** plano_figura — y=2ˣ, pontos (0;1),(1;2),(2;4), assíntota y=0.
+- **Fórmula:** f(x)→c2 = b→c3ˣ
+- **Definições:**
+  - "Base b: fator repetido a cada passo."
+  - "Expoente x: número de passos."
+  - "Saídas exponenciais são positivas."
+- **Paco (abertura):** "Como a figura explica a regra? Por isso f(x)=bˣ, b>0."
+- **Interação do aluno:** toque nas marcas c1–c4 para relacionar cada grandeza ao gráfico.
+- **Paco (conclusão):** "A figura mostra como cada entrada produz a saída prevista pela regra."
+- **Dica (hint):** "Toque em uma marca para ver o que ela representa no gráfico."
+- **Tati (dúvida):** `início` — P: "O desenho vale fora do domínio?" / R: "Não; as condições da função limitam as entradas válidas."
+
+**Frase de encerramento (outro):** "Você testou a entrada e a fronteira; por isso f(x)=bˣ, b>0."
+
+## i) Treino pós-aula
+
+### Fáceis
+
+#### F1 — `f1-funcao-exponencial`
+- **Enunciado:** "Quanto vale 2⁰?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 2⁰=1.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f1-funcao-exponencial-e` | 0 | não | "Resposta: 1; Confunde expoente e saída; conferência: 2⁰=1." |
+| `f1-funcao-exponencial-c` | 1 | **sim** | "Certo: resposta 1; conferência: 2⁰=1." |
+
+#### F2 — `f2-funcao-exponencial`
+- **Enunciado:** "Em 3ˣ, por qual fator a saída muda ao avançar 1?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 3ˣ⁺¹=3·3ˣ.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f2-funcao-exponencial-e` | 1 | não | "Resposta: 3; Confunde avanço da entrada com fator de saída; conferência: 3ˣ⁺¹=3·3ˣ." |
+| `f2-funcao-exponencial-c` | 3 | **sim** | "Certo: resposta 3; conferência: 3ˣ⁺¹=3·3ˣ." |
+
+#### F3 — `f3-funcao-exponencial`
+- **Enunciado:** "Quanto vale 2⁻²?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 2⁻²=1/2²=1/4.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f3-funcao-exponencial-e` | −4 | não | "Resposta: 1/4; Torna negativa a saída; conferência: 2⁻²=1/2²=1/4." |
+| `f3-funcao-exponencial-c` | 1/4 | **sim** | "Certo: resposta 1/4; conferência: 2⁻²=1/2²=1/4." |
+
+#### F4 — `f4-funcao-exponencial`
+- **Enunciado:** "Qual base gera decaimento?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 0<1/2<1; as saídas encolhem.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f4-funcao-exponencial-e` | 2 | não | "Resposta: 1/2; Base maior que 1 cresce; conferência: 0<1/2<1; as saídas encolhem." |
+| `f4-funcao-exponencial-c` | 1/2 | **sim** | "Certo: resposta 1/2; conferência: 0<1/2<1; as saídas encolhem." |
+
+### Médias
+
+#### M1 — `m1-funcao-exponencial`
+- **Enunciado:** "5ˣ pode valer zero?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 5ˣ>0 para todo x.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m1-funcao-exponencial-e` | Sim | não | "Resposta: Não; Supõe que a curva toca o eixo x; conferência: 5ˣ>0 para todo x." |
+| `m1-funcao-exponencial-c` | Não | **sim** | "Certo: resposta Não; conferência: 5ˣ>0 para todo x." |
+
+#### M2 — `m2-funcao-exponencial`
+- **Enunciado:** "4 triplica duas vezes. Total?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 4·3²=36.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m2-funcao-exponencial-e` | 24 | não | "Resposta: 36; Soma em vez de repetir multiplicação; conferência: 4·3²=36." |
+| `m2-funcao-exponencial-c` | 36 | **sim** | "Certo: resposta 36; conferência: 4·3²=36." |
+
+#### M3 — `m3-funcao-exponencial`
+- **Enunciado:** "Quanto vale (1/2)³?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** (1/2)³=1/2³=1/8.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m3-funcao-exponencial-e` | 1/6 | não | "Resposta: 1/8; Não eleva o denominador ao cubo; conferência: (1/2)³=1/2³=1/8." |
+| `m3-funcao-exponencial-c` | 1/8 | **sim** | "Certo: resposta 1/8; conferência: (1/2)³=1/2³=1/8." |
+
+### Desafios
+
+#### D1 — `d1-funcao-exponencial`
+- **Enunciado:** "Se f(x)=2ˣ, quanto vale f(3)?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 2³=8.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d1-funcao-exponencial-e` | 6 | não | "Resposta: 8; Multiplica base pelo expoente; conferência: 2³=8." |
+| `d1-funcao-exponencial-c` | 8 | **sim** | "Certo: resposta 8; conferência: 2³=8." |
+
+#### D2 — `d2-funcao-exponencial`
+- **Enunciado:** "3 células dobram 3 vezes. Quantas?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 3·2³=24.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d2-funcao-exponencial-e` | 18 | não | "Resposta: 24; Soma três dobros; conferência: 3·2³=24." |
+| `d2-funcao-exponencial-c` | 24 | **sim** | "Certo: resposta 24; conferência: 3·2³=24." |
+
+#### D3 — `d3-funcao-exponencial`
+- **Enunciado:** "Quantas soluções tem 2ˣ=1?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 2⁰=1; curva crescente, só x=0.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d3-funcao-exponencial-e` | Duas: x=±1 | não | "Resposta: Uma: x=0; Supõe expoentes opostos com saída 1; conferência: 2⁰=1; curva crescente, só x=0." |
+| `d3-funcao-exponencial-c` | Uma: x=0 | **sim** | "Certo: resposta Uma: x=0; conferência: 2⁰=1; curva crescente, só x=0." |
+
+#### D4 — `d4-funcao-exponencial`
+- **Enunciado:** "Imagem de (1/3)ˣ?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** Toda potência positiva é >0.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d4-funcao-exponencial-e` | [0;∞) | não | "Resposta: (0;∞); Inclui zero, que a curva não atinge; conferência: Toda potência positiva é >0." |
+| `d4-funcao-exponencial-c` | (0;∞) | **sim** | "Certo: resposta (0;∞); conferência: Toda potência positiva é >0." |
+
+#### D5 — `d5-funcao-exponencial`
+- **Enunciado:** "Se 5·2ˣ=40, x vale?"
+- **Figura (opcional):** nenhuma
+- **Conta de conferência:** 2ˣ=8=2³, logo x=3.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d5-funcao-exponencial-e` | 4 | não | "Resposta: 3; Para em 40÷5=8; conferência: 2ˣ=8=2³, logo x=3." |
+| `d5-funcao-exponencial-c` | 3 | **sim** | "Certo: resposta 3; conferência: 2ˣ=8=2³, logo x=3." |
+
+### Vestibular
+
+> Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
+
+#### V1 — `pendente-fonte-funcao-exponencial-1`
+- **Enunciado (resumido):** PENDENTE-FONTE
+- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
+- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
+- **Adaptação:** nenhuma; questão não inserida.
+- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
+- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V2 — `pendente-fonte-funcao-exponencial-2`
+- **Enunciado (resumido):** PENDENTE-FONTE
+- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
+- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
+- **Adaptação:** nenhuma; questão não inserida.
+- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
+- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V3 — `pendente-fonte-funcao-exponencial-3`
+- **Enunciado (resumido):** PENDENTE-FONTE
+- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
+- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
+- **Adaptação:** nenhuma; questão não inserida.
+- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
+- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V4 — `pendente-fonte-funcao-exponencial-4`
+- **Enunciado (resumido):** PENDENTE-FONTE
+- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
+- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
+- **Adaptação:** nenhuma; questão não inserida.
+- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
+- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+
+---
+
+# Checklist de qualidade
+
+**Método (METODO.md)**
+- [x] Os 7 pilares a)–g) estão escritos e cada um aparece em pelo menos um passo (linha "Pilares").
+- [x] A aula abre com figura viva, não com fórmula nem definição.
+- [x] O caso neutro aparece na tela e é nomeado numa fala.
+- [x] O panorama ocupa uma fala e o recorte fica claro.
+- [x] O contraste mostra o antes na tela.
+- [x] A fórmula do fechamento foi deduzida antes por causa visual.
+- [x] Há teste de fronteira: domínio, caso neutro ou restrição da regra.
+
+**Roteiro**
+- [x] De 4 a 8 passos; primeiro `interactive_canvas`, último `concept_lock`, há `micro_challenge`.
+- [x] Toda abertura pergunta ou pede previsão; toda conclusão responde com o porquê.
+- [x] Cada passo interativo tem métrica existente e alcançável; widget novo declara métrica.
+- [x] No desafio, a opção errada tem feedback diagnóstico e figura que mostra o erro.
+- [x] Toda marca c1..c4 usada tem linha no glossário.
+- [x] Widgets novos estão marcados com desenho, ação do aluno e métrica.
+
+**Treino**
+- [x] Exatamente 4 fáceis, 3 médias, 5 desafios e 4 registros vestibular; ids únicos em minúsculas com hífen.
+- [x] Cada questão respondível tem duas opções e exatamente uma certa; vestibular aguarda fonte.
+- [x] Todo feedback errado contém resposta certa e conta curta.
+- [x] Cada distrator corresponde a erro diagnosticado.
+- [x] Toda questão factual tem conta de conferência revisada.
+- [ ] Vestibular: 4 entradas PENDENTE-FONTE; banca, ano, enunciado, alternativas, gabarito e URL pendentes.
+
+**Texto**
+- [x] Falas, enunciados e feedback têm até 140 caracteres e duas frases; sem emoji ou termos proibidos.
+- [x] Notação usa −, vírgula decimal, ·, potências e coordenadas do app.
