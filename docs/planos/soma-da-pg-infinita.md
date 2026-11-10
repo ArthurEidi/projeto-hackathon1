@@ -298,3 +298,6 @@ A fórmula exige |q|<1. q=1 repete parcelas; q=−1 alterna sem encolher; ambos 
 **Texto**
 - [x] Falas, enunciados e feedbacks curtos, sem emoji ou termos proibidos.
 - [x] Notação e contas foram conferidas.
+
+---
+**Notas da implementação (JSON):** `barras` modo `sequencia` (pg, `acumular`, `limite`; passo 2 com `q: "1/$m"`). Passo 1 mostra a₁ = 8 em vez do caso a₁ = 0 do plano (a₁ = 0 virou comentário na abertura). Correções: M2 5,2->6 (5+1); D2 16->36 (dividir por q em vez de 1-q); Tati duplicadas dos passos 3 e fechamento reescritas. Vestibular `[]`.

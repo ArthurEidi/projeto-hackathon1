@@ -357,6 +357,20 @@
                   "arquivo": "algebra/sequencias/somatorios-pa-pg/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "soma-da-pg-infinita",
+              "titulo": "Soma da PG Infinita",
+              "icone": "sequencia",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Acréscimos que Encolhem",
+                  "subtitulo": "Soma de PG infinita",
+                  "arquivo": "algebra/sequencias/soma-da-pg-infinita/aula-01.json"
+                }
+              ]
             }
           ]
         },

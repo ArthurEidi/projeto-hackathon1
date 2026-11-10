@@ -1,0 +1,482 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Acréscimos que Encolhem",
+  "subtitulo": "Soma de PG infinita",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "sequencias",
+    "unidade": "soma-da-pg-infinita"
+  },
+  "outro": "Você viu parcelas encolherem até um limite; a condição |q| < 1 é indispensável.",
+  "glossario": {
+    "c1": {
+      "nome": "Primeiro termo a₁",
+      "resumo": "Parcela inicial da PG."
+    },
+    "c2": {
+      "nome": "Razão q",
+      "resumo": "Fator que gera a parcela seguinte."
+    },
+    "c3": {
+      "nome": "Soma parcial Sₙ",
+      "resumo": "Total das primeiras n parcelas."
+    },
+    "c4": {
+      "nome": "Limite S∞",
+      "resumo": "Valor-limite das somas parciais."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "regra": "pg",
+        "casas": 1,
+        "nome": "a",
+        "a1": 8,
+        "q": 0.5,
+        "termos": 6,
+        "n": "$n",
+        "acumular": true,
+        "limite": true
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Parcelas",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com a₁ = 0 o total seria zero; com a₁ = 8 e q = 1/2, o total passa de 16? Avance o índice e confira.",
+        "done": "O total sobe 8, 12, 14, 15… e se aproxima de 16 sem chegar lá. Cada parcela é metade da anterior."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda PG infinita tem soma finita?",
+        "resposta": "Não. É preciso que |q| < 1."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "contraste-de-regras",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "regra": "pg",
+        "casas": 1,
+        "nome": "a",
+        "a1": 8,
+        "q": "1/$m",
+        "termos": 6,
+        "acumular": true,
+        "limite": true
+      },
+      "controls": [
+        {
+          "id": "m",
+          "label": "Divisor da razão q = 1/m",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Com a₁ = 8 e q = 1/2, quanto vale o segundo termo? Leve m até 2 e confira.",
+        "done": "Vale 4: cada parcela é metade da anterior, e o total passa a ter um teto."
+      },
+      "complete_when": {
+        "metric": "m",
+        "gte": 2
+      }
+    },
+    {
+      "id": "teste-de-fronteira",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "regra": "pg",
+        "casas": 1,
+        "nome": "a",
+        "a1": 8,
+        "q": 1,
+        "termos": 6,
+        "n": "$n",
+        "acumular": true
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Parcelas",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com q = 1, as parcelas desaparecem? Avance o índice até n = 5.",
+        "done": "Não: elas ficam iguais e o total só cresce, 8, 16, 24… A soma diverge."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E com q = −1 ou q = 2?",
+        "resposta": "q = −1 alterna sem encolher e q = 2 só cresce. Nenhuma soma converge: é preciso |q| < 1."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 5
+      }
+    },
+    {
+      "id": "micro-desafio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "sequencia",
+          "regra": "pg",
+          "casas": 1,
+          "nome": "a",
+          "a1": 8,
+          "q": 0.5,
+          "termos": 6,
+          "n": 6,
+          "acumular": true,
+          "limite": true
+        }
+      },
+      "prompt": "Calcule a soma infinita 8 + 4 + 2 + …",
+      "lines": {
+        "intro": "Cada parcela é metade da anterior. Qual resposta a figura sustenta?"
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "16",
+          "correct": true,
+          "feedback": "Certo. S∞ = 8 ÷ (1 − 1/2) = 16.",
+          "figure": {
+            "n": 6
+          }
+        },
+        {
+          "id": "o2",
+          "label": "14",
+          "correct": false,
+          "feedback": "14 é a soma até 2; a cauda soma mais 2, e o total é 16.",
+          "figure": {
+            "n": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "sequencia",
+          "regra": "pg",
+          "casas": 1,
+          "nome": "a",
+          "a1": 8,
+          "q": 0.5,
+          "termos": 6,
+          "n": 6,
+          "acumular": true,
+          "limite": true
+        }
+      },
+      "formula": [
+        {
+          "text": "S∞",
+          "ref": "c4"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "a₁",
+          "ref": "c1"
+        },
+        {
+          "text": "÷ (1 −"
+        },
+        {
+          "text": "q",
+          "ref": "c2"
+        },
+        {
+          "text": "), com |q| < 1"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Soma parcial",
+          "text": "total após n parcelas."
+        },
+        {
+          "term": "Convergência",
+          "text": "limite finito das somas parciais."
+        },
+        {
+          "term": "Condição",
+          "text": "|q| < 1."
+        }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Por que a soma não passa de 16?",
+        "resposta": "Cada parcela é metade da distância que falta até 16. Nunca ultrapassa, só se aproxima."
+      },
+      "lines": {
+        "intro": "Como |q| < 1 faz qⁿ tender a zero, a soma parcial se aproxima de a₁ ÷ (1 − q).",
+        "hint": "Toque em uma marca para ver a grandeza correspondente nas barras."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "soma-da-pg-infinita-f1",
+        "prompt": "Na PG infinita com a₁ = 8 e q = 1/2, qual é a soma?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "16",
+            "correct": true,
+            "feedback": "Certo. 8 ÷ (1 − 1/2) = 16."
+          },
+          {
+            "id": "o2",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é a soma de só duas parcelas. A soma infinita é 8 ÷ (1 − 1/2) = 16."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-f2",
+        "prompt": "Com a₁ = 3 e q = 0, qual é a soma infinita?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Razão zero não zera o primeiro termo. 3 + 0 + 0 + … = 3."
+          },
+          {
+            "id": "o1",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo. 3 + 0 + 0 + … = 3."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-f3",
+        "prompt": "Qual condição permite usar S∞ = a₁ ÷ (1 − q)?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "|q| < 1",
+            "correct": true,
+            "feedback": "Certo. qⁿ tende a zero só se |q| < 1."
+          },
+          {
+            "id": "o2",
+            "label": "q > 1",
+            "correct": false,
+            "feedback": "q > 1 faz as parcelas crescerem. A condição é |q| < 1."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-f4",
+        "prompt": "Qual é a soma de 4 + 2 + 1 + …?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "7",
+            "correct": false,
+            "feedback": "7 soma só três parcelas. A soma infinita é 4 ÷ (1 − 1/2) = 8."
+          },
+          {
+            "id": "o1",
+            "label": "8",
+            "correct": true,
+            "feedback": "Certo. 4 ÷ (1 − 1/2) = 8."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "soma-da-pg-infinita-m1",
+        "prompt": "Qual é a soma de 6 + 3 + 1,5 + …?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "10,5",
+            "correct": false,
+            "feedback": "10,5 para na terceira parcela. A soma infinita é 6 ÷ (1 − 1/2) = 12."
+          },
+          {
+            "id": "o1",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo. 6 ÷ (1 − 1/2) = 12."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-m2",
+        "prompt": "Qual é a soma de 5 + 1 + 0,2 + …, com q = 0,2?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "6,25",
+            "correct": true,
+            "feedback": "Certo. 5 ÷ (1 − 0,2) = 6,25."
+          },
+          {
+            "id": "o2",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 soma só duas parcelas, 5 + 1. A soma infinita é 5 ÷ 0,8 = 6,25."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-m3",
+        "prompt": "Na PG com a₁ = 10 e q = −1/2, qual é a soma?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 ignora o sinal de q: 1 − (−1/2) = 3/2. A soma é 10 ÷ 3/2 = 20/3."
+          },
+          {
+            "id": "o1",
+            "label": "20/3",
+            "correct": true,
+            "feedback": "Certo. 10 ÷ (1 + 1/2) = 20/3."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "soma-da-pg-infinita-d1",
+        "prompt": "A soma 7 + 7 + 7 + … converge?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo. q = 1: a soma parcial cresce sem limite."
+          },
+          {
+            "id": "o2",
+            "label": "Sim, vale 7",
+            "correct": false,
+            "feedback": "As parcelas não encolhem: q = 1. A soma parcial cresce sem limite, então não converge."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-d2",
+        "prompt": "Na PG com a₁ = 12 e q = 1/3, qual é a soma?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "36",
+            "correct": false,
+            "feedback": "36 divide por q em vez de por 1 − q. A soma é 12 ÷ (2/3) = 18."
+          },
+          {
+            "id": "o1",
+            "label": "18",
+            "correct": true,
+            "feedback": "Certo. 12 ÷ (1 − 1/3) = 18."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-d3",
+        "prompt": "A soma 2 + 6 + 18 + … converge?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Não converge",
+            "correct": true,
+            "feedback": "Certo. q = 3: os termos crescem."
+          },
+          {
+            "id": "o2",
+            "label": "26",
+            "correct": false,
+            "feedback": "26 é a soma parcial de três termos. Como q = 3, a soma infinita não converge."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-d4",
+        "prompt": "Na PG com a₁ = 9 e q = −1/3, qual é a soma?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "27/2",
+            "correct": false,
+            "feedback": "27/2 usa 1 − 1/3. Com q = −1/3 o denominador é 1 + 1/3 = 4/3: 27/4."
+          },
+          {
+            "id": "o1",
+            "label": "27/4",
+            "correct": true,
+            "feedback": "Certo. 9 ÷ (1 + 1/3) = 27/4."
+          }
+        ]
+      },
+      {
+        "id": "soma-da-pg-infinita-d5",
+        "prompt": "Com a₁ = 8 e q = 1/2, quanto falta para chegar ao limite depois de três termos?",
+        "fala": "Última. Compare a soma parcial com o limite.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo. S₃ = 14, S∞ = 16, falta 2."
+          },
+          {
+            "id": "o2",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é só a próxima parcela. A cauda toda soma 2: 16 − 14."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
