@@ -27,7 +27,7 @@ Permutações, arranjos, combinações e probabilidade nascem deste princípio. 
 Cada opção da primeira etapa abre o mesmo número de galhos na segunda. Por isso o desenho é um retângulo cheio, e contar um retângulo é multiplicar lados. Com mais etapas o retângulo vira caixa, e a regra continua: total = n₁ · n₂ · … · nₖ.
 
 ## g) Simulação espacial e fronteiras
-Zerar uma etapa apaga a grade inteira: sem bermuda, não há look completo. Proibir repetição tira exatamente uma opção da etapa seguinte. Pedir mais posições distintas do que há símbolos dá zero (4 algarismos distintos só com 1, 2 e 3).
+Zerar uma etapa apaga a grade inteira: sem bermuda, não há look completo. Proibir repetição tira exatamente uma opção da etapa seguinte. Pedir mais posições distintas do que há símbolos dá zero (4 algarismos distintos só com 1, 2 e 3). Com restrição numa vaga (o primeiro algarismo não pode ser 0, o último tem de ser par), preenche-se primeiro a vaga restrita; no widget, essa vaga aparece com cadeado c4 e é a primeira a pedir escolha.
 
 ## h) Roteiro da aula
 

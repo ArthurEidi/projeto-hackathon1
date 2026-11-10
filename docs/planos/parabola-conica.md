@@ -26,7 +26,7 @@ Elipse e hipérbole são as outras cônicas, com regras de soma e diferença de 
 Para o foco (0; p) e a diretriz y = −p, a distância de P(x; y) ao foco é √(x² + (y − p)²) e à diretriz é y + p. Igualando e elevando ao quadrado: x² + y² − 2py + p² = y² + 2py + p², e sobra x² = 4py. Pontos simétricos (x e −x) dão a mesma conta, por isso a curva é simétrica em relação ao eixo.
 
 ## g) Simulação espacial e fronteiras
-p maior abre a parábola; p menor fecha. p negativo (foco abaixo da diretriz) vira a parábola para baixo: x² = −4|p|y. Pontos do lado do foco ficam mais perto dele que da reta; do outro lado da curva, o contrário. Raios que saem do foco refletem paralelos ao eixo (faróis e antenas).
+Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o plano de corte leva de circunferência a elipse, parábola (plano paralelo à geratriz) e hipérbole; vale como abertura da dúvida da Tati no passo 1. p maior abre a parábola; p menor fecha. p negativo (foco abaixo da diretriz) vira a parábola para baixo: x² = −4|p|y. Pontos do lado do foco ficam mais perto dele que da reta; do outro lado da curva, o contrário. Raios que saem do foco refletem paralelos ao eixo (faróis e antenas).
 
 ## h) Roteiro da aula
 

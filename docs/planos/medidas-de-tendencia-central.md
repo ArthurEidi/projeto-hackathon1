@@ -23,10 +23,10 @@ Há medidas de dispersão, médias ponderadas, geométricas e harmônicas, e qua
 4. Quantidade par e valores repetidos: mediana como média dos dois do meio; moda como o mais frequente.
 
 ## f) Dedução causal da forma
-A média é o ponto onde a régua equilibra: as distâncias dos valores à esquerda somam o mesmo que as da direita. Isso acontece exatamente quando a média vale a soma dos valores dividida pela quantidade. A mediana só depende da posição na fila, por isso um valor extremo não a desloca.
+A média é o ponto onde a régua equilibra: as distâncias dos valores à esquerda somam o mesmo que as da direita. Isso acontece exatamente quando a média vale a soma dos valores dividida pela quantidade. A mediana só depende da posição na fila, por isso um valor extremo não a desloca. Visão alternativa da média (modo barras): despejar todas as barras num reservatório e redistribuir por igual; a altura comum é a média, e o que sobra acima da linha preenche exatamente o que falta abaixo.
 
 ## g) Simulação espacial e fronteiras
-Com quantidade par, a mediana é a média dos dois centrais. Pode haver duas modas ou nenhuma. A média pode não ser nenhum dos valores (média 2,5 de filhos). Para salários com poucos valores enormes, a mediana representa melhor o típico.
+Com quantidade par, a mediana é a média dos dois centrais. Pode haver duas modas ou nenhuma. A média pode não ser nenhum dos valores (média 2,5 de filhos). Para salários com poucos valores enormes, a mediana representa melhor o típico. Armadilha visual a mostrar no widget: com a lista desordenada (10, 2, 8, 4, 6), pegar o valor do meio sem ordenar dá 8 em vez de 6; o widget pisca um alerta até o aluno tocar em "pôr em fila".
 
 ## h) Roteiro da aula
 

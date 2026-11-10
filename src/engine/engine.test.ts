@@ -144,4 +144,18 @@ describe("regras de texto", () => {
   it("decimal com vírgula não conta como frase", () => {
     expect(countSentences("A geratriz mede 5,0. Ela não muda.")).toBe(2);
   });
+
+  it("! de fatorial não conta como fim de frase", () => {
+    expect(countSentences("Com 4 pessoas: 4 · 3 · 2 · 1 = 24. Isso é 4! = 24.")).toBe(2);
+    expect(countSentences("Isso. 5 · 4 · 3! / 3! = 5 · 4 = 20.")).toBe(2);
+    expect(countSentences("120 é só o 5!. Dividindo por 3! = 6, fica 20.")).toBe(2);
+    expect(countSentences("O arranjo conta cada grupo k! vezes. Por isso divide por k!.")).toBe(2);
+    expect(countSentences("Vale n! = n · (n − 1)! sempre.")).toBe(1);
+    expect(checkLine("Certo. E isso mantém 1! = 1 · 0! funcionando.")).toEqual([]);
+  });
+
+  it("exclamação comum continua quebrando frase", () => {
+    expect(countSentences("Muito bem! Acertou. De novo!")).toBe(3);
+    expect(checkLine("Uau! Isso. Aquilo.")[0]).toMatch(/3 frases/);
+  });
 });

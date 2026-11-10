@@ -26,7 +26,7 @@ Hipérboles aparecem em relações do tipo xy = constante (y = 1/x), em navegaç
 No vértice (a; 0), as distâncias aos focos são c + a e c − a, cuja diferença é 2a. Escrevendo |PF₁ − PF₂| = 2a para (x; y) e simplificando como na elipse, chega-se a x²/a² − y²/b² = 1 com b² = c² − a², ou seja c² = a² + b²: no retângulo de lados a e b, c é a diagonal. Para x muito grande, o "1" fica desprezível e y ≈ ±(b/a)x: por isso os ramos se aproximam dessas retas.
 
 ## g) Simulação espacial e fronteiras
-Diferença zero dá a mediatriz; diferença igual à distância entre os focos (2a = 2c) dá duas semirretas; diferença maior não desenha nada. Se o termo positivo for y², os ramos abrem para cima e para baixo. Com a = b, as assíntotas são y = ±x (hipérbole equilátera), parente de y = k/x.
+Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o plano de corte leva de circunferência a elipse, parábola (plano paralelo à geratriz) e hipérbole; vale como abertura da dúvida da Tati no passo 1. Diferença zero dá a mediatriz; diferença igual à distância entre os focos (2a = 2c) dá duas semirretas; diferença maior não desenha nada. Se o termo positivo for y², os ramos abrem para cima e para baixo. Com a = b, as assíntotas são y = ±x (hipérbole equilátera), parente de y = k/x.
 
 ## h) Roteiro da aula
 

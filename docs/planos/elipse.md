@@ -26,7 +26,7 @@ Elipses descrevem órbitas de planetas e aparecem em espelhos e arcos; há tamb�
 No topo (0; b), P está à mesma distância dos dois focos, então cada distância vale a; o triângulo com catetos b e c tem hipotenusa a, e por isso a² = b² + c². Nas pontas (±a; 0), as distâncias são a − c e a + c, que somam 2a. Escrevendo PF₁ + PF₂ = 2a para (x; y) e simplificando, chega-se a x²/a² + y²/b² = 1: a circunferência x² + y² = a² "esticada" de fator b/a na vertical.
 
 ## g) Simulação espacial e fronteiras
-c = 0 dá circunferência; c perto de a dá elipse quase segmento; c = a reduz a curva ao segmento F₁F₂; 2a menor que a distância entre os focos não desenha nada. Se o maior denominador estiver sob y², o eixo maior é vertical e os focos ficam no eixo y.
+Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o plano de corte leva de circunferência a elipse, parábola (plano paralelo à geratriz) e hipérbole; vale como abertura da dúvida da Tati no passo 1. c = 0 dá circunferência; c perto de a dá elipse quase segmento; c = a reduz a curva ao segmento F₁F₂; 2a menor que a distância entre os focos não desenha nada. Se o maior denominador estiver sob y², o eixo maior é vertical e os focos ficam no eixo y.
 
 ## h) Roteiro da aula
 

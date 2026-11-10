@@ -21,11 +21,18 @@ const fold = (s: string) =>
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase();
 
-/** Conta frases: termina em . ! ? seguido de espaço ou fim. "5,0" não quebra frase. */
+/**
+ * Fim de frase: . ? ou ! seguido de espaço. O ! de fatorial não conta: colado a um número
+ * ("3! = 6"), a um fecha-parênteses ("(n − 1)!") ou a uma letra solta ("n!", "k!").
+ * Exclamação comum ("Muito bem! Certo.") continua quebrando frase.
+ */
+const FIM_DE_FRASE = /(?<=[.?]|(?<![\p{N})])(?<!(?:^|[^\p{L}])\p{L})!)\s+/u;
+
+/** Conta frases: termina em . ! ? seguido de espaço ou fim. "5,0" e "3!" não quebram frase. */
 export function countSentences(text: string): number {
   const parts = text
     .trim()
-    .split(/(?<=[.!?])\s+/)
+    .split(FIM_DE_FRASE)
     .filter((p) => p.trim().length > 0);
   return parts.length;
 }

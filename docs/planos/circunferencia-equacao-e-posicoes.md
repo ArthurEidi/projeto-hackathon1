@@ -27,7 +27,7 @@ Há equação geral com termos em x e y, circunferência por três pontos, retas
 "Estar na circunferência" quer dizer "estar a distância r do centro". Pela fórmula da distância, √((x − a)² + (y − b)²) = r; elevando ao quadrado, (x − a)² + (y − b)² = r². O centro aparece subtraindo porque os degraus são medidos a partir dele. As posições relativas vêm todas da mesma comparação: alguma distância contra o raio.
 
 ## g) Simulação espacial e fronteiras
-Raio zero reduz a curva a um ponto; r² negativo não desenha nada. A reta y = k é tangente quando |k − b| = r. Duas circunferências: d > r₁ + r₂ separadas; d = r₁ + r₂ tangentes por fora; d menor, se cruzam ou uma fica dentro da outra.
+Raio zero reduz a curva a um ponto; r² negativo não desenha nada. Na forma geral x² + y² − 2ax − 2by + k = 0, completar quadrados revela r² = a² + b² − k: o sinal desse número decide entre circunferência, ponto ou conjunto vazio (bom desafio extra). A reta y = k é tangente quando |k − b| = r. Duas circunferências: d > r₁ + r₂ separadas; d = r₁ + r₂ tangentes por fora; d menor, se cruzam ou uma fica dentro da outra.
 
 ## h) Roteiro da aula
 
