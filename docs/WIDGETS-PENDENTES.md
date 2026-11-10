@@ -2,7 +2,7 @@
 
 Lista única dos widgets que os planos em `docs/planos/` pedem e que ainda **não existem** no app. Cada agente acrescenta os seus no fim, no mesmo formato. Antes de criar um widget novo, confira se um daqui já serve.
 
-**Já existem** (não listar aqui): `plano_cartesiano` / `plano_figura`, `reta_numerica` / `reta_figura`, `barras` / `barras_figura` (entradas 2 e 9; o modo `barras`/`linha`/`setores` chama-se `categorias`, e `coleta` é a chave `coleta: true` dele) (em `src/widgets/common/`, ver GUIA §5), `revolution`, `generatrix` e `cone_figure` (só Cones).
+**Já existem** (não listar aqui): `plano_cartesiano` / `plano_figura`, `reta_numerica` / `reta_figura`, extensões do plano (entradas 7 e 10, GUIA §5.1), `barras` / `barras_figura` (entradas 2 e 9; o modo `barras`/`linha`/`setores` chama-se `categorias`, e `coleta` é a chave `coleta: true` dele) (em `src/widgets/common/`, ver GUIA §5), `revolution`, `generatrix` e `cone_figure` (só Cones).
 
 **Convenções para todos** (iguais às de `src/widgets/common/`):
 - Arquivos em `src/widgets/common/` (widget comum) ou `src/widgets/<unidade>/` (só um capítulo). Schema zod em `params.ts`, sem React; registro em `src/widgets/params.ts` e `registry.ts`.
@@ -138,14 +138,15 @@ Lista única dos widgets que os planos em `docs/planos/` pedem e que ainda **nã
 
 - **Tipos de curva novos:** `raiz` a·√(x − b) + c · `racional` a/(x − b) + c · `cubica` a·x³ + b·x² + c·x + d · `potencia` a·(x − b)ⁿ + c.
 - **Transformação de qualquer curva** (`transformador-de-graficos`): `transforma: { a, b, h, k }` na curva → a·f(b·(x − h)) + k.
-- **Por partes** (`seletor-por-partes`): `tipo: "partes"` com `trechos: { curva, de, ate, abreDe, abreAte }[]`, bolinhas abertas/fechadas nos extremos.
-- **Domínio e buracos:** `dominio: [de, ate]` por curva; `furos: number[]` (bolinha vazia); `assintotas: { x?: number[], y?: number[] }` tracejadas; o ponto não entra fora do domínio.
+- **Por partes** (`seletor-por-partes`): uma curva por trecho, cada uma com `dominio: { de, ate, abreDe, abreAte }`, e o ponto com `curva: [0, 1]` (vale a 1ª curva definida no x); bolinhas abertas/fechadas nos extremos.
+- **Domínio e buracos:** `dominio` por curva (acima); `furos: number[]` (bolinha vazia); `assintotas: { x?: number[], y?: number[] }` tracejadas; o ponto não entra fora do domínio.
 - **Ponto independente** (`cursor independente`): `ponto.curva: null` → o ponto anda no eixo x e mostra a altura de cada curva naquele x.
 - **Retângulo sob o ponto** (`plano-proporcional`): `ponto.retangulo: true` → retângulo da origem a (x, y) com a área x·y (c4).
 - **Marcas** da entrada 7: `marcar.angulo`, `coincidentes`, `intercepto_tocado`.
 - **Vértice e eixo de simetria** (pedido do coordenador, capítulo funcao-quadratica): `marcar.vertice` → ponto (x_v; y_v) da primeira quadrática não fantasma com rótulo; `marcar.eixo` → reta tracejada x = x_v. Cor em `cores.vertice` (padrão c4). Métrica `no_vertice` (0/1: ponto arrastável em x_v).
 - **Exponencial** (pedido do coordenador): `triangulo.modo: "fator"` → degrau "anda 1, ×b" (seta com rótulo `×b` na cor da base) em vez de "+a"; `cores.base` para a base b ter cor própria no rótulo da curva; `marcar.assintota` → assíntota horizontal y = c tracejada da primeira exponencial não fantasma.
 - **Logaritmos** (pedido do coordenador): `ponto.espelho: true` → segundo ponto (y; x) refletido em y = x, ligado ao primeiro por um segmento perpendicular tracejado, andando junto no arraste; `marcar.assintota` também desenha x = b (x = 0 no log puro) para logaritmo; `guias: { diagonal: true }` → y = x como guia cinza fina (não entra em `curvas`, não conta para encontro/raízes). Métrica `espelho_visto` (0/1).
+- **Periódicas** (pedido do coordenador, modelos-periodicos-e-amplitude): campo `fase` em `seno`/`cosseno` → a·sen(b·(x − fase)) + c; `marcar.fase` desenha a seta de 0 até a fase no eixo da linha média; `marcar.periodo` desenha a chave de um período T = 2π/b com o rótulo; `marcar.faixa` desenha linha média (y = c), topo (c + |a|) e fundo (c − |a|) como guias cinza rotuladas. Guias livres: `guias.horizontais: { y, rotulo?, cor? }[]` e `guias.verticais` (não são curvas: não entram em encontro/raízes).
 - **Métricas novas:** `ramos_visitados`, `trechos_visitados`, `fora_do_dominio` (0/1), `no_furo` (0/1), `parametros_testados`.
 
 ### 11. Extensões da `reta_numerica`
@@ -154,6 +155,7 @@ Lista única dos widgets que os planos em `docs/planos/` pedem e que ainda **nã
 
 - `operacao: { a: Trecho, b: Trecho, modo: "uniao" | "intersecao" | "diferenca" | "$id" }` → três trilhas (A c1, B c2, resultado c4), extremos abertos/fechados calculados.
 - `ponto.centro: number` → seta de c até x (x − c, c3) e segmento |x − c| (c4); `distanciaZero` é o caso c = 0.
+- `ponto.centro` aceita `"$h"`; o centro h ganha marcador próprio (`ponto.vertice: true` → bolinha + rótulo "h" na `corCentro`, pedido do coordenador para funcao-modular).
 - **Métricas:** `pertence` (0/1 no resultado), `distancia` (|x − c|).
 
 ### 12. `geometria_triangulo` + figura `geometria_triangulo_figura`
@@ -279,8 +281,8 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | # | Widget canônico | Capítulos | Situação |
 |---|---|---|---|
 | 1 | `barras` (entradas 2 + 9) | 14 | **pronto** (GUIA §5.3) |
-| 2 | Extensões do `plano_cartesiano` (7 + 10) | 10 (+ funcao-quadratica, funcao-exponencial, logaritmos melhorados) | em andamento |
-| 3 | `grade_resultados` (1) | 10 | pendente |
+| 2 | Extensões do `plano_cartesiano` (7 + 10) | 10 (+ funcao-quadratica, funcao-exponencial, logaritmos, modelos-periodicos melhorados) | **pronto** (GUIA §5.1) |
+| 3 | `grade_resultados` (1) | 10 | em andamento |
 | 4 | `solido_3d` (8 + 16) | 10 (+3 com `lugar_geometrico`) | pendente |
 | 5 | `geometria_triangulo` (12) | 7 | pendente |
 | 6 | `ciclo_trigonometrico` (15) | 7 | pendente |

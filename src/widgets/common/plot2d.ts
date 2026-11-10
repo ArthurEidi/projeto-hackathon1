@@ -9,19 +9,55 @@ export function resolver(v: Valor, controles: Controles): number {
   return typeof v === "number" ? v : (controles[v.slice(1)] ?? 0);
 }
 
+export interface Transformacao {
+  /** g(x) = a·f(b·(x − h)) + k */
+  a: number;
+  b: number;
+  h: number;
+  k: number;
+}
+
+export interface Dominio {
+  de: number | null;
+  ate: number | null;
+  abreDe: boolean;
+  abreAte: boolean;
+}
+
 export interface CurvaResolvida {
   tipo: TipoCurva;
   a: number;
   b: number;
   c: number;
+  /** cúbica: termo independente. */
+  d?: number;
+  /** potência: expoente. */
+  n?: number;
+  /** seno/cosseno: deslocamento horizontal, a·sen(b·(x − fase)) + c. */
+  fase?: number;
+  t?: Transformacao;
+  dom?: Dominio;
+  furos?: readonly number[];
 }
 
 export function resolverCurva(c: Curva, controles: Controles): CurvaResolvida {
-  return { tipo: c.tipo, a: resolver(c.a, controles), b: resolver(c.b, controles), c: resolver(c.c, controles) };
+  const k: CurvaResolvida = { tipo: c.tipo, a: resolver(c.a, controles), b: resolver(c.b, controles), c: resolver(c.c, controles) };
+  if (c.tipo === "cubica") k.d = resolver(c.d, controles);
+  if (c.tipo === "potencia") k.n = resolver(c.n, controles);
+  if ((c.tipo === "seno" || c.tipo === "cosseno") && c.fase !== 0) k.fase = resolver(c.fase, controles);
+  if (c.transforma) {
+    const t = c.transforma;
+    k.t = { a: resolver(t.a, controles), b: resolver(t.b, controles), h: resolver(t.h, controles), k: resolver(t.k, controles) };
+  }
+  if (c.dominio) k.dom = c.dominio;
+  if (c.furos.length) k.furos = c.furos;
+  return k;
 }
 
-/** f(x) da curva; NaN fora do domínio (log de x ≤ 0, base inválida). */
-export function avaliar(k: CurvaResolvida, x: number): number {
+/** Curva "pura": sem transformação, domínio ou furos (aí valem as fórmulas exatas). */
+const pura = (k: CurvaResolvida) => !k.t && !k.dom && !k.furos?.length;
+
+function avaliarBase(k: CurvaResolvida, x: number): number {
   const { a, b, c } = k;
   switch (k.tipo) {
     case "afim":
@@ -35,11 +71,103 @@ export function avaliar(k: CurvaResolvida, x: number): number {
     case "modular":
       return a * Math.abs(x - b) + c;
     case "seno":
-      return a * Math.sin(b * x) + c;
+      return a * Math.sin(b * (x - (k.fase ?? 0))) + c;
     case "cosseno":
-      return a * Math.cos(b * x) + c;
+      return a * Math.cos(b * (x - (k.fase ?? 0))) + c;
+    case "raiz":
+      return x - b >= 0 ? a * Math.sqrt(x - b) + c : NaN;
+    case "racional":
+      return x === b ? NaN : a / (x - b) + c;
+    case "cubica":
+      return ((a * x + b) * x + c) * x + (k.d ?? 0);
+    case "potencia": {
+      const n = k.n ?? 2;
+      const base = x - b;
+      // Expoente fracionário de base negativa não é real.
+      if (base < 0 && !Number.isInteger(n)) return NaN;
+      if (base === 0 && n < 0) return NaN;
+      return a * base ** n + c;
+    }
   }
 }
+
+/** O x está no domínio declarado (e não é um furo)? */
+export function noDominio(k: CurvaResolvida, x: number): boolean {
+  if (k.furos?.some((f) => Math.abs(f - x) < 1e-9)) return false;
+  const d = k.dom;
+  if (!d) return true;
+  if (d.de !== null && (d.abreDe ? x <= d.de : x < d.de)) return false;
+  if (d.ate !== null && (d.abreAte ? x >= d.ate : x > d.ate)) return false;
+  return true;
+}
+
+/** f(x) da curva; NaN fora do domínio (log de x ≤ 0, base inválida, furo, domínio declarado). */
+export function avaliar(k: CurvaResolvida, x: number): number {
+  if (!noDominio(k, x)) return NaN;
+  const y = k.t ? k.t.a * avaliarBase(k, k.t.b * (x - k.t.h)) + k.t.k : avaliarBase(k, x);
+  return Number.isFinite(y) ? y : NaN;
+}
+
+/** Valor da curva sem olhar furos (para desenhar a bolinha vazia no lugar certo). */
+export function avaliarSemFuro(k: CurvaResolvida, x: number): number {
+  return avaliar({ ...k, furos: undefined }, x);
+}
+
+/** Assíntotas da curva (vertical em x, horizontal em y), já com a transformação aplicada. */
+export function assintotas(k: CurvaResolvida): { x?: number; y?: number } {
+  const t = k.t ?? { a: 1, b: 1, h: 0, k: 0 };
+  // Ponto da curva base u ↦ x = h + u/b; valor base v ↦ y = a·v + k.
+  const xDe = (u: number) => (t.b === 0 ? NaN : arredondar(t.h + u / t.b));
+  const yDe = (v: number) => arredondar(t.a * v + t.k);
+  switch (k.tipo) {
+    case "exponencial":
+      return k.b > 0 && k.b !== 1 && k.a !== 0 ? { y: yDe(k.c) } : {};
+    case "logaritmo":
+      return { x: xDe(0) };
+    case "racional":
+      return k.a !== 0 ? { x: xDe(k.b), y: yDe(k.c) } : {};
+    case "potencia":
+      return (k.n ?? 2) < 0 ? { x: xDe(k.b), y: yDe(k.c) } : {};
+    default:
+      return {};
+  }
+}
+
+/** Vértice da parábola (quadrática, ou potência de expoente 2), com a transformação aplicada. */
+export function vertice(k: CurvaResolvida): { x: number; y: number } | null {
+  let u: number;
+  if (k.tipo === "quadratica" && k.a !== 0) u = -k.b / (2 * k.a);
+  else if (k.tipo === "potencia" && (k.n ?? 2) === 2 && k.a !== 0) u = k.b;
+  else return null;
+  const t = k.t ?? { a: 1, b: 1, h: 0, k: 0 };
+  if (t.b === 0) return null;
+  const x = arredondar(t.h + u / t.b);
+  const y = avaliar({ ...k, dom: undefined, furos: undefined }, x);
+  return Number.isFinite(y) ? { x, y: arredondar(y) } : null;
+}
+
+/** Fator de crescimento da exponencial ao andar 1 em x: (y(x+1) − c')/(y(x) − c'). */
+export function fatorPorPasso(k: CurvaResolvida, x: number): number {
+  const ass = assintotas(k).y ?? 0;
+  const y0 = avaliar(k, x) - ass;
+  const y1 = avaliar(k, x + 1) - ass;
+  return y0 === 0 ? NaN : arredondar(y1 / y0);
+}
+
+/** Período 2π/|b| de seno/cosseno (com a transformação b'), NaN para as demais. */
+export function periodo(k: CurvaResolvida): number {
+  if (k.tipo !== "seno" && k.tipo !== "cosseno") return NaN;
+  const b = k.b * (k.t?.b ?? 1);
+  return b === 0 ? NaN : (2 * Math.PI) / Math.abs(b);
+}
+
+/** As duas curvas são a mesma reta? */
+export const coincidentes = (p: CurvaResolvida, q: CurvaResolvida) =>
+  p.tipo === "afim" && q.tipo === "afim" && pura(p) && pura(q) && Math.abs(p.a - q.a) < 1e-9 && Math.abs(p.b - q.b) < 1e-9;
+
+/** Retas perpendiculares (m₁ · m₂ = −1)? */
+export const perpendiculares = (p: CurvaResolvida, q: CurvaResolvida) =>
+  p.tipo === "afim" && q.tipo === "afim" && pura(p) && pura(q) && Math.abs(p.a * q.a + 1) < 1e-9;
 
 const EPS = 1e-9;
 
@@ -84,7 +212,7 @@ export function arredondar(x: number): number {
 
 /** Raízes da curva na faixa visível. Afim: exata; a = 0 e b = 0 devolve [] (todo x é raiz, ver `todaRaiz`). */
 export function raizes(k: CurvaResolvida, x0: number, x1: number): number[] {
-  if (k.tipo === "afim") {
+  if (k.tipo === "afim" && pura(k)) {
     if (k.a === 0) return [];
     const r = arredondar(-k.b / k.a);
     return r >= x0 && r <= x1 ? [r] : [];
@@ -93,10 +221,10 @@ export function raizes(k: CurvaResolvida, x0: number, x1: number): number[] {
 }
 
 /** A curva é o próprio eixo x? (f(x) = 0 para todo x) */
-export const todaRaiz = (k: CurvaResolvida) => k.tipo === "afim" && k.a === 0 && k.b === 0;
+export const todaRaiz = (k: CurvaResolvida) => k.tipo === "afim" && pura(k) && k.a === 0 && k.b === 0;
 
 export function encontros(p: CurvaResolvida, q: CurvaResolvida, x0: number, x1: number): number[] {
-  if (p.tipo === "afim" && q.tipo === "afim") {
+  if (p.tipo === "afim" && q.tipo === "afim" && pura(p) && pura(q)) {
     if (p.a === q.a) return [];
     const x = arredondar((q.b - p.b) / (p.a - q.a));
     return x >= x0 && x <= x1 ? [x] : [];
@@ -169,4 +297,25 @@ export function criarVista(
     yDe: (py) => (oy - py) / k,
     area: { x: ox + x0 * k, y: oy - y1 * k, w: (x1 - x0) * k, h: (y1 - y0) * k },
   };
+}
+
+/** Ponto que segue uma curva, uma função por partes (lista) ou anda solto no eixo (null). */
+export type SelecaoCurva = number | readonly number[] | null;
+
+/** Altura do ponto no x e a curva usada (-1 = cursor no eixo; NaN se fora de todos os domínios). */
+export function alturaDoPonto(curvas: readonly CurvaResolvida[], sel: SelecaoCurva, x: number): { y: number; curva: number } {
+  if (sel === null) return { y: 0, curva: -1 };
+  const lista = typeof sel === "number" ? [sel] : sel;
+  for (const i of lista) {
+    const y = avaliar(curvas[i], x);
+    if (Number.isFinite(y)) return { y, curva: i };
+  }
+  return { y: NaN, curva: lista[0] };
+}
+
+/** Ângulo (graus, 0..90) entre duas retas de inclinações m1 e m2. */
+export function anguloEntreRetas(m1: number, m2: number): number {
+  const d = 1 + m1 * m2;
+  if (Math.abs(d) < 1e-12) return 90;
+  return arredondar((Math.atan(Math.abs((m1 - m2) / d)) * 180) / Math.PI);
 }

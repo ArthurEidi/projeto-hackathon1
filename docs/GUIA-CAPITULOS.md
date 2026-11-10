@@ -419,6 +419,15 @@ Arquivos: `common/params.ts` (schemas), `common/plot2d.ts` (matemática pura, te
 - **`plano_figura`**: mesmos campos, só números. Em `micro_challenge`, cada opção sobrescreve campos inteiros (ex.: `{ "marcar": { "raizes": true }, "highlight": ["c4"] }` ou `{ "ponto": { "x": 0 } }`).
 - Rótulos de curva fogem das bordas, dos eixos e uns dos outros; mesmo assim, confira no celular.
 
+**Extensões (fase de widgets).** Tudo opcional; o JSON antigo continua valendo.
+- **Curvas novas:** `raiz` a·√(x − b) + c · `racional` a/(x − b) + c · `cubica` a·x³ + b·x² + c·x + `d` · `potencia` a·(x − b)^`n` + c · `seno`/`cosseno` ganham `fase`: a·sen(b·(x − fase)) + c.
+- **Em qualquer curva:** `transforma: { a, b, h, k }` desenha a·f(b·(x − h)) + k (aceitam `"$id"`; ponha a original como fantasma ao lado); `dominio: { de, ate, abreDe, abreAte }` (null = infinito; bolinha aberta/fechada nos extremos) para funções por partes; `furos: [1]` (bolinha vazia, ex.: (x² − 1)/(x − 1)).
+- **Ponto:** `curva: [0, 1]` percorre uma função por partes (vale a 1ª curva definida no x); `curva: null` é o cursor independente (anda no eixo x e mostra a altura de cada curva); `espelho: true` mostra o reflexo (y; x) em y = x; `retangulo: true` desenha o retângulo da origem ao ponto com x·y (cor `corRetangulo`). O ponto não entra fora do domínio nem em furo (a tentativa vira métrica).
+- **Triângulo:** `modo: "fator"` rotula o degrau como `×b` (exponencial) em vez de `+a`.
+- **Marcar:** `vertice` e `eixo` (parábola: quadrática ou potência n = 2), `assintota` (exponencial, logaritmo, racional, potência negativa; já com a transformação), `angulo` (entre as retas 0 e 1; quadradinho quando m₁·m₂ = −1; a curva 1 fica tracejada quando coincide com a 0), `base` (etiqueta da base b), `fase`, `periodo` (T = 2π/b) e `faixa` (linha média, topo, fundo) para seno/cosseno. Cores em `cores.vertice | angulo | base | fase | periodo`.
+- **Guias** (não são curvas, não entram em raiz/encontro): `guias: { diagonal: true, horizontais: [{ v: 3, rotulo: "pico", cor }], verticais: [...] }`; `assintotas: { x: [..], y: [..] }` extras.
+- **Métricas novas:** `no_vertice`, `ramos_visitados` (lados da assíntota vertical, 0..2), `trechos_visitados`, `fora_do_dominio`, `no_furo`, `angulo_reto`, `coincidentes`, `intercepto_tocado` (tocar o marcador de `interceptoY`), `parametros_testados` (sliders que saíram do inicial), `espelho_visto`. `na_raiz` não vale para o cursor independente.
+
 ### 5.2 `reta_numerica` + `reta_figura` — PRONTOS
 
 ```jsonc
