@@ -1,0 +1,497 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Somas de Potências",
+  "subtitulo": "Grau, raízes e divisão",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "polinomios-e-complexos",
+    "unidade": "polinomios"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Número usado em todas as parcelas."
+    },
+    "c2": {
+      "nome": "Coeficientes",
+      "resumo": "Fatores que multiplicam as potências de x."
+    },
+    "c3": {
+      "nome": "Valor P(x)",
+      "resumo": "Soma das parcelas do polinômio."
+    },
+    "c4": {
+      "nome": "Raízes",
+      "resumo": "Entradas em que a soma vale zero."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 4],
+        "y": [-3, 4],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "cor": "c3",
+            "rotulo": "P(x) = x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": -1
+      },
+      "lines": {
+        "intro": "No caso neutro P(x) = x, qual saída aparece em −1? Arraste até lá.",
+        "done": "Sai −1 porque a identidade conserva a entrada."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Polinômios têm grau, raízes e divisão; aqui lemos termos, valores e zeros, deixando divisão e multiplicidade para os próximos capítulos."
+      }
+    },
+    {
+      "id": "somar-quadrado",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "a",
+          "label": "Coeficiente de x²",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-3, 3],
+        "y": [-3, 12],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": "$a",
+            "b": 1,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "P(x)"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "fantasma": true,
+            "rotulo": "y = x"
+          }
+        ],
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "a",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Ao ligar x², o que muda em x = −2 e x = 2? Leve a a 1.",
+        "done": "As duas saídas ganham 4; por isso somar potências muda a curva sem exigir simetria da soma."
+      }
+    },
+    {
+      "id": "raizes-e-grau",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "a",
+          "label": "Coeficiente de x³",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-3, 3],
+        "y": [-6, 6],
+        "curvas": [
+          {
+            "tipo": "cubica",
+            "a": "$a",
+            "b": 0,
+            "c": 1,
+            "d": 0,
+            "cor": "c3",
+            "rotulo": "P(x)"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "fantasma": true,
+            "rotulo": "y = x"
+          }
+        ],
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "a",
+        "lte": 0
+      },
+      "lines": {
+        "intro": "Se o coeficiente cúbico zerar, o grau continua 3? Reduza a até 0.",
+        "done": "Não; o maior termo restante é x, por isso o grau cai para 1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Grau 3 garante três raízes reais?",
+        "resposta": "Não; x³+x só zera em 0 nos reais, pois x²+1 nunca zera."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 2],
+          "y": [-5, 5],
+          "curvas": [
+            {
+              "tipo": "cubica",
+              "a": 3,
+              "b": 0,
+              "c": -2,
+              "d": 1,
+              "cor": "c3",
+              "rotulo": "3x³ − 2x + 1"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual é o grau de 3x³−2x+1?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "6",
+          "correct": false,
+          "feedback": "Você somou expoentes; o maior expoente não nulo é 3, então o grau é 3."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "3",
+          "correct": true,
+          "feedback": "Certo: 3; O maior expoente com coeficiente não nulo é 3."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 3],
+          "y": [-2, 6],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": 1,
+              "b": 1,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "P(x) = x² + x"
+            }
+          ],
+          "marcar": {
+            "raizes": true
+          },
+          "cores": {
+            "raiz": "c4"
+          }
+        }
+      },
+      "formula": [
+        { "text": "P(x)", "ref": "c3" },
+        { "text": "= aₙ", "ref": "c2" },
+        { "text": "xⁿ", "ref": "c1" },
+        { "text": " + … + a₁x + a₀; aₙ ≠ 0" }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Número usado em todas as parcelas."
+        },
+        {
+          "term": "Valor P(x)",
+          "text": "Soma das parcelas do polinômio."
+        },
+        {
+          "term": "Raízes",
+          "text": "Entradas em que a soma vale zero."
+        }
+      ],
+      "lines": {
+        "intro": "As potências se somam com pesos; por isso o maior expoente não cancelado define o grau.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-polinomios",
+        "prompt": "Em P(x)=x, quanto vale P(−1)?",
+        "options": [
+          {
+            "id": "f1-polinomios-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você aplicou módulo sem ele existir. O certo é −1; P(−1)=−1."
+          },
+          {
+            "id": "f1-polinomios-certa",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo: −1; P(−1)=−1."
+          }
+        ]
+      },
+      {
+        "id": "f2-polinomios",
+        "prompt": "Qual é o grau de 3x³−2x+1?",
+        "options": [
+          {
+            "id": "f2-polinomios-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; Maior expoente não nulo: 3."
+          },
+          {
+            "id": "f2-polinomios-erro",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você somou expoentes. O certo é 3; Maior expoente não nulo: 3."
+          }
+        ]
+      },
+      {
+        "id": "f3-polinomios",
+        "prompt": "Em P(x)=x²+3x−2, quanto vale P(0)?",
+        "options": [
+          {
+            "id": "f3-polinomios-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "O termo constante não desaparece. O certo é −2; 0+0−2=−2."
+          },
+          {
+            "id": "f3-polinomios-certa",
+            "label": "−2",
+            "correct": true,
+            "feedback": "Certo: −2; 0+0−2=−2."
+          }
+        ]
+      },
+      {
+        "id": "f4-polinomios",
+        "prompt": "Ser raiz de P significa produzir qual saída?",
+        "options": [
+          {
+            "id": "f4-polinomios-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; P(r)=0."
+          },
+          {
+            "id": "f4-polinomios-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você confundiu raiz com identidade. O certo é 0; P(r)=0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-polinomios",
+        "prompt": "Quanto vale P(2) em P(x)=x²−1?",
+        "options": [
+          {
+            "id": "m1-polinomios-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você esqueceu de elevar 2 ao quadrado. O certo é 3; 2²−1=3."
+          },
+          {
+            "id": "m1-polinomios-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 2²−1=3."
+          }
+        ]
+      },
+      {
+        "id": "m2-polinomios",
+        "prompt": "Quais são as raízes de x(x−2)?",
+        "options": [
+          {
+            "id": "m2-polinomios-certa",
+            "label": "0 e 2",
+            "correct": true,
+            "feedback": "Certo: 0 e 2; x=0 ou x−2=0."
+          },
+          {
+            "id": "m2-polinomios-erro",
+            "label": "Só 2",
+            "correct": false,
+            "feedback": "Você cancelou o fator x. O certo é 0 e 2; x=0 ou x−2=0."
+          }
+        ]
+      },
+      {
+        "id": "m3-polinomios",
+        "prompt": "Qual é o grau de x³−x³+2x?",
+        "options": [
+          {
+            "id": "m3-polinomios-erro",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você não reduziu os termos semelhantes. O certo é 1; x³−x³=0; sobra 2x."
+          },
+          {
+            "id": "m3-polinomios-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; x³−x³=0; sobra 2x."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-polinomios",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Se P(x)=ax²+x e a=0, qual é o grau?",
+        "options": [
+          {
+            "id": "d1-polinomios-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; P(x)=x."
+          },
+          {
+            "id": "d1-polinomios-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Coeficiente zero elimina o termo de grau 2. O certo é 1; P(x)=x."
+          }
+        ]
+      },
+      {
+        "id": "d2-polinomios",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "O polinômio zero tem grau definido nesta aula?",
+        "options": [
+          {
+            "id": "d2-polinomios-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você confundiu zero com constante não nula. O certo é Não; Nenhum coeficiente é não nulo."
+          },
+          {
+            "id": "d2-polinomios-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; Nenhum coeficiente é não nulo."
+          }
+        ]
+      },
+      {
+        "id": "d3-polinomios",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Em P(x)=2x−1, qual é a raiz?",
+        "options": [
+          {
+            "id": "d3-polinomios-certa",
+            "label": "0,5",
+            "correct": true,
+            "feedback": "Certo: 0,5; 2x=1; x=1/2."
+          },
+          {
+            "id": "d3-polinomios-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você inverteu a divisão. O certo é 0,5; 2x=1; x=1/2."
+          }
+        ]
+      },
+      {
+        "id": "d4-polinomios",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "P(x)=x³+x tem quantas raízes reais distintas?",
+        "options": [
+          {
+            "id": "d4-polinomios-erro",
+            "label": "3",
+            "correct": false,
+            "feedback": "Grau não garante todas as raízes reais. O certo é 1; x(x²+1)=0 só em x=0."
+          },
+          {
+            "id": "d4-polinomios-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; x(x²+1)=0 só em x=0."
+          }
+        ]
+      },
+      {
+        "id": "d5-polinomios",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "P(x)=ax²+b passa por (0;1) e (1;3); quanto vale P(2)?",
+        "options": [
+          {
+            "id": "d5-polinomios-certa",
+            "label": "9",
+            "correct": true,
+            "feedback": "Certo: 9; b=1; a=2; P(2)=8+1=9."
+          },
+          {
+            "id": "d5-polinomios-erro",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você tratou a mudança como linear. O certo é 9; b=1; a=2; P(2)=8+1=9."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

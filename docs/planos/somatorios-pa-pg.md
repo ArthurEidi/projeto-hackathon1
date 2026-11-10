@@ -298,3 +298,6 @@ n é inteiro positivo. A fórmula da PG com 1−q exige q≠1; q=0 deixa apenas 
 **Texto**
 - [x] Falas, enunciados e feedbacks curtos, sem emoji ou termos proibidos.
 - [x] Notação e contas foram conferidas.
+
+---
+**Notas da implementação (JSON):** `barras` modo `sequencia` com `acumular` e slider `n` (passos 1 a 3). Correções de gabarito/distratores (as contas antigas não geravam os números): F2 12->6 (2+4); M1 21->15 (sem o 4º termo); M2 18->12 (só o 3º termo); M3 42->19 (sexto termo); D2 16->4 (último termo); D4 16 mantido com feedback de "quatro termos"; D5 "PG, por 1"->"PA, por 3" (7-4); desafio 30->26 (S4, não 30). Tati do passo 3 era cópia da abertura (reescrita para q=0); passo 4 repetia a abertura do passo 2 (reescrita); dúvida do fechamento trocada. Vestibular `[]`.

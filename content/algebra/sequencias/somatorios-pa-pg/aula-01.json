@@ -1,0 +1,505 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Termos em Pilha",
+  "subtitulo": "Somatórios de PA e PG",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "sequencias",
+    "unidade": "somatorios-pa-pg"
+  },
+  "outro": "Você acumulou termos sem perder parcelas; o pareamento simplifica a PA e a PG cresce por fator.",
+  "glossario": {
+    "c1": {
+      "nome": "Quantidade n",
+      "resumo": "Número de parcelas acumuladas."
+    },
+    "c2": {
+      "nome": "Termo aₙ",
+      "resumo": "Parcela na posição n."
+    },
+    "c3": {
+      "nome": "Soma Sₙ",
+      "resumo": "Total dos primeiros n termos."
+    },
+    "c4": {
+      "nome": "Razão q",
+      "resumo": "Fator entre termos da PG."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 0,
+        "acumular": true,
+        "nome": "a",
+        "regra": "pa",
+        "a1": 2,
+        "d": 3,
+        "termos": 5,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Parcelas",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com n = 1, há mais de uma parcela no total? Observe a barra acumulada.",
+        "done": "S₁ = a₁ = 2: ainda não há outros termos para acumular. A cada n, o total ganha a próxima parcela."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Há somas infinitas neste capítulo?",
+        "resposta": "Não. Aqui somamos termos finitos de PA e PG."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "contraste-de-regras",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 0,
+        "acumular": true,
+        "nome": "a",
+        "regra": "pa",
+        "a1": 2,
+        "d": 3,
+        "termos": 6,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Parcelas",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Na PA 2, 5, 8, 11, quanto somam os extremos? Avance até n = 4 e confira.",
+        "done": "Os extremos dão 2 + 11 = 13, e o outro par, 5 + 8, também. Dois pares totalizam 26, que é S₄."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "teste-de-fronteira",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 0,
+        "acumular": true,
+        "nome": "a",
+        "regra": "pg",
+        "a1": 3,
+        "q": 1,
+        "termos": 6,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Parcelas",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com q = 1, todos os termos são iguais; a fórmula com divisor 1 − q ainda funciona? Avance até n = 5.",
+        "done": "Não: 1 − q vale zero. Com q = 1 cada termo é a₁, então Sₙ = n·a₁: 3, 6, 9, 12, 15."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se q for zero?",
+        "resposta": "Só o a₁ é diferente de zero, então Sₙ = a₁ para qualquer n."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 5
+      }
+    },
+    {
+      "id": "micro-desafio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "sequencia",
+          "casas": 0,
+          "acumular": true,
+          "nome": "a",
+          "regra": "pa",
+          "a1": 2,
+          "d": 3,
+          "termos": 5,
+          "n": 5
+        }
+      },
+      "prompt": "PA 2, 5, 8, 11, 14. Calcule S₅.",
+      "lines": {
+        "intro": "Some os extremos e veja quantos pares eles formam. Qual resposta a figura sustenta?"
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "40",
+          "correct": true,
+          "feedback": "Certo. S₅ = 5·(2 + 14) ÷ 2 = 40.",
+          "figure": {
+            "n": 5
+          }
+        },
+        {
+          "id": "o2",
+          "label": "26",
+          "correct": false,
+          "feedback": "26 omite o quinto termo: é S₄. Somando os cinco, S₅ = 40.",
+          "figure": {
+            "n": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "sequencia",
+          "casas": 0,
+          "acumular": true,
+          "nome": "a",
+          "regra": "pa",
+          "a1": 2,
+          "d": 3,
+          "termos": 5,
+          "n": 5
+        }
+      },
+      "formula": [
+        {
+          "text": "Sₙ",
+          "ref": "c3"
+        },
+        {
+          "text": "(PA) ="
+        },
+        {
+          "text": "n",
+          "ref": "c1"
+        },
+        {
+          "text": "(a₁ +"
+        },
+        {
+          "text": "aₙ",
+          "ref": "c2"
+        },
+        {
+          "text": ") ÷ 2"
+        },
+        {
+          "text": "|"
+        },
+        {
+          "text": "Sₙ",
+          "ref": "c3"
+        },
+        {
+          "text": "(PG) = a₁(1 −"
+        },
+        {
+          "text": "q",
+          "sup": "n",
+          "ref": "c4"
+        },
+        {
+          "text": ") ÷ (1 −"
+        },
+        {
+          "text": "q",
+          "ref": "c4"
+        },
+        {
+          "text": "), q ≠ 1"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Sₙ",
+          "text": "soma dos n primeiros termos."
+        },
+        {
+          "term": "PA",
+          "text": "diferença constante entre vizinhos."
+        },
+        {
+          "term": "PG com q = 1",
+          "text": "usa Sₙ = n·a₁."
+        }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Por que parear os extremos funciona?",
+        "resposta": "Cada par de extremos soma o mesmo valor, a₁ + aₙ, e há n/2 pares. Daí Sₙ = n(a₁ + aₙ) ÷ 2."
+      },
+      "lines": {
+        "intro": "Na PA, parear extremos simplifica a soma. Na PG, cada termo é gerado pelo fator q.",
+        "hint": "Toque em uma marca para ver a grandeza correspondente nas barras."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "somatorios-pa-pg-f1",
+        "prompt": "Qual é a soma de 1, 2, 3, 4, 5?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "15",
+            "correct": true,
+            "feedback": "Certo. 1 + 2 + 3 + 4 + 5 = 15."
+          },
+          {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Somou só quatro termos. São cinco: 15."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-f2",
+        "prompt": "Qual é a soma de 2, 4, 8?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "6",
+            "correct": false,
+            "feedback": "Esqueceu o último termo: 2 + 4 = 6. Com o 8: 14."
+          },
+          {
+            "id": "o1",
+            "label": "14",
+            "correct": true,
+            "feedback": "Certo. 2 + 4 + 8 = 14."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-f3",
+        "prompt": "Na PA com a₁ = 2 e a₅ = 14, quanto vale S₅?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "40",
+            "correct": true,
+            "feedback": "Certo. 5·(2 + 14) ÷ 2 = 40."
+          },
+          {
+            "id": "o2",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 soma só os extremos. S₅ = 5·16 ÷ 2 = 40."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-f4",
+        "prompt": "Qual é S₄ da PG 1, 2, 4, 8?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 é só o último termo, não o total. S₄ = 15."
+          },
+          {
+            "id": "o1",
+            "label": "15",
+            "correct": true,
+            "feedback": "Certo. 1 + 2 + 4 + 8 = 15."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "somatorios-pa-pg-m1",
+        "prompt": "Qual é a soma de 3, 5, 7, 9?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "15",
+            "correct": false,
+            "feedback": "Parou antes do quarto termo: 3 + 5 + 7 = 15. Com o 9: 24."
+          },
+          {
+            "id": "o1",
+            "label": "24",
+            "correct": true,
+            "feedback": "Certo. 3 + 5 + 7 + 9 = 24."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-m2",
+        "prompt": "Na PG com a₁ = 3 e q = 2, quanto vale S₃?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "21",
+            "correct": true,
+            "feedback": "Certo. 3 + 6 + 12 = 21."
+          },
+          {
+            "id": "o2",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é só o terceiro termo. S₃ = 3 + 6 + 12 = 21."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-m3",
+        "prompt": "Na PA com a₁ = 4, d = 3 e n = 6, qual é S₆?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "19",
+            "correct": false,
+            "feedback": "19 é o sexto termo, não a soma. S₆ = 6·(4 + 19) ÷ 2 = 69."
+          },
+          {
+            "id": "o1",
+            "label": "69",
+            "correct": true,
+            "feedback": "Certo. a₆ = 19 e S₆ = 6·(4 + 19) ÷ 2 = 69."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "somatorios-pa-pg-d1",
+        "prompt": "Qual é S₄ da PG 5, 10, 20, 40?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "75",
+            "correct": true,
+            "feedback": "Certo. 5 + 10 + 20 + 40 = 75."
+          },
+          {
+            "id": "o2",
+            "label": "40",
+            "correct": false,
+            "feedback": "Usou só a última parcela. S₄ = 75."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-d2",
+        "prompt": "Uma PA começa em 10 com d = −2. Quanto vale S₄?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é o último termo, não a soma. S₄ = 10 + 8 + 6 + 4 = 28."
+          },
+          {
+            "id": "o1",
+            "label": "28",
+            "correct": true,
+            "feedback": "Certo. 10 + 8 + 6 + 4 = 28."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-d3",
+        "prompt": "Qual é S₃ da PG 2, 6, 18?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "26",
+            "correct": true,
+            "feedback": "Certo. 2 + 6 + 18 = 26."
+          },
+          {
+            "id": "o2",
+            "label": "18",
+            "correct": false,
+            "feedback": "Usou apenas o terceiro termo. S₃ = 26."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-d4",
+        "prompt": "Na PG com a₁ = 4 e q = 1, quanto vale S₅?",
+        "fala": "Com q = 1 a fórmula do divisor não serve.",
+        "options": [
+          {
+            "id": "o2",
+            "label": "16",
+            "correct": false,
+            "feedback": "Contou só quatro termos. Com q = 1 são cinco parcelas de 4: 20."
+          },
+          {
+            "id": "o1",
+            "label": "20",
+            "correct": true,
+            "feedback": "Certo. Com q = 1, S₅ = 5·4 = 20."
+          }
+        ]
+      },
+      {
+        "id": "somatorios-pa-pg-d5",
+        "prompt": "Entre a PA 1, 4, 7 e a PG 1, 2, 4, qual soma é maior e por quanto?",
+        "fala": "Última. Compare as somas, não os últimos termos.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "PA, por 5",
+            "correct": true,
+            "feedback": "Certo. PA = 12; PG = 7; diferença 5."
+          },
+          {
+            "id": "o2",
+            "label": "PA, por 3",
+            "correct": false,
+            "feedback": "3 é a diferença dos últimos termos (7 − 4). Comparando somas: 12 − 7 = 5."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

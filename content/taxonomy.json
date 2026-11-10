@@ -343,6 +343,20 @@
                   "arquivo": "algebra/sequencias/sequencias-recursivas-e-padroes/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "somatorios-pa-pg",
+              "titulo": "Somatórios de PA e PG",
+              "icone": "sequencia",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Termos em Pilha",
+                  "subtitulo": "Somatórios de PA e PG",
+                  "arquivo": "algebra/sequencias/somatorios-pa-pg/aula-01.json"
+                }
+              ]
             }
           ]
         },
@@ -387,7 +401,7 @@
                   "numero": 1,
                   "titulo": "Somas de Potências",
                   "subtitulo": "Grau, raízes e divisão",
-                  "arquivo": null
+                  "arquivo": "algebra/polinomios-e-complexos/polinomios/aula-01.json"
                 }
               ]
             },
