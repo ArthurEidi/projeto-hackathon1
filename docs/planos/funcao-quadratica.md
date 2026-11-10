@@ -52,7 +52,7 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 - **Sliders:** nenhum
 - **Paco (abertura):** "Que saída prevê no caso neutro? f(x)=x²; qual é o ponto mínimo?"
 - **Interação do aluno:** Arraste x até −2 e depois 2; compare as alturas.
-- **Conclusão:** `faixa_x ≥ 2`
+- **Conclusão:** `faixa_x ≥ 4` (corrigido: de x = −2 a 2 a faixa é 4)
 - **Paco (conclusão):** "Nos dois lados x² dá 4; o quadrado apaga o sinal."
 - **Tati (dúvida):** `fim` — P: "Toda parábola abre para cima?" / R: "Não; a<0 reflete a curva e ela abre para baixo."
 
@@ -60,7 +60,7 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 - **Tipo:** `interactive_canvas`
 - **Pilares:** 5 (contraste), 6 (causa)
 - **Widget:** `plano_cartesiano` — y=x² fica fantasma; slider a multiplica x².
-- **Sliders:** `a` · Coeficiente quadrático · −3..3 · passo 1 · inicial 1 · c1
+- **Sliders:** `a` · Coeficiente quadrático · −3..3 · passo 1 · inicial 1 · c3 (corrigido: c1 é Entrada x; a é c3)
 - **Paco (abertura):** "O que muda quando a fica negativa?"
 - **Interação do aluno:** Leve a a −1; a curva espelha-se no eixo x.
 - **Conclusão:** `a ≤ −1`
@@ -88,7 +88,7 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 | `erro` | (−1;1) | não | "Troca os sinais dos deslocamentos horizontal e vertical; O quadrado zera em x=1 e a saída mínima é −1; V=(1;−1)." | Marca o vértice invertido (−1;1) para mostrar a troca de sinais. |
 | `certa` | (1;−1) | **sim** | "O quadrado zera em x=1 e a saída mínima é −1; V=(1;−1)." | marca a resposta no gráfico. |
 - **Paco (conclusão):** "O quadrado zera em x=1 e a saída mínima é −1; V=(1;−1)."
-- **Tati (dúvida):** `fim` — P: "E se a entrada estiver na fronteira?" / R: "A condição do domínio decide se o ponto entra e qual regra vale."
+- **Tati (dúvida):** `fim` — P: "Toda parábola cruza o eixo x?" / R: "Não: pode cruzar duas vezes, tocar uma ou ficar sem raiz real." (reescrito: texto genérico de domínio não se aplicava)
 
 ### Passo 5 — `fechamento`
 - **Tipo:** `concept_lock`
@@ -103,7 +103,7 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 - **Interação do aluno:** toque nas marcas c1–c4 para relacionar cada grandeza ao gráfico.
 - **Paco (conclusão):** "A figura mostra como cada entrada produz a saída prevista pela regra."
 - **Dica (hint):** "Toque em uma marca para ver o que ela representa no gráfico."
-- **Tati (dúvida):** `início` — P: "O desenho vale fora do domínio?" / R: "Não; as condições da função limitam as entradas válidas."
+- **Tati (dúvida):** `início` — P: "A parábola tem fim?" / R: "Não: o domínio são todos os reais." (reescrito)
 
 **Frase de encerramento (outro):** "Você testou a entrada e a fronteira; por isso f(x)=ax²+bx+c."
 
@@ -208,12 +208,12 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 #### D3 — `d3-funcao-quadratica`
 - **Enunciado:** "Se a=0 em ax²+2x+1, é parábola?"
 - **Figura (opcional):** nenhuma
-- **Conta de conferência:** A expressão vira 2x+1, função linear.
+- **Conta de conferência:** A expressão vira 2x+1, função afim (corrigido: "linear" exigiria b = 0).
 
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
-| `d3-funcao-quadratica-e` | Sim | não | "Resposta: Não; Mantém termo quadrático com coeficiente zero; conferência: A expressão vira 2x+1, função linear." |
-| `d3-funcao-quadratica-c` | Não | **sim** | "Certo: resposta Não; conferência: A expressão vira 2x+1, função linear." |
+| `d3-funcao-quadratica-e` | Sim | não | "Resposta: Não; Mantém termo quadrático com coeficiente zero; conferência: A expressão vira 2x+1, função afim (corrigido: "linear" exigiria b = 0)." |
+| `d3-funcao-quadratica-c` | Não | **sim** | "Certo: resposta Não; conferência: A expressão vira 2x+1, função afim (corrigido: "linear" exigiria b = 0)." |
 
 #### D4 — `d4-funcao-quadratica`
 - **Enunciado:** "Quantas interseções com eixo x tem (x−2)²?"
@@ -232,7 +232,7 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
-| `d5-funcao-quadratica-e` | 6 | não | "Resposta: 4; Confunde soma e produto; conferência: (x−1)(x−3); raízes 1 e 3, soma 4." |
+| `d5-funcao-quadratica-e` | 3 (corrigido: era 6; o produto é 3) | não | "Resposta: 4; Confunde soma e produto; conferência: (x−1)(x−3); raízes 1 e 3, soma 4." |
 | `d5-funcao-quadratica-c` | 4 | **sim** | "Certo: resposta 4; conferência: (x−1)(x−3); raízes 1 e 3, soma 4." |
 
 ### Vestibular
@@ -300,3 +300,6 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 **Texto**
 - [x] Falas, enunciados e feedback têm até 140 caracteres e duas frases; sem emoji ou termos proibidos.
 - [x] Notação usa −, vírgula decimal, ·, potências e coordenadas do app.
+
+---
+**Notas da implementação (JSON):** panorama colocado como dúvida do passo `mudar-a`; a = 0 como dúvida de `mover-vertice`; vestibular `[]` (PENDENTE-FONTE fora). Lacunas de widget: sem marcador de vértice nem eixo de simetria (usado `ponto` na cor c4); as opções de treino ficaram com 2 alternativas como no plano.

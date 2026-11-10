@@ -1,0 +1,257 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Reta que Dobra",
+  "subtitulo": "Parábola, concavidade e vértice",
+  "caminho": { "pilar": "algebra", "setor": "funcoes", "unidade": "funcao-quadratica" },
+  "outro": "Você viu x² apagar o sinal, a refletir a curva e o vértice guiar o desenho: por isso f(x) = ax² + bx + c.",
+  "glossario": {
+    "c1": { "nome": "Entrada x", "resumo": "Valor independente que a função eleva ao quadrado e combina." },
+    "c2": { "nome": "Saída f(x)", "resumo": "Altura da parábola correspondente à entrada x." },
+    "c3": { "nome": "Coeficiente a", "resumo": "Seu sinal define a concavidade; seu módulo muda a abertura." },
+    "c4": { "nome": "Vértice", "resumo": "Ponto extremo que define o eixo de simetria e o limite da imagem." }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "cor": "c2", "rotulo": "y = x²" },
+          { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" }
+        ],
+        "ponto": { "curva": 0, "x": 1, "passo": 0.5, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "Caso neutro: f(x) = x²; que saída você prevê em x = −2 e em x = 2? Arraste o ponto e confira.",
+        "done": "Nos dois lados x² dá 4: o quadrado apaga o sinal. O ponto mais baixo é (0; 0), e a reta y = x ficou só de referência."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda parábola abre para cima?",
+        "resposta": "Não; com a < 0 a curva se reflete e abre para baixo."
+      },
+      "complete_when": { "metric": "faixa_x", "gte": 4 }
+    },
+    {
+      "id": "mudar-a",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "fantasma": true, "rotulo": "y = x²" },
+          { "tipo": "quadratica", "a": "$a", "b": 0, "c": 0, "cor": "c2" }
+        ]
+      },
+      "controls": [{ "id": "a", "label": "Coeficiente quadrático", "min": -3, "max": 3, "step": 1, "initial": 1, "color": "c3" }],
+      "lines": {
+        "intro": "Agora a multiplica o quadrado: f(x) = a·x²; o que muda quando a fica negativo? Leve a até −1.",
+        "done": "a negativo inverte as saídas: a parábola se espelha no eixo x e abre para baixo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Existem curvas além da parábola?",
+        "resposta": "Sim: cúbicas, exponenciais e outras. Aqui ficamos nas formas simples da parábola."
+      },
+      "complete_when": { "metric": "a", "lte": -1 }
+    },
+    {
+      "id": "mover-vertice",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [{ "tipo": "quadratica", "a": 1, "b": -2, "c": 1, "cor": "c2", "rotulo": "f(x) = (x − 1)²" }],
+        "ponto": { "curva": 0, "x": -1, "passo": 0.5, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "Aqui f(x) = (x − 1)²; em qual entrada o quadrado zera? Arraste o ponto até lá e leia a saída.",
+        "done": "Em x = 1, (x − 1)² = 0: é o ponto mais baixo, então vértice e raiz coincidem. A curva é simétrica em torno de x = 1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a for zero?",
+        "resposta": "O termo quadrático some e sobra uma reta: deixa de ser parábola."
+      },
+      "complete_when": { "metric": "na_raiz", "gte": 1 }
+    },
+    {
+      "id": "desafio-fronteira",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [{ "tipo": "quadratica", "a": 1, "b": -2, "c": 0, "cor": "c2", "rotulo": "f(x) = (x − 1)² − 1" }]
+        }
+      },
+      "prompt": "Qual é o vértice de f(x) = (x − 1)² − 1?",
+      "lines": { "intro": "Leia a lei: o quadrado zera em um x, e a saída mínima vem daí. Qual resposta a figura sustenta?" },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda parábola cruza o eixo x?",
+        "resposta": "Não: pode cruzar duas vezes, tocar uma ou ficar sem raiz real. Depende de onde está o vértice."
+      },
+      "options": [
+        {
+          "id": "erro",
+          "label": "(−1; 1)",
+          "correct": false,
+          "feedback": "Os sinais saíram trocados: em x = −1 a saída é 3, não 1. O quadrado zera em x = 1 e o mínimo é −1.",
+          "figure": { "ponto": { "x": -1, "cor": "c4" }, "highlight": ["c4"] }
+        },
+        {
+          "id": "certa",
+          "label": "(1; −1)",
+          "correct": true,
+          "feedback": "Isso. O quadrado zera em x = 1 e a saída mínima é −1: V = (1; −1).",
+          "figure": { "ponto": { "x": 1, "cor": "c4" }, "highlight": ["c4"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [{ "tipo": "quadratica", "a": 1, "b": -2, "c": 0, "cor": "c2", "rotulo": "f(x) = (x − 1)² − 1" }],
+          "ponto": { "x": 1, "cor": "c4" },
+          "marcar": { "raizes": true },
+          "cores": { "raiz": "ink" }
+        }
+      },
+      "formula": [
+        { "text": "f(x)", "ref": "c2" },
+        { "text": "=" },
+        { "text": "a", "ref": "c3" },
+        { "text": "x", "sup": "2" },
+        { "text": "+" },
+        { "text": "bx" },
+        { "text": "+" },
+        { "text": "c" }
+      ],
+      "definitions": [
+        { "term": "Vértice", "text": "ponto extremo da parábola, em x = −b/(2a)." },
+        { "term": "Raiz", "text": "entrada que produz saída zero." },
+        { "term": "Sinal de a", "text": "a > 0 abre para cima; a < 0 abre para baixo." }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "A parábola tem fim?",
+        "resposta": "Não: o domínio são todos os reais. A curva segue para os dois lados, subindo se a > 0 e descendo se a < 0."
+      },
+      "lines": {
+        "intro": "Cada entrada é elevada ao quadrado e combinada com bx e c. Por isso o gráfico é uma parábola, com vértice em x = −b/(2a).",
+        "hint": "Toque em uma marca para ver o que ela representa no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-funcao-quadratica",
+        "prompt": "Em x², quanto vale (−3)²?",
+        "options": [
+          { "id": "e", "label": "−9", "correct": false, "feedback": "O quadrado apaga o sinal: (−3)·(−3) = 9, não −9." },
+          { "id": "c", "label": "9", "correct": true, "feedback": "Isso. (−3)² = (−3)·(−3) = 9: menos com menos dá mais." }
+        ]
+      },
+      {
+        "id": "f2-funcao-quadratica",
+        "prompt": "Em f(x) = −x², para onde abre a parábola?",
+        "options": [
+          { "id": "c", "label": "Para baixo", "correct": true, "feedback": "Isso. Com a = −1 a curva se espelha e abre para baixo." },
+          { "id": "e", "label": "Para cima", "correct": false, "feedback": "Com a = −1 as saídas ficam invertidas: a parábola abre para baixo." }
+        ]
+      },
+      {
+        "id": "f3-funcao-quadratica",
+        "prompt": "Em f(x) = x² − 4, quanto vale f(0)?",
+        "options": [
+          { "id": "e", "label": "4", "correct": false, "feedback": "O −4 mantém o sinal: 0² − 4 = −4." },
+          { "id": "c", "label": "−4", "correct": true, "feedback": "Isso. Com x = 0 o quadrado some e sobra o termo constante: −4." }
+        ]
+      },
+      {
+        "id": "f4-funcao-quadratica",
+        "prompt": "Qual é o eixo de simetria de f(x) = (x − 2)²?",
+        "options": [
+          { "id": "c", "label": "x = 2", "correct": true, "feedback": "Isso. O quadrado zera em x = 2, e a parábola é simétrica em torno dessa reta." },
+          { "id": "e", "label": "x = −2", "correct": false, "feedback": "O sinal dentro do quadrado vem invertido: (x − 2)² zera em x = 2, e esse é o eixo." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-funcao-quadratica",
+        "prompt": "Quais são as raízes de x² − 9 = 0?",
+        "options": [
+          { "id": "e", "label": "0 e 9", "correct": false, "feedback": "9 não é raiz: x² = 9 pede x = 3 ou x = −3. As raízes são −3 e 3." },
+          { "id": "c", "label": "−3 e 3", "correct": true, "feedback": "Isso. x² = 9 dá x = 3 ou x = −3." }
+        ]
+      },
+      {
+        "id": "m2-funcao-quadratica",
+        "prompt": "Qual é o vértice de f(x) = (x − 1)² + 2?",
+        "options": [
+          { "id": "c", "label": "(1; 2)", "correct": true, "feedback": "Isso. O quadrado zera em x = 1, e a saída mínima é 2." },
+          { "id": "e", "label": "(−1; 2)", "correct": false, "feedback": "O sinal em x vem invertido: o quadrado zera em x = 1. O vértice é (1; 2)." }
+        ]
+      },
+      {
+        "id": "m3-funcao-quadratica",
+        "prompt": "Quantas raízes reais tem x² + 1 = 0?",
+        "options": [
+          { "id": "e", "label": "Duas", "correct": false, "feedback": "x² nunca é negativo nos reais, então x² + 1 ≥ 1 e nunca zera. Nenhuma raiz real." },
+          { "id": "c", "label": "Nenhuma", "correct": true, "feedback": "Isso. x² ≥ 0, logo x² + 1 ≥ 1 e a saída nunca zera." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-funcao-quadratica",
+        "prompt": "Qual é o vértice de f(x) = x² − 4x + 3?",
+        "fala": "Complete o quadrado: ache o x que zera a parte quadrada.",
+        "options": [
+          { "id": "e", "label": "(−2; 3)", "correct": false, "feedback": "Cuidado com os sinais: x² − 4x + 3 = (x − 2)² − 1, então V = (2; −1)." },
+          { "id": "c", "label": "(2; −1)", "correct": true, "feedback": "Isso. x² − 4x + 3 = (x − 2)² − 1, com vértice em (2; −1)." }
+        ]
+      },
+      {
+        "id": "d2-funcao-quadratica",
+        "prompt": "Quais são as raízes de x² − 5x + 6 = 0?",
+        "options": [
+          { "id": "c", "label": "2 e 3", "correct": true, "feedback": "Isso. (x − 2)(x − 3) = 0 dá x = 2 ou x = 3." },
+          { "id": "e", "label": "−2 e −3", "correct": false, "feedback": "Os sinais estão trocados: x² − 5x + 6 = (x − 2)(x − 3), com raízes 2 e 3." }
+        ]
+      },
+      {
+        "id": "d3-funcao-quadratica",
+        "prompt": "Em f(x) = ax² + 2x + 1, se a = 0, o gráfico é uma parábola?",
+        "fala": "Veja o que sobra da lei quando o termo quadrático some.",
+        "options": [
+          { "id": "e", "label": "Sim", "correct": false, "feedback": "Com a = 0 o termo quadrático some e sobra 2x + 1, uma reta. Não é parábola." },
+          { "id": "c", "label": "Não", "correct": true, "feedback": "Isso. Fica f(x) = 2x + 1, função afim: o gráfico é uma reta." }
+        ]
+      },
+      {
+        "id": "d4-funcao-quadratica",
+        "prompt": "Quantos pontos em comum com o eixo x tem o gráfico de f(x) = (x − 2)²?",
+        "options": [
+          { "id": "c", "label": "Um", "correct": true, "feedback": "Isso. O vértice (2; 0) está sobre o eixo x: um único ponto em comum." },
+          { "id": "e", "label": "Dois", "correct": false, "feedback": "(x − 2)² = 0 só em x = 2: a parábola apenas toca o eixo, em um ponto." }
+        ]
+      },
+      {
+        "id": "d5-funcao-quadratica",
+        "prompt": "Qual é a soma das raízes de x² − 4x + 3 = 0?",
+        "fala": "Última. Fatore, ache as duas raízes e só então some.",
+        "options": [
+          { "id": "e", "label": "3", "correct": false, "feedback": "3 é o produto das raízes. Como x² − 4x + 3 = (x − 1)(x − 3), as raízes são 1 e 3 e a soma é 4." },
+          { "id": "c", "label": "4", "correct": true, "feedback": "Isso. (x − 1)(x − 3) = 0 tem raízes 1 e 3, e 1 + 3 = 4." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

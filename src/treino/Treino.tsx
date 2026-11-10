@@ -73,7 +73,10 @@ export function Treino({ treino, onSair }: TreinoProps) {
   const [respondida, setRespondida] = useState(false);
   const questoes = useMemo(() => questoesDaEtapa(treino, etapa), [treino, etapa]);
   const fim = index >= questoes.length;
-  const proximaEtapa = ETAPAS[ETAPAS.indexOf(etapa) + 1] as Exclude<Etapa, "basico"> | undefined;
+  // Etapa sem questões (ex.: vestibular ainda sem fonte conferida) é pulada.
+  const proximaEtapa = ETAPAS.slice(ETAPAS.indexOf(etapa) + 1).find((e) => questoesDaEtapa(treino, e).length > 0) as
+    | Exclude<Etapa, "basico">
+    | undefined;
 
   const responder = (certa: boolean) => {
     setRespondida(true);

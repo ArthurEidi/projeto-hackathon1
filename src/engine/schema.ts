@@ -196,7 +196,8 @@ const Treino = z.object({
   faceis: z.array(Questao).length(TREINO_FACEIS),
   medias: z.array(Questao).length(TREINO_MEDIAS),
   desafios: z.array(Questao).length(TREINO_DESAFIOS),
-  vestibular: z.array(QuestaoVestibular).length(TREINO_VESTIBULAR),
+  // Pode vir com menos de 4 (até vazio) enquanto as fontes reais não forem conferidas; nunca inventar questão.
+  vestibular: z.array(QuestaoVestibular).max(TREINO_VESTIBULAR),
 });
 
 /** Significado das marcas c1..c4 nesta aula (h, r, g já vêm do glossário padrão do cone). */
