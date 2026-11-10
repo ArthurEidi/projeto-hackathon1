@@ -165,6 +165,20 @@
                   "arquivo": "aritmetica/estatistica/distribuicao-de-frequencias-e-amostragem/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "medidas-de-tendencia-central",
+              "titulo": "Média, Mediana e Moda",
+              "icone": "barras",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Ponto de Equilíbrio",
+                  "subtitulo": "Média, mediana e moda",
+                  "arquivo": "aritmetica/estatistica/medidas-de-tendencia-central/aula-01.json"
+                }
+              ]
             }
           ]
         }

@@ -1,0 +1,828 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "O Ponto de Equilíbrio",
+  "subtitulo": "Média, mediana e moda",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "estatistica",
+    "unidade": "medidas-de-tendencia-central"
+  },
+  "outro": "Você equilibrou pesos numa régua: a média é o apoio, a mediana é o meio da fila e a moda é o que mais se repete.",
+  "glossario": {
+    "c1": {
+      "nome": "Soma dos valores",
+      "resumo": "Todos os valores somados."
+    },
+    "c2": {
+      "nome": "Quantidade",
+      "resumo": "Quantos valores há na lista (n)."
+    },
+    "c3": {
+      "nome": "Média",
+      "resumo": "Ponto de equilíbrio: soma dividida pela quantidade."
+    },
+    "c4": {
+      "nome": "Mediana",
+      "resumo": "O valor do meio quando a lista está em ordem."
+    }
+  },
+  "steps": [
+    {
+      "id": "todos-iguais",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "pontos",
+        "valores": [
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "regua": [
+          0,
+          10
+        ],
+        "arrastaveis": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "mostrar": {
+          "mediana": true,
+          "moda": true
+        }
+      },
+      "lines": {
+        "intro": "Cinco notas iguais a 6: onde ficam média, mediana e moda? Arraste uma nota e veja quem se mexe.",
+        "done": "Iguais, as três ficam em 6. Mexendo uma nota, a média anda junto, mas a mediana pode ficar parada."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Só existem essas três médias?",
+        "resposta": "Há ponderada, geométrica e outras, além das medidas de espalhamento. Hoje: média, mediana e moda."
+      },
+      "complete_when": {
+        "metric": "arrastes",
+        "gte": 1
+      }
+    },
+    {
+      "id": "gangorra",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "pontos",
+        "valores": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "regua": [
+          0,
+          10
+        ],
+        "apoio": "arrastavel",
+        "apoio_inicial": 2
+      },
+      "lines": {
+        "intro": "Pense nas notas como pesos numa régua. Onde fica o apoio para ela não tombar?",
+        "done": "Em 5 as distâncias da esquerda (3 + 1) igualam as da direita (1 + 3). A média é esse ponto: (2 + 4 + 6 + 8) ÷ 4 = 5."
+      },
+      "complete_when": {
+        "metric": "equilibrio",
+        "gte": 1
+      }
+    },
+    {
+      "id": "valor-extremo",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "pontos",
+        "valores": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "regua": [
+          0,
+          30
+        ],
+        "arrastaveis": [
+          4
+        ],
+        "mostrar": {
+          "mediana": true
+        }
+      },
+      "lines": {
+        "intro": "Arraste a maior nota para bem longe. Quem foge mais: a média ou a mediana?",
+        "done": "Com 30, a média foi de 6 para 10,4; a mediana ficou em 6. Um valor extremo puxa a média, mas não muda quem está no meio."
+      },
+      "complete_when": {
+        "metric": "maior_valor",
+        "gte": 25
+      }
+    },
+    {
+      "id": "par-e-moda",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "pontos",
+        "valores": [
+          3,
+          5,
+          5,
+          7,
+          8,
+          10
+        ],
+        "regua": [
+          0,
+          10
+        ],
+        "chaves": [
+          "fila"
+        ],
+        "tocar_meios": true,
+        "mostrar": {
+          "mediana": true,
+          "moda": true
+        }
+      },
+      "lines": {
+        "intro": "Com seis notas, não há uma única do meio. Qual valor fica no centro da fila, e qual se repete mais?",
+        "done": "A mediana é a média dos dois do meio: (5 + 7) ÷ 2 = 6. A moda é 5, o valor que mais aparece."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Pode ter duas modas, ou nenhuma?",
+        "resposta": "Pode: um empate faz duas modas, e se nenhum valor repete não há moda."
+      },
+      "complete_when": {
+        "metric": "meios_tocados",
+        "gte": 2
+      }
+    },
+    {
+      "id": "desafio-nota-que-falta",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "pontos",
+          "valores": [
+            5,
+            7,
+            7
+          ],
+          "regua": [
+            0,
+            10
+          ],
+          "apoio": 7,
+          "incognita": 2
+        }
+      },
+      "prompt": "Um aluno tirou 5 e 7 e quer média 7 em três provas. Quanto precisa tirar na terceira?",
+      "lines": {
+        "intro": "O apoio está fixo em 7. Onde precisa ficar o terceiro peso para equilibrar?"
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "7",
+          "correct": false,
+          "feedback": "Com 7, a média seria 19 ÷ 3 ≈ 6,3. Para média 7 a soma tem de ser 21: falta 9.",
+          "figure": {
+            "valores": [
+              5,
+              7,
+              7
+            ]
+          }
+        },
+        {
+          "id": "o2",
+          "label": "9",
+          "correct": true,
+          "feedback": "Isso. 5 + 7 + 9 = 21, e 21 ÷ 3 = 7.",
+          "figure": {
+            "valores": [
+              5,
+              7,
+              9
+            ]
+          }
+        },
+        {
+          "id": "o3",
+          "label": "21",
+          "correct": false,
+          "feedback": "21 é a soma necessária, não a nota. Faltam 21 − 12 = 9.",
+          "figure": {
+            "valores": [
+              5,
+              7,
+              9
+            ],
+            "highlight": [
+              "c1"
+            ]
+          }
+        },
+        {
+          "id": "o4",
+          "label": "8",
+          "correct": false,
+          "feedback": "Com 8 a soma seria 20 e a média 6,7. Precisa de 9.",
+          "figure": {
+            "valores": [
+              5,
+              7,
+              8
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "pontos",
+          "valores": [
+            3,
+            5,
+            5,
+            7,
+            8,
+            10
+          ],
+          "regua": [
+            0,
+            10
+          ],
+          "mostrar": {
+            "mediana": true,
+            "moda": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "x̄",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "soma",
+          "ref": "c1"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "n",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Média",
+          "text": "ponto de equilíbrio, soma dividida pela quantidade."
+        },
+        {
+          "term": "Mediana",
+          "text": "valor central da lista ordenada (ou a média dos dois centrais)."
+        },
+        {
+          "term": "Moda",
+          "text": "o valor que mais se repete."
+        }
+      ],
+      "lines": {
+        "intro": "A média equilibra as distâncias dos dois lados, por isso é soma sobre quantidade. A mediana olha só a posição na fila.",
+        "hint": "Toque em uma letra para ver onde ela aparece na régua."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "media-2-4-6",
+        "prompt": "Qual a média de 2, 4 e 6?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "4",
+            "correct": true,
+            "feedback": "Isso. 12 ÷ 3 = 4."
+          },
+          {
+            "id": "o2",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é a soma. Dividindo por 3: 4."
+          },
+          {
+            "id": "o3",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é o maior valor. A média é 12 ÷ 3 = 4."
+          },
+          {
+            "id": "o4",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é a quantidade. A média é 12 ÷ 3 = 4."
+          }
+        ]
+      },
+      {
+        "id": "mediana-impar",
+        "prompt": "Qual a mediana de 3, 9, 1, 5, 7?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "3",
+            "correct": false,
+            "feedback": "Sem ordenar, o meio engana. Ordenada, a mediana é 5."
+          },
+          {
+            "id": "o1",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. Em ordem, o 5 fica no meio."
+          },
+          {
+            "id": "o2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Primeiro ponha em ordem: 1, 3, 5, 7, 9. O meio é 5."
+          },
+          {
+            "id": "o3",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é o maior. A mediana, no meio da fila ordenada, é 5."
+          }
+        ]
+      },
+      {
+        "id": "moda",
+        "prompt": "Qual a moda de 2, 3, 3, 5, 8?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 aparece uma vez. A moda é 3."
+          },
+          {
+            "id": "o4",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 aparece uma vez. O que se repete é 3."
+          },
+          {
+            "id": "o1",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. É o único valor repetido."
+          },
+          {
+            "id": "o2",
+            "label": "4,2",
+            "correct": false,
+            "feedback": "4,2 é a média. A moda é o mais frequente: 3."
+          }
+        ]
+      },
+      {
+        "id": "todas-iguais",
+        "prompt": "Uma turma tirou 7 em todas as notas. Qual é a média?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Sem variação, a média é o próprio valor: 7."
+          },
+          {
+            "id": "o3",
+            "label": "Depende de quantos",
+            "correct": false,
+            "feedback": "Com todos em 7, a média é 7 para qualquer quantidade."
+          },
+          {
+            "id": "o4",
+            "label": "70",
+            "correct": false,
+            "feedback": "70 seria a soma de 10 notas. A média é 7."
+          },
+          {
+            "id": "o1",
+            "label": "7",
+            "correct": true,
+            "feedback": "Certo. Valores iguais: média igual a eles."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "mediana-par",
+        "prompt": "Qual a mediana de 2, 4, 6, 8?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "Não há",
+            "correct": false,
+            "feedback": "Há sim: a média dos dois centrais, 5."
+          },
+          {
+            "id": "o1",
+            "label": "5",
+            "correct": true,
+            "feedback": "Isso. Média dos dois centrais."
+          },
+          {
+            "id": "o2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Com quantidade par, use os dois do meio: (4 + 6) ÷ 2 = 5."
+          },
+          {
+            "id": "o3",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é um dos centrais. A mediana é (4 + 6) ÷ 2 = 5."
+          }
+        ]
+      },
+      {
+        "id": "soma-pela-media",
+        "prompt": "A média de 4 provas foi 6. Quanto dá a soma das notas?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "1,5",
+            "correct": false,
+            "feedback": "6 ÷ 4 inverte. Soma = 6 · 4 = 24."
+          },
+          {
+            "id": "o4",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é a média. A soma é 24."
+          },
+          {
+            "id": "o1",
+            "label": "24",
+            "correct": true,
+            "feedback": "Certo. Soma = média · quantidade."
+          },
+          {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "6 + 4 não é a conta. Soma = 6 · 4 = 24."
+          }
+        ]
+      },
+      {
+        "id": "salario-tipico",
+        "prompt": "Salários de 5 pessoas, em mil reais: 1, 1, 1, 1 e 16. Qual medida representa melhor o salário típico?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Mediana",
+            "correct": true,
+            "feedback": "Isso. A mediana, 1, mostra o comum; o 16 puxa a média para 4."
+          },
+          {
+            "id": "o2",
+            "label": "Média",
+            "correct": false,
+            "feedback": "A média dá 4, mas ninguém ganha perto disso. A mediana, 1, é mais típica."
+          },
+          {
+            "id": "o3",
+            "label": "O maior valor",
+            "correct": false,
+            "feedback": "16 é uma exceção. O típico é a mediana, 1."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "ponderada",
+        "prompt": "A prova tem peso 2 e o trabalho peso 1. Com 8 na prova e 5 no trabalho, qual é a média ponderada?",
+        "fala": "Peso 2 é como contar a prova duas vezes.",
+        "options": [
+          {
+            "id": "o3",
+            "label": "10,5",
+            "correct": false,
+            "feedback": "10,5 divide por 2 notas. Divida pela soma dos pesos, 3: 21 ÷ 3 = 7."
+          },
+          {
+            "id": "o4",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 é só a prova. Com o trabalho: (16 + 5) ÷ 3 = 7."
+          },
+          {
+            "id": "o1",
+            "label": "7",
+            "correct": true,
+            "feedback": "Certo. (8 + 8 + 5) ÷ 3 = 7."
+          },
+          {
+            "id": "o2",
+            "label": "6,5",
+            "correct": false,
+            "feedback": "6,5 ignora os pesos. Com a prova valendo 2: (16 + 5) ÷ 3 = 7."
+          }
+        ]
+      },
+      {
+        "id": "entra-um-valor",
+        "prompt": "A média de 5 números é 10. Acrescentando o número 16, qual a nova média?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "13",
+            "correct": false,
+            "feedback": "(10 + 16) ÷ 2 trata a média como um valor só. Soma 66 ÷ 6 = 11."
+          },
+          {
+            "id": "o3",
+            "label": "13,2",
+            "correct": false,
+            "feedback": "Divida por 6, não por 5: 66 ÷ 6 = 11."
+          },
+          {
+            "id": "o4",
+            "label": "10",
+            "correct": false,
+            "feedback": "16 está acima da média, então ela sobe: 66 ÷ 6 = 11."
+          },
+          {
+            "id": "o1",
+            "label": "11",
+            "correct": true,
+            "feedback": "Isso. Soma 66 em 6 números."
+          }
+        ]
+      },
+      {
+        "id": "media-de-grupos",
+        "prompt": "Uma turma de 10 alunos tem média 6 e outra de 20 tem média 9. Qual a média das duas juntas?",
+        "fala": "A turma maior pesa mais.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "8",
+            "correct": true,
+            "feedback": "Certo. Soma 240 em 30 alunos."
+          },
+          {
+            "id": "o2",
+            "label": "7,5",
+            "correct": false,
+            "feedback": "7,5 dá o mesmo peso às turmas. A maior pesa o dobro: 240 ÷ 30 = 8."
+          },
+          {
+            "id": "o3",
+            "label": "15",
+            "correct": false,
+            "feedback": "6 + 9 não é média. Somando notas: 240 ÷ 30 = 8."
+          },
+          {
+            "id": "o4",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é só a turma maior. Juntas: 8."
+          }
+        ]
+      },
+      {
+        "id": "nota-para-media-7",
+        "prompt": "Um aluno tirou 6 e 7 e quer média 7 em três provas. Quanto precisa na terceira?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "9",
+            "correct": false,
+            "feedback": "Com 9 a média passa de 7. Basta 8."
+          },
+          {
+            "id": "o1",
+            "label": "8",
+            "correct": true,
+            "feedback": "Isso. Soma 21 menos 13 = 8."
+          },
+          {
+            "id": "o2",
+            "label": "7",
+            "correct": false,
+            "feedback": "Com 7, a soma seria 20 e a média 6,7. Precisa de 8."
+          },
+          {
+            "id": "o3",
+            "label": "21",
+            "correct": false,
+            "feedback": "21 é a soma necessária. A nota é 21 − 13 = 8."
+          }
+        ]
+      },
+      {
+        "id": "o-que-nao-muda",
+        "prompt": "Na lista 2, 4, 6, 8, 10, o maior valor passa a ser 100. Qual medida não muda?",
+        "fala": "Última. Quem olha só a posição na fila?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "Soma",
+            "correct": false,
+            "feedback": "A soma cresce 90. Quem não muda é a mediana."
+          },
+          {
+            "id": "o4",
+            "label": "Todas mudam",
+            "correct": false,
+            "feedback": "A mediana depende só da posição: continua 6."
+          },
+          {
+            "id": "o1",
+            "label": "Mediana",
+            "correct": true,
+            "feedback": "Certo. O meio da fila ainda é 6."
+          },
+          {
+            "id": "o2",
+            "label": "Média",
+            "correct": false,
+            "feedback": "A média sobe de 6 para 24. A mediana fica em 6."
+          }
+        ]
+      }
+    ],
+    "vestibular": [
+      {
+        "id": "enem-2018-media-ponderada",
+        "prompt": "Pesos 20%, 10%, 30% e 40%; média mínima 60. Com 46, 60 e 50 nas três primeiras, quanto falta tirar na quarta?",
+        "fala": "Some o que já foi garantido e veja quanto falta para 60.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 166, caderno azul: enunciado resumido; alternativas mantidas; gabarito conferido pela conta (74,5).",
+          "urls": [
+            "https://www.todamateria.com.br/lista-de-exercicios-de-media-moda-e-mediana-de-enem/"
+          ]
+        },
+        "options": [
+          {
+            "id": "o1",
+            "label": "29,8",
+            "correct": false,
+            "feedback": "29,8 é o que falta na média, mas a 4ª prova vale 40%. Nota: 29,8 ÷ 0,4 = 74,5."
+          },
+          {
+            "id": "o2",
+            "label": "71,0",
+            "correct": false,
+            "feedback": "Com 71 a média fica 58,6. Precisa de 29,8 ÷ 0,4 = 74,5."
+          },
+          {
+            "id": "o3",
+            "label": "74,5",
+            "correct": true,
+            "feedback": "Isso. As três primeiras dão 30,2; faltam 29,8, e 29,8 ÷ 0,4 = 74,5."
+          },
+          {
+            "id": "o4",
+            "label": "75,5",
+            "correct": false,
+            "feedback": "75,5 passa do mínimo. O mínimo exato é 29,8 ÷ 0,4 = 74,5."
+          },
+          {
+            "id": "o5",
+            "label": "84,0",
+            "correct": false,
+            "feedback": "84 ignora os pesos. Pesando: 74,5 basta."
+          }
+        ]
+      },
+      {
+        "id": "uft-2013-alturas",
+        "prompt": "A altura média de 35 indígenas é 1,65 m, e a dos 20 homens é 1,70 m. Qual a altura média das mulheres?",
+        "fala": "Use somas: total do grupo menos total dos homens.",
+        "fonte": {
+          "banca": "UFT",
+          "ano": 2013,
+          "adaptada": true,
+          "adaptacao": "Enunciado resumido; alternativas e gabarito (1,58) mantidos.",
+          "urls": [
+            "https://www.todamateria.com.br/exercicios-de-media-moda-e-mediana/"
+          ]
+        },
+        "options": [
+          {
+            "id": "o1",
+            "label": "1,46",
+            "correct": false,
+            "feedback": "Somas: 57,75 − 34 = 23,75 para 15 mulheres. Média ≈ 1,58."
+          },
+          {
+            "id": "o2",
+            "label": "1,55",
+            "correct": false,
+            "feedback": "Divida 23,75 por 15, não por 20 ou 35. Dá ≈ 1,58."
+          },
+          {
+            "id": "o3",
+            "label": "1,58",
+            "correct": true,
+            "feedback": "Certo. 23,75 ÷ 15 ≈ 1,58 m."
+          },
+          {
+            "id": "o4",
+            "label": "1,60",
+            "correct": false,
+            "feedback": "A conta pelas somas dá 23,75 ÷ 15 ≈ 1,58."
+          },
+          {
+            "id": "o5",
+            "label": "1,65",
+            "correct": false,
+            "feedback": "1,65 é a média geral. As mulheres puxam para baixo: ≈ 1,58."
+          }
+        ]
+      },
+      {
+        "id": "essa-2012-aprovados",
+        "prompt": "A média de todos os candidatos foi 9,0; a dos aprovados, 9,8; a dos eliminados, 7,8. Que porcentagem foi aprovada?",
+        "fala": "Média geral é o equilíbrio entre os dois grupos.",
+        "fonte": {
+          "banca": "EsSA",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Enunciado resumido; alternativas e gabarito (60%) mantidos.",
+          "urls": [
+            "https://www.todamateria.com.br/exercicios-de-media-moda-e-mediana/"
+          ]
+        },
+        "options": [
+          {
+            "id": "o1",
+            "label": "20%",
+            "correct": false,
+            "feedback": "Equilíbrio: 0,8 · A = 1,2 · E, então A = 1,5 E. Aprovados: 60%."
+          },
+          {
+            "id": "o2",
+            "label": "25%",
+            "correct": false,
+            "feedback": "Os aprovados estão mais perto da média geral, então são maioria: 60%."
+          },
+          {
+            "id": "o3",
+            "label": "30%",
+            "correct": false,
+            "feedback": "A distância 0,8 dos aprovados contra 1,2 dos eliminados dá A = 1,5 E: 60%."
+          },
+          {
+            "id": "o4",
+            "label": "50%",
+            "correct": false,
+            "feedback": "Com 50% a média seria 8,8. Para 9,0 os aprovados são 60%."
+          },
+          {
+            "id": "o5",
+            "label": "60%",
+            "correct": true,
+            "feedback": "Isso. A = 1,5 E, então A é 60% do total."
+          }
+        ]
+      }
+    ]
+  }
+}

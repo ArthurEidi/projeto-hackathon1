@@ -198,7 +198,7 @@ Com quantidade par, a mediana é a média dos dois centrais. Pode haver duas mod
 |---|---|---|---|
 | `a7` | 7 | **sim** | "Certo. (8 + 8 + 5) / 3 = 7." |
 | `a6-5` | 6,5 | não | "6,5 ignora os pesos. Com a prova valendo 2: (16 + 5) / 3 = 7." |
-| `a10-5` | 10,5 | não | "Faltou dividir pela soma dos pesos, 3: 21 / 3 = 7." |
+| `a10-5` | 10,5 | não | "10,5 divide por 2 notas. Divida pela soma dos pesos, 3: 21 / 3 = 7." (corrigido: o feedback antigo não explicava 10,5 = 21 / 2) |
 | `a8` | 8 | não | "8 é só a prova. Com o trabalho: (16 + 5) / 3 = 7." |
 
 #### D2 — `entra-um-valor`
@@ -294,3 +294,6 @@ Com quantidade par, a mediana é a média dos dois centrais. Pode haver duas mod
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** mediana ou moda lidas em tabela de frequências.
 - **Onde procurar:** ENEM (questões de "mediana" sem imagem).
+
+---
+**Notas da implementação (JSON):** `barras` modo `pontos` (apoio arrastável no passo 2 com `apoio_inicial` 2; maior peso arrastável no passo 3; `chaves: ["fila"]` e `tocar_meios` no passo 4). Vestibular: V1-V3 do plano incluídos (ENEM 2018, UFT 2013, EsSA 2012) com as URLs do plano; conferi só as contas, não reabri as fontes; V4 PENDENTE-FONTE fora. Lacunas: o alerta "mediana sem ordenar" do item g) não foi implementado (nenhum parâmetro o pede); c1 (soma) e c2 (quantidade) do fechamento não têm elemento desenhado na régua.
