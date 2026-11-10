@@ -137,6 +137,20 @@
                   "arquivo": null
                 }
               ]
+            },
+            {
+              "id": "leitura-de-tabelas-e-graficos",
+              "titulo": "Leitura de Tabelas e Gráficos",
+              "icone": "barras",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Régua do Gráfico",
+                  "subtitulo": "Barras, linhas, setores e escalas que enganam",
+                  "arquivo": "aritmetica/estatistica/leitura-de-tabelas-e-graficos/aula-01.json"
+                }
+              ]
             }
           ]
         }

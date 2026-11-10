@@ -263,3 +263,6 @@ Truncar o eixo exagera diferenças; ampliar demais o eixo esconde mudanças. Set
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** escala do eixo e gráfico enganoso.
 - **Onde procurar:** ENEM, Unicamp.
+
+---
+**Notas da implementação (JSON):** widget canônico `barras`/`barras_figura` modo `categorias`; barras em `ink` (c1 é "Porcentagem" no glossário); passo 2 com `eixo_fim` 60 e `comparar [0,1]`. Vestibular `[]`. Lacuna: `categorias` não desenha os degraus +5/+10/+3 entre barras (o plano pedia no desafio): usei `acesas` para acender a(s) barra(s) lida(s) por cada opção. Unidade nova na taxonomia (setor estatistica).

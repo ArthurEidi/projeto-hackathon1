@@ -1,0 +1,717 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Régua do Gráfico",
+  "subtitulo": "Barras, linhas, setores e escalas que enganam",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "estatistica",
+    "unidade": "leitura-de-tabelas-e-graficos"
+  },
+  "outro": "Você viu a mesma tabela virar barras, linha e setores, e aprendeu a desconfiar de eixos que não começam em zero.",
+  "glossario": {
+    "c1": {
+      "nome": "Porcentagem",
+      "resumo": "A parte do total que a categoria representa."
+    },
+    "c2": {
+      "nome": "Ângulo do setor",
+      "resumo": "Fatia do círculo: porcentagem vezes 360°."
+    },
+    "c3": {
+      "nome": "Valor",
+      "resumo": "O número da tabela que a barra ou o ponto representa."
+    },
+    "c4": {
+      "nome": "Início do eixo",
+      "resumo": "Onde a régua vertical começa; fora de zero, distorce barras."
+    }
+  },
+  "steps": [
+    {
+      "id": "tabela-vira-barras",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "Seg",
+            "valor": 20
+          },
+          {
+            "nome": "Ter",
+            "valor": 40
+          },
+          {
+            "nome": "Qua",
+            "valor": 30
+          },
+          {
+            "nome": "Qui",
+            "valor": 10
+          }
+        ],
+        "tabela": true,
+        "cor": "ink"
+      },
+      "lines": {
+        "intro": "A tabela diz que terça vendeu 40 e quinta, 10. Toque nas duas barras: quantas vezes a de terça é maior?",
+        "done": "4 vezes maior. Com o eixo começando em zero, a altura é proporcional ao valor."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Gráfico é sempre de barras?",
+        "resposta": "Há linhas, setores, histogramas e mapas. Hoje: barras, linhas e setores."
+      },
+      "complete_when": {
+        "metric": "barras_tocadas",
+        "gte": 2
+      }
+    },
+    {
+      "id": "eixo-truncado",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "Candidato A",
+            "valor": 50
+          },
+          {
+            "nome": "Candidato B",
+            "valor": 55
+          }
+        ],
+        "eixo_inicio": "$eixo",
+        "comparar": [
+          0,
+          1
+        ],
+        "cor": "ink",
+        "eixo_fim": 60
+      },
+      "controls": [
+        {
+          "id": "eixo",
+          "label": "Início do eixo",
+          "min": 0,
+          "max": 45,
+          "step": 5,
+          "initial": 0,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "A tem 50 votos e B tem 55. Suba o início do eixo e veja o que acontece com a diferença aparente.",
+        "done": "Com o eixo em 45, B parece o dobro de A. Os números não mudaram: B tem só 10% a mais."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então gráfico com eixo cortado é mentira?",
+        "resposta": "Nem sempre, mas para barras engana. Confira sempre onde a régua começa."
+      },
+      "complete_when": {
+        "metric": "eixo",
+        "gte": 45
+      }
+    },
+    {
+      "id": "linha-no-tempo",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "Seg",
+            "valor": 18
+          },
+          {
+            "nome": "Ter",
+            "valor": 20
+          },
+          {
+            "nome": "Qua",
+            "valor": 25
+          },
+          {
+            "nome": "Qui",
+            "valor": 26
+          },
+          {
+            "nome": "Sex",
+            "valor": 22
+          }
+        ],
+        "tipos": [
+          "barras",
+          "linha"
+        ],
+        "cor": "ink"
+      },
+      "lines": {
+        "intro": "Para mostrar como a temperatura mudou dia a dia, barras ou linha? Troque e veja qual deixa a mudança mais clara.",
+        "done": "A linha liga os dias em ordem e mostra a tendência. Onde ela inclina mais, a mudança foi maior: de 20 para 25."
+      },
+      "complete_when": {
+        "metric": "tipo_linha",
+        "gte": 1
+      }
+    },
+    {
+      "id": "setores",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "Pizza",
+            "valor": 25
+          },
+          {
+            "nome": "Massa",
+            "valor": 25
+          },
+          {
+            "nome": "Lanche",
+            "valor": 40
+          },
+          {
+            "nome": "Salada",
+            "valor": 10
+          }
+        ],
+        "tipos": [
+          "barras",
+          "setores"
+        ],
+        "unidade": "%",
+        "cor": "ink"
+      },
+      "lines": {
+        "intro": "Agora importa a fatia de cada parte no total. Troque para setores: quanto do círculo vale 25%?",
+        "done": "Um quarto do círculo, 90°. O círculo inteiro é o total, então cada fatia é a porcentagem vezes 360°."
+      },
+      "complete_when": {
+        "metric": "tipo_setores",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-maior-crescimento",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "Jan",
+              "valor": 10
+            },
+            {
+              "nome": "Fev",
+              "valor": 15
+            },
+            {
+              "nome": "Mar",
+              "valor": 25
+            },
+            {
+              "nome": "Abr",
+              "valor": 28
+            }
+          ],
+          "cor": "ink"
+        }
+      },
+      "prompt": "Em qual mês as vendas mais cresceram em relação ao mês anterior?",
+      "lines": {
+        "intro": "Cuidado: crescer mais não é ter a maior barra."
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "Abril",
+          "correct": false,
+          "feedback": "Abril tem a maior barra, mas subiu só 3. Março subiu 10, de 15 para 25.",
+          "figure": {
+            "acesas": [
+              3
+            ]
+          }
+        },
+        {
+          "id": "o2",
+          "label": "Março",
+          "correct": true,
+          "feedback": "Isso. De 15 para 25 são +10, o maior degrau.",
+          "figure": {
+            "acesas": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "o3",
+          "label": "Fevereiro",
+          "correct": false,
+          "feedback": "Fevereiro subiu 5. Março subiu 10: foi o maior aumento.",
+          "figure": {
+            "acesas": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "id": "o4",
+          "label": "Janeiro",
+          "correct": false,
+          "feedback": "Janeiro é o primeiro mês, sem anterior para comparar. O maior aumento foi março, +10.",
+          "figure": {
+            "acesas": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "Pizza",
+              "valor": 25
+            },
+            {
+              "nome": "Massa",
+              "valor": 25
+            },
+            {
+              "nome": "Lanche",
+              "valor": 40
+            },
+            {
+              "nome": "Salada",
+              "valor": 10
+            }
+          ],
+          "tipo": "setores",
+          "unidade": "%"
+        }
+      },
+      "formula": [
+        {
+          "text": "ângulo",
+          "ref": "c2"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "porcentagem",
+          "ref": "c1"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "360°"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Barras",
+          "text": "comparam valores pela altura; o eixo deve começar em zero."
+        },
+        {
+          "term": "Linha",
+          "text": "mostra mudança no tempo; a inclinação é o ritmo."
+        },
+        {
+          "term": "Setores",
+          "text": "mostram partes de um total que soma 100%."
+        }
+      ],
+      "lines": {
+        "intro": "Cada gráfico é uma régua diferente. Por isso o setor usa ângulo proporcional e a barra exige eixo a partir de zero.",
+        "hint": "Toque em uma palavra para ver o que ela mede no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "maior-da-tabela",
+        "prompt": "Uma feira vendeu 12 kg de maçã, 18 kg de banana e 6 kg de uva. Qual barra será a mais alta?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Banana",
+            "correct": true,
+            "feedback": "Isso. 18 kg é o maior valor."
+          },
+          {
+            "id": "o2",
+            "label": "Maçã",
+            "correct": false,
+            "feedback": "Maçã tem 12 kg. A maior é banana, 18 kg."
+          },
+          {
+            "id": "o3",
+            "label": "Uva",
+            "correct": false,
+            "feedback": "Uva tem 6 kg, a menor. A maior é banana."
+          },
+          {
+            "id": "o4",
+            "label": "Iguais",
+            "correct": false,
+            "feedback": "Os valores são diferentes. A maior barra é a da banana."
+          }
+        ]
+      },
+      {
+        "id": "metade-do-circulo",
+        "prompt": "Num gráfico de setores, uma fatia de 50% ocupa quantos graus?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "360°",
+            "correct": false,
+            "feedback": "360° é o círculo todo. Metade: 180°."
+          },
+          {
+            "id": "o1",
+            "label": "180°",
+            "correct": true,
+            "feedback": "Certo. Metade do círculo: 0,5 · 360° = 180°."
+          },
+          {
+            "id": "o2",
+            "label": "90°",
+            "correct": false,
+            "feedback": "90° é um quarto. 50% é metade: 180°."
+          },
+          {
+            "id": "o3",
+            "label": "50°",
+            "correct": false,
+            "feedback": "Porcentagem não vira grau direto. 0,5 · 360° = 180°."
+          }
+        ]
+      },
+      {
+        "id": "barra-dobro",
+        "prompt": "Com o eixo começando em zero, a barra A vale 20 e a B vale 40. A barra B é quantas vezes a A?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "4",
+            "correct": false,
+            "feedback": "40 é o dobro de 20, não o quádruplo."
+          },
+          {
+            "id": "o4",
+            "label": "1",
+            "correct": false,
+            "feedback": "As barras não são iguais: B tem o dobro."
+          },
+          {
+            "id": "o1",
+            "label": "2",
+            "correct": true,
+            "feedback": "Isso. Eixo em zero: altura proporcional, 40 ÷ 20 = 2."
+          },
+          {
+            "id": "o2",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 é a diferença. Quantas vezes: 40 ÷ 20 = 2."
+          }
+        ]
+      },
+      {
+        "id": "tipo-para-tempo",
+        "prompt": "Para mostrar a temperatura ao longo da semana, qual gráfico é mais indicado?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "Setores",
+            "correct": false,
+            "feedback": "Setores mostram partes de um total. Para tempo, linha."
+          },
+          {
+            "id": "o3",
+            "label": "Só tabela",
+            "correct": false,
+            "feedback": "A tabela funciona, mas a linha mostra a tendência de relance."
+          },
+          {
+            "id": "o4",
+            "label": "Barras",
+            "correct": false,
+            "feedback": "Barras comparam categorias. Para a mudança no tempo, linha é melhor."
+          },
+          {
+            "id": "o1",
+            "label": "Linha",
+            "correct": true,
+            "feedback": "Certo. A linha mostra a mudança de um dia para o outro."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "quanto-a-mais",
+        "prompt": "A tem 50 votos e B tem 55. Quantos por cento B tem a mais que A?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "50%",
+            "correct": false,
+            "feedback": "A diferença é 5 votos, 10% de 50."
+          },
+          {
+            "id": "o1",
+            "label": "10%",
+            "correct": true,
+            "feedback": "Isso. 5 a mais sobre 50: 10%."
+          },
+          {
+            "id": "o2",
+            "label": "100%",
+            "correct": false,
+            "feedback": "100% é o que o eixo cortado sugere. A conta é 5 ÷ 50 = 10%."
+          },
+          {
+            "id": "o3",
+            "label": "5%",
+            "correct": false,
+            "feedback": "5 é a diferença em votos. Em relação a 50: 10%."
+          }
+        ]
+      },
+      {
+        "id": "setor-72",
+        "prompt": "Um setor de 72° representa qual porcentagem do total?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "25%",
+            "correct": false,
+            "feedback": "25% seria 90°. 72° é 20%."
+          },
+          {
+            "id": "o4",
+            "label": "36%",
+            "correct": false,
+            "feedback": "72 ÷ 360 = 0,2, ou seja, 20%."
+          },
+          {
+            "id": "o1",
+            "label": "20%",
+            "correct": true,
+            "feedback": "Certo. 72 é um quinto de 360."
+          },
+          {
+            "id": "o2",
+            "label": "72%",
+            "correct": false,
+            "feedback": "Grau não é porcentagem. 72 ÷ 360 = 20%."
+          }
+        ]
+      },
+      {
+        "id": "variacao-linha",
+        "prompt": "Uma linha passa por 100 em janeiro, 120 em fevereiro e 90 em março. Quanto variou de fevereiro para março?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "30",
+            "correct": false,
+            "feedback": "O valor caiu de 120 para 90: variação −30."
+          },
+          {
+            "id": "o3",
+            "label": "−10",
+            "correct": false,
+            "feedback": "−10 compara março com janeiro. De fevereiro: −30."
+          },
+          {
+            "id": "o4",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 é de janeiro para fevereiro. De fevereiro para março: −30."
+          },
+          {
+            "id": "o1",
+            "label": "−30",
+            "correct": true,
+            "feedback": "Isso. Caiu 30, a linha desce."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "trinta-por-cento",
+        "prompt": "Numa pesquisa com 200 pessoas, o setor de quem prefere X marca 30%. Quantas pessoas preferem X?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "108",
+            "correct": false,
+            "feedback": "108 é o ângulo em graus. Pessoas: 0,3 · 200 = 60."
+          },
+          {
+            "id": "o4",
+            "label": "170",
+            "correct": false,
+            "feedback": "170 é 200 − 30. 30% de 200 é 60."
+          },
+          {
+            "id": "o1",
+            "label": "60",
+            "correct": true,
+            "feedback": "Certo. 30% de 200: 0,3 · 200 = 60."
+          },
+          {
+            "id": "o2",
+            "label": "30",
+            "correct": false,
+            "feedback": "30 é a porcentagem. De 200 pessoas: 60."
+          }
+        ]
+      },
+      {
+        "id": "aumento-percentual",
+        "prompt": "Uma barra passou de 20 para 25. Qual foi o aumento percentual?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "5%",
+            "correct": false,
+            "feedback": "5 é o aumento em unidades. Sobre 20: 25%."
+          },
+          {
+            "id": "o3",
+            "label": "20%",
+            "correct": false,
+            "feedback": "20% divide 5 por 25, o valor final. Divida pelo inicial: 25%."
+          },
+          {
+            "id": "o4",
+            "label": "125%",
+            "correct": false,
+            "feedback": "125% é o valor final em relação ao inicial. O aumento é 25%."
+          },
+          {
+            "id": "o1",
+            "label": "25%",
+            "correct": true,
+            "feedback": "Isso. 5 de aumento sobre os 20 iniciais."
+          }
+        ]
+      },
+      {
+        "id": "dois-setores",
+        "prompt": "Dois setores representam 45% e 15%. Quantos graus ocupam juntos?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "216°",
+            "correct": true,
+            "feedback": "Certo. 60% de 360°."
+          },
+          {
+            "id": "o2",
+            "label": "60°",
+            "correct": false,
+            "feedback": "60 é a porcentagem somada. Em graus: 0,6 · 360° = 216°."
+          },
+          {
+            "id": "o3",
+            "label": "162°",
+            "correct": false,
+            "feedback": "162° é só o setor de 45%. Com o de 15%: 216°."
+          },
+          {
+            "id": "o4",
+            "label": "144°",
+            "correct": false,
+            "feedback": "144° são 40%. Juntos são 60%: 216°."
+          }
+        ]
+      },
+      {
+        "id": "qual-cresceu-mais",
+        "prompt": "A passou de 10 para 20; B passou de 100 para 120. Qual cresceu mais em porcentagem?",
+        "fala": "Compare o aumento com o valor de partida de cada um.",
+        "options": [
+          {
+            "id": "o2",
+            "label": "B",
+            "correct": false,
+            "feedback": "B subiu 20 unidades, mas sobre 100 é 20%. A subiu 100%."
+          },
+          {
+            "id": "o3",
+            "label": "Iguais",
+            "correct": false,
+            "feedback": "Os percentuais são 100% e 20%. A cresceu mais."
+          },
+          {
+            "id": "o1",
+            "label": "A",
+            "correct": true,
+            "feedback": "Isso. A dobrou (100%); B subiu 20%."
+          }
+        ]
+      },
+      {
+        "id": "ponto-do-meio",
+        "prompt": "Uma linha vai de 40 no mês 1 a 60 no mês 3, com variação constante. Quanto vale no mês 2?",
+        "fala": "Última. Variação constante é uma linha reta.",
+        "options": [
+          {
+            "id": "o3",
+            "label": "60",
+            "correct": false,
+            "feedback": "60 é o mês 3. No meio do caminho: 50."
+          },
+          {
+            "id": "o4",
+            "label": "45",
+            "correct": false,
+            "feedback": "Com variação constante, a metade do caminho é 50."
+          },
+          {
+            "id": "o1",
+            "label": "50",
+            "correct": true,
+            "feedback": "Certo. A reta sobe 10 por mês."
+          },
+          {
+            "id": "o2",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 é a subida total em 2 meses. No mês 2: 40 + 10 = 50."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
