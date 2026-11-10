@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "lint:content": "tsx scripts/lint-content.ts",
+    "lint:planos": "tsx scripts/lint-planos.ts",
     "predev": "npm run lint:content",
     "dev": "vite --host",
     "prebuild": "npm run lint:content",
