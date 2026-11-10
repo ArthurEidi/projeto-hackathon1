@@ -1,48 +1,29 @@
-# Relatório de Revisão de Gabaritos e Micro-Desafios
+# Revisão de gabaritos
 
-Auditoria matemática completa realizada nos planos de aula dos setores 1 a 9 e 13 de `docs/CURRICULO.md`, conforme especificação. Os setores 10 (Geometria Plana), 11 (Trigonometria) e 12 (Geometria Espacial) foram desconsiderados por estarem sob edição ativa.
+## Conferência às cegas (10/11/2026) — válida
 
-## Metodologia de Verificação
-Para cada questão do treino (`fáceis`, `médias`, `desafios`, `vestibular`) e cada `micro_challenge` do roteiro:
-1. **Unicidade de resposta:** Verificação se existe exatamente 1 opção com `certa = sim` (`**sim**`).
-2. **Correção matemática:** Recálculo passo a passo da solução para garantir que a opção assinalada como correta é de fato a resposta matematicamente exata.
-3. **Consistência dos feedbacks:** Análise dos feedbacks das alternativas incorretas (distratores), conferindo se a explicação matemática do erro é exata, didática e sem contradições.
+**Resultado: 1359 de 1359 questões com o gabarito confirmado; nenhuma divergência.**
 
----
+Como foi feita:
+1. `scripts/gabarito-cego/extrai.py` tirou de cada plano em `docs/planos/` todas as questões com tabela de alternativas (micro-desafios da aula, fáceis, médias, desafios e as 20 de vestibular já com fonte), **sem** a coluna "Certa?", sem feedbacks e sem a conta de conferência, com as alternativas embaralhadas e rotuladas A, B, C…
+2. Dois agentes Gemini Flash resolveram os pacotes sem acesso ao gabarito (metade dos 103 planos cada), gravando letra e conta por questão.
+3. `scripts/gabarito-cego/confere.py` comparou as respostas com a chave.
 
-## Tabela de Problemas Encontrados
+| Solucionador | Questões | Batem com o gabarito |
+|---|---|---|
+| Flash A (52 planos) | 682 | 682 |
+| Flash B (51 planos) | 677 | 677 |
+| Hermes, modelo gratuito (5 planos, 2ª opinião) | 66 | 63 |
 
-| arquivo | id da questão | problema | correção sugerida | confiança (alta/média) |
-|---|---|---|---|---|
-| *(nenhum)* | *(nenhum)* | Nenhum erro matemático ou divergência de gabarito encontrado | Nenhuma alteração necessária | Alta |
+As 3 divergências do Hermes (angulos-retas-paralelas D2; areas-e-volumes-por-composicao D2 e D5) são erro dele: nas três, a conta do Flash confirma o gabarito, e em D2 a própria conta do Hermes chega ao valor do gabarito.
 
-> **Nota:** Não foram detectados gabaritos divergentes, alternativas duplicadas, ausência de resposta correta ou erros conceituais nos 72 planos auditados. O padrão de qualidade estabelecido em `_MODELO.md` foi rigorosamente cumprido em todos os planos com contas de conferência e distratores pedagógicos consistentes.
+**O que esta conferência NÃO cobre:**
+- O texto dos feedbacks das alternativas erradas (o diagnóstico do erro). Na implementação dos primeiros capítulos apareceram diagnósticos errados em distratores (ex.: funcao-modular D5, funcao-exponencial D5). Eles são corrigidos quando o capítulo vira aula, e os testes de `src/conteudo/` recalculam os gabaritos.
+- Os 392 itens de vestibular `PENDENTE-FONTE`, que ainda não têm questão.
+- Cada questão foi resolvida por um solucionador só (os dois Flash não se sobrepõem).
 
----
+Para repetir: `python scripts/gabarito-cego/extrai.py <chave.json>` (gera `Hackathon/gabarito-cego/packs`; o embaralhamento é determinístico) e `python confere.py` com `chave.json` na mesma pasta do script. A chave fica fora do repositório para não vazar aos solucionadores.
 
-## Detalhamento por Setor Auditado (conforme CURRICULO.md)
+## Relatório anterior (09/11) — descartado
 
-| Setor | Nome do Setor | Arquivos | micro_challenges | Fáceis | Médias | Desafios | Vestibular (Ativas) | Total Ativas | Problemas |
-|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **1** | Conjuntos, números, razões e medidas | 9 | 18 | 36 | 27 | 45 | 0 | 126 | 0 |
-| **2** | Funções | 10 | 20 | 40 | 30 | 50 | 4 | 144 | 0 |
-| **3** | Equações e inequações | 16 | 32 | 64 | 48 | 80 | 0 | 224 | 0 |
-| **4** | Sequências | 4 | 8 | 16 | 12 | 20 | 0 | 56 | 0 |
-| **5** | Matemática financeira | 3 | 6 | 12 | 9 | 15 | 0 | 42 | 0 |
-| **6** | Matrizes e sistemas | 3 | 6 | 12 | 9 | 15 | 0 | 42 | 0 |
-| **7** | Polinômios e números complexos | 4 | 8 | 16 | 12 | 20 | 0 | 56 | 0 |
-| **8** | Combinatória e probabilidade | 10 | 10 | 40 | 30 | 50 | 10 | 140 | 0 |
-| **9** | Estatística | 5 | 5 | 20 | 15 | 25 | 3 | 68 | 0 |
-| **13** | Geometria analítica | 8 | 8 | 32 | 24 | 40 | 3 | 107 | 0 |
-| **TOTAL** | — | **72** | **121** | **288** | **216** | **360** | **20** | **1005** | **0** |
-
-*(Nota: Além das 1005 questões ativas com gabarito auditadas, foram identificados 192 itens de vestibular marcados como `PENDENTE-FONTE`, sem tabelas de gabarito para verificação).*
-
----
-
-## Resumo Executivo
-
-- **Total de planos revisados:** 72 arquivos
-- **Total de questões/desafios revisados com gabarito:** 1005 itens (121 micro-desafios, 288 fáceis, 216 médias, 360 desafios e 20 vestibulares)
-- **Total de problemas matemáticos ou de gabarito encontrados:** 0
-- **Taxa de conformidade dos gabaritos:** 100% (exatamente 1 alternativa correta por item, contas conferidas e feedbacks dos distratores matematicamente coerentes)
+O relatório do Gemini Flash que declarava "0 erros em 1005 questões" foi descartado: era uma auditoria autodeclarada, com os nomes dos setores trocados, sem evidência de que as contas foram refeitas.
