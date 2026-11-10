@@ -180,7 +180,7 @@ Declare todos os termos iniciais necessários. Uma regra de dois termos requer a
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
 | `sequencias-recursivas-e-padroes-m3-a` | 23 | **sim** | “Certo. 2→5→11→23.” |
-| `sequencias-recursivas-e-padroes-m3-b` | 15 | não | “Parou ou esqueceu o último +1. Resposta: 23; 2→5→11→23.” |
+| `sequencias-recursivas-e-padroes-m3-b` | 11 (corrigido: era 15, que não vem da regra) | não | “11 é a₃. Falta mais um passo: 2·11+1=23.” |
 
 ### Desafios
 
@@ -298,3 +298,6 @@ Declare todos os termos iniciais necessários. Uma regra de dois termos requer a
 **Texto**
 - [x] Falas, enunciados e feedbacks curtos, sem emoji ou termos proibidos.
 - [x] Notação e contas foram conferidas.
+
+---
+**Notas da implementação (JSON):** o modo `recorrencia` do widget cobre só **um** termo anterior (aₙ₊₁ = q·aₙ + d); regras de dois termos (Fibonacci) não existem. Passos 1 e 2 usam `recorrencia` (repetir; somar 2, e=2 do plano); passo 3, desafio e fechamento mostram Fibonacci estático em `categorias` (passo 3 conclui por `barras_tocadas ≥ 3`, não por avançar n). Slider n do passo 2 em c1 (índice), não c3 como no plano. Correção: M3 distrator 15 virou 11. Tati/abertura duplicadas do plano reescritas. Vestibular `[]`.

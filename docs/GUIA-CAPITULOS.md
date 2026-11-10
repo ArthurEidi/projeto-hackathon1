@@ -456,22 +456,42 @@ Arquivos: `common/barras/params.ts` (schema por `modo`), `calc.ts` (estatística
 
 Cores por marca em `cor`/`cores` de cada modo (padrões: índice c1, termo c2, d c3, q c4; parte c1, todo c2, % c3, razão c4; apoio c3, mediana c4, desvio c1). Quartis pelo método das metades (1, 3, 4, 6, 8, 9, 12 → 3, 6, 9). Juros: `regra: "pg"`, `q: "1+$t/100"`. A figura aceita os mesmos campos, só números, e `highlight`.
 
-### 5.3b `ciclo_trigonometrico` (trigonometria)
+### 5.4 `grade_resultados` + `grade_figura` — PRONTOS
+
+Arquivos: `common/grade/params.ts`, `calc.ts` (fatorial, arranjo, C(n, k), Pascal, permutações, distribuições, binomial, conjuntos de casas; testado), `desenho.ts`, `GradeWidget.tsx`, `GradeFigura.tsx`. Valores com slider aceitam expressão (`"$k"`, `"$inicio_b+3"`).
+
+| `modo` | Campos principais | Métricas |
+|---|---|---|
+| `casas` | `linhas` (rótulos ou quantidade), `colunas` (rótulos, quantidade ou `"linhas"`), `n_linhas`/`n_colunas`/`etapas` (`"$id"`), `titulos`, `conteudo: rotulo \| soma \| vazio \| soma_ao_tocar`, `evento`/`a`/`b` (conjuntos: `casas`, `linhas`, `colunas`, `soma`, `intervalo {de, ate}`, `diagonal`), `repetir`, `ordem`, `ou`, `pista`, `chaves: [repetir, ordem, e_ou, unir, tirar_repetidas, complemento, pista, a_e_b]`, `botoes_evento: [{rotulo, conjunto}]`, `regua`, `contador`, `acesas`/`mostrar` (figura) | `total`, `celulas_tocadas`, `marcadas_certas`, `marcadas_erradas`, `modo_ou`, `repetir_desligado`, `ordem_desligada`, `uniu`, `descontou`, `complemento_visto`, `pista_ligada`, `intersecao_vista`, `extremos_vistos`, `eventos_vistos` |
+| `tabela` | `linhas: [{rotulo, valores}]`, `colunas`, `pista_linha`/`pista_coluna`, `evento_coluna` | `linha_tocada`, `coluna_tocada`, `linha_<rótulo>`, `coluna_<rótulo>` (ex.: `linha_meninas`, `coluna_oculos`) |
+| `arvore` | `niveis: [{titulo, galhos}]` ou `galhos` + `n` (`"$n"`); galho `{rotulo, cor, p, sucesso}`; `agrupar` (barras por nº de sucessos), `caminho: "sucessos"`, `chave_um` (a = b = 1), `mostrar_produto`, `acesas`, `acender_k` | `total`, `pontas_tocadas`, `pontas_k0..kN` (no binômio, marque o galho b como `sucesso`: `pontas_k1` = pontas com um b), `chave_ligada` |
+| `fila` | `itens`, `lugares`, `listar`, `iguais: [i, j]`, `prender: {item, lugar}`, `escada`, `montada` (figura) | `filas_montadas`, `iguais_ligado`, `letra_presa`, `total` |
+| `escada` | `n`, `k` | `total` |
+| `lista` | `itens`, `k`, `ordem` | `total`, `ordem_desligada` |
+| `barras` | `n`, `k`, `p` (% , `"$p"`), `itens` | `total` (C(n, k) ou P(k) em %) |
+| `pascal` | `n`, `tocada` (figura) | `numeros_tocados` |
+| `bolinhas_e_barras` | `bolinhas`, `barras`, `sequencia: "●●\|●\|"`, `caixas`, `contador_apos` | `distribuicoes_vistas`, `total` |
+| `caixas` | `itens`, `n`, `rotulos`, `chave_minimo`, `minimo` | `total`, `regra_ligada`, `distribuicoes_vistas` |
+| `colunas` | `colunas: [{titulo, itens, cor}]`, `ou` | `total`, `modo_ou` |
+
+Chaves de casa nos dados: `"1,6"` (linha, coluna pelos rótulos); fila: `"6"`. Cores em `cores` (linhas c1, colunas c2, casa c3, A c1, B c2, interseção c3, fora/complemento c4).
+
+### 5.5 `ciclo_trigonometrico` (trigonometria) — pendente
 Ângulo por slider/arraste; projeções seno (vertical) e cosseno (horizontal) coloridas; sombra da função sendo traçada ao lado (liga ciclo ↔ gráfico, pilar 2); quadrantes e sinais (pilar 6, regra de sinais).
 
-### 5.4 `geometria_plana` (plana, Pitágoras, semelhança, áreas)
+### 5.6 `geometria_*` (plana) — pendente; dividido em `geometria_triangulo`, `geometria_poligono`, `geometria_circulo` (WIDGETS-PENDENTES 12–14)
 Polígonos com vértices arrastáveis, ângulo reto, medidas ao vivo, **quadrados sobre os lados** (generalizar `drawSection` de `ConeFigure.tsx`), malha quadriculada para contar área.
 
-### 5.5 `solido_3d` (espacial: cilindro, esfera, tronco, prismas, pirâmides)
+### 5.7 `solido_3d` (espacial: cilindro, esfera, tronco, prismas, pirâmides)
 Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer perfil (retângulo → cilindro, semicírculo → esfera, trapézio → tronco) e acrescentar sólidos de faces planas; mesma câmera ortográfica e convenção de aresta oculta tracejada. Inclui planificação (Aula 02 de Cones já prevista na taxonomia).
 
-### 5.6 Menores, mas úteis
-- `grade_resultados` (probabilidade/combinatória): grade de casos possíveis × favoráveis, árvore de escolhas.
+### 5.8 Menores, mas úteis
+- ~~`grade_resultados`~~ — pronto (§5.4).
 - ~~`barras`~~ — pronto (§5.3). Fila de widgets pendentes e prioridade: `docs/WIDGETS-PENDENTES.md`.
 - `transformacao_plano` (matrizes): malha do plano deformada por uma matriz 2×2 com sliders.
 - Hooks: `useArrasto` (ponteiro com captura, como no `GeneratrixWidget`), `useVisitados` (contagem de faixas visitadas → métrica de cobertura, generalizando o `arc`).
 
-### 5.7 Ordem sugerida
+### 5.9 Ordem sugerida
 
 1. ~~Coordenador resolve §4.3~~ e ~~plano cartesiano + reta numérica~~ — feitos na fase 2.
 2. Agentes de capítulo de funções, conjuntos, inequações, PA/PG e analítica: caminho curto (§3.0), só JSON + teste.

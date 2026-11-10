@@ -1,0 +1,509 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Equações com Radicais e Soluções Espúrias",
+  "subtitulo": "A raiz escolhe a altura positiva",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "equacoes-irracionais"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Número testado nos dois lados."
+    },
+    "c2": {
+      "nome": "Radicando A",
+      "resumo": "Expressão dentro da raiz quadrada."
+    },
+    "c3": {
+      "nome": "Raiz principal",
+      "resumo": "Valor não negativo devolvido pela raiz."
+    },
+    "c4": {
+      "nome": "Candidatos válidos",
+      "resumo": "Candidatos que passam na equação original."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          {
+            "tipo": "modular",
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "√(x²)"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "fantasma": true,
+            "rotulo": "y = x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": -1
+      },
+      "lines": {
+        "intro": "No caso neutro com x ≥ 0, √(x²) = x; o que sai se você arrastar até −1?",
+        "done": "Sai 1 porque a raiz principal é não negativa; √(x²) é o módulo de x."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Há vários índices de radicais; aqui tratamos raízes quadradas e conferimos candidatos depois de elevar ao quadrado."
+      }
+    },
+    {
+      "id": "encontro-valido",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 4],
+        "y": [-3, 4],
+        "curvas": [
+          {
+            "tipo": "raiz",
+            "a": 1,
+            "b": -2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = √(x+2)"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "cor": "ink",
+            "rotulo": "y = x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Qual ponto faz √(x+2) = x? Arraste até 2.",
+        "done": "Em 2 os lados valem 2; como x+2=x², então os candidatos vêm de x²−x−2=0."
+      }
+    },
+    {
+      "id": "rejeitar-sinal",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 4],
+        "y": [-3, 4],
+        "curvas": [
+          {
+            "tipo": "raiz",
+            "a": 1,
+            "b": -2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = √(x+2)"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "cor": "ink",
+            "rotulo": "y = x"
+          }
+        ],
+        "ponto": {
+          "curva": null,
+          "x": 0,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": -1
+      },
+      "lines": {
+        "intro": "A conta ao quadrado também deu −1; ele passa no original? Arraste até −1.",
+        "done": "Não; 1 ≠ −1, por isso elevar ao quadrado exige conferir o sinal no original."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Basta o radicando ser positivo?",
+        "resposta": "Não; o lado igual à raiz também precisa ser não negativo."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 4],
+          "y": [-3, 4],
+          "curvas": [
+            {
+              "tipo": "raiz",
+              "a": 1,
+              "b": -2,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = √(x+2)"
+            },
+            {
+              "tipo": "afim",
+              "a": 1,
+              "b": 0,
+              "cor": "ink",
+              "rotulo": "y = x"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual solução de √(x+2)=x é válida?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "−1",
+          "correct": false,
+          "feedback": "O lado direito ficou negativo; √1=1≠−1, então só 2 é solução.",
+          "figure": {
+            "ponto": {
+              "curva": null,
+              "x": -1
+            }
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "2",
+          "correct": true,
+          "feedback": "Certo: 2; Em 2, √4=2; em −1, √1≠−1.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 2
+            },
+            "marcar": {
+              "encontro": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 4],
+          "y": [-3, 4],
+          "curvas": [
+            {
+              "tipo": "raiz",
+              "a": 1,
+              "b": -2,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = √(x+2)"
+            },
+            {
+              "tipo": "afim",
+              "a": 1,
+              "b": 0,
+              "cor": "c2",
+              "rotulo": "y = x"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "cor": "c4"
+          },
+          "marcar": {
+            "encontro": true
+          }
+        }
+      },
+      "formula": [
+        { "text": "√" },
+        { "text": "A", "ref": "c2" },
+        { "text": "=" },
+        { "text": "B", "ref": "c3" },
+        { "text": " ⇔ A=B² e B≥0" }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Número testado nos dois lados."
+        },
+        {
+          "term": "Raiz principal",
+          "text": "Valor não negativo devolvido pela raiz."
+        },
+        {
+          "term": "Candidatos válidos",
+          "text": "Candidatos que passam na equação original."
+        }
+      ],
+      "lines": {
+        "intro": "O quadrado apaga sinais; por isso todo candidato precisa satisfazer a raiz principal na equação original.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-equacoes-irracionais",
+        "prompt": "Quanto vale a raiz principal √9?",
+        "options": [
+          {
+            "id": "f1-equacoes-irracionais-erro",
+            "label": "±3",
+            "correct": false,
+            "feedback": "Você confundiu raiz principal com soluções de x²=9. O certo é 3; √9=3≥0."
+          },
+          {
+            "id": "f1-equacoes-irracionais-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; √9=3≥0."
+          }
+        ]
+      },
+      {
+        "id": "f2-equacoes-irracionais",
+        "prompt": "A raiz principal pode ser negativa?",
+        "options": [
+          {
+            "id": "f2-equacoes-irracionais-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; √A≥0 para A≥0."
+          },
+          {
+            "id": "f2-equacoes-irracionais-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "A definição escolhe o valor não negativo. O certo é Não; √A≥0 para A≥0."
+          }
+        ]
+      },
+      {
+        "id": "f3-equacoes-irracionais",
+        "prompt": "Quanto vale √(x²) em x=−2?",
+        "options": [
+          {
+            "id": "f3-equacoes-irracionais-erro",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Você retirou o quadrado sem considerar o módulo. O certo é 2; √4=2."
+          },
+          {
+            "id": "f3-equacoes-irracionais-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; √4=2."
+          }
+        ]
+      },
+      {
+        "id": "f4-equacoes-irracionais",
+        "prompt": "Elevar uma equação ao quadrado pode criar candidatos falsos?",
+        "options": [
+          {
+            "id": "f4-equacoes-irracionais-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; 1²=(−1)², mas 1≠−1."
+          },
+          {
+            "id": "f4-equacoes-irracionais-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "O quadrado apaga a diferença de sinais. O certo é Sim; 1²=(−1)², mas 1≠−1."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-equacoes-irracionais",
+        "prompt": "Resolva √x=2.",
+        "options": [
+          {
+            "id": "m1-equacoes-irracionais-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você não elevou o alvo ao quadrado. O certo é 4; x=2²=4."
+          },
+          {
+            "id": "m1-equacoes-irracionais-certa",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: 4; x=2²=4."
+          }
+        ]
+      },
+      {
+        "id": "m2-equacoes-irracionais",
+        "prompt": "Resolva √(x+1)=3.",
+        "options": [
+          {
+            "id": "m2-equacoes-irracionais-certa",
+            "label": "8",
+            "correct": true,
+            "feedback": "Certo: 8; x+1=9; x=8."
+          },
+          {
+            "id": "m2-equacoes-irracionais-erro",
+            "label": "10",
+            "correct": false,
+            "feedback": "Você somou 1 após elevar ao quadrado. O certo é 8; x+1=9; x=8."
+          }
+        ]
+      },
+      {
+        "id": "m3-equacoes-irracionais",
+        "prompt": "Resolva √(2x)=2.",
+        "options": [
+          {
+            "id": "m3-equacoes-irracionais-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você esqueceu de dividir por 2. O certo é 2; 2x=4; x=2."
+          },
+          {
+            "id": "m3-equacoes-irracionais-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; 2x=4; x=2."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-equacoes-irracionais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva √(x+2)=x nos reais.",
+        "options": [
+          {
+            "id": "d1-equacoes-irracionais-certa",
+            "label": "{2}",
+            "correct": true,
+            "feedback": "Certo: {2}; x²−x−2=0; x≥0."
+          },
+          {
+            "id": "d1-equacoes-irracionais-erro",
+            "label": "{−1; 2}",
+            "correct": false,
+            "feedback": "Você aceitou o candidato de lado direito negativo. O certo é {2}; x²−x−2=0; x≥0."
+          }
+        ]
+      },
+      {
+        "id": "d2-equacoes-irracionais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva √(x−1)=−1.",
+        "options": [
+          {
+            "id": "d2-equacoes-irracionais-erro",
+            "label": "{2}",
+            "correct": false,
+            "feedback": "A raiz principal não pode valer −1. O certo é ∅; √(x−1)≥0."
+          },
+          {
+            "id": "d2-equacoes-irracionais-certa",
+            "label": "∅",
+            "correct": true,
+            "feedback": "Certo: ∅; √(x−1)≥0."
+          }
+        ]
+      },
+      {
+        "id": "d3-equacoes-irracionais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva √(2x+1)=2.",
+        "options": [
+          {
+            "id": "d3-equacoes-irracionais-certa",
+            "label": "1,5",
+            "correct": true,
+            "feedback": "Certo: 1,5; 2x+1=4; x=3/2."
+          },
+          {
+            "id": "d3-equacoes-irracionais-erro",
+            "label": "2,5",
+            "correct": false,
+            "feedback": "Você somou 1 ao isolar x. O certo é 1,5; 2x+1=4; x=3/2."
+          }
+        ]
+      },
+      {
+        "id": "d4-equacoes-irracionais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva √(x²)=x.",
+        "options": [
+          {
+            "id": "d4-equacoes-irracionais-erro",
+            "label": "R",
+            "correct": false,
+            "feedback": "Para x negativo a raiz devolve −x. O certo é x≥0; √(x²)=∣x∣; ∣x∣=x se x≥0."
+          },
+          {
+            "id": "d4-equacoes-irracionais-certa",
+            "label": "x≥0",
+            "correct": true,
+            "feedback": "Certo: x≥0; √(x²)=∣x∣; ∣x∣=x se x≥0."
+          }
+        ]
+      },
+      {
+        "id": "d5-equacoes-irracionais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva √(x+2)=x−4.",
+        "options": [
+          {
+            "id": "d5-equacoes-irracionais-certa",
+            "label": "{7}",
+            "correct": true,
+            "feedback": "Certo: {7}; x²−9x+14=0; x≥4; x=7."
+          },
+          {
+            "id": "d5-equacoes-irracionais-erro",
+            "label": "{2; 7}",
+            "correct": false,
+            "feedback": "Você aceitou um lado direito negativo. O certo é {7}; x²−9x+14=0; x≥4; x=7."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

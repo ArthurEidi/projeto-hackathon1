@@ -293,6 +293,26 @@
           ]
         },
         {
+          "id": "equacoes-e-inequacoes",
+          "titulo": "Equações e Inequações",
+          "unidades": [
+            {
+              "id": "equacoes-irracionais",
+              "titulo": "Equações com Radicais",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações com Radicais e Soluções Espúrias",
+                  "subtitulo": "A raiz escolhe a altura positiva",
+                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-irracionais/aula-01.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "id": "sequencias",
           "titulo": "Sequências",
           "unidades": [
@@ -304,16 +324,23 @@
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Degraus Iguais",
-                  "subtitulo": "Progressão aritmética",
-                  "arquivo": null
-                },
+                  "titulo": "Degraus que Somam e Multiplicam",
+                  "subtitulo": "Progressões aritmética e geométrica",
+                  "arquivo": "algebra/sequencias/sequencias-pa-pg/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "sequencias-recursivas-e-padroes",
+              "titulo": "Sequências Recursivas e Padrões",
+              "icone": "sequencia",
+              "aulas": [
                 {
-                  "id": "aula-02",
-                  "numero": 2,
-                  "titulo": "Degraus que Multiplicam",
-                  "subtitulo": "Progressão geométrica",
-                  "arquivo": null
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Próximo Depende do Anterior",
+                  "subtitulo": "Recursão e padrões",
+                  "arquivo": "algebra/sequencias/sequencias-recursivas-e-padroes/aula-01.json"
                 }
               ]
             }

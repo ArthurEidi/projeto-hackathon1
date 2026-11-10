@@ -1,0 +1,528 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "O Próximo Depende do Anterior",
+  "subtitulo": "Recursão e padrões",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "sequencias",
+    "unidade": "sequencias-recursivas-e-padroes"
+  },
+  "outro": "Você executou uma regra passo a passo; os termos iniciais e a recorrência determinam o padrão.",
+  "glossario": {
+    "c1": {
+      "nome": "Índice n",
+      "resumo": "Passo inteiro da sequência."
+    },
+    "c2": {
+      "nome": "Termo anterior",
+      "resumo": "Entrada para gerar o próximo."
+    },
+    "c3": {
+      "nome": "Regra recursiva",
+      "resumo": "Instrução sobre termos anteriores."
+    },
+    "c4": {
+      "nome": "Novo termo",
+      "resumo": "Saída no passo n."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "regra": "recorrencia",
+        "casas": 0,
+        "a1": 5,
+        "q": 1,
+        "d": 0,
+        "termos": 5,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Índice",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Se a regra repete o termo anterior, qual altura terá a próxima barra? Avance o índice e confira.",
+        "done": "O caso neutro mantém o valor: 5, 5, 5, 5. As barras ficam na mesma altura."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Uma recorrência pode usar mais de um termo anterior?",
+        "resposta": "Sim. Declare todos os inícios que a regra exige."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "contraste-de-regras",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "regra": "recorrencia",
+        "casas": 0,
+        "a1": 3,
+        "q": 1,
+        "d": 2,
+        "termos": 6,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Índice",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Agora a regra soma 2 ao termo anterior, começando em 3; quanto é a₃? Avance até n = 4.",
+        "done": "3, 5, 7, 9: cada saída vira a entrada do passo seguinte. A regra roda por índice, sem pular termos."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "teste-de-fronteira",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "a₁",
+            "valor": 1
+          },
+          {
+            "nome": "a₂",
+            "valor": 1
+          },
+          {
+            "nome": "a₃",
+            "valor": 2
+          },
+          {
+            "nome": "a₄",
+            "valor": 3
+          },
+          {
+            "nome": "a₅",
+            "valor": 5
+          },
+          {
+            "nome": "a₆",
+            "valor": 8
+          }
+        ],
+        "cor": "ink"
+      },
+      "lines": {
+        "intro": "Cada barra é a soma das duas anteriores. Toque em a₃, a₄ e a₅ e confira: e a₁ e a₂, quem gera?",
+        "done": "Ninguém gera: a₁ e a₂ têm de ser dados. Com uma regra de dois termos, um valor inicial não basta."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Um termo inicial basta se a regra usar dois termos?",
+        "resposta": "Não. São necessários dois valores iniciais."
+      },
+      "complete_when": {
+        "metric": "barras_tocadas",
+        "gte": 3
+      }
+    },
+    {
+      "id": "micro-desafio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "a₁",
+              "valor": 1
+            },
+            {
+              "nome": "a₂",
+              "valor": 1
+            },
+            {
+              "nome": "a₃",
+              "valor": 2
+            },
+            {
+              "nome": "a₄",
+              "valor": 3
+            },
+            {
+              "nome": "a₅",
+              "valor": 5
+            }
+          ],
+          "cor": "ink"
+        }
+      },
+      "prompt": "a₁ = a₂ = 1 e aₙ = aₙ₋₁ + aₙ₋₂. Ache a₅.",
+      "lines": {
+        "intro": "Some os dois termos anteriores, um passo de cada vez. Qual resposta a figura sustenta?"
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "5",
+          "correct": true,
+          "feedback": "Certo. Os termos são 1, 1, 2, 3, 5.",
+          "figure": {
+            "acesas": [
+              2,
+              3
+            ]
+          }
+        },
+        {
+          "id": "o2",
+          "label": "4",
+          "correct": false,
+          "feedback": "4 não aplica a regra ao último par: a₅ = 2 + 3 = 5.",
+          "figure": {
+            "acesas": [
+              2,
+              3
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "a₁",
+              "valor": 1
+            },
+            {
+              "nome": "a₂",
+              "valor": 1
+            },
+            {
+              "nome": "a₃",
+              "valor": 2
+            },
+            {
+              "nome": "a₄",
+              "valor": 3
+            },
+            {
+              "nome": "a₅",
+              "valor": 5
+            }
+          ],
+          "cor": "ink"
+        }
+      },
+      "formula": [
+        {
+          "text": "aₙ",
+          "ref": "c4"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "F",
+          "ref": "c3"
+        },
+        {
+          "text": "("
+        },
+        {
+          "text": "aₙ₋₁",
+          "ref": "c2"
+        },
+        {
+          "text": ","
+        },
+        {
+          "text": "aₙ₋₂",
+          "ref": "c2"
+        },
+        {
+          "text": ")"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Recorrência",
+          "text": "regra que gera cada termo a partir dos anteriores."
+        },
+        {
+          "term": "Termos iniciais",
+          "text": "valores que dão partida à regra."
+        },
+        {
+          "term": "Índice",
+          "text": "posição inteira do termo."
+        }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Dá para achar o termo 100 sem listar os 99 anteriores?",
+        "resposta": "Nem sempre. Em PA e PG há fórmula direta; nas demais, muitas vezes é preciso rodar a regra."
+      },
+      "lines": {
+        "intro": "Uma recorrência transforma termos anteriores em novos. A regra e os valores iniciais determinam a sequência.",
+        "hint": "Toque em uma marca para ver a grandeza correspondente nas barras."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "sequencias-recursivas-e-padroes-f1",
+        "prompt": "Uma sequência começa em 5 e repete o termo anterior. Qual é a₃?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. 5 → 5 → 5."
+          },
+          {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Somou sem que a regra mandasse. A regra repete: a₃ = 5."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-f2",
+        "prompt": "Começa em 2 e soma 3 a cada passo. Quais são os termos até a₄?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "2, 5, 9, 12",
+            "correct": false,
+            "feedback": "Somou 4 em um passo. Sempre +3: 2, 5, 8, 11."
+          },
+          {
+            "id": "o1",
+            "label": "2, 5, 8, 11",
+            "correct": true,
+            "feedback": "Certo. 2 → 5 → 8 → 11."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-f3",
+        "prompt": "a₁ = a₂ = 1 e cada termo soma os dois anteriores. Qual é a₃?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo. 1 + 1 = 2."
+          },
+          {
+            "id": "o2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Copiou um termo em vez de somar os dois: 1 + 1 = 2."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-f4",
+        "prompt": "Alterna +1 e +2, começando em 3. Qual é a₄?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "6",
+            "correct": false,
+            "feedback": "Repetiu +1 no segundo passo. A alternância dá 3 → 4 → 6 → 7."
+          },
+          {
+            "id": "o1",
+            "label": "7",
+            "correct": true,
+            "feedback": "Certo. 3 → 4 → 6 → 7."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "sequencias-recursivas-e-padroes-m1",
+        "prompt": "a₁ = a₂ = 1; cada termo soma os dois anteriores. Qual é a₅?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Parou em a₄ = 3. Aplicando a regra mais uma vez: a₅ = 2 + 3 = 5."
+          },
+          {
+            "id": "o1",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. 1, 1, 2, 3, 5."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-m2",
+        "prompt": "Começa em 16 e divide por 2 a cada passo. Qual é a₅?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo. 16 → 8 → 4 → 2 → 1."
+          },
+          {
+            "id": "o2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Fez três divisões em vez de quatro. 16 → 8 → 4 → 2 → 1."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-m3",
+        "prompt": "a₁ = 2 e aₙ = 2·aₙ₋₁ + 1. Qual é a₄?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "11",
+            "correct": false,
+            "feedback": "11 é a₃. Falta mais um passo: 2 · 11 + 1 = 23."
+          },
+          {
+            "id": "o1",
+            "label": "23",
+            "correct": true,
+            "feedback": "Certo. 2 → 5 → 11 → 23."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "sequencias-recursivas-e-padroes-d1",
+        "prompt": "a₁ = 2 e a₂ = 5; cada termo soma os dois anteriores. Qual é a₄?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo. a₃ = 7 e a₄ = 5 + 7 = 12."
+          },
+          {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Somou só o anterior. a₃ = 2 + 5 = 7 e a₄ = 5 + 7 = 12."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-d2",
+        "prompt": "Começa em 10 e subtrai 3 a cada passo. Qual é a₅?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Contou três subtrações, não quatro. a₅ = −2."
+          },
+          {
+            "id": "o1",
+            "label": "−2",
+            "correct": true,
+            "feedback": "Certo. 10 → 7 → 4 → 1 → −2."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-d3",
+        "prompt": "Começa em 1 e alterna ×2 e +1. Qual é a₄?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo. 1 → 2 → 3 → 6."
+          },
+          {
+            "id": "o2",
+            "label": "5",
+            "correct": false,
+            "feedback": "Aplicou ×2 duas vezes seguidas. A alternância dá 1 → 2 → 3 → 6."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-d4",
+        "prompt": "Em aₙ = aₙ₋₁ + aₙ₋₂, quantos termos iniciais são necessários?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "1",
+            "correct": false,
+            "feedback": "A regra consulta dois termos. Precisa de 2 inícios: a₃ requer a₁ e a₂."
+          },
+          {
+            "id": "o1",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo. a₃ requer a₁ e a₂."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-recursivas-e-padroes-d5",
+        "prompt": "Começa em 1 e dobra a cada passo. Em qual posição n aparece 16?",
+        "fala": "Última. Posição e número de avanços não são a mesma coisa.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. 1, 2, 4, 8, 16: n = 5."
+          },
+          {
+            "id": "o2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Contou avanços, não posições. 1, 2, 4, 8, 16 coloca o 16 em n = 5."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

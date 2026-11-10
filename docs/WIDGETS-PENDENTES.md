@@ -2,7 +2,7 @@
 
 Lista única dos widgets que os planos em `docs/planos/` pedem e que ainda **não existem** no app. Cada agente acrescenta os seus no fim, no mesmo formato. Antes de criar um widget novo, confira se um daqui já serve.
 
-**Já existem** (não listar aqui): `plano_cartesiano` / `plano_figura`, `reta_numerica` / `reta_figura`, extensões do plano (entradas 7 e 10, GUIA §5.1), `barras` / `barras_figura` (entradas 2 e 9; o modo `barras`/`linha`/`setores` chama-se `categorias`, e `coleta` é a chave `coleta: true` dele) (em `src/widgets/common/`, ver GUIA §5), `revolution`, `generatrix` e `cone_figure` (só Cones).
+**Já existem** (não listar aqui): `plano_cartesiano` / `plano_figura`, `reta_numerica` / `reta_figura`, extensões do plano (entradas 7 e 10, GUIA §5.1), `grade_resultados` / `grade_figura` (entrada 1, GUIA §5.4; os 14 modos foram unificados em 11: `grade`, `sorteio`, `pares`, `dois_eventos` e `pista` são o modo `casas` com chaves), `barras` / `barras_figura` (entradas 2 e 9; o modo `barras`/`linha`/`setores` chama-se `categorias`, e `coleta` é a chave `coleta: true` dele) (em `src/widgets/common/`, ver GUIA §5), `revolution`, `generatrix` e `cone_figure` (só Cones).
 
 **Convenções para todos** (iguais às de `src/widgets/common/`):
 - Arquivos em `src/widgets/common/` (widget comum) ou `src/widgets/<unidade>/` (só um capítulo). Schema zod em `params.ts`, sem React; registro em `src/widgets/params.ts` e `registry.ts`.
@@ -282,8 +282,8 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 |---|---|---|---|
 | 1 | `barras` (entradas 2 + 9) | 14 | **pronto** (GUIA §5.3) |
 | 2 | Extensões do `plano_cartesiano` (7 + 10) | 10 (+ funcao-quadratica, funcao-exponencial, logaritmos, modelos-periodicos melhorados) | **pronto** (GUIA §5.1) |
-| 3 | `grade_resultados` (1) | 10 | em andamento |
-| 4 | `solido_3d` (8 + 16) | 10 (+3 com `lugar_geometrico`) | pendente |
+| 3 | `grade_resultados` (1) | 10 | **pronto** (GUIA §5.4) |
+| 4 | `solido_3d` (8 + 16) | 10 (+3 com `lugar_geometrico`) | em andamento |
 | 5 | `geometria_triangulo` (12) | 7 | pendente |
 | 6 | `ciclo_trigonometrico` (15) | 7 | pendente |
 | 7 | `geometria_poligono` (13) | 5 | pendente |
