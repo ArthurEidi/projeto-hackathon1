@@ -137,8 +137,8 @@ A fórmula exige |q|<1. q=1 repete parcelas; q=−1 alterna sem encolher; ambos 
 
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
-| `soma-da-pg-infinita-f3-a` | |q|<1 | **sim** | “Certo. qⁿ→0 exige |q|<1.” |
-| `soma-da-pg-infinita-f3-b` | q>1 | não | “Tomou crescimento como convergência. Resposta: |q|<1; qⁿ→0 exige |q|<1.” |
+| `soma-da-pg-infinita-f3-a` | &#124;q&#124;<1 | **sim** | “Certo. qⁿ→0 exige \|q\|<1.” |
+| `soma-da-pg-infinita-f3-b` | q>1 | não | “Tomou crescimento como convergência. Resposta: \|q\|<1; qⁿ→0 exige \|q\|<1.” |
 
 #### F4 — `soma-da-pg-infinita-f4`
 - **Enunciado:** “Soma de 4+2+1+…?”

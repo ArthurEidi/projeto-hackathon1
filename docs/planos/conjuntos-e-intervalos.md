@@ -1,46 +1,328 @@
-# Plano — Conjuntos e intervalos
+# Plano — Conjuntos, operações e intervalos
+
+**Aula:** 1 — Quem Está Dentro · Pertinência, união e interseção
+**Caminho:** aritmetica / conjuntos / conjuntos-e-intervalos
+**Pré-requisitos que o aluno já domina:** `sistemas-numericos-e-divisibilidade`; contagem e leitura da reta numérica.
 
 ## a) Ancoragem mecânica
-Conjunto é uma coleção de entradas que passam por um critério: `x → teste → pertence/não pertence`. Operações combinam filtros: união aceita quem passa em pelo menos um; interseção exige passar em ambos; diferença conserva quem passa no primeiro e falha no segundo. Intervalo é uma região contínua da reta real, descrita por limites e pela decisão de incluir ou excluir cada extremo.
+
+O aluno controla o ponto-teste e a operação entre dois conjuntos. A pertinência depende de passar em um filtro, em ambos ou só no primeiro.
 
 ## b) Visual de partida
-Palco: reta numérica interativa com dois intervalos coloridos A e B. Controles: quatro sliders de extremos, alternância aberto/fechado em cada ponta e seleção de operação. Arrastar um extremo move a fronteira; alternar o ponto o preenche ou deixa vazado; trocar a operação atualiza a faixa resultante ao vivo. Exibir também a notação simbólica sincronizada.
+
+reta_numerica — intervalo −4..5; A=[−2;3] em c1, resultado A∪∅ sobreposto c4; ponto x=4 c3,passo 1; extremos fechados.
+Controles: nenhum.
+A figura aparece antes das expressões; a fala acompanha o gesto descrito no passo 1.
 
 ## c) Caso neutro
-Começar com A = [−2, 3] e B = [1, 4], antes de escolher operação: apenas duas faixas sobre a mesma reta. Um ponto-teste x = 2 pertence aos dois; x = 0 só pertence a A. A reta sem filtros representa R; intervalo vazio representa nenhuma entrada aprovada.
+
+A união com o vazio conserva A; começar com A=[−2;3] e B=∅ deixa a faixa de A intacta como referência.
 
 ## d) Panorama e recorte
-Situar pertinência, subconjunto, conjunto vazio, união, interseção, diferença, complemento e intervalos. Foco desta aula: leitura da reta, notação de extremos e operações entre dois intervalos finitos. Deixar conjuntos infinitos mais elaborados, desigualdades compostas e provas formais para depois.
+
+Conjuntos também têm subconjuntos e complementos; aqui lemos extremos e combinamos intervalos da reta real.
 
 ## e) Progressão por contraste
-1. Comparar `[1,3]` com `(1,3)`: mesmos números internos, mas só o primeiro inclui 1 e 3.
-2. Abrir/fechar uma única ponta para isolar o efeito do colchete/parêntese.
-3. Sobrepor A e B; união pinta o território coberto por qualquer faixa, interseção só a sobreposição.
-4. Diferença A\B remove de A a parte coberta por B; comparar com complemento, que depende do universo declarado.
+
+1. Referência visual: Move para dentro de A, sem alterar o trecho original.
+2. Em contraste com a referência: Resultado passa de [−2;4] para [1;3], união anterior em muted.
+3. Depois, teste de fronteira: Encontra 1 em B e vê o círculo aberto no resultado.
 
 ## f) Dedução causal da forma
-O extremo fechado é incluído porque o próprio número satisfaz o limite; o aberto é excluído. A união é larga porque aceita a condição A **ou** B; a interseção é estreita porque exige A **e** B. Não é uma convenção arbitrária: a região desenhada traduz diretamente a regra de aceitação. Em extremos coincidentes, o ponto entra no resultado somente se ao menos uma faixa o incluir na união, e na interseção somente se ambas o incluírem.
+
+União aceita quem está em A ou B; interseção exige A e B; diferença mantém A e exclui B. Um extremo só entra na interseção se ambos o incluem. Complemento depende do universo declarado.
+
+Fórmula deduzida: x∈A∪B ⇔ x∈A ou x∈B; x∈A∩B ⇔ x∈A e x∈B.
 
 ## g) Simulação espacial e fronteiras
-Arrastar as pontas atravessa números e pode inverter a ordem; impedir ou indicar intervalo vazio quando limite esquerdo > direito. Um ponto móvel testa a pertinência e ilumina cada condição. Explicitar que infinito nunca é um ponto incluído: usa sempre parêntese. Reforçar a diferença entre complemento relativo a R e relativo a outro universo.
 
-## h) Roteiro da lição
+Infinito nunca é extremo incluído. Limite esquerdo maior que o direito gera vazio nesta convenção; [a;a]={a}, mas (a;a)=∅. Complemento em R difere do complemento em universo restrito.
 
-1. **Fala:** “Se A vai de −2 a 3 e B vai de 1 a 4, o 2 passa por quais filtros? Ele está nos dois, porque 1≤2≤3.” **Widget §5.2 — `reta_numerica`:** mostrar A e B em faixas separadas; o aluno arrasta o ponto-teste até 2 e vê as duas iluminar.
-2. **Fala:** “E o próprio 3 entra em `[−2,3)`? Não; a ponta aberta deixa o 3 do lado de fora.” **Widget §5.2 — `reta_numerica`:** aluno alterna o extremo direito entre aberto e fechado; o ponto da borda muda de estado de pertinência.
-3. **Fala:** “Na união, basta passar em um filtro: qual faixa cobre tudo que A ou B aceita? De −2 até 4.” **Widget §5.2 — `reta_numerica`:** escolher união e observar a faixa resultante cobrir as duas, mantendo os extremos corretos.
-4. **Fala:** “Agora exijo passar nos dois: o que sobra em comum? Só de 1 a 3.” **Widget §5.2 — `reta_numerica`:** trocar para interseção; a região sobreposta fica colorida e as partes exclusivas apagam.
-5. **Fala:** “Se tiro B de A, o 2 permanece? Não, porque B também o cobre; o trecho de 1 a 3 sai de A.” **Widget §5.2 — `reta_numerica`:** selecionar diferença A\B e mover uma ponta de B para acompanhar o recorte.
-6. **Fala:** “Se A termina em 3 aberto e B começa em 3 fechado, o 3 está na união? Sim, porque pelo menos uma faixa o inclui.” **Widget §5.2 — `reta_numerica`:** encostar extremos e alternar inclusão; a união conserva o ponto quando uma das pontas o fecha.
-7. **Fala:** “E na interseção, com só B incluindo o 3, ele entra? Não; as duas faixas precisam incluir o mesmo ponto.” **Widget §5.2 — `reta_numerica`:** manter as faixas encostadas, escolher interseção e testar o ponto comum.
-8. **Fala:** “O que completa `(−∞,2]` em R: incluir o 2 ou começar depois dele? Começamos em `(2,∞)`, pois 2 já foi aceito.” **Widget §5.2 — `reta_numerica`:** alternar para complemento relativo a R e ver a faixa complementar, sem marcar infinito como ponto.
+## h) Roteiro da aula
 
-## i) Questões pós-lição (6)
-Formato de treino: pergunta curta, quatro alternativas, uma correta e feedback causal.
+**Glossário da aula:**
+| Marca | Nome | Resumo |
+|---|---|---|
+| c1 | Conjunto A | Primeiro filtro de pertinência. |
+| c2 | Conjunto B | Segundo filtro de pertinência. |
+| c3 | Ponto-teste x | Número arrastado para testar os filtros. |
+| c4 | Resultado da operação | Faixa aceita pela operação escolhida. |
 
-1. **Em `[−1, 3)`, o 3 pertence ao intervalo?** A) Sim, porque há colchete à esquerda. B) Não, a ponta 3 está aberta. C) Só se 3 for inteiro. D) Não, porque −1 é negativo. **Gabarito: B.** Feedback: colchete/parêntese da direita decide a ponta direita.
-2. **Qual intervalo representa `−2 ≤ x < 2`?** A) `(−2,2)` B) `[−2,2]` C) `[−2,2)` D) `(−2,2]`. **Gabarito: C.** Feedback: −2 entra; 2 não entra.
-3. **A = [0,3] e B = [2,5]. Qual é A ∩ B?** A) `[0,5]` B) `[2,3]` C) `[0,2]` D) `(3,5]`. **Gabarito: B.** Feedback: interseção guarda só o trecho comum.
-4. **Com os mesmos A e B, qual é A ∪ B?** A) `[0,5]` B) `[2,3]` C) `[0,2)` D) `(3,5]`. **Gabarito: A.** Feedback: a união cobre tudo que está em pelo menos um dos dois.
-5. **A = [−1,4] e B = [1,3). Qual é A\B?** A) `[1,3)` B) `[−1,1) ∪ [3,4]` C) `[−1,4]` D) `(−∞,1)`. **Gabarito: B.** Feedback: retire de A o trecho de B; 1 é retirado, 3 permanece.
-6. **Em R, qual é o complementar de `(−∞,2]`?** A) `(2,∞)` B) `[2,∞)` C) `(−∞,2)` D) `[−2,∞)`. **Gabarito: A.** Feedback: 2 já está no conjunto, então o complemento começa depois dele.
+**Convenções visuais:** c1 azul, c2 laranja, c3 rosa e c4 violeta; eixos em ink e referências em muted.
+Cada letra tocável destaca somente a grandeza correspondente; dicas usam o texto do glossário.
+Nos widgets novos, a figura homônima é a versão estática, com os mesmos parâmetros e destaques; treino não reage à resposta.
+
+### Passo 1 — `caso-neutro`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 1 (máquina), 2 (visual), 3 (caso neutro), 4 (panorama)
+- **Widget:** reta_numerica — intervalo −4..5; A=[−2;3] em c1, resultado A∪∅ sobreposto c4; ponto x=4 c3,passo 1; extremos fechados.
+- **Sliders:** nenhum
+- **Paco (abertura):** "No caso neutro A∪∅, alguma entrada nova aparece? Arraste de 4 até 2."
+- **Interação do aluno:** Move para dentro de A, sem alterar o trecho original.
+- **Conclusão:** `dentro ≥ 1`
+- **Paco (conclusão):** "Não; o vazio não acrescenta pontos, por isso A∪∅=A."
+- **Tati (dúvida):** `fim` — P: "Esse assunto tem outras versões?" / R: "Conjuntos também têm subconjuntos e complementos; aqui lemos extremos e combinamos intervalos da reta real."
+
+### Passo 2 — `unir-e-intersectar`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 2 (visual), 5 (contraste), 6 (dedução)
+- **Widget:** WIDGET NOVO: intervalos-operacoes — A=[−2;3] c1,B=[1;4] c2, três trilhas A,B e resultado c4; modo 0=união,1=interseção; ponto x=2 c3; emite modo.
+- **Sliders:** modo · União ou interseção · 0..1 · passo 1 · inicial 0 · ink
+- **Paco (abertura):** "Se exigirmos pertencer aos dois intervalos, a faixa aumenta? Mude para interseção."
+- **Interação do aluno:** Resultado passa de [−2;4] para [1;3], união anterior em muted.
+- **Conclusão:** `modo ≥ 1`
+- **Paco (conclusão):** "Diminui; por isso a interseção guarda só [1;3], onde os dois filtros aceitam."
+
+### Passo 3 — `retirar-e-testar-pontas`
+- **Tipo:** `interactive_canvas`
+- **Pilares:** 5 (contraste), 6 (causa), 7 (fronteira)
+- **Widget:** WIDGET NOVO: intervalos-operacoes — A=[−2;3],B=[1;4], modo diferença A\B; ponto x=0,passo 1; resultado [−2;1) c4; emite ponto_x e pertence.
+- **Sliders:** nenhum
+- **Paco (abertura):** "Ao retirar B de A, o ponto 1 permanece? Leve o ponto até essa fronteira."
+- **Interação do aluno:** Encontra 1 em B e vê o círculo aberto no resultado.
+- **Conclusão:** `ponto_x ≥ 1`
+- **Paco (conclusão):** "Não; 1 pertence a B, por isso A\B=[−2;1), sem a ponta direita."
+- **Tati (dúvida):** `fim` — P: "E o complemento de (−∞;2] em R?" / R: "É (2;+∞); o ponto 2 já estava no conjunto, e infinito nunca é incluído."
+
+### Passo 4 — `conferir-previsao`
+- **Tipo:** `micro_challenge`
+- **Pilares:** 2, 6, 7
+- **Figura:** WIDGET NOVO: intervalos-operacoes-figura — A=[0;3] c1,B=[2;5] c2, resultado [2;3] c4; extremos fechados.
+- **Paco (abertura):** "Que previsão você faz ao comparar a figura com as condições do problema?"
+- **Enunciado:** "Se A=[0;3] e B=[2;5], qual é A∩B?"
+
+| id | Rótulo | Certa? | Feedback | A figura muda para… |
+|---|---|---|---|---|
+| `micro-erro` | [0;5] | não | "Você fez a união; a interseção exige os dois filtros, então é [2;3]." | Destaca partes exclusivas de A e B fora do resultado. |
+| `micro-acerto` | [2;3] | **sim** | "Certo: [2;3]; Só de 2 a 3 os dois conjuntos aceitam." | Pinta apenas o trecho comum [2;3]. |
+
+### Passo 5 — `fechamento`
+- **Tipo:** `concept_lock`
+- **Pilares:** 6 (+ resumo de 1 a 7)
+- **Figura:** WIDGET NOVO: intervalos-operacoes-figura — A=[0;3] c1,B=[2;5] c2, resultado [2;3] c4; extremos fechados.
+- **Fórmula:** `x`→c3 · `∈A`→c1 · `∪B`→c2 · `⇔ x∈A ou x∈B; A∩B`→c4 · `exige ambos`
+- **Definições:**
+  - "Conjunto A: Primeiro filtro de pertinência."
+  - "Ponto-teste x: Número arrastado para testar os filtros."
+  - "Resultado da operação: Faixa aceita pela operação escolhida."
+- **Paco (abertura):** "Cada operação combina filtros; por isso união aceita um deles e interseção exige os dois."
+- **Dica (hint):** "Toque em uma letra para ver o que ela faz no gráfico."
+
+**Frase de encerramento (outro):** "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra."
+
+## i) Treino pós-aula
+
+As 12 questões autorais estão prontas para tradução; os quatro espaços de vestibular seguem a exceção de fonte do modelo.
+
+### Fáceis
+
+#### F1 — `f1-conjuntos-e-intervalos`
+- **Enunciado:** "Em [−1;3), o ponto 3 entra?"
+- **Figura:** nenhuma
+- **Conta de conferência:** x<3.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f1-conjuntos-e-intervalos-erro` | Sim | não | "O extremo direito está aberto. O certo é Não; x<3." |
+| `f1-conjuntos-e-intervalos-certa` | Não | **sim** | "Certo: Não; x<3." |
+
+#### F2 — `f2-conjuntos-e-intervalos`
+- **Enunciado:** "A união usa a condição ou ou e?"
+- **Figura:** nenhuma
+- **Conta de conferência:** Basta pertencer a um conjunto.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f2-conjuntos-e-intervalos-certa` | Ou | **sim** | "Certo: Ou; Basta pertencer a um conjunto." |
+| `f2-conjuntos-e-intervalos-erro` | E | não | "Você confundiu união com interseção. O certo é Ou; Basta pertencer a um conjunto." |
+
+#### F3 — `f3-conjuntos-e-intervalos`
+- **Enunciado:** "A interseção exige pertencer aos dois conjuntos?"
+- **Figura:** nenhuma
+- **Conta de conferência:** x∈A e x∈B.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f3-conjuntos-e-intervalos-erro` | Não | não | "Passar só em um filtro não basta. O certo é Sim; x∈A e x∈B." |
+| `f3-conjuntos-e-intervalos-certa` | Sim | **sim** | "Certo: Sim; x∈A e x∈B." |
+
+#### F4 — `f4-conjuntos-e-intervalos`
+- **Enunciado:** "Qual é A∪∅?"
+- **Figura:** nenhuma
+- **Conta de conferência:** x∈A ou x∈∅ equivale a x∈A.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `f4-conjuntos-e-intervalos-certa` | A | **sim** | "Certo: A; x∈A ou x∈∅ equivale a x∈A." |
+| `f4-conjuntos-e-intervalos-erro` | ∅ | não | "O vazio não acrescenta nem remove pontos. O certo é A; x∈A ou x∈∅ equivale a x∈A." |
+
+### Médias
+
+#### M1 — `m1-conjuntos-e-intervalos`
+- **Enunciado:** "Se A=[0;3] e B=[2;5], qual é A∩B?"
+- **Figura:** nenhuma
+- **Conta de conferência:** O trecho comum vai de 2 a 3.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m1-conjuntos-e-intervalos-erro` | [0;5] | não | "Você calculou a união. O certo é [2;3]; O trecho comum vai de 2 a 3." |
+| `m1-conjuntos-e-intervalos-certa` | [2;3] | **sim** | "Certo: [2;3]; O trecho comum vai de 2 a 3." |
+
+#### M2 — `m2-conjuntos-e-intervalos`
+- **Enunciado:** "Se A=[0;3] e B=[2;5], qual é A∪B?"
+- **Figura:** nenhuma
+- **Conta de conferência:** As faixas juntas cobrem de 0 a 5.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m2-conjuntos-e-intervalos-certa` | [0;5] | **sim** | "Certo: [0;5]; As faixas juntas cobrem de 0 a 5." |
+| `m2-conjuntos-e-intervalos-erro` | [2;3] | não | "Você calculou a interseção. O certo é [0;5]; As faixas juntas cobrem de 0 a 5." |
+
+#### M3 — `m3-conjuntos-e-intervalos`
+- **Enunciado:** "Qual intervalo representa −2≤x<2?"
+- **Figura:** nenhuma
+- **Conta de conferência:** −2 entra; 2 não entra.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m3-conjuntos-e-intervalos-erro` | (−2;2] | não | "Você trocou a inclusão dos extremos. O certo é [−2;2); −2 entra; 2 não entra." |
+| `m3-conjuntos-e-intervalos-certa` | [−2;2) | **sim** | "Certo: [−2;2); −2 entra; 2 não entra." |
+
+### Desafios
+
+#### D1 — `d1-conjuntos-e-intervalos`
+- **Enunciado:** "Se A=[−1;4] e B=[1;3), qual é A menos B?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** 1 pertence a B; 3 não pertence.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d1-conjuntos-e-intervalos-certa` | [−1;1)∪[3;4] | **sim** | "Certo: [−1;1)∪[3;4]; 1 pertence a B; 3 não pertence." |
+| `d1-conjuntos-e-intervalos-erro` | [−1;1]∪(3;4] | não | "Você trocou as fronteiras retiradas. O certo é [−1;1)∪[3;4]; 1 pertence a B; 3 não pertence." |
+
+#### D2 — `d2-conjuntos-e-intervalos`
+- **Enunciado:** "Qual é [2;2]?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** 2≤x≤2 ⇒ x=2.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d2-conjuntos-e-intervalos-erro` | ∅ | não | "Os extremos fechados incluem o único ponto. O certo é {2}; 2≤x≤2 ⇒ x=2." |
+| `d2-conjuntos-e-intervalos-certa` | {2} | **sim** | "Certo: {2}; 2≤x≤2 ⇒ x=2." |
+
+#### D3 — `d3-conjuntos-e-intervalos`
+- **Enunciado:** "Qual é (−∞;2]∩(2;+∞)?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** Nenhum real é ≤2 e >2.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d3-conjuntos-e-intervalos-certa` | ∅ | **sim** | "Certo: ∅; Nenhum real é ≤2 e >2." |
+| `d3-conjuntos-e-intervalos-erro` | {2} | não | "O segundo intervalo não inclui 2. O certo é ∅; Nenhum real é ≤2 e >2." |
+
+#### D4 — `d4-conjuntos-e-intervalos`
+- **Enunciado:** "Em R, qual é o complemento de (−∞;0,5]?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** Complemento exige x>0,5.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d4-conjuntos-e-intervalos-erro` | [0,5;+∞) | não | "Você incluiu um ponto que já está no conjunto. O certo é (0,5;+∞); Complemento exige x>0,5." |
+| `d4-conjuntos-e-intervalos-certa` | (0,5;+∞) | **sim** | "Certo: (0,5;+∞); Complemento exige x>0,5." |
+
+#### D5 — `d5-conjuntos-e-intervalos`
+- **Enunciado:** "No universo U=[0;4], seja A=[1;3); qual é o complemento de A em U?"
+- **Figura:** nenhuma
+- **Fala do Paco:** "Antes de escolher, confira as condições e substitua a resposta na relação do problema."
+- **Conta de conferência:** Retirar [1;3) de [0;4] preserva 3.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d5-conjuntos-e-intervalos-certa` | [0;1)∪[3;4] | **sim** | "Certo: [0;1)∪[3;4]; Retirar [1;3) de [0;4] preserva 3." |
+| `d5-conjuntos-e-intervalos-erro` | (−∞;1)∪[3;+∞) | não | "Você usou R em vez do universo declarado. O certo é [0;1)∪[3;4]; Retirar [1;3) de [0;4] preserva 3." |
+
+### Vestibular
+
+#### V1 — `v1-conjuntos-e-intervalos`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema conjuntos, operações e intervalos.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+#### V2 — `v2-conjuntos-e-intervalos`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Aplicação direta em contexto, no tema conjuntos, operações e intervalos.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+#### V3 — `v3-conjuntos-e-intervalos`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema conjuntos, operações e intervalos.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+#### V4 — `v4-conjuntos-e-intervalos`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema conjuntos, operações e intervalos.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+---
+
+# Checklist de qualidade (marque tudo antes de entregar o plano)
+
+**Método (METODO.md)**
+- [x] Os 7 pilares a)–g) estão escritos **e** cada um aparece em pelo menos um passo (linha "Pilares").
+- [x] A aula abre com a figura viva (passo `interactive_canvas`), não com fórmula nem definição.
+- [x] O caso neutro aparece na tela e é **nomeado numa fala**.
+- [x] O panorama ocupa uma única fala (em geral a dúvida da Tati) e o recorte fica claro.
+- [x] O contraste mostra o "antes" na tela (curva fantasma ou valor de referência).
+- [x] A fórmula do fechamento foi **deduzida** antes (há uma fala com "por isso" ou "como … então").
+- [x] Há teste de fronteira: quadrantes, 0/1/infinitas soluções, domínio ou restrição real.
+
+**Roteiro**
+- [x] De 4 a 8 passos; 1º é `interactive_canvas`, último é `concept_lock`, há pelo menos um `micro_challenge`.
+- [x] Toda abertura pergunta ou pede previsão; toda conclusão responde com o porquê.
+- [x] Cada passo interativo tem conclusão com métrica existente e alcançável (valor inicial não cumpre; arraste com passo que acerta o valor exato).
+- [x] No desafio, cada opção errada tem feedback que diagnostica o erro e uma mudança de figura que mostra o erro.
+- [x] Toda marca c1..c4 usada tem linha no glossário; o que não tem significado é `ink`/`muted`.
+- [x] Widget inexistente está marcado como **WIDGET NOVO** com o que desenha, o que o aluno manipula e a métrica.
+
+**Treino**
+- [x] Exatamente 4 fáceis, 3 médias, 5 desafios, 4 vestibular; ids únicos, minúsculos, com hífen.
+- [ ] Cada questão tem exatamente 1 opção certa e 2 a 4 opções (vestibular 2 a 5).
+- [ ] Todo feedback de opção errada **contém a resposta certa**.
+- [ ] Cada distrator corresponde a um erro típico nomeado no feedback.
+- [ ] Toda questão tem conta de conferência, e a conta bate com o gabarito.
+- [ ] Vestibular: questões reais, conferidas na URL, fonte "Banca Ano (adaptada)", adaptação descrita, fala do Paco presente.
+
+**Texto**
+- [x] Toda fala, enunciado e feedback com ≤ 140 caracteres e ≤ 2 frases; sem emoji; sem termos proibidos.
+- [x] Números pequenos, de cabeça; notação do app (−, vírgula decimal, ·, ², (x; y)).
+
+
+**Ressalva do checklist:** os cinco itens em aberto dependem somente das quatro fontes de vestibular; nas 12 autorais, alternativas, diagnósticos e contas estão preenchidos.
