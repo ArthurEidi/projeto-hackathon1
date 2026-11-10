@@ -52,7 +52,7 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 - **Sliders:** nenhum
 - **Paco (abertura):** "Que saída prevê no caso neutro? f(x)=|x|; onde a distância zera?"
 - **Interação do aluno:** Arraste x de −2 a 2; veja alturas iguais em entradas opostas.
-- **Conclusão:** `faixa_x ≥ 2`
+- **Conclusão:** `faixa_x ≥ 4` (corrigido: de x = −2 a 2 a faixa é 4)
 - **Paco (conclusão):** "A distância de −2 e 2 até zero é 2."
 - **Tati (dúvida):** `fim` — P: "A distância pode ser negativa?" / R: "Não; a escala pode refletir a saída, mas a distância segue não negativa."
 
@@ -73,7 +73,7 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 - **Sliders:** nenhum
 - **Paco (abertura):** "Quais pontos ficam a duas unidades de h=1?"
 - **Interação do aluno:** Posicione pontos a distância 2 de h.
-- **Conclusão:** `faixa_x ≥ 2`
+- **Conclusão:** `faixa_x ≥ 4` (corrigido: de x = −1 a 3 a faixa é 4; exige visitar os dois lados)
 - **Paco (conclusão):** "As soluções ficam duas unidades de cada lado da referência."
 
 ### Passo 4 — `desafio-fronteira`
@@ -88,7 +88,7 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 | `erro` | (−1;−2) | não | "Inverte os sinais de h e k; A distância zera em x=1 e a saída ali é 2; V=(1;2)." | Marca (−1;−2), o vértice errado com sinais trocados. |
 | `certa` | (1;2) | **sim** | "A distância zera em x=1 e a saída ali é 2; V=(1;2)." | marca a resposta no gráfico. |
 - **Paco (conclusão):** "A distância zera em x=1 e a saída ali é 2; V=(1;2)."
-- **Tati (dúvida):** `fim` — P: "E se a entrada estiver na fronteira?" / R: "A condição do domínio decide se o ponto entra e qual regra vale."
+- **Tati (dúvida):** `fim` — P: "E se a for negativo?" / R: "O V se inverte e o vértice é o ponto mais alto." (reescrito: texto genérico não se aplicava)
 
 ### Passo 5 — `fechamento`
 - **Tipo:** `concept_lock`
@@ -103,7 +103,7 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 - **Interação do aluno:** toque nas marcas c1–c4 para relacionar cada grandeza ao gráfico.
 - **Paco (conclusão):** "A figura mostra como cada entrada produz a saída prevista pela regra."
 - **Dica (hint):** "Toque em uma marca para ver o que ela representa no gráfico."
-- **Tati (dúvida):** `início` — P: "O desenho vale fora do domínio?" / R: "Não; as condições da função limitam as entradas válidas."
+- **Tati (dúvida):** `início` — P: "Por que o gráfico tem uma quina?" / R: "A regra troca de lado em x = h." (reescrito)
 
 **Frase de encerramento (outro):** "Você testou a entrada e a fronteira; por isso f(x)=a|x−h|+k."
 
@@ -232,7 +232,7 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
-| `d5-funcao-modular-e` | 1 e 5 | não | "Resposta: −1 e 5; Esquece dividir por 2; conferência: 2x−4=±6 ⇒ x=5 ou −1." |
+| `d5-funcao-modular-e` | 1 e 5 | não | "Resposta: −1 e 5; (corrigido: o erro é de sinal em 2x = −2, não de esquecer a divisão por 2); conferência: 2x−4=±6 ⇒ x=5 ou −1." |
 | `d5-funcao-modular-c` | −1 e 5 | **sim** | "Certo: resposta −1 e 5; conferência: 2x−4=±6 ⇒ x=5 ou −1." |
 
 ### Vestibular
@@ -300,3 +300,6 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 **Texto**
 - [x] Falas, enunciados e feedback têm até 140 caracteres e duas frases; sem emoji ou termos proibidos.
 - [x] Notação usa −, vírgula decimal, ·, potências e coordenadas do app.
+
+---
+**Notas da implementação (JSON):** panorama (equações e funções por partes) como dúvida de `mover-referencia`; fronteira (distância negativa/zero) como dúvida de `duas-distancias`. Passo 1 começa em x = 1. Vestibular `[]`. Lacunas de widget: `reta_numerica` só desenha a distância até zero (`distanciaZero`), não até h = 1, então o passo 3 marca h como ponto fixo e conta a faixa percorrida (−1 a 3); sem marcador de vértice.

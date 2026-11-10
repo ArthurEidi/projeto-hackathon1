@@ -1,0 +1,259 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Distância Até o Zero",
+  "subtitulo": "Módulo e o gráfico em V",
+  "caminho": { "pilar": "algebra", "setor": "funcoes", "unidade": "funcao-modular" },
+  "outro": "Você viu a distância virar um V, mexeu com h e achou as soluções a distância fixa: por isso f(x) = a|x − h| + k.",
+  "glossario": {
+    "c1": { "nome": "Entrada x", "resumo": "Posição cuja distância até h alimenta a função." },
+    "c2": { "nome": "Saída f(x)", "resumo": "Distância escalada por a e deslocada por k." },
+    "c3": { "nome": "Escala a", "resumo": "O sinal orienta o V; o módulo de a muda a abertura." },
+    "c4": { "nome": "Referência h", "resumo": "Entrada em que a distância |x − h| zera." }
+  },
+  "steps": [
+    {
+      "id": "distancia-zero",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "modular", "a": 1, "b": 0, "c": 0, "cor": "c2", "rotulo": "y = |x|" },
+          { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" }
+        ],
+        "ponto": { "curva": 0, "x": 1, "passo": 0.5, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "Caso neutro: f(x) = |x|, a distância até zero; que saída você prevê em x = −2 e em x = 2? Arraste o ponto.",
+        "done": "A distância de −2 e de 2 até zero é 2: entradas opostas, mesma altura. O vértice (0; 0) é onde a distância zera."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A distância pode ser negativa?",
+        "resposta": "Não; a escala pode refletir a saída, mas a distância segue não negativa."
+      },
+      "complete_when": { "metric": "faixa_x", "gte": 4 }
+    },
+    {
+      "id": "mover-referencia",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "modular", "a": 1, "b": 0, "c": 0, "fantasma": true, "rotulo": "y = |x|" },
+          { "tipo": "modular", "a": 1, "b": "$h", "c": 0, "cor": "c2" }
+        ]
+      },
+      "controls": [{ "id": "h", "label": "Referência", "min": -2, "max": 2, "step": 1, "initial": 0, "color": "c4" }],
+      "lines": {
+        "intro": "Agora a distância é medida até h: f(x) = |x − h|; onde ela zera para h = 1? Leve h até 1.",
+        "done": "O vértice foi para x = 1, porque |x − 1| só zera ali. O V inteiro andou 1 para a direita."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Só existe esse V?",
+        "resposta": "O módulo também aparece em equações e em funções por partes. Aqui ficamos em a|x − h| + k."
+      },
+      "complete_when": { "metric": "h", "gte": 1 }
+    },
+    {
+      "id": "duas-distancias",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "pontos": [{ "x": 1, "cor": "c4", "rotulo": "h = 1" }],
+        "ponto": { "x": 1, "passo": 1, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "Quais pontos ficam a 2 unidades de h = 1? Arraste o ponto para os dois lados e pare nos que servem.",
+        "done": "As soluções ficam 2 unidades de cada lado da referência: x = −1 e x = 3."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a distância pedida for negativa?",
+        "resposta": "Nenhum ponto serve. Para distância 0 há uma solução; para qualquer positiva, duas."
+      },
+      "complete_when": { "metric": "faixa_x", "gte": 4 }
+    },
+    {
+      "id": "desafio-fronteira",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [{ "tipo": "modular", "a": -1, "b": 1, "c": 2, "cor": "c2", "rotulo": "f(x) = −|x − 1| + 2" }]
+        }
+      },
+      "prompt": "Qual é o vértice de f(x) = −|x − 1| + 2?",
+      "lines": { "intro": "A distância zera em um x, e ali a saída é k. Qual resposta a figura sustenta?" },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a for negativo?",
+        "resposta": "O V se inverte: abre para baixo, e o vértice é o ponto mais alto."
+      },
+      "options": [
+        {
+          "id": "erro",
+          "label": "(−1; −2)",
+          "correct": false,
+          "feedback": "Os sinais de h e k saíram trocados: em x = −1 a saída é 0, não −2. A distância zera em x = 1, onde vale 2.",
+          "figure": { "ponto": { "x": -1, "cor": "c1" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "certa",
+          "label": "(1; 2)",
+          "correct": true,
+          "feedback": "Isso. A distância zera em x = 1 e a saída ali é 2: V = (1; 2).",
+          "figure": { "ponto": { "x": 1, "cor": "c4" }, "highlight": ["c4"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [{ "tipo": "modular", "a": 2, "b": 1, "c": -1, "cor": "c2", "rotulo": "f(x) = 2|x − 1| − 1" }],
+          "ponto": { "x": 1, "cor": "c4" },
+          "marcar": { "raizes": true },
+          "cores": { "raiz": "ink" }
+        }
+      },
+      "formula": [
+        { "text": "f(x)", "ref": "c2" },
+        { "text": "=" },
+        { "text": "a", "ref": "c3" },
+        { "text": "|" },
+        { "text": "x", "ref": "c1" },
+        { "text": "−" },
+        { "text": "h", "ref": "c4" },
+        { "text": "|" },
+        { "text": "+" },
+        { "text": "k" }
+      ],
+      "definitions": [
+        { "term": "|x − h|", "text": "distância entre x e h." },
+        { "term": "Vértice", "text": "o ponto (h; k)." },
+        { "term": "Escala a", "text": "decide a orientação e a escala vertical." }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Por que o gráfico tem uma quina?",
+        "resposta": "A regra troca de lado em x = h: à direita vale x − h, à esquerda vale h − x."
+      },
+      "lines": {
+        "intro": "A distância |x − h| é escalada por a e deslocada por k. Por isso f(x) = a|x − h| + k, com vértice em (h; k).",
+        "hint": "Toque em uma marca para ver o que ela representa no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-funcao-modular",
+        "prompt": "Quanto vale |−4|?",
+        "options": [
+          { "id": "e", "label": "−4", "correct": false, "feedback": "O módulo é distância, não posição: |−4| = 4." },
+          { "id": "c", "label": "4", "correct": true, "feedback": "Isso. A distância de −4 até zero é 4." }
+        ]
+      },
+      {
+        "id": "f2-funcao-modular",
+        "prompt": "Qual é o vértice de f(x) = |x − 3|?",
+        "options": [
+          { "id": "c", "label": "(3; 0)", "correct": true, "feedback": "Isso. |x − 3| zera em x = 3, e a saída ali é 0." },
+          { "id": "e", "label": "(−3; 0)", "correct": false, "feedback": "O sinal dentro do módulo vem invertido: |x − 3| zera em x = 3. O vértice é (3; 0)." }
+        ]
+      },
+      {
+        "id": "f3-funcao-modular",
+        "prompt": "Quanto vale |0| + 2?",
+        "options": [
+          { "id": "e", "label": "0", "correct": false, "feedback": "Faltou o +2, que desloca a saída: |0| + 2 = 2." },
+          { "id": "c", "label": "2", "correct": true, "feedback": "Isso. |0| = 0, e o deslocamento soma 2." }
+        ]
+      },
+      {
+        "id": "f4-funcao-modular",
+        "prompt": "Quais x satisfazem |x| = 3?",
+        "options": [
+          { "id": "c", "label": "−3 e 3", "correct": true, "feedback": "Isso. A distância 3 até zero vale para os dois lados: x = ±3." },
+          { "id": "e", "label": "3", "correct": false, "feedback": "Só o lado positivo não basta: −3 também fica a 3 de zero. As soluções são −3 e 3." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-funcao-modular",
+        "prompt": "Qual é a imagem de f(x) = |x| + 1?",
+        "options": [
+          { "id": "e", "label": "y ≤ 1", "correct": false, "feedback": "O V abre para cima, então a saída só sobe a partir do vértice: |x| ≥ 0 e |x| + 1 ≥ 1." },
+          { "id": "c", "label": "y ≥ 1", "correct": true, "feedback": "Isso. |x| ≥ 0, logo |x| + 1 ≥ 1." }
+        ]
+      },
+      {
+        "id": "m2-funcao-modular",
+        "prompt": "Para onde abre o V de f(x) = −|x|?",
+        "options": [
+          { "id": "e", "label": "Para cima", "correct": false, "feedback": "O sinal de menos inverte as saídas: −|x| ≤ 0, e o V abre para baixo." },
+          { "id": "c", "label": "Para baixo", "correct": true, "feedback": "Isso. −|x| ≤ 0, então o vértice é o ponto mais alto." }
+        ]
+      },
+      {
+        "id": "m3-funcao-modular",
+        "prompt": "Quantas soluções tem |x − 2| = 0?",
+        "options": [
+          { "id": "c", "label": "Uma", "correct": true, "feedback": "Isso. Distância zero só acontece em x = 2." },
+          { "id": "e", "label": "Duas", "correct": false, "feedback": "Duas soluções vêm de distância positiva. Com raio zero há uma só: x = 2." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-funcao-modular",
+        "prompt": "Qual é o vértice de f(x) = 2|x + 1| − 3?",
+        "fala": "Ache o x que zera o módulo e depois leia a saída ali.",
+        "options": [
+          { "id": "e", "label": "(1; 3)", "correct": false, "feedback": "Os sinais de h e k saíram trocados: x + 1 zera em −1 e a saída ali é −3. V = (−1; −3)." },
+          { "id": "c", "label": "(−1; −3)", "correct": true, "feedback": "Isso. x + 1 zera em x = −1, e a saída mínima é −3." }
+        ]
+      },
+      {
+        "id": "d2-funcao-modular",
+        "prompt": "Quais são as soluções de |x − 1| = 4?",
+        "options": [
+          { "id": "c", "label": "−3 e 5", "correct": true, "feedback": "Isso. Os pontos ficam 4 para cada lado de 1: 1 − 4 = −3 e 1 + 4 = 5." },
+          { "id": "e", "label": "3 e 5", "correct": false, "feedback": "Os pontos ficam 4 para cada lado de 1, não só à direita: 1 − 4 = −3 e 1 + 4 = 5." }
+        ]
+      },
+      {
+        "id": "d3-funcao-modular",
+        "prompt": "Quantas soluções tem |x| = −2?",
+        "fala": "Pergunte: existe distância negativa?",
+        "options": [
+          { "id": "e", "label": "Duas", "correct": false, "feedback": "Distância não é negativa: |x| ≥ 0 nunca vale −2. Não há solução." },
+          { "id": "c", "label": "Nenhuma", "correct": true, "feedback": "Isso. |x| ≥ 0, então nunca vale −2." }
+        ]
+      },
+      {
+        "id": "d4-funcao-modular",
+        "prompt": "Qual é a imagem de f(x) = −2|x − 3| + 1?",
+        "options": [
+          { "id": "c", "label": "y ≤ 1", "correct": true, "feedback": "Isso. |x − 3| ≥ 0, então −2|x − 3| + 1 ≤ 1: o vértice é o máximo." },
+          { "id": "e", "label": "y ≥ 1", "correct": false, "feedback": "Com a = −2 o V abre para baixo e 1 é o máximo: |x − 3| ≥ 0 dá −2|x − 3| + 1 ≤ 1." }
+        ]
+      },
+      {
+        "id": "d5-funcao-modular",
+        "prompt": "Resolva |2x − 4| = 6.",
+        "fala": "Última. Separe em 2x − 4 = 6 e 2x − 4 = −6.",
+        "options": [
+          { "id": "e", "label": "1 e 5", "correct": false, "feedback": "Cuidado no sinal: 2x − 4 = −6 dá 2x = −2, x = −1. As soluções são −1 e 5." },
+          { "id": "c", "label": "−1 e 5", "correct": true, "feedback": "Isso. 2x − 4 = 6 dá x = 5, e 2x − 4 = −6 dá x = −1." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
