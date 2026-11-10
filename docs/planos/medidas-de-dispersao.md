@@ -262,3 +262,6 @@ Somar uma constante a todos os valores desloca a régua inteira e não muda o de
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** efeito de somar ou multiplicar todos os dados.
 - **Onde procurar:** Fuvest, Unicamp.
+
+---
+**Notas da implementação (JSON):** `barras` modo `pontos` com `$s` nos valores (passo 1), `grupo_b` e chave `desvios` (passo 2), chaves `somar` e `quadrados` (passos 3 e 4). Vestibular `[]` (os 4 itens do plano são PENDENTE-FONTE). Sem correção de gabarito; contas conferidas por teste.

@@ -1,0 +1,688 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Quadrados Sobre os Desvios",
+  "subtitulo": "Amplitude, variância e desvio padrão",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "estatistica",
+    "unidade": "medidas-de-dispersao"
+  },
+  "outro": "Você desenhou quadrados sobre os desvios: a variância é a área média e o desvio padrão é o lado desse quadrado.",
+  "glossario": {
+    "c1": {
+      "nome": "Desvio",
+      "resumo": "Distância de um valor até a média, com sinal."
+    },
+    "c2": {
+      "nome": "Quantidade",
+      "resumo": "Quantos valores há (n)."
+    },
+    "c3": {
+      "nome": "Variância",
+      "resumo": "Média das áreas dos quadrados dos desvios."
+    },
+    "c4": {
+      "nome": "Desvio padrão",
+      "resumo": "Lado do quadrado médio: raiz da variância."
+    }
+  },
+  "steps": [
+    {
+      "id": "espalhar",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "pontos",
+        "valores": [
+          "5-$s",
+          "5-$s",
+          "5+$s",
+          "5+$s"
+        ],
+        "regua": [
+          0,
+          10
+        ],
+        "apoio": 5,
+        "mostrar": {
+          "desvios": true
+        }
+      },
+      "controls": [
+        {
+          "id": "s",
+          "label": "Espalhar",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "initial": 0,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Quatro notas iguais a 5: quanto elas se afastam da média? Espalhe as notas sem mudar a média.",
+        "done": "A média continua 5, mas cada nota está a 2 dela. Dispersão mede esse afastamento, que antes era zero."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Existe uma medida só para isso?",
+        "resposta": "Há várias: amplitude, desvio médio, quartis. Hoje: amplitude, variância e desvio padrão."
+      },
+      "complete_when": {
+        "metric": "s",
+        "gte": 2
+      }
+    },
+    {
+      "id": "amplitude-engana",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "pontos",
+        "valores": [
+          1,
+          5,
+          5,
+          5,
+          9
+        ],
+        "regua": [
+          0,
+          10
+        ],
+        "grupo_b": [
+          1,
+          1,
+          5,
+          9,
+          9
+        ],
+        "chaves": [
+          "desvios"
+        ]
+      },
+      "lines": {
+        "intro": "Os dois grupos vão de 1 a 9, amplitude 8. Mostre os desvios: eles são igualmente espalhados?",
+        "done": "Não: em A quase tudo está no 5, em B quase tudo está longe. A amplitude só olha as pontas."
+      },
+      "complete_when": {
+        "metric": "desvios_ligados",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desvios-somam-zero",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "pontos",
+        "valores": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "regua": [
+          0,
+          10
+        ],
+        "mostrar": {
+          "desvios": true
+        },
+        "chaves": [
+          "somar"
+        ]
+      },
+      "lines": {
+        "intro": "Some os desvios de cada nota até a média. O que você espera que aconteça?",
+        "done": "Dá zero: os desvios de um lado cancelam os do outro, porque a média é o ponto de equilíbrio. Somar não mede nada."
+      },
+      "complete_when": {
+        "metric": "somou",
+        "gte": 1
+      }
+    },
+    {
+      "id": "quadrados",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "pontos",
+        "valores": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "regua": [
+          0,
+          10
+        ],
+        "mostrar": {
+          "desvios": true
+        },
+        "chaves": [
+          "quadrados"
+        ]
+      },
+      "lines": {
+        "intro": "Desenhe um quadrado sobre cada desvio. Quadrado nunca é negativo: qual é a média das áreas?",
+        "done": "Áreas 9, 1, 1 e 9: média 20 ÷ 4 = 5, a variância. O lado do quadrado médio, √5 ≈ 2,2, é o desvio padrão."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que tirar a raiz no fim?",
+        "resposta": "Para voltar à unidade das notas. A variância está em \"nota ao quadrado\"."
+      },
+      "complete_when": {
+        "metric": "quadrados_ligados",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-dois-valores",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "pontos",
+          "valores": [
+            2,
+            8
+          ],
+          "regua": [
+            0,
+            10
+          ],
+          "apoio": 5
+        }
+      },
+      "prompt": "Qual o desvio padrão dos valores 2 e 8?",
+      "lines": {
+        "intro": "Ache a média, os desvios e depois os quadrados."
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "9",
+          "correct": false,
+          "feedback": "9 é a variância, a área média. O desvio padrão é o lado: √9 = 3.",
+          "figure": {
+            "mostrar": {
+              "desvios": true,
+              "quadrados": true
+            }
+          }
+        },
+        {
+          "id": "o2",
+          "label": "3",
+          "correct": true,
+          "feedback": "Isso. Desvios de 3, quadrados de área 9, raiz 3.",
+          "figure": {
+            "mostrar": {
+              "desvios": true,
+              "quadrados": true
+            },
+            "highlight": [
+              "c4"
+            ]
+          }
+        },
+        {
+          "id": "o3",
+          "label": "6",
+          "correct": false,
+          "feedback": "6 é a amplitude, 8 − 2. O desvio padrão é 3.",
+          "figure": {
+            "mostrar": {
+              "desvios": false
+            }
+          }
+        },
+        {
+          "id": "o4",
+          "label": "0",
+          "correct": false,
+          "feedback": "0 é a soma dos desvios, −3 + 3. Com quadrados: σ = 3.",
+          "figure": {
+            "mostrar": {
+              "desvios": true,
+              "soma_desvios": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "pontos",
+          "valores": [
+            2,
+            4,
+            6,
+            8
+          ],
+          "regua": [
+            0,
+            10
+          ],
+          "mostrar": {
+            "desvios": true,
+            "quadrados": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "σ",
+          "sup": "2",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "Σ (x − x̄)",
+          "sup": "2",
+          "ref": "c1"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "n",
+          "ref": "c2"
+        },
+        {
+          "text": ";"
+        },
+        {
+          "text": "σ = √σ²",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Amplitude",
+          "text": "maior valor menos o menor."
+        },
+        {
+          "term": "Variância",
+          "text": "média dos quadrados dos desvios."
+        },
+        {
+          "term": "Desvio padrão",
+          "text": "raiz da variância, na mesma unidade dos dados."
+        }
+      ],
+      "lines": {
+        "intro": "Os desvios somam zero, então elevamos cada um ao quadrado e tiramos a média. Por isso σ é a raiz dessa média.",
+        "hint": "Toque em uma letra para ver o que ela desenha na régua."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "amplitude",
+        "prompt": "Qual a amplitude de 3, 7 e 10?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "7",
+            "correct": true,
+            "feedback": "Isso. Maior menos menor."
+          },
+          {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é o maior valor. Amplitude: 10 − 3 = 7."
+          },
+          {
+            "id": "o3",
+            "label": "6,7",
+            "correct": false,
+            "feedback": "6,7 é a média. Amplitude: 10 − 3 = 7."
+          },
+          {
+            "id": "o4",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 é a soma. Amplitude: 10 − 3 = 7."
+          }
+        ]
+      },
+      {
+        "id": "dp-iguais",
+        "prompt": "Qual o desvio padrão de 5, 5, 5?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "1",
+            "correct": false,
+            "feedback": "Não há afastamento algum: σ = 0."
+          },
+          {
+            "id": "o1",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo. Ninguém se afasta da média."
+          },
+          {
+            "id": "o2",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 é a média. Os desvios são 0, então σ = 0."
+          },
+          {
+            "id": "o3",
+            "label": "15",
+            "correct": false,
+            "feedback": "15 é a soma. Sem afastamento, σ = 0."
+          }
+        ]
+      },
+      {
+        "id": "um-desvio",
+        "prompt": "A média é 6. Qual o desvio do valor 9?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "−3",
+            "correct": false,
+            "feedback": "9 está acima da média: desvio +3."
+          },
+          {
+            "id": "o4",
+            "label": "15",
+            "correct": false,
+            "feedback": "Desvio é diferença: 9 − 6 = 3."
+          },
+          {
+            "id": "o1",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. 9 está 3 acima da média."
+          },
+          {
+            "id": "o2",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é o valor. O desvio é 9 − 6 = 3."
+          }
+        ]
+      },
+      {
+        "id": "mais-disperso",
+        "prompt": "Qual grupo é mais disperso: {4, 5, 6} ou {1, 5, 9}?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "{1, 5, 9}",
+            "correct": true,
+            "feedback": "Isso. Mesma média, mas valores bem mais afastados."
+          },
+          {
+            "id": "o2",
+            "label": "{4, 5, 6}",
+            "correct": false,
+            "feedback": "Em {4, 5, 6} os desvios são 1. Em {1, 5, 9} são 4: mais disperso."
+          },
+          {
+            "id": "o3",
+            "label": "Iguais",
+            "correct": false,
+            "feedback": "A média é igual, mas os afastamentos não. {1, 5, 9} é mais disperso."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "variancia-2-4",
+        "prompt": "Qual a variância de 2 e 4?",
+        "options": [
+          {
+            "id": "o4",
+            "label": "0",
+            "correct": false,
+            "feedback": "0 é a soma dos desvios. Com quadrados: 1."
+          },
+          {
+            "id": "o1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo. Quadrados de área 1, média 1."
+          },
+          {
+            "id": "o2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é a soma das áreas. Dividindo por 2: 1."
+          },
+          {
+            "id": "o3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é a média. A variância é 1."
+          }
+        ]
+      },
+      {
+        "id": "dp-da-variancia",
+        "prompt": "A variância de um grupo é 16. Qual o desvio padrão?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "8",
+            "correct": false,
+            "feedback": "16 ÷ 2 não é raiz. √16 = 4."
+          },
+          {
+            "id": "o4",
+            "label": "256",
+            "correct": false,
+            "feedback": "256 é 16². O desvio padrão é √16 = 4."
+          },
+          {
+            "id": "o1",
+            "label": "4",
+            "correct": true,
+            "feedback": "Isso. O lado do quadrado de área 16."
+          },
+          {
+            "id": "o2",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 é a área. O desvio padrão é a raiz: 4."
+          }
+        ]
+      },
+      {
+        "id": "soma-dos-desvios",
+        "prompt": "Para os valores 1, 2 e 6, quanto dá a soma dos desvios em relação à média?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "6",
+            "correct": false,
+            "feedback": "Média 3: desvios −2, −1 e +3. Soma 0."
+          },
+          {
+            "id": "o3",
+            "label": "14",
+            "correct": false,
+            "feedback": "14 soma os quadrados. Os desvios somam 0."
+          },
+          {
+            "id": "o4",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é a média. A soma dos desvios é 0."
+          },
+          {
+            "id": "o1",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo. Os desvios sempre se cancelam."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "variancia-1-3-5",
+        "prompt": "Qual a variância de 1, 3 e 5?",
+        "options": [
+          {
+            "id": "o3",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 é a soma das áreas. Média: 8/3."
+          },
+          {
+            "id": "o4",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é o desvio das pontas. A variância é 8/3."
+          },
+          {
+            "id": "o1",
+            "label": "8/3",
+            "correct": true,
+            "feedback": "Isso. Áreas 4, 0 e 4, divididas por 3."
+          },
+          {
+            "id": "o2",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 divide por 2. São 3 valores: 8/3."
+          }
+        ]
+      },
+      {
+        "id": "somar-10",
+        "prompt": "Somando 10 pontos a todas as notas da turma, o que acontece com o desvio padrão?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "Aumenta 10",
+            "correct": false,
+            "feedback": "A média também sobe 10, então os desvios não mudam."
+          },
+          {
+            "id": "o3",
+            "label": "Dobra",
+            "correct": false,
+            "feedback": "Dobrar seria multiplicar as notas. Somando, σ não muda."
+          },
+          {
+            "id": "o4",
+            "label": "Zera",
+            "correct": false,
+            "feedback": "As notas continuam espalhadas do mesmo jeito: σ igual."
+          },
+          {
+            "id": "o1",
+            "label": "Não muda",
+            "correct": true,
+            "feedback": "Certo. A régua toda anda 10, os afastamentos ficam iguais."
+          }
+        ]
+      },
+      {
+        "id": "multiplicar-2",
+        "prompt": "E se todas as notas forem multiplicadas por 2?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "Dobra",
+            "correct": true,
+            "feedback": "Isso. Cada desvio dobra, e o lado do quadrado médio também."
+          },
+          {
+            "id": "o2",
+            "label": "Quadruplica",
+            "correct": false,
+            "feedback": "Quem quadruplica é a variância. O desvio padrão dobra."
+          },
+          {
+            "id": "o3",
+            "label": "Não muda",
+            "correct": false,
+            "feedback": "Os afastamentos dobram, então σ dobra."
+          },
+          {
+            "id": "o4",
+            "label": "Aumenta 2",
+            "correct": false,
+            "feedback": "Multiplicar escala os desvios: σ dobra."
+          }
+        ]
+      },
+      {
+        "id": "mais-regular",
+        "prompt": "Dois atletas têm média 7; um tem desvio padrão 0,5 e o outro, 2. Qual é mais regular?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "O de σ = 2",
+            "correct": false,
+            "feedback": "σ = 2 indica resultados mais espalhados. O mais regular é o de 0,5."
+          },
+          {
+            "id": "o3",
+            "label": "Iguais",
+            "correct": false,
+            "feedback": "A média é igual, mas a dispersão não. Mais regular: σ = 0,5."
+          },
+          {
+            "id": "o1",
+            "label": "O de σ = 0,5",
+            "correct": true,
+            "feedback": "Certo. Os resultados dele ficam mais perto da média."
+          }
+        ]
+      },
+      {
+        "id": "dp-4-6-4-6",
+        "prompt": "Qual o desvio padrão de 4, 6, 4, 6?",
+        "fala": "Última. Ache a média e veja o tamanho de cada desvio.",
+        "options": [
+          {
+            "id": "o3",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é a soma das áreas. Média 1, raiz 1."
+          },
+          {
+            "id": "o4",
+            "label": "0",
+            "correct": false,
+            "feedback": "Os valores não são iguais. σ = 1."
+          },
+          {
+            "id": "o1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Isso. Todos estão a 1 da média."
+          },
+          {
+            "id": "o2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é a amplitude. Cada valor está a 1 da média: σ = 1."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

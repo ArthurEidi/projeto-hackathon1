@@ -118,27 +118,6 @@
           "titulo": "Estatística",
           "unidades": [
             {
-              "id": "estatistica",
-              "titulo": "Estatística",
-              "icone": "barras",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "O Centro dos Dados",
-                  "subtitulo": "Média, moda e mediana",
-                  "arquivo": null
-                },
-                {
-                  "id": "aula-02",
-                  "numero": 2,
-                  "titulo": "Quanto Espalha",
-                  "subtitulo": "Dispersão e desvio padrão",
-                  "arquivo": null
-                }
-              ]
-            },
-            {
               "id": "leitura-de-tabelas-e-graficos",
               "titulo": "Leitura de Tabelas e Gráficos",
               "icone": "barras",
@@ -177,6 +156,20 @@
                   "titulo": "O Ponto de Equilíbrio",
                   "subtitulo": "Média, mediana e moda",
                   "arquivo": "aritmetica/estatistica/medidas-de-tendencia-central/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "medidas-de-dispersao",
+              "titulo": "Medidas de Dispersão",
+              "icone": "barras",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Quadrados Sobre os Desvios",
+                  "subtitulo": "Amplitude, variância e desvio padrão",
+                  "arquivo": "aritmetica/estatistica/medidas-de-dispersao/aula-01.json"
                 }
               ]
             }
