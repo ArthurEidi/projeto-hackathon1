@@ -121,7 +121,7 @@ Quando k → 0, a paralela encosta no vértice do topo e o triângulo encolhe a 
 | `k05` | 0,5 | não | "0,5 é a redução de 6 para 3. Na ampliação de 3 para 6, k = 2." |
 
 #### F2 — `tales-direto`
-- **Enunciado:** "Três paralelas cortam duas transversais. Na primeira os segmentos medem 2 e 6; na segunda medem 3 e x. Quanto vale x?"
+- **Enunciado:** "Três paralelas cortam duas transversais: na primeira os segmentos medem 2 e 6; na segunda medem 3 e x. Quanto vale x?"
 - **Conta de conferência:** 2 / 6 = 3 / x ⇒ x = 9
 
 | id | Rótulo | Certa? | Feedback |

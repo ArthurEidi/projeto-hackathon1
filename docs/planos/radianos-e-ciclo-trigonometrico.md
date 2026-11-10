@@ -225,7 +225,7 @@ O aluno gira P além de 360° (ex.: 420° = 60° + 360°) e no sentido horário 
 | `q4` | 4º quadrante | não | "3 rad é quase meia-volta (3,14 rad), logo fica no 2º quadrante." |
 
 #### D5 — `bicicleta-voltas`
-- **Enunciado:** "A roda de uma bicicleta tem raio 0,4 m. Se ela girou um ângulo total de 10π rad, quantas voltas completas deu e quantos metros andou (use π ≈ 3)?"
+- **Enunciado:** "Uma roda de raio 0,4 m girou um ângulo total de 10π rad. Quantas voltas completas ela deu e quantos metros andou (use π ≈ 3)?"
 - **Fala do Paco:** "Cada volta são 2π rad; a distância é o ângulo em radianos vezes o raio."
 - **Conta de conferência:** voltas = 10π / (2π) = 5; distância = 10π · 0,4 = 4π ≈ 12 m
 

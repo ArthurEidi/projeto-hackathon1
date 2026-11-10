@@ -57,7 +57,7 @@ O aluno percorre os 4 quadrantes observando o sinal de x, y e y/x, compara os si
 - **Paco (abertura):** "Em 30°, sen = 0,5 e cos ≈ 0,87. Passe por 150°, 210° e 330°: os números mudam ou só os sinais?"
 - **Interação do aluno:** avança `theta` até 330°; o retângulo mostra que o tamanho das sombras é sempre o mesmo de 30°, mudando só o sinal em cada quadrante.
 - **Conclusão:** `theta ≥ 330`
-- **Paco (conclusão):** "Só os sinais mudam: em 150° (2º Q) o seno é +0,5 e o cosseno é −0,87; em 210° (3º Q) os dois são negativos; em 330° (4º Q) só o cosseno é positivo."
+- **Paco (conclusão):** "Só os sinais mudam: em 150° temos sen > 0 e cos < 0; em 210° os dois são negativos; em 330° só o cosseno é positivo."
 
 ### Passo 3 — `reta-tangente-e-90`
 - **Tipo:** `interactive_canvas`
@@ -67,7 +67,7 @@ O aluno percorre os 4 quadrantes observando o sinal de x, y e y/x, compara os si
 - **Paco (abertura):** "Em 45° o raio corta a reta tangente na altura 1. Leve θ a 90° e depois a 135°: onde o raio corta a reta em 90°?"
 - **Interação do aluno:** passa por 90° (onde a linha do raio fica vertical e paralela à reta tangente, mostrando "não existe") e chega a 135° (tg 135° = −1).
 - **Conclusão:** `theta ≥ 135`
-- **Paco (conclusão):** "Em 90° o raio fica paralelo à reta tangente e cos 90° = 0, por isso tg 90° não existe. Já em 135° (2º Q), o prolongamento corta lá embaixo em −1."
+- **Paco (conclusão):** "Em 90° o raio fica paralelo à reta tangente e cos 90° = 0, por isso tg 90° não existe. Em 135°, o prolongamento corta em −1."
 - **Tati (dúvida):** `fim` — P: "Por que no 3º quadrante a tangente volta a ser positiva?" / R: "Porque no 3º quadrante seno e cosseno são ambos negativos, e negativo dividido por negativo dá positivo."
 
 ### Passo 4 — `desafio-reduzir-150`

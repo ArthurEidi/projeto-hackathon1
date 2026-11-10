@@ -214,7 +214,7 @@ Quando a soma de dois lados empata com o terceiro (b + c = a), o triângulo acha
 | `a55` | 55° | não | "55° é o topo; na base cada um mede (180° − 55°) / 2 = 62,5°." |
 
 #### D3 — `bissetrizes-internas`
-- **Enunciado:** "Num triângulo ABC, o ângulo A mede 80°. As bissetrizes dos ângulos B e C se cruzam em P. Quanto mede o ângulo BPC?"
+- **Enunciado:** "No triângulo ABC, o ângulo A mede 80° e as bissetrizes de B e C se cruzam em P. Quanto mede o ângulo BPC?"
 - **Fala do Paco:** "Primeiro ache B + C no triângulo grande; no triângulo BPC você usa metade de B mais metade de C."
 - **Conta de conferência:** B + C = 180° − 80° = 100° ⇒ B/2 + C/2 = 50° ⇒ BPC = 180° − 50° = 130°
 

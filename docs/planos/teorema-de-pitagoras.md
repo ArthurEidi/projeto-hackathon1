@@ -100,7 +100,7 @@ A hipotenusa (oposta a 90°) é sempre o maior lado (a > b e a > c), mas menor q
 - **Figura:** `geometria_plana_figura` — triângulo retângulo com os quadrados b² (c1), c² (c2), a² (c3) e destaque da diagonal d (c4).
 - **Fórmula:** `a²`→c3 · `=` · `b²`→c1 · `+` · `c²`→c2
 - **Definições:** "Hipotenusa (a): lado oposto ao ângulo de 90°; é sempre o maior lado." · "Ternas pitagóricas: 3-4-5, 6-8-10, 5-12-13 fecham contas sem raiz." · "Diagonal do quadrado de lado L: d² = 2·L²."
-- **Paco (abertura):** "Os quatro triângulos no quadradão deixam a mesma área livre nos dois arranjos, por isso o quadrado da hipotenusa vale a soma dos quadrados dos catetos."
+- **Paco (abertura):** "Os 4 triângulos deixam a mesma área livre nos dois arranjos, por isso o quadrado da hipotenusa soma os quadrados dos catetos."
 - **Dica (hint):** "Toque em a², b² ou c² para iluminar o quadrado correspondente na figura."
 
 **Frase de encerramento (outro):** "Você somou as áreas dos quadrados nos catetos, dominou as ternas 3-4-5 e 6-8-10 e calculou a diagonal do quadrado."
