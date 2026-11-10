@@ -88,7 +88,7 @@ Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {
 | `erro` | −4 | não | "Trata expoente negativo como sinal da saída; 2⁻²=1/2²=1/4." | Destaca o sinal errado e mostra o recíproco correto 1/4. |
 | `certa` | 1/4 | **sim** | "2⁻²=1/2²=1/4." | marca a resposta no gráfico. |
 - **Paco (conclusão):** "2⁻²=1/2²=1/4."
-- **Tati (dúvida):** `fim` — P: "E se a entrada estiver na fronteira?" / R: "A condição do domínio decide se o ponto entra e qual regra vale."
+- **Tati (dúvida):** `fim` — P: "A curva chega a ser negativa?" / R: "Nunca: potência de base positiva é sempre positiva." (reescrito: texto genérico de domínio não se aplicava)
 
 ### Passo 5 — `fechamento`
 - **Tipo:** `concept_lock`
@@ -103,7 +103,7 @@ Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {
 - **Interação do aluno:** toque nas marcas c1–c4 para relacionar cada grandeza ao gráfico.
 - **Paco (conclusão):** "A figura mostra como cada entrada produz a saída prevista pela regra."
 - **Dica (hint):** "Toque em uma marca para ver o que ela representa no gráfico."
-- **Tati (dúvida):** `início` — P: "O desenho vale fora do domínio?" / R: "Não; as condições da função limitam as entradas válidas."
+- **Tati (dúvida):** `início` — P: "Todas as curvas passam por (0; 1)?" / R: "Sim, para qualquer b > 0: b⁰ = 1." (reescrito)
 
 **Frase de encerramento (outro):** "Você testou a entrada e a fronteira; por isso f(x)=bˣ, b>0."
 
@@ -232,7 +232,7 @@ Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {
 
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
-| `d5-funcao-exponencial-e` | 4 | não | "Resposta: 3; Para em 40÷5=8; conferência: 2ˣ=8=2³, logo x=3." |
+| `d5-funcao-exponencial-e` | 8 (corrigido: era 4, que não bate com o feedback) | não | "Resposta: 3; Para em 40÷5=8; conferência: 2ˣ=8=2³, logo x=3." |
 | `d5-funcao-exponencial-c` | 3 | **sim** | "Certo: resposta 3; conferência: 2ˣ=8=2³, logo x=3." |
 
 ### Vestibular
@@ -300,3 +300,6 @@ Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {
 **Texto**
 - [x] Falas, enunciados e feedback têm até 140 caracteres e duas frases; sem emoji ou termos proibidos.
 - [x] Notação usa −, vírgula decimal, ·, potências e coordenadas do app.
+
+---
+**Notas da implementação (JSON):** panorama (inversa = logaritmo) como dúvida de `base-cresce`; fronteira b ≤ 0 / b = 1 como dúvida de `base-decai`; y = 1 e y = x como fantasmas no passo 1. M2 e D2: feedbacks dos distratores 24 e 18 reescritos (a conta do plano não explicava esses números). Vestibular `[]`. Lacunas: o slider mostra `Math.round(value)` (b = 0,5 aparece "1"); sem seta "×b" entre passos; a base b não tem elemento próprio no gráfico.

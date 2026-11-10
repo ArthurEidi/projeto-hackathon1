@@ -16,6 +16,11 @@ export function Slider({ label, value, min, max, step = 1, unit = "", color, onC
   const trackRef = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState(false);
   const frac = (value - min) / (max - min);
+  // Passo fracionário (0,5; 0,1) aparece com vírgula; passo inteiro continua sem casas.
+  const casas = Number.isInteger(step) ? 0 : Math.min(2, (String(step).split(".")[1] ?? "").length);
+  const texto = (Math.round(value * 1e6) / 1e6)
+    .toLocaleString("pt-BR", { maximumFractionDigits: casas })
+    .replace("-", "−");
 
   const clampStep = (v: number) => {
     const s = Math.round((v - min) / step) * step + min;
@@ -53,7 +58,7 @@ export function Slider({ label, value, min, max, step = 1, unit = "", color, onC
       <div className="slider__head">
         <span>{label}</span>
         <span className="slider__value">
-          {Math.round(value)}
+          {texto}
           {unit}
         </span>
       </div>
@@ -66,7 +71,7 @@ export function Slider({ label, value, min, max, step = 1, unit = "", color, onC
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={value}
-        aria-valuetext={`${Math.round(value)}${unit}`}
+        aria-valuetext={`${texto}${unit}`}
         onKeyDown={onKey}
         onPointerDown={(e) => {
           e.currentTarget.setPointerCapture(e.pointerId);

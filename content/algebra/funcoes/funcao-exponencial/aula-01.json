@@ -1,0 +1,254 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Multiplicar a Cada Passo",
+  "subtitulo": "Crescimento e decaimento exponencial",
+  "caminho": { "pilar": "algebra", "setor": "funcoes", "unidade": "funcao-exponencial" },
+  "outro": "Você viu cada passo multiplicar a saída por b e a curva passar sempre por (0; 1): por isso f(x) = bˣ, com b > 0.",
+  "glossario": {
+    "c1": { "nome": "Expoente x", "resumo": "Número de passos que repete o fator da base." },
+    "c2": { "nome": "Saída bˣ", "resumo": "Quantidade acumulada após os passos indicados." },
+    "c3": { "nome": "Base b", "resumo": "Fator repetido; acima de 1 cresce, entre 0 e 1 decai." },
+    "c4": { "nome": "Nível unitário", "resumo": "Todas as curvas passam por (0; 1), pois b⁰ = 1." }
+  },
+  "steps": [
+    {
+      "id": "expoente-zero",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "y = 2ˣ" },
+          { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" },
+          { "tipo": "afim", "a": 0, "b": 1, "fantasma": true, "rotulo": "y = 1" }
+        ],
+        "ponto": { "curva": 0, "x": 0, "passo": 1, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "Caso neutro: com b = 2 e x = 0, qual é a saída? Arraste o ponto até x = 2 e leia as saídas.",
+        "done": "Em x = 0 a saída é 1 e em x = 2 é 4: cada passo duplica. Zero passos deixam a quantidade como estava."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda exponencial cresce?",
+        "resposta": "Não; bases entre zero e um fazem a saída decair."
+      },
+      "complete_when": { "metric": "ponto_x", "gte": 2 }
+    },
+    {
+      "id": "base-cresce",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "fantasma": true, "rotulo": "y = 2ˣ" },
+          { "tipo": "exponencial", "a": 1, "b": "$b", "c": 0, "cor": "c2" }
+        ]
+      },
+      "controls": [{ "id": "b", "label": "Base", "min": 0.5, "max": 3, "step": 0.5, "initial": 1, "color": "c3" }],
+      "lines": {
+        "intro": "Com b = 1 a saída fica sempre 1, pois nada multiplica. Leve b até 2 e veja o que cada passo faz com a saída.",
+        "done": "A cada passo a saída se multiplica por 2: em x = 1, 2 e 3 ela vale 2, 4 e 8."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Existe a operação inversa?",
+        "resposta": "Sim: o logaritmo, que procura o expoente. Aqui ficamos em bˣ com b > 0."
+      },
+      "complete_when": { "metric": "b", "gte": 2 }
+    },
+    {
+      "id": "base-decai",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "fantasma": true, "rotulo": "y = 2ˣ" },
+          { "tipo": "exponencial", "a": 1, "b": "$b", "c": 0, "cor": "c2" }
+        ]
+      },
+      "controls": [{ "id": "b", "label": "Base", "min": 0.5, "max": 3, "step": 0.5, "initial": 2, "color": "c3" }],
+      "lines": {
+        "intro": "O que muda quando a base passa a 0,5? Leve b até 0,5 e compare com a curva de b = 2.",
+        "done": "Fator entre 0 e 1 encolhe a saída a cada passo: (0; 1), (1; 0,5), (2; 0,25). A curva decai e nunca toca o zero."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que b não pode ser zero nem negativo?",
+        "resposta": "Com b negativo, saídas como b^(1/2) não existem nos reais. Com b = 1 a curva vira a reta y = 1, sem inversa."
+      },
+      "complete_when": { "metric": "b", "lte": 0.5 }
+    },
+    {
+      "id": "desafio-fronteira",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [{ "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "f(x) = 2ˣ" }]
+        }
+      },
+      "prompt": "Quanto vale 2⁻²?",
+      "lines": { "intro": "Avançar um passo multiplica por 2; voltar divide por 2. Qual resposta a figura sustenta?" },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A curva chega a ser negativa?",
+        "resposta": "Nunca: potência de base positiva é sempre positiva. A curva se aproxima do eixo x sem tocá-lo."
+      },
+      "options": [
+        {
+          "id": "erro",
+          "label": "−4",
+          "correct": false,
+          "feedback": "O expoente negativo não deixa a saída negativa: voltar dois passos divide por 2 duas vezes. 2⁻² = 1/4.",
+          "figure": { "ponto": { "x": -2, "cor": "c1" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "certa",
+          "label": "1/4",
+          "correct": true,
+          "feedback": "Isso. 2⁻² = 1/2² = 1/4: voltar dois passos divide 1 por 2 duas vezes.",
+          "figure": { "ponto": { "x": -2, "cor": "c2" }, "highlight": ["c2"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [{ "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "f(x) = 2ˣ" }],
+          "ponto": { "x": 0, "cor": "c4" }
+        }
+      },
+      "formula": [
+        { "text": "f(x)", "ref": "c2" },
+        { "text": "=" },
+        { "text": "b", "sup": "x", "ref": "c3" }
+      ],
+      "definitions": [
+        { "term": "Base b", "text": "fator repetido a cada passo." },
+        { "term": "Expoente x", "text": "número de passos." },
+        { "term": "Saída", "text": "bˣ com b > 0 é sempre positiva." }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Todas as curvas passam por (0; 1)?",
+        "resposta": "Sim, para qualquer b > 0: zero passos deixam o fator neutro, e b⁰ = 1."
+      },
+      "lines": {
+        "intro": "Cada passo multiplica a saída por b, e zero passos deixa 1. Por isso f(x) = bˣ, com b > 0 e curva sempre acima do eixo x.",
+        "hint": "Toque em uma marca para ver o que ela representa no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-funcao-exponencial",
+        "prompt": "Quanto vale 2⁰?",
+        "options": [
+          { "id": "e", "label": "0", "correct": false, "feedback": "Zero passos deixam o neutro da multiplicação: 2⁰ = 1, não 0." },
+          { "id": "c", "label": "1", "correct": true, "feedback": "Isso. Sem passos nada foi multiplicado, então a saída é 1." }
+        ]
+      },
+      {
+        "id": "f2-funcao-exponencial",
+        "prompt": "Em f(x) = 3ˣ, por qual fator a saída muda ao avançar 1 na entrada?",
+        "options": [
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. Cada passo multiplica por 3: 3ˣ⁺¹ = 3·3ˣ." },
+          { "id": "e", "label": "1", "correct": false, "feedback": "1 é quanto a entrada avança. A saída é multiplicada por 3: 3ˣ⁺¹ = 3·3ˣ." }
+        ]
+      },
+      {
+        "id": "f3-funcao-exponencial",
+        "prompt": "Quanto vale 2⁻²?",
+        "options": [
+          { "id": "e", "label": "−4", "correct": false, "feedback": "O expoente negativo não troca o sinal da saída: 2⁻² = 1/2² = 1/4." },
+          { "id": "c", "label": "1/4", "correct": true, "feedback": "Isso. Voltar dois passos divide por 2 duas vezes: 1/2² = 1/4." }
+        ]
+      },
+      {
+        "id": "f4-funcao-exponencial",
+        "prompt": "Qual base gera decaimento?",
+        "options": [
+          { "id": "c", "label": "1/2", "correct": true, "feedback": "Isso. Com 0 < 1/2 < 1, cada passo encolhe a saída." },
+          { "id": "e", "label": "2", "correct": false, "feedback": "Base maior que 1 cresce. O decaimento vem de uma base entre 0 e 1, como 1/2." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-funcao-exponencial",
+        "prompt": "A saída de f(x) = 5ˣ pode valer zero?",
+        "options": [
+          { "id": "e", "label": "Sim", "correct": false, "feedback": "A curva se aproxima do eixo x, mas não o toca: 5ˣ > 0 para todo x. A resposta é não." },
+          { "id": "c", "label": "Não", "correct": true, "feedback": "Isso. Potência de base positiva é sempre positiva: 5ˣ > 0 para todo x." }
+        ]
+      },
+      {
+        "id": "m2-funcao-exponencial",
+        "prompt": "Uma quantidade 4 triplica duas vezes seguidas. Qual é o total?",
+        "options": [
+          { "id": "c", "label": "36", "correct": true, "feedback": "Isso. Triplicar duas vezes é multiplicar por 3 duas vezes: 4·3² = 36." },
+          { "id": "e", "label": "24", "correct": false, "feedback": "24 é 4·3·2: o expoente virou fator. Triplicar duas vezes dá 4·3² = 36." }
+        ]
+      },
+      {
+        "id": "m3-funcao-exponencial",
+        "prompt": "Quanto vale (1/2)³?",
+        "options": [
+          { "id": "e", "label": "1/6", "correct": false, "feedback": "1/6 multiplica 2 por 3. O cubo vale 1/2³ = 1/8." },
+          { "id": "c", "label": "1/8", "correct": true, "feedback": "Isso. (1/2)³ = 1/2 · 1/2 · 1/2 = 1/8." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-funcao-exponencial",
+        "prompt": "Se f(x) = 2ˣ, quanto vale f(3)?",
+        "options": [
+          { "id": "c", "label": "8", "correct": true, "feedback": "Isso. 2³ = 2·2·2 = 8." },
+          { "id": "e", "label": "6", "correct": false, "feedback": "6 é 2·3: base vezes expoente. O expoente conta repetições, então 2³ = 8." }
+        ]
+      },
+      {
+        "id": "d2-funcao-exponencial",
+        "prompt": "Há 3 células e o número dobra 3 vezes seguidas. Quantas ficam?",
+        "options": [
+          { "id": "e", "label": "18", "correct": false, "feedback": "18 é 3·2·3. Dobrar 3 vezes multiplica por 2³ = 8: 3·8 = 24." },
+          { "id": "c", "label": "24", "correct": true, "feedback": "Isso. Dobrar 3 vezes é multiplicar por 2³ = 8, e 3·8 = 24." }
+        ]
+      },
+      {
+        "id": "d3-funcao-exponencial",
+        "prompt": "Quantas soluções tem 2ˣ = 1?",
+        "fala": "Teste x = 1 e x = −1 antes de decidir.",
+        "options": [
+          { "id": "e", "label": "Duas: x = ±1", "correct": false, "feedback": "x = 1 dá 2 e x = −1 dá 1/2, nenhum dá 1. Só x = 0 serve: 2⁰ = 1." },
+          { "id": "c", "label": "Uma: x = 0", "correct": true, "feedback": "Isso. 2⁰ = 1, e a curva é crescente: nenhum outro x dá 1." }
+        ]
+      },
+      {
+        "id": "d4-funcao-exponencial",
+        "prompt": "Qual é a imagem de f(x) = (1/3)ˣ?",
+        "fala": "Pergunte: a saída pode chegar a zero ou ficar negativa?",
+        "options": [
+          { "id": "c", "label": "(0; ∞)", "correct": true, "feedback": "Isso. Toda potência de base positiva é maior que 0, e a curva nunca toca o zero." },
+          { "id": "e", "label": "[0; ∞)", "correct": false, "feedback": "A curva nunca toca o zero: toda potência positiva é maior que 0. A imagem é (0; ∞)." }
+        ]
+      },
+      {
+        "id": "d5-funcao-exponencial",
+        "prompt": "Se 5·2ˣ = 40, quanto vale x?",
+        "fala": "Última. Isole 2ˣ e pergunte: quantos 2 multiplicados dão esse valor?",
+        "options": [
+          { "id": "e", "label": "8", "correct": false, "feedback": "8 é o valor de 2ˣ, não de x. Como 2ˣ = 8 = 2³, x = 3." },
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. 40 ÷ 5 = 8 = 2³, logo x = 3." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
