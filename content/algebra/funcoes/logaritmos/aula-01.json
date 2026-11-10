@@ -1,0 +1,275 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Pergunta Inversa",
+  "subtitulo": "Logaritmo como expoente procurado",
+  "caminho": { "pilar": "algebra", "setor": "funcoes", "unidade": "logaritmos" },
+  "outro": "Você viu o log devolver o expoente e o gráfico espelhar a exponencial: por isso log_b(x) = y equivale a bʸ = x.",
+  "glossario": {
+    "c1": { "nome": "Argumento x", "resumo": "Saída positiva da potência que o logaritmo desfaz." },
+    "c2": { "nome": "Expoente y", "resumo": "Resposta à pergunta: a que potência elevar b para obter x." },
+    "c3": { "nome": "Base b", "resumo": "Precisa ser positiva e diferente de 1 para ter inversa." },
+    "c4": { "nome": "Diagonal y = x", "resumo": "Espelho que troca coordenadas entre exponencial e log." }
+  },
+  "steps": [
+    {
+      "id": "volta-potencia",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 10],
+        "y": [-3, 9],
+        "curvas": [
+          { "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "cor": "c3", "rotulo": "y = 2ˣ" },
+          { "tipo": "logaritmo", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "y = log₂(x)" },
+          { "tipo": "afim", "a": 1, "b": 0, "cor": "c4", "rotulo": "y = x" }
+        ],
+        "ponto": { "curva": 0, "x": 0, "passo": 1, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "Caso neutro: 2⁰ = 1, então quanto vale log₂(1)? Arraste o ponto da exponencial até (3; 8) e olhe o log.",
+        "done": "A exponencial diz 2³ = 8; o log volta por (8; 3). Os pontos trocam entrada e saída e se espelham na diagonal."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "O logaritmo pode receber zero?",
+        "resposta": "Não; seu argumento precisa ser positivo."
+      },
+      "complete_when": { "metric": "ponto_x", "gte": 3 }
+    },
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 10],
+        "y": [-3, 9],
+        "curvas": [
+          { "tipo": "logaritmo", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "y = log₂(x)" },
+          { "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "cor": "c3", "rotulo": "y = 2ˣ" }
+        ],
+        "ponto": { "curva": 0, "x": 4, "passo": 0.5, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "Que expoente de 2 produz 1? Arraste o argumento até a saída do log ser zero.",
+        "done": "log₂(1) = 0, pois 2⁰ = 1. É o caso neutro: expoente zero devolve 1, qualquer que seja a base."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Dá para somar logaritmos?",
+        "resposta": "Dá: o log de um produto é a soma dos logs. Aqui ficamos na definição, no domínio e no gráfico."
+      },
+      "complete_when": { "metric": "na_raiz", "gte": 1 }
+    },
+    {
+      "id": "dominio-positivo",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 9],
+        "y": [-5, 5],
+        "curvas": [{ "tipo": "logaritmo", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "y = log₂(x)" }],
+        "ponto": { "curva": 0, "x": 4, "passo": 0.5, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "O argumento pode chegar a zero? Arraste o ponto para perto de x = 0 e veja a saída.",
+        "done": "Perto de 0 a saída despenca, e em x ≤ 0 não há curva. O log aceita só argumento positivo; zero fica de fora."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A base pode ser qualquer número?",
+        "resposta": "Não: base 1 só dá 1 e base negativa quebra as potências. Fica b > 0 e b ≠ 1."
+      },
+      "complete_when": { "metric": "ponto_x", "lte": 0.5 }
+    },
+    {
+      "id": "desafio-fronteira",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 10],
+          "y": [-3, 9],
+          "curvas": [
+            { "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "cor": "c3", "rotulo": "y = 2ˣ" },
+            { "tipo": "logaritmo", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "y = log₂(x)" },
+            { "tipo": "afim", "a": 1, "b": 0, "cor": "c4", "rotulo": "y = x" }
+          ]
+        }
+      },
+      "prompt": "Quanto vale log₂(8)?",
+      "lines": { "intro": "log₂(8) pergunta: a que potência elevar 2 para chegar a 8? Qual resposta a figura sustenta?" },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que o log e a exponencial são espelhos?",
+        "resposta": "Trocam entrada e saída: se 2³ = 8, então log₂(8) = 3. Trocar x e y é refletir na diagonal."
+      },
+      "options": [
+        {
+          "id": "erro",
+          "label": "8",
+          "correct": false,
+          "feedback": "8 é o argumento, não a resposta. O log procura o expoente: 2³ = 8, então log₂(8) = 3.",
+          "figure": { "ponto": { "curva": 1, "x": 8, "cor": "c1" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "certa",
+          "label": "3",
+          "correct": true,
+          "feedback": "Isso. 2³ = 8, então o expoente procurado é 3: log₂(8) = 3.",
+          "figure": { "ponto": { "curva": 1, "x": 8, "cor": "c2" }, "highlight": ["c2"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 10],
+          "y": [-3, 9],
+          "curvas": [
+            { "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "cor": "c3", "rotulo": "y = 2ˣ" },
+            { "tipo": "logaritmo", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "y = log₂(x)" },
+            { "tipo": "afim", "a": 1, "b": 0, "cor": "c4", "rotulo": "y = x" }
+          ],
+          "ponto": { "curva": 1, "x": 8, "cor": "c1" }
+        }
+      },
+      "formula": [
+        { "text": "log_b(x)", "ref": "c2" },
+        { "text": "=" },
+        { "text": "y" },
+        { "text": "⇔" },
+        { "text": "b", "sup": "y", "ref": "c3" },
+        { "text": "=" },
+        { "text": "x", "ref": "c1" }
+      ],
+      "definitions": [
+        { "term": "Argumento x", "text": "precisa ser positivo." },
+        { "term": "Base b", "text": "positiva e diferente de 1." },
+        { "term": "Logaritmo", "text": "expoente que produz o argumento." }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "O log é a exponencial de cabeça para baixo?",
+        "resposta": "É a volta dela. Por isso o gráfico é o espelho na diagonal e o domínio é x > 0."
+      },
+      "lines": {
+        "intro": "O log pergunta qual expoente de b dá x. Por isso log_b(x) = y equivale a bʸ = x, e os gráficos se espelham na diagonal.",
+        "hint": "Toque em uma marca para ver o que ela representa no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-logaritmos",
+        "prompt": "Quanto vale log₂(8)?",
+        "options": [
+          { "id": "e", "label": "8", "correct": false, "feedback": "8 é o argumento. O log procura o expoente: 2³ = 8, então log₂(8) = 3." },
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. 2³ = 8, então log₂(8) = 3." }
+        ]
+      },
+      {
+        "id": "f2-logaritmos",
+        "prompt": "Quanto vale log₅(1)?",
+        "options": [
+          { "id": "c", "label": "0", "correct": true, "feedback": "Isso. 5⁰ = 1, então log₅(1) = 0: o caso neutro." },
+          { "id": "e", "label": "1", "correct": false, "feedback": "1 é o argumento. Procure o expoente: 5⁰ = 1, então log₅(1) = 0." }
+        ]
+      },
+      {
+        "id": "f3-logaritmos",
+        "prompt": "log₃(9) = 2 equivale a qual potência?",
+        "options": [
+          { "id": "e", "label": "3·2 = 9", "correct": false, "feedback": "O log dá um expoente, não um fator: log₃(9) = 2 significa 3² = 9." },
+          { "id": "c", "label": "3² = 9", "correct": true, "feedback": "Isso. Pela definição, log₃(9) = 2 equivale a 3² = 9." }
+        ]
+      },
+      {
+        "id": "f4-logaritmos",
+        "prompt": "Qual argumento está no domínio de log₂(x)?",
+        "options": [
+          { "id": "c", "label": "1/2", "correct": true, "feedback": "Isso. 1/2 > 0, e o domínio exige argumento positivo." },
+          { "id": "e", "label": "0", "correct": false, "feedback": "Zero não está no domínio: o argumento precisa ser positivo. Serve 1/2, pois 1/2 > 0." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-logaritmos",
+        "prompt": "Quanto vale log₂(4) + log₂(2)?",
+        "options": [
+          { "id": "e", "label": "6", "correct": false, "feedback": "6 soma os argumentos, 4 + 2. Some os expoentes: 2 + 1 = 3, que também é log₂(8)." },
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. log₂(4) = 2 e log₂(2) = 1, então 2 + 1 = 3." }
+        ]
+      },
+      {
+        "id": "m2-logaritmos",
+        "prompt": "Qual destas bases não serve para um logaritmo?",
+        "options": [
+          { "id": "c", "label": "1", "correct": true, "feedback": "Isso. 1ʸ = 1 para todo y, então não há inversa: a base precisa ser diferente de 1." },
+          { "id": "e", "label": "2", "correct": false, "feedback": "A base 2 serve. A inválida é 1: 1ʸ = 1 para todo y, sem inversa." }
+        ]
+      },
+      {
+        "id": "m3-logaritmos",
+        "prompt": "Quanto vale log₃(27)?",
+        "options": [
+          { "id": "e", "label": "9", "correct": false, "feedback": "9 é 27 ÷ 3. Procure o expoente: 3³ = 27, então log₃(27) = 3." },
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. 3·3·3 = 27, então o expoente é 3." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-logaritmos",
+        "prompt": "Resolva log₂(x) = 4.",
+        "fala": "Volte pela definição: log₂(x) = 4 equivale a 2⁴ = x.",
+        "options": [
+          { "id": "c", "label": "16", "correct": true, "feedback": "Isso. log₂(x) = 4 equivale a x = 2⁴ = 16." },
+          { "id": "e", "label": "8", "correct": false, "feedback": "8 usa 2³. Com log₂(x) = 4, x = 2⁴ = 16." }
+        ]
+      },
+      {
+        "id": "d2-logaritmos",
+        "prompt": "Quanto vale log₁₀(0,1)?",
+        "fala": "Escreva 0,1 como potência de 10.",
+        "options": [
+          { "id": "e", "label": "1", "correct": false, "feedback": "10¹ = 10, não 0,1. Como 10⁻¹ = 0,1, o log vale −1." },
+          { "id": "c", "label": "−1", "correct": true, "feedback": "Isso. 10⁻¹ = 1/10 = 0,1, então o expoente é −1." }
+        ]
+      },
+      {
+        "id": "d3-logaritmos",
+        "prompt": "Qual é o domínio de f(x) = log₃(x − 2)?",
+        "fala": "O que está dentro do log precisa ser positivo.",
+        "options": [
+          { "id": "c", "label": "x > 2", "correct": true, "feedback": "Isso. x − 2 > 0 dá x > 2." },
+          { "id": "e", "label": "x ≥ 2", "correct": false, "feedback": "Com x = 2 o argumento vira 0, fora do domínio. É preciso x − 2 > 0, ou seja, x > 2." }
+        ]
+      },
+      {
+        "id": "d4-logaritmos",
+        "prompt": "Se log₂(x) = 3, quanto vale log₂(4x)?",
+        "fala": "Ache x primeiro e depois o expoente de 4x.",
+        "options": [
+          { "id": "e", "label": "12", "correct": false, "feedback": "12 multiplica 4 por 3. Aqui x = 8, 4x = 32 = 2⁵, e log₂(32) = 5." },
+          { "id": "c", "label": "5", "correct": true, "feedback": "Isso. x = 2³ = 8, então 4x = 32 = 2⁵ e log₂(32) = 5." }
+        ]
+      },
+      {
+        "id": "d5-logaritmos",
+        "prompt": "Resolva log₃(x) + log₃(3) = 2.",
+        "fala": "Última. Calcule log₃(3) primeiro e isole log₃(x).",
+        "options": [
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. log₃(3) = 1, então log₃(x) = 1 e x = 3." },
+          { "id": "e", "label": "9", "correct": false, "feedback": "9 esquece o log₃(3) = 1. Fica log₃(x) + 1 = 2, então log₃(x) = 1 e x = 3." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

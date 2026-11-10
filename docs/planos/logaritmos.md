@@ -52,7 +52,7 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 - **Sliders:** nenhum
 - **Paco (abertura):** "Que saída prevê no caso neutro? 2⁰=1; quanto vale log₂(1)?"
 - **Interação do aluno:** Arraste (3;8) e veja surgir (8;3) no inverso.
-- **Conclusão:** `faixa_x ≥ 2`
+- **Conclusão:** `ponto_x ≥ 3` (corrigido: o texto manda arrastar até (3; 8))
 - **Paco (conclusão):** "Exponencial e log trocam entrada e saída; os pontos se espelham."
 - **Tati (dúvida):** `fim` — P: "O logaritmo pode receber zero?" / R: "Não; seu argumento precisa ser positivo."
 
@@ -63,7 +63,7 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 - **Sliders:** nenhum
 - **Paco (abertura):** "Que expoente de 2 produz 1?"
 - **Interação do aluno:** Mova o argumento até x=1 e leia saída zero.
-- **Conclusão:** `ponto_x ≥ 2`
+- **Conclusão:** `na_raiz ≥ 1` (corrigido: o texto manda ir a x = 1, então ponto_x ≥ 2 não fazia sentido)
 - **Paco (conclusão):** "log₂(1)=0, pois 2⁰=1."
 
 ### Passo 3 — `dominio-positivo`
@@ -73,7 +73,7 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 - **Sliders:** nenhum
 - **Paco (abertura):** "O argumento pode chegar a zero?"
 - **Interação do aluno:** Arraste o argumento para perto de zero sem cruzar.
-- **Conclusão:** `faixa_x ≥ 1`
+- **Conclusão:** `ponto_x ≤ 0,5` (corrigido: faixa_x ≥ 1 não leva "perto de zero")
 - **Paco (conclusão):** "Log aceita argumento positivo; zero não pertence ao domínio."
 
 ### Passo 4 — `desafio-fronteira`
@@ -88,7 +88,7 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 | `erro` | 8 | não | "Lê o argumento como resposta em vez de procurar expoente; 2³=8; portanto log₂(8)=3." | Realça 8 como argumento e 3 como expoente procurado. |
 | `certa` | 3 | **sim** | "2³=8; portanto log₂(8)=3." | marca a resposta no gráfico. |
 - **Paco (conclusão):** "2³=8; portanto log₂(8)=3."
-- **Tati (dúvida):** `fim` — P: "E se a entrada estiver na fronteira?" / R: "A condição do domínio decide se o ponto entra e qual regra vale."
+- **Tati (dúvida):** `fim` — P: "Por que o log e a exponencial são espelhos?" / R: "Trocam entrada e saída: 2³ = 8 e log₂(8) = 3." (reescrito: texto genérico não se aplicava)
 
 ### Passo 5 — `fechamento`
 - **Tipo:** `concept_lock`
@@ -103,7 +103,7 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 - **Interação do aluno:** toque nas marcas c1–c4 para relacionar cada grandeza ao gráfico.
 - **Paco (conclusão):** "A figura mostra como cada entrada produz a saída prevista pela regra."
 - **Dica (hint):** "Toque em uma marca para ver o que ela representa no gráfico."
-- **Tati (dúvida):** `início` — P: "O desenho vale fora do domínio?" / R: "Não; as condições da função limitam as entradas válidas."
+- **Tati (dúvida):** `início` — P: "O log é a exponencial de cabeça para baixo?" / R: "É a volta dela; por isso o espelho e x > 0." (reescrito)
 
 **Frase de encerramento (outro):** "Você testou a entrada e a fronteira; por isso log_b(x)=y ⇔ bʸ=x."
 
@@ -300,3 +300,6 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 **Texto**
 - [x] Falas, enunciados e feedback têm até 140 caracteres e duas frases; sem emoji ou termos proibidos.
 - [x] Notação usa −, vírgula decimal, ·, potências e coordenadas do app.
+
+---
+**Notas da implementação (JSON):** panorama (log do produto) como dúvida de `caso-neutro`; base inválida como dúvida de `dominio-positivo`. Janela x[−2; 10] y[−3; 9] para caber (3; 8) e (8; 3). Vestibular `[]`. Lacunas de widget: o ponto espelhado (8; 3) não é desenhado automaticamente (só um ponto móvel por vez; a curva do log mostra o par); sem marcador de x = 0 (assíntota vertical); diagonal y = x é uma curva afim em c4.
