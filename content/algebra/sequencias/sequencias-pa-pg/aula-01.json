@@ -1,0 +1,511 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Degraus que Somam e Multiplicam",
+  "subtitulo": "Progressões aritmética e geométrica",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "sequencias",
+    "unidade": "sequencias-pa-pg"
+  },
+  "outro": "Você comparou soma fixa e fator fixo; por isso PA e PG avançam por mecanismos diferentes.",
+  "glossario": {
+    "c1": {
+      "nome": "Índice n",
+      "resumo": "Posição inteira que escolhe o termo."
+    },
+    "c2": {
+      "nome": "Termo aₙ",
+      "resumo": "Valor da sequência na posição n."
+    },
+    "c3": {
+      "nome": "Diferença d",
+      "resumo": "Parcela somada em cada avanço da PA."
+    },
+    "c4": {
+      "nome": "Razão q",
+      "resumo": "Fator de cada avanço da PG."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 0,
+        "regra": "pg",
+        "a1": 4,
+        "q": 1,
+        "termos": 5,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Índice",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com d = 0 ou q = 1, a próxima barra muda ou fica igual? Avance o índice e confira.",
+        "done": "O caso neutro mantém o valor: 4, 4, 4, 4. As barras ficam na mesma altura."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Há outras ideias além de PA e PG?",
+        "resposta": "Sim. Hoje comparamos essas duas regras; as demais vêm depois."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "contraste-de-regras",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 0,
+        "regra": "pa",
+        "a1": 1,
+        "d": "$d",
+        "termos": 5,
+        "fantasma": {
+          "regra": "pg",
+          "a1": 1,
+          "d": 0,
+          "q": 2
+        }
+      },
+      "controls": [
+        {
+          "id": "d",
+          "label": "Diferença da PA",
+          "min": -2,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Na PA de a₁ = 1, quanto cada barra sobe por passo? Leve d até 2 e compare com a PG de razão 2, em cinza.",
+        "done": "Com d = 2, cada passo soma 2: 1, 3, 5, 7, 9. Na PG cinza, cada passo multiplica por 2: 1, 2, 4, 8, 16."
+      },
+      "complete_when": {
+        "metric": "d",
+        "gte": 2
+      }
+    },
+    {
+      "id": "teste-de-fronteira",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "casas": 0,
+        "regra": "pg",
+        "a1": 2,
+        "q": -1,
+        "termos": 6,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Índice",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Se q = −1, a PG mantém o sinal ou alterna? Avance o índice até n = 5.",
+        "done": "Os sinais alternam e o módulo permanece: 2, −2, 2, −2, 2."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a₁ ou q for zero?",
+        "resposta": "Com a₁ = 0 toda PG fica zero; com q = 0 só o primeiro termo sobrevive."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 5
+      }
+    },
+    {
+      "id": "micro-desafio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "sequencia",
+          "casas": 0,
+          "regra": "pa",
+          "a1": 4,
+          "d": -2,
+          "termos": 5
+        }
+      },
+      "prompt": "PA com a₁ = 4 e d = −2. Determine a₅.",
+      "lines": {
+        "intro": "A PA começa em 4 e desce 2 a cada passo. Até a₅, quantos avanços acontecem?"
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "−4",
+          "correct": true,
+          "feedback": "Certo. Quatro passos dão 4 − 8 = −4.",
+          "figure": {
+            "acesos": [
+              5
+            ]
+          }
+        },
+        {
+          "id": "o2",
+          "label": "−6",
+          "correct": false,
+          "feedback": "Contou cinco avanços; são quatro, então a₅ = −4.",
+          "figure": {
+            "termos": 6,
+            "acesos": [
+              6
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "sequencia",
+          "casas": 0,
+          "regra": "pa",
+          "a1": 1,
+          "d": 2,
+          "termos": 5,
+          "fantasma": {
+            "regra": "pg",
+            "a1": 1,
+            "d": 0,
+            "q": 2
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "aₙ",
+          "ref": "c2"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "a₁"
+        },
+        {
+          "text": "+"
+        },
+        {
+          "text": "("
+        },
+        {
+          "text": "n",
+          "ref": "c1"
+        },
+        {
+          "text": "− 1)"
+        },
+        {
+          "text": "d",
+          "ref": "c3"
+        },
+        {
+          "text": "|"
+        },
+        {
+          "text": "aₙ",
+          "ref": "c2"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "a₁"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "q",
+          "sup": "n − 1",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "PA",
+          "text": "diferença constante entre vizinhos."
+        },
+        {
+          "term": "PG",
+          "text": "quociente constante entre vizinhos."
+        },
+        {
+          "term": "n",
+          "text": "índice inteiro positivo."
+        }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Dá para saltar direto ao termo 100?",
+        "resposta": "Dá: a PA soma d noventa e nove vezes e a PG aplica q noventa e nove vezes, sem listar os termos."
+      },
+      "lines": {
+        "intro": "A PA soma uma diferença fixa e a PG reaplica uma razão fixa. Por isso seus termos obedecem regras diferentes.",
+        "hint": "Toque em uma marca para ver a grandeza correspondente nas barras."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "sequencias-pa-pg-f1",
+        "prompt": "Qual é o próximo termo da PA 2, 5, 8?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "11",
+            "correct": true,
+            "feedback": "Certo. d = 3; 8 + 3 = 11."
+          },
+          {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Somou 2, não 3. A diferença é 3: 8 + 3 = 11."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-f2",
+        "prompt": "Qual é o próximo termo da PG 3, 6, 12?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "18",
+            "correct": false,
+            "feedback": "Somou 6 em vez de multiplicar por 2. O próximo é 12 · 2 = 24."
+          },
+          {
+            "id": "o1",
+            "label": "24",
+            "correct": true,
+            "feedback": "Certo. q = 2; 12 · 2 = 24."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-f3",
+        "prompt": "Na PA com a₁ = 4 e d = 2, quanto vale a₄?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "10",
+            "correct": true,
+            "feedback": "Certo. 4 + 3 · 2 = 10."
+          },
+          {
+            "id": "o2",
+            "label": "12",
+            "correct": false,
+            "feedback": "Contou quatro avanços, mas são três. a₄ = 4 + 3 · 2 = 10."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-f4",
+        "prompt": "Na PG com a₁ = 2 e q = 3, quanto vale a₃?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "6",
+            "correct": false,
+            "feedback": "Parou no segundo termo. a₃ = 2 · 3² = 18."
+          },
+          {
+            "id": "o1",
+            "label": "18",
+            "correct": true,
+            "feedback": "Certo. 2 · 3² = 18."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "sequencias-pa-pg-m1",
+        "prompt": "A sequência 7, 5, 3, 1 é PA? Qual é d?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "Sim, 2",
+            "correct": false,
+            "feedback": "Leu a queda como positiva. É PA com d = 5 − 7 = −2."
+          },
+          {
+            "id": "o1",
+            "label": "Sim, −2",
+            "correct": true,
+            "feedback": "Certo. 5 − 7 = −2 e 3 − 5 = −2."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-m2",
+        "prompt": "Na PG com a₁ = 16 e q = 1/2, quanto vale a₄?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo. 16 → 8 → 4 → 2."
+          },
+          {
+            "id": "o2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Fez dois avanços; são três. 16 → 8 → 4 → 2."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-m3",
+        "prompt": "Na PA com a₁ = 3 e d = 4, qual é a₆?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "27",
+            "correct": false,
+            "feedback": "Somou seis vezes em vez de cinco: 3 + 6 · 4 = 27. De a₁ a a₆ são 5 avanços: 23."
+          },
+          {
+            "id": "o1",
+            "label": "23",
+            "correct": true,
+            "feedback": "Certo. 3 + 5 · 4 = 23."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "sequencias-pa-pg-d1",
+        "prompt": "Na PG com a₁ = 5 e q = −2, qual é a₄?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "−40",
+            "correct": true,
+            "feedback": "Certo. 5 · (−2)³ = −40."
+          },
+          {
+            "id": "o2",
+            "label": "40",
+            "correct": false,
+            "feedback": "Ignorou o sinal da razão: (−2)³ = −8. a₄ = −40."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-d2",
+        "prompt": "A sequência 4, 4, 4, … pode ser PA e PG ao mesmo tempo?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "Não, só PA",
+            "correct": false,
+            "feedback": "O mesmo padrão tem duas leituras: diferença 0 (PA) e quociente 1 (PG). Resposta: sim."
+          },
+          {
+            "id": "o1",
+            "label": "Sim: d = 0 e q = 1",
+            "correct": true,
+            "feedback": "Certo. Diferença 0; quociente 1."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-d3",
+        "prompt": "Na PA com a₁ = 10 e d = −3, em qual n o termo é 1?",
+        "fala": "Quantos avanços de −3 levam de 10 até 1?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo. 10 + (n − 1)(−3) = 1 dá n = 4."
+          },
+          {
+            "id": "o2",
+            "label": "3",
+            "correct": false,
+            "feedback": "Contou dois avanços, mas são três. 10 + 3 · (−3) = 1 em n = 4."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-d4",
+        "prompt": "Na PG com a₁ = 81 e q = 1/3, quanto vale a₅?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é a₄: faltou a quarta divisão por 3. a₅ = 1."
+          },
+          {
+            "id": "o1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo. 81 → 27 → 9 → 3 → 1."
+          }
+        ]
+      },
+      {
+        "id": "sequencias-pa-pg-d5",
+        "prompt": "Uma PA começa em 2 com d = 0; uma PG começa em 2 com q = 0. Quais são os termos 1 a 3?",
+        "fala": "Última. Somar zero e multiplicar por zero fazem coisas diferentes.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "PA: 2, 2, 2; PG: 2, 0, 0",
+            "correct": true,
+            "feedback": "Certo. A PA soma zero; a PG multiplica por zero."
+          },
+          {
+            "id": "o2",
+            "label": "Ambas 2, 2, 2",
+            "correct": false,
+            "feedback": "Tratou q = 0 como q = 1. Resposta: PA 2, 2, 2 e PG 2, 0, 0."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

@@ -180,7 +180,7 @@ n é inteiro positivo. Teste d=0, q=1, q=0, q<0 e a₁=0; com a₁=0, toda PG fi
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
 | `sequencias-pa-pg-m3-a` | 23 | **sim** | “Certo. 3+5·4=23.” |
-| `sequencias-pa-pg-m3-b` | 24 | não | “Somou seis vezes em vez de cinco. Resposta: 23; 3+5·4=23.” |
+| `sequencias-pa-pg-m3-b` | 27 (corrigido: era 24, que não vem de seis somas de 4) | não | “Somou seis vezes em vez de cinco: 3+6·4=27. Resposta: 23; 3+5·4=23.” |
 
 ### Desafios
 
@@ -298,3 +298,6 @@ n é inteiro positivo. Teste d=0, q=1, q=0, q<0 e a₁=0; com a₁=0, toda PG fi
 **Texto**
 - [x] Falas, enunciados e feedbacks curtos, sem emoji ou termos proibidos.
 - [x] Notação e contas foram conferidas.
+
+---
+**Notas da implementação (JSON):** `barras` modo `sequencia` (n por slider nos passos 1 e 3; PA com `d` por slider e PG cinza como `fantasma` no passo 2). Correções: o passo 3 tinha a dúvida da Tati igual à abertura/conclusão (reescrita para a₁ ou q zero); a abertura do passo 4 repetia a do passo 2 (reescrita); dúvida do fechamento trocada por "saltar ao termo 100"; M3 distrator 24 virou 27 (seis somas de 4). Vestibular `[]`. Aula-02 provisória removida da taxonomia (decisão do coordenador).
