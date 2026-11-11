@@ -1,0 +1,623 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Bolinhas e Barras",
+  "subtitulo": "Distribuir itens iguais em caixas diferentes",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "combinacoes-com-repeticao"
+  },
+  "outro": "Você transformou distribuições em fileiras de bolinhas e barras, e contou tudo com uma única combinação.",
+  "glossario": {
+    "c1": {
+      "nome": "Barras",
+      "resumo": "Separadores entre caixas: n caixas usam n − 1 barras."
+    },
+    "c2": {
+      "nome": "Itens iguais",
+      "resumo": "Os k itens idênticos que serão distribuídos."
+    },
+    "c3": {
+      "nome": "Distribuições",
+      "resumo": "Quantos jeitos diferentes existem de repartir os itens."
+    },
+    "c4": {
+      "nome": "Item garantido",
+      "resumo": "Item já entregue para cumprir \"pelo menos um em cada\"."
+    }
+  },
+  "steps": [
+    {
+      "id": "uma-caixa",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "caixas",
+        "itens": 3,
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Crianças",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Três balas iguais e uma criança só: de quantos jeitos dá para distribuir? Depois acrescente uma criança.",
+        "done": "Com 2 crianças: 3 e 0, 2 e 1, 1 e 2, 0 e 3. São 4 jeitos, e não 2 · 2 · 2, porque as balas são iguais."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Isso ainda é combinação?",
+        "resposta": "É combinação com repetição. Hoje: itens iguais em caixas diferentes."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 2
+      }
+    },
+    {
+      "id": "bolinhas-e-barras",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "bolinhas_e_barras",
+        "bolinhas": 3,
+        "barras": 1,
+        "sequencia": "●●●|",
+        "caixas": [
+          "A",
+          "B"
+        ]
+      },
+      "lines": {
+        "intro": "Escreva cada jeito como bolinhas e uma barra: ●●|● quer dizer 2 e 1. Arraste a barra por todas as posições.",
+        "done": "Cada jeito é só escolher onde fica a barra entre 4 lugares. Por isso são 4."
+      },
+      "complete_when": {
+        "metric": "distribuicoes_vistas",
+        "gte": 4
+      }
+    },
+    {
+      "id": "tres-caixas",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "bolinhas_e_barras",
+        "bolinhas": 3,
+        "barras": 2,
+        "sequencia": "●●●||",
+        "caixas": [
+          "A",
+          "B",
+          "C"
+        ],
+        "contador_apos": 6
+      },
+      "lines": {
+        "intro": "Com 3 crianças são 2 barras entre as bolinhas. Quantas fileiras de 5 símbolos dá para montar?",
+        "done": "Basta escolher 2 lugares de 5 para as barras: C(5, 2) = 10 jeitos."
+      },
+      "complete_when": {
+        "metric": "distribuicoes_vistas",
+        "gte": 6
+      }
+    },
+    {
+      "id": "pelo-menos-uma",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "caixas",
+        "itens": 5,
+        "n": 3,
+        "chave_minimo": true
+      },
+      "lines": {
+        "intro": "E se cada criança precisar ganhar pelo menos uma bala? Ligue a regra e veja quanto sobra para distribuir.",
+        "done": "Dê uma bala para cada uma primeiro. Sobram 2, e elas se distribuem livremente: C(4, 2) = 6 jeitos."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se forem 2 balas para 3 crianças?",
+        "resposta": "Aí é impossível dar pelo menos uma para cada. O total é 0."
+      },
+      "complete_when": {
+        "metric": "regra_ligada",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-equacao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "bolinhas_e_barras",
+          "bolinhas": 4,
+          "barras": 2,
+          "sequencia": "●●●●||",
+          "caixas": [
+            "x",
+            "y",
+            "z"
+          ]
+        }
+      },
+      "prompt": "Quantas soluções com números naturais tem x + y + z = 4?",
+      "lines": {
+        "intro": "Uma equação também é distribuição: cada variável é uma caixa."
+      },
+      "options": [
+        {
+          "id": "a64",
+          "label": "64",
+          "correct": false,
+          "feedback": "64 = 4³ trataria as unidades como diferentes. Elas são iguais: C(6, 2) = 15.",
+          "figure": {
+            "highlight": [
+              "c2"
+            ]
+          }
+        },
+        {
+          "id": "a4",
+          "label": "4",
+          "correct": false,
+          "feedback": "4 é o total a distribuir. Fileira com 4 bolinhas e 2 barras: C(6, 2) = 15.",
+          "figure": {
+            "sequencia": "●●●●||"
+          }
+        },
+        {
+          "id": "a15",
+          "label": "15",
+          "correct": true,
+          "feedback": "Isso. 6 símbolos, 2 lugares para as barras: C(6, 2) = 15.",
+          "figure": {
+            "highlight": [
+              "c1"
+            ]
+          }
+        },
+        {
+          "id": "a12",
+          "label": "12",
+          "correct": false,
+          "feedback": "12 esquece as soluções com zero. Com naturais, o zero vale: C(6, 2) = 15.",
+          "figure": {
+            "sequencia": "||●●●●"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "bolinhas_e_barras",
+          "bolinhas": 3,
+          "barras": 2,
+          "sequencia": "●●|●|",
+          "caixas": [
+            "x",
+            "y",
+            "z"
+          ]
+        }
+      },
+      "formula": [
+        {
+          "text": "total",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "C("
+        },
+        {
+          "text": "n",
+          "ref": "c1"
+        },
+        {
+          "text": "+"
+        },
+        {
+          "text": "k",
+          "ref": "c2"
+        },
+        {
+          "text": "− 1, k)"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Combinação com repetição",
+          "text": "escolher k itens de n tipos, podendo repetir tipo."
+        },
+        {
+          "term": "Bolinhas e barras",
+          "text": "k bolinhas e n − 1 barras numa fileira de n + k − 1 símbolos."
+        },
+        {
+          "term": "Pelo menos um",
+          "text": "entregue um a cada caixa e distribua o resto."
+        }
+      ],
+      "lines": {
+        "intro": "Toda distribuição é uma fileira de bolinhas e barras. Por isso contar distribuições é escolher os lugares das bolinhas.",
+        "hint": "Toque em uma letra para ver o que ela conta na fileira."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "duas-bolas-duas-caixas",
+        "prompt": "De quantos jeitos 2 bolas iguais podem ser colocadas em 2 caixas?",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. 2 e 0, 1 e 1, 0 e 2."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 = 2² trata as bolas como diferentes. Iguais, são 3 jeitos."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Faltou o 1 e 1. São 3 jeitos."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Há mais de um: 2 e 0, 1 e 1, 0 e 2. São 3."
+          }
+        ]
+      },
+      {
+        "id": "ler-fileira",
+        "prompt": "Na fileira ●|●●, quantas bolinhas ficaram na segunda caixa?",
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo. Depois da barra vêm 2 bolinhas."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é a primeira caixa, antes da barra. A segunda tem 2."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é o total. A segunda caixa, depois da barra, tem 2."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "A segunda caixa é o que vem depois da barra: 2 bolinhas."
+          }
+        ]
+      },
+      {
+        "id": "barras-para-4",
+        "prompt": "Quantas barras são necessárias para separar 4 caixas?",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. Entre 4 caixas há 3 divisões."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Com 4 barras surgiriam 5 caixas. Para 4 caixas: 3 barras."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 barras fariam 6 caixas. Para 4 caixas: 3 barras."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 barras separam só 3 caixas. Para 4: 3 barras."
+          }
+        ]
+      },
+      {
+        "id": "caixas-diferentes",
+        "prompt": "As balas são iguais. Dar 2 para Ana e 1 para Bia é diferente de dar 1 para Ana e 2 para Bia?",
+        "options": [
+          {
+            "id": "sim",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Isso. As balas são iguais, mas as crianças não: 2 e 1 não é 1 e 2."
+          },
+          {
+            "id": "nao",
+            "label": "Não",
+            "correct": false,
+            "feedback": "As crianças são diferentes, então 2 e 1 é outra distribuição que 1 e 2."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "quatro-balas-duas",
+        "prompt": "De quantos jeitos 4 balas iguais podem ser repartidas entre 2 crianças?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. A barra pode ficar em 5 lugares: 4+0 até 0+4."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 = 2⁴ trata as balas como diferentes. Iguais: 5 jeitos."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Faltou um extremo: 4 e 0 e 0 e 4 contam. São 5."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 seria 4 · 2. A barra tem 5 lugares: 5 jeitos."
+          }
+        ]
+      },
+      {
+        "id": "tres-bolas-sabores",
+        "prompt": "Uma taça leva 3 bolas, escolhidas entre 3 sabores, podendo repetir. Quantas taças diferentes?",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Isso. 3 bolinhas e 2 barras: C(5, 2) = 10."
+          },
+          {
+            "id": "a27",
+            "label": "27",
+            "correct": false,
+            "feedback": "27 = 3³ conta a ordem das bolas. Na taça a ordem não importa: 10."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 seria sem repetir sabor. Podendo repetir: C(5, 2) = 10."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 esquece taças como 3 bolas do mesmo sabor. Com elas: 10."
+          }
+        ]
+      },
+      {
+        "id": "x-mais-y-6",
+        "prompt": "Quantas soluções com naturais tem x + y = 6?",
+        "options": [
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": true,
+            "feedback": "Certo. x vai de 0 a 6, e y completa: 7 soluções."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "Faltou o zero: x = 0 também vale. São 7."
+          },
+          {
+            "id": "a36",
+            "label": "36",
+            "correct": false,
+            "feedback": "36 seria escolher x e y livres. Com a soma fixa em 6: 7."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 conta só positivos. Com naturais o zero entra: 7."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "xyz-5",
+        "prompt": "Quantas soluções naturais tem x + y + z = 5?",
+        "options": [
+          {
+            "id": "a21",
+            "label": "21",
+            "correct": true,
+            "feedback": "Isso. 5 bolinhas e 2 barras: C(7, 2) = 21."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "15 é C(6, 2), com uma bolinha a menos. Para 5: C(7, 2) = 21."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é C(5, 2), sem contar as barras na fileira. São 7 símbolos: 21."
+          },
+          {
+            "id": "a125",
+            "label": "125",
+            "correct": false,
+            "feedback": "125 = 5³ não respeita a soma 5. A conta é C(7, 2) = 21."
+          }
+        ]
+      },
+      {
+        "id": "seis-balas-pelo-menos-uma",
+        "prompt": "6 balas iguais para 3 crianças, cada uma com pelo menos uma. Quantas distribuições?",
+        "fala": "Entregue uma bala para cada criança antes de contar.",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Certo. Sobram 3 balas para 3 crianças: C(5, 2) = 10."
+          },
+          {
+            "id": "a28",
+            "label": "28",
+            "correct": false,
+            "feedback": "28 = C(8, 2) ignora a regra. Dando uma a cada, sobram 3: C(5, 2) = 10."
+          },
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": false,
+            "feedback": "Depois de dar uma a cada, a fileira tem 5 símbolos: C(5, 2) = 10."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 são as balas que sobram. Distribuí-las dá C(5, 2) = 10."
+          }
+        ]
+      },
+      {
+        "id": "positivos-x-y-5",
+        "prompt": "Quantas soluções com inteiros positivos tem x + y = 5?",
+        "options": [
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Isso. 1+4, 2+3, 3+2, 4+1: positivos tiram o zero."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 inclui 0 + 5 e 5 + 0. Positivos não aceitam zero: 4."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 inclui um caso com zero. Só positivos: 4."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Há mais de um par: 1+4, 2+3, 3+2, 4+1. São 4."
+          }
+        ]
+      },
+      {
+        "id": "pasteis",
+        "prompt": "Você compra 4 pastéis escolhendo entre 3 sabores, podendo repetir. Quantas compras diferentes?",
+        "options": [
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": true,
+            "feedback": "Certo. 4 bolinhas e 2 barras: C(6, 2) = 15."
+          },
+          {
+            "id": "a81",
+            "label": "81",
+            "correct": false,
+            "feedback": "81 = 3⁴ conta a ordem de compra. No pacote a ordem não importa: 15."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 são os pastéis. As compras são C(6, 2) = 15."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 = 4 · 3 não é contagem de distribuições. Bolinhas e barras: 15."
+          }
+        ]
+      },
+      {
+        "id": "zero-balas",
+        "prompt": "De quantos jeitos 0 balas podem ser distribuídas entre 3 crianças?",
+        "fala": "Última. Pense na fileira só de barras.",
+        "options": [
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Isso. Todas ficam sem bala: um jeito só, a fileira ||."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Existe um jeito: ninguém ganha nada. Total 1."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 são as crianças. Com 0 balas, só há a distribuição vazia: 1."
+          },
+          {
+            "id": "inf",
+            "label": "Infinitos",
+            "correct": false,
+            "feedback": "Sem balas não há o que variar. É 1 jeito só."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

@@ -159,6 +159,20 @@
                   "arquivo": "aritmetica/contagem-probabilidade/arranjos-e-combinacoes/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "combinacoes-com-repeticao",
+              "titulo": "Combinações com repetição e distribuição",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Bolinhas e Barras",
+                  "subtitulo": "Distribuir itens iguais em caixas diferentes",
+                  "arquivo": "aritmetica/contagem-probabilidade/combinacoes-com-repeticao/aula-01.json"
+                }
+              ]
             }
           ]
         },
