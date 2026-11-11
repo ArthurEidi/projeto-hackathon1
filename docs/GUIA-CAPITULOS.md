@@ -480,8 +480,9 @@ Chaves de casa nos dados: `"1,6"` (linha, coluna pelos rótulos); fila: `"6"`. C
 
 Ver §5.11.
 
-### 5.6 `geometria_*` (plana) — pendente; dividido em `geometria_triangulo`, `geometria_poligono`, `geometria_circulo` (WIDGETS-PENDENTES 12–14)
-Polígonos com vértices arrastáveis, ângulo reto, medidas ao vivo, **quadrados sobre os lados** (generalizar `drawSection` de `ConeFigure.tsx`), malha quadriculada para contar área.
+### 5.6 `geometria_*` (plana) — PRONTOS
+
+`geometria_triangulo` (§5.10), `geometria_poligono` (§5.12), `geometria_circulo` (§5.13, pendente).
 
 ### 5.7 `solido_3d` (espacial: cilindro, esfera, tronco, prismas, pirâmides)
 Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer perfil (retângulo → cilindro, semicírculo → esfera, trapézio → tronco) e acrescentar sólidos de faces planas; mesma câmera ortográfica e convenção de aresta oculta tracejada. Inclui planificação (Aula 02 de Cones já prevista na taxonomia).
@@ -566,4 +567,34 @@ Exemplos (`params`):
 { "angulo": "$angulo", "alvo": { "seno": 0.5 }, "marcos_rad": [] }                   // equações: dois encontros
 { "angulo": "$angulo", "arco": { "de": 30, "ate": 150 }, "alvo": { "seno": 0.5 } }   // inequações: dentro (0/1)
 { "rad": "$x_rad*0.785398", "grafico": "sen" }                                       // ponto no ciclo traça y = sen x
+```
+
+### 5.12 `geometria_poligono` + `geometria_poligono_figura` — PRONTOS
+
+Arquivos: `common/poligono/params.ts` (schema por `modo`), `calc.ts` (geometria e métricas; testado), `desenho.ts`, `GeometriaPoligonoWidget.tsx`, `GeometriaPoligonoFigura.tsx`. Valores aceitam `"$id"`; a figura só aceita números e `highlight`.
+
+| `modo` | Campos principais | Métricas emitidas |
+|---|---|---|
+| `malha` | `forma: retangulo \| paralelogramo \| triangulo \| trapezio`; `b`, `h`, `B` (base maior do trapézio), `inc` (deslocamento do lado de cima); `k` (ampliação do retângulo: mostra as k² cópias); `cortar` (0/1: paralelogramo → retângulo); `duplicar` (0/1: cópia girada 180° forma um paralelogramo); `fantasma: [b, h]`; `mostrar: { area, perimetro, alturas }` | `area`, `perimetro`, `b`, `h`, `k`, `razao_area`, `encaixado`, `duplicado` |
+| `poligono` | `n` (3..12), `diagonais` (n − 2 triângulos a partir de um vértice), `externos` (ângulos externos c3), `encolher` 0..100 (o polígono encolhe e os externos formam o círculo de 360°); `quadrilatero` 1 paralelogramo, 2 retângulo, 3 losango (diagonais c4) | `n`, `triangulos`, `soma_internos`, `soma_externos`, `encolher`, `diagonais_iguais`, `diagonais_perpendiculares`, `lados_iguais` |
+| `regular` | `n`, `R`, `dividir` (0/1: n triângulos centrais; hexágono = 6 equiláteros), `ladrilho` (peças de lado 1 em torno de um ponto: fresta c4 ou 360°) | `n`, `angulo_central`, `angulo_externo`, `angulo_interno`, `soma_internos`, `lado`, `ladrilho_fechado`, `fresta`, `dividido` |
+| `isometria` | `transformacao: rotacao \| translacao \| reflexao \| homotetia \| painel`; `figura: F \| triangulo` (triângulo de base 2 e área 2); `angulo`, `dx`, `dy`, `refletir` (0/1) com `espelho`, `k` (aceita negativa), `fantasma` | `angulo`, `dx`, `dy`, `k`, `area`, `area_imagem`, `perimetro`, `perimetro_imagem`, `razao_area`, `razao_lados`, `orientacao_trocada`, `invertido` |
+| `paralelas` | `alfa` (10..170), `foco` (um cruzamento só + meia-volta), `destacar: nenhum \| opostos \| correspondentes \| alternos \| colaterais`, `desvio` (gira s por Δ), `deslizar` 0..1 (ou a chave `chaves: ["deslizar"]`), `fantasma` (transversal a 90°), `rotulos` (ex.: `{ "s-ne": "x" }`; ids `r-ne`, `r-nw`, `r-sw`, `r-se`, `s-…`), `ocultar` | `alfa`, `suplementar`, `inclinou`, `desvio_paralela`, `paralelas`, `deslizou_paralela` |
+
+Cores: área c3, perímetro c4, base c1, altura c2 (malha); triângulos alternados c1/c2 e externos c3 (polígono); central c1, externo c2, interno c3, fresta c4 (regular); imagem da isometria: rotação c3, translação c1, reflexão c2, homotetia c4 (o original é cinza); α e opostos c1, 180° − α c2 (paralelas).
+
+Exemplos (`params`):
+```jsonc
+{ "modo": "malha", "forma": "retangulo", "b": "$b", "h": "$h", "fantasma": [1, 1] }
+{ "modo": "malha", "forma": "paralelogramo", "b": 4, "h": 3, "inc": "$inc", "cortar": "$cortar" }
+{ "modo": "malha", "forma": "trapezio", "b": 4, "B": 6, "h": 3, "inc": 1, "duplicar": "$duplicado" }
+{ "modo": "poligono", "n": "$n", "diagonais": true }
+{ "modo": "poligono", "n": 5, "diagonais": false, "externos": true, "encolher": "$encolher" }
+{ "modo": "poligono", "quadrilatero": "$formas_testadas" }
+{ "modo": "regular", "n": "$n" }
+{ "modo": "regular", "n": "$peca_piso", "ladrilho": true }
+{ "modo": "isometria", "transformacao": "rotacao", "angulo": "$angulo" }
+{ "modo": "isometria", "transformacao": "homotetia", "figura": "triangulo", "k": "$k" }
+{ "modo": "paralelas", "alfa": "$alfa", "fantasma": true }
+{ "modo": "paralelas", "alfa": 65, "destacar": "colaterais", "rotulos": { "s-ne": "x" } }
 ```

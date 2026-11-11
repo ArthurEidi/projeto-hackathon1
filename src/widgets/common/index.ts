@@ -5,6 +5,8 @@ import { GradeFigura } from "./grade/GradeFigura";
 import { GradeWidget } from "./grade/GradeWidget";
 import { CicloTrigonometricoFigura } from "./ciclo/CicloTrigonometricoFigura";
 import { CicloTrigonometricoWidget } from "./ciclo/CicloTrigonometricoWidget";
+import { GeometriaPoligonoFigura } from "./poligono/GeometriaPoligonoFigura";
+import { GeometriaPoligonoWidget } from "./poligono/GeometriaPoligonoWidget";
 import { GeometriaTrianguloFigura } from "./triangulo/GeometriaTrianguloFigura";
 import { GeometriaTrianguloWidget } from "./triangulo/GeometriaTrianguloWidget";
 import { SolidoFigura } from "./solido/SolidoFigura";
@@ -21,6 +23,7 @@ export const widgets = {
   solido_3d: SolidoWidget,
   geometria_triangulo: GeometriaTrianguloWidget,
   ciclo_trigonometrico: CicloTrigonometricoWidget,
+  geometria_poligono: GeometriaPoligonoWidget,
 };
 
 export const figures = {
@@ -31,4 +34,5 @@ export const figures = {
   solido_3d_figura: SolidoFigura,
   geometria_triangulo_figura: GeometriaTrianguloFigura,
   ciclo_trigonometrico_figura: CicloTrigonometricoFigura,
+  geometria_poligono_figura: GeometriaPoligonoFigura,
 };
