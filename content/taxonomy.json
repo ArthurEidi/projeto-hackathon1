@@ -57,6 +57,20 @@
               ]
             },
             {
+              "id": "grandezas-direta-e-inversa",
+              "titulo": "Grandezas Diretas e Inversas",
+              "icone": "porcento",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Grandezas Diretas e Inversas",
+                  "subtitulo": "Razão constante ou produto constante",
+                  "arquivo": "aritmetica/proporcionalidade/grandezas-direta-e-inversa/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "matematica-financeira",
               "titulo": "Matemática Financeira",
               "icone": "porcento",
@@ -81,6 +95,20 @@
                   "titulo": "Taxa, Tempo e Valor Real",
                   "subtitulo": "Equivalência e inflação",
                   "arquivo": "aritmetica/proporcionalidade/taxas-equivalentes-e-inflacao/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "descontos-acrescimos-e-indices",
+              "titulo": "Descontos, Acréscimos e Índices",
+              "icone": "porcento",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Fatores em Sequência",
+                  "subtitulo": "Descontos, acréscimos e índices",
+                  "arquivo": "aritmetica/proporcionalidade/descontos-acrescimos-e-indices/aula-01.json"
                 }
               ]
             }
@@ -303,6 +331,48 @@
                   "arquivo": "algebra/funcoes/logaritmos/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "funcao-racional",
+              "titulo": "Função Racional",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Funções Racionais e Assíntotas Simples",
+                  "subtitulo": "Função racional",
+                  "arquivo": "algebra/funcoes/funcao-racional/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "funcao-definida-por-partes",
+              "titulo": "Função Definida por Partes",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Função Definida por Sentenças e Gráficos",
+                  "subtitulo": "Função definida por partes",
+                  "arquivo": "algebra/funcoes/funcao-definida-por-partes/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "transformacoes-graficos-de-funcoes",
+              "titulo": "Transformações de Gráficos",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Translações, Reflexões e Escalas de Gráficos",
+                  "subtitulo": "Transformações de gráficos de funções",
+                  "arquivo": "algebra/funcoes/transformacoes-graficos-de-funcoes/aula-01.json"
+                }
+              ]
             }
           ]
         },
@@ -310,6 +380,34 @@
           "id": "equacoes-e-inequacoes",
           "titulo": "Equações e Inequações",
           "unidades": [
+            {
+              "id": "equacoes-primeiro-grau",
+              "titulo": "Equações do Primeiro Grau",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações do Primeiro Grau",
+                  "subtitulo": "O ponto em que as saídas concordam",
+                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-primeiro-grau/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "equacoes-quadraticas",
+              "titulo": "Equações Quadráticas",
+              "icone": "parabola",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações Quadráticas e Interpretação das Raízes",
+                  "subtitulo": "Contar encontros com o eixo",
+                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-quadraticas/aula-01.json"
+                }
+              ]
+            },
             {
               "id": "equacoes-irracionais",
               "titulo": "Equações com Radicais",
@@ -325,6 +423,34 @@
               ]
             },
             {
+              "id": "equacoes-modulares",
+              "titulo": "Equações Modulares",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações Modulares",
+                  "subtitulo": "Duas posições, uma distância",
+                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-modulares/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "equacoes-exponenciais",
+              "titulo": "Equações Exponenciais",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações Exponenciais",
+                  "subtitulo": "A altura revela o expoente",
+                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-exponenciais/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "equacoes-logaritmicas",
               "titulo": "Equações Logarítmicas",
               "icone": "curva",
@@ -335,6 +461,20 @@
                   "titulo": "Equações Logarítmicas e Condições de Existência",
                   "subtitulo": "O argumento precisa existir",
                   "arquivo": "algebra/equacoes-e-inequacoes/equacoes-logaritmicas/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "equacoes-racionais",
+              "titulo": "Equações Racionais",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações Racionais e Restrições do Denominador",
+                  "subtitulo": "Conferir antes de cancelar",
+                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-racionais/aula-01.json"
                 }
               ]
             }
@@ -712,6 +852,20 @@
                   "titulo": "A Equação da Reta",
                   "subtitulo": "Coeficiente angular e equação",
                   "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "posicoes-relativas-de-retas",
+              "titulo": "Posições Relativas de Retas",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Cruzar, Correr ao Lado ou Coincidir",
+                  "subtitulo": "Posições relativas de retas",
+                  "arquivo": "geometria/geometria-analitica/posicoes-relativas-de-retas/aula-01.json"
                 }
               ]
             },

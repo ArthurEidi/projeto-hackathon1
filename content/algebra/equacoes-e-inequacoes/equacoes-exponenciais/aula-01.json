@@ -1,0 +1,534 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Equações Exponenciais",
+  "subtitulo": "A altura revela o expoente",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "equacoes-exponenciais"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Expoente x",
+      "resumo": "Número que controla quantas vezes a escala atua."
+    },
+    "c2": {
+      "nome": "Base b",
+      "resumo": "Fator aplicado em cada avanço de uma unidade."
+    },
+    "c3": {
+      "nome": "Potência",
+      "resumo": "Altura produzida pela exponencial."
+    },
+    "c4": {
+      "nome": "Solução",
+      "resumo": "Expoente que atinge a altura pedida."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 4],
+        "y": [0, 17],
+        "curvas": [
+          {
+            "tipo": "exponencial",
+            "a": 1,
+            "b": 2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = 2ˣ"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1,
+          "cor": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro x=0 a saída é 1; quanto sai após dois passos? Arraste até 2.",
+        "done": "Sai 4 porque cada passo multiplica por 2: 1·2·2=4."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Equações exponenciais podem exigir logaritmos; aqui usamos bases iguais e substituições simples."
+      }
+    },
+    {
+      "id": "mesma-altura",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 4],
+        "y": [0, 17],
+        "curvas": [
+          {
+            "tipo": "exponencial",
+            "a": 1,
+            "b": 2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = 2ˣ"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 8,
+            "cor": "ink",
+            "rotulo": "y = 8"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1,
+          "cor": "c1"
+        },
+        "marcar": {
+          "encontro": true
+        },
+        "cores": {
+          "encontro": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Qual expoente produz 8? Arraste até o encontro.",
+        "done": "É 3; como 8=2³ e a curva cresce, então 2ˣ=8 só aceita x=3."
+      }
+    },
+    {
+      "id": "base-neutra",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 4],
+        "y": [0, 17],
+        "curvas": [
+          {
+            "tipo": "exponencial",
+            "a": 1,
+            "b": "$b",
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = bˣ"
+          },
+          {
+            "tipo": "exponencial",
+            "a": 1,
+            "b": 2,
+            "c": 0,
+            "fantasma": true,
+            "rotulo": "y = 2ˣ"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "cor": "ink",
+            "rotulo": "y = 1"
+          }
+        ]
+      },
+      "controls": [
+        {
+          "id": "b",
+          "label": "Base",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "initial": 2,
+          "color": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "b",
+        "lte": 1
+      },
+      "lines": {
+        "intro": "Se a base cair para 1, ainda há uma única entrada para saída 1?",
+        "done": "Não; 1ˣ=1 para todo x, por isso a regra de igualar expoentes exige b≠1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A potência pode ser zero?",
+        "resposta": "Para base positiva, não; ela se aproxima de zero, mas não o alcança."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 4],
+          "y": [0, 17],
+          "curvas": [
+            {
+              "tipo": "exponencial",
+              "a": 1,
+              "b": 2,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = 2ˣ"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 8,
+              "cor": "ink",
+              "rotulo": "y = 8"
+            }
+          ],
+          "marcar": {
+            "encontro": true
+          },
+          "cores": {
+            "encontro": "c4"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual é x em 2ˣ=8?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "4",
+          "correct": false,
+          "feedback": "Você dividiu 8 por 2; exponenciação pede 2³=8, então x=3.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 4,
+              "cor": "c1"
+            }
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "3",
+          "correct": true,
+          "feedback": "Certo: 3; 2³=8.",
+          "figure": {
+            "highlight": [
+              "c4"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 4],
+          "y": [0, 17],
+          "curvas": [
+            {
+              "tipo": "exponencial",
+              "a": 1,
+              "b": 2,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = 2ˣ"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 8,
+              "cor": "ink",
+              "rotulo": "y = 8"
+            }
+          ],
+          "marcar": {
+            "encontro": true
+          },
+          "cores": {
+            "encontro": "c4"
+          },
+          "ponto": {
+            "curva": 0,
+            "x": 3,
+            "cor": "c1"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "b",
+          "ref": "c2"
+        },
+        {
+          "text": "ᵘ = bᵛ ⇔ u = v (b > 0 e b ≠ 1)"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Expoente x",
+          "text": "Número que controla quantas vezes a escala atua."
+        },
+        {
+          "term": "Potência",
+          "text": "Altura produzida pela exponencial."
+        },
+        {
+          "term": "Solução",
+          "text": "Expoente que atinge a altura pedida."
+        }
+      ],
+      "lines": {
+        "intro": "A potência de base válida é estritamente monótona; por isso alturas iguais exigem expoentes iguais.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-equacoes-exponenciais",
+        "prompt": "Quanto vale 2⁰?",
+        "options": [
+          {
+            "id": "f1-equacoes-exponenciais-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você confundiu expoente zero com base zero. O certo é 1; b⁰=1 para b≠0."
+          },
+          {
+            "id": "f1-equacoes-exponenciais-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; b⁰=1 para b≠0."
+          }
+        ]
+      },
+      {
+        "id": "f2-equacoes-exponenciais",
+        "prompt": "De 2ˣ para 2ˣ⁺¹, a saída é multiplicada por quanto?",
+        "options": [
+          {
+            "id": "f2-equacoes-exponenciais-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; 2ˣ⁺¹=2·2ˣ."
+          },
+          {
+            "id": "f2-equacoes-exponenciais-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Avançar o expoente multiplica pela base. O certo é 2; 2ˣ⁺¹=2·2ˣ."
+          }
+        ]
+      },
+      {
+        "id": "f3-equacoes-exponenciais",
+        "prompt": "Na base 2, duas alturas iguais têm expoentes iguais?",
+        "options": [
+          {
+            "id": "f3-equacoes-exponenciais-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "A curva é estritamente crescente. O certo é Sim; 2ᵘ=2ᵛ ⇒ u=v."
+          },
+          {
+            "id": "f3-equacoes-exponenciais-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; 2ᵘ=2ᵛ ⇒ u=v."
+          }
+        ]
+      },
+      {
+        "id": "f4-equacoes-exponenciais",
+        "prompt": "A potência 2ˣ pode valer zero?",
+        "options": [
+          {
+            "id": "f4-equacoes-exponenciais-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 2ˣ>0."
+          },
+          {
+            "id": "f4-equacoes-exponenciais-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Aproximar-se de zero não é alcançá-lo. O certo é Não; 2ˣ>0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-equacoes-exponenciais",
+        "prompt": "Resolva 2ˣ=8.",
+        "options": [
+          {
+            "id": "m1-equacoes-exponenciais-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você dividiu a altura pela base. O certo é 3; 8=2³."
+          },
+          {
+            "id": "m1-equacoes-exponenciais-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 8=2³."
+          }
+        ]
+      },
+      {
+        "id": "m2-equacoes-exponenciais",
+        "prompt": "Resolva 3ˣ=9.",
+        "options": [
+          {
+            "id": "m2-equacoes-exponenciais-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; 9=3²."
+          },
+          {
+            "id": "m2-equacoes-exponenciais-erro",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você usou divisão no lugar de potência. O certo é 2; 9=3²."
+          }
+        ]
+      },
+      {
+        "id": "m3-equacoes-exponenciais",
+        "prompt": "Resolva 2ˣ⁺¹=8.",
+        "options": [
+          {
+            "id": "m3-equacoes-exponenciais-erro",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você esqueceu o +1 do expoente. O certo é 2; x+1=3; x=2."
+          },
+          {
+            "id": "m3-equacoes-exponenciais-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; x+1=3; x=2."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-equacoes-exponenciais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva 4ˣ=8.",
+        "options": [
+          {
+            "id": "d1-equacoes-exponenciais-certa",
+            "label": "1,5",
+            "correct": true,
+            "feedback": "Certo: 1,5; 2²ˣ=2³; x=3/2."
+          },
+          {
+            "id": "d1-equacoes-exponenciais-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você igualou bases diferentes diretamente. O certo é 1,5; 2²ˣ=2³; x=3/2."
+          }
+        ]
+      },
+      {
+        "id": "d2-equacoes-exponenciais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Quais soluções reais tem 1ˣ=1?",
+        "options": [
+          {
+            "id": "d2-equacoes-exponenciais-erro",
+            "label": "Só 0",
+            "correct": false,
+            "feedback": "A base 1 é constante. O certo é Todas; 1ˣ=1 para todo x."
+          },
+          {
+            "id": "d2-equacoes-exponenciais-certa",
+            "label": "Todas",
+            "correct": true,
+            "feedback": "Certo: Todas; 1ˣ=1 para todo x."
+          }
+        ]
+      },
+      {
+        "id": "d3-equacoes-exponenciais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva 2ˣ=−2.",
+        "options": [
+          {
+            "id": "d3-equacoes-exponenciais-certa",
+            "label": "∅",
+            "correct": true,
+            "feedback": "Certo: ∅; 2ˣ>0."
+          },
+          {
+            "id": "d3-equacoes-exponenciais-erro",
+            "label": "{−1}",
+            "correct": false,
+            "feedback": "Expoente negativo não produz valor negativo. O certo é ∅; 2ˣ>0."
+          }
+        ]
+      },
+      {
+        "id": "d4-equacoes-exponenciais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva 2²ˣ−3·2ˣ+2=0.",
+        "options": [
+          {
+            "id": "d4-equacoes-exponenciais-erro",
+            "label": "1 e 2",
+            "correct": false,
+            "feedback": "Você parou nos valores de 2ˣ. O certo é 0 e 1; t=2ˣ; t=1 ou 2; x=0 ou 1."
+          },
+          {
+            "id": "d4-equacoes-exponenciais-certa",
+            "label": "0 e 1",
+            "correct": true,
+            "feedback": "Certo: 0 e 1; t=2ˣ; t=1 ou 2; x=0 ou 1."
+          }
+        ]
+      },
+      {
+        "id": "d5-equacoes-exponenciais",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Uma população começa em 2 e dobra por dia; em quantos dias chega a 16?",
+        "options": [
+          {
+            "id": "d5-equacoes-exponenciais-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 2·2ᵗ=16; 2ᵗ=8; t=3."
+          },
+          {
+            "id": "d5-equacoes-exponenciais-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você esqueceu a população inicial. O certo é 3; 2·2ᵗ=16; 2ᵗ=8; t=3."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

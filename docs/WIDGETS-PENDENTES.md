@@ -131,6 +131,7 @@ Lista única dos widgets que os planos em `docs/planos/` pedem e que ainda **nã
 **Params (`sequencia`):** `regra: "pa" | "pg" | "recorrencia"` (recorrência aₙ₊₁ = q·aₙ + d, que cobre PA, PG e juros), `a1`, `d`, `q` (aceitam `"$id"`), `termos` (N), `n` (`"$n"`: até onde acende), `degraus`, `acumular`, `limite`, `fantasma: { regra, a1, d, q }`, `cores`, `highlight`.
 **Params (`parte_todo`):** `partes`, `pintadas` (aceitam `"$id"`), `todo` (rótulo do todo), `referencia: { partes, pintadas }`, `mostrar: { fracao, porcento, razao }`, `highlight`.
 **Métricas:** `termo_n` (último termo aceso), `soma_n`, `sinal_trocou` (0/1), `barras_tocadas`; `fracao`, `porcento`, `equivalente` (0/1: mesma fração da referência).
+**Lacunas pedidas pelo coordenador (pendentes, entram depois do `solido_3d`):** (1) `sequencia` com recorrência de dois termos (`a2`, regra aₙ₊₂ = p·aₙ₊₁ + q·aₙ; Fibonacci) para sequencias-recursivas-e-padroes; (2) `categorias` com `degraus: true` (rótulo +d entre barras vizinhas, maior crescimento destacado); (3) `pontos` com alerta "mediana sem ordenar" e a conta soma ÷ quantidade desenhada na régua.
 
 ### 10. Extensões do `plano_cartesiano` — curvas e marcas novas (estende a entrada 7)
 **Aliases:** `plano-radical`, `plano-log-dominio`, `plano-racional`, `grafico-racional`, `plano-polinomial`, `plano-proporcional`, `transformador-de-graficos`, `seletor-por-partes`.

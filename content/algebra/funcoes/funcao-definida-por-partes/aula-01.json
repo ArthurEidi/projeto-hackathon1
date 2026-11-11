@@ -1,0 +1,540 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Função Definida por Sentenças e Gráficos",
+  "subtitulo": "Função definida por partes",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "funcoes",
+    "unidade": "funcao-definida-por-partes"
+  },
+  "outro": "Você testou a entrada e a fronteira; por isso f(x)=regra do trecho que contém x.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Valor que seleciona o intervalo e a sentença ativa."
+    },
+    "c2": {
+      "nome": "Saída f(x)",
+      "resumo": "Resultado calculado pela regra do trecho escolhido."
+    },
+    "c3": {
+      "nome": "Trecho ativo",
+      "resumo": "Sentença aplicada à entrada no intervalo indicado."
+    },
+    "c4": {
+      "nome": "Fronteira",
+      "resumo": "Extremo aberto ou fechado decide a inclusão da entrada."
+    }
+  },
+  "steps": [
+    {
+      "id": "regra-unica",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 3],
+        "y": [-3, 3],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "cor": "c3",
+            "rotulo": "y = x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": -1,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Que saída prevê no caso neutro? f(x)=x em R; uma regra vale para todo x?",
+        "done": "Sem fronteira, uma regra transforma qualquer entrada."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Qual regra vale exatamente na fronteira?",
+        "resposta": "A condição com extremo fechado decide."
+      }
+    },
+    {
+      "id": "trocar-trecho",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 3],
+        "y": [-3, 4],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "dominio": {
+              "de": null,
+              "ate": 0,
+              "abreDe": false,
+              "abreAte": true
+            },
+            "cor": "c3",
+            "rotulo": "x"
+          },
+          {
+            "tipo": "afim",
+            "a": 2,
+            "b": 0,
+            "dominio": {
+              "de": 0,
+              "ate": null,
+              "abreDe": false,
+              "abreAte": false
+            },
+            "cor": "c2",
+            "rotulo": "2x"
+          }
+        ],
+        "ponto": {
+          "curva": [0, 1],
+          "x": -1,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "trechos_visitados",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Qual regra assume quando x cruza zero?",
+        "done": "A entrada seleciona a regra pelo intervalo."
+      }
+    },
+    {
+      "id": "ponto-fronteira",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 3],
+        "y": [-3, 4],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "dominio": {
+              "de": null,
+              "ate": 0,
+              "abreDe": false,
+              "abreAte": true
+            },
+            "cor": "c3",
+            "rotulo": "x"
+          },
+          {
+            "tipo": "afim",
+            "a": 2,
+            "b": 0,
+            "dominio": {
+              "de": 0,
+              "ate": null,
+              "abreDe": false,
+              "abreAte": false
+            },
+            "cor": "c2",
+            "rotulo": "2x"
+          }
+        ],
+        "ponto": {
+          "curva": [0, 1],
+          "x": -2,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 0
+      },
+      "lines": {
+        "intro": "Qual trecho inclui o ponto x=0?",
+        "done": "O extremo fechado inclui zero; vale a sentença x≥0."
+      }
+    },
+    {
+      "id": "desafio-fronteira",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 3],
+          "y": [-3, 4],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 1,
+              "b": 0,
+              "dominio": {
+                "de": null,
+                "ate": 0,
+                "abreDe": false,
+                "abreAte": true
+              },
+              "cor": "c3",
+              "rotulo": "x"
+            },
+            {
+              "tipo": "afim",
+              "a": 2,
+              "b": 0,
+              "dominio": {
+                "de": 0,
+                "ate": null,
+                "abreDe": false,
+                "abreAte": false
+              },
+              "cor": "c2",
+              "rotulo": "2x"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Qual resposta a figura sustenta?"
+      },
+      "prompt": "Quanto vale f(−2) na regra mostrada?",
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a entrada estiver na fronteira?",
+        "resposta": "A condição do domínio decide se o ponto entra e qual regra vale."
+      },
+      "options": [
+        {
+          "id": "erro",
+          "label": "−4",
+          "correct": false,
+          "feedback": "Aplica o trecho de x≥0 a uma entrada negativa; −2<0; usa f(x)=x, logo f(−2)=−2.",
+          "figure": {
+            "ponto": {
+              "curva": 1,
+              "x": -2,
+              "cor": "c1"
+            }
+          }
+        },
+        {
+          "id": "certa",
+          "label": "−2",
+          "correct": true,
+          "feedback": "−2<0; usa f(x)=x, logo f(−2)=−2.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -2,
+              "cor": "c4"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 3],
+          "y": [-3, 4],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 1,
+              "b": 0,
+              "dominio": {
+                "de": null,
+                "ate": 0,
+                "abreDe": false,
+                "abreAte": true
+              },
+              "cor": "c3",
+              "rotulo": "x"
+            },
+            {
+              "tipo": "afim",
+              "a": 2,
+              "b": 0,
+              "dominio": {
+                "de": 0,
+                "ate": null,
+                "abreDe": false,
+                "abreAte": false
+              },
+              "cor": "c2",
+              "rotulo": "2x"
+            }
+          ]
+        }
+      },
+      "formula": [
+        {
+          "text": "f(x)",
+          "ref": "c2"
+        },
+        {
+          "text": " = f₁(x) se x∈I₁; f₂(x) se x∈I₂"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Trecho",
+          "text": "Regra válida num intervalo."
+        },
+        {
+          "term": "Fronteira",
+          "text": "Entrada onde pode trocar a sentença."
+        },
+        {
+          "term": "Ponto fechado",
+          "text": "Extremo incluído."
+        }
+      ],
+      "lines": {
+        "intro": "Como a figura explica a regra? Por isso f(x)=regra do trecho que contém x.",
+        "hint": "Toque em uma marca para ver o que ela representa no gráfico."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "O desenho vale fora do domínio?",
+        "resposta": "Não; as condições da função limitam as entradas válidas."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-funcao-definida-por-partes",
+        "prompt": "Se f(x)=x, quanto vale f(2)?",
+        "options": [
+          {
+            "id": "f1-funcao-definida-por-partes-e",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 2; Aplica quadrado em vez da identidade; conferência: f(2)=2."
+          },
+          {
+            "id": "f1-funcao-definida-por-partes-c",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: resposta 2; conferência: f(2)=2."
+          }
+        ]
+      },
+      {
+        "id": "f2-funcao-definida-por-partes",
+        "prompt": "x se x<0; 2x se x≥0. f(1)?",
+        "options": [
+          {
+            "id": "f2-funcao-definida-por-partes-e",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 2; Usa trecho de x<0 para entrada positiva; conferência: 1≥0; 2·1=2."
+          },
+          {
+            "id": "f2-funcao-definida-por-partes-c",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: resposta 2; conferência: 1≥0; 2·1=2."
+          }
+        ]
+      },
+      {
+        "id": "f3-funcao-definida-por-partes",
+        "prompt": "Mesma regra, f(−2)?",
+        "options": [
+          {
+            "id": "f3-funcao-definida-por-partes-e",
+            "label": "−4",
+            "correct": false,
+            "feedback": "Resposta: −2; Usa 2x fora do intervalo; conferência: −2<0; f(−2)=−2."
+          },
+          {
+            "id": "f3-funcao-definida-por-partes-c",
+            "label": "−2",
+            "correct": true,
+            "feedback": "Certo: resposta −2; conferência: −2<0; f(−2)=−2."
+          }
+        ]
+      },
+      {
+        "id": "f4-funcao-definida-por-partes",
+        "prompt": "Qual sentença vale em x=0 se condição é x≥0?",
+        "options": [
+          {
+            "id": "f4-funcao-definida-por-partes-e",
+            "label": "x<0",
+            "correct": false,
+            "feedback": "Resposta: x≥0; Trata extremo fechado como aberto; conferência: 0≥0; primeiro termo da condição é falso, segundo verdadeiro."
+          },
+          {
+            "id": "f4-funcao-definida-por-partes-c",
+            "label": "x≥0",
+            "correct": true,
+            "feedback": "Certo: resposta x≥0; conferência: 0≥0; primeiro termo da condição é falso, segundo verdadeiro."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-funcao-definida-por-partes",
+        "prompt": "f=3 se x<1; f=5 se x≥1. f(1)?",
+        "options": [
+          {
+            "id": "m1-funcao-definida-por-partes-e",
+            "label": "3",
+            "correct": false,
+            "feedback": "Resposta: 5; Escolhe condição estrita que exclui 1; conferência: 1≥1; f(1)=5."
+          },
+          {
+            "id": "m1-funcao-definida-por-partes-c",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo: resposta 5; conferência: 1≥1; f(1)=5."
+          }
+        ]
+      },
+      {
+        "id": "m2-funcao-definida-por-partes",
+        "prompt": "f=x+1 se x≤2; f=x−1 se x>2. f(2)?",
+        "options": [
+          {
+            "id": "m2-funcao-definida-por-partes-e",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 3; Usa trecho estrito x>2 em x=2; conferência: 2≤2; 2+1=3."
+          },
+          {
+            "id": "m2-funcao-definida-por-partes-c",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: resposta 3; conferência: 2≤2; 2+1=3."
+          }
+        ]
+      },
+      {
+        "id": "m3-funcao-definida-por-partes",
+        "prompt": "x se x<0; 2x se x≥0. f(0)?",
+        "options": [
+          {
+            "id": "m3-funcao-definida-por-partes-e",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 0; Calcula 2·0 como 2; conferência: 0≥0; 2·0=0."
+          },
+          {
+            "id": "m3-funcao-definida-por-partes-c",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: resposta 0; conferência: 0≥0; 2·0=0."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-funcao-definida-por-partes",
+        "prompt": "x² se x<0; x+2 se x≥0. f(−3)?",
+        "options": [
+          {
+            "id": "d1-funcao-definida-por-partes-e",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Resposta: 9; Escolhe regra linear para x negativo; conferência: −3<0; (−3)²=9."
+          },
+          {
+            "id": "d1-funcao-definida-por-partes-c",
+            "label": "9",
+            "correct": true,
+            "feedback": "Certo: resposta 9; conferência: −3<0; (−3)²=9."
+          }
+        ]
+      },
+      {
+        "id": "d2-funcao-definida-por-partes",
+        "prompt": "f=x² se x<0; f=x+2 se x≥0. Quanto vale f(2)?",
+        "options": [
+          {
+            "id": "d2-funcao-definida-por-partes-e",
+            "label": "3",
+            "correct": false,
+            "feedback": "Resposta: 4; Usa o trecho quadrático para x positivo; conferência: 2≥0; f(2)=2+2=4."
+          },
+          {
+            "id": "d2-funcao-definida-por-partes-c",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: resposta 4; conferência: 2≥0; f(2)=2+2=4."
+          }
+        ]
+      },
+      {
+        "id": "d3-funcao-definida-por-partes",
+        "prompt": "f=1 se x<0; f=−1 se x≥0. Quantos trechos valem em zero?",
+        "options": [
+          {
+            "id": "d3-funcao-definida-por-partes-e",
+            "label": "Nenhum",
+            "correct": false,
+            "feedback": "Resposta: Um; Confunde intervalo aberto e fechado; conferência: 0 não satisfaz x<0, mas satisfaz x≥0."
+          },
+          {
+            "id": "d3-funcao-definida-por-partes-c",
+            "label": "Um",
+            "correct": true,
+            "feedback": "Certo: resposta Um; conferência: 0 não satisfaz x<0, mas satisfaz x≥0."
+          }
+        ]
+      },
+      {
+        "id": "d4-funcao-definida-por-partes",
+        "prompt": "2x se x≤1; x+3 se x>1. f(1)?",
+        "options": [
+          {
+            "id": "d4-funcao-definida-por-partes-e",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 2; Aplica x>1 ao ponto 1; conferência: 1≤1; 2·1=2."
+          },
+          {
+            "id": "d4-funcao-definida-por-partes-c",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: resposta 2; conferência: 1≤1; 2·1=2."
+          }
+        ]
+      },
+      {
+        "id": "d5-funcao-definida-por-partes",
+        "prompt": "x+1 se x<2; 3x−1 se x≥2. f(2)?",
+        "options": [
+          {
+            "id": "d5-funcao-definida-por-partes-e",
+            "label": "3",
+            "correct": false,
+            "feedback": "Resposta: 5; Escolhe trecho que exclui 2; conferência: 2≥2; 3·2−1=5."
+          },
+          {
+            "id": "d5-funcao-definida-por-partes-c",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo: resposta 5; conferência: 2≥2; 3·2−1=5."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

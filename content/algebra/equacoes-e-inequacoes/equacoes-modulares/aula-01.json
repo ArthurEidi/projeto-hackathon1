@@ -1,0 +1,534 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Equações Modulares",
+  "subtitulo": "Duas posições, uma distância",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "equacoes-modulares"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Posição do ponto na reta."
+    },
+    "c2": {
+      "nome": "Centro c",
+      "resumo": "Referência a partir da qual medimos distância."
+    },
+    "c3": {
+      "nome": "Distância",
+      "resumo": "Comprimento entre a entrada e o centro."
+    },
+    "c4": {
+      "nome": "Soluções",
+      "resumo": "Pontos à distância pedida do centro."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-5, 5],
+        "marcas": 1,
+        "pontos": [
+          {
+            "x": 0,
+            "cor": "c4",
+            "rotulo": "0"
+          }
+        ],
+        "ponto": {
+          "x": 1,
+          "arrastavel": true,
+          "passo": 1,
+          "cor": "c1",
+          "distanciaZero": true,
+          "corDistancia": "c3"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": 0
+      },
+      "lines": {
+        "intro": "No caso neutro ∣x∣=0, existe outro ponto além da origem? Arraste até 0.",
+        "done": "Não; só a origem tem distância zero dela mesma."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Módulo também aparece em inequações e funções; aqui buscamos pontos a uma distância fixa."
+      }
+    },
+    {
+      "id": "dois-lados",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-5, 5],
+        "marcas": 1,
+        "pontos": [
+          {
+            "x": -2,
+            "cor": "c4",
+            "rotulo": "−2"
+          },
+          {
+            "x": 2,
+            "cor": "c4",
+            "rotulo": "2"
+          }
+        ],
+        "ponto": {
+          "x": 0,
+          "arrastavel": true,
+          "passo": 1,
+          "cor": "c1",
+          "distanciaZero": true,
+          "corDistancia": "c3"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": -2
+      },
+      "lines": {
+        "intro": "Para ∣x∣=2, o lado negativo também serve? Arraste até −2.",
+        "done": "Serve; −2 e 2 ficam a duas unidades de zero."
+      }
+    },
+    {
+      "id": "mover-centro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 5],
+        "y": [-1, 4],
+        "curvas": [
+          {
+            "tipo": "modular",
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = |x − 1|"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 2,
+            "cor": "ink",
+            "rotulo": "y = 2"
+          },
+          {
+            "tipo": "modular",
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "fantasma": true,
+            "rotulo": "y = |x|"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "passo": 1,
+          "cor": "c1"
+        },
+        "marcar": {
+          "encontro": true
+        },
+        "cores": {
+          "encontro": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Ao mudar o centro para 1, onde fica a solução da direita? Arraste até 3.",
+        "done": "Fica em 3 porque 3−1=2; a outra é −1, por isso x=c±r."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a distância pedida for −2?",
+        "resposta": "Não existe solução, pois distâncias não são negativas."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 5],
+          "y": [-1, 4],
+          "curvas": [
+            {
+              "tipo": "modular",
+              "a": 1,
+              "b": 1,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = |x − 1|"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 2,
+              "cor": "ink",
+              "rotulo": "y = 2"
+            }
+          ],
+          "marcar": {
+            "encontro": true
+          },
+          "cores": {
+            "encontro": "c4"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Quais soluções tem ∣x−1∣=2?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "1 e 3",
+          "correct": false,
+          "feedback": "Faltou andar duas unidades à esquerda; as soluções são −1 e 3.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 1,
+              "cor": "c2"
+            }
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "−1 e 3",
+          "correct": true,
+          "feedback": "Certo: −1 e 3; 1−2=−1 e 1+2=3.",
+          "figure": {
+            "highlight": [
+              "c4"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 5],
+          "y": [-1, 4],
+          "curvas": [
+            {
+              "tipo": "modular",
+              "a": 1,
+              "b": 1,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = |x − 1|"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 2,
+              "cor": "ink",
+              "rotulo": "y = 2"
+            }
+          ],
+          "marcar": {
+            "encontro": true
+          },
+          "cores": {
+            "encontro": "c4"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "|x",
+          "ref": "c1"
+        },
+        {
+          "text": " − "
+        },
+        {
+          "text": "c",
+          "ref": "c2"
+        },
+        {
+          "text": "| = r ⇒ "
+        },
+        {
+          "text": "x = c ± r",
+          "ref": "c4"
+        },
+        {
+          "text": ", r ≥ 0"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Posição do ponto na reta."
+        },
+        {
+          "term": "Distância",
+          "text": "Comprimento entre a entrada e o centro."
+        },
+        {
+          "term": "Soluções",
+          "text": "Pontos à distância pedida do centro."
+        }
+      ],
+      "lines": {
+        "intro": "A distância mede os dois lados do centro; por isso as soluções são c−r e c+r quando r≥0.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-equacoes-modulares",
+        "prompt": "Qual é a distância de −2 até zero?",
+        "options": [
+          {
+            "id": "f1-equacoes-modulares-erro",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Distância não leva sinal negativo. O certo é 2; ∣−2∣=2."
+          },
+          {
+            "id": "f1-equacoes-modulares-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; ∣−2∣=2."
+          }
+        ]
+      },
+      {
+        "id": "f2-equacoes-modulares",
+        "prompt": "Quantas soluções tem ∣x∣=0?",
+        "options": [
+          {
+            "id": "f2-equacoes-modulares-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; x=±0=0."
+          },
+          {
+            "id": "f2-equacoes-modulares-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Os dois candidatos coincidem em zero. O certo é 1; x=±0=0."
+          }
+        ]
+      },
+      {
+        "id": "f3-equacoes-modulares",
+        "prompt": "Quais pontos ficam a 2 de zero?",
+        "options": [
+          {
+            "id": "f3-equacoes-modulares-erro",
+            "label": "0 e 2",
+            "correct": false,
+            "feedback": "O centro tem distância zero. O certo é −2 e 2; ∣−2∣=∣2∣=2."
+          },
+          {
+            "id": "f3-equacoes-modulares-certa",
+            "label": "−2 e 2",
+            "correct": true,
+            "feedback": "Certo: −2 e 2; ∣−2∣=∣2∣=2."
+          }
+        ]
+      },
+      {
+        "id": "f4-equacoes-modulares",
+        "prompt": "Em ∣x−1∣=2, qual é o centro?",
+        "options": [
+          {
+            "id": "f4-equacoes-modulares-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; x−1=0 em x=1."
+          },
+          {
+            "id": "f4-equacoes-modulares-erro",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Você confundiu a expressão com a raiz do fator. O certo é 1; x−1=0 em x=1."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-equacoes-modulares",
+        "prompt": "Resolva ∣x∣=3.",
+        "options": [
+          {
+            "id": "m1-equacoes-modulares-erro",
+            "label": "Só 3",
+            "correct": false,
+            "feedback": "Faltou o lado esquerdo. O certo é −3 e 3; x=±3."
+          },
+          {
+            "id": "m1-equacoes-modulares-certa",
+            "label": "−3 e 3",
+            "correct": true,
+            "feedback": "Certo: −3 e 3; x=±3."
+          }
+        ]
+      },
+      {
+        "id": "m2-equacoes-modulares",
+        "prompt": "Resolva ∣x−2∣=1.",
+        "options": [
+          {
+            "id": "m2-equacoes-modulares-certa",
+            "label": "1 e 3",
+            "correct": true,
+            "feedback": "Certo: 1 e 3; x=2±1."
+          },
+          {
+            "id": "m2-equacoes-modulares-erro",
+            "label": "−1 e 1",
+            "correct": false,
+            "feedback": "Você esqueceu o centro 2. O certo é 1 e 3; x=2±1."
+          }
+        ]
+      },
+      {
+        "id": "m3-equacoes-modulares",
+        "prompt": "Resolva ∣x+1∣=2.",
+        "options": [
+          {
+            "id": "m3-equacoes-modulares-erro",
+            "label": "−1 e 3",
+            "correct": false,
+            "feedback": "O centro é −1, não 1. O certo é −3 e 1; x=−1±2."
+          },
+          {
+            "id": "m3-equacoes-modulares-certa",
+            "label": "−3 e 1",
+            "correct": true,
+            "feedback": "Certo: −3 e 1; x=−1±2."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-equacoes-modulares",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva ∣2x−1∣=0.",
+        "options": [
+          {
+            "id": "d1-equacoes-modulares-certa",
+            "label": "0,5",
+            "correct": true,
+            "feedback": "Certo: 0,5; 2x−1=0; x=1/2."
+          },
+          {
+            "id": "d1-equacoes-modulares-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você não dividiu pelo coeficiente 2. O certo é 0,5; 2x−1=0; x=1/2."
+          }
+        ]
+      },
+      {
+        "id": "d2-equacoes-modulares",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva ∣x−2∣=−1.",
+        "options": [
+          {
+            "id": "d2-equacoes-modulares-erro",
+            "label": "{1;3}",
+            "correct": false,
+            "feedback": "Você tratou uma distância negativa como positiva. O certo é ∅; ∣x−2∣≥0."
+          },
+          {
+            "id": "d2-equacoes-modulares-certa",
+            "label": "∅",
+            "correct": true,
+            "feedback": "Certo: ∅; ∣x−2∣≥0."
+          }
+        ]
+      },
+      {
+        "id": "d3-equacoes-modulares",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Se as soluções são −1 e 3, qual é o centro?",
+        "options": [
+          {
+            "id": "d3-equacoes-modulares-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; (−1+3)/2=1."
+          },
+          {
+            "id": "d3-equacoes-modulares-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você confundiu centro com raio. O certo é 1; (−1+3)/2=1."
+          }
+        ]
+      },
+      {
+        "id": "d4-equacoes-modulares",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva ∣2x∣=1.",
+        "options": [
+          {
+            "id": "d4-equacoes-modulares-erro",
+            "label": "−2 e 2",
+            "correct": false,
+            "feedback": "Você multiplicou por 2 em vez de dividir. O certo é −0,5 e 0,5; 2x=±1; x=±1/2."
+          },
+          {
+            "id": "d4-equacoes-modulares-certa",
+            "label": "−0,5 e 0,5",
+            "correct": true,
+            "feedback": "Certo: −0,5 e 0,5; 2x=±1; x=±1/2."
+          }
+        ]
+      },
+      {
+        "id": "d5-equacoes-modulares",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Um sensor está em x=2 e detecta pontos a distância 3; restringindo x≥0, qual ponto resta?",
+        "options": [
+          {
+            "id": "d5-equacoes-modulares-certa",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo: 5; x=2±3; x≥0 ⇒ x=5."
+          },
+          {
+            "id": "d5-equacoes-modulares-erro",
+            "label": "−1 e 5",
+            "correct": false,
+            "feedback": "Você ignorou a restrição do modelo. O certo é 5; x=2±3; x≥0 ⇒ x=5."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

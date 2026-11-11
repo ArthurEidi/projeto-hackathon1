@@ -1,0 +1,717 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Cruzar, Correr ao Lado ou Coincidir",
+  "subtitulo": "Posições relativas de retas",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-analitica",
+    "unidade": "posicoes-relativas-de-retas"
+  },
+  "outro": "Você fez retas coincidirem, correrem lado a lado e se cruzarem; perpendiculares têm m₁ · m₂ = −1.",
+  "glossario": {
+    "c1": {
+      "nome": "Primeira reta",
+      "resumo": "A reta de referência, y = m₁x + n₁."
+    },
+    "c2": {
+      "nome": "Segunda reta",
+      "resumo": "A reta que o aluno modifica, y = m₂x + n₂."
+    },
+    "c3": {
+      "nome": "Ponto de encontro",
+      "resumo": "Onde as duas retas têm a mesma altura."
+    },
+    "c4": {
+      "nome": "Ângulo reto",
+      "resumo": "Cruzamento perpendicular: m₁ · m₂ = −1."
+    }
+  },
+  "steps": [
+    {
+      "id": "coincidentes-e-paralelas",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "n2",
+          "label": "Corte da segunda",
+          "min": -3,
+          "max": 4,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-5, 5],
+        "y": [-5, 5],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 1,
+            "cor": "c1",
+            "rotulo": "y = x + 1"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": "$n2",
+            "cor": "c2",
+            "rotulo": "y = x + n₂"
+          }
+        ]
+      },
+      "complete_when": {
+        "metric": "n2",
+        "gte": 3
+      },
+      "lines": {
+        "intro": "As duas retas são y = x + 1: quantos pontos em comum elas têm? Agora mude o corte da segunda.",
+        "done": "Iguais, tinham todos os pontos em comum. Com o mesmo m e outro corte, viraram paralelas: nenhum ponto comum."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "No espaço também é assim?",
+        "resposta": "No espaço há retas que nem se cruzam nem são paralelas, as reversas. Hoje ficamos no plano."
+      }
+    },
+    {
+      "id": "concorrentes",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "m2",
+          "label": "Inclinação da segunda",
+          "min": -3,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-5, 5],
+        "y": [-5, 5],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 1,
+            "cor": "c1",
+            "rotulo": "y = x + 1"
+          },
+          {
+            "tipo": "afim",
+            "a": "$m2",
+            "b": 3,
+            "cor": "c2",
+            "rotulo": "y = m₂x + 3"
+          }
+        ],
+        "marcar": {
+          "encontro": true
+        },
+        "cores": {
+          "encontro": "c3"
+        }
+      },
+      "complete_when": {
+        "metric": "m2",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Agora mude a inclinação da segunda. Elas passam a se cruzar, e em quantos pontos?",
+        "done": "Com inclinações diferentes, uma sobe mais rápido e alcança a outra: sempre exatamente um ponto."
+      }
+    },
+    {
+      "id": "achar-encontro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 6],
+        "y": [-2, 6],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 1,
+            "cor": "c1",
+            "rotulo": "y = x + 1"
+          },
+          {
+            "tipo": "afim",
+            "a": -1,
+            "b": 5,
+            "cor": "c2",
+            "rotulo": "y = −x + 5"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 0.5
+        },
+        "marcar": {
+          "encontro": true,
+          "quadrantes": true
+        },
+        "cores": {
+          "encontro": "c3"
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Onde y = x + 1 e y = −x + 5 se encontram? Arraste o ponto pela primeira até achar.",
+        "done": "Em (2; 3): x + 1 = −x + 5 dá x = 2. O encontro é a solução do sistema das duas equações."
+      }
+    },
+    {
+      "id": "angulo-reto",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "m2",
+          "label": "Inclinação da segunda",
+          "min": -3,
+          "max": 3,
+          "step": 1,
+          "initial": 2,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-5, 5],
+        "y": [-5, 5],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "cor": "c1",
+            "rotulo": "y = x"
+          },
+          {
+            "tipo": "afim",
+            "a": "$m2",
+            "b": 0,
+            "cor": "c2",
+            "rotulo": "y = m₂x"
+          }
+        ],
+        "marcar": {
+          "angulo": true
+        },
+        "cores": {
+          "angulo": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "m2",
+        "lte": -1
+      },
+      "lines": {
+        "intro": "A primeira reta tem m = 1. Gire a segunda até formar um ângulo reto: quanto vale m₂?",
+        "done": "Com m₂ = −1: m₁ · m₂ = 1 · (−1) = −1. Perpendiculares têm inclinações cujo produto é −1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se m₁ fosse 2?",
+        "resposta": "Aí m₂ = −1/2: inverte e troca o sinal. Girar 90° troca os degraus de lugar."
+      }
+    },
+    {
+      "id": "desafio-posicao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-5, 5],
+          "y": [-5, 5],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 2,
+              "b": 1,
+              "cor": "c1",
+              "rotulo": "y = 2x + 1"
+            },
+            {
+              "tipo": "afim",
+              "a": 2,
+              "b": -3,
+              "cor": "c2",
+              "rotulo": "y = 2x − 3"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Compare as inclinações antes dos cortes."
+      },
+      "prompt": "Qual a posição das retas y = 2x + 1 e y = 2x − 3?",
+      "options": [
+        {
+          "id": "paralelas",
+          "label": "Paralelas",
+          "correct": true,
+          "feedback": "Isso. Mesmo m, cortes diferentes: nunca se encontram."
+        },
+        {
+          "id": "concorrentes",
+          "label": "Concorrentes",
+          "correct": false,
+          "feedback": "Concorrentes precisam de m diferentes. Aqui ambos são 2: paralelas."
+        },
+        {
+          "id": "coincidentes",
+          "label": "Coincidentes",
+          "correct": false,
+          "feedback": "Os cortes são 1 e −3, então não são a mesma reta. Paralelas."
+        },
+        {
+          "id": "perpendiculares",
+          "label": "Perpendiculares",
+          "correct": false,
+          "feedback": "2 · 2 = 4, não −1. Com o mesmo m, são paralelas."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-5, 5],
+          "y": [-5, 5],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 1,
+              "b": 0,
+              "cor": "c1",
+              "rotulo": "y = x"
+            },
+            {
+              "tipo": "afim",
+              "a": -1,
+              "b": 0,
+              "cor": "c2",
+              "rotulo": "y = −x"
+            }
+          ],
+          "marcar": {
+            "angulo": true
+          },
+          "cores": {
+            "angulo": "c4"
+          }
+        }
+      },
+      "formula": [
+        { "text": "m₁", "ref": "c1" },
+        { "text": " · " },
+        { "text": "m₂", "ref": "c2" },
+        { "text": " = " },
+        { "text": "−1", "ref": "c4" }
+      ],
+      "definitions": [
+        {
+          "term": "Paralelas",
+          "text": "Mesmo m e cortes diferentes; nenhum ponto comum."
+        },
+        {
+          "term": "Concorrentes",
+          "text": "m diferentes; exatamente um ponto comum."
+        },
+        {
+          "term": "Coincidentes",
+          "text": "Mesmo m e mesmo corte; todos os pontos comuns."
+        }
+      ],
+      "lines": {
+        "intro": "Mesmo ritmo nunca alcança, ritmos diferentes se cruzam uma vez. E girar 90° inverte a inclinação e troca o sinal.",
+        "hint": "Toque em uma letra para ver a reta correspondente."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-posicoes-relativas-de-retas",
+        "prompt": "Qual a posição de y = 3x + 1 e y = 3x + 5?",
+        "options": [
+          {
+            "id": "f1-posicoes-relativas-de-retas-paralelas",
+            "label": "Paralelas",
+            "correct": true,
+            "feedback": "Isso. Mesmo ritmo, alturas diferentes."
+          },
+          {
+            "id": "f1-posicoes-relativas-de-retas-concorrentes",
+            "label": "Concorrentes",
+            "correct": false,
+            "feedback": "Os dois m valem 3. Mesmo ritmo, cortes diferentes: paralelas."
+          },
+          {
+            "id": "f1-posicoes-relativas-de-retas-coincidentes",
+            "label": "Coincidentes",
+            "correct": false,
+            "feedback": "Os cortes 1 e 5 são diferentes. Paralelas."
+          },
+          {
+            "id": "f1-posicoes-relativas-de-retas-perpendiculares",
+            "label": "Perpendiculares",
+            "correct": false,
+            "feedback": "3 · 3 = 9, não −1. São paralelas."
+          }
+        ]
+      },
+      {
+        "id": "f2-posicoes-relativas-de-retas",
+        "prompt": "Quantos pontos em comum têm y = x e y = −x?",
+        "options": [
+          {
+            "id": "f2-posicoes-relativas-de-retas-a1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo. Elas se cruzam só na origem."
+          },
+          {
+            "id": "f2-posicoes-relativas-de-retas-a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Inclinações diferentes sempre se cruzam na origem. O certo é 1."
+          },
+          {
+            "id": "f2-posicoes-relativas-de-retas-a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Duas retas distintas se cruzam no máximo em 1 ponto."
+          },
+          {
+            "id": "f2-posicoes-relativas-de-retas-inf",
+            "label": "Infinitos",
+            "correct": false,
+            "feedback": "Infinitos seria se fossem a mesma reta. É 1 ponto."
+          }
+        ]
+      },
+      {
+        "id": "f3-posicoes-relativas-de-retas",
+        "fala": "Divida a segunda equação por 2.",
+        "prompt": "Quantos pontos em comum têm y = 2x + 2 e 2y = 4x + 4?",
+        "options": [
+          {
+            "id": "f3-posicoes-relativas-de-retas-inf",
+            "label": "Infinitos",
+            "correct": true,
+            "feedback": "Isso. Dividindo por 2, é a mesma reta."
+          },
+          {
+            "id": "f3-posicoes-relativas-de-retas-a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Simplificada, a segunda é y = 2x + 2: a mesma reta, infinitos pontos."
+          },
+          {
+            "id": "f3-posicoes-relativas-de-retas-a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Não são retas diferentes: 2y = 4x + 4 é y = 2x + 2, infinitos pontos."
+          },
+          {
+            "id": "f3-posicoes-relativas-de-retas-a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "É a mesma reta escrita de outro jeito: infinitos pontos."
+          }
+        ]
+      },
+      {
+        "id": "f4-posicoes-relativas-de-retas",
+        "prompt": "Uma reta tem m = 1. Qual a inclinação de uma perpendicular a ela?",
+        "options": [
+          {
+            "id": "f4-posicoes-relativas-de-retas-am1",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo. 1 · (−1) = −1."
+          },
+          {
+            "id": "f4-posicoes-relativas-de-retas-a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "m = 1 de novo seria paralela. Perpendicular: −1."
+          },
+          {
+            "id": "f4-posicoes-relativas-de-retas-a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "0 é horizontal, que faz 45° com ela. Perpendicular: −1."
+          },
+          {
+            "id": "f4-posicoes-relativas-de-retas-a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "1 · 2 = 2, não −1. A perpendicular tem m = −1."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-posicoes-relativas-de-retas",
+        "prompt": "Onde se encontram y = x e y = −x + 4?",
+        "options": [
+          {
+            "id": "m1-posicoes-relativas-de-retas-p22",
+            "label": "(2; 2)",
+            "correct": true,
+            "feedback": "Isso. 2x = 4, x = 2 e y = 2."
+          },
+          {
+            "id": "m1-posicoes-relativas-de-retas-p44",
+            "label": "(4; 4)",
+            "correct": false,
+            "feedback": "Em x = 4 a segunda dá 0. Igualando: (2; 2)."
+          },
+          {
+            "id": "m1-posicoes-relativas-de-retas-p04",
+            "label": "(0; 4)",
+            "correct": false,
+            "feedback": "(0; 4) é o corte da segunda reta. O encontro é (2; 2)."
+          },
+          {
+            "id": "m1-posicoes-relativas-de-retas-p40",
+            "label": "(4; 0)",
+            "correct": false,
+            "feedback": "(4; 0) é onde a segunda corta o eixo x. Encontro: (2; 2)."
+          }
+        ]
+      },
+      {
+        "id": "m2-posicoes-relativas-de-retas",
+        "prompt": "Uma reta tem m = 2. Qual a inclinação de uma perpendicular?",
+        "options": [
+          {
+            "id": "m2-posicoes-relativas-de-retas-am1-2",
+            "label": "−1/2",
+            "correct": true,
+            "feedback": "Certo. Inverte e troca o sinal: 2 · (−1/2) = −1."
+          },
+          {
+            "id": "m2-posicoes-relativas-de-retas-am2",
+            "label": "−2",
+            "correct": false,
+            "feedback": "2 · (−2) = −4. Perpendicular: −1/2."
+          },
+          {
+            "id": "m2-posicoes-relativas-de-retas-a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Faltou trocar o sinal: −1/2."
+          },
+          {
+            "id": "m2-posicoes-relativas-de-retas-a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Mesmo m é paralela. Perpendicular: −1/2."
+          }
+        ]
+      },
+      {
+        "id": "m3-posicoes-relativas-de-retas",
+        "prompt": "Qual reta é paralela a y = 3x − 2 e corta o eixo y em 5?",
+        "options": [
+          {
+            "id": "m3-posicoes-relativas-de-retas-r3x5",
+            "label": "y = 3x + 5",
+            "correct": true,
+            "feedback": "Isso. Mesmo m, novo corte."
+          },
+          {
+            "id": "m3-posicoes-relativas-de-retas-r5x3",
+            "label": "y = 5x + 3",
+            "correct": false,
+            "feedback": "Trocou m e n. Paralela mantém m = 3: y = 3x + 5."
+          },
+          {
+            "id": "m3-posicoes-relativas-de-retas-rm3x5",
+            "label": "y = −3x + 5",
+            "correct": false,
+            "feedback": "m = −3 cruza a original. Paralela: y = 3x + 5."
+          },
+          {
+            "id": "m3-posicoes-relativas-de-retas-r3xm2",
+            "label": "y = 3x − 2",
+            "correct": false,
+            "feedback": "Essa é a própria reta. Com corte 5: y = 3x + 5."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-posicoes-relativas-de-retas",
+        "prompt": "Onde se encontram y = 2x − 1 e y = x + 2?",
+        "options": [
+          {
+            "id": "d1-posicoes-relativas-de-retas-p35",
+            "label": "(3; 5)",
+            "correct": true,
+            "feedback": "Certo. x = 3 e as duas dão 5."
+          },
+          {
+            "id": "d1-posicoes-relativas-de-retas-p13",
+            "label": "(1; 3)",
+            "correct": false,
+            "feedback": "Em x = 1 dão 1 e 3. Igualando: x = 3, y = 5."
+          },
+          {
+            "id": "d1-posicoes-relativas-de-retas-pm1-1",
+            "label": "(−1; 1)",
+            "correct": false,
+            "feedback": "Em x = −1 dão −3 e 1. O encontro é (3; 5)."
+          },
+          {
+            "id": "d1-posicoes-relativas-de-retas-p32",
+            "label": "(3; 2)",
+            "correct": false,
+            "feedback": "x = 3 está certo, mas y = 3 + 2 = 5."
+          }
+        ]
+      },
+      {
+        "id": "d2-posicoes-relativas-de-retas",
+        "prompt": "Para qual k as retas y = kx + 1 e y = 4x − 2 são paralelas?",
+        "options": [
+          {
+            "id": "d2-posicoes-relativas-de-retas-k4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Isso. Mesmo m e cortes diferentes."
+          },
+          {
+            "id": "d2-posicoes-relativas-de-retas-km1-4",
+            "label": "−1/4",
+            "correct": false,
+            "feedback": "−1/4 deixaria perpendicular. Paralela: k = 4."
+          },
+          {
+            "id": "d2-posicoes-relativas-de-retas-km2",
+            "label": "−2",
+            "correct": false,
+            "feedback": "−2 é o corte da segunda. O m precisa ser 4."
+          },
+          {
+            "id": "d2-posicoes-relativas-de-retas-k1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Com k = 1 elas se cruzam. k = 4."
+          }
+        ]
+      },
+      {
+        "id": "d3-posicoes-relativas-de-retas",
+        "prompt": "Qual reta é perpendicular a y = 2x + 1 e corta o eixo y em 3?",
+        "options": [
+          {
+            "id": "d3-posicoes-relativas-de-retas-rm05x3",
+            "label": "y = −x/2 + 3",
+            "correct": true,
+            "feedback": "Certo. m = −1/2 e corte 3."
+          },
+          {
+            "id": "d3-posicoes-relativas-de-retas-rm2x3",
+            "label": "y = −2x + 3",
+            "correct": false,
+            "feedback": "2 · (−2) = −4. Perpendicular: m = −1/2."
+          },
+          {
+            "id": "d3-posicoes-relativas-de-retas-r2x3",
+            "label": "y = 2x + 3",
+            "correct": false,
+            "feedback": "Mesmo m é paralela. Perpendicular: y = −x/2 + 3."
+          },
+          {
+            "id": "d3-posicoes-relativas-de-retas-r05x3",
+            "label": "y = x/2 + 3",
+            "correct": false,
+            "feedback": "Faltou trocar o sinal: y = −x/2 + 3."
+          }
+        ]
+      },
+      {
+        "id": "d4-posicoes-relativas-de-retas",
+        "prompt": "Um sistema de duas equações de retas não tem solução. Como são as retas?",
+        "options": [
+          {
+            "id": "d4-posicoes-relativas-de-retas-paralelas",
+            "label": "Paralelas",
+            "correct": true,
+            "feedback": "Isso. Sem ponto comum, sem solução."
+          },
+          {
+            "id": "d4-posicoes-relativas-de-retas-coincidentes",
+            "label": "Coincidentes",
+            "correct": false,
+            "feedback": "Coincidentes têm infinitas soluções. Nenhuma: paralelas."
+          },
+          {
+            "id": "d4-posicoes-relativas-de-retas-perpendiculares",
+            "label": "Perpendiculares",
+            "correct": false,
+            "feedback": "Perpendiculares se cruzam num ponto. Sem solução: paralelas."
+          },
+          {
+            "id": "d4-posicoes-relativas-de-retas-concorrentes",
+            "label": "Concorrentes",
+            "correct": false,
+            "feedback": "Concorrentes têm uma solução. Nenhuma: paralelas."
+          }
+        ]
+      },
+      {
+        "id": "d5-posicoes-relativas-de-retas",
+        "fala": "Última. Desenhe as duas: uma em pé, outra deitada.",
+        "prompt": "Como são as retas x = 2 e y = 3?",
+        "options": [
+          {
+            "id": "d5-posicoes-relativas-de-retas-perp",
+            "label": "Perpendiculares",
+            "correct": true,
+            "feedback": "Certo. Cruzam em (2; 3) em ângulo reto, mesmo sem a regra m₁ · m₂ = −1."
+          },
+          {
+            "id": "d5-posicoes-relativas-de-retas-paralelas",
+            "label": "Paralelas",
+            "correct": false,
+            "feedback": "Uma é vertical e a outra horizontal: cruzam em (2; 3), em ângulo reto."
+          },
+          {
+            "id": "d5-posicoes-relativas-de-retas-nenhum",
+            "label": "Não se cruzam",
+            "correct": false,
+            "feedback": "O ponto (2; 3) está nas duas. São perpendiculares."
+          },
+          {
+            "id": "d5-posicoes-relativas-de-retas-coincidentes",
+            "label": "Coincidentes",
+            "correct": false,
+            "feedback": "Uma é vertical e outra horizontal, não podem coincidir. Perpendiculares."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

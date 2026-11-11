@@ -1,0 +1,584 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Equações Quadráticas e Interpretação das Raízes",
+  "subtitulo": "Contar encontros com o eixo",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "equacoes-quadraticas"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Coordenada horizontal da parábola."
+    },
+    "c2": {
+      "nome": "Altura c",
+      "resumo": "Deslocamento vertical da parábola."
+    },
+    "c3": {
+      "nome": "Parábola",
+      "resumo": "Altura da expressão quadrática."
+    },
+    "c4": {
+      "nome": "Raízes",
+      "resumo": "Entradas em que a parábola encontra o eixo."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-4, 4],
+        "y": [-4, 4],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": "$c",
+            "cor": "c3",
+            "rotulo": "y = x² + c"
+          },
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "fantasma": true,
+            "rotulo": "y = x²"
+          }
+        ],
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "controls": [
+        {
+          "id": "c",
+          "label": "Altura",
+          "min": -1,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "c",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "No caso neutro x²=0, a curva só toca o eixo; ao levar c a 1, ainda haverá encontro?",
+        "done": "Não; x²+1≥1, então a saída nunca zera."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Há quadráticas completas e incompletas; aqui ligamos fatoração, quadrado completo e quantidade de raízes."
+      }
+    },
+    {
+      "id": "abrir-duas-raizes",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-4, 4],
+        "y": [-4, 4],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": "$c",
+            "cor": "c3",
+            "rotulo": "y = x² + c"
+          },
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "fantasma": true,
+            "rotulo": "y = x²"
+          }
+        ],
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "controls": [
+        {
+          "id": "c",
+          "label": "Altura",
+          "min": -1,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "c",
+        "lte": -1
+      },
+      "lines": {
+        "intro": "Ao baixar c até −1, quantas raízes surgem?",
+        "done": "Surgem duas: x²=1 aceita −1 e 1, porque ambos têm quadrado 1."
+      }
+    },
+    {
+      "id": "contar-pelo-discriminante",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 3],
+        "y": [-2, 5],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": -2,
+            "c": "$c",
+            "cor": "c3",
+            "rotulo": "y = x² − 2x + c"
+          },
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": -2,
+            "c": 1,
+            "fantasma": true,
+            "rotulo": "y = (x − 1)²"
+          }
+        ],
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "controls": [
+        {
+          "id": "c",
+          "label": "Termo constante",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "c",
+        "lte": 0
+      },
+      "lines": {
+        "intro": "Com x²−2x+c=(x−1)²+c−1, baixar c de 1 para 0 cria quantas raízes?",
+        "done": "Cria duas: (x−1)²=1; em geral, (x+b/(2a))²=Δ/(4a²), por isso o sinal de Δ decide a quantidade."
+      }
+    },
+    {
+      "id": "deslocar-centro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 3],
+        "y": [-2, 5],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": -2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = x² − 2x"
+          },
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": -1,
+            "fantasma": true,
+            "rotulo": "y = x² − 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "passo": 1,
+          "cor": "c1"
+        },
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "na_raiz",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Em (x−1)²=1, a simetria ainda fica em zero? Arraste de 1 até 2.",
+        "done": "Agora o centro é 1; como x−1=±1, então as raízes são 0 e 2."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Se o coeficiente de x² zerar?",
+        "resposta": "A equação perde o grau 2; a fórmula quadrática deixa de valer."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 3],
+          "y": [-1, 5],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": 1,
+              "b": 0,
+              "c": 1,
+              "cor": "c3",
+              "rotulo": "y = x² + 1"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Quantas raízes reais distintas tem x²+1=0?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "Duas",
+          "correct": false,
+          "feedback": "Você tratou −1 como quadrado real; x²≥0, então não há raiz real.",
+          "figure": {
+            "highlight": [
+              "c3"
+            ]
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "Nenhuma",
+          "correct": true,
+          "feedback": "Certo: Nenhuma; x²+1≥1 para todo real.",
+          "figure": {
+            "highlight": [
+              "c3"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 4],
+          "y": [-2, 4],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": 1,
+              "b": -2,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = x² − 2x"
+            }
+          ],
+          "marcar": {
+            "raizes": true,
+            "vertice": true
+          },
+          "cores": {
+            "raiz": "c4",
+            "vertice": "c2"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "x",
+          "ref": "c1"
+        },
+        {
+          "text": " = (−b ± √Δ)/(2a); Δ = b² − 4ac; "
+        },
+        {
+          "text": "raízes",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Coordenada horizontal da parábola."
+        },
+        {
+          "term": "Parábola",
+          "text": "Altura da expressão quadrática."
+        },
+        {
+          "term": "Raízes",
+          "text": "Entradas em que a parábola encontra o eixo."
+        }
+      ],
+      "lines": {
+        "intro": "O quadrado completo precisa ser não negativo; por isso Δ decide quantas raízes reais existem.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-equacoes-quadraticas",
+        "prompt": "A curva y=x² encontra o eixo x em quantos pontos distintos?",
+        "options": [
+          {
+            "id": "f1-equacoes-quadraticas-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você contou a raiz repetida duas vezes como ponto. O certo é 1; x²=0 ⇒ x=0."
+          },
+          {
+            "id": "f1-equacoes-quadraticas-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; x²=0 ⇒ x=0."
+          }
+        ]
+      },
+      {
+        "id": "f2-equacoes-quadraticas",
+        "prompt": "A curva y=x²+1 toca o eixo x?",
+        "options": [
+          {
+            "id": "f2-equacoes-quadraticas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; x²+1≥1."
+          },
+          {
+            "id": "f2-equacoes-quadraticas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O mínimo é positivo. O certo é Não; x²+1≥1."
+          }
+        ]
+      },
+      {
+        "id": "f3-equacoes-quadraticas",
+        "prompt": "Quais são as raízes de x²−1?",
+        "options": [
+          {
+            "id": "f3-equacoes-quadraticas-erro",
+            "label": "Só 1",
+            "correct": false,
+            "feedback": "Faltou a raiz negativa. O certo é −1 e 1; (−1)²=1²=1."
+          },
+          {
+            "id": "f3-equacoes-quadraticas-certa",
+            "label": "−1 e 1",
+            "correct": true,
+            "feedback": "Certo: −1 e 1; (−1)²=1²=1."
+          }
+        ]
+      },
+      {
+        "id": "f4-equacoes-quadraticas",
+        "prompt": "Se a=0 em ax²+bx+c=0, ela ainda é quadrática?",
+        "options": [
+          {
+            "id": "f4-equacoes-quadraticas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 0x²=0."
+          },
+          {
+            "id": "f4-equacoes-quadraticas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O termo de grau 2 desapareceu. O certo é Não; 0x²=0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-equacoes-quadraticas",
+        "prompt": "Resolva x²−4=0 nos reais.",
+        "options": [
+          {
+            "id": "m1-equacoes-quadraticas-erro",
+            "label": "−4 e 4",
+            "correct": false,
+            "feedback": "Você confundiu x² com x. O certo é −2 e 2; x²=4; x=±2."
+          },
+          {
+            "id": "m1-equacoes-quadraticas-certa",
+            "label": "−2 e 2",
+            "correct": true,
+            "feedback": "Certo: −2 e 2; x²=4; x=±2."
+          }
+        ]
+      },
+      {
+        "id": "m2-equacoes-quadraticas",
+        "prompt": "Resolva x²−3x+2=0.",
+        "options": [
+          {
+            "id": "m2-equacoes-quadraticas-certa",
+            "label": "1 e 2",
+            "correct": true,
+            "feedback": "Certo: 1 e 2; (x−1)(x−2)=0."
+          },
+          {
+            "id": "m2-equacoes-quadraticas-erro",
+            "label": "−1 e −2",
+            "correct": false,
+            "feedback": "Você trocou os sinais dos fatores. O certo é 1 e 2; (x−1)(x−2)=0."
+          }
+        ]
+      },
+      {
+        "id": "m3-equacoes-quadraticas",
+        "prompt": "Quantas raízes reais distintas tem x²−2x+1=0?",
+        "options": [
+          {
+            "id": "m3-equacoes-quadraticas-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "O quadrado pode valer zero. O certo é 1; (x−1)²=0; x=1."
+          },
+          {
+            "id": "m3-equacoes-quadraticas-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; (x−1)²=0; x=1."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-equacoes-quadraticas",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Qual k faz x²−2x+k=0 ter raiz dupla?",
+        "options": [
+          {
+            "id": "d1-equacoes-quadraticas-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; Δ=4−4k=0; k=1."
+          },
+          {
+            "id": "d1-equacoes-quadraticas-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você confundiu o coeficiente linear com o termo constante. O certo é 1; Δ=4−4k=0; k=1."
+          }
+        ]
+      },
+      {
+        "id": "d2-equacoes-quadraticas",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva 4x²−1=0.",
+        "options": [
+          {
+            "id": "d2-equacoes-quadraticas-erro",
+            "label": "−0,25 e 0,25",
+            "correct": false,
+            "feedback": "Você parou no valor de x². O certo é −0,5 e 0,5; x²=1/4; x=±1/2."
+          },
+          {
+            "id": "d2-equacoes-quadraticas-certa",
+            "label": "−0,5 e 0,5",
+            "correct": true,
+            "feedback": "Certo: −0,5 e 0,5; x²=1/4; x=±1/2."
+          }
+        ]
+      },
+      {
+        "id": "d3-equacoes-quadraticas",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Em x²+2x+2=0, qual é o conjunto real de soluções?",
+        "options": [
+          {
+            "id": "d3-equacoes-quadraticas-certa",
+            "label": "∅",
+            "correct": true,
+            "feedback": "Certo: ∅; (x+1)²+1>0."
+          },
+          {
+            "id": "d3-equacoes-quadraticas-erro",
+            "label": "{−1}",
+            "correct": false,
+            "feedback": "Você confundiu vértice com raiz. O certo é ∅; (x+1)²+1>0."
+          }
+        ]
+      },
+      {
+        "id": "d4-equacoes-quadraticas",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Se as raízes são 1 e 3 e a=1, qual equação aparece?",
+        "options": [
+          {
+            "id": "d4-equacoes-quadraticas-erro",
+            "label": "x²+4x+3=0",
+            "correct": false,
+            "feedback": "A soma das raízes entra com sinal negativo. O certo é x²−4x+3=0; (x−1)(x−3)=x²−4x+3."
+          },
+          {
+            "id": "d4-equacoes-quadraticas-certa",
+            "label": "x²−4x+3=0",
+            "correct": true,
+            "feedback": "Certo: x²−4x+3=0; (x−1)(x−3)=x²−4x+3."
+          }
+        ]
+      },
+      {
+        "id": "d5-equacoes-quadraticas",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Um retângulo de lados x e x+1 tem área 6; qual comprimento x>0 serve?",
+        "options": [
+          {
+            "id": "d5-equacoes-quadraticas-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; x²+x−6=(x−2)(x+3)=0."
+          },
+          {
+            "id": "d5-equacoes-quadraticas-erro",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Você aceitou comprimento negativo. O certo é 2; x²+x−6=(x−2)(x+3)=0."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

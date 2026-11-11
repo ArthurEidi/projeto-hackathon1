@@ -298,3 +298,6 @@ Taxas mensal e anual s√≥ se comparam ap√≥s convers√£o √† mesma janela temporal.
 **Texto**
 - [x] Falas, enunciados e feedbacks curtos, sem emoji ou termos proibidos.
 - [x] Nota√ß√£o e contas foram conferidas.
+
+---
+**Notas da implementaÁ„o (JSON):** `barras` modo `sequencia` (PG 100 x fator; trimestres com o 20% direto como `fantasma` PA) e `categorias` no desafio/fechamento (110, 105 e 104,76). Slider `t` mapeado em `n: "1+$t"` (a barra 1 È t = 0). Tati duplicada do passo 3 trocada pela convers„o inversa (12% a.a. em mensal); fechamento com Tati nova; D2 reescrito (o enunciado "igual taxa semestral?" era ambÌguo). Sem correÁ„o de gabarito: todas as contas conferem. Vestibular `[]`.

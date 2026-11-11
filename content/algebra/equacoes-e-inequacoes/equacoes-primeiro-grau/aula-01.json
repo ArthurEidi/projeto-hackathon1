@@ -1,0 +1,532 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Equações do Primeiro Grau",
+  "subtitulo": "O ponto em que as saídas concordam",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "equacoes-primeiro-grau"
+  },
+  "outro": "Você encontrou a entrada comum e separou solução única, nenhuma e infinitas soluções.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Número testado nos dois lados."
+    },
+    "c2": {
+      "nome": "Coeficiente a",
+      "resumo": "Fator que multiplica a entrada."
+    },
+    "c3": {
+      "nome": "Saída ax+b",
+      "resumo": "Altura produzida pela expressão linear."
+    },
+    "c4": {
+      "nome": "Solução",
+      "resumo": "Entrada que torna a igualdade verdadeira."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-4, 4],
+        "y": [-4, 4],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "cor": "c3",
+            "rotulo": "y = x"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 0,
+            "cor": "ink",
+            "rotulo": "y = 0"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": -2,
+          "passo": 1
+        },
+        "marcar": {
+          "encontro": true
+        },
+        "cores": {
+          "encontro": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "No caso neutro, y = x; qual entrada encontra a saída zero? Arraste até o encontro.",
+        "done": "A entrada é zero porque a identidade devolve o próprio x."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Equações podem ter potências e radicais; aqui comparamos expressões lineares e cuidamos do coeficiente zero."
+      }
+    },
+    {
+      "id": "desfazer-operacoes",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 5],
+        "y": [-6, 6],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 2,
+            "b": -4,
+            "cor": "c3",
+            "rotulo": "y = 2x − 4"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 0,
+            "cor": "ink",
+            "rotulo": "y = 0"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "fantasma": true,
+            "rotulo": "y = x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1
+        },
+        "marcar": {
+          "encontro": true
+        },
+        "cores": {
+          "encontro": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Qual entrada faz 2x − 4 encontrar zero? Preveja e leve o ponto ao encontro.",
+        "done": "Como 2x − 4 = 0 pede 2x = 4, então x = 2; subtrair e dividir desfazem a máquina."
+      }
+    },
+    {
+      "id": "coeficiente-zero",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "a",
+          "label": "Coeficiente a",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 2,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-3, 4],
+        "y": [-6, 6],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": "$a",
+            "b": -4,
+            "cor": "c3",
+            "rotulo": "y = ax − 4"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 0,
+            "cor": "ink",
+            "rotulo": "y = 0"
+          },
+          {
+            "tipo": "afim",
+            "a": 2,
+            "b": -4,
+            "fantasma": true,
+            "rotulo": "2x − 4"
+          }
+        ]
+      },
+      "complete_when": {
+        "metric": "a",
+        "lte": 0
+      },
+      "lines": {
+        "intro": "Se a chegar a zero, ax − 4 ainda alcança zero? Reduza a e observe.",
+        "done": "Não; 0x − 4 vale −4 para qualquer entrada, por isso não existe solução."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a saída fosse 0x + 0?",
+        "resposta": "Seria zero para todo x; haveria infinitas soluções."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 5],
+          "y": [-9, 5],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 2,
+              "b": -4,
+              "cor": "c3",
+              "rotulo": "y = 2x − 4"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 0,
+              "cor": "ink",
+              "rotulo": "y = 0"
+            }
+          ],
+          "marcar": {
+            "encontro": true
+          },
+          "cores": {
+            "encontro": "c4"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual é a solução de 2x−4=0?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "−2",
+          "correct": false,
+          "feedback": "O sinal mudou errado; 2x=4, então x=2."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "2",
+          "correct": true,
+          "feedback": "Certo: 2; 2x=4 dá x=2."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 5],
+          "y": [-6, 6],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 2,
+              "b": -4,
+              "cor": "c3",
+              "rotulo": "y = 2x − 4"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 0,
+              "cor": "ink",
+              "rotulo": "y = 0"
+            }
+          ],
+          "marcar": {
+            "encontro": true
+          },
+          "cores": {
+            "encontro": "c4"
+          },
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "cor": "c4"
+          }
+        }
+      },
+      "formula": [
+        { "text": "a", "ref": "c2" },
+        { "text": "x", "ref": "c1" },
+        { "text": " + b = 0 ⇒ " },
+        { "text": "x", "ref": "c4" },
+        { "text": " = −b/a (a ≠ 0)" }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Número testado nos dois lados."
+        },
+        {
+          "term": "Saída ax+b",
+          "text": "Altura produzida pela expressão linear."
+        },
+        {
+          "term": "Solução",
+          "text": "Entrada que torna a igualdade verdadeira."
+        }
+      ],
+      "lines": {
+        "intro": "Desfazemos as operações nos dois lados; por isso x = −b/a quando a ≠ 0.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-equacoes-primeiro-grau",
+        "prompt": "Na identidade y=x, que entrada produz zero?",
+        "options": [
+          {
+            "id": "f1-equacoes-primeiro-grau-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você deslocou uma reta sem termo constante. O certo é 0; x=0."
+          },
+          {
+            "id": "f1-equacoes-primeiro-grau-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; x=0."
+          }
+        ]
+      },
+      {
+        "id": "f2-equacoes-primeiro-grau",
+        "prompt": "Resolver uma equação no gráfico é procurar o quê?",
+        "options": [
+          {
+            "id": "f2-equacoes-primeiro-grau-certa",
+            "label": "Encontro",
+            "correct": true,
+            "feedback": "Certo: Encontro; f(x)=g(x) no encontro."
+          },
+          {
+            "id": "f2-equacoes-primeiro-grau-erro",
+            "label": "Maior altura",
+            "correct": false,
+            "feedback": "Altura máxima não expressa igualdade. O certo é Encontro; f(x)=g(x) no encontro."
+          }
+        ]
+      },
+      {
+        "id": "f3-equacoes-primeiro-grau",
+        "prompt": "Em 2x−4=0, qual operação desfaz o −4?",
+        "options": [
+          {
+            "id": "f3-equacoes-primeiro-grau-erro",
+            "label": "Subtrair 4 nos dois lados",
+            "correct": false,
+            "feedback": "Você repetiu a operação em vez de desfazê-la. O certo é Somar 4 nos dois lados; 2x−4+4=4."
+          },
+          {
+            "id": "f3-equacoes-primeiro-grau-certa",
+            "label": "Somar 4 nos dois lados",
+            "correct": true,
+            "feedback": "Certo: Somar 4 nos dois lados; 2x−4+4=4."
+          }
+        ]
+      },
+      {
+        "id": "f4-equacoes-primeiro-grau",
+        "prompt": "A reta y=−4 encontra y=0?",
+        "options": [
+          {
+            "id": "f4-equacoes-primeiro-grau-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; −4≠0."
+          },
+          {
+            "id": "f4-equacoes-primeiro-grau-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Retas horizontais distintas não se encontram. O certo é Não; −4≠0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-equacoes-primeiro-grau",
+        "prompt": "Resolva 3x−6=0.",
+        "options": [
+          {
+            "id": "m1-equacoes-primeiro-grau-erro",
+            "label": "−2",
+            "correct": false,
+            "feedback": "O sinal de 6 foi trocado. O certo é 2; 3x=6; x=2."
+          },
+          {
+            "id": "m1-equacoes-primeiro-grau-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; 3x=6; x=2."
+          }
+        ]
+      },
+      {
+        "id": "m2-equacoes-primeiro-grau",
+        "prompt": "Resolva 2x+1=7.",
+        "options": [
+          {
+            "id": "m2-equacoes-primeiro-grau-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 2x=6; x=3."
+          },
+          {
+            "id": "m2-equacoes-primeiro-grau-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você somou 1 ao alvo. O certo é 3; 2x=6; x=3."
+          }
+        ]
+      },
+      {
+        "id": "m3-equacoes-primeiro-grau",
+        "prompt": "Resolva x+3=2x.",
+        "options": [
+          {
+            "id": "m3-equacoes-primeiro-grau-erro",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Ao isolar x você trocou o sinal. O certo é 3; 3=2x−x=x."
+          },
+          {
+            "id": "m3-equacoes-primeiro-grau-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 3=2x−x=x."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-equacoes-primeiro-grau",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva 2x+1=x+4.",
+        "options": [
+          {
+            "id": "d1-equacoes-primeiro-grau-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; x=4−1=3."
+          },
+          {
+            "id": "d1-equacoes-primeiro-grau-erro",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você somou as constantes indevidamente. O certo é 3; x=4−1=3."
+          }
+        ]
+      },
+      {
+        "id": "d2-equacoes-primeiro-grau",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Quantas soluções reais tem 0x=0?",
+        "options": [
+          {
+            "id": "d2-equacoes-primeiro-grau-erro",
+            "label": "Uma",
+            "correct": false,
+            "feedback": "Zero multiplicado por qualquer real é zero. O certo é Infinitas; 0·x=0 para todo x."
+          },
+          {
+            "id": "d2-equacoes-primeiro-grau-certa",
+            "label": "Infinitas",
+            "correct": true,
+            "feedback": "Certo: Infinitas; 0·x=0 para todo x."
+          }
+        ]
+      },
+      {
+        "id": "d3-equacoes-primeiro-grau",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Quantas soluções reais tem 0x=2?",
+        "options": [
+          {
+            "id": "d3-equacoes-primeiro-grau-certa",
+            "label": "Nenhuma",
+            "correct": true,
+            "feedback": "Certo: Nenhuma; 0≠2."
+          },
+          {
+            "id": "d3-equacoes-primeiro-grau-erro",
+            "label": "Infinitas",
+            "correct": false,
+            "feedback": "Você confundiu igualdade verdadeira com contradição. O certo é Nenhuma; 0≠2."
+          }
+        ]
+      },
+      {
+        "id": "d4-equacoes-primeiro-grau",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Resolva 2x=1.",
+        "options": [
+          {
+            "id": "d4-equacoes-primeiro-grau-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você inverteu a divisão. O certo é 0,5; x=1/2=0,5."
+          },
+          {
+            "id": "d4-equacoes-primeiro-grau-certa",
+            "label": "0,5",
+            "correct": true,
+            "feedback": "Certo: 0,5; x=1/2=0,5."
+          }
+        ]
+      },
+      {
+        "id": "d5-equacoes-primeiro-grau",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Dois planos cobram 2+2x e 5+x reais; para qual x≥0 os custos coincidem?",
+        "options": [
+          {
+            "id": "d5-equacoes-primeiro-grau-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 2+2x=5+x; x=3."
+          },
+          {
+            "id": "d5-equacoes-primeiro-grau-erro",
+            "label": "7",
+            "correct": false,
+            "feedback": "Você somou taxas fixas em vez de comparar. O certo é 3; 2+2x=5+x; x=3."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

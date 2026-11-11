@@ -1,0 +1,502 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Fatores em Sequência",
+  "subtitulo": "Descontos, acréscimos e índices",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "proporcionalidade",
+    "unidade": "descontos-acrescimos-e-indices"
+  },
+  "outro": "Você aplicou percentuais ao valor corrente; fatores sucessivos não se cancelam automaticamente.",
+  "glossario": {
+    "c1": {
+      "nome": "Valor V",
+      "resumo": "Preço ou valor inicial."
+    },
+    "c2": {
+      "nome": "Taxa p",
+      "resumo": "Percentual em forma decimal."
+    },
+    "c3": {
+      "nome": "Fator",
+      "resumo": "Multiplicador que atualiza o valor."
+    },
+    "c4": {
+      "nome": "Índice",
+      "resumo": "Número relativo a uma base."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "sequencia",
+        "regra": "pg",
+        "a1": 100,
+        "q": 1,
+        "termos": 5,
+        "n": "$n",
+        "casas": 0,
+        "nome": "V"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Índice",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com variação de 0%, o preço muda? Observe a barra e avance o índice.",
+        "done": "Com 0% o fator é 1: o valor não muda, e as barras ficam na mesma altura."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Como os índices comparam datas?",
+        "resposta": "Eles usam uma base de referência; aqui calculamos variações percentuais simples."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "contraste-de-regras",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "Antes",
+            "valor": 100
+          },
+          {
+            "nome": "Depois do desconto",
+            "valor": "100-10*$p"
+          }
+        ],
+        "cor": "ink"
+      },
+      "controls": [
+        {
+          "id": "p",
+          "label": "Desconto (em dezenas de %)",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "O preço 100 recebe 10% de desconto. Leve o desconto até 10% e leia o fator.",
+        "done": "O fator é 0,9: ficam 90% do preço original."
+      },
+      "complete_when": {
+        "metric": "p",
+        "gte": 1
+      }
+    },
+    {
+      "id": "teste-de-fronteira",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "categorias",
+        "categorias": [
+          {
+            "nome": "Início",
+            "valor": 100
+          },
+          {
+            "nome": "+10%",
+            "valor": 110
+          },
+          {
+            "nome": "−10%",
+            "valor": 99
+          }
+        ],
+        "cor": "ink"
+      },
+      "lines": {
+        "intro": "Após +10% e depois −10%, o preço volta a 100? Toque nas três barras e compare.",
+        "done": "Não: 1,1 · 0,9 = 0,99, resta 99%. O −10% incide sobre 110, não sobre 100."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E com −10% primeiro e +10% depois?",
+        "resposta": "Dá o mesmo, 0,9 · 1,1 = 0,99: a ordem não muda o resultado, só a base de cada passo."
+      },
+      "complete_when": {
+        "metric": "barras_tocadas",
+        "gte": 3
+      }
+    },
+    {
+      "id": "micro-desafio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "Início",
+              "valor": 100
+            },
+            {
+              "nome": "+10%",
+              "valor": 110
+            },
+            {
+              "nome": "−10%",
+              "valor": 99
+            }
+          ],
+          "cor": "ink"
+        }
+      },
+      "prompt": "R$ 100 sobem 10% e depois caem 10%. Qual é o valor final?",
+      "lines": {
+        "intro": "Cada percentual age sobre o valor corrente. Qual resposta a figura sustenta?"
+      },
+      "options": [
+        {
+          "id": "o1",
+          "label": "R$ 99",
+          "correct": true,
+          "feedback": "Certo. 100 · 1,1 · 0,9 = 99.",
+          "figure": {
+            "acesas": [
+              2
+            ]
+          }
+        },
+        {
+          "id": "o2",
+          "label": "R$ 100",
+          "correct": false,
+          "feedback": "As bases são diferentes e não se cancelam: o −10% incide em 110. O final é R$ 99.",
+          "figure": {
+            "acesas": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "categorias",
+          "categorias": [
+            {
+              "nome": "Início",
+              "valor": 100
+            },
+            {
+              "nome": "+10%",
+              "valor": 110
+            },
+            {
+              "nome": "−10%",
+              "valor": 99
+            }
+          ],
+          "cor": "ink"
+        }
+      },
+      "formula": [
+        {
+          "text": "V"
+        },
+        {
+          "text": "novo",
+          "ref": "c1"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "V",
+          "ref": "c1"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "(1 ∓"
+        },
+        {
+          "text": "p",
+          "ref": "c2"
+        },
+        {
+          "text": ")",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Desconto",
+          "text": "mantém 1 − p do valor."
+        },
+        {
+          "term": "Acréscimo",
+          "text": "multiplica por 1 + p."
+        },
+        {
+          "term": "Variações sucessivas",
+          "text": "multiplicam fatores."
+        }
+      ],
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Como ler um índice que vai de 120 a 132?",
+        "resposta": "Divida: 132 ÷ 120 = 1,10, uma alta de 10%. O índice compara com uma base declarada."
+      },
+      "lines": {
+        "intro": "Cada percentual age no valor corrente; por isso variações sucessivas se multiplicam.",
+        "hint": "Toque em uma marca para ver a grandeza correspondente nas barras."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "descontos-acrescimos-e-indices-f1",
+        "prompt": "R$ 100 recebem desconto de 10%. Qual o preço final?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 90",
+            "correct": true,
+            "feedback": "Certo. 100 · 0,9 = 90."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 10",
+            "correct": false,
+            "feedback": "Deu o desconto, não o preço final: 100 · 0,9 = R$ 90."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-f2",
+        "prompt": "R$ 50 aumentam 20%. Qual o valor final?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 10",
+            "correct": false,
+            "feedback": "Deu apenas o acréscimo: 50 · 1,2 = R$ 60."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 60",
+            "correct": true,
+            "feedback": "Certo. 50 · 1,2 = 60."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-f3",
+        "prompt": "Um índice vai de 100 a 110. Qual a variação?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "10%",
+            "correct": true,
+            "feedback": "Certo. (110 − 100) ÷ 100 = 10%."
+          },
+          {
+            "id": "o2",
+            "label": "110%",
+            "correct": false,
+            "feedback": "Tomou o índice final como variação: (110 − 100) ÷ 100 = 10%."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-f4",
+        "prompt": "R$ 200 recebem desconto de 25%. Qual o preço final?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 50",
+            "correct": false,
+            "feedback": "Deu só o valor descontado: 200 · 0,75 = R$ 150."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 150",
+            "correct": true,
+            "feedback": "Certo. 200 · 0,75 = 150."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "descontos-acrescimos-e-indices-m1",
+        "prompt": "R$ 80 aumentam 10%. Qual o valor final?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 8",
+            "correct": false,
+            "feedback": "Deu o acréscimo, não o total: 80 · 1,1 = R$ 88."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 88",
+            "correct": true,
+            "feedback": "Certo. 80 · 1,1 = 88."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-m2",
+        "prompt": "Após um desconto de 20%, que parte do preço resta?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "80%",
+            "correct": true,
+            "feedback": "Certo. 100% − 20% = 80%."
+          },
+          {
+            "id": "o2",
+            "label": "20%",
+            "correct": false,
+            "feedback": "Confundiu desconto com a parte que resta: 100% − 20% = 80%."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-m3",
+        "prompt": "R$ 100 sobem 10% e depois caem 10%. Qual o final?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "R$ 100",
+            "correct": false,
+            "feedback": "Supôs cancelamento com bases diferentes: 100 · 1,1 · 0,9 = R$ 99."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 99",
+            "correct": true,
+            "feedback": "Certo. 100 · 1,1 · 0,9 = 99."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "descontos-acrescimos-e-indices-d1",
+        "prompt": "R$ 200 caem 10% duas vezes. Quanto ficam?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 162",
+            "correct": true,
+            "feedback": "Certo. 200 · 0,9² = 162."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 160",
+            "correct": false,
+            "feedback": "Somou dois descontos sobre a base inicial. Sobre o valor corrente: 200 · 0,9² = R$ 162."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-d2",
+        "prompt": "Um índice sobe de 120 a 132. Qual a variação?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "12%",
+            "correct": false,
+            "feedback": "Usou o aumento sem dividir pela base: 12 ÷ 120 = 10%."
+          },
+          {
+            "id": "o1",
+            "label": "10%",
+            "correct": true,
+            "feedback": "Certo. 12 ÷ 120 = 10%."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-d3",
+        "prompt": "R$ 250 recebem acréscimo de 8%. Qual o preço?",
+        "options": [
+          {
+            "id": "o1",
+            "label": "R$ 270",
+            "correct": true,
+            "feedback": "Certo. 250 · 1,08 = 270."
+          },
+          {
+            "id": "o2",
+            "label": "R$ 258",
+            "correct": false,
+            "feedback": "Somou R$ 8, não 8% do preço: 250 · 1,08 = R$ 270."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-d4",
+        "prompt": "Um valor sobe 20% e cai 20%. Qual o fator final?",
+        "options": [
+          {
+            "id": "o2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Supôs que variações opostas se cancelam: 1,2 · 0,8 = 0,96."
+          },
+          {
+            "id": "o1",
+            "label": "0,96",
+            "correct": true,
+            "feedback": "Certo. 1,2 · 0,8 = 0,96."
+          }
+        ]
+      },
+      {
+        "id": "descontos-acrescimos-e-indices-d5",
+        "prompt": "O preço passa de 100 a 150. Qual o aumento percentual?",
+        "fala": "Última. Divida o aumento pela base.",
+        "options": [
+          {
+            "id": "o1",
+            "label": "50%",
+            "correct": true,
+            "feedback": "Certo. (150 − 100) ÷ 100 = 50%."
+          },
+          {
+            "id": "o2",
+            "label": "150%",
+            "correct": false,
+            "feedback": "150 é o preço final, não o aumento: (150 − 100) ÷ 100 = 50%."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

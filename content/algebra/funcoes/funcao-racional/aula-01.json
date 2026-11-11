@@ -1,0 +1,496 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Funções Racionais e Assíntotas Simples",
+  "subtitulo": "Função racional",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "funcoes",
+    "unidade": "funcao-racional"
+  },
+  "outro": "Você testou a entrada e a fronteira; por isso f(x)=P(x)/Q(x), Q(x)≠0.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Valor que substitui a variável nos polinômios."
+    },
+    "c2": {
+      "nome": "Saída f(x)",
+      "resumo": "Quociente definido quando o denominador não zera."
+    },
+    "c3": {
+      "nome": "Denominador Q(x)",
+      "resumo": "Seus zeros ficam fora do domínio da função."
+    },
+    "c4": {
+      "nome": "Assíntota",
+      "resumo": "Linha que um ramo aproxima sem necessariamente alcançar."
+    }
+  },
+  "steps": [
+    {
+      "id": "dois-ramos",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-4, 4],
+        "y": [-4, 4],
+        "curvas": [
+          {
+            "tipo": "racional",
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "cor": "c2",
+            "rotulo": "1/x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": -1,
+          "passo": 0.5
+        },
+        "marcar": {
+          "assintota": true
+        }
+      },
+      "complete_when": {
+        "metric": "ramos_visitados",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Que saída prevê no caso neutro? f(x)=1/x; x=0 é permitido?",
+        "done": "O denominador separa ramos; x=0 não pertence ao domínio."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Posso usar zero no denominador?",
+        "resposta": "Não; esses valores ficam fora do domínio."
+      }
+    },
+    {
+      "id": "mover-assintotas",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "h",
+          "label": "h",
+          "min": -2,
+          "max": 2,
+          "step": 1,
+          "initial": 0
+        },
+        {
+          "id": "k",
+          "label": "k",
+          "min": -2,
+          "max": 2,
+          "step": 1,
+          "initial": 0
+        }
+      ],
+      "params": {
+        "x": [-4, 5],
+        "y": [-4, 5],
+        "curvas": [
+          {
+            "tipo": "racional",
+            "a": 1,
+            "b": "$h",
+            "c": "$k",
+            "cor": "c3",
+            "rotulo": "1/(x−h)+k"
+          }
+        ],
+        "marcar": {
+          "assintota": true
+        }
+      },
+      "complete_when": {
+        "metric": "parametros_testados",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Onde o denominador zera após mover h?",
+        "done": "O denominador zera em 1; +2 fixa a assíntota horizontal."
+      }
+    },
+    {
+      "id": "buraco-ou-assintota",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 4],
+        "y": [-2, 4],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "furos": [1],
+            "cor": "c2",
+            "rotulo": "(x−1)/(x−1)"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": -1,
+          "passo": 0.5
+        }
+      },
+      "complete_when": {
+        "metric": "no_furo",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "O cancelamento recoloca x=1 no domínio?",
+        "done": "A expressão vale 1 fora de x=1; o cancelamento não inclui essa entrada."
+      }
+    },
+    {
+      "id": "desafio-fronteira",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 6],
+          "y": [-3, 5],
+          "curvas": [
+            {
+              "tipo": "racional",
+              "a": 1,
+              "b": 2,
+              "c": 1,
+              "cor": "c3",
+              "rotulo": "1/(x−2)+1"
+            }
+          ],
+          "marcar": {
+            "assintota": true
+          }
+        }
+      },
+      "lines": {
+        "intro": "Qual resposta a figura sustenta?"
+      },
+      "prompt": "Quais são as assíntotas de f(x)=1/(x−2)+1?",
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a entrada estiver na fronteira?",
+        "resposta": "A condição do domínio decide se o ponto entra e qual regra vale."
+      },
+      "options": [
+        {
+          "id": "erro",
+          "label": "x=−2 e y=−1",
+          "correct": false,
+          "feedback": "Troca os sinais dos deslocamentos; x−2 zera em 2; +1 fixa y=1.",
+          "figure": {
+            "assintotas": {
+              "x": [-2],
+              "y": [-1]
+            }
+          }
+        },
+        {
+          "id": "certa",
+          "label": "x=2 e y=1",
+          "correct": true,
+          "feedback": "x−2 zera em 2; +1 fixa y=1.",
+          "figure": {
+            "highlight": ["c4"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 6],
+          "y": [-3, 5],
+          "curvas": [
+            {
+              "tipo": "racional",
+              "a": 1,
+              "b": 2,
+              "c": 1,
+              "cor": "c2",
+              "rotulo": "1/(x−2)+1"
+            }
+          ],
+          "marcar": {
+            "assintota": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "f(x)",
+          "ref": "c2"
+        },
+        {
+          "text": " = P(x) / "
+        },
+        {
+          "text": "Q(x)",
+          "ref": "c3"
+        },
+        {
+          "text": ", Q(x)≠0"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Domínio",
+          "text": "Exclui zeros do denominador."
+        },
+        {
+          "term": "Assíntota",
+          "text": "Linha que o ramo aproxima."
+        },
+        {
+          "term": "Cancelamento",
+          "text": "Não restaura entrada excluída."
+        }
+      ],
+      "lines": {
+        "intro": "Como a figura explica a regra? Por isso f(x)=P(x)/Q(x), Q(x)≠0.",
+        "hint": "Toque em uma marca para ver o que ela representa no gráfico."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "O desenho vale fora do domínio?",
+        "resposta": "Não; as condições da função limitam as entradas válidas."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-funcao-racional",
+        "prompt": "Em 1/x, qual x é proibido?",
+        "options": [
+          {
+            "id": "f1-funcao-racional-e",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 0; Confunde ponto do gráfico com zero do denominador; conferência: Denominador x=0 em x=0."
+          },
+          {
+            "id": "f1-funcao-racional-c",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: resposta 0; conferência: Denominador x=0 em x=0."
+          }
+        ]
+      },
+      {
+        "id": "f2-funcao-racional",
+        "prompt": "Quanto vale 1/(−2)?",
+        "options": [
+          {
+            "id": "f2-funcao-racional-e",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Resposta: −1/2; Ignora o sinal do denominador; conferência: 1÷(−2)=−1/2."
+          },
+          {
+            "id": "f2-funcao-racional-c",
+            "label": "−1/2",
+            "correct": true,
+            "feedback": "Certo: resposta −1/2; conferência: 1÷(−2)=−1/2."
+          }
+        ]
+      },
+      {
+        "id": "f3-funcao-racional",
+        "prompt": "Assíntota vertical de 1/(x−3)?",
+        "options": [
+          {
+            "id": "f3-funcao-racional-e",
+            "label": "x=−3",
+            "correct": false,
+            "feedback": "Resposta: x=3; Erra sinal ao resolver x−3=0; conferência: x−3=0 ⇒ x=3."
+          },
+          {
+            "id": "f3-funcao-racional-c",
+            "label": "x=3",
+            "correct": true,
+            "feedback": "Certo: resposta x=3; conferência: x−3=0 ⇒ x=3."
+          }
+        ]
+      },
+      {
+        "id": "f4-funcao-racional",
+        "prompt": "Domínio de 1/(x+2)?",
+        "options": [
+          {
+            "id": "f4-funcao-racional-e",
+            "label": "x≠2",
+            "correct": false,
+            "feedback": "Resposta: x≠−2; Erra sinal da raiz do denominador; conferência: x+2=0 ⇒ x=−2; exclua."
+          },
+          {
+            "id": "f4-funcao-racional-c",
+            "label": "x≠−2",
+            "correct": true,
+            "feedback": "Certo: resposta x≠−2; conferência: x+2=0 ⇒ x=−2; exclua."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-funcao-racional",
+        "prompt": "Quanto vale 1/2+1?",
+        "options": [
+          {
+            "id": "m1-funcao-racional-e",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 3/2; Soma denominadores sem equivalência; conferência: 1/2+2/2=3/2."
+          },
+          {
+            "id": "m1-funcao-racional-c",
+            "label": "3/2",
+            "correct": true,
+            "feedback": "Certo: resposta 3/2; conferência: 1/2+2/2=3/2."
+          }
+        ]
+      },
+      {
+        "id": "m2-funcao-racional",
+        "prompt": "Assíntota horizontal de 1/x+2?",
+        "options": [
+          {
+            "id": "m2-funcao-racional-e",
+            "label": "y=0",
+            "correct": false,
+            "feedback": "Resposta: y=2; Ignora a translação vertical; conferência: 1/x→0; então y→2."
+          },
+          {
+            "id": "m2-funcao-racional-c",
+            "label": "y=2",
+            "correct": true,
+            "feedback": "Certo: resposta y=2; conferência: 1/x→0; então y→2."
+          }
+        ]
+      },
+      {
+        "id": "m3-funcao-racional",
+        "prompt": "Simplifique (x−1)/(x−1), x≠1.",
+        "options": [
+          {
+            "id": "m3-funcao-racional-e",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: 1; Subtrai em vez de dividir termos iguais; conferência: Para x≠1, razão de iguais vale 1."
+          },
+          {
+            "id": "m3-funcao-racional-c",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: resposta 1; conferência: Para x≠1, razão de iguais vale 1."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-funcao-racional",
+        "prompt": "Domínio de (x+1)/(x−2)?",
+        "options": [
+          {
+            "id": "d1-funcao-racional-e",
+            "label": "x≠−1",
+            "correct": false,
+            "feedback": "Resposta: x≠2; Exclui zero do numerador, não do denominador; conferência: x−2=0 ⇒ x=2 proibido."
+          },
+          {
+            "id": "d1-funcao-racional-c",
+            "label": "x≠2",
+            "correct": true,
+            "feedback": "Certo: resposta x≠2; conferência: x−2=0 ⇒ x=2 proibido."
+          }
+        ]
+      },
+      {
+        "id": "d2-funcao-racional",
+        "prompt": "Quanto vale 2/(x−1) em x=3?",
+        "options": [
+          {
+            "id": "d2-funcao-racional-e",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 1; Não subtrai 1 no denominador; conferência: 2/(3−1)=1."
+          },
+          {
+            "id": "d2-funcao-racional-c",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: resposta 1; conferência: 2/(3−1)=1."
+          }
+        ]
+      },
+      {
+        "id": "d3-funcao-racional",
+        "prompt": "Assíntota horizontal de 1/(x+1)−2?",
+        "options": [
+          {
+            "id": "d3-funcao-racional-e",
+            "label": "y=2",
+            "correct": false,
+            "feedback": "Resposta: y=−2; Inverte sinal da constante; conferência: 1/(x+1)→0; logo y→−2."
+          },
+          {
+            "id": "d3-funcao-racional-c",
+            "label": "y=−2",
+            "correct": true,
+            "feedback": "Certo: resposta y=−2; conferência: 1/(x+1)→0; logo y→−2."
+          }
+        ]
+      },
+      {
+        "id": "d4-funcao-racional",
+        "prompt": "Buraco de (x−2)/(x−2), x≠2?",
+        "options": [
+          {
+            "id": "d4-funcao-racional-e",
+            "label": "(2;0)",
+            "correct": false,
+            "feedback": "Resposta: (2;1); Confunde valor removido com zero; conferência: Fora de x=2, f=1; falta (2;1)."
+          },
+          {
+            "id": "d4-funcao-racional-c",
+            "label": "(2;1)",
+            "correct": true,
+            "feedback": "Certo: resposta (2;1); conferência: Fora de x=2, f=1; falta (2;1)."
+          }
+        ]
+      },
+      {
+        "id": "d5-funcao-racional",
+        "prompt": "Resolva 3/(x−1)=1.",
+        "options": [
+          {
+            "id": "d5-funcao-racional-e",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 4; Não multiplica ambos os lados pelo denominador; conferência: 3=x−1 ⇒ x=4."
+          },
+          {
+            "id": "d5-funcao-racional-c",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: resposta 4; conferência: 3=x−1 ⇒ x=4."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

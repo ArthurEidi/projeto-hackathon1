@@ -1,0 +1,473 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Grandezas Diretas e Inversas",
+  "subtitulo": "Razão constante ou produto constante",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "proporcionalidade",
+    "unidade": "grandezas-direta-e-inversa"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Grandeza x",
+      "resumo": "Quantidade escolhida como entrada."
+    },
+    "c2": {
+      "nome": "Constante k",
+      "resumo": "Valor que não muda na razão ou no produto."
+    },
+    "c3": {
+      "nome": "Grandeza y",
+      "resumo": "Quantidade que responde à entrada."
+    },
+    "c4": {
+      "nome": "Invariante",
+      "resumo": "Razão ou produto que o modelo conserva."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [0, 5],
+        "y": [0, 5],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "cor": "c3",
+            "rotulo": "y = x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro y = x, dobrar x dobra a saída? Arraste até 2.",
+        "done": "Sim; a razão y/x continua 1, por isso ambas crescem na mesma proporção."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Relações crescentes nem sempre são proporcionais; aqui distinguimos y=kx de y=k/x e testamos os invariantes."
+      }
+    },
+    {
+      "id": "manter-produto",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [0, 7],
+        "y": [0, 7],
+        "curvas": [
+          {
+            "tipo": "racional",
+            "a": 6,
+            "b": 0,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = 6/x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "passo": 1,
+          "retangulo": true,
+          "corRetangulo": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Com área total 6, dobrar a largura faz a altura dobrar? Leve x a 2.",
+        "done": "Não; a altura cai à metade, por isso a inversa conserva o produto, não a razão."
+      }
+    },
+    {
+      "id": "testar-taxa-fixa",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [0, 4],
+        "y": [0, 9],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 2,
+            "b": 1,
+            "cor": "c3",
+            "rotulo": "y = 2x + 1"
+          },
+          {
+            "tipo": "afim",
+            "a": 2,
+            "b": 0,
+            "fantasma": true,
+            "rotulo": "y = 2x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "passo": 1
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Em y = 2x + 1, dobrar x de 1 para 2 dobra y? Arraste e compare.",
+        "done": "Não; 5 ≠ 2 · 3, por isso a parcela fixa impede proporcionalidade direta."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Posso usar x = 0 na relação inversa?",
+        "resposta": "Não com k ≠ 0; dividir por zero não define uma saída."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [0, 7],
+          "y": [0, 7],
+          "curvas": [
+            {
+              "tipo": "racional",
+              "a": 6,
+              "b": 0,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = 6/x"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "retangulo": true,
+            "corRetangulo": "c4"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Se xy = 6 e x passa de 1 para 2, quanto vale y?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "12",
+          "correct": false,
+          "feedback": "Você aplicou proporcionalidade direta; o produto exige y = 6/2 = 3."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "3",
+          "correct": true,
+          "feedback": "Certo: 3; 2 · 3 = 6."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [0, 7],
+          "y": [0, 7],
+          "curvas": [
+            {
+              "tipo": "racional",
+              "a": 6,
+              "b": 0,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = 6/x"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "retangulo": true,
+            "corRetangulo": "c4"
+          }
+        }
+      },
+      "formula": [
+        { "text": "y", "ref": "c3" },
+        { "text": " = " },
+        { "text": "k", "ref": "c2" },
+        { "text": "x", "ref": "c1" },
+        { "text": " (y/x = k)", "ref": "c4" },
+        { "text": "; inversa: xy = k", "ref": "c4" }
+      ],
+      "definitions": [
+        {
+          "term": "Grandeza x",
+          "text": "Quantidade escolhida como entrada."
+        },
+        {
+          "term": "Grandeza y",
+          "text": "Quantidade que responde à entrada."
+        },
+        {
+          "term": "Invariante",
+          "text": "Razão ou produto que o modelo conserva."
+        }
+      ],
+      "lines": {
+        "intro": "A direta conserva a razão e a inversa conserva o produto; por isso duplicar x tem efeitos diferentes sobre y.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-grandezas-direta-e-inversa",
+        "prompt": "Em y=2x, qual razão fica constante?",
+        "options": [
+          {
+            "id": "f1-grandezas-direta-e-inversa-erro",
+            "label": "xy",
+            "correct": false,
+            "feedback": "Você confundiu direta com inversa. O certo é y/x; y/x=2 para x≠0."
+          },
+          {
+            "id": "f1-grandezas-direta-e-inversa-certa",
+            "label": "y/x",
+            "correct": true,
+            "feedback": "Certo: y/x; y/x=2 para x≠0."
+          }
+        ]
+      },
+      {
+        "id": "f2-grandezas-direta-e-inversa",
+        "prompt": "Em xy=6, qual quantidade fica constante?",
+        "options": [
+          {
+            "id": "f2-grandezas-direta-e-inversa-certa",
+            "label": "Produto",
+            "correct": true,
+            "feedback": "Certo: Produto; xy=6."
+          },
+          {
+            "id": "f2-grandezas-direta-e-inversa-erro",
+            "label": "Razão",
+            "correct": false,
+            "feedback": "Na inversa o produto é fixo. O certo é Produto; xy=6."
+          }
+        ]
+      },
+      {
+        "id": "f3-grandezas-direta-e-inversa",
+        "prompt": "Em y=x, dobrar x dobra y?",
+        "options": [
+          {
+            "id": "f3-grandezas-direta-e-inversa-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "As grandezas são diretamente proporcionais. O certo é Sim; y(2x)=2x=2y(x)."
+          },
+          {
+            "id": "f3-grandezas-direta-e-inversa-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; y(2x)=2x=2y(x)."
+          }
+        ]
+      },
+      {
+        "id": "f4-grandezas-direta-e-inversa",
+        "prompt": "Toda relação crescente é diretamente proporcional?",
+        "options": [
+          {
+            "id": "f4-grandezas-direta-e-inversa-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; y=x+1 é crescente e y/x varia."
+          },
+          {
+            "id": "f4-grandezas-direta-e-inversa-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Crescimento não basta para conservar a razão. O certo é Não; y=x+1 é crescente e y/x varia."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-grandezas-direta-e-inversa",
+        "prompt": "Se y=3x e x=2, quanto vale y?",
+        "options": [
+          {
+            "id": "m1-grandezas-direta-e-inversa-erro",
+            "label": "1,5",
+            "correct": false,
+            "feedback": "Você usou uma regra inversa. O certo é 6; y=3·2=6."
+          },
+          {
+            "id": "m1-grandezas-direta-e-inversa-certa",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo: 6; y=3·2=6."
+          }
+        ]
+      },
+      {
+        "id": "m2-grandezas-direta-e-inversa",
+        "prompt": "Se xy=6 e x=2, quanto vale y?",
+        "options": [
+          {
+            "id": "m2-grandezas-direta-e-inversa-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; y=6/2=3."
+          },
+          {
+            "id": "m2-grandezas-direta-e-inversa-erro",
+            "label": "12",
+            "correct": false,
+            "feedback": "Você usou uma regra direta. O certo é 3; y=6/2=3."
+          }
+        ]
+      },
+      {
+        "id": "m3-grandezas-direta-e-inversa",
+        "prompt": "Se 2 cadernos custam 6, quanto custam 3 ao mesmo preço unitário?",
+        "options": [
+          {
+            "id": "m3-grandezas-direta-e-inversa-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você inverteu a proporção. O certo é 9; Unidade=6/2=3; total=3·3=9."
+          },
+          {
+            "id": "m3-grandezas-direta-e-inversa-certa",
+            "label": "9",
+            "correct": true,
+            "feedback": "Certo: 9; Unidade=6/2=3; total=3·3=9."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-grandezas-direta-e-inversa",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Se y=2x+1, a relação é diretamente proporcional?",
+        "options": [
+          {
+            "id": "d1-grandezas-direta-e-inversa-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; y(1)=3; y(2)=5≠6."
+          },
+          {
+            "id": "d1-grandezas-direta-e-inversa-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "A taxa fixa quebra a razão constante. O certo é Não; y(1)=3; y(2)=5≠6."
+          }
+        ]
+      },
+      {
+        "id": "d2-grandezas-direta-e-inversa",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Em y=6/x, x=0 é permitido?",
+        "options": [
+          {
+            "id": "d2-grandezas-direta-e-inversa-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O denominador não pode zerar. O certo é Não; 6/0 não existe."
+          },
+          {
+            "id": "d2-grandezas-direta-e-inversa-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 6/0 não existe."
+          }
+        ]
+      },
+      {
+        "id": "d3-grandezas-direta-e-inversa",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Uma relação direta passa por (2;1); quanto vale y em x=1?",
+        "options": [
+          {
+            "id": "d3-grandezas-direta-e-inversa-certa",
+            "label": "0,5",
+            "correct": true,
+            "feedback": "Certo: 0,5; k=1/2; y=0,5·1."
+          },
+          {
+            "id": "d3-grandezas-direta-e-inversa-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você inverteu a constante de proporcionalidade. O certo é 0,5; k=1/2; y=0,5·1."
+          }
+        ]
+      },
+      {
+        "id": "d4-grandezas-direta-e-inversa",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Se xy=8 e x triplica, o que acontece com y?",
+        "options": [
+          {
+            "id": "d4-grandezas-direta-e-inversa-erro",
+            "label": "Multiplica por 3",
+            "correct": false,
+            "feedback": "Você não conservou o produto. O certo é Divide por 3; (3x)·(y/3)=xy."
+          },
+          {
+            "id": "d4-grandezas-direta-e-inversa-certa",
+            "label": "Divide por 3",
+            "correct": true,
+            "feedback": "Certo: Divide por 3; (3x)·(y/3)=xy."
+          }
+        ]
+      },
+      {
+        "id": "d5-grandezas-direta-e-inversa",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "prompt": "Duas máquinas iguais terminam uma tarefa em 6 horas; com três máquinas de mesma eficiência, quantas horas são necessárias?",
+        "options": [
+          {
+            "id": "d5-grandezas-direta-e-inversa-certa",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: 4; Trabalho=2·6=12; tempo=12/3=4."
+          },
+          {
+            "id": "d5-grandezas-direta-e-inversa-erro",
+            "label": "9",
+            "correct": false,
+            "feedback": "Você aplicou proporção direta ao tempo. O certo é 4; Trabalho=2·6=12; tempo=12/3=4."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
