@@ -887,6 +887,20 @@
               ]
             },
             {
+              "id": "relacoes-metricas-triangulo-retangulo",
+              "titulo": "Relações métricas no triângulo retângulo",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Relações métricas no triângulo retângulo",
+                  "subtitulo": "Três triângulos num só",
+                  "arquivo": "geometria/geometria-plana/relacoes-metricas-triangulo-retangulo/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "areas",
               "titulo": "Áreas de Figuras Planas",
               "icone": "triangulo",

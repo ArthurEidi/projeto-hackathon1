@@ -1,0 +1,541 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Relações métricas no triângulo retângulo",
+  "subtitulo": "Três triângulos num só",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "relacoes-metricas-triangulo-retangulo"
+  },
+  "outro": "Você enxergou os 3 triângulos semelhantes dentro de um só e deduziu todas as relações métricas sem decoreba.",
+  "glossario": {
+    "c1": {
+      "nome": "Hipotenusa (a)",
+      "resumo": "Maior lado, oposto ao ângulo reto: soma das projeções m + n."
+    },
+    "c2": {
+      "nome": "Projeções (m e n)",
+      "resumo": "Sombras dos catetos b e c sobre a hipotenusa a."
+    },
+    "c3": {
+      "nome": "Altura (h)",
+      "resumo": "Segmento perpendicular da quina de 90° até a hipotenusa: h² = m·n."
+    },
+    "c4": {
+      "nome": "Catetos (b e c)",
+      "resumo": "Lados do ângulo reto: b² = a·m, c² = a·n e a·h = b·c."
+    }
+  },
+  "steps": [
+    {
+      "id": "altura-e-sombras",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "metricas",
+        "a": 10,
+        "m": "$m"
+      },
+      "controls": [
+        {
+          "id": "m",
+          "label": "Projeção m",
+          "min": 2,
+          "max": 8,
+          "step": 3,
+          "initial": 5,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "No meio da hipotenusa 10 (m = 5 e n = 5), a altura vale h = 5. Leve m até 8 (sobrando n = 2): quanto passa a medir h?",
+        "done": "Em m = 8 e n = 2, a altura vale 4 porque 4² = 8 · 2 = 16! A altura separa dois triângulos semelhantes, por isso h² = m · n."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que os triângulos menores são semelhantes ao grande?",
+        "resposta": "Porque cada menor tem um ângulo de 90° e compartilha um ângulo agudo com o triângulo grande!"
+      },
+      "complete_when": {
+        "metric": "m",
+        "gte": 8
+      }
+    },
+    {
+      "id": "cateto-e-sua-sombra",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "metricas",
+        "a": 9,
+        "m": 4,
+        "comparar": true
+      },
+      "controls": [
+        {
+          "id": "destacar_cateto",
+          "label": "Comparar b² com a·m",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Se a hipotenusa toda mede a = 9 e a sombra debaixo do cateto b mede m = 4, quanto mede o cateto b?",
+        "done": "Mede 6! Pela semelhança entre o triângulo menor e o grande, b / m = a / b, logo b² = a · m = 9 · 4 = 36."
+      },
+      "complete_when": {
+        "metric": "destacar_cateto",
+        "gte": 1
+      }
+    },
+    {
+      "id": "duas-formas-da-area",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "metricas",
+        "catetos": [
+          3,
+          4
+        ],
+        "apoio": "$girar_base"
+      },
+      "controls": [
+        {
+          "id": "girar_base",
+          "label": "Apoiar na hipotenusa",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "No triângulo 3-4-5, a área pelos catetos é (3·4)/2 = 6; apoiando na hipotenusa 5, a área muda? Gire para achar h!",
+        "done": "O triângulo é o mesmo, então a área não muda: (a · h)/2 = (b · c)/2. Cancelando o 2, fica sempre a · h = b · c!"
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Qual é a maior altura h que cabe numa hipotenusa a = 10?",
+        "resposta": "É h = 5, bem no meio (m = n = 5). Passar de 5 é impossível para um ângulo de 90°."
+      },
+      "complete_when": {
+        "metric": "girar_base",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-altura-hipotenusa",
+      "type": "micro_challenge",
+      "prompt": "A altura relativa à hipotenusa divide-a em dois segmentos de 4 cm e 9 cm. Quanto mede essa altura h?",
+      "lines": {
+        "intro": "Olhe para as duas sombras m = 4 e n = 9 de cada lado da altura h."
+      },
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "metricas",
+          "a": 13,
+          "m": 4
+        }
+      },
+      "options": [
+        {
+          "id": "h6",
+          "label": "6 cm",
+          "correct": true,
+          "feedback": "Exato. Como h² = m · n = 4 · 9 = 36, temos h = √36 = 6 cm."
+        },
+        {
+          "id": "h13",
+          "label": "13 cm",
+          "correct": false,
+          "feedback": "13 cm é a hipotenusa a = 4 + 9. A altura é h = √(4 · 9) = 6 cm."
+        },
+        {
+          "id": "h36",
+          "label": "36 cm",
+          "correct": false,
+          "feedback": "36 é h² (4 · 9). Tirando a raiz quadrada, h = 6 cm."
+        },
+        {
+          "id": "h65",
+          "label": "6,5 cm",
+          "correct": false,
+          "feedback": "6,5 é a metade da hipotenusa (média aritmética). A altura é √(4 · 9) = 6 cm."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "metricas",
+          "a": 10,
+          "m": 6
+        }
+      },
+      "formula": [
+        {
+          "text": "h²",
+          "ref": "c3"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "m · n",
+          "ref": "c2"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "b²",
+          "ref": "c4"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "a",
+          "ref": "c1"
+        },
+        {
+          "text": " · "
+        },
+        {
+          "text": "m",
+          "ref": "c2"
+        },
+        {
+          "text": " e a · h = b · c"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Hipotenusa (a)",
+          "text": "Maior lado, oposto ao ângulo reto: soma das projeções m + n."
+        },
+        {
+          "term": "Projeções (m e n)",
+          "text": "Sombras dos catetos b e c sobre a hipotenusa a."
+        },
+        {
+          "term": "Altura (h)",
+          "text": "Segmento perpendicular da quina de 90° até a hipotenusa: h² = m·n."
+        }
+      ],
+      "lines": {
+        "intro": "A altura divide o triângulo retângulo em dois menores semelhantes ao grande; por isso h² = m · n, b² = a · m e a · h = b · c.",
+        "hint": "Toque em cada letra para ver o segmento correspondente no triângulo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "hipotenusa-pelas-projecoes",
+        "prompt": "Num triângulo retângulo, as projeções dos catetos sobre a hipotenusa medem m = 3 cm e n = 7 cm. Quanto mede a hipotenusa a?",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10 cm",
+            "correct": true,
+            "feedback": "Isso. A hipotenusa é a soma das duas projeções: 3 + 7 = 10 cm."
+          },
+          {
+            "id": "a21",
+            "label": "21 cm",
+            "correct": false,
+            "feedback": "As duas projeções juntas formam a hipotenusa, então somamos: 3 + 7 = 10 cm."
+          },
+          {
+            "id": "a4",
+            "label": "4 cm",
+            "correct": false,
+            "feedback": "Some as duas sombras na base: a = 3 + 7 = 10 cm."
+          }
+        ]
+      },
+      {
+        "id": "altura-pelas-projecoes-2-8",
+        "prompt": "As projeções dos catetos na hipotenusa medem m = 2 cm e n = 8 cm. Quanto mede a altura h relativa à hipotenusa?",
+        "options": [
+          {
+            "id": "h4",
+            "label": "4 cm",
+            "correct": true,
+            "feedback": "Certo. h² = m · n = 2 · 8 = 16, logo h = √16 = 4 cm."
+          },
+          {
+            "id": "h10",
+            "label": "10 cm",
+            "correct": false,
+            "feedback": "10 cm é a hipotenusa (2 + 8). A altura é √(2 · 8) = 4 cm."
+          },
+          {
+            "id": "h16",
+            "label": "16 cm",
+            "correct": false,
+            "feedback": "16 é h²; tirando a raiz quadrada, h = 4 cm."
+          }
+        ]
+      },
+      {
+        "id": "cateto-pela-hipotenusa-e-sombra",
+        "prompt": "Um triângulo retângulo tem hipotenusa a = 8 cm e a projeção do cateto b mede m = 2 cm. Quanto mede o cateto b?",
+        "options": [
+          {
+            "id": "b4",
+            "label": "4 cm",
+            "correct": true,
+            "feedback": "Exato. Como b² = a · m = 8 · 2 = 16, temos b = √16 = 4 cm."
+          },
+          {
+            "id": "b16",
+            "label": "16 cm",
+            "correct": false,
+            "feedback": "16 é b²; tirando a raiz quadrada, b = 4 cm."
+          },
+          {
+            "id": "b6",
+            "label": "6 cm",
+            "correct": false,
+            "feedback": "6 cm é a outra projeção (8 − 2). O cateto é b = √(8 · 2) = 4 cm."
+          }
+        ]
+      },
+      {
+        "id": "produto-ah-bc",
+        "prompt": "Num triângulo retângulo de catetos b = 6 cm, c = 8 cm e hipotenusa a = 10 cm, quanto vale o produto a · h?",
+        "options": [
+          {
+            "id": "p48",
+            "label": "48",
+            "correct": true,
+            "feedback": "Isso. Pela igualdade das áreas, a · h = b · c = 6 · 8 = 48."
+          },
+          {
+            "id": "p24",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 cm² é a área (b·c/2). Sem dividir por 2, a · h = b · c = 48."
+          },
+          {
+            "id": "p14",
+            "label": "14",
+            "correct": false,
+            "feedback": "Multiplique os catetos: a · h = 6 · 8 = 48."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "achar-altura-6-8-10",
+        "prompt": "No triângulo retângulo de catetos 6 cm e 8 cm e hipotenusa 10 cm, quanto mede a altura h relativa à hipotenusa?",
+        "options": [
+          {
+            "id": "h48",
+            "label": "4,8 cm",
+            "correct": true,
+            "feedback": "Certo. De a · h = b · c temos 10 · h = 6 · 8 = 48, logo h = 4,8 cm."
+          },
+          {
+            "id": "h5",
+            "label": "5 cm",
+            "correct": false,
+            "feedback": "5 cm é metade da hipotenusa. Usando 10 · h = 6 · 8, achamos h = 4,8 cm."
+          },
+          {
+            "id": "h24",
+            "label": "2,4 cm",
+            "correct": false,
+            "feedback": "2,4 cm é no triângulo 3-4-5. No 6-8-10 é o dobro: 48 / 10 = 4,8 cm."
+          }
+        ]
+      },
+      {
+        "id": "achar-projecao-pelo-cateto",
+        "prompt": "Um triângulo retângulo tem cateto b = 6 cm e hipotenusa a = 9 cm. Quanto mede a projeção m desse cateto sobre a hipotenusa?",
+        "options": [
+          {
+            "id": "m4",
+            "label": "4 cm",
+            "correct": true,
+            "feedback": "Exato. Como b² = a · m, temos 36 = 9 · m ⇒ m = 36 / 9 = 4 cm."
+          },
+          {
+            "id": "m3",
+            "label": "3 cm",
+            "correct": false,
+            "feedback": "Use b² = a · m: 6² = 36, e 36 / 9 = 4 cm."
+          },
+          {
+            "id": "m5",
+            "label": "5 cm",
+            "correct": false,
+            "feedback": "5 cm é a outra projeção n = 9 − 4. A projeção do cateto 6 é m = 36 / 9 = 4 cm."
+          }
+        ]
+      },
+      {
+        "id": "achar-outra-projecao-pela-altura",
+        "prompt": "A altura relativa à hipotenusa mede h = 6 cm e uma das projeções mede m = 3 cm. Quanto mede a outra projeção n?",
+        "options": [
+          {
+            "id": "n12",
+            "label": "12 cm",
+            "correct": true,
+            "feedback": "Isso. De h² = m · n temos 36 = 3 · n, logo n = 36 / 3 = 12 cm."
+          },
+          {
+            "id": "n2",
+            "label": "2 cm",
+            "correct": false,
+            "feedback": "Você dividiu 6 por 3 sem elevar h ao quadrado! É 6² / 3 = 36 / 3 = 12 cm."
+          },
+          {
+            "id": "n9",
+            "label": "9 cm",
+            "correct": false,
+            "feedback": "Usando h² = m · n: 36 = 3 · n ⇒ n = 12 cm."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "cateto-pelas-duas-projecoes",
+        "prompt": "As projeções dos catetos sobre a hipotenusa medem m = 4 cm e n = 5 cm. Quanto mede o cateto b (cuja projeção é m = 4 cm)?",
+        "fala": "Primeiro some m + n para ter a hipotenusa inteira a!",
+        "options": [
+          {
+            "id": "b6",
+            "label": "6 cm",
+            "correct": true,
+            "feedback": "Exato. Primeiro a = 4 + 5 = 9 cm; depois b² = a · m = 9 · 4 = 36 ⇒ b = 6 cm."
+          },
+          {
+            "id": "b2r5",
+            "label": "√20 cm",
+            "correct": false,
+            "feedback": "√20 é a altura h = √(4·5). Para o cateto b usamos a hipotenusa toda (9): √(9·4) = 6 cm."
+          },
+          {
+            "id": "b9",
+            "label": "9 cm",
+            "correct": false,
+            "feedback": "9 cm é a hipotenusa (4 + 5). O cateto mede √(9 · 4) = 6 cm."
+          }
+        ]
+      },
+      {
+        "id": "altura-no-5-12-13",
+        "prompt": "Num triângulo retângulo de catetos 5 cm e 12 cm, quanto mede a altura h relativa à hipotenusa?",
+        "options": [
+          {
+            "id": "h6013",
+            "label": "60/13 cm",
+            "correct": true,
+            "feedback": "Certo! Pela terna 5-12-13 a hipotenusa é 13 cm, e de 13·h = 5·12 sai h = 60/13 cm."
+          },
+          {
+            "id": "h6",
+            "label": "6 cm",
+            "correct": false,
+            "feedback": "A hipotenusa é 13 (não 10). Como 13 · h = 60, temos h = 60/13 cm."
+          },
+          {
+            "id": "h13",
+            "label": "13 cm",
+            "correct": false,
+            "feedback": "13 cm é a hipotenusa. A altura vale (5 · 12) / 13 = 60/13 cm."
+          }
+        ]
+      },
+      {
+        "id": "diagonal-retangulo-projecao",
+        "prompt": "Num retângulo 3 cm × 4 cm, traça-se a diagonal (5 cm) e a altura de um canto até ela. Quanto mede a menor projeção na diagonal?",
+        "options": [
+          {
+            "id": "m18",
+            "label": "1,8 cm",
+            "correct": true,
+            "feedback": "Exato. No triângulo 3-4-5, b² = a · m dá 3² = 5 · m ⇒ m = 9 / 5 = 1,8 cm."
+          },
+          {
+            "id": "m24",
+            "label": "2,4 cm",
+            "correct": false,
+            "feedback": "2,4 cm é a altura h = (3·4)/5. A menor projeção é m = 3² / 5 = 1,8 cm."
+          },
+          {
+            "id": "m25",
+            "label": "2,5 cm",
+            "correct": false,
+            "feedback": "Como os lados 3 e 4 são diferentes, a altura não cai no meio: m = 9/5 = 1,8 cm."
+          }
+        ]
+      },
+      {
+        "id": "semicirculo-corda-altura",
+        "prompt": "A altura de um ponto de um semicírculo até o diâmetro divide esse diâmetro em 1 cm e 9 cm. Quanto mede essa altura?",
+        "options": [
+          {
+            "id": "h3",
+            "label": "3 cm",
+            "correct": true,
+            "feedback": "Isso! Inscrito no semicírculo, o ângulo no topo é 90°; logo h = √(1 · 9) = 3 cm."
+          },
+          {
+            "id": "h5",
+            "label": "5 cm",
+            "correct": false,
+            "feedback": "5 cm é no centro (5·5). A 1 cm da ponta, h = √(1 · 9) = 3 cm."
+          },
+          {
+            "id": "h45",
+            "label": "4,5 cm",
+            "correct": false,
+            "feedback": "Use a média geométrica h = √(m · n) = √(1 · 9) = 3 cm."
+          }
+        ]
+      },
+      {
+        "id": "soma-b2-c2-deduz-pitagoras",
+        "prompt": "Sabendo que num triângulo retângulo a · m = 16 e a · n = 9, quanto mede a hipotenusa a?",
+        "fala": "Some a·m + a·n: isso dá a(m + n) = a²!",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Exato! Somando b² + c² = a·m + a·n = a² = 16 + 9 = 25, tiramos a = √25 = 5."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "25 é a² (pois a·m + a·n = a²). Tirando a raiz quadrada, a = 5."
+          },
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": false,
+            "feedback": "4 e 3 são os catetos (b = 4, c = 3). A hipotenusa é √(16 + 9) = 5."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
