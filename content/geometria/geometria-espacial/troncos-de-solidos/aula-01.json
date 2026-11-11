@@ -1,0 +1,585 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Cortar o Topo e Ficar com a Base",
+  "subtitulo": "Escala k, k², k³ e o volume do tronco",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "troncos-de-solidos"
+  },
+  "outro": "Você dominou a semelhança linear, a razão de áreas e volumes e o cálculo de troncos por subtração.",
+  "glossario": {
+    "c1": {
+      "nome": "Razão linear (k)",
+      "resumo": "Proporção das alturas e raios: k = h_menor / H_total = r / R."
+    },
+    "c2": {
+      "nome": "Razão de áreas (k²)",
+      "resumo": "Proporção entre a área do corte e a base: A_menor / A_maior = k²."
+    },
+    "c3": {
+      "nome": "Volume do topo (k³)",
+      "resumo": "Fração do volume que fica na ponta cortada: V_menor = k³ · V_total."
+    },
+    "c4": {
+      "nome": "Tronco",
+      "resumo": "Parte inferior que sobra após retirar a ponta: V_total − V_menor."
+    }
+  },
+  "steps": [
+    {
+      "id": "corte-na-metade-areas",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "tronco",
+        "solido": "piramide",
+        "R": 3,
+        "H": 8,
+        "corte": "$h_menor",
+        "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
+      },
+      "controls": [
+        {
+          "id": "h_menor",
+          "label": "Distância do topo ao corte (h')",
+          "min": 2,
+          "max": 8,
+          "step": 2,
+          "initial": 8,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Na base (h' = 8), o corte tem área 36. Leve o corte para h' = 4: a área cai para a metade (18) ou um quarto (9)?",
+        "done": "Cai para 9 (um quarto)! Como as duas dimensões da base encolhem à metade (k = 0,5), a área cai com k² = 0,25."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A razão k² vale também se a base for um triângulo ou círculo?",
+        "resposta": "Vale sempre! Qualquer figura plana multiplicada pela escala k em todas as direções tem sua área multiplicada por k²."
+      },
+      "complete_when": {
+        "metric": "h_menor",
+        "lte": 4
+      }
+    },
+    {
+      "id": "volume-escala-k3",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "tronco",
+        "solido": "cone",
+        "R": 4,
+        "H": 10,
+        "corte": 5,
+        "separar": "$separar / 100",
+        "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
+      },
+      "controls": [
+        {
+          "id": "separar",
+          "label": "Separar a ponta do tronco",
+          "min": 0,
+          "max": 100,
+          "step": 25,
+          "initial": 0,
+          "unit": "%",
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Cortamos o cone na metade da altura (k = 0,5). Que fração do volume total você acha que fica na ponta de cima?",
+        "done": "A ponta tem só (1/2)³ = 1/8 do volume! O tronco embaixo fica com os 7/8 restantes: volume escala ao cubo (k³)."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Como calculamos o volume do tronco sem fórmula complicada?",
+        "resposta": "Basta subtrair: volume do sólido todo menos o volume da ponta retirada (V_tronco = V_total − V_menor)."
+      },
+      "complete_when": {
+        "metric": "separar",
+        "gte": 100
+      }
+    },
+    {
+      "id": "trapezio-meridiano",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "tronco",
+        "solido": "cone",
+        "R": 6,
+        "H": 10,
+        "corte": 5,
+        "meridiano": true,
+        "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
+      },
+      "controls": [
+        {
+          "id": "rotacionar",
+          "label": "Girar visão",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "No corte vertical do tronco de cone com R = 6, r = 2 e altura h_t = 3, quanto mede a geratriz inclinada g_t?",
+        "done": "Mede 5! O cateto horizontal vale R − r = 4 e a altura é 3: por Pitágoras, g_t² = 3² + 4² = 25, logo g_t = 5."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o raio de cima fosse igual ao de baixo (r = R)?",
+        "resposta": "O cateto R − r zeraria e a geratriz ficaria vertical (g_t = h_t): o tronco viraria um cilindro reto."
+      },
+      "complete_when": {
+        "metric": "rotacionar",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-tronco",
+      "type": "micro_challenge",
+      "prompt": "Um cone de altura 12 cm e volume 80 cm³ é cortado a 6 cm do vértice. Qual é o volume da ponta retirada?",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "tronco",
+          "solido": "cone",
+          "R": 4,
+          "H": 12,
+          "corte": 6,
+          "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
+        }
+      },
+      "lines": {
+        "intro": "A razão de altura é k = 6/12 = 1/2. O volume escala com k³."
+      },
+      "options": [
+        {
+          "id": "v10",
+          "label": "10 cm³",
+          "correct": true,
+          "feedback": "Exato! k = 6/12 = 1/2, logo V_menor = (1/2)³ · 80 = 80 / 8 = 10 cm³.",
+          "figure": {
+            "modo": "tronco",
+            "solido": "cone",
+            "R": 4,
+            "H": 12,
+            "corte": 6,
+            "separar": 1,
+            "highlight": ["c1", "c3"]
+          }
+        },
+        {
+          "id": "v40",
+          "label": "40 cm³",
+          "correct": false,
+          "feedback": "40 seria metade. Em 3D, cortar na metade da altura reduz o volume a 1/8: 80 / 8 = 10 cm³.",
+          "figure": {
+            "modo": "tronco",
+            "solido": "cone",
+            "R": 4,
+            "H": 12,
+            "corte": 6,
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "v20",
+          "label": "20 cm³",
+          "correct": false,
+          "feedback": "20 é 80 / 4 (razão de área k² = 1/4). Para volume usamos k³ = 1/8: 10 cm³.",
+          "figure": {
+            "modo": "tronco",
+            "solido": "cone",
+            "R": 4,
+            "H": 12,
+            "corte": 6,
+            "highlight": ["c2"]
+          }
+        },
+        {
+          "id": "v70",
+          "label": "70 cm³",
+          "correct": false,
+          "feedback": "70 cm³ é o volume do tronco que sobrou embaixo (80 − 10). A ponta retirada tem 10 cm³.",
+          "figure": {
+            "modo": "tronco",
+            "solido": "cone",
+            "R": 4,
+            "H": 12,
+            "corte": 6,
+            "highlight": ["c4"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "tronco",
+          "solido": "cone",
+          "R": 4,
+          "H": 8,
+          "corte": 4,
+          "meridiano": true,
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "k", "ref": "c1" },
+        { "text": "=" },
+        { "text": "h'/H" },
+        { "text": ";" },
+        { "text": "A_m", "ref": "c2" },
+        { "text": "=" },
+        { "text": "k²·A_M" },
+        { "text": ";" },
+        { "text": "V_m", "ref": "c3" },
+        { "text": "=" },
+        { "text": "k³·V_t" },
+        { "text": ";" },
+        { "text": "V_tronco", "ref": "c4" },
+        { "text": "=" },
+        { "text": "V_t − V_m" }
+      ],
+      "definitions": [
+        {
+          "term": "Razão de semelhança",
+          "text": "Comprimentos escalam com k, áreas com k² e volumes com k³."
+        },
+        {
+          "term": "Volume do tronco",
+          "text": "Diferença entre o sólido total e o sólido menor do topo: V_tronco = V_total − V_menor."
+        },
+        {
+          "term": "Geratriz do tronco",
+          "text": "Pitágoras no trapézio meridiano: g_t² = h_t² + (R − r)²."
+        }
+      ],
+      "lines": {
+        "intro": "A escala k, k² e k³ governa todo corte paralelo em pirâmides e cones.",
+        "hint": "Toque nas letras coloridas para destacar cada elemento."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Por que um copo de tronco de cone parece caber mais do que parece?",
+        "resposta": "Porque a maior parte do volume fica na base mais larga do tronco: 7/8 do volume na metade inferior."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "razao-areas-metade-altura",
+        "prompt": "Cortando uma pirâmide na metade da sua altura (k = 1/2), a área da seção do corte é:",
+        "options": [
+          {
+            "id": "a_quarto",
+            "label": "1/4 da área da base",
+            "correct": true,
+            "feedback": "Isso. A área varia com o quadrado da escala linear: k² = (1/2)² = 1/4."
+          },
+          {
+            "id": "a_metade",
+            "label": "1/2 da área da base",
+            "correct": false,
+            "feedback": "1/2 é a escala linear das arestas. Como a área é 2D, a razão é (1/2)² = 1/4."
+          },
+          {
+            "id": "a_oitavo",
+            "label": "1/8 da área da base",
+            "correct": false,
+            "feedback": "1/8 é a escala do volume (k³). A área escala com o quadrado: k² = 1/4."
+          }
+        ]
+      },
+      {
+        "id": "razao-volumes-metade-altura",
+        "prompt": "Cortando um cone na metade da sua altura (k = 1/2), que fração do volume fica no cone menor do topo?",
+        "options": [
+          {
+            "id": "v_oitavo",
+            "label": "1/8 do volume total",
+            "correct": true,
+            "feedback": "Exato. O volume escala com o cubo da razão linear: k³ = (1/2)³ = 1/8."
+          },
+          {
+            "id": "v_metade",
+            "label": "1/2 do volume total",
+            "correct": false,
+            "feedback": "1/2 seria se a seção não encolhesse. Como encolhe em 3D, k³ = (1/2)³ = 1/8."
+          },
+          {
+            "id": "v_quarto",
+            "label": "1/4 do volume total",
+            "correct": false,
+            "feedback": "1/4 é a razão das áreas (k²). O volume escala com o cubo: k³ = (1/2)³ = 1/8."
+          }
+        ]
+      },
+      {
+        "id": "volume-do-tronco-fracao",
+        "prompt": "Se a ponta cortada no topo tem 1/8 do volume total do cone, que fração do volume fica no tronco embaixo?",
+        "options": [
+          {
+            "id": "v_7oitavos",
+            "label": "7/8 do volume total",
+            "correct": true,
+            "feedback": "Correto! O tronco fica com o total menos a ponta: 1 − 1/8 = 7/8 do volume."
+          },
+          {
+            "id": "v_1oitavo",
+            "label": "1/8 do volume total",
+            "correct": false,
+            "feedback": "1/8 é a pontinha retirada. O tronco embaixo fica com o restante: 1 − 1/8 = 7/8."
+          },
+          {
+            "id": "v_3quartos",
+            "label": "3/4 do volume total",
+            "correct": false,
+            "feedback": "3/4 seria se a ponta tivesse 1/4. Como a ponta tem 1/8, o tronco tem 7/8."
+          }
+        ]
+      },
+      {
+        "id": "geratriz-tronco-cone-pitagoras",
+        "prompt": "No trapézio retângulo do corte meridiano de um tronco de cone, o cateto horizontal é:",
+        "options": [
+          {
+            "id": "cat_diff",
+            "label": "R − r (a diferença dos raios)",
+            "correct": true,
+            "feedback": "Exato. Baixando a perpendicular do raio menor r sobre a base maior R, sobra R − r."
+          },
+          {
+            "id": "cat_soma",
+            "label": "R + r (a soma dos raios)",
+            "correct": false,
+            "feedback": "O cateto é a diferença entre o raio da base e o do topo: R − r."
+          },
+          {
+            "id": "cat_R",
+            "label": "R (o raio da base)",
+            "correct": false,
+            "feedback": "R é o raio todo; descontando a largura r da tampa menor, o cateto mede R − r."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "geratriz-tronco-345",
+        "prompt": "Um tronco de cone tem raios R = 7 cm, r = 3 cm e altura h_t = 3 cm. Quanto mede a sua geratriz g_t?",
+        "options": [
+          {
+            "id": "gt5",
+            "label": "5 cm",
+            "correct": true,
+            "feedback": "Exato! O cateto é R − r = 4 cm; com h_t = 3 cm, g_t = √(3² + 4²) = 5 cm."
+          },
+          {
+            "id": "gt4",
+            "label": "4 cm",
+            "correct": false,
+            "feedback": "4 cm é apenas a diferença dos raios R − r. A geratriz é a hipotenusa: 5 cm."
+          },
+          {
+            "id": "gt7",
+            "label": "7 cm",
+            "correct": false,
+            "feedback": "7 cm é o raio maior R. Por Pitágoras no trapézio, g_t = √(3² + 4²) = 5 cm."
+          }
+        ]
+      },
+      {
+        "id": "volume-tronco-por-subtracao",
+        "prompt": "Uma pirâmide de volume 240 cm³ tem uma ponta de 30 cm³ separada por um corte. Qual é o volume do tronco?",
+        "options": [
+          {
+            "id": "v210",
+            "label": "210 cm³",
+            "correct": true,
+            "feedback": "Isso. Subtração direta: V_tronco = V_total − V_menor = 240 − 30 = 210 cm³."
+          },
+          {
+            "id": "v270",
+            "label": "270 cm³",
+            "correct": false,
+            "feedback": "Você somou os volumes em vez de subtrair: 240 − 30 = 210 cm³."
+          },
+          {
+            "id": "v120",
+            "label": "120 cm³",
+            "correct": false,
+            "feedback": "O tronco é o restante do sólido: 240 − 30 = 210 cm³."
+          }
+        ]
+      },
+      {
+        "id": "raio-corte-semelhanca-direta",
+        "prompt": "Num cone de raio R = 10 cm e altura H = 15 cm cortado a 6 cm do vértice, qual é o raio r do corte?",
+        "options": [
+          {
+            "id": "r4",
+            "label": "4 cm",
+            "correct": true,
+            "feedback": "Isso. Pela semelhança r / 10 = 6 / 15 = 2/5, temos r = 4 cm."
+          },
+          {
+            "id": "r6",
+            "label": "6 cm",
+            "correct": false,
+            "feedback": "6 cm é a distância ao vértice. Como k = 6/15 = 2/5, r = 10 · (2/5) = 4 cm."
+          },
+          {
+            "id": "r5",
+            "label": "5 cm",
+            "correct": false,
+            "feedback": "5 cm seria na metade da altura (7,5 cm). Em h' = 6 cm, r = 4 cm."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "taca-ate-a-metade-da-altura",
+        "prompt": "Uma taça em forma de cone tem capacidade total de 160 mL. Cheia até a metade da altura, quantos mL há nela?",
+        "fala": "O líquido ocupa justamente o conezinho do fundo (vértice) com k = 1/2!",
+        "options": [
+          {
+            "id": "v20",
+            "label": "20 mL",
+            "correct": true,
+            "feedback": "Exato! Até metade da altura (k = 1/2), o conezinho contém só (1/2)³ = 1/8 de 160 = 20 mL."
+          },
+          {
+            "id": "v80",
+            "label": "80 mL",
+            "correct": false,
+            "feedback": "Pegadinha clássica! Na metade da altura cabe apenas (1/2)³ = 1/8 da taça: 20 mL."
+          },
+          {
+            "id": "v40",
+            "label": "40 mL",
+            "correct": false,
+            "feedback": "1/4 é a razão das áreas. No volume é (1/2)³ = 1/8: 160 / 8 = 20 mL."
+          },
+          {
+            "id": "v140",
+            "label": "140 mL",
+            "correct": false,
+            "feedback": "140 mL é o que falta para encher (o tronco no topo). No fundo há 20 mL."
+          }
+        ]
+      },
+      {
+        "id": "quantas-tacas-meia-altura",
+        "prompt": "Quantas taças cheias até a metade da altura igualam o volume de 1 taça cheia até a borda?",
+        "options": [
+          {
+            "id": "t8",
+            "label": "8",
+            "correct": true,
+            "feedback": "Certo. Como metade da altura guarda só (1/2)³ = 1/8 do volume, são precisas 8 taças."
+          },
+          {
+            "id": "t2",
+            "label": "2",
+            "correct": false,
+            "feedback": "O cone afunila no fundo: metade da altura tem 1/8 do volume, exigindo 8 taças."
+          },
+          {
+            "id": "t4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é 2² (área). Em 3 dimensões, 2³ = 8 taças."
+          }
+        ]
+      },
+      {
+        "id": "achar-k-pela-area",
+        "prompt": "A área da seção de uma pirâmide é 1/9 da área da base. Que fração do volume total tem a ponta cortada?",
+        "options": [
+          {
+            "id": "v127",
+            "label": "1/27",
+            "correct": true,
+            "feedback": "Exato. Se k² = 1/9, então k = 1/3; logo a razão dos volumes é k³ = (1/3)³ = 1/27."
+          },
+          {
+            "id": "v19",
+            "label": "1/9",
+            "correct": false,
+            "feedback": "1/9 é a razão das áreas (k²). Tirando a raiz (k = 1/3) e elevando ao cubo, dá 1/27."
+          },
+          {
+            "id": "v13",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "1/3 é a razão linear k. O volume da ponta é k³ = (1/3)³ = 1/27."
+          }
+        ]
+      },
+      {
+        "id": "formula-volume-tronco-piramide",
+        "prompt": "Um tronco de pirâmide quadrada tem base maior 16 cm², base menor 4 cm² e h_t = 3 cm. Qual é o volume?",
+        "options": [
+          {
+            "id": "v28",
+            "label": "28 cm³",
+            "correct": true,
+            "feedback": "Isso. V = (3/3)·(16 + √(16·4) + 4) = 16 + 8 + 4 = 28 cm³ (ou 32 − 4 pela pirâmide toda)."
+          },
+          {
+            "id": "v20",
+            "label": "20 cm³",
+            "correct": false,
+            "feedback": "Faltou o termo médio √(16·4) = 8 na soma das bases: 16 + 8 + 4 = 28 cm³."
+          },
+          {
+            "id": "v30",
+            "label": "30 cm³",
+            "correct": false,
+            "feedback": "Não é a média simples das bases (10·3). Com k = 1/2, V = 32 − 4 = 28 cm³."
+          }
+        ]
+      },
+      {
+        "id": "area-lateral-tronco-cone",
+        "prompt": "Um abajur tem forma de tronco de cone aberto com R = 6 cm, r = 2 cm e h_t = 3 cm. Qual é a área lateral?",
+        "fala": "Ache primeiro a geratriz g_t com h_t = 3 e R − r = 4!",
+        "options": [
+          {
+            "id": "a40p",
+            "label": "40π cm²",
+            "correct": true,
+            "feedback": "Exato. g_t = √(3² + 4²) = 5 cm, e A_l = π·(R + r)·g_t = π·8·5 = 40π cm²."
+          },
+          {
+            "id": "a24p",
+            "label": "24π cm²",
+            "correct": false,
+            "feedback": "Você usou h_t = 3 em vez da geratriz inclinada g_t = 5: π·(6 + 2)·5 = 40π cm²."
+          },
+          {
+            "id": "a20p",
+            "label": "20π cm²",
+            "correct": false,
+            "feedback": "Na área lateral soma-se R + r = 8 (não subtrai): π·8·5 = 40π cm²."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

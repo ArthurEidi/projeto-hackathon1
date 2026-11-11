@@ -960,6 +960,20 @@
                   "arquivo": "geometria/geometria-espacial/areas-e-volumes-por-composicao/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "troncos-de-solidos",
+              "titulo": "Troncos de pirâmides e cones",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Cortar o Topo e Ficar com a Base",
+                  "subtitulo": "Escala k, k², k³ e o volume do tronco",
+                  "arquivo": "geometria/geometria-espacial/troncos-de-solidos/aula-01.json"
+                }
+              ]
             }
           ]
         },
