@@ -1,0 +1,284 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Desmontar e Fatiar o 3D",
+  "subtitulo": "Vistas ortogonais, cortes planos e moldes",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "projecoes-cortes-e-planificacoes"
+  },
+  "outro": "Você leu as 3 sombras ortogonais, fatiou sólidos por dentro e dobrou moldes 2D sem perder a posição das faces.",
+  "glossario": {
+    "c1": { "nome": "Vista ortogonal", "resumo": "Sombra do sólido olhada de frente, de cima ou de lado." },
+    "c2": { "nome": "Seção de corte", "resumo": "Figura plana que nasce onde o plano fatia o sólido." },
+    "c3": { "nome": "Planificação", "resumo": "Molde 2D de todas as faces abertas pelas arestas." },
+    "c4": { "nome": "Faces opostas", "resumo": "Par de faces que ficam frente a frente ao fechar o molde." }
+  },
+  "steps": [
+    {
+      "id": "tres-vistas",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "vistas",
+        "solido": "cubo",
+        "solidos": ["cubo", "cilindro", "piramide"],
+        "sombras": true
+      },
+      "lines": {
+        "intro": "No cubo, as 3 vistas são quadrados; e na pirâmide, o que aparece olhando de cima e de frente? Gire pelas 3 vistas.",
+        "done": "De frente é triângulo; de cima é o quadrado da base com as 4 arestas encontrando o vértice no centro."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que a gente estuda sombra, corte e molde juntos?",
+        "resposta": "São os três jeitos de traduzir 3D para 2D: olhar de fora, fatiar por dentro ou abrir a casca."
+      },
+      "complete_when": { "metric": "vistas_vistas", "gte": 3 }
+    },
+    {
+      "id": "plano-de-corte",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "vistas",
+        "solido": "piramide",
+        "corte": {
+          "tipo": "horizontal",
+          "altura": "$altura_corte"
+        },
+        "chave_corte": true
+      },
+      "controls": [
+        { "id": "altura_corte", "label": "Altura do corte", "min": 0.2, "max": 0.8, "step": 0.2, "initial": 0.2, "color": "c2" }
+      ],
+      "lines": {
+        "intro": "Fatie a pirâmide paralelamente à base e suba a lâmina: o formato do corte muda ou só encolhe?",
+        "done": "Paralelo à base, o corte imita a base em miniatura; já se a lâmina descer pelo vértice, o corte vira triângulo."
+      },
+      "complete_when": { "metric": "altura_corte", "gte": 0.8 }
+    },
+    {
+      "id": "abrir-e-fechar-molde",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "vistas",
+        "solido": "dado",
+        "fechar": "$dobrar / 100"
+      },
+      "controls": [
+        { "id": "dobrar", "label": "Dobrar molde", "min": 0, "max": 100, "step": 25, "initial": 0, "unit": "%", "color": "c3" }
+      ],
+      "lines": {
+        "intro": "Na fita central do molde há 4 quadrados seguidos. Quando dobramos em 90°, quem fica frente a frente com o 1º quadrado?",
+        "done": "Pular uma casa soma duas dobras de 90°, totalizando 180°: por isso faces que pulam uma casa ficam opostas."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Qualquer desenho com 6 quadrados fecha um cubo?",
+        "resposta": "Não! Se as duas tampas ficarem do mesmo lado da faixa, elas batem na mesma face e o outro lado fica aberto."
+      },
+      "complete_when": { "metric": "dobrar", "gte": 100 }
+    },
+    {
+      "id": "desafio-face-oposta",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "vistas",
+          "solido": "dado",
+          "fechar": 0
+        }
+      },
+      "prompt": "Quando dobrarmos este molde em cruz para fechar o cubo, qual face ficará oposta à face 1?",
+      "lines": {
+        "intro": "Use a regra de pular uma casa na mesma faixa do molde."
+      },
+      "options": [
+        {
+          "id": "f3",
+          "label": "Face 3",
+          "correct": true,
+          "feedback": "Exato. Na fita 1-2-3-4, a face 2 dobra 90° e a 3 fica paralela e oposta à 1.",
+          "figure": { "fechar": 1 }
+        },
+        {
+          "id": "f2",
+          "label": "Face 2",
+          "correct": false,
+          "feedback": "A face 2 é vizinha de aresta da 1 (faz 90°). Pulando a 2, a oposta é a 3.",
+          "figure": { "fechar": 0.3 }
+        },
+        {
+          "id": "f4",
+          "label": "Face 4",
+          "correct": false,
+          "feedback": "A face 4 dá a volta e encosta na borda da 1. A oposta à 1 é a 3 (e a 4 é oposta à 2).",
+          "figure": { "fechar": 0.6 }
+        },
+        {
+          "id": "f5",
+          "label": "Face 5",
+          "correct": false,
+          "feedback": "5 e 6 são as abas laterais opostas entre si. Na faixa vertical, a oposta à 1 é a 3.",
+          "figure": { "fechar": 0.8 }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "vistas",
+          "solido": "dado",
+          "fechar": 1
+        }
+      },
+      "formula": [
+        { "text": "Sólido 3D" },
+        { "text": "⇔" },
+        { "text": "vistas", "ref": "c1" },
+        { "text": "+" },
+        { "text": "cortes", "ref": "c2" },
+        { "text": "+" },
+        { "text": "moldes", "ref": "c3" },
+        { "text": "e" },
+        { "text": "opostas", "ref": "c4" }
+      ],
+      "definitions": [
+        { "term": "Vista ortogonal", "text": "Sombra perpendicular do objeto projetada sem profundidade." },
+        { "term": "Seção plana", "text": "Figura bidimensional revelada onde o plano fatia o sólido." },
+        { "term": "Faces opostas no cubo", "text": "Ficam separadas por exatamente uma face na mesma fila do molde." }
+      ],
+      "lines": {
+        "intro": "Duas dobras seguidas de 90° somam 180°. Por isso, no molde do cubo, pular uma casa na fila garante faces paralelas e opostas.",
+        "hint": "Toque em cada conceito para ver vistas, cortes ou o molde."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "vista-superior-cilindro",
+        "prompt": "Uma lata cilíndrica está em pé sobre a mesa. Qual é a sua vista superior (olhando de cima)?",
+        "options": [
+          { "id": "circ", "label": "Um círculo", "correct": true, "feedback": "Isso. Olhando de cima, vemos a tampa circular da lata." },
+          { "id": "ret", "label": "Um retângulo", "correct": false, "feedback": "Retângulo é a vista frontal da lata em pé. De cima, vemos um círculo." },
+          { "id": "tri", "label": "Um triângulo", "correct": false, "feedback": "Triângulo é a vista frontal de um cone. A lata vista de cima é um círculo." }
+        ]
+      },
+      {
+        "id": "vista-frontal-cone",
+        "prompt": "Um cone circular reto está apoiado pela base numa mesa. Qual é a sua vista frontal?",
+        "options": [
+          { "id": "tri", "label": "Um triângulo", "correct": true, "feedback": "Certo. De frente, a base vira um segmento e as geratrizes fecham um triângulo." },
+          { "id": "circ", "label": "Um círculo", "correct": false, "feedback": "Círculo é a vista de cima ou de baixo. De frente, o cone parece um triângulo." },
+          { "id": "quad", "label": "Um quadrado", "correct": false, "feedback": "O cone afunila até um único vértice no topo: a vista frontal é um triângulo." }
+        ]
+      },
+      {
+        "id": "molde-piramide-quadrada",
+        "prompt": "A planificação de uma pirâmide de base quadrada é formada por:",
+        "options": [
+          { "id": "q4t", "label": "1 quadrado e 4 triângulos", "correct": true, "feedback": "Exato. O quadrado da base cercado pelas 4 faces laterais triangulares." },
+          { "id": "q3t", "label": "1 quadrado e 3 triângulos", "correct": false, "feedback": "Cada um dos 4 lados do quadrado precisa de 1 triângulo: são 4 triângulos." },
+          { "id": "q4r", "label": "2 quadrados e 4 retângulos", "correct": false, "feedback": "2 quadrados e 4 retângulos formam um prisma. A pirâmide tem 1 quadrado e 4 triângulos." }
+        ]
+      },
+      {
+        "id": "corte-esfera",
+        "prompt": "Quando cortamos uma esfera com um corte plano reto, a seção formada é sempre:",
+        "options": [
+          { "id": "circ", "label": "Um círculo", "correct": true, "feedback": "Isso. Em qualquer direção ou altura, fatiar uma esfera produz sempre um círculo." },
+          { "id": "ret", "label": "Um retângulo", "correct": false, "feedback": "A esfera é perfeitamente simétrica: qualquer corte plano gera um círculo." },
+          { "id": "tri", "label": "Um triângulo", "correct": false, "feedback": "Não há quinas na esfera; todo corte plano nela é um círculo." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "oposta-no-dado",
+        "prompt": "Num molde com a fila [A]-[B]-[C]-[D] e abas [E] e [F] ao lado de [B], qual face fica oposta a [B]?",
+        "options": [
+          { "id": "fd", "label": "D", "correct": true, "feedback": "Certo. Pulando uma casa na fila A-B-C-D, B fica frente a frente com D." },
+          { "id": "fc", "label": "C", "correct": false, "feedback": "C é vizinha de B (dobra de 90°). Pulando C, a oposta a B é D." },
+          { "id": "fe", "label": "E", "correct": false, "feedback": "E é aba lateral vizinha de B (oposta a F). A oposta a B é D." },
+          { "id": "fa", "label": "A", "correct": false, "feedback": "A é vizinha de B e fica oposta a C. A oposta a B é D." }
+        ]
+      },
+      {
+        "id": "corte-vertical-cilindro",
+        "prompt": "Um cilindro reto de raio 3 cm e altura 8 cm é cortado verticalmente pelo eixo. Qual é a figura do corte?",
+        "options": [
+          { "id": "r68", "label": "Retângulo 6 cm × 8 cm", "correct": true, "feedback": "Exato. A base do corte é o diâmetro 2·3 = 6 cm e a altura é 8 cm." },
+          { "id": "r38", "label": "Retângulo 3 cm × 8 cm", "correct": false, "feedback": "3 cm é só o raio; o corte atravessa o cilindro todo (diâmetro 6 cm): 6 cm × 8 cm." },
+          { "id": "c3", "label": "Círculo de raio 3 cm", "correct": false, "feedback": "Círculo é o corte horizontal. O corte vertical pelo eixo é um retângulo 6 cm × 8 cm." }
+        ]
+      },
+      {
+        "id": "molde-prisma-hexagonal",
+        "prompt": "Quantos retângulos e quantos hexágonos compõem a planificação de um prisma hexagonal reto?",
+        "options": [
+          { "id": "r6h2", "label": "6 retângulos e 2 hexágonos", "correct": true, "feedback": "Isso. 1 retângulo para cada lado do hexágono (6) mais as 2 tampas hexagonais." },
+          { "id": "r6h1", "label": "6 retângulos e 1 hexágono", "correct": false, "feedback": "O prisma tem duas bases (fundo e tampa): são 6 retângulos e 2 hexágonos." },
+          { "id": "r5h2", "label": "5 retângulos e 2 hexágonos", "correct": false, "feedback": "O hexágono tem 6 lados, então a lateral exige 6 retângulos e 2 hexágonos." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "dado-soma-7",
+        "prompt": "Num dado padrão, faces opostas somam 7. Na fila [2]-[4]-[x]-[y] do molde, quanto valem x e y?",
+        "fala": "Na fila, a 1ª face fica oposta à 3ª, e a 2ª fica oposta à 4ª.",
+        "options": [
+          { "id": "x5y3", "label": "x = 5 e y = 3", "correct": true, "feedback": "Exato. x fica oposta ao 2 (7 − 2 = 5) e y fica oposta ao 4 (7 − 4 = 3)." },
+          { "id": "x3y5", "label": "x = 3 e y = 5", "correct": false, "feedback": "Você inverteu: quem pula uma casa do 2 é o x (5), e quem pula do 4 é o y (3)." },
+          { "id": "x5y4", "label": "x = 5 e y = 4", "correct": false, "feedback": "Oposto ao 4 precisa somar 7: y = 3. Logo x = 5 e y = 3." }
+        ]
+      },
+      {
+        "id": "corte-tres-pontas-cubo",
+        "prompt": "Se passarmos uma lâmina plana cortando apenas uma quina de um cubo (as 3 arestas do vértice), a seção é:",
+        "options": [
+          { "id": "tri", "label": "Um triângulo", "correct": true, "feedback": "Certo. O plano corta as 3 faces que chegam naquela quina, formando 3 lados: um triângulo." },
+          { "id": "quad", "label": "Um quadrado", "correct": false, "feedback": "Só 3 faces foram tocadas na quina, então nascem 3 lados: um triângulo." },
+          { "id": "hex", "label": "Um hexágono", "correct": false, "feedback": "Hexágono exige cortar todas as 6 faces pelo meio do cubo. Na quina é um triângulo." }
+        ]
+      },
+      {
+        "id": "empilhamento-blocos-vistas",
+        "prompt": "Uma pilha de cubos vista de cima forma um quadrado 2×2 (4 colunas), todas com 2 cubos de altura. Quantos cubos há ao todo?",
+        "options": [
+          { "id": "c8", "label": "8", "correct": true, "feedback": "Isso. Base 2×2 (4 colunas) com 2 cubos de altura em cada coluna: 4·2 = 8." },
+          { "id": "c4", "label": "4", "correct": false, "feedback": "4 é só o primeiro andar visto de cima. Com 2 andares em cada, são 8 cubos." },
+          { "id": "c6", "label": "6", "correct": false, "feedback": "São 4 colunas de altura 2: 4·2 = 8 cubos." }
+        ]
+      },
+      {
+        "id": "molde-invalido-abas",
+        "prompt": "Um molde tem 4 quadrados em linha e 2 quadrados no mesmo lado da linha. Ao dobrar, o que acontece?",
+        "options": [
+          { "id": "sob", "label": "Duas faces se sobrepõem e falta uma tampa", "correct": true, "feedback": "Exato. As duas abas do mesmo lado caem no mesmo topo e o fundo fica aberto." },
+          { "id": "fecha", "label": "Fecha um cubo perfeito", "correct": false, "feedback": "Para fechar, precisa de 1 aba de cada lado da faixa. Do mesmo lado, elas batem." },
+          { "id": "pir", "label": "Forma uma pirâmide", "correct": false, "feedback": "Faces quadradas não formam pirâmide; duas abas do mesmo lado se sobrepõem." }
+        ]
+      },
+      {
+        "id": "caminho-formiga-planificacao",
+        "prompt": "Uma formiga cruza duas faces 3×3 seguidas na casca de um bloco (formando um retângulo 6×3 no molde). Qual é o menor caminho?",
+        "fala": "Abra as duas faces 3×3 num retângulo plano 6×3 e trace a reta!",
+        "options": [
+          { "id": "r45", "label": "√45", "correct": true, "feedback": "Exato. Abrindo as duas faces 3×3 num retângulo 6×3, a diagonal mede √(6² + 3²) = √45." },
+          { "id": "r9", "label": "9", "correct": false, "feedback": "9 é andar pelas bordas (6 + 3). Pela diagonal do molde 6×3, mede √(36 + 9) = √45." },
+          { "id": "r18", "label": "√18", "correct": false, "feedback": "√18 é a diagonal de uma face só (3×3). Pelas duas faces abertas (6×3), dá √45." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

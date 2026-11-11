@@ -876,6 +876,20 @@
                   "arquivo": "geometria/geometria-espacial/posicoes-relativas-no-espaco/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "projecoes-cortes-e-planificacoes",
+              "titulo": "Vistas, projeções, cortes e planificações",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Desmontar e Fatiar o 3D",
+                  "subtitulo": "Vistas ortogonais, cortes planos e moldes",
+                  "arquivo": "geometria/geometria-espacial/projecoes-cortes-e-planificacoes/aula-01.json"
+                }
+              ]
             }
           ]
         },
