@@ -173,6 +173,20 @@
                   "arquivo": "aritmetica/contagem-probabilidade/combinacoes-com-repeticao/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "binomio-de-newton",
+              "titulo": "Binômio de Newton e coeficientes binomiais",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Caminhos que Viram Coeficientes",
+                  "subtitulo": "Expansão de (a + b)ⁿ e triângulo de Pascal",
+                  "arquivo": "aritmetica/contagem-probabilidade/binomio-de-newton/aula-01.json"
+                }
+              ]
             }
           ]
         },

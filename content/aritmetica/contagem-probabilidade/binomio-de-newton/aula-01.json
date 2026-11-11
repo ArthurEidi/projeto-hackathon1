@@ -1,0 +1,671 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Caminhos que Viram Coeficientes",
+  "subtitulo": "Expansão de (a + b)ⁿ e triângulo de Pascal",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "binomio-de-newton"
+  },
+  "outro": "Você viu a árvore de escolhas virar coeficientes: (a + b)ⁿ é soma de C(n, k) aⁿ⁻ᵏ bᵏ, linha do triângulo de Pascal.",
+  "glossario": {
+    "c1": {
+      "nome": "Expoente",
+      "resumo": "Quantos fatores (a + b) são multiplicados (n)."
+    },
+    "c2": {
+      "nome": "Escolhas de b",
+      "resumo": "Quantas vezes o b foi escolhido num caminho (k)."
+    },
+    "c3": {
+      "nome": "Coeficiente binomial",
+      "resumo": "Quantos caminhos dão o mesmo termo: C(n, k)."
+    },
+    "c4": {
+      "nome": "Linha de Pascal",
+      "resumo": "Os coeficientes de um mesmo n, lidos em fila."
+    }
+  },
+  "steps": [
+    {
+      "id": "dois-fatores",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "arvore",
+        "galhos": [
+          {
+            "rotulo": "a",
+            "cor": "c1"
+          },
+          {
+            "rotulo": "b",
+            "cor": "c2",
+            "sucesso": true
+          }
+        ],
+        "n": "$n",
+        "agrupar": true
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Fatores (a + b)",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com um fator só, (a + b) dá a + b. Leve n para 2: de quantos caminhos sai o termo ab?",
+        "done": "Sai de 2 caminhos, ab e ba. Por isso (a + b)² = a² + 2ab + b²."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Para que serve expandir potências enormes?",
+        "resposta": "Probabilidade e aproximações usam muito. Hoje ficamos em achar os coeficientes."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 2
+      }
+    },
+    {
+      "id": "tres-fatores",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "arvore",
+        "galhos": [
+          {
+            "rotulo": "a",
+            "cor": "c1"
+          },
+          {
+            "rotulo": "b",
+            "cor": "c2",
+            "sucesso": true
+          }
+        ],
+        "n": 3
+      },
+      "lines": {
+        "intro": "Com 3 fatores, quantos caminhos escolhem b exatamente uma vez? Toque nessas pontas.",
+        "done": "São 3: o b pode vir do 1º, do 2º ou do 3º fator. É C(3, 1) = 3, o coeficiente de a²b."
+      },
+      "complete_when": {
+        "metric": "pontas_k1",
+        "gte": 3
+      }
+    },
+    {
+      "id": "triangulo-de-pascal",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "pascal",
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Linhas",
+          "min": 2,
+          "max": 5,
+          "step": 1,
+          "initial": 2,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Empilhe as linhas de coeficientes. Que relação cada número tem com os dois logo acima?",
+        "done": "Cada número é a soma dos dois acima. Um caminho novo termina em a ou em b, e isso soma as duas contagens."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 5
+      }
+    },
+    {
+      "id": "soma-dos-coeficientes",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "arvore",
+        "galhos": [
+          {
+            "rotulo": "a",
+            "cor": "c1"
+          },
+          {
+            "rotulo": "b",
+            "cor": "c2",
+            "sucesso": true
+          }
+        ],
+        "n": 4,
+        "agrupar": true,
+        "chave_um": true
+      },
+      "lines": {
+        "intro": "Se a e b valem 1, quanto dá a soma de todos os coeficientes da linha 4? Faça uma previsão e ligue a chave.",
+        "done": "Dá 16 = 2⁴. Somar os coeficientes é contar todos os caminhos da árvore."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E com (a − b)ⁿ?",
+        "resposta": "Cada b traz um sinal de menos. Os termos com b ímpar ficam negativos e os sinais alternam."
+      },
+      "complete_when": {
+        "metric": "chave_ligada",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-x-quadrado",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "arvore",
+          "galhos": [
+            {
+              "rotulo": "x",
+              "cor": "c1",
+              "sucesso": true
+            },
+            {
+              "rotulo": "1",
+              "cor": "c2"
+            }
+          ],
+          "n": 4,
+          "agrupar": true
+        }
+      },
+      "prompt": "Qual é o coeficiente de x² em (x + 1)⁴?",
+      "lines": {
+        "intro": "Pense: em quantos fatores o x é escolhido para sair x²?"
+      },
+      "options": [
+        {
+          "id": "a4",
+          "label": "4",
+          "correct": false,
+          "feedback": "4 é o expoente. x² sai escolhendo x em 2 dos 4 fatores: C(4, 2) = 6.",
+          "figure": {
+            "acender_k": 1
+          }
+        },
+        {
+          "id": "a2",
+          "label": "2",
+          "correct": false,
+          "feedback": "2 é o expoente do termo. Os caminhos com dois x são C(4, 2) = 6.",
+          "figure": {
+            "acesas": [
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "id": "a6",
+          "label": "6",
+          "correct": true,
+          "feedback": "Isso. Escolher 2 dos 4 fatores para dar x: C(4, 2) = 6.",
+          "figure": {
+            "acender_k": 2
+          }
+        },
+        {
+          "id": "a1",
+          "label": "1",
+          "correct": false,
+          "feedback": "1 é o coeficiente de x⁴. Para x² são C(4, 2) = 6 caminhos.",
+          "figure": {
+            "acender_k": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "arvore",
+          "galhos": [
+            {
+              "rotulo": "a",
+              "cor": "c1"
+            },
+            {
+              "rotulo": "b",
+              "cor": "c2",
+              "sucesso": true
+            }
+          ],
+          "n": 3,
+          "agrupar": true
+        }
+      },
+      "formula": [
+        {
+          "text": "(a + b)ⁿ"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "Σ"
+        },
+        {
+          "text": "C(n, k)",
+          "ref": "c3"
+        },
+        {
+          "text": "aⁿ⁻ᵏ"
+        },
+        {
+          "text": "bᵏ",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Coeficiente binomial",
+          "text": "C(n, k) conta os caminhos com k escolhas de b."
+        },
+        {
+          "term": "Triângulo de Pascal",
+          "text": "cada número é a soma dos dois acima."
+        },
+        {
+          "term": "Termos",
+          "text": "(a + b)ⁿ tem n + 1 termos."
+        }
+      ],
+      "lines": {
+        "intro": "Cada termo vem de escolher b em k dos n fatores. Por isso o coeficiente é C(n, k).",
+        "hint": "Toque em uma letra para ver o que ela conta na árvore."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "quadrado-da-soma",
+        "prompt": "Qual é a expansão de (a + b)²?",
+        "options": [
+          {
+            "id": "soma-quadrados",
+            "label": "a² + b²",
+            "correct": false,
+            "feedback": "Faltaram os caminhos ab e ba. Fica a² + 2ab + b²."
+          },
+          {
+            "id": "certa",
+            "label": "a² + 2ab + b²",
+            "correct": true,
+            "feedback": "Isso. ab aparece por dois caminhos, daí o 2."
+          },
+          {
+            "id": "dobro",
+            "label": "2a + 2b",
+            "correct": false,
+            "feedback": "Isso é 2(a + b). O quadrado multiplica: a² + 2ab + b²."
+          },
+          {
+            "id": "um-ab",
+            "label": "a² + ab + b²",
+            "correct": false,
+            "feedback": "ab vem de dois caminhos, ab e ba. O coeficiente é 2: a² + 2ab + b²."
+          }
+        ]
+      },
+      {
+        "id": "linha-3",
+        "prompt": "Quais são os coeficientes de (a + b)³?",
+        "options": [
+          {
+            "id": "l1331",
+            "label": "1, 3, 3, 1",
+            "correct": true,
+            "feedback": "Certo. É a linha 3 do triângulo de Pascal."
+          },
+          {
+            "id": "l1221",
+            "label": "1, 2, 2, 1",
+            "correct": false,
+            "feedback": "Cada número é a soma dos dois acima de 1, 2, 1: fica 1, 3, 3, 1."
+          },
+          {
+            "id": "l121",
+            "label": "1, 2, 1",
+            "correct": false,
+            "feedback": "Essa é a linha 2. Para o cubo: 1, 3, 3, 1."
+          },
+          {
+            "id": "l1111",
+            "label": "1, 1, 1, 1",
+            "correct": false,
+            "feedback": "Os termos do meio vêm de 3 caminhos. Linha: 1, 3, 3, 1."
+          }
+        ]
+      },
+      {
+        "id": "numero-de-termos",
+        "prompt": "Quantos termos tem a expansão de (a + b)⁵?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "k vai de 0 a 5, então são 6 termos."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Isso. n + 1 = 6 termos."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é o maior coeficiente. Os termos são n + 1 = 6."
+          },
+          {
+            "id": "a32",
+            "label": "32",
+            "correct": false,
+            "feedback": "32 são os caminhos. Agrupados por número de b: 6 termos."
+          }
+        ]
+      },
+      {
+        "id": "coef-ab",
+        "prompt": "Qual é o coeficiente de ab em (a + b)²?",
+        "options": [
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "ab vem de ab e de ba: coeficiente 2."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo. Dois caminhos dão ab."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 são todos os caminhos de n = 2. Só ab e ba dão ab: 2."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "O termo ab existe: vem de ab e ba. Coeficiente 2."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "coef-x-cubo-1",
+        "prompt": "Qual é o coeficiente de x em (x + 1)³?",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. x sai de um fator e 1 dos outros dois: 3 caminhos."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é o coeficiente de x³. Para x: 3 caminhos."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é a soma 1 + 2 + 3. A linha é 1, 3, 3, 1: coeficiente de x é 3."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 seria 3². O coeficiente é C(3, 1) = 3."
+          }
+        ]
+      },
+      {
+        "id": "soma-linha-5",
+        "prompt": "Quanto dá a soma dos coeficientes de (a + b)⁵?",
+        "options": [
+          {
+            "id": "a32",
+            "label": "32",
+            "correct": true,
+            "feedback": "Certo. Com a = b = 1: (1 + 1)⁵ = 32."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "25 = 5². A soma é (1 + 1)⁵ = 32."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é o maior coeficiente. A soma de todos é 2⁵ = 32."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é o número de termos. A soma dos coeficientes é 32."
+          }
+        ]
+      },
+      {
+        "id": "coef-x3-x1-5",
+        "prompt": "Qual é o coeficiente de x³ em (x + 1)⁵?",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Isso. Escolher 3 dos 5 fatores para x: C(5, 3) = 10."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 é C(5, 1). Para x³: C(5, 3) = 10."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "15 não está na linha 5 (1, 5, 10, 10, 5, 1). É 10."
+          },
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 é da linha 6. Na linha 5, o coeficiente é 10."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "x-mais-2-cubo",
+        "prompt": "Qual é o coeficiente de x em (x + 2)³?",
+        "fala": "O 2 também é escolhido nos outros fatores.",
+        "options": [
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo. 3 caminhos, cada um com 2 · 2 = 4: 12."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 conta os caminhos, mas cada um traz 2 · 2. Fica 3 · 4 = 12."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "O 2 aparece duas vezes em cada caminho: 3 · 2² = 12."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 = 2³ é o termo sem x. Para x: 3 · 2² = 12."
+          }
+        ]
+      },
+      {
+        "id": "x-menos-1-quarta",
+        "prompt": "Qual é o coeficiente de x³ em (x − 1)⁴?",
+        "options": [
+          {
+            "id": "am4",
+            "label": "−4",
+            "correct": true,
+            "feedback": "Isso. 4 caminhos, cada um com um −1: −4."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "O −1 entra uma vez em cada caminho. O coeficiente é −4."
+          },
+          {
+            "id": "am6",
+            "label": "−6",
+            "correct": false,
+            "feedback": "6 é o coeficiente de x². Para x³: 4 caminhos com um −1, −4."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é de x², e sem o sinal. Para x³: −4."
+          }
+        ]
+      },
+      {
+        "id": "termo-independente",
+        "prompt": "Qual é o termo sem x na expansão de (x + 1/x)⁴?",
+        "fala": "O x some quando ele e o 1/x aparecem o mesmo número de vezes.",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo. Dois x e dois 1/x: C(4, 2) = 6."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é C(4, 1), que deixa x². Para cancelar: 2 de cada, C(4, 2) = 6."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é o coeficiente de x⁴. O termo sem x é C(4, 2) = 6."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Existe termo sem x: dois x com dois 1/x. Vale C(4, 2) = 6."
+          }
+        ]
+      },
+      {
+        "id": "centro-linha-6",
+        "prompt": "Qual é o maior coeficiente de (a + b)⁶?",
+        "options": [
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": true,
+            "feedback": "Isso. O meio da linha 6: C(6, 3) = 20."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "15 = C(6, 2) é vizinho do meio. O maior é C(6, 3) = 20."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é C(6, 1). O maior fica no meio: 20."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é o maior da linha 5. Na linha 6: 20."
+          }
+        ]
+      },
+      {
+        "id": "onze-ao-cubo",
+        "prompt": "Usando (10 + 1)³, quanto vale 11³?",
+        "fala": "Última. Os coeficientes 1, 3, 3, 1 viram algarismos.",
+        "options": [
+          {
+            "id": "a1331",
+            "label": "1331",
+            "correct": true,
+            "feedback": "Certo. 1000 + 300 + 30 + 1: os algarismos são a linha 1, 3, 3, 1."
+          },
+          {
+            "id": "a1111",
+            "label": "1111",
+            "correct": false,
+            "feedback": "Os termos do meio têm coeficiente 3. Fica 1000 + 300 + 30 + 1 = 1331."
+          },
+          {
+            "id": "a1001",
+            "label": "1001",
+            "correct": false,
+            "feedback": "Faltaram os termos do meio: 3 · 100 + 3 · 10. Total 1331."
+          },
+          {
+            "id": "a121",
+            "label": "121",
+            "correct": false,
+            "feedback": "121 é 11². O cubo é 1331."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
