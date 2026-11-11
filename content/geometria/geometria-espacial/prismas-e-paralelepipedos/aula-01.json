@@ -1,0 +1,574 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Empilhar Fatias Iguais",
+  "subtitulo": "Área, volume e diagonal de prismas e blocos",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "prismas-e-paralelepipedos"
+  },
+  "outro": "Você dominou o empilhamento de camadas, a planificação das paredes e a diagonal espacial dos prismas.",
+  "glossario": {
+    "c1": {
+      "nome": "Área da base (A_b)",
+      "resumo": "Quantidade de quadrados unitários no piso do prisma."
+    },
+    "c2": {
+      "nome": "Altura (h)",
+      "resumo": "Distância vertical entre as duas bases paralelas."
+    },
+    "c3": {
+      "nome": "Área lateral (A_l)",
+      "resumo": "Soma dos retângulos que formam as paredes verticais."
+    },
+    "c4": {
+      "nome": "Diagonal espacial (D)",
+      "resumo": "Segmento que atravessa o interior de um canto ao canto oposto."
+    }
+  },
+  "steps": [
+    {
+      "id": "empilhar-camadas",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "prisma",
+        "base": "retangulo",
+        "a": 4,
+        "b": 3,
+        "h": "$h",
+        "camadas": true,
+        "fantasma_h": 1,
+        "cores": { "base": "c1", "h": "c2", "lateral": "c3", "diagonal": "c4" }
+      },
+      "controls": [
+        {
+          "id": "h",
+          "label": "Andares de altura (h)",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Com 1 andar de altura, cabem 12 cubinhos. Se subirmos para 4 andares, quantos cubinhos teremos?",
+        "done": "Cada andar repete os mesmos 12 cubos da base: 12 · 4 = 48. Volume de prisma é a área da base vezes altura."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Vale mesmo se a base for um triângulo ou um hexágono?",
+        "resposta": "Vale para qualquer prisma! Só muda a área do piso; todas as fatias até o topo continuam iguais à base."
+      },
+      "complete_when": {
+        "metric": "h",
+        "gte": 4
+      }
+    },
+    {
+      "id": "paredes-e-tampas",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "prisma",
+        "base": "triangulo",
+        "a": 4,
+        "b": 3,
+        "h": 4,
+        "abrir": "$abrir / 100",
+        "cores": { "base": "c1", "h": "c2", "lateral": "c3", "diagonal": "c4" }
+      },
+      "controls": [
+        {
+          "id": "abrir",
+          "label": "Abrir paredes",
+          "min": 0,
+          "max": 100,
+          "step": 25,
+          "initial": 0,
+          "unit": "%",
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Ao abrir as 3 paredes de altura 4 em volta da base 3, 4 e 5, que figura plana aparece?",
+        "done": "As paredes formam um retângulo de largura igual ao perímetro (12 · 4 = 48), mais 2 tampas de área 6."
+      },
+      "complete_when": {
+        "metric": "abrir",
+        "gte": 100
+      }
+    },
+    {
+      "id": "diagonal-do-bloco",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "prisma",
+        "base": "retangulo",
+        "a": 4,
+        "b": 3,
+        "h": 12,
+        "diagonal": true,
+        "cores": { "base": "c1", "h": "c2", "lateral": "c3", "diagonal": "c4" }
+      },
+      "controls": [
+        {
+          "id": "etapa_pitagoras",
+          "label": "Destacar Pitágoras",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "No chão 3 por 4, a diagonal mede 5. Suba 12 na vertical: quanto mede a diagonal D que corta o ar?",
+        "done": "A diagonal do chão (5) e a altura (12) formam outro triângulo: 5² + 12² = 169, logo D = 13!"
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se uma caixa não tiver tampa, o que muda?",
+        "resposta": "O volume não muda nada, mas na área da superfície contamos só 1 base (o fundo) em vez de 2."
+      },
+      "complete_when": {
+        "metric": "etapa_pitagoras",
+        "gte": 2
+      }
+    },
+    {
+      "id": "desafio-prisma",
+      "type": "micro_challenge",
+      "prompt": "Qual é o volume de um paralelepípedo retângulo de dimensões 5 cm, 2 cm e 6 cm?",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "prisma",
+          "base": "retangulo",
+          "a": 5,
+          "b": 2,
+          "h": 6,
+          "camadas": true,
+          "cores": { "base": "c1", "h": "c2", "lateral": "c3", "diagonal": "c4" }
+        }
+      },
+      "lines": {
+        "intro": "Calcule primeiro quantos quadradinhos cabem no piso."
+      },
+      "options": [
+        {
+          "id": "v60",
+          "label": "60 cm³",
+          "correct": true,
+          "feedback": "Exato. A base tem 5·2 = 10 cm²; empilhando 6 andares, V = 10·6 = 60 cm³.",
+          "figure": {
+            "modo": "prisma",
+            "base": "retangulo",
+            "a": 5,
+            "b": 2,
+            "h": 6,
+            "camadas": true,
+            "highlight": ["c1", "c2"]
+          }
+        },
+        {
+          "id": "v13",
+          "label": "13 cm³",
+          "correct": false,
+          "feedback": "Você somou 5 + 2 + 6 = 13. Para empilhar camadas, multiplique: 5·2·6 = 60 cm³.",
+          "figure": {
+            "modo": "prisma",
+            "base": "retangulo",
+            "a": 5,
+            "b": 2,
+            "h": 1,
+            "camadas": true,
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "v104",
+          "label": "104 cm²",
+          "correct": false,
+          "feedback": "104 é a área total das 6 faces. O volume é o produto das 3 dimensões: 60 cm³.",
+          "figure": {
+            "modo": "prisma",
+            "base": "retangulo",
+            "a": 5,
+            "b": 2,
+            "h": 6,
+            "camadas": false,
+            "highlight": ["c3"]
+          }
+        },
+        {
+          "id": "v30",
+          "label": "30 cm³",
+          "correct": false,
+          "feedback": "Você dividiu por 2 como se fosse triângulo. No bloco retangular, 5·2·6 = 60 cm³.",
+          "figure": {
+            "modo": "prisma",
+            "base": "retangulo",
+            "a": 5,
+            "b": 2,
+            "h": 3,
+            "camadas": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "prisma",
+          "base": "retangulo",
+          "a": 4,
+          "b": 3,
+          "h": 5,
+          "diagonal": true,
+          "camadas": false,
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "V" },
+        { "text": "=" },
+        { "text": "A_b", "ref": "c1" },
+        { "text": "·" },
+        { "text": "h", "ref": "c2" },
+        { "text": ";" },
+        { "text": "D", "ref": "c4" },
+        { "text": "=" },
+        { "text": "√(a² + b² + c²)" }
+      ],
+      "definitions": [
+        {
+          "term": "Volume do prisma",
+          "text": "Área da base multiplicada pela altura (V = A_b · h)."
+        },
+        {
+          "term": "Área total",
+          "text": "Soma da área lateral com as duas bases (A_t = A_l + 2·A_b)."
+        },
+        {
+          "term": "Diagonal do bloco",
+          "text": "Pitágoras nas 3 dimensões, D = √(a² + b² + c²)."
+        }
+      ],
+      "lines": {
+        "intro": "Toda fatia horizontal repete a área da base até a altura h.",
+        "hint": "Toque nas letras coloridas para destacar cada elemento."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Por que a diagonal espacial tem três termos dentro da raiz?",
+        "resposta": "Porque aplicamos Pitágoras duas vezes: primeiro no chão (a² + b²) e depois na altura (d² + c²)."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "volume-camadas-cubo",
+        "prompt": "Um bloco retangular tem base 3 × 2 e altura 4. Quantos cubinhos unitários de volume cabem nele?",
+        "options": [
+          {
+            "id": "v24",
+            "label": "24",
+            "correct": true,
+            "feedback": "Exato. A base tem 3·2 = 6 cubinhos por camada; com 4 andares, 6·4 = 24 cubos."
+          },
+          {
+            "id": "v9",
+            "label": "9",
+            "correct": false,
+            "feedback": "Você somou 3 + 2 + 4 = 9. O volume é a multiplicação das 3 dimensões: 24 cubos."
+          },
+          {
+            "id": "v12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 seria o volume com altura 2. Com altura 4, temos 6·4 = 24 cubinhos."
+          }
+        ]
+      },
+      {
+        "id": "fatia-inclinada-cavalieri",
+        "prompt": "Inclinamos uma pilha de 50 folhas de papel mantendo a altura vertical. O que acontece com o volume?",
+        "options": [
+          {
+            "id": "v_igual",
+            "label": "Permanece o mesmo",
+            "correct": true,
+            "feedback": "Isso. Pelo princípio de Cavalieri, a área de cada folha e a altura continuam iguais."
+          },
+          {
+            "id": "v_aumenta",
+            "label": "Aumenta",
+            "correct": false,
+            "feedback": "Inclinar entorta as faces, mas as fatias têm a mesma área e altura: volume não muda."
+          },
+          {
+            "id": "v_diminui",
+            "label": "Diminui",
+            "correct": false,
+            "feedback": "Cada folha continua com a mesma espessura e área; o volume total segue idêntico."
+          }
+        ]
+      },
+      {
+        "id": "paredes-retangulo-comprido",
+        "prompt": "Ao planificar as paredes laterais de um prisma reto de altura h, obtemos um retângulo de base igual:",
+        "options": [
+          {
+            "id": "p_perimetro",
+            "label": "Ao perímetro da base",
+            "correct": true,
+            "feedback": "Exato. Cada lado do piso vira a largura de uma face; juntas, somam o perímetro."
+          },
+          {
+            "id": "p_area",
+            "label": "À área da base",
+            "correct": false,
+            "feedback": "A base do retângulo planificado é o contorno (perímetro) da base, não a sua área."
+          },
+          {
+            "id": "p_altura",
+            "label": "À altura h",
+            "correct": false,
+            "feedback": "A altura do retângulo é h; a base do retângulo é o perímetro do polígono do chão."
+          }
+        ]
+      },
+      {
+        "id": "faces-paralelepipedo",
+        "prompt": "Quantas faces e quantas bases tem um paralelepípedo retângulo?",
+        "options": [
+          {
+            "id": "f6b2",
+            "label": "6 faces e 2 bases",
+            "correct": true,
+            "feedback": "Correto. São 4 faces laterais e 2 bases paralelas (chão e teto), totalizando 6 faces."
+          },
+          {
+            "id": "f4b2",
+            "label": "4 faces e 2 bases",
+            "correct": false,
+            "feedback": "4 são apenas as faces laterais; contando as 2 bases, são 6 faces no total."
+          },
+          {
+            "id": "f8b2",
+            "label": "8 faces e 2 bases",
+            "correct": false,
+            "feedback": "8 é o número de vértices; o paralelepípedo tem 6 faces no total (4 paredes + 2 bases)."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "area-total-bloco",
+        "prompt": "Qual é a área total de um paralelepípedo com dimensões 2 cm, 3 cm e 4 cm?",
+        "options": [
+          {
+            "id": "a52",
+            "label": "52 cm²",
+            "correct": true,
+            "feedback": "Correto. São 2·(2·3) + 2·(2·4) + 2·(3·4) = 12 + 16 + 24 = 52 cm²."
+          },
+          {
+            "id": "a24",
+            "label": "24 cm²",
+            "correct": false,
+            "feedback": "24 cm³ é o volume (2·3·4). A área total soma os 3 pares de faces: 52 cm²."
+          },
+          {
+            "id": "a26",
+            "label": "26 cm²",
+            "correct": false,
+            "feedback": "26 cm² é a soma de apenas 3 faces; dobrando para as 6 faces, obtemos 52 cm²."
+          }
+        ]
+      },
+      {
+        "id": "diagonal-espacial-236",
+        "prompt": "Um bloco retangular tem arestas 2 cm, 3 cm e 6 cm. Quanto mede a sua diagonal espacial D?",
+        "options": [
+          {
+            "id": "d7",
+            "label": "7 cm",
+            "correct": true,
+            "feedback": "Exato. D = √(2² + 3² + 6²) = √(4 + 9 + 36) = √49 = 7 cm."
+          },
+          {
+            "id": "d11",
+            "label": "11 cm",
+            "correct": false,
+            "feedback": "11 é a soma das arestas 2 + 3 + 6. Por Pitágoras 3D, √(4 + 9 + 36) = 7 cm."
+          },
+          {
+            "id": "d49",
+            "label": "49 cm",
+            "correct": false,
+            "feedback": "49 é D²; tirando a raiz quadrada, D = √49 = 7 cm."
+          }
+        ]
+      },
+      {
+        "id": "altura-pelo-volume",
+        "prompt": "Um reservatório em forma de bloco retangular tem base de 5 m por 4 m e contém 60 m³ de água. Qual é a altura da água?",
+        "options": [
+          {
+            "id": "h3",
+            "label": "3 m",
+            "correct": true,
+            "feedback": "Isso. A base tem 5·4 = 20 m²; dividindo 60 m³ por 20 m², a altura é 3 m."
+          },
+          {
+            "id": "h6",
+            "label": "6 m",
+            "correct": false,
+            "feedback": "A base mede 5·4 = 20 m² (não 10). Logo h = 60 / 20 = 3 m."
+          },
+          {
+            "id": "h12",
+            "label": "12 m",
+            "correct": false,
+            "feedback": "Você dividiu só por 5. Dividindo pela área da base 20 m², h = 3 m."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "diagonal-do-cubo",
+        "prompt": "Qual é a medida da diagonal espacial D de um cubo de aresta 5 cm?",
+        "fala": "No cubo as três dimensões são iguais: a = b = c = 5.",
+        "options": [
+          {
+            "id": "d5r3",
+            "label": "5√3 cm",
+            "correct": true,
+            "feedback": "Exato. D = √(5² + 5² + 5²) = √(3·25) = 5√3 cm."
+          },
+          {
+            "id": "d5r2",
+            "label": "5√2 cm",
+            "correct": false,
+            "feedback": "5√2 é a diagonal de uma face (2D). A diagonal espacial do cubo é 5√3 cm."
+          },
+          {
+            "id": "d15",
+            "label": "15 cm",
+            "correct": false,
+            "feedback": "Não some 5 + 5 + 5; some os quadrados: √(25 + 25 + 25) = 5√3 cm."
+          }
+        ]
+      },
+      {
+        "id": "caixa-sem-tampa",
+        "prompt": "Uma piscina sem tampa mede 4 m × 3 m de base e 2 m de profundidade. Qual é a área total azulejada?",
+        "options": [
+          {
+            "id": "a40",
+            "label": "40 m²",
+            "correct": true,
+            "feedback": "Certo. Fundo 4·3 = 12 m² mais as 4 paredes (16 + 12 = 28 m²) dão 40 m²."
+          },
+          {
+            "id": "a52",
+            "label": "52 m²",
+            "correct": false,
+            "feedback": "52 m² inclui uma tampa no topo! Como a piscina é aberta, descontamos 12 m²: 40 m²."
+          },
+          {
+            "id": "a28",
+            "label": "28 m²",
+            "correct": false,
+            "feedback": "28 m² são só as 4 paredes; somando o fundo de 12 m², temos 40 m²."
+          }
+        ]
+      },
+      {
+        "id": "escala-dobrar-aresta-cubo",
+        "prompt": "Ao dobrar a aresta de um cubo, a sua área total e o seu volume ficam multiplicados por:",
+        "options": [
+          {
+            "id": "k48",
+            "label": "4 e 8",
+            "correct": true,
+            "feedback": "Exato. A área depende do quadrado (2² = 4) e o volume do cubo da escala (2³ = 8)."
+          },
+          {
+            "id": "k22",
+            "label": "2 e 2",
+            "correct": false,
+            "feedback": "Dobrar as 3 dimensões multiplica a área por 2² = 4 e o volume por 2³ = 8."
+          },
+          {
+            "id": "k24",
+            "label": "2 e 4",
+            "correct": false,
+            "feedback": "Área é 2D (multiplica por 2² = 4) e volume é 3D (multiplica por 2³ = 8)."
+          }
+        ]
+      },
+      {
+        "id": "prisma-hexagonal-regular",
+        "prompt": "A base de um prisma reto tem 6 triângulos de área 4 cm² cada. Se a altura é 5 cm, qual é o volume?",
+        "options": [
+          {
+            "id": "v120",
+            "label": "120 cm³",
+            "correct": true,
+            "feedback": "Isso. A base hexagonal tem área 6·4 = 24 cm², e V = 24·5 = 120 cm³."
+          },
+          {
+            "id": "v20",
+            "label": "20 cm³",
+            "correct": false,
+            "feedback": "20 cm³ é o volume sobre 1 triângulo só. Nos 6 triângulos do hexágono: 6·20 = 120 cm³."
+          },
+          {
+            "id": "v40",
+            "label": "40 cm³",
+            "correct": false,
+            "feedback": "Não divida por 3 (é prisma). A_b = 24 cm² e V = 24·5 = 120 cm³."
+          }
+        ]
+      },
+      {
+        "id": "nivel-agua-pedra-arquimedes",
+        "prompt": "Num aquário de base 20 cm × 15 cm, mergulhar uma pedra faz a água subir 2 cm. Qual é o volume da pedra?",
+        "fala": "O volume da pedra é a fatia de água de altura 2 cm que subiu!",
+        "options": [
+          {
+            "id": "v600",
+            "label": "600 cm³",
+            "correct": true,
+            "feedback": "Exato. A água deslocada forma um prisma de base 20·15 = 300 cm² e altura 2 cm: 600 cm³."
+          },
+          {
+            "id": "v300",
+            "label": "300 cm³",
+            "correct": false,
+            "feedback": "300 cm² é a área da base (ou subida de 1 cm). Com subida de 2 cm: 300·2 = 600 cm³."
+          },
+          {
+            "id": "v70",
+            "label": "70 cm³",
+            "correct": false,
+            "feedback": "Multiplique a área da base pela subida do nível: 20·15·2 = 600 cm³."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

@@ -759,16 +759,30 @@
           "titulo": "Geometria Espacial",
           "unidades": [
             {
-              "id": "prismas",
-              "titulo": "Prismas",
+              "id": "poliedros-e-relacao-de-euler",
+              "titulo": "Poliedros, elementos e relação de Euler",
               "icone": "cubo",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Fatias Iguais",
-                  "subtitulo": "Volume do prisma",
-                  "arquivo": null
+                  "titulo": "A Contabilidade das Quinas",
+                  "subtitulo": "Vértices, arestas, faces e V − A + F = 2",
+                  "arquivo": "geometria/geometria-espacial/poliedros-e-relacao-de-euler/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "prismas-e-paralelepipedos",
+              "titulo": "Prismas e Paralelepípedos",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Empilhar Fatias Iguais",
+                  "subtitulo": "Área, volume e diagonal de prismas e blocos",
+                  "arquivo": "geometria/geometria-espacial/prismas-e-paralelepipedos/aula-01.json"
                 }
               ]
             },
@@ -832,20 +846,6 @@
                   "titulo": "O Semicírculo que Gira",
                   "subtitulo": "Volume e área da esfera",
                   "arquivo": null
-                }
-              ]
-            },
-            {
-              "id": "poliedros-e-relacao-de-euler",
-              "titulo": "Poliedros, elementos e relação de Euler",
-              "icone": "cubo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "A Contabilidade das Quinas",
-                  "subtitulo": "Vértices, arestas, faces e V − A + F = 2",
-                  "arquivo": "geometria/geometria-espacial/poliedros-e-relacao-de-euler/aula-01.json"
                 }
               ]
             }
