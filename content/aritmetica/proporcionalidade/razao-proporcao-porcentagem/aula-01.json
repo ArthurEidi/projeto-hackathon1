@@ -1,0 +1,455 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Comparar por Divisão",
+  "subtitulo": "Razão e proporção",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "proporcionalidade",
+    "unidade": "razao-proporcao-porcentagem"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Parte P",
+      "resumo": "Quantidade comparada com o todo."
+    },
+    "c2": {
+      "nome": "Todo T",
+      "resumo": "Quantidade usada como base da comparação."
+    },
+    "c3": {
+      "nome": "Percentual p",
+      "resumo": "Razão reescrita para cada cem unidades."
+    },
+    "c4": {
+      "nome": "Razão P/T",
+      "resumo": "Fração do todo ocupada pela parte."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "parte_todo",
+        "partes": 4,
+        "pintadas": "$p",
+        "mostrar": {
+          "fracao": true,
+          "porcento": true,
+          "razao": true
+        }
+      },
+      "controls": [
+        {
+          "id": "p",
+          "label": "Parte",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 4,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "No caso neutro, o todo vale 100%; ao pintar só 2 das 4 partes, qual fração permanece?",
+        "done": "Permanece 1/2=50%, pois 2/4=0,5 e 0,5·100=50."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Razões comparam quantidades, proporções igualam razões e porcentagens usam cem como referência; aqui mantemos o todo explícito."
+      },
+      "complete_when": {
+        "metric": "porcento",
+        "lte": 50
+      }
+    },
+    {
+      "id": "escalar-os-dois",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "parte_todo",
+        "partes": "4*$k",
+        "pintadas": "2*$k",
+        "referencia": {
+          "partes": 4,
+          "pintadas": 2
+        },
+        "mostrar": {
+          "fracao": true,
+          "porcento": true,
+          "razao": true
+        }
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Escala",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "ink"
+        }
+      ],
+      "lines": {
+        "intro": "Se parte e todo dobram juntos, o percentual dobra? Leve k a 2.",
+        "done": "Não; 4/8=2/4, por isso multiplicar os dois termos pelo mesmo fator preserva a proporção."
+      },
+      "complete_when": {
+        "metric": "pintadas",
+        "gte": 4
+      }
+    },
+    {
+      "id": "mudar-a-base",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "parte_todo",
+        "partes": "$t",
+        "pintadas": 2,
+        "referencia": {
+          "partes": 4,
+          "pintadas": 2
+        },
+        "mostrar": {
+          "fracao": true,
+          "porcento": true,
+          "razao": true
+        }
+      },
+      "controls": [
+        {
+          "id": "t",
+          "label": "Todo",
+          "min": 2,
+          "max": 4,
+          "step": 1,
+          "initial": 4,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Se a parte continuar 2 mas o todo cair para 2, o percentual continua 50%?",
+        "done": "Não; agora 2/2=1, por isso a mesma parte passa a representar 100%."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Aumentar 10% e depois reduzir 10% desfaz tudo?",
+        "resposta": "Não; 100 vira 110 e depois 99, pois o desconto usa o novo todo."
+      },
+      "complete_when": {
+        "metric": "partes",
+        "lte": 2
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "parte_todo",
+          "partes": 4,
+          "pintadas": 1,
+          "todo": 8
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Quanto é 25% de 8?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "4",
+          "correct": false,
+          "feedback": "Você calculou metade; 25%=1/4, então 8/4=2.",
+          "figure": {
+            "pintadas": 2,
+            "partes": 4,
+            "todo": 8
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "2",
+          "correct": true,
+          "feedback": "Certo: 2; 25/100·8=2.",
+          "figure": {
+            "pintadas": 1,
+            "partes": 4,
+            "todo": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "parte_todo",
+          "partes": 4,
+          "pintadas": 1,
+          "todo": 8
+        }
+      },
+      "formula": [
+        { "text": "p", "ref": "c3" },
+        { "text": "=" },
+        { "text": "100·P", "ref": "c1" },
+        { "text": "/T", "ref": "c2" },
+        { "text": ";" },
+        { "text": "P/T", "ref": "c4" },
+        { "text": "=" },
+        { "text": "p/100" }
+      ],
+      "definitions": [
+        { "term": "Parte P", "text": "Quantidade comparada com o todo." },
+        { "term": "Percentual p", "text": "Razão reescrita para cada cem unidades." },
+        { "term": "Razão P/T", "text": "Fração do todo ocupada pela parte." }
+      ],
+      "lines": {
+        "intro": "A parte é comparada ao todo; por isso o percentual é 100 vezes a razão P/T.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Como a razão se transforma em percentual?",
+        "resposta": "Multiplica-se a razão por 100; p=100·P/T."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-razao-proporcao-porcentagem",
+        "prompt": "Se parte e todo são iguais, qual é o percentual?",
+        "options": [
+          {
+            "id": "f1-razao-proporcao-porcentagem-erro",
+            "label": "1%",
+            "correct": false,
+            "feedback": "Você confundiu razão 1 com percentual 1. O certo é 100%; 1·100=100%."
+          },
+          {
+            "id": "f1-razao-proporcao-porcentagem-certa",
+            "label": "100%",
+            "correct": true,
+            "feedback": "Certo: 100%; 1·100=100%."
+          }
+        ]
+      },
+      {
+        "id": "f2-razao-proporcao-porcentagem",
+        "prompt": "Que fração representa 50%?",
+        "options": [
+          {
+            "id": "f2-razao-proporcao-porcentagem-certa",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Certo: 1/2; 50/100=1/2."
+          },
+          {
+            "id": "f2-razao-proporcao-porcentagem-erro",
+            "label": "1/50",
+            "correct": false,
+            "feedback": "Por cento significa dividir por 100. O certo é 1/2; 50/100=1/2."
+          }
+        ]
+      },
+      {
+        "id": "f3-razao-proporcao-porcentagem",
+        "prompt": "Se parte e todo dobram juntos, a razão muda?",
+        "options": [
+          {
+            "id": "f3-razao-proporcao-porcentagem-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Você dobrou só um termo na comparação. O certo é Não; 2P/(2T)=P/T."
+          },
+          {
+            "id": "f3-razao-proporcao-porcentagem-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 2P/(2T)=P/T."
+          }
+        ]
+      },
+      {
+        "id": "f4-razao-proporcao-porcentagem",
+        "prompt": "O todo pode ser zero ao calcular P/T?",
+        "options": [
+          {
+            "id": "f4-razao-proporcao-porcentagem-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; T≠0."
+          },
+          {
+            "id": "f4-razao-proporcao-porcentagem-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "A razão exigiria divisão por zero. O certo é Não; T≠0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-razao-proporcao-porcentagem",
+        "prompt": "Quanto é 25% de 8?",
+        "options": [
+          {
+            "id": "m1-razao-proporcao-porcentagem-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você calculou 50%. O certo é 2; 8·25/100=2."
+          },
+          {
+            "id": "m1-razao-proporcao-porcentagem-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; 8·25/100=2."
+          }
+        ]
+      },
+      {
+        "id": "m2-razao-proporcao-porcentagem",
+        "prompt": "2 é quantos por cento de 8?",
+        "options": [
+          {
+            "id": "m2-razao-proporcao-porcentagem-certa",
+            "label": "25%",
+            "correct": true,
+            "feedback": "Certo: 25%; 100·2/8=25."
+          },
+          {
+            "id": "m2-razao-proporcao-porcentagem-erro",
+            "label": "400%",
+            "correct": false,
+            "feedback": "Você inverteu parte e todo. O certo é 25%; 100·2/8=25."
+          }
+        ]
+      },
+      {
+        "id": "m3-razao-proporcao-porcentagem",
+        "prompt": "Se x/6=1/2, quanto vale x?",
+        "options": [
+          {
+            "id": "m3-razao-proporcao-porcentagem-erro",
+            "label": "12",
+            "correct": false,
+            "feedback": "Você multiplicou pelo inverso da razão. O certo é 3; x=6/2=3."
+          },
+          {
+            "id": "m3-razao-proporcao-porcentagem-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; x=6/2=3."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-razao-proporcao-porcentagem",
+        "prompt": "Um preço de 20 sobe 10%; qual é o novo preço?",
+        "options": [
+          {
+            "id": "d1-razao-proporcao-porcentagem-certa",
+            "label": "22",
+            "correct": true,
+            "feedback": "Certo: 22; 20·1,1=22."
+          },
+          {
+            "id": "d1-razao-proporcao-porcentagem-erro",
+            "label": "30",
+            "correct": false,
+            "feedback": "Você somou 10 unidades em vez de 10%. O certo é 22; 20·1,1=22."
+          }
+        ]
+      },
+      {
+        "id": "d2-razao-proporcao-porcentagem",
+        "prompt": "Um preço 100 sobe 10% e cai 10%; volta a 100?",
+        "options": [
+          {
+            "id": "d2-razao-proporcao-porcentagem-erro",
+            "label": "Sim, fica 100",
+            "correct": false,
+            "feedback": "Os percentuais usam bases diferentes. O certo é Não, fica 99; 100·1,1·0,9=99."
+          },
+          {
+            "id": "d2-razao-proporcao-porcentagem-certa",
+            "label": "Não, fica 99",
+            "correct": true,
+            "feedback": "Certo: Não, fica 99; 100·1,1·0,9=99."
+          }
+        ]
+      },
+      {
+        "id": "d3-razao-proporcao-porcentagem",
+        "prompt": "Quanto é 12,5% de 4?",
+        "options": [
+          {
+            "id": "d3-razao-proporcao-porcentagem-certa",
+            "label": "0,5",
+            "correct": true,
+            "feedback": "Certo: 0,5; 12,5%=1/8; 4/8=0,5."
+          },
+          {
+            "id": "d3-razao-proporcao-porcentagem-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você confundiu 12,5% com 50%. O certo é 0,5; 12,5%=1/8; 4/8=0,5."
+          }
+        ]
+      },
+      {
+        "id": "d4-razao-proporcao-porcentagem",
+        "prompt": "Um preço após desconto de 20% é 8; qual era o preço?",
+        "options": [
+          {
+            "id": "d4-razao-proporcao-porcentagem-erro",
+            "label": "9,6",
+            "correct": false,
+            "feedback": "Você somou 20% sobre a base errada. O certo é 10; 0,8T=8; T=10."
+          },
+          {
+            "id": "d4-razao-proporcao-porcentagem-certa",
+            "label": "10",
+            "correct": true,
+            "feedback": "Certo: 10; 0,8T=8; T=10."
+          }
+        ]
+      },
+      {
+        "id": "d5-razao-proporcao-porcentagem",
+        "prompt": "Uma turma tem 8 alunos e 25% faltam; depois chega metade dos ausentes; qual percentual continua ausente?",
+        "options": [
+          {
+            "id": "d5-razao-proporcao-porcentagem-certa",
+            "label": "12,5%",
+            "correct": true,
+            "feedback": "Certo: 12,5%; Faltavam 2; sobra 1; 1/8=12,5%."
+          },
+          {
+            "id": "d5-razao-proporcao-porcentagem-erro",
+            "label": "50%",
+            "correct": false,
+            "feedback": "Você usou só os ausentes como novo todo. O certo é 12,5%; Faltavam 2; sobra 1; 1/8=12,5%."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
