@@ -1,0 +1,272 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Inequações Quadráticas",
+  "subtitulo": "Ler o sinal entre raízes",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "inequacoes-quadraticas"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": { "nome": "Entrada x", "resumo": "Número usado na comparação." },
+    "c2": { "nome": "Coeficiente a", "resumo": "Fator que decide a concavidade e o sinal." },
+    "c3": { "nome": "Valor da quadrática", "resumo": "Altura da parábola, comparada com zero." },
+    "c4": { "nome": "Intervalo-solução", "resumo": "Entradas aceitas pela desigualdade." }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 3],
+        "y": [-3, 3],
+        "curvas": [
+          { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "cor": "c3", "rotulo": "y = x²" }
+        ],
+        "ponto": { "curva": 0, "x": 0, "passo": 1 }
+      },
+      "lines": {
+        "intro": "No caso neutro x², a saída pode ser negativa? Arraste até 1.",
+        "done": "Não; multiplicar um real por ele mesmo dá valor não negativo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Há desigualdades estritas e inclusivas; aqui lemos o sinal de quadráticas a partir das raízes."
+      },
+      "complete_when": { "metric": "ponto_x", "gte": 1 }
+    },
+    {
+      "id": "entre-raizes",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 3],
+        "y": [-3, 3],
+        "curvas": [
+          { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "fantasma": true, "rotulo": "y = x²" },
+          { "tipo": "quadratica", "a": 1, "b": 0, "c": -1, "cor": "c3", "rotulo": "y = x² − 1" }
+        ],
+        "ponto": { "curva": 1, "x": -2, "passo": 1 },
+        "marcar": { "raizes": true },
+        "cores": { "raiz": "c4" }
+      },
+      "lines": {
+        "intro": "Entre −1 e 1, x² − 1 fica acima ou abaixo do eixo? Leve x até 0.",
+        "done": "Fica abaixo; em 0 vale −1, e os fatores têm sinais opostos nesse intervalo."
+      },
+      "complete_when": { "metric": "ponto_x", "gte": 0 }
+    },
+    {
+      "id": "inverter-concavidade",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-3, 3],
+        "y": [-3, 3],
+        "curvas": [
+          { "tipo": "quadratica", "a": 1, "b": 0, "c": -1, "fantasma": true, "rotulo": "y = x² − 1" },
+          { "tipo": "quadratica", "a": -1, "b": 0, "c": 1, "cor": "c3", "rotulo": "y = 1 − x²" }
+        ],
+        "ponto": { "curva": 1, "x": 0, "passo": 1 },
+        "marcar": { "raizes": true },
+        "cores": { "raiz": "c4" }
+      },
+      "lines": {
+        "intro": "Ao trocar a saída pelo oposto, o exterior passa a ser negativo? Arraste até 2.",
+        "done": "Sim; a reflexão vertical troca o sinal, por isso 1 − x² < 0 fora de [−1; 1]."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E em x² ≤ 0?",
+        "resposta": "Só x = 0 serve; a raiz dupla não cria um trecho negativo."
+      },
+      "complete_when": { "metric": "ponto_x", "gte": 2 }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 3],
+          "y": [-3, 3],
+          "curvas": [
+            { "tipo": "quadratica", "a": 1, "b": 0, "c": -1, "cor": "c3", "rotulo": "y = x² − 1" }
+          ],
+          "marcar": { "raizes": true },
+          "cores": { "raiz": "c4" }
+        }
+      },
+      "prompt": "Onde x² − 1 ≤ 0?",
+      "lines": {
+        "intro": "Observe onde a parábola fica abaixo ou sobre o eixo x."
+      },
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "Fora de [−1; 1]",
+          "correct": false,
+          "feedback": "Você escolheu o sinal positivo; a solução é [−1; 1], incluindo as raízes.",
+          "figure": {
+            "ponto": { "curva": 0, "x": 2 }
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "[−1; 1]",
+          "correct": true,
+          "feedback": "Certo: [−1; 1]. O produto (x − 1)(x + 1) é não positivo entre as raízes.",
+          "figure": {
+            "ponto": { "curva": 0, "x": 0 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-3, 3],
+          "y": [-3, 3],
+          "curvas": [
+            { "tipo": "quadratica", "a": 1, "b": 0, "c": -1, "cor": "c3", "rotulo": "y = (x−1)(x+1)" }
+          ],
+          "marcar": { "raizes": true },
+          "cores": { "raiz": "c4" }
+        }
+      },
+      "formula": [
+        { "text": "a", "ref": "c2" },
+        { "text": "· (x" },
+        { "text": "− r1)(x − r2) ≤ 0" },
+        { "text": "⇔" },
+        { "text": "r1 ≤ x ≤ r2", "ref": "c4" }
+      ],
+      "definitions": [
+        { "term": "Entrada x", "text": "Número usado na comparação." },
+        { "term": "Valor da quadrática", "text": "Altura da parábola, comparada com zero." },
+        { "term": "Intervalo-solução", "text": "Entradas aceitas pela desigualdade." }
+      ],
+      "lines": {
+        "intro": "Os fatores trocam sinais nas raízes simples. Por isso o intervalo-solução depende também do sinal de a.",
+        "hint": "Toque em uma letra para ver seu significado."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-inequacoes-quadraticas",
+        "prompt": "Em x = 0, x² − 1 é positivo ou negativo?",
+        "options": [
+          { "id": "f1-erro", "label": "Positivo", "correct": false, "feedback": "Você ignorou o termo −1. O certo é Negativo, pois 0² − 1 = −1." },
+          { "id": "f1-certa", "label": "Negativo", "correct": true, "feedback": "Certo: Negativo, pois 0² − 1 = −1." }
+        ]
+      },
+      {
+        "id": "f2-inequacoes-quadraticas",
+        "prompt": "Onde x² − 1 zera?",
+        "options": [
+          { "id": "f2-certa", "label": "−1 e 1", "correct": true, "feedback": "Certo: −1 e 1, pois x² = 1 resulta em x = 1 ou x = −1." },
+          { "id": "f2-erro", "label": "0 e 1", "correct": false, "feedback": "Você confundiu o vértice com uma raiz. O certo é −1 e 1." }
+        ]
+      },
+      {
+        "id": "f3-inequacoes-quadraticas",
+        "prompt": "Em x² − 1 < 0, as raízes entram?",
+        "options": [
+          { "id": "f3-certa", "label": "Não", "correct": true, "feedback": "Certo: Não, pois a desigualdade estrita não aceita igual a zero." },
+          { "id": "f3-erro", "label": "Sim", "correct": false, "feedback": "A comparação estrita não aceita zero. O certo é Não, pois 0 < 0 é falso." }
+        ]
+      },
+      {
+        "id": "f4-inequacoes-quadraticas",
+        "prompt": "Trocar P por −P muda o sinal fora das raízes?",
+        "options": [
+          { "id": "f4-certa", "label": "Sim", "correct": true, "feedback": "Certo: Sim, multiplicar por −1 inverte o sinal de todas as saídas." },
+          { "id": "f4-erro", "label": "Não", "correct": false, "feedback": "Multiplicar por −1 inverte o sinal. O certo é Sim: positivo vira negativo." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-inequacoes-quadraticas",
+        "prompt": "Resolva x² − 4 < 0.",
+        "options": [
+          { "id": "m1-certa", "label": "(−2; 2)", "correct": true, "feedback": "Certo: (−2; 2), pois x² < 4 resulta em −2 < x < 2." },
+          { "id": "m1-erro", "label": "(−∞; −2) ∪ (2; +∞)", "correct": false, "feedback": "Você escolheu a parte positiva. O certo é (−2; 2)." }
+        ]
+      },
+      {
+        "id": "m2-inequacoes-quadraticas",
+        "prompt": "Resolva x² − 1 ≥ 0.",
+        "options": [
+          { "id": "m2-certa", "label": "(−∞; −1] ∪ [1; +∞)", "correct": true, "feedback": "Certo: (−∞; −1] ∪ [1; +∞), pois x² ≥ 1 fora do intervalo das raízes." },
+          { "id": "m2-erro", "label": "[−1; 1]", "correct": false, "feedback": "O interior tem sinal negativo. O certo é (−∞; −1] ∪ [1; +∞)." }
+        ]
+      },
+      {
+        "id": "m3-inequacoes-quadraticas",
+        "prompt": "Resolva 1 − x² ≥ 0.",
+        "options": [
+          { "id": "m3-certa", "label": "[−1; 1]", "correct": true, "feedback": "Certo: [−1; 1], pois 1 − x² ≥ 0 equivale a x² ≤ 1." },
+          { "id": "m3-erro", "label": "(−1; 1)", "correct": false, "feedback": "Você retirou igualdades válidas. O certo é [−1; 1], incluindo as raízes." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-inequacoes-quadraticas",
+        "prompt": "Resolva (x − 1)² ≤ 0.",
+        "fala": "Lembre que um quadrado perfeito real nunca é estritamente negativo.",
+        "options": [
+          { "id": "d1-certa", "label": "{1}", "correct": true, "feedback": "Certo: {1}, pois um quadrado real nunca é negativo, mas zera em x = 1." },
+          { "id": "d1-erro", "label": "∅", "correct": false, "feedback": "O quadrado pode ser zero. O certo é {1}, pois (1 − 1)² = 0." }
+        ]
+      },
+      {
+        "id": "d2-inequacoes-quadraticas",
+        "prompt": "Resolva x² + 1 < 0 nos reais.",
+        "fala": "Pense no menor valor que x² + 1 pode atingir.",
+        "options": [
+          { "id": "d2-certa", "label": "∅", "correct": true, "feedback": "Certo: ∅, pois x² ≥ 0 implica x² + 1 ≥ 1, nunca menor que zero." },
+          { "id": "d2-erro", "label": "R", "correct": false, "feedback": "Um quadrado real somado a 1 nunca é negativo. O certo é ∅." }
+        ]
+      },
+      {
+        "id": "d3-inequacoes-quadraticas",
+        "prompt": "Resolva 4x² − 1 < 0.",
+        "fala": "Isole x² e encontre a raiz quadrada da fração.",
+        "options": [
+          { "id": "d3-certa", "label": "(−0,5; 0,5)", "correct": true, "feedback": "Certo: (−0,5; 0,5), pois x² < 1/4 resulta em −0,5 < x < 0,5." },
+          { "id": "d3-erro", "label": "(−0,25; 0,25)", "correct": false, "feedback": "Você não tirou a raiz de 1/4. O certo é (−0,5; 0,5)." }
+        ]
+      },
+      {
+        "id": "d4-inequacoes-quadraticas",
+        "prompt": "Resolva −(x − 2)² ≥ 0.",
+        "fala": "Um número com sinal negativo pode ser maior ou igual a zero?",
+        "options": [
+          { "id": "d4-certa", "label": "{2}", "correct": true, "feedback": "Certo: {2}, pois o oposto de um quadrado só não é negativo quando zera em x = 2." },
+          { "id": "d4-erro", "label": "R", "correct": false, "feedback": "O sinal negativo torna as outras saídas negativas. O certo é {2}." }
+        ]
+      },
+      {
+        "id": "d5-inequacoes-quadraticas",
+        "prompt": "Uma área vale x(x + 1) com x ≥ 0. Para ela ser no máximo 6, qual x serve?",
+        "fala": "Monte x² + x − 6 ≤ 0 e lembre que x não pode ser negativo.",
+        "options": [
+          { "id": "d5-certa", "label": "[0; 2]", "correct": true, "feedback": "Certo: [0; 2], pois (x + 3)(x − 2) ≤ 0 com x ≥ 0 dá 0 ≤ x ≤ 2." },
+          { "id": "d5-erro", "label": "[−3; 2]", "correct": false, "feedback": "Você aceitou uma dimensão negativa. O certo é [0; 2], pois x ≥ 0." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

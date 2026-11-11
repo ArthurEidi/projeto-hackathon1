@@ -596,6 +596,20 @@
                   "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-primeiro-grau/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "inequacoes-quadraticas",
+              "titulo": "Inequações quadráticas",
+              "icone": "parabola",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações Quadráticas",
+                  "subtitulo": "Ler o sinal entre raízes",
+                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-quadraticas/aula-01.json"
+                }
+              ]
             }
           ]
         },
