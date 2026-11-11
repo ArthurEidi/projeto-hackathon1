@@ -845,20 +845,6 @@
               ]
             },
             {
-              "id": "semelhanca-e-pitagoras",
-              "titulo": "Semelhança e Pitágoras",
-              "icone": "triangulo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Quadrados Sobre os Lados",
-                  "subtitulo": "Teorema de Pitágoras",
-                  "arquivo": null
-                }
-              ]
-            },
-            {
               "id": "areas",
               "titulo": "Áreas de Figuras Planas",
               "icone": "triangulo",
@@ -883,6 +869,20 @@
                   "titulo": "Quantos Diâmetros Cabem",
                   "subtitulo": "Comprimento e área do círculo",
                   "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "teorema-de-pitagoras",
+              "titulo": "Teorema de Pitágoras",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Teorema de Pitágoras",
+                  "subtitulo": "Três quadrados nos lados",
+                  "arquivo": "geometria/geometria-plana/teorema-de-pitagoras/aula-01.json"
                 }
               ]
             }

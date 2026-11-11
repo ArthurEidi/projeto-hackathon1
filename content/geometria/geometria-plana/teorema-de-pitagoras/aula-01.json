@@ -1,0 +1,625 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Teorema de Pitágoras",
+  "subtitulo": "Três quadrados nos lados",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "teorema-de-pitagoras"
+  },
+  "outro": "Você somou as áreas dos quadrados nos catetos, dominou as ternas 3-4-5 e 6-8-10 e calculou a diagonal do quadrado.",
+  "glossario": {
+    "c1": {
+      "nome": "Cateto b",
+      "resumo": "Um dos lados que formam o ângulo reto (90°); gera o quadrado b²."
+    },
+    "c2": {
+      "nome": "Cateto c",
+      "resumo": "O outro lado que forma 90°; gera o quadrado c²."
+    },
+    "c3": {
+      "nome": "Hipotenusa a",
+      "resumo": "Lado oposto ao ângulo de 90° (o maior lado); gera o quadrado a²."
+    },
+    "c4": {
+      "nome": "Diagonal d",
+      "resumo": "Hipotenusa quando os dois catetos são lados iguais de um quadrado."
+    }
+  },
+  "steps": [
+    {
+      "id": "quadrados-3-4-5",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "pitagoras",
+        "b": 3,
+        "c": "$c",
+        "quadrados": true,
+        "malha": true
+      },
+      "controls": [
+        {
+          "id": "c",
+          "label": "Cateto c",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Com c = 0, a hipotenusa empata com b = 3. Leve c até 4: quantos quadradinhos somam os dois catetos no quadrado da hipotenusa?",
+        "done": "9 + 16 = 25 quadradinhos, que formam um quadrado de lado 5. É a famosa terna 3-4-5."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que a gente soma os quadrados (b² + c²) e não os lados direto?",
+        "resposta": "Somar lados (3 + 4 = 7) seria andar pela esquina. O atalho a = 5 fecha a igualdade nas áreas dos quadrados."
+      },
+      "complete_when": {
+        "metric": "c",
+        "gte": 4
+      }
+    },
+    {
+      "id": "quebra-cabeca-areas",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "pitagoras",
+        "b": 3,
+        "c": 4,
+        "prova": true,
+        "chaves": [
+          "deslizar"
+        ]
+      },
+      "lines": {
+        "intro": "Por que b² + c² sempre dá a²? Deslize os 4 triângulos dentro do quadradão e veja no que a área vazia a² se transforma.",
+        "done": "O quadradão e os 4 triângulos são os mesmos, então o espaço que sobra tem que ser igual: a² = b² + c²."
+      },
+      "complete_when": {
+        "metric": "deslizou_pecas",
+        "gte": 1
+      }
+    },
+    {
+      "id": "ternas-e-diagonal",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "pitagoras",
+        "b": "$b",
+        "c": "(4/3)*$b",
+        "chaves": [
+          "diagonal"
+        ]
+      },
+      "controls": [
+        {
+          "id": "b",
+          "label": "Cateto b",
+          "min": 3,
+          "max": 6,
+          "step": 3,
+          "initial": 3,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Dobre a terna 3-4-5 para catetos 6 e 8 e veja a hipotenusa; depois toque na diagonal do quadrado de lado 5.",
+        "done": "Dobrando 3-4-5 nasce a terna 6-8-10. E no quadrado de lados iguais L, d² = L² + L² = 2L²."
+      },
+      "complete_when": {
+        "metric": "testou_diagonal",
+        "gte": 1
+      }
+    },
+    {
+      "id": "fora-de-90-graus",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "cossenos",
+        "b": 3,
+        "c": 4,
+        "angulo": "$theta",
+        "fantasma": true
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Ângulo entre b e c",
+          "min": 60,
+          "max": 120,
+          "step": 15,
+          "initial": 90,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "E se o canto entre 3 e 4 não for de 90°? Mude o ângulo e veja se a² continua valendo 25.",
+        "done": "Passou de 90°, a² passa de 25; fechou menos de 90°, a² fica menor que 25. Pitágoras exige ângulo reto cravado."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Um cateto pode ser maior que a hipotenusa?",
+        "resposta": "Nunca: como a² = b² + c² soma dois quadrados positivos, a hipotenusa é sempre o maior dos três lados."
+      },
+      "complete_when": {
+        "metric": "theta",
+        "gte": 105
+      }
+    },
+    {
+      "id": "desafio-achar-cateto",
+      "type": "micro_challenge",
+      "prompt": "Num triângulo retângulo, a hipotenusa mede 10 e um dos catetos mede 8. Quanto mede o outro cateto?",
+      "lines": {
+        "intro": "Atenção a quem está oposto ao ângulo de 90°: o 10 já é a hipotenusa!"
+      },
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "pitagoras",
+          "b": 8,
+          "c": 6,
+          "quadrados": true
+        }
+      },
+      "options": [
+        {
+          "id": "a6",
+          "label": "6",
+          "correct": true,
+          "feedback": "Isso. 8² + x² = 10², então 64 + x² = 100, x² = 36 e x = 6 (terna 6-8-10)."
+        },
+        {
+          "id": "a36",
+          "label": "36",
+          "correct": false,
+          "feedback": "36 é a área do quadrado (x²). Tirando a raiz quadrada de 36, o cateto mede 6."
+        },
+        {
+          "id": "a2",
+          "label": "2",
+          "correct": false,
+          "feedback": "Você subtraiu os lados (10 − 8 = 2). Subtraia os quadrados: 100 − 64 = 36, cuja raiz é 6."
+        },
+        {
+          "id": "a12-8",
+          "label": "12,8",
+          "correct": false,
+          "feedback": "Você somou 10² + 8² = 164 como se x fosse a hipotenusa. O 10 é a hipotenusa: 100 − 64 = 36, x = 6."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "pitagoras",
+          "b": 3,
+          "c": 4,
+          "quadrados": true
+        }
+      },
+      "formula": [
+        {
+          "text": "a²",
+          "ref": "c3"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "b²",
+          "ref": "c1"
+        },
+        {
+          "text": " + "
+        },
+        {
+          "text": "c²",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Hipotenusa a",
+          "text": "Lado oposto ao ângulo de 90°; é sempre o maior lado."
+        },
+        {
+          "term": "Cateto b",
+          "text": "Um dos lados que formam o ângulo reto (90°); gera o quadrado b²."
+        },
+        {
+          "term": "Cateto c",
+          "text": "O outro lado que forma 90°; gera o quadrado c²."
+        }
+      ],
+      "lines": {
+        "intro": "Os 4 triângulos deixam a mesma área livre nos dois arranjos, por isso o quadrado da hipotenusa soma os quadrados dos catetos.",
+        "hint": "Toque em a², b² ou c² para iluminar o quadrado correspondente na figura."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "hipotenusa-3-4",
+        "prompt": "Os catetos de um triângulo retângulo medem 3 cm e 4 cm. Quanto mede a hipotenusa?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5 cm",
+            "correct": true,
+            "feedback": "Isso. 3² + 4² = 9 + 16 = 25, e a raiz de 25 é 5 cm."
+          },
+          {
+            "id": "a7",
+            "label": "7 cm",
+            "correct": false,
+            "feedback": "7 cm é a soma 3 + 4. Em Pitágoras somamos os quadrados: 9 + 16 = 25, raiz = 5 cm."
+          },
+          {
+            "id": "a25",
+            "label": "25 cm",
+            "correct": false,
+            "feedback": "25 é a² (a área do quadrado). A hipotenusa é a raiz de 25: 5 cm."
+          },
+          {
+            "id": "a1",
+            "label": "1 cm",
+            "correct": false,
+            "feedback": "A hipotenusa é o maior lado: raiz de (9 + 16) = 5 cm."
+          }
+        ]
+      },
+      {
+        "id": "quem-e-hipotenusa",
+        "prompt": "Num triângulo retângulo de lados 5, 12 e 13, qual medida é a hipotenusa (oposta ao ângulo de 90°)?",
+        "options": [
+          {
+            "id": "a13",
+            "label": "13",
+            "correct": true,
+            "feedback": "Certo. A hipotenusa é sempre o maior lado: 5² + 12² = 13²."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é o cateto maior. A hipotenusa é o maior dos três lados: 13."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 é o menor cateto. Oposta a 90° fica o maior lado: 13."
+          },
+          {
+            "id": "a17",
+            "label": "17",
+            "correct": false,
+            "feedback": "17 é 5 + 12. Dos lados dados (5, 12 e 13), a hipotenusa é 13."
+          }
+        ]
+      },
+      {
+        "id": "cateto-3-5",
+        "prompt": "Um triângulo retângulo tem hipotenusa 5 e um cateto igual a 3. Quanto mede o outro cateto?",
+        "options": [
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Exato. 25 − 9 = 16, cuja raiz quadrada é 4."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é 5 − 3. Subtraia os quadrados: 5² − 3² = 16, e a raiz é 4."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 é o cateto ao quadrado (b²). Tirando a raiz, o cateto vale 4."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "O cateto é menor que a hipotenusa 5: raiz de (25 − 9) = 4."
+          }
+        ]
+      },
+      {
+        "id": "diagonal-quadrado-area",
+        "prompt": "Um quadrado tem lado 3. Quanto vale d², o quadrado da sua diagonal?",
+        "options": [
+          {
+            "id": "a18",
+            "label": "18",
+            "correct": true,
+            "feedback": "Isso. A diagonal divide o quadrado em dois catetos de 3: d² = 3² + 3² = 18."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é a área de um lado só (3²). Somando os dois catetos: 9 + 9 = 18."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é 3 + 3. Pela fórmula de Pitágoras, d² = 3² + 3² = 18."
+          },
+          {
+            "id": "a36",
+            "label": "36",
+            "correct": false,
+            "feedback": "36 é (3 + 3)². Somam-se os quadrados separados: 9 + 9 = 18."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "escada-na-parede",
+        "prompt": "Uma escada de 10 m está apoiada numa parede, com o pé a 6 m da base da parede. A que altura da parede ela encosta?",
+        "options": [
+          {
+            "id": "a8",
+            "label": "8 m",
+            "correct": true,
+            "feedback": "Certo. Terna 6-8-10: 10² − 6² = 64, então a altura é 8 m."
+          },
+          {
+            "id": "a4",
+            "label": "4 m",
+            "correct": false,
+            "feedback": "4 m é 10 − 6. Usando Pitágoras: 100 − 36 = 64, cuja raiz é 8 m."
+          },
+          {
+            "id": "a16",
+            "label": "16 m",
+            "correct": false,
+            "feedback": "A altura não pode passar do tamanho da escada (10 m). Vale 8 m."
+          },
+          {
+            "id": "a64",
+            "label": "64 m",
+            "correct": false,
+            "feedback": "64 é h². Tirando a raiz quadrada de 64, a altura é 8 m."
+          }
+        ]
+      },
+      {
+        "id": "diagonal-retangulo-5-12",
+        "prompt": "Um terreno retangular mede 5 m de largura por 12 m de comprimento. Quanto mede a diagonal desse terreno?",
+        "options": [
+          {
+            "id": "a13",
+            "label": "13 m",
+            "correct": true,
+            "feedback": "Exato. 5² + 12² = 25 + 144 = 169, e a raiz de 169 é 13 m."
+          },
+          {
+            "id": "a17",
+            "label": "17 m",
+            "correct": false,
+            "feedback": "17 m é o caminho pelos dois lados (5 + 12). Pela diagonal: raiz de 169 = 13 m."
+          },
+          {
+            "id": "a7",
+            "label": "7 m",
+            "correct": false,
+            "feedback": "7 m é 12 − 5. A diagonal é a hipotenusa: 5² + 12² = 13², logo 13 m."
+          },
+          {
+            "id": "a15",
+            "label": "15 m",
+            "correct": false,
+            "feedback": "25 + 144 = 169 (não 225). A raiz de 169 é 13 m."
+          }
+        ]
+      },
+      {
+        "id": "altura-isosceles",
+        "prompt": "Um triângulo isósceles tem lados iguais de 5 cm e base de 6 cm. Quanto mede a altura relativa à base?",
+        "fala": "No isósceles, a altura cai bem no meio da base, dividindo os 6 cm em duas metades de 3 cm.",
+        "options": [
+          {
+            "id": "a4",
+            "label": "4 cm",
+            "correct": true,
+            "feedback": "Isso. Metade da base é 3 cm; no triângulo retângulo de hipotenusa 5 e cateto 3, h = 4 cm."
+          },
+          {
+            "id": "a5",
+            "label": "5 cm",
+            "correct": false,
+            "feedback": "5 cm é o lado inclinado (hipotenusa). A altura é o cateto: raiz de (25 − 9) = 4 cm."
+          },
+          {
+            "id": "a2",
+            "label": "2 cm",
+            "correct": false,
+            "feedback": "Use metade da base (3 cm) em Pitágoras: 5² − 3² = 16, então h = 4 cm."
+          },
+          {
+            "id": "a3",
+            "label": "3 cm",
+            "correct": false,
+            "feedback": "3 cm é a metade da base. A altura mede raiz de (25 − 9) = 4 cm."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "terna-decimal",
+        "prompt": "Os catetos de um triângulo retângulo medem 1,5 m e 2 m. Quanto mede a hipotenusa?",
+        "fala": "Repare que 1,5 e 2 são exatamente a metade de 3 e 4.",
+        "options": [
+          {
+            "id": "a2-5",
+            "label": "2,5 m",
+            "correct": true,
+            "feedback": "Certo. É a terna 3-4-5 dividida por 2: 2,25 + 4 = 6,25, raiz = 2,5 m."
+          },
+          {
+            "id": "a3-5",
+            "label": "3,5 m",
+            "correct": false,
+            "feedback": "3,5 m é a soma 1,5 + 2. Pela raiz de (2,25 + 4 = 6,25), a hipotenusa é 2,5 m."
+          },
+          {
+            "id": "a6-25",
+            "label": "6,25 m",
+            "correct": false,
+            "feedback": "6,25 é o quadrado da hipotenusa (a²). Tirando a raiz, dá 2,5 m."
+          },
+          {
+            "id": "a2-25",
+            "label": "2,25 m",
+            "correct": false,
+            "feedback": "2,25 é só 1,5². Somando 2² = 4 dá 6,25, cuja raiz é 2,5 m."
+          }
+        ]
+      },
+      {
+        "id": "lado-pela-diagonal",
+        "prompt": "A diagonal de um quadrado mede 6 cm. Qual é a área (L²) desse quadrado?",
+        "fala": "Use d² = L² + L² = 2·L²: você nem precisa achar L separado para descobrir L²!",
+        "options": [
+          {
+            "id": "a18",
+            "label": "18 cm²",
+            "correct": true,
+            "feedback": "Exato. Como d² = 2·L², temos 36 = 2·L² e a área L² vale 18 cm²."
+          },
+          {
+            "id": "a36",
+            "label": "36 cm²",
+            "correct": false,
+            "feedback": "36 é d² (área do quadrado sobre a diagonal). A área do quadrado original é metade: 18 cm²."
+          },
+          {
+            "id": "a12",
+            "label": "12 cm²",
+            "correct": false,
+            "feedback": "d² = 6² = 36, e dividindo por 2 encontramos L² = 18 cm²."
+          },
+          {
+            "id": "a9",
+            "label": "9 cm²",
+            "correct": false,
+            "feedback": "9 cm² seria para lado 3 (diagonal raiz de 18). Com diagonal 6, L² = 36 / 2 = 18 cm²."
+          }
+        ]
+      },
+      {
+        "id": "losango-diagonais",
+        "prompt": "As diagonais de um losango se cruzam a 90° no meio e medem 12 cm e 16 cm. Quanto mede cada lado do losango?",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10 cm",
+            "correct": true,
+            "feedback": "Isso. As metades das diagonais são 6 cm e 8 cm (catetos), dando hipotenusa 10 cm."
+          },
+          {
+            "id": "a20",
+            "label": "20 cm",
+            "correct": false,
+            "feedback": "20 cm usa 12 e 16 inteiros. As diagonais se cortam ao meio (6 e 8), então o lado mede 10 cm."
+          },
+          {
+            "id": "a14",
+            "label": "14 cm",
+            "correct": false,
+            "feedback": "14 é a soma das metades (6 + 8). Pela terna 6-8-10, o lado mede 10 cm."
+          },
+          {
+            "id": "a8",
+            "label": "8 cm",
+            "correct": false,
+            "feedback": "8 cm é metade da diagonal maior. O lado é a hipotenusa de 6 e 8: 10 cm."
+          }
+        ]
+      },
+      {
+        "id": "classificar-angulo-pela-soma",
+        "prompt": "Um triângulo tem lados 3, 4 e 6. Como 6² = 36 é maior que 3² + 4² = 25, o ângulo oposto ao lado 6 é:",
+        "options": [
+          {
+            "id": "obtuso",
+            "label": "Maior que 90° (obtuso)",
+            "correct": true,
+            "feedback": "Certo. Em 90° o lado seria 5; para chegar a 6, o ângulo precisou abrir além de 90°."
+          },
+          {
+            "id": "reto",
+            "label": "Igual a 90° (reto)",
+            "correct": false,
+            "feedback": "Em 90° o terceiro lado mediria 5 (3² + 4² = 25). Com lado 6, o ângulo é maior que 90°."
+          },
+          {
+            "id": "agudo",
+            "label": "Menor que 90° (agudo)",
+            "correct": false,
+            "feedback": "Menor que 90° daria lado menor que 5. Como 6 > 5, o ângulo é maior que 90° (obtuso)."
+          },
+          {
+            "id": "imposs",
+            "label": "Não fecha triângulo",
+            "correct": false,
+            "feedback": "Fecha sim, pois 3 + 4 = 7 > 6. E como 6² > 25, o ângulo é maior que 90°."
+          }
+        ]
+      },
+      {
+        "id": "caminho-em-l",
+        "prompt": "Um drone voa 4 km para o norte, 6 km para o leste e mais 4 km para o norte. A que distância em linha reta ele está da partida?",
+        "fala": "Junte todo o deslocamento para o norte num cateto só e todo o deslocamento para o leste no outro.",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10 km",
+            "correct": true,
+            "feedback": "Exato. Ele avançou 8 km ao norte e 6 km ao leste: hipotenusa de 6 e 8 vale 10 km."
+          },
+          {
+            "id": "a14",
+            "label": "14 km",
+            "correct": false,
+            "feedback": "14 km é o caminho percorrido (4 + 6 + 4). Em linha reta (catetos 8 e 6), dá 10 km."
+          },
+          {
+            "id": "a8",
+            "label": "8 km",
+            "correct": false,
+            "feedback": "8 km é só o total para o norte (4 + 4). Com os 6 km ao leste, a distância é 10 km."
+          },
+          {
+            "id": "a12",
+            "label": "12 km",
+            "correct": false,
+            "feedback": "Os catetos totais são 8 e 6: 8² + 6² = 100, então a distância é 10 km."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
