@@ -1080,23 +1080,16 @@
           "titulo": "Geometria Analítica",
           "unidades": [
             {
-              "id": "ponto-e-reta",
-              "titulo": "Ponto e Reta",
+              "id": "reta-equacao-e-inclinacao",
+              "titulo": "Equação da reta, inclinação e interceptos",
               "icone": "reta",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Endereços no Plano",
-                  "subtitulo": "Distância e ponto médio",
-                  "arquivo": null
-                },
-                {
-                  "id": "aula-02",
-                  "numero": 2,
-                  "titulo": "A Equação da Reta",
-                  "subtitulo": "Coeficiente angular e equação",
-                  "arquivo": null
+                  "titulo": "Dois Pontos Bastam",
+                  "subtitulo": "Coeficiente angular, linear e equação da reta",
+                  "arquivo": "geometria/geometria-analitica/reta-equacao-e-inclinacao/aula-01.json"
                 }
               ]
             },
