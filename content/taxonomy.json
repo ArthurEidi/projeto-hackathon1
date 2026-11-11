@@ -901,20 +901,6 @@
               ]
             },
             {
-              "id": "areas",
-              "titulo": "Áreas de Figuras Planas",
-              "icone": "triangulo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Contar Quadradinhos",
-                  "subtitulo": "Área de polígonos",
-                  "arquivo": null
-                }
-              ]
-            },
-            {
               "id": "circunferencia",
               "titulo": "Circunferência e Círculo",
               "icone": "circulo",
@@ -925,6 +911,20 @@
                   "titulo": "Quantos Diâmetros Cabem",
                   "subtitulo": "Comprimento e área do círculo",
                   "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "perimetro-e-area-de-figuras-planas",
+              "titulo": "Perímetro e área de figuras planas",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Contorno e Preenchimento",
+                  "subtitulo": "Perímetro, área por corte e escala k²",
+                  "arquivo": "geometria/geometria-plana/perimetro-e-area-de-figuras-planas/aula-01.json"
                 }
               ]
             }

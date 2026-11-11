@@ -1,0 +1,681 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Contorno e Preenchimento",
+  "subtitulo": "Perímetro, área por corte e escala k²",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "perimetro-e-area-de-figuras-planas"
+  },
+  "outro": "Você diferenciou contorno de preenchimento, deduziu áreas por corte e viu que a escala k gera k² na área.",
+  "glossario": {
+    "c1": {
+      "nome": "Base (b, B)",
+      "resumo": "Lado de apoio sobre a malha onde contamos as colunas (b ou B)."
+    },
+    "c2": {
+      "nome": "Altura (h)",
+      "resumo": "Distância perpendicular entre a base e o topo, em linhas da malha."
+    },
+    "c3": {
+      "nome": "Área (A)",
+      "resumo": "Quantidade de quadradinhos unitários que preenchem o interior."
+    },
+    "c4": {
+      "nome": "Perímetro (P)",
+      "resumo": "Comprimento total do contorno, somando todos os lados."
+    }
+  },
+  "steps": [
+    {
+      "id": "retangulo-malha",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "malha",
+        "forma": "retangulo",
+        "b": "$b",
+        "h": "$h",
+        "fantasma": [1, 1],
+        "mostrar": {
+          "area": true,
+          "perimetro": true,
+          "alturas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "b",
+          "label": "Base b",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        },
+        {
+          "id": "h",
+          "label": "Altura h",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "O quadradinho 1 por 1 é nossa unidade. Leve b até 4 e h até 3: quantos quadradinhos preenchem o retângulo e quanto mede o contorno?",
+        "done": "São 4 colunas de 3: área 4·3 = 12 quadradinhos, enquanto o perímetro soma o contorno: 4 + 3 + 4 + 3 = 14."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda figura plana se mede contando quadradinhos inteiros assim?",
+        "resposta": "Em círculos usamos π e no espaço medimos volumes. Hoje recortamos polígonos para transformá-los em retângulos."
+      },
+      "complete_when": {
+        "metric": "b",
+        "gte": 4
+      }
+    },
+    {
+      "id": "paralelogramo-corte",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "malha",
+        "forma": "paralelogramo",
+        "b": 4,
+        "h": 3,
+        "inc": "$inc",
+        "cortar": "$cortar",
+        "fantasma": [4, 3],
+        "mostrar": {
+          "area": true,
+          "perimetro": true,
+          "alturas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "inc",
+          "label": "Inclinação",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 2,
+          "color": "c4"
+        },
+        {
+          "id": "cortar",
+          "label": "Cortar e encaixar",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Incline o paralelogramo e acione o corte: o contorno estica, mas a área muda quando encaixamos o triângulo na outra ponta?",
+        "done": "O que sai de um lado entra no outro: a área continua 4·3 = 12, mesmo com o perímetro aumentando na inclinação."
+      },
+      "complete_when": {
+        "metric": "encaixado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "triangulo-e-trapezio",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "malha",
+        "forma": "triangulo",
+        "b": 4,
+        "h": 3,
+        "inc": 1,
+        "duplicar": "$duplicado",
+        "mostrar": {
+          "area": true,
+          "perimetro": true,
+          "alturas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "duplicado",
+          "label": "Girar cópia",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Encaixe uma cópia girada do triângulo ao lado dele. Que figura os dois formam juntos, e qual fração sobra para um só?",
+        "done": "Juntos formam um paralelogramo de área b·h = 12; logo um triângulo sozinho tem metade: A = b·h / 2 = 6."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E no trapézio, funciona igual?",
+        "resposta": "Sim: dois trapézios iguais encaixados formam um paralelogramo de base B + b, então um só tem área (B + b)·h / 2."
+      },
+      "complete_when": {
+        "metric": "duplicado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "escala-k2",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "malha",
+        "forma": "retangulo",
+        "b": 2,
+        "h": 3,
+        "k": "$k",
+        "fantasma": [2, 3],
+        "mostrar": {
+          "area": true,
+          "perimetro": true,
+          "alturas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Escala k",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Se dobrarmos a base e a altura (k = 2), o perímetro dobra. A área também só dobra ou cresce mais?",
+        "done": "Como base e altura são multiplicadas por k, a área multiplica por k·k = k². Dobrar os lados quadruplica a área: de 6 vai para 24."
+      },
+      "complete_when": {
+        "metric": "k",
+        "gte": 2
+      }
+    },
+    {
+      "id": "desafio-trapezio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "malha",
+          "forma": "trapezio",
+          "b": 4,
+          "B": 6,
+          "h": 3,
+          "inc": 1,
+          "mostrar": {
+            "area": true,
+            "perimetro": true,
+            "alturas": true
+          }
+        }
+      },
+      "lines": {
+        "intro": "Some as duas bases antes de multiplicar pela altura e dividir por 2."
+      },
+      "prompt": "Qual é a área de um trapézio com base maior 6, base menor 4 e altura 3?",
+      "options": [
+        {
+          "id": "a15",
+          "label": "15",
+          "correct": true,
+          "feedback": "Isso. (6 + 4)·3 / 2 = 30 / 2 = 15.",
+          "figure": {
+            "duplicar": 1
+          }
+        },
+        {
+          "id": "a30",
+          "label": "30",
+          "correct": false,
+          "feedback": "30 é a área de dois trapézios juntos. Divida por 2: (6 + 4)·3 / 2 = 15.",
+          "figure": {
+            "duplicar": 1
+          }
+        },
+        {
+          "id": "a18",
+          "label": "18",
+          "correct": false,
+          "feedback": "18 usa só a base maior (6·3). Some as bases e divida por 2: (6 + 4)·3 / 2 = 15."
+        },
+        {
+          "id": "a13",
+          "label": "13",
+          "correct": false,
+          "feedback": "13 soma 6 + 4 + 3. A área é (6 + 4)·3 / 2 = 15."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "malha",
+          "forma": "triangulo",
+          "b": 4,
+          "h": 3,
+          "inc": 1,
+          "duplicar": 1,
+          "mostrar": {
+            "area": true,
+            "perimetro": true,
+            "alturas": true
+          }
+        }
+      },
+      "formula": [
+        { "text": "A", "ref": "c3" },
+        { "text": " = " },
+        { "text": "b", "ref": "c1" },
+        { "text": " · " },
+        { "text": "h", "ref": "c2" },
+        { "text": " / 2" }
+      ],
+      "definitions": [
+        {
+          "term": "Perímetro P",
+          "text": "Soma dos lados do contorno."
+        },
+        {
+          "term": "Área A",
+          "text": "Superfície interna; b·h no paralelogramo e (B + b)·h / 2 no trapézio."
+        },
+        {
+          "term": "Escala k",
+          "text": "Escala k nos lados multiplica o perímetro por k e a área por k²."
+        }
+      ],
+      "lines": {
+        "intro": "Todo triângulo é metade de um paralelogramo de mesma base e altura, por isso sua área é sempre b·h / 2.",
+        "hint": "Toque em cada letra para destacar a base, a altura e a área na malha."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-retangulo-area",
+        "prompt": "Um retângulo tem base 5 cm e altura 4 cm. Qual é a sua área?",
+        "options": [
+          {
+            "id": "a20",
+            "label": "20 cm²",
+            "correct": true,
+            "feedback": "Certo. 5 colunas de 4 quadradinhos: 5·4 = 20 cm²."
+          },
+          {
+            "id": "a18",
+            "label": "18 cm²",
+            "correct": false,
+            "feedback": "18 cm é o perímetro (5 + 4 + 5 + 4). A área é 5·4 = 20 cm²."
+          },
+          {
+            "id": "a9",
+            "label": "9 cm²",
+            "correct": false,
+            "feedback": "9 soma base e altura. A área multiplica: 5·4 = 20 cm²."
+          },
+          {
+            "id": "a10",
+            "label": "10 cm²",
+            "correct": false,
+            "feedback": "10 seria a área do triângulo (5·4 / 2). No retângulo é 5·4 = 20 cm²."
+          }
+        ]
+      },
+      {
+        "id": "f2-retangulo-perimetro",
+        "prompt": "Nesse mesmo retângulo de 5 cm por 4 cm, qual é o perímetro?",
+        "options": [
+          {
+            "id": "a18",
+            "label": "18 cm",
+            "correct": true,
+            "feedback": "Isso. Somando os 4 lados: 5 + 4 + 5 + 4 = 18 cm."
+          },
+          {
+            "id": "a20",
+            "label": "20 cm",
+            "correct": false,
+            "feedback": "20 cm² é a área (5·4). O perímetro soma os 4 lados: 18 cm."
+          },
+          {
+            "id": "a9",
+            "label": "9 cm",
+            "correct": false,
+            "feedback": "9 cm soma só dois lados. O contorno inteiro tem 2·(5 + 4) = 18 cm."
+          },
+          {
+            "id": "a14",
+            "label": "14 cm",
+            "correct": false,
+            "feedback": "14 soma 5 + 5 + 4. Faltou o outro lado de 4 cm: total 18 cm."
+          }
+        ]
+      },
+      {
+        "id": "f3-triangulo-simples",
+        "prompt": "Qual é a área de um triângulo de base 6 m e altura 4 m?",
+        "options": [
+          {
+            "id": "a12",
+            "label": "12 m²",
+            "correct": true,
+            "feedback": "Exato. Metade do paralelogramo: 6·4 / 2 = 12 m²."
+          },
+          {
+            "id": "a24",
+            "label": "24 m²",
+            "correct": false,
+            "feedback": "24 m² é a área do retângulo 6·4. No triângulo divide-se por 2: 12 m²."
+          },
+          {
+            "id": "a10",
+            "label": "10 m²",
+            "correct": false,
+            "feedback": "10 é 6 + 4. A área do triângulo é 6·4 / 2 = 12 m²."
+          },
+          {
+            "id": "a5",
+            "label": "5 m²",
+            "correct": false,
+            "feedback": "Você somou e dividiu por 2. Multiplique primeiro: 6·4 / 2 = 12 m²."
+          }
+        ]
+      },
+      {
+        "id": "f4-paralelogramo-area",
+        "prompt": "Um paralelogramo tem base 7 cm, lado inclinado 5 cm e altura 3 cm. Qual é a área?",
+        "options": [
+          {
+            "id": "a21",
+            "label": "21 cm²",
+            "correct": true,
+            "feedback": "Certo. Usa-se a altura perpendicular, não o lado inclinado: 7·3 = 21 cm²."
+          },
+          {
+            "id": "a35",
+            "label": "35 cm²",
+            "correct": false,
+            "feedback": "35 multiplica pelo lado inclinado 5. Use a altura 3: 7·3 = 21 cm²."
+          },
+          {
+            "id": "a24",
+            "label": "24 cm²",
+            "correct": false,
+            "feedback": "24 cm é o perímetro (7 + 5 + 7 + 5). A área é base vezes altura: 7·3 = 21 cm²."
+          },
+          {
+            "id": "a105",
+            "label": "10,5 cm²",
+            "correct": false,
+            "feedback": "Não se divide por 2 no paralelogramo. A área é 7·3 = 21 cm²."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-trapezio-direto",
+        "prompt": "Um trapézio tem bases de 8 cm e 4 cm e altura de 5 cm. Qual é a sua área?",
+        "options": [
+          {
+            "id": "a30",
+            "label": "30 cm²",
+            "correct": true,
+            "feedback": "Isso. (8 + 4)·5 / 2 = 12·5 / 2 = 30 cm²."
+          },
+          {
+            "id": "a60",
+            "label": "60 cm²",
+            "correct": false,
+            "feedback": "Faltou dividir por 2: (8 + 4)·5 / 2 = 30 cm²."
+          },
+          {
+            "id": "a40",
+            "label": "40 cm²",
+            "correct": false,
+            "feedback": "40 usa só a base maior (8·5). Com as duas bases: (8 + 4)·5 / 2 = 30 cm²."
+          },
+          {
+            "id": "a20",
+            "label": "20 cm²",
+            "correct": false,
+            "feedback": "20 usa só a base menor (4·5). O certo é (8 + 4)·5 / 2 = 30 cm²."
+          }
+        ]
+      },
+      {
+        "id": "m2-escala-triplicar",
+        "prompt": "Um jardim tem 10 m² de área. Se triplicarmos todos os seus lados (k = 3), qual será a nova área?",
+        "options": [
+          {
+            "id": "a90",
+            "label": "90 m²",
+            "correct": true,
+            "feedback": "Certo. Escala 3 nos lados multiplica a área por 3² = 9: 10·9 = 90 m²."
+          },
+          {
+            "id": "a30",
+            "label": "30 m²",
+            "correct": false,
+            "feedback": "O perímetro triplica, mas a área multiplica por 3² = 9: 10·9 = 90 m²."
+          },
+          {
+            "id": "a60",
+            "label": "60 m²",
+            "correct": false,
+            "feedback": "O fator da área é k² = 3² = 9, não 6. Nova área: 10·9 = 90 m²."
+          },
+          {
+            "id": "a19",
+            "label": "19 m²",
+            "correct": false,
+            "feedback": "Não se soma 9; multiplica-se por 3² = 9: 10·9 = 90 m²."
+          }
+        ]
+      },
+      {
+        "id": "m3-achar-altura",
+        "prompt": "Um triângulo tem área 18 cm² e base 9 cm. Quanto mede a sua altura?",
+        "options": [
+          {
+            "id": "a4",
+            "label": "4 cm",
+            "correct": true,
+            "feedback": "Exato. 9·h / 2 = 18 dá 9·h = 36, então h = 4 cm."
+          },
+          {
+            "id": "a2",
+            "label": "2 cm",
+            "correct": false,
+            "feedback": "Com h = 2 a área seria 9·2 / 2 = 9. Como há divisão por 2, h = 36 / 9 = 4 cm."
+          },
+          {
+            "id": "a9",
+            "label": "9 cm",
+            "correct": false,
+            "feedback": "9 é a metade de 18. Resolva 9·h / 2 = 18: h = 4 cm."
+          },
+          {
+            "id": "a1",
+            "label": "1 cm",
+            "correct": false,
+            "feedback": "Substituindo na fórmula: 9·h = 36, logo h = 4 cm."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-mesmo-perimetro-maior-area",
+        "prompt": "Dois terrenos retangulares têm perímetro 20 m: um mede 5 m por 5 m e o outro 8 m por 2 m. Qual tem maior área?",
+        "options": [
+          {
+            "id": "q55",
+            "label": "O de 5×5 (25 m²)",
+            "correct": true,
+            "feedback": "Isso. 5·5 = 25 m² contra 8·2 = 16 m²: mesmo perímetro não significa mesma área."
+          },
+          {
+            "id": "q82",
+            "label": "O de 8×2 (16 m²)",
+            "correct": false,
+            "feedback": "8·2 = 16 m², menor que 5·5 = 25 m². O quadrado 5×5 tem a maior área."
+          },
+          {
+            "id": "iguais",
+            "label": "Têm áreas iguais",
+            "correct": false,
+            "feedback": "Perímetros iguais podem ter áreas diferentes: 5·5 = 25 m² é maior que 8·2 = 16 m²."
+          },
+          {
+            "id": "q20",
+            "label": "Ambos têm 20 m²",
+            "correct": false,
+            "feedback": "20 m é o perímetro. As áreas são 25 m² (maior) e 16 m²."
+          }
+        ]
+      },
+      {
+        "id": "d2-figura-em-l",
+        "prompt": "De um retângulo de 6 cm por 5 cm foi recortado um canto de 2 cm por 2 cm. Qual é a área restante?",
+        "options": [
+          {
+            "id": "a26",
+            "label": "26 cm²",
+            "correct": true,
+            "feedback": "Certo. Área total 6·5 = 30 menos o canto 2·2 = 4 dá 26 cm²."
+          },
+          {
+            "id": "a30",
+            "label": "30 cm²",
+            "correct": false,
+            "feedback": "30 cm² é o retângulo inteiro. Subtraindo o canto 2·2 = 4, sobram 26 cm²."
+          },
+          {
+            "id": "a28",
+            "label": "28 cm²",
+            "correct": false,
+            "feedback": "O canto tem área 2·2 = 4, não 2. Logo 30 − 4 = 26 cm²."
+          },
+          {
+            "id": "a12",
+            "label": "12 cm²",
+            "correct": false,
+            "feedback": "Não subtraia os lados (4·3). Subtraia as áreas: 30 − 4 = 26 cm²."
+          }
+        ]
+      },
+      {
+        "id": "d3-triangulo-decimal",
+        "prompt": "Um triângulo tem base 5 cm e altura 2,5 cm. Qual é a sua área?",
+        "options": [
+          {
+            "id": "a625",
+            "label": "6,25 cm²",
+            "correct": true,
+            "feedback": "Exato. 5·2,5 = 12,5, e metade de 12,5 é 6,25 cm²."
+          },
+          {
+            "id": "a125",
+            "label": "12,5 cm²",
+            "correct": false,
+            "feedback": "12,5 é 5·2,5 (paralelogramo). Dividindo por 2: 6,25 cm²."
+          },
+          {
+            "id": "a75",
+            "label": "7,5 cm²",
+            "correct": false,
+            "feedback": "7,5 é a soma 5 + 2,5. Multiplique e divida por 2: 5·2,5 / 2 = 6,25 cm²."
+          },
+          {
+            "id": "a375",
+            "label": "3,75 cm²",
+            "correct": false,
+            "feedback": "3,75 é (5 + 2,5) / 2. O produto dividido por 2 dá 6,25 cm²."
+          }
+        ]
+      },
+      {
+        "id": "d4-fronteira-cavalieri-plano",
+        "prompt": "Três triângulos têm a mesma base de 4 cm sobre uma reta e o topo numa paralela a 3 cm de distância. O que vale para suas áreas?",
+        "fala": "Lembre-se do que acontece quando inclinamos a figura sem mudar a base nem a altura.",
+        "options": [
+          {
+            "id": "iguais",
+            "label": "Todas valem 6 cm²",
+            "correct": true,
+            "feedback": "Isso. Mesma base 4 e mesma altura 3 garantem área 4·3 / 2 = 6 cm² em todos."
+          },
+          {
+            "id": "inclinado",
+            "label": "O mais inclinado é maior",
+            "correct": false,
+            "feedback": "Inclinar aumenta o perímetro, mas base e altura não mudam: todas valem 6 cm²."
+          },
+          {
+            "id": "reto",
+            "label": "O retângulo é maior",
+            "correct": false,
+            "feedback": "Todos têm b = 4 e h = 3, logo todos têm área 4·3 / 2 = 6 cm²."
+          },
+          {
+            "id": "a12",
+            "label": "Todas valem 12 cm²",
+            "correct": false,
+            "feedback": "Faltou dividir por 2: todas têm área 4·3 / 2 = 6 cm²."
+          }
+        ]
+      },
+      {
+        "id": "d5-escala-reversa",
+        "prompt": "Uma foto retangular foi ampliada e sua área passou de 12 cm² para 108 cm². Por qual fator k o perímetro foi multiplicado?",
+        "fala": "Última. Descubra primeiro por quanto a área foi multiplicada para achar k².",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Exato. A área multiplicou por 108 / 12 = 9 = k², então os lados e o perímetro multiplicaram por k = 3."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é o fator da área (k²). O perímetro acompanha os lados: k = √9 = 3."
+          },
+          {
+            "id": "a45",
+            "label": "4,5",
+            "correct": false,
+            "feedback": "Não divida 9 por 2; tire a raiz quadrada: k² = 9 dá k = 3."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "108 / 12 = 9, e √9 = 3. O perímetro foi multiplicado por 3."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
