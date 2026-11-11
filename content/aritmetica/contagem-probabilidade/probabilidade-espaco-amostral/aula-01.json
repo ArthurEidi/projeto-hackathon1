@@ -1,0 +1,686 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Fração da Grade",
+  "subtitulo": "Casos favoráveis sobre casos possíveis",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "probabilidade-espaco-amostral"
+  },
+  "outro": "Você mediu chances como fração da grade: casos favoráveis sobre casos possíveis, sempre entre 0 e 1.",
+  "glossario": {
+    "c1": {
+      "nome": "Casos favoráveis",
+      "resumo": "Casas da grade que fazem o evento acontecer, n(A)."
+    },
+    "c2": {
+      "nome": "Espaço amostral",
+      "resumo": "Todas as casas possíveis do sorteio, n(Ω)."
+    },
+    "c3": {
+      "nome": "Probabilidade",
+      "resumo": "Fração da grade ocupada pelo evento, entre 0 e 1."
+    },
+    "c4": {
+      "nome": "Evento certo",
+      "resumo": "Evento que ocupa a grade inteira, com probabilidade 1."
+    }
+  },
+  "steps": [
+    {
+      "id": "um-dado",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "etapas": 1,
+        "evento": {
+          "casas": [
+            "2",
+            "4",
+            "6"
+          ]
+        },
+        "regua": true,
+        "titulos": {
+          "linhas": "Faces"
+        }
+      },
+      "lines": {
+        "intro": "Um dado tem 6 faces. Toque nas faces pares: que fração da fila ficou acesa?",
+        "done": "3 de 6 acesas: P(par) = 3/6 = 1/2. Probabilidade é a fração da grade que o evento ocupa."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Isso funciona para qualquer sorteio?",
+        "resposta": "Só quando os resultados têm a mesma chance. Hoje: dados, moedas e urnas justos."
+      },
+      "complete_when": {
+        "metric": "marcadas_certas",
+        "gte": 3
+      }
+    },
+    {
+      "id": "certo-e-impossivel",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "etapas": 1,
+        "regua": true,
+        "titulos": {
+          "linhas": "Faces"
+        },
+        "botoes_evento": [
+          {
+            "rotulo": "de 1 a 6",
+            "conjunto": {
+              "intervalo": {
+                "de": 1,
+                "ate": 6
+              }
+            }
+          },
+          {
+            "rotulo": "sair 7",
+            "conjunto": {
+              "casas": [
+                "7"
+              ]
+            }
+          }
+        ]
+      },
+      "lines": {
+        "intro": "Escolha o evento 'sair de 1 a 6' e depois 'sair 7'. Onde cada um cai na régua?",
+        "done": "O certo ocupa a grade inteira, P = 1; o impossível não ocupa nada, P = 0. Toda probabilidade mora entre os dois."
+      },
+      "complete_when": {
+        "metric": "extremos_vistos",
+        "gte": 2
+      }
+    },
+    {
+      "id": "dois-dados",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "colunas": "linhas",
+        "conteudo": "soma_ao_tocar",
+        "evento": {
+          "soma": [
+            7
+          ]
+        },
+        "titulos": {
+          "linhas": "1º dado",
+          "colunas": "2º dado"
+        }
+      },
+      "lines": {
+        "intro": "Dois dados: qual soma você acha mais provável, 2 ou 7? Marque as casas de soma 7.",
+        "done": "A soma 7 ocupa uma diagonal de 6 casas: 6/36 = 1/6. A soma 2 só tem a casa (1, 1): 1/36."
+      },
+      "complete_when": {
+        "metric": "marcadas_certas",
+        "gte": 6
+      }
+    },
+    {
+      "id": "duas-moedas",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": [
+          "K",
+          "C"
+        ],
+        "colunas": "linhas",
+        "evento": {
+          "casas": [
+            "K,C",
+            "C,K"
+          ]
+        },
+        "titulos": {
+          "linhas": "1ª moeda",
+          "colunas": "2ª moeda"
+        }
+      },
+      "lines": {
+        "intro": "Duas moedas: 'uma cara e uma coroa' tem chance 1/3, já que há 3 tipos de resultado? Marque na grade.",
+        "done": "São 2 casas de 4, KC e CK: 1/2. Os 3 'tipos' não têm a mesma chance, por isso a conta precisa da grade."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então listar resultados pode enganar?",
+        "resposta": "Pode, se eles não forem igualmente prováveis. Monte a grade e conte casas."
+      },
+      "complete_when": {
+        "metric": "marcadas_certas",
+        "gte": 2
+      }
+    },
+    {
+      "id": "desafio-urna",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": [
+            "A1",
+            "A2",
+            "A3",
+            "V1",
+            "V2"
+          ],
+          "etapas": 1,
+          "titulos": {
+            "linhas": "Bolas"
+          }
+        }
+      },
+      "prompt": "Uma urna tem 3 bolas azuis e 2 vermelhas. Qual a probabilidade de tirar uma vermelha?",
+      "lines": {
+        "intro": "Cada bola é uma casa da grade, com a mesma chance."
+      },
+      "options": [
+        {
+          "id": "a2-3",
+          "label": "2/3",
+          "correct": false,
+          "feedback": "2/3 compara vermelhas com azuis. O total são 5 bolas: 2/5.",
+          "figure": {
+            "acesas": [
+              "V1",
+              "V2"
+            ],
+            "regua": false
+          }
+        },
+        {
+          "id": "a1-2",
+          "label": "1/2",
+          "correct": false,
+          "feedback": "Há 2 cores, mas elas não têm a mesma chance. 2 de 5 casas: 2/5.",
+          "figure": {
+            "linhas": [
+              "azul",
+              "vermelha"
+            ],
+            "acesas": [
+              "vermelha"
+            ],
+            "regua": true
+          }
+        },
+        {
+          "id": "a2-5",
+          "label": "2/5",
+          "correct": true,
+          "feedback": "Isso. 2 casas favoráveis de 5 possíveis.",
+          "figure": {
+            "acesas": [
+              "V1",
+              "V2"
+            ],
+            "regua": true,
+            "highlight": [
+              "c1"
+            ]
+          }
+        },
+        {
+          "id": "a3-5",
+          "label": "3/5",
+          "correct": false,
+          "feedback": "3/5 é a chance de azul. Vermelha: 2/5.",
+          "figure": {
+            "acesas": [
+              "A1",
+              "A2",
+              "A3"
+            ],
+            "regua": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": 6,
+          "colunas": "linhas",
+          "acesas": [
+            "1,6",
+            "2,5",
+            "3,4",
+            "4,3",
+            "5,2",
+            "6,1"
+          ],
+          "regua": true
+        }
+      },
+      "formula": [
+        {
+          "text": "P(A)",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "n(A)",
+          "ref": "c1"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "n(Ω)",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Espaço amostral",
+          "text": "todos os resultados possíveis do sorteio."
+        },
+        {
+          "term": "Evento",
+          "text": "o conjunto de resultados que interessa."
+        },
+        {
+          "term": "Limites",
+          "text": "vale 0 ≤ P(A) ≤ 1, com 0 no impossível e 1 no certo."
+        }
+      ],
+      "lines": {
+        "intro": "Cada casa tem a mesma chance, 1/n(Ω). Por isso a probabilidade é casas do evento dividido pelo total.",
+        "hint": "Toque em uma letra para ver o que ela conta na grade."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "face-5",
+        "prompt": "Num dado comum, qual a probabilidade de sair 5?",
+        "options": [
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": true,
+            "feedback": "Isso. Uma casa favorável em 6."
+          },
+          {
+            "id": "a1-5",
+            "label": "1/5",
+            "correct": false,
+            "feedback": "O dado tem 6 faces, não 5. P = 1/6."
+          },
+          {
+            "id": "a5-6",
+            "label": "5/6",
+            "correct": false,
+            "feedback": "5/6 é a chance de NÃO sair 5. De sair: 1/6."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/2 seria metade das faces. O 5 é uma face só: 1/6."
+          }
+        ]
+      },
+      {
+        "id": "cara",
+        "prompt": "Ao lançar uma moeda justa, qual a probabilidade de sair cara?",
+        "options": [
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Certo. Uma casa de duas."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 seria certeza. Cara é uma de 2 casas: 1/2."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Cara pode sair. P = 1/2."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Probabilidade não passa de 1. É 1/2."
+          }
+        ]
+      },
+      {
+        "id": "impossivel",
+        "prompt": "Qual a probabilidade de sair 0 num dado comum?",
+        "options": [
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": true,
+            "feedback": "Isso. Não há face 0: evento impossível."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "Não existe face 0 entre as 6. P = 0."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é o evento certo. Sair 0 é impossível: P = 0."
+          },
+          {
+            "id": "am1",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Probabilidade nunca é negativa. O impossível vale 0."
+          }
+        ]
+      },
+      {
+        "id": "moeda-e-dado",
+        "prompt": "Lança-se uma moeda e um dado. Quantos resultados tem o espaço amostral?",
+        "options": [
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo. Grade 2 × 6: 12 casas."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 é a soma 2 + 6. A grade multiplica: 12."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é só o dado. Com a moeda: 2 · 6 = 12."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é só a moeda. Com o dado: 12 resultados."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "soma-7",
+        "prompt": "Lançando dois dados, qual a probabilidade de a soma ser 7?",
+        "options": [
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": true,
+            "feedback": "Isso. A diagonal da soma 7 tem 6 casas de 36."
+          },
+          {
+            "id": "a7-36",
+            "label": "7/36",
+            "correct": false,
+            "feedback": "A soma 7 tem 6 casas, de (1, 6) a (6, 1). P = 6/36 = 1/6."
+          },
+          {
+            "id": "a1-11",
+            "label": "1/11",
+            "correct": false,
+            "feedback": "As somas 2 a 12 não têm a mesma chance. Contando casas: 6/36 = 1/6."
+          },
+          {
+            "id": "a1-12",
+            "label": "1/12",
+            "correct": false,
+            "feedback": "1/12 é a chance da soma 10. A soma 7 tem 6 casas: 1/6."
+          }
+        ]
+      },
+      {
+        "id": "urna-branca",
+        "prompt": "Uma urna tem 1 bola verde e 3 brancas. Qual a probabilidade de sair branca?",
+        "options": [
+          {
+            "id": "a3-4",
+            "label": "3/4",
+            "correct": true,
+            "feedback": "Certo. 3 casas brancas de 4."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "As duas cores não têm a mesma chance. Brancas: 3 de 4."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é a contagem. Dividindo pelo total: 3/4."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "1/4 é a verde. Branca: 3/4."
+          }
+        ]
+      },
+      {
+        "id": "multiplo-de-3",
+        "prompt": "Sorteia-se um número de 1 a 20. Qual a probabilidade de ele ser múltiplo de 3?",
+        "options": [
+          {
+            "id": "a3-10",
+            "label": "3/10",
+            "correct": true,
+            "feedback": "Isso. 6 múltiplos de 3 em 20 números."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "1/3 valeria se 20 fosse múltiplo de 3. São 6 de 20: 3/10."
+          },
+          {
+            "id": "a7-20",
+            "label": "7/20",
+            "correct": false,
+            "feedback": "São 6 múltiplos: 3, 6, 9, 12, 15, 18. P = 3/10."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "1/6 é de dado. Aqui: 6 em 20, 3/10."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "pelo-menos-uma-cara",
+        "prompt": "Lançando duas moedas, qual a probabilidade de sair pelo menos uma cara?",
+        "options": [
+          {
+            "id": "a3-4",
+            "label": "3/4",
+            "correct": true,
+            "feedback": "Certo. Só CC fica de fora: 3 casas de 4."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/2 é exatamente uma cara. Pelo menos uma inclui KK: 3/4."
+          },
+          {
+            "id": "a2-3",
+            "label": "2/3",
+            "correct": false,
+            "feedback": "Com 3 'tipos' a conta engana. Na grade 2 × 2: 3/4."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "1/4 é só KK. Pelo menos uma: 3/4."
+          }
+        ]
+      },
+      {
+        "id": "soma-10",
+        "prompt": "Com dois dados, qual a probabilidade de a soma ser 10?",
+        "options": [
+          {
+            "id": "a1-12",
+            "label": "1/12",
+            "correct": true,
+            "feedback": "Isso. 3 casas de 36."
+          },
+          {
+            "id": "a1-18",
+            "label": "1/18",
+            "correct": false,
+            "feedback": "(4, 6) e (6, 4) são casas diferentes. Com (5, 5): 3/36 = 1/12."
+          },
+          {
+            "id": "a1-11",
+            "label": "1/11",
+            "correct": false,
+            "feedback": "As 11 somas não têm a mesma chance. Contando casas: 1/12."
+          },
+          {
+            "id": "a10-36",
+            "label": "10/36",
+            "correct": false,
+            "feedback": "O 10 é a soma, não o número de casas. São 3: 3/36 = 1/12."
+          }
+        ]
+      },
+      {
+        "id": "letra-banana",
+        "prompt": "Sorteia-se uma letra da palavra BANANA. Qual a probabilidade de ser A?",
+        "options": [
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Certo. 3 A em 6 letras."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "Há 3 letras diferentes, mas elas aparecem em quantidades diferentes. A: 3 de 6."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "O A aparece 3 vezes. P = 3/6 = 1/2."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é a contagem de A. Dividindo por 6: 1/2."
+          }
+        ]
+      },
+      {
+        "id": "dados-iguais",
+        "prompt": "Com dois dados, qual a probabilidade de saírem números iguais?",
+        "options": [
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": true,
+            "feedback": "Isso. A diagonal (1, 1) a (6, 6) tem 6 casas."
+          },
+          {
+            "id": "a1-36",
+            "label": "1/36",
+            "correct": false,
+            "feedback": "1/36 é um par específico, como (3, 3). Qualquer par igual: 6/36."
+          },
+          {
+            "id": "a1-12",
+            "label": "1/12",
+            "correct": false,
+            "feedback": "São 6 pares iguais em 36 casas: 1/6."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Iguais é só a diagonal: 6 de 36, 1/6."
+          }
+        ]
+      },
+      {
+        "id": "tres-moedas-duas-caras",
+        "prompt": "Lançando três moedas, qual a probabilidade de sair exatamente duas caras?",
+        "fala": "Última. São 8 sequências; liste as que têm duas caras.",
+        "options": [
+          {
+            "id": "a3-8",
+            "label": "3/8",
+            "correct": true,
+            "feedback": "Certo. KKC, KCK e CKK: 3 de 8."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "Com 4 'tipos' (0 a 3 caras) a conta engana. Na grade: 3/8."
+          },
+          {
+            "id": "a2-3",
+            "label": "2/3",
+            "correct": false,
+            "feedback": "2/3 compara caras com moedas. São 3 sequências de 8: 3/8."
+          },
+          {
+            "id": "a1-8",
+            "label": "1/8",
+            "correct": false,
+            "feedback": "1/8 é uma ordem só. A coroa pode estar em 3 lugares: 3/8."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

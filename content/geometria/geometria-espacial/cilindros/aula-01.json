@@ -1,0 +1,558 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "O Retângulo que Gira e Desenrola",
+  "subtitulo": "Revolução, casca 2πrh e volume πr²h",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "cilindros"
+  },
+  "outro": "Você dominou o cilindro de revolução, o rótulo desenrolado de área 2πrh e o volume πr²h.",
+  "glossario": {
+    "c1": {
+      "nome": "Raio da base (r)",
+      "resumo": "Distância do eixo central até a borda circular."
+    },
+    "c2": {
+      "nome": "Altura (h)",
+      "resumo": "Distância entre as duas tampas circulares."
+    },
+    "c3": {
+      "nome": "Área lateral (2πrh)",
+      "resumo": "Rótulo retangular aberto de base 2πr e altura h."
+    },
+    "c4": {
+      "nome": "Volume (πr²h)",
+      "resumo": "Área do disco da base (πr²) multiplicada pela altura h."
+    }
+  },
+  "steps": [
+    {
+      "id": "girar-retangulo",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "revolucao",
+        "perfil": "retangulo",
+        "r": 3,
+        "h": 4,
+        "giro": "$giro",
+        "cores": { "r": "c1", "h": "c2", "superficie": "c3" }
+      },
+      "controls": [
+        {
+          "id": "giro",
+          "label": "Girar retângulo",
+          "min": 0,
+          "max": 360,
+          "step": 45,
+          "initial": 0,
+          "unit": "°",
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Se o triângulo girando gerava o cone, que sólido nasce quando giramos um retângulo? Gire até 360°.",
+        "done": "Nasce o cilindro reto! Como a largura r = 3 é a mesma em toda a altura, todas as fatias são iguais."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se cortarmos o cilindro bem pelo meio, de cima a baixo?",
+        "resposta": "Aparece um retângulo de base 2r e altura h; quando h = 2r, o corte é quadrado (cilindro equilátero)."
+      },
+      "complete_when": {
+        "metric": "giro",
+        "gte": 360
+      }
+    },
+    {
+      "id": "desenrolar-rotulo",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "cilindro",
+        "r": 3,
+        "h": 4,
+        "desenrolar": "$desenrolar / 100",
+        "cores": { "r": "c1", "h": "c2", "lateral": "c3", "volume": "c4" }
+      },
+      "controls": [
+        {
+          "id": "desenrolar",
+          "label": "Desenrolar rótulo",
+          "min": 0,
+          "max": 100,
+          "step": 25,
+          "initial": 0,
+          "unit": "%",
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Ao descascar o rótulo da lata cilíndrica de raio 3 e altura 4, que tamanho tem o retângulo desenrolado?",
+        "done": "A largura é todo o contorno da base: 2πr = 6π! A área lateral aberta mede 6π · 4 = 24π."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E as duas tampas circulares, onde entram na conta?",
+        "resposta": "Entram na área total: somamos as 2 bases de área πr² = 9π à lateral 24π, totalizando 42π."
+      },
+      "complete_when": {
+        "metric": "desenrolar",
+        "gte": 100
+      }
+    },
+    {
+      "id": "raio-vs-altura",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "cilindro",
+        "r": "$r",
+        "h": 3,
+        "fantasma": { "r": 2, "h": 3 },
+        "cores": { "r": "c1", "h": "c2", "lateral": "c3", "volume": "c4" }
+      },
+      "controls": [
+        {
+          "id": "r",
+          "label": "Raio da base (r)",
+          "min": 2,
+          "max": 4,
+          "step": 1,
+          "initial": 2,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com raio 2 e altura 3, o volume é 12π. O que acontece se dobrarmos o raio para r = 4?",
+        "done": "O volume quadruplicou para 48π! O raio ganha da altura porque entra ao quadrado: 2² = 4."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Se dobrássemos a altura em vez do raio, o volume quadruplicaria também?",
+        "resposta": "Não, só dobraria (24π)! A altura entra com expoente 1 no volume, enquanto o raio entra com r²."
+      },
+      "complete_when": {
+        "metric": "r",
+        "gte": 4
+      }
+    },
+    {
+      "id": "desafio-cilindro",
+      "type": "micro_challenge",
+      "prompt": "Um cilindro tem raio da base r = 3 cm e altura h = 5 cm. Qual é o seu volume?",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "cilindro",
+          "r": 3,
+          "h": 5,
+          "cores": { "r": "c1", "h": "c2", "lateral": "c3", "volume": "c4" }
+        }
+      },
+      "lines": {
+        "intro": "Lembre que a base é um disco de área πr²."
+      },
+      "options": [
+        {
+          "id": "v45p",
+          "label": "45π cm³",
+          "correct": true,
+          "feedback": "Exato. A base tem π·3² = 9π cm²; com altura 5, V = 9π·5 = 45π cm³.",
+          "figure": {
+            "modo": "cilindro",
+            "r": 3,
+            "h": 5,
+            "highlight": ["c1", "c4"]
+          }
+        },
+        {
+          "id": "v15p",
+          "label": "15π cm³",
+          "correct": false,
+          "feedback": "15π seria (45π)/3. O cilindro não divide por 3 como o cone: V = πr²h = 45π cm³.",
+          "figure": {
+            "modo": "cilindro",
+            "r": 3,
+            "h": 5,
+            "highlight": ["c2"]
+          }
+        },
+        {
+          "id": "v30p",
+          "label": "30π cm²",
+          "correct": false,
+          "feedback": "30π é a área lateral 2πrh. O volume usa a base πr²: 9π·5 = 45π cm³.",
+          "figure": {
+            "modo": "cilindro",
+            "r": 3,
+            "h": 5,
+            "highlight": ["c3"]
+          }
+        },
+        {
+          "id": "v225p",
+          "label": "225π cm³",
+          "correct": false,
+          "feedback": "Você elevou a altura ao quadrado também. Só o raio é ao quadrado: π·3²·5 = 45π cm³.",
+          "figure": {
+            "modo": "cilindro",
+            "r": 3,
+            "h": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "cilindro",
+          "r": 3,
+          "h": 4,
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "A_l", "ref": "c3" },
+        { "text": "=" },
+        { "text": "2" },
+        { "text": "π" },
+        { "text": "r", "ref": "c1" },
+        { "text": "h", "ref": "c2" },
+        { "text": ";" },
+        { "text": "V", "ref": "c4" },
+        { "text": "=" },
+        { "text": "π" },
+        { "text": "r", "sup": "2", "ref": "c1" },
+        { "text": "h", "ref": "c2" }
+      ],
+      "definitions": [
+        {
+          "term": "Área lateral",
+          "text": "Retângulo desenrolado de base 2πr e altura h: A_l = 2πrh."
+        },
+        {
+          "term": "Volume do cilindro",
+          "text": "Área do disco da base multiplicada pela altura: V = πr²h."
+        },
+        {
+          "term": "Cilindro equilátero",
+          "text": "Cilindro cuja altura é igual ao diâmetro da base (h = 2r)."
+        }
+      ],
+      "lines": {
+        "intro": "O raio entra linear na casca lateral e ao quadrado no volume do cilindro.",
+        "hint": "Toque nas letras coloridas para destacar cada elemento."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Por que duas latas de mesma folha de alumínio podem ter volumes diferentes?",
+        "resposta": "Porque o raio está ao quadrado no volume: a lata mais larga e baixa aproveita melhor o raio."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "revolucao-retangulo",
+        "prompt": "Qual sólido de revolução nasce quando giramos um retângulo em torno de um dos seus lados?",
+        "options": [
+          {
+            "id": "cilindro",
+            "label": "Cilindro reto",
+            "correct": true,
+            "feedback": "Isso. A largura varre as tampas circulares e a altura varre a parede cilíndrica."
+          },
+          {
+            "id": "cone",
+            "label": "Cone",
+            "correct": false,
+            "feedback": "O cone nasce do giro de um triângulo retângulo. O retângulo gera o cilindro reto."
+          },
+          {
+            "id": "esfera",
+            "label": "Esfera",
+            "correct": false,
+            "feedback": "A esfera nasce do giro de um semicírculo. O retângulo gera um cilindro."
+          }
+        ]
+      },
+      {
+        "id": "largura-rotulo-aberto",
+        "prompt": "Ao desenrolar a parede lateral de um cilindro de raio r e altura h, a largura da faixa é:",
+        "options": [
+          {
+            "id": "l_2pir",
+            "label": "2πr (o comprimento da base)",
+            "correct": true,
+            "feedback": "Exato. O rótulo contorna toda a circunferência da base, que mede 2πr."
+          },
+          {
+            "id": "l_r",
+            "label": "r (o raio)",
+            "correct": false,
+            "feedback": "r é só do centro até a borda; para contornar a borda toda, a volta mede 2πr."
+          },
+          {
+            "id": "l_2r",
+            "label": "2r (o diâmetro)",
+            "correct": false,
+            "feedback": "2r é o diâmetro em linha reta. O contorno circular desenrolado mede 2πr."
+          }
+        ]
+      },
+      {
+        "id": "secao-meridiana-quadrada",
+        "prompt": "Quando a seção meridiana de um cilindro (corte pelo eixo) é um quadrado, a relação entre h e r é:",
+        "options": [
+          {
+            "id": "h_2r",
+            "label": "h = 2r (cilindro equilátero)",
+            "correct": true,
+            "feedback": "Correto. A largura do corte é o diâmetro 2r; para ser quadrado, h = 2r."
+          },
+          {
+            "id": "h_r",
+            "label": "h = r",
+            "correct": false,
+            "feedback": "A base do corte é o diâmetro 2r (não r); para ser quadrado, a altura h deve ser 2r."
+          },
+          {
+            "id": "h_4r",
+            "label": "h = 4r",
+            "correct": false,
+            "feedback": "O lado do quadrado no chão é 2r, logo a altura h precisa ser 2r."
+          }
+        ]
+      },
+      {
+        "id": "formula-volume-cilindro",
+        "prompt": "Qual é a fórmula do volume de um cilindro circular reto de raio r e altura h?",
+        "options": [
+          {
+            "id": "v_pir2h",
+            "label": "V = πr²h",
+            "correct": true,
+            "feedback": "Isso. O volume é a área do disco da base (πr²) multiplicada pela altura h."
+          },
+          {
+            "id": "v_terco",
+            "label": "V = (πr²h) / 3",
+            "correct": false,
+            "feedback": "Dividir por 3 é a fórmula do cone. O cilindro acumula fatias iguais: V = πr²h."
+          },
+          {
+            "id": "v_2pirh",
+            "label": "V = 2πrh",
+            "correct": false,
+            "feedback": "2πrh é a área lateral da casca. O volume do espaço interno é πr²h."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "area-lateral-raio3-h5",
+        "prompt": "Qual é a área lateral de um cilindro reto de raio r = 3 cm e altura h = 5 cm?",
+        "options": [
+          {
+            "id": "al30p",
+            "label": "30π cm²",
+            "correct": true,
+            "feedback": "Correto. A_l = 2πrh = 2 · π · 3 · 5 = 30π cm²."
+          },
+          {
+            "id": "al15p",
+            "label": "15π cm²",
+            "correct": false,
+            "feedback": "Faltou o fator 2 do diâmetro: 2πrh = 2 · π · 3 · 5 = 30π cm²."
+          },
+          {
+            "id": "al45p",
+            "label": "45π cm²",
+            "correct": false,
+            "feedback": "45π é o volume (πr²h). A área lateral é 2πrh = 30π cm²."
+          }
+        ]
+      },
+      {
+        "id": "cilindro-equilatero-volume",
+        "prompt": "Um cilindro equilátero tem raio da base r = 3 cm (logo h = 2r = 6 cm). Qual é o seu volume?",
+        "options": [
+          {
+            "id": "v54p",
+            "label": "54π cm³",
+            "correct": true,
+            "feedback": "Exato. V = π · r² · h = π · 3² · 6 = π · 9 · 6 = 54π cm³."
+          },
+          {
+            "id": "v36p",
+            "label": "36π cm³",
+            "correct": false,
+            "feedback": "Você usou h = 4; no cilindro equilátero de raio 3, h = 2·3 = 6 cm: 9·6π = 54π cm³."
+          },
+          {
+            "id": "v18p",
+            "label": "18π cm³",
+            "correct": false,
+            "feedback": "Você não elevou o raio ao quadrado. V = π · 3² · 6 = 54π cm³."
+          }
+        ]
+      },
+      {
+        "id": "altura-pelo-volume-cilindro",
+        "prompt": "Um reservatório cilíndrico de raio r = 2 m contém 36π m³ de água. Qual é a altura da água?",
+        "options": [
+          {
+            "id": "h9",
+            "label": "9 m",
+            "correct": true,
+            "feedback": "Isso. A área da base é π·2² = 4π m²; dividindo 36π por 4π, temos h = 9 m."
+          },
+          {
+            "id": "h18",
+            "label": "18 m",
+            "correct": false,
+            "feedback": "Você dividiu por 2 em vez de 2² = 4. Como A_b = 4π, h = 36π / 4π = 9 m."
+          },
+          {
+            "id": "h6",
+            "label": "6 m",
+            "correct": false,
+            "feedback": "Divida o volume 36π pela área da base 4π: h = 36 / 4 = 9 m."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "dobrar-raio-metade-altura",
+        "prompt": "Ao dobrar o raio da base (2r) e reduzir a altura à metade (h/2), o que acontece com o volume?",
+        "fala": "O raio entra ao quadrado (×4) e a altura entra simples (÷2)!",
+        "options": [
+          {
+            "id": "dobra",
+            "label": "Dobra (multiplica por 2)",
+            "correct": true,
+            "feedback": "Exato! Dobrar o raio multiplica por 2² = 4, e cortar a altura ao meio divide por 2: 4 / 2 = 2."
+          },
+          {
+            "id": "igual",
+            "label": "Não muda (continua igual)",
+            "correct": false,
+            "feedback": "Armadilha famosa! O raio ganha da altura porque está ao quadrado: 4 / 2 = 2 (dobra)."
+          },
+          {
+            "id": "quad",
+            "label": "Quadruplica (multiplica por 4)",
+            "correct": false,
+            "feedback": "4 seria se a altura ficasse fixa. Como a altura caiu à metade, 4 / 2 = 2."
+          }
+        ]
+      },
+      {
+        "id": "area-secao-meridiana",
+        "prompt": "Um cilindro reto tem raio r = 4 cm e altura h = 7 cm. Qual é a área da seção meridiana?",
+        "options": [
+          {
+            "id": "a56",
+            "label": "56 cm²",
+            "correct": true,
+            "feedback": "Certo. O corte pelo eixo é um retângulo de base 2r = 8 cm e altura 7 cm: 8·7 = 56 cm²."
+          },
+          {
+            "id": "a28",
+            "label": "28 cm²",
+            "correct": false,
+            "feedback": "28 cm² usa só o raio 4. O corte atravessa o diâmetro todo (2r = 8 cm): 8·7 = 56 cm²."
+          },
+          {
+            "id": "a56p",
+            "label": "56π cm²",
+            "correct": false,
+            "feedback": "56π é a área lateral curva. O corte plano interno é um retângulo comum sem π: 56 cm²."
+          }
+        ]
+      },
+      {
+        "id": "volume-usando-pi-3",
+        "prompt": "Com π = 3, quantos litros cabem num tonel cilíndrico com r = 1 m e h = 2 m? (1 m³ = 1000 L).",
+        "options": [
+          {
+            "id": "l6000",
+            "label": "6000 L",
+            "correct": true,
+            "feedback": "Exato. V = 3 · 1² · 2 = 6 m³; como cada m³ tem 1000 L, cabem 6000 L."
+          },
+          {
+            "id": "l6",
+            "label": "6 L",
+            "correct": false,
+            "feedback": "6 é o volume em m³. Multiplicando por 1000 L por m³, são 6000 L."
+          },
+          {
+            "id": "l3000",
+            "label": "3000 L",
+            "correct": false,
+            "feedback": "Com π = 3, r = 1 e h = 2, temos V = 3·1·2 = 6 m³ = 6000 L."
+          }
+        ]
+      },
+      {
+        "id": "cano-oco-coroa",
+        "prompt": "Um tubo de concreto tem raio externo R = 5 cm, raio interno r = 3 cm e h = 10 cm. Qual é o volume?",
+        "options": [
+          {
+            "id": "v160p",
+            "label": "160π cm³",
+            "correct": true,
+            "feedback": "Isso. Cilindro externo (250π) menos o furo interno (90π): π·(25 − 9)·10 = 160π cm³."
+          },
+          {
+            "id": "v40p",
+            "label": "40π cm³",
+            "correct": false,
+            "feedback": "Não faça (5 − 3)²; subtraia os quadrados dos raios: (5² − 3²)·10π = 160π cm³."
+          },
+          {
+            "id": "v250p",
+            "label": "250π cm³",
+            "correct": false,
+            "feedback": "250π é o cilindro maciço sem descontar o furo de 90π: 250π − 90π = 160π cm³."
+          }
+        ]
+      },
+      {
+        "id": "enrolar-folha-dois-jeitos",
+        "prompt": "Uma folha retangular de 6π cm × 4 cm é enrolada num cilindro de altura 4 cm. Qual é o volume?",
+        "fala": "De 2πr = 6π você descobre o raio r na hora!",
+        "options": [
+          {
+            "id": "v36p",
+            "label": "36π cm³",
+            "correct": true,
+            "feedback": "Exato. Como a volta 2πr = 6π dá r = 3 cm, o volume é π·3²·4 = 36π cm³."
+          },
+          {
+            "id": "v144p",
+            "label": "144π cm³",
+            "correct": false,
+            "feedback": "6π é a circunferência inteira 2πr, então r = 3 cm (não 6): π·3²·4 = 36π cm³."
+          },
+          {
+            "id": "v24p",
+            "label": "24π cm³",
+            "correct": false,
+            "feedback": "24π é a área da folha (6π·4). Com r = 3 cm, o volume é π·9·4 = 36π cm³."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

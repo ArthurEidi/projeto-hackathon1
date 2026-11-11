@@ -1,0 +1,282 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Qualquer Perfil no Torno",
+  "subtitulo": "Da figura plana ao sólido 3D e ao teorema de Pappus",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "solidos-de-revolucao"
+  },
+  "outro": "Você identificou qual sólido nasce de cada figura plana, comparou trocas de eixo e calculou volumes com furo central.",
+  "glossario": {
+    "c1": { "nome": "Eixo de rotação", "resumo": "Reta fixa ao redor da qual a figura plana gira 360°." },
+    "c2": { "nome": "Perfil gerador", "resumo": "Figura plana 2D que varre o espaço durante o giro." },
+    "c3": { "nome": "Raio varrido (r)", "resumo": "Distância perpendicular de cada ponto do perfil até o eixo." },
+    "c4": { "nome": "Sólido gerado", "resumo": "Corpo 3D resultante da volta completa." }
+  },
+  "steps": [
+    {
+      "id": "qual-perfil-gera-qual-solido",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "revolucao",
+        "perfil": "trapezio",
+        "perfis": ["retangulo", "triangulo", "trapezio", "semicirculo"],
+        "giro": "$giro"
+      },
+      "controls": [
+        { "id": "giro", "label": "Girar perfil (360°)", "min": 0, "max": 360, "step": 90, "initial": 0, "unit": "°", "color": "c2" }
+      ],
+      "lines": {
+        "intro": "No caso neutro com ângulo 0° temos só figuras planas. Gire o perfil em 360° ao redor do eixo: que sólido aparece?",
+        "done": "Retângulo vira cilindro, triângulo vira cone, trapézio vira tronco e semicírculo vira esfera!"
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a gente mudar qual lado da figura fica encostado no eixo?",
+        "resposta": "Muda tudo: até o mesmo triângulo pode gerar cones de volumes bem diferentes. Vamos testar!"
+      },
+      "complete_when": { "metric": "giro", "gte": 360 }
+    },
+    {
+      "id": "trocar-eixo-do-triangulo",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "revolucao",
+        "perfil": "triangulo",
+        "r": "3 + $eixo",
+        "h": "4 - $eixo",
+        "giro": 360,
+        "chave_eixo": true
+      },
+      "controls": [
+        { "id": "eixo", "label": "Trocar cateto do eixo", "min": 0, "max": 1, "step": 1, "initial": 0, "color": "c1" }
+      ],
+      "lines": {
+        "intro": "Girando o triângulo 3-4 no cateto 4, temos r = 3 e V = 12π. Se girarmos no cateto 3, o volume continua 12π?",
+        "done": "Sobe para 16π! Quem gira longe do eixo vira raio e entra ao quadrado: π·4²·3 / 3 = 16π ganha de 12π."
+      },
+      "complete_when": { "metric": "eixo", "gte": 1 }
+    },
+    {
+      "id": "afastar-do-eixo-furo",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "revolucao",
+        "perfil": "anel",
+        "r": 2,
+        "h": 5,
+        "d": "$d",
+        "giro": 360
+      },
+      "controls": [
+        { "id": "d", "label": "Afastar do eixo (d)", "min": 0, "max": 2, "step": 1, "initial": 0, "color": "c3" }
+      ],
+      "lines": {
+        "intro": "Quando o retângulo de largura 2 descola do eixo por uma distância d = 1, o que aparece no meio ao girar?",
+        "done": "Abre um furo de raio 1! O sólido vira um tubo de raio externo 3 e interno 1, com volume π(9 − 1)·5 = 40π."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se girarmos um triângulo em torno da hipotenusa?",
+        "resposta": "O vértice oposto gira fazendo um círculo no meio, e nascem dois cones colados pela mesma base!"
+      },
+      "complete_when": { "metric": "d", "gte": 1 }
+    },
+    {
+      "id": "desafio-revolucao-trapezio",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "revolucao",
+          "perfil": "trapezio",
+          "r": 2,
+          "r2": 1,
+          "h": 5,
+          "giro": 360
+        }
+      },
+      "prompt": "Um retângulo (r = 2, h = 2) colado a um triângulo (r = 2, h = 3) gira no eixo comum. Que sólido nasce e qual seu volume?",
+      "lines": {
+        "intro": "Separe a figura em um retângulo mais um triângulo girando juntos."
+      },
+      "options": [
+        {
+          "id": "cc12",
+          "label": "Cilindro + cone (12π)",
+          "correct": true,
+          "feedback": "Exato! O retângulo gera cilindro (8π) e o triângulo gera cone (4π): total 12π.",
+          "figure": { "highlight": ["c4"] }
+        },
+        {
+          "id": "cc20",
+          "label": "Dois cilindros (20π)",
+          "correct": false,
+          "feedback": "O triângulo no topo afunila e gera um cone (4π, não 12π). Total: 8π + 4π = 12π.",
+          "figure": { "highlight": ["c2"] }
+        },
+        {
+          "id": "co4",
+          "label": "Só um cone (4π)",
+          "correct": false,
+          "feedback": "4π é só o topo cônico; somando a base cilíndrica de 8π, temos 12π.",
+          "figure": { "highlight": ["c3"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "revolucao",
+          "perfil": "triangulo",
+          "r": 3,
+          "h": 4,
+          "giro": 360
+        }
+      },
+      "formula": [
+        { "text": "Retângulo → Cilindro", "ref": "c2" },
+        { "text": "," },
+        { "text": "Triângulo → Cone", "ref": "c3" },
+        { "text": "," },
+        { "text": "Afastado → Furo", "ref": "c4" }
+      ],
+      "definitions": [
+        { "term": "Lado no eixo", "text": "Permanece parado e vira a altura h do sólido de revolução." },
+        { "term": "Lado perpendicular ao eixo", "text": "Gira 360° varrendo o círculo da base de raio r." },
+        { "term": "Figura afastada do eixo", "text": "Gera um sólido vazado com volume externo menos o furo interno." }
+      ],
+      "lines": {
+        "intro": "Cada ponto a distância r do eixo traça um círculo. Por isso o lado no eixo vira altura, o perpendicular vira raio e o vão vira furo.",
+        "hint": "Toque nas transformações para ver os perfis e os sólidos."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "perfil-do-cone",
+        "prompt": "Qual figura plana, ao girar 360° em torno de um de seus lados, gera um CONE circular reto?",
+        "options": [
+          { "id": "tri", "label": "Triângulo retângulo", "correct": true, "feedback": "Isso. Um cateto fica no eixo como altura e o outro gira formando o círculo da base." },
+          { "id": "ret", "label": "Retângulo", "correct": false, "feedback": "Retângulo girando gera um cilindro. Quem gera o cone é o triângulo retângulo." },
+          { "id": "semi", "label": "Semicírculo", "correct": false, "feedback": "Semicírculo girando gera uma esfera. O cone nasce do triângulo retângulo." }
+        ]
+      },
+      {
+        "id": "perfil-do-tronco",
+        "prompt": "Girando um trapézio retângulo 360° em torno do seu lado perpendicular às bases, obtemos um:",
+        "options": [
+          { "id": "tronco", "label": "Tronco de cone", "correct": true, "feedback": "Certo. A base maior gera o círculo de raio R e a menor gera o topo de raio r." },
+          { "id": "prisma", "label": "Prisma trapezoidal", "correct": false, "feedback": "Rotação de 360° sempre gera corpos redondos: aqui nasce um tronco de cone." },
+          { "id": "esf", "label": "Esfera", "correct": false, "feedback": "As duas bases retas de tamanhos diferentes geram um tronco de cone." }
+        ]
+      },
+      {
+        "id": "volume-retangulo-girando",
+        "prompt": "Um retângulo de lados 2 cm e 5 cm gira 360° em torno do lado de 5 cm. Qual é o volume do cilindro gerado?",
+        "options": [
+          { "id": "v20p", "label": "20π cm³", "correct": true, "feedback": "Exato. O lado 5 no eixo é a altura e o lado 2 é o raio: V = π·2²·5 = 20π cm³." },
+          { "id": "v50p", "label": "50π cm³", "correct": false, "feedback": "50π seria se girasse em torno do lado 2 (raio 5). Com o lado 5 no eixo, r = 2 e V = 20π cm³." },
+          { "id": "v10p", "label": "10π cm³", "correct": false, "feedback": "Eleve o raio r = 2 ao quadrado: π·2²·5 = 20π cm³." }
+        ]
+      },
+      {
+        "id": "volume-triangulo-girando",
+        "prompt": "Um triângulo retângulo de catetos 3 cm e 6 cm gira 360° em torno do cateto de 6 cm. Qual é o volume do cone gerado?",
+        "options": [
+          { "id": "v18p", "label": "18π cm³", "correct": true, "feedback": "Isso. Com h = 6 no eixo e raio r = 3, temos V = (π·3²·6) / 3 = 18π cm³." },
+          { "id": "v54p", "label": "54π cm³", "correct": false, "feedback": "54π seria o cilindro; no cone dividimos por 3: 54π / 3 = 18π cm³." },
+          { "id": "v36p", "label": "36π cm³", "correct": false, "feedback": "36π seria girando no cateto 3 (raio 6). Girando no cateto 6, o raio é 3 e V = 18π cm³." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "razao-volumes-trocando-catetos",
+        "prompt": "Um triângulo de catetos 2 cm e 6 cm gera V₁ no cateto 6 (r=2) e V₂ no cateto 2 (r=6). Quanto vale V₂ / V₁?",
+        "options": [
+          { "id": "rz3", "label": "3", "correct": true, "feedback": "Certo. V₁ = 8π e V₂ = 24π; logo V₂ é 3 vezes maior que V₁ (a razão dos raios 6/2)." },
+          { "id": "rz1", "label": "1", "correct": false, "feedback": "Trocar quem é o raio muda o volume! V₁ = 8π e V₂ = 24π, razão 3." },
+          { "id": "rz9", "label": "9", "correct": false, "feedback": "O raio triplica (×9), mas a altura divide por 3 (÷3), resultando em 9 / 3 = 3." }
+        ]
+      },
+      {
+        "id": "retangulo-afastado-do-eixo",
+        "prompt": "Um retângulo de largura 2 cm e altura 4 cm gira a 1 cm do eixo (r = 1 cm e R = 3 cm). Qual é o volume do tubo gerado?",
+        "options": [
+          { "id": "v32p", "label": "32π cm³", "correct": true, "feedback": "Exato. Cilindro externo (π·3²·4 = 36π) menos o furo (π·1²·4 = 4π) dá 32π cm³." },
+          { "id": "v16p", "label": "16π cm³", "correct": false, "feedback": "16π seria se estivesse colado no eixo (r = 2). Afastado 1 cm, faz π(3² − 1²)·4 = 32π cm³." },
+          { "id": "v36p", "label": "36π cm³", "correct": false, "feedback": "Faltou descontar o furo central de raio 1 cm (4π): 36π − 4π = 32π cm³." }
+        ]
+      },
+      {
+        "id": "triangulo-isoceles-na-base",
+        "prompt": "Um triângulo isósceles de base 6 cm e altura 4 cm gira 360° em torno da sua base de 6 cm. Que sólido é gerado?",
+        "options": [
+          { "id": "2con", "label": "Dois cones colados pela base (raio 4 cm e altura 3 cm cada)", "correct": true, "feedback": "Isso! O vértice gira a distância 4 do eixo, criando dois cones de raio 4 e altura 3." },
+          { "id": "1con", "label": "Um único cone de raio 6 cm", "correct": false, "feedback": "Como a base está no eixo e o vértice no meio, formam-se dois cones colados pela base." },
+          { "id": "cil", "label": "Um cilindro de raio 4 cm", "correct": false, "feedback": "Os lados inclinados afunilam até as pontas no eixo, gerando dois cones." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "volume-dois-cones-isoceles",
+        "prompt": "Calcule o volume do sólido do item anterior: dois cones colados pela base, cada um com raio r = 4 cm e altura h = 3 cm.",
+        "fala": "Calcule um cone (π·4²·3)/3 e dobre!",
+        "options": [
+          { "id": "v32p", "label": "32π cm³", "correct": true, "feedback": "Exato. Cada cone tem (π·16·3)/3 = 16π cm³; os dois juntos somam 32π cm³." },
+          { "id": "v16p", "label": "16π cm³", "correct": false, "feedback": "16π é apenas uma metade (1 cone). Somando os dois cones, dá 32π cm³." },
+          { "id": "v96p", "label": "96π cm³", "correct": false, "feedback": "Faltou dividir por 3 no volume dos cones: 96π / 3 = 32π cm³." }
+        ]
+      },
+      {
+        "id": "triangulo-retangulo-na-hipotenusa",
+        "prompt": "Um triângulo retângulo isósceles de hipotenusa 2 cm e altura relativa h = 1 cm gira 360° na hipotenusa. Qual é o volume gerado?",
+        "options": [
+          { "id": "v23p", "label": "2π/3 cm³", "correct": true, "feedback": "Certo. São dois cones de raio 1 cm e alturas 1 cm cada: 2 · (π·1²·1)/3 = 2π/3 cm³." },
+          { "id": "v2p", "label": "2π cm³", "correct": false, "feedback": "Faltou dividir por 3 na fórmula do cone: V = 2π/3 cm³." },
+          { "id": "v43p", "label": "4π/3 cm³", "correct": false, "feedback": "Cada cone tem altura 1 (metade da hipotenusa 2), somando 2π/3 cm³." }
+        ]
+      },
+      {
+        "id": "semicirculo-com-furo-cilindrico",
+        "prompt": "Um semicírculo de raio 3 cm gira 360° em torno do seu diâmetro. Qual é o volume da esfera gerada?",
+        "options": [
+          { "id": "v36p", "label": "36π cm³", "correct": true, "feedback": "Isso. Um semicírculo de raio 3 cm girando 360° no diâmetro varre a esfera de 36π cm³." },
+          { "id": "v18p", "label": "18π cm³", "correct": false, "feedback": "Um semicírculo já cobre de um polo ao outro; girando 360°, fecha a esfera inteira: 36π cm³." },
+          { "id": "v72p", "label": "72π cm³", "correct": false, "feedback": "O semicírculo girando 360° forma 1 esfera (não 2): (4/3)π·27 = 36π cm³." }
+        ]
+      },
+      {
+        "id": "quadrado-girando-pela-diagonal",
+        "prompt": "Um quadrado de diagonal 6 cm (semidiagonal 3 cm) gira 360° em torno de uma diagonal. Qual é o volume dos 2 cones gerados?",
+        "options": [
+          { "id": "v18p", "label": "18π cm³", "correct": true, "feedback": "Exato. A outra diagonal vale 6 (raio r = 3), formando 2 cones de altura 3: 2·9π = 18π cm³." },
+          { "id": "v9p", "label": "9π cm³", "correct": false, "feedback": "9π é um cone só. Como são 2 cones colados pela base, V = 18π cm³." },
+          { "id": "v54p", "label": "54π cm³", "correct": false, "feedback": "Faltou dividir por 3 na fórmula dos cones: 54π / 3 = 18π cm³." }
+        ]
+      },
+      {
+        "id": "pappus-guldin-anel-quadrado",
+        "prompt": "Um quadrado de área 4 cm² cujo centro dista d = 5 cm do eixo gira 360° (volta = 2π·5). Pelo teorema de Pappus, qual é o volume?",
+        "fala": "Multiplique a área 4 pelo comprimento da circunferência de raio 5 (2π·5)!",
+        "options": [
+          { "id": "v40p", "label": "40π cm³", "correct": true, "feedback": "Exato! Área 4 cm² vezes a volta do centro 2π·5 = 10π cm dá 4·10π = 40π cm³." },
+          { "id": "v20p", "label": "20π cm³", "correct": false, "feedback": "Faltou o 2 de 2π·d_c na volta do centro: 4 · (2π·5) = 40π cm³." },
+          { "id": "v100p", "label": "100π cm³", "correct": false, "feedback": "Multiplique a área 4 pela circunferência 2π·5 = 10π: dá 40π cm³." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

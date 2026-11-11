@@ -1,0 +1,549 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "O Semicírculo que Gira",
+  "subtitulo": "Volume e área da esfera",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "esferas"
+  },
+  "outro": "Você dominou o triângulo do corte secante, a casca de 4 círculos máximos e o volume de Arquimedes.",
+  "glossario": {
+    "c1": {
+      "nome": "Raio da esfera (R)",
+      "resumo": "Distância constante do centro a qualquer ponto da casca."
+    },
+    "c2": {
+      "nome": "Distância do corte (d)",
+      "resumo": "Afastamento perpendicular entre o centro e o plano secante."
+    },
+    "c3": {
+      "nome": "Raio da seção (r)",
+      "resumo": "Raio do círculo formado pelo corte: r² + d² = R²."
+    },
+    "c4": {
+      "nome": "Casca e Volume",
+      "resumo": "Superfície 4πR² (4 discos máximos) e volume (4/3)πR³."
+    }
+  },
+  "steps": [
+    {
+      "id": "corte-no-equador-e-acima",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "esfera",
+        "R": 5,
+        "corte": "$d",
+        "cores": { "R": "c1", "d": "c2", "r": "c3", "area": "c4" }
+      },
+      "controls": [
+        {
+          "id": "d",
+          "label": "Distância do corte ao centro (d)",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "No equador (d = 0), o corte tem o mesmo raio R = 5 da esfera. Suba para d = 3: qual é o raio r da fatia?",
+        "done": "Mede 4! Do centro até a borda do corte é o raio R = 5: por Pitágoras, r² + 3² = 5², logo r = 4."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o corte subir até d = 5, no polo?",
+        "resposta": "O corte encosta na casca em um único ponto (r = 0); o plano vira tangente à esfera."
+      },
+      "complete_when": {
+        "metric": "d",
+        "gte": 3
+      }
+    },
+    {
+      "id": "quatro-circulos-maximos",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "esfera",
+        "R": 3,
+        "no_cilindro": true,
+        "cores": { "R": "c1", "d": "c2", "r": "c3", "area": "c4" }
+      },
+      "controls": [
+        {
+          "id": "comparar",
+          "label": "Encaixar no cilindro",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "A sombra plana da esfera de raio 3 tem área πR² = 9π. Quantos círculos máximos cobrem a casca inteira?",
+        "done": "A casca inteira mede 4πR² = 36π: exatamente 4 círculos máximos, a mesma área lateral do cilindro!"
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "De onde vem a relação com o cilindro circunscrito?",
+        "resposta": "Arquimedes provou que a área da casca e o volume da esfera são exatamente 2/3 do cilindro circunscrito."
+      },
+      "complete_when": {
+        "metric": "comparar",
+        "gte": 1
+      }
+    },
+    {
+      "id": "volume-e-escala-k",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "esfera",
+        "R": 2,
+        "k": "$k",
+        "cores": { "R": "c1", "d": "c2", "r": "c3", "area": "c4" }
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Fator de escala do raio (k)",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Uma esfera tem raio 2. Se dobrarmos o raio para k = 2 (raio 4), por quanto multiplica o volume?",
+        "done": "O volume multiplica por 2³ = 8! Como V depende de R³, dobrar o raio produz 8 vezes mais volume."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E a área da superfície, por quanto multiplica?",
+        "resposta": "A área depende de R², então multiplica por 2² = 4. Área escala com k² e volume com k³."
+      },
+      "complete_when": {
+        "metric": "k",
+        "gte": 2
+      }
+    },
+    {
+      "id": "desafio-esfera",
+      "type": "micro_challenge",
+      "prompt": "Uma esfera tem raio R = 3 cm. Qual é a área da sua superfície e o seu volume?",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "esfera",
+          "R": 3,
+          "cores": { "R": "c1", "d": "c2", "r": "c3", "area": "c4" }
+        }
+      },
+      "lines": {
+        "intro": "Use A = 4πR² e V = (4/3)πR³ com R = 3."
+      },
+      "options": [
+        {
+          "id": "av36",
+          "label": "A = 36π cm² e V = 36π cm³",
+          "correct": true,
+          "feedback": "Exato! A = 4π·3² = 36π cm² e V = (4/3)π·3³ = 36π cm³ (um empate numérico curioso em R = 3).",
+          "figure": {
+            "modo": "esfera",
+            "R": 3,
+            "highlight": ["c1", "c4"]
+          }
+        },
+        {
+          "id": "av12",
+          "label": "A = 12π cm² e V = 12π cm³",
+          "correct": false,
+          "feedback": "Você esqueceu de elevar o raio às potências: 4πR² = 36π e (4/3)πR³ = 36π.",
+          "figure": {
+            "modo": "esfera",
+            "R": 3,
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "av108",
+          "label": "A = 36π cm² e V = 108π cm³",
+          "correct": false,
+          "feedback": "Faltou dividir por 3 no volume: 4π·27 / 3 = 36π cm³.",
+          "figure": {
+            "modo": "esfera",
+            "R": 3,
+            "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "av9",
+          "label": "A = 9π cm² e V = 36π cm³",
+          "correct": false,
+          "feedback": "9π é apenas 1 círculo máximo. A casca inteira vale 4 círculos máximos: 36π cm².",
+          "figure": {
+            "modo": "esfera",
+            "R": 3,
+            "corte": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "esfera",
+          "R": 5,
+          "corte": 3,
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "r", "sup": "2", "ref": "c3" },
+        { "text": "+" },
+        { "text": "d", "sup": "2", "ref": "c2" },
+        { "text": "=" },
+        { "text": "R", "sup": "2", "ref": "c1" },
+        { "text": ";" },
+        { "text": "A", "ref": "c4" },
+        { "text": "=" },
+        { "text": "4πR²" },
+        { "text": ";" },
+        { "text": "V", "ref": "c4" },
+        { "text": "=" },
+        { "text": "(4/3)πR³" }
+      ],
+      "definitions": [
+        {
+          "term": "Seção plana",
+          "text": "Corte a distância d do centro: círculo de raio r com r² + d² = R²."
+        },
+        {
+          "term": "Área da esfera",
+          "text": "Quatro círculos máximos de raio R: A = 4πR²."
+        },
+        {
+          "term": "Volume da esfera",
+          "text": "Dois terços do cilindro circunscrito: V = (4/3)πR³."
+        }
+      ],
+      "lines": {
+        "intro": "O triângulo r-d-R governa todo corte e o raio R governa a área e o volume.",
+        "hint": "Toque nas letras coloridas para destacar cada elemento."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Como lembrar a fórmula do volume a partir da área?",
+        "resposta": "Pense em pirâmides finas de base na casca (4πR²) e altura R: V = (4πR² · R)/3 = (4/3)πR³."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "secao-passa-pelo-centro",
+        "prompt": "Quando um plano corta uma esfera passando exatamente pelo centro (d = 0), o círculo obtido é:",
+        "options": [
+          {
+            "id": "maximo",
+            "label": "O círculo máximo (raio r = R)",
+            "correct": true,
+            "feedback": "Isso. Sem nenhum afastamento do centro, o corte tem o diâmetro total da esfera."
+          },
+          {
+            "id": "metade",
+            "label": "Um círculo de raio R/2",
+            "correct": false,
+            "feedback": "No centro o corte tem o raio máximo possível: r = R (o círculo máximo)."
+          },
+          {
+            "id": "ponto",
+            "label": "Um único ponto",
+            "correct": false,
+            "feedback": "Um único ponto ocorre quando d = R (plano tangente). No centro (d = 0), r = R."
+          }
+        ]
+      },
+      {
+        "id": "quantos-circulos-maximos",
+        "prompt": "A área da superfície de uma esfera de raio R equivale à área de quantos círculos máximos (πR²)?",
+        "options": [
+          {
+            "id": "quatro",
+            "label": "4 círculos máximos (4πR²)",
+            "correct": true,
+            "feedback": "Exato! A casca inteira de uma esfera tem área igual a 4 círculos máximos: A = 4πR²."
+          },
+          {
+            "id": "dois",
+            "label": "2 círculos máximos",
+            "correct": false,
+            "feedback": "2 círculos máximos cobrem apenas 1 hemisfério (semiesfera). A esfera toda vale 4."
+          },
+          {
+            "id": "tres",
+            "label": "3 círculos máximos",
+            "correct": false,
+            "feedback": "A área total da casca esférica é exatamente 4 círculos máximos: A = 4πR²."
+          }
+        ]
+      },
+      {
+        "id": "relacao-pitagoras-secao",
+        "prompt": "Numa esfera de raio R, um plano a distância d do centro corta uma seção de raio r. A relação é:",
+        "options": [
+          {
+            "id": "r2d2",
+            "label": "r² + d² = R²",
+            "correct": true,
+            "feedback": "Correto. O raio da esfera R é a hipotenusa do triângulo retângulo formado por d e r."
+          },
+          {
+            "id": "soma",
+            "label": "r + d = R",
+            "correct": false,
+            "feedback": "A relação é de Pitágoras com os quadrados (não soma simples): r² + d² = R²."
+          },
+          {
+            "id": "r2R2",
+            "label": "r² + R² = d²",
+            "correct": false,
+            "feedback": "A hipotenusa é R (vai do centro à casca), logo r² + d² = R²."
+          }
+        ]
+      },
+      {
+        "id": "esfera-no-cilindro-arquimedes",
+        "prompt": "Uma esfera de raio R está inscrita num cilindro (raio R, altura 2R). A razão V_esfera / V_cilindro é:",
+        "options": [
+          {
+            "id": "dois_tercos",
+            "label": "2/3",
+            "correct": true,
+            "feedback": "Isso. Arquimedes descobriu que a esfera ocupa exatamente 2/3 do volume do cilindro."
+          },
+          {
+            "id": "um_terco",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "1/3 é o cone! A esfera ocupa 2/3 do cilindro circunscrito."
+          },
+          {
+            "id": "metade",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Não é metade; (4/3)πR³ dividido por 2πR³ é exatamente 2/3."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "raio-da-secao-345",
+        "prompt": "Uma esfera de raio R = 5 cm é cortada a uma distância d = 3 cm do seu centro. Quanto mede o raio r da seção?",
+        "options": [
+          {
+            "id": "r4",
+            "label": "4 cm",
+            "correct": true,
+            "feedback": "Exato. r = √(R² − d²) = √(25 − 9) = √16 = 4 cm."
+          },
+          {
+            "id": "r2",
+            "label": "2 cm",
+            "correct": false,
+            "feedback": "Você subtraiu 5 − 3. Pelo triângulo retângulo, r = √(25 − 9) = 4 cm."
+          },
+          {
+            "id": "r8",
+            "label": "8 cm",
+            "correct": false,
+            "feedback": "O raio da seção não pode ser maior que o raio da esfera (5 cm): r = 4 cm."
+          }
+        ]
+      },
+      {
+        "id": "area-esfera-raio-3",
+        "prompt": "Qual é a área da superfície de uma esfera de raio R = 3 cm?",
+        "options": [
+          {
+            "id": "a36p",
+            "label": "36π cm²",
+            "correct": true,
+            "feedback": "Correto. A = 4 · π · R² = 4 · π · 3² = 4 · 9π = 36π cm²."
+          },
+          {
+            "id": "a12p",
+            "label": "12π cm²",
+            "correct": false,
+            "feedback": "Você fez 4 · 3π. O raio é elevado ao quadrado: 4 · π · 9 = 36π cm²."
+          },
+          {
+            "id": "a9p",
+            "label": "9π cm²",
+            "correct": false,
+            "feedback": "9π é apenas 1 círculo máximo. A esfera tem 4 círculos máximos: 36π cm²."
+          }
+        ]
+      },
+      {
+        "id": "area-do-fuso-60-graus",
+        "prompt": "Uma esfera tem raio R = 3 cm (área total 36π cm²). Qual é a área de um fuso esférico de ângulo 60°?",
+        "options": [
+          {
+            "id": "a6p",
+            "label": "6π cm²",
+            "correct": true,
+            "feedback": "Isso. 60° é 1/6 de 360°, então a área do fuso é (1/6)·(4π·3²) = 36π / 6 = 6π cm²."
+          },
+          {
+            "id": "a36p",
+            "label": "36π cm²",
+            "correct": false,
+            "feedback": "36π é a esfera toda (360°). Para 60° (1/6 da volta), dá 6π cm²."
+          },
+          {
+            "id": "a12p",
+            "label": "12π cm²",
+            "correct": false,
+            "feedback": "12π seria para 120° (1/3). Para 60° (1/6 de 36π), dá 6π cm²."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "fundir-oito-esferas",
+        "prompt": "Oito esferas de metal de raio r = 1 cm são fundidas numa única esfera de raio R. Quanto vale R?",
+        "fala": "Volume total antes = volume depois: se o volume multiplicou por 8, por quanto multiplicou o raio?",
+        "options": [
+          {
+            "id": "r2",
+            "label": "2 cm",
+            "correct": true,
+            "feedback": "Exato. Como V é proporcional a R³, ter 8 vezes o volume significa R = ∛8 = 2 cm."
+          },
+          {
+            "id": "r8",
+            "label": "8 cm",
+            "correct": false,
+            "feedback": "Raio 8 teria volume 8³ = 512 vezes maior! Para 8 vezes o volume, R = ∛8 = 2 cm."
+          },
+          {
+            "id": "r4",
+            "label": "4 cm",
+            "correct": false,
+            "feedback": "Raio 4 daria volume 4³ = 64 vezes maior. Como 2³ = 8, o novo raio é 2 cm."
+          }
+        ]
+      },
+      {
+        "id": "area-total-semiesfera-macica",
+        "prompt": "Uma semiesfera maciça de raio R = 2 cm tem casca curva e base circular plana. Qual é a sua área total?",
+        "options": [
+          {
+            "id": "a12p",
+            "label": "12π cm²",
+            "correct": true,
+            "feedback": "Certo! Metade da casca (2πR² = 8π) mais o círculo plano do corte (πR² = 4π) somam 3πR² = 12π cm²."
+          },
+          {
+            "id": "a8p",
+            "label": "8π cm²",
+            "correct": false,
+            "feedback": "8π é só a parte curva externa. Na peça maciça soma-se o círculo plano do corte (+4π): 12π cm²."
+          },
+          {
+            "id": "a16p",
+            "label": "16π cm²",
+            "correct": false,
+            "feedback": "16π é a esfera inteira. A semiesfera maciça tem 2πR² + πR² = 3πR² = 12π cm²."
+          }
+        ]
+      },
+      {
+        "id": "arquimedes-cilindro-circunscrito",
+        "prompt": "Uma esfera de volume 20 cm³ está inscrita num cilindro reto. Qual é o volume do cilindro?",
+        "options": [
+          {
+            "id": "v30",
+            "label": "30 cm³",
+            "correct": true,
+            "feedback": "Exato. Pela relação de Arquimedes, a esfera ocupa 2/3 do cilindro; logo V_cil = 20 · (3/2) = 30 cm³."
+          },
+          {
+            "id": "v40",
+            "label": "40 cm³",
+            "correct": false,
+            "feedback": "A esfera é 2/3 do cilindro (não metade): 20 / 2 · 3 = 30 cm³."
+          },
+          {
+            "id": "v60",
+            "label": "60 cm³",
+            "correct": false,
+            "feedback": "1/3 é o cone! A esfera ocupa 2/3 do cilindro, então o cilindro tem 30 cm³."
+          }
+        ]
+      },
+      {
+        "id": "achar-raio-igualando-area-e-volume",
+        "prompt": "Para qual valor do raio R a área da superfície (4πR²) e o volume ((4/3)πR³) são numericamente iguais?",
+        "options": [
+          {
+            "id": "r3",
+            "label": "3 cm",
+            "correct": true,
+            "feedback": "Isso. Igualando (4/3)πR³ = 4πR² e dividindo por 4πR², sobra R/3 = 1 ⇒ R = 3 cm."
+          },
+          {
+            "id": "r1",
+            "label": "1 cm",
+            "correct": false,
+            "feedback": "Em R = 1, área é 4π e volume é 4π/3. Eles empatam em R = 3 (ambos dão 36π)."
+          },
+          {
+            "id": "r4",
+            "label": "4 cm",
+            "correct": false,
+            "feedback": "Cancelando 4πR² em (4/3)πR³ = 4πR², obtemos R = 3 cm."
+          }
+        ]
+      },
+      {
+        "id": "esferas-no-cilindro-nivel",
+        "prompt": "Três bolas de raio R = 3 cm cabem justas num tubo cilíndrico de altura 18 cm. Que volume fica vazio?",
+        "fala": "Em cada fatia de altura 2R, a esfera ocupa 2/3 e deixa 1/3 vazio!",
+        "options": [
+          {
+            "id": "v54p",
+            "label": "54π cm³",
+            "correct": true,
+            "feedback": "Exato. O tubo tem 162π cm³ e as 3 esferas ocupam 2/3 (108π), deixando 1/3 vazio: 54π cm³."
+          },
+          {
+            "id": "v108p",
+            "label": "108π cm³",
+            "correct": false,
+            "feedback": "108π cm³ é o volume ocupado pelas 3 bolas. O espaço vazio é 162π − 108π = 54π cm³."
+          },
+          {
+            "id": "v18p",
+            "label": "18π cm³",
+            "correct": false,
+            "feedback": "18π é o vazio em volta de 1 bola só. Nas 3 bolas do tubo são 3·18π = 54π cm³."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

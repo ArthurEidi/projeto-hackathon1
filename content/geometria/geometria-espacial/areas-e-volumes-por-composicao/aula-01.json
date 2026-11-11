@@ -1,0 +1,295 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Somar Volumes, Descontar Colagens",
+  "subtitulo": "Silos, cápsulas, peças cavadas e imersão",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "areas-e-volumes-por-composicao"
+  },
+  "outro": "Você combinou cilindros, cones e esferas, descontou tampas ocultas na colagem e viu por que cavar um buraco aumenta a área.",
+  "glossario": {
+    "c1": { "nome": "Peça 1 (corpo)", "resumo": "Sólido principal da montagem (ex.: cilindro ou cubo)." },
+    "c2": { "nome": "Peça 2 (topo ou cava)", "resumo": "Sólido acoplado (soma volume) ou escavado (subtrai volume)." },
+    "c3": { "nome": "Face oculta", "resumo": "Tampa onde as peças se colam; não entra na área externa." },
+    "c4": { "nome": "Superfície exposta", "resumo": "Casca externa real que pode ser pintada ou tocada." }
+  },
+  "steps": [
+    {
+      "id": "colar-silo-volume-e-area",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "composicao",
+        "montagem": "silo",
+        "r": 3,
+        "h": 4,
+        "hc": 4,
+        "juntar": "$colar / 100"
+      },
+      "controls": [
+        { "id": "colar", "label": "Colar telhado cônico", "min": 0, "max": 100, "step": 50, "initial": 0, "unit": "%", "color": "c2" }
+      ],
+      "lines": {
+        "intro": "Ao colar o telhado cônico (12π) sobre o cilindro (36π), o volume soma 48π. E o disco de encontro: ainda fica exposto por fora?",
+        "done": "O disco do meio fica escondido! Por fora sobram só o fundo do cilindro, a parede lateral e o chapéu cônico."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então no volume a gente soma tudo, mas na área só conta o que dá para pintar?",
+        "resposta": "Exatamente! Volume mede o recheio; área superficial mede a pintura externa."
+      },
+      "complete_when": { "metric": "colar", "gte": 100 }
+    },
+    {
+      "id": "capsula-duas-semiesferas",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "composicao",
+        "montagem": "capsula",
+        "r": 3,
+        "h": 5,
+        "juntar": "$juntar_pontas / 100"
+      },
+      "controls": [
+        { "id": "juntar_pontas", "label": "Juntar as 2 semiesferas", "min": 0, "max": 100, "step": 50, "initial": 0, "unit": "%", "color": "c2" }
+      ],
+      "lines": {
+        "intro": "Uma cápsula tem um cilindro no meio e duas semiesferas de raio 3 nas pontas. Juntando as pontas, que sólido único formam?",
+        "done": "Duas semiesferas formam 1 esfera inteira! O volume é cilindro mais esfera, e a área externa é a lateral mais a casca da esfera."
+      },
+      "complete_when": { "metric": "juntar_pontas", "gte": 100 }
+    },
+    {
+      "id": "cavar-diminui-volume-aumenta-area",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "composicao",
+        "montagem": "cavidade",
+        "r": 3,
+        "h": 4,
+        "hc": 4,
+        "juntar": "$cavar / 100"
+      },
+      "controls": [
+        { "id": "cavar", "label": "Escavar cone no topo", "min": 0, "max": 100, "step": 50, "initial": 0, "unit": "%", "color": "c4" }
+      ],
+      "lines": {
+        "intro": "Se cavarmos um buraco em forma de cone no topo do cilindro, o volume diminui. E a área total da peça: diminui ou aumenta?",
+        "done": "A área aumenta! Tiramos a tampa plana de 9π, mas abrimos uma parede inclinada maior (15π) lá dentro."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que isso sempre cai nas provas?",
+        "resposta": "Porque parece que tirar volume sempre tira área. Mas cavar um buraco abre paredes novas para pintar!"
+      },
+      "complete_when": { "metric": "cavar", "gte": 100 }
+    },
+    {
+      "id": "desafio-volume-silo",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "composicao",
+          "montagem": "silo",
+          "r": 3,
+          "h": 5,
+          "hc": 3,
+          "juntar": 1
+        }
+      },
+      "prompt": "Qual é o volume total de um silo formado por um cilindro (r = 3 m, h = 5 m) e um telhado cônico (r = 3 m, h = 3 m)?",
+      "lines": {
+        "intro": "Some o cilindro de baixo com o cone do telhado (lembre do 1/3 no cone)."
+      },
+      "options": [
+        {
+          "id": "v54p",
+          "label": "54π m³",
+          "correct": true,
+          "feedback": "Exato: cilindro π·3²·5 = 45π e cone (π·3²·3)/3 = 9π, somando 54π m³.",
+          "figure": { "highlight": ["c4"] }
+        },
+        {
+          "id": "v72p",
+          "label": "72π m³",
+          "correct": false,
+          "feedback": "Você esqueceu de dividir o volume do cone por 3. O certo é 45π + 9π = 54π m³.",
+          "figure": { "highlight": ["c2"] }
+        },
+        {
+          "id": "v45p",
+          "label": "45π m³",
+          "correct": false,
+          "feedback": "45π m³ é só a parte cilíndrica. Somando o cone de 9π m³, dá 54π m³.",
+          "figure": { "highlight": ["c1"] }
+        },
+        {
+          "id": "v36p",
+          "label": "36π m³",
+          "correct": false,
+          "feedback": "Você subtraiu em vez de somar. Como o cone está em cima, soma-se: 54π m³.",
+          "figure": { "highlight": ["c3"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "composicao",
+          "montagem": "silo",
+          "r": 3,
+          "h": 4,
+          "hc": 4,
+          "juntar": 1
+        }
+      },
+      "formula": [
+        { "text": "V", "ref": "c1" },
+        { "text": "=" },
+        { "text": "V1", "ref": "c1" },
+        { "text": "±" },
+        { "text": "V2", "ref": "c2" },
+        { "text": "e" },
+        { "text": "Área", "ref": "c4" },
+        { "text": "descarta" },
+        { "text": "tampas", "ref": "c3" }
+      ],
+      "definitions": [
+        { "term": "Volume por composição", "text": "Soma os sólidos colados e subtrai as cavidades escavadas." },
+        { "term": "Área de sólidos colados", "text": "Descarta todas as faces internas que ficaram escondidas na colagem." },
+        { "term": "Área de sólido escavado", "text": "Perde a tampa do furo, mas ganha toda a parede interna da cavidade." }
+      ],
+      "lines": {
+        "intro": "Faces coladas ficam ocultas e furos abrem paredes novas. Por isso o volume soma ou subtrai, mas a área conta só a casca exposta.",
+        "hint": "Toque nas grandezas para destacar peças, tampas coladas e a casca exposta."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "volume-cubo-mais-piramide",
+        "prompt": "Um troféu é formado por um cubo de volume 64 cm³ com uma pirâmide de volume 16 cm³ colada no topo. Qual é o volume total do troféu?",
+        "options": [
+          { "id": "v80", "label": "80 cm³", "correct": true, "feedback": "Isso. Como as peças estão acopladas para fora, basta somar os volumes: 64 + 16 = 80 cm³." },
+          { "id": "v48", "label": "48 cm³", "correct": false, "feedback": "48 seria se a pirâmide fosse cavada para dentro. Colada no topo, soma-se: 64 + 16 = 80 cm³." },
+          { "id": "v64", "label": "64 cm³", "correct": false, "feedback": "64 cm³ é só o cubo. Com a pirâmide de 16 cm³, o total é 80 cm³." }
+        ]
+      },
+      {
+        "id": "volume-bloco-com-furo",
+        "prompt": "De um bloco de madeira de 200 cm³ é escavado um furo cilíndrico de 50 cm³. Qual é o volume de madeira restante?",
+        "options": [
+          { "id": "v150", "label": "150 cm³", "correct": true, "feedback": "Certo. Na cavidade retiramos material: 200 − 50 = 150 cm³." },
+          { "id": "v250", "label": "250 cm³", "correct": false, "feedback": "O furo retira madeira, então subtraímos: 200 − 50 = 150 cm³." },
+          { "id": "v100", "label": "100 cm³", "correct": false, "feedback": "Basta subtrair o volume do furo: 200 − 50 = 150 cm³." }
+        ]
+      },
+      {
+        "id": "faces-dois-cubos-colados",
+        "prompt": "Dois cubos idênticos (6 faces cada) são colados por uma face inteira. Quantas faces unitárias ficam EXPOSTAS por fora?",
+        "options": [
+          { "id": "f10", "label": "10", "correct": true, "feedback": "Exato. Das 12 faces (6 + 6), as 2 que se encostaram ficam escondidas no meio: 12 − 2 = 10." },
+          { "id": "f12", "label": "12", "correct": false, "feedback": "12 é antes de colar. Ao colar, 1 face de cada cubo fica presa por dentro: 12 − 2 = 10." },
+          { "id": "f11", "label": "11", "correct": false, "feedback": "Escondem-se 2 faces (uma do 1º cubo e uma do 2º): 12 − 2 = 10." }
+        ]
+      },
+      {
+        "id": "volume-capsula-pronta",
+        "prompt": "Uma cápsula tem um corpo cilíndrico de volume 30 mm³ e duas pontas semiesféricas de 10 mm³ cada. Qual é o volume total da cápsula?",
+        "options": [
+          { "id": "v50", "label": "50 mm³", "correct": true, "feedback": "Isso. Corpo (30) mais as duas semiesferas (10 + 10) somam 50 mm³." },
+          { "id": "v40", "label": "40 mm³", "correct": false, "feedback": "Há duas pontas semiesféricas de 10 mm³ cada: 30 + 10 + 10 = 50 mm³." },
+          { "id": "v20", "label": "20 mm³", "correct": false, "feedback": "20 mm³ são só as duas pontas. Somando o cilindro de 30 mm³, dá 50 mm³." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "volume-capsula-por-medidas",
+        "prompt": "Uma cápsula une um cilindro (r = 3 mm, h = 4 mm) a duas semiesferas de raio 3 mm nas pontas. Qual é o volume total?",
+        "options": [
+          { "id": "v72p", "label": "72π mm³", "correct": true, "feedback": "Certo. O cilindro tem 36π e as duas semiesferas formam 1 esfera de 36π: 36π + 36π = 72π mm³." },
+          { "id": "v54p", "label": "54π mm³", "correct": false, "feedback": "54π soma apenas 1 semiesfera (18π). Com as 2 pontas (36π), dá 36π + 36π = 72π mm³." },
+          { "id": "v36p", "label": "36π mm³", "correct": false, "feedback": "36π é só o cilindro (ou só a esfera). Juntos somam 72π mm³." }
+        ]
+      },
+      {
+        "id": "area-externa-capsula",
+        "prompt": "Na mesma cápsula (cilindro de r = 3 mm e h = 4 mm + duas semiesferas de r = 3 mm), qual é a ÁREA EXTERNA total?",
+        "options": [
+          { "id": "a60p", "label": "60π mm²", "correct": true, "feedback": "Exato. Lateral do cilindro (24π) mais a casca das 2 semiesferas (4π·3² = 36π) dão 60π mm²." },
+          { "id": "a78p", "label": "78π mm²", "correct": false, "feedback": "Você incluiu as 2 tampas circulares internas (18π), que ficam ocultas na colagem! O certo é 60π mm²." },
+          { "id": "a42p", "label": "42π mm²", "correct": false, "feedback": "As 2 semiesferas somam 4π·3² = 36π (não 18π); com a lateral 24π, dá 60π mm²." }
+        ]
+      },
+      {
+        "id": "sorvete-casquinha-mais-bola",
+        "prompt": "Uma casquinha cônica (r = 3 cm, h = 6 cm) cheia de sorvete traz 1 semiesfera de raio 3 cm no topo. Qual é o volume de sorvete?",
+        "options": [
+          { "id": "v36p", "label": "36π cm³", "correct": true, "feedback": "Isso. No cone há (π·9·6)/3 = 18π e na semiesfera há (2/3)π·27 = 18π, somando 36π cm³." },
+          { "id": "v54p", "label": "54π cm³", "correct": false, "feedback": "Em cima há metade de uma esfera (18π), não a esfera inteira (36π). Total: 18π + 18π = 36π cm³." },
+          { "id": "v18p", "label": "18π cm³", "correct": false, "feedback": "18π é só o cone (ou só a semiesfera). Somando as duas partes: 36π cm³." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "area-silo-com-fundo",
+        "prompt": "Um silo tem corpo cilíndrico (r = 3 m, h = 4 m) e teto cônico (r = 3 m, g = 5 m). Qual é a área externa lateral + teto?",
+        "fala": "Some a parede do cilindro (2πrh) com o chapéu do cone (πrg), sem a tampa do meio!",
+        "options": [
+          { "id": "a39p", "label": "39π m²", "correct": true, "feedback": "Exato. Parede cilíndrica 2π·3·4 = 24π mais teto cônico π·3·5 = 15π somam 39π m²." },
+          { "id": "a48p", "label": "48π m²", "correct": false, "feedback": "Você somou o círculo interno de colagem (9π). Por fora são apenas 24π + 15π = 39π m²." },
+          { "id": "a36p", "label": "36π m²", "correct": false, "feedback": "No teto cônico usa-se a geratriz g = 5 (π·3·5 = 15π), não h = 4. Total: 24π + 15π = 39π m²." }
+        ]
+      },
+      {
+        "id": "area-cilindro-com-cone-cavado",
+        "prompt": "De um cilindro maciço (r = 3 cm, h = 4 cm) escava-se no topo um cone de raio 3 cm e g = 5 cm. Qual é a área total da peça?",
+        "options": [
+          { "id": "a48p", "label": "48π cm²", "correct": true, "feedback": "Certo! Fundo (9π) + parede externa (24π) + funil cônico interno (15π) = 48π cm²." },
+          { "id": "a42p", "label": "42π cm²", "correct": false, "feedback": "42π era o cilindro antes de cavar. O furo tirou a tampa 9π mas abriu o cone 15π: 48π cm²." },
+          { "id": "a18p", "label": "18π cm²", "correct": false, "feedback": "Na área a parede da cavidade soma (não subtrai!): 9π + 24π + 15π = 48π cm²." }
+        ]
+      },
+      {
+        "id": "transferir-esfera-para-cilindro",
+        "prompt": "Uma esfera de raio 3 cm derrete inteira dentro de um copo cilíndrico de raio 3 cm. Que altura h o líquido atinge no copo?",
+        "options": [
+          { "id": "h4", "label": "4 cm", "correct": true, "feedback": "Exato. Igualando 9π·h = (4/3)π·27 = 36π, achamos h = 36π / 9π = 4 cm." },
+          { "id": "h3", "label": "3 cm", "correct": false, "feedback": "O volume da esfera é 36π e a base do copo é 9π; dividindo, h = 4 cm." },
+          { "id": "h6", "label": "6 cm", "correct": false, "feedback": "6 cm é a altura da bola inteira; como ela ocupa 2/3 daquela faixa, a água fica em 4 cm." }
+        ]
+      },
+      {
+        "id": "tres-cubos-empilhados-area",
+        "prompt": "Três cubos de aresta 2 cm (face 4 cm²) são colados em fila formando um bloco 2 × 2 × 6. Qual é a área externa desse bloco?",
+        "options": [
+          { "id": "a56", "label": "56 cm²", "correct": true, "feedback": "Isso. Das 18 faces (3·6), 4 ficam ocultas nas duas colagens; sobram 14 · 4 cm² = 56 cm²." },
+          { "id": "a72", "label": "72 cm²", "correct": false, "feedback": "72 cm² é a soma dos 3 cubos soltos. Descontando as 4 faces coladas (16 cm²), dá 56 cm²." },
+          { "id": "a64", "label": "64 cm²", "correct": false, "feedback": "Cada colagem esconde 2 faces (4 no total): 18 − 4 = 14 faces de 4 cm² = 56 cm²." }
+        ]
+      },
+      {
+        "id": "lapis-cilindro-mais-cone",
+        "prompt": "Ao apontar um lápis cilíndrico de raio 1 cm, os últimos 3 cm de comprimento viram um cone de altura 3 cm. Quanto volume saiu?",
+        "fala": "Na faixa de 3 cm da ponta, o cone guarda 1/3 e as aparas levam 2/3!",
+        "options": [
+          { "id": "v2p", "label": "2π cm³", "correct": true, "feedback": "Exato! Os 3 cm cilíndricos tinham 3π cm³ e viraram um cone de 1π cm³, perdendo 2π cm³." },
+          { "id": "v1p", "label": "1π cm³", "correct": false, "feedback": "1π cm³ é o volume da ponta cônica que ficou. O que saiu em aparas foi 3π − 1π = 2π cm³." },
+          { "id": "v8p", "label": "8π cm³", "correct": false, "feedback": "8π cm³ é o volume do lápis apontado (7π + 1π). O volume perdido ao apontar foi 2π cm³." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

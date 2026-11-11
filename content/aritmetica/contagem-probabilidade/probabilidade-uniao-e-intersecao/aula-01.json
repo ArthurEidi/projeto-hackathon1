@@ -1,0 +1,782 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Casas Contadas Duas Vezes",
+  "subtitulo": "P(A ou B), P(A e B) e o complemento",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "probabilidade-uniao-e-intersecao"
+  },
+  "outro": "Você viu casas contadas duas vezes: a união soma e desconta a interseção, e o complemento é o que falta para 1.",
+  "glossario": {
+    "c1": {
+      "nome": "Evento A",
+      "resumo": "Casas que fazem A acontecer."
+    },
+    "c2": {
+      "nome": "Evento B",
+      "resumo": "Casas que fazem B acontecer."
+    },
+    "c3": {
+      "nome": "Interseção",
+      "resumo": "Casas comuns a A e B: os dois acontecem juntos."
+    },
+    "c4": {
+      "nome": "Complemento",
+      "resumo": "Casas fora do evento: ele não acontece."
+    }
+  },
+  "steps": [
+    {
+      "id": "disjuntos",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "etapas": 1,
+        "a": {
+          "casas": [
+            "1",
+            "2"
+          ]
+        },
+        "b": {
+          "casas": [
+            "5",
+            "6"
+          ]
+        },
+        "chaves": [
+          "unir"
+        ],
+        "regua": true,
+        "titulos": {
+          "linhas": "Faces"
+        }
+      },
+      "lines": {
+        "intro": "No dado, A é sair 1 ou 2 e B é sair 5 ou 6. A chance de A ou B é a soma das duas?",
+        "done": "É: 2/6 + 2/6 = 4/6. Sem casas em comum, juntar é só somar."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se saber que A aconteceu mudar a chance de B?",
+        "resposta": "Isso é probabilidade condicional, a próxima aula. Hoje olhamos a grade inteira."
+      },
+      "complete_when": {
+        "metric": "uniu",
+        "gte": 1
+      }
+    },
+    {
+      "id": "contada-duas-vezes",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "etapas": 1,
+        "a": {
+          "casas": [
+            "2",
+            "4",
+            "6"
+          ]
+        },
+        "b": {
+          "casas": [
+            "4",
+            "5",
+            "6"
+          ]
+        },
+        "chaves": [
+          "unir",
+          "tirar_repetidas"
+        ],
+        "regua": true,
+        "titulos": {
+          "linhas": "Faces"
+        }
+      },
+      "lines": {
+        "intro": "Agora A é par e B é maior que 3. Some 3/6 + 3/6 e conte as casas acesas: bate?",
+        "done": "Não bate: acendem 4 casas, não 6. As casas 4 e 6 entraram duas vezes, então 3/6 + 3/6 − 2/6 = 4/6."
+      },
+      "complete_when": {
+        "metric": "descontou",
+        "gte": 1
+      }
+    },
+    {
+      "id": "pelo-menos-um-seis",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "colunas": "linhas",
+        "a": {
+          "linhas": [
+            "6"
+          ],
+          "colunas": [
+            "6"
+          ]
+        },
+        "chaves": [
+          "complemento"
+        ],
+        "titulos": {
+          "linhas": "1º dado",
+          "colunas": "2º dado"
+        }
+      },
+      "lines": {
+        "intro": "Com dois dados, quantas casas têm pelo menos um 6? Não fica mais fácil contar as que não têm nenhum?",
+        "done": "Sem nenhum 6 há 5 · 5 = 25 casas. O resto, 36 − 25 = 11, tem pelo menos um 6: P = 11/36."
+      },
+      "complete_when": {
+        "metric": "complemento_visto",
+        "gte": 1
+      }
+    },
+    {
+      "id": "sobreposicao-cresce",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 10,
+        "etapas": 1,
+        "a": {
+          "intervalo": {
+            "de": 1,
+            "ate": 4
+          }
+        },
+        "b": {
+          "intervalo": {
+            "de": "$inicio_b",
+            "ate": "$inicio_b+3"
+          }
+        },
+        "chaves": [
+          "unir",
+          "tirar_repetidas"
+        ],
+        "regua": true
+      },
+      "controls": [
+        {
+          "id": "inicio_b",
+          "label": "Início de B",
+          "min": 1,
+          "max": 7,
+          "step": 1,
+          "initial": 7,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Deslize B até ele coincidir com A. O que acontece com a união quando as casas comuns aumentam?",
+        "done": "A união encolhe até virar só A, 4/10. Quanto mais casas comuns, mais a soma precisa descontar."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A soma P(A) + P(B) pode passar de 1?",
+        "resposta": "A soma pode, a união não. Se passar de 1, A e B são obrigados a ter casas em comum."
+      },
+      "complete_when": {
+        "metric": "inicio_b",
+        "lte": 1
+      }
+    },
+    {
+      "id": "desafio-2-ou-5",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": 20,
+          "etapas": 1,
+          "a": {
+            "casas": [
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12",
+              "14",
+              "16",
+              "18",
+              "20"
+            ]
+          },
+          "b": {
+            "casas": [
+              "5",
+              "10",
+              "15",
+              "20"
+            ]
+          },
+          "titulos": {
+            "linhas": "Números de 1 a 20"
+          }
+        }
+      },
+      "prompt": "Sorteia-se um número de 1 a 20. Qual a probabilidade de ele ser múltiplo de 2 ou de 5?",
+      "lines": {
+        "intro": "Marque os múltiplos de 2, depois os de 5. Algum número ficou com as duas cores?"
+      },
+      "options": [
+        {
+          "id": "a7-10",
+          "label": "7/10",
+          "correct": false,
+          "feedback": "10 + 4 = 14 conta 10 e 20 duas vezes. Descontando: 12/20 = 3/5.",
+          "figure": {
+            "mostrar": {
+              "uniao": true
+            }
+          }
+        },
+        {
+          "id": "a3-5",
+          "label": "3/5",
+          "correct": true,
+          "feedback": "Isso. 10 + 4 − 2 = 12 casas de 20.",
+          "figure": {
+            "mostrar": {
+              "uniao": true,
+              "sem_repetidas": true
+            }
+          }
+        },
+        {
+          "id": "a1-2",
+          "label": "1/2",
+          "correct": false,
+          "feedback": "1/2 são só os pares. Os múltiplos de 5 ímpares (5 e 15) também contam: 3/5.",
+          "figure": {
+            "acesas": [
+              "5",
+              "15"
+            ]
+          }
+        },
+        {
+          "id": "a1-10",
+          "label": "1/10",
+          "correct": false,
+          "feedback": "1/10 é a interseção, 10 e 20. A união é 12/20 = 3/5.",
+          "figure": {
+            "mostrar": {
+              "intersecao": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": 6,
+          "etapas": 1,
+          "a": {
+            "casas": [
+              "2",
+              "4",
+              "6"
+            ]
+          },
+          "b": {
+            "casas": [
+              "4",
+              "5",
+              "6"
+            ]
+          },
+          "mostrar": {
+            "uniao": true,
+            "sem_repetidas": true,
+            "intersecao": true
+          },
+          "regua": true
+        }
+      },
+      "formula": [
+        {
+          "text": "P(A ∪ B)"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "P(A)",
+          "ref": "c1"
+        },
+        {
+          "text": "+"
+        },
+        {
+          "text": "P(B)",
+          "ref": "c2"
+        },
+        {
+          "text": "−"
+        },
+        {
+          "text": "P(A ∩ B)",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "União",
+          "text": "A ou B, pelo menos um acontece."
+        },
+        {
+          "term": "Interseção",
+          "text": "A e B ao mesmo tempo."
+        },
+        {
+          "term": "Complemento",
+          "text": "P(não A) = 1 − P(A)."
+        }
+      ],
+      "lines": {
+        "intro": "Somando A e B, as casas comuns entram duas vezes. Por isso a união desconta a interseção uma vez.",
+        "hint": "Toque em uma letra para ver suas casas na grade."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "um-ou-seis",
+        "prompt": "Num dado, qual a probabilidade de sair 1 ou 6?",
+        "options": [
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": true,
+            "feedback": "Isso. Sem casas comuns: 1/6 + 1/6 = 1/3."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "1/6 é um número só. O 1 ou o 6: 2/6 = 1/3."
+          },
+          {
+            "id": "a1-36",
+            "label": "1/36",
+            "correct": false,
+            "feedback": "1/36 multiplica, como se fossem dois dados. No mesmo dado, soma: 1/3."
+          },
+          {
+            "id": "a7-6",
+            "label": "7/6",
+            "correct": false,
+            "feedback": "Probabilidade não passa de 1. São 2 casas de 6: 1/3."
+          }
+        ]
+      },
+      {
+        "id": "nao-chover",
+        "prompt": "A chance de chover amanhã é 0,3. Qual a chance de não chover?",
+        "options": [
+          {
+            "id": "a07",
+            "label": "0,7",
+            "correct": true,
+            "feedback": "Certo. O complemento é o que falta para 1."
+          },
+          {
+            "id": "a03",
+            "label": "0,3",
+            "correct": false,
+            "feedback": "0,3 é chover. Não chover: 1 − 0,3 = 0,7."
+          },
+          {
+            "id": "a05",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Os dois casos não têm a mesma chance. 1 − 0,3 = 0,7."
+          },
+          {
+            "id": "am03",
+            "label": "−0,3",
+            "correct": false,
+            "feedback": "Probabilidade não é negativa. O complemento é 1 − 0,3 = 0,7."
+          }
+        ]
+      },
+      {
+        "id": "intersecao-dado",
+        "prompt": "Num dado, A = par e B = maior que 4. Que casas formam A e B ao mesmo tempo?",
+        "options": [
+          {
+            "id": "s6",
+            "label": "{6}",
+            "correct": true,
+            "feedback": "Isso. 6 é o único par maior que 4."
+          },
+          {
+            "id": "s56",
+            "label": "{5, 6}",
+            "correct": false,
+            "feedback": "5 é maior que 4, mas não é par. A interseção é {6}."
+          },
+          {
+            "id": "uniao",
+            "label": "{2, 4, 5, 6}",
+            "correct": false,
+            "feedback": "Isso é a união. A interseção pede as duas coisas: {6}."
+          },
+          {
+            "id": "vazio",
+            "label": "Nenhuma",
+            "correct": false,
+            "feedback": "O 6 é par e maior que 4. A interseção é {6}."
+          }
+        ]
+      },
+      {
+        "id": "mesmo-lancamento",
+        "prompt": "Num único lançamento de dado, qual a probabilidade de sair 2 e 3 ao mesmo tempo?",
+        "options": [
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo. Uma face só aparece por vez: os eventos não se cruzam."
+          },
+          {
+            "id": "a1-36",
+            "label": "1/36",
+            "correct": false,
+            "feedback": "1/36 seria com dois dados. Num dado só, 2 e 3 juntos é impossível."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "1/3 é 2 OU 3. Os dois juntos: 0."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "Não há casa que seja 2 e 3 ao mesmo tempo. P = 0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "par-ou-mult-3",
+        "prompt": "Num dado, qual a probabilidade de sair par ou múltiplo de 3?",
+        "options": [
+          {
+            "id": "a2-3",
+            "label": "2/3",
+            "correct": true,
+            "feedback": "Isso. 3/6 + 2/6 − 1/6 = 4/6."
+          },
+          {
+            "id": "a5-6",
+            "label": "5/6",
+            "correct": false,
+            "feedback": "O 6 entrou duas vezes. Descontando: 4/6 = 2/3."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/2 são só os pares. Com o 3: 4/6 = 2/3."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "1/6 é a interseção, o 6. A união é 4/6 = 2/3."
+          }
+        ]
+      },
+      {
+        "id": "formula-uniao",
+        "prompt": "P(A) = 0,5, P(B) = 0,4 e P(A e B) = 0,2. Quanto vale P(A ou B)?",
+        "options": [
+          {
+            "id": "a07",
+            "label": "0,7",
+            "correct": true,
+            "feedback": "Certo. Soma e desconta a interseção: 0,7."
+          },
+          {
+            "id": "a09",
+            "label": "0,9",
+            "correct": false,
+            "feedback": "0,9 conta a interseção duas vezes. Tirando 0,2: 0,7."
+          },
+          {
+            "id": "a02",
+            "label": "0,2",
+            "correct": false,
+            "feedback": "0,2 é A e B. A ou B: 0,5 + 0,4 − 0,2 = 0,7."
+          },
+          {
+            "id": "a11",
+            "label": "1,1",
+            "correct": false,
+            "feedback": "Probabilidade não passa de 1. A conta é 0,9 − 0,2 = 0,7."
+          }
+        ]
+      },
+      {
+        "id": "tres-moedas-uma-cara",
+        "prompt": "Lançando três moedas, qual a probabilidade de sair pelo menos uma cara?",
+        "options": [
+          {
+            "id": "a7-8",
+            "label": "7/8",
+            "correct": true,
+            "feedback": "Isso. Só CCC fica de fora: 1 − 1/8."
+          },
+          {
+            "id": "a3-8",
+            "label": "3/8",
+            "correct": false,
+            "feedback": "3/8 é exatamente uma cara. Pelo menos uma: 1 − 1/8 = 7/8."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Pelo complemento: nenhuma cara é 1/8, então 7/8."
+          },
+          {
+            "id": "a1-8",
+            "label": "1/8",
+            "correct": false,
+            "feedback": "1/8 é nenhuma cara. O pedido é o complemento: 7/8."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "mult-2-ou-3-ate-30",
+        "prompt": "Sorteia-se um número de 1 a 30. Qual a probabilidade de ser divisível por 2 ou por 3?",
+        "options": [
+          {
+            "id": "a2-3",
+            "label": "2/3",
+            "correct": true,
+            "feedback": "Certo. 15 + 10 − 5 = 20 de 30."
+          },
+          {
+            "id": "a5-6",
+            "label": "5/6",
+            "correct": false,
+            "feedback": "25 conta os múltiplos de 6 duas vezes. Descontando 5: 20/30 = 2/3."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/2 são só os pares. Com os múltiplos de 3 ímpares: 2/3."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "1/6 é a interseção. A união é 20/30 = 2/3."
+          }
+        ]
+      },
+      {
+        "id": "pelo-menos-um-6",
+        "prompt": "Com dois dados, qual a probabilidade de sair pelo menos um 6?",
+        "options": [
+          {
+            "id": "a11-36",
+            "label": "11/36",
+            "correct": true,
+            "feedback": "Isso. Nenhum 6 ocupa 25 casas; sobram 11."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "1/6 + 1/6 conta (6, 6) duas vezes. Fica 11/36."
+          },
+          {
+            "id": "a1-36",
+            "label": "1/36",
+            "correct": false,
+            "feedback": "1/36 é só (6, 6). Pelo menos um 6: 11/36."
+          },
+          {
+            "id": "a25-36",
+            "label": "25/36",
+            "correct": false,
+            "feedback": "25/36 é nenhum 6. O pedido é o complemento: 11/36."
+          }
+        ]
+      },
+      {
+        "id": "achar-intersecao",
+        "prompt": "P(A ou B) = 0,8, P(A) = 0,5 e P(B) = 0,6. Quanto vale P(A e B)?",
+        "fala": "Use a fórmula da união ao contrário.",
+        "options": [
+          {
+            "id": "a03",
+            "label": "0,3",
+            "correct": true,
+            "feedback": "Certo. 0,5 + 0,6 − 0,8 = 0,3."
+          },
+          {
+            "id": "a11",
+            "label": "1,1",
+            "correct": false,
+            "feedback": "1,1 é P(A) + P(B). Descontando a união: 0,3."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Se fosse 0, a união seria 1,1. Ela é 0,8: a interseção é 0,3."
+          },
+          {
+            "id": "a02",
+            "label": "0,2",
+            "correct": false,
+            "feedback": "0,8 − 0,6 = 0,2 esquece o A. A conta é 0,5 + 0,6 − 0,8 = 0,3."
+          }
+        ]
+      },
+      {
+        "id": "nenhum-esporte",
+        "prompt": "Numa turma de 20, 12 jogam futebol, 10 vôlei e 5 os dois. Qual a chance de um sorteado não jogar nenhum?",
+        "options": [
+          {
+            "id": "a3-20",
+            "label": "3/20",
+            "correct": true,
+            "feedback": "Isso. 17 jogam algum; sobram 3 de 20."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "12 + 10 passa de 20 porque 5 contam duas vezes. Jogam 17; nenhum: 3/20."
+          },
+          {
+            "id": "a17-20",
+            "label": "17/20",
+            "correct": false,
+            "feedback": "17/20 é jogar algum. O pedido é o complemento: 3/20."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "A união é 17, não 15. Nenhum: 3/20."
+          }
+        ]
+      },
+      {
+        "id": "minima-intersecao",
+        "prompt": "P(A) = 0,7 e P(B) = 0,6. Qual o menor valor possível de P(A e B)?",
+        "fala": "Última. A união não pode passar de 1.",
+        "options": [
+          {
+            "id": "a03",
+            "label": "0,3",
+            "correct": true,
+            "feedback": "Certo. Com a união no máximo 1, sobra pelo menos 0,3 em comum."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Disjuntos somariam 1,3, mais que a grade toda. O mínimo é 0,3."
+          },
+          {
+            "id": "a042",
+            "label": "0,42",
+            "correct": false,
+            "feedback": "0,7 · 0,6 vale para independentes, não é o mínimo. O mínimo é 0,3."
+          },
+          {
+            "id": "a06",
+            "label": "0,6",
+            "correct": false,
+            "feedback": "0,6 é o máximo, com B dentro de A. O mínimo é 0,3."
+          }
+        ]
+      }
+    ],
+    "vestibular": [
+      {
+        "id": "enem-2020-digital-gol",
+        "prompt": "Numa contagem de 1 a 103, diz-se GOL no lugar de cada múltiplo de 4 e de cada número terminado em 4. Quantas vezes se diz GOL?",
+        "fala": "Conte cada grupo e veja quem está nos dois.",
+        "options": [
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 desconta demais. 25 múltiplos de 4 + 10 terminados em 4 − 5 comuns = 30."
+          },
+          {
+            "id": "a28",
+            "label": "28",
+            "correct": false,
+            "feedback": "Os comuns são 5: 4, 24, 44, 64 e 84. Fica 25 + 10 − 5 = 30."
+          },
+          {
+            "id": "a30",
+            "label": "30",
+            "correct": true,
+            "feedback": "Isso. 25 + 10 − 5 = 30."
+          },
+          {
+            "id": "a35",
+            "label": "35",
+            "correct": false,
+            "feedback": "35 conta 4, 24, 44, 64 e 84 duas vezes. Descontando: 30."
+          },
+          {
+            "id": "a40",
+            "label": "40",
+            "correct": false,
+            "feedback": "40 passa de tudo o que existe: 25 múltiplos de 4 e 10 terminados em 4, com 5 comuns. São 30."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2020,
+          "edicao": "Digital",
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (30) mantidos.",
+          "urls": [
+            "https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php"
+          ]
+        }
+      }
+    ]
+  }
+}
