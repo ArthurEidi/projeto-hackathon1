@@ -1,0 +1,279 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Inequações do Primeiro Grau",
+  "subtitulo": "A fronteira separa os lados",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "inequacoes-primeiro-grau"
+  },
+  "outro": "Você encontrou a fronteira e escolheu o lado válido sem incluir igualdades proibidas.",
+  "glossario": {
+    "c1": { "nome": "Entrada x", "resumo": "Número escolhido na reta numérica." },
+    "c2": { "nome": "Coeficiente a", "resumo": "Fator cujo sinal decide a ordem da desigualdade." },
+    "c3": { "nome": "Valor comparado", "resumo": "Resultado da expressão comparada com zero." },
+    "c4": { "nome": "Intervalo-solução", "resumo": "Entradas que tornam a desigualdade verdadeira." }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 4],
+        "marcas": 1,
+        "trechos": [
+          { "de": 0, "ate": null, "abreDe": true, "cor": "c4", "rotulo": "x > 0" }
+        ],
+        "pontos": [
+          { "x": 0, "cor": "c4", "rotulo": "0", "aberto": true }
+        ],
+        "ponto": { "x": -1, "passo": 1, "arrastavel": true, "distanciaZero": false }
+      },
+      "lines": {
+        "intro": "No caso neutro x > 0, zero entra na solução? Atravesse a fronteira até 1.",
+        "done": "Zero não entra porque a comparação é estrita; em 1 ela é verdadeira."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Inequações também envolvem produtos e curvas; aqui comparamos retas e a troca de ordem."
+      },
+      "complete_when": { "metric": "dentro", "gte": 1 }
+    },
+    {
+      "id": "mover-fronteira",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 5],
+        "marcas": 1,
+        "trechos": [
+          { "de": 1, "ate": null, "abreDe": true, "cor": "c4", "rotulo": "x > 1" }
+        ],
+        "pontos": [
+          { "x": 1, "cor": "c4", "rotulo": "1", "aberto": true },
+          { "x": 0, "cor": "muted", "rotulo": "0" }
+        ],
+        "ponto": { "x": 0, "passo": 1, "arrastavel": true, "distanciaZero": false }
+      },
+      "lines": {
+        "intro": "Em 2x − 2 > 0, qual lado de 1 serve? Leve o ponto até 2.",
+        "done": "2x − 2 > 0 equivale a 2x > 2; por isso x > 1, com fronteira aberta."
+      },
+      "complete_when": { "metric": "dentro", "gte": 1 }
+    },
+    {
+      "id": "espelhar-ordem",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 5],
+        "marcas": 1,
+        "trechos": [
+          { "de": null, "ate": 1, "abreAte": true, "cor": "c4", "rotulo": "x < 1" }
+        ],
+        "pontos": [
+          { "x": 1, "cor": "c4", "rotulo": "1", "aberto": true }
+        ],
+        "ponto": { "x": 2, "passo": 1, "arrastavel": true, "distanciaZero": false }
+      },
+      "lines": {
+        "intro": "Agora −2x + 2 > 0; o lado válido muda? Arraste de 2 até 0.",
+        "done": "Muda: dividir −2x > −2 por −2 inverte a ordem, por isso x < 1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Se trocar > por ≥, o que muda?",
+        "resposta": "O ponto 1 passa a entrar; a igualdade também é permitida."
+      },
+      "complete_when": { "metric": "dentro", "gte": 1 }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [-3, 5],
+          "marcas": 1,
+          "pontos": [
+            { "x": 1, "cor": "c4", "rotulo": "1", "aberto": true }
+          ],
+          "trechos": []
+        }
+      },
+      "prompt": "Qual é a solução de −2x + 2 > 0?",
+      "lines": {
+        "intro": "Pense no sinal do coeficiente ao isolar x."
+      },
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "x > 1",
+          "correct": false,
+          "feedback": "Faltou inverter a ordem ao dividir por −2; a solução correta é x < 1.",
+          "figure": {
+            "trechos": [{ "de": 1, "ate": null, "abreDe": true, "cor": "c4" }]
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "x < 1",
+          "correct": true,
+          "feedback": "Certo: x < 1. Dividir por −2 inverte o sinal da desigualdade.",
+          "figure": {
+            "trechos": [{ "de": null, "ate": 1, "abreAte": true, "cor": "c4" }]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [-3, 5],
+          "marcas": 1,
+          "pontos": [
+            { "x": 1, "cor": "c4", "rotulo": "1", "aberto": true }
+          ],
+          "trechos": [
+            { "de": 1, "ate": null, "abreDe": true, "cor": "c4", "rotulo": "x > 1" }
+          ]
+        }
+      },
+      "formula": [
+        { "text": "a", "ref": "c2" },
+        { "text": "·" },
+        { "text": "x", "ref": "c1" },
+        { "text": "+ b > 0" },
+        { "text": "⇔" },
+        { "text": "x", "ref": "c1" },
+        { "text": "> −b/a", "ref": "c4" },
+        { "text": "(a > 0)" }
+      ],
+      "definitions": [
+        { "term": "Entrada x", "text": "Número escolhido na reta numérica." },
+        { "term": "Valor comparado", "text": "Resultado da expressão comparada com zero." },
+        { "term": "Intervalo-solução", "text": "Entradas que tornam a desigualdade verdadeira." }
+      ],
+      "lines": {
+        "intro": "Multiplicar por um negativo espelha a reta. Por isso a ordem da desigualdade se inverte.",
+        "hint": "Toque em uma letra para ver seu significado."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-inequacoes-primeiro-grau",
+        "prompt": "Em x > 0, zero entra na solução?",
+        "options": [
+          { "id": "f1-erro", "label": "Sim", "correct": false, "feedback": "O sinal estrito exclui a igualdade. O certo é Não, pois 0 > 0 é falso." },
+          { "id": "f1-certa", "label": "Não", "correct": true, "feedback": "Certo: Não, pois 0 > 0 é falso." }
+        ]
+      },
+      {
+        "id": "f2-inequacoes-primeiro-grau",
+        "prompt": "Na reta numérica, x > 1 fica de qual lado de 1?",
+        "options": [
+          { "id": "f2-certa", "label": "Direita", "correct": true, "feedback": "Certo: Direita, pois números maiores que 1 ficam à direita." },
+          { "id": "f2-erro", "label": "Esquerda", "correct": false, "feedback": "Você inverteu a ordem dos números. O certo é Direita, pois 2 > 1." }
+        ]
+      },
+      {
+        "id": "f3-inequacoes-primeiro-grau",
+        "prompt": "Ao dividir uma desigualdade por −2, o sinal da desigualdade muda?",
+        "options": [
+          { "id": "f3-certa", "label": "Sim", "correct": true, "feedback": "Certo: Sim, multiplicar ou dividir por número negativo inverte a ordem." },
+          { "id": "f3-erro", "label": "Não", "correct": false, "feedback": "Um fator negativo inverte a ordem. O certo é Sim: 2 > 0 vira −1 < 0." }
+        ]
+      },
+      {
+        "id": "f4-inequacoes-primeiro-grau",
+        "prompt": "Em x ≥ 1, a marca no ponto 1 é aberta ou fechada?",
+        "options": [
+          { "id": "f4-certa", "label": "Fechada", "correct": true, "feedback": "Certo: Fechada, pois 1 ≥ 1 é verdadeiro e o ponto é incluído." },
+          { "id": "f4-erro", "label": "Aberta", "correct": false, "feedback": "Você excluiu uma igualdade permitida. O certo é Fechada, pois 1 ≥ 1 vale." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-inequacoes-primeiro-grau",
+        "prompt": "Resolva 2x − 2 > 0.",
+        "options": [
+          { "id": "m1-certa", "label": "x > 1", "correct": true, "feedback": "Certo: 2x > 2 resulta em x > 1." },
+          { "id": "m1-erro", "label": "x < 1", "correct": false, "feedback": "Você inverteu ao dividir por positivo. O certo é x > 1: 2x > 2." }
+        ]
+      },
+      {
+        "id": "m2-inequacoes-primeiro-grau",
+        "prompt": "Resolva −2x + 2 > 0.",
+        "options": [
+          { "id": "m2-certa", "label": "x < 1", "correct": true, "feedback": "Certo: −2x > −2 ao dividir por −2 inverte o sinal para x < 1." },
+          { "id": "m2-erro", "label": "x > 1", "correct": false, "feedback": "Faltou inverter ao dividir por negativo. O certo é x < 1." }
+        ]
+      },
+      {
+        "id": "m3-inequacoes-primeiro-grau",
+        "prompt": "Resolva 3x ≤ 6.",
+        "options": [
+          { "id": "m3-certa", "label": "x ≤ 2", "correct": true, "feedback": "Certo: dividindo por 3 temos x ≤ 2." },
+          { "id": "m3-erro", "label": "x < 2", "correct": false, "feedback": "Você retirou a igualdade. O certo é x ≤ 2, pois o sinal era menor ou igual." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-inequacoes-primeiro-grau",
+        "prompt": "Resolva 2x + 1 ≤ x + 3.",
+        "fala": "Subtraia x dos dois lados e depois isole o número.",
+        "options": [
+          { "id": "d1-certa", "label": "x ≤ 2", "correct": true, "feedback": "Certo: 2x − x ≤ 3 − 1 resulta em x ≤ 2." },
+          { "id": "d1-erro", "label": "x ≥ 2", "correct": false, "feedback": "Você trocou o lado da solução. O certo é x ≤ 2." }
+        ]
+      },
+      {
+        "id": "d2-inequacoes-primeiro-grau",
+        "prompt": "Quais números reais satisfazem 0x + 1 > 0?",
+        "fala": "Calcule 0 vezes qualquer número e veja se a sentença é verdadeira.",
+        "options": [
+          { "id": "d2-certa", "label": "Todos", "correct": true, "feedback": "Certo: 0x é zero e 1 > 0 é sempre verdadeiro para todo x real." },
+          { "id": "d2-erro", "label": "Nenhum", "correct": false, "feedback": "A sentença 1 > 0 é sempre verdadeira, independentemente de x: são Todos." }
+        ]
+      },
+      {
+        "id": "d3-inequacoes-primeiro-grau",
+        "prompt": "Quais números reais satisfazem 0x − 1 ≥ 0?",
+        "fala": "Calcule 0 vezes x e veja se a desigualdade é possível.",
+        "options": [
+          { "id": "d3-certa", "label": "Nenhum", "correct": true, "feedback": "Certo: 0x é zero e −1 ≥ 0 é impossível, logo nenhum número satisfaz." },
+          { "id": "d3-erro", "label": "Todos", "correct": false, "feedback": "−1 ≥ 0 é sempre falso, portanto a resposta é Nenhum." }
+        ]
+      },
+      {
+        "id": "d4-inequacoes-primeiro-grau",
+        "prompt": "Resolva −2x < 1.",
+        "fala": "Atenção ao dividir por número negativo.",
+        "options": [
+          { "id": "d4-certa", "label": "x > −0,5", "correct": true, "feedback": "Certo: dividindo por −2 invertemos o sinal para x > −0,5." },
+          { "id": "d4-erro", "label": "x < −0,5", "correct": false, "feedback": "Faltou inverter a desigualdade ao dividir por −2. O certo é x > −0,5." }
+        ]
+      },
+      {
+        "id": "d5-inequacoes-primeiro-grau",
+        "prompt": "Uma corrida custa 3 + 2x reais com x ≥ 0. Com até 8 reais, qual intervalo de x é possível?",
+        "fala": "Monte 3 + 2x ≤ 8 e lembre que a distância x não pode ser negativa.",
+        "options": [
+          { "id": "d5-certa", "label": "[0; 2,5]", "correct": true, "feedback": "Certo: 2x ≤ 5 dá x ≤ 2,5; como x ≥ 0, temos [0; 2,5]." },
+          { "id": "d5-erro", "label": "(−∞; 2,5]", "correct": false, "feedback": "Você aceitou distância negativa. O certo é [0; 2,5], pois x ≥ 0." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
