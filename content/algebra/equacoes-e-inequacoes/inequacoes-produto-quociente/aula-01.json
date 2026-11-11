@@ -1,0 +1,612 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Inequações-produto e inequações-quociente",
+  "subtitulo": "Zeros não são buracos",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "inequacoes-produto-quociente"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Número usado nos dois fatores."
+    },
+    "c2": {
+      "nome": "Fator x+1",
+      "resumo": "Fator que zera em −1."
+    },
+    "c3": {
+      "nome": "Sinal do resultado",
+      "resumo": "Sinal obtido ao multiplicar ou dividir."
+    },
+    "c4": {
+      "nome": "Conjunto-solução",
+      "resumo": "Entradas válidas, sem denominadores nulos."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [
+          -4,
+          4
+        ],
+        "marcas": 1,
+        "trechos": [
+          {
+            "de": 1,
+            "ate": null,
+            "abreDe": false,
+            "cor": "c4",
+            "rotulo": "x ≥ 1"
+          }
+        ],
+        "pontos": [
+          {
+            "x": 1,
+            "cor": "c4",
+            "rotulo": "1",
+            "aberto": false
+          }
+        ],
+        "ponto": {
+          "x": 0,
+          "passo": 1,
+          "arrastavel": true,
+          "distanciaZero": false
+        }
+      },
+      "lines": {
+        "intro": "No caso neutro, multiplicar x−1 por 1 nada muda; quando a saída fica não negativa? Leve x a 1.",
+        "done": "Em 1 ela zera; acima de 1 o fator x−1 é positivo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Produtos e quocientes compartilham uma tabela de sinais; aqui distinguimos raízes permitidas e denominadores proibidos."
+      },
+      "complete_when": {
+        "metric": "dentro",
+        "gte": 1
+      }
+    },
+    {
+      "id": "produto-de-sinais",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [
+          -4,
+          4
+        ],
+        "marcas": 1,
+        "trechos": [
+          {
+            "de": null,
+            "ate": -1,
+            "abreAte": false,
+            "cor": "c4",
+            "rotulo": "x ≤ −1"
+          },
+          {
+            "de": 1,
+            "ate": null,
+            "abreDe": false,
+            "cor": "c4",
+            "rotulo": "x ≥ 1"
+          }
+        ],
+        "pontos": [
+          {
+            "x": -1,
+            "cor": "c4",
+            "rotulo": "−1",
+            "aberto": false
+          },
+          {
+            "x": 1,
+            "cor": "c4",
+            "rotulo": "1",
+            "aberto": false
+          }
+        ],
+        "ponto": {
+          "x": 0,
+          "passo": 1,
+          "arrastavel": true,
+          "distanciaZero": false
+        }
+      },
+      "lines": {
+        "intro": "Se o outro fator for x+1, qual sinal aparece à direita de 1? Arraste até 2.",
+        "done": "O produto é positivo porque os fatores 1 e 3 têm o mesmo sinal."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      }
+    },
+    {
+      "id": "excluir-denominador",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [
+          -4,
+          4
+        ],
+        "marcas": 1,
+        "trechos": [
+          {
+            "de": null,
+            "ate": -1,
+            "abreAte": true,
+            "cor": "c4",
+            "rotulo": "x < −1"
+          },
+          {
+            "de": 1,
+            "ate": null,
+            "abreDe": false,
+            "cor": "c4",
+            "rotulo": "x ≥ 1"
+          }
+        ],
+        "pontos": [
+          {
+            "x": -1,
+            "cor": "c4",
+            "rotulo": "−1",
+            "aberto": true
+          },
+          {
+            "x": 1,
+            "cor": "c4",
+            "rotulo": "1",
+            "aberto": false
+          }
+        ],
+        "ponto": {
+          "x": 0,
+          "passo": 1,
+          "arrastavel": true,
+          "distanciaZero": false
+        }
+      },
+      "lines": {
+        "intro": "No quociente, −1 continua permitido? Arraste até −2 e observe o buraco em −1.",
+        "done": "Não; em −1 o denominador zera, por isso o extremo fica aberto mesmo com ≥."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o fator estiver ao quadrado?",
+        "resposta": "O sinal não troca ao passar pelo zero duplo; teste os intervalos em vez de alternar às cegas."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": -2
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "prompt": "Em (x−1)/(x+1)≥0, x=−1 é solução?",
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [
+            -4,
+            4
+          ],
+          "marcas": 1,
+          "trechos": [
+            {
+              "de": null,
+              "ate": -1,
+              "abreAte": true,
+              "cor": "c4",
+              "rotulo": "x < −1"
+            },
+            {
+              "de": 1,
+              "ate": null,
+              "abreDe": false,
+              "cor": "c4",
+              "rotulo": "x ≥ 1"
+            }
+          ],
+          "pontos": [
+            {
+              "x": -1,
+              "cor": "c4",
+              "rotulo": "−1",
+              "aberto": true
+            },
+            {
+              "x": 1,
+              "cor": "c4",
+              "rotulo": "1",
+              "aberto": false
+            }
+          ]
+        }
+      },
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "Sim",
+          "correct": false,
+          "feedback": "Igualdade não permite dividir por zero; −1 não é solução.",
+          "figure": {
+            "pontos": [
+              {
+                "x": -1,
+                "cor": "c2",
+                "rotulo": "x=−1 não pode",
+                "aberto": true
+              },
+              {
+                "x": 1,
+                "cor": "c4",
+                "rotulo": "1",
+                "aberto": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "Não",
+          "correct": true,
+          "feedback": "Certo: Não; O denominador x+1 zera em −1.",
+          "figure": {
+            "pontos": [
+              {
+                "x": -1,
+                "cor": "c4",
+                "rotulo": "−1 (aberto)",
+                "aberto": true
+              },
+              {
+                "x": 1,
+                "cor": "c4",
+                "rotulo": "1 (fechado)",
+                "aberto": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [
+            -4,
+            4
+          ],
+          "marcas": 1,
+          "trechos": [
+            {
+              "de": null,
+              "ate": -1,
+              "abreAte": true,
+              "cor": "c4",
+              "rotulo": "x < −1 (+)"
+            },
+            {
+              "de": 1,
+              "ate": null,
+              "abreDe": false,
+              "cor": "c4",
+              "rotulo": "x ≥ 1 (+)"
+            }
+          ],
+          "pontos": [
+            {
+              "x": -1,
+              "cor": "c4",
+              "rotulo": "−1",
+              "aberto": true
+            },
+            {
+              "x": 1,
+              "cor": "c4",
+              "rotulo": "1",
+              "aberto": false
+            },
+            {
+              "x": 0,
+              "cor": "ink",
+              "rotulo": "0 (−)",
+              "aberto": false
+            }
+          ]
+        }
+      },
+      "formula": [
+        {
+          "text": "("
+        },
+        {
+          "text": "x",
+          "ref": "c1"
+        },
+        {
+          "text": "−1)/("
+        },
+        {
+          "text": "x+1",
+          "ref": "c2"
+        },
+        {
+          "text": ") ≥ 0 ⇔ "
+        },
+        {
+          "text": "x<−1 ou x≥1",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Número usado nos dois fatores."
+        },
+        {
+          "term": "Sinal do resultado",
+          "text": "Sinal obtido ao multiplicar ou dividir."
+        },
+        {
+          "term": "Conjunto-solução",
+          "text": "Entradas válidas, sem denominadores nulos."
+        }
+      ],
+      "lines": {
+        "intro": "Sinais iguais dão quociente positivo; por isso testamos os intervalos e excluímos os denominadores nulos.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-inequacoes-produto-quociente",
+        "prompt": "No produto (x−1)(x+1), onde o fator x+1 zera?",
+        "options": [
+          {
+            "id": "f1-inequacoes-produto-quociente-certa",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo: −1; −1+1=0."
+          },
+          {
+            "id": "f1-inequacoes-produto-quociente-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você trocou o sinal da raiz. O certo é −1; −1+1=0."
+          }
+        ]
+      },
+      {
+        "id": "f2-inequacoes-produto-quociente",
+        "prompt": "Em (x−1)/(x+1), qual entrada é proibida?",
+        "options": [
+          {
+            "id": "f2-inequacoes-produto-quociente-certa",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo: −1; x+1=0 ⇒ x=−1."
+          },
+          {
+            "id": "f2-inequacoes-produto-quociente-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você confundiu zero do numerador com o do denominador. O certo é −1; x+1=0 ⇒ x=−1."
+          }
+        ]
+      },
+      {
+        "id": "f3-inequacoes-produto-quociente",
+        "prompt": "Em x=0, (x−1)(x+1) tem qual sinal?",
+        "options": [
+          {
+            "id": "f3-inequacoes-produto-quociente-certa",
+            "label": "Negativo",
+            "correct": true,
+            "feedback": "Certo: Negativo; (−1)·1=−1."
+          },
+          {
+            "id": "f3-inequacoes-produto-quociente-erro",
+            "label": "Positivo",
+            "correct": false,
+            "feedback": "Os fatores têm sinais opostos. O certo é Negativo; (−1)·1=−1."
+          }
+        ]
+      },
+      {
+        "id": "f4-inequacoes-produto-quociente",
+        "prompt": "Na inequação quociente ≥0, denominador zero pode entrar?",
+        "options": [
+          {
+            "id": "f4-inequacoes-produto-quociente-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 1/0 não existe."
+          },
+          {
+            "id": "f4-inequacoes-produto-quociente-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Igualdade não autoriza divisão por zero. O certo é Não; 1/0 não existe."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-inequacoes-produto-quociente",
+        "prompt": "Resolva (x−1)(x+1)>0.",
+        "options": [
+          {
+            "id": "m1-inequacoes-produto-quociente-certa",
+            "label": "x<−1 ou x>1",
+            "correct": true,
+            "feedback": "Certo: x<−1 ou x>1; Fora das raízes os sinais coincidem."
+          },
+          {
+            "id": "m1-inequacoes-produto-quociente-erro",
+            "label": "−1<x<1",
+            "correct": false,
+            "feedback": "Você escolheu fatores de sinais opostos. O certo é x<−1 ou x>1; Fora das raízes os sinais coincidem."
+          }
+        ]
+      },
+      {
+        "id": "m2-inequacoes-produto-quociente",
+        "prompt": "Resolva (x−1)/(x+1)≥0.",
+        "options": [
+          {
+            "id": "m2-inequacoes-produto-quociente-certa",
+            "label": "x<−1 ou x≥1",
+            "correct": true,
+            "feedback": "Certo: x<−1 ou x≥1; x=−1 é proibido; x=1 zera."
+          },
+          {
+            "id": "m2-inequacoes-produto-quociente-erro",
+            "label": "x≤−1 ou x≥1",
+            "correct": false,
+            "feedback": "Você incluiu o polo −1. O certo é x<−1 ou x≥1; x=−1 é proibido; x=1 zera."
+          }
+        ]
+      },
+      {
+        "id": "m3-inequacoes-produto-quociente",
+        "prompt": "Resolva x/(x−2)<0.",
+        "options": [
+          {
+            "id": "m3-inequacoes-produto-quociente-certa",
+            "label": "(0;2)",
+            "correct": true,
+            "feedback": "Certo: (0;2); Em 1: 1/(−1)<0."
+          },
+          {
+            "id": "m3-inequacoes-produto-quociente-erro",
+            "label": "(−∞;0)∪(2;+∞)",
+            "correct": false,
+            "feedback": "Você escolheu sinais iguais. O certo é (0;2); Em 1: 1/(−1)<0."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-inequacoes-produto-quociente",
+        "prompt": "Resolva (x−1)²/(x+1)>0.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-inequacoes-produto-quociente-certa",
+            "label": "(−1;1)∪(1;+∞)",
+            "correct": true,
+            "feedback": "Certo: (−1;1)∪(1;+∞); x>−1 e x≠1."
+          },
+          {
+            "id": "d1-inequacoes-produto-quociente-erro",
+            "label": "(−1;+∞)",
+            "correct": false,
+            "feedback": "Você incluiu o zero do numerador. O certo é (−1;1)∪(1;+∞); x>−1 e x≠1."
+          }
+        ]
+      },
+      {
+        "id": "d2-inequacoes-produto-quociente",
+        "prompt": "Resolva x²/(x−1)≤0.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-inequacoes-produto-quociente-certa",
+            "label": "(−∞;1)",
+            "correct": true,
+            "feedback": "Certo: (−∞;1); x²≥0; x−1<0; zero em x=0."
+          },
+          {
+            "id": "d2-inequacoes-produto-quociente-erro",
+            "label": "(−∞;1]",
+            "correct": false,
+            "feedback": "Você incluiu denominador zero. O certo é (−∞;1); x²≥0; x−1<0; zero em x=0."
+          }
+        ]
+      },
+      {
+        "id": "d3-inequacoes-produto-quociente",
+        "prompt": "Resolva (2x−1)/(x+1)≤0.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-inequacoes-produto-quociente-certa",
+            "label": "(−1;0,5]",
+            "correct": true,
+            "feedback": "Certo: (−1;0,5]; Polo −1; zero 1/2."
+          },
+          {
+            "id": "d3-inequacoes-produto-quociente-erro",
+            "label": "[−1;0,5]",
+            "correct": false,
+            "feedback": "Você fechou o ponto proibido. O certo é (−1;0,5]; Polo −1; zero 1/2."
+          }
+        ]
+      },
+      {
+        "id": "d4-inequacoes-produto-quociente",
+        "prompt": "Em (x−1)²≥0, qual é a solução?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-inequacoes-produto-quociente-certa",
+            "label": "R",
+            "correct": true,
+            "feedback": "Certo: R; Todo quadrado real é ≥0."
+          },
+          {
+            "id": "d4-inequacoes-produto-quociente-erro",
+            "label": "x≥1",
+            "correct": false,
+            "feedback": "Você alternou sinais numa raiz dupla. O certo é R; Todo quadrado real é ≥0."
+          }
+        ]
+      },
+      {
+        "id": "d5-inequacoes-produto-quociente",
+        "prompt": "Resolva (x−1)(x+1)/(x−1)>0 sem perder a restrição original.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-inequacoes-produto-quociente-certa",
+            "label": "(−1;1)∪(1;+∞)",
+            "correct": true,
+            "feedback": "Certo: (−1;1)∪(1;+∞); x+1>0; x≠1."
+          },
+          {
+            "id": "d5-inequacoes-produto-quociente-erro",
+            "label": "(−1;+∞)",
+            "correct": false,
+            "feedback": "O cancelamento não devolve x=1 ao domínio. O certo é (−1;1)∪(1;+∞); x+1>0; x≠1."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

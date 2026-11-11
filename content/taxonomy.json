@@ -638,6 +638,20 @@
                   "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-modulares/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "inequacoes-produto-quociente",
+              "titulo": "Inequações-produto e inequações-quociente",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações-produto e inequações-quociente",
+                  "subtitulo": "Zeros não são buracos",
+                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-produto-quociente/aula-01.json"
+                }
+              ]
             }
           ]
         },
