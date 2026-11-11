@@ -119,37 +119,16 @@
           "titulo": "Contagem e Probabilidade",
           "unidades": [
             {
-              "id": "analise-combinatoria",
-              "titulo": "Análise Combinatória",
+              "id": "principio-fundamental-da-contagem",
+              "titulo": "Princípio Fundamental da Contagem",
               "icone": "dado",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Árvore de Escolhas",
-                  "subtitulo": "Princípio fundamental da contagem",
-                  "arquivo": null
-                },
-                {
-                  "id": "aula-02",
-                  "numero": 2,
-                  "titulo": "Ordem Importa?",
-                  "subtitulo": "Permutação, arranjo e combinação",
-                  "arquivo": null
-                }
-              ]
-            },
-            {
-              "id": "probabilidade",
-              "titulo": "Probabilidade",
-              "icone": "dado",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Casos que Contam",
-                  "subtitulo": "Probabilidade clássica",
-                  "arquivo": null
+                  "titulo": "A Grade de Escolhas",
+                  "subtitulo": "Contar etapas multiplicando",
+                  "arquivo": "aritmetica/contagem-probabilidade/principio-fundamental-da-contagem/aula-01.json"
                 }
               ]
             }

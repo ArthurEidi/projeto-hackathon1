@@ -1,0 +1,977 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Grade de Escolhas",
+  "subtitulo": "Contar etapas multiplicando",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "principio-fundamental-da-contagem"
+  },
+  "outro": "Você viu a grade crescer etapa por etapa: multiplicar conta escolhas combinadas, somar conta escolhas alternativas.",
+  "glossario": {
+    "c1": {
+      "nome": "Opções da 1ª etapa",
+      "resumo": "Quantas escolhas existem no primeiro passo."
+    },
+    "c2": {
+      "nome": "Opções da 2ª etapa",
+      "resumo": "Quantas escolhas existem no segundo passo, para cada escolha do primeiro."
+    },
+    "c3": {
+      "nome": "Total de resultados",
+      "resumo": "Quantos resultados completos a máquina produz."
+    },
+    "c4": {
+      "nome": "Opção bloqueada",
+      "resumo": "Escolha proibida por uma regra, como não repetir."
+    }
+  },
+  "steps": [
+    {
+      "id": "uma-coluna",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "colunas": [
+          "1",
+          "2",
+          "3"
+        ],
+        "n_linhas": "$camisetas",
+        "n_colunas": "$bermudas",
+        "titulos": {
+          "linhas": "Camisetas",
+          "colunas": "Bermudas"
+        },
+        "contador": true
+      },
+      "controls": [
+        {
+          "id": "camisetas",
+          "label": "Camisetas",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "initial": 3,
+          "color": "c1"
+        },
+        {
+          "id": "bermudas",
+          "label": "Bermudas",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Com 3 camisetas e uma bermuda só, quantos looks dá para montar? Depois aumente as bermudas e veja a grade.",
+        "done": "Cada bermuda nova copia a coluna inteira de camisetas. Por isso 3 camisetas e 2 bermudas dão 3 · 2 = 6 looks."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda contagem é multiplicar?",
+        "resposta": "Não: há casos de 'ou', de ordem e de grupos. Hoje ficamos nas escolhas feitas em etapas."
+      },
+      "complete_when": {
+        "metric": "bermudas",
+        "gte": 2
+      }
+    },
+    {
+      "id": "terceira-etapa",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "arvore",
+        "niveis": [
+          {
+            "titulo": "Camiseta",
+            "galhos": [
+              {
+                "rotulo": "A",
+                "cor": "c1"
+              },
+              {
+                "rotulo": "B",
+                "cor": "c1"
+              },
+              {
+                "rotulo": "C",
+                "cor": "c1"
+              }
+            ]
+          },
+          {
+            "titulo": "Bermuda",
+            "galhos": [
+              {
+                "rotulo": "1",
+                "cor": "c2"
+              },
+              {
+                "rotulo": "2",
+                "cor": "c2"
+              }
+            ]
+          },
+          {
+            "titulo": "Boné",
+            "galhos": [
+              {
+                "rotulo": "x",
+                "cor": "ink"
+              },
+              {
+                "rotulo": "y",
+                "cor": "ink"
+              }
+            ]
+          }
+        ]
+      },
+      "lines": {
+        "intro": "Agora entra um boné, com 2 opções. Antes de tocar: o total soma 2 ou dobra?",
+        "done": "Dobrou: 6 · 2 = 12. Cada look ganhou dois finais diferentes, um para cada boné."
+      },
+      "complete_when": {
+        "metric": "pontas_tocadas",
+        "gte": 4
+      }
+    },
+    {
+      "id": "e-ou",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": [
+          "A",
+          "B",
+          "C"
+        ],
+        "colunas": [
+          "x",
+          "y"
+        ],
+        "titulos": {
+          "linhas": "Camisetas",
+          "colunas": "Bonés"
+        },
+        "chaves": [
+          "e_ou"
+        ],
+        "contador": true
+      },
+      "lines": {
+        "intro": "E se você usasse camiseta OU boné, só uma peça? Ligue o modo 'ou' e compare com o 'e'.",
+        "done": "No 'ou' as opções ficam lado a lado: 3 + 2 = 5. No 'e' cada uma se combina com todas: 3 · 2 = 6."
+      },
+      "complete_when": {
+        "metric": "modo_ou",
+        "gte": 1
+      }
+    },
+    {
+      "id": "sem-repetir",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": [
+          "1",
+          "2",
+          "3"
+        ],
+        "colunas": "linhas",
+        "titulos": {
+          "linhas": "1º dígito",
+          "colunas": "2º dígito"
+        },
+        "chaves": [
+          "repetir"
+        ],
+        "contador": true,
+        "cores": {
+          "fora": "c4"
+        }
+      },
+      "lines": {
+        "intro": "Uma senha de 2 dígitos usa 1, 2 ou 3. Se não pode repetir, quantas opções sobram para o segundo dígito?",
+        "done": "Sobram 2, porque um dígito já foi usado. Fica 3 · 2 = 6 em vez de 3 · 3 = 9: a grade perde a diagonal."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se uma etapa não tiver nenhuma opção?",
+        "resposta": "Aí o produto zera. Sem bermuda, não existe nenhum look completo."
+      },
+      "complete_when": {
+        "metric": "repetir_desligado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-lanche",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "colunas",
+          "colunas": [
+            {
+              "titulo": "Pães",
+              "itens": [
+                "P1",
+                "P2",
+                "P3"
+              ],
+              "cor": "c1"
+            },
+            {
+              "titulo": "Recheios",
+              "itens": [
+                "R1",
+                "R2",
+                "R3",
+                "R4"
+              ],
+              "cor": "c2"
+            },
+            {
+              "titulo": "Molhos",
+              "itens": [
+                "M1",
+                "M2"
+              ],
+              "cor": "ink"
+            }
+          ]
+        }
+      },
+      "prompt": "Um lanche tem 3 pães, 4 recheios e 2 molhos, um de cada. Quantos lanches diferentes existem?",
+      "lines": {
+        "intro": "Sem desenhar tudo: pense em quantas vezes cada escolha se repete."
+      },
+      "options": [
+        {
+          "id": "a9",
+          "label": "9",
+          "correct": false,
+          "feedback": "Você somou as opções. Um lanche usa pão E recheio E molho, então multiplica.",
+          "figure": {
+            "ou": true
+          }
+        },
+        {
+          "id": "a12",
+          "label": "12",
+          "correct": false,
+          "feedback": "12 é pão com recheio. Falta o molho: cada um dos 12 vira 2 lanches.",
+          "figure": {
+            "colunas": [
+              {
+                "titulo": "Pães",
+                "itens": [
+                  "P1",
+                  "P2",
+                  "P3"
+                ],
+                "cor": "c1"
+              },
+              {
+                "titulo": "Recheios",
+                "itens": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4"
+                ],
+                "cor": "c2"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a24",
+          "label": "24",
+          "correct": true,
+          "feedback": "Isso. 3 · 4 · 2 = 24: cada etapa multiplica o que já existia.",
+          "figure": {
+            "highlight": [
+              "c3"
+            ]
+          }
+        },
+        {
+          "id": "a14",
+          "label": "14",
+          "correct": false,
+          "feedback": "Somar o molho no fim não basta: ele se combina com cada um dos 12. Fica 24.",
+          "figure": {
+            "ou": true,
+            "colunas": [
+              {
+                "titulo": "Pão e recheio",
+                "itens": [
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8",
+                  "9",
+                  "10",
+                  "11",
+                  "12"
+                ],
+                "cor": "c3"
+              },
+              {
+                "titulo": "Molhos",
+                "itens": [
+                  "M1",
+                  "M2"
+                ],
+                "cor": "ink"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": [
+            "A",
+            "B",
+            "C"
+          ],
+          "colunas": [
+            "x",
+            "y"
+          ],
+          "titulos": {
+            "linhas": "n₁",
+            "colunas": "n₂"
+          },
+          "contador": true
+        }
+      },
+      "formula": [
+        {
+          "text": "total",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "n₁",
+          "ref": "c1"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "n₂",
+          "ref": "c2"
+        },
+        {
+          "text": "· … · nₖ"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Princípio multiplicativo",
+          "text": "etapas feitas uma após a outra multiplicam as opções."
+        },
+        {
+          "term": "Princípio aditivo",
+          "text": "escolher uma coisa OU outra soma as opções."
+        },
+        {
+          "term": "Sem repetição",
+          "text": "cada etapa perde as opções já usadas."
+        }
+      ],
+      "lines": {
+        "intro": "Cada opção abre o mesmo número de galhos na etapa seguinte. Por isso o total é o produto das opções.",
+        "hint": "Toque em uma letra para ver a parte da grade que ela conta."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "looks-4-2",
+        "prompt": "Com 4 camisetas e 2 calças, quantos looks diferentes dá para montar?",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é a soma das peças. Cada camiseta vai com cada calça: 4 · 2 = 8."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": true,
+            "feedback": "Isso. A grade tem 4 linhas e 2 colunas: 8 looks."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é só o número de calças. Cada uma serve para 4 camisetas: 8 looks."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 seria 4 · 4. São 2 calças, então 4 · 2 = 8."
+          }
+        ]
+      },
+      {
+        "id": "pontas-da-arvore",
+        "prompt": "Uma árvore tem 3 galhos, e cada galho se abre em 2. Quantas pontas há no fim?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 seria somar. Cada um dos 3 galhos abre 2 pontas: 3 · 2 = 6."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo. Três galhos com duas pontas cada: 6."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 seria 2 · 2 · 2. Aqui são 3 galhos de 2 pontas: 6."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 seria 3 · 3. Cada galho abre só 2: 3 · 2 = 6."
+          }
+        ]
+      },
+      {
+        "id": "sobremesa-ou",
+        "prompt": "Você vai pegar UMA sobremesa: há 3 doces e 2 frutas. Quantas escolhas possíveis?",
+        "fala": "Repare: é uma sobremesa só.",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 seria doce E fruta juntos. É um ou outro, então soma: 3 + 2 = 5."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Isso. No 'ou' as opções ficam lado a lado: 3 + 2 = 5."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Faltaram as frutas. Doce ou fruta: 3 + 2 = 5."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você pega uma, mas pode escolher entre 5 opções: 3 doces + 2 frutas."
+          }
+        ]
+      },
+      {
+        "id": "etapa-de-um",
+        "prompt": "Uma das etapas tem uma única opção. O que acontece com o total?",
+        "options": [
+          {
+            "id": "nao-muda",
+            "label": "Não muda",
+            "correct": true,
+            "feedback": "Certo. Multiplicar por 1 deixa o total igual, como a coluna única da aula."
+          },
+          {
+            "id": "zera",
+            "label": "Zera",
+            "correct": false,
+            "feedback": "Zeraria com 0 opções. Com 1 opção o total não muda."
+          },
+          {
+            "id": "dobra",
+            "label": "Dobra",
+            "correct": false,
+            "feedback": "Dobraria com 2 opções. Com 1 opção, o total fica igual."
+          },
+          {
+            "id": "soma1",
+            "label": "Soma 1",
+            "correct": false,
+            "feedback": "Etapas multiplicam, não somam. Vezes 1, o total não muda."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "senha-3-com-repeticao",
+        "prompt": "Uma senha tem 3 dígitos de 0 a 9, podendo repetir. Quantas senhas existem?",
+        "options": [
+          {
+            "id": "a30",
+            "label": "30",
+            "correct": false,
+            "feedback": "30 é a soma das opções. Cada dígito multiplica: 10 · 10 · 10 = 1000."
+          },
+          {
+            "id": "a720",
+            "label": "720",
+            "correct": false,
+            "feedback": "720 seria sem repetir. Repetindo, cada dígito tem 10 opções: 1000."
+          },
+          {
+            "id": "a1000",
+            "label": "1000",
+            "correct": true,
+            "feedback": "Isso. De 000 a 999 são 1000 senhas."
+          },
+          {
+            "id": "a999",
+            "label": "999",
+            "correct": false,
+            "feedback": "Faltou o 000. São 10 · 10 · 10 = 1000 senhas."
+          }
+        ]
+      },
+      {
+        "id": "senha-3-sem-repeticao",
+        "prompt": "E se os 3 dígitos tiverem de ser diferentes entre si?",
+        "options": [
+          {
+            "id": "a1000",
+            "label": "1000",
+            "correct": false,
+            "feedback": "1000 permite repetir. Sem repetir: 10 · 9 · 8 = 720."
+          },
+          {
+            "id": "a720",
+            "label": "720",
+            "correct": true,
+            "feedback": "Certo. Cada dígito usado sai das opções: 10 · 9 · 8 = 720."
+          },
+          {
+            "id": "a504",
+            "label": "504",
+            "correct": false,
+            "feedback": "504 é 9 · 8 · 7: você tirou uma opção logo no primeiro dígito. É 10 · 9 · 8 = 720."
+          },
+          {
+            "id": "a27",
+            "label": "27",
+            "correct": false,
+            "feedback": "Somar 10 + 9 + 8 não conta senhas. Multiplique: 10 · 9 · 8 = 720."
+          }
+        ]
+      },
+      {
+        "id": "moeda-3-vezes",
+        "prompt": "Uma moeda é lançada 3 vezes. Quantas sequências de cara e coroa podem sair?",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é 2 + 2 + 2. Cada lançamento dobra as sequências: 2 · 2 · 2 = 8."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": true,
+            "feedback": "Isso. A árvore dobra três vezes: 8 sequências."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 conta só dois lançamentos. Com três: 2 · 2 · 2 = 8."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é o número de lançamentos. Cada um tem 2 resultados: 8 sequências."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "tres-algarismos-distintos",
+        "prompt": "Quantos números de 3 algarismos distintos dá para formar com 1, 2, 3, 4 e 5?",
+        "options": [
+          {
+            "id": "a125",
+            "label": "125",
+            "correct": false,
+            "feedback": "125 permite repetir. Distintos: 5 · 4 · 3 = 60."
+          },
+          {
+            "id": "a60",
+            "label": "60",
+            "correct": true,
+            "feedback": "Certo. Cada casa usa um algarismo a menos: 5 · 4 · 3 = 60."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "15 é 5 · 3. Na segunda casa sobram 4: 5 · 4 · 3 = 60."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 conta grupos sem ordem. Aqui 123 e 321 são números diferentes: 60."
+          }
+        ]
+      },
+      {
+        "id": "pares-distintos",
+        "prompt": "Com 1, 2, 3 e 4, quantos números pares de 2 algarismos distintos existem?",
+        "fala": "Comece pela etapa com regra: o último algarismo.",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Isso. O final tem 2 opções e o começo, as 3 que sobram: 6."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 deixa repetir o algarismo, como 22. Distintos: 2 finais · 3 começos = 6."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 conta todos os números distintos, pares ou não. Pares: 2 · 3 = 6."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 é 4 · 4. Com final par e sem repetir: 2 · 3 = 6."
+          }
+        ]
+      },
+      {
+        "id": "ida-e-volta",
+        "prompt": "De A a B há 3 estradas e de B a C há 2. Ida A → C e volta C → A sem repetir nenhuma estrada: quantos roteiros?",
+        "options": [
+          {
+            "id": "a36",
+            "label": "36",
+            "correct": false,
+            "feedback": "36 deixa repetir estradas na volta. Sem repetir, a volta tem 1 · 2 = 2 opções: 6 · 2 = 12."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo. Ida 3 · 2 = 6, volta 1 · 2 = 2, total 12."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é só a ida. A volta tem 1 · 2 = 2 opções: 6 · 2 = 12."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "Na volta de C a B sobra 1 estrada, não 2. Fica 6 · 1 · 2 = 12."
+          }
+        ]
+      },
+      {
+        "id": "placa-2-letras-1-digito",
+        "prompt": "Um código tem 2 letras (26 cada, pode repetir) seguidas de 1 dígito. Quantos códigos existem?",
+        "options": [
+          {
+            "id": "a6760",
+            "label": "6760",
+            "correct": true,
+            "feedback": "Isso. 26 · 26 · 10 = 6760."
+          },
+          {
+            "id": "a520",
+            "label": "520",
+            "correct": false,
+            "feedback": "520 é 26 · 2 · 10: você contou só uma letra. São 26 · 26 · 10 = 6760."
+          },
+          {
+            "id": "a676",
+            "label": "676",
+            "correct": false,
+            "feedback": "676 conta só as letras. Falta o dígito: 676 · 10 = 6760."
+          },
+          {
+            "id": "a62",
+            "label": "62",
+            "correct": false,
+            "feedback": "62 é a soma 26 + 26 + 10. Etapas multiplicam: 6760."
+          }
+        ]
+      },
+      {
+        "id": "impossivel",
+        "prompt": "Quantos números de 4 algarismos distintos dá para formar usando só 1, 2 e 3?",
+        "fala": "Última. Olhe a quarta casa antes de multiplicar.",
+        "options": [
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": true,
+            "feedback": "Exato. Na quarta casa não sobra algarismo: 3 · 2 · 1 · 0 = 0."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 conta só três casas. A quarta não tem opção, então o total é 0."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 precisaria de 4 algarismos. Com 3, a quarta casa tem 0 opções: total 0."
+          },
+          {
+            "id": "a81",
+            "label": "81",
+            "correct": false,
+            "feedback": "81 deixa repetir. Distintos, a quarta casa fica sem opção: total 0."
+          }
+        ]
+      }
+    ],
+    "vestibular": [
+      {
+        "id": "enem-2019-ppl-chaves",
+        "prompt": "Um aparelho de som sem fio tem 4 chaves, cada uma na posição 0 ou 1. Quantas frequências diferentes ele pode transmitir?",
+        "fala": "Cada chave é uma etapa com 2 opções.",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 lembra contar pares de chaves. Cada chave dobra as opções: 2⁴ = 16."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 conta só três chaves. Com quatro: 2 · 2 · 2 · 2 = 16."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "Cada chave multiplica por 2, não soma. 2 · 2 · 2 · 2 = 16."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": true,
+            "feedback": "Isso. Quatro etapas de 2 opções: 2⁴ = 16."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 é 4!, que ordenaria as chaves. Aqui cada uma só escolhe 0 ou 1: 16."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "edicao": "PPL",
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (16) mantidos.",
+          "urls": [
+            "https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php"
+          ]
+        }
+      },
+      {
+        "id": "enem-2025-respostas",
+        "prompt": "Respostas: 1 de 5 objetos, 1 de 6 personagens e 1 de 9 cômodos. Quantos alunos a mais que respostas possíveis há numa turma de 280?",
+        "fala": "Primeiro conte as respostas diferentes que existem.",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Certo. 5 · 6 · 9 = 270 respostas, e 280 − 270 = 10."
+          },
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": false,
+            "feedback": "As respostas são 5 · 6 · 9 = 270. Sobram 280 − 270 = 10 alunos."
+          },
+          {
+            "id": "a119",
+            "label": "119",
+            "correct": false,
+            "feedback": "Parece vir de somas parciais. Multiplique: 270 respostas, 10 alunos a mais."
+          },
+          {
+            "id": "a260",
+            "label": "260",
+            "correct": false,
+            "feedback": "260 é 280 − 20, que soma as opções. Multiplicando dá 270, e sobram 10."
+          },
+          {
+            "id": "a270",
+            "label": "270",
+            "correct": false,
+            "feedback": "270 é o número de respostas. A pergunta é quantos alunos passam disso: 10."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (10) mantidos.",
+          "urls": [
+            "https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php"
+          ]
+        }
+      },
+      {
+        "id": "enem-2025-montadora",
+        "prompt": "Uma montadora tem 7 modelos, 2 motores e 3 opcionais que podem entrar ou não. Quantas cores, no mínimo, para passar de 1000 configurações?",
+        "fala": "Cada opcional é uma etapa de sim ou não.",
+        "options": [
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "Sem cor há 7 · 2 · 8 = 112 versões. 112 · 8 = 896 não passa de 1000; com 9 cores, 1008."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": true,
+            "feedback": "Isso. 112 · 9 = 1008 passa de 1000, e 112 · 8 = 896 não."
+          },
+          {
+            "id": "a11",
+            "label": "11",
+            "correct": false,
+            "feedback": "11 passa de 1000, mas não é o mínimo: 112 · 9 = 1008 já basta."
+          },
+          {
+            "id": "a18",
+            "label": "18",
+            "correct": false,
+            "feedback": "Os opcionais dão 2³ = 8 combinações, não 4. São 112 versões: bastam 9 cores."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "Talvez tenha contado os opcionais como 3. São 2³ = 8: 112 versões, mínimo de 9 cores."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (9) mantidos.",
+          "urls": [
+            "https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php"
+          ]
+        }
+      },
+      {
+        "id": "enem-2025-placas-do-2",
+        "prompt": "Um hotel numera os quartos de 100 a 399 com placas de um algarismo cada. Quantas placas com o algarismo 2 são necessárias?",
+        "fala": "Última. Conte o 2 em cada casa: centena, dezena e unidade.",
+        "options": [
+          {
+            "id": "a160",
+            "label": "160",
+            "correct": true,
+            "feedback": "Certo. 100 na centena, 30 na dezena e 30 na unidade: 160."
+          },
+          {
+            "id": "a157",
+            "label": "157",
+            "correct": false,
+            "feedback": "Não desconte repetições: 222 usa três placas de 2. Total 100 + 30 + 30 = 160."
+          },
+          {
+            "id": "a130",
+            "label": "130",
+            "correct": false,
+            "feedback": "Faltou uma casa. Centena 100, dezena 30, unidade 30: 160."
+          },
+          {
+            "id": "a120",
+            "label": "120",
+            "correct": false,
+            "feedback": "A centena 2 aparece em 100 quartos, de 200 a 299. Com dezena e unidade: 160."
+          },
+          {
+            "id": "a60",
+            "label": "60",
+            "correct": false,
+            "feedback": "60 conta só dezena e unidade. A centena 2 soma mais 100: 160."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (160) mantidos.",
+          "urls": [
+            "https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php"
+          ]
+        }
+      }
+    ]
+  }
+}
