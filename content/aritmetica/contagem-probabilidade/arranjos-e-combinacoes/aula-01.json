@@ -1,0 +1,725 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Quando a Ordem Some",
+  "subtitulo": "Arranjos, combinações e a divisão por k!",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "arranjos-e-combinacoes"
+  },
+  "outro": "Você viu a ordem sumir: arranjos contam filas, combinações contam grupos, e a ponte entre os dois é dividir por k!.",
+  "glossario": {
+    "c1": {
+      "nome": "Total de objetos",
+      "resumo": "De quantos objetos se escolhe (n)."
+    },
+    "c2": {
+      "nome": "Escolhidos",
+      "resumo": "Quantos objetos entram no grupo (k)."
+    },
+    "c3": {
+      "nome": "Número de grupos",
+      "resumo": "Quantas escolhas sem ordem existem: C(n, k)."
+    },
+    "c4": {
+      "nome": "Ordens repetidas",
+      "resumo": "As k! ordens de um mesmo grupo, que a combinação conta como uma."
+    }
+  },
+  "steps": [
+    {
+      "id": "presidente-e-vice",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "colunas": "linhas",
+        "etapas": "$k",
+        "repetir": false,
+        "titulos": {
+          "linhas": "Presidente",
+          "colunas": "Vice"
+        }
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Escolhidos",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Escolher 1 de 4 pessoas dá quantas opções? Agora escolha 2, um para presidente e outro para vice.",
+        "done": "Presidente tem 4 opções e vice, 3: 4 · 3 = 12. Escolher em ordem tira uma opção a cada cargo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se pudesse repetir a mesma pessoa?",
+        "resposta": "Seria outra contagem, com repetição. Hoje cada pessoa entra uma vez só."
+      },
+      "complete_when": {
+        "metric": "k",
+        "gte": 2
+      }
+    },
+    {
+      "id": "ordem-some",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "colunas": "linhas",
+        "repetir": false,
+        "chaves": [
+          "ordem"
+        ],
+        "cores": {
+          "fora": "c4"
+        }
+      },
+      "lines": {
+        "intro": "E se forem só dois representantes, sem cargo? AB e BA continuam sendo escolhas diferentes?",
+        "done": "Não: viram a mesma dupla. Cada dupla aparecia 2 vezes, então 12 / 2 = 6 combinações."
+      },
+      "complete_when": {
+        "metric": "ordem_desligada",
+        "gte": 1
+      }
+    },
+    {
+      "id": "trios",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "lista",
+        "itens": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "k": "$k"
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Escolhidos",
+          "min": 2,
+          "max": 3,
+          "step": 1,
+          "initial": 2,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Com trios, cada grupo aparece em quantas ordens? Leve k para 3 e veja os grupos colarem.",
+        "done": "Cada trio aparece 3! = 6 vezes no arranjo. Por isso 24 / 6 = 4 trios."
+      },
+      "complete_when": {
+        "metric": "k",
+        "gte": 3
+      }
+    },
+    {
+      "id": "simetria",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "barras",
+        "n": 4,
+        "k": "$k",
+        "itens": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Escolhidos",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 2,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Escolher 1 de 4 e deixar 1 de fora dão a mesma conta? Leve k até 4 e compare as barras.",
+        "done": "Dão: escolher quem entra é escolher quem fica de fora. Por isso as barras são simétricas, 1, 4, 6, 4, 1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Escolher zero pessoas conta?",
+        "resposta": "Conta como 1: o grupo vazio. Do mesmo jeito, escolher todas dá 1."
+      },
+      "complete_when": {
+        "metric": "k",
+        "gte": 4
+      }
+    },
+    {
+      "id": "desafio-duplas",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "colunas": "linhas",
+          "titulos": {
+            "linhas": "1º aluno",
+            "colunas": "2º aluno"
+          }
+        }
+      },
+      "prompt": "Numa turma de 5 alunos, quantas duplas diferentes podem ser formadas?",
+      "lines": {
+        "intro": "Dupla de trabalho não tem cargo. A ordem importa aqui?"
+      },
+      "options": [
+        {
+          "id": "a20",
+          "label": "20",
+          "correct": false,
+          "feedback": "20 conta AB e BA separados. Numa dupla a ordem não importa: 20 / 2 = 10.",
+          "figure": {
+            "repetir": false
+          }
+        },
+        {
+          "id": "a25",
+          "label": "25",
+          "correct": false,
+          "feedback": "25 inclui alguém com ele mesmo e as ordens trocadas. Sem isso: 10.",
+          "figure": {
+            "repetir": true,
+            "highlight": [
+              "c4"
+            ]
+          }
+        },
+        {
+          "id": "a10",
+          "label": "10",
+          "correct": true,
+          "feedback": "Isso. 5 · 4 = 20 ordens, divididas pelas 2 ordens de cada dupla: 10.",
+          "figure": {
+            "repetir": false,
+            "ordem": false,
+            "highlight": [
+              "c3"
+            ]
+          }
+        },
+        {
+          "id": "a5",
+          "label": "5",
+          "correct": false,
+          "feedback": "5 é o número de alunos. As duplas são C(5, 2) = 10.",
+          "figure": {
+            "repetir": false,
+            "acesas": [
+              "A,B",
+              "A,C",
+              "A,D",
+              "A,E"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "lista",
+          "itens": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "k": 3
+        }
+      },
+      "formula": [
+        {
+          "text": "C(n, k)",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "n!",
+          "ref": "c1"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "(k!",
+          "ref": "c4"
+        },
+        {
+          "text": "(n − k)!)"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Arranjo",
+          "text": "escolhas em que a ordem importa, A(n, k) = n! / (n − k)!."
+        },
+        {
+          "term": "Combinação",
+          "text": "grupos sem ordem, C(n, k) = A(n, k) / k!."
+        },
+        {
+          "term": "Simetria",
+          "text": "C(n, k) = C(n, n − k)."
+        }
+      ],
+      "lines": {
+        "intro": "O arranjo conta cada grupo k! vezes, uma para cada ordem. Por isso a combinação divide o arranjo por k!.",
+        "hint": "Toque em uma letra para ver o que ela conta na grade."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "presidente-vice-5",
+        "prompt": "Numa turma de 5, de quantos jeitos se escolhe um presidente e um vice?",
+        "options": [
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": true,
+            "feedback": "Isso. Cargos diferentes, a ordem importa: 5 · 4 = 20."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 trata presidente e vice como iguais. Com cargos, a ordem conta: 20."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "25 deixa a mesma pessoa ter os dois cargos. São 5 · 4 = 20."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é a soma 5 + 4. Etapas multiplicam: 20."
+          }
+        ]
+      },
+      {
+        "id": "duplas-de-4",
+        "prompt": "Com 4 amigos, quantas duplas diferentes dá para formar?",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo. 12 pares ordenados, cada dupla contada 2 vezes: 6."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 conta AB e BA separados. Na dupla a ordem não importa: 6."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 seria 4 · 2. As duplas são 4 · 3 / 2 = 6."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 é a grade cheia, com alguém repetido. Sem isso e sem ordem: 6."
+          }
+        ]
+      },
+      {
+        "id": "ordem-no-sorvete",
+        "prompt": "Escolher 3 sabores para uma taça de sorvete misturada: a ordem importa?",
+        "options": [
+          {
+            "id": "sim",
+            "label": "Sim, é arranjo",
+            "correct": false,
+            "feedback": "Na taça misturada, trocar a ordem dos sabores dá a mesma taça. É combinação."
+          },
+          {
+            "id": "nao",
+            "label": "Não, é combinação",
+            "correct": true,
+            "feedback": "Isso. O que importa é quais sabores entram, não a ordem."
+          }
+        ]
+      },
+      {
+        "id": "c-5-1",
+        "prompt": "De quantos jeitos se escolhe 1 pessoa entre 5?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. Com um escolhido não há ordem para trocar: 5 opções."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 seria escolher ninguém ou todos. Para escolher 1 de 5, há 5 opções."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é quem fica de fora. Quem entra pode ser qualquer um dos 5."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é C(5, 2), duplas. Escolhendo 1: 5."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "c-6-2",
+        "prompt": "Quantas duplas dá para formar com 6 pessoas?",
+        "options": [
+          {
+            "id": "a30",
+            "label": "30",
+            "correct": false,
+            "feedback": "30 conta as duplas em ordem. Divida pelas 2 ordens: 15."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": true,
+            "feedback": "Isso. 6 · 5 / 2 = 15."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é 6 · 2. As duplas são 6 · 5 / 2 = 15."
+          },
+          {
+            "id": "a36",
+            "label": "36",
+            "correct": false,
+            "feedback": "36 é 6 · 6, com repetição e ordem. Sem os dois: 15."
+          }
+        ]
+      },
+      {
+        "id": "podio-6",
+        "prompt": "Seis corredores disputam ouro, prata e bronze. Quantos pódios diferentes são possíveis?",
+        "options": [
+          {
+            "id": "a120",
+            "label": "120",
+            "correct": true,
+            "feedback": "Certo. Medalhas diferentes, a ordem importa: 6 · 5 · 4 = 120."
+          },
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 são os trios sem ordem. No pódio ouro e prata são diferentes: 120."
+          },
+          {
+            "id": "a216",
+            "label": "216",
+            "correct": false,
+            "feedback": "216 deixa um corredor ganhar duas medalhas. Sem repetir: 120."
+          },
+          {
+            "id": "a18",
+            "label": "18",
+            "correct": false,
+            "feedback": "18 é 6 · 3. As medalhas tiram um corredor por vez: 6 · 5 · 4 = 120."
+          }
+        ]
+      },
+      {
+        "id": "c-5-3",
+        "prompt": "De quantos jeitos se escolhem 3 livros de uma pilha de 5 para levar na viagem?",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Isso. 60 ordens divididas pelas 3! = 6 de cada trio: 10."
+          },
+          {
+            "id": "a60",
+            "label": "60",
+            "correct": false,
+            "feedback": "60 conta a ordem dos livros na mala. Sem ordem: 60 / 6 = 10."
+          },
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 divide por 3 em vez de 3! = 6. Fica 60 / 6 = 10."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "15 é a soma 5 + 4 + 3 + 2 + 1. A conta é 60 / 6 = 10."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "apertos-de-mao",
+        "prompt": "Seis pessoas se cumprimentam, cada par uma vez. Quantos apertos de mão acontecem?",
+        "fala": "Um aperto de mão é uma dupla: A com B é o mesmo que B com A.",
+        "options": [
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": true,
+            "feedback": "Certo. São as duplas de 6: 6 · 5 / 2 = 15."
+          },
+          {
+            "id": "a30",
+            "label": "30",
+            "correct": false,
+            "feedback": "30 conta cada aperto duas vezes. Dividindo por 2: 15."
+          },
+          {
+            "id": "a36",
+            "label": "36",
+            "correct": false,
+            "feedback": "36 inclui cada um cumprimentando a si mesmo. Sem isso e sem ordem: 15."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é 6 · 2. Os apertos são C(6, 2) = 15."
+          }
+        ]
+      },
+      {
+        "id": "c-10-8",
+        "prompt": "Quanto vale C(10, 8)?",
+        "fala": "Escolher 8 que entram é escolher 2 que ficam de fora.",
+        "options": [
+          {
+            "id": "a45",
+            "label": "45",
+            "correct": true,
+            "feedback": "Isso. C(10, 8) = C(10, 2) = 10 · 9 / 2 = 45."
+          },
+          {
+            "id": "a90",
+            "label": "90",
+            "correct": false,
+            "feedback": "90 é 10 · 9, com ordem. Dividindo por 2: 45."
+          },
+          {
+            "id": "a80",
+            "label": "80",
+            "correct": false,
+            "feedback": "80 é 10 · 8. Pela simetria, C(10, 8) = C(10, 2) = 45."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é C(10, 1). Deixar 2 de fora dá C(10, 2) = 45."
+          }
+        ]
+      },
+      {
+        "id": "pelo-menos-uma",
+        "prompt": "De 3 homens e 2 mulheres, quantas comissões de 3 pessoas têm pelo menos uma mulher?",
+        "fala": "Conte tudo e tire o que não serve.",
+        "options": [
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": true,
+            "feedback": "Certo. 10 comissões ao todo, menos 1 só de homens: 9."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 inclui a comissão só de homens. Tirando ela: 9."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 conta só comissões com exatamente uma mulher. Com duas há mais 3: 9."
+          },
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": false,
+            "feedback": "Pelo complemento: 10 − 1 = 9."
+          }
+        ]
+      },
+      {
+        "id": "diagonais-pentagono",
+        "prompt": "Quantas diagonais tem um pentágono?",
+        "fala": "Toda dupla de vértices é um segmento; alguns são lados.",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Isso. 10 segmentos entre vértices, menos os 5 lados: 5."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 conta também os lados. Tirando os 5 lados: 5 diagonais."
+          },
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 conta cada segmento duas vezes e inclui os lados. Fica 10 − 5 = 5."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "Os segmentos entre 5 vértices são C(5, 2) = 10; sem os lados, 5."
+          }
+        ]
+      },
+      {
+        "id": "aposta-7-de-6",
+        "prompt": "Numa loteria se marcam 6 números. Quantas apostas simples cabem numa escolha de 7 números?",
+        "fala": "Última. Quantos números ficam de fora em cada aposta?",
+        "options": [
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": true,
+            "feedback": "Certo. Cada aposta deixa um dos 7 de fora: C(7, 6) = 7."
+          },
+          {
+            "id": "a42",
+            "label": "42",
+            "correct": false,
+            "feedback": "42 é 7 · 6. Pela simetria, C(7, 6) = C(7, 1) = 7."
+          },
+          {
+            "id": "a5040",
+            "label": "5040",
+            "correct": false,
+            "feedback": "5040 é 7!, ordens de 7 números. Grupos de 6 de 7: só 7."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 seria escolher os 7 de uma vez. Grupos de 6: cada um deixa um de fora, 7."
+          }
+        ]
+      }
+    ],
+    "vestibular": [
+      {
+        "id": "ueg-2005-provas",
+        "prompt": "Oito matérias serão divididas em duas provas de 4 matérias, uma em cada dia. De quantos modos isso pode ser feito?",
+        "fala": "Escolha as 4 do primeiro dia; as outras vão para o segundo.",
+        "options": [
+          {
+            "id": "a1680",
+            "label": "1680",
+            "correct": false,
+            "feedback": "1680 é 8 · 7 · 6 · 5, com ordem dentro da prova. Sem ordem: 1680 / 4! = 70."
+          },
+          {
+            "id": "a256",
+            "label": "256",
+            "correct": false,
+            "feedback": "256 é 2⁸, sem garantir 4 por dia. Escolhendo as 4 do 1º dia: C(8, 4) = 70."
+          },
+          {
+            "id": "a140",
+            "label": "140",
+            "correct": false,
+            "feedback": "Os dias são distintos, mas escolher o 1º dia já define o 2º. Não dobre: 70."
+          },
+          {
+            "id": "a128",
+            "label": "128",
+            "correct": false,
+            "feedback": "128 é 2⁷. O certo é escolher 4 de 8: C(8, 4) = 70."
+          },
+          {
+            "id": "a70",
+            "label": "70",
+            "correct": true,
+            "feedback": "Isso. C(8, 4) = 70, e o resto vai para o outro dia."
+          }
+        ],
+        "fonte": {
+          "banca": "UEG",
+          "ano": 2005,
+          "adaptada": true,
+          "adaptacao": "Processo Seletivo 2005/2; enunciado resumido (lista de matérias omitida), alternativas e gabarito (70) mantidos.",
+          "urls": [
+            "https://projetoagathaedu.com.br/questoes-vestibular/matematica/algebra/analise-combinatoria.php"
+          ]
+        }
+      }
+    ]
+  }
+}

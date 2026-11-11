@@ -145,6 +145,20 @@
                   "arquivo": "aritmetica/contagem-probabilidade/fatorial-e-permutacoes/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "arranjos-e-combinacoes",
+              "titulo": "Arranjos e combinações",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Quando a Ordem Some",
+                  "subtitulo": "Arranjos, combinações e a divisão por k!",
+                  "arquivo": "aritmetica/contagem-probabilidade/arranjos-e-combinacoes/aula-01.json"
+                }
+              ]
             }
           ]
         },
