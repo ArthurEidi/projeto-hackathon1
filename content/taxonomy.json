@@ -848,6 +848,20 @@
                   "arquivo": null
                 }
               ]
+            },
+            {
+              "id": "posicoes-relativas-no-espaco",
+              "titulo": "Retas, planos, paralelismo e perpendicularidade no espaço",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Quando Sair do Papel Muda Tudo",
+                  "subtitulo": "Paralelas, concorrentes, reversas e planos",
+                  "arquivo": "geometria/geometria-espacial/posicoes-relativas-no-espaco/aula-01.json"
+                }
+              ]
             }
           ]
         },

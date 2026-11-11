@@ -1,0 +1,305 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Quando Sair do Papel Muda Tudo",
+  "subtitulo": "Paralelas, concorrentes, reversas e planos",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "posicoes-relativas-no-espaco"
+  },
+  "outro": "Você saiu do plano 2D, enxergou retas reversas no cubo e viu como travar retas e planos no espaço.",
+  "glossario": {
+    "c1": { "nome": "Reta r (base)", "resumo": "Reta de referência fixa no plano do piso." },
+    "c2": { "nome": "Reta s (móvel)", "resumo": "Segunda reta cuja altura e direção o aluno altera." },
+    "c3": { "nome": "Plano α", "resumo": "Superfície plana determinada por 3 pontos não alinhados." },
+    "c4": { "nome": "Distância ou ângulo", "resumo": "Vão vertical ou ângulo de 90° entre reta e plano." }
+  },
+  "steps": [
+    {
+      "id": "no-mesmo-plano",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "espaco",
+        "L": 4,
+        "planos": ["piso"],
+        "retas": [
+          { "ponto": [0, 0, 0], "angulo": 0, "inclinacao": 0, "cor": "c1", "rotulo": "r" },
+          { "ponto": [0, 0, 4], "angulo": "$giro_s", "inclinacao": 0, "cor": "c2", "rotulo": "s" }
+        ]
+      },
+      "controls": [
+        { "id": "giro_s", "label": "Girar reta s no piso", "min": 0, "max": 90, "step": 15, "initial": 0, "unit": "°", "color": "c2" }
+      ],
+      "lines": {
+        "intro": "No piso, r e s começam paralelas. Se você girar s sem sair do chão, elas continuam sem se tocar?",
+        "done": "No mesmo plano, girou, cruzou: viram concorrentes. Até aqui vale tudo o que você via no papel."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "O que muda quando saímos para o espaço 3D?",
+        "resposta": "Ganhamos altura: retas podem passar uma por cima da outra e planos se cruzar. Vamos testar no cubo."
+      },
+      "complete_when": { "metric": "giro_s", "gte": 45 }
+    },
+    {
+      "id": "retas-reversas",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "espaco",
+        "L": 4,
+        "planos": ["piso"],
+        "retas": [
+          { "ponto": [0, 0, 0], "angulo": 0, "inclinacao": 0, "cor": "c1", "rotulo": "r" },
+          { "ponto": [4, "$altura_s", 0], "angulo": 90, "inclinacao": 0, "cor": "c2", "rotulo": "s" }
+        ]
+      },
+      "controls": [
+        { "id": "altura_s", "label": "Subir reta s", "min": 0, "max": 4, "step": 1, "initial": 0, "color": "c4" }
+      ],
+      "lines": {
+        "intro": "Com s girada a 90° de r, levante s até o teto do cubo: elas ainda se cruzam ou são paralelas?",
+        "done": "Nem se cruzam nem têm a mesma direção! Como moram em planos diferentes, são retas reversas."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então não se cruzar no espaço não garante paralelismo?",
+        "resposta": "Exato: paralelas têm a mesma direção e dividem um plano; reversas apontam diferente em andares separados."
+      },
+      "complete_when": { "metric": "altura_s", "gte": 4 }
+    },
+    {
+      "id": "reta-perpendicular-plano",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "espaco",
+        "L": 4,
+        "planos": ["piso"],
+        "retas": [
+          { "ponto": [0, 0, 0], "angulo": 0, "inclinacao": "$inclinacao", "cor": "c2", "rotulo": "haste" }
+        ],
+        "esquadros": [
+          { "em": [0, 0, 0], "a": [1, 0, 0], "b": [0, 1, 0] },
+          { "em": [0, 0, 0], "a": [0, 0, 1], "b": [0, 1, 0] }
+        ]
+      },
+      "controls": [
+        { "id": "inclinacao", "label": "Aprumar haste", "min": 30, "max": 90, "step": 15, "initial": 30, "unit": "°", "color": "c4" }
+      ],
+      "lines": {
+        "intro": "Para o poste ficar em pé no chão, basta fazer 90° com uma linha do piso ou precisa de duas direções?",
+        "done": "Com uma reta só ele ainda tomba para o lado. Fazendo 90° com duas concorrentes do piso, fica perpendicular ao plano todo."
+      },
+      "complete_when": { "metric": "inclinacao", "gte": 90 }
+    },
+    {
+      "id": "desafio-cubo",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "espaco",
+          "L": 4,
+          "retas": [
+            { "ponto": [0, 0, 0], "angulo": 0, "inclinacao": 0, "cor": "c1", "rotulo": "AB" },
+            { "ponto": [4, 0, 4], "angulo": 0, "inclinacao": 90, "cor": "c2", "rotulo": "CG" }
+          ],
+          "planos": ["piso"],
+          "highlight": []
+        }
+      },
+      "prompt": "No cubo ABCD-EFGH, as retas das arestas AB e CG são:",
+      "lines": {
+        "intro": "Olhe para a frente do piso (AB) e o pilar de trás à direita (CG)."
+      },
+      "options": [
+        {
+          "id": "par",
+          "label": "Paralelas",
+          "correct": false,
+          "feedback": "AB é horizontal e CG é vertical; direções diferentes. São reversas.",
+          "figure": { "highlight": ["c1"] }
+        },
+        {
+          "id": "conc",
+          "label": "Concorrentes",
+          "correct": false,
+          "feedback": "AB passa na frente e CG sobe lá atrás; não se tocam. São reversas.",
+          "figure": { "highlight": ["c2"] }
+        },
+        {
+          "id": "rev",
+          "label": "Reversas",
+          "correct": true,
+          "feedback": "Isso. Não se cruzam e não têm a mesma direção: são reversas.",
+          "figure": { "highlight": ["c1", "c2"] }
+        },
+        {
+          "id": "coin",
+          "label": "Coincidentes",
+          "correct": false,
+          "feedback": "São arestas distintas e separadas pela largura do cubo: reversas.",
+          "figure": { "highlight": ["c4"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "espaco",
+          "L": 4,
+          "retas": [
+            { "ponto": [0, 0, 0], "angulo": 0, "inclinacao": 0, "cor": "c1", "rotulo": "r" },
+            { "ponto": [0, 4, 0], "angulo": 0, "inclinacao": 0, "cor": "c2", "rotulo": "s" }
+          ],
+          "planos": ["piso"]
+        }
+      },
+      "formula": [
+        { "text": "r ∩ s = ∅" },
+        { "text": "⇒" },
+        { "text": "paralelas", "ref": "c1" },
+        { "text": "ou" },
+        { "text": "reversas", "ref": "c2" }
+      ],
+      "definitions": [
+        { "term": "Paralelas", "text": "Não se cruzam e estão contidas no mesmo plano." },
+        { "term": "Reversas", "text": "Não se cruzam e não existe plano que contenha as duas." },
+        { "term": "Perpendicular ao plano", "text": "Forma 90° com pelo menos duas retas concorrentes do plano." }
+      ],
+      "lines": {
+        "intro": "No espaço 3D uma reta pode passar por cima da outra em outra direção. Por isso retas sem encontro podem ser paralelas ou reversas.",
+        "hint": "Toque nas palavras para destacar as retas correspondentes no cubo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "viaduto-avenida",
+        "prompt": "Um viaduto reto passa por cima de uma avenida reta transversal sem tocá-la. Essas duas retas são:",
+        "options": [
+          { "id": "rev", "label": "Reversas", "correct": true, "feedback": "Exato. Não se cruzam e têm direções diferentes em alturas distintas." },
+          { "id": "par", "label": "Paralelas", "correct": false, "feedback": "Paralelas apontam na mesma direção. O viaduto cruza por cima: são reversas." },
+          { "id": "conc", "label": "Concorrentes", "correct": false, "feedback": "Concorrentes se tocam num ponto. Como há vão vertical, são reversas." },
+          { "id": "copl", "label": "Coplanares", "correct": false, "feedback": "Não há um único plano que contenha as duas. São reversas." }
+        ]
+      },
+      {
+        "id": "tripe-plano",
+        "prompt": "Quantos pontos não alinhados são necessários, no mínimo, para determinar um único plano?",
+        "options": [
+          { "id": "p3", "label": "3", "correct": true, "feedback": "Isso. Três pontos não alinhados travam um único plano, como um tripé." },
+          { "id": "p2", "label": "2", "correct": false, "feedback": "2 pontos determinam só uma reta, e o plano ainda gira nela. São 3." },
+          { "id": "p1", "label": "1", "correct": false, "feedback": "Por 1 ponto passam infinitos planos. São necessários 3 não alinhados." },
+          { "id": "p4", "label": "4", "correct": false, "feedback": "Com 3 pontos não alinhados o plano já fica fixo; o 4º pode até ficar fora." }
+        ]
+      },
+      {
+        "id": "piso-teto",
+        "prompt": "Em uma sala em forma de bloco retangular, os planos do piso e do teto são:",
+        "options": [
+          { "id": "par", "label": "Paralelos", "correct": true, "feedback": "Certo. Piso e teto mantêm distância constante e nunca se encontram." },
+          { "id": "sec", "label": "Secantes", "correct": false, "feedback": "Planos secantes se cortam numa reta, como piso e parede. Piso e teto são paralelos." },
+          { "id": "rev", "label": "Reversos", "correct": false, "feedback": "Reversas são retas, não planos. Dois planos sem encontro são paralelos." }
+        ]
+      },
+      {
+        "id": "piso-parede",
+        "prompt": "A interseção entre o plano do piso e o plano de uma parede vertical é:",
+        "options": [
+          { "id": "reta", "label": "Uma reta", "correct": true, "feedback": "Exato: a linha do rodapé, pois dois planos secantes se cortam numa reta." },
+          { "id": "ponto", "label": "Um único ponto", "correct": false, "feedback": "Dois planos que se tocam não param num ponto: cortam-se numa reta inteira." },
+          { "id": "vazio", "label": "Vazia", "correct": false, "feedback": "A parede encosta no chão ao longo do rodapé: a interseção é uma reta." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "arestas-paralelas-cubo",
+        "prompt": "Um cubo tem 12 arestas. Dada uma aresta AB, quantas OUTRAS arestas do cubo são paralelas a AB?",
+        "options": [
+          { "id": "a3", "label": "3", "correct": true, "feedback": "Isso. Das 4 arestas na mesma direção de AB, 3 são as outras paralelas a ela." },
+          { "id": "a4", "label": "4", "correct": false, "feedback": "4 inclui a própria AB. As outras paralelas a ela são 3." },
+          { "id": "a2", "label": "2", "correct": false, "feedback": "Há a oposta no piso, a oposta na frente e a diagonal no teto: são 3." },
+          { "id": "a8", "label": "8", "correct": false, "feedback": "As outras 8 têm direções perpendiculares. Paralelas a AB são só 3." }
+        ]
+      },
+      {
+        "id": "intersecao-planos-paralelos",
+        "prompt": "Um plano transversal corta dois planos paralelos α e β. As duas retas de interseção formadas são:",
+        "options": [
+          { "id": "par", "label": "Paralelas", "correct": true, "feedback": "Certo. Estão no mesmo plano transversal e em planos paralelos, logo nunca se tocam." },
+          { "id": "rev", "label": "Reversas", "correct": false, "feedback": "Ambas pertencem ao mesmo plano transversal, então são coplanares e paralelas." },
+          { "id": "conc", "label": "Concorrentes", "correct": false, "feedback": "Se se cruzassem, os planos paralelos α e β se tocariam ali. São paralelas." }
+        ]
+      },
+      {
+        "id": "angulo-reversas-cubo",
+        "prompt": "No cubo ABCD-EFGH, qual é o ângulo formado pelas retas reversas AB (horizontal) e CG (vertical)?",
+        "options": [
+          { "id": "g90", "label": "90°", "correct": true, "feedback": "Exato. CG tem a mesma direção vertical de BF, que faz 90° com AB (ortogonais)." },
+          { "id": "g0", "label": "0°", "correct": false, "feedback": "0° seria se fossem paralelas. Uma é horizontal e a outra vertical: 90°." },
+          { "id": "g45", "label": "45°", "correct": false, "feedback": "45° é com a diagonal da face. Entre aresta horizontal e vertical é 90°." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "contar-reversas-cubo",
+        "prompt": "Fixada uma aresta AB de um cubo, quantas das outras 11 arestas são REVERSAS a AB?",
+        "fala": "Desconte as 3 paralelas e as que encostam nas pontas A ou B.",
+        "options": [
+          { "id": "r4", "label": "4", "correct": true, "feedback": "Isso. Das 11 outras, 3 são paralelas e 4 tocam A ou B; sobram 4 reversas." },
+          { "id": "r8", "label": "8", "correct": false, "feedback": "4 dessas 8 encostam em A ou B (concorrentes). Sem tocar AB, sobram 4 reversas." },
+          { "id": "r3", "label": "3", "correct": false, "feedback": "3 são as paralelas. As reversas a AB são 4." },
+          { "id": "r6", "label": "6", "correct": false, "feedback": "Tire de 11 as 3 paralelas e as 4 concorrentes em A e B: restam 4." }
+        ]
+      },
+      {
+        "id": "reta-paralela-plano",
+        "prompt": "Se uma reta r é paralela a um plano α, então r em relação às retas contidas em α é:",
+        "options": [
+          { "id": "pr", "label": "Paralela a algumas e reversa a outras", "correct": true, "feedback": "Certo. Não toca nenhuma: é paralela às de mesma direção e reversa às outras." },
+          { "id": "pt", "label": "Paralela a todas", "correct": false, "feedback": "Em α há retas em várias direções; r é paralela a algumas e reversa a outras." },
+          { "id": "ct", "label": "Concorrente com todas", "correct": false, "feedback": "Como r não toca α, não cruza nenhuma reta de α: é paralela ou reversa." }
+        ]
+      },
+      {
+        "id": "projecao-ortogonal-segmento",
+        "prompt": "Um bastão vertical de 1 m está em pé, perpendicular ao chão plano. Sua projeção ortogonal no chão é:",
+        "options": [
+          { "id": "pto", "label": "Um único ponto", "correct": true, "feedback": "Exato. Como todo o bastão está na mesma vertical, todos os pontos caem no mesmo pé." },
+          { "id": "seg1", "label": "Um segmento de 1 m", "correct": false, "feedback": "1 m seria se o bastão estivesse deitado paralelo ao chão. Em pé, projeta um ponto." },
+          { "id": "seg05", "label": "Um segmento de 0,5 m", "correct": false, "feedback": "Perpendicular ao piso, o topo projeta exatamente sobre a base: um único ponto." }
+        ]
+      },
+      {
+        "id": "planos-perpendiculares-terceiro",
+        "prompt": "Duas paredes vizinhas no canto da sala são ambas perpendiculares ao piso. Elas são paralelas entre si?",
+        "options": [
+          { "id": "nao", "label": "Não, podem ser secantes", "correct": true, "feedback": "Isso. Duas paredes no canto fazem 90° com o chão e se cruzam na quina." },
+          { "id": "sim", "label": "Sim, sempre paralelas", "correct": false, "feedback": "No canto da sala, duas paredes são perpendiculares ao chão e se cruzam." }
+        ]
+      },
+      {
+        "id": "soma-determinacao-planos",
+        "prompt": "4 pontos não coplanares (como os vértices de uma pirâmide triangular) determinam quantos planos distintos?",
+        "fala": "Cada trio de vértices fecha uma face da pirâmide.",
+        "options": [
+          { "id": "p4", "label": "4", "correct": true, "feedback": "Exato. Cada grupo de 3 pontos forma 1 face do tetraedro: são 4 planos." },
+          { "id": "p1", "label": "1", "correct": false, "feedback": "Eles não estão no mesmo plano. Cada trio forma um plano: são 4." },
+          { "id": "p3", "label": "3", "correct": false, "feedback": "Há 3 faces laterais mais a base: 4 trios de pontos, logo 4 planos." },
+          { "id": "p6", "label": "6", "correct": false, "feedback": "6 é o número de retas (arestas) C(4,2). De planos C(4,3) são 4." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
