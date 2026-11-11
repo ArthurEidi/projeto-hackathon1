@@ -1,0 +1,618 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Lei dos senos e lei dos cossenos",
+  "subtitulo": "Além do ângulo reto",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "trigonometria",
+    "unidade": "lei-dos-senos-e-cossenos"
+  },
+  "outro": "Você abriu e fechou o ângulo do triângulo, recuperou Pitágoras em 90° e ligou cada lado ao diâmetro 2R pela lei dos senos.",
+  "glossario": {
+    "c1": {
+      "nome": "Lado oposto a",
+      "resumo": "Lado que fica de frente para o ângulo A e abre ou fecha com ele."
+    },
+    "c2": {
+      "nome": "Lados adjacentes b e c",
+      "resumo": "Os dois lados que formam o ângulo A."
+    },
+    "c3": {
+      "nome": "Ângulo A",
+      "resumo": "Abertura entre os lados b e c que governa o tamanho de a."
+    },
+    "c4": {
+      "nome": "Diâmetro 2R",
+      "resumo": "Dobro do raio da circunferência circunscrita ao triângulo."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro-pitagoras",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "cossenos",
+        "b": 3,
+        "c": 4,
+        "angulo": "$ang_a",
+        "fantasma": true
+      },
+      "controls": [
+        {
+          "id": "ang_a",
+          "label": "Ângulo A (graus)",
+          "min": 60,
+          "max": 120,
+          "step": 30,
+          "initial": 90,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Em A = 90°, b = 3 e c = 4 dão a² = 25. Feche o ângulo A para 60°: a² fica maior ou menor que 25?",
+        "done": "Ficou menor: a² = 25 − 2·3·4·cos 60° = 13. Fechar o ângulo desconta 2bc·cos A da soma de Pitágoras."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então a lei dos cossenos é o Teorema de Pitágoras para qualquer ângulo?",
+        "resposta": "Isso mesmo: ela corrige Pitágoras quando o ângulo deixa de ser reto, e com a lei dos senos resolve qualquer triângulo."
+      },
+      "complete_when": {
+        "metric": "ang_a",
+        "lte": 60
+      }
+    },
+    {
+      "id": "angulo-obtuso",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "cossenos",
+        "b": 3,
+        "c": 4,
+        "angulo": "$ang_a",
+        "fantasma": true
+      },
+      "controls": [
+        {
+          "id": "ang_a",
+          "label": "Ângulo A (graus)",
+          "min": 60,
+          "max": 120,
+          "step": 30,
+          "initial": 60,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Em 60° descontamos 12 porque cos 60° = 0,5. E se abrirmos A para 120°, onde cos 120° = −0,5?",
+        "done": "Passou de 25 para 37. No ângulo obtuso o cosseno é negativo, então −2bc·cos A vira uma soma e estica o lado a."
+      },
+      "complete_when": {
+        "metric": "ang_a",
+        "gte": 120
+      }
+    },
+    {
+      "id": "lei-dos-senos-2r",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "senos",
+        "R": 5,
+        "angulo": "$ang_a"
+      },
+      "controls": [
+        {
+          "id": "ang_a",
+          "label": "Ângulo A (graus)",
+          "min": 30,
+          "max": 90,
+          "step": 30,
+          "initial": 30,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Com R = 5, o diâmetro 2R vale 10. Suba o ângulo A de 30° até 90°: quanto dá a divisão a / sen A em cada posição?",
+        "done": "Dá sempre 10, que é o diâmetro 2R. Em 90°, sen 90° = 1 e o lado a vira o próprio diâmetro da circunferência."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Como sei qual das duas leis usar num exercício?",
+        "resposta": "Dois lados e o ângulo entre eles (ou os três lados) pedem cossenos; pares de lado e ângulo oposto pedem senos."
+      },
+      "complete_when": {
+        "metric": "ang_a",
+        "gte": 90
+      }
+    },
+    {
+      "id": "desafio-cossenos",
+      "type": "micro_challenge",
+      "prompt": "Num triângulo, b = 5, c = 8 e o ângulo entre eles é A = 60° (cos 60° = 0,5). Quanto mede o lado a?",
+      "lines": {
+        "intro": "Você tem dois lados e o ângulo de 60° entre eles: aplique a lei dos cossenos."
+      },
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "cossenos",
+          "b": 5,
+          "c": 8,
+          "angulo": 60,
+          "fantasma": false
+        }
+      },
+      "options": [
+        {
+          "id": "a7",
+          "label": "7",
+          "correct": true,
+          "feedback": "Isso. a² = 25 + 64 − 2·5·8·0,5 = 89 − 40 = 49, logo a = 7."
+        },
+        {
+          "id": "a49",
+          "label": "49",
+          "correct": false,
+          "feedback": "49 é a². Tirando a raiz quadrada, o lado mede a = 7."
+        },
+        {
+          "id": "a89",
+          "label": "√89",
+          "correct": false,
+          "feedback": "Faltou descontar 2bc·cos 60° = 40. Com o desconto: a² = 49 e a = 7."
+        },
+        {
+          "id": "a11",
+          "label": "√129",
+          "correct": false,
+          "feedback": "Você somou 40 em vez de subtrair. Em 60° subtrai-se: a² = 49, a = 7."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "senos",
+          "R": 5,
+          "angulo": 60
+        }
+      },
+      "formula": [
+        {
+          "text": "a²",
+          "ref": "c1"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "b² + c²",
+          "ref": "c2"
+        },
+        {
+          "text": " − 2bc·cos "
+        },
+        {
+          "text": "A",
+          "ref": "c3"
+        },
+        {
+          "text": "; "
+        },
+        {
+          "text": "a",
+          "ref": "c1"
+        },
+        {
+          "text": " / sen "
+        },
+        {
+          "text": "A",
+          "ref": "c3"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "2R",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Lado oposto a",
+          "text": "Lado que fica de frente para o ângulo A e abre ou fecha com ele."
+        },
+        {
+          "term": "Lados adjacentes b e c",
+          "text": "Os dois lados que formam o ângulo A."
+        },
+        {
+          "term": "Diâmetro 2R",
+          "text": "Dobro do raio da circunferência circunscrita ao triângulo."
+        }
+      ],
+      "lines": {
+        "intro": "O termo −2bc·cos A mede o quanto o ângulo desvia de 90°, por isso a lei dos cossenos generaliza Pitágoras para qualquer triângulo.",
+        "hint": "Toque em cada parte da fórmula para destacá-la no triângulo e na circunferência."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "cossenos-em-90",
+        "prompt": "Quando A = 90° (cos 90° = 0), a lei dos cossenos a² = b² + c² − 2bc·cos A se reduz a:",
+        "options": [
+          {
+            "id": "pit",
+            "label": "a² = b² + c²",
+            "correct": true,
+            "feedback": "Certo. Com cos 90° = 0, o termo −2bc·cos A zera e sobra Pitágoras."
+          },
+          {
+            "id": "sub",
+            "label": "a² = b² + c² − 2bc",
+            "correct": false,
+            "feedback": "Isso seria cos A = 1. Como cos 90° = 0, fica a² = b² + c²."
+          },
+          {
+            "id": "som",
+            "label": "a² = b² + c² + 2bc",
+            "correct": false,
+            "feedback": "Com cos 90° = 0 o produto zera: fica a² = b² + c²."
+          },
+          {
+            "id": "sen",
+            "label": "a / sen A = 0",
+            "correct": false,
+            "feedback": "Em 90° o termo com cosseno some, restando a² = b² + c²."
+          }
+        ]
+      },
+      {
+        "id": "senos-diametro",
+        "prompt": "Num triângulo inscrito em circunferência de raio R = 6, quanto vale a razão a / sen A?",
+        "options": [
+          {
+            "id": "r12",
+            "label": "12",
+            "correct": true,
+            "feedback": "Isso. Pela lei dos senos, a / sen A = 2R = 2 · 6 = 12."
+          },
+          {
+            "id": "r6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é o raio R. A razão vale o diâmetro 2R = 12."
+          },
+          {
+            "id": "r3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Multiplique o raio por 2: a / sen A = 2R = 12."
+          },
+          {
+            "id": "r36",
+            "label": "36",
+            "correct": false,
+            "feedback": "Não eleve ao quadrado: a / sen A = 2R = 12."
+          }
+        ]
+      },
+      {
+        "id": "achar-lado-senos",
+        "prompt": "Num triângulo, A = 30° (sen 30° = 0,5) e o raio circunscrito é R = 10. Quanto mede o lado oposto a?",
+        "options": [
+          {
+            "id": "l10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Certo. a = 2R · sen 30° = 20 · 0,5 = 10."
+          },
+          {
+            "id": "l20",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 é o diâmetro 2R. Multiplicando por sen 30° = 0,5, dá a = 10."
+          },
+          {
+            "id": "l5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 é R · sen 30°. Como usamos 2R = 20, o lado mede 20 · 0,5 = 10."
+          },
+          {
+            "id": "l40",
+            "label": "40",
+            "correct": false,
+            "feedback": "Multiplique 2R = 20 por 0,5, não divida: a = 10."
+          }
+        ]
+      },
+      {
+        "id": "sinal-obtuso",
+        "prompt": "Se um triângulo tem lados b = 3, c = 4 e ângulo A obtuso (A > 90°), então a² é:",
+        "options": [
+          {
+            "id": "mai25",
+            "label": "Maior que 25",
+            "correct": true,
+            "feedback": "Exato. Em A = 90° dá 25; como A > 90°, o lado abre mais e a² > 25."
+          },
+          {
+            "id": "ig25",
+            "label": "Igual a 25",
+            "correct": false,
+            "feedback": "25 ocorre só em A = 90°. Com A obtuso, a² é maior que 25."
+          },
+          {
+            "id": "men25",
+            "label": "Menor que 25",
+            "correct": false,
+            "feedback": "Menor que 25 ocorre quando A é agudo. Com A obtuso, a² > 25."
+          },
+          {
+            "id": "ig7",
+            "label": "Igual a 7",
+            "correct": false,
+            "feedback": "Com A > 90° o termo −2bc·cos A é positivo, então a² > 25."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "dois-angulos-senos",
+        "prompt": "Num triângulo, A = 30° (sen 30° = 0,5), B = 45° (sen 45° = √2/2) e a = 6. Quanto mede o lado b?",
+        "options": [
+          {
+            "id": "b6r2",
+            "label": "6√2",
+            "correct": true,
+            "feedback": "Isso. a / sen 30° = 12, então b = 12 · (√2/2) = 6√2."
+          },
+          {
+            "id": "b12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é a razão 2R = 6 / 0,5. Multiplicando por sen 45°, b = 6√2."
+          },
+          {
+            "id": "b3r2",
+            "label": "3√2",
+            "correct": false,
+            "feedback": "Dividir 6 por 0,5 dá 12, não 6. Logo b = 12 · (√2/2) = 6√2."
+          },
+          {
+            "id": "b6",
+            "label": "6",
+            "correct": false,
+            "feedback": "Os ângulos são diferentes. Pela lei dos senos, b = 6√2."
+          }
+        ]
+      },
+      {
+        "id": "cossenos-lado-3-5",
+        "prompt": "Dois lados de um triângulo medem 3 e 5, e formam um ângulo de 120° (cos 120° = −0,5). Quanto mede o terceiro lado?",
+        "options": [
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": true,
+            "feedback": "Certo. a² = 9 + 25 + 15 = 49, portanto a = 7."
+          },
+          {
+            "id": "a19",
+            "label": "√19",
+            "correct": false,
+            "feedback": "Como cos 120° = −0,5, o termo −2bc·cos A soma +15: a² = 49 e a = 7."
+          },
+          {
+            "id": "a49",
+            "label": "49",
+            "correct": false,
+            "feedback": "49 é a². Extraindo a raiz quadrada, o lado mede 7."
+          },
+          {
+            "id": "a34",
+            "label": "√34",
+            "correct": false,
+            "feedback": "√34 seria para 90°. Em 120° soma-se 15: a² = 49 e a = 7."
+          }
+        ]
+      },
+      {
+        "id": "achar-cosseno",
+        "prompt": "Num triângulo de lados a = 7, b = 5 e c = 6, quanto vale cos A?",
+        "options": [
+          {
+            "id": "c15",
+            "label": "1/5",
+            "correct": true,
+            "feedback": "Exato. 49 = 25 + 36 − 60·cos A, então 60·cos A = 12 e cos A = 1/5."
+          },
+          {
+            "id": "cm15",
+            "label": "−1/5",
+            "correct": false,
+            "feedback": "Cuidado com o sinal: 61 − 49 = 12, então cos A = 12/60 = 1/5."
+          },
+          {
+            "id": "c56",
+            "label": "5/6",
+            "correct": false,
+            "feedback": "O triângulo não é retângulo. Pela lei dos cossenos, cos A = 1/5."
+          },
+          {
+            "id": "c12",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "60·cos A = 61 − 49 = 12, logo cos A = 12/60 = 1/5."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "terceiro-angulo-senos",
+        "prompt": "Num triângulo ABC, A = 75°, B = 45° e o lado c mede 12 (sen 60° = √3/2). Quanto vale o raio R da circunferência circunscrita?",
+        "options": [
+          {
+            "id": "r4r3",
+            "label": "4√3",
+            "correct": true,
+            "feedback": "Isso. C = 60°, então 2R = 12 / (√3/2) = 8√3 e R = 4√3."
+          },
+          {
+            "id": "r8r3",
+            "label": "8√3",
+            "correct": false,
+            "feedback": "8√3 é o diâmetro 2R. O raio R é a metade: 4√3."
+          },
+          {
+            "id": "r6",
+            "label": "6",
+            "correct": false,
+            "feedback": "C = 60°, não 90°. Com sen 60° = √3/2, R = 4√3."
+          },
+          {
+            "id": "r6r2",
+            "label": "6√2",
+            "correct": false,
+            "feedback": "O lado c é oposto a C = 60°, não a B = 45°. Assim, R = 4√3."
+          }
+        ]
+      },
+      {
+        "id": "classificar-triangulo",
+        "prompt": "Um triângulo tem lados 4, 5 e 7. O maior ângulo desse triângulo é:",
+        "options": [
+          {
+            "id": "obt",
+            "label": "Obtuso",
+            "correct": true,
+            "feedback": "Certo. Como 7² = 49 é maior que 4² + 5² = 41, o cosseno é negativo."
+          },
+          {
+            "id": "ret",
+            "label": "Reto",
+            "correct": false,
+            "feedback": "Seria reto se 4² + 5² desse 49, mas dá 41. Como 49 > 41, é obtuso."
+          },
+          {
+            "id": "agu",
+            "label": "Agudo",
+            "correct": false,
+            "feedback": "Para ser agudo, 7² deveria ser menor que 41. Como 49 > 41, é obtuso."
+          },
+          {
+            "id": "ras",
+            "label": "Raso",
+            "correct": false,
+            "feedback": "4 + 5 = 9 > 7, o triângulo fecha e tem maior ângulo obtuso."
+          }
+        ]
+      },
+      {
+        "id": "cosseno-nao-inteiro",
+        "prompt": "Dois caminhos retos saem do mesmo ponto fazendo 60° (cos 60° = 0,5). Após 2 km num e 4 km no outro, qual a distância entre as pontas?",
+        "options": [
+          {
+            "id": "d2r3",
+            "label": "2√3 km",
+            "correct": true,
+            "feedback": "Exato. d² = 4 + 16 − 8 = 12, então d = √12 = 2√3 km."
+          },
+          {
+            "id": "d12",
+            "label": "12 km",
+            "correct": false,
+            "feedback": "12 é d². Tirando a raiz quadrada: √12 = 2√3 km."
+          },
+          {
+            "id": "d2r5",
+            "label": "2√5 km",
+            "correct": false,
+            "feedback": "2√5 seria para 90°. Descontando 2·2·4·0,5 = 8, fica √12 = 2√3 km."
+          },
+          {
+            "id": "d3",
+            "label": "3 km",
+            "correct": false,
+            "feedback": "Pela lei dos cossenos, d² = 20 − 8 = 12, logo d = 2√3 km."
+          }
+        ]
+      },
+      {
+        "id": "fronteira-diametro",
+        "prompt": "Num triângulo inscrito numa circunferência de raio R = 8, um dos lados mede 16. Quanto vale o seno do ângulo oposto a esse lado?",
+        "options": [
+          {
+            "id": "s1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Isso. O lado 16 é o próprio diâmetro 2R, então sen A = 16/16 = 1 (A = 90°)."
+          },
+          {
+            "id": "s05",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Você dividiu 8 por 16. Como 2R = 16, sen A = 16 / 16 = 1."
+          },
+          {
+            "id": "s0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Pela lei dos senos, sen A = a / (2R) = 16 / 16 = 1."
+          },
+          {
+            "id": "s2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Seno nunca passa de 1; aqui 2R = 16, então sen A = 16 / 16 = 1."
+          }
+        ]
+      },
+      {
+        "id": "combinar-seno-cosseno",
+        "prompt": "Num triângulo ABC, b = 4, c = 6 e cos A = 3/4. Quanto mede o lado a, e se sen A = √7/4, quanto vale o diâmetro 2R?",
+        "fala": "Primeiro ache a pela lei dos cossenos; depois divida a por sen A.",
+        "options": [
+          {
+            "id": "c4e16",
+            "label": "a = 4 e 2R = 16/√7",
+            "correct": true,
+            "feedback": "Exato. a² = 52 − 36 = 16 ⇒ a = 4; depois 2R = 4 / (√7/4) = 16/√7."
+          },
+          {
+            "id": "c16e4",
+            "label": "a = 16 e 2R = 4/√7",
+            "correct": false,
+            "feedback": "16 é a², então a = 4; dividindo por √7/4, temos 2R = 16/√7."
+          },
+          {
+            "id": "c4e4",
+            "label": "a = 4 e 2R = √7",
+            "correct": false,
+            "feedback": "Para achar 2R, divida a = 4 por sen A = √7/4: 2R = 16/√7."
+          },
+          {
+            "id": "c8e16",
+            "label": "a = √52 e 2R = 16/√7",
+            "correct": false,
+            "feedback": "Desconte 2bc·cos A = 36: a² = 16, a = 4 e 2R = 16/√7."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

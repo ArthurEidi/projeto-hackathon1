@@ -949,6 +949,20 @@
               ]
             },
             {
+              "id": "lei-dos-senos-e-cossenos",
+              "titulo": "Lei dos senos e lei dos cossenos",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Lei dos senos e lei dos cossenos",
+                  "subtitulo": "Além do ângulo reto",
+                  "arquivo": "geometria/trigonometria/lei-dos-senos-e-cossenos/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "ciclo-trigonometrico",
               "titulo": "Ciclo Trigonométrico",
               "icone": "circulo",
