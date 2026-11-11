@@ -478,6 +478,20 @@
                   "arquivo": "algebra/funcoes/transformacoes-graficos-de-funcoes/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "funcao-composta-e-inversa",
+              "titulo": "Função composta e inversa",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Função Composta e Inversa",
+                  "subtitulo": "Composição de regras e inversão de papéis",
+                  "arquivo": "algebra/funcoes/funcao-composta-e-inversa/aula-01.json"
+                }
+              ]
             }
           ]
         },

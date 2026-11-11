@@ -1,0 +1,423 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Função Composta e Inversa",
+  "subtitulo": "Composição de regras e inversão de papéis",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "funcoes",
+    "unidade": "funcao-composta-e-inversa"
+  },
+  "outro": "Você dominou a composição de funções e a reflexão da função inversa na reta y = x.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Valor inicial que percorre a primeira regra aplicada."
+    },
+    "c2": {
+      "nome": "Saída composta",
+      "resumo": "Resultado final após passar pelas regras encadeadas."
+    },
+    "c3": {
+      "nome": "Regra interna g",
+      "resumo": "Primeira transformação aplicada na composição f(g(x))."
+    },
+    "c4": {
+      "nome": "Diagonal y = x",
+      "resumo": "Eixo de simetria entre o gráfico de f e de sua inversa f⁻¹."
+    }
+  },
+  "steps": [
+    {
+      "id": "identidade",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "afim", "a": 1, "b": 0, "cor": "c3", "rotulo": "f(x) = x" }
+        ],
+        "ponto": { "curva": 0, "x": 0, "arrastavel": true, "passo": 0.5, "coordenadas": true, "espelho": true, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "Na identidade f(x) = x, cada entrada é devolvida igual. Arraste até x = 2 e veja o ponto espelhado.",
+        "done": "Em (2; 2), o ponto coincide com seu espelho: a identidade é sua própria inversa."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A ordem das máquinas importa?",
+        "resposta": "Sim! Aplicar g depois f em geral produz resultado diferente de aplicar f depois g."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      }
+    },
+    {
+      "id": "ordem-maquinas",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "afim", "a": 2, "b": 2, "cor": "c3", "rotulo": "f(g(x)) = 2x + 2" },
+          { "tipo": "afim", "a": 2, "b": 1, "cor": "c2", "rotulo": "g(f(x)) = 2x + 1" }
+        ],
+        "ponto": { "curva": 0, "x": 0, "arrastavel": true, "passo": 0.5, "coordenadas": true, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "A ordem da composição importa? Mova x até 1 para comparar f(g(x)) com g(f(x)).",
+        "done": "Para x = 1, uma ordem dá 4 e a outra dá 3! A ordem em que encadeamos as funções muda o resultado."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 1
+      }
+    },
+    {
+      "id": "reflexao-inversa",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "curvas": [
+          { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" },
+          { "tipo": "afim", "a": 2, "b": 1, "cor": "c3", "rotulo": "f(x) = 2x + 1" },
+          { "tipo": "afim", "a": 0.5, "b": -0.5, "cor": "c2", "rotulo": "f⁻¹(x) = (x−1)/2" }
+        ],
+        "ponto": { "curva": 1, "x": 0, "arrastavel": true, "passo": 0.5, "coordenadas": true, "espelho": true, "cor": "c1" }
+      },
+      "lines": {
+        "intro": "A inversa desfaz f(x) = 2x + 1 trocando x e y. Arraste x pela reta e veja o ponto espelhado em y = x.",
+        "done": "O ponto (1; 3) reflete em (3; 1) sobre a reta y = x. O gráfico da inversa é a reflexão de f na diagonal."
+      },
+      "complete_when": {
+        "metric": "faixa_x",
+        "gte": 2
+      }
+    },
+    {
+      "id": "desafio-fronteira",
+      "type": "micro_challenge",
+      "prompt": "Qual é a função inversa de f(x) = 2x + 1?",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [
+            { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" },
+            { "tipo": "afim", "a": 2, "b": 1, "cor": "c3", "rotulo": "f(x) = 2x + 1" }
+          ],
+          "ponto": { "curva": 1, "x": 1, "coordenadas": true, "espelho": true, "cor": "c1" }
+        }
+      },
+      "lines": {
+        "intro": "Troque x por y na equação y = 2x + 1 e isole a nova variável y."
+      },
+      "options": [
+        {
+          "id": "certa",
+          "label": "(x − 1)/2",
+          "correct": true,
+          "feedback": "Exato! Trocando as variáveis: x = 2y + 1 ⇒ 2y = x − 1 ⇒ y = (x − 1)/2.",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 0, "fantasma": true },
+              { "tipo": "afim", "a": 2, "b": 1, "cor": "c3" },
+              { "tipo": "afim", "a": 0.5, "b": -0.5, "cor": "c2", "rotulo": "f⁻¹" }
+            ]
+          }
+        },
+        {
+          "id": "erro",
+          "label": "2x − 1",
+          "correct": false,
+          "feedback": "Você só trocou o sinal de 1. É preciso isolar y após trocar x e y: f⁻¹(x) = (x − 1)/2.",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 0, "fantasma": true },
+              { "tipo": "afim", "a": 2, "b": 1, "cor": "c3" },
+              { "tipo": "afim", "a": 2, "b": -1, "cor": "c4", "rotulo": "2x − 1" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "curvas": [
+            { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" },
+            { "tipo": "afim", "a": 2, "b": 1, "cor": "c3", "rotulo": "f" },
+            { "tipo": "afim", "a": 0.5, "b": -0.5, "cor": "c2", "rotulo": "f⁻¹" }
+          ],
+          "ponto": { "curva": 1, "x": 1, "coordenadas": true, "espelho": true, "cor": "c1" },
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "(f∘g)(x)" },
+        { "text": "=" },
+        { "text": "f" },
+        { "text": "(" },
+        { "text": "g(x)", "ref": "c3" },
+        { "text": ")" },
+        { "text": ";" },
+        { "text": "f⁻¹(b)", "ref": "c2" },
+        { "text": "=" },
+        { "text": "a", "ref": "c1" },
+        { "text": "⇔" },
+        { "text": "f(a)" },
+        { "text": "=" },
+        { "text": "b" }
+      ],
+      "definitions": [
+        {
+          "term": "Função composta",
+          "text": "Aplicação encadeada: (f∘g)(x) = f(g(x)), aplicando primeiro g e depois f."
+        },
+        {
+          "term": "Função inversa",
+          "text": "Regra f⁻¹ que desfaz f: f⁻¹(y) = x se e somente se f(x) = y."
+        },
+        {
+          "term": "Simetria em y=x",
+          "text": "Os gráficos de f e f⁻¹ são reflexões mútuas em torno da diagonal y = x."
+        }
+      ],
+      "lines": {
+        "intro": "A composta encadeia máquinas e a inversa reflete o gráfico na diagonal y = x.",
+        "hint": "Toque nas letras coloridas para destacar cada elemento."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Toda função possui função inversa?",
+        "resposta": "Não! Apenas funções bijetivas têm inversa; se duas entradas dão a mesma saída, a volta não é função."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-funcao-composta-e-inversa",
+        "prompt": "Se f(x) = x e g(x) = 3, quanto vale (f∘g)(2)?",
+        "options": [
+          {
+            "id": "f1-c",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo! Primeiro g(2) = 3; depois f(3) = 3."
+          },
+          {
+            "id": "f1-e",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 3; Aplique g primeiro: g(2) = 3 e f(3) = 3."
+          }
+        ]
+      },
+      {
+        "id": "f2-funcao-composta-e-inversa",
+        "prompt": "Se f(x) = 2x e g(x) = x + 1, quanto vale f(g(1))?",
+        "options": [
+          {
+            "id": "f2-c",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo! g(1) = 1 + 1 = 2; então f(2) = 2·2 = 4."
+          },
+          {
+            "id": "f2-e",
+            "label": "3",
+            "correct": false,
+            "feedback": "Resposta: 4; Calcule g(1) = 2 primeiro, depois f(2) = 4."
+          }
+        ]
+      },
+      {
+        "id": "f3-funcao-composta-e-inversa",
+        "prompt": "Qual é a função inversa de f(x) = x + 2?",
+        "options": [
+          {
+            "id": "f3-c",
+            "label": "x − 2",
+            "correct": true,
+            "feedback": "Certo! y = x + 2 ⇒ x = y − 2; logo f⁻¹(x) = x − 2."
+          },
+          {
+            "id": "f3-e",
+            "label": "x + 2",
+            "correct": false,
+            "feedback": "Resposta: x − 2; A inversa desfaz a soma subtraindo: x − 2."
+          }
+        ]
+      },
+      {
+        "id": "f4-funcao-composta-e-inversa",
+        "prompt": "Se f(x) = 2x, quanto vale f⁻¹(6)?",
+        "options": [
+          {
+            "id": "f4-c",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo! 2x = 6 ⇒ x = 6/2 = 3."
+          },
+          {
+            "id": "f4-e",
+            "label": "12",
+            "correct": false,
+            "feedback": "Resposta: 3; A inversa divide por 2 em vez de multiplicar: 6/2 = 3."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-funcao-composta-e-inversa",
+        "prompt": "Se f(x) = x + 1 e g(x) = 2x, quanto vale (g∘f)(2)?",
+        "options": [
+          {
+            "id": "m1-c",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo! f(2) = 2 + 1 = 3; depois g(3) = 2·3 = 6."
+          },
+          {
+            "id": "m1-e",
+            "label": "5",
+            "correct": false,
+            "feedback": "Resposta: 6; Na ordem g(f(2)), calculamos f(2) = 3 e g(3) = 6."
+          }
+        ]
+      },
+      {
+        "id": "m2-funcao-composta-e-inversa",
+        "prompt": "Qual das funções abaixo é a sua própria inversa?",
+        "options": [
+          {
+            "id": "m2-c",
+            "label": "f(x) = x",
+            "correct": true,
+            "feedback": "Certo! A identidade composta consigo mesma continua sendo x."
+          },
+          {
+            "id": "m2-e",
+            "label": "f(x) = x + 1",
+            "correct": false,
+            "feedback": "Resposta: f(x) = x; A inversa de x + 1 é x − 1, que não coincide com x + 1."
+          }
+        ]
+      },
+      {
+        "id": "m3-funcao-composta-e-inversa",
+        "prompt": "Qual é a função inversa de f(x) = 3x?",
+        "options": [
+          {
+            "id": "m3-c",
+            "label": "x/3",
+            "correct": true,
+            "feedback": "Certo! y = 3x ⇒ x = y/3; logo f⁻¹(x) = x/3."
+          },
+          {
+            "id": "m3-e",
+            "label": "3x",
+            "correct": false,
+            "feedback": "Resposta: x/3; A inversa desfaz a multiplicação por 3 dividindo por 3."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-funcao-composta-e-inversa",
+        "prompt": "Se f(x) = x² com domínio restrito a x ≥ 0, qual é a inversa f⁻¹(x)?",
+        "options": [
+          {
+            "id": "d1-c",
+            "label": "√x",
+            "correct": true,
+            "feedback": "Certo! Como x ≥ 0, a inversa é unívoca: f⁻¹(x) = √x."
+          },
+          {
+            "id": "d1-e",
+            "label": "±√x",
+            "correct": false,
+            "feedback": "Resposta: √x; O domínio x ≥ 0 descarta o ramo negativo −√x."
+          }
+        ]
+      },
+      {
+        "id": "d2-funcao-composta-e-inversa",
+        "prompt": "Se f(x) = x + 2 e g(x) = 3x, quanto vale (f∘g)(2)?",
+        "options": [
+          {
+            "id": "d2-c",
+            "label": "8",
+            "correct": true,
+            "feedback": "Certo! g(2) = 3·2 = 6; depois f(6) = 6 + 2 = 8."
+          },
+          {
+            "id": "d2-e",
+            "label": "12",
+            "correct": false,
+            "feedback": "Resposta: 8; Primeiro g(2) = 6, depois f(6) = 6 + 2 = 8."
+          }
+        ]
+      },
+      {
+        "id": "d3-funcao-composta-e-inversa",
+        "prompt": "Qual é a função inversa de f(x) = 2x − 4?",
+        "options": [
+          {
+            "id": "d3-c",
+            "label": "(x + 4)/2",
+            "correct": true,
+            "feedback": "Certo! y = 2x − 4 ⇒ 2x = y + 4 ⇒ x = (y + 4)/2."
+          },
+          {
+            "id": "d3-e",
+            "label": "(x − 4)/2",
+            "correct": false,
+            "feedback": "Resposta: (x + 4)/2; Desfazemos a subtração somando 4 antes de dividir por 2."
+          }
+        ]
+      },
+      {
+        "id": "d4-funcao-composta-e-inversa",
+        "prompt": "A função f(x) = x² definida em todos os reais possui função inversa?",
+        "options": [
+          {
+            "id": "d4-c",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo! f(−2) = f(2) = 4; duas entradas dão a mesma saída, logo não é injetiva."
+          },
+          {
+            "id": "d4-e",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Resposta: Não; Como (−2)² = 2² = 4, a volta não seria uma função unívoca."
+          }
+        ]
+      },
+      {
+        "id": "d5-funcao-composta-e-inversa",
+        "prompt": "Se f(x) = 2x + 1, quanto vale f⁻¹(7)?",
+        "options": [
+          {
+            "id": "d5-c",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo! Igualamos 2x + 1 = 7 ⇒ 2x = 6 ⇒ x = 3."
+          },
+          {
+            "id": "d5-e",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 3; Subtraia 1 e divida por 2: (7 − 1)/2 = 3."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
