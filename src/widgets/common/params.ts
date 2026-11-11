@@ -4,6 +4,7 @@ import { CorTraco, Marca } from "../../ui/marcas";
 import * as barras from "./barras/params";
 import * as grade from "./grade/params";
 import * as solido from "./solido/params";
+import * as triangulo from "./triangulo/params";
 
 /** Número fixo ou referência a um slider do passo: "$a" vale o slider de id "a". */
 export const Valor = z.union([z.number(), z.string().regex(/^\$[a-z0-9_]+$/, 'use um número ou "$id" de um slider')]);
@@ -242,6 +243,7 @@ export const widgetParams = {
   ...barras.widgetParams,
   ...grade.widgetParams,
   ...solido.widgetParams,
+  ...triangulo.widgetParams,
 } as const;
 
 export const figureParams = {
@@ -250,4 +252,5 @@ export const figureParams = {
   ...barras.figureParams,
   ...grade.figureParams,
   ...solido.figureParams,
+  ...triangulo.figureParams,
 } as const;

@@ -1,0 +1,554 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Conjuntos, Operações e Intervalos",
+  "subtitulo": "Quem está dentro · Pertinência, união e interseção",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "conjuntos",
+    "unidade": "conjuntos-e-intervalos"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Conjunto A",
+      "resumo": "Primeiro filtro de pertinência."
+    },
+    "c2": {
+      "nome": "Conjunto B",
+      "resumo": "Segundo filtro de pertinência."
+    },
+    "c3": {
+      "nome": "Ponto-teste x",
+      "resumo": "Número arrastado para testar os filtros."
+    },
+    "c4": {
+      "nome": "Resultado da operação",
+      "resumo": "Faixa aceita pela operação escolhida."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 5],
+        "marcas": 1,
+        "trechos": [
+          {
+            "de": -2,
+            "ate": 3,
+            "cor": "c1",
+            "rotulo": "A = [−2; 3]"
+          }
+        ],
+        "ponto": {
+          "x": 4,
+          "arrastavel": true,
+          "passo": 1,
+          "cor": "c3"
+        }
+      },
+      "complete_when": {
+        "metric": "dentro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "No caso neutro A ∪ ∅, alguma entrada nova aparece? Arraste o ponto de 4 até 2.",
+        "done": "Não; o vazio não acrescenta pontos, por isso A ∪ ∅ = A."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Conjuntos também têm subconjuntos e complementos; aqui combinamos intervalos da reta real."
+      }
+    },
+    {
+      "id": "unir-e-intersectar",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 5],
+        "marcas": 1,
+        "trechos": [
+          {
+            "de": -2,
+            "ate": 3,
+            "cor": "c1",
+            "rotulo": "A = [−2; 3]"
+          },
+          {
+            "de": 1,
+            "ate": 4,
+            "cor": "c2",
+            "rotulo": "B = [1; 4]"
+          }
+        ],
+        "pontos": [
+          {
+            "x": 1,
+            "cor": "c4",
+            "rotulo": "1"
+          },
+          {
+            "x": 3,
+            "cor": "c4",
+            "rotulo": "3"
+          }
+        ],
+        "ponto": {
+          "x": -1,
+          "arrastavel": true,
+          "passo": 1,
+          "cor": "c3"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Se exigirmos pertencer a A e a B, a faixa aumenta? Arraste até a região comum x = 2.",
+        "done": "Diminui: a interseção guarda só [1; 3], onde os dois filtros aceitam ao mesmo tempo."
+      }
+    },
+    {
+      "id": "retirar-e-testar-pontas",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 5],
+        "marcas": 1,
+        "trechos": [
+          {
+            "de": -2,
+            "ate": 1,
+            "abreAte": true,
+            "cor": "c4",
+            "rotulo": "A \\ B = [−2; 1)"
+          }
+        ],
+        "pontos": [
+          {
+            "x": 1,
+            "cor": "c2",
+            "rotulo": "1 ∈ B",
+            "aberto": false
+          }
+        ],
+        "ponto": {
+          "x": -1,
+          "arrastavel": true,
+          "passo": 1,
+          "cor": "c3"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Ao retirar B de A, o ponto 1 permanece? Leve o ponto x até essa fronteira x = 1.",
+        "done": "Não; 1 pertence a B, por isso A \\ B = [−2; 1), sem a ponta direita."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E o complemento de (−∞; 2] em R?",
+        "resposta": "É (2; +∞); o ponto 2 já estava no conjunto, e infinito nunca é incluído."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "prompt": "Se A = [0; 3] e B = [2; 5], qual é A ∩ B?",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [-1, 6],
+          "marcas": 1,
+          "trechos": [
+            {
+              "de": 0,
+              "ate": 3,
+              "cor": "c1",
+              "rotulo": "A = [0; 3]"
+            },
+            {
+              "de": 2,
+              "ate": 5,
+              "cor": "c2",
+              "rotulo": "B = [2; 5]"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "A interseção exige que o número pertença aos dois conjuntos simultaneamente."
+      },
+      "options": [
+        {
+          "id": "micro-acerto",
+          "label": "[2; 3]",
+          "correct": true,
+          "feedback": "Certo: [2; 3]; Só de 2 a 3 os dois conjuntos aceitam.",
+          "override": {
+            "trechos": [
+              {
+                "de": 2,
+                "ate": 3,
+                "cor": "c4",
+                "rotulo": "A ∩ B = [2; 3]"
+              }
+            ],
+            "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "micro-erro",
+          "label": "[0; 5]",
+          "correct": false,
+          "feedback": "Resposta: [2; 3]; Você fez a união; a interseção exige os dois filtros: [2; 3].",
+          "override": {
+            "trechos": [
+              {
+                "de": 0,
+                "ate": 5,
+                "cor": "c3",
+                "rotulo": "A ∪ B = [0; 5]"
+              }
+            ],
+            "highlight": ["c1", "c2"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [-1, 6],
+          "marcas": 1,
+          "trechos": [
+            {
+              "de": 2,
+              "ate": 3,
+              "cor": "c4",
+              "rotulo": "A ∩ B"
+            }
+          ],
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "x", "ref": "c3" },
+        { "text": "∈" },
+        { "text": "A", "ref": "c1" },
+        { "text": "∪" },
+        { "text": "B", "ref": "c2" },
+        { "text": "⇔" },
+        { "text": "x ∈ A ou x ∈ B;" },
+        { "text": "A ∩ B", "ref": "c4" },
+        { "text": "exige ambos" }
+      ],
+      "definitions": [
+        {
+          "term": "Conjunto A",
+          "text": "Primeiro filtro de pertinência."
+        },
+        {
+          "term": "Ponto-teste x",
+          "text": "Número arrastado para testar os filtros."
+        },
+        {
+          "term": "Resultado da operação",
+          "text": "Faixa aceita pela operação escolhida."
+        }
+      ],
+      "lines": {
+        "intro": "Cada operação combina filtros; união aceita um deles e interseção exige os dois.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-conjuntos-e-intervalos",
+        "prompt": "Em [−1; 3), o ponto 3 entra?",
+        "options": [
+          {
+            "id": "f1-nao",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; o extremo direito é aberto (x < 3)."
+          },
+          {
+            "id": "f1-sim",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Resposta: Não; O extremo com parêntese é aberto: x < 3."
+          }
+        ]
+      },
+      {
+        "id": "f2-conjuntos-e-intervalos",
+        "prompt": "A união de conjuntos usa a condição ou ou e?",
+        "options": [
+          {
+            "id": "f2-ou",
+            "label": "Ou",
+            "correct": true,
+            "feedback": "Certo: Ou; basta pertencer a pelo menos um dos conjuntos."
+          },
+          {
+            "id": "f2-e",
+            "label": "E",
+            "correct": false,
+            "feedback": "Resposta: Ou; Condição E é da interseção; a união usa Ou."
+          }
+        ]
+      },
+      {
+        "id": "f3-conjuntos-e-intervalos",
+        "prompt": "A interseção exige pertencer aos dois conjuntos?",
+        "options": [
+          {
+            "id": "f3-sim",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; x ∈ A e x ∈ B simultaneamente."
+          },
+          {
+            "id": "f3-nao",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Resposta: Sim; Passar só em um filtro não basta na interseção."
+          }
+        ]
+      },
+      {
+        "id": "f4-conjuntos-e-intervalos",
+        "prompt": "Qual é o resultado de A ∪ ∅?",
+        "options": [
+          {
+            "id": "f4-a",
+            "label": "A",
+            "correct": true,
+            "feedback": "Certo: A; o conjunto vazio não acrescenta elementos."
+          },
+          {
+            "id": "f4-vazio",
+            "label": "∅",
+            "correct": false,
+            "feedback": "Resposta: A; O vazio não remove os elementos de A: A ∪ ∅ = A."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-conjuntos-e-intervalos",
+        "prompt": "Se A = [0; 3] e B = [2; 5], qual é A ∩ B?",
+        "options": [
+          {
+            "id": "m1-inter",
+            "label": "[2; 3]",
+            "correct": true,
+            "feedback": "Certo: [2; 3]; O trecho comum a ambos vai de 2 a 3."
+          },
+          {
+            "id": "m1-uniao",
+            "label": "[0; 5]",
+            "correct": false,
+            "feedback": "Resposta: [2; 3]; [0; 5] é a união A ∪ B; a interseção é [2; 3]."
+          },
+          {
+            "id": "m1-vazio",
+            "label": "∅",
+            "correct": false,
+            "feedback": "Resposta: [2; 3]; Os intervalos se sobrepõem de 2 a 3."
+          }
+        ]
+      },
+      {
+        "id": "m2-conjuntos-e-intervalos",
+        "prompt": "Se A = [0; 3] e B = [2; 5], qual é A ∪ B?",
+        "options": [
+          {
+            "id": "m2-uniao",
+            "label": "[0; 5]",
+            "correct": true,
+            "feedback": "Certo: [0; 5]; As faixas juntas cobrem de 0 até 5."
+          },
+          {
+            "id": "m2-inter",
+            "label": "[2; 3]",
+            "correct": false,
+            "feedback": "Resposta: [0; 5]; [2; 3] é a interseção; a união junta tudo: [0; 5]."
+          },
+          {
+            "id": "m2-vazio",
+            "label": "[0; 2]",
+            "correct": false,
+            "feedback": "Resposta: [0; 5]; A união engloba todos os pontos de A e de B: [0; 5]."
+          }
+        ]
+      },
+      {
+        "id": "m3-conjuntos-e-intervalos",
+        "prompt": "Qual intervalo representa −2 ≤ x < 2?",
+        "options": [
+          {
+            "id": "m3-fech-abert",
+            "label": "[−2; 2)",
+            "correct": true,
+            "feedback": "Certo: [−2; 2); −2 entra (fechado) e 2 não entra (aberto)."
+          },
+          {
+            "id": "m3-abert-fech",
+            "label": "(−2; 2]",
+            "correct": false,
+            "feedback": "Resposta: [−2; 2); O sinal ≤ inclui o −2 e < exclui o 2."
+          },
+          {
+            "id": "m3-fech-fech",
+            "label": "[−2; 2]",
+            "correct": false,
+            "feedback": "Resposta: [−2; 2); Em 2 o sinal é estrito (<), logo é aberto: [−2; 2)."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-conjuntos-e-intervalos",
+        "prompt": "Se A = [−1; 4] e B = [1; 3), qual é A menos B?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-certa",
+            "label": "[−1; 1) ∪ [3; 4]",
+            "correct": true,
+            "feedback": "Certo: [−1; 1) ∪ [3; 4]; 1 pertence a B (sai), 3 não pertence a B (fica)."
+          },
+          {
+            "id": "d1-erro1",
+            "label": "[−1; 1] ∪ (3; 4]",
+            "correct": false,
+            "feedback": "Resposta: [−1; 1) ∪ [3; 4]; 1 estava em B e sai; 3 não estava e fica."
+          },
+          {
+            "id": "d1-erro2",
+            "label": "[−1; 1)",
+            "correct": false,
+            "feedback": "Resposta: [−1; 1) ∪ [3; 4]; O trecho após 3 também pertence a A."
+          }
+        ]
+      },
+      {
+        "id": "d2-conjuntos-e-intervalos",
+        "prompt": "Qual conjunto representa o intervalo fechado [2; 2]?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-certa",
+            "label": "{2}",
+            "correct": true,
+            "feedback": "Certo: {2}; 2 ≤ x ≤ 2 admite apenas o próprio número 2."
+          },
+          {
+            "id": "d2-vazio",
+            "label": "∅",
+            "correct": false,
+            "feedback": "Resposta: {2}; Extremos fechados iguais contêm um único ponto: {2}."
+          },
+          {
+            "id": "d2-aberto",
+            "label": "(2; 2)",
+            "correct": false,
+            "feedback": "Resposta: {2}; O intervalo fechado contém o ponto 2: {2}."
+          }
+        ]
+      },
+      {
+        "id": "d3-conjuntos-e-intervalos",
+        "prompt": "Qual é o resultado de (−∞; 2] ∩ (2; +∞)?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-certa",
+            "label": "∅",
+            "correct": true,
+            "feedback": "Certo: ∅; nenhum número real pode ser ≤ 2 e > 2 ao mesmo tempo."
+          },
+          {
+            "id": "d3-ponto",
+            "label": "{2}",
+            "correct": false,
+            "feedback": "Resposta: ∅; O segundo intervalo é aberto em 2, logo 2 não pertence a ambos."
+          },
+          {
+            "id": "d3-reais",
+            "label": "R",
+            "correct": false,
+            "feedback": "Resposta: ∅; Trata-se de interseção sem elementos comuns, não união."
+          }
+        ]
+      },
+      {
+        "id": "d4-conjuntos-e-intervalos",
+        "prompt": "Em R, qual é o complementar de (−∞; 0,5]?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-certa",
+            "label": "(0,5; +∞)",
+            "correct": true,
+            "feedback": "Certo: (0,5; +∞); o complementar contém os x > 0,5 (aberto em 0,5)."
+          },
+          {
+            "id": "d4-fechado",
+            "label": "[0,5; +∞)",
+            "correct": false,
+            "feedback": "Resposta: (0,5; +∞); 0,5 já pertence ao conjunto original, logo fica fora."
+          },
+          {
+            "id": "d4-negativo",
+            "label": "(−∞; 0,5)",
+            "correct": false,
+            "feedback": "Resposta: (0,5; +∞); O complementar são os números maiores que 0,5."
+          }
+        ]
+      },
+      {
+        "id": "d5-conjuntos-e-intervalos",
+        "prompt": "No universo U = [0; 4], seja A = [1; 3); qual é o complementar de A em U?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-certa",
+            "label": "[0; 1) ∪ [3; 4]",
+            "correct": true,
+            "feedback": "Certo: [0; 1) ∪ [3; 4]; retirando [1; 3) de [0; 4], o extremo 3 permanece."
+          },
+          {
+            "id": "d5-infinito",
+            "label": "(−∞; 1) ∪ [3; +∞)",
+            "correct": false,
+            "feedback": "Resposta: [0; 1) ∪ [3; 4]; O universo é restrito a [0; 4], não a R."
+          },
+          {
+            "id": "d5-pontas",
+            "label": "[0; 1] ∪ (3; 4]",
+            "correct": false,
+            "feedback": "Resposta: [0; 1) ∪ [3; 4]; 1 pertence a A (sai); 3 não pertence a A (fica)."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

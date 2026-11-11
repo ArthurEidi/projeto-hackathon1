@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
-import { certaDe, fechamentoOk, passosConcluiveis, semVestibular } from "./util";
+import { certaDe, fechamentoOk, semVestibular } from "./util";
 
 const L = Lesson.parse(
   JSON.parse(

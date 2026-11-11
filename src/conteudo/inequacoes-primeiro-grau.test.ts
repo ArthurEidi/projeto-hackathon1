@@ -46,7 +46,7 @@ describe("passos da aula de inequacoes do primeiro grau", () => {
   it("caso-neutro: trecho x > 0 contém 1 mas não contém 0 nem -1", () => {
     const s = step("caso-neutro");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trecho = (s.params as { trechos: { de: number; ate: number | null; abreDe: boolean }[] }).trechos[0];
+    const trecho = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos[0];
     expect(dentroDoTrecho(trecho, -1)).toBe(false);
     expect(dentroDoTrecho(trecho, 0)).toBe(false);
     expect(dentroDoTrecho(trecho, 1)).toBe(true);
@@ -55,7 +55,7 @@ describe("passos da aula de inequacoes do primeiro grau", () => {
   it("mover-fronteira: trecho x > 1 contém 2 mas não contém 0", () => {
     const s = step("mover-fronteira");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trecho = (s.params as { trechos: { de: number; ate: number | null; abreDe: boolean }[] }).trechos[0];
+    const trecho = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos[0];
     expect(dentroDoTrecho(trecho, 0)).toBe(false);
     expect(dentroDoTrecho(trecho, 2)).toBe(true);
   });
@@ -63,7 +63,7 @@ describe("passos da aula de inequacoes do primeiro grau", () => {
   it("espelhar-ordem: trecho x < 1 contém 0 mas não contém 2", () => {
     const s = step("espelhar-ordem");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trecho = (s.params as { trechos: { de: number | null; ate: number; abreAte: boolean }[] }).trechos[0];
+    const trecho = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos[0];
     expect(dentroDoTrecho(trecho, 2)).toBe(false);
     expect(dentroDoTrecho(trecho, 0)).toBe(true);
   });

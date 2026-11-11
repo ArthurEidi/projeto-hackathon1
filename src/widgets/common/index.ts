@@ -3,6 +3,8 @@ import { BarrasFigura } from "./barras/BarrasFigura";
 import { BarrasWidget } from "./barras/BarrasWidget";
 import { GradeFigura } from "./grade/GradeFigura";
 import { GradeWidget } from "./grade/GradeWidget";
+import { GeometriaTrianguloFigura } from "./triangulo/GeometriaTrianguloFigura";
+import { GeometriaTrianguloWidget } from "./triangulo/GeometriaTrianguloWidget";
 import { SolidoFigura } from "./solido/SolidoFigura";
 import { SolidoWidget } from "./solido/SolidoWidget";
 import { PlanoCartesianoWidget } from "./PlanoCartesianoWidget";
@@ -15,6 +17,7 @@ export const widgets = {
   barras: BarrasWidget,
   grade_resultados: GradeWidget,
   solido_3d: SolidoWidget,
+  geometria_triangulo: GeometriaTrianguloWidget,
 };
 
 export const figures = {
@@ -23,4 +26,5 @@ export const figures = {
   barras_figura: BarrasFigura,
   grade_figura: GradeFigura,
   solido_3d_figura: SolidoFigura,
+  geometria_triangulo_figura: GeometriaTrianguloFigura,
 };

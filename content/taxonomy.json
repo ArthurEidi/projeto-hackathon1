@@ -18,7 +18,7 @@
                   "numero": 1,
                   "titulo": "Quem Está Dentro",
                   "subtitulo": "Pertinência, união e interseção",
-                  "arquivo": null
+                  "arquivo": "aritmetica/conjuntos/conjuntos-e-intervalos/aula-01.json"
                 },
                 {
                   "id": "aula-02",
@@ -650,6 +650,20 @@
                   "titulo": "Inequações-produto e inequações-quociente",
                   "subtitulo": "Zeros não são buracos",
                   "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-produto-quociente/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "inequacoes-exponenciais-logaritmicas",
+              "titulo": "Inequações exponenciais e logarítmicas",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações exponenciais e logarítmicas",
+                  "subtitulo": "A base decide a ordem",
+                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-exponenciais-logaritmicas/aula-01.json"
                 }
               ]
             }

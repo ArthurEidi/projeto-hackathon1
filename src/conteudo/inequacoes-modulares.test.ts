@@ -46,7 +46,7 @@ describe("passos da aula de inequacoes modulares", () => {
   it("caso-neutro: trecho [0;0] contém apenas o 0", () => {
     const s = step("caso-neutro");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trecho = (s.params as { trechos: { de: number; ate: number }[] }).trechos[0];
+    const trecho = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos[0];
     expect(dentroDoTrecho(trecho, 1)).toBe(false);
     expect(dentroDoTrecho(trecho, 0)).toBe(true);
   });
@@ -54,7 +54,7 @@ describe("passos da aula de inequacoes modulares", () => {
   it("abrir-interior: trecho (-2;2) contém 0 mas não contém -3 nem 2", () => {
     const s = step("abrir-interior");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trecho = (s.params as { trechos: { de: number; ate: number; abreDe: boolean; abreAte: boolean }[] }).trechos[0];
+    const trecho = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos[0];
     expect(dentroDoTrecho(trecho, -3)).toBe(false);
     expect(dentroDoTrecho(trecho, 2)).toBe(false);
     expect(dentroDoTrecho(trecho, 0)).toBe(true);
@@ -63,7 +63,7 @@ describe("passos da aula de inequacoes modulares", () => {
   it("trocar-para-exterior: trechos exteriores contêm 2 e -2 mas não 0", () => {
     const s = step("trocar-para-exterior");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trechos = (s.params as { trechos: { de: number | null; ate: number | null }[] }).trechos;
+    const trechos = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos;
     expect(trechos.some((t) => dentroDoTrecho(t, 0))).toBe(false);
     expect(trechos.some((t) => dentroDoTrecho(t, 2))).toBe(true);
     expect(trechos.some((t) => dentroDoTrecho(t, -2))).toBe(true);

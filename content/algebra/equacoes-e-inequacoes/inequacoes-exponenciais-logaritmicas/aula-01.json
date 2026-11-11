@@ -1,0 +1,564 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Inequações exponenciais e logarítmicas",
+  "subtitulo": "A base decide a ordem",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "inequacoes-exponenciais-logaritmicas"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Número comparado nas curvas."
+    },
+    "c2": {
+      "nome": "Base b",
+      "resumo": "Fator que decide crescimento ou decrescimento."
+    },
+    "c3": {
+      "nome": "Altura da função",
+      "resumo": "Valor produzido pela exponencial ou logaritmo."
+    },
+    "c4": {
+      "nome": "Intervalo-solução",
+      "resumo": "Entradas válidas que satisfazem a comparação."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -3,
+          3
+        ],
+        "y": [
+          0,
+          9
+        ],
+        "curvas": [
+          {
+            "tipo": "exponencial",
+            "a": 1,
+            "b": 2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = 2ˣ"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "cor": "ink",
+            "rotulo": "y = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1,
+          "cor": "c1"
+        }
+      },
+      "lines": {
+        "intro": "No caso-base 2⁰=1, ir para x=1 aumenta a saída? Arraste.",
+        "done": "Sim; multiplicar por 2 aumenta a saída, então 2ˣ>1 pede x>0."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Inequações exponenciais e logarítmicas usam monotonicidade; aqui cuidamos da base e do domínio."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 1
+      }
+    },
+    {
+      "id": "base-fracionaria",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -3,
+          3
+        ],
+        "y": [
+          0,
+          9
+        ],
+        "curvas": [
+          {
+            "tipo": "exponencial",
+            "a": 1,
+            "b": 0.5,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = (0,5)ˣ"
+          },
+          {
+            "tipo": "exponencial",
+            "a": 1,
+            "b": 2,
+            "c": 0,
+            "fantasma": true,
+            "rotulo": "y = 2ˣ"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "cor": "ink",
+            "rotulo": "y = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1,
+          "cor": "c1"
+        }
+      },
+      "lines": {
+        "intro": "Com base 0,5, o mesmo passo aumenta ou diminui? Leve x a 1.",
+        "done": "Diminui; dividir por 2 em cada passo inverte a ordem dos expoentes."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 1
+      }
+    },
+    {
+      "id": "log-com-dominio",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -1,
+          4
+        ],
+        "y": [
+          -3,
+          3
+        ],
+        "curvas": [
+          {
+            "tipo": "logaritmo",
+            "a": 1,
+            "b": 0.5,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = log₀,₅(x)"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 0,
+            "cor": "ink",
+            "rotulo": "y = 0"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 2,
+          "passo": 0.5,
+          "cor": "c1"
+        }
+      },
+      "lines": {
+        "intro": "Para log de base 0,5 ser positivo, x fica entre 0 e 1? Arraste até 0,5.",
+        "done": "Sim; como a curva decresce e zera em 1, então 0<x<1 dá saída positiva."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "O intervalo pode incluir zero?",
+        "resposta": "Não; o argumento do logaritmo deve ser positivo."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": 0.5
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "prompt": "Qual solução tem (0,5)ˣ>1?",
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -3,
+            3
+          ],
+          "y": [
+            0,
+            9
+          ],
+          "curvas": [
+            {
+              "tipo": "exponencial",
+              "a": 1,
+              "b": 0.5,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = (0,5)ˣ"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 1,
+              "cor": "ink",
+              "rotulo": "y = 1"
+            }
+          ]
+        }
+      },
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "x>0",
+          "correct": false,
+          "feedback": "Você manteve a ordem de uma base crescente; a solução é x<0.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 1,
+              "cor": "c1"
+            }
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "x<0",
+          "correct": true,
+          "feedback": "Certo: x<0; A base 0,5 é decrescente.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -1,
+              "cor": "c1"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -3,
+            3
+          ],
+          "y": [
+            0,
+            9
+          ],
+          "curvas": [
+            {
+              "tipo": "exponencial",
+              "a": 1,
+              "b": 0.5,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = (0,5)ˣ"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 1,
+              "cor": "ink",
+              "rotulo": "y = 1"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 0,
+            "cor": "c1"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "b",
+          "ref": "c2"
+        },
+        {
+          "text": "ᵘ > bᵛ ⇔ "
+        },
+        {
+          "text": "u > v",
+          "ref": "c4"
+        },
+        {
+          "text": " se b > 1; "
+        },
+        {
+          "text": "u < v",
+          "ref": "c4"
+        },
+        {
+          "text": " se 0 < b < 1"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Número comparado nas curvas."
+        },
+        {
+          "term": "Altura da função",
+          "text": "Valor produzido pela exponencial ou logaritmo."
+        },
+        {
+          "term": "Intervalo-solução",
+          "text": "Entradas válidas que satisfazem a comparação."
+        }
+      ],
+      "lines": {
+        "intro": "A base define a direção da curva; por isso comparar expoentes exige inverter a ordem quando 0<b<1.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-inequacoes-exponenciais-logaritmicas",
+        "prompt": "A função 2ˣ cresce ou decresce?",
+        "options": [
+          {
+            "id": "f1-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "Cresce",
+            "correct": true,
+            "feedback": "Certo: Cresce; 2⁰=1<2¹=2."
+          },
+          {
+            "id": "f1-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "Decresce",
+            "correct": false,
+            "feedback": "A base é maior que 1. O certo é Cresce; 2⁰=1<2¹=2."
+          }
+        ]
+      },
+      {
+        "id": "f2-inequacoes-exponenciais-logaritmicas",
+        "prompt": "A função (0,5)ˣ cresce ou decresce?",
+        "options": [
+          {
+            "id": "f2-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "Decresce",
+            "correct": true,
+            "feedback": "Certo: Decresce; 1>0,5>0,25."
+          },
+          {
+            "id": "f2-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "Cresce",
+            "correct": false,
+            "feedback": "Cada passo multiplica por um número menor que 1. O certo é Decresce; 1>0,5>0,25."
+          }
+        ]
+      },
+      {
+        "id": "f3-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Em log₂x, x=0 é permitido?",
+        "options": [
+          {
+            "id": "f3-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; Domínio x>0."
+          },
+          {
+            "id": "f3-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O argumento precisa ser positivo. O certo é Não; Domínio x>0."
+          }
+        ]
+      },
+      {
+        "id": "f4-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Na base 0,5, maior expoente produz menor potência?",
+        "options": [
+          {
+            "id": "f4-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; (0,5)¹<(0,5)⁰."
+          },
+          {
+            "id": "f4-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Você aplicou a regra de base maior que 1. O certo é Sim; (0,5)¹<(0,5)⁰."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Resolva 2ˣ>4.",
+        "options": [
+          {
+            "id": "m1-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "x>2",
+            "correct": true,
+            "feedback": "Certo: x>2; 4=2²."
+          },
+          {
+            "id": "m1-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "x<2",
+            "correct": false,
+            "feedback": "Você inverteu uma função crescente. O certo é x>2; 4=2²."
+          }
+        ]
+      },
+      {
+        "id": "m2-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Resolva (0,5)ˣ≥0,25.",
+        "options": [
+          {
+            "id": "m2-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "x≤2",
+            "correct": true,
+            "feedback": "Certo: x≤2; 0,25=(0,5)²."
+          },
+          {
+            "id": "m2-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "x≥2",
+            "correct": false,
+            "feedback": "Faltou inverter a ordem na base decrescente. O certo é x≤2; 0,25=(0,5)²."
+          }
+        ]
+      },
+      {
+        "id": "m3-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Resolva log₂x≤1.",
+        "options": [
+          {
+            "id": "m3-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "0<x≤2",
+            "correct": true,
+            "feedback": "Certo: 0<x≤2; x>0 e x≤2¹."
+          },
+          {
+            "id": "m3-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "x≤2",
+            "correct": false,
+            "feedback": "Você incluiu argumentos não positivos. O certo é 0<x≤2; x>0 e x≤2¹."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Resolva log de base 0,5 de x > 0.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "0<x<1",
+            "correct": true,
+            "feedback": "Certo: 0<x<1; log₀,₅1=0; função decrescente."
+          },
+          {
+            "id": "d1-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "x>1",
+            "correct": false,
+            "feedback": "Você tratou a base como crescente. O certo é 0<x<1; log₀,₅1=0; função decrescente."
+          }
+        ]
+      },
+      {
+        "id": "d2-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Resolva 1ˣ>1 nos reais.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "∅",
+            "correct": true,
+            "feedback": "Certo: ∅; 1ˣ=1, nunca maior."
+          },
+          {
+            "id": "d2-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "x>0",
+            "correct": false,
+            "feedback": "Você usou monotonicidade na base 1. O certo é ∅; 1ˣ=1, nunca maior."
+          }
+        ]
+      },
+      {
+        "id": "d3-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Resolva 4ˣ<2.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "x<0,5",
+            "correct": true,
+            "feedback": "Certo: x<0,5; 2²ˣ<2¹; 2x<1."
+          },
+          {
+            "id": "d3-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "x<2",
+            "correct": false,
+            "feedback": "Você não reescreveu as bases. O certo é x<0,5; 2²ˣ<2¹; 2x<1."
+          }
+        ]
+      },
+      {
+        "id": "d4-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Resolva log₂(x−1)<1.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "1<x<3",
+            "correct": true,
+            "feedback": "Certo: 1<x<3; 0<x−1<2."
+          },
+          {
+            "id": "d4-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "x<3",
+            "correct": false,
+            "feedback": "Você esqueceu a condição do argumento. O certo é 1<x<3; 0<x−1<2."
+          }
+        ]
+      },
+      {
+        "id": "d5-inequacoes-exponenciais-logaritmicas",
+        "prompt": "Uma dose inicial 8 cai pela metade a cada hora; a partir de qual t≥0 ela fica ≤2?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "t≥2",
+            "correct": true,
+            "feedback": "Certo: t≥2; 8·(0,5)ᵗ≤2; t≥2."
+          },
+          {
+            "id": "d5-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "t≤2",
+            "correct": false,
+            "feedback": "Você não inverteu a ordem da exponencial decrescente. O certo é t≥2; 8·(0,5)ᵗ≤2; t≥2."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

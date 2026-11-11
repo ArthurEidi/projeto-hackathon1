@@ -496,3 +496,40 @@ Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer pe
 1. ~~Coordenador resolve §4.3~~ e ~~plano cartesiano + reta numérica~~ — feitos na fase 2.
 2. Agentes de capítulo de funções, conjuntos, inequações, PA/PG e analítica: caminho curto (§3.0), só JSON + teste.
 3. Em paralelo, um agente de componentes comuns faz `ciclo_trigonometrico` e `geometria_plana`; outro generaliza `solido_3d`.
+
+### 5.10 `geometria_triangulo` + `geometria_triangulo_figura` — PRONTOS
+
+Arquivos: `common/triangulo/params.ts` (schema por `modo`), `calc.ts` (geometria e métricas; testado), `desenho.ts`, `GeometriaTrianguloWidget.tsx`, `GeometriaTrianguloFigura.tsx`; helpers de geometria em `common/geo/` (`base.ts`, `Controles.tsx`). Todo número aceita `"$id"` (slider de id em minúsculas) no widget; a figura só aceita números e `highlight: Marca[]`. Triângulo de referência em cinza tracejado: `fantasma`. Chaves (`chaves: [...]`) aparecem como botões abaixo do desenho. As métricas dos sliders entram sozinhas, pelo id.
+
+| `modo` | Campos principais | Métricas emitidas |
+|---|---|---|
+| `pitagoras` | `b`, `c` (catetos), `quadrados`, `malha`; `prova` + `deslizado` + chave `deslizar` (quadradão b + c com 4 triângulos: sobra a², depois b² e c²); `diagonal` + chave `diagonal` (quadrado de lado b, d = b√2) | `a`, `area_b2`, `area_c2`, `area_a2`, `deslizou_pecas`, `testou_diagonal` |
+| `razoes` | `angulo` (θ), `hip` (hipotenusa na escala 1), `k`, `k_max` (fixa a janela), `malha`, `painel`, `fantasma` (θ de referência, em graus) | `razao_sen`, `razao_cos`, `razao_tg`, `k`, `angulo`, `co`, `ca`, `hip` |
+| `metricas` | `a`, `m` (n = a − m); ou `catetos: [b, c]` + `apoio` (0 apoia no cateto, 1 na hipotenusa); `comparar` (quadrado b² × retângulo a·m) | `a`, `m`, `n`, `h`, `b`, `area_b2`, `area_am`, `apoio` |
+| `cossenos` | `b`, `c`, `angulo` (A), `fantasma` (A = 90°) | `a`, `a2`, `termo_cos`, `ang_a` |
+| `senos` | `R`, `angulo` (A), `posicao` (desloca o vértice A pelo arco) | `a`, `razao_a_sen`, `dois_R`, `ang_a` |
+| `angulos` | `vertice: [x, y]` arrastável (base de (−3, 0) a (3, 0); padrão equilátero), `passo`, `arrastavel`; ou `alfa`/`beta` por slider; `paralela`, `externo`, `fantasma`, chave `fechar` (três barras = meia-volta) | `soma_angulos`, `vertices_movidos`, `fecha`, `alfa`, `beta`, `gama`, `externo` |
+| `desigualdade` | `a` (base), `b`, `c` (braços articulados) | `se_cruzam`, `a`, `b`, `c` |
+| `congruencia` | `lados: [l0, l1, l2]`, `chaves` (LLL, LAL, ALA, AAA; uma por vez), `ligada` (figura) | `testou_congruencia`, `congruentes_vistas` |
+| `notaveis` | `figura: quadrado \| equilatero \| mediatriz`; `L`, `cortar` (0/1), `diagonal`, `fantasma` (L = 1); mediatriz: `ab`, `raio` | `l`, `d`, `h`, `cortou`, `raio`, `se_cruzam` |
+| `semelhanca` | `variante: paralela \| tales \| sombras`; paralela: `lados`, `k`, `giro`; tales: `esq`, `dir`, `corte` (h da paralela do meio); sombras: `bastao: [h, sombra]`, `sombra_poste`, chave `sobrepor` | `k`, `razao`, `giro`, `entortou_corte`, `sobrepos_triangulos`, `x`, `h_poste` |
+
+Notas de uso:
+- No ângulo externo (`externo: true`) o prolongamento da base sai do vértice B: `e = α + γ` (as duas fatias são α, correspondente, e γ, alterno).
+- Nomes de slider são minúsculos (`ang_a`, `l`): é a regra do schema de aula e das expressões `"$id"`.
+- `razoes` com `k_max` (padrão 3) mantém a janela fixa: o triângulo cresce sem a vista mudar, e as razões ficam iguais.
+
+Exemplos (`params`):
+```jsonc
+{ "modo": "pitagoras", "b": 3, "c": "$c" }                                   // quadrados quadriculados nos 3 lados
+{ "modo": "pitagoras", "prova": true, "chaves": ["deslizar"], "b": 3, "c": 4 } // quebra-cabeça das áreas
+{ "modo": "razoes", "angulo": 30, "k": "$k", "hip": 5, "fantasma": 45 }
+{ "modo": "metricas", "a": 10, "m": "$m", "comparar": false }
+{ "modo": "cossenos", "b": 3, "c": 4, "angulo": "$ang_a", "fantasma": true }
+{ "modo": "senos", "R": 5, "angulo": "$ang_a" }
+{ "modo": "angulos", "paralela": true, "chaves": ["fechar"] }                 // vértice arrastável; vertices_movidos
+{ "modo": "desigualdade", "a": 8, "b": 5, "c": "$c" }
+{ "modo": "congruencia", "lados": [4, 5, 6] }
+{ "modo": "notaveis", "figura": "equilatero", "L": 6, "cortar": "$cortar_eq" }
+{ "modo": "semelhanca", "variante": "paralela", "lados": [6, 8, 10], "k": "$k", "giro": "$giro" }
+```

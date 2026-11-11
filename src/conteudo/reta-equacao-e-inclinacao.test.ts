@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
-import { avaliar, raizes, type CurvaResolvida } from "../widgets/common/plot2d";
+import { raizes, type CurvaResolvida } from "../widgets/common/plot2d";
 
 const L = Lesson.parse(
   JSON.parse(

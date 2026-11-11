@@ -46,7 +46,7 @@ describe("passos da aula de inequações-produto e inequações-quociente", () =
   it("caso-neutro: trecho [1; +inf) contém 1 mas não 0", () => {
     const s = step("caso-neutro");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trecho = (s.params as { trechos: { de: number; ate: number | null }[] }).trechos[0];
+    const trecho = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos[0];
     expect(dentroDoTrecho(trecho, 0)).toBe(false);
     expect(dentroDoTrecho(trecho, 1)).toBe(true);
     expect(dentroDoTrecho(trecho, 2)).toBe(true);
@@ -55,7 +55,7 @@ describe("passos da aula de inequações-produto e inequações-quociente", () =
   it("produto-de-sinais: trechos (-inf; -1] e [1; +inf) contêm 2", () => {
     const s = step("produto-de-sinais");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trechos = (s.params as { trechos: { de: number | null; ate: number | null }[] }).trechos;
+    const trechos = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos;
     expect(trechos.some((t) => dentroDoTrecho(t, 2))).toBe(true);
     expect(trechos.some((t) => dentroDoTrecho(t, 0))).toBe(false);
   });
@@ -63,7 +63,7 @@ describe("passos da aula de inequações-produto e inequações-quociente", () =
   it("excluir-denominador: trecho (-inf; -1) tem -1 aberto e contém -2", () => {
     const s = step("excluir-denominador");
     if (s.type !== "interactive_canvas") throw new Error();
-    const trecho1 = (s.params as { trechos: { de: number | null; ate: number | null; abreAte: boolean }[] }).trechos[0];
+    const trecho1 = (s.params as { trechos: Parameters<typeof dentroDoTrecho>[0][] }).trechos[0];
     expect(trecho1.abreAte).toBe(true);
     expect(dentroDoTrecho(trecho1, -1)).toBe(false);
     expect(dentroDoTrecho(trecho1, -2)).toBe(true);
