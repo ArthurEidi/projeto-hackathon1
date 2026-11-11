@@ -831,16 +831,16 @@
           "titulo": "Geometria Plana",
           "unidades": [
             {
-              "id": "angulos-e-triangulos",
-              "titulo": "Ângulos e Triângulos",
+              "id": "triangulos-congruencia-e-propriedades",
+              "titulo": "Triângulos, congruência e propriedades",
               "icone": "triangulo",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "A Soma que Não Muda",
-                  "subtitulo": "Ângulos internos do triângulo",
-                  "arquivo": null
+                  "titulo": "Triângulos, Congruência e Propriedades",
+                  "subtitulo": "Três cantos travados em 180° · Soma interna, externo e lados",
+                  "arquivo": "geometria/geometria-plana/triangulos-congruencia-e-propriedades/aula-01.json"
                 }
               ]
             },

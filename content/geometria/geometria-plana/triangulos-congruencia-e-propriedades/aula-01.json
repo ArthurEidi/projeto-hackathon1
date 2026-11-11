@@ -1,0 +1,607 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Triângulos, Congruência e Propriedades",
+  "subtitulo": "Três cantos travados em 180° · Soma interna, externo e lados",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "triangulos-congruencia-e-propriedades"
+  },
+  "outro": "Você provou por que os ângulos somam 180°, testou quando os lados fecham e travou cópias por congruência.",
+  "glossario": {
+    "c1": {
+      "nome": "Ângulos da base",
+      "resumo": "Sobem até a paralela do topo como alternos internos."
+    },
+    "c2": {
+      "nome": "Ângulo do topo",
+      "resumo": "Junta-se aos da base para formar meia-volta de 180°."
+    },
+    "c3": {
+      "nome": "Ângulo externo",
+      "resumo": "Suplementar do interno ao lado; vale a soma dos outros dois."
+    },
+    "c4": {
+      "nome": "Lados e congruência",
+      "resumo": "Três barras que só fecham se cada uma for menor que as outras duas."
+    }
+  },
+  "steps": [
+    {
+      "id": "soma-180-paralela",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "angulos",
+        "paralela": true,
+        "arrastavel": true,
+        "fantasma": true
+      },
+      "complete_when": {
+        "metric": "vertices_movidos",
+        "gte": 3
+      },
+      "lines": {
+        "intro": "No equilátero, três de 60° somam 180°. Arraste o vértice do topo: a soma dos três ângulos muda ou fica travada?",
+        "done": "Fica travada em 180°. A paralela no topo traz os ângulos da base como alternos internos, formando meia-volta."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Em figuras de 4 ou 5 lados a soma também é 180°?",
+        "resposta": "Não: cada lado extra adiciona um triângulo e mais 180°. Hoje dominamos o bloco básico: o triângulo."
+      }
+    },
+    {
+      "id": "angulo-externo",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "angulos",
+        "alfa": "$alfa",
+        "beta": 40,
+        "externo": true,
+        "paralela": false,
+        "fantasma": false
+      },
+      "controls": [
+        {
+          "id": "alfa",
+          "label": "Ângulo α",
+          "min": 20,
+          "max": 80,
+          "step": 10,
+          "initial": 50,
+          "cor": "c1"
+        }
+      ],
+      "complete_when": {
+        "metric": "alfa",
+        "gte": 70
+      },
+      "lines": {
+        "intro": "O ângulo externo e o interno γ formam meia-volta (180°). Mude α para 70° (com β = 40°): quanto vale o externo e?",
+        "done": "Vale 110°, exatamente 70° + 40°. Como o externo e α + β completam 180° com γ, o externo é sempre α + β."
+      }
+    },
+    {
+      "id": "desigualdade-triangular",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "desigualdade",
+        "a": 8,
+        "b": 5,
+        "c": "$c"
+      },
+      "controls": [
+        {
+          "id": "c",
+          "label": "Lado c",
+          "min": 1,
+          "max": 7,
+          "step": 1,
+          "initial": 6,
+          "cor": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "c",
+        "lte": 2
+      },
+      "lines": {
+        "intro": "A base mede 8 e um braço mede 5. Diminua o outro braço c até 2: o triângulo ainda consegue fechar?",
+        "done": "Não fecha: 5 + 2 = 7, que não alcança 8. O caminho reto é o mais curto, então dois lados juntos precisam passar do terceiro."
+      }
+    },
+    {
+      "id": "congruencia-travar",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "congruencia",
+        "lados": [4, 5, 6],
+        "chaves": ["LLL", "LAL", "ALA", "AAA"]
+      },
+      "complete_when": {
+        "metric": "testou_congruencia",
+        "gte": 4
+      },
+      "lines": {
+        "intro": "Para garantir que dois triângulos são cópias exatas, basta ter os 3 ângulos iguais? Teste AAA contra LLL, LAL e ALA.",
+        "done": "Três lados (LLL), dois lados e ângulo entre eles (LAL) ou lado e dois ângulos (ALA) travam tudo; só ângulos (AAA) variam o tamanho."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E no triângulo isósceles, com dois lados iguais?",
+        "resposta": "Se dois lados são iguais, os dois ângulos opostos a eles na base também são iguais."
+      }
+    },
+    {
+      "id": "desafio-isosceles-externo",
+      "type": "micro_challenge",
+      "prompt": "Num triângulo isósceles, o ângulo do topo entre os lados iguais mede 40°. Quanto mede cada ângulo da base?",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "angulos",
+          "alfa": 70,
+          "beta": 70,
+          "paralela": false,
+          "externo": false,
+          "fantasma": false,
+          "highlight": ["c2", "c4"]
+        }
+      },
+      "lines": {
+        "intro": "Lembre que os três somam 180° e que os dois ângulos da base do isósceles são iguais."
+      },
+      "options": [
+        {
+          "id": "a70",
+          "label": "70°",
+          "correct": true,
+          "feedback": "Isso. Faltam 180° − 40° = 140°, divididos igualmente nos dois da base: 70° cada.",
+          "override": {
+            "highlight": ["c1", "c2"]
+          }
+        },
+        {
+          "id": "a140",
+          "label": "140°",
+          "correct": false,
+          "feedback": "Resposta: 70°; 140° é a soma dos dois da base. Como são iguais, cada um mede 140° / 2 = 70°."
+        },
+        {
+          "id": "a40",
+          "label": "40°",
+          "correct": false,
+          "feedback": "Resposta: 70°; Três de 40° somariam 120°, não 180°. Na base cada um mede (180° − 40°) / 2 = 70°."
+        },
+        {
+          "id": "a50",
+          "label": "50°",
+          "correct": false,
+          "feedback": "Resposta: 70°; 50° + 50° + 40° dá 140°. Para fechar 180°, cada ângulo da base mede 70°."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "angulos",
+          "alfa": 50,
+          "beta": 60,
+          "paralela": true,
+          "externo": true,
+          "fantasma": false,
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "α + β", "ref": "c1" },
+        { "text": "+" },
+        { "text": "γ", "ref": "c2" },
+        { "text": "=" },
+        { "text": "180°" },
+        { "text": ";" },
+        { "text": "e", "ref": "c3" },
+        { "text": "=" },
+        { "text": "α + β", "ref": "c1" }
+      ],
+      "definitions": [
+        {
+          "term": "Soma interna",
+          "text": "Os 3 ângulos internos de qualquer triângulo somam 180°."
+        },
+        {
+          "term": "Desigualdade triangular",
+          "text": "Cada lado é menor que a soma dos outros dois."
+        },
+        {
+          "term": "Congruência",
+          "text": "LLL, LAL e ALA garantem triângulos idênticos."
+        }
+      ],
+      "lines": {
+        "intro": "A paralela no topo junta os três ângulos internos numa meia-volta, por isso a soma dá 180° e o externo vale α + β.",
+        "hint": "Toque nos símbolos da fórmula para ver cada parte no triângulo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "terceiro-angulo",
+        "prompt": "Dois ângulos internos de um triângulo medem 50° e 60°. Quanto mede o terceiro ângulo?",
+        "options": [
+          {
+            "id": "a70",
+            "label": "70°",
+            "correct": true,
+            "feedback": "Isso. 50° + 60° = 110°, e para 180° faltam 70°."
+          },
+          {
+            "id": "a110",
+            "label": "110°",
+            "correct": false,
+            "feedback": "Resposta: 70°; 110° é a soma dos dois primeiros. O interno restante é 180° − 110° = 70°."
+          },
+          {
+            "id": "a80",
+            "label": "80°",
+            "correct": false,
+            "feedback": "Resposta: 70°; 50° + 60° + 80° daria 190°, passando de 180°. O terceiro mede 70°."
+          },
+          {
+            "id": "a90",
+            "label": "90°",
+            "correct": false,
+            "feedback": "Resposta: 70°; A soma precisa dar 180°: 180° − 110° = 70°."
+          }
+        ]
+      },
+      {
+        "id": "externo-direto",
+        "prompt": "Num triângulo, dois ângulos internos medem 45° e 35°. Quanto mede o ângulo externo ao terceiro vértice?",
+        "options": [
+          {
+            "id": "a80",
+            "label": "80°",
+            "correct": true,
+            "feedback": "Certo. O ângulo externo é a soma dos dois internos não adjacentes: 45° + 35° = 80°."
+          },
+          {
+            "id": "a100",
+            "label": "100°",
+            "correct": false,
+            "feedback": "Resposta: 80°; 100° é o terceiro interno (180° − 80°). O externo vale 45° + 35° = 80°."
+          },
+          {
+            "id": "a10",
+            "label": "10°",
+            "correct": false,
+            "feedback": "Resposta: 80°; 10° é a diferença. O ângulo externo soma os dois internos: 45° + 35° = 80°."
+          },
+          {
+            "id": "a135",
+            "label": "135°",
+            "correct": false,
+            "feedback": "Resposta: 80°; 135° é o externo ao de 45°. No terceiro vértice, o externo mede 45° + 35° = 80°."
+          }
+        ]
+      },
+      {
+        "id": "lados-que-fecham",
+        "prompt": "Qual destes trios de medidas pode formar os lados de um triângulo?",
+        "options": [
+          {
+            "id": "t345",
+            "label": "3, 4 e 5",
+            "correct": true,
+            "feedback": "Exato. 3 + 4 = 7, que é maior que 5, então os lados se alcançam."
+          },
+          {
+            "id": "t236",
+            "label": "2, 3 e 6",
+            "correct": false,
+            "feedback": "Resposta: 3, 4 e 5; 2 + 3 = 5, que é menor que 6: as pontas não se alcançam."
+          },
+          {
+            "id": "t123",
+            "label": "1, 2 e 3",
+            "correct": false,
+            "feedback": "Resposta: 3, 4 e 5; 1 + 2 = 3 empata com o terceiro lado e achata numa linha."
+          },
+          {
+            "id": "t225",
+            "label": "2, 2 e 5",
+            "correct": false,
+            "feedback": "Resposta: 3, 4 e 5; 2 + 2 = 4 < 5, não fecha. O trio que forma triângulo é 3, 4 e 5."
+          }
+        ]
+      },
+      {
+        "id": "caso-congruencia-lal",
+        "prompt": "Dois triângulos têm lados de 5 cm e 7 cm e o ângulo de 60° entre eles. Eles são congruentes por qual caso?",
+        "options": [
+          {
+            "id": "lal",
+            "label": "LAL",
+            "correct": true,
+            "feedback": "Isso. Dois Lados e o Ângulo entre eles: caso LAL."
+          },
+          {
+            "id": "lll",
+            "label": "LLL",
+            "correct": false,
+            "feedback": "Resposta: LAL; LLL usa os três lados. Com dois lados e o ângulo do meio, o caso é LAL."
+          },
+          {
+            "id": "ala",
+            "label": "ALA",
+            "correct": false,
+            "feedback": "Resposta: LAL; ALA usa dois ângulos e um lado. Aqui temos dois lados e um ângulo: LAL."
+          },
+          {
+            "id": "aaa",
+            "label": "AAA",
+            "correct": false,
+            "feedback": "Resposta: LAL; AAA nem garante congruência (muda o tamanho). Aqui o caso é LAL."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "isosceles-topo",
+        "prompt": "Um triângulo isósceles tem os dois ângulos da base medindo 65° cada. Quanto mede o ângulo do vértice do topo?",
+        "options": [
+          {
+            "id": "a50",
+            "label": "50°",
+            "correct": true,
+            "feedback": "Certo. Os dois da base somam 130°, e 180° − 130° = 50°."
+          },
+          {
+            "id": "a65",
+            "label": "65°",
+            "correct": false,
+            "feedback": "Resposta: 50°; 65° é cada ângulo da base. No topo sobra 180° − 130° = 50°."
+          },
+          {
+            "id": "a115",
+            "label": "115°",
+            "correct": false,
+            "feedback": "Resposta: 50°; Você tirou um 65° só (180° − 65°). São dois na base: 180° − 130° = 50°."
+          },
+          {
+            "id": "a57-5",
+            "label": "57,5°",
+            "correct": false,
+            "feedback": "Resposta: 50°; 57,5° seria se o topo fosse 65°. Com 65° e 65° na base, o topo mede 50°."
+          }
+        ]
+      },
+      {
+        "id": "angulos-em-progressao",
+        "prompt": "Os ângulos internos de um triângulo medem x, 2x e 3x. Quanto mede o maior ângulo?",
+        "options": [
+          {
+            "id": "a90",
+            "label": "90°",
+            "correct": true,
+            "feedback": "Exato. 6x = 180° dá x = 30°, e o maior ângulo é 3x = 90°."
+          },
+          {
+            "id": "a30",
+            "label": "30°",
+            "correct": false,
+            "feedback": "Resposta: 90°; 30° é o menor (x). O maior vale 3x = 3 · 30° = 90°."
+          },
+          {
+            "id": "a60",
+            "label": "60°",
+            "correct": false,
+            "feedback": "Resposta: 90°; 60° é o do meio (2x). O maior vale 3x = 90°."
+          },
+          {
+            "id": "a120",
+            "label": "120°",
+            "correct": false,
+            "feedback": "Resposta: 90°; A soma é 6x = 180°, então x = 30° e o maior (3x) mede 90°."
+          }
+        ]
+      },
+      {
+        "id": "externo-com-incognita",
+        "prompt": "Num triângulo, o ângulo externo mede 130° e um dos internos não adjacentes mede 55°. Quanto mede o outro interno?",
+        "options": [
+          {
+            "id": "a75",
+            "label": "75°",
+            "correct": true,
+            "feedback": "Isso. Como o externo soma os dois internos de fora, 130° − 55° = 75°."
+          },
+          {
+            "id": "a50",
+            "label": "50°",
+            "correct": false,
+            "feedback": "Resposta: 75°; 50° é o interno vizinho ao de 130° (180° − 130°). O outro mede 130° − 55° = 75°."
+          },
+          {
+            "id": "a125",
+            "label": "125°",
+            "correct": false,
+            "feedback": "Resposta: 75°; 125° é 180° − 55°. Use a regra do externo: 130° − 55° = 75°."
+          },
+          {
+            "id": "a65",
+            "label": "65°",
+            "correct": false,
+            "feedback": "Resposta: 75°; Confira a subtração: 130° − 55° = 75°, não 65°."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "terceiro-lado-inteiro",
+        "prompt": "Dois lados de um triângulo medem 4 cm e 9 cm. Qual é o maior valor inteiro possível para o terceiro lado?",
+        "paco": "O terceiro lado precisa ser estritamente menor que a soma dos outros dois.",
+        "options": [
+          {
+            "id": "a12",
+            "label": "12 cm",
+            "correct": true,
+            "feedback": "Certo. O lado deve ser menor que 4 + 9 = 13, então o maior inteiro é 12 cm."
+          },
+          {
+            "id": "a13",
+            "label": "13 cm",
+            "correct": false,
+            "feedback": "Resposta: 12 cm; Em 13 cm (4 + 9) o triângulo achata numa reta: precisa ser 12 cm."
+          },
+          {
+            "id": "a5",
+            "label": "5 cm",
+            "correct": false,
+            "feedback": "Resposta: 12 cm; 5 cm (9 − 4) é o limite inferior. O maior inteiro menor que 13 é 12 cm."
+          },
+          {
+            "id": "a14",
+            "label": "14 cm",
+            "correct": false,
+            "feedback": "Resposta: 12 cm; 14 cm passa da soma 4 + 9 = 13 e não fecha. O maior inteiro é 12 cm."
+          }
+        ]
+      },
+      {
+        "id": "isosceles-decimal",
+        "prompt": "Num triângulo isósceles, o ângulo do topo mede 55°. Quanto mede cada ângulo da base?",
+        "options": [
+          {
+            "id": "a62-5",
+            "label": "62,5°",
+            "correct": true,
+            "feedback": "Exato. 180° − 55° = 125°, e dividindo por 2 dá 62,5°."
+          },
+          {
+            "id": "a125",
+            "label": "125°",
+            "correct": false,
+            "feedback": "Resposta: 62,5°; 125° é a soma dos dois da base. Dividindo por 2, cada um mede 62,5°."
+          },
+          {
+            "id": "a67-5",
+            "label": "67,5°",
+            "correct": false,
+            "feedback": "Resposta: 62,5°; 67,5° seria para topo de 45°. Com 55°, sobra 125° / 2 = 62,5°."
+          },
+          {
+            "id": "a55",
+            "label": "55°",
+            "correct": false,
+            "feedback": "Resposta: 62,5°; 55° é o topo; na base cada um mede (180° − 55°) / 2 = 62,5°."
+          }
+        ]
+      },
+      {
+        "id": "bissetrizes-internas",
+        "prompt": "No triângulo ABC, o ângulo A mede 80° e as bissetrizes de B e C se cruzam em P. Quanto mede o ângulo BPC?",
+        "paco": "Primeiro ache B + C no triângulo grande; no triângulo BPC você usa metade de B mais metade de C.",
+        "options": [
+          {
+            "id": "a130",
+            "label": "130°",
+            "correct": true,
+            "feedback": "Isso. B + C = 100°, as metades somam 50°, e BPC = 180° − 50° = 130°."
+          },
+          {
+            "id": "a100",
+            "label": "100°",
+            "correct": false,
+            "feedback": "Resposta: 130°; 100° é B + C. As bissetrizes pegam a metade (50°), então BPC = 180° − 50° = 130°."
+          },
+          {
+            "id": "a50",
+            "label": "50°",
+            "correct": false,
+            "feedback": "Resposta: 130°; 50° é a soma dos dois ângulos da base de BPC. No topo P sobra 180° − 50° = 130°."
+          },
+          {
+            "id": "a140",
+            "label": "140°",
+            "correct": false,
+            "feedback": "Resposta: 130°; B + C = 100° e metade é 50°; portanto BPC = 180° − 50° = 130°."
+          }
+        ]
+      },
+      {
+        "id": "falso-caso-lla",
+        "prompt": "Conhecendo apenas os três ângulos (60°, 60°, 60°) de dois triângulos, o que podemos afirmar?",
+        "options": [
+          {
+            "id": "formato",
+            "label": "Têm mesma forma, mas lados podem diferir",
+            "correct": true,
+            "feedback": "Certo. AAA garante o formato (equilátero), mas um pode ser maior que o outro."
+          },
+          {
+            "id": "congr",
+            "label": "São obrigatoriamente congruentes",
+            "correct": false,
+            "feedback": "Resposta: Têm mesma forma, mas lados podem diferir; Sem lado fixo, o tamanho é livre."
+          },
+          {
+            "id": "naofecha",
+            "label": "Não formam triângulo",
+            "correct": false,
+            "feedback": "Resposta: Têm mesma forma, mas lados podem diferir; 60° + 60° + 60° = 180° fecha perfeitamente."
+          },
+          {
+            "id": "retang",
+            "label": "São triângulos retângulos",
+            "correct": false,
+            "feedback": "Resposta: Têm mesma forma, mas lados podem diferir; Todos os ângulos são 60° (equiláteros)."
+          }
+        ]
+      },
+      {
+        "id": "dois-isosceles-colados",
+        "prompt": "No triângulo ABC, AB = BD = DC (D está na base AC). Se o ângulo C mede 35°, quanto mede o ângulo BDC e o ângulo A?",
+        "paco": "Comece no isósceles BDC para achar o externo ABD; depois use o isósceles ABD.",
+        "options": [
+          {
+            "id": "a110e70",
+            "label": "110° e 70°",
+            "correct": true,
+            "feedback": "Exato. Em BDC sobram 110°, e o externo ADB = 35° + 35° = 70° iguala o ângulo A."
+          },
+          {
+            "id": "a70e110",
+            "label": "70° e 110°",
+            "correct": false,
+            "feedback": "Resposta: 110° e 70°; Você inverteu: BDC vale 180° − 70° = 110°, e A = ADB = 70°."
+          },
+          {
+            "id": "a110e35",
+            "label": "110° e 35°",
+            "correct": false,
+            "feedback": "Resposta: 110° e 70°; ADB é externo a BDC, então vale 35° + 35° = 70° (logo A = 70°)."
+          },
+          {
+            "id": "a145e70",
+            "label": "145° e 70°",
+            "correct": false,
+            "feedback": "Resposta: 110° e 70°; Em BDC há dois ângulos de 35°: 180° − 70° = 110°, ficando 110° e 70°."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
