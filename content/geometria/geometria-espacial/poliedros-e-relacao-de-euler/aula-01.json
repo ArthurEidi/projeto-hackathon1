@@ -1,0 +1,279 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Contabilidade das Quinas",
+  "subtitulo": "Vértices, arestas, faces e V − A + F = 2",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "poliedros-e-relacao-de-euler"
+  },
+  "outro": "Você contou lados pela costura das arestas, testou a invariância de V − A + F = 2 e viu por que só existem 5 sólidos de Platão.",
+  "glossario": {
+    "c1": { "nome": "Vértices (V)", "resumo": "Quinas onde 3 ou mais arestas se encontram." },
+    "c2": { "nome": "Arestas (A)", "resumo": "Costuras onde exatamente 2 faces se juntam." },
+    "c3": { "nome": "Faces (F)", "resumo": "Polígonos planos que formam a casca do poliedro." },
+    "c4": { "nome": "Saldo de Euler", "resumo": "O valor constante V − A + F = 2 nos poliedros convexos." }
+  },
+  "steps": [
+    {
+      "id": "tetraedro-base",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "poliedro",
+        "solidos": ["tetraedro", "piramide_quadrada", "cubo", "octaedro"],
+        "indice": 0
+      },
+      "lines": {
+        "intro": "No tetraedro, quanto dá 4 vértices menos 6 arestas mais 4 faces? Troque de sólido e veja se esse resultado muda.",
+        "done": "4 − 6 + 4 = 2 no tetraedro, e 8 − 12 + 6 = 2 no cubo! Muda tudo, menos o saldo 2."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que esse saldo dá sempre 2?",
+        "resposta": "Porque vértices, arestas e faces nascem amarrados: toda nova divisão acrescenta a mesma quantidade em V + F e em A."
+      },
+      "complete_when": { "metric": "solidos_vistos", "gte": 3 }
+    },
+    {
+      "id": "cortar-quina",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "poliedro",
+        "solidos": ["cubo"],
+        "indice": 0,
+        "serrar": "$serrar"
+      },
+      "controls": [
+        { "id": "serrar", "label": "Cortar quina", "min": 0, "max": 1, "step": 1, "initial": 0, "color": "c4" }
+      ],
+      "lines": {
+        "intro": "Se serrarmos um vértice do cubo, trocamos 1 quina por um triângulo novo. O saldo V − A + F vai mudar?",
+        "done": "Ganhamos 2 vértices e 1 face (+3), mas também 3 arestas (−3). Os acréscimos se anulam e o saldo continua 2."
+      },
+      "complete_when": { "metric": "serrar", "gte": 1 }
+    },
+    {
+      "id": "costura-das-arestas",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "poliedro",
+        "solidos": ["cubo"],
+        "indice": 0,
+        "soltar": "1 - $colar / 100"
+      },
+      "controls": [
+        { "id": "colar", "label": "Colar lados em arestas", "min": 0, "max": 100, "step": 50, "initial": 0, "color": "c2" }
+      ],
+      "lines": {
+        "intro": "Se o cubo tem 6 faces quadradas de 4 lados, por que ele não tem 6·4 = 24 arestas? Feche o molde para ver.",
+        "done": "Cada aresta costura exatamente 2 lados vizinhos! Por isso o total de arestas é metade da soma dos lados: A = 24 / 2 = 12."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Podemos fazer um poliedro regular só de hexágonos?",
+        "resposta": "Não! Três hexágonos juntos já somam 3·120° = 360° e ficam planos: por isso só existem 5 poliedros de Platão."
+      },
+      "complete_when": { "metric": "colar", "gte": 100 }
+    },
+    {
+      "id": "desafio-euler",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "poliedro",
+          "solidos": ["octaedro"],
+          "indice": 0,
+          "highlight": ["c2", "c3"]
+        }
+      },
+      "prompt": "Um poliedro convexo tem 8 faces e 12 arestas. Quantos vértices (V) ele possui?",
+      "lines": {
+        "intro": "Use a balança de Euler: V − A + F = 2."
+      },
+      "options": [
+        {
+          "id": "v6",
+          "label": "6",
+          "correct": true,
+          "feedback": "Isso. V − 12 + 8 = 2 resulta em V = 6 vértices.",
+          "figure": { "highlight": ["c1"] }
+        },
+        {
+          "id": "v4",
+          "label": "4",
+          "correct": false,
+          "feedback": "Você fez 12 − 8 = 4 e esqueceu de somar 2 da fórmula: V = 6.",
+          "figure": { "highlight": ["c2"] }
+        },
+        {
+          "id": "v18",
+          "label": "18",
+          "correct": false,
+          "feedback": "Você somou 12 + 8 − 2. Na relação V − A + F = 2, temos V = 6.",
+          "figure": { "highlight": ["c3"] }
+        },
+        {
+          "id": "v22",
+          "label": "22",
+          "correct": false,
+          "feedback": "22 é 12 + 8 + 2. Como F soma com V, temos V = 2 + 12 − 8 = 6.",
+          "figure": { "highlight": ["c4"] }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "poliedro",
+          "solidos": ["cubo"],
+          "indice": 0
+        }
+      },
+      "formula": [
+        { "text": "V", "ref": "c1" },
+        { "text": "−" },
+        { "text": "A", "ref": "c2" },
+        { "text": "+" },
+        { "text": "F", "ref": "c3" },
+        { "text": "=" },
+        { "text": "2", "ref": "c4" }
+      ],
+      "definitions": [
+        { "term": "Relação de Euler", "text": "Em todo poliedro convexo, V − A + F = 2." },
+        { "term": "Costura das faces", "text": "Cada aresta une 2 lados, logo 2A é a soma dos lados de todas as faces." },
+        { "term": "Poliedros de Platão", "text": "Apenas 5 sólidos regulares: tetraedro, cubo, octaedro, dodecaedro e icosaedro." }
+      ],
+      "lines": {
+        "intro": "Cada costura junta dois lados e cada corte compensa arestas com faces ou vértices. Por isso V − A + F vale sempre 2.",
+        "hint": "Toque em V, A ou F para iluminar quinas, arestas ou faces no sólido."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "elementos-cubo",
+        "prompt": "Quantos vértices (V), arestas (A) e faces (F) tem um cubo?",
+        "options": [
+          { "id": "c8126", "label": "V = 8, A = 12, F = 6", "correct": true, "feedback": "Exato: 8 cantos, 12 arestas e 6 faces quadradas (8 − 12 + 6 = 2)." },
+          { "id": "c6128", "label": "V = 6, A = 12, F = 8", "correct": false, "feedback": "6 faces e 8 vértices foram invertidos (esse é o octaedro). No cubo: V = 8, A = 12, F = 6." },
+          { "id": "c8612", "label": "V = 8, A = 6, F = 12", "correct": false, "feedback": "6 são as faces e 12 são as arestas. O certo é V = 8, A = 12, F = 6." }
+        ]
+      },
+      {
+        "id": "achar-faces-euler",
+        "prompt": "Um poliedro convexo tem 6 vértices e 10 arestas. Quantas faces ele tem?",
+        "options": [
+          { "id": "f6", "label": "6", "correct": true, "feedback": "Isso. 6 − 10 + F = 2 resulta em F = 6 faces." },
+          { "id": "f4", "label": "4", "correct": false, "feedback": "Você fez 10 − 6 = 4 e esqueceu de somar 2. F = 10 − 6 + 2 = 6." },
+          { "id": "f14", "label": "14", "correct": false, "feedback": "Pela relação V − A + F = 2, temos 6 − 10 + F = 2, logo F = 6." }
+        ]
+      },
+      {
+        "id": "achar-arestas-euler",
+        "prompt": "Um poliedro convexo possui 5 faces e 5 vértices. Quantas arestas ele tem?",
+        "options": [
+          { "id": "a8", "label": "8", "correct": true, "feedback": "Certo. 5 − A + 5 = 2 leva a 10 − A = 2 e A = 8 arestas." },
+          { "id": "a10", "label": "10", "correct": false, "feedback": "10 é a soma V + F. Descontando 2 da fórmula de Euler: A = 8 arestas." },
+          { "id": "a12", "label": "12", "correct": false, "feedback": "Você somou 2 em vez de subtrair. Como V + F = A + 2, temos A = 8." }
+        ]
+      },
+      {
+        "id": "costura-tetraedro",
+        "prompt": "Um poliedro é formado por 4 faces triangulares. Quantas arestas ele possui?",
+        "options": [
+          { "id": "a6", "label": "6", "correct": true, "feedback": "Exato. 4 triângulos têm 12 lados soltos; colados dois a dois, dão 6 arestas." },
+          { "id": "a12", "label": "12", "correct": false, "feedback": "12 é o total de lados soltos. Cada aresta une 2 lados: 12 / 2 = 6 arestas." },
+          { "id": "a7", "label": "7", "correct": false, "feedback": "Multiplique 4 por 3 lados e divida por 2: são 6 arestas no total." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "octaedro-arestas-vertices",
+        "prompt": "O octaedro regular tem 8 faces triangulares. Quantas arestas e quantos vértices ele tem?",
+        "options": [
+          { "id": "a12v6", "label": "A = 12 e V = 6", "correct": true, "feedback": "Isso. A = (8·3)/2 = 12 arestas e, por Euler, V = 2 + 12 − 8 = 6 vértices." },
+          { "id": "a24v18", "label": "A = 24 e V = 18", "correct": false, "feedback": "Faltou dividir os 24 lados por 2. São 12 arestas e 6 vértices." },
+          { "id": "a12v8", "label": "A = 12 e V = 8", "correct": false, "feedback": "Com A = 12 e F = 8, a relação de Euler dá V = 6 vértices." }
+        ]
+      },
+      {
+        "id": "faces-mistas-arestas",
+        "prompt": "Um poliedro convexo tem 2 faces triangulares e 3 faces quadrangulares. Quantas arestas ele tem?",
+        "options": [
+          { "id": "a9", "label": "9", "correct": true, "feedback": "Certo. Lados = 2·3 + 3·4 = 18; dividindo por 2, temos 9 arestas." },
+          { "id": "a18", "label": "18", "correct": false, "feedback": "18 é a soma dos lados antes de colar. Dividindo por 2: 9 arestas." },
+          { "id": "a5", "label": "5", "correct": false, "feedback": "5 é o número de faces. Pelos lados: (6 + 12) / 2 = 9 arestas." }
+        ]
+      },
+      {
+        "id": "dodecaedro-vertices",
+        "prompt": "O dodecaedro regular tem 12 faces pentagonais (5 lados cada). Quantos vértices ele tem?",
+        "options": [
+          { "id": "v20", "label": "20", "correct": true, "feedback": "Exato. A = (12·5)/2 = 30 arestas; por Euler, V = 2 + 30 − 12 = 20 vértices." },
+          { "id": "v30", "label": "30", "correct": false, "feedback": "30 é o número de arestas. Usando V − 30 + 12 = 2, achamos 20 vértices." },
+          { "id": "v12", "label": "12", "correct": false, "feedback": "12 é o número de faces. Com A = 30, temos V = 20 vértices." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "faces-quadrangulares-e-triangulares",
+        "prompt": "Um poliedro convexo tem 4 faces triangulares e 5 faces quadrangulares. Quantos vértices ele possui?",
+        "fala": "Primeiro ache as arestas somando os lados e dividindo por 2; depois aplique Euler.",
+        "options": [
+          { "id": "v9", "label": "9", "correct": true, "feedback": "Isso. F = 9 e A = (12 + 20)/2 = 16; logo V = 2 + 16 − 9 = 9 vértices." },
+          { "id": "v16", "label": "16", "correct": false, "feedback": "16 é o número de arestas. Com F = 9, Euler dá V = 2 + 16 − 9 = 9." },
+          { "id": "v7", "label": "7", "correct": false, "feedback": "Você esqueceu de somar 2 na relação de Euler: V = 16 − 9 + 2 = 9." }
+        ]
+      },
+      {
+        "id": "arestas-pelos-vertices",
+        "prompt": "Em um poliedro convexo de 8 vértices, de cada vértice partem exatamente 3 arestas. Quantas faces ele tem?",
+        "options": [
+          { "id": "f6", "label": "6", "correct": true, "feedback": "Exato. Como cada aresta liga 2 vértices, A = 12; logo F = 2 + 12 − 8 = 6." },
+          { "id": "f12", "label": "12", "correct": false, "feedback": "12 é o número de arestas. Aplicando Euler com 8 vértices, temos 6 faces." },
+          { "id": "f18", "label": "18", "correct": false, "feedback": "Você usou A = 24 sem dividir por 2. Com A = 12, temos 6 faces." }
+        ]
+      },
+      {
+        "id": "cubo-truncado-todos-vertices",
+        "prompt": "Se serrarmos todas as 8 quinas de um cubo criando triângulos nos cantos, quantas faces terá o novo sólido?",
+        "options": [
+          { "id": "f14", "label": "14", "correct": true, "feedback": "Certo. As 6 faces originais continuam lá e ganham mais 8 triângulos: 6 + 8 = 14." },
+          { "id": "f8", "label": "8", "correct": false, "feedback": "8 são apenas os triângulos novos nos cantos. Somando as 6 faces originais: 14." },
+          { "id": "f12", "label": "12", "correct": false, "feedback": "São 6 faces originais mais 8 quinas cortadas: 6 + 8 = 14 faces." }
+        ]
+      },
+      {
+        "id": "fronteira-hexagonos-regulares",
+        "prompt": "Por que não existe poliedro regular feito apenas de hexágonos regulares de 120°?",
+        "options": [
+          { "id": "g360", "label": "3 hexágonos num vértice já somam 360° e ficam planos", "correct": true, "feedback": "Exato. Com 3·120° = 360°, o encontro vira ladrilho plano e não dobra no espaço." },
+          { "id": "impar", "label": "Porque 6 é número par", "correct": false, "feedback": "O quadrado tem 4 lados (par) e forma o cubo. O limite é que 3·120° = 360° fica plano." },
+          { "id": "euler", "label": "Porque hexágonos não têm diagonal", "correct": false, "feedback": "Eles têm diagonais. O bloqueio é que 3 ângulos de 120° já somam 360° no vértice." }
+        ]
+      },
+      {
+        "id": "bola-de-futebol-truncada",
+        "prompt": "Uma bola de futebol clássica tem 12 faces pentagonais e 20 hexagonais (F = 32). Quantas costuras (arestas) ela possui?",
+        "fala": "Some os lados dos 12 pentágonos e dos 20 hexágonos e divida por 2!",
+        "options": [
+          { "id": "a90", "label": "90", "correct": true, "feedback": "Exato. Lados = 12·5 + 20·6 = 180; como cada aresta une 2 lados, A = 180 / 2 = 90." },
+          { "id": "a180", "label": "180", "correct": false, "feedback": "180 é a soma dos lados soltos. Dividindo por 2 lados por aresta: 90 arestas." },
+          { "id": "a60", "label": "60", "correct": false, "feedback": "60 é o total de vértices. O número de arestas é (60 + 120) / 2 = 90." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

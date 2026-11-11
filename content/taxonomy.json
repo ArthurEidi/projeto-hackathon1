@@ -820,6 +820,20 @@
                   "arquivo": null
                 }
               ]
+            },
+            {
+              "id": "poliedros-e-relacao-de-euler",
+              "titulo": "Poliedros, elementos e relação de Euler",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Contabilidade das Quinas",
+                  "subtitulo": "Vértices, arestas, faces e V − A + F = 2",
+                  "arquivo": "geometria/geometria-espacial/poliedros-e-relacao-de-euler/aula-01.json"
+                }
+              ]
             }
           ]
         },
