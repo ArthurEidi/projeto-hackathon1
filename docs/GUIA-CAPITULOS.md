@@ -482,7 +482,7 @@ Ver §5.11.
 
 ### 5.6 `geometria_*` (plana) — PRONTOS
 
-`geometria_triangulo` (§5.10), `geometria_poligono` (§5.12), `geometria_circulo` (§5.13, pendente).
+`geometria_triangulo` (§5.10), `geometria_poligono` (§5.12), `geometria_circulo` (§5.13).
 
 ### 5.7 `solido_3d` (espacial: cilindro, esfera, tronco, prismas, pirâmides)
 Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer perfil (retângulo → cilindro, semicírculo → esfera, trapézio → tronco) e acrescentar sólidos de faces planas; mesma câmera ortográfica e convenção de aresta oculta tracejada. Inclui planificação (Aula 02 de Cones já prevista na taxonomia).
@@ -597,4 +597,31 @@ Exemplos (`params`):
 { "modo": "isometria", "transformacao": "homotetia", "figura": "triangulo", "k": "$k" }
 { "modo": "paralelas", "alfa": "$alfa", "fantasma": true }
 { "modo": "paralelas", "alfa": 65, "destacar": "colaterais", "rotulos": { "s-ne": "x" } }
+```
+
+### 5.13 `geometria_circulo` + `geometria_circulo_figura` — PRONTOS
+
+Arquivos: `common/circulo/params.ts` (schema por `modo`), `calc.ts` (geometria e métricas; testado), `desenho.ts`, `GeometriaCirculoWidget.tsx`, `GeometriaCirculoFigura.tsx`. Valores aceitam `"$id"`; a figura só aceita números e `highlight`.
+
+| `modo` | Campos principais | Métricas emitidas |
+|---|---|---|
+| `arcos` | `alfa` (central AÔB e arco AB, graus), `inicio` (posição de A), `pos_v` (posição de V; sem ela, no meio do arco maior); `mostrar: { arco c1, central c2, inscrito c3, corda c4, isosceles, medidas }`; `arrastaveis: ["B", "V"]` e `passo` (graus) para o aluno arrastar | `alfa`, `central`, `arco`, `inscrito`, `pos_v`, `razao_central_inscrito`, `reto`, `arco_visto` |
+| `roda` | `variante`: `giro` (roda rolando na pista com 1, 2, 3 e π; `d`, `giro` em graus; rastro C c3), `razao` (roda d com a de d = 1 em cinza: C/d = π), `arco` (`r`, `alfa`: L = α/360 · 2πr com a volta desenrolada), `voltas` (`d`, `voltas`, `voltas_max`; cada trecho é uma circunferência); `unidade` ("m") | `giro`, `d`, `voltas`, `rastro`, `comprimento`, `razao_c_d`, `arco`, `alfa`, `percurso` |
+| `fatias` | `variante`: `disco` (`r`, `N` setores rearranjados em fila: base → πr, altura r), `setor` (`r`, `alfa`; área em múltiplos de π), `coroa` (`R`, `furo`: A = π(R² − r²)) | `n`, `area`, `razao_base`, `area_setor`, `fracao`, `coef_setor`, `area_coroa`, `coef_coroa`, `furo` |
+
+Notas: no `arcos`, o inscrito é medido de verdade (ângulo em V entre VA e VB): com V no arco maior vale α/2; com V sobre o arco AB vale 180° − α/2; com α = 180° vale 90° e aparece o quadradinho de ângulo reto. Arraste só vale em `arcos`; nos demais modos o slider comanda tudo.
+
+Exemplos (`params`):
+```jsonc
+{ "modo": "arcos", "alfa": "$alfa", "mostrar": { "central": true, "inscrito": false } }
+{ "modo": "arcos", "alfa": 80, "mostrar": { "inscrito": true, "isosceles": true } }          // chave mostra OV e os isósceles
+{ "modo": "arcos", "alfa": 100, "pos_v": "$pos_v", "mostrar": { "inscrito": true } }          // V passeia pela borda
+{ "modo": "arcos", "alfa": "$alfa", "pos_v": 90, "mostrar": { "inscrito": true, "corda": true } } // semicircunferência
+{ "modo": "roda", "variante": "giro", "d": 1, "giro": "$giro" }
+{ "modo": "roda", "variante": "razao", "d": "$d" }
+{ "modo": "roda", "variante": "arco", "r": 3, "alfa": "$alfa" }
+{ "modo": "roda", "variante": "voltas", "d": 1, "voltas": "$voltas", "unidade": "m" }
+{ "modo": "fatias", "variante": "disco", "r": 4, "N": "$fatias" }
+{ "modo": "fatias", "variante": "setor", "r": 6, "alfa": "$alfa" }
+{ "modo": "fatias", "variante": "coroa", "R": 5, "furo": "$r_int" }
 ```
