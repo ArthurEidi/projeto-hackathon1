@@ -1,0 +1,671 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Caminhos de Sucesso e Fracasso",
+  "subtitulo": "A distribuição binomial",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "experimentos-binomial-e-repetidos"
+  },
+  "outro": "Você contou caminhos de sucesso e fracasso: C(n, k) caminhos, cada um valendo pᵏ (1 − p)ⁿ⁻ᵏ.",
+  "glossario": {
+    "c1": {
+      "nome": "Caminhos",
+      "resumo": "Quantas sequências têm exatamente k sucessos: C(n, k)."
+    },
+    "c2": {
+      "nome": "Sucesso",
+      "resumo": "Resultado que contamos, com chance p em cada ensaio."
+    },
+    "c3": {
+      "nome": "Fracasso",
+      "resumo": "Qualquer outro resultado, com chance 1 − p."
+    },
+    "c4": {
+      "nome": "Ensaios",
+      "resumo": "Quantas vezes o experimento é repetido (n)."
+    }
+  },
+  "steps": [
+    {
+      "id": "um-ensaio",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "arvore",
+        "galhos": [
+          {
+            "rotulo": "K",
+            "cor": "c2",
+            "p": 0.5,
+            "sucesso": true
+          },
+          {
+            "rotulo": "C",
+            "cor": "c3",
+            "p": 0.5
+          }
+        ],
+        "n": "$n",
+        "agrupar": true
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Lançamentos",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Um lançamento: qual a chance de 1 cara? Depois aumente para 3 e veja os caminhos se agruparem por número de caras.",
+        "done": "Com 3 lançamentos, 1 caminho dá 0 caras, 3 dão 1, 3 dão 2 e 1 dá 3. É a linha do binômio."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Isso vale para qualquer experimento repetido?",
+        "resposta": "Vale se os ensaios forem independentes e iguais. Hoje: moedas, dados e chutes."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 3
+      }
+    },
+    {
+      "id": "cada-caminho",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "arvore",
+        "galhos": [
+          {
+            "rotulo": "K",
+            "cor": "c2",
+            "p": 0.5,
+            "sucesso": true
+          },
+          {
+            "rotulo": "C",
+            "cor": "c3",
+            "p": 0.5
+          }
+        ],
+        "n": 3,
+        "mostrar_produto": true
+      },
+      "lines": {
+        "intro": "Cada caminho de 3 lançamentos tem a mesma chance? Toque nos caminhos com 2 caras e some.",
+        "done": "Cada caminho vale 1/8, e há 3 com duas caras: 3 · 1/8 = 3/8."
+      },
+      "complete_when": {
+        "metric": "pontas_k2",
+        "gte": 3
+      }
+    },
+    {
+      "id": "dado-sucesso-6",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "arvore",
+        "galhos": [
+          {
+            "rotulo": "6",
+            "cor": "c2",
+            "p": 0.16666666666666666,
+            "sucesso": true
+          },
+          {
+            "rotulo": "não",
+            "cor": "c3",
+            "p": 0.8333333333333334
+          }
+        ],
+        "n": 3,
+        "mostrar_produto": true
+      },
+      "lines": {
+        "intro": "Agora sucesso é tirar 6. Os caminhos com exatamente um 6 ainda valem todos o mesmo?",
+        "done": "Valem o mesmo entre si: 1/6 · 5/6 · 5/6 = 25/216. Com 3 caminhos, 75/216."
+      },
+      "complete_when": {
+        "metric": "pontas_k1",
+        "gte": 3
+      }
+    },
+    {
+      "id": "p-desliza",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "barras",
+        "n": 4,
+        "p": "$p"
+      },
+      "controls": [
+        {
+          "id": "p",
+          "label": "Chance de sucesso",
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "initial": 50,
+          "unit": "%",
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Leve a chance de sucesso de 50% para perto de 100%. Para onde as barras escorregam?",
+        "done": "Escorregam para k = 4: com sucesso quase certo, quase todo caminho é só sucesso. Em 50% elas ficam simétricas."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se os ensaios não forem independentes?",
+        "resposta": "Aí cada caminho tem chance própria e a fórmula não vale."
+      },
+      "complete_when": {
+        "metric": "p",
+        "gte": 90
+      }
+    },
+    {
+      "id": "desafio-quatro-moedas",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "barras",
+          "n": 4
+        }
+      },
+      "prompt": "Lançando 4 moedas, qual a probabilidade de sair exatamente 2 caras?",
+      "lines": {
+        "intro": "Quantos caminhos, e quanto vale cada um?"
+      },
+      "options": [
+        {
+          "id": "a1-2",
+          "label": "1/2",
+          "correct": false,
+          "feedback": "Os 5 valores de k não têm a mesma chance. São 6 caminhos de 1/16: 3/8.",
+          "figure": {
+            "p": 50
+          }
+        },
+        {
+          "id": "a1-16",
+          "label": "1/16",
+          "correct": false,
+          "feedback": "1/16 é um caminho só. Há C(4, 2) = 6: 6/16 = 3/8.",
+          "figure": {
+            "k": 4
+          }
+        },
+        {
+          "id": "a3-8",
+          "label": "3/8",
+          "correct": true,
+          "feedback": "Isso. 6 caminhos de 1/16: 6/16 = 3/8.",
+          "figure": {
+            "k": 2,
+            "p": 50
+          }
+        },
+        {
+          "id": "a1-4",
+          "label": "1/4",
+          "correct": false,
+          "feedback": "Faltou contar os caminhos certos: C(4, 2) = 6, e 6/16 = 3/8.",
+          "figure": {
+            "k": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "arvore",
+          "galhos": [
+            {
+              "rotulo": "6",
+              "cor": "c2",
+              "p": 0.16666666666666666,
+              "sucesso": true
+            },
+            {
+              "rotulo": "não",
+              "cor": "c3",
+              "p": 0.8333333333333334
+            }
+          ],
+          "n": 3,
+          "acender_k": 1
+        }
+      },
+      "formula": [
+        {
+          "text": "P(k)"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "C(n, k)",
+          "ref": "c1"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "pᵏ",
+          "ref": "c2"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "(1 − p)ⁿ⁻ᵏ",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Ensaios de Bernoulli",
+          "text": "repetições independentes com dois resultados."
+        },
+        {
+          "term": "Cada caminho",
+          "text": "com k sucessos vale pᵏ (1 − p)ⁿ⁻ᵏ."
+        },
+        {
+          "term": "Caminhos",
+          "text": "há C(n, k) caminhos com k sucessos."
+        }
+      ],
+      "lines": {
+        "intro": "Cada caminho multiplica as chances dos seus ensaios, e há C(n, k) caminhos iguais. Por isso a fórmula é o produto dos três.",
+        "hint": "Toque em uma parte da fórmula para ver o que ela conta na árvore."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "duas-moedas-uma-cara",
+        "prompt": "Lançando duas moedas, qual a chance de exatamente uma cara?",
+        "options": [
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Isso. 2 caminhos de 1/4."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "1/4 é um caminho só. KC e CK: 1/2."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "Os 3 valores de k não têm a mesma chance. 2 caminhos de 4: 1/2."
+          },
+          {
+            "id": "a3-4",
+            "label": "3/4",
+            "correct": false,
+            "feedback": "3/4 é pelo menos uma cara. Exatamente uma: 1/2."
+          }
+        ]
+      },
+      {
+        "id": "caminhos-k2-n3",
+        "prompt": "Em 3 lançamentos de moeda, quantos caminhos têm exatamente 2 caras?",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo. KKC, KCK e CKK."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "A coroa pode estar em 3 lugares. São 3 caminhos."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 são todos os caminhos. Com 2 caras: 3."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é 3 · 2, contando ordens das caras iguais. São C(3, 2) = 3."
+          }
+        ]
+      },
+      {
+        "id": "fracasso",
+        "prompt": "Num ensaio, o sucesso tem chance 0,3. Qual a chance de fracasso?",
+        "options": [
+          {
+            "id": "a07",
+            "label": "0,7",
+            "correct": true,
+            "feedback": "Isso. Fracasso é o complemento."
+          },
+          {
+            "id": "a03",
+            "label": "0,3",
+            "correct": false,
+            "feedback": "0,3 é o sucesso. Fracasso: 0,7."
+          },
+          {
+            "id": "a05",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Os dois resultados não precisam ter a mesma chance. 1 − 0,3 = 0,7."
+          },
+          {
+            "id": "a009",
+            "label": "0,09",
+            "correct": false,
+            "feedback": "0,09 é 0,3². Fracasso: 1 − 0,3 = 0,7."
+          }
+        ]
+      },
+      {
+        "id": "valor-de-um-caminho",
+        "prompt": "Em 3 lançamentos de moeda, quanto vale a chance de um caminho específico, como KCK?",
+        "options": [
+          {
+            "id": "a1-8",
+            "label": "1/8",
+            "correct": true,
+            "feedback": "Certo. 1/2 · 1/2 · 1/2."
+          },
+          {
+            "id": "a3-8",
+            "label": "3/8",
+            "correct": false,
+            "feedback": "3/8 soma os 3 caminhos com 2 caras. Um caminho só: 1/8."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/2 é um lançamento. Três: 1/8."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "1/6 é de dado. Moeda, 3 vezes: 1/8."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "tres-moedas-uma-cara",
+        "prompt": "Lançando 3 moedas, qual a chance de exatamente uma cara?",
+        "options": [
+          {
+            "id": "a3-8",
+            "label": "3/8",
+            "correct": true,
+            "feedback": "Isso. 3 caminhos de 1/8."
+          },
+          {
+            "id": "a1-8",
+            "label": "1/8",
+            "correct": false,
+            "feedback": "1/8 é um caminho. Há 3: 3/8."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "Contando caminhos: 3 de 8, não 1 de 3."
+          },
+          {
+            "id": "a7-8",
+            "label": "7/8",
+            "correct": false,
+            "feedback": "7/8 é pelo menos uma. Exatamente uma: 3/8."
+          }
+        ]
+      },
+      {
+        "id": "quatro-caras",
+        "prompt": "Lançando 4 moedas, qual a chance de saírem 4 caras?",
+        "options": [
+          {
+            "id": "a1-16",
+            "label": "1/16",
+            "correct": true,
+            "feedback": "Certo. Um único caminho, KKKK."
+          },
+          {
+            "id": "a1-8",
+            "label": "1/8",
+            "correct": false,
+            "feedback": "1/8 vale para 3 moedas. Com 4: 1/16."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "1/4 é com duas moedas. Quatro caras: 1/16."
+          },
+          {
+            "id": "a4-16",
+            "label": "4/16",
+            "correct": false,
+            "feedback": "Só há um caminho com 4 caras: 1/16."
+          }
+        ]
+      },
+      {
+        "id": "um-seis-em-dois",
+        "prompt": "Lançando 2 dados, qual a chance de exatamente um 6?",
+        "options": [
+          {
+            "id": "a5-18",
+            "label": "5/18",
+            "correct": true,
+            "feedback": "Isso. 2 caminhos de 5/36."
+          },
+          {
+            "id": "a5-36",
+            "label": "5/36",
+            "correct": false,
+            "feedback": "5/36 é um caminho só. O 6 pode vir em qualquer dado: 10/36."
+          },
+          {
+            "id": "a11-36",
+            "label": "11/36",
+            "correct": false,
+            "feedback": "11/36 inclui (6, 6). Exatamente um: 10/36 = 5/18."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "1/6 + 1/6 não desconta o outro dado. 2 · 1/6 · 5/6 = 5/18."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "cinco-moedas-duas",
+        "prompt": "Lançando 5 moedas, qual a chance de exatamente 2 caras?",
+        "options": [
+          {
+            "id": "a5-16",
+            "label": "5/16",
+            "correct": true,
+            "feedback": "Certo. 10 caminhos de 1/32."
+          },
+          {
+            "id": "a2-5",
+            "label": "2/5",
+            "correct": false,
+            "feedback": "2 de 5 moedas não é a chance. 10 caminhos de 32: 5/16."
+          },
+          {
+            "id": "a1-32",
+            "label": "1/32",
+            "correct": false,
+            "feedback": "1/32 é um caminho. Há C(5, 2) = 10."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "Os 6 valores de k não têm a mesma chance. 10/32 = 5/16."
+          }
+        ]
+      },
+      {
+        "id": "chute-vf",
+        "prompt": "Num teste de 3 questões de verdadeiro ou falso, um aluno chuta tudo. Qual a chance de acertar pelo menos 2?",
+        "fala": "Some as barras k = 2 e k = 3.",
+        "options": [
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Isso. 3 caminhos com 2 acertos e 1 com 3: 4/8."
+          },
+          {
+            "id": "a3-8",
+            "label": "3/8",
+            "correct": false,
+            "feedback": "3/8 é exatamente 2. Com os 3 acertos: 1/2."
+          },
+          {
+            "id": "a1-8",
+            "label": "1/8",
+            "correct": false,
+            "feedback": "1/8 é acertar tudo. Pelo menos 2: 4/8."
+          },
+          {
+            "id": "a2-3",
+            "label": "2/3",
+            "correct": false,
+            "feedback": "2 de 3 questões não é a chance. Contando caminhos: 4/8 = 1/2."
+          }
+        ]
+      },
+      {
+        "id": "nenhum-sucesso",
+        "prompt": "Um ensaio tem chance 0,2 de sucesso. Repetido 3 vezes, qual a chance de nenhum sucesso?",
+        "options": [
+          {
+            "id": "a0512",
+            "label": "0,512",
+            "correct": true,
+            "feedback": "Certo. Três fracassos: 0,8 · 0,8 · 0,8."
+          },
+          {
+            "id": "a0008",
+            "label": "0,008",
+            "correct": false,
+            "feedback": "0,008 é 0,2³, três sucessos. Nenhum: 0,8³ = 0,512."
+          },
+          {
+            "id": "a04",
+            "label": "0,4",
+            "correct": false,
+            "feedback": "0,8 − 0,2 − 0,2 não é a conta. Produto: 0,512."
+          },
+          {
+            "id": "a024",
+            "label": "0,24",
+            "correct": false,
+            "feedback": "Nenhum sucesso é um único caminho, três fracassos seguidos: 0,8³ = 0,512."
+          }
+        ]
+      },
+      {
+        "id": "dois-seis-em-quatro",
+        "prompt": "Lançando 4 dados, qual a chance de exatamente dois 6?",
+        "fala": "Conte os caminhos e calcule um deles.",
+        "options": [
+          {
+            "id": "a25-216",
+            "label": "25/216",
+            "correct": true,
+            "feedback": "Isso. 6 caminhos de 25/1296: 150/1296 = 25/216."
+          },
+          {
+            "id": "a25-1296",
+            "label": "25/1296",
+            "correct": false,
+            "feedback": "25/1296 é um caminho só. Há C(4, 2) = 6: 25/216."
+          },
+          {
+            "id": "a1-36",
+            "label": "1/36",
+            "correct": false,
+            "feedback": "1/36 esquece os dois fracassos e os caminhos. 6 · (1/6)² · (5/6)² = 25/216."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "2 de 6 faces não é a conta. Binomial: 25/216."
+          }
+        ]
+      },
+      {
+        "id": "k-mais-provavel",
+        "prompt": "Lançando 4 moedas, qual número de caras é o mais provável?",
+        "fala": "Última. Pense nas barras 1, 4, 6, 4, 1.",
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo. k = 2 tem 6 caminhos, o maior grupo."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 caras é um caminho só. O maior grupo é k = 2, com 6."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "0 caras é um caminho só. O pico fica no meio, k = 2."
+          },
+          {
+            "id": "igual",
+            "label": "Todos iguais",
+            "correct": false,
+            "feedback": "As barras são 1, 4, 6, 4, 1. O mais provável é k = 2."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

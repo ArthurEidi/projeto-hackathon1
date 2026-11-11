@@ -243,6 +243,20 @@
                   "arquivo": "aritmetica/contagem-probabilidade/eventos-independentes/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "experimentos-binomial-e-repetidos",
+              "titulo": "Ensaios repetidos e distribuição binomial",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Caminhos de Sucesso e Fracasso",
+                  "subtitulo": "A distribuição binomial",
+                  "arquivo": "aritmetica/contagem-probabilidade/experimentos-binomial-e-repetidos/aula-01.json"
+                }
+              ]
             }
           ]
         },
