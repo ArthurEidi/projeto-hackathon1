@@ -174,7 +174,7 @@
         "options": [
           { "id": "f6", "label": "6", "correct": true, "feedback": "Isso. 6 − 10 + F = 2 resulta em F = 6 faces." },
           { "id": "f4", "label": "4", "correct": false, "feedback": "Você fez 10 − 6 = 4 e esqueceu de somar 2. F = 10 − 6 + 2 = 6." },
-          { "id": "f14", "label": "14", "correct": false, "feedback": "Pela relação V − A + F = 2, temos 6 − 10 + F = 2, logo F = 6." }
+          { "id": "f14", "label": "14", "correct": false, "feedback": "Você fez 6 + 10 − 2. Pela relação, 6 − 10 + F = 2, logo F = 6." }
         ]
       },
       {

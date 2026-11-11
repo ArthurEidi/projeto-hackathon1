@@ -206,7 +206,7 @@
         "options": [
           { "id": "rz3", "label": "3", "correct": true, "feedback": "Certo. V₁ = 8π e V₂ = 24π; logo V₂ é 3 vezes maior que V₁ (a razão dos raios 6/2)." },
           { "id": "rz1", "label": "1", "correct": false, "feedback": "Trocar quem é o raio muda o volume! V₁ = 8π e V₂ = 24π, razão 3." },
-          { "id": "rz9", "label": "9", "correct": false, "feedback": "O raio triplica (×9), mas a altura divide por 3 (÷3), resultando em 9 / 3 = 3." }
+          { "id": "rz9", "label": "9", "correct": false, "feedback": "O raio triplica (r² fica ×9), mas a altura divide por 3 (÷3), resultando em 9 / 3 = 3." }
         ]
       },
       {

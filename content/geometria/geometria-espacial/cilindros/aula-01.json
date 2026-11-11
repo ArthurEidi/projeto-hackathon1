@@ -370,7 +370,7 @@
             "id": "al15p",
             "label": "15π cm²",
             "correct": false,
-            "feedback": "Faltou o fator 2 do diâmetro: 2πrh = 2 · π · 3 · 5 = 30π cm²."
+            "feedback": "Faltou o 2 do contorno 2πr: 2πrh = 2 · π · 3 · 5 = 30π cm²."
           },
           {
             "id": "al45p",
@@ -499,7 +499,7 @@
             "id": "l3000",
             "label": "3000 L",
             "correct": false,
-            "feedback": "Com π = 3, r = 1 e h = 2, temos V = 3·1·2 = 6 m³ = 6000 L."
+            "feedback": "3000 L esquece a altura 2: V = 3·1²·2 = 6 m³ = 6000 L."
           }
         ]
       },

@@ -191,7 +191,7 @@
           "id": "v24",
           "label": "24 cm³",
           "correct": false,
-          "feedback": "Você multiplicou o perímetro 24 por 4 e dividiu por 4. Use A_b = 36: 36·4/3 = 48 cm³.",
+          "feedback": "Você fez 6 · 4, sem a área da base nem o /3. Use A_b = 36: 36·4/3 = 48 cm³.",
           "figure": {
             "modo": "piramide",
             "L": 6,

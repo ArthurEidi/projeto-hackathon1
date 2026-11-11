@@ -94,7 +94,7 @@
       ],
       "lines": {
         "intro": "Ao abrir as 3 paredes de altura 4 em volta da base 3, 4 e 5, que figura plana aparece?",
-        "done": "As paredes formam um retângulo de largura igual ao perímetro (12 · 4 = 48), mais 2 tampas de área 6."
+        "done": "As paredes formam um retângulo de largura igual ao perímetro 12 (área 12 · 4 = 48), mais 2 tampas de área 6."
       },
       "complete_when": {
         "metric": "abrir",
@@ -564,7 +564,7 @@
             "id": "v70",
             "label": "70 cm³",
             "correct": false,
-            "feedback": "Multiplique a área da base pela subida do nível: 20·15·2 = 600 cm³."
+            "feedback": "Você somou 20 + 15 em vez de multiplicar: 20·15·2 = 600 cm³."
           }
         ]
       }

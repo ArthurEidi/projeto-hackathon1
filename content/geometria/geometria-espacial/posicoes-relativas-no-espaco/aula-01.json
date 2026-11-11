@@ -227,7 +227,7 @@
         "options": [
           { "id": "a3", "label": "3", "correct": true, "feedback": "Isso. Das 4 arestas na mesma direção de AB, 3 são as outras paralelas a ela." },
           { "id": "a4", "label": "4", "correct": false, "feedback": "4 inclui a própria AB. As outras paralelas a ela são 3." },
-          { "id": "a2", "label": "2", "correct": false, "feedback": "Há a oposta no piso, a oposta na frente e a diagonal no teto: são 3." },
+          { "id": "a2", "label": "2", "correct": false, "feedback": "Há a oposta no piso, a de cima no teto e a oposta em diagonal no cubo: são 3." },
           { "id": "a8", "label": "8", "correct": false, "feedback": "As outras 8 têm direções perpendiculares. Paralelas a AB são só 3." }
         ]
       },

@@ -286,7 +286,7 @@
         "options": [
           { "id": "v2p", "label": "2π cm³", "correct": true, "feedback": "Exato! Os 3 cm cilíndricos tinham 3π cm³ e viraram um cone de 1π cm³, perdendo 2π cm³." },
           { "id": "v1p", "label": "1π cm³", "correct": false, "feedback": "1π cm³ é o volume da ponta cônica que ficou. O que saiu em aparas foi 3π − 1π = 2π cm³." },
-          { "id": "v8p", "label": "8π cm³", "correct": false, "feedback": "8π cm³ é o volume do lápis apontado (7π + 1π). O volume perdido ao apontar foi 2π cm³." }
+          { "id": "v8p", "label": "8π cm³", "correct": false, "feedback": "8π passa do trecho apontado, que só tinha 3π cm³. Saiu 3π − 1π = 2π cm³." }
         ]
       }
     ],
