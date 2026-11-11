@@ -1,0 +1,626 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Fila que Encolhe",
+  "subtitulo": "Fatorial, permutações e letras repetidas",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "fatorial-e-permutacoes"
+  },
+  "outro": "Você viu a fila encolher lugar por lugar: n objetos distintos fazem n! ordens, e letras iguais dividem esse total.",
+  "glossario": {
+    "c1": {
+      "nome": "Número de objetos",
+      "resumo": "Quantos objetos distintos entram na fila (n)."
+    },
+    "c2": {
+      "nome": "Opções do lugar",
+      "resumo": "Quantos objetos ainda podem ocupar este lugar."
+    },
+    "c3": {
+      "nome": "Total de ordens",
+      "resumo": "Quantas filas diferentes existem: n! quando todos são distintos."
+    },
+    "c4": {
+      "nome": "Letras repetidas",
+      "resumo": "Objetos iguais, cuja troca não cria fila nova."
+    }
+  },
+  "steps": [
+    {
+      "id": "tres-amigos",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "fila",
+        "itens": [
+          "Ana",
+          "Bia",
+          "Caio"
+        ]
+      },
+      "lines": {
+        "intro": "Três amigos vão sentar em fila. Quantos podem ocupar a primeira cadeira, e quantos sobram para a segunda?",
+        "done": "3, depois 2, depois 1: são 3 · 2 · 1 = 6 filas. Cada cadeira tem uma opção a menos que a anterior."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Isso vale para escolher só alguns da fila?",
+        "resposta": "Aí viram arranjos e combinações, na próxima aula. Hoje todo mundo entra na fila."
+      },
+      "complete_when": {
+        "metric": "filas_montadas",
+        "gte": 3
+      }
+    },
+    {
+      "id": "escada",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "escada",
+        "n": "$n"
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Pessoas na fila",
+          "min": 1,
+          "max": 6,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com uma pessoa só, quantas filas existem? Agora aumente n e veja a escada de opções crescer.",
+        "done": "Com 4 pessoas: 4 · 3 · 2 · 1 = 24. Esse produto em escada se chama fatorial: 4! = 24."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que cresce tão rápido?",
+        "resposta": "Cada pessoa nova multiplica tudo pelo maior degrau. 5! = 5 · 4! = 120."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 4
+      }
+    },
+    {
+      "id": "letras-iguais",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "fila",
+        "itens": [
+          "O",
+          "V",
+          "O"
+        ],
+        "listar": true,
+        "iguais": [
+          0,
+          2
+        ]
+      },
+      "lines": {
+        "intro": "OVO tem 3 letras. Se os dois O fossem diferentes, seriam 6 ordens; quantas sobram quando eles são iguais?",
+        "done": "Sobram 3: trocar um O pelo outro não muda nada. Dividimos 3! = 6 pelas 2! = 2 trocas dos O."
+      },
+      "complete_when": {
+        "metric": "iguais_ligado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "letra-presa",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "fila",
+        "itens": [
+          "A",
+          "M",
+          "O",
+          "R"
+        ],
+        "prender": {
+          "item": 0,
+          "lugar": 0
+        }
+      },
+      "lines": {
+        "intro": "Quantos anagramas de AMOR começam com A? Prenda o A na primeira casa e conte o resto.",
+        "done": "Com o A preso, sobram 3 letras para 3 casas: 3! = 6."
+      },
+      "complete_when": {
+        "metric": "letra_presa",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-prateleira",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "escada",
+          "n": 5
+        }
+      },
+      "prompt": "De quantos jeitos 5 livros diferentes podem ficar lado a lado numa prateleira?",
+      "lines": {
+        "intro": "Pense na escada: quantas opções tem cada lugar da prateleira?"
+      },
+      "options": [
+        {
+          "id": "a25",
+          "label": "25",
+          "correct": false,
+          "feedback": "25 é 5 · 5, como se todo lugar tivesse 5 livros. Cada livro usado sai: 5! = 120.",
+          "figure": {
+            "highlight": [
+              "c2"
+            ]
+          }
+        },
+        {
+          "id": "a15",
+          "label": "15",
+          "correct": false,
+          "feedback": "15 soma 5 + 4 + 3 + 2 + 1. Os degraus se multiplicam: 120.",
+          "figure": {
+            "highlight": [
+              "c1"
+            ]
+          }
+        },
+        {
+          "id": "a120",
+          "label": "120",
+          "correct": true,
+          "feedback": "Isso. 5 · 4 · 3 · 2 · 1 = 120.",
+          "figure": {
+            "highlight": [
+              "c3"
+            ]
+          }
+        },
+        {
+          "id": "a5",
+          "label": "5",
+          "correct": false,
+          "feedback": "5 é o número de livros. As ordens são 5! = 120.",
+          "figure": {
+            "k": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "escada",
+          "n": 4
+        }
+      },
+      "formula": [
+        {
+          "text": "n!",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "n",
+          "ref": "c1"
+        },
+        {
+          "text": "· (n − 1) · … · 2 · 1"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Fatorial",
+          "text": "n! = n · (n − 1) · … · 1, e 0! = 1."
+        },
+        {
+          "term": "Permutação simples",
+          "text": "ordens de n objetos distintos, n!."
+        },
+        {
+          "term": "Com repetição",
+          "text": "n! dividido pelo fatorial de cada grupo de iguais."
+        }
+      ],
+      "lines": {
+        "intro": "Cada lugar usa um objeto e o próximo tem um a menos. Por isso as ordens são o produto em escada, n!.",
+        "hint": "Toque em uma letra para ver a parte da escada que ela representa."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "E quanto vale 0!?",
+        "resposta": "Vale 1: existe um único jeito de organizar nada, a fila vazia."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "tres-fatorial",
+        "prompt": "De quantas ordens 3 pessoas podem formar uma fila?",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é o número de pessoas. As ordens são 3 · 2 · 1 = 6."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Isso. 3 · 2 · 1 = 6, como na aula."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é 3 · 3, deixando repetir pessoa. Sem repetir: 3 · 2 · 1 = 6."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Há muitas ordens, não uma. São 3! = 6."
+          }
+        ]
+      },
+      {
+        "id": "primeiro-lugar",
+        "prompt": "Numa fila de 4 pessoas, quantas opções há para o primeiro lugar?",
+        "options": [
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo. Qualquer uma das 4 pode começar a fila."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 são as opções do segundo lugar. O primeiro tem as 4."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 é o total de filas, 4!. O primeiro lugar tem 4 opções."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é o último lugar, que recebe quem sobrou. O primeiro tem 4 opções."
+          }
+        ]
+      },
+      {
+        "id": "quatro-fatorial",
+        "prompt": "Quanto vale 4!?",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é 4 + 3 + 2 + 1. Fatorial multiplica: 24."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 é 4 · 4. Os degraus descem: 4 · 3 · 2 · 1 = 24."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": true,
+            "feedback": "Isso. 4 · 3 · 2 · 1 = 24."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é 4 · 3, faltaram degraus. 4 · 3 · 2 · 1 = 24."
+          }
+        ]
+      },
+      {
+        "id": "anagramas-sol",
+        "prompt": "Quantos anagramas tem a palavra SOL?",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é o número de letras. As ordens são 3! = 6."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo. Letras todas diferentes: 3! = 6."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 deixaria repetir letra. São 3 · 2 · 1 = 6."
+          },
+          {
+            "id": "a27",
+            "label": "27",
+            "correct": false,
+            "feedback": "27 é 3 · 3 · 3. Cada letra é usada uma vez só: 6."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "razao-fatoriais",
+        "prompt": "Quanto vale 5! / 3!?",
+        "fala": "Escreva as duas escadas e corte o que é igual.",
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Fatoriais não se dividem como 5/3 ou 2!. Corte 3 · 2 · 1: sobra 5 · 4 = 20."
+          },
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": true,
+            "feedback": "Isso. 5 · 4 · 3! / 3! = 5 · 4 = 20."
+          },
+          {
+            "id": "a40",
+            "label": "40",
+            "correct": false,
+            "feedback": "Sobra só 5 · 4 depois de cortar o 3!. Dá 20."
+          },
+          {
+            "id": "a120",
+            "label": "120",
+            "correct": false,
+            "feedback": "120 é só o 5!. Dividindo por 3! = 6, fica 20."
+          }
+        ]
+      },
+      {
+        "id": "bola-com-b",
+        "prompt": "Quantos anagramas de BOLA começam com B?",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo. B preso, sobram 3 letras: 3! = 6."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 são todos os anagramas. Com o B preso: 3! = 6."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é o número de letras. Com o B fixo, as outras 3 fazem 3! = 6."
+          },
+          {
+            "id": "a18",
+            "label": "18",
+            "correct": false,
+            "feedback": "Com B na frente, só as 3 letras de trás mudam: 3! = 6."
+          }
+        ]
+      },
+      {
+        "id": "anagramas-ana",
+        "prompt": "Quantos anagramas tem a palavra ANA?",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 trata os dois A como diferentes. Dividindo pelas 2! trocas: 3."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. ANA, AAN e NAA: 3! / 2! = 3."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Falta um: ANA, AAN e NAA. São 3! / 2! = 3."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Há mais de um: AAN e NAA também valem. 3! / 2! = 3."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "banana",
+        "prompt": "Quantos anagramas tem a palavra BANANA?",
+        "fala": "Conte as letras repetidas: quantos A e quantos N?",
+        "options": [
+          {
+            "id": "a720",
+            "label": "720",
+            "correct": false,
+            "feedback": "720 trata todas as letras como diferentes. Divida por 3! dos A e 2! dos N: 60."
+          },
+          {
+            "id": "a60",
+            "label": "60",
+            "correct": true,
+            "feedback": "Certo. 720 / (6 · 2) = 60."
+          },
+          {
+            "id": "a120",
+            "label": "120",
+            "correct": false,
+            "feedback": "120 divide só pelos A. Falta dividir pelos N: 720 / 12 = 60."
+          },
+          {
+            "id": "a360",
+            "label": "360",
+            "correct": false,
+            "feedback": "360 divide só pelos N. Os três A dão mais 3!: 720 / 12 = 60."
+          }
+        ]
+      },
+      {
+        "id": "juntas-na-fila",
+        "prompt": "Cinco pessoas fazem fila, e Ana e Bia querem ficar juntas. Quantas filas são possíveis?",
+        "fala": "Cole as duas num bloco só e não esqueça de trocá-las dentro do bloco.",
+        "options": [
+          {
+            "id": "a48",
+            "label": "48",
+            "correct": true,
+            "feedback": "Isso. 4! ordens do bloco com as outras e 2 ordens dentro: 48."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "Faltou trocar Ana e Bia dentro do bloco. 24 · 2 = 48."
+          },
+          {
+            "id": "a120",
+            "label": "120",
+            "correct": false,
+            "feedback": "120 são todas as filas, sem exigir que fiquem juntas. Com o bloco: 4! · 2 = 48."
+          },
+          {
+            "id": "a96",
+            "label": "96",
+            "correct": false,
+            "feedback": "Com o bloco há 4 itens, não 5. 4! · 2 = 48."
+          }
+        ]
+      },
+      {
+        "id": "zero-fatorial",
+        "prompt": "Quanto vale 0!?",
+        "fala": "Pense em quantas filas existem com ninguém.",
+        "options": [
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Há um jeito de organizar nada: a fila vazia. Por isso 0! = 1."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo. E isso mantém 1! = 1 · 0! funcionando."
+          },
+          {
+            "id": "indef",
+            "label": "Não existe",
+            "correct": false,
+            "feedback": "Existe e vale 1: a fila vazia é um arranjo só."
+          },
+          {
+            "id": "inf",
+            "label": "Infinito",
+            "correct": false,
+            "feedback": "Não há infinitas filas vazias, há uma. 0! = 1."
+          }
+        ]
+      },
+      {
+        "id": "dez-sobre-nove",
+        "prompt": "Quanto vale 10! / 9!?",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Isso. 10! = 10 · 9!, e o 9! se cancela."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Não se cancelam por inteiro: 10! tem um degrau a mais, o 10. Resultado 10."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "O degrau que sobra é o maior, o 10. Resultado 10."
+          },
+          {
+            "id": "a90",
+            "label": "90",
+            "correct": false,
+            "feedback": "90 seria 10! / 8!. Com 9! sobra só o 10."
+          }
+        ]
+      },
+      {
+        "id": "amor-pontas",
+        "prompt": "Quantos anagramas de AMOR têm A e R nas pontas, em qualquer ordem?",
+        "fala": "Última. Primeiro as pontas, depois o meio.",
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 conta só as pontas (A…R ou R…A). O meio M, O também troca: 2 · 2 = 4."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo. 2 ordens nas pontas vezes 2 no meio: 4."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 prende só uma ponta. Com as duas presas: 2 · 2 = 4."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 são todos os anagramas. Com as pontas fixas em A e R: 4."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

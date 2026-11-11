@@ -131,6 +131,20 @@
                   "arquivo": "aritmetica/contagem-probabilidade/principio-fundamental-da-contagem/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "fatorial-e-permutacoes",
+              "titulo": "Fatorial e Permutações",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Fila que Encolhe",
+                  "subtitulo": "Fatorial, permutações e letras repetidas",
+                  "arquivo": "aritmetica/contagem-probabilidade/fatorial-e-permutacoes/aula-01.json"
+                }
+              ]
             }
           ]
         },
