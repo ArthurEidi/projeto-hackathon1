@@ -859,6 +859,20 @@
               ]
             },
             {
+              "id": "semelhanca-e-teorema-de-tales",
+              "titulo": "Semelhança de triângulos e teorema de Tales",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Semelhança e Teorema de Tales",
+                  "subtitulo": "Mesma forma, outra escala · Paralela no triângulo, razão constante e Tales",
+                  "arquivo": "geometria/geometria-plana/semelhanca-e-teorema-de-tales/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "teorema-de-pitagoras",
               "titulo": "Teorema de Pitágoras",
               "icone": "triangulo",

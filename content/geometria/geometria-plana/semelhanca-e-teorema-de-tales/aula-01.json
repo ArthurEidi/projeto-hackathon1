@@ -1,0 +1,618 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Semelhança e Teorema de Tales",
+  "subtitulo": "Mesma forma, outra escala · Paralela no triângulo, razão constante e Tales",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "semelhanca-e-teorema-de-tales"
+  },
+  "outro": "Você deslizou paralelas, descobriu a razão constante k de Tales e usou o caso AA para medir alturas por sombras.",
+  "glossario": {
+    "c1": {
+      "nome": "Triângulo semelhante",
+      "resumo": "Figura de mesmo formato cujos lados foram todos multiplicados por k."
+    },
+    "c2": {
+      "nome": "Triângulo original",
+      "resumo": "Figura de referência (k = 1) com lados a, b e c."
+    },
+    "c3": {
+      "nome": "Ângulos correspondentes",
+      "resumo": "Dois ângulos iguais (caso AA) já garantem que os triângulos são semelhantes."
+    },
+    "c4": {
+      "nome": "Razão de semelhança",
+      "resumo": "Constante k pela qual todos os lados são multiplicados."
+    }
+  },
+  "steps": [
+    {
+      "id": "escala-na-paralela",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "semelhanca",
+        "variante": "paralela",
+        "lados": [6, 8, 10],
+        "k": "$k"
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Escala k",
+          "min": 0.25,
+          "max": 1.5,
+          "step": 0.25,
+          "initial": 1,
+          "cor": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "k",
+        "lte": 0.5
+      },
+      "lines": {
+        "intro": "Em k = 1 os dois triângulos empatam. Leve k até 0,5: os ângulos mudam ou só os lados encolhem?",
+        "done": "Os ângulos não mudam nada (são correspondentes na paralela), e todos os três lados caem exatamente pela metade."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E a área também cai pela metade?",
+        "resposta": "A área multiplica base e altura, variando com k² (cai para 1/4). Hoje olhamos os comprimentos, que seguem k."
+      }
+    },
+    {
+      "id": "teorema-de-tales",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "semelhanca",
+        "variante": "tales",
+        "esq": 6,
+        "dir": 9,
+        "corte": "$corte"
+      },
+      "controls": [
+        {
+          "id": "corte",
+          "label": "Posição da paralela",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 2,
+          "cor": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "corte",
+        "gte": 4
+      },
+      "lines": {
+        "intro": "Na transversal da direita, o pedaço de baixo é o dobro do de cima. Mova a paralela do meio: a razão da esquerda acompanha a da direita?",
+        "done": "Empatam sempre: é o teorema de Tales. Paralelas cortam qualquer transversal na mesma proporção."
+      }
+    },
+    {
+      "id": "caso-aa-sombras",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "semelhanca",
+        "variante": "sombras",
+        "bastao": [2, 3],
+        "sombra_poste": 9,
+        "chaves": ["sobrepor"]
+      },
+      "complete_when": {
+        "metric": "sobrepos_triangulos",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "O sol ilumina um bastão de 2 m (sombra 3 m) e um poste (sombra 9 m). Encaixe o triângulo do bastão no do poste: qual a altura do poste?",
+        "done": "90° e o ângulo do sol são iguais (caso AA). Se a sombra é 3 vezes maior (9 ÷ 3), a altura também é: 2 · 3 = 6 m."
+      }
+    },
+    {
+      "id": "quebra-semelhanca",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "semelhanca",
+        "variante": "paralela",
+        "lados": [6, 8, 10],
+        "k": 0.6,
+        "giro": "$giro"
+      },
+      "controls": [
+        {
+          "id": "giro",
+          "label": "Entortar corte",
+          "min": 0,
+          "max": 20,
+          "step": 5,
+          "initial": 0,
+          "cor": "c3"
+        }
+      ],
+      "complete_when": {
+        "metric": "giro",
+        "gte": 15
+      },
+      "lines": {
+        "intro": "E se o corte dentro do triângulo não for paralelo à base? Entorte o corte e compare as razões dos lados.",
+        "done": "Sem paralelismo, os ângulos mudam e as razões descolam. Semelhança exige ângulos iguais (caso AA)."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Preciso conferir os 3 ângulos para ter certeza da semelhança?",
+        "resposta": "Basta conferir 2 ângulos (caso AA): como a soma é 180°, o terceiro já fica igual automaticamente."
+      }
+    },
+    {
+      "id": "desafio-tales",
+      "type": "micro_challenge",
+      "prompt": "No feixe de paralelas, a transversal da esquerda mede 4 e 6; a da direita mede 6 e x. Quanto vale x?",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "semelhanca",
+          "variante": "tales",
+          "esq": 10,
+          "dir": 15,
+          "corte": 4,
+          "highlight": ["c1", "c2"]
+        }
+      },
+      "lines": {
+        "intro": "Monte a proporção entre o pedaço de cima e o de baixo de cada transversal."
+      },
+      "options": [
+        {
+          "id": "a9",
+          "label": "9",
+          "correct": true,
+          "feedback": "Isso. 4 / 6 = 6 / x, então 4x = 36 e x = 9.",
+          "override": {
+            "highlight": ["c1", "c4"]
+          }
+        },
+        {
+          "id": "a8",
+          "label": "8",
+          "correct": false,
+          "feedback": "Resposta: 9; Você somou 2 (4 + 2 = 6, 6 + 2 = 8). Tales usa proporção: 4/6 = 6/x dá x = 9."
+        },
+        {
+          "id": "a4",
+          "label": "4",
+          "correct": false,
+          "feedback": "Resposta: 9; 4 seria se os segmentos de cima fossem iguais. Como 6 é 1,5 vez 4, x = 1,5 · 6 = 9."
+        },
+        {
+          "id": "a10",
+          "label": "10",
+          "correct": false,
+          "feedback": "Resposta: 9; 10 é a soma 4 + 6. Pela proporção 4 / 6 = 6 / x, temos x = 9."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "semelhanca",
+          "variante": "paralela",
+          "lados": [6, 8, 10],
+          "k": 0.6,
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "a′", "ref": "c1" },
+        { "text": "/" },
+        { "text": "a", "ref": "c2" },
+        { "text": "=" },
+        { "text": "b′", "ref": "c1" },
+        { "text": "/" },
+        { "text": "b", "ref": "c2" },
+        { "text": "=" },
+        { "text": "k", "ref": "c4" }
+      ],
+      "definitions": [
+        {
+          "term": "Caso AA",
+          "text": "Dois ângulos iguais já garantem triângulos semelhantes."
+        },
+        {
+          "term": "Razão k",
+          "text": "Todos os lados e alturas correspondentes dividem na mesma razão k."
+        },
+        {
+          "term": "Teorema de Tales",
+          "text": "Paralelas cortam transversais em segmentos proporcionais."
+        }
+      ],
+      "lines": {
+        "intro": "A paralela conserva os ângulos dos lados, por isso todos os comprimentos crescem ou encolhem na mesma razão k.",
+        "hint": "Toque em cada letra para ver o lado correspondente na figura."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "razao-de-semelhanca",
+        "prompt": "Um triângulo de lados 3, 4 e 5 foi ampliado para um semelhante de lados 6, 8 e 10. Qual foi a razão de semelhança k?",
+        "options": [
+          {
+            "id": "k2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Isso. Todos os lados dobraram: 6 / 3 = 2."
+          },
+          {
+            "id": "k3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Resposta: 2; 3 é quanto somou no menor lado (3 + 3 = 6). A razão divide: 6 / 3 = 2."
+          },
+          {
+            "id": "k4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 2; 4 é k² (razão das áreas). Nos comprimentos dos lados a razão é 6 / 3 = 2."
+          },
+          {
+            "id": "k05",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Resposta: 2; 0,5 é a redução de 6 para 3. Na ampliação de 3 para 6, k = 2."
+          }
+        ]
+      },
+      {
+        "id": "tales-direto",
+        "prompt": "Três paralelas cortam duas transversais: na primeira os segmentos medem 2 e 6; na segunda medem 3 e x. Quanto vale x?",
+        "options": [
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": true,
+            "feedback": "Certo. O segmento de baixo é o triplo do de cima: 3 · 3 = 9."
+          },
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": false,
+            "feedback": "Resposta: 9; Você somou 4 (como em 2 + 4 = 6). Em Tales multiplica-se por 3: 3 · 3 = 9."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "Resposta: 9; A razão é 6 / 2 = 3, então x = 3 · 3 = 9."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 9; 1 seria dividir por 3. O segmento de baixo é 3 vezes maior: x = 9."
+          }
+        ]
+      },
+      {
+        "id": "angulos-na-ampliacao",
+        "prompt": "Um triângulo tem ângulos de 40°, 60° e 80°. Se dobrarmos todos os seus lados (k = 2), quanto medirão os novos ângulos?",
+        "options": [
+          {
+            "id": "iguais",
+            "label": "40°, 60° e 80°",
+            "correct": true,
+            "feedback": "Exato. Triângulos semelhantes têm exatamente os mesmos ângulos."
+          },
+          {
+            "id": "dobro",
+            "label": "80°, 120° e 160°",
+            "correct": false,
+            "feedback": "Resposta: 40°, 60° e 80°; Na semelhança só os lados dobram; os ângulos continuam 40°, 60° e 80°."
+          },
+          {
+            "id": "metade",
+            "label": "20°, 30° e 40°",
+            "correct": false,
+            "feedback": "Resposta: 40°, 60° e 80°; Os ângulos nunca mudam na escala: continuam 40°, 60° e 80°."
+          },
+          {
+            "id": "retos",
+            "label": "60°, 60° e 60°",
+            "correct": false,
+            "feedback": "Resposta: 40°, 60° e 80°; A forma não vira equilátera; mantém os ângulos originais."
+          }
+        ]
+      },
+      {
+        "id": "paralela-no-meio",
+        "prompt": "Uma reta paralela à base de 12 cm de um triângulo passa exatamente na metade dos outros dois lados. Quanto mede esse segmento?",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6 cm",
+            "correct": true,
+            "feedback": "Isso. Na metade da altura (k = 0,5), o segmento paralelo mede metade da base: 6 cm."
+          },
+          {
+            "id": "a12",
+            "label": "12 cm",
+            "correct": false,
+            "feedback": "Resposta: 6 cm; 12 cm é a base inteira. Na metade dos lados, o segmento cai pela metade: 6 cm."
+          },
+          {
+            "id": "a3",
+            "label": "3 cm",
+            "correct": false,
+            "feedback": "Resposta: 6 cm; 3 cm seria um quarto. Na metade dos lados (k = 0,5), mede 12 / 2 = 6 cm."
+          },
+          {
+            "id": "a24",
+            "label": "24 cm",
+            "correct": false,
+            "feedback": "Resposta: 6 cm; O triângulo de cima é menor (metade), então mede 12 / 2 = 6 cm."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "sombra-predio",
+        "prompt": "No mesmo instante, uma pessoa de 1,8 m projeta sombra de 2 m e um prédio projeta sombra de 10 m. Qual a altura do prédio?",
+        "options": [
+          {
+            "id": "a9",
+            "label": "9 m",
+            "correct": true,
+            "feedback": "Certo. A sombra é 5 vezes maior (10 / 2), então a altura é 5 · 1,8 = 9 m."
+          },
+          {
+            "id": "a9-8",
+            "label": "9,8 m",
+            "correct": false,
+            "feedback": "Resposta: 9 m; Você somou 8 m. A relação é proporcional: (10 / 2) · 1,8 = 9 m."
+          },
+          {
+            "id": "a11-1",
+            "label": "11,1 m",
+            "correct": false,
+            "feedback": "Resposta: 9 m; Você inverteu a razão. O certo é H = 1,8 · (10 / 2) = 9 m."
+          },
+          {
+            "id": "a5",
+            "label": "5 m",
+            "correct": false,
+            "feedback": "Resposta: 9 m; 5 é a razão entre as sombras (10 / 2). Multiplicando por 1,8 m dá 9 m."
+          }
+        ]
+      },
+      {
+        "id": "paralela-interna-total",
+        "prompt": "No triângulo ABC, DE é paralelo à base BC = 15. Se AD = 2 e DB = 3 (lado AB inteiro vale 5), quanto mede DE?",
+        "paco": "Cuidado: compare o lado do triângulo pequeno (AD = 2) com o lado inteiro do grande (AB = 2 + 3 = 5).",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Exato. O lado inteiro é 2 + 3 = 5, então DE / 15 = 2 / 5 e DE = 6."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "Resposta: 6; 10 usa 2 / 3 (só o pedaço de baixo). O lado do triângulo grande é 2 + 3 = 5, dando DE = 6."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "Resposta: 6; 5 é o lado AB (2 + 3). Pela proporção DE / 15 = 2 / 5, DE vale 6."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "Resposta: 6; 9 seria usando 3 / 5. O triângulo de cima tem lado AD = 2: (2 / 5) · 15 = 6."
+          }
+        ]
+      },
+      {
+        "id": "perimetro-semelhante",
+        "prompt": "Dois triângulos semelhantes têm razão k = 3. Se o perímetro do menor é 14 cm, qual é o perímetro do maior?",
+        "options": [
+          {
+            "id": "a42",
+            "label": "42 cm",
+            "correct": true,
+            "feedback": "Isso. Como cada lado triplica, o perímetro também triplica: 14 · 3 = 42 cm."
+          },
+          {
+            "id": "a126",
+            "label": "126 cm",
+            "correct": false,
+            "feedback": "Resposta: 42 cm; 126 é 14 · 9 (usando k²). O perímetro é linear, então multiplica por k = 3: 42 cm."
+          },
+          {
+            "id": "a17",
+            "label": "17 cm",
+            "correct": false,
+            "feedback": "Resposta: 42 cm; A escala multiplica por 3, não soma 3: 14 · 3 = 42 cm."
+          },
+          {
+            "id": "a28",
+            "label": "28 cm",
+            "correct": false,
+            "feedback": "Resposta: 42 cm; 28 seria o dobro. Com k = 3, o perímetro vale 14 · 3 = 42 cm."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "tales-decimal",
+        "prompt": "Três paralelas cortam duas transversais: na esquerda os pedaços medem 2 e 3; na direita medem 3 e x. Quanto vale x?",
+        "options": [
+          {
+            "id": "a4-5",
+            "label": "4,5",
+            "correct": true,
+            "feedback": "Certo. 2 / 3 = 3 / x dá 2x = 9, portanto x = 4,5."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 4,5; 4 vem de somar 1. Em Tales multiplica-se pela razão: 3 · (3 / 2) = 4,5."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 4,5; Você inverteu a fração (3 · 2/3). Como o de baixo é maior, x = 3 · 1,5 = 4,5."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "Resposta: 4,5; A razão é 3 / 2 = 1,5, não 2. Multiplicando 3 por 1,5 dá 4,5."
+          }
+        ]
+      },
+      {
+        "id": "ampulheta-alternos",
+        "prompt": "Duas paralelas AB = 4 e CD = 10 são ligadas por AD e BC que se cruzam em O. Se AO = 2, quanto mede OD?",
+        "paco": "Os alternos internos e o oposto pelo vértice fazem os dois triângulos da ampulheta serem semelhantes.",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Exato. A razão entre as bases é 10 / 4 = 2,5, então OD = 2 · 2,5 = 5."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "Resposta: 5; Você somou 6 (como de 4 para 10). Na semelhança multiplica-se: 2 · (10 / 4) = 5."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 5; A razão das bases é 10 / 4 = 2,5, não 2. Portanto OD = 2 · 2,5 = 5."
+          },
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": false,
+            "feedback": "Resposta: 5; 7 seria a soma AO + OD. O segmento OD sozinho mede 2 · (10 / 4) = 5."
+          }
+        ]
+      },
+      {
+        "id": "quadrado-inscrito",
+        "prompt": "Num triângulo retângulo de catetos 6 e 6, inscreve-se um quadrado apoiado nos dois catetos. Quanto mede o lado x desse quadrado?",
+        "paco": "O triângulo menor que sobra em cima do quadrado tem base x e altura 6 − x.",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. Por semelhança, (6 − x) / 6 = x / 6, logo 6 − x = x e x = 3."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 3; Com x = 2 sobraria altura 4 em cima. A proporção (6 − x)/6 = x/6 dá x = 3."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 3; Com x = 4 a altura restante seria 2. O equilíbrio 6 − x = x acontece em x = 3."
+          },
+          {
+            "id": "a1-5",
+            "label": "1,5",
+            "correct": false,
+            "feedback": "Resposta: 3; Como os catetos são iguais a 6, o quadrado pega exatamente a metade: x = 3."
+          }
+        ]
+      },
+      {
+        "id": "rampa-altura-intermediaria",
+        "prompt": "Uma rampa reta sobe 3 m ao longo de 12 m horizontais. A que altura ela está após percorrer 4 m horizontais?",
+        "options": [
+          {
+            "id": "a1",
+            "label": "1 m",
+            "correct": true,
+            "feedback": "Certo. 4 m é um terço de 12 m, então a altura também é um terço de 3 m: 1 m."
+          },
+          {
+            "id": "a1-5",
+            "label": "1,5 m",
+            "correct": false,
+            "feedback": "Resposta: 1 m; 1,5 m é a metade (em 6 m horizontais). Em 4 m (um terço), a altura é 1 m."
+          },
+          {
+            "id": "a0-75",
+            "label": "0,75 m",
+            "correct": false,
+            "feedback": "Resposta: 1 m; 0,75 m seria um quarto (em 3 m horizontais). Em 4 de 12, vale 3 · (4 / 12) = 1 m."
+          },
+          {
+            "id": "a2",
+            "label": "2 m",
+            "correct": false,
+            "feedback": "Resposta: 1 m; 2 m de altura acontece em 8 m horizontais. Em 4 m, a altura é 1 m."
+          }
+        ]
+      },
+      {
+        "id": "trapezio-base-intermediaria",
+        "prompt": "Três terrenos têm frentes de 10 m, 15 m e 25 m na Rua A. Se o fundo total na Rua B tem 60 m, qual o fundo do maior?",
+        "paco": "Use a soma das frentes na Rua A (10 + 15 + 25) para achar a razão entre a Rua B e a Rua A.",
+        "options": [
+          {
+            "id": "a30",
+            "label": "30 m",
+            "correct": true,
+            "feedback": "Exato. O total em A é 50 m; como 25 m é metade de 50 m, na Rua B leva metade de 60 m: 30 m."
+          },
+          {
+            "id": "a25",
+            "label": "25 m",
+            "correct": false,
+            "feedback": "Resposta: 30 m; 25 m é na Rua A. Na Rua B o total é 60 m (1,2 vez maior): 25 · 1,2 = 30 m."
+          },
+          {
+            "id": "a35",
+            "label": "35 m",
+            "correct": false,
+            "feedback": "Resposta: 30 m; Os 10 m extras (60 − 50) dividem-se proporcionalmente entre os lotes: dá 30 m."
+          },
+          {
+            "id": "a20",
+            "label": "20 m",
+            "correct": false,
+            "feedback": "Resposta: 30 m; 20 m seria dividir 60 por 3 lotes iguais. O maior tem metade da frente: 30 m."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
