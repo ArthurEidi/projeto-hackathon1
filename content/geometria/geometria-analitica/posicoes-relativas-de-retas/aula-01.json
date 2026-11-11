@@ -389,7 +389,7 @@
             "id": "f2-posicoes-relativas-de-retas-a0",
             "label": "0",
             "correct": false,
-            "feedback": "Inclinações diferentes sempre se cruzam na origem. O certo é 1."
+            "feedback": "Inclinações diferentes se cruzam uma vez, aqui na origem. O certo é 1."
           },
           {
             "id": "f2-posicoes-relativas-de-retas-a2",

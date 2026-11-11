@@ -352,7 +352,7 @@
             "id": "m1-funcao-racional-e",
             "label": "2",
             "correct": false,
-            "feedback": "Resposta: 3/2; Soma denominadores sem equivalência; conferência: 1/2+2/2=3/2."
+            "feedback": "Resposta: 3/2; Ignora o denominador 2 ao somar; conferência: 1/2+2/2=3/2."
           },
           {
             "id": "m1-funcao-racional-c",
@@ -480,7 +480,7 @@
             "id": "d5-funcao-racional-e",
             "label": "2",
             "correct": false,
-            "feedback": "Resposta: 4; Não multiplica ambos os lados pelo denominador; conferência: 3=x−1 ⇒ x=4."
+            "feedback": "Resposta: 4; Erra o sinal, fazendo 3=x+1; conferência: 3=x−1 ⇒ x=4."
           },
           {
             "id": "d5-funcao-racional-c",

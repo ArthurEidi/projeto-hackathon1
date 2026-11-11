@@ -203,7 +203,7 @@
           "id": "micro-erro",
           "label": "1 e 3",
           "correct": false,
-          "feedback": "Faltou andar duas unidades à esquerda; as soluções são −1 e 3.",
+          "feedback": "1 é o centro, não solução; andando 2 para cada lado, as soluções são −1 e 3.",
           "figure": {
             "ponto": {
               "curva": 0,
@@ -371,7 +371,7 @@
             "id": "f4-equacoes-modulares-erro",
             "label": "−1",
             "correct": false,
-            "feedback": "Você confundiu a expressão com a raiz do fator. O certo é 1; x−1=0 em x=1."
+            "feedback": "Você trocou o sinal ao zerar x−1. O certo é 1; x−1=0 em x=1."
           }
         ]
       }

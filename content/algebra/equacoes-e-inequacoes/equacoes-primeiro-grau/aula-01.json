@@ -309,7 +309,7 @@
             "id": "f1-equacoes-primeiro-grau-erro",
             "label": "1",
             "correct": false,
-            "feedback": "Você deslocou uma reta sem termo constante. O certo é 0; x=0."
+            "feedback": "Em x=1 a saída é 1, não zero. O certo é 0; x=0."
           },
           {
             "id": "f1-equacoes-primeiro-grau-certa",

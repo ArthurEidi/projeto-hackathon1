@@ -470,7 +470,7 @@
             "id": "d2-funcao-definida-por-partes-e",
             "label": "3",
             "correct": false,
-            "feedback": "Resposta: 4; Usa o trecho quadrático para x positivo; conferência: 2≥0; f(2)=2+2=4."
+            "feedback": "Resposta: 4; Soma 1 em vez de 2 no trecho x+2; conferência: 2≥0; f(2)=2+2=4."
           },
           {
             "id": "d2-funcao-definida-por-partes-c",
