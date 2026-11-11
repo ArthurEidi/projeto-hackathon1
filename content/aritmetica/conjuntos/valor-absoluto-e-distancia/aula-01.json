@@ -1,0 +1,562 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Valor Absoluto como Distância",
+  "subtitulo": "Distância não tem lado negativo",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "conjuntos",
+    "unidade": "valor-absoluto-e-distancia"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Posição x",
+      "resumo": "Lugar do ponto móvel na reta."
+    },
+    "c2": {
+      "nome": "Referência c",
+      "resumo": "Ponto a partir do qual medimos."
+    },
+    "c3": {
+      "nome": "Deslocamento x − c",
+      "resumo": "Diferença com sinal entre as posições."
+    },
+    "c4": {
+      "nome": "Distância d",
+      "resumo": "Comprimento não negativo entre os pontos."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 4],
+        "marcas": 1,
+        "pontos": [
+          {
+            "x": 0,
+            "cor": "c2",
+            "rotulo": "0"
+          }
+        ],
+        "ponto": {
+          "x": 0,
+          "arrastavel": true,
+          "passo": 1,
+          "cor": "c1",
+          "distanciaZero": true,
+          "corDistancia": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro x = 0, a distância é zero; ao ir até 2, quanto o segmento mede?",
+        "done": "Mede 2 porque há duas unidades entre a origem e o ponto."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Módulo também aparece em funções e equações; aqui medimos distância até zero e entre dois pontos."
+      }
+    },
+    {
+      "id": "espelhar-ponto",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 4],
+        "marcas": 1,
+        "pontos": [
+          {
+            "x": 0,
+            "cor": "c2",
+            "rotulo": "0"
+          },
+          {
+            "x": 2,
+            "cor": "muted",
+            "rotulo": "2"
+          }
+        ],
+        "ponto": {
+          "x": 2,
+          "arrastavel": true,
+          "passo": 1,
+          "cor": "c1",
+          "distanciaZero": true,
+          "corDistancia": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": -2
+      },
+      "lines": {
+        "intro": "Se você levar o ponto de 2 a −2, a distância fica negativa?",
+        "done": "Não; mede 2 de novo, por isso ∣−2∣ = 2, embora o deslocamento seja −2."
+      }
+    },
+    {
+      "id": "trocar-referencia",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 5],
+        "marcas": 1,
+        "pontos": [
+          {
+            "x": 1,
+            "cor": "c2",
+            "rotulo": "c = 1"
+          }
+        ],
+        "trechos": [
+          {
+            "de": -2,
+            "ate": 1,
+            "cor": "c4",
+            "rotulo": "d = 3"
+          }
+        ],
+        "ponto": {
+          "x": 1,
+          "arrastavel": true,
+          "passo": 1,
+          "cor": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": -2
+      },
+      "lines": {
+        "intro": "Com referência em 1, ir até −2 exige percorrer 1 ou 3 unidades? Arraste até −2.",
+        "done": "São 3; a diferença é −2 − 1 = −3, por isso a distância vale ∣−3∣ = 3."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Trocar os pontos muda a distância?",
+        "resposta": "Não; ∣x − c∣ = ∣c − x∣, pois apenas a direção da seta se inverte."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "prompt": "Qual é a distância entre −2 e 1?",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [-4, 4],
+          "marcas": 1,
+          "pontos": [
+            {
+              "x": -2,
+              "cor": "c1",
+              "rotulo": "−2"
+            },
+            {
+              "x": 1,
+              "cor": "c2",
+              "rotulo": "1"
+            }
+          ],
+          "trechos": [
+            {
+              "de": -2,
+              "ate": 1,
+              "cor": "c4",
+              "rotulo": "d = 3"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "A distância mede o comprimento do segmento, independentemente da direção."
+      },
+      "options": [
+        {
+          "id": "micro-acerto",
+          "label": "3",
+          "correct": true,
+          "feedback": "Certo: 3; ∣−2 − 1∣ = ∣−3∣ = 3.",
+          "override": {
+            "trechos": [
+              {
+                "de": -2,
+                "ate": 1,
+                "cor": "c4",
+                "rotulo": "d = 3"
+              }
+            ],
+            "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "micro-erro",
+          "label": "−3",
+          "correct": false,
+          "feedback": "Resposta: 3; −3 é o deslocamento; a distância é não negativa: ∣−2 − 1∣ = 3.",
+          "override": {
+            "trechos": [
+              {
+                "de": -2,
+                "ate": 1,
+                "cor": "c3",
+                "rotulo": "x − c = −3"
+              }
+            ],
+            "highlight": ["c3"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [-4, 4],
+          "marcas": 1,
+          "pontos": [
+            {
+              "x": -2,
+              "cor": "c1",
+              "rotulo": "x = −2"
+            },
+            {
+              "x": 1,
+              "cor": "c2",
+              "rotulo": "c = 1"
+            }
+          ],
+          "trechos": [
+            {
+              "de": -2,
+              "ate": 1,
+              "cor": "c4",
+              "rotulo": "d = 3"
+            }
+          ],
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "d", "ref": "c4" },
+        { "text": "(" },
+        { "text": "x", "ref": "c1" },
+        { "text": ";" },
+        { "text": "c", "ref": "c2" },
+        { "text": ")" },
+        { "text": "=" },
+        { "text": "∣" },
+        { "text": "x", "ref": "c1" },
+        { "text": "−" },
+        { "text": "c", "ref": "c2" },
+        { "text": "∣" }
+      ],
+      "definitions": [
+        {
+          "term": "Posição x",
+          "text": "Lugar do ponto móvel na reta."
+        },
+        {
+          "term": "Deslocamento x − c",
+          "text": "Diferença com sinal entre as posições."
+        },
+        {
+          "term": "Distância d",
+          "text": "Comprimento não negativo entre os pontos."
+        }
+      ],
+      "lines": {
+        "intro": "O sinal indica direção, não comprimento; a distância entre x e c é ∣x − c∣.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-valor-absoluto-e-distancia",
+        "prompt": "Qual é o módulo de −2?",
+        "options": [
+          {
+            "id": "f1-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; ∣−2∣ = 2."
+          },
+          {
+            "id": "f1-erro",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Resposta: 2; Módulo mede distância não negativa: ∣−2∣ = 2."
+          }
+        ]
+      },
+      {
+        "id": "f2-valor-absoluto-e-distancia",
+        "prompt": "Quanto vale ∣0∣?",
+        "options": [
+          {
+            "id": "f2-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; a distância de 0 a 0 é 0."
+          },
+          {
+            "id": "f2-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 0; A distância de zero até ele mesmo é zero: ∣0∣ = 0."
+          }
+        ]
+      },
+      {
+        "id": "f3-valor-absoluto-e-distancia",
+        "prompt": "2 e −2 estão à mesma distância de zero?",
+        "options": [
+          {
+            "id": "f3-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; ∣2∣ = ∣−2∣ = 2."
+          },
+          {
+            "id": "f3-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Resposta: Sim; O lado não altera a distância: ∣2∣ = ∣−2∣ = 2."
+          }
+        ]
+      },
+      {
+        "id": "f4-valor-absoluto-e-distancia",
+        "prompt": "A distância entre dois pontos pode ser negativa?",
+        "options": [
+          {
+            "id": "f4-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; por definição, distância é não negativa (∣x − c∣ ≥ 0)."
+          },
+          {
+            "id": "f4-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Resposta: Não; Deslocamento pode ter sinal, mas distância é sempre ≥ 0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-valor-absoluto-e-distancia",
+        "prompt": "Qual é a distância entre −2 e 1?",
+        "options": [
+          {
+            "id": "m1-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; ∣−2 − 1∣ = ∣−3∣ = 3."
+          },
+          {
+            "id": "m1-erro1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 3; A separação total é 2 + 1 = 3: ∣−2 − 1∣ = 3."
+          },
+          {
+            "id": "m1-erro2",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Resposta: 3; Distância é sempre não negativa: ∣−2 − 1∣ = 3."
+          }
+        ]
+      },
+      {
+        "id": "m2-valor-absoluto-e-distancia",
+        "prompt": "Qual é a distância entre 4 e 1?",
+        "options": [
+          {
+            "id": "m2-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; ∣4 − 1∣ = 3."
+          },
+          {
+            "id": "m2-erro1",
+            "label": "5",
+            "correct": false,
+            "feedback": "Resposta: 3; Distância é a subtração das posições: ∣4 − 1∣ = 3."
+          },
+          {
+            "id": "m2-erro2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 3; Do ponto 1 ao 4 são 3 unidades de distância: ∣4 − 1∣ = 3."
+          }
+        ]
+      },
+      {
+        "id": "m3-valor-absoluto-e-distancia",
+        "prompt": "Qual é o deslocamento de 1 para −2?",
+        "options": [
+          {
+            "id": "m3-certa",
+            "label": "−3",
+            "correct": true,
+            "feedback": "Certo: −3; deslocamento final menos inicial: −2 − 1 = −3."
+          },
+          {
+            "id": "m3-erro1",
+            "label": "3",
+            "correct": false,
+            "feedback": "Resposta: −3; 3 é a distância; o deslocamento para a esquerda é −3."
+          },
+          {
+            "id": "m3-erro2",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Resposta: −3; Calculando final menos inicial: −2 − 1 = −3."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-valor-absoluto-e-distancia",
+        "prompt": "Quais pontos na reta estão a 2 unidades de 1?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-certa",
+            "label": "−1 e 3",
+            "correct": true,
+            "feedback": "Certo: −1 e 3; 1 − 2 = −1 e 1 + 2 = 3."
+          },
+          {
+            "id": "d1-erro1",
+            "label": "1 e 3",
+            "correct": false,
+            "feedback": "Resposta: −1 e 3; Devemos somar e subtrair 2 da referência 1: −1 e 3."
+          },
+          {
+            "id": "d1-erro2",
+            "label": "−2 e 2",
+            "correct": false,
+            "feedback": "Resposta: −1 e 3; A referência é 1, não 0: 1 ± 2 dá −1 e 3."
+          }
+        ]
+      },
+      {
+        "id": "d2-valor-absoluto-e-distancia",
+        "prompt": "Se a distância entre x e 3 é zero, quanto vale x?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; ∣x − 3∣ = 0 ⇒ x = 3."
+          },
+          {
+            "id": "d2-erro1",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: 3; Distância zero significa pontos coincidentes: x = 3."
+          },
+          {
+            "id": "d2-erro2",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Resposta: 3; Resolvendo ∣x − 3∣ = 0 temos x = 3."
+          }
+        ]
+      },
+      {
+        "id": "d3-valor-absoluto-e-distancia",
+        "prompt": "Qual é a distância entre −0,5 e 1?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-certa",
+            "label": "1,5",
+            "correct": true,
+            "feedback": "Certo: 1,5; ∣−0,5 − 1∣ = ∣−1,5∣ = 1,5."
+          },
+          {
+            "id": "d3-erro1",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Resposta: 1,5; São 0,5 até a origem mais 1,0 até 1: total 1,5."
+          },
+          {
+            "id": "d3-erro2",
+            "label": "−1,5",
+            "correct": false,
+            "feedback": "Resposta: 1,5; A distância nunca é negativa: ∣−0,5 − 1∣ = 1,5."
+          }
+        ]
+      },
+      {
+        "id": "d4-valor-absoluto-e-distancia",
+        "prompt": "Para x < 0, a expressão ∣x∣ equivale a x ou −x?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-certa",
+            "label": "−x",
+            "correct": true,
+            "feedback": "Certo: −x; se x = −2, então −x = −(−2) = 2 (positivo)."
+          },
+          {
+            "id": "d4-erro1",
+            "label": "x",
+            "correct": false,
+            "feedback": "Resposta: −x; Se x é negativo, x seria negativo; a saída positiva é −x."
+          },
+          {
+            "id": "d4-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: −x; Para números não nulos, o módulo é positivo: −x."
+          }
+        ]
+      },
+      {
+        "id": "d5-valor-absoluto-e-distancia",
+        "prompt": "Uma pessoa vai de −2 a 1 e volta a 0. Qual distância percorre e qual deslocamento tem?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-certa",
+            "label": "4 e 2",
+            "correct": true,
+            "feedback": "Certo: 4 e 2; percurso = 3 + 1 = 4; deslocamento = 0 − (−2) = 2."
+          },
+          {
+            "id": "d5-erro1",
+            "label": "2 e 4",
+            "correct": false,
+            "feedback": "Resposta: 4 e 2; Distância percorrida é 4 e deslocamento resultante é 2."
+          },
+          {
+            "id": "d5-erro2",
+            "label": "3 e 0",
+            "correct": false,
+            "feedback": "Resposta: 4 e 2; Ela andou 3 até 1 e mais 1 até 0: total 4; posição final 0 − (−2) = 2."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

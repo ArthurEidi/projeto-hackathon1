@@ -28,6 +28,20 @@
                   "arquivo": null
                 }
               ]
+            },
+            {
+              "id": "valor-absoluto-e-distancia",
+              "titulo": "Valor absoluto como distância",
+              "icone": "conjunto",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Valor Absoluto como Distância",
+                  "subtitulo": "Distância não tem lado negativo",
+                  "arquivo": "aritmetica/conjuntos/valor-absoluto-e-distancia/aula-01.json"
+                }
+              ]
             }
           ]
         },

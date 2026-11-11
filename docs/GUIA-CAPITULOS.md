@@ -476,8 +476,9 @@ Arquivos: `common/grade/params.ts`, `calc.ts` (fatorial, arranjo, C(n, k), Pasca
 
 Chaves de casa nos dados: `"1,6"` (linha, coluna pelos rótulos); fila: `"6"`. Cores em `cores` (linhas c1, colunas c2, casa c3, A c1, B c2, interseção c3, fora/complemento c4).
 
-### 5.5 `ciclo_trigonometrico` (trigonometria) — pendente
-Ângulo por slider/arraste; projeções seno (vertical) e cosseno (horizontal) coloridas; sombra da função sendo traçada ao lado (liga ciclo ↔ gráfico, pilar 2); quadrantes e sinais (pilar 6, regra de sinais).
+### 5.5 `ciclo_trigonometrico` — PRONTO
+
+Ver §5.11.
 
 ### 5.6 `geometria_*` (plana) — pendente; dividido em `geometria_triangulo`, `geometria_poligono`, `geometria_circulo` (WIDGETS-PENDENTES 12–14)
 Polígonos com vértices arrastáveis, ângulo reto, medidas ao vivo, **quadrados sobre os lados** (generalizar `drawSection` de `ConeFigure.tsx`), malha quadriculada para contar área.
@@ -532,4 +533,37 @@ Exemplos (`params`):
 { "modo": "congruencia", "lados": [4, 5, 6] }
 { "modo": "notaveis", "figura": "equilatero", "L": 6, "cortar": "$cortar_eq" }
 { "modo": "semelhanca", "variante": "paralela", "lados": [6, 8, 10], "k": "$k", "giro": "$giro" }
+```
+
+### 5.11 `ciclo_trigonometrico` + `ciclo_trigonometrico_figura` — PRONTOS
+
+Arquivos: `common/ciclo/params.ts`, `calc.ts` (ângulo, quadrantes, soma, alvo, arco; testado), `desenho.ts`, `CicloTrigonometricoWidget.tsx`, `CicloTrigonometricoFigura.tsx`. Um só modo: circunferência de raio 1 com o ponto P(cos θ; sen θ); cada elemento liga por um campo. Valores numéricos aceitam `"$id"` (slider minúsculo); a figura só aceita números.
+
+| Campo | O que faz |
+|---|---|
+| `angulo` (graus, pode passar de 360 ou ser negativo) ou `rad` (radianos) | posição de P; `unidade: graus \| radianos \| ambos` escolhe o mostrador (30° = π/6) |
+| `arrastavel`, `passo` | o aluno arrasta P; o ângulo encaixa em múltiplos de `passo` graus |
+| `mostrar` | `seno`, `cosseno` (projeções c1 e c2, ligados por padrão), `tangente` (reta x = 1, c3), `secante`, `fita` (arco desenrolado em radianos), `voltas`, `simetricos` (retângulo dos 4 simétricos, em torno do `fantasma` se houver), `pitagorica` (triângulo + barra sen² + cos² = 1), `marcos` (eixos e 0, π/2, π, 3π/2) |
+| `soma: { alfa, beta }` + `blocos` | giros α (c1) e β (c2); P vai para α + β; barras sen(α + β) × sen α + sen β e, com `blocos` ≥ 1, sen α cos β + cos α sen β. Arco duplo: `alfa` e `beta` com o mesmo `"$id"` |
+| `alvo: { seno: k }` ou `{ cosseno: k }` | reta y = k (ou x = k) e os dois encontros, que o aluno toca para marcar; `marcadas: [0, 1]` já os marca (figura) |
+| `arco: { de, ate, abreDe, abreAte }` | arco solução aceso; extremo aberto = bolinha vazia |
+| `grafico: "sen" \| "cos"` | curva traçada ao lado, de 0 a 2π, ligada a P por uma linha tracejada |
+| `fantasma` (graus ou lista), `marcos_rad: [1, 2, 3]` | referências em cinza |
+| `quadrante` + `seno_fixo` | P no quadrante dado com \|sen\| = `seno_fixo` (o ângulo é calculado) |
+| `cores` | `seno` c1, `cosseno` c2, `tangente` c3, `arco`/`angulo`/`solucao`/`simetricos` c4, `alvo` c2, `fita` c2, `alfa` c1, `beta` c2, `soma` c3; `highlight: Marca[]` engrossa |
+
+**Métricas:** `angulo` (graus, total), `rad`, `x_rad`, `voltas`, `quadrantes` (visitados, 0..4), `quad` (quadrante atual), `seno`, `cosseno`, `tangente`, `dentro` (0/1, dentro do `arco`), `no_alvo` (0/1, P sobre um encontro; vale 390° = 30°), `solucoes_marcadas`, e com `soma`: `sen_soma`, `soma_senos`.
+
+Exemplos (`params`):
+```jsonc
+{ "angulo": "$angulo", "unidade": "ambos" }                                          // caso neutro: seno e cosseno de θ
+{ "rad": "$rad", "mostrar": { "fita": true, "seno": false, "cosseno": false }, "marcos_rad": [1, 2, 3] }
+{ "angulo": "$graus", "fantasma": 60, "mostrar": { "voltas": true } }                // arcos côngruos
+{ "angulo": "$theta", "fantasma": 30, "mostrar": { "simetricos": true } }
+{ "angulo": "$theta", "mostrar": { "tangente": true, "secante": true } }
+{ "angulo": "$theta", "mostrar": { "pitagorica": true } }                            // sen² + cos² = 1
+{ "soma": { "alfa": 30, "beta": "$beta" }, "blocos": "$mostrar_blocos" }
+{ "angulo": "$angulo", "alvo": { "seno": 0.5 }, "marcos_rad": [] }                   // equações: dois encontros
+{ "angulo": "$angulo", "arco": { "de": 30, "ate": 150 }, "alvo": { "seno": 0.5 } }   // inequações: dentro (0/1)
+{ "rad": "$x_rad*0.785398", "grafico": "sen" }                                       // ponto no ciclo traça y = sen x
 ```

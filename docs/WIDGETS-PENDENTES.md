@@ -286,7 +286,7 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 3 | `grade_resultados` (1) | 10 | **pronto** (GUIA §5.4) |
 | 4 | `solido_3d` (8 + 16) | 10 (+3 com `lugar_geometrico`) | em andamento |
 | 5 | `geometria_triangulo` (12) | 7 | **pronto** (GUIA §5.10) |
-| 6 | `ciclo_trigonometrico` (15) | 7 | pendente |
+| 6 | `ciclo_trigonometrico` (15) | 7 | **pronto** (GUIA §5.11) |
 | 7 | `geometria_poligono` (13) | 5 | pendente |
 | 8 | `lugar_geometrico` (6) | 3 | pendente |
 | 9 | `geometria_circulo` (14) | 3 | pendente |

@@ -2,6 +2,7 @@
 import { z } from "zod";
 import { CorTraco, Marca } from "../../ui/marcas";
 import * as barras from "./barras/params";
+import * as ciclo from "./ciclo/params";
 import * as grade from "./grade/params";
 import * as solido from "./solido/params";
 import * as triangulo from "./triangulo/params";
@@ -244,6 +245,7 @@ export const widgetParams = {
   ...grade.widgetParams,
   ...solido.widgetParams,
   ...triangulo.widgetParams,
+  ...ciclo.widgetParams,
 } as const;
 
 export const figureParams = {
@@ -253,4 +255,5 @@ export const figureParams = {
   ...grade.figureParams,
   ...solido.figureParams,
   ...triangulo.figureParams,
+  ...ciclo.figureParams,
 } as const;

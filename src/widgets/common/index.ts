@@ -3,6 +3,8 @@ import { BarrasFigura } from "./barras/BarrasFigura";
 import { BarrasWidget } from "./barras/BarrasWidget";
 import { GradeFigura } from "./grade/GradeFigura";
 import { GradeWidget } from "./grade/GradeWidget";
+import { CicloTrigonometricoFigura } from "./ciclo/CicloTrigonometricoFigura";
+import { CicloTrigonometricoWidget } from "./ciclo/CicloTrigonometricoWidget";
 import { GeometriaTrianguloFigura } from "./triangulo/GeometriaTrianguloFigura";
 import { GeometriaTrianguloWidget } from "./triangulo/GeometriaTrianguloWidget";
 import { SolidoFigura } from "./solido/SolidoFigura";
@@ -18,6 +20,7 @@ export const widgets = {
   grade_resultados: GradeWidget,
   solido_3d: SolidoWidget,
   geometria_triangulo: GeometriaTrianguloWidget,
+  ciclo_trigonometrico: CicloTrigonometricoWidget,
 };
 
 export const figures = {
@@ -27,4 +30,5 @@ export const figures = {
   grade_figura: GradeFigura,
   solido_3d_figura: SolidoFigura,
   geometria_triangulo_figura: GeometriaTrianguloFigura,
+  ciclo_trigonometrico_figura: CicloTrigonometricoFigura,
 };
