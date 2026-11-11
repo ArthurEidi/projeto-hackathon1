@@ -215,6 +215,20 @@
                   "arquivo": "aritmetica/contagem-probabilidade/probabilidade-uniao-e-intersecao/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "probabilidade-condicional",
+              "titulo": "Probabilidade condicional",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Pista que Encolhe a Grade",
+                  "subtitulo": "P(A dado B)",
+                  "arquivo": "aritmetica/contagem-probabilidade/probabilidade-condicional/aula-01.json"
+                }
+              ]
             }
           ]
         },

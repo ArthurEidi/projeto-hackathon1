@@ -1,0 +1,879 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Pista que Encolhe a Grade",
+  "subtitulo": "P(A dado B)",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "probabilidade-condicional"
+  },
+  "outro": "Você viu a pista encolher a grade: P(A dado B) conta A só dentro de B, e trocar a pista troca o total.",
+  "glossario": {
+    "c1": {
+      "nome": "Evento A",
+      "resumo": "O que queremos saber se aconteceu."
+    },
+    "c2": {
+      "nome": "Pista B",
+      "resumo": "O que já sabemos que aconteceu; vira a nova grade."
+    },
+    "c3": {
+      "nome": "A e B",
+      "resumo": "Casas da pista que também são A: o novo favorável."
+    },
+    "c4": {
+      "nome": "Casa eliminada",
+      "resumo": "Resultado que a pista tornou impossível."
+    }
+  },
+  "steps": [
+    {
+      "id": "sem-pista",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "etapas": 1,
+        "evento": {
+          "casas": [
+            "6"
+          ]
+        },
+        "a": {
+          "casas": [
+            "6"
+          ]
+        },
+        "regua": true,
+        "titulos": {
+          "linhas": "Faces"
+        }
+      },
+      "lines": {
+        "intro": "Alguém lançou um dado e escondeu o resultado. Sem nenhuma pista, qual a chance de ser 6?",
+        "done": "Uma casa de 6: 1/6. Sem pista, a grade inteira continua valendo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Uma pista sempre muda a chance?",
+        "resposta": "Nem sempre, e isso se chama independência. Hoje vemos como a pista encolhe a grade."
+      },
+      "complete_when": {
+        "metric": "marcadas_certas",
+        "gte": 1
+      }
+    },
+    {
+      "id": "pista-par",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "etapas": 1,
+        "a": {
+          "casas": [
+            "6"
+          ]
+        },
+        "b": {
+          "casas": [
+            "2",
+            "4",
+            "6"
+          ]
+        },
+        "chaves": [
+          "pista"
+        ],
+        "regua": true,
+        "titulos": {
+          "linhas": "Faces"
+        }
+      },
+      "lines": {
+        "intro": "Pista: o número é par. As casas ímpares ainda contam, e como fica a chance do 6?",
+        "done": "A grade encolheu para 3 casas, e o 6 é uma delas: 1/3. A pista mudou o total, não o favorável."
+      },
+      "complete_when": {
+        "metric": "pista_ligada",
+        "gte": 1
+      }
+    },
+    {
+      "id": "tabela-linha",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "tabela",
+        "linhas": [
+          {
+            "rotulo": "meninas",
+            "valores": [
+              15,
+              45
+            ]
+          },
+          {
+            "rotulo": "meninos",
+            "valores": [
+              10,
+              30
+            ]
+          }
+        ],
+        "colunas": [
+          "óculos",
+          "sem óculos"
+        ],
+        "evento_coluna": 0
+      },
+      "lines": {
+        "intro": "Há 60 meninas e 40 meninos; 15 meninas e 10 meninos usam óculos. Sabendo que é menina, qual a chance de usar óculos?",
+        "done": "A grade virou só a linha das meninas: 15 de 60, ou seja, 1/4."
+      },
+      "complete_when": {
+        "metric": "linha_meninas",
+        "gte": 1
+      }
+    },
+    {
+      "id": "inverter-a-pista",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "tabela",
+        "linhas": [
+          {
+            "rotulo": "meninas",
+            "valores": [
+              15,
+              45
+            ]
+          },
+          {
+            "rotulo": "meninos",
+            "valores": [
+              10,
+              30
+            ]
+          }
+        ],
+        "colunas": [
+          "óculos",
+          "sem óculos"
+        ]
+      },
+      "lines": {
+        "intro": "Agora ao contrário: sabendo que usa óculos, qual a chance de ser menina? Aposte antes: dá o mesmo 1/4?",
+        "done": "Não: a grade agora é a coluna, com 25 pessoas, e 15 são meninas: 3/5. Trocar a pista troca o total."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então a ordem do 'dado que' importa?",
+        "resposta": "Importa muito. P(A dado B) usa B como total; P(B dado A) usa A."
+      },
+      "complete_when": {
+        "metric": "coluna_oculos",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-soma-8",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": 6,
+          "colunas": "linhas",
+          "a": {
+            "linhas": [
+              "3"
+            ]
+          },
+          "b": {
+            "soma": [
+              8
+            ]
+          },
+          "titulos": {
+            "linhas": "1º dado",
+            "colunas": "2º dado"
+          }
+        }
+      },
+      "prompt": "Dois dados somaram 8. Qual a probabilidade de o primeiro dado ter dado 3?",
+      "lines": {
+        "intro": "Primeiro acenda as casas da pista; depois conte."
+      },
+      "options": [
+        {
+          "id": "a1-36",
+          "label": "1/36",
+          "correct": false,
+          "feedback": "1/36 usa a grade toda. Com a pista, sobram 5 casas de soma 8, e uma tem o 3: 1/5.",
+          "figure": {
+            "pista": true,
+            "regua": false
+          }
+        },
+        {
+          "id": "a1-6",
+          "label": "1/6",
+          "correct": false,
+          "feedback": "1/6 ignora a pista. Na soma 8 há 5 casas: 1/5.",
+          "figure": {
+            "pista": false,
+            "regua": true
+          }
+        },
+        {
+          "id": "a1-5",
+          "label": "1/5",
+          "correct": true,
+          "feedback": "Isso. 5 casas somam 8, e só (3, 5) começa com 3.",
+          "figure": {
+            "pista": true,
+            "regua": true,
+            "highlight": [
+              "c3"
+            ]
+          }
+        },
+        {
+          "id": "a5-36",
+          "label": "5/36",
+          "correct": false,
+          "feedback": "5/36 é a chance da soma 8 sem pista. Dentro dela: 1/5.",
+          "figure": {
+            "pista": false,
+            "mostrar": {
+              "uniao": false
+            },
+            "regua": false,
+            "highlight": [
+              "c2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "tabela",
+          "linhas": [
+            {
+              "rotulo": "meninas",
+              "valores": [
+                15,
+                45
+              ]
+            },
+            {
+              "rotulo": "meninos",
+              "valores": [
+                10,
+                30
+              ]
+            }
+          ],
+          "colunas": [
+            "óculos",
+            "sem óculos"
+          ],
+          "pista_linha": 0,
+          "evento_coluna": 0
+        }
+      },
+      "formula": [
+        {
+          "text": "P(A | B)"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "P(A ∩ B)",
+          "ref": "c3"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "P(B)",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Probabilidade condicional",
+          "text": "chance de A sabendo que B aconteceu."
+        },
+        {
+          "term": "Pista",
+          "text": "B vira o novo espaço amostral."
+        },
+        {
+          "term": "Ordem",
+          "text": "em geral, P(A | B) é diferente de P(B | A)."
+        }
+      ],
+      "lines": {
+        "intro": "A pista apaga o que não é B e deixa o resto com a mesma chance. Por isso dividimos a parte comum por B.",
+        "hint": "Toque em uma letra para ver que casas ela ocupa."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "seis-dado-maior-3",
+        "prompt": "Saiu um número maior que 3 num dado. Qual a probabilidade de ser 6?",
+        "options": [
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": true,
+            "feedback": "Isso. A pista deixa 4, 5 e 6, e o 6 é um deles."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "1/6 ignora a pista. Sobram 3 casas: 1/3."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Maior que 3 deixa 3 casas, não 2. P = 1/3."
+          },
+          {
+            "id": "a3-6",
+            "label": "3/6",
+            "correct": false,
+            "feedback": "3/6 é a chance da pista. Dentro dela, o 6 é 1 de 3."
+          }
+        ]
+      },
+      {
+        "id": "quem-ja-aconteceu",
+        "prompt": "Em P(A | B), qual evento já se sabe que aconteceu?",
+        "options": [
+          {
+            "id": "b",
+            "label": "B",
+            "correct": true,
+            "feedback": "Certo. O que vem depois da barra é a pista."
+          },
+          {
+            "id": "a",
+            "label": "A",
+            "correct": false,
+            "feedback": "A é o que queremos saber. A pista é B, depois da barra."
+          },
+          {
+            "id": "ambos",
+            "label": "Os dois",
+            "correct": false,
+            "feedback": "Só B é conhecido. A é o que estamos medindo."
+          },
+          {
+            "id": "nenhum",
+            "label": "Nenhum",
+            "correct": false,
+            "feedback": "A barra quer dizer 'sabendo que': B já aconteceu."
+          }
+        ]
+      },
+      {
+        "id": "urna-vermelha-1",
+        "prompt": "Uma urna tem bolas vermelhas numeradas de 1 a 4 e azuis de 1 a 6. Sabendo que saiu vermelha, qual a chance de ser 1?",
+        "options": [
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": true,
+            "feedback": "Isso. A pista deixa só as 4 vermelhas."
+          },
+          {
+            "id": "a1-10",
+            "label": "1/10",
+            "correct": false,
+            "feedback": "1/10 é a chance da vermelha 1 sem pista. Com a pista: 1/4."
+          },
+          {
+            "id": "a2-10",
+            "label": "2/10",
+            "correct": false,
+            "feedback": "As azuis saíram da conta. Entre as vermelhas: 1/4."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "6 são as azuis. Sabendo que é vermelha: 1/4."
+          }
+        ]
+      },
+      {
+        "id": "pista-inutil",
+        "prompt": "Uma pista que não elimina nenhuma casa muda a probabilidade?",
+        "options": [
+          {
+            "id": "nao",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo. Com a grade inteira, a conta é a mesma."
+          },
+          {
+            "id": "sim",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Se nada some, numerador e total ficam iguais: a chance não muda."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "pelo-menos-uma-cara-duas",
+        "prompt": "Duas moedas: sabendo que saiu pelo menos uma cara, qual a chance de terem saído duas?",
+        "options": [
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": true,
+            "feedback": "Isso. A pista deixa 3 casas, e KK é uma."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "A pista tira só CC, sobram 3 casas. P = 1/3."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "1/4 ignora a pista. Sem CC: 1/3."
+          },
+          {
+            "id": "a2-3",
+            "label": "2/3",
+            "correct": false,
+            "feedback": "2/3 é exatamente uma cara dentro da pista. Duas: 1/3."
+          }
+        ]
+      },
+      {
+        "id": "gosta-dado-menina",
+        "prompt": "Numa sala há 15 meninas, e 12 delas gostam de Matemática. Escolhida uma menina, qual a chance de gostar?",
+        "options": [
+          {
+            "id": "a4-5",
+            "label": "4/5",
+            "correct": true,
+            "feedback": "Certo. A pista é ser menina: 12 de 15."
+          },
+          {
+            "id": "a12-30",
+            "label": "12/30",
+            "correct": false,
+            "feedback": "A turma inteira saiu da conta. Entre as 15 meninas: 12/15 = 4/5."
+          },
+          {
+            "id": "a1-5",
+            "label": "1/5",
+            "correct": false,
+            "feedback": "1/5 são as que não gostam. Gostam: 4/5."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é a contagem. Dividindo por 15: 4/5."
+          }
+        ]
+      },
+      {
+        "id": "formula-condicional",
+        "prompt": "P(A e B) = 0,12 e P(B) = 0,4. Quanto vale P(A | B)?",
+        "options": [
+          {
+            "id": "a03",
+            "label": "0,3",
+            "correct": true,
+            "feedback": "Isso. 0,12 dividido por 0,4."
+          },
+          {
+            "id": "a0048",
+            "label": "0,048",
+            "correct": false,
+            "feedback": "Multiplicou em vez de dividir. 0,12 / 0,4 = 0,3."
+          },
+          {
+            "id": "a012",
+            "label": "0,12",
+            "correct": false,
+            "feedback": "0,12 é A e B. Dividindo pela pista: 0,3."
+          },
+          {
+            "id": "a052",
+            "label": "0,52",
+            "correct": false,
+            "feedback": "Não se soma aqui. P(A | B) = 0,12 / 0,4 = 0,3."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "soma-7-tem-6",
+        "prompt": "Dois dados somaram 7. Qual a probabilidade de um deles ser 6?",
+        "options": [
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": true,
+            "feedback": "Certo. 2 das 6 casas de soma 7 têm um 6."
+          },
+          {
+            "id": "a1-6",
+            "label": "1/6",
+            "correct": false,
+            "feedback": "(1, 6) e (6, 1) são duas casas. P = 2/6 = 1/3."
+          },
+          {
+            "id": "a11-36",
+            "label": "11/36",
+            "correct": false,
+            "feedback": "11/36 é pelo menos um 6 sem pista. Com a soma 7: 1/3."
+          },
+          {
+            "id": "a1-18",
+            "label": "1/18",
+            "correct": false,
+            "feedback": "1/18 usa a grade toda. Dentro da soma 7: 2/6 = 1/3."
+          }
+        ]
+      },
+      {
+        "id": "menina-dado-gosta",
+        "prompt": "Na sala, 18 gostam de Matemática, e 12 delas são meninas. Escolhido alguém que gosta, qual a chance de ser menina?",
+        "fala": "Agora a pista é gostar, não ser menina.",
+        "options": [
+          {
+            "id": "a2-3",
+            "label": "2/3",
+            "correct": true,
+            "feedback": "Isso. A pista são os 18; 12 são meninas."
+          },
+          {
+            "id": "a4-5",
+            "label": "4/5",
+            "correct": false,
+            "feedback": "4/5 é gostar sabendo que é menina. Invertendo a pista: 12/18 = 2/3."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "1/3 são os meninos entre os que gostam. Meninas: 2/3."
+          },
+          {
+            "id": "a12-30",
+            "label": "12/30",
+            "correct": false,
+            "feedback": "A pista tira quem não gosta. 12 de 18: 2/3."
+          }
+        ]
+      },
+      {
+        "id": "sem-reposicao",
+        "prompt": "Uma urna tem 3 brancas e 2 pretas; tira-se uma branca, que não volta. Qual a chance de a 2ª ser branca?",
+        "options": [
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Certo. Sobraram 2 brancas em 4 bolas."
+          },
+          {
+            "id": "a3-5",
+            "label": "3/5",
+            "correct": false,
+            "feedback": "3/5 é a primeira tirada. Sem reposição sobram 2 de 4: 1/2."
+          },
+          {
+            "id": "a2-5",
+            "label": "2/5",
+            "correct": false,
+            "feedback": "A urna agora tem 4 bolas, não 5. P = 2/4 = 1/2."
+          },
+          {
+            "id": "a3-10",
+            "label": "3/10",
+            "correct": false,
+            "feedback": "3/10 é branca e branca, antes de saber a primeira. Sabendo: 1/2."
+          }
+        ]
+      },
+      {
+        "id": "achar-intersecao",
+        "prompt": "P(A | B) = 0,5 e P(B) = 0,6. Quanto vale P(A e B)?",
+        "options": [
+          {
+            "id": "a03",
+            "label": "0,3",
+            "correct": true,
+            "feedback": "Isso. P(A e B) = P(A | B) · P(B)."
+          },
+          {
+            "id": "a083",
+            "label": "0,83",
+            "correct": false,
+            "feedback": "0,5 / 0,6 inverte a conta. Multiplicando: 0,3."
+          },
+          {
+            "id": "a11",
+            "label": "1,1",
+            "correct": false,
+            "feedback": "Não se soma. P(A e B) = 0,5 · 0,6 = 0,3."
+          },
+          {
+            "id": "a05",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "0,5 já é dentro de B. Na grade toda: 0,5 · 0,6 = 0,3."
+          }
+        ]
+      },
+      {
+        "id": "teste-positivo",
+        "prompt": "De 100 pessoas, 10 estão doentes; o teste dá positivo em 9 doentes e 9 saudáveis. Dado um positivo, qual a chance de doença?",
+        "fala": "Última. A pista é dar positivo: conte todos os positivos.",
+        "options": [
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Certo. 18 positivos, 9 doentes."
+          },
+          {
+            "id": "a9-10",
+            "label": "9/10",
+            "correct": false,
+            "feedback": "9/10 é positivo sabendo que é doente. Invertendo a pista: 9/18 = 1/2."
+          },
+          {
+            "id": "a1-10",
+            "label": "1/10",
+            "correct": false,
+            "feedback": "1/10 ignora a pista. Entre os positivos: 1/2."
+          },
+          {
+            "id": "a9-100",
+            "label": "9/100",
+            "correct": false,
+            "feedback": "9/100 é doente e positivo na grade toda. Dentro dos positivos: 1/2."
+          }
+        ]
+      }
+    ],
+    "vestibular": [
+      {
+        "id": "enem-2013-idiomas",
+        "prompt": "Escola de 1200 alunos: 600 falam inglês, 500 espanhol e 300 nenhum. Um aluno que não fala inglês: qual a chance de falar espanhol?",
+        "fala": "A pista é não falar inglês. Quantos alunos são?",
+        "options": [
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Isso. 600 não falam inglês, e 300 deles falam espanhol."
+          },
+          {
+            "id": "a5-8",
+            "label": "5/8",
+            "correct": false,
+            "feedback": "5/8 usa os 500 de espanhol, mas 200 deles falam inglês. Fora do inglês: 300/600 = 1/2."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "1/4 divide por 1200. A pista deixa 600 alunos: 300/600 = 1/2."
+          },
+          {
+            "id": "a5-6",
+            "label": "5/6",
+            "correct": false,
+            "feedback": "Dos 500 de espanhol, 200 falam inglês e saem da pista. Fica 300/600 = 1/2."
+          },
+          {
+            "id": "a5-14",
+            "label": "5/14",
+            "correct": false,
+            "feedback": "O total da pista é 600, os que não falam inglês. Deles, 300 falam espanhol: 1/2."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2013,
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (1/2) mantidos.",
+          "urls": [
+            "https://projetoagathaedu.com.br/questoes-enem/matematica-3/probabilidade/probabilidade-condicional.php"
+          ]
+        }
+      },
+      {
+        "id": "enem-2025-declaracoes",
+        "prompt": "Declarações: 20% inconsistentes, 25% delas fraude; das demais, 6,25% fraude. Dada uma fraude, qual a chance de ser inconsistente?",
+        "fala": "A pista é ser fraude. Some as fraudes dos dois grupos.",
+        "options": [
+          {
+            "id": "a005",
+            "label": "0,0500",
+            "correct": false,
+            "feedback": "0,05 é inconsistente e fraude na grade toda. Dentro das fraudes (0,10): 0,5."
+          },
+          {
+            "id": "a01",
+            "label": "0,1000",
+            "correct": false,
+            "feedback": "0,10 é o total de fraudes, a pista. A parte inconsistente é metade: 0,5."
+          },
+          {
+            "id": "a01125",
+            "label": "0,1125",
+            "correct": false,
+            "feedback": "As fraudes somam 0,05 + 0,05 = 0,10. Inconsistentes entre elas: 0,5."
+          },
+          {
+            "id": "a03125",
+            "label": "0,3125",
+            "correct": false,
+            "feedback": "0,25 + 0,0625 soma taxas de grupos diferentes. Pesando: 0,05 / 0,10 = 0,5."
+          },
+          {
+            "id": "a05",
+            "label": "0,5000",
+            "correct": true,
+            "feedback": "Isso. Cada grupo traz 0,05 de fraude: metade vem das inconsistentes."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (0,5000) mantidos.",
+          "urls": [
+            "https://projetoagathaedu.com.br/questoes-enem/matematica-3/probabilidade/probabilidade-condicional.php"
+          ]
+        }
+      },
+      {
+        "id": "enem-2021-ppl-maquinas",
+        "prompt": "Máquinas M1, M2 e M3 fazem 25%, 30% e 45% das peças, com 2%, 3% e 4% de defeito. Dada uma peça defeituosa, qual a chance de vir de M2?",
+        "fala": "Calcule quanto de defeito cada máquina produz no total.",
+        "options": [
+          {
+            "id": "a156",
+            "label": "15,6%",
+            "correct": false,
+            "feedback": "M2 gera 0,30 · 0,03 = 0,009 de 0,032 defeituosas: 28,1%."
+          },
+          {
+            "id": "a281",
+            "label": "28,1%",
+            "correct": true,
+            "feedback": "Isso. 0,009 / 0,032 ≈ 28,1%."
+          },
+          {
+            "id": "a437",
+            "label": "43,7%",
+            "correct": false,
+            "feedback": "Divida o defeito de M2 pelo total de defeitos: 0,009 / 0,032 ≈ 28,1%."
+          },
+          {
+            "id": "a562",
+            "label": "56,2%",
+            "correct": false,
+            "feedback": "A pista são as 0,032 defeituosas. M2 responde por 0,009: 28,1%."
+          },
+          {
+            "id": "a718",
+            "label": "71,8%",
+            "correct": false,
+            "feedback": "71,8% são as defeituosas que NÃO vêm de M2. De M2: 28,1%."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "edicao": "PPL",
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (28,1%) mantidos.",
+          "urls": [
+            "https://projetoagathaedu.com.br/questoes-enem/matematica-3/probabilidade/probabilidade-condicional.php"
+          ]
+        }
+      },
+      {
+        "id": "enem-2017-atraso",
+        "prompt": "Com chuva, a chance de atraso é 50%; sem chuva, 25%; a previsão dá 30% de chuva. Qual a chance de atraso?",
+        "fala": "Última. Some o atraso dos dois caminhos: com e sem chuva.",
+        "options": [
+          {
+            "id": "a0075",
+            "label": "0,075",
+            "correct": false,
+            "feedback": "Faltou o caminho com chuva (0,15). Somando: 0,15 + 0,175 = 0,325."
+          },
+          {
+            "id": "a015",
+            "label": "0,150",
+            "correct": false,
+            "feedback": "0,15 é só o atraso com chuva. Sem chuva entra mais 0,175: 0,325."
+          },
+          {
+            "id": "a0325",
+            "label": "0,325",
+            "correct": true,
+            "feedback": "Certo. 0,3 · 0,5 + 0,7 · 0,25 = 0,325."
+          },
+          {
+            "id": "a06",
+            "label": "0,600",
+            "correct": false,
+            "feedback": "Não se somam as taxas 0,5 e 0,25 direto. Pesando pela chuva: 0,325."
+          },
+          {
+            "id": "a08",
+            "label": "0,800",
+            "correct": false,
+            "feedback": "0,8 soma taxas e chance de chuva. A conta pesada dá 0,325."
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2017,
+          "adaptada": true,
+          "adaptacao": "enunciado resumido; alternativas e gabarito (0,325) mantidos.",
+          "urls": [
+            "https://projetoagathaedu.com.br/questoes-enem/matematica-3/probabilidade/teorema-da-probabilidade-total.php"
+          ]
+        }
+      }
+    ]
+  }
+}
