@@ -963,16 +963,16 @@
               ]
             },
             {
-              "id": "ciclo-trigonometrico",
-              "titulo": "Ciclo Trigonométrico",
+              "id": "radianos-e-ciclo-trigonometrico",
+              "titulo": "Graus, radianos e ciclo trigonométrico",
               "icone": "circulo",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "A Volta Completa",
-                  "subtitulo": "Ângulos no ciclo e seus sinais",
-                  "arquivo": null
+                  "titulo": "O Raio que Mede a Curva",
+                  "subtitulo": "Do grau ao radiano e às voltas no ciclo",
+                  "arquivo": "geometria/trigonometria/radianos-e-ciclo-trigonometrico/aula-01.json"
                 }
               ]
             },
