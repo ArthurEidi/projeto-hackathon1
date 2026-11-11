@@ -1,0 +1,288 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Inequações Modulares",
+  "subtitulo": "Dentro ou fora do alcance",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "inequacoes-modulares"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": { "nome": "Entrada x", "resumo": "Posição testada na reta numérica." },
+    "c2": { "nome": "Raio r", "resumo": "Limite da distância permitida." },
+    "c3": { "nome": "Distância", "resumo": "Comprimento entre a entrada e o centro." },
+    "c4": { "nome": "Região-solução", "resumo": "Interior ou exterior aceito pela comparação." }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 4],
+        "marcas": 1,
+        "trechos": [
+          { "de": 0, "ate": 0, "cor": "c4", "rotulo": "|x| ≤ 0" }
+        ],
+        "pontos": [
+          { "x": 0, "cor": "c4", "rotulo": "0" }
+        ],
+        "ponto": { "x": 1, "passo": 1, "arrastavel": true, "distanciaZero": true, "corDistancia": "c3" }
+      },
+      "lines": {
+        "intro": "No caso neutro |x| ≤ 0, o trecho tem largura? Arraste até a origem.",
+        "done": "Não; só o zero tem distância menor ou igual a zero."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Distâncias podem ser menores ou maiores que um limite; aqui distinguimos interior, exterior e extremos."
+      },
+      "complete_when": { "metric": "dentro", "gte": 1 }
+    },
+    {
+      "id": "abrir-interior",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-4, 4],
+        "marcas": 1,
+        "trechos": [
+          { "de": -2, "ate": 2, "abreDe": true, "abreAte": true, "cor": "c4", "rotulo": "|x| < 2" }
+        ],
+        "pontos": [
+          { "x": -2, "cor": "c4", "rotulo": "-2", "aberto": true },
+          { "x": 2, "cor": "c4", "rotulo": "2", "aberto": true }
+        ],
+        "ponto": { "x": -3, "passo": 1, "arrastavel": true, "distanciaZero": true, "corDistancia": "c3" }
+      },
+      "lines": {
+        "intro": "Em |x| < 2, a fronteira 2 entra? Leve o ponto até 0.",
+        "done": "Não; a distância deve ser menor que 2, por isso −2 < x < 2."
+      },
+      "complete_when": { "metric": "dentro", "gte": 1 }
+    },
+    {
+      "id": "trocar-para-exterior",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-5, 5],
+        "marcas": 1,
+        "trechos": [
+          { "de": null, "ate": -2, "cor": "c4", "rotulo": "x ≤ −2" },
+          { "de": 2, "ate": null, "cor": "c4", "rotulo": "x ≥ 2" }
+        ],
+        "pontos": [
+          { "x": -2, "cor": "c4", "rotulo": "-2" },
+          { "x": 2, "cor": "c4", "rotulo": "2" }
+        ],
+        "ponto": { "x": 0, "passo": 1, "arrastavel": true, "distanciaZero": true, "corDistancia": "c3" }
+      },
+      "lines": {
+        "intro": "Se pedirmos |x| ≥ 2, o centro ainda serve? Arraste até 2.",
+        "done": "Não; serve o exterior, incluindo −2 e 2, porque a distância mínima pedida é 2."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que aparece ou no exterior?",
+        "resposta": "Cada ponto pode estar à esquerda ou à direita; não precisa ocupar os dois lados ao mesmo tempo."
+      },
+      "complete_when": { "metric": "dentro", "gte": 1 }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [-4, 4],
+          "marcas": 1,
+          "trechos": [
+            { "de": -2, "ate": 2, "abreDe": true, "abreAte": true, "cor": "c4" }
+          ],
+          "pontos": [
+            { "x": -2, "cor": "c4", "rotulo": "-2", "aberto": true },
+            { "x": 2, "cor": "c4", "rotulo": "2", "aberto": true }
+          ]
+        }
+      },
+      "prompt": "Qual conjunto resolve |x| < 2?",
+      "lines": {
+        "intro": "Pense se os extremos entram ou ficam de fora."
+      },
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "[−2; 2]",
+          "correct": false,
+          "feedback": "Você incluiu a igualdade; o certo é (−2; 2), com os extremos abertos.",
+          "figure": {
+            "pontos": [
+              { "x": -2, "cor": "c4", "rotulo": "-2" },
+              { "x": 2, "cor": "c4", "rotulo": "2" }
+            ]
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "(−2; 2)",
+          "correct": true,
+          "feedback": "Certo: (−2; 2). A distância ao zero deve ser estritamente menor que 2.",
+          "figure": {
+            "trechos": [
+              { "de": -2, "ate": 2, "abreDe": true, "abreAte": true, "cor": "c4" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [-4, 4],
+          "marcas": 1,
+          "trechos": [
+            { "de": -2, "ate": 2, "abreDe": true, "abreAte": true, "cor": "c4" }
+          ],
+          "pontos": [
+            { "x": 0, "cor": "ink", "rotulo": "c" },
+            { "x": -2, "cor": "c4", "rotulo": "c−r", "aberto": true },
+            { "x": 2, "cor": "c4", "rotulo": "c+r", "aberto": true }
+          ]
+        }
+      },
+      "formula": [
+        { "text": "|x", "ref": "c1" },
+        { "text": "− c| < r", "ref": "c2" },
+        { "text": "⇔" },
+        { "text": "c − r < x < c + r", "ref": "c4" },
+        { "text": "(r > 0)" }
+      ],
+      "definitions": [
+        { "term": "Entrada x", "text": "Posição testada na reta numérica." },
+        { "term": "Distância", "text": "Comprimento entre a entrada e o centro c." },
+        { "term": "Região-solução", "text": "Interior ou exterior aceito pela comparação." }
+      ],
+      "lines": {
+        "intro": "A distância limita o deslocamento nos dois sentidos. Por isso o interior fica entre c − r e c + r.",
+        "hint": "Toque em uma letra para ver seu significado."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-inequacoes-modulares",
+        "prompt": "Em |x| < 2, o ponto 2 entra na solução?",
+        "options": [
+          { "id": "f1-erro", "label": "Sim", "correct": false, "feedback": "O sinal estrito exclui a fronteira. O certo é Não, pois |2| = 2." },
+          { "id": "f1-certa", "label": "Não", "correct": true, "feedback": "Certo: Não, pois |2| = 2 não é menor que 2." }
+        ]
+      },
+      {
+        "id": "f2-inequacoes-modulares",
+        "prompt": "Em |x| ≥ 2, o centro zero entra na solução?",
+        "options": [
+          { "id": "f2-certa", "label": "Não", "correct": true, "feedback": "Certo: Não, pois |0| = 0 < 2." },
+          { "id": "f2-erro", "label": "Sim", "correct": false, "feedback": "Você escolheu o interior em vez do exterior. O certo é Não." }
+        ]
+      },
+      {
+        "id": "f3-inequacoes-modulares",
+        "prompt": "O conjunto |x| ≤ 0 contém quantos pontos?",
+        "options": [
+          { "id": "f3-certa", "label": "1", "correct": true, "feedback": "Certo: 1, pois apenas x = 0 tem distância zero." },
+          { "id": "f3-erro", "label": "0", "correct": false, "feedback": "A igualdade admite a distância zero. O certo é 1: apenas x = 0." }
+        ]
+      },
+      {
+        "id": "f4-inequacoes-modulares",
+        "prompt": "Em |x − 1| < 2, qual é o centro da desigualdade?",
+        "options": [
+          { "id": "f4-certa", "label": "1", "correct": true, "feedback": "Certo: 1, pois x − 1 zera em x = 1." },
+          { "id": "f4-erro", "label": "−1", "correct": false, "feedback": "Você trocou o sinal do centro. O certo é 1, pois x − 1 = 0 em x = 1." }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-inequacoes-modulares",
+        "prompt": "Resolva |x| ≤ 3.",
+        "options": [
+          { "id": "m1-certa", "label": "[−3; 3]", "correct": true, "feedback": "Certo: [−3; 3], incluindo as fronteiras −3 e 3." },
+          { "id": "m1-erro", "label": "(−3; 3)", "correct": false, "feedback": "Você excluiu a igualdade. O certo é [−3; 3], com extremos inclusos." }
+        ]
+      },
+      {
+        "id": "m2-inequacoes-modulares",
+        "prompt": "Resolva |x − 1| < 2.",
+        "options": [
+          { "id": "m2-certa", "label": "(−1; 3)", "correct": true, "feedback": "Certo: (−1; 3), pois 1 − 2 < x < 1 + 2." },
+          { "id": "m2-erro", "label": "(−2; 2)", "correct": false, "feedback": "Você esqueceu de deslocar o centro 1. O certo é (−1; 3)." }
+        ]
+      },
+      {
+        "id": "m3-inequacoes-modulares",
+        "prompt": "Resolva |x| > 1.",
+        "options": [
+          { "id": "m3-certa", "label": "x < −1 ou x > 1", "correct": true, "feedback": "Certo: x < −1 ou x > 1, ou seja, o exterior de [−1; 1]." },
+          { "id": "m3-erro", "label": "−1 < x < 1", "correct": false, "feedback": "Você escolheu o interior. O certo é o exterior: x < −1 ou x > 1." }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-inequacoes-modulares",
+        "prompt": "Resolva |2x − 1| ≤ 1.",
+        "fala": "Abra a desigualdade dupla −1 ≤ 2x − 1 ≤ 1 e some 1 em tudo.",
+        "options": [
+          { "id": "d1-certa", "label": "[0; 1]", "correct": true, "feedback": "Certo: [0; 1], pois −1 ≤ 2x − 1 ≤ 1 leva a 0 ≤ 2x ≤ 2 e 0 ≤ x ≤ 1." },
+          { "id": "d1-erro", "label": "[−1; 1]", "correct": false, "feedback": "Você ignorou a escala e o deslocamento. O certo é [0; 1]." }
+        ]
+      },
+      {
+        "id": "d2-inequacoes-modulares",
+        "prompt": "Resolva |x − 2| < 0.",
+        "fala": "Lembre que o módulo de um número real nunca é estritamente negativo.",
+        "options": [
+          { "id": "d2-certa", "label": "∅", "correct": true, "feedback": "Certo: ∅, pois o módulo é sempre maior ou igual a zero." },
+          { "id": "d2-erro", "label": "{2}", "correct": false, "feedback": "Desigualdade estrita não aceita zero. O certo é ∅." }
+        ]
+      },
+      {
+        "id": "d3-inequacoes-modulares",
+        "prompt": "Resolva |x| ≤ −1.",
+        "fala": "Pense se uma distância pode ser menor ou igual a −1.",
+        "options": [
+          { "id": "d3-certa", "label": "∅", "correct": true, "feedback": "Certo: ∅, pois |x| ≥ 0 nunca é menor ou igual a −1." },
+          { "id": "d3-erro", "label": "[−1; 1]", "correct": false, "feedback": "Você trocou o raio negativo por positivo. O certo é ∅." }
+        ]
+      },
+      {
+        "id": "d4-inequacoes-modulares",
+        "prompt": "Resolva |2x| < 1.",
+        "fala": "Escreva −1 < 2x < 1 e divida por 2.",
+        "options": [
+          { "id": "d4-certa", "label": "(−0,5; 0,5)", "correct": true, "feedback": "Certo: (−0,5; 0,5), pois −1 < 2x < 1 dá −0,5 < x < 0,5." },
+          { "id": "d4-erro", "label": "(−2; 2)", "correct": false, "feedback": "Você multiplicou o limite em vez de dividir. O certo é (−0,5; 0,5)." }
+        ]
+      },
+      {
+        "id": "d5-inequacoes-modulares",
+        "prompt": "Uma peça mede x cm e deve ficar a no máximo 0,5 cm de 2 cm. Qual intervalo é aceito?",
+        "fala": "Monte |x − 2| ≤ 0,5.",
+        "options": [
+          { "id": "d5-certa", "label": "[1,5; 2,5]", "correct": true, "feedback": "Certo: [1,5; 2,5], pois 2 − 0,5 ≤ x ≤ 2 + 0,5." },
+          { "id": "d5-erro", "label": "(1,5; 2,5)", "correct": false, "feedback": "A tolerância máxima admite igualdade. O certo é [1,5; 2,5]." }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

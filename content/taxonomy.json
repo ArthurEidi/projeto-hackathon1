@@ -624,6 +624,20 @@
                   "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-quadraticas/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "inequacoes-modulares",
+              "titulo": "Inequações modulares",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações Modulares",
+                  "subtitulo": "Dentro ou fora do alcance",
+                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-modulares/aula-01.json"
+                }
+              ]
             }
           ]
         },
