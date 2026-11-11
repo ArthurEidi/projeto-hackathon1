@@ -808,9 +808,9 @@
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Um Terço do Prisma",
-                  "subtitulo": "Volume da pirâmide",
-                  "arquivo": null
+                  "titulo": "Três Pirâmides num Prisma",
+                  "subtitulo": "Apótemas, área lateral e o fator 1/3",
+                  "arquivo": "geometria/geometria-espacial/piramides/aula-01.json"
                 }
               ]
             },

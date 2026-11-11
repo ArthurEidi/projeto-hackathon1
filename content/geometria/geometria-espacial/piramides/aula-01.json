@@ -1,0 +1,551 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Três Pirâmides num Prisma",
+  "subtitulo": "Apótemas, área lateral e o fator 1/3",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-espacial",
+    "unidade": "piramides"
+  },
+  "outro": "Você dominou o triângulo retângulo dos apótemas, a planificação das faces e o fator 1/3 no volume da pirâmide.",
+  "glossario": {
+    "c1": {
+      "nome": "Altura (h)",
+      "resumo": "Distância vertical do vértice até o centro da base."
+    },
+    "c2": {
+      "nome": "Apótema da base (m)",
+      "resumo": "Distância do centro da base até o meio de um lado."
+    },
+    "c3": {
+      "nome": "Apótema da pirâmide (a_p)",
+      "resumo": "Altura inclinada da face lateral: a_p² = h² + m²."
+    },
+    "c4": {
+      "nome": "Volume (V)",
+      "resumo": "Um terço do prisma de mesma base e altura: A_b · h / 3."
+    }
+  },
+  "steps": [
+    {
+      "id": "nasce-o-apotema",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "piramide",
+        "L": 6,
+        "h": "$h",
+        "apotemas": true,
+        "cores": { "h": "c1", "m": "c2", "ap": "c3", "volume": "c4" }
+      },
+      "controls": [
+        {
+          "id": "h",
+          "label": "Altura da pirâmide (h)",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Com h = 0, o vértice está no chão a m = 3 da borda. Puxe até h = 4: a rampa da parede mede 4 ou mais?",
+        "done": "Mede 5! A altura h = 4 desce reta pelo meio, mas a parede desce inclinada: 3² + 4² = 5²."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Essa altura inclinada da parede tem nome?",
+        "resposta": "Sim: é o apótema da pirâmide (a_p). É a altura da face triangular da parede e hipotenusa de h e m."
+      },
+      "complete_when": {
+        "metric": "h",
+        "gte": 4
+      }
+    },
+    {
+      "id": "abrir-paredes",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "piramide",
+        "L": 6,
+        "h": 4,
+        "abrir": "$abrir / 100",
+        "cores": { "h": "c1", "m": "c2", "ap": "c3", "volume": "c4" }
+      },
+      "controls": [
+        {
+          "id": "abrir",
+          "label": "Abrir as 4 faces",
+          "min": 0,
+          "max": 100,
+          "step": 25,
+          "initial": 0,
+          "unit": "%",
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Ao abrir as 4 faces triangulares no chão em volta da base 6 × 6, qual é a altura de cada triângulo?",
+        "done": "Cada triângulo tem base 6 e altura 5 (o apótema a_p). A área lateral é 4 · (6 · 5)/2 = 60."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que não usamos a altura h = 4 na área da face?",
+        "resposta": "Porque h passa pelo ar no centro da pirâmide; quem sobe pela superfície da face é o apótema a_p = 5."
+      },
+      "complete_when": {
+        "metric": "abrir",
+        "gte": 100
+      }
+    },
+    {
+      "id": "tres-num-prisma",
+      "type": "interactive_canvas",
+      "widget": "solido_3d",
+      "params": {
+        "modo": "piramide",
+        "L": 6,
+        "h": 4,
+        "dividir": "$dividir / 100",
+        "cores": { "h": "c1", "m": "c2", "ap": "c3", "volume": "c4" }
+      },
+      "controls": [
+        {
+          "id": "dividir",
+          "label": "Separar as 3 pirâmides",
+          "min": 0,
+          "max": 100,
+          "step": 25,
+          "initial": 0,
+          "unit": "%",
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Dentro de um prisma de base 6 × 6 e altura 4 (volume 144), quantas pirâmides iguais cabem?",
+        "done": "Cabem exatamente 3 pirâmides idênticas! Cada uma tem volume 144 ÷ 3 = 48."
+      },
+      "complete_when": {
+        "metric": "dividir",
+        "gte": 100
+      }
+    },
+    {
+      "id": "desafio-piramide",
+      "type": "micro_challenge",
+      "prompt": "Uma pirâmide regular de base quadrada tem lado da base 6 cm e altura 4 cm. Qual é o seu volume?",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "piramide",
+          "L": 6,
+          "h": 4,
+          "apotemas": true,
+          "cores": { "h": "c1", "m": "c2", "ap": "c3", "volume": "c4" }
+        }
+      },
+      "lines": {
+        "intro": "A base quadrada mede 6 × 6 e a altura vertical é 4."
+      },
+      "options": [
+        {
+          "id": "v48",
+          "label": "48 cm³",
+          "correct": true,
+          "feedback": "Exato. A base tem 6² = 36 cm²; V = (36 · 4) / 3 = 144 / 3 = 48 cm³.",
+          "figure": {
+            "modo": "piramide",
+            "L": 6,
+            "h": 4,
+            "highlight": ["c1", "c4"]
+          }
+        },
+        {
+          "id": "v144",
+          "label": "144 cm³",
+          "correct": false,
+          "feedback": "144 cm³ é o volume do prisma inteiro! A pirâmide ocupa 1/3 dele: 144 / 3 = 48 cm³.",
+          "figure": {
+            "modo": "piramide",
+            "L": 6,
+            "h": 4,
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "v60",
+          "label": "60 cm³",
+          "correct": false,
+          "feedback": "60 é a área lateral (4 faces triangulares). O volume é A_b · h / 3 = 48 cm³.",
+          "figure": {
+            "modo": "piramide",
+            "L": 6,
+            "h": 4,
+            "highlight": ["c3"]
+          }
+        },
+        {
+          "id": "v24",
+          "label": "24 cm³",
+          "correct": false,
+          "feedback": "Você multiplicou o perímetro 24 por 4 e dividiu por 4. Use A_b = 36: 36·4/3 = 48 cm³.",
+          "figure": {
+            "modo": "piramide",
+            "L": 6,
+            "h": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solido_3d_figura",
+        "params": {
+          "modo": "piramide",
+          "L": 6,
+          "h": 4,
+          "apotemas": true,
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "a_p", "sup": "2", "ref": "c3" },
+        { "text": "=" },
+        { "text": "h", "sup": "2", "ref": "c1" },
+        { "text": "+" },
+        { "text": "m", "sup": "2", "ref": "c2" },
+        { "text": ";" },
+        { "text": "V", "ref": "c4" },
+        { "text": "=" },
+        { "text": "(A_b · h) / 3" }
+      ],
+      "definitions": [
+        {
+          "term": "Apótema da pirâmide",
+          "text": "Altura inclinada da face triangular, a_p² = h² + m²."
+        },
+        {
+          "term": "Volume da pirâmide",
+          "text": "Terça parte do prisma de mesma base e altura: V = A_b·h / 3."
+        },
+        {
+          "term": "Área total",
+          "text": "Soma da área da base poligonal com a área de todas as faces laterais."
+        }
+      ],
+      "lines": {
+        "intro": "O apótema a_p governa as faces inclinadas e o fator 1/3 governa o volume.",
+        "hint": "Toque nas letras coloridas para destacar cada elemento."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Por que o apótema da pirâmide é sempre maior que a altura?",
+        "resposta": "Porque a_p é a hipotenusa do triângulo retângulo interno formado por h e m."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "faces-piramide-quadrada",
+        "prompt": "Quantas faces e quantos vértices tem uma pirâmide de base quadrada?",
+        "options": [
+          {
+            "id": "f5v5",
+            "label": "5 faces e 5 vértices",
+            "correct": true,
+            "feedback": "Isso. São 4 faces triangulares + 1 base quadrada (5 faces) e 4 cantos + 1 topo (5 vértices)."
+          },
+          {
+            "id": "f4v4",
+            "label": "4 faces e 4 vértices",
+            "correct": false,
+            "feedback": "4 faces e 4 vértices formam um tetraedro. A pirâmide de base quadrada tem 5 faces e 5 vértices."
+          },
+          {
+            "id": "f5v8",
+            "label": "5 faces e 8 vértices",
+            "correct": false,
+            "feedback": "8 é o número de arestas (4 na base + 4 subindo). A pirâmide tem 5 vértices e 5 faces."
+          }
+        ]
+      },
+      {
+        "id": "fator-um-terco",
+        "prompt": "Um prisma e uma pirâmide têm a mesma base e a mesma altura. O volume da pirâmide é:",
+        "options": [
+          {
+            "id": "v_terco",
+            "label": "1/3 do volume do prisma",
+            "correct": true,
+            "feedback": "Exato. Cabem exatamente 3 pirâmides de mesmo volume dentro do prisma correspondente."
+          },
+          {
+            "id": "v_metade",
+            "label": "1/2 do volume do prisma",
+            "correct": false,
+            "feedback": "Não é metade; as seções afunilam em 3D, acumulando exatamente 1/3 do volume do prisma."
+          },
+          {
+            "id": "v_quarto",
+            "label": "1/4 do volume do prisma",
+            "correct": false,
+            "feedback": "O fator correto em 3 dimensões é 1/3: V = (A_b · h) / 3."
+          }
+        ]
+      },
+      {
+        "id": "qual-altura-na-face",
+        "prompt": "Para calcular a área de uma face triangular da parede da pirâmide, usamos como altura:",
+        "options": [
+          {
+            "id": "a_apotema",
+            "label": "O apótema da pirâmide (a_p)",
+            "correct": true,
+            "feedback": "Correto. O apótema a_p é o segmento que sobe inclinado pelo meio da face triangular."
+          },
+          {
+            "id": "a_altura_h",
+            "label": "A altura vertical h",
+            "correct": false,
+            "feedback": "A altura h passa pelo meio do sólido no ar. Na face inclinada, a altura do triângulo é a_p."
+          },
+          {
+            "id": "a_aresta_l",
+            "label": "A aresta lateral l",
+            "correct": false,
+            "feedback": "A aresta lateral l é um dos lados do triângulo; a altura relativa à base é o apótema a_p."
+          }
+        ]
+      },
+      {
+        "id": "triangulo-interno-pitagoras",
+        "prompt": "No triângulo retângulo interno da pirâmide regular, a hipotenusa é:",
+        "options": [
+          {
+            "id": "h_apotema_p",
+            "label": "O apótema da pirâmide (a_p)",
+            "correct": true,
+            "feedback": "Exato. Os catetos são a altura h e o apótema da base m; a hipotenusa é a_p: a_p² = h² + m²."
+          },
+          {
+            "id": "h_altura",
+            "label": "A altura h",
+            "correct": false,
+            "feedback": "A altura h desce na vertical e forma 90° com a base; portanto h é um cateto, não a hipotenusa."
+          },
+          {
+            "id": "h_apotema_b",
+            "label": "O apótema da base m",
+            "correct": false,
+            "feedback": "O apótema da base m está no chão e é cateto; a hipotenusa inclinada é o apótema a_p."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "calculo-apotema-345",
+        "prompt": "Uma pirâmide regular de base quadrada tem apótema da base m = 3 cm e altura h = 4 cm. Quanto mede a_p?",
+        "options": [
+          {
+            "id": "ap5",
+            "label": "5 cm",
+            "correct": true,
+            "feedback": "Exato. Pela terna 3-4-5, a_p = √(3² + 4²) = √(9 + 16) = √25 = 5 cm."
+          },
+          {
+            "id": "ap7",
+            "label": "7 cm",
+            "correct": false,
+            "feedback": "Não some 3 + 4. Aplique Pitágoras: a_p = √(3² + 4²) = √25 = 5 cm."
+          },
+          {
+            "id": "ap25",
+            "label": "25 cm",
+            "correct": false,
+            "feedback": "25 é a_p²; tirando a raiz quadrada, temos a_p = 5 cm."
+          }
+        ]
+      },
+      {
+        "id": "achar-altura-por-pitagoras",
+        "prompt": "Numa pirâmide regular de base quadrada, temos m = 6 cm e apótema a_p = 10 cm. Qual é a altura vertical h?",
+        "options": [
+          {
+            "id": "h8",
+            "label": "8 cm",
+            "correct": true,
+            "feedback": "Isso. Pelo triângulo retângulo, h = √(10² − 6²) = √(100 − 36) = √64 = 8 cm."
+          },
+          {
+            "id": "h4",
+            "label": "4 cm",
+            "correct": false,
+            "feedback": "Você subtraiu 10 − 6. Por Pitágoras, h = √(100 − 36) = √64 = 8 cm."
+          },
+          {
+            "id": "h16",
+            "label": "16 cm",
+            "correct": false,
+            "feedback": "Você somou 10 + 6. Como h é cateto, subtraímos os quadrados: √(100 − 36) = 8 cm."
+          }
+        ]
+      },
+      {
+        "id": "volume-pelo-apotema",
+        "prompt": "Na pirâmide de base quadrada de lado 6 cm (m = 3 cm) e apótema a_p = 5 cm, qual é o seu volume?",
+        "options": [
+          {
+            "id": "v48",
+            "label": "48 cm³",
+            "correct": true,
+            "feedback": "Isso. Primeiro h = √(5² − 3²) = 4 cm; depois V = (36 · 4) / 3 = 48 cm³."
+          },
+          {
+            "id": "v60",
+            "label": "60 cm³",
+            "correct": false,
+            "feedback": "Você usou a_p = 5 no lugar da altura h = 4. O certo é (36 · 4) / 3 = 48 cm³."
+          },
+          {
+            "id": "v144",
+            "label": "144 cm³",
+            "correct": false,
+            "feedback": "Faltou dividir por 3: V = (36 · 4) / 3 = 48 cm³."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "area-total-pelos-dados-base-h",
+        "prompt": "Uma pirâmide regular tem base quadrada de lado 6 cm e altura 4 cm. Qual é a sua área total?",
+        "fala": "Ache primeiro a_p por Pitágoras (3-4-5) para calcular as 4 faces!",
+        "options": [
+          {
+            "id": "a96",
+            "label": "96 cm²",
+            "correct": true,
+            "feedback": "Exato. Com a_p = 5, as 4 faces somam 60 cm² e a base tem 36 cm²: 60 + 36 = 96 cm²."
+          },
+          {
+            "id": "a60",
+            "label": "60 cm²",
+            "correct": false,
+            "feedback": "60 cm² é só a área lateral. Somando a base quadrada 6² = 36 cm², dá 96 cm²."
+          },
+          {
+            "id": "a84",
+            "label": "84 cm²",
+            "correct": false,
+            "feedback": "Você usou h = 4 nas faces em vez de a_p = 5. Com a_p = 5, A_t = 36 + 60 = 96 cm²."
+          }
+        ]
+      },
+      {
+        "id": "aresta-lateral-piramide",
+        "prompt": "Numa pirâmide de base quadrada de lado 6 cm e apótema a_p = 4 cm, quanto mede a aresta lateral l?",
+        "options": [
+          {
+            "id": "l5",
+            "label": "5 cm",
+            "correct": true,
+            "feedback": "Certo. Na face triangular, a_p = 4 e metade da base (3) formam 90°: l = √(4² + 3²) = 5 cm."
+          },
+          {
+            "id": "l4",
+            "label": "4 cm",
+            "correct": false,
+            "feedback": "4 cm é o apótema no meio da face; até a quina é a hipotenusa: √(4² + 3²) = 5 cm."
+          },
+          {
+            "id": "l7",
+            "label": "7 cm",
+            "correct": false,
+            "feedback": "Não some 4 + 3; use Pitágoras na metade da face: √(16 + 9) = 5 cm."
+          }
+        ]
+      },
+      {
+        "id": "tetraedro-regular-area",
+        "prompt": "Um tetraedro regular tem 4 faces congruentes de área 5 cm² cada. Qual é a sua área total?",
+        "options": [
+          {
+            "id": "a20",
+            "label": "20 cm²",
+            "correct": true,
+            "feedback": "Isso. O tetraedro regular tem 4 faces triangulares idênticas: 4 · 5 = 20 cm²."
+          },
+          {
+            "id": "a15",
+            "label": "15 cm²",
+            "correct": false,
+            "feedback": "15 cm² são só as 3 faces laterais; contando a base também são 4 · 5 = 20 cm²."
+          },
+          {
+            "id": "a25",
+            "label": "25 cm²",
+            "correct": false,
+            "feedback": "O tetraedro tem 4 faces (não 5): 4 · 5 = 20 cm²."
+          }
+        ]
+      },
+      {
+        "id": "dobrar-lado-base-piramide",
+        "prompt": "Ao dobrar o lado da base quadrada mantendo a mesma altura h, o volume da pirâmide é multiplicado por:",
+        "options": [
+          {
+            "id": "k4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Exato. Dobrar o lado quadruplica a área da base (2² = 4), logo o volume quadruplica."
+          },
+          {
+            "id": "k2",
+            "label": "2",
+            "correct": false,
+            "feedback": "A base é bidimensional: dobrar o lado multiplica a área da base e o volume por 2² = 4."
+          },
+          {
+            "id": "k8",
+            "label": "8",
+            "correct": false,
+            "feedback": "Multiplicaria por 8 se a altura também dobrasse. Com h fixa, multiplica por 4."
+          }
+        ]
+      },
+      {
+        "id": "octaedro-duas-piramides",
+        "prompt": "Um octaedro une duas pirâmides quadrangulares iguais base com base (lado 6 cm e h = 4 cm). Qual é o volume?",
+        "fala": "Calcule o volume de uma pirâmide e multiplique por 2!",
+        "options": [
+          {
+            "id": "v96",
+            "label": "96 cm³",
+            "correct": true,
+            "feedback": "Exato. Cada pirâmide tem (36·4)/3 = 48 cm³; juntas, as duas somam 2·48 = 96 cm³."
+          },
+          {
+            "id": "v48",
+            "label": "48 cm³",
+            "correct": false,
+            "feedback": "48 cm³ é uma pirâmide só. Como o octaedro junta duas iguais, 2·48 = 96 cm³."
+          },
+          {
+            "id": "v288",
+            "label": "288 cm³",
+            "correct": false,
+            "feedback": "Faltou dividir por 3 no volume de cada pirâmide: 2 · (36·4)/3 = 96 cm³."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
