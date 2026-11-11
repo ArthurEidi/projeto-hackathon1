@@ -1,0 +1,612 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Seno, Cosseno e Tangente no Ciclo",
+  "subtitulo": "Sombras nos eixos · Seno, cosseno, tangente e simetrias nos quatro quadrantes",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "trigonometria",
+    "unidade": "seno-cosseno-tangente-no-ciclo"
+  },
+  "outro": "Você leu seno, cosseno e tangente no ciclo, descobriu os sinais nos 4 quadrantes e viu por que tg 90° não existe.",
+  "glossario": {
+    "c1": {
+      "nome": "Seno (eixo y)",
+      "resumo": "Coordenada vertical do ponto no ciclo unitário: varia de −1 a 1."
+    },
+    "c2": {
+      "nome": "Cosseno (eixo x)",
+      "resumo": "Coordenada horizontal do ponto no ciclo unitário: varia de −1 a 1."
+    },
+    "c3": {
+      "nome": "Tangente (reta x = 1)",
+      "resumo": "Altura onde a reta do raio corta a tangente vertical: vale sen θ / cos θ."
+    },
+    "c4": {
+      "nome": "Arco simétrico",
+      "resumo": "Arco correspondente no 1º quadrante com mesmos módulos de seno e cosseno."
+    }
+  },
+  "steps": [
+    {
+      "id": "partida-e-1q",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$theta",
+        "mostrar": {
+          "seno": true,
+          "cosseno": true,
+          "tangente": false,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Ângulo θ",
+          "min": 0,
+          "max": 90,
+          "step": 30,
+          "initial": 0,
+          "cor": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "theta",
+        "gte": 90
+      },
+      "lines": {
+        "intro": "Em 0°, P está em (1; 0): cosseno 1 e seno 0. Suba θ até 90°: o que acontece com a sombra horizontal (cosseno) e a vertical (seno)?",
+        "done": "Em 90°, P chega a (0; 1): cos 90° = 0 e sen 90° = 1. No ciclo de raio 1, cosseno é o x do ponto e seno é o y."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então agora seno e cosseno podem dar zero ou negativo?",
+        "resposta": "Sim: como são coordenadas x e y no plano, ganham o sinal do quadrante e mais adiante viram ondas."
+      }
+    },
+    {
+      "id": "simetria-4-quadrantes",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$theta",
+        "fantasma": 30,
+        "mostrar": {
+          "seno": true,
+          "cosseno": true,
+          "simetricos": true,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Ângulo θ",
+          "min": 30,
+          "max": 330,
+          "step": 60,
+          "initial": 30,
+          "cor": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "theta",
+        "gte": 330
+      },
+      "lines": {
+        "intro": "Em 30°, sen = 0,5 e cos ≈ 0,87. Passe por 150°, 210° e 330°: os números mudam ou só os sinais?",
+        "done": "Só os sinais mudam: em 150° temos sen > 0 e cos < 0; em 210° ambos são negativos; em 330° só o cosseno é positivo."
+      }
+    },
+    {
+      "id": "reta-tangente-e-90",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$theta",
+        "mostrar": {
+          "seno": true,
+          "cosseno": true,
+          "tangente": true,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Ângulo θ",
+          "min": 0,
+          "max": 135,
+          "step": 45,
+          "initial": 45,
+          "cor": "c3"
+        }
+      ],
+      "complete_when": {
+        "metric": "theta",
+        "gte": 135
+      },
+      "lines": {
+        "intro": "Em 45° o raio corta a reta tangente na altura 1. Leve θ a 90° e depois a 135°: onde o raio corta a reta em 90°?",
+        "done": "Em 90° o raio fica paralelo à reta tangente e cos 90° = 0, por isso tg 90° não existe. Em 135°, corta em −1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que no 3º quadrante a tangente volta a ser positiva?",
+        "resposta": "Porque no 3º quadrante seno e cosseno são ambos negativos, e negativo dividido por negativo dá positivo."
+      }
+    },
+    {
+      "id": "desafio-reduzir-150",
+      "type": "micro_challenge",
+      "prompt": "Sabendo que em 30° temos sen 30° = 1/2 e cos 30° = √3/2, quanto valem sen 150° e cos 150°?",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 150,
+          "fantasma": 30,
+          "mostrar": {
+            "seno": true,
+            "cosseno": true,
+            "simetricos": true,
+            "marcos": true
+          },
+          "highlight": ["c1", "c2"]
+        }
+      },
+      "lines": {
+        "intro": "Olhe para que lado estão o x (cosseno) e o y (seno) do ponto de 150°."
+      },
+      "options": [
+        {
+          "id": "spcm",
+          "label": "1/2 e −√3/2",
+          "correct": true,
+          "feedback": "Isso. No 2º quadrante y > 0 (seno positivo) e x < 0 (cosseno negativo).",
+          "override": {
+            "highlight": ["c1", "c2"]
+          }
+        },
+        {
+          "id": "smcp",
+          "label": "−1/2 e √3/2",
+          "correct": false,
+          "feedback": "Resposta: 1/2 e −√3/2; No 2º quadrante o y (seno) é positivo e o x (cosseno) é negativo."
+        },
+        {
+          "id": "spcp",
+          "label": "1/2 e √3/2",
+          "correct": false,
+          "feedback": "Resposta: 1/2 e −√3/2; Em 150° o ponto está à esquerda do eixo y, então cos 150° é negativo: −√3/2."
+        },
+        {
+          "id": "smcm",
+          "label": "−1/2 e −√3/2",
+          "correct": false,
+          "feedback": "Resposta: 1/2 e −√3/2; Ambos negativos é no 3º quadrante (210°). Em 150° o seno é +1/2 e o cosseno é −√3/2."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 60,
+          "fantasma": 30,
+          "mostrar": {
+            "seno": true,
+            "cosseno": true,
+            "tangente": true,
+            "simetricos": true,
+            "marcos": true
+          },
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "P = (" },
+        { "text": "cos θ", "ref": "c2" },
+        { "text": ";" },
+        { "text": "sen θ", "ref": "c1" },
+        { "text": ");" },
+        { "text": "tg θ", "ref": "c3" },
+        { "text": "=" },
+        { "text": "sen θ", "ref": "c1" },
+        { "text": "/" },
+        { "text": "cos θ", "ref": "c2" }
+      ],
+      "definitions": [
+        {
+          "term": "Seno (y)",
+          "text": "Positivo no 1º e 2º quadrantes; negativo no 3º e 4º."
+        },
+        {
+          "term": "Cosseno (x)",
+          "text": "Positivo no 1º e 4º quadrantes; negativo no 2º e 3º."
+        },
+        {
+          "term": "Tangente (y/x)",
+          "text": "Positiva no 1º e 3º quadrantes; não existe em 90° e 270°."
+        }
+      ],
+      "lines": {
+        "intro": "Cosseno e seno são as coordenadas x e y no ciclo de raio 1, por isso seus sinais vêm diretamente dos quadrantes.",
+        "hint": "Toque em cada razão na fórmula para ver seu eixo no ciclo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "cosseno-180",
+        "prompt": "No ciclo trigonométrico, o ângulo de 180° fica no ponto (−1; 0). Quanto valem cos 180° e sen 180°?",
+        "options": [
+          {
+            "id": "m1e0",
+            "label": "−1 e 0",
+            "correct": true,
+            "feedback": "Certo. Cosseno é o x (−1) e seno é o y (0)."
+          },
+          {
+            "id": "z0em1",
+            "label": "0 e −1",
+            "correct": false,
+            "feedback": "Resposta: −1 e 0; 0 e −1 são de 270°. Em 180° o ponto é (−1; 0): cos = −1 e sen = 0."
+          },
+          {
+            "id": "p1e0",
+            "label": "1 e 0",
+            "correct": false,
+            "feedback": "Resposta: −1 e 0; 1 e 0 são de 0°. Em 180° estamos na esquerda: cos 180° = −1 e sen 180° = 0."
+          },
+          {
+            "id": "m1em1",
+            "label": "−1 e −1",
+            "correct": false,
+            "feedback": "Resposta: −1 e 0; Em 180° o ponto está sobre o eixo x: cos = −1 e sen = 0."
+          }
+        ]
+      },
+      {
+        "id": "sinais-2-quadrante",
+        "prompt": "Para um ângulo θ do 2º quadrante (entre 90° e 180°), os sinais de sen θ e cos θ são:",
+        "options": [
+          {
+            "id": "pm",
+            "label": "+ e −",
+            "correct": true,
+            "feedback": "Isso. No 2º quadrante estamos acima do eixo x (sen > 0) e à esquerda do eixo y (cos < 0)."
+          },
+          {
+            "id": "mp",
+            "label": "− e +",
+            "correct": false,
+            "feedback": "Resposta: + e −; − e + ocorrem no 4º quadrante. No 2º quadrante, sen é + e cos é −."
+          },
+          {
+            "id": "mm",
+            "label": "− e −",
+            "correct": false,
+            "feedback": "Resposta: + e −; − e − ocorrem no 3º quadrante. No 2º quadrante, sen é + e cos é −."
+          },
+          {
+            "id": "pp",
+            "label": "+ e +",
+            "correct": false,
+            "feedback": "Resposta: + e −; + e + ocorrem no 1º quadrante. No 2º quadrante, sen é + e cos é −."
+          }
+        ]
+      },
+      {
+        "id": "seno-270",
+        "prompt": "Quanto vale sen 270° (ou sen 3π/2)?",
+        "options": [
+          {
+            "id": "sm1",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Exato. Em 270° estamos no ponto mais baixo do ciclo: y = −1."
+          },
+          {
+            "id": "s0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: −1; 0 é o cos 270°. A ordenada vertical em 270° é sen 270° = −1."
+          },
+          {
+            "id": "sp1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: −1; 1 é sen 90° (no topo). Em 270°, sen 270° = −1."
+          },
+          {
+            "id": "ne",
+            "label": "Não existe",
+            "correct": false,
+            "feedback": "Resposta: −1; Quem não existe em 270° é a tangente. O seno vale −1."
+          }
+        ]
+      },
+      {
+        "id": "tangente-sinal-3q",
+        "prompt": "No 3º quadrante, sen θ é negativo e cos θ é negativo. Qual é o sinal de tg θ?",
+        "options": [
+          {
+            "id": "pos",
+            "label": "Positivo",
+            "correct": true,
+            "feedback": "Certo. Negativo dividido por negativo dá positivo."
+          },
+          {
+            "id": "neg",
+            "label": "Negativo",
+            "correct": false,
+            "feedback": "Resposta: Positivo; Como sen θ < 0 e cos θ < 0, a divisão sen θ / cos θ fica positiva."
+          },
+          {
+            "id": "zero",
+            "label": "Zero",
+            "correct": false,
+            "feedback": "Resposta: Positivo; Tangente só é zero em 0° e 180°. No 3º quadrante ela é positiva."
+          },
+          {
+            "id": "ind",
+            "label": "Indefinido",
+            "correct": false,
+            "feedback": "Resposta: Positivo; No 3º quadrante cos θ ≠ 0, e (−)/(−) dá tangente positiva."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "valor-cos-120",
+        "prompt": "Sabendo que cos 60° = 1/2, quanto vale cos 120°?",
+        "options": [
+          {
+            "id": "cm05",
+            "label": "−1/2",
+            "correct": true,
+            "feedback": "Isso. 120° é simétrico de 60° no 2º quadrante, onde o cosseno é negativo: −1/2."
+          },
+          {
+            "id": "cp05",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Resposta: −1/2; 120° está no 2º quadrante (x negativo), então cos 120° = −1/2."
+          },
+          {
+            "id": "cmr3",
+            "label": "−√3/2",
+            "correct": false,
+            "feedback": "Resposta: −1/2; √3/2 é o sen 60°. O simétrico de cos 60° no 2º quadrante vale −1/2."
+          },
+          {
+            "id": "cpr3",
+            "label": "√3/2",
+            "correct": false,
+            "feedback": "Resposta: −1/2; √3/2 é sen 120°. Para o cosseno no 2º quadrante: cos 120° = −1/2."
+          }
+        ]
+      },
+      {
+        "id": "valor-tg-225",
+        "prompt": "Sabendo que tg 45° = 1, quanto vale tg 225°?",
+        "options": [
+          {
+            "id": "tp1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo. 225° = 180° + 45° fica no 3º quadrante, onde a tangente é positiva: 1."
+          },
+          {
+            "id": "tm1",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Resposta: 1; No 3º quadrante seno e cosseno têm o mesmo sinal, então tg 225° = +1."
+          },
+          {
+            "id": "t0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: 1; 225° é o simétrico de 45° no 3º quadrante, logo tg 225° = 1."
+          },
+          {
+            "id": "tr2",
+            "label": "√2/2",
+            "correct": false,
+            "feedback": "Resposta: 1; √2/2 é o módulo do seno e cosseno; a divisão deles em 225° dá 1."
+          }
+        ]
+      },
+      {
+        "id": "qual-quadrante",
+        "prompt": "Se sen θ < 0 e cos θ > 0, em qual quadrante está o arco θ?",
+        "options": [
+          {
+            "id": "q4",
+            "label": "4º quadrante",
+            "correct": true,
+            "feedback": "Exato. Direita (x > 0) e abaixo (y < 0) formam o 4º quadrante."
+          },
+          {
+            "id": "q2",
+            "label": "2º quadrante",
+            "correct": false,
+            "feedback": "Resposta: 4º quadrante; No 2º quadrante sen > 0 e cos < 0."
+          },
+          {
+            "id": "q3",
+            "label": "3º quadrante",
+            "correct": false,
+            "feedback": "Resposta: 4º quadrante; No 3º quadrante o cosseno também é negativo."
+          },
+          {
+            "id": "q1",
+            "label": "1º quadrante",
+            "correct": false,
+            "feedback": "Resposta: 4º quadrante; No 1º quadrante ambos são positivos."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "seno-330-rad",
+        "prompt": "Quanto vale sen(11π/6), sabendo que π/6 = 30° e sen 30° = 0,5?",
+        "options": [
+          {
+            "id": "sm05",
+            "label": "−0,5",
+            "correct": true,
+            "feedback": "Isso. 11π/6 é 330° (simétrico de 30° no 4º Q), onde o seno vale −0,5."
+          },
+          {
+            "id": "sp05",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Resposta: −0,5; 11π/6 está no 4º quadrante (y negativo), então sen(11π/6) = −0,5."
+          },
+          {
+            "id": "pr3",
+            "label": "√3/2",
+            "correct": false,
+            "feedback": "Resposta: −0,5; √3/2 é cos(11π/6). Para o seno no 4º quadrante, o valor é −0,5."
+          },
+          {
+            "id": "mr3",
+            "label": "−√3/2",
+            "correct": false,
+            "feedback": "Resposta: −0,5; O arco de referência é π/6 (30°), cujo seno tem módulo 0,5: −0,5."
+          }
+        ]
+      },
+      {
+        "id": "duas-solucoes-seno",
+        "prompt": "Quantos arcos θ em [0°; 360°[ satisfazem sen θ = 1/2, e quais são?",
+        "options": [
+          {
+            "id": "d30e150",
+            "label": "Dois: 30° e 150°",
+            "correct": true,
+            "feedback": "Certo. A linha y = 1/2 corta o ciclo em 30° (1º Q) e em 150° (2º Q)."
+          },
+          {
+            "id": "u30",
+            "label": "Apenas um: 30°",
+            "correct": false,
+            "feedback": "Resposta: Dois: 30° e 150°; No 2º quadrante a altura y também é +1/2: são dois arcos."
+          },
+          {
+            "id": "d30e330",
+            "label": "Dois: 30° e 330°",
+            "correct": false,
+            "feedback": "Resposta: Dois: 30° e 150°; Em 330° o seno é −1/2. Para sen = 1/2: 30° e 150°."
+          },
+          {
+            "id": "d30e210",
+            "label": "Dois: 30° e 210°",
+            "correct": false,
+            "feedback": "Resposta: Dois: 30° e 150°; Em 210° o seno é −1/2. Os dois arcos com sen = +1/2 são 30° e 150°."
+          }
+        ]
+      },
+      {
+        "id": "fronteira-tangente-inexistente",
+        "prompt": "Para quais valores de θ em [0; 2π[ a razão tg θ = sen θ / cos θ NÃO está definida?",
+        "options": [
+          {
+            "id": "p2e3p2",
+            "label": "π/2 e 3π/2",
+            "correct": true,
+            "feedback": "Exato. Em 90° (π/2) e 270° (3π/2) temos cos θ = 0, e não se divide por zero."
+          },
+          {
+            "id": "z0ep",
+            "label": "0 e π",
+            "correct": false,
+            "feedback": "Resposta: π/2 e 3π/2; Em 0 e π temos sen θ = 0, então tg θ = 0. O problema é cos θ = 0."
+          },
+          {
+            "id": "sop2",
+            "label": "Apenas π/2",
+            "correct": false,
+            "feedback": "Resposta: π/2 e 3π/2; Em 3π/2 (270°) o cosseno também é zero: ela não existe em π/2 e 3π/2."
+          },
+          {
+            "id": "todos",
+            "label": "Existe para todos",
+            "correct": false,
+            "feedback": "Resposta: π/2 e 3π/2; Em π/2 e 3π/2 o cosseno vale zero e o raio fica paralelo à tangente."
+          }
+        ]
+      },
+      {
+        "id": "expressao-eixos",
+        "prompt": "Quanto vale a expressão E = sen 90° + cos 180° − sen 270° + cos 0°?",
+        "options": [
+          {
+            "id": "e2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Isso. E = 1 + (−1) − (−1) + 1 = 2."
+          },
+          {
+            "id": "e0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: 2; Cuidado com −sen 270° = −(−1) = +1. A conta é 1 − 1 + 1 + 1 = 2."
+          },
+          {
+            "id": "e4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 2; cos 180° é −1, não +1: 1 + (−1) − (−1) + 1 = 2."
+          },
+          {
+            "id": "em2",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Resposta: 2; sen 90° = 1, cos 180° = −1, sen 270° = −1 e cos 0° = 1: soma = 2."
+          }
+        ]
+      },
+      {
+        "id": "simetria-soma-zero",
+        "prompt": "Quanto vale a soma cos 40° + cos 140° + sen 210°?",
+        "paco": "Compare 40° e 140°: eles são suplementares (somam 180°).",
+        "options": [
+          {
+            "id": "sm05",
+            "label": "−0,5",
+            "correct": true,
+            "feedback": "Exato. cos 140° = −cos 40° (cancelam-se), e sobra sen 210° = −0,5."
+          },
+          {
+            "id": "sp05",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Resposta: −0,5; cos 40° + cos 140° = 0, mas 210° está no 3º quadrante: sen 210° = −0,5."
+          },
+          {
+            "id": "s0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: −0,5; cos 40° + cos 140° zera, mas falta somar sen 210° = −0,5."
+          },
+          {
+            "id": "s15",
+            "label": "−1,5",
+            "correct": false,
+            "feedback": "Resposta: −0,5; Por simetria, cos 140° = −cos 40° (soma 0); sobra apenas sen 210° = −0,5."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
