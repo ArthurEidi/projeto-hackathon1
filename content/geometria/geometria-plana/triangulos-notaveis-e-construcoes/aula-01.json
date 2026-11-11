@@ -1,0 +1,520 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Triângulos Notáveis e Construções",
+  "subtitulo": "Metade do quadrado e do equilátero · 45°-45°-90°, 30°-60°-90° e lugares geométricos",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "triangulos-notaveis-e-construcoes"
+  },
+  "outro": "Você deduziu os triângulos notáveis a partir do quadrado e do equilátero e construiu mediatrizes e bissetrizes.",
+  "glossario": {
+    "c1": {
+      "nome": "Diagonal do quadrado",
+      "resumo": "Hipotenusa do triângulo 45°-45°-90° de catetos L e L: vale L√2."
+    },
+    "c2": {
+      "nome": "Cateto de 30°",
+      "resumo": "Lado oposto ao ângulo de 30°: vale metade da hipotenusa (L/2)."
+    },
+    "c3": {
+      "nome": "Altura do equilátero",
+      "resumo": "Lado oposto a 60° no triângulo 30°-60°-90°: vale L√3/2."
+    },
+    "c4": {
+      "nome": "Mediatriz e bissetriz",
+      "resumo": "Pontos equidistantes de 2 pontos (mediatriz) ou de 2 lados (bissetriz)."
+    }
+  },
+  "steps": [
+    {
+      "id": "metade-do-quadrado",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "notaveis",
+        "figura": "quadrado",
+        "L": "$l",
+        "diagonal": true,
+        "fantasma": true
+      },
+      "controls": [
+        {
+          "id": "l",
+          "label": "Lado do quadrado (L)",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "cor": "c1"
+        }
+      ],
+      "complete_when": {
+        "metric": "l",
+        "gte": 5
+      },
+      "lines": {
+        "intro": "No quadrado de lado 1, a diagonal mede √(1² + 1²) = √2. Aumente o lado L até 5: quanto passa a medir a diagonal?",
+        "done": "Mede 5√2! Todo triângulo 45°-45°-90° é metade de um quadrado, por isso sua hipotenusa vale sempre L√2."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E quando os ângulos são 30° e 60° em vez de 45°?",
+        "resposta": "Aí ele vem da metade de um triângulo equilátero, cortado ao meio pela altura!"
+      }
+    },
+    {
+      "id": "metade-do-equilatero",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "notaveis",
+        "figura": "equilatero",
+        "L": 6,
+        "cortar": "$cortar"
+      },
+      "controls": [
+        {
+          "id": "cortar",
+          "label": "Cortar ao meio",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "cor": "c3"
+        }
+      ],
+      "complete_when": {
+        "metric": "cortar",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Cortando o equilátero de lado 6 ao meio, o topo vira 30°. Quanto medem a metade da base e a altura?",
+        "done": "Oposto a 30° mede metade da hipotenusa (L/2 = 3), e oposto a 60° mede L√3/2 = 3√3!"
+      }
+    },
+    {
+      "id": "mediatriz-e-bissetriz",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "notaveis",
+        "figura": "mediatriz",
+        "ab": 6,
+        "raio": "$raio"
+      },
+      "controls": [
+        {
+          "id": "raio",
+          "label": "Abrir compasso (r)",
+          "min": 2,
+          "max": 5,
+          "step": 1,
+          "initial": 2,
+          "cor": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "raio",
+        "gte": 5
+      },
+      "lines": {
+        "intro": "Com raio r = 2, menor que metade de AB = 6, os círculos não se tocam. Aumente r até 5: que reta passa pelos cruzamentos?",
+        "done": "Nasce a mediatriz! Como os raios a partir de A e B são iguais, todo ponto dessa reta está à mesma distância de A e B."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E para ficar à mesma distância de duas retas que formam esquina?",
+        "resposta": "Traça-se a bissetriz, que divide o ângulo da esquina exatamente ao meio!"
+      }
+    },
+    {
+      "id": "desafio-triangulo-30-60",
+      "type": "micro_challenge",
+      "prompt": "Em um triângulo retângulo de ângulos 30° e 60° e hipotenusa 10 cm, quanto medem o cateto oposto a 30° e o oposto a 60°?",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "notaveis",
+          "figura": "equilatero",
+          "L": 10,
+          "cortar": 1,
+          "highlight": ["c2", "c3"]
+        }
+      },
+      "lines": {
+        "intro": "Lembre que esse triângulo é metade de um equilátero de lado 10 cm!"
+      },
+      "options": [
+        {
+          "id": "c55r3",
+          "label": "5 cm e 5√3 cm",
+          "correct": true,
+          "feedback": "Exato. Oposto a 30° é metade da hipotenusa (5 cm), e oposto a 60° é L√3/2 = 5√3 cm.",
+          "override": {
+            "highlight": ["c2", "c3"]
+          }
+        },
+        {
+          "id": "c5r35",
+          "label": "5√3 cm e 5 cm",
+          "correct": false,
+          "feedback": "Resposta: 5 cm e 5√3 cm; O menor ângulo (30°) enxerga o menor lado (5 cm), e o de 60° enxerga 5√3 cm."
+        },
+        {
+          "id": "c55r2",
+          "label": "5 cm e 5√2 cm",
+          "correct": false,
+          "feedback": "Resposta: 5 cm e 5√3 cm; √2 é na diagonal do quadrado (45°). No 30°-60°-90° usamos √3: 5 cm e 5√3 cm."
+        },
+        {
+          "id": "c10r3",
+          "label": "10 cm e 10√3 cm",
+          "correct": false,
+          "feedback": "Resposta: 5 cm e 5√3 cm; Faltou dividir por 2: L/2 = 5 cm e L√3/2 = 5√3 cm."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "notaveis",
+          "figura": "quadrado",
+          "L": 4,
+          "diagonal": true,
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "d = L√2", "ref": "c1" },
+        { "text": ";" },
+        { "text": "c = L/2", "ref": "c2" },
+        { "text": ";" },
+        { "text": "h = L√3/2", "ref": "c3" },
+        { "text": "e" },
+        { "text": "A = L²√3/4" }
+      ],
+      "definitions": [
+        {
+          "term": "Triângulo 45°-45°-90°",
+          "text": "Metade do quadrado: catetos L e hipotenusa L√2."
+        },
+        {
+          "term": "Triângulo 30°-60°-90°",
+          "text": "Metade do equilátero: hipotenusa L, oposto a 30° vale L/2 e a 60° vale L√3/2."
+        },
+        {
+          "term": "Mediatriz e bissetriz",
+          "text": "Pontos equidistantes de 2 pontos (mediatriz) ou de 2 lados (bissetriz)."
+        }
+      ],
+      "lines": {
+        "intro": "O 45°-45°-90° vem do quadrado e o 30°-60°-90° do equilátero; suas medidas saem direto de L√2, L/2 e L√3/2.",
+        "hint": "Toque em cada relação para ver o quadrado ou o equilátero."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "diagonal-quadrado-lado-6",
+        "prompt": "Quanto mede a diagonal de um quadrado de lado L = 6 cm?",
+        "options": [
+          {
+            "id": "d6r2",
+            "label": "6√2 cm",
+            "correct": true,
+            "feedback": "Isso. A diagonal do quadrado de lado L mede L√2 = 6√2 cm."
+          },
+          {
+            "id": "d6r3",
+            "label": "6√3 cm",
+            "correct": false,
+            "feedback": "Resposta: 6√2 cm; 6√3 é a diagonal do cubo (3D). No quadrado plano é L√2 = 6√2 cm."
+          },
+          {
+            "id": "d12",
+            "label": "12 cm",
+            "correct": false,
+            "feedback": "Resposta: 6√2 cm; 12 cm é a soma de dois lados. Pela hipotenusa, √(6² + 6²) = 6√2 cm."
+          }
+        ]
+      },
+      {
+        "id": "cateto-oposto-30-graus",
+        "prompt": "Em um triângulo retângulo com ângulo de 30° e hipotenusa 14 m, quanto mede o cateto oposto a 30°?",
+        "options": [
+          {
+            "id": "c7",
+            "label": "7 m",
+            "correct": true,
+            "feedback": "Certo! O cateto oposto a 30° vale metade da hipotenusa: 14 / 2 = 7 m."
+          },
+          {
+            "id": "c7r3",
+            "label": "7√3 m",
+            "correct": false,
+            "feedback": "Resposta: 7 m; 7√3 m é o cateto oposto a 60°. O oposto a 30° é a metade: 7 m."
+          },
+          {
+            "id": "c14",
+            "label": "14 m",
+            "correct": false,
+            "feedback": "Resposta: 7 m; 14 m é a própria hipotenusa. O oposto a 30° mede 14 / 2 = 7 m."
+          }
+        ]
+      },
+      {
+        "id": "mediatriz-lugar-geometrico",
+        "prompt": "No plano, qual é o lugar geométrico de todos os pontos à MESMA distância de dois pontos fixos A e B?",
+        "options": [
+          {
+            "id": "med",
+            "label": "A mediatriz do segmento AB",
+            "correct": true,
+            "feedback": "Exato. A reta perpendicular pelo ponto médio de AB tem pontos equidistantes de A e B."
+          },
+          {
+            "id": "bis",
+            "label": "A bissetriz",
+            "correct": false,
+            "feedback": "Resposta: A mediatriz do segmento AB; Bissetriz é equidistante de duas retas. Para 2 pontos é a mediatriz."
+          },
+          {
+            "id": "circ",
+            "label": "Uma circunferência",
+            "correct": false,
+            "feedback": "Resposta: A mediatriz do segmento AB; Circunferência é equidistante de 1 único ponto (o centro)."
+          }
+        ]
+      },
+      {
+        "id": "terna-multipla-3-4-5",
+        "prompt": "Um triângulo retângulo tem catetos 9 cm e 12 cm (triplo de 3 e 4). Quanto mede sua hipotenusa?",
+        "options": [
+          {
+            "id": "h15",
+            "label": "15 cm",
+            "correct": true,
+            "feedback": "Isso! Como 9 = 3 · 3 e 12 = 3 · 4, a hipotenusa é o triplo de 5: 3 · 5 = 15 cm."
+          },
+          {
+            "id": "h21",
+            "label": "21 cm",
+            "correct": false,
+            "feedback": "Resposta: 15 cm; 21 é a soma 9 + 12. Pela terna 3-4-5 triplicada, a hipotenusa é 15 cm."
+          },
+          {
+            "id": "h13",
+            "label": "13 cm",
+            "correct": false,
+            "feedback": "Resposta: 15 cm; 13 cm é na terna 5-12-13. Para catetos 9 e 12, a hipotenusa é 15 cm."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "altura-triangulo-equilatero",
+        "prompt": "Qual é a medida da altura h de um triângulo equilátero de lado L = 8 cm?",
+        "options": [
+          {
+            "id": "h4r3",
+            "label": "4√3 cm",
+            "correct": true,
+            "feedback": "Certo. A altura do equilátero é L√3 / 2 = 8√3 / 2 = 4√3 cm."
+          },
+          {
+            "id": "h4",
+            "label": "4 cm",
+            "correct": false,
+            "feedback": "Resposta: 4√3 cm; 4 cm é metade da base (L/2). A altura vertical mede L√3 / 2 = 4√3 cm."
+          },
+          {
+            "id": "h8r3",
+            "label": "8√3 cm",
+            "correct": false,
+            "feedback": "Resposta: 4√3 cm; Faltou dividir por 2 na fórmula L√3 / 2: 8√3 / 2 = 4√3 cm."
+          }
+        ]
+      },
+      {
+        "id": "area-triangulo-equilatero",
+        "prompt": "Qual é a área de um triângulo equilátero de lado L = 4 cm?",
+        "options": [
+          {
+            "id": "a4r3",
+            "label": "4√3 cm²",
+            "correct": true,
+            "feedback": "Exato. Pela fórmula L²√3 / 4: 4²√3 / 4 = 16√3 / 4 = 4√3 cm²."
+          },
+          {
+            "id": "a2r3",
+            "label": "2√3 cm²",
+            "correct": false,
+            "feedback": "Resposta: 4√3 cm²; 2√3 cm é a altura do triângulo; a área é 4 · 2√3 / 2 = 4√3 cm²."
+          },
+          {
+            "id": "a16r3",
+            "label": "16√3 cm²",
+            "correct": false,
+            "feedback": "Resposta: 4√3 cm²; Faltou dividir por 4 em L²√3 / 4: 16√3 / 4 = 4√3 cm²."
+          }
+        ]
+      },
+      {
+        "id": "achar-lado-pela-diagonal",
+        "prompt": "A diagonal de um quadrado mede 7√2 cm. Quanto mede o lado L e qual é a área desse quadrado?",
+        "options": [
+          {
+            "id": "l7a49",
+            "label": "L = 7 cm e A = 49 cm²",
+            "correct": true,
+            "feedback": "Isso. Como d = L√2 = 7√2, o lado é L = 7 cm e a área é 7² = 49 cm²."
+          },
+          {
+            "id": "l14a196",
+            "label": "L = 14 cm e A = 196 cm²",
+            "correct": false,
+            "feedback": "Resposta: L = 7 cm e A = 49 cm²; Basta comparar L√2 com 7√2: o lado é 7 cm e a área é 49 cm²."
+          },
+          {
+            "id": "l7a98",
+            "label": "L = 7 cm e A = 98 cm²",
+            "correct": false,
+            "feedback": "Resposta: L = 7 cm e A = 49 cm²; Com lado 7 cm, a área é 7² = 49 cm² (98 seria d²)."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "achar-lado-quando-diagonal-e-inteira",
+        "prompt": "A diagonal de um quadrado mede 6 cm. Qual é a ÁREA desse quadrado?",
+        "paco": "Em todo quadrado, d² = L² + L² = 2·Área, então Área = d² / 2!",
+        "options": [
+          {
+            "id": "a18",
+            "label": "18 cm²",
+            "correct": true,
+            "feedback": "Exato! Como d² = 2·L², a área L² é metade do quadrado da diagonal: 6² / 2 = 18 cm²."
+          },
+          {
+            "id": "a36",
+            "label": "36 cm²",
+            "correct": false,
+            "feedback": "Resposta: 18 cm²; 36 cm² seria se o lado medisse 6 cm. Com diagonal 6 cm, a área é 6² / 2 = 18 cm²."
+          },
+          {
+            "id": "a12",
+            "label": "12 cm²",
+            "correct": false,
+            "feedback": "Resposta: 18 cm²; Por Pitágoras, L² + L² = 6² = 36, logo a área L² = 18 cm²."
+          }
+        ]
+      },
+      {
+        "id": "achar-lado-equilatero-pela-altura",
+        "prompt": "A altura de um triângulo equilátero mede 6 cm. Quanto mede o lado L desse triângulo?",
+        "options": [
+          {
+            "id": "l4r3",
+            "label": "4√3 cm",
+            "correct": true,
+            "feedback": "Certo! De L√3 / 2 = 6 sai L = 12 / √3 = 12√3 / 3 = 4√3 cm."
+          },
+          {
+            "id": "l3r3",
+            "label": "3√3 cm",
+            "correct": false,
+            "feedback": "Resposta: 4√3 cm; 3√3 seria a altura se o lado fosse 6. Como a altura é 6, L = 4√3 cm."
+          },
+          {
+            "id": "l12",
+            "label": "12 cm",
+            "correct": false,
+            "feedback": "Resposta: 4√3 cm; 12 cm é 2h, mas é L√3 que vale 12: dividindo por √3 temos 4√3 cm."
+          }
+        ]
+      },
+      {
+        "id": "bissetriz-equidistante-ruas",
+        "prompt": "Um chafariz numa praça triangular deve ficar à MESMA distância das 3 ruas que formam os lados. Onde ele deve ficar?",
+        "options": [
+          {
+            "id": "inc",
+            "label": "No encontro das bissetrizes (incentro)",
+            "correct": true,
+            "feedback": "Exato! Cada bissetriz equidista de 2 ruas (lados); o encontro delas equidista das 3 ruas."
+          },
+          {
+            "id": "circ",
+            "label": "No encontro das mediatrizes (circuncentro)",
+            "correct": false,
+            "feedback": "Resposta: No encontro das bissetrizes (incentro); Mediatrizes equidistam dos 3 vértices (esquinas)."
+          },
+          {
+            "id": "bar",
+            "label": "No encontro das medianas (baricentro)",
+            "correct": false,
+            "feedback": "Resposta: No encontro das bissetrizes (incentro); Baricentro é o centro de gravidade da praça."
+          }
+        ]
+      },
+      {
+        "id": "escada-60-graus",
+        "prompt": "Uma escada de 8 m está apoiada num muro vertical formando 60° com o chão. A que distância do muro está o pé da escada?",
+        "options": [
+          {
+            "id": "d4",
+            "label": "4 m",
+            "correct": true,
+            "feedback": "Isso! Fazendo 60° no chão, no topo faz 30°; o chão é oposto a 30°: 8 / 2 = 4 m."
+          },
+          {
+            "id": "d4r3",
+            "label": "4√3 m",
+            "correct": false,
+            "feedback": "Resposta: 4 m; 4√3 m é a altura no muro (oposta a 60°). No chão (oposto a 30°) mede 4 m."
+          },
+          {
+            "id": "d4r2",
+            "label": "4√2 m",
+            "correct": false,
+            "feedback": "Resposta: 4 m; 4√2 m seria para 45°. Para 60° com o chão, o pé fica a 8 / 2 = 4 m."
+          }
+        ]
+      },
+      {
+        "id": "area-hexagono-pela-formula-equilatero",
+        "prompt": "Se um triângulo equilátero de lado L = 2 cm tem área √3 cm², qual é a área de um hexágono regular de lado 2 cm?",
+        "paco": "O hexágono regular é formado por 6 desses triângulos equiláteros!",
+        "options": [
+          {
+            "id": "a6r3",
+            "label": "6√3 cm²",
+            "correct": true,
+            "feedback": "Exato! Cada um dos 6 triângulos equiláteros tem área √3 cm², somando 6√3 cm²."
+          },
+          {
+            "id": "a4r3",
+            "label": "4√3 cm²",
+            "correct": false,
+            "feedback": "Resposta: 6√3 cm²; O hexágono regular se divide em 6 triângulos equiláteros (não 4): 6√3 cm²."
+          },
+          {
+            "id": "a12r3",
+            "label": "12√3 cm²",
+            "correct": false,
+            "feedback": "Resposta: 6√3 cm²; São 6 triângulos de √3 cm² cada: área total 6√3 cm²."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

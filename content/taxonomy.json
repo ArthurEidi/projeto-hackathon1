@@ -845,6 +845,34 @@
               ]
             },
             {
+              "id": "triangulos-notaveis-e-construcoes",
+              "titulo": "Triângulos notáveis e construções geométricas",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Triângulos Notáveis e Construções",
+                  "subtitulo": "Metade do quadrado e do equilátero · 45°-45°-90°, 30°-60°-90° e lugares geométricos",
+                  "arquivo": "geometria/geometria-plana/triangulos-notaveis-e-construcoes/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "teorema-de-pitagoras",
+              "titulo": "Teorema de Pitágoras",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Teorema de Pitágoras",
+                  "subtitulo": "Três quadrados nos lados",
+                  "arquivo": "geometria/geometria-plana/teorema-de-pitagoras/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "areas",
               "titulo": "Áreas de Figuras Planas",
               "icone": "triangulo",
@@ -871,20 +899,6 @@
                   "arquivo": null
                 }
               ]
-            },
-            {
-              "id": "teorema-de-pitagoras",
-              "titulo": "Teorema de Pitágoras",
-              "icone": "triangulo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Teorema de Pitágoras",
-                  "subtitulo": "Três quadrados nos lados",
-                  "arquivo": "geometria/geometria-plana/teorema-de-pitagoras/aula-01.json"
-                }
-              ]
             }
           ]
         },
@@ -893,16 +907,16 @@
           "titulo": "Trigonometria",
           "unidades": [
             {
-              "id": "trigonometria-triangulo-retangulo",
-              "titulo": "Trigonometria no Triângulo Retângulo",
+              "id": "trigonometria-no-triangulo-retangulo",
+              "titulo": "Trigonometria no triângulo retângulo",
               "icone": "triangulo",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Razões que Não Dependem do Tamanho",
-                  "subtitulo": "Seno, cosseno e tangente",
-                  "arquivo": null
+                  "titulo": "Trigonometria no triângulo retângulo",
+                  "subtitulo": "Razões que não mudam",
+                  "arquivo": "geometria/trigonometria/trigonometria-no-triangulo-retangulo/aula-01.json"
                 }
               ]
             },

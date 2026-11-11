@@ -1,0 +1,643 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Trigonometria no triângulo retângulo",
+  "subtitulo": "Razões que não mudam",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "trigonometria",
+    "unidade": "trigonometria-no-triangulo-retangulo"
+  },
+  "outro": "Você variou o ângulo e a escala do triângulo retângulo e descobriu que seno, cosseno e tangente dependem apenas do ângulo.",
+  "glossario": {
+    "c1": {
+      "nome": "Cateto oposto",
+      "resumo": "Lado que fica de frente para o ângulo θ escolhido (CO)."
+    },
+    "c2": {
+      "nome": "Cateto adjacente",
+      "resumo": "Lado que forma o ângulo θ junto com a hipotenusa (CA)."
+    },
+    "c3": {
+      "nome": "Hipotenusa",
+      "resumo": "Maior lado do triângulo, oposto ao ângulo reto de 90° (HIP)."
+    },
+    "c4": {
+      "nome": "Ângulo agudo θ",
+      "resumo": "Abertura que define o valor do seno, do cosseno e da tangente."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro-45",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "razoes",
+        "angulo": 45,
+        "k": "$k",
+        "k_max": 3,
+        "hip": 5
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Escala do triângulo",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "ink"
+        }
+      ],
+      "lines": {
+        "intro": "Em 45°, os dois catetos são iguais e CO / CA = 1. Aumente a escala k: o que acontece com a divisão CO / CA?",
+        "done": "Os lados triplicaram, mas 3 / 3 continua dando 1. Triângulos semelhantes mantêm a mesma razão entre os lados."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Essas razões só existem em triângulos retângulos?",
+        "resposta": "Começamos neles, mas depois levamos seno, cosseno e tangente para qualquer triângulo e para o ciclo."
+      },
+      "complete_when": {
+        "metric": "k",
+        "gte": 3
+      }
+    },
+    {
+      "id": "seno-e-cosseno",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "razoes",
+        "angulo": "$theta",
+        "fantasma": 45,
+        "k": 1,
+        "hip": 5
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Ângulo θ (graus)",
+          "min": 15,
+          "max": 75,
+          "step": 15,
+          "initial": 45,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Seno divide o oposto pela hipotenusa; cosseno divide o adjacente. Leve θ para 30°: qual cateto fica igual à metade da hipotenusa?",
+        "done": "Em 30°, o cateto oposto é metade da hipotenusa: sen 30° = 1/2. Enquanto θ diminui, o oposto encolhe e o adjacente cresce."
+      },
+      "complete_when": {
+        "metric": "theta",
+        "lte": 30
+      }
+    },
+    {
+      "id": "complementares-60",
+      "type": "interactive_canvas",
+      "widget": "geometria_triangulo",
+      "params": {
+        "modo": "razoes",
+        "angulo": "$theta",
+        "k": 1,
+        "hip": 5
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Ângulo θ (graus)",
+          "min": 30,
+          "max": 60,
+          "step": 15,
+          "initial": 30,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Se um ângulo agudo é 30°, o outro lá em cima é 60°. Suba θ para 60°: o que acontece com o seno e o cosseno?",
+        "done": "Eles trocam de valor: cos 60° = sen 30° = 1/2. O cateto oposto a 30° é o adjacente a 60°."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "O seno no triângulo retângulo pode passar de 1?",
+        "resposta": "Nunca: o cateto é sempre menor que a hipotenusa, então CO / HIP fica sempre entre 0 e 1."
+      },
+      "complete_when": {
+        "metric": "theta",
+        "gte": 60
+      }
+    },
+    {
+      "id": "desafio-rampa",
+      "type": "micro_challenge",
+      "prompt": "Uma rampa de 10 m faz 30° com o chão (sen 30° = 0,5). Qual é a altura h no topo da rampa?",
+      "lines": {
+        "intro": "Olhe para o ângulo de 30° e veja quem é h e quem é 10 m."
+      },
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "razoes",
+          "angulo": 30,
+          "hip": 10,
+          "k": 1
+        }
+      },
+      "options": [
+        {
+          "id": "h5",
+          "label": "5 m",
+          "correct": true,
+          "feedback": "Isso. sen 30° = h / 10 = 0,5, então h = 5 m."
+        },
+        {
+          "id": "h10",
+          "label": "10 m",
+          "correct": false,
+          "feedback": "10 m é a hipotenusa. Como sen 30° = 0,5, a altura é 10 · 0,5 = 5 m."
+        },
+        {
+          "id": "h20",
+          "label": "20 m",
+          "correct": false,
+          "feedback": "Você dividiu por 0,5; o cateto é menor que a hipotenusa: 10 · 0,5 = 5 m."
+        },
+        {
+          "id": "h86",
+          "label": "8,66 m",
+          "correct": false,
+          "feedback": "8,66 m usa cos 30° (base no chão). A altura é o oposto: 10 · 0,5 = 5 m."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_triangulo_figura",
+        "params": {
+          "modo": "razoes",
+          "angulo": 30,
+          "hip": 5,
+          "k": 1
+        }
+      },
+      "formula": [
+        {
+          "text": "sen "
+        },
+        {
+          "text": "θ",
+          "ref": "c4"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "CO",
+          "ref": "c1"
+        },
+        {
+          "text": " / "
+        },
+        {
+          "text": "HIP",
+          "ref": "c3"
+        },
+        {
+          "text": "; cos "
+        },
+        {
+          "text": "θ",
+          "ref": "c4"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "CA",
+          "ref": "c2"
+        },
+        {
+          "text": " / "
+        },
+        {
+          "text": "HIP",
+          "ref": "c3"
+        },
+        {
+          "text": "; tg "
+        },
+        {
+          "text": "θ",
+          "ref": "c4"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "CO",
+          "ref": "c1"
+        },
+        {
+          "text": " / "
+        },
+        {
+          "text": "CA",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Cateto oposto",
+          "text": "Lado que fica de frente para o ângulo θ escolhido (CO)."
+        },
+        {
+          "term": "Cateto adjacente",
+          "text": "Lado que forma o ângulo θ junto com a hipotenusa (CA)."
+        },
+        {
+          "term": "Hipotenusa",
+          "text": "Maior lado do triângulo, oposto ao ângulo reto de 90° (HIP)."
+        }
+      ],
+      "lines": {
+        "intro": "Mudar a escala multiplica todos os lados pelo mesmo fator, por isso as razões dependem só do ângulo θ.",
+        "hint": "Toque em uma letra para ver o lado ou o ângulo correspondente no triângulo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "seno-3-4-5",
+        "prompt": "Num triângulo retângulo de lados 3, 4 e 5, o cateto oposto a θ mede 3. Quanto vale sen θ?",
+        "options": [
+          {
+            "id": "s35",
+            "label": "3/5",
+            "correct": true,
+            "feedback": "Certo. Oposto 3 sobre a hipotenusa 5."
+          },
+          {
+            "id": "s45",
+            "label": "4/5",
+            "correct": false,
+            "feedback": "4/5 é o cosseno (adjacente sobre hipotenusa). O seno é 3/5."
+          },
+          {
+            "id": "s34",
+            "label": "3/4",
+            "correct": false,
+            "feedback": "3/4 é a tangente (oposto sobre adjacente). O seno usa a hipotenusa: 3/5."
+          },
+          {
+            "id": "s53",
+            "label": "5/3",
+            "correct": false,
+            "feedback": "A hipotenusa 5 fica no denominador. O seno é 3/5."
+          }
+        ]
+      },
+      {
+        "id": "tangente-45",
+        "prompt": "Quanto vale tg 45° num triângulo retângulo isósceles?",
+        "options": [
+          {
+            "id": "t1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Isso. Em 45° os dois catetos são iguais, então CO / CA = 1."
+          },
+          {
+            "id": "t05",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/2 é sen 30°. Em 45° os catetos são iguais, então tg 45° = 1."
+          },
+          {
+            "id": "t0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Os dois catetos têm a mesma medida: a divisão deles dá 1."
+          },
+          {
+            "id": "t2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Dividir um cateto por outro de mesma medida dá 1, não 2."
+          }
+        ]
+      },
+      {
+        "id": "cosseno-definicao",
+        "prompt": "No triângulo retângulo, qual razão define cos θ?",
+        "options": [
+          {
+            "id": "cah",
+            "label": "CA / HIP",
+            "correct": true,
+            "feedback": "Exato. Cateto adjacente dividido pela hipotenusa."
+          },
+          {
+            "id": "coh",
+            "label": "CO / HIP",
+            "correct": false,
+            "feedback": "CO / HIP é o seno. O cosseno é CA / HIP."
+          },
+          {
+            "id": "coca",
+            "label": "CO / CA",
+            "correct": false,
+            "feedback": "CO / CA é a tangente. O cosseno é CA / HIP."
+          },
+          {
+            "id": "hca",
+            "label": "HIP / CA",
+            "correct": false,
+            "feedback": "A hipotenusa divide o cateto adjacente: cos θ = CA / HIP."
+          }
+        ]
+      },
+      {
+        "id": "escala-dobrada",
+        "prompt": "Se dobrarmos todos os lados de um triângulo retângulo, o valor de sen θ:",
+        "options": [
+          {
+            "id": "igual",
+            "label": "Não muda",
+            "correct": true,
+            "feedback": "Certo. O fator 2 cancela na divisão CO / HIP."
+          },
+          {
+            "id": "dobra",
+            "label": "Dobra",
+            "correct": false,
+            "feedback": "Os dois lados dobram juntos, então a razão CO / HIP não muda."
+          },
+          {
+            "id": "metade",
+            "label": "Cai pela metade",
+            "correct": false,
+            "feedback": "Numerador e denominador dobram juntos; sen θ não muda."
+          },
+          {
+            "id": "quad",
+            "label": "Quadruplica",
+            "correct": false,
+            "feedback": "O seno depende só do ângulo; dobrar os lados não muda sen θ."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "escada-60",
+        "prompt": "Uma escada de 8 m apoia-se na parede fazendo 60° com o chão (cos 60° = 0,5). Qual a distância do pé da escada à parede?",
+        "options": [
+          {
+            "id": "d4",
+            "label": "4 m",
+            "correct": true,
+            "feedback": "Isso. A distância no chão é o cateto adjacente: 8 · 0,5 = 4 m."
+          },
+          {
+            "id": "d8",
+            "label": "8 m",
+            "correct": false,
+            "feedback": "8 m é a escada (hipotenusa). No chão: 8 · 0,5 = 4 m."
+          },
+          {
+            "id": "d16",
+            "label": "16 m",
+            "correct": false,
+            "feedback": "Multiplique pela razão, não divida: 8 · 0,5 = 4 m."
+          },
+          {
+            "id": "d6",
+            "label": "6 m",
+            "correct": false,
+            "feedback": "Use cos 60° = CA / 8 = 0,5, que dá CA = 4 m."
+          }
+        ]
+      },
+      {
+        "id": "sombra-torre",
+        "prompt": "Uma árvore projeta sombra de 12 m quando os raios de sol formam 45° com o solo (tg 45° = 1). Qual a altura da árvore?",
+        "options": [
+          {
+            "id": "a12",
+            "label": "12 m",
+            "correct": true,
+            "feedback": "Certo. Como tg 45° = 1, a altura é igual à sombra: 12 m."
+          },
+          {
+            "id": "a6",
+            "label": "6 m",
+            "correct": false,
+            "feedback": "Em 45°, cateto oposto e adjacente são iguais: h = 12 m."
+          },
+          {
+            "id": "a24",
+            "label": "24 m",
+            "correct": false,
+            "feedback": "h / 12 = tg 45° = 1, logo h = 12 m."
+          },
+          {
+            "id": "a17",
+            "label": "17 m",
+            "correct": false,
+            "feedback": "17 m seria a hipotenusa aproximada. A altura é o cateto oposto: 12 m."
+          }
+        ]
+      },
+      {
+        "id": "complementar-seno",
+        "prompt": "Num triângulo retângulo, α e β são os dois ângulos agudos. Se sen α = 0,8, quanto vale cos β?",
+        "options": [
+          {
+            "id": "c08",
+            "label": "0,8",
+            "correct": true,
+            "feedback": "Exato. O cateto oposto a α é o adjacente a β, então cos β = 0,8."
+          },
+          {
+            "id": "c02",
+            "label": "0,2",
+            "correct": false,
+            "feedback": "Cosseno complementar não é 1 − sen α. O oposto de α é adjacente de β: 0,8."
+          },
+          {
+            "id": "c06",
+            "label": "0,6",
+            "correct": false,
+            "feedback": "0,6 é cos α. Para o outro ângulo β, cos β = sen α = 0,8."
+          },
+          {
+            "id": "c10",
+            "label": "1,0",
+            "correct": false,
+            "feedback": "O cateto oposto a α é o adjacente a β, logo cos β = sen α = 0,8."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "achar-hipotenusa",
+        "prompt": "Num triângulo retângulo, o cateto oposto a 30° mede 7 cm (sen 30° = 0,5). Quanto mede a hipotenusa?",
+        "options": [
+          {
+            "id": "h14",
+            "label": "14 cm",
+            "correct": true,
+            "feedback": "Isso. Se o cateto oposto é metade da hipotenusa, ela mede 2 · 7 = 14 cm."
+          },
+          {
+            "id": "h35",
+            "label": "3,5 cm",
+            "correct": false,
+            "feedback": "A hipotenusa é maior que o cateto: 7 / 0,5 = 14 cm."
+          },
+          {
+            "id": "h7",
+            "label": "7 cm",
+            "correct": false,
+            "feedback": "7 cm é o cateto. A hipotenusa é o dobro em 30°: 14 cm."
+          },
+          {
+            "id": "h105",
+            "label": "10,5 cm",
+            "correct": false,
+            "feedback": "Como sen 30° = 7 / HIP = 0,5, a hipotenusa mede 14 cm."
+          }
+        ]
+      },
+      {
+        "id": "pitagoras-e-tangente",
+        "prompt": "Num triângulo retângulo, a hipotenusa mede 13 e o cateto oposto a θ mede 5. Quanto vale tg θ?",
+        "options": [
+          {
+            "id": "t512",
+            "label": "5/12",
+            "correct": true,
+            "feedback": "Certo. Por Pitágoras o adjacente é 12, então tg θ = 5/12."
+          },
+          {
+            "id": "t513",
+            "label": "5/13",
+            "correct": false,
+            "feedback": "5/13 é o seno. O cateto adjacente é 12 (Pitágoras), então tg θ = 5/12."
+          },
+          {
+            "id": "t1213",
+            "label": "12/13",
+            "correct": false,
+            "feedback": "12/13 é o cosseno. A tangente é CO / CA = 5/12."
+          },
+          {
+            "id": "t125",
+            "label": "12/5",
+            "correct": false,
+            "feedback": "Você inverteu CA / CO. A tangente é CO / CA = 5/12."
+          }
+        ]
+      },
+      {
+        "id": "fronteira-seno-maior-1",
+        "prompt": "Um aluno calculou sen θ = 1,2 num triângulo retângulo. Por que esse valor é impossível?",
+        "options": [
+          {
+            "id": "catmen",
+            "label": "O cateto é sempre menor que a hipotenusa",
+            "correct": true,
+            "feedback": "Exato. Como CO < HIP, a divisão CO / HIP nunca passa de 1."
+          },
+          {
+            "id": "angobt",
+            "label": "O ângulo seria obtuso",
+            "correct": false,
+            "feedback": "Mesmo no ciclo o seno não passa de 1; no triângulo, CO é menor que HIP."
+          },
+          {
+            "id": "tgmen",
+            "label": "Nenhuma razão passa de 1",
+            "correct": false,
+            "feedback": "A tangente pode passar de 1; o seno não passa porque CO < HIP."
+          },
+          {
+            "id": "catmai",
+            "label": "O cateto adjacente é maior",
+            "correct": false,
+            "feedback": "O motivo é que a hipotenusa é o maior lado, então CO / HIP < 1."
+          }
+        ]
+      },
+      {
+        "id": "altura-observador",
+        "prompt": "Um observador de 1,5 m de altura vê o topo de um poste sob 30° a 10 m de distância (tg 30° ≈ 0,58). Qual a altura do poste?",
+        "options": [
+          {
+            "id": "p73",
+            "label": "7,3 m",
+            "correct": true,
+            "feedback": "Isso. Subida de 10 · 0,58 = 5,8 m mais 1,5 m do observador: 7,3 m."
+          },
+          {
+            "id": "p58",
+            "label": "5,8 m",
+            "correct": false,
+            "feedback": "5,8 m é só a parte acima dos olhos. Somando 1,5 m: 7,3 m."
+          },
+          {
+            "id": "p65",
+            "label": "6,5 m",
+            "correct": false,
+            "feedback": "Use tg 30° ≈ 0,58: 10 · 0,58 + 1,5 = 7,3 m."
+          },
+          {
+            "id": "p115",
+            "label": "11,5 m",
+            "correct": false,
+            "feedback": "Não some 10 + 1,5. Faça 10 · 0,58 + 1,5 = 7,3 m."
+          }
+        ]
+      },
+      {
+        "id": "dois-angulos-predio",
+        "prompt": "Do topo de um prédio de 20 m, vê-se um barco sob 45° e outro na mesma linha sob 30° (tg 30° ≈ 0,5). Qual a distância entre os barcos?",
+        "fala": "Ache a distância horizontal de cada barco até o prédio e subtraia.",
+        "options": [
+          {
+            "id": "b20",
+            "label": "20 m",
+            "correct": true,
+            "feedback": "Exato. Os barcos estão a 20 m e 40 m do prédio; a distância entre eles é 20 m."
+          },
+          {
+            "id": "b40",
+            "label": "40 m",
+            "correct": false,
+            "feedback": "40 m é a distância do segundo barco ao prédio. Entre os barcos: 40 − 20 = 20 m."
+          },
+          {
+            "id": "b60",
+            "label": "60 m",
+            "correct": false,
+            "feedback": "Eles estão do mesmo lado: subtraia 40 − 20 = 20 m."
+          },
+          {
+            "id": "b10",
+            "label": "10 m",
+            "correct": false,
+            "feedback": "Com tg 30° ≈ 0,5, d2 = 20 / 0,5 = 40 m; logo 40 − 20 = 20 m."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}
