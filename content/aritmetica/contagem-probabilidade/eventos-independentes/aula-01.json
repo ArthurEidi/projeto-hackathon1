@@ -1,0 +1,701 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Pista que Não Diz Nada",
+  "subtitulo": "Independência e a regra do produto",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "contagem-probabilidade",
+    "unidade": "eventos-independentes"
+  },
+  "outro": "Você testou pistas que não dizem nada: quando a chance não muda, os eventos são independentes e as probabilidades se multiplicam.",
+  "glossario": {
+    "c1": {
+      "nome": "Evento A",
+      "resumo": "Linhas da grade em que A acontece."
+    },
+    "c2": {
+      "nome": "Evento B",
+      "resumo": "Colunas da grade em que B acontece."
+    },
+    "c3": {
+      "nome": "A e B",
+      "resumo": "O retângulo onde as linhas de A cruzam as colunas de B."
+    },
+    "c4": {
+      "nome": "Pista que muda",
+      "resumo": "Informação que altera a chance: sinal de dependência."
+    }
+  },
+  "steps": [
+    {
+      "id": "pista-que-nao-muda",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "colunas": "linhas",
+        "a": {
+          "linhas": [
+            "2",
+            "4",
+            "6"
+          ]
+        },
+        "b": {
+          "colunas": [
+            "5",
+            "6"
+          ]
+        },
+        "chaves": [
+          "pista"
+        ],
+        "regua": true,
+        "titulos": {
+          "linhas": "1º dado",
+          "colunas": "2º dado"
+        }
+      },
+      "lines": {
+        "intro": "Dois dados: a pista diz que o segundo deu mais que 4. Isso muda a chance de o primeiro ser par?",
+        "done": "Não muda: dentro da pista, metade das casas ainda tem o primeiro par. A pista não fala nada de A, então são independentes."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Para que serve saber disso?",
+        "resposta": "Com independência dá para multiplicar chances, e isso abre a binomial. Hoje vemos quando pode."
+      },
+      "complete_when": {
+        "metric": "pista_ligada",
+        "gte": 1
+      }
+    },
+    {
+      "id": "retangulo",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "colunas": "linhas",
+        "a": {
+          "linhas": [
+            "2",
+            "4",
+            "6"
+          ]
+        },
+        "b": {
+          "colunas": [
+            "5",
+            "6"
+          ]
+        },
+        "chaves": [
+          "a_e_b"
+        ],
+        "titulos": {
+          "linhas": "1º dado",
+          "colunas": "2º dado"
+        }
+      },
+      "lines": {
+        "intro": "Acenda A e B juntos. Que forma tem a interseção, e quanto ela mede?",
+        "done": "Um retângulo de 3 por 2 casas: 6/36 = 1/6. É 1/2 · 1/3: a chance conjunta é área de retângulo."
+      },
+      "complete_when": {
+        "metric": "intersecao_vista",
+        "gte": 1
+      }
+    },
+    {
+      "id": "dependentes",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "casas",
+        "linhas": 6,
+        "etapas": 1,
+        "a": {
+          "casas": [
+            "2",
+            "4",
+            "6"
+          ]
+        },
+        "b": {
+          "casas": [
+            "4",
+            "5",
+            "6"
+          ]
+        },
+        "chaves": [
+          "pista"
+        ],
+        "regua": true,
+        "titulos": {
+          "linhas": "Faces"
+        }
+      },
+      "lines": {
+        "intro": "Agora um dado só: A é par e B é maior que 3. A pista B muda a chance de A?",
+        "done": "Muda: de 1/2 para 2/3, porque 4 e 6 dominam a pista. Os eventos são dependentes e o produto 1/2 · 1/2 falha."
+      },
+      "complete_when": {
+        "metric": "pista_ligada",
+        "gte": 1
+      }
+    },
+    {
+      "id": "moeda-sem-memoria",
+      "type": "interactive_canvas",
+      "widget": "grade_resultados",
+      "params": {
+        "modo": "arvore",
+        "galhos": [
+          {
+            "rotulo": "K",
+            "cor": "c1",
+            "p": 0.5,
+            "sucesso": true
+          },
+          {
+            "rotulo": "C",
+            "cor": "ink",
+            "p": 0.5
+          }
+        ],
+        "n": "$n",
+        "caminho": "sucessos",
+        "mostrar_produto": true
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Lançamentos",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Uma moeda não tem memória: qual a chance de 3 caras seguidas? Aumente os lançamentos e veja a fatia encolher.",
+        "done": "Cada lançamento corta a chance pela metade: (1/2)³ = 1/8."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Depois de 3 caras, a quarta tende a ser coroa?",
+        "resposta": "Não: a moeda não lembra. A próxima continua 1/2."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 3
+      }
+    },
+    {
+      "id": "desafio-dado-e-moeda",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": [
+            "K",
+            "C"
+          ],
+          "colunas": 6,
+          "a": {
+            "linhas": [
+              "K"
+            ]
+          },
+          "b": {
+            "colunas": [
+              "6"
+            ]
+          },
+          "titulos": {
+            "linhas": "Moeda",
+            "colunas": "Dado"
+          }
+        }
+      },
+      "prompt": "Lançam-se uma moeda e um dado. Qual a probabilidade de sair cara e 6?",
+      "lines": {
+        "intro": "Moeda e dado não se influenciam. Que retângulo você precisa?"
+      },
+      "options": [
+        {
+          "id": "a2-3",
+          "label": "2/3",
+          "correct": false,
+          "feedback": "1/2 + 1/6 soma chances, mas o pedido é 'e'. Multiplica: 1/12.",
+          "figure": {
+            "mostrar": {
+              "uniao": true
+            }
+          }
+        },
+        {
+          "id": "a1-12",
+          "label": "1/12",
+          "correct": true,
+          "feedback": "Isso. Independentes: 1/2 · 1/6 = 1/12.",
+          "figure": {
+            "mostrar": {
+              "intersecao": true
+            },
+            "acesas": [
+              "K,6"
+            ]
+          }
+        },
+        {
+          "id": "a1-8",
+          "label": "1/8",
+          "correct": false,
+          "feedback": "1/8 seria com 8 casas. A grade tem 2 · 6 = 12: 1/12.",
+          "figure": {
+            "highlight": [
+              "c3"
+            ]
+          }
+        },
+        {
+          "id": "a7-12",
+          "label": "7/12",
+          "correct": false,
+          "feedback": "7/12 é cara ou 6. Cara e 6: só uma casa, 1/12.",
+          "figure": {
+            "mostrar": {
+              "uniao": true,
+              "intersecao": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "grade_figura",
+        "params": {
+          "modo": "casas",
+          "linhas": 6,
+          "colunas": "linhas",
+          "a": {
+            "linhas": [
+              "2",
+              "4",
+              "6"
+            ]
+          },
+          "b": {
+            "colunas": [
+              "5",
+              "6"
+            ]
+          },
+          "mostrar": {
+            "intersecao": true
+          },
+          "titulos": {
+            "linhas": "1º dado",
+            "colunas": "2º dado"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "P(A ∩ B)",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "P(A)",
+          "ref": "c1"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "P(B)",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Independentes",
+          "text": "saber B não muda a chance de A, P(A | B) = P(A)."
+        },
+        {
+          "term": "Regra do produto",
+          "text": "só vale para eventos independentes."
+        },
+        {
+          "term": "Sem reposição",
+          "text": "as retiradas costumam ser dependentes."
+        }
+      ],
+      "lines": {
+        "intro": "Se A ocupa a mesma fração dentro de B e fora dele, a interseção é um retângulo. Por isso a chance conjunta é o produto.",
+        "hint": "Toque em uma letra para ver suas linhas e colunas."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "duas-caras",
+        "prompt": "Duas moedas são lançadas. Qual a probabilidade de saírem duas caras?",
+        "options": [
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": true,
+            "feedback": "Isso. 1/2 · 1/2 = 1/4."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/2 é uma moeda só. As duas: 1/2 · 1/2 = 1/4."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1/2 + 1/2 soma, mas é 'e'. Multiplica: 1/4."
+          },
+          {
+            "id": "a1-3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "Os 3 'tipos' não têm a mesma chance. KK é 1 de 4."
+          }
+        ]
+      },
+      {
+        "id": "par-e-coroa",
+        "prompt": "Num dado e numa moeda, qual a chance de sair par e coroa?",
+        "options": [
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": true,
+            "feedback": "Certo. Independentes: 1/2 · 1/2."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Somar dá 1, mas é 'e'. Produto: 1/4."
+          },
+          {
+            "id": "a1-12",
+            "label": "1/12",
+            "correct": false,
+            "feedback": "1/12 é um número específico com coroa. Par tem 3 faces: 1/4."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/2 é só par. Com coroa: 1/2 · 1/2 = 1/4."
+          }
+        ]
+      },
+      {
+        "id": "sem-memoria",
+        "prompt": "Uma moeda deu 5 caras seguidas. Qual a chance de a próxima ser cara?",
+        "options": [
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Isso. A moeda não lembra o passado."
+          },
+          {
+            "id": "a1-64",
+            "label": "1/64",
+            "correct": false,
+            "feedback": "1/64 é seis caras seguidas desde o início. A próxima sozinha: 1/2."
+          },
+          {
+            "id": "menor",
+            "label": "Menos que 1/2",
+            "correct": false,
+            "feedback": "A moeda não compensa sequências. Continua 1/2."
+          },
+          {
+            "id": "maior",
+            "label": "Mais que 1/2",
+            "correct": false,
+            "feedback": "Uma moeda justa não pega embalo. Continua 1/2."
+          }
+        ]
+      },
+      {
+        "id": "sem-reposicao-depende",
+        "prompt": "Tirar duas cartas de um baralho sem devolver a primeira: as retiradas são independentes?",
+        "options": [
+          {
+            "id": "nao",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo. A primeira carta muda o baralho da segunda."
+          },
+          {
+            "id": "sim",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Sem devolver, o baralho da segunda retirada muda. São dependentes."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "produto-03-05",
+        "prompt": "A e B são independentes, com P(A) = 0,3 e P(B) = 0,5. Quanto vale P(A e B)?",
+        "options": [
+          {
+            "id": "a015",
+            "label": "0,15",
+            "correct": true,
+            "feedback": "Isso. Independentes: multiplica."
+          },
+          {
+            "id": "a08",
+            "label": "0,8",
+            "correct": false,
+            "feedback": "0,8 é a soma. 'E' independente é produto: 0,15."
+          },
+          {
+            "id": "a06",
+            "label": "0,6",
+            "correct": false,
+            "feedback": "0,3 / 0,5 não é a conta. Produto: 0,15."
+          },
+          {
+            "id": "a065",
+            "label": "0,65",
+            "correct": false,
+            "feedback": "0,65 é P(A ou B). P(A e B) = 0,15."
+          }
+        ]
+      },
+      {
+        "id": "tres-seis",
+        "prompt": "Lançando três dados, qual a chance de os três darem 6?",
+        "options": [
+          {
+            "id": "a1-216",
+            "label": "1/216",
+            "correct": true,
+            "feedback": "Certo. 1/6 · 1/6 · 1/6."
+          },
+          {
+            "id": "a1-18",
+            "label": "1/18",
+            "correct": false,
+            "feedback": "1/18 soma os denominadores. Produto: 1/216."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/6 + 1/6 + 1/6 soma, mas é 'e'. Produto: 1/216."
+          },
+          {
+            "id": "a1-36",
+            "label": "1/36",
+            "correct": false,
+            "feedback": "1/36 vale para dois dados. Com três: 1/216."
+          }
+        ]
+      },
+      {
+        "id": "sao-independentes",
+        "prompt": "P(A) = 0,4, P(B) = 0,5 e P(A e B) = 0,2. A e B são independentes?",
+        "options": [
+          {
+            "id": "sim",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Isso. O produto 0,4 · 0,5 é exatamente 0,2."
+          },
+          {
+            "id": "nao",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Compare: 0,4 · 0,5 = 0,2, igual a P(A e B). São independentes."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "uniao-independentes",
+        "prompt": "A e B independentes, P(A) = 0,5 e P(B) = 0,4. Quanto vale P(A ou B)?",
+        "fala": "Ache a interseção pelo produto e use a fórmula da união.",
+        "options": [
+          {
+            "id": "a07",
+            "label": "0,7",
+            "correct": true,
+            "feedback": "Certo. Interseção 0,2, união 0,9 − 0,2 = 0,7."
+          },
+          {
+            "id": "a09",
+            "label": "0,9",
+            "correct": false,
+            "feedback": "0,9 conta a interseção duas vezes. Ela vale 0,2: união 0,7."
+          },
+          {
+            "id": "a02",
+            "label": "0,2",
+            "correct": false,
+            "feedback": "0,2 é A e B. A ou B: 0,5 + 0,4 − 0,2 = 0,7."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Não é certeza. 0,5 + 0,4 − 0,2 = 0,7."
+          }
+        ]
+      },
+      {
+        "id": "pelo-menos-um-6-tres",
+        "prompt": "Lançando três dados, qual a chance de sair pelo menos um 6?",
+        "options": [
+          {
+            "id": "a91",
+            "label": "91/216",
+            "correct": true,
+            "feedback": "Isso. Nenhum 6 é (5/6)³ = 125/216; o resto é 91/216."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "1/6 + 1/6 + 1/6 conta repetições. Pelo complemento: 91/216."
+          },
+          {
+            "id": "a125",
+            "label": "125/216",
+            "correct": false,
+            "feedback": "125/216 é nenhum 6. Pelo menos um: 91/216."
+          },
+          {
+            "id": "a1-216",
+            "label": "1/216",
+            "correct": false,
+            "feedback": "1/216 são três 6. Pelo menos um: 1 − 125/216 = 91/216."
+          }
+        ]
+      },
+      {
+        "id": "com-reposicao",
+        "prompt": "Urna com 2 vermelhas e 3 azuis; tiram-se duas bolas, devolvendo a primeira. Qual a chance de as duas serem vermelhas?",
+        "options": [
+          {
+            "id": "a4-25",
+            "label": "4/25",
+            "correct": true,
+            "feedback": "Certo. Com reposição a urna se repete: 2/5 · 2/5."
+          },
+          {
+            "id": "a1-10",
+            "label": "1/10",
+            "correct": false,
+            "feedback": "1/10 seria sem reposição. Devolvendo: 4/25."
+          },
+          {
+            "id": "a4-5",
+            "label": "4/5",
+            "correct": false,
+            "feedback": "2/5 + 2/5 soma, mas é 'e'. Produto: 4/25."
+          },
+          {
+            "id": "a2-5",
+            "label": "2/5",
+            "correct": false,
+            "feedback": "2/5 é uma retirada. As duas: 4/25."
+          }
+        ]
+      },
+      {
+        "id": "sem-reposicao",
+        "prompt": "Mesma urna, agora sem devolver a primeira bola. Qual a chance de as duas serem vermelhas?",
+        "options": [
+          {
+            "id": "a1-10",
+            "label": "1/10",
+            "correct": true,
+            "feedback": "Isso. Depois da primeira vermelha, sobra 1 em 4: 2/5 · 1/4."
+          },
+          {
+            "id": "a4-25",
+            "label": "4/25",
+            "correct": false,
+            "feedback": "4/25 supõe reposição. Sem ela, a segunda é 1/4: 1/10."
+          },
+          {
+            "id": "a2-9",
+            "label": "2/9",
+            "correct": false,
+            "feedback": "Sem reposição a urna tem 4 bolas, com 1 vermelha. 2/5 · 1/4 = 1/10."
+          },
+          {
+            "id": "a1-4",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "1/4 é só a segunda retirada. Vezes 2/5: 1/10."
+          }
+        ]
+      },
+      {
+        "id": "condicional-dependentes",
+        "prompt": "P(A) = 0,6, P(B) = 0,5 e P(A e B) = 0,4. Quanto vale P(A | B)?",
+        "fala": "Última. Compare o resultado com P(A): eles são independentes?",
+        "options": [
+          {
+            "id": "a08",
+            "label": "0,8",
+            "correct": true,
+            "feedback": "Certo. 0,4 / 0,5 = 0,8, diferente de 0,6: são dependentes."
+          },
+          {
+            "id": "a06",
+            "label": "0,6",
+            "correct": false,
+            "feedback": "0,6 supõe independência. A conta dá 0,4 / 0,5 = 0,8."
+          },
+          {
+            "id": "a03",
+            "label": "0,3",
+            "correct": false,
+            "feedback": "0,3 é 0,6 · 0,5. A condicional é 0,4 / 0,5 = 0,8."
+          },
+          {
+            "id": "a04",
+            "label": "0,4",
+            "correct": false,
+            "feedback": "0,4 é A e B. Dividindo por P(B): 0,8."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

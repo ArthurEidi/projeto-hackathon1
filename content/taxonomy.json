@@ -229,6 +229,20 @@
                   "arquivo": "aritmetica/contagem-probabilidade/probabilidade-condicional/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "eventos-independentes",
+              "titulo": "Eventos independentes e multiplicação de probabilidades",
+              "icone": "dado",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "A Pista que Não Diz Nada",
+                  "subtitulo": "Independência e a regra do produto",
+                  "arquivo": "aritmetica/contagem-probabilidade/eventos-independentes/aula-01.json"
+                }
+              ]
             }
           ]
         },
