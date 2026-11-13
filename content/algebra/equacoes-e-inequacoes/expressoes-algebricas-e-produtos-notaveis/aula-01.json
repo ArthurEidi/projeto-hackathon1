@@ -31,18 +31,13 @@
     {
       "id": "caso-neutro",
       "type": "interactive_canvas",
-      "widget": "geometria_poligono",
+      "widget": "retangulo_areas",
       "params": {
-        "modo": "malha",
-        "forma": "retangulo",
-        "b": "$lado",
-        "h": "$lado",
-        "fantasma": [2, 2],
-        "mostrar": {
-          "area": true,
-          "perimetro": true,
-          "alturas": false
-        }
+        "modo": "produto",
+        "a": 2,
+        "b": "$b",
+        "retirar": false,
+        "referencia": true
       },
       "controls": [
         {
@@ -72,18 +67,13 @@
     {
       "id": "separar-faixas",
       "type": "interactive_canvas",
-      "widget": "geometria_poligono",
+      "widget": "retangulo_areas",
       "params": {
-        "modo": "malha",
-        "forma": "retangulo",
-        "b": "$lado",
-        "h": "$lado",
-        "fantasma": [3, 3],
-        "mostrar": {
-          "area": true,
-          "perimetro": true,
-          "alturas": false
-        }
+        "modo": "produto",
+        "a": 2,
+        "b": "$b",
+        "retirar": false,
+        "referencia": true
       },
       "controls": [
         {
@@ -108,18 +98,13 @@
     {
       "id": "testar-diferenca",
       "type": "interactive_canvas",
-      "widget": "geometria_poligono",
+      "widget": "retangulo_areas",
       "params": {
-        "modo": "malha",
-        "forma": "retangulo",
-        "b": "$restante",
-        "h": "$restante",
-        "fantasma": [2, 2],
-        "mostrar": {
-          "area": true,
-          "perimetro": true,
-          "alturas": false
-        }
+        "modo": "produto",
+        "a": 2,
+        "b": "$b",
+        "retirar": true,
+        "referencia": true
       },
       "controls": [
         {
@@ -150,18 +135,13 @@
       "id": "conferir-previsao",
       "type": "micro_challenge",
       "figure": {
-        "widget": "geometria_poligono_figura",
+        "widget": "retangulo_areas_figura",
         "params": {
-          "modo": "malha",
-          "forma": "retangulo",
-          "b": 3,
-          "h": 3,
-          "fantasma": [2, 2],
-          "mostrar": {
-            "area": true,
-            "perimetro": true,
-            "alturas": false
-          }
+          "modo": "produto",
+          "a": 2,
+          "b": 1,
+          "retirar": false,
+          "referencia": true
         }
       },
       "lines": {
@@ -187,18 +167,13 @@
       "id": "fechamento",
       "type": "concept_lock",
       "figure": {
-        "widget": "geometria_poligono_figura",
+        "widget": "retangulo_areas_figura",
         "params": {
-          "modo": "malha",
-          "forma": "retangulo",
-          "b": 3,
-          "h": 3,
-          "fantasma": [2, 2],
-          "mostrar": {
-            "area": true,
-            "perimetro": true,
-            "alturas": false
-          }
+          "modo": "produto",
+          "a": 2,
+          "b": 1,
+          "retirar": false,
+          "referencia": true
         }
       },
       "formula": [
