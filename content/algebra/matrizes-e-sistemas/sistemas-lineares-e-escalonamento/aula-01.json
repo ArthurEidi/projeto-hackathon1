@@ -696,7 +696,7 @@
             "id": "d5-sistemas-lineares-e-escalonamento-erro3",
             "label": "(3−t;−t;t), t∈R",
             "correct": false,
-            "feedback": "Você errou o sinal de y ao passar z em y−z=0. O certo é (3−2t;t;t), t∈R."
+            "feedback": "Você errou o sinal de y (−t) e subtraiu só z ao isolar x. O certo é (3−2t;t;t), t∈R."
           }
         ]
       }
