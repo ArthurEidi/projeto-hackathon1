@@ -688,7 +688,7 @@
             "id": "d4-potencias-e-radicais-erro3",
             "label": "−1",
             "correct": false,
-            "feedback": "Expoente −1 indica inverso, não sinal negativo. O certo é 1; √4·(1/2)=2/2=1."
+            "feedback": "Você inverteu 2 e ainda trocou o sinal do produto (−2/2=−1). O certo é 1; √4·(1/2)=2/2=1."
           }
         ]
       },

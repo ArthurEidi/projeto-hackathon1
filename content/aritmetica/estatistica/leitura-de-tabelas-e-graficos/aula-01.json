@@ -481,7 +481,7 @@
             "id": "o4",
             "label": "50%",
             "correct": false,
-            "feedback": "A diferença é 5 votos, 10% de 50."
+            "feedback": "50 é o valor de A, não a porcentagem. O certo é 10%; 5 ÷ 50 = 10%."
           },
           {
             "id": "o1",
@@ -517,7 +517,7 @@
             "id": "o4",
             "label": "36%",
             "correct": false,
-            "feedback": "72 ÷ 360 = 0,2, ou seja, 20%."
+            "feedback": "36% divide 72 por 2 (ou 360 por 10). O certo é 20%; 72 ÷ 360 = 20%."
           },
           {
             "id": "o1",
@@ -695,7 +695,7 @@
             "id": "o4",
             "label": "45",
             "correct": false,
-            "feedback": "Com variação constante, a metade do caminho é 50."
+            "feedback": "45 soma só um quarto da subida (40 + 5). Na metade do caminho: 40 + 10 = 50."
           },
           {
             "id": "o1",

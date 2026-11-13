@@ -553,7 +553,7 @@
             "id": "d5-grandezas-direta-e-inversa-erro3",
             "label": "3",
             "correct": false,
-            "feedback": "Você dividiu 6 por 2 sem multiplicar antes por 2. O certo é 4; Trabalho=2·6=12; tempo=12/3=4."
+            "feedback": "Você dividiu 6 por 2 em vez de dividir o trabalho 12 por 3. O certo é 4; Trabalho=2·6=12; tempo=12/3=4."
           },
           {
             "id": "d5-grandezas-direta-e-inversa-certa",

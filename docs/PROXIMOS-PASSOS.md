@@ -1,6 +1,6 @@
 # Próximos passos
 
-Atualizado em 13/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
+Atualizado em 13/11/2026 (noite). Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
 **Antes de pegar qualquer tarefa, leia `docs/EM-ANDAMENTO.md`**: é lá que cada máquina reserva a sua frente, para duas máquinas não mexerem nos mesmos arquivos.
 
 ## Estado
@@ -13,25 +13,21 @@ Atualizado em 13/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim
 
 O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets que foram substituídos por adaptações, fontes de vestibular.
 
-## O que foi feito em 13/11 (Máquina A)
+## Resumo para quem chega agora (atualizado em 13/11 à noite)
 
-- Registrados os 2 últimos capítulos (103/103) e publicado tudo no GitHub.
-- Widgets novos: `maquinas_funcao` (refeito), `transformacao_plano`, extensões da `reta_numerica`; lacunas fechadas em `grade_resultados`, `barras` e `solido_3d` (`corte_cone`). Do inventário só faltam os quatro pequenos de um capítulo (`escala_decimal`, `divisao_polinomial`, `sistema_escalonado`, `grupos_inteiros`).
-- **Revisão de texto de aritmética e álgebra concluída** (frentes 1 e 2): 60 capítulos lidos, 21 correções, quase todas nos capítulos do modelo gratuito. Registro em `docs/revisao/`.
-- **Distratores:** 905 alternativas novas em aritmética e álgebra; as questões deixaram de ter só 2 alternativas (ficaram binárias só as de resposta sim/não). **Geometria ainda tem questões binárias.**
-- **Conferência dos passos interativos (params × falas):** equações e inequações completa (7 correções); aritmética completa (14 correções em 8 capítulos); funções/sequências/matrizes/polinômios **parcial**: 12 de 21 capítulos conferidos (3 correções), faltam `funcao-afim`, `funcao-quadratica`, `funcao-modular`, `funcao-exponencial`, `logaritmos` e os 4 de sequências. O agente parou por limite de uso.
-- `introducao-a-funcoes`, `funcao-composta-e-inversa` e `expressoes-algebricas-e-produtos-notaveis` passaram a usar os widgets certos.
+**Feito.** 103/103 capítulos no app; todos os widgets principais; em aritmética e álgebra (61 capítulos): revisão de texto, distratores (as questões deixaram de ter só 2 alternativas), conferência dos passos interativos (params × falas), segunda passada nos feedbacks dos distratores (equações e funções/sequências/matrizes/polinômios concluídas; aritmética quase toda) e troca das adaptações pelos widgets certos. Registros em `docs/revisao/`.
 
-### Pendências imediatas da Máquina A (retomar daqui)
+**O que falta, em ordem de prioridade:**
 
-1. **Qualidade visual dos widgets do Codex** (não começou): `retangulo_areas` desenha pequeno, descentralizado e sem rótulo nas peças (visto no navegador em `expressoes-algebricas-e-produtos-notaveis`); conferir com imagem também `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `maquinas_funcao` modo `maquinas`, `transformacao_plano`. A conferência feita em 13/11 só verificou botões e largura, sem ver os pixels.
-2. Terminar a conferência de passos nos 9 capítulos listados acima (`docs/revisao/algebra-funcoes-passos.md`).
-3. Piloto de fontes de vestibular (frente 8): o agente tinha acesso à web e parou por limite de uso antes de gravar qualquer arquivo. Refazer: candidatos em `docs/fontes-candidatas/<slug>.md`, com URL de enunciado e gabarito, para o coordenador conferir.
-4. Trocar adaptações restantes (frente 7): `fatoracao-algebrica` e `potencias-e-radicais` (→ `retangulo_areas`, depois do item 1), `matrizes-determinantes-sistemas` e `determinantes-e-matriz-inversa` (→ `transformacao_plano`), `conjuntos-e-intervalos` e `valor-absoluto-e-distancia` (→ modos novos da `reta_numerica`).
-5. Conferência visual das aulas de aritmética e álgebra (frente 6).
-6. **Segunda passada nos feedbacks dos distratores (aritmética e álgebra).** Uma auditoria do Claude em 4 capítulos (`docs/revisao/auditoria-claude.md`) achou 3 feedbacks que descrevem um erro que não produz aquela alternativa (a conta citada dá outro número), parte deles nos distratores acrescentados em 13/11. Conclusão: a revisão do Hydrogen confere gabaritos e falas, mas é branda nos distratores. Método da nova passada: para cada alternativa errada, refazer a conta que o feedback atribui ao aluno e conferir se o resultado é exatamente o rótulo da alternativa; se não for, reescrever o feedback. Usar modelo forte ou instrução bem estreita. Vale também para geometria.
+1. **Geometria inteira (42 capítulos em `content/geometria/**`)**: nada do que foi feito em aritmética e álgebra foi feito aqui. Reservada para a Máquina B. Fazer, nesta ordem, por setor: (a) distratores: questões com 2 alternativas passam a 3 ou 4 (ver `docs/revisao/algebra-equacoes-distratores.md` como exemplo de registro); (b) conferência dos passos interativos, params × falas (método em "Como fazer cada frente"); (c) segunda passada nos feedbacks dos distratores: para cada alternativa errada, executar a conta que o feedback atribui ao aluno e ver se dá exatamente o rótulo; (d) trocar `reta-equacao-e-inclinacao` para `pontos_no_plano`. O arquivo `docs/revisao/hermes-geometria-alertas.md` (modelo fraco, só leitura) não achou gabarito divergente em geometria plana e trigonometria; vale como indício, não como garantia.
+2. **Questões de vestibular nas aulas.** Há candidatas em `docs/fontes-candidatas/<slug>.md` para cerca de 34 capítulos. As do ENEM vêm de `api.enem.dev` e são conferidas por `python scripts/confere-fontes-enem.py` (as 21 primeiras bateram; rodar de novo, pois chegaram mais). Falta: para cada candidata que o script aprova, acrescentar em `treino.vestibular` da aula (formato no GUIA §2.3: `fonte`, URLs, `adaptada`, enunciado resumido em até 140 caracteres, alternativas e gabarito oficiais, `fala` própria) e trocar o `PENDENTE-FONTE` correspondente no roteiro. As candidatas de sites de exercícios (Toda Matéria, Brasil Escola etc.) precisam de conferência manual abrindo a página; só 2 foram conferidas. Geometria ainda não tem candidatas.
+3. **Visual dos widgets** (`docs/visual/widgets.md`). `retangulo_areas` foi corrigido em parte (centralizado e com rótulos), mas continua pequeno: o widget precisa receber os máximos dos sliders, o que exige mexer em `src/widgets/types.ts` e `src/steps/InteractiveCanvas.tsx` (Máquina A). `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `maquinas_funcao` (modo `maquinas`) e `transformacao_plano` nunca foram vistos em imagem. Quem fizer precisa de navegador: o agente Codex não consegue tirar screenshot no sandbox dele.
+4. **Abrir as aulas no navegador, uma por uma** (frentes 5 e 6). Só umas oito foram vistas. É onde aparecem erros que testes não pegam.
+5. **Segunda passada nos distratores de aritmética**: conferir em `docs/revisao/distratores-segunda-passada-aritmetica.md` quais capítulos faltam (o agente estava em contagem e probabilidade).
+6. **Auditoria por modelo forte**: uma amostra de 4 capítulos por Claude achou 3 feedbacks imprecisos que o modelo barato tinha deixado passar (`docs/revisao/auditoria-claude.md`). Depois da segunda passada, repetir a amostra em outros 4 capítulos para medir se melhorou.
+7. Fatoração e potências com `retangulo_areas` (depois do item 3); quatro widgets pequenos (`escala_decimal`, `divisao_polinomial`, `sistema_escalonado`, `grupos_inteiros`); aula 02 de Cones; vídeos; hospedagem do app (hoje só roda com `npm run dev` na máquina).
 
-Lição do dia: dois tipos de erro passaram pela revisão de texto e pelos testes e só apareceram ao comparar params com falas: curva rotulada "2ˣ" que desenhava y = 2 (a e b trocados) e falas de conclusão que só valiam para um valor do slider. A conferência "params × falas" deve ser feita em geometria também.
+**Cuidados aprendidos.** (1) Relato de agente não basta: validar sempre com `npm run lint:content`, `npm test`, `npm run typecheck`. (2) Revisão feita por modelo barato é branda: exigir no registro a conta executada como prova. (3) Erros que passam pelos testes: curva com parâmetros trocados (rótulo "2ˣ" desenhando y = 2), fala de conclusão que só vale para um valor do slider, feedback que descreve um erro que não produz a alternativa. (4) A Máquina A fica sem memória com sete agentes ao mesmo tempo (erro ENOMEM e servidor de pré-visualização derrubado).
 
 ## Fila, em ordem de prioridade
 

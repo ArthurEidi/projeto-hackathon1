@@ -364,7 +364,7 @@
             "id": "m2-fracoes-e-decimais-erro3",
             "label": "1/2",
             "correct": false,
-            "feedback": "Você manteve 1/2 em vez de tirar 2/4 de 3/4. O certo é 1/4; 3/4−2/4=1/4."
+            "feedback": "Você subtraiu só os numeradores (2/4) e simplificou, sem converter 1/2 em 2/4. O certo é 1/4; 3/4−2/4=1/4."
           }
         ]
       },

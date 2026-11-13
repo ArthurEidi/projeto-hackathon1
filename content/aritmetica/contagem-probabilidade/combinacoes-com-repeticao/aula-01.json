@@ -429,7 +429,7 @@
             "id": "a6",
             "label": "6",
             "correct": false,
-            "feedback": "6 esquece taças como 3 bolas do mesmo sabor. Com elas: 10."
+            "feedback": "6 = 3 · 2 multiplica bolas por sabores (ou 3!), em vez de C(5, 2) = 10."
           }
         ]
       },
@@ -516,7 +516,7 @@
             "id": "a20",
             "label": "20",
             "correct": false,
-            "feedback": "Depois de dar uma a cada, a fileira tem 5 símbolos: C(5, 2) = 10."
+            "feedback": "20 = 5 · 4 esquece de dividir por 2! na combinação. O certo é C(5, 2) = 10."
           },
           {
             "id": "a3",

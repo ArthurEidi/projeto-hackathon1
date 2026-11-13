@@ -426,7 +426,7 @@
             "id": "m2-vazio",
             "label": "[0; 2]",
             "correct": false,
-            "feedback": "Resposta: [0; 5]; A união engloba todos os pontos de A e de B: [0; 5]."
+            "feedback": "Você pegou só os dois menores extremos (ou A \\ B); a união cobre de 0 a 5. O certo é [0; 5]."
           }
         ]
       },
@@ -552,7 +552,7 @@
             "id": "d4-negativo",
             "label": "(−∞; 0,5)",
             "correct": false,
-            "feedback": "Resposta: (0,5; +∞); O complementar são os números maiores que 0,5."
+            "feedback": "Você só abriu o extremo 0,5 em vez de inverter o lado; o complementar são os x > 0,5. O certo é (0,5; +∞)."
           }
         ]
       },

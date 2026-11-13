@@ -560,7 +560,7 @@
             "id": "d5-erro",
             "label": "4·10³; ordem 10⁴",
             "correct": false,
-            "feedback": "Você dividiu pela metade em vez de multiplicar o volume. O certo é 1·10³; ordem 10³; 2000·0,5 = 1000 = 1·10³."
+            "feedback": "Você dividiu por 0,5 em vez de multiplicar (2·10³÷0,5 = 4·10³). O certo é 1·10³; ordem 10³; 2000·0,5 = 1000 = 1·10³."
           },
           {
             "id": "d5-erro2",

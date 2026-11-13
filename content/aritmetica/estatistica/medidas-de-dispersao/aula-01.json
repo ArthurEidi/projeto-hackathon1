@@ -513,7 +513,7 @@
             "id": "o2",
             "label": "6",
             "correct": false,
-            "feedback": "Média 3: desvios −2, −1 e +3. Soma 0."
+            "feedback": "6 soma os desvios em módulo (2 + 1 + 3). Com sinal (−2 − 1 + 3), a soma é 0."
           },
           {
             "id": "o3",

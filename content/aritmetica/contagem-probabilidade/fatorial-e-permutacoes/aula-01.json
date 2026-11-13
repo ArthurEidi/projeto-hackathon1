@@ -524,7 +524,7 @@
             "id": "a96",
             "label": "96",
             "correct": false,
-            "feedback": "Com o bloco há 4 itens, não 5. 4! · 2 = 48."
+            "feedback": "96 = 4! · 4 multiplica pelas 4 posições em vez de 2! no bloco. O certo é 4! · 2 = 48."
           }
         ]
       },

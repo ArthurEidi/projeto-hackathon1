@@ -546,7 +546,7 @@
             "id": "o4",
             "label": "4",
             "correct": false,
-            "feedback": "Q1 é 5 e Q3 é 13: AIQ = 8."
+            "feedback": "4 é só metade da caixa (13 − 9 ou 9 − 5). Como Q1 = 5 e Q3 = 13, AIQ = 8."
           },
           {
             "id": "o1",
@@ -661,7 +661,7 @@
             "id": "o4",
             "label": "75",
             "correct": false,
-            "feedback": "0,25 · 200 = 50."
+            "feedback": "75 calcula 100 − 25 em vez de aplicar 25% sobre 200. O certo é 50; 0,25 · 200 = 50."
           },
           {
             "id": "o1",

@@ -342,7 +342,7 @@
             "id": "l1221",
             "label": "1, 2, 2, 1",
             "correct": false,
-            "feedback": "Cada número é a soma dos dois acima de 1, 2, 1: fica 1, 3, 3, 1."
+            "feedback": "Você repetiu o 2 da linha 2 (1, 2, 1) em vez de somar 1 + 2 = 3. Fica 1, 3, 3, 1."
           },
           {
             "id": "l121",
