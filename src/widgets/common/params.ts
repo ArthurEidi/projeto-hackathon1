@@ -6,6 +6,7 @@ import * as circunferencia from "./circunferencia/params";
 import * as vetores from "./vetores/params";
 import * as areas from "./areas/params";
 import * as maquinas from "./maquinas/params";
+import * as transformacao from "./transformacao/params";
 import { CorTraco, Marca } from "../../ui/marcas";
 import * as barras from "./barras/params";
 import * as ciclo from "./ciclo/params";
@@ -227,6 +228,23 @@ const PontoMovel = z.object({
   /** Mostra a distância até o zero (módulo) como chave colorida. */
   distanciaZero: z.boolean().default(false),
   corDistancia: CorTraco.default("c2"),
+  /** Centro de referência para distância |x - c| e vetor x - c. */
+  centro: Valor.optional(),
+  /** Marca o ponto do centro na reta com rótulo "h". */
+  vertice: z.boolean().default(false),
+  corCentro: CorTraco.default("c2"),
+});
+
+export const ModoOperacao = z.enum(["uniao", "intersecao", "diferenca"]);
+export type ModoOperacao = z.infer<typeof ModoOperacao>;
+
+const OperacaoConjuntos = z.object({
+  a: Trecho,
+  b: Trecho,
+  modo: z.union([
+    ModoOperacao,
+    z.string().regex(/^\$[a-z0-9_]+$/, 'use "uniao", "intersecao", "diferenca" ou "$id"'),
+  ]),
 });
 
 export const RetaNumerica = z.object({
@@ -234,6 +252,7 @@ export const RetaNumerica = z.object({
   /** Espaçamento das marcas numeradas. */
   marcas: z.number().positive().default(1),
   trechos: z.array(Trecho).default([]),
+  operacao: OperacaoConjuntos.optional(),
   pontos: z.array(PontoFixo).default([]),
   ponto: PontoMovel.optional(),
   highlight: z.array(Marca).default([]),
@@ -244,10 +263,17 @@ export const RetaFigura = RetaNumerica.superRefine((p, ctx) => {
   if (p.ponto && typeof p.ponto.x === "string") {
     ctx.addIssue({ code: "custom", message: 'reta_figura não aceita "$slider": use números' });
   }
+  if (p.ponto && typeof p.ponto.centro === "string") {
+    ctx.addIssue({ code: "custom", message: 'reta_figura não aceita "$slider" em ponto.centro' });
+  }
+  if (p.operacao && typeof p.operacao.modo === "string" && p.operacao.modo.startsWith("$")) {
+    ctx.addIssue({ code: "custom", message: 'reta_figura não aceita "$slider" em operacao.modo' });
+  }
 });
 
 export const widgetParams = {
   ...maquinas.widgetParams,
+  ...transformacao.widgetParams,
   ...areas.widgetParams,
   ...vetores.widgetParams,
   ...circunferencia.widgetParams,
@@ -266,6 +292,7 @@ export const widgetParams = {
 
 export const figureParams = {
   ...maquinas.figureParams,
+  ...transformacao.figureParams,
   ...areas.figureParams,
   ...vetores.figureParams,
   ...circunferencia.figureParams,

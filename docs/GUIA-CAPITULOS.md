@@ -435,11 +435,12 @@ Arquivos: `common/params.ts` (schemas), `common/plot2d.ts` (matemática pura, te
   "intervalo": [-5, 5], "marcas": 1,
   "trechos": [ { "de": -1, "ate": null, "abreDe": true, "cor": "c1", "rotulo": "x > −1" } ],   // null = infinito
   "pontos":  [ { "x": 2, "cor": "c2", "rotulo": "2", "aberto": false } ],
-  "ponto":   { "x": 0, "arrastavel": true, "passo": 0.5, "distanciaZero": false, "corDistancia": "c2" },
+  "operacao": { "a": { "de": -2, "ate": 2 }, "b": { "de": 0, "ate": 4, "abreDe": true }, "modo": "intersecao" }, // ou "$op" (0/1/2)
+  "ponto":   { "x": 0, "arrastavel": true, "passo": 0.5, "distanciaZero": false, "corDistancia": "c2", "centro": "$h", "vertice": true },
   "highlight": []
 }
 ```
-Métricas: `ponto_x`, `dentro` (1 se o ponto está em algum trecho), `faixa_x`. `distanciaZero` desenha |x| (módulo). Serve para conjuntos, intervalos, inequações e módulo.
+Métricas: `ponto_x`, `dentro` (1 se o ponto está em algum trecho), `faixa_x`, `pertence` (1 se o ponto está no resultado de `operacao`), `distancia` (`|x - centro|` ou `|x|` com `distanciaZero`). `operacao` desenha três trilhas (`A` `c1`, `B` `c2`, resultado `c4`); `ponto.centro` (aceita `"$slider"`) desenha vetor `x - c` (`c3`) e segmento `|x - c|` (`c4`), com marcador `"h"` quando `vertice: true`. `reta_figura` recusa `"$slider"`. Serve para conjuntos, intervalos, inequações e módulo.
 
 ### 5.3 `barras` + `barras_figura` — PRONTOS
 
@@ -727,4 +728,20 @@ Pasta `common/maquinas/`: modos `flechas` e `maquinas`. `maquinas_figura` exige 
 ```
 
 Métricas: `entradas_com_uma_saida` (no modo `flechas`), `entradas_testadas`, `ordens_testadas`, `inversa_testada` (no modo `maquinas`). Cores: entradas `c1`, saídas `c2`, setas/máquinas `c3`, conflito/inversa `c4`.
+
+### 5.20 `transformacao_plano` + `transformacao_figura`
+
+Pasta `common/transformacao/`: transformações no plano cartesiano (isometrias, homotetia e matrizes 2×2). `transformacao_figura` recusa `"$slider"`. Aceita `highlight`.
+
+- **Modos**: `translacao` (`dx`, `dy`), `rotacao` (`angulo`, `cx`, `cy`), `reflexao` (`eixo`: `"x" | "y" | "y=x" | "y=-x"` ou `"$slider"` 0..3), `homotetia` (`k`, `cx`, `cy`), `matriz` (`m: [[a,b],[c,d]]`).
+- **Campos comuns**: `figura` (vértices `[{x,y}]`; padrão triângulo `[(1,1),(3,1),(2,3)]`), `eixo_centro?: [cx, cy]`, `mostrar?: { vetores, malha, area, matriz, determinante }`, `caixa?: [x0, x1, y0, y1]`.
+
+```json
+{"modo":"rotacao","angulo":"$ang","cx":0,"cy":0,"mostrar":{"vetores":true,"area":true}}
+```
+```json
+{"modo":"matriz","m":[["$a",0],[0,"$d"]],"mostrar":{"malha":true,"determinante":true,"area":true}}
+```
+
+Métricas: `det`, `razao_area` (`|det|`), `area_original`, `area_imagem`, `preserva_orientacao` (`1` se `det >= 0`, `0` se inverte), `distancia_centro` (para translação/rotação/homotetia). Cores: original `c1`, malha deformada `c2`, imagem `c3`, centro/eixo/vetores `c4`.
 

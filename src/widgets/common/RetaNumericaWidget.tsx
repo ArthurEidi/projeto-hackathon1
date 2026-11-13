@@ -1,10 +1,11 @@
 // Reta numérica viva: o aluno arrasta um ponto e vê se ele está dentro dos trechos marcados.
-// Métricas: ponto_x, dentro (1 se o ponto está em algum trecho), faixa_x (largura percorrida).
+// Métricas: ponto_x, dentro (1 se o ponto está em algum trecho), faixa_x (largura percorrida),
+// pertence (1 se o ponto está no resultado de operacao), distancia (|x - centro|).
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Dica } from "../../ui/Dica";
 import { useCanvas } from "../canvas";
 import type { WidgetProps } from "../types";
-import { dentroDoTrecho, desenharReta, type VistaReta } from "./desenhoReta";
+import { dentroDoTrecho, desenharReta, operarTrechos, resolverModoOperacao, type VistaReta } from "./desenhoReta";
 import { RetaNumerica } from "./params";
 import { encaixar, resolver } from "./plot2d";
 
@@ -15,6 +16,12 @@ export function RetaNumericaWidget({ params, controls, onMetric, onInteract }: W
   const xInicial = pm ? resolver(pm.x, controls) : 0;
   const [xArrastado, setXArrastado] = useState(xInicial);
   const pontoX = pm ? (segueSlider ? xInicial : xArrastado) : undefined;
+  const centro = pm?.centro !== undefined ? resolver(pm.centro, controls) : undefined;
+  const modoOp = p.operacao ? resolverModoOperacao(p.operacao.modo, controls) : undefined;
+  const resultadoOp = useMemo(
+    () => (p.operacao && modoOp ? operarTrechos(p.operacao.a, p.operacao.b, modoOp) : null),
+    [p.operacao, modoOp],
+  );
   const [faixa, setFaixa] = useState<[number, number] | null>(null);
   const [tocou, setTocou] = useState(false);
   const vista = useRef<VistaReta | null>(null);
@@ -24,12 +31,20 @@ export function RetaNumericaWidget({ params, controls, onMetric, onInteract }: W
     if (pontoX === undefined) return;
     onMetric("ponto_x", pontoX);
     onMetric("dentro", p.trechos.some((t) => dentroDoTrecho(t, pontoX)) ? 1 : 0);
+    if (resultadoOp) {
+      onMetric("pertence", resultadoOp.some((t) => dentroDoTrecho(t, pontoX)) ? 1 : 0);
+    }
+    if (centro !== undefined) {
+      onMetric("distancia", Math.abs(pontoX - centro));
+    } else if (pm?.distanciaZero) {
+      onMetric("distancia", Math.abs(pontoX));
+    }
     setFaixa((f) => (f ? [Math.min(f[0], pontoX), Math.max(f[1], pontoX)] : [pontoX, pontoX]));
-  }, [pontoX, p.trechos, onMetric]);
+  }, [pontoX, p.trechos, resultadoOp, centro, pm?.distanciaZero, onMetric]);
   useEffect(() => onMetric("faixa_x", faixa ? faixa[1] - faixa[0] : 0), [faixa, onMetric]);
 
   const { ref, size, hover } = useCanvas(0.42, (ctx, w, h, hits) => {
-    vista.current = desenharReta(ctx, w, h, hits, p, pontoX);
+    vista.current = desenharReta(ctx, w, h, hits, p, pontoX, { centro, modoOp });
   });
 
   const arrastavel = Boolean(pm && pm.arrastavel && !segueSlider);
@@ -67,8 +82,10 @@ export function RetaNumericaWidget({ params, controls, onMetric, onInteract }: W
 
 export function RetaFigura({ state }: { state: RetaNumerica }) {
   const pontoX = state.ponto ? resolver(state.ponto.x, {}) : undefined;
+  const centro = state.ponto?.centro !== undefined ? resolver(state.ponto.centro, {}) : undefined;
+  const modoOp = state.operacao ? resolverModoOperacao(state.operacao.modo, {}) : undefined;
   const { ref, size, hover } = useCanvas(0.42, (ctx, w, h, hits) => {
-    desenharReta(ctx, w, h, hits, state, pontoX);
+    desenharReta(ctx, w, h, hits, state, pontoX, { centro, modoOp });
   });
   return (
     <>

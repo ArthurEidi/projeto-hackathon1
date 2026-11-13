@@ -292,8 +292,8 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 9 | `geometria_circulo` (14) | 3 | **pronto** (GUIA §5.13) |
 | 10 | `retangulo_areas` (19) | 3 | implementado e testado (GUIA §5.18); revisão visual pendente |
 | 11 | `pontos_no_plano` (3) | 2 | implementado e testado (GUIA §5.15); revisão visual pendente |
-| 12 | Extensões da `reta_numerica` (11) | 2 | pendente |
-| 13 | `transformacao_plano` (17) | 2 | pendente |
+| 12 | Extensões da `reta_numerica` (11) | 2 | **pronto** (GUIA §5.2) |
+| 13 | `transformacao_plano` (17) | 2 | **pronto** (GUIA §5.20) |
 | 14 | `vetores_no_plano` + `complexo` (4 + 18) | 2 | implementado e testado (GUIA §5.17); revisão visual pendente |
 | 15 | `maquinas_funcao` (20) | 2 | **pronto** (GUIA §5.19) |
 | 16 | `circunferencia_no_plano` (5) | 1 | implementado e testado (GUIA §5.16); revisão visual pendente |
