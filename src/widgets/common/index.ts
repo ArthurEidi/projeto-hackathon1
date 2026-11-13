@@ -1,5 +1,7 @@
 // Widgets e figuras comuns a vários capítulos. Schemas em ./params.ts.
 import { BarrasFigura } from "./barras/BarrasFigura";
+import { LugarWidget } from "./lugar/LugarWidget";
+import { LugarFigura } from "./lugar/LugarFigura";
 import { BarrasWidget } from "./barras/BarrasWidget";
 import { GradeFigura } from "./grade/GradeFigura";
 import { GradeWidget } from "./grade/GradeWidget";
@@ -18,6 +20,7 @@ import { PlanoFigura } from "./PlanoFigura";
 import { RetaFigura, RetaNumericaWidget } from "./RetaNumericaWidget";
 
 export const widgets = {
+  lugar_geometrico: LugarWidget,
   plano_cartesiano: PlanoCartesianoWidget,
   reta_numerica: RetaNumericaWidget,
   barras: BarrasWidget,
@@ -30,6 +33,7 @@ export const widgets = {
 };
 
 export const figures = {
+  lugar_figura: LugarFigura,
   plano_figura: PlanoFigura,
   reta_figura: RetaFigura,
   barras_figura: BarrasFigura,

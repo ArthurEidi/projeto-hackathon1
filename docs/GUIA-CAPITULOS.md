@@ -625,3 +625,26 @@ Exemplos (`params`):
 { "modo": "fatias", "variante": "setor", "r": 6, "alfa": "$alfa" }
 { "modo": "fatias", "variante": "coroa", "R": 5, "furo": "$r_int" }
 ```
+
+### 5.14 `lugar_geometrico` + `lugar_figura`
+
+Pasta `common/lugar/`: matemática pura em `calc.ts`, desenho em `desenho.ts`, widget e figura separados.
+Modos `parabola`, `elipse`, `hiperbole`; dimensões aceitam expressões com sliders, figura exige números.
+
+Campos comuns: `ponto: [x,y]`, `passo` (0,5), `prender_na_curva`, `prender_no_eixo`, `curva_oculta`, `focos`, `zoom`, `fantasma: {p?,a?,c?}`, `mostrar: {triangulo,retangulo,assintotas}`, `highlight`.
+Elipse exige `0 <= c < a`; hipérbole exige `0 <= a < c`; parábola exige `p != 0`. Parâmetros inválidos mostram aviso sem desenhar uma curva falsa.
+
+```json
+{"modo":"parabola","p":"$p","ponto":[0,2],"prender_no_eixo":true,"curva_oculta":true}
+```
+```json
+{"modo":"elipse","a":5,"c":"$c","prender_na_curva":true,"fantasma":{"c":0}}
+```
+```json
+{"modo":"hiperbole","c":5,"diferenca":"$diferenca","prender_na_curva":true,"zoom":"$zoom","mostrar":{"assintotas":true}}
+```
+
+`diferenca` substitui `2a` na hipérbole; zero desenha a mediatriz. Elipse presa encaixa em 7,5 graus; demais arrastes encaixam pelo `passo`. O aluno pode arrastar P ou tocar outra posição da malha. O topo da elipse é tocável.
+Métricas: `pontos_sobre` (posições distintas que satisfazem o lugar), `pontos_vistos`, `vertice_achado`, `topo_tocado`, `triangulo_ligado`, `igualou`. O estado inicial não conta como interação; visitas repetidas não aumentam contadores. Botões mostram triângulo/retângulo ou a igualdade algébrica da parábola. Sliders são métricas do motor.
+
+Conferência visual em 400 px pendente nesta máquina: portal Maestri ausente, navegador conectado indisponível e aprovação do Computer Use expirou.

@@ -288,7 +288,7 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 5 | `geometria_triangulo` (12) | 7 | **pronto** (GUIA §5.10) |
 | 6 | `ciclo_trigonometrico` (15) | 7 | **pronto** (GUIA §5.11) |
 | 7 | `geometria_poligono` (13) | 5 | **pronto** (GUIA §5.12) |
-| 8 | `lugar_geometrico` (6) | 3 | pendente |
+| 8 | `lugar_geometrico` (6) | 3 | implementado e testado (GUIA ?5.14); revis?o visual pendente |
 | 9 | `geometria_circulo` (14) | 3 | **pronto** (GUIA §5.13) |
 | 10 | `retangulo_areas` (19) | 3 | pendente |
 | 11 | `pontos_no_plano` (3) | 2 | pendente |
