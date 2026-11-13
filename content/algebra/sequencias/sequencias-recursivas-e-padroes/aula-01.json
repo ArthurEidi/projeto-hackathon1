@@ -383,7 +383,7 @@
             "id": "o2",
             "label": "4",
             "correct": false,
-            "feedback": "Parou em a₄ = 3. Aplicando a regra mais uma vez: a₅ = 2 + 3 = 5."
+            "feedback": "Somou 1 em vez dos dois anteriores (1, 1, 2, 3, 4). Aplicando a regra: a₅ = 2 + 3 = 5."
           },
           {
             "id": "o1",
