@@ -33,3 +33,7 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 
 - 13/11, A: frentes 1 e 2 (revisão de texto de aritmética e álgebra) e distratores de aritmética e álgebra.
 - 13/11, A: os 103 capítulos escritos e registrados; 14 widgets; repositório publicado.
+
+- 13/11, Shell #2 (Codex): reserva exclusiva de src/widgets/common/** para a pendência visual 1, por instrução do usuário. Sem commit/push/build; registros incrementais em docs/visual/widgets.md.
+
+- 13/11, Shell #2: unidade parcial de retangulo_areas gravada; typecheck e 332 testes passaram. Sem imagens, lint bloqueado por ENOMEM e CLI Maestri ausente. Retomada detalhada em docs/visual/widgets.md; os seis widgets seguintes não foram iniciados.

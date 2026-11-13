@@ -80,3 +80,5 @@ Já revistos por modelo forte (não precisam de nova passada): os 10 capítulos 
 ## Fora do repositório (só na máquina A)
 
 `C:\Users\User\Hackathon\sprites` (arte-fonte dos personagens; os recortes usados estão em `public/`) e `C:\Users\User\Hackathon\gabarito-cego` (material da conferência às cegas; resultado em `docs/REVISAO-GABARITOS.md`).
+
+- 13/11, Shell #2, pendência visual 1: retangulo_areas parcialmente corrigido e testado; não aprovado visualmente. Faltam acesso a screenshots e limites de sliders no contrato WidgetProps; outros seis widgets pendentes. Ver docs/visual/widgets.md. lint:content falhou por ENOMEM antes de validar; typecheck e 332 testes de widgets passaram.
