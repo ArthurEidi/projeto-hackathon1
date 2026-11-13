@@ -41,6 +41,8 @@ const Categorias = z.object({
   /** Setores: cores das fatias % e ângulo. */
   cor_porcento: CorTraco.default("c1"),
   cor_angulo: CorTraco.default("c2"),
+  /** Rótulos +d entre barras vizinhas (maior crescimento destacado). */
+  degraus: z.boolean().default(false),
   /** Índices das barras acesas na figura (ex.: a barra que o erro leu). */
   acesas: z.array(z.number().int().min(0)).default([]),
   highlight: Highlight,
@@ -82,8 +84,10 @@ const Pontos = z.object({
       quadrados: z.boolean().default(false),
       fila: z.boolean().default(false),
       soma_desvios: z.boolean().default(false),
+      alerta_mediana: z.boolean().default(false),
+      conta_media: z.boolean().default(false),
     })
-    .default({ mediana: false, moda: false, desvios: false, quadrados: false, fila: false, soma_desvios: false }),
+    .default({ mediana: false, moda: false, desvios: false, quadrados: false, fila: false, soma_desvios: false, alerta_mediana: false, conta_media: false }),
   /** Botões/chaves visíveis no widget. */
   chaves: z.array(z.enum(["desvios", "quadrados", "fila", "somar"])).default([]),
   /** Na fila, o aluno toca os dois do meio (métrica meios_tocados). */
@@ -119,8 +123,15 @@ const Fila = z.object({
   highlight: Highlight,
 });
 
-const Regra = z.enum(["pa", "pg", "recorrencia"]);
-const RegraSeq = z.object({ regra: Regra.default("pa"), a1: Expr.default(1), d: Expr.default(0), q: Expr.default(1) });
+const Regra = z.enum(["pa", "pg", "recorrencia", "recorrencia2"]);
+const RegraSeq = z.object({
+  regra: Regra.default("pa"),
+  a1: Expr.default(1),
+  a2: Expr.optional(),
+  d: Expr.default(0),
+  p: Expr.default(1),
+  q: Expr.default(1),
+});
 
 const Sequencia = RegraSeq.extend({
   modo: z.literal("sequencia"),
@@ -184,7 +195,15 @@ export function exprsDe(p: Barras): Expr[] {
     case "fila":
       return [];
     case "sequencia":
-      return [p.a1, p.d, p.q, ...(p.n !== undefined ? [p.n] : []), ...(p.fantasma ? [p.fantasma.a1, p.fantasma.d, p.fantasma.q] : [])];
+      return [
+        p.a1,
+        ...(p.a2 !== undefined ? [p.a2] : []),
+        p.d,
+        p.p,
+        p.q,
+        ...(p.n !== undefined ? [p.n] : []),
+        ...(p.fantasma ? [p.fantasma.a1, ...(p.fantasma.a2 !== undefined ? [p.fantasma.a2] : []), p.fantasma.d, p.fantasma.p, p.fantasma.q] : []),
+      ];
     case "parte_todo":
       return [p.partes, p.pintadas, ...(p.todo !== undefined ? [p.todo] : []), ...(p.referencia ? [p.referencia.partes, p.referencia.pintadas] : [])];
   }

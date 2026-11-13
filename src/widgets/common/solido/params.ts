@@ -177,7 +177,19 @@ const Composicao = z.object({
   ...Base,
 });
 
-export const Solido = z.discriminatedUnion("modo", [Revolucao, Prisma, Piramide, Cilindro, Esfera, Tronco, Poliedro, Espaco, Vistas, Composicao]);
+const CorteCone = z.object({
+  modo: z.literal("corte_cone"),
+  /** Inclinação do plano em graus (0° = horizontal/circunferência, ~60° = parábola, >60° = hipérbole). */
+  inclinacao: Expr.default(0),
+  /** Altura do corte ao longo do eixo (y). */
+  altura_do_corte: Expr.default(1.8),
+  r: z.number().positive().default(2.6),
+  h: z.number().positive().default(4.5),
+  cores: z.object({ cone: CorTraco.default("c1"), plano: CorTraco.default("c2"), secao: CorTraco.default("c3") }).default({ cone: "c1", plano: "c2", secao: "c3" }),
+  ...Base,
+});
+
+export const Solido = z.discriminatedUnion("modo", [Revolucao, Prisma, Piramide, Cilindro, Esfera, Tronco, Poliedro, Espaco, Vistas, Composicao, CorteCone]);
 export type Solido = z.output<typeof Solido>;
 export type SolidoDe<M extends Solido["modo"]> = Extract<Solido, { modo: M }>;
 
@@ -203,6 +215,8 @@ export function exprsDe(p: Solido): Expr[] {
       return [p.fechar, ...(p.corte ? [p.corte.altura] : [])];
     case "composicao":
       return [p.juntar];
+    case "corte_cone":
+      return [p.inclinacao, p.altura_do_corte];
   }
 }
 

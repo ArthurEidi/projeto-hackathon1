@@ -668,7 +668,7 @@ function desenharFila(ctx: CanvasRenderingContext2D, w: number, h: number, hits:
 export function degraus(p: GradeDe<"escada">, ctl: Controles): number[] {
   const n = Math.max(0, Math.round(avaliarExpr(p.n, ctl)));
   const k = p.k === undefined ? n : Math.max(0, Math.min(n, Math.round(avaliarExpr(p.k, ctl))));
-  return Array.from({ length: k }, (_, i) => n - i);
+  return Array.from({ length: k }, (_, i) => (p.iguais ? n : n - i));
 }
 
 function desenharEscada(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: GradeDe<"escada">, ctl: Controles): GeoGrade {
@@ -684,8 +684,10 @@ function desenharEscada(ctx: CanvasRenderingContext2D, w: number, h: number, hit
     text(ctx, { x: x + slot * 0.35, y: area.y + area.h - bh - 12 }, String(v), kd.dark, 15);
   });
   seg(ctx, { x: area.x, y: area.y + area.h }, { x: area.x + area.w, y: area.y + area.h }, c.axis, 2);
-  const total = d.reduce((s, v) => s * v, 1);
-  etiqueta(ctx, hits, { x: w / 2, y: h - 30 }, d.length ? `${d.join(" × ")} = ${total}` : "1", p.cores.produto);
+  const ehSoma = p.operacao === "soma";
+  const total = d.reduce((s, v) => (ehSoma ? s + v : s * v), ehSoma ? 0 : 1);
+  const sep = ehSoma ? " + " : " × ";
+  etiqueta(ctx, hits, { x: w / 2, y: h - 30 }, d.length ? `${d.join(sep)} = ${total}` : ehSoma ? "0" : "1", p.cores.produto);
   return { alvos: [] };
 }
 
@@ -829,6 +831,7 @@ function desenharBolinhas(ctx: CanvasRenderingContext2D, w: number, h: number, h
   const yF = h * 0.55;
   const slotsX: number[] = [];
   const alvos: Alvo[] = [];
+  let bolaIdx = 0;
   seq.forEach((barra, i) => {
     const x = xs0 + sw * (i + 0.5);
     slotsX.push(x);
@@ -836,8 +839,10 @@ function desenharBolinhas(ctx: CanvasRenderingContext2D, w: number, h: number, h
       caixa(ctx, { x: x - 5, y: yF - 26, w: 10, h: 52 }, kr.main, kr.dark, 2, 3);
       alvos.push({ tipo: "barra", id: String(i), r: { x: x - sw / 2, y: yF - 34, w: sw, h: 68 } });
     } else {
+      bolaIdx += 1;
       dot(ctx, { x, y: yF + 3 }, sw * 0.32, kb.dark);
       dot(ctx, { x, y: yF }, sw * 0.32, kb.main);
+      if (p.numeradas) text(ctx, { x, y: yF }, String(bolaIdx), "#FFFFFF", Math.min(13, sw * 0.36));
     }
   });
   if (e.vistas !== undefined) text(ctx, { x: w / 2, y: yF + 50 }, `${e.vistas} fileira${e.vistas === 1 ? "" : "s"} diferente${e.vistas === 1 ? "" : "s"}`, c.ink2, 13);
@@ -914,6 +919,54 @@ function desenharColunas(ctx: CanvasRenderingContext2D, w: number, h: number, hi
   return { alvos: [] };
 }
 
+// ---------- urna ----------
+
+export function totalUrna(p: GradeDe<"urna">, ctl: Controles): { inicial: number; retiradas: number; restante: number } {
+  const inicial = p.bolas.reduce((s, g) => s + g.quantidade, 0);
+  const retiradas = Math.max(0, Math.min(inicial, Math.round(avaliarExpr(p.retiradas, ctl))));
+  return { inicial, retiradas, restante: Math.max(0, inicial - retiradas) };
+}
+
+function desenharUrna(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: GradeDe<"urna">, ctl: Controles): GeoGrade {
+  const { inicial, retiradas, restante } = totalUrna(p, ctl);
+  const itens: { cor: CorTraco; rotulo?: string }[] = [];
+  for (const g of p.bolas) {
+    for (let i = 0; i < g.quantidade; i++) itens.push({ cor: g.cor, rotulo: g.rotulo });
+  }
+  const box = { x: 24, y: 18, w: w - 48, h: h - 76 };
+  caixa(ctx, box, c.surface, c.lineDark, 2, 12);
+
+  const cols = Math.max(1, Math.min(itens.length, Math.ceil(Math.sqrt(Math.max(1, itens.length) * 1.4))));
+  const rows = Math.max(1, Math.ceil(itens.length / cols));
+  const cw = (box.w - 24) / cols;
+  const ch = (box.h - 24) / rows;
+  const r = Math.max(8, Math.min(20, Math.min(cw, ch) * 0.36));
+
+  itens.forEach((b, idx) => {
+    const col = idx % cols;
+    const row = Math.floor(idx / cols);
+    const x = box.x + 12 + cw * (col + 0.5);
+    const y = box.y + 12 + ch * (row + 0.5);
+    const riscada = idx >= itens.length - retiradas;
+    const k = corDoTraco(b.cor);
+    if (riscada) {
+      dot(ctx, { x, y }, r, c.line);
+      seg(ctx, { x: x - r * 0.85, y: y + r * 0.85 }, { x: x + r * 0.85, y: y - r * 0.85 }, c.muted, 2.5);
+    } else {
+      dot(ctx, { x, y: y + 2 }, r, k.dark);
+      dot(ctx, { x, y }, r, k.main);
+      if (b.rotulo) text(ctx, { x, y }, b.rotulo, "#FFFFFF", Math.min(13, r * 0.95));
+    }
+  });
+
+  const fav = p.destaque !== undefined ? p.bolas[p.destaque]?.quantidade ?? 0 : undefined;
+  const rotTotal = retiradas > 0 ? `total: ${inicial}̶ → ${restante}` : `total: ${inicial}`;
+  const texto = fav !== undefined ? `${fav}/${restante} (${rotTotal})` : rotTotal;
+  const corTag: CorTraco = p.destaque !== undefined ? p.bolas[p.destaque]?.cor ?? "c3" : "c3";
+  etiqueta(ctx, hits, { x: w / 2, y: h - 24 }, texto, corTag);
+  return { alvos: [] };
+}
+
 export function desenharGrade(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: Grade, ctl: Controles, e: EstadoGrade = {}): GeoGrade {
   switch (p.modo) {
     case "casas":
@@ -938,6 +991,8 @@ export function desenharGrade(ctx: CanvasRenderingContext2D, w: number, h: numbe
       return desenharCaixas(ctx, w, h, hits, p, ctl, e);
     case "colunas":
       return desenharColunas(ctx, w, h, hits, p, ctl, e);
+    case "urna":
+      return desenharUrna(ctx, w, h, hits, p, ctl);
   }
 }
 

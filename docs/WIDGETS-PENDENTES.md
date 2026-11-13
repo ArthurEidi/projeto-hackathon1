@@ -284,7 +284,7 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 1 | `barras` (entradas 2 + 9) | 14 | **pronto** (GUIA §5.3) |
 | 2 | Extensões do `plano_cartesiano` (7 + 10) | 10 (+ funcao-quadratica, funcao-exponencial, logaritmos, modelos-periodicos melhorados) | **pronto** (GUIA §5.1) |
 | 3 | `grade_resultados` (1) | 10 | **pronto** (GUIA §5.4) |
-| 4 | `solido_3d` (8 + 16) | 10 (+3 com `lugar_geometrico`) | em andamento |
+| 4 | `solido_3d` (8 + 16) | 10 (+3 com `lugar_geometrico`) | **pronto** (inclui `corte_cone`, GUIA §5.7) |
 | 5 | `geometria_triangulo` (12) | 7 | **pronto** (GUIA §5.10) |
 | 6 | `ciclo_trigonometrico` (15) | 7 | **pronto** (GUIA §5.11) |
 | 7 | `geometria_poligono` (13) | 5 | **pronto** (GUIA §5.12) |

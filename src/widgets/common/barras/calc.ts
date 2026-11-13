@@ -104,6 +104,19 @@ export function termos(a1: number, d: number, q: number, N: number): number[] {
   return out;
 }
 
+/**
+ * Termos a₁..a_N da recorrência de dois termos aₖ₊₂ = p·aₖ₊₁ + q·aₖ (ex.: Fibonacci com a1=1, a2=1, p=1, q=1).
+ */
+export function termos2(a1: number, a2: number, p: number, q: number, N: number): number[] {
+  if (N <= 0) return [];
+  if (N === 1) return [arred(a1)];
+  const out: number[] = [arred(a1), arred(a2)];
+  for (let k = 2; k < N; k++) {
+    out.push(arred(p * out[k - 1] + q * out[k - 2]));
+  }
+  return out;
+}
+
 export const somasParciais = (t: readonly number[]) => {
   let s = 0;
   return t.map((x) => arred((s += x)));

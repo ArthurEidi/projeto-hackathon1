@@ -703,6 +703,77 @@ function cenaComposicao(p: SolidoDe<"composicao">, ctl: Controles): Cena {
   };
 }
 
+/** 0 = circunferência, 1 = elipse, 2 = parábola, 3 = hipérbole. */
+export function classificarSecaoCone(inclinacaoGraus: number, geratrizGraus: number): { tipo: 0 | 1 | 2 | 3; nome: string } {
+  const ang = Math.abs(((inclinacaoGraus % 180) + 180) % 180);
+  const inc = ang > 90 ? 180 - ang : ang;
+  if (inc < 2) return { tipo: 0, nome: "circunferência" };
+  if (Math.abs(inc - geratrizGraus) <= 3) return { tipo: 2, nome: "parábola" };
+  if (inc < geratrizGraus) return { tipo: 1, nome: "elipse" };
+  return { tipo: 3, nome: "hipérbole" };
+}
+
+function cenaCorteCone(p: SolidoDe<"corte_cone">, ctl: Controles): Cena {
+  const r = p.r;
+  const h = p.h;
+  const k = r / h;
+  const geratrizGraus = (Math.atan(h / r) * 180) / Math.PI;
+  const incGraus = avaliarExpr(p.inclinacao, ctl);
+  const y0 = Math.max(-h * 0.85, Math.min(h * 0.85, avaliarExpr(p.altura_do_corte, ctl)));
+  const rad = incGraus * DEG;
+  const { tipo, nome } = classificarSecaoCone(incGraus, geratrizGraus);
+
+  const sup = revolucao([{ r: 0, y: 0 }, { r, y: h, quebra: true }, { r: 0, y: h, quebra: true }], 0, 2 * Math.PI, 28, tint(p.cores.cone));
+  const inf = revolucao([{ r: 0, y: 0 }, { r, y: -h, quebra: true }, { r: 0, y: -h, quebra: true }], 0, 2 * Math.PI, 28, tint(p.cores.cone));
+
+  const cosI = Math.cos(rad);
+  const sinI = Math.sin(rad);
+  const L = Math.max(r, h) * 1.15;
+  const planoPts: Vec3[] = [
+    [-L * cosI, y0 - L * sinI, -L * 0.85],
+    [L * cosI, y0 + L * sinI, -L * 0.85],
+    [L * cosI, y0 + L * sinI, L * 0.85],
+    [-L * cosI, y0 - L * sinI, L * 0.85],
+  ];
+
+  // Amostra pontos da interseção do plano P(u, v) = (u*cosI, y0 + u*sinI, v) com o cone duplo.
+  const anotacoes: Anotacao[] = [{ tipo: "poligono", pts: planoPts, cor: p.cores.plano }];
+  const addBranch = (sign: 1 | -1) => {
+    const pos: Vec3[] = [];
+    const neg: Vec3[] = [];
+    const N = 80;
+    for (let i = 0; i <= N; i++) {
+      const u = -L + (2 * L * i) / N;
+      const y = y0 + u * sinI;
+      if (y * sign < 0 || Math.abs(y) > h) continue;
+      const x = u * cosI;
+      const v2 = (k * y) * (k * y) - x * x;
+      if (v2 >= 0) {
+        const v = Math.sqrt(v2);
+        pos.push([x, y, v]);
+        neg.push([x, y, -v]);
+      }
+    }
+    const pts = [...pos, ...neg.reverse()];
+    if (pts.length >= 3) {
+      anotacoes.push({ tipo: "poligono", pts, cor: p.cores.secao, forte: true });
+    }
+  };
+  addBranch(1);
+  addBranch(-1);
+
+  return {
+    malhas: [sup, inf],
+    anotacoes,
+    extras: planoPts,
+    placar: [
+      { s: `seção: ${nome}`, cor: p.cores.secao },
+      { s: `inclinação ${num(incGraus, 0)}°`, cor: p.cores.plano },
+    ],
+    metricas: { secao: tipo, inclinacao: incGraus },
+  };
+}
+
 export function montarCena(p: Solido, ctl: Controles, e: EstadoSolido = {}): Cena {
   switch (p.modo) {
     case "revolucao":
@@ -725,6 +796,8 @@ export function montarCena(p: Solido, ctl: Controles, e: EstadoSolido = {}): Cen
       return cenaVistas(p, ctl, e);
     case "composicao":
       return cenaComposicao(p, ctl);
+    case "corte_cone":
+      return cenaCorteCone(p, ctl);
   }
 }
 

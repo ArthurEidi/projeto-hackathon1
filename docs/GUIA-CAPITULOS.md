@@ -448,11 +448,11 @@ Arquivos: `common/barras/params.ts` (schema por `modo`), `calc.ts` (estatística
 
 | `modo` | Campos principais | Métricas |
 |---|---|---|
-| `categorias` | `categorias: [{nome, valor}]`, `tipo` e `tipos` (chave barras/linha/setores), `eixo_inicio` (`"$eixo"`), `tabela`, `relativa` / `chave_relativa`, `coleta` (botões +1), `comparar: [i, j]` ("B parece X× A"), `acesas` (figura) | `barras_tocadas`, `tipo_linha`, `tipo_setores`, `regua_relativa`, `respostas` |
+| `categorias` | `categorias: [{nome, valor}]`, `tipo` e `tipos` (chave barras/linha/setores), `eixo_inicio` (`"$eixo"`), `tabela`, `relativa` / `chave_relativa`, `coleta` (botões +1), `comparar: [i, j]` ("B parece X× A"), `degraus` (`+d` entre barras vizinhas, maior crescimento em `c3`), `acesas` (figura) | `barras_tocadas`, `tipo_linha`, `tipo_setores`, `regua_relativa`, `respostas` |
 | `amostragem` | `populacao: [{nome, pct}]`, `destaque`, `n` (`"$n"`), `vicio: {rotulo, populacao}`, `semente` | `amostra_pct`, `erro`, `vicio_ligado`, `amostras` |
-| `pontos` | `valores` (aceitam `"5-$s"`), `regua`, `passo`, `arrastaveis` (índices), `apoio: "media" \| "arrastavel" \| número`, `mostrar: {mediana, moda, desvios, quadrados, fila, soma_desvios}`, `chaves: ["desvios","quadrados","fila","somar"]`, `tocar_meios`, `grupo_b`, `incognita` | `arrastes`, `equilibrio`, `maior_valor`, `media`, `mediana`, `desvios_ligados`, `quadrados_ligados`, `somou`, `fila_ligada`, `meios_tocados` |
+| `pontos` | `valores` (aceitam `"5-$s"`), `regua`, `passo`, `arrastaveis` (índices), `apoio: "media" \| "arrastavel" \| número`, `mostrar: {mediana, moda, desvios, quadrados, fila, soma_desvios, alerta_mediana, conta_media}`, `chaves: ["desvios","quadrados","fila","somar"]`, `tocar_meios`, `grupo_b`, `incognita` | `arrastes`, `equilibrio`, `maior_valor`, `media`, `mediana`, `desvios_ligados`, `quadrados_ligados`, `somou`, `fila_ligada`, `meios_tocados` |
 | `fila` | `valores`, `ordenada` (senão botão "pôr em fila"), `arrastaveis` / `fixos` (`q1 q2 q3`), `caixa` / `chave_caixa`, `maior_arrastavel: {ate, passo}` | `ordenou`, `q1_certo`, `q2_certo`, `q3_certo`, `cortes_certos`, `caixa_desenhada`, `maior_valor`, `atipicos` |
-| `sequencia` | `regra: "pa" \| "pg" \| "recorrencia"` (aₙ₊₁ = q·aₙ + d), `a1`, `d`, `q`, `termos` (N colunas), `n` (`"$n"`: até onde acende), `degraus` (+d / ×q), `acumular` (torre Sₙ), `limite` (a₁/(1 − q)), `fantasma`, `nome`, `casas`, `acesos` (figura) | `termo_n`, `soma_n`, `sinal_trocou`, `barras_tocadas` |
+| `sequencia` | `regra: "pa" \| "pg" \| "recorrencia" \| "recorrencia2"` (`aₙ₊₁ = q·aₙ + d`, ou `aₙ₊₂ = p·aₙ₊₁ + q·aₙ` com `a2`), `a1`, `a2`, `d`, `p`, `q`, `termos` (N colunas), `n` (`"$n"`: até onde acende), `degraus` (+d / ×q), `acumular` (torre Sₙ), `limite` (a₁/(1 − q)), `fantasma`, `nome`, `casas`, `acesos` (figura) | `termo_n`, `soma_n`, `sinal_trocou`, `barras_tocadas` |
 | `parte_todo` | `partes`, `pintadas` (`"2*$k"`, `"2+$n"`), `todo` (valor do todo), `referencia: {partes, pintadas}`, `mostrar: {fracao, porcento, razao}`, `rotulos: {parte, todo}` | `fracao`, `porcento`, `pintadas`, `partes`, `equivalente` |
 
 Cores por marca em `cor`/`cores` de cada modo (padrões: índice c1, termo c2, d c3, q c4; parte c1, todo c2, % c3, razão c4; apoio c3, mediana c4, desvio c1). Quartis pelo método das metades (1, 3, 4, 6, 8, 9, 12 → 3, 6, 9). Juros: `regra: "pg"`, `q: "1+$t/100"`. A figura aceita os mesmos campos, só números, e `highlight`.
@@ -467,13 +467,14 @@ Arquivos: `common/grade/params.ts`, `calc.ts` (fatorial, arranjo, C(n, k), Pasca
 | `tabela` | `linhas: [{rotulo, valores}]`, `colunas`, `pista_linha`/`pista_coluna`, `evento_coluna` | `linha_tocada`, `coluna_tocada`, `linha_<rótulo>`, `coluna_<rótulo>` (ex.: `linha_meninas`, `coluna_oculos`) |
 | `arvore` | `niveis: [{titulo, galhos}]` ou `galhos` + `n` (`"$n"`); galho `{rotulo, cor, p, sucesso}`; `agrupar` (barras por nº de sucessos), `caminho: "sucessos"`, `chave_um` (a = b = 1), `mostrar_produto`, `acesas`, `acender_k` | `total`, `pontas_tocadas`, `pontas_k0..kN` (no binômio, marque o galho b como `sucesso`: `pontas_k1` = pontas com um b), `chave_ligada` |
 | `fila` | `itens`, `lugares`, `listar`, `iguais: [i, j]`, `prender: {item, lugar}`, `escada`, `montada` (figura) | `filas_montadas`, `iguais_ligado`, `letra_presa`, `total` |
-| `escada` | `n`, `k` | `total` |
+| `escada` | `n`, `k`, `iguais` (todos os degraus em `n`), `operacao: "produto" \| "soma"` (sinais `+` na legenda e soma em `total`) | `total` |
 | `lista` | `itens`, `k`, `ordem` | `total`, `ordem_desligada` |
 | `barras` | `n`, `k`, `p` (% , `"$p"`), `itens` | `total` (C(n, k) ou P(k) em %) |
 | `pascal` | `n`, `tocada` (figura) | `numeros_tocados` |
-| `bolinhas_e_barras` | `bolinhas`, `barras`, `sequencia: "●●\|●\|"`, `caixas`, `contador_apos` | `distribuicoes_vistas`, `total` |
+| `bolinhas_e_barras` | `bolinhas`, `barras`, `sequencia: "●●\|●\|"`, `caixas`, `contador_apos`, `numeradas` (bolinhas 1, 2, …) | `distribuicoes_vistas`, `total` |
 | `caixas` | `itens`, `n`, `rotulos`, `chave_minimo`, `minimo` | `total`, `regra_ligada`, `distribuicoes_vistas` |
 | `colunas` | `colunas: [{titulo, itens, cor}]`, `ou` | `total`, `modo_ou` |
+| `urna` | `bolas: [{rotulo?, cor, quantidade}]`, `retiradas` (bolas riscadas + total riscado), `destaque` | `total` |
 
 Chaves de casa nos dados: `"1,6"` (linha, coluna pelos rótulos); fila: `"6"`. Cores em `cores` (linhas c1, colunas c2, casa c3, A c1, B c2, interseção c3, fora/complemento c4).
 
@@ -485,7 +486,8 @@ Ver §5.11.
 
 `geometria_triangulo` (§5.10), `geometria_poligono` (§5.12), `geometria_circulo` (§5.13).
 
-### 5.7 `solido_3d` (espacial: cilindro, esfera, tronco, prismas, pirâmides)
+### 5.7 `solido_3d` + `solido_3d_figura` — PRONTOS
+Inclui os modos `revolucao`, `prisma`, `piramide`, `cilindro`, `esfera`, `tronco`, `poliedro`, `espaco`, `vistas`, `composicao` e `corte_cone` (`inclinacao` em graus, `altura_do_corte`, `r`, `h`; métricas `secao` 0..3 e `secoes_vistas` 0..4 para circunferência, elipse, parábola e hipérbole). `solido_3d_figura` recusa `"$slider"`.
 Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer perfil (retângulo → cilindro, semicírculo → esfera, trapézio → tronco) e acrescentar sólidos de faces planas; mesma câmera ortográfica e convenção de aresta oculta tracejada. Inclui planificação (Aula 02 de Cones já prevista na taxonomia).
 
 ### 5.8 Menores, mas úteis

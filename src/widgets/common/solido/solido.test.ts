@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { areaCentroide, casco, contar, montarCena, moldeDado, perfilDe, posicaoRetas, secao, verticesPoliedro } from "./cenas";
+import { areaCentroide, casco, classificarSecaoCone, contar, montarCena, moldeDado, perfilDe, posicaoRetas, secao, verticesPoliedro } from "./cenas";
 import { desenharSolido } from "./desenho";
 import { prisma } from "./malha";
 import { Solido3d, Solido3dFigura } from "./params";
@@ -66,9 +66,23 @@ describe("contas do solido_3d", () => {
     { modo: "vistas", solido: "dado", fechar: 0.5 },
     { modo: "composicao", montagem: "capsula", juntar: 0.5 },
     { modo: "composicao", montagem: "cavidade" },
+    { modo: "corte_cone", inclinacao: 35, altura_do_corte: 1.5 },
   ];
   it.each(casos.map((c, i) => [i, c] as const))("caso %i desenha sem erro", (_, c) => {
     const p = Solido3dFigura.parse(c);
     expect(() => desenharSolido(ctx, 400, 400, [], p, {})).not.toThrow();
+  });
+
+  it("corte_cone classifica as 4 cônicas e recusa slider na figura", () => {
+    expect(classificarSecaoCone(0, 60).tipo).toBe(0);
+    expect(classificarSecaoCone(30, 60).tipo).toBe(1);
+    expect(classificarSecaoCone(60, 60).tipo).toBe(2);
+    expect(classificarSecaoCone(80, 60).tipo).toBe(3);
+
+    const c = montarCena(Solido3d.parse({ modo: "corte_cone", inclinacao: "$inc", altura_do_corte: 1.5 }), { inc: 0 });
+    expect(c.metricas.secao).toBe(0);
+    expect(c.malhas).toHaveLength(2);
+    expect(Solido3dFigura.safeParse({ modo: "corte_cone", inclinacao: "$inc" }).success).toBe(false);
+    expect(Solido3dFigura.safeParse({ modo: "corte_cone", inclinacao: 45, altura_do_corte: 1.5 }).success).toBe(true);
   });
 });

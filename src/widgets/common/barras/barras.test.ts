@@ -177,10 +177,19 @@ describe("desenho não quebra em nenhum modo", () => {
     { modo: "fila", valores: [1, 3, 4, 6, 8, 9, 30], ordenada: true, fixos: ["q1", "q2", "q3"], caixa: true },
     { modo: "sequencia", regra: "pg", a1: 1, q: 0.5, acumular: true, limite: true, fantasma: { regra: "pa", a1: 1 } },
     { modo: "sequencia", regra: "recorrencia", a1: 4, d: -2, q: -1, acesos: [3] },
+    { modo: "sequencia", regra: "recorrencia2", a1: 1, a2: 1, p: 1, q: 1, termos: 6 },
+    { modo: "categorias", categorias: [{ nome: "a", valor: 2 }, { nome: "b", valor: 5 }, { nome: "c", valor: 6 }], degraus: true },
+    { modo: "pontos", valores: [8, 2, 4, 6], mostrar: { mediana: true, alerta_mediana: true, conta_media: true } },
     { modo: "parte_todo", partes: 4, pintadas: 6, todo: 8, referencia: { partes: 2, pintadas: 1 }, mostrar: { razao: true } },
   ];
   it.each(estados.map((e) => [e.modo, e] as const))("%s", (_, e) => {
     const p = Barras.parse(e);
     expect(() => desenharBarras(ctx, 400, 320, [], p, {}, { marcadores: { q2: 6 }, maior: 30 })).not.toThrow();
+  });
+
+  it("sequencia recorrencia2 (Fibonacci) gera aₙ₊₂ = p·aₙ₊₁ + q·aₙ", async () => {
+    const { termos2 } = await import("./calc");
+    expect(termos2(1, 1, 1, 1, 6)).toEqual([1, 1, 2, 3, 5, 8]);
+    expect(termos2(2, 3, 2, -1, 5)).toEqual([2, 3, 4, 5, 6]);
   });
 });

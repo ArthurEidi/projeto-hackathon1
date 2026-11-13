@@ -154,6 +154,10 @@ const Escada = z.object({
   n: Expr,
   /** Só os k primeiros degraus (arranjo); padrão: todos (fatorial). */
   k: Expr.optional(),
+  /** Todos os k degraus com altura n (potência n^k ou soma k·n). */
+  iguais: z.boolean().default(false),
+  /** Operação mostrada na legenda e métrica total ("produto" ou "soma"). */
+  operacao: z.enum(["produto", "soma"]).default("produto"),
   cores: z.object({ degrau: CorTraco.default("c2"), produto: CorTraco.default("c3") }).default({ degrau: "c2", produto: "c3" }),
   highlight: Highlight,
 });
@@ -200,6 +204,8 @@ const BolinhasBarras = z.object({
   caixas: z.array(z.string()).optional(),
   /** Mostra o total C(k + b, b) depois de tantas fileiras vistas (0 = sempre). */
   contador_apos: z.number().int().min(0).default(0),
+  /** Numera cada bolinha (1, 2, ...) na fileira. */
+  numeradas: z.boolean().default(false),
   cores: z.object({ bolinha: CorTraco.default("c2"), barra: CorTraco.default("c1"), total: CorTraco.default("c3") }).default({ bolinha: "c2", barra: "c1", total: "c3" }),
   highlight: Highlight,
 });
@@ -226,7 +232,25 @@ const Colunas = z.object({
   highlight: Highlight,
 });
 
-export const Grade = z.discriminatedUnion("modo", [Casas, Tabela, Arvore, Fila, Escada, Lista, BarrasK, Pascal, BolinhasBarras, Caixas, Colunas]);
+const Urna = z.object({
+  modo: z.literal("urna"),
+  bolas: z
+    .array(
+      z.object({
+        rotulo: z.string().optional(),
+        cor: CorTraco.default("c1"),
+        quantidade: z.number().int().min(0).max(20),
+      }),
+    )
+    .min(1),
+  /** Quantas bolas foram retiradas (riscadas do total). */
+  retiradas: Expr.default(0),
+  /** Índice do grupo em destaque para mostrar a fração favoráveis / restante. */
+  destaque: z.number().int().min(0).optional(),
+  highlight: Highlight,
+});
+
+export const Grade = z.discriminatedUnion("modo", [Casas, Tabela, Arvore, Fila, Escada, Lista, BarrasK, Pascal, BolinhasBarras, Caixas, Colunas, Urna]);
 export type Grade = z.output<typeof Grade>;
 export type GradeDe<M extends Grade["modo"]> = Extract<Grade, { modo: M }>;
 
@@ -256,6 +280,8 @@ export function exprsDe(p: Grade): Expr[] {
       return [p.n];
     case "caixas":
       return [p.n];
+    case "urna":
+      return [p.retiradas];
     default:
       return [];
   }

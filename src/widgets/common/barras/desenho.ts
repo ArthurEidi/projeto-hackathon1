@@ -19,6 +19,7 @@ import {
   somasParciais,
   sortear,
   termos,
+  termos2,
   valorNaPosicao,
   variancia,
 } from "./calc";
@@ -213,6 +214,17 @@ function desenharCategorias(ctx: CanvasRenderingContext2D, w: number, h: number,
         else text(ctx, { x: topos[i].x, y: y + 4 }, s, c.ink2, 13);
       }
     });
+    if (p.degraus && vals.length >= 2) {
+      const diffs = vals.slice(1).map((v, i) => v - vals[i]);
+      const iMax = diffs.reduce((best, d, i) => (d > diffs[best] ? i : best), 0);
+      diffs.forEach((d, i) => {
+        const xm = (topos[i].x + topos[i + 1].x) / 2;
+        const ym = Math.min(topos[i].y, topos[i + 1].y) - 24;
+        const txt = `${d >= 0 ? "+" : "−"}${num(Math.abs(d), 1)}${unidade}`;
+        if (i === iMax && d > 0) etiqueta(ctx, hits, { x: xm, y: ym }, txt, p.cor_toque);
+        else text(ctx, { x: xm, y: ym }, txt, c.muted, 11);
+      });
+    }
     if (p.comparar) {
       const [i, j] = p.comparar;
       const hi = vals[i] - ini;
@@ -373,6 +385,21 @@ function desenharPontos(ctx: CanvasRenderingContext2D, w: number, h: number, hit
   // Rótulo do apoio: a média (ou o apoio, se o aluno o arrasta).
   const rotApoio = p.apoio === "media" ? `média ${num(m, 2)}` : num(apoio, 2);
   etiqueta(ctx, hits, { x: principal.piv.x, y: yViga + 58 }, rotApoio, p.cores.apoio);
+  if (p.mostrar.conta_media) {
+    const soma = vals.reduce((s, v) => s + v, 0);
+    const exprMedia = vals.length <= 5 ? `${vals.map((v) => num(v, 1)).join(" + ")} ÷ ${vals.length}` : `${num(soma, 1)} ÷ ${vals.length}`;
+    chip(ctx, { x: w / 2, y: yViga + 80 }, `${exprMedia} = ${num(m, 2)}`, corDoTraco(p.cores.apoio).main, corDoTraco(p.cores.apoio).dark);
+  }
+  if (p.mostrar.alerta_mediana) {
+    const desordenada = vals.some((v, i) => i > 0 && v < vals[i - 1]);
+    if (desordenada) {
+      const meioCru =
+        vals.length % 2 === 1
+          ? vals[(vals.length - 1) / 2]
+          : (vals[vals.length / 2 - 1] + vals[vals.length / 2]) / 2;
+      chip(ctx, { x: X(meioCru), y: yViga - 72 }, `mediana sem ordenar (${num(meioCru, 1)})!`, c.red, c.red);
+    }
+  }
 
   if (mostrar.mediana) {
     const md = mediana(vals);
@@ -574,13 +601,26 @@ function desenharFila(ctx: CanvasRenderingContext2D, w: number, h: number, hits:
 
 // ---------- sequência ----------
 
-export function regraResolvida(r: { regra: "pa" | "pg" | "recorrencia"; a1: number; d: number; q: number }) {
-  return { a1: r.a1, d: r.regra === "pg" ? 0 : r.d, q: r.regra === "pa" ? 1 : r.q };
+export function regraResolvida(r: { regra: "pa" | "pg" | "recorrencia" | "recorrencia2"; a1: number; d: number; q: number }) {
+  return { a1: r.a1, d: r.regra === "pg" || r.regra === "recorrencia2" ? 0 : r.d, q: r.regra === "pa" ? 1 : r.q };
+}
+
+function gerarTermos(
+  r: { regra: "pa" | "pg" | "recorrencia" | "recorrencia2"; a1: number; a2?: number; d: number; p?: number; q: number },
+  n: number,
+): number[] {
+  const res = regraResolvida(r);
+  return r.regra === "recorrencia2" ? termos2(res.a1, r.a2 ?? res.a1, r.p ?? 1, res.q, n) : termos(res.a1, res.d, res.q, n);
 }
 
 export function termosSequencia(p: BarrasDe<"sequencia">, ctl: Controles) {
-  const r = regraResolvida({ regra: p.regra, a1: avaliarExpr(p.a1, ctl), d: avaliarExpr(p.d, ctl), q: avaliarExpr(p.q, ctl) });
-  const t = termos(r.a1, r.d, r.q, p.termos);
+  const a1 = avaliarExpr(p.a1, ctl);
+  const a2 = p.a2 !== undefined ? avaliarExpr(p.a2, ctl) : undefined;
+  const d = avaliarExpr(p.d, ctl);
+  const coefP = avaliarExpr(p.p, ctl);
+  const q = avaliarExpr(p.q, ctl);
+  const r = regraResolvida({ regra: p.regra, a1, d, q });
+  const t = gerarTermos({ regra: p.regra, a1, a2, d, p: coefP, q }, p.termos);
   const nAceso = p.n === undefined ? p.termos : Math.max(0, Math.min(p.termos, Math.round(avaliarExpr(p.n, ctl))));
   return { ...r, t, nAceso, somas: somasParciais(t) };
 }
@@ -589,10 +629,17 @@ function desenharSequencia(ctx: CanvasRenderingContext2D, w: number, h: number, 
   const { t, nAceso, somas, a1, d, q } = termosSequencia(p, ctl);
   const hl = p.highlight;
   const fant = p.fantasma
-    ? (() => {
-        const r = regraResolvida({ regra: p.fantasma.regra, a1: avaliarExpr(p.fantasma.a1, ctl), d: avaliarExpr(p.fantasma.d, ctl), q: avaliarExpr(p.fantasma.q, ctl) });
-        return termos(r.a1, r.d, r.q, p.termos);
-      })()
+    ? gerarTermos(
+        {
+          regra: p.fantasma.regra,
+          a1: avaliarExpr(p.fantasma.a1, ctl),
+          a2: p.fantasma.a2 !== undefined ? avaliarExpr(p.fantasma.a2, ctl) : undefined,
+          d: avaliarExpr(p.fantasma.d, ctl),
+          p: avaliarExpr(p.fantasma.p, ctl),
+          q: avaliarExpr(p.fantasma.q, ctl),
+        },
+        p.termos,
+      )
     : [];
   const lim = p.limite ? limitePG(a1, q) : NaN;
   const sAceso = nAceso ? somas[nAceso - 1] : 0;
@@ -644,8 +691,15 @@ function desenharSequencia(ctx: CanvasRenderingContext2D, w: number, h: number, 
       const yTopo = Math.min(Y(Math.max(t[i], t[i + 1], 0)), Y(0)) - 34;
       const x = (cx(i) + cx(i + 1)) / 2;
       const partes: [string, CorTraco][] = [];
-      if (p.regra !== "pa") partes.push([`×${num(q, 3)}`, p.cores.q]);
-      if (p.regra !== "pg") partes.push([`${d >= 0 ? "+" : "−"}${num(Math.abs(d), 3)}`, p.cores.d]);
+      if (p.regra === "recorrencia2") {
+        if (i >= 1) {
+          const parc = q * t[i - 1];
+          partes.push([`${parc >= 0 ? "+" : "−"}${num(Math.abs(parc), 3)}`, p.cores.d]);
+        }
+      } else {
+        if (p.regra !== "pa") partes.push([`×${num(q, 3)}`, p.cores.q]);
+        if (p.regra !== "pg") partes.push([`${d >= 0 ? "+" : "−"}${num(Math.abs(d), 3)}`, p.cores.d]);
+      }
       partes.forEach(([s, cor], j) => {
         const k = corDoTraco(cor);
         ctx.font = "900 12px Nunito, system-ui, sans-serif";

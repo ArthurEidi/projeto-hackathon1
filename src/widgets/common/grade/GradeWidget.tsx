@@ -28,6 +28,7 @@ import {
   ordensFila,
   sequenciaDe,
   textoOrdem,
+  totalUrna,
   valoresBarras,
   type GeoGrade,
 } from "./desenho";
@@ -159,7 +160,11 @@ export function GradeWidget({ params, controls, onMetric, onInteract }: WidgetPr
   }, [p, montadas, vistos, preso, iguais, onMetric]);
 
   useEffect(() => {
-    if (p.modo === "escada") onMetric("total", degraus(p, controls).reduce((s, v) => s * v, 1));
+    if (p.modo === "escada") {
+      const ehSoma = p.operacao === "soma";
+      onMetric("total", degraus(p, controls).reduce((s, v) => (ehSoma ? s + v : s * v), ehSoma ? 0 : 1));
+    }
+    if (p.modo === "urna") onMetric("total", totalUrna(p, controls).restante);
     if (p.modo === "lista") {
       const k = Math.max(1, Math.min(p.itens.length, Math.round(avaliarExpr(p.k, controls))));
       onMetric("total", ordem ? arranjo(p.itens.length, k) : comb(p.itens.length, k));

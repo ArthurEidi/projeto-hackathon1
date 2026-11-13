@@ -66,6 +66,7 @@ export function SolidoWidget({ params, controls, onMetric, onInteract }: WidgetP
   const [solidosVistos, setSolidosVistos] = useState<Set<string>>(new Set());
   const [vistas, setVistas] = useState<Set<string>>(new Set());
   const [posicoes, setPosicoes] = useState<Set<number>>(new Set());
+  const [secoesVistas, setSecoesVistas] = useState<Set<number>>(new Set());
 
   const estado: EstadoSolido = { perfil, eixoTrocado, indice, solidoVistas, corteVertical, yaw: (cam.yaw * Math.PI) / 180 };
   const cena = montarCena(p, controls, estado);
@@ -97,11 +98,16 @@ export function SolidoWidget({ params, controls, onMetric, onInteract }: WidgetP
       const ps = cena.metricas.posicao;
       setPosicoes((s) => (s.has(ps) ? s : new Set(s).add(ps)));
     }
+    if (p.modo === "corte_cone" && cena.metricas.secao !== undefined) {
+      const sc = cena.metricas.secao;
+      setSecoesVistas((s) => (s.has(sc) ? s : new Set(s).add(sc)));
+    }
   }, [chaveMetricas, p, perfil, eixoTrocado, solidoVistas]);
   useEffect(() => onMetric("perfis_girados", perfisGirados.size), [perfisGirados, onMetric]);
   useEffect(() => onMetric("solidos_vistos", solidosVistos.size), [solidosVistos, onMetric]);
   useEffect(() => onMetric("vistas_vistas", vistas.size), [vistas, onMetric]);
   useEffect(() => onMetric("posicoes_vistas", posicoes.size), [posicoes, onMetric]);
+  useEffect(() => onMetric("secoes_vistas", secoesVistas.size), [secoesVistas, onMetric]);
   useEffect(() => onMetric("camera_girada", girou ? 1 : 0), [girou, onMetric]);
 
   const { ref, size, hover } = useCanvas(aspectoSolido(p), (ctx, w, h, hits) => {

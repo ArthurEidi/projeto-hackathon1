@@ -177,10 +177,22 @@ describe("schemas e desenho", () => {
     { modo: "bolinhas_e_barras", bolinhas: 3, barras: 2, sequencia: "●●|●|", caixas: ["x", "y", "z"] },
     { modo: "caixas", itens: 5, n: 3, minimo: true },
     { modo: "colunas", colunas: [{ titulo: "pães", itens: ["a", "b", "c"], cor: "c1" }, { titulo: "recheios", itens: ["1", "2", "3", "4"], cor: "c2" }] },
+    { modo: "casas", linhas: 4, colunas: 5 },
+    { modo: "escada", n: 5, k: 3, iguais: true, operacao: "soma" },
+    { modo: "bolinhas_e_barras", bolinhas: 4, barras: 2, sequencia: "●●|●|●", numeradas: true },
+    { modo: "urna", bolas: [{ rotulo: "V", cor: "c4", quantidade: 2 }, { rotulo: "A", cor: "c1", quantidade: 3 }], retiradas: 1, destaque: 0 },
   ];
   it.each(casos.map((c, i) => [i, c] as const))("caso %i: figura valida e desenha", (_, c) => {
     const r = GradeFigura.safeParse(c);
     expect(r.success, r.success ? "" : r.error.message).toBe(true);
     expect(() => desenharGrade(ctx, 400, 360, [], r.data!, {})).not.toThrow();
+  });
+
+  it("escada iguais+soma, grade 4x5 e urna com retiradas", () => {
+    const esc = GradeResultados.parse({ modo: "escada", n: 5, k: 3, iguais: true, operacao: "soma" }) as GradeDe<"escada">;
+    expect(degraus(esc, {})).toEqual([5, 5, 5]);
+    const g45 = modeloCasas(GradeResultados.parse({ modo: "casas", linhas: 4, colunas: 5 }) as GradeDe<"casas">, {}, {});
+    expect(g45.casas).toHaveLength(20);
+    expect(GradeFigura.safeParse({ modo: "urna", bolas: [{ cor: "c1", quantidade: 5 }], retiradas: "$r" }).success).toBe(false);
   });
 });
