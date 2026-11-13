@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
+import { PlanoCartesiano } from "../widgets/common/params";
+import { avaliar, resolverCurva } from "../widgets/common/plot2d";
 import { certaDe, fechamentoOk, semVestibular } from "./util";
 
 const L = Lesson.parse(
@@ -59,8 +61,11 @@ describe("passos da aula", () => {
   it("reflexao-inversa: ponto (1; 3) reflete em (3; 1) na diagonal y = x", () => {
     const s = step("reflexao-inversa");
     if (s.type !== "interactive_canvas") throw new Error();
-    expect(2 * 1 + 1).toBe(3);
-    expect((3 - 1) / 2).toBe(1);
+    const p = PlanoCartesiano.parse(s.params);
+    const f = resolverCurva(p.curvas[1], {});
+    const inv = resolverCurva(p.curvas[2], {});
+    expect(avaliar(f, 1)).toBe(3);
+    expect(avaliar(inv, 3)).toBe(1);
     expect(s.complete_when.gte).toBe(2);
   });
 

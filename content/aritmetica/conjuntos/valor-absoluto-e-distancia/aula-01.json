@@ -57,7 +57,7 @@
       },
       "lines": {
         "intro": "No caso neutro x = 0, a distância é zero; ao ir até 2, quanto o segmento mede?",
-        "done": "Mede 2 porque há duas unidades entre a origem e o ponto."
+        "done": "Em x = 2 mede 2 porque há duas unidades entre a origem e o ponto (em geral, mede ∣x∣)."
       },
       "duvida": {
         "quando": "fim",
@@ -99,7 +99,7 @@
       },
       "lines": {
         "intro": "Se você levar o ponto de 2 a −2, a distância fica negativa?",
-        "done": "Não; mede 2 de novo, por isso ∣−2∣ = 2, embora o deslocamento seja −2."
+        "done": "Não; em x = −2 mede 2 de novo (∣−2∣ = 2), e a distância ∣x∣ é sempre não negativa."
       }
     },
     {
@@ -137,7 +137,7 @@
       },
       "lines": {
         "intro": "Com referência em 1, ir até −2 exige percorrer 1 ou 3 unidades? Arraste até −2.",
-        "done": "São 3; a diferença é −2 − 1 = −3, por isso a distância vale ∣−3∣ = 3."
+        "done": "Para x = −2 são 3 unidades; a diferença é −2 − 1 = −3, por isso a distância vale ∣−3∣ = 3."
       },
       "duvida": {
         "quando": "fim",

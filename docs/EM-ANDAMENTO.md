@@ -18,8 +18,7 @@ Este arquivo é a **reserva de frentes**. Serve para duas máquinas (ou dois coo
 
 | Frente (nº em PROXIMOS-PASSOS) | Máquina / coordenador | Desde | Arquivos |
 |---|---|---|---|
-| 1. Revisão de texto: aritmética | A (Claude Code + agentes Maestri) | 13/11 | `content/aritmetica/**`, `docs/revisao/aritmetica.md` |
-| 2. Revisão de texto: álgebra | A | 13/11 | `content/algebra/**`, `docs/revisao/algebra-*.md` |
+| Pendências 1 a 5 de "Pendências imediatas da Máquina A" em PROXIMOS-PASSOS (passos de álgebra, adaptações, fontes, visual de aritmética e álgebra) | A (Claude Code + agentes Maestri) | 13/11 | `content/aritmetica/**`, `content/algebra/**`, `docs/revisao/**`, `docs/fontes-candidatas/**` |
 | 3. Widgets (`maquinas_funcao`, acentos, `transformacao_plano`, `reta_numerica`) | A | 13/11 | `src/widgets/common/**`, GUIA §5, `WIDGETS-PENDENTES.md` |
 | 4. Revisão de texto: geometria | **B: reservada para a segunda máquina** (confirme trocando esta linha pelo seu nome e data) | — | `content/geometria/**`, `docs/revisao/geometria-*.md` |
 | 5. Conferência visual: geometria | **B: reservada para a segunda máquina** | — | `docs/visual/geometria.md`, `content/geometria/**` |
@@ -32,4 +31,5 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 
 ## Concluídas
 
+- 13/11, A: frentes 1 e 2 (revisão de texto de aritmética e álgebra) e distratores de aritmética e álgebra.
 - 13/11, A: os 103 capítulos escritos e registrados; 14 widgets; repositório publicado.

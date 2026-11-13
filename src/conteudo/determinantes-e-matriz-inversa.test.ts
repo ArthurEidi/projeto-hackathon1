@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
+import { PlanoCartesiano } from "../widgets/common/params";
+import { avaliar, resolverCurva } from "../widgets/common/plot2d";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -44,6 +46,9 @@ describe("passos da aula: determinantes-e-matriz-inversa", () => {
     const s = step("caso-neutro");
     if (s.type !== "interactive_canvas") throw new Error();
     expect(s.complete_when).toEqual({ metric: "a", gte: 2 });
+    const p = PlanoCartesiano.parse(s.params);
+    const k = resolverCurva(p.curvas[0], { a: 2 });
+    expect(avaliar(k, 2)).toBe(1);
   });
 
   it("inverter-orientacao: a=-1 inverte orientação e det=-1", () => {

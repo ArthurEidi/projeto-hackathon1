@@ -63,7 +63,7 @@
       ],
       "lines": {
         "intro": "No caso neutro, 2·10⁰ = 2. Ao elevar n de 0 a 1, o valor multiplica por 10: arraste n.",
-        "done": "Multiplica por 10: 2·10¹ = 20, pois cada posição vale 10× a anterior."
+        "done": "Cada passo de +1 em n multiplica por 10: em n = 1, 2·10¹ = 20; em n = 2, 2·10² = 200."
       },
       "duvida": {
         "quando": "fim",
@@ -103,7 +103,7 @@
           "id": "n",
           "label": "Expoente compensado",
           "min": 0,
-          "max": 2,
+          "max": 1,
           "step": 1,
           "initial": 0,
           "color": "c2"
@@ -179,7 +179,7 @@
         }
       },
       "lines": {
-        "intro": "A previsão é a notação científica: 2·10² = 200, com 1 ≤ 2 < 10."
+        "intro": "Compare a barra total com as opções e escolha a escrita em notação científica normalizada (1 ≤ a < 10)."
       },
       "options": [
         {

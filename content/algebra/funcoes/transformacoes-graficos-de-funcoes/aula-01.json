@@ -132,7 +132,7 @@
       },
       "lines": {
         "intro": "Para onde vai o vértice ao alterar h e k?",
-        "done": "x−1 move à direita; +2 move para cima."
+        "done": "h positivo move para a direita e k positivo move para cima."
       }
     },
     {
@@ -186,7 +186,7 @@
       },
       "lines": {
         "intro": "O que faz o sinal negativo diante de f?",
-        "done": "O sinal negativo reflete no eixo x e 2 dobra a distância vertical."
+        "done": "O sinal negativo reflete no eixo x e |a| maior que 1 estica a distância vertical."
       }
     },
     {

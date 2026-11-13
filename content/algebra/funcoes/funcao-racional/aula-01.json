@@ -113,7 +113,7 @@
       },
       "lines": {
         "intro": "Onde o denominador zera após mover h?",
-        "done": "O denominador zera em 1; +2 fixa a assíntota horizontal."
+        "done": "O denominador zera em x = h e a constante k fixa a assíntota horizontal y = k."
       }
     },
     {

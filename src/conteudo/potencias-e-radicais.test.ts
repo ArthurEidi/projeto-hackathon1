@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
+import { PlanoCartesiano } from "../widgets/common/params";
+import { avaliar, resolverCurva } from "../widgets/common/plot2d";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -34,6 +36,24 @@ describe("passos da aula", () => {
         expect(["ponto_x", "dentro", "faixa_x"]).toContain(metric);
       }
     }
+  });
+
+  it("curvas e pontos batem com os rótulos", () => {
+    for (const id of ["caso-neutro", "andar-para-tras"]) {
+      const s = step(id);
+      if (s.type !== "interactive_canvas") throw new Error();
+      const p = PlanoCartesiano.parse(s.params);
+      const k = resolverCurva(p.curvas[0], {});
+      expect(avaliar(k, 0), id).toBe(1);
+      expect(avaliar(k, 1), id).toBe(2);
+      expect(avaliar(k, 2), id).toBe(4);
+      expect(avaliar(k, -1), id).toBe(0.5);
+    }
+    const rl = step("recuperar-lado");
+    if (rl.type !== "interactive_canvas") throw new Error();
+    const kl = resolverCurva(PlanoCartesiano.parse(rl.params).curvas[0], {});
+    expect(avaliar(kl, 3)).toBe(9);
+    expect(avaliar(kl, -3)).toBe(9);
   });
 
   it("desafio: 0,5 é 2⁻¹", () => {

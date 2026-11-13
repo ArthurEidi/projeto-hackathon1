@@ -30,6 +30,8 @@ describe("passos da aula", () => {
         if (gte !== undefined) expect(slider.max, s.id).toBeGreaterThanOrEqual(gte);
         if (lte !== undefined) expect(slider.min, s.id).toBeLessThanOrEqual(lte);
         expect(slider.initial, `${s.id} não pode começar concluído`).not.toBe(gte ?? lte);
+        if (gte !== undefined) expect(slider.initial, `${s.id} não pode começar >= gte`).toBeLessThan(gte);
+        if (lte !== undefined) expect(slider.initial, `${s.id} não pode começar <= lte`).toBeGreaterThan(lte);
       } else {
         expect(["ponto_x", "dentro", "faixa_x"]).toContain(metric);
       }

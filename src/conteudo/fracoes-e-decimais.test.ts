@@ -32,6 +32,18 @@ describe("passos da aula", () => {
         expect(slider.initial, `${s.id} não pode começar concluído`).not.toBe(gte ?? lte);
       } else {
         expect(["ponto_x", "dentro", "faixa_x"]).toContain(metric);
+        if (metric === "ponto_x") {
+          const p = s.params as { intervalo: [number, number]; ponto?: { x: number; arrastavel?: boolean } };
+          expect(p.ponto?.arrastavel, s.id).toBe(true);
+          if (gte !== undefined) {
+            expect(p.ponto!.x, `${s.id} não pode começar concluído`).toBeLessThan(gte);
+            expect(p.intervalo[1], s.id).toBeGreaterThanOrEqual(gte);
+          }
+          if (lte !== undefined) {
+            expect(p.ponto!.x, `${s.id} não pode começar concluído`).toBeGreaterThan(lte);
+            expect(p.intervalo[0], s.id).toBeLessThanOrEqual(lte);
+          }
+        }
       }
     }
   });

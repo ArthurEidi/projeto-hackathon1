@@ -67,7 +67,7 @@
       },
       "lines": {
         "intro": "No caso neutro k=1 a figura não muda; ao dobrar cada lado, a área só dobra?",
-        "done": "Não; o lado vai a 4 e a área a 16, por isso área multiplica por k²."
+        "done": "Não; para k = 2 o lado vai a 4 e a área a 16 (para k = 3, vai a 6 e 36), pois a área multiplica por k²."
       },
       "duvida": {
         "quando": "fim",

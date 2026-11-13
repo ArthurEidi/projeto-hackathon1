@@ -220,10 +220,22 @@
           "correct": false,
           "feedback": "Expoente negativo pede inverso, não troca de sinal; 2⁻¹=1/2.",
           "figure": {
+            "y": [
+              -3,
+              9
+            ],
+            "guias": {
+              "horizontais": [
+                {
+                  "v": -2,
+                  "rotulo": "y = −2",
+                  "cor": "c3"
+                }
+              ]
+            },
             "ponto": {
-              "x": -2,
-              "cor": "c3",
-              "rotulo": "(−2; 0,5)"
+              "x": -1,
+              "cor": "c3"
             }
           }
         },

@@ -29,6 +29,11 @@ describe("passos da aula", () => {
         expect(slider.initial, `${s.id} não pode começar concluído`).not.toBe(gte ?? lte);
       } else {
         expect(["fracao", "porcento", "pintadas", "partes", "equivalente"]).toContain(metric);
+        const p = s.params as { partes: string | number; pintadas: string | number };
+        expect(s.controls.length, s.id).toBeGreaterThan(0);
+        const c = s.controls[0];
+        expect(c.initial, `${s.id} slider não pode começar no alvo`).not.toBe(gte ?? lte);
+        expect(typeof p.partes === "number" || typeof p.pintadas === "number" || typeof p.partes === "string").toBe(true);
       }
     }
   });

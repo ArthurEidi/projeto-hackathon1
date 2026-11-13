@@ -46,7 +46,7 @@
         {
           "id": "p",
           "label": "Parte",
-          "min": 0,
+          "min": 2,
           "max": 4,
           "step": 1,
           "initial": 4,
@@ -98,7 +98,7 @@
       ],
       "lines": {
         "intro": "Se parte e todo dobram juntos, o percentual dobra? Leve k a 2.",
-        "done": "Não; 4/8=2/4, por isso multiplicar os dois termos pelo mesmo fator preserva a proporção."
+        "done": "Não; a razão continua 2/4 (4/8 em k=2 e 6/12 em k=3), pois multiplicar os dois termos pelo mesmo fator preserva a proporção."
       },
       "complete_when": {
         "metric": "pintadas",

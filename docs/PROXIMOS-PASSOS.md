@@ -6,12 +6,31 @@ Atualizado em 13/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim
 ## Estado
 
 - **103 de 103 capítulos** têm aula no app (mais Cones, o capítulo-modelo). Cada um tem `aula-01.json` e teste próprio.
-- **Validações em 13/11:** `lint:content` ok, 122 arquivos de teste / 1888 testes passando, `typecheck` limpo, `build` ok.
-- **Widgets** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `retangulo_areas`. `maquinas_funcao` existe só como rascunho (compila, sem documentação, sem conferência).
+- **Validações em 13/11:** `lint:content` ok, 124 arquivos de teste / 1913 testes passando, `typecheck` limpo, `build` ok.
+- **Widgets** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `retangulo_areas`, `maquinas_funcao`, `transformacao_plano`.
 - **Roteiros:** 103 planos em `docs/planos/`; gabaritos conferidos às cegas (1359/1359).
 - **Vestibular:** cerca de 20 questões com fonte real; 392 marcadas `PENDENTE-FONTE` nos roteiros.
 
 O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets que foram substituídos por adaptações, fontes de vestibular.
+
+## O que foi feito em 13/11 (Máquina A)
+
+- Registrados os 2 últimos capítulos (103/103) e publicado tudo no GitHub.
+- Widgets novos: `maquinas_funcao` (refeito), `transformacao_plano`, extensões da `reta_numerica`; lacunas fechadas em `grade_resultados`, `barras` e `solido_3d` (`corte_cone`). Do inventário só faltam os quatro pequenos de um capítulo (`escala_decimal`, `divisao_polinomial`, `sistema_escalonado`, `grupos_inteiros`).
+- **Revisão de texto de aritmética e álgebra concluída** (frentes 1 e 2): 60 capítulos lidos, 21 correções, quase todas nos capítulos do modelo gratuito. Registro em `docs/revisao/`.
+- **Distratores:** 905 alternativas novas em aritmética e álgebra; as questões deixaram de ter só 2 alternativas (ficaram binárias só as de resposta sim/não). **Geometria ainda tem questões binárias.**
+- **Conferência dos passos interativos (params × falas):** equações e inequações completa (7 correções); aritmética completa (14 correções em 8 capítulos); funções/sequências/matrizes/polinômios **parcial**: 12 de 21 capítulos conferidos (3 correções), faltam `funcao-afim`, `funcao-quadratica`, `funcao-modular`, `funcao-exponencial`, `logaritmos` e os 4 de sequências. O agente parou por limite de uso.
+- `introducao-a-funcoes`, `funcao-composta-e-inversa` e `expressoes-algebricas-e-produtos-notaveis` passaram a usar os widgets certos.
+
+### Pendências imediatas da Máquina A (retomar daqui)
+
+1. **Qualidade visual dos widgets do Codex** (não começou): `retangulo_areas` desenha pequeno, descentralizado e sem rótulo nas peças (visto no navegador em `expressoes-algebricas-e-produtos-notaveis`); conferir com imagem também `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `maquinas_funcao` modo `maquinas`, `transformacao_plano`. A conferência feita em 13/11 só verificou botões e largura, sem ver os pixels.
+2. Terminar a conferência de passos nos 9 capítulos listados acima (`docs/revisao/algebra-funcoes-passos.md`).
+3. Piloto de fontes de vestibular (frente 8): o agente tinha acesso à web e parou por limite de uso antes de gravar qualquer arquivo. Refazer: candidatos em `docs/fontes-candidatas/<slug>.md`, com URL de enunciado e gabarito, para o coordenador conferir.
+4. Trocar adaptações restantes (frente 7): `fatoracao-algebrica` e `potencias-e-radicais` (→ `retangulo_areas`, depois do item 1), `matrizes-determinantes-sistemas` e `determinantes-e-matriz-inversa` (→ `transformacao_plano`), `conjuntos-e-intervalos` e `valor-absoluto-e-distancia` (→ modos novos da `reta_numerica`).
+5. Conferência visual das aulas de aritmética e álgebra (frente 6).
+
+Lição do dia: dois tipos de erro passaram pela revisão de texto e pelos testes e só apareceram ao comparar params com falas: curva rotulada "2ˣ" que desenhava y = 2 (a e b trocados) e falas de conclusão que só valiam para um valor do slider. A conferência "params × falas" deve ser feita em geometria também.
 
 ## Fila, em ordem de prioridade
 

@@ -68,10 +68,10 @@
         "intervalo": [0, 1],
         "marcas": 2,
         "trechos": [
-          { "de": 0, "ate": 1, "cor": "c3", "rotulo": "1/2" }
+          { "de": 0, "ate": 0.5, "cor": "c3", "rotulo": "1/2" }
         ],
         "ponto": {
-          "x": 0.5,
+          "x": 0,
           "arrastavel": true,
           "passo": 0.25,
           "cor": "c1",
@@ -79,7 +79,7 @@
         }
       },
       "lines": {
-        "intro": "Se cada metade se partir em duas, a parte pintada muda? Confira o ponto 0,5 na reta.",
+        "intro": "Se cada metade se partir em duas, a parte pintada muda? Arraste o ponto até 0,5 (2/4) para conferir.",
         "done": "Não; duplicamos peças pintadas e peças totais, por isso 1/2=2/4."
       },
       "complete_when": {
@@ -95,10 +95,10 @@
         "intervalo": [0, 1],
         "marcas": 4,
         "trechos": [
-          { "de": 0, "ate": 1, "cor": "c3", "rotulo": "1/2" }
+          { "de": 0, "ate": 0.5, "cor": "c3", "rotulo": "1/2" }
         ],
         "ponto": {
-          "x": 0.75,
+          "x": 0.5,
           "arrastavel": true,
           "passo": 0.25,
           "cor": "c1",
@@ -106,7 +106,7 @@
         }
       },
       "lines": {
-        "intro": "Quantas meias unidades cabem em 3/4? Veja 0,75 em relação a 1/2 na reta.",
+        "intro": "Quantas meias unidades cabem em 3/4? Arraste o ponto de 1/2 até 0,75 na reta.",
         "done": "Cabem 1,5 meias; por isso (3/4)÷(1/2)=(3/4)·2=3/2."
       },
       "complete_when": {
