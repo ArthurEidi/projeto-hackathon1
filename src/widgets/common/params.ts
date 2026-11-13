@@ -4,6 +4,7 @@ import * as lugar from "./lugar/params";
 import * as pontos from "./pontos/params";
 import * as circunferencia from "./circunferencia/params";
 import * as vetores from "./vetores/params";
+import * as areas from "./areas/params";
 import { CorTraco, Marca } from "../../ui/marcas";
 import * as barras from "./barras/params";
 import * as ciclo from "./ciclo/params";
@@ -245,6 +246,7 @@ export const RetaFigura = RetaNumerica.superRefine((p, ctx) => {
 });
 
 export const widgetParams = {
+  ...areas.widgetParams,
   ...vetores.widgetParams,
   ...circunferencia.widgetParams,
   ...pontos.widgetParams,
@@ -261,6 +263,7 @@ export const widgetParams = {
 } as const;
 
 export const figureParams = {
+  ...areas.figureParams,
   ...vetores.figureParams,
   ...circunferencia.figureParams,
   ...pontos.figureParams,

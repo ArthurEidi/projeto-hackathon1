@@ -290,7 +290,7 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 7 | `geometria_poligono` (13) | 5 | **pronto** (GUIA §5.12) |
 | 8 | `lugar_geometrico` (6) | 3 | implementado e testado (GUIA ?5.14); revis?o visual pendente |
 | 9 | `geometria_circulo` (14) | 3 | **pronto** (GUIA §5.13) |
-| 10 | `retangulo_areas` (19) | 3 | pendente |
+| 10 | `retangulo_areas` (19) | 3 | implementado e testado (GUIA ?5.18); revis?o visual pendente |
 | 11 | `pontos_no_plano` (3) | 2 | implementado e testado (GUIA ?5.15); revis?o visual pendente |
 | 12 | Extensões da `reta_numerica` (11) | 2 | pendente |
 | 13 | `transformacao_plano` (17) | 2 | pendente |

@@ -694,3 +694,20 @@ Métricas: `pontos_sobre` (distintos após toque/arraste), `estados_vistos` (den
 
 `z`, `w?` são pares Re/Im; `potencia_i` aplica giros inteiros de 90 graus (use slider inteiro). Mostra rastro dos giros e eixos Re/Im. Conjugado reflete a parte imaginária.
 Métricas: `origens_vistas`, `<id>_comprimento` (inclui `v_comprimento`), `modulo_ligado`, `modulo`, `re`, `im`, `giros`. Contador de origens registra posições distintas após arraste da cauda. Cores: componentes c1/c2, vetor/resultante c3, módulo c4. Revisão visual em 400 px pendente pelo bloqueio de §5.14.
+
+### 5.18 `retangulo_areas` + `retangulo_areas_figura`
+
+Pasta `common/areas/`; modos `produto`, `raiz`, `escala`. Dimensões aceitam expressões; figura só números. Campos comuns: `referencia` (true), `limite` (8, extensão mínima da vista), `highlight`.
+
+```json
+{"modo":"produto","a":2,"b":"$b","retirar":false}
+```
+```json
+{"modo":"raiz","A":"$area","limite":4}
+```
+```json
+{"modo":"escala","L":2,"k":"$k","e":"$e","unidade":false}
+```
+
+Produto desenha a², ab, ab, b²; `retirar: true` desenha as duas faixas retiradas, o canto compensado e o quadrado restante. Exige a,b não negativos e, na retirada, b <= a. Raiz exige A >= 0. Escala exige L,k >= 0; `unidade: true` troca o quadrado por segmento fixo L em m/dm/cm conforme e = 0/1/2. Use ids de slider minúsculos, mesmo quando o campo é A/L.
+Métricas: `area`, `lado`, `pecas` (quantidade da decomposição), `razao_area`; sliders pelo motor. Valores inválidos mostram aviso. O canvas mantém a escala até ultrapassar `limite`, e o original aparece tracejado. Revisão visual em 400 px pendente pelo bloqueio de §5.14.

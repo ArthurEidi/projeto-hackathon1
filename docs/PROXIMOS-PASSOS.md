@@ -112,3 +112,5 @@ Pontos no plano implementado e testado: 114 arquivos / 1781 testes; lint, typech
 Circunferencia no plano implementado (4 testes). Integrado plano-cartesiano-distancia-e-ponto-medio com id corrigido para aula-01. Lint, typecheck e build ok; 116 arquivos / 1809 testes. Proximo: vetores_no_plano e modo complexo. Revisao visual e sincronizacao GitHub continuam bloqueadas.
 
 Vetores e complexo implementados (5 testes). Integrado circunferencia-equacao-e-posicoes, removida unidade provisoria circunferencia-analitica. Proximo widget: retangulo_areas.
+
+Retangulo de areas implementado nos modos produto, raiz e escala. 119 arquivos / 1840 testes passando; lint, typecheck e build ok. Nenhuma entrega nova nessa integracao. Proximo e ultimo widget desta lista: maquinas_funcao.
