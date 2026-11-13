@@ -477,7 +477,7 @@
             "id": "d2-erro2",
             "label": "−3",
             "correct": false,
-            "feedback": "Resposta: 3; Resolvendo ∣x − 3∣ = 0 temos x = 3."
+            "feedback": "Resposta: 3; Você trocou o sinal em x − 3 = 0; o certo é x = 3."
           }
         ]
       },

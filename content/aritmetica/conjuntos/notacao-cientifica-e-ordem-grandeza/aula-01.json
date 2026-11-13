@@ -262,7 +262,7 @@
             "id": "f1-erro",
             "label": "0",
             "correct": false,
-            "feedback": "O certo é 1; 10⁰ = 1."
+            "feedback": "Você confundiu expoente zero com valor zero. O certo é 1; 10⁰ = 1."
           },
           {
             "id": "f1-certa",
@@ -280,7 +280,7 @@
             "id": "f2-erro",
             "label": "2",
             "correct": false,
-            "feedback": "O certo é 3; n = 3."
+            "feedback": "Você trocou coeficiente e expoente. O certo é 3; n = 3."
           },
           {
             "id": "f2-certa",
@@ -298,7 +298,7 @@
             "id": "f3-erro",
             "label": "20",
             "correct": false,
-            "feedback": "O certo é 2; 1 ≤ 2 < 10."
+            "feedback": "O coeficiente deve ficar entre 1 e 10. O certo é 2; 1 ≤ 2 < 10."
           },
           {
             "id": "f3-certa",
@@ -316,7 +316,7 @@
             "id": "f4-erro",
             "label": "Esquerda",
             "correct": false,
-            "feedback": "O certo é Direita; 2,5·10 = 25."
+            "feedback": "Você fez a operação inversa. O certo é Direita; 2,5·10 = 25."
           },
           {
             "id": "f4-certa",
@@ -336,7 +336,7 @@
             "id": "m1-erro",
             "label": "3·10³",
             "correct": false,
-            "feedback": "O certo é 3·10²; 3·100 = 300."
+            "feedback": "Você contou uma casa a mais. O certo é 3·10²; 3·100 = 300."
           },
           {
             "id": "m1-certa",
@@ -354,7 +354,7 @@
             "id": "m2-erro",
             "label": "2·10²",
             "correct": false,
-            "feedback": "O certo é 2·10⁻²; 2/100 = 0,02."
+            "feedback": "Você trocou o sinal do expoente. O certo é 2·10⁻²; 2/100 = 0,02."
           },
           {
             "id": "m2-certa",
@@ -372,7 +372,7 @@
             "id": "m3-erro",
             "label": "5·10³",
             "correct": false,
-            "feedback": "O certo é 6·10³; 2·3 = 6 e 10²·10¹ = 10³."
+            "feedback": "Você somou coeficientes em um produto. O certo é 6·10³; 2·3 = 6 e 10²·10¹ = 10³."
           },
           {
             "id": "m3-certa",
@@ -392,7 +392,7 @@
             "id": "d1-erro",
             "label": "9,9·10²",
             "correct": false,
-            "feedback": "O certo é 1,0·10³; 9,96 arredonda para 10 e 10·10² = 1,0·10³."
+            "feedback": "Você truncou em vez de arredondar. O certo é 1,0·10³; 9,96 arredonda para 10 e 10·10² = 1,0·10³."
           },
           {
             "id": "d1-certa",
@@ -410,7 +410,7 @@
             "id": "d2-erro",
             "label": "Sim",
             "correct": false,
-            "feedback": "O certo é Não; a·10ⁿ > 0 nesse intervalo."
+            "feedback": "Todo coeficiente permitido é não nulo. O certo é Não; a·10ⁿ > 0 nesse intervalo."
           },
           {
             "id": "d2-certa",
@@ -428,7 +428,7 @@
             "id": "d3-erro",
             "label": "10²",
             "correct": false,
-            "feedback": "O certo é 10³; 4 > √10, então sobe uma ordem."
+            "feedback": "Você tomou o expoente sem comparar o coeficiente. O certo é 10³; 4 > √10, então sobe uma ordem."
           },
           {
             "id": "d3-certa",
@@ -446,7 +446,7 @@
             "id": "d4-erro",
             "label": "0,5·10⁻¹",
             "correct": false,
-            "feedback": "O certo é 5·10⁻²; 300/6000 = 0,05 = 5·10⁻²."
+            "feedback": "O valor é igual, mas o coeficiente não está normalizado. O certo é 5·10⁻²; 300/6000 = 0,05 = 5·10⁻²."
           },
           {
             "id": "d4-certa",
@@ -464,7 +464,7 @@
             "id": "d5-erro",
             "label": "4·10³; ordem 10⁴",
             "correct": false,
-            "feedback": "O certo é 1·10³; 2000·0,5 = 1000 = 1·10³."
+            "feedback": "Você dividiu pela metade em vez de multiplicar o volume. O certo é 1·10³; ordem 10³; 2000·0,5 = 1000 = 1·10³."
           },
           {
             "id": "d5-certa",

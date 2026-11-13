@@ -79,7 +79,7 @@
         }
       },
       "lines": {
-        "intro": "Se cada metade se partir em duas, a parte pintada muda? Leve k a 2.",
+        "intro": "Se cada metade se partir em duas, a parte pintada muda? Confira o ponto 0,5 na reta.",
         "done": "Não; duplicamos peças pintadas e peças totais, por isso 1/2=2/4."
       },
       "complete_when": {
@@ -106,7 +106,7 @@
         }
       },
       "lines": {
-        "intro": "Quantas meias unidades cabem em 3/4? Leve k de 1 a 3.",
+        "intro": "Quantas meias unidades cabem em 3/4? Veja 0,75 em relação a 1/2 na reta.",
         "done": "Cabem 1,5 meias; por isso (3/4)÷(1/2)=(3/4)·2=3/2."
       },
       "complete_when": {
@@ -134,7 +134,7 @@
         }
       },
       "lines": {
-        "intro": "Ao juntar 1/2 com 1/4, o denominador deve virar 6? Adicione um quarto.",
+        "intro": "Ao juntar 1/2 com 1/4, o denominador vira 6? Arraste o ponto até 0,75.",
         "done": "Não; a unidade continua dividida em quatro, então 2/4+1/4=3/4."
       },
       "complete_when": {
@@ -414,7 +414,7 @@
             "id": "d4-fracoes-e-decimais-certa",
             "label": "−1/4",
             "correct": true,
-            "feedback": "Entre negativos, o mais perto de zero é maior. O certo é −1/4; −0,25>−0,5."
+            "feedback": "Certo: −1/4; −0,25>−0,5."
           },
           {
             "id": "d4-fracoes-e-decimais-erro",

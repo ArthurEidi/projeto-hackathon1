@@ -45,8 +45,8 @@
         "curvas": [
           {
             "tipo": "exponencial",
-            "a": 2,
-            "b": 1,
+            "a": 1,
+            "b": 2,
             "c": 0,
             "cor": "c3",
             "rotulo": "2ˣ"
@@ -92,8 +92,8 @@
         "curvas": [
           {
             "tipo": "exponencial",
-            "a": 2,
-            "b": 1,
+            "a": 1,
+            "b": 2,
             "c": 0,
             "cor": "c3",
             "rotulo": "2ˣ"
@@ -195,8 +195,8 @@
           "curvas": [
             {
               "tipo": "exponencial",
-              "a": 2,
-              "b": 1,
+              "a": 1,
+              "b": 2,
               "c": 0,
               "cor": "c3",
               "rotulo": "2ˣ"
@@ -263,8 +263,8 @@
           "curvas": [
             {
               "tipo": "exponencial",
-              "a": 2,
-              "b": 1,
+              "a": 1,
+              "b": 2,
               "c": 0,
               "cor": "c3",
               "rotulo": "2ˣ"
@@ -335,15 +335,15 @@
       "definitions": [
         {
           "term": "Base a",
-          "text": "Base a: Fator repetido na potência."
+          "text": "Fator repetido na potência."
         },
         {
           "term": "Potência",
-          "text": "Potência: Resultado de aplicar o expoente à base."
+          "text": "Resultado de aplicar o expoente à base."
         },
         {
           "term": "Raiz principal",
-          "text": "Raiz principal: Comprimento não negativo recuperado da área."
+          "text": "Comprimento não negativo recuperado da área."
         }
       ],
       "lines": {
