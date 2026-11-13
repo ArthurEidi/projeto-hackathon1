@@ -288,15 +288,15 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 5 | `geometria_triangulo` (12) | 7 | **pronto** (GUIA §5.10) |
 | 6 | `ciclo_trigonometrico` (15) | 7 | **pronto** (GUIA §5.11) |
 | 7 | `geometria_poligono` (13) | 5 | **pronto** (GUIA §5.12) |
-| 8 | `lugar_geometrico` (6) | 3 | implementado e testado (GUIA ?5.14); revis?o visual pendente |
+| 8 | `lugar_geometrico` (6) | 3 | implementado e testado (GUIA §5.14); revisão visual pendente |
 | 9 | `geometria_circulo` (14) | 3 | **pronto** (GUIA §5.13) |
-| 10 | `retangulo_areas` (19) | 3 | implementado e testado (GUIA ?5.18); revis?o visual pendente |
-| 11 | `pontos_no_plano` (3) | 2 | implementado e testado (GUIA ?5.15); revis?o visual pendente |
+| 10 | `retangulo_areas` (19) | 3 | implementado e testado (GUIA §5.18); revisão visual pendente |
+| 11 | `pontos_no_plano` (3) | 2 | implementado e testado (GUIA §5.15); revisão visual pendente |
 | 12 | Extensões da `reta_numerica` (11) | 2 | pendente |
 | 13 | `transformacao_plano` (17) | 2 | pendente |
-| 14 | `vetores_no_plano` + `complexo` (4 + 18) | 2 | implementado e testado (GUIA ?5.17); revis?o visual pendente |
+| 14 | `vetores_no_plano` + `complexo` (4 + 18) | 2 | implementado e testado (GUIA §5.17); revisão visual pendente |
 | 15 | `maquinas_funcao` (20) | 2 | pendente |
-| 16 | `circunferencia_no_plano` (5) | 1 | implementado e testado (GUIA ?5.16); revis?o visual pendente |
+| 16 | `circunferencia_no_plano` (5) | 1 | implementado e testado (GUIA §5.16); revisão visual pendente |
 | 17 | `escala_decimal`, `divisao_polinomial`, `sistema_escalonado`, `grupos_inteiros` (21) | 1 cada | pendente |
 
 Capítulos que já andam com `plano_cartesiano` / `reta_numerica`: funções afim, quadrática, exponencial, modular, logaritmos; equações e inequações de 1º e 2º grau, modulares, exponenciais e logarítmicas, produto-quociente; fatoração.
