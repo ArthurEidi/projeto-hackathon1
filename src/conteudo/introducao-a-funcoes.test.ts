@@ -31,7 +31,7 @@ describe("passos da aula", () => {
         if (lte !== undefined) expect(slider.min, s.id).toBeLessThanOrEqual(lte);
         expect(slider.initial, `${s.id} não pode começar concluído`).not.toBe(gte ?? lte);
       } else {
-        expect(["ponto_x", "faixa_x", "quadrantes", "na_raiz", "no_encontro"]).toContain(metric);
+        expect(["ponto_x", "faixa_x", "quadrantes", "na_raiz", "no_encontro", "entradas_com_uma_saida"]).toContain(metric);
       }
     }
   });
@@ -42,9 +42,11 @@ describe("passos da aula", () => {
     expect(s.complete_when.gte).toBe(2);
   });
 
-  it("setas-uma-saida: f(x) = x + 1 em x = 2 dá saída 3", () => {
+  it("setas-uma-saida: usa maquinas_funcao e conclui com 2 entradas ligadas a 1 saída", () => {
     const s = step("setas-uma-saida");
     if (s.type !== "interactive_canvas") throw new Error();
+    expect(s.widget).toBe("maquinas_funcao");
+    expect(s.complete_when.metric).toBe("entradas_com_uma_saida");
     expect(s.complete_when.gte).toBe(2);
   });
 

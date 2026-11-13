@@ -55,20 +55,20 @@
     {
       "id": "setas-uma-saida",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "maquinas_funcao",
       "params": {
-        "curvas": [
-          { "tipo": "afim", "a": 1, "b": 0, "fantasma": true, "rotulo": "y = x" },
-          { "tipo": "afim", "a": 1, "b": 1, "cor": "c3", "rotulo": "f(x) = x + 1" }
-        ],
-        "ponto": { "curva": 1, "x": 0, "arrastavel": true, "passo": 0.5, "coordenadas": true, "cor": "c1" }
+        "modo": "flechas",
+        "entradas": [1, 2, 3],
+        "saidas": [2, 4, 6],
+        "ligacoes": [],
+        "rotulos": { "entradas": "Entradas", "saidas": "Saídas" }
       },
       "lines": {
-        "intro": "Cada entrada tem que ter uma única saída. Arraste x até 2 na reta f(x) = x + 1: qual saída aparece?",
-        "done": "Para x = 2 temos f(2) = 3. Cada entrada x tem exatamente uma única altura correspondente."
+        "intro": "Uma entrada pode apontar a duas saídas? Ligue pelo menos duas entradas a uma saída cada.",
+        "done": "Cada entrada aponta a uma única saída; entradas distintas podem compartilhar saída."
       },
       "complete_when": {
-        "metric": "ponto_x",
+        "metric": "entradas_com_uma_saida",
         "gte": 2
       }
     },

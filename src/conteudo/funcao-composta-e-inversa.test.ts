@@ -31,25 +31,29 @@ describe("passos da aula", () => {
         if (lte !== undefined) expect(slider.min, s.id).toBeLessThanOrEqual(lte);
         expect(slider.initial, `${s.id} não pode começar concluído`).not.toBe(gte ?? lte);
       } else {
-        expect(["ponto_x", "faixa_x", "quadrantes", "na_raiz", "no_encontro"]).toContain(metric);
+        expect(["ponto_x", "faixa_x", "quadrantes", "na_raiz", "no_encontro", "entradas_testadas", "ordens_testadas"]).toContain(metric);
       }
     }
   });
 
-  it("identidade: f(x) = x em x = 2 coincide com espelho (2; 2)", () => {
+  it("identidade: usa maquinas_funcao e testa pelo menos 2 entradas", () => {
     const s = step("identidade");
     if (s.type !== "interactive_canvas") throw new Error();
+    expect(s.widget).toBe("maquinas_funcao");
+    expect(s.complete_when.metric).toBe("entradas_testadas");
     expect(s.complete_when.gte).toBe(2);
   });
 
-  it("ordem-maquinas: em x = 1, f(g(1)) = 4 e g(f(1)) = 3", () => {
+  it("ordem-maquinas: em x = 1, f(g(1)) = 4 e g(f(1)) = 3 com ordens_testadas >= 2", () => {
     const s = step("ordem-maquinas");
     if (s.type !== "interactive_canvas") throw new Error();
     const fg = 2 * (1 + 1);
     const gf = 2 * 1 + 1;
     expect(fg).toBe(4);
     expect(gf).toBe(3);
-    expect(s.complete_when.gte).toBe(1);
+    expect(s.widget).toBe("maquinas_funcao");
+    expect(s.complete_when.metric).toBe("ordens_testadas");
+    expect(s.complete_when.gte).toBe(2);
   });
 
   it("reflexao-inversa: ponto (1; 3) reflete em (3; 1) na diagonal y = x", () => {

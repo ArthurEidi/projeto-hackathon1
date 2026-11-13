@@ -31,16 +31,17 @@
     {
       "id": "identidade",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "maquinas_funcao",
       "params": {
-        "curvas": [
-          { "tipo": "afim", "a": 1, "b": 0, "cor": "c3", "rotulo": "f(x) = x" }
-        ],
-        "ponto": { "curva": 0, "x": 0, "arrastavel": true, "passo": 0.5, "coordenadas": true, "espelho": true, "cor": "c1" }
+        "modo": "maquinas",
+        "maquinas": [{ "nome": "f", "a": 1, "b": 0 }],
+        "entradas": [-1, 1, 2],
+        "x": 1,
+        "mostrar": { "inverter": false, "inversa": true }
       },
       "lines": {
-        "intro": "Na identidade f(x) = x, cada entrada é devolvida igual. Arraste até x = 2 e veja o ponto espelhado.",
-        "done": "Em (2; 2), o ponto coincide com seu espelho: a identidade é sua própria inversa."
+        "intro": "No caso neutro f(x) = x, a entrada muda? Teste duas entradas diferentes na máquina.",
+        "done": "A identidade devolve o mesmo valor x e é sua própria inversa."
       },
       "duvida": {
         "quando": "fim",
@@ -48,28 +49,31 @@
         "resposta": "Sim! Aplicar g depois f em geral produz resultado diferente de aplicar f depois g."
       },
       "complete_when": {
-        "metric": "ponto_x",
+        "metric": "entradas_testadas",
         "gte": 2
       }
     },
     {
       "id": "ordem-maquinas",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "maquinas_funcao",
       "params": {
-        "curvas": [
-          { "tipo": "afim", "a": 2, "b": 2, "cor": "c3", "rotulo": "f(g(x)) = 2x + 2" },
-          { "tipo": "afim", "a": 2, "b": 1, "cor": "c2", "rotulo": "g(f(x)) = 2x + 1" }
+        "modo": "maquinas",
+        "maquinas": [
+          { "nome": "g", "a": 1, "b": 1 },
+          { "nome": "f", "a": 2, "b": 0 }
         ],
-        "ponto": { "curva": 0, "x": 0, "arrastavel": true, "passo": 0.5, "coordenadas": true, "cor": "c1" }
+        "entradas": [-1, 1, 2],
+        "x": 1,
+        "mostrar": { "inverter": true, "inversa": false }
       },
       "lines": {
-        "intro": "A ordem da composição importa? Mova x até 1 para comparar f(g(x)) com g(f(x)).",
-        "done": "Para x = 1, uma ordem dá 4 e a outra dá 3! A ordem em que encadeamos as funções muda o resultado."
+        "intro": "Trocar a ordem das máquinas muda a saída? Inverta a ordem para comparar em x = 1.",
+        "done": "Em x = 1, g depois f dá 4 e f depois g dá 3! A ordem altera o resultado."
       },
       "complete_when": {
-        "metric": "ponto_x",
-        "gte": 1
+        "metric": "ordens_testadas",
+        "gte": 2
       }
     },
     {
