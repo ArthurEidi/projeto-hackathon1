@@ -494,7 +494,7 @@
             "id": "m2-fatoracao-algebrica-erro3",
             "label": "(x+3)²",
             "correct": false,
-            "feedback": "A soma de quadrados expandida dá x²+6x+9. O certo é (x−3)(x+3); 9=3²."
+            "feedback": "O quadrado da soma expandido dá x²+6x+9, não x²−9. O certo é (x−3)(x+3); 9=3²."
           }
         ]
       },

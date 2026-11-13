@@ -465,7 +465,7 @@
             "id": "m2-equacoes-logaritmicas-erro3",
             "label": "4",
             "correct": false,
-            "feedback": "Você usou 2²=4 em vez de 2¹=2. O certo é 3; x−1=2; x=3."
+            "feedback": "Você calculou 2²=4 e esqueceu de somar o 1. O certo é 3; x−1=2; x=3."
           }
         ]
       },
@@ -584,7 +584,7 @@
             "id": "d3-equacoes-logaritmicas-erro",
             "label": "0,125",
             "correct": false,
-            "feedback": "Você inverteu a potência. O certo é 2; x=4¹ᐟ²=2."
+            "feedback": "Você dividiu o expoente pela base: 0,5/4=0,125. O certo é 2; x=4¹ᐟ²=2."
           },
           {
             "id": "d3-equacoes-logaritmicas-erro3",
@@ -652,7 +652,7 @@
             "id": "d5-equacoes-logaritmicas-erro3",
             "label": "6",
             "correct": false,
-            "feedback": "Você somou a variação ao valor inicial: 2+4=6. O certo é 4; N passa de 2 para 8; 8/2=4."
+            "feedback": "Você calculou a diferença 8−2=6 em vez da razão. O certo é 4; N passa de 2 para 8; 8/2=4."
           }
         ]
       }

@@ -466,7 +466,7 @@
             "id": "d2-expressoes-algebricas-e-produtos-notaveis-erro",
             "label": "4",
             "correct": false,
-            "feedback": "A diferença dos lados deve ser feita antes. O certo é 0; (2−2)²=0."
+            "feedback": "Você calculou a·b=2·2=4 em vez de (a−b)². O certo é 0; (2−2)²=0."
           },
           {
             "id": "d2-expressoes-algebricas-e-produtos-notaveis-erro2",
