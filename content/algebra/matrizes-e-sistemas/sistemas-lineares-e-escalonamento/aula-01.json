@@ -1,0 +1,598 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Sistemas lineares, classificação e escalonamento",
+  "subtitulo": "Eliminar sem perder soluções",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "matrizes-e-sistemas",
+    "unidade": "sistemas-lineares-e-escalonamento"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Par solução",
+      "resumo": "Valores que atendem a todas as equações."
+    },
+    "c2": {
+      "nome": "Multiplicador k",
+      "resumo": "Número de cópias de uma linha que retiramos."
+    },
+    "c3": {
+      "nome": "Equações",
+      "resumo": "Condições simultâneas antes e depois da operação."
+    },
+    "c4": {
+      "nome": "Pivôs e classificação",
+      "resumo": "Marcas que revelam solução única, livre ou impossível."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 5],
+        "y": [-2, 6],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": -1,
+            "b": 3,
+            "cor": "c3",
+            "rotulo": "x + y = 3"
+          },
+          {
+            "tipo": "afim",
+            "a": -2,
+            "b": 4,
+            "cor": "ink",
+            "rotulo": "2x + y = 4"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1,
+          "cor": "c1"
+        },
+        "marcar": {
+          "encontro": true
+        },
+        "cores": {
+          "encontro": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "No caso neutro, as linhas ainda não mudaram; onde x+y=3 e 2x+y=4 se encontram?",
+        "done": "Em (1;2), pois 1+2=3 e 2·1+2=4."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Sistemas podem ter mais incógnitas; aqui escalonamos 2×2 e 3×3 e classificamos pivôs, contradições e variáveis livres."
+      }
+    },
+    {
+      "id": "eliminar-linha",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "k",
+          "label": "Múltiplo retirado k",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-2, 5],
+        "y": [-2, 6],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": -1,
+            "b": 3,
+            "cor": "c3",
+            "rotulo": "x + y = 3"
+          },
+          {
+            "tipo": "afim",
+            "a": -2,
+            "b": 4,
+            "fantasma": true,
+            "rotulo": "2x + y = 4"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 2,
+            "cor": "c4",
+            "rotulo": "y = 2"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "arrastavel": false,
+          "cor": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "k",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Ao retirar duas vezes L₁ de L₂, x some sem mudar o encontro? Leve k a 2.",
+        "done": "Sim; sobra −y=−2, então y=2 e x=1; por isso eliminar conserva a solução."
+      }
+    },
+    {
+      "id": "subir-tres-linhas",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "t",
+          "label": "Valor de z",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "ink"
+        }
+      ],
+      "params": {
+        "x": [-1, 4],
+        "y": [-1, 4],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": -1,
+            "b": 2,
+            "cor": "c3",
+            "rotulo": "y + z = 2"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "cor": "c4",
+            "rotulo": "z = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "arrastavel": false,
+          "cor": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "t",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "No sistema triangular, se z passar de 0 para 1, quais valores sobram para y e x?",
+        "done": "Ficam y=1 e x=1; começamos pela última linha, por isso cada substituição usa um valor já conhecido."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a última linha fosse 0=0?",
+        "resposta": "z ficaria livre; então y=2−z e x=1, com infinitas soluções."
+      }
+    },
+    {
+      "id": "classificar-linha",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "t",
+          "label": "Deslocamento",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "ink"
+        }
+      ],
+      "params": {
+        "x": [-2, 5],
+        "y": [-2, 6],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": -1,
+            "b": 2,
+            "cor": "c3",
+            "rotulo": "x + y = 2"
+          },
+          {
+            "tipo": "afim",
+            "a": -1,
+            "b": 2.5,
+            "cor": "c4",
+            "rotulo": "2x + 2y = 5"
+          }
+        ]
+      },
+      "complete_when": {
+        "metric": "t",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Se a última coluna ganhar 1, a linha 0=0 continua compatível? Leve t a 1.",
+        "done": "Não; 0=1 é impossível, por isso o sistema deixa de ter infinitas soluções e fica sem solução."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Posso multiplicar uma linha por zero?",
+        "resposta": "Não como operação equivalente; isso apagaria uma condição do sistema."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 5],
+          "y": [-2, 6],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": -1,
+              "b": 2,
+              "cor": "c3",
+              "rotulo": "x + y = 2"
+            },
+            {
+              "tipo": "afim",
+              "a": -1,
+              "b": 2.5,
+              "cor": "c4",
+              "rotulo": "2x + 2y = 5"
+            }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Após escalonar, aparece 0x+0y=1; quantas soluções há?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "Infinitas",
+          "correct": false,
+          "feedback": "Você confundiu 0=1 com 0=0; a contradição dá nenhuma solução."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "Nenhuma",
+          "correct": true,
+          "feedback": "Certo: Nenhuma; Zero nunca é igual a 1."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 5],
+          "y": [-2, 6],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": -1,
+              "b": 3,
+              "cor": "c3",
+              "rotulo": "x + y = 3"
+            },
+            {
+              "tipo": "afim",
+              "a": -2,
+              "b": 4,
+              "cor": "ink",
+              "rotulo": "2x + y = 4"
+            },
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 2,
+              "cor": "c4",
+              "rotulo": "y = 2"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 1,
+            "cor": "c1"
+          },
+          "marcar": {
+            "encontro": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "L₂",
+          "ref": "c3"
+        },
+        {
+          "text": " ← L₂ − "
+        },
+        {
+          "text": "k",
+          "ref": "c2"
+        },
+        {
+          "text": " · L₁; 0 = 0: livre; "
+        },
+        {
+          "text": "0 = c: impossível",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Par solução",
+          "text": "Valores que atendem a todas as equações."
+        },
+        {
+          "term": "Equações",
+          "text": "Condições simultâneas antes e depois da operação."
+        },
+        {
+          "term": "Pivôs e classificação",
+          "text": "Marcas que revelam solução única, livre ou impossível."
+        }
+      ],
+      "lines": {
+        "intro": "As operações reversíveis conservam as soluções; por isso pivôs e linhas nulas revelam a classificação.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-sistemas-lineares-e-escalonamento",
+        "prompt": "A linha 0=1 indica o quê?",
+        "options": [
+          {
+            "id": "f1-sistemas-lineares-e-escalonamento-erro",
+            "label": "Variável livre",
+            "correct": false,
+            "feedback": "Você confundiu contradição com linha nula. O certo é Impossibilidade; 0≠1."
+          },
+          {
+            "id": "f1-sistemas-lineares-e-escalonamento-certa",
+            "label": "Impossibilidade",
+            "correct": true,
+            "feedback": "Certo: Impossibilidade; 0≠1."
+          }
+        ]
+      },
+      {
+        "id": "f2-sistemas-lineares-e-escalonamento",
+        "prompt": "A linha 0=0 acrescenta alguma restrição?",
+        "options": [
+          {
+            "id": "f2-sistemas-lineares-e-escalonamento-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 0=0 sempre."
+          },
+          {
+            "id": "f2-sistemas-lineares-e-escalonamento-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Uma identidade vale para qualquer incógnita. O certo é Não; 0=0 sempre."
+          }
+        ]
+      },
+      {
+        "id": "f3-sistemas-lineares-e-escalonamento",
+        "prompt": "Multiplicar uma linha por zero é operação reversível?",
+        "options": [
+          {
+            "id": "f3-sistemas-lineares-e-escalonamento-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Essa operação apaga informação. O certo é Não; Não se recupera a linha dividindo por zero."
+          },
+          {
+            "id": "f3-sistemas-lineares-e-escalonamento-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; Não se recupera a linha dividindo por zero."
+          }
+        ]
+      },
+      {
+        "id": "f4-sistemas-lineares-e-escalonamento",
+        "prompt": "Trocar a ordem das equações muda as soluções?",
+        "options": [
+          {
+            "id": "f4-sistemas-lineares-e-escalonamento-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; As mesmas igualdades continuam exigidas."
+          },
+          {
+            "id": "f4-sistemas-lineares-e-escalonamento-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "A ordem não muda as condições simultâneas. O certo é Não; As mesmas igualdades continuam exigidas."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-sistemas-lineares-e-escalonamento",
+        "prompt": "Resolva x+y=3 e 2x+y=4.",
+        "options": [
+          {
+            "id": "m1-sistemas-lineares-e-escalonamento-erro",
+            "label": "(2;1)",
+            "correct": false,
+            "feedback": "Você trocou as incógnitas. O certo é (1;2); L₂−L₁: x=1; y=2."
+          },
+          {
+            "id": "m1-sistemas-lineares-e-escalonamento-certa",
+            "label": "(1;2)",
+            "correct": true,
+            "feedback": "Certo: (1;2); L₂−L₁: x=1; y=2."
+          }
+        ]
+      },
+      {
+        "id": "m2-sistemas-lineares-e-escalonamento",
+        "prompt": "Em x+y=2 e 2x+2y=4, quantas soluções há?",
+        "options": [
+          {
+            "id": "m2-sistemas-lineares-e-escalonamento-certa",
+            "label": "Infinitas",
+            "correct": true,
+            "feedback": "Certo: Infinitas; L₂−2L₁ dá 0=0."
+          },
+          {
+            "id": "m2-sistemas-lineares-e-escalonamento-erro",
+            "label": "Uma",
+            "correct": false,
+            "feedback": "Você contou duas equações dependentes como independentes. O certo é Infinitas; L₂−2L₁ dá 0=0."
+          }
+        ]
+      },
+      {
+        "id": "m3-sistemas-lineares-e-escalonamento",
+        "prompt": "Em x+y=2 e 2x+2y=5, quantas soluções há?",
+        "options": [
+          {
+            "id": "m3-sistemas-lineares-e-escalonamento-erro",
+            "label": "Infinitas",
+            "correct": false,
+            "feedback": "Você ignorou a última coluna. O certo é Nenhuma; L₂−2L₁ dá 0=1."
+          },
+          {
+            "id": "m3-sistemas-lineares-e-escalonamento-certa",
+            "label": "Nenhuma",
+            "correct": true,
+            "feedback": "Certo: Nenhuma; L₂−2L₁ dá 0=1."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-sistemas-lineares-e-escalonamento",
+        "prompt": "Resolva 2x+y=2 e y=1.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-sistemas-lineares-e-escalonamento-certa",
+            "label": "(0,5;1)",
+            "correct": true,
+            "feedback": "Certo: (0,5;1); 2x=1; x=1/2."
+          },
+          {
+            "id": "d1-sistemas-lineares-e-escalonamento-erro",
+            "label": "(1;1)",
+            "correct": false,
+            "feedback": "Você esqueceu o coeficiente 2. O certo é (0,5;1); 2x=1; x=1/2."
+          }
+        ]
+      },
+      {
+        "id": "d2-sistemas-lineares-e-escalonamento",
+        "prompt": "No sistema x+y+z=3 e y+z=2, qual variável pode ficar livre?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-sistemas-lineares-e-escalonamento-erro",
+            "label": "x",
+            "correct": false,
+            "feedback": "Você escolheu uma variável determinada. O certo é z; x=1; y=2−z."
+          },
+          {
+            "id": "d2-sistemas-lineares-e-escalonamento-certa",
+            "label": "z",
+            "correct": true,
+            "feedback": "Certo: z; x=1; y=2−z."
+          }
+        ]
+      },
+      {
+        "id": "d3-sistemas-lineares-e-escalonamento",
+        "prompt": "Resolva x+y+z=3, y+z=2 e z=1.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-sistemas-lineares-e-escalonamento-certa",
+            "label": "(1;1;1)",
+            "correct": true,
+            "feedback": "Certo: (1;1;1); z=1; y=1; x=1."
+          },
+          {
+            "id": "d3-sistemas-lineares-e-escalonamento-erro",
+            "label": "(3;2;1)",
+            "correct": false,
+            "feedback": "Você leu os termos independentes como incógnitas. O certo é (1;1;1); z=1; y=1; x=1."
+          }
+        ]
+      },
+      {
+        "id": "d4-sistemas-lineares-e-escalonamento",
+        "prompt": "Em x+y=2 e 2x+ky=4, qual k gera infinitas soluções?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-sistemas-lineares-e-escalonamento-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você confundiu coeficiente com termo independente. O certo é 2; L₂−2L₁: (k−2)y=0."
+          },
+          {
+            "id": "d4-sistemas-lineares-e-escalonamento-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; L₂−2L₁: (k−2)y=0."
+          }
+        ]
+      },
+      {
+        "id": "d5-sistemas-lineares-e-escalonamento",
+        "prompt": "Um sistema 3×3 escalonado dá x+y+z=3, y−z=0 e 0=0; qual é a solução geral?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-sistemas-lineares-e-escalonamento-certa",
+            "label": "(3−2t;t;t), t∈R",
+            "correct": true,
+            "feedback": "Certo: (3−2t;t;t), t∈R; z=t; y=t; x=3−2t."
+          },
+          {
+            "id": "d5-sistemas-lineares-e-escalonamento-erro",
+            "label": "(1;1;1) apenas",
+            "correct": false,
+            "feedback": "Você fixou sem motivo a variável livre. O certo é (3−2t;t;t), t∈R; z=t; y=t; x=3−2t."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

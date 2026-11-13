@@ -1,0 +1,539 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Conjuntos numéricos, divisibilidade e fatoração prima",
+  "subtitulo": "Números que cabem em grupos",
+  "slug": "sistemas-numericos-e-divisibilidade",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "conjuntos",
+    "unidade": "sistemas-numericos-e-divisibilidade"
+  },
+  "tempo_estimado": 10,
+  "prerequisitos": [
+    "fracoes-e-decimais"
+  ],
+  "glossario": {
+    "c1": {
+      "nome": "Número n",
+      "resumo": "Inteiro a organizar ou localizar na reta."
+    },
+    "c2": {
+      "nome": "Divisor d",
+      "resumo": "Tamanho positivo de cada grupo."
+    },
+    "c3": {
+      "nome": "Quociente q",
+      "resumo": "Quantidade de grupos completos."
+    },
+    "c4": {
+      "nome": "Resto r",
+      "resumo": "Unidades que não completaram outro grupo."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [
+          -3,
+          4
+        ],
+        "marcas": 0.5,
+        "ponto": {
+          "x": 0,
+          "passo": 0.5,
+          "arrastavel": true,
+          "cor": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 0.5
+      },
+      "lines": {
+        "intro": "No caso neutro, somar zero mantém a posição; ao ir até 0,5, você ainda está num inteiro?",
+        "done": "Não; 0,5=1/2 é racional, mas fica entre os inteiros 0 e 1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Naturais, inteiros, racionais e irracionais ampliam a reta; aqui também agrupamos inteiros e encontramos fatores primos."
+      }
+    },
+    {
+      "id": "agrupar-unidades",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "parte_todo",
+        "partes": "$d",
+        "pintadas": "$d",
+        "todo": 6,
+        "rotulos": {
+          "parte": "d",
+          "todo": "n"
+        },
+        "highlight": [
+          "c2"
+        ]
+      },
+      "controls": [
+        {
+          "id": "d",
+          "label": "Tamanho do grupo",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "d",
+        "gte": 3
+      },
+      "lines": {
+        "intro": "Se cada grupo tiver 3 unidades, as 6 fichas deixam sobra? Leve d a 3.",
+        "done": "Não; 6=3·2+0, por isso 3 divide 6."
+      }
+    },
+    {
+      "id": "divisores-e-multiplos",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [
+          0,
+          14
+        ],
+        "marcas": 2,
+        "pontos": [
+          {
+            "x": 4,
+            "rotulo": "4",
+            "cor": "muted"
+          },
+          {
+            "x": 6,
+            "rotulo": "6",
+            "cor": "muted"
+          },
+          {
+            "x": 12,
+            "rotulo": "MMC = 12",
+            "cor": "c1"
+          }
+        ],
+        "ponto": {
+          "x": "$m",
+          "arrastavel": false,
+          "cor": "c1"
+        },
+        "highlight": [
+          "c1"
+        ]
+      },
+      "controls": [
+        {
+          "id": "m",
+          "label": "Total comum",
+          "min": 4,
+          "max": 12,
+          "step": 4,
+          "initial": 4,
+          "color": "c1"
+        }
+      ],
+      "complete_when": {
+        "metric": "m",
+        "gte": 12
+      },
+      "lines": {
+        "intro": "Qual primeiro total cabe em grupos de 4 e de 6 sem sobras? Leve m de 4 até 12.",
+        "done": "É 12=2²·3; o MMC usa fatores suficientes para ambos, enquanto o MDC de 4 e 6 é 2."
+      }
+    },
+    {
+      "id": "fatorar-e-testar",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "parte_todo",
+        "partes": "$d",
+        "pintadas": "$d",
+        "todo": 12,
+        "rotulos": {
+          "parte": "d",
+          "todo": "n"
+        },
+        "highlight": [
+          "c2"
+        ]
+      },
+      "controls": [
+        {
+          "id": "d",
+          "label": "Tamanho do grupo",
+          "min": 3,
+          "max": 5,
+          "step": 1,
+          "initial": 3,
+          "color": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "d",
+        "gte": 5
+      },
+      "lines": {
+        "intro": "12 tem fatores 2·2·3; se o grupo tiver 5, ainda há divisão exata? Arraste até 5.",
+        "done": "Não; 12=5·2+2, por isso 5 não divide 12."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "1 é primo por dividir todos os inteiros?",
+        "resposta": "Não; primo tem exatamente dois divisores positivos distintos, e 1 tem só um."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "parte_todo",
+          "partes": 3,
+          "pintadas": 3,
+          "todo": 6,
+          "rotulos": {
+            "parte": "d",
+            "todo": "n"
+          },
+          "highlight": [
+            "c4"
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Ao dividir 6 fichas em grupos de 3, qual é o resto?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "2",
+          "correct": false,
+          "feedback": "Você confundiu quociente com resto; 6=3·2+0."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "0",
+          "correct": true,
+          "feedback": "Certo: 0; 6=3·2+0."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "parte_todo",
+          "partes": 3,
+          "pintadas": 3,
+          "todo": 6,
+          "rotulos": {
+            "parte": "d",
+            "todo": "n"
+          },
+          "highlight": [
+            "c4"
+          ]
+        }
+      },
+      "formula": [
+        {
+          "text": "n",
+          "ref": "c1"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "d",
+          "ref": "c2"
+        },
+        {
+          "text": " · "
+        },
+        {
+          "text": "q",
+          "ref": "c3"
+        },
+        {
+          "text": " + "
+        },
+        {
+          "text": "r",
+          "ref": "c4"
+        },
+        {
+          "text": "; 0 ≤ r < d; d ∣ n ⇔ r = 0"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Número n",
+          "text": "Inteiro a organizar ou localizar na reta."
+        },
+        {
+          "term": "Quociente q",
+          "text": "Quantidade de grupos completos."
+        },
+        {
+          "term": "Resto r",
+          "text": "Unidades que não completaram outro grupo."
+        }
+      ],
+      "lines": {
+        "intro": "Grupos completos não deixam resto; por isso d divide n exatamente quando r=0.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-sistemas-numericos-e-divisibilidade",
+        "prompt": "Na convenção da aula, 0 pertence a N?",
+        "options": [
+          {
+            "id": "f1-sistemas-numericos-e-divisibilidade-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Você usou outra convenção. O certo é Sim; N={0,1,2,…}."
+          },
+          {
+            "id": "f1-sistemas-numericos-e-divisibilidade-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; N={0,1,2,…}."
+          }
+        ]
+      },
+      {
+        "id": "f2-sistemas-numericos-e-divisibilidade",
+        "prompt": "Qual conjunto contém −2, mas não contém 0,5?",
+        "options": [
+          {
+            "id": "f2-sistemas-numericos-e-divisibilidade-certa",
+            "label": "Z",
+            "correct": true,
+            "feedback": "Certo: Z; −2 é inteiro; 0,5 não é inteiro."
+          },
+          {
+            "id": "f2-sistemas-numericos-e-divisibilidade-erro",
+            "label": "N",
+            "correct": false,
+            "feedback": "Naturais não incluem negativos. O certo é Z; −2 é inteiro; 0,5 não é inteiro."
+          }
+        ]
+      },
+      {
+        "id": "f3-sistemas-numericos-e-divisibilidade",
+        "prompt": "0,5 é racional?",
+        "options": [
+          {
+            "id": "f3-sistemas-numericos-e-divisibilidade-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Você confundiu não inteiro com irracional. O certo é Sim; 0,5=1/2."
+          },
+          {
+            "id": "f3-sistemas-numericos-e-divisibilidade-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; 0,5=1/2."
+          }
+        ]
+      },
+      {
+        "id": "f4-sistemas-numericos-e-divisibilidade",
+        "prompt": "1 é primo?",
+        "options": [
+          {
+            "id": "f4-sistemas-numericos-e-divisibilidade-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 1 tem só o divisor positivo 1."
+          },
+          {
+            "id": "f4-sistemas-numericos-e-divisibilidade-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Primo exige dois divisores positivos distintos. O certo é Não; 1 tem só o divisor positivo 1."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-sistemas-numericos-e-divisibilidade",
+        "prompt": "Qual resto deixa 7 dividido por 3?",
+        "options": [
+          {
+            "id": "m1-sistemas-numericos-e-divisibilidade-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você respondeu o quociente. O certo é 1; 7=3·2+1."
+          },
+          {
+            "id": "m1-sistemas-numericos-e-divisibilidade-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; 7=3·2+1."
+          }
+        ]
+      },
+      {
+        "id": "m2-sistemas-numericos-e-divisibilidade",
+        "prompt": "Qual é a fatoração prima de 12?",
+        "options": [
+          {
+            "id": "m2-sistemas-numericos-e-divisibilidade-certa",
+            "label": "2²·3",
+            "correct": true,
+            "feedback": "Certo: 2²·3; 12=2·2·3."
+          },
+          {
+            "id": "m2-sistemas-numericos-e-divisibilidade-erro",
+            "label": "2·6",
+            "correct": false,
+            "feedback": "Você deixou um fator composto. O certo é 2²·3; 12=2·2·3."
+          }
+        ]
+      },
+      {
+        "id": "m3-sistemas-numericos-e-divisibilidade",
+        "prompt": "Qual é o maior divisor comum de 6 e 8?",
+        "options": [
+          {
+            "id": "m3-sistemas-numericos-e-divisibilidade-erro",
+            "label": "24",
+            "correct": false,
+            "feedback": "Você confundiu divisor comum com múltiplo comum. O certo é 2; Divisores comuns: 1 e 2."
+          },
+          {
+            "id": "m3-sistemas-numericos-e-divisibilidade-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; Divisores comuns: 1 e 2."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-sistemas-numericos-e-divisibilidade",
+        "prompt": "Qual é o menor múltiplo comum positivo de 4 e 6?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-sistemas-numericos-e-divisibilidade-certa",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo: 12; 12=4·3=6·2."
+          },
+          {
+            "id": "d1-sistemas-numericos-e-divisibilidade-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você calculou o máximo divisor comum. O certo é 12; 12=4·3=6·2."
+          }
+        ]
+      },
+      {
+        "id": "d2-sistemas-numericos-e-divisibilidade",
+        "prompt": "Zero é múltiplo de 3?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-sistemas-numericos-e-divisibilidade-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "O multiplicador pode ser zero. O certo é Sim; 0=3·0."
+          },
+          {
+            "id": "d2-sistemas-numericos-e-divisibilidade-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; 0=3·0."
+          }
+        ]
+      },
+      {
+        "id": "d3-sistemas-numericos-e-divisibilidade",
+        "prompt": "√2 pertence a Q?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-sistemas-numericos-e-divisibilidade-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; √2 é irracional."
+          },
+          {
+            "id": "d3-sistemas-numericos-e-divisibilidade-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Nem todo real é uma razão de inteiros. O certo é Não; √2 é irracional."
+          }
+        ]
+      },
+      {
+        "id": "d4-sistemas-numericos-e-divisibilidade",
+        "prompt": "Qual inteiro n deixa quociente 2 e resto 1 na divisão por 3?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-sistemas-numericos-e-divisibilidade-erro",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você esqueceu o resto. O certo é 7; n=3·2+1=7."
+          },
+          {
+            "id": "d4-sistemas-numericos-e-divisibilidade-certa",
+            "label": "7",
+            "correct": true,
+            "feedback": "Certo: 7; n=3·2+1=7."
+          }
+        ]
+      },
+      {
+        "id": "d5-sistemas-numericos-e-divisibilidade",
+        "prompt": "Sinais piscam a cada 4 e 6 segundos, juntos no início; em quantos segundos coincidem de novo?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-sistemas-numericos-e-divisibilidade-certa",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo: 12; mmc(4;6)=12."
+          },
+          {
+            "id": "d5-sistemas-numericos-e-divisibilidade-erro",
+            "label": "24",
+            "correct": false,
+            "feedback": "Você multiplicou sem procurar o primeiro múltiplo comum. O certo é 12; mmc(4;6)=12."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra."
+}

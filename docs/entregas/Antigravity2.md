@@ -1,0 +1,4 @@
+algebra/polinomios-e-complexos/divisao-polinomial-e-teorema-do-resto | validações: aula ok, vitest 10/10, lint:content ok, tsc limpo | lacunas: divisao_polinomial adaptado para plano_cartesiano (passos 1 e 3)
+algebra/matrizes-e-sistemas/sistemas-lineares-e-escalonamento | validações: aula ok, vitest 10/10, lint:content ok, tsc limpo | lacunas: sistema_escalonado adaptado para plano_cartesiano (passos 2, 3 e 4)
+algebra/matrizes-e-sistemas/matrizes-determinantes-sistemas | validações: aula ok, vitest 10/10, lint:content ok, tsc limpo | lacunas: transformacao_plano adaptado para plano_cartesiano (passos 1, 2, 3, 5 e 6)
+algebra/matrizes-e-sistemas/determinantes-e-matriz-inversa | validações: aula ok, vitest 9/9, lint:content ok, tsc limpo | lacunas: transformacao_plano adaptado para plano_cartesiano com retangulo:true (passos 1, 2, 3, 4 e 5)

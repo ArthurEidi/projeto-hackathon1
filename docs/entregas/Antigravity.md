@@ -1,0 +1,4 @@
+algebra/equacoes-e-inequacoes/expressoes-algebricas-e-produtos-notaveis | validações: aula ok, vitest 14/14, lint:content ok, tsc ok | lacunas: adaptado para geometria_poligono modo malha (roteiro pedia areas-produtos)
+algebra/equacoes-e-inequacoes/fatoracao-algebrica | validações: aula ok, vitest 14/14, lint:content ok, tsc ok | lacunas: nenhuma (usado plano_cartesiano conforme especificado)
+aritmetica/proporcionalidade/unidades-conversoes-e-escalas | validações: aula ok, vitest 14/14, lint:content ok, tsc ok | lacunas: adaptado passo 1 para geometria_poligono modo malha escala k e passo 2 para reta_numerica (roteiro pedia figura-escala)
+aritmetica/conjuntos/sistemas-numericos-e-divisibilidade | validações: aula ok, vitest 14/14, lint:content ok, tsc ok | lacunas: adaptado passos 2 e 4 para barras modo parte_todo e passo 3 para reta_numerica (roteiro pedia grupos-inteiros)

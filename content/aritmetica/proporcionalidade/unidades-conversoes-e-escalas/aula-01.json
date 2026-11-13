@@ -1,0 +1,506 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Unidades, conversões, escala e erro de medida",
+  "subtitulo": "A unidade muda, o objeto permanece",
+  "slug": "unidades-conversoes-e-escalas",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "proporcionalidade",
+    "unidade": "unidades-conversoes-e-escalas"
+  },
+  "tempo_estimado": 10,
+  "prerequisitos": [
+    "razao-proporcao-porcentagem"
+  ],
+  "glossario": {
+    "c1": {
+      "nome": "Comprimento L",
+      "resumo": "Medida linear da figura ou segmento."
+    },
+    "c2": {
+      "nome": "Escala k",
+      "resumo": "Fator aplicado a todas as dimensões lineares."
+    },
+    "c3": {
+      "nome": "Área A",
+      "resumo": "Medida da superfície da figura."
+    },
+    "c4": {
+      "nome": "Faixa de medida",
+      "resumo": "Valores compatíveis com a precisão informada."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "malha",
+        "forma": "retangulo",
+        "b": 2,
+        "h": 2,
+        "k": "$k",
+        "fantasma": [
+          2,
+          2
+        ],
+        "highlight": [
+          "c2"
+        ]
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Ampliação",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "k",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro k=1 a figura não muda; ao dobrar cada lado, a área só dobra?",
+        "done": "Não; o lado vai a 4 e a área a 16, por isso área multiplica por k²."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Comprimento, área e volume têm fatores distintos; aqui convertemos unidades, ampliamos figuras e indicamos intervalos de arredondamento."
+      }
+    },
+    {
+      "id": "converter-unidade",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [
+          0,
+          2
+        ],
+        "marcas": 1,
+        "pontos": [
+          {
+            "x": 0,
+            "rotulo": "2 m",
+            "cor": "ink"
+          },
+          {
+            "x": 1,
+            "rotulo": "20 dm",
+            "cor": "ink"
+          },
+          {
+            "x": 2,
+            "rotulo": "200 cm",
+            "cor": "c1"
+          }
+        ],
+        "ponto": {
+          "x": "$e",
+          "arrastavel": false,
+          "cor": "c1"
+        }
+      },
+      "controls": [
+        {
+          "id": "e",
+          "label": "Casas da unidade",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 0,
+          "color": "ink"
+        }
+      ],
+      "complete_when": {
+        "metric": "e",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Se o mesmo segmento for medido em centímetros, ele aumenta? Leve e a 2.",
+        "done": "Não; apenas a unidade encolhe, por isso o número de unidades cresce."
+      }
+    },
+    {
+      "id": "medida-com-faixa",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [
+          1.9,
+          2.1
+        ],
+        "marcas": 0.05,
+        "trechos": [
+          {
+            "de": 1.95,
+            "ate": 2.05,
+            "abreDe": false,
+            "abreAte": true,
+            "cor": "c4",
+            "rotulo": "[1,95; 2,05)"
+          }
+        ],
+        "ponto": {
+          "x": 1.9,
+          "arrastavel": true,
+          "passo": 0.01,
+          "cor": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 1.96
+      },
+      "lines": {
+        "intro": "Se a régua registra 2,0 cm ao décimo mais próximo, 1,96 cm é compatível? Arraste até 1,96.",
+        "done": "Sim; 1,96 fica entre 1,95 e 2,05, por isso arredonda para 2,0."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "2,05 também arredonda para 2,0?",
+        "resposta": "Com empate para cima, vai a 2,1; por isso o extremo direito fica aberto."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "malha",
+          "forma": "retangulo",
+          "b": 2,
+          "h": 2,
+          "k": 2,
+          "fantasma": [
+            2,
+            2
+          ],
+          "highlight": [
+            "c3"
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Ao ampliar um quadrado de lado 2 por k=2, qual é a nova área?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "8",
+          "correct": false,
+          "feedback": "Você dobrou só uma dimensão; (2·2)²=16."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "16",
+          "correct": true,
+          "feedback": "Certo: 16; (2·2)²=16."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "malha",
+          "forma": "retangulo",
+          "b": 2,
+          "h": 2,
+          "k": 2,
+          "fantasma": [
+            2,
+            2
+          ],
+          "highlight": [
+            "c2",
+            "c3"
+          ]
+        }
+      },
+      "formula": [
+        {
+          "text": "L′",
+          "ref": "c1"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "k",
+          "ref": "c2"
+        },
+        {
+          "text": "L; "
+        },
+        {
+          "text": "A′",
+          "ref": "c3"
+        },
+        {
+          "text": " = k²A; V′ = k³V; escala = L desenho / L real"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Comprimento L",
+          "text": "Medida linear da figura ou segmento."
+        },
+        {
+          "term": "Escala k",
+          "text": "Fator aplicado a todas as dimensões lineares."
+        },
+        {
+          "term": "Área A",
+          "text": "Medida da superfície da figura."
+        }
+      ],
+      "lines": {
+        "intro": "Cada dimensão recebe o mesmo fator; por isso comprimento, área e volume mudam por k, k² e k³.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-unidades-conversoes-e-escalas",
+        "prompt": "Na escala 1:1, a figura muda de tamanho?",
+        "options": [
+          {
+            "id": "f1-unidades-conversoes-e-escalas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O fator de escala é neutro. O certo é Não; k=1."
+          },
+          {
+            "id": "f1-unidades-conversoes-e-escalas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; k=1."
+          }
+        ]
+      },
+      {
+        "id": "f2-unidades-conversoes-e-escalas",
+        "prompt": "Quantos centímetros há em 1 metro?",
+        "options": [
+          {
+            "id": "f2-unidades-conversoes-e-escalas-certa",
+            "label": "100",
+            "correct": true,
+            "feedback": "Certo: 100; 1 m=100 cm."
+          },
+          {
+            "id": "f2-unidades-conversoes-e-escalas-erro",
+            "label": "10",
+            "correct": false,
+            "feedback": "Você converteu para decímetros. O certo é 100; 1 m=100 cm."
+          }
+        ]
+      },
+      {
+        "id": "f3-unidades-conversoes-e-escalas",
+        "prompt": "Ao dobrar todos os lados de um quadrado, a área multiplica por quanto?",
+        "options": [
+          {
+            "id": "f3-unidades-conversoes-e-escalas-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você escalou uma dimensão só. O certo é 4; 2²=4."
+          },
+          {
+            "id": "f3-unidades-conversoes-e-escalas-certa",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: 4; 2²=4."
+          }
+        ]
+      },
+      {
+        "id": "f4-unidades-conversoes-e-escalas",
+        "prompt": "Converter metros em centímetros muda o comprimento físico?",
+        "options": [
+          {
+            "id": "f4-unidades-conversoes-e-escalas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 2 m=200 cm."
+          },
+          {
+            "id": "f4-unidades-conversoes-e-escalas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Muda a unidade, não o objeto. O certo é Não; 2 m=200 cm."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-unidades-conversoes-e-escalas",
+        "prompt": "Converta 2,5 m em centímetros.",
+        "options": [
+          {
+            "id": "m1-unidades-conversoes-e-escalas-erro",
+            "label": "25 cm",
+            "correct": false,
+            "feedback": "Você usou fator 10 em vez de 100. O certo é 250 cm; 2,5·100=250."
+          },
+          {
+            "id": "m1-unidades-conversoes-e-escalas-certa",
+            "label": "250 cm",
+            "correct": true,
+            "feedback": "Certo: 250 cm; 2,5·100=250."
+          }
+        ]
+      },
+      {
+        "id": "m2-unidades-conversoes-e-escalas",
+        "prompt": "Converta 1 m² em cm².",
+        "options": [
+          {
+            "id": "m2-unidades-conversoes-e-escalas-certa",
+            "label": "10 000 cm²",
+            "correct": true,
+            "feedback": "Certo: 10 000 cm²; 100·100=10 000."
+          },
+          {
+            "id": "m2-unidades-conversoes-e-escalas-erro",
+            "label": "100 cm²",
+            "correct": false,
+            "feedback": "Você esqueceu de converter as duas dimensões. O certo é 10 000 cm²; 100·100=10 000."
+          }
+        ]
+      },
+      {
+        "id": "m3-unidades-conversoes-e-escalas",
+        "prompt": "Na escala 1:100, 2 cm no desenho representam quanto no real?",
+        "options": [
+          {
+            "id": "m3-unidades-conversoes-e-escalas-erro",
+            "label": "200 m",
+            "correct": false,
+            "feedback": "Você não converteu 200 cm para metros. O certo é 2 m; 2·100=200 cm=2 m."
+          },
+          {
+            "id": "m3-unidades-conversoes-e-escalas-certa",
+            "label": "2 m",
+            "correct": true,
+            "feedback": "Certo: 2 m; 2·100=200 cm=2 m."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-unidades-conversoes-e-escalas",
+        "prompt": "Ao reduzir o lado de um cubo à metade, o volume fica em qual fração?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-unidades-conversoes-e-escalas-certa",
+            "label": "1/8",
+            "correct": true,
+            "feedback": "Certo: 1/8; (1/2)³=1/8."
+          },
+          {
+            "id": "d1-unidades-conversoes-e-escalas-erro",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Volume envolve três dimensões. O certo é 1/8; (1/2)³=1/8."
+          }
+        ]
+      },
+      {
+        "id": "d2-unidades-conversoes-e-escalas",
+        "prompt": "Uma medida 2,0 cm, arredondada ao décimo com empate para cima, admite 2,05 cm?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-unidades-conversoes-e-escalas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O extremo direito arredonda para 2,1. O certo é Não; Faixa [1,95;2,05)."
+          },
+          {
+            "id": "d2-unidades-conversoes-e-escalas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; Faixa [1,95;2,05)."
+          }
+        ]
+      },
+      {
+        "id": "d3-unidades-conversoes-e-escalas",
+        "prompt": "Qual é a área de um quadrado de lado 0,5 m?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-unidades-conversoes-e-escalas-certa",
+            "label": "0,25 m²",
+            "correct": true,
+            "feedback": "Certo: 0,25 m²; 0,5·0,5=0,25."
+          },
+          {
+            "id": "d3-unidades-conversoes-e-escalas-erro",
+            "label": "1 m²",
+            "correct": false,
+            "feedback": "Você somou dois lados em vez de multiplicar. O certo é 0,25 m²; 0,5·0,5=0,25."
+          }
+        ]
+      },
+      {
+        "id": "d4-unidades-conversoes-e-escalas",
+        "prompt": "Um desenho de 3 cm representa 6 m; qual é a escala?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-unidades-conversoes-e-escalas-erro",
+            "label": "1:2",
+            "correct": false,
+            "feedback": "Você comparou unidades diferentes. O certo é 1:200; 6 m=600 cm; 3/600=1/200."
+          },
+          {
+            "id": "d4-unidades-conversoes-e-escalas-certa",
+            "label": "1:200",
+            "correct": true,
+            "feedback": "Certo: 1:200; 6 m=600 cm; 3/600=1/200."
+          }
+        ]
+      },
+      {
+        "id": "d5-unidades-conversoes-e-escalas",
+        "prompt": "Uma planta 1:100 mostra quarto de 2 cm por 3 cm; qual é a área real em m²?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-unidades-conversoes-e-escalas-certa",
+            "label": "6 m²",
+            "correct": true,
+            "feedback": "Certo: 6 m²; Lados reais 2 m e 3 m; área=6 m²."
+          },
+          {
+            "id": "d5-unidades-conversoes-e-escalas-erro",
+            "label": "600 m²",
+            "correct": false,
+            "feedback": "Você misturou escala linear com conversão de área. O certo é 6 m²; Lados reais 2 m e 3 m; área=6 m²."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra."
+}

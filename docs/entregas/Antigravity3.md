@@ -1,0 +1,3 @@
+geometria/geometria-analitica/elipse | validações: aula ok (GUIA §3.4), vitest 19/19, lint:content conteúdo ok, tsc --noEmit limpo | lacunas: nenhuma; vestibular vazio (PENDENTE-FONTE no plano); usado widget lugar_geometrico modo elipse
+geometria/geometria-analitica/hiperbole | validações: aula ok (GUIA §3.4), vitest 20/20, lint:content conteúdo ok, tsc --noEmit limpo | lacunas: nenhuma; vestibular V1 ENEM 2017 (adaptada) incluído com fonte real conferida; usado widget lugar_geometrico modo hiperbole
+geometria/geometria-analitica/parabola-conica | validações: aula ok (GUIA §3.4), vitest 19/19, lint:content conteúdo ok, tsc --noEmit limpo | lacunas: nenhuma; vestibular vazio (PENDENTE-FONTE no plano); usado widget lugar_geometrico modo parabola

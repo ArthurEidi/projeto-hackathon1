@@ -1,0 +1,585 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Potenciação, propriedades e radicais",
+  "subtitulo": "Repetir fatores e desfazer áreas",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "conjuntos",
+    "unidade": "potencias-e-radicais"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Base a",
+      "resumo": "Fator repetido na potência."
+    },
+    "c2": {
+      "nome": "Expoente n",
+      "resumo": "Quantidade de fatores ou regra de inversão."
+    },
+    "c3": {
+      "nome": "Potência",
+      "resumo": "Resultado de aplicar o expoente à base."
+    },
+    "c4": {
+      "nome": "Raiz principal",
+      "resumo": "Comprimento não negativo recuperado da área."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -2,
+          3
+        ],
+        "y": [
+          0,
+          9
+        ],
+        "grade": true,
+        "curvas": [
+          {
+            "tipo": "exponencial",
+            "a": 2,
+            "b": 1,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "2ˣ"
+          }
+        ],
+        "ponto": {
+          "x": 1,
+          "passo": 1,
+          "arrastavel": true,
+          "cor": "c3",
+          "coordenadas": true,
+          "rastro": true
+        }
+      },
+      "lines": {
+        "intro": "No caso neutro 2¹=2; ao avançar o expoente para 2, somamos 2 ou multiplicamos por 2?",
+        "done": "Multiplicamos; 2²=2·2=4, por isso juntar fatores soma seus expoentes."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Há expoentes inteiros e fracionários; aqui ligamos fatores, inversos e raízes reais, com atenção aos sinais."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      }
+    },
+    {
+      "id": "andar-para-tras",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -2,
+          3
+        ],
+        "y": [
+          0,
+          9
+        ],
+        "grade": true,
+        "curvas": [
+          {
+            "tipo": "exponencial",
+            "a": 2,
+            "b": 1,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "2ˣ"
+          }
+        ],
+        "ponto": {
+          "x": 1,
+          "passo": 1,
+          "arrastavel": true,
+          "cor": "c3",
+          "coordenadas": true,
+          "rastro": true
+        }
+      },
+      "lines": {
+        "intro": "Se cada avanço dobra a saída, voltar até −1 exige qual operação?",
+        "done": "Exige dividir por 2; por isso 2⁰=1 e 2⁻¹=1/2."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": -1
+      }
+    },
+    {
+      "id": "recuperar-lado",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -2,
+          3
+        ],
+        "y": [
+          0,
+          9
+        ],
+        "grade": true,
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = x²"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": "$s",
+          "arrastavel": false,
+          "passo": 0.1,
+          "coordenadas": true,
+          "rastro": true,
+          "cor": "c4",
+          "rotulo": "lado"
+        }
+      },
+      "controls": [
+        {
+          "id": "s",
+          "label": "Lado",
+          "min": 1,
+          "max": 3,
+          "step": 0.1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Um quadrado de área 9 pode ter lado −3? Leve o lado a 3.",
+        "done": "Não; comprimento é não negativo, por isso √9=3, embora x²=9 aceite x=±3."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "√(a²) sempre é a?",
+        "resposta": "Não; com a=−2, √4=2, então o resultado é ∣a∣."
+      },
+      "complete_when": {
+        "metric": "s",
+        "gte": 3
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -2,
+            3
+          ],
+          "y": [
+            0,
+            9
+          ],
+          "grade": true,
+          "curvas": [
+            {
+              "tipo": "exponencial",
+              "a": 2,
+              "b": 1,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "2ˣ"
+            }
+          ],
+          "ponto": {
+            "x": 0,
+            "cor": "c2",
+            "rotulo": "(0; 1)"
+          }
+        }
+      },
+      "prompt": "Quanto vale 2⁻¹?",
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "−2",
+          "correct": false,
+          "feedback": "Expoente negativo pede inverso, não troca de sinal; 2⁻¹=1/2.",
+          "figure": {
+            "ponto": {
+              "x": -2,
+              "cor": "c3",
+              "rotulo": "(−2; 0,5)"
+            }
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "0,5",
+          "correct": true,
+          "feedback": "Certo: 0,5; 2⁻¹=1/2.",
+          "figure": {
+            "ponto": {
+              "x": -1,
+              "cor": "c1",
+              "rotulo": "(−1; 0,5)"
+            },
+            "highlight": [
+              "c1"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -2,
+            3
+          ],
+          "y": [
+            0,
+            9
+          ],
+          "grade": true,
+          "curvas": [
+            {
+              "tipo": "exponencial",
+              "a": 2,
+              "b": 1,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "2ˣ"
+            }
+          ],
+          "ponto": {
+            "x": 0,
+            "cor": "c1",
+            "rotulo": "(0; 1)"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "a",
+          "ref": "c1"
+        },
+        {
+          "text": "a",
+          "ref": "c3",
+          "sup": "m"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "a",
+          "ref": "c3",
+          "sup": "n"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "a",
+          "sup": "m+n"
+        },
+        {
+          "text": "a",
+          "sup": "−n"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "1"
+        },
+        {
+          "text": "a",
+          "sup": "n",
+          "ref": "c3"
+        },
+        {
+          "text": "√"
+        },
+        {
+          "text": "a",
+          "sup": "2",
+          "ref": "c4"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "∣a∣"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Base a",
+          "text": "Base a: Fator repetido na potência."
+        },
+        {
+          "term": "Potência",
+          "text": "Potência: Resultado de aplicar o expoente à base."
+        },
+        {
+          "term": "Raiz principal",
+          "text": "Raiz principal: Comprimento não negativo recuperado da área."
+        }
+      ],
+      "lines": {
+        "intro": "Fatores se juntam e inversos desfazem produtos; por isso expoentes somam no produto e mudam de sinal na inversão.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-potencias-e-radicais",
+        "prompt": "Quanto vale 2¹?",
+        "options": [
+          {
+            "id": "f1-potencias-e-radicais-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você confundiu expoente 1 com expoente 0. O certo é 2; 2¹=2."
+          },
+          {
+            "id": "f1-potencias-e-radicais-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; 2¹=2."
+          }
+        ]
+      },
+      {
+        "id": "f2-potencias-e-radicais",
+        "prompt": "Quanto vale 2⁰?",
+        "options": [
+          {
+            "id": "f2-potencias-e-radicais-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; 2²/2²=2⁰=1."
+          },
+          {
+            "id": "f2-potencias-e-radicais-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Expoente zero não zera base não nula. O certo é 1; 2²/2²=2⁰=1."
+          }
+        ]
+      },
+      {
+        "id": "f3-potencias-e-radicais",
+        "prompt": "Quanto vale 2⁻¹?",
+        "options": [
+          {
+            "id": "f3-potencias-e-radicais-erro",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Expoente negativo indica inverso. O certo é 0,5; 2⁻¹=1/2."
+          },
+          {
+            "id": "f3-potencias-e-radicais-certa",
+            "label": "0,5",
+            "correct": true,
+            "feedback": "Certo: 0,5; 2⁻¹=1/2."
+          }
+        ]
+      },
+      {
+        "id": "f4-potencias-e-radicais",
+        "prompt": "Quanto vale a raiz principal √9?",
+        "options": [
+          {
+            "id": "f4-potencias-e-radicais-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; √9=3≥0."
+          },
+          {
+            "id": "f4-potencias-e-radicais-erro",
+            "label": "±3",
+            "correct": false,
+            "feedback": "Você confundiu raiz principal com equação quadrática. O certo é 3; √9=3≥0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-potencias-e-radicais",
+        "prompt": "Calcule 2²·2³.",
+        "options": [
+          {
+            "id": "m1-potencias-e-radicais-erro",
+            "label": "64",
+            "correct": false,
+            "feedback": "Você multiplicou expoentes em vez de somá-los. O certo é 32; 2²⁺³=2⁵=32."
+          },
+          {
+            "id": "m1-potencias-e-radicais-certa",
+            "label": "32",
+            "correct": true,
+            "feedback": "Certo: 32; 2²⁺³=2⁵=32."
+          }
+        ]
+      },
+      {
+        "id": "m2-potencias-e-radicais",
+        "prompt": "Calcule (2²)³.",
+        "options": [
+          {
+            "id": "m2-potencias-e-radicais-erro",
+            "label": "32",
+            "correct": false,
+            "feedback": "Você somou expoentes em uma potência de potência. O certo é 64; (2²)³=2⁶=64."
+          },
+          {
+            "id": "m2-potencias-e-radicais-certa",
+            "label": "64",
+            "correct": true,
+            "feedback": "Certo: 64; (2²)³=2⁶=64."
+          }
+        ]
+      },
+      {
+        "id": "m3-potencias-e-radicais",
+        "prompt": "Calcule √4+√9.",
+        "options": [
+          {
+            "id": "m3-potencias-e-radicais-erro",
+            "label": "√13",
+            "correct": false,
+            "feedback": "Raiz não distribui sobre soma. O certo é 5; 2+3=5."
+          },
+          {
+            "id": "m3-potencias-e-radicais-certa",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo: 5; 2+3=5."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-potencias-e-radicais",
+        "prompt": "Quanto vale √((−3)²)?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-potencias-e-radicais-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; √9=3."
+          },
+          {
+            "id": "d1-potencias-e-radicais-erro",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Você esqueceu o módulo ao desfazer o quadrado. O certo é 3; √9=3."
+          }
+        ]
+      },
+      {
+        "id": "d2-potencias-e-radicais",
+        "prompt": "0⁻¹ está definido?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-potencias-e-radicais-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O inverso exigiria dividir por zero. O certo é Não; 0⁻¹=1/0 não existe."
+          },
+          {
+            "id": "d2-potencias-e-radicais-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 0⁻¹=1/0 não existe."
+          }
+        ]
+      },
+      {
+        "id": "d3-potencias-e-radicais",
+        "prompt": "Quanto vale a raiz cúbica de −8?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-potencias-e-radicais-certa",
+            "label": "−2",
+            "correct": true,
+            "feedback": "Certo: −2; (−2)³=−8."
+          },
+          {
+            "id": "d3-potencias-e-radicais-erro",
+            "label": "Não existe real",
+            "correct": false,
+            "feedback": "A restrição de sinal vale para índice par. O certo é −2; (−2)³=−8."
+          }
+        ]
+      },
+      {
+        "id": "d4-potencias-e-radicais",
+        "prompt": "Calcule 4¹ᐟ²·2⁻¹.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-potencias-e-radicais-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você não inverteu o fator de expoente negativo. O certo é 1; √4·(1/2)=2/2=1."
+          },
+          {
+            "id": "d4-potencias-e-radicais-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; √4·(1/2)=2/2=1."
+          }
+        ]
+      },
+      {
+        "id": "d5-potencias-e-radicais",
+        "prompt": "Um quadrado tem área 8; qual é seu lado e o dobro desse lado?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-potencias-e-radicais-certa",
+            "label": "2√2 e 4√2",
+            "correct": true,
+            "feedback": "Certo: 2√2 e 4√2; √8=2√2; 2·2√2=4√2."
+          },
+          {
+            "id": "d5-potencias-e-radicais-erro",
+            "label": "4 e 8",
+            "correct": false,
+            "feedback": "Você dividiu a área por 2 em vez de extrair a raiz. O certo é 2√2 e 4√2; √8=2√2; 2·2√2=4√2."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

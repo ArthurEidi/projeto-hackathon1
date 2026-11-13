@@ -1,0 +1,538 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Divisão de polinômios e teorema do resto",
+  "subtitulo": "O resto aparece como altura",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "polinomios-e-complexos",
+    "unidade": "divisao-polinomial-e-teorema-do-resto"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Candidato r",
+      "resumo": "Raiz do divisor linear x−r."
+    },
+    "c2": {
+      "nome": "Divisor x−r",
+      "resumo": "Polinômio pelo qual dividimos."
+    },
+    "c3": {
+      "nome": "Valor P(r)",
+      "resumo": "Altura do polinômio no candidato r."
+    },
+    "c4": {
+      "nome": "Resto",
+      "resumo": "Parcela que sobra após a divisão."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "d",
+          "label": "Divisor constante",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-3, 3],
+        "y": [-2, 8],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": -1,
+            "cor": "c3",
+            "rotulo": "P(x) = x² − 1"
+          }
+        ]
+      },
+      "complete_when": {
+        "metric": "d",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro, dividir por 1 mantém P; ao dividir por 2 aparece resto?",
+        "done": "Não; nos reais, (x²−1)/2 é polinômio e o resto é zero."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Há divisão longa e divisores de graus maiores; aqui dividimos por x−r e ligamos o resto à avaliação."
+      }
+    },
+    {
+      "id": "ler-resto",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 3],
+        "y": [-2, 9],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": -1,
+            "cor": "c3",
+            "rotulo": "P(x) = x² − 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1,
+          "cor": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Ao dividir x²−1 por x−2, o resto é a altura em 2? Arraste até lá.",
+        "done": "Sim; P(2)=3 porque o termo (x−2)Q zera em 2, por isso sobra apenas o resto."
+      }
+    },
+    {
+      "id": "montar-quociente",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "etapa",
+          "label": "Parcela retirada",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 0,
+          "color": "ink"
+        }
+      ],
+      "params": {
+        "x": [-3, 3],
+        "y": [-2, 9],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": -1,
+            "cor": "c3",
+            "rotulo": "P(x) = x² − 1"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 2,
+            "cor": "c2",
+            "rotulo": "Q(x) = x + 2"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 3,
+            "cor": "c4",
+            "rotulo": "R = 3"
+          }
+        ]
+      },
+      "complete_when": {
+        "metric": "etapa",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Qual termo anula x² primeiro e qual elimina o 2x restante? Avance as duas retiradas.",
+        "done": "Primeiro x, depois 2; por isso x²−1=(x−2)(x+2)+3, e o resto coincide com P(2)."
+      }
+    },
+    {
+      "id": "encontrar-fator",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-2, 3],
+        "y": [-2, 9],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": 0,
+            "c": -1,
+            "cor": "c3",
+            "rotulo": "P(x) = x² − 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1,
+          "cor": "c1"
+        },
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "na_raiz",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Se o candidato for 1, ainda sobra resto? Arraste até a raiz.",
+        "done": "Não; P(1)=0, então x−1 é fator e o quociente é x+1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o divisor for 2x−2?",
+        "resposta": "O resto ainda é P(1); o quociente muda para (x+1)/2."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 3],
+          "y": [-2, 9],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": 1,
+              "b": 0,
+              "c": -1,
+              "cor": "c3",
+              "rotulo": "P(x) = x² − 1"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "cor": "c1"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual resto deixa x²−1 ao dividir por x−2?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "0",
+          "correct": false,
+          "feedback": "Você confundiu 2 com raiz; P(2)=4−1=3, então o resto é 3."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "3",
+          "correct": true,
+          "feedback": "Certo: 3; P(2)=4−1=3."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-2, 3],
+          "y": [-2, 9],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": 1,
+              "b": 0,
+              "c": -1,
+              "cor": "c3",
+              "rotulo": "P(x) = x² − 1"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "cor": "c4"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "P(x) = "
+        },
+        {
+          "text": "(x − r)",
+          "ref": "c2"
+        },
+        {
+          "text": " · Q(x) + "
+        },
+        {
+          "text": "P(r)",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Candidato r",
+          "text": "Raiz do divisor linear x−r."
+        },
+        {
+          "term": "Valor P(r)",
+          "text": "Altura do polinômio no candidato r."
+        },
+        {
+          "term": "Resto",
+          "text": "Parcela que sobra após a divisão."
+        }
+      ],
+      "lines": {
+        "intro": "Em x=r, o produto (x−r)Q zera; por isso o resto da divisão é P(r).",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Qual avaliação dá o resto ao dividir P(x) por x−2?",
+        "options": [
+          {
+            "id": "f1-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "P(−2)",
+            "correct": false,
+            "feedback": "Você trocou o sinal da raiz do divisor. O certo é P(2); x−2=0 em 2."
+          },
+          {
+            "id": "f1-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "P(2)",
+            "correct": true,
+            "feedback": "Certo: P(2); x−2=0 em 2."
+          }
+        ]
+      },
+      {
+        "id": "f2-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Resto zero ao dividir por x−r significa que x−r é fator?",
+        "options": [
+          {
+            "id": "f2-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; P=(x−r)Q."
+          },
+          {
+            "id": "f2-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Divisão exata produz uma fatoração. O certo é Sim; P=(x−r)Q."
+          }
+        ]
+      },
+      {
+        "id": "f3-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "O resto da divisão por um polinômio linear pode ter grau 1?",
+        "options": [
+          {
+            "id": "f3-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O grau do resto precisa ser menor. O certo é Não; grau R<1."
+          },
+          {
+            "id": "f3-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; grau R<1."
+          }
+        ]
+      },
+      {
+        "id": "f4-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Dividir um polinômio por 1 deixa resto quanto?",
+        "options": [
+          {
+            "id": "f4-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; P=1·P+0."
+          },
+          {
+            "id": "f4-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você confundiu divisor com resto. O certo é 0; P=1·P+0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Qual é o resto de x²−1 por x−2?",
+        "options": [
+          {
+            "id": "m1-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você presumiu que 2 fosse raiz. O certo é 3; P(2)=4−1=3."
+          },
+          {
+            "id": "m1-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; P(2)=4−1=3."
+          }
+        ]
+      },
+      {
+        "id": "m2-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Qual é o resto de x²+1 por x+1?",
+        "options": [
+          {
+            "id": "m2-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; P(−1)=1+1=2."
+          },
+          {
+            "id": "m2-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você ignorou o termo constante positivo. O certo é 2; P(−1)=1+1=2."
+          }
+        ]
+      },
+      {
+        "id": "m3-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Qual é o quociente de x²−1 por x−1?",
+        "options": [
+          {
+            "id": "m3-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "x−1",
+            "correct": false,
+            "feedback": "Você confundiu diferença de quadrados com quadrado da diferença. O certo é x+1; x²−1=(x−1)(x+1)."
+          },
+          {
+            "id": "m3-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "x+1",
+            "correct": true,
+            "feedback": "Certo: x+1; x²−1=(x−1)(x+1)."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Qual k faz x²+k divisível por x−2?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "−4",
+            "correct": true,
+            "feedback": "Certo: −4; 4+k=0; k=−4."
+          },
+          {
+            "id": "d1-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você trocou o sinal ao zerar o resto. O certo é −4; 4+k=0; k=−4."
+          }
+        ]
+      },
+      {
+        "id": "d2-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Qual é o resto de P(x)=2x+1 por 2x−1?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você avaliou em 1, não na raiz 0,5. O certo é 2; P(0,5)=1+1=2."
+          },
+          {
+            "id": "d2-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; P(0,5)=1+1=2."
+          }
+        ]
+      },
+      {
+        "id": "d3-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "O resto por x²−1 precisa ser constante?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; R pode ser ax+b."
+          },
+          {
+            "id": "d3-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Você aplicou a regra do divisor linear. O certo é Não; R pode ser ax+b."
+          }
+        ]
+      },
+      {
+        "id": "d4-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Qual é o resto de x³−1 por x−1?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você somou em vez de subtrair 1. O certo é 0; P(1)=1−1=0."
+          },
+          {
+            "id": "d4-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; P(1)=1−1=0."
+          }
+        ]
+      },
+      {
+        "id": "d5-divisao-polinomial-e-teorema-do-resto",
+        "prompt": "Se P(x)=(x−2)(x+1)+3, quais são o resto por x−2 e P(0)?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-divisao-polinomial-e-teorema-do-resto-certa",
+            "label": "3 e 1",
+            "correct": true,
+            "feedback": "Certo: 3 e 1; P(2)=3; P(0)=−2+3=1."
+          },
+          {
+            "id": "d5-divisao-polinomial-e-teorema-do-resto-erro",
+            "label": "0 e 3",
+            "correct": false,
+            "feedback": "Você confundiu a parcela do produto com o resto. O certo é 3 e 1; P(2)=3; P(0)=−2+3=1."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

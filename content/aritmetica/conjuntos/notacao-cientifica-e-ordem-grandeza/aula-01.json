@@ -1,0 +1,480 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Notação científica, estimativa e arredondamento",
+  "subtitulo": "Mover a vírgula sem mudar o número",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "conjuntos",
+    "unidade": "notacao-cientifica-e-ordem-grandeza"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Coeficiente a",
+      "resumo": "Fator normalizado entre 1 e 10."
+    },
+    "c2": {
+      "nome": "Expoente n",
+      "resumo": "Potência de dez que define a escala."
+    },
+    "c3": {
+      "nome": "Valor N",
+      "resumo": "Número representado pelo produto."
+    },
+    "c4": {
+      "nome": "Ordem de grandeza",
+      "resumo": "Potência de dez mais próxima em escala logarítmica."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-5, 5],
+        "marcas": 1,
+        "pontos": [
+          { "x": 0, "cor": "c2", "rotulo": "n = 0" },
+          { "x": 2, "cor": "muted", "rotulo": "2·10²" },
+          { "x": 1, "cor": "muted", "rotulo": "2·10¹" },
+          { "x": -1, "cor": "muted", "rotulo": "2·10⁻¹" },
+          { "x": -2, "cor": "muted", "rotulo": "2·10⁻²" }
+        ],
+        "ponto": {
+          "x": "$n",
+          "arrastavel": false,
+          "passo": 1,
+          "cor": "c3",
+          "rotulo": "2·10ⁿ"
+        }
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Expoente de dez",
+          "min": -2,
+          "max": 2,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "No caso neutro, 2·10⁰ = 2. Ao elevar n de 0 a 1, o valor multiplica por 10: arraste n.",
+        "done": "Multiplica por 10: 2·10¹ = 20, pois cada posição vale 10× a anterior."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Notação científica organiza escalas grandes e pequenas; aqui normalizamos, estimamos e arredondamos sem confundir expoente e valor."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 1
+      }
+    },
+    {
+      "id": "normalizar",
+      "type": "interactive_canvas",
+      "widget": "barras",
+      "params": {
+        "modo": "parte_todo",
+        "partes": 200,
+        "pintadas": 20,
+        "referencia": {
+          "partes": 200,
+          "pintadas": 20
+        },
+        "mostrar": {
+          "fracao": true,
+          "porcento": true,
+          "razao": true
+        },
+        "todo": 200,
+        "rotulos": {
+          "parte": "2·10¹",
+          "todo": "2·10²"
+        }
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Expoente compensado",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "A barra cinza é o 20·10⁰; a pintada é o 2·10¹. Leve n de 0 a 1 sem mudar o valor.",
+        "done": "Fica 2·10¹: o coeficiente divide por 10 e o expoente soma 1, preservando o número."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 1
+      }
+    },
+    {
+      "id": "ordem-e-arredondamento",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [-5, 5],
+        "marcas": 1,
+        "pontos": [
+          { "x": 2, "cor": "c2", "rotulo": "a = 2" },
+          { "x": 3, "cor": "muted", "rotulo": "a = 3" },
+          { "x": 3.16, "cor": "muted", "rotulo": "corte √10" }
+        ],
+        "ponto": {
+          "x": "$a",
+          "arrastavel": false,
+          "passo": 1,
+          "cor": "c1",
+          "rotulo": "a"
+        }
+      },
+      "controls": [
+        {
+          "id": "a",
+          "label": "Coeficiente",
+          "min": 2,
+          "max": 4,
+          "step": 1,
+          "initial": 2,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "300 e 400 têm a mesma ordem mais próxima? Leve a de 2 a 4 e encontre o corte √10.",
+        "done": "3 < √10 < 4: 300 tem ordem 10² e 400 tem ordem 10³."
+      },
+      "complete_when": {
+        "metric": "a",
+        "gte": 4
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "prompt": "Qual é a notação científica de 200?",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "parte_todo",
+          "partes": 200,
+          "pintadas": 200,
+          "referencia": {
+            "partes": 200,
+            "pintadas": 20
+          },
+          "rotulos": {
+            "parte": "2·10²",
+            "todo": "2·10²"
+          }
+        }
+      },
+      "lines": {
+        "intro": "A previsão é a notação científica: 2·10² = 200, com 1 ≤ 2 < 10."
+      },
+      "options": [
+        {
+          "id": "micro-acerto",
+          "label": "2·10²",
+          "correct": true,
+          "feedback": "Certo: 2·10²; 200 = 2·10², com 1 ≤ 2 < 10.",
+          "figure": {
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "micro-erro",
+          "label": "20·10¹",
+          "correct": false,
+          "feedback": "O valor coincide, mas o coeficiente 20 não está normalizado; use 2·10².",
+          "figure": {
+            "rotulos": {
+              "parte": "20·10¹"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "barras_figura",
+        "params": {
+          "modo": "parte_todo",
+          "partes": 200,
+          "pintadas": 200,
+          "referencia": {
+            "partes": 200,
+            "pintadas": 20
+          },
+          "rotulos": {
+            "parte": "2·10²",
+            "todo": "2·10²"
+          }
+        }
+      },
+      "formula": [
+        { "text": "N", "ref": "c3" },
+        { "text": "=" },
+        { "text": "a", "ref": "c1" },
+        { "text": "·10", "sup": "n", "ref": "c2" },
+        { "text": "; 1≤a<10;" },
+        { "text": "ordem", "ref": "c4" },
+        { "text": "=10ⁿ se a<√10, senão 10ⁿ⁺¹" }
+      ],
+      "definitions": [
+        {
+          "term": "Coeficiente a",
+          "text": "Fator normalizado entre 1 e 10."
+        },
+        {
+          "term": "Valor N",
+          "text": "Número representado pelo produto."
+        },
+        {
+          "term": "Ordem de grandeza",
+          "text": "Potência de dez mais próxima em escala logarítmica."
+        }
+      ],
+      "lines": {
+        "intro": "Mudar a escala exige compensar o coeficiente; por isso a·10ⁿ representa o mesmo valor após a normalização.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Quanto vale 10⁰?",
+        "options": [
+          {
+            "id": "f1-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "O certo é 1; 10⁰ = 1."
+          },
+          {
+            "id": "f1-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; 10⁰ = 1."
+          }
+        ]
+      },
+      {
+        "id": "f2-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Em 2·10³, qual é o expoente?",
+        "options": [
+          {
+            "id": "f2-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "O certo é 3; n = 3."
+          },
+          {
+            "id": "f2-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; n = 3."
+          }
+        ]
+      },
+      {
+        "id": "f3-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Qual coeficiente está normalizado: 2 ou 20?",
+        "options": [
+          {
+            "id": "f3-erro",
+            "label": "20",
+            "correct": false,
+            "feedback": "O certo é 2; 1 ≤ 2 < 10."
+          },
+          {
+            "id": "f3-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; 1 ≤ 2 < 10."
+          }
+        ]
+      },
+      {
+        "id": "f4-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Multiplicar por 10 desloca a vírgula para qual lado?",
+        "options": [
+          {
+            "id": "f4-erro",
+            "label": "Esquerda",
+            "correct": false,
+            "feedback": "O certo é Direita; 2,5·10 = 25."
+          },
+          {
+            "id": "f4-certa",
+            "label": "Direita",
+            "correct": true,
+            "feedback": "Certo: Direita; 2,5·10 = 25."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Escreva 300 em notação científica.",
+        "options": [
+          {
+            "id": "m1-erro",
+            "label": "3·10³",
+            "correct": false,
+            "feedback": "O certo é 3·10²; 3·100 = 300."
+          },
+          {
+            "id": "m1-certa",
+            "label": "3·10²",
+            "correct": true,
+            "feedback": "Certo: 3·10²; 3·100 = 300."
+          }
+        ]
+      },
+      {
+        "id": "m2-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Escreva 0,02 em notação científica.",
+        "options": [
+          {
+            "id": "m2-erro",
+            "label": "2·10²",
+            "correct": false,
+            "feedback": "O certo é 2·10⁻²; 2/100 = 0,02."
+          },
+          {
+            "id": "m2-certa",
+            "label": "2·10⁻²",
+            "correct": true,
+            "feedback": "Certo: 2·10⁻²; 2/100 = 0,02."
+          }
+        ]
+      },
+      {
+        "id": "m3-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Quanto vale (2·10²)·(3·10¹)?",
+        "options": [
+          {
+            "id": "m3-erro",
+            "label": "5·10³",
+            "correct": false,
+            "feedback": "O certo é 6·10³; 2·3 = 6 e 10²·10¹ = 10³."
+          },
+          {
+            "id": "m3-certa",
+            "label": "6·10³",
+            "correct": true,
+            "feedback": "Certo: 6·10³; 2·3 = 6 e 10²·10¹ = 10³."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Arredonde 9,96·10² para dois algarismos significativos.",
+        "options": [
+          {
+            "id": "d1-erro",
+            "label": "9,9·10²",
+            "correct": false,
+            "feedback": "O certo é 1,0·10³; 9,96 arredonda para 10 e 10·10² = 1,0·10³."
+          },
+          {
+            "id": "d1-certa",
+            "label": "1,0·10³",
+            "correct": true,
+            "feedback": "Certo: 1,0·10³; 9,96 arredonda para 10 e 10·10² = 1,0·10³."
+          }
+        ]
+      },
+      {
+        "id": "d2-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Zero tem forma normalizada a·10ⁿ com 1≤a<10?",
+        "options": [
+          {
+            "id": "d2-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O certo é Não; a·10ⁿ > 0 nesse intervalo."
+          },
+          {
+            "id": "d2-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; a·10ⁿ > 0 nesse intervalo."
+          }
+        ]
+      },
+      {
+        "id": "d3-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Pela convenção do corte √10, qual é a ordem de grandeza de 400?",
+        "options": [
+          {
+            "id": "d3-erro",
+            "label": "10²",
+            "correct": false,
+            "feedback": "O certo é 10³; 4 > √10, então sobe uma ordem."
+          },
+          {
+            "id": "d3-certa",
+            "label": "10³",
+            "correct": true,
+            "feedback": "Certo: 10³; 4 > √10, então sobe uma ordem."
+          }
+        ]
+      },
+      {
+        "id": "d4-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Quanto vale (3·10²)÷(6·10³) em notação científica?",
+        "options": [
+          {
+            "id": "d4-erro",
+            "label": "0,5·10⁻¹",
+            "correct": false,
+            "feedback": "O certo é 5·10⁻²; 300/6000 = 0,05 = 5·10⁻²."
+          },
+          {
+            "id": "d4-certa",
+            "label": "5·10⁻²",
+            "correct": true,
+            "feedback": "Certo: 5·10⁻²; 300/6000 = 0,05 = 5·10⁻²."
+          }
+        ]
+      },
+      {
+        "id": "d5-notacao-cientifica-e-ordem-grandeza",
+        "prompt": "Uma amostra tem 2·10³ células por mL; em 0,5 mL, quantas células há e qual é a ordem?",
+        "options": [
+          {
+            "id": "d5-erro",
+            "label": "4·10³; ordem 10⁴",
+            "correct": false,
+            "feedback": "O certo é 1·10³; 2000·0,5 = 1000 = 1·10³."
+          },
+          {
+            "id": "d5-certa",
+            "label": "1·10³; ordem 10³",
+            "correct": true,
+            "feedback": "Certo: 1·10³; 2000·0,5 = 1000 = 1·10³."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

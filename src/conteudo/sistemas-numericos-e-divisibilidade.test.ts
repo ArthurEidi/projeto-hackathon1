@@ -1,0 +1,103 @@
+// Conjuntos numéricos, divisibilidade e fatoração prima · Aula 01: passos completáveis e gabaritos conferidos com conta.
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { describe, expect, it } from "vitest";
+import { Lesson } from "../engine/schema";
+
+const L = Lesson.parse(
+  JSON.parse(
+    readFileSync(
+      join(
+        import.meta.dirname,
+        "../../content/aritmetica/conjuntos/sistemas-numericos-e-divisibilidade/aula-01.json",
+      ),
+      "utf8",
+    ),
+  ),
+);
+
+const certa = (id: string) =>
+  Object.values(L.treino)
+    .flat()
+    .find((q) => q.id === id)!
+    .options.find((o) => o.correct)!.label;
+
+const step = (id: string) => L.steps.find((s) => s.id === id)!;
+
+describe("passos da aula de conjuntos numéricos, divisibilidade e fatoração prima", () => {
+  it("cada interactive_canvas pode ser concluído", () => {
+    for (const s of L.steps) {
+      if (s.type !== "interactive_canvas") continue;
+      const { metric, gte, lte } = s.complete_when;
+      const slider = s.controls.find((c) => c.id === metric);
+      if (slider) {
+        if (gte !== undefined) expect(slider.max, s.id).toBeGreaterThanOrEqual(gte);
+        if (lte !== undefined) expect(slider.min, s.id).toBeLessThanOrEqual(lte);
+        expect(slider.initial, `${s.id} não pode começar concluído`).not.toBe(gte ?? lte);
+        const alvo = (gte ?? lte)!;
+        expect(((alvo - slider.min) / slider.step) % 1, `${s.id}: alvo fora do passo`).toBeCloseTo(0, 9);
+      }
+    }
+  });
+
+  it("gabarito do micro-desafio confere com o resto de 6 dividido por 3 (resto 0)", () => {
+    const s = step("conferir-previsao");
+    if (s.type !== "micro_challenge") throw new Error("esperava micro_challenge");
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("0");
+  });
+});
+
+describe("gabaritos das fáceis", () => {
+  it("F1: 0 pertence a N", () => {
+    expect(certa("f1-sistemas-numericos-e-divisibilidade")).toBe("Sim");
+  });
+
+  it("F2: Z contém -2 mas não 0,5", () => {
+    expect(certa("f2-sistemas-numericos-e-divisibilidade")).toBe("Z");
+  });
+
+  it("F3: 0,5 = 1/2 é racional", () => {
+    expect(certa("f3-sistemas-numericos-e-divisibilidade")).toBe("Sim");
+  });
+
+  it("F4: 1 não é primo", () => {
+    expect(certa("f4-sistemas-numericos-e-divisibilidade")).toBe("Não");
+  });
+});
+
+describe("gabaritos das médias", () => {
+  it("M1: 7 = 3·2 + 1 deixa resto 1", () => {
+    expect(certa("m1-sistemas-numericos-e-divisibilidade")).toBe("1");
+  });
+
+  it("M2: 12 = 2²·3", () => {
+    expect(certa("m2-sistemas-numericos-e-divisibilidade")).toBe("2²·3");
+  });
+
+  it("M3: mdc(6, 8) = 2", () => {
+    expect(certa("m3-sistemas-numericos-e-divisibilidade")).toBe("2");
+  });
+});
+
+describe("gabaritos dos desafios", () => {
+  it("D1: mmc(4, 6) = 12", () => {
+    expect(certa("d1-sistemas-numericos-e-divisibilidade")).toBe("12");
+  });
+
+  it("D2: 0 = 3·0 é múltiplo de 3", () => {
+    expect(certa("d2-sistemas-numericos-e-divisibilidade")).toBe("Sim");
+  });
+
+  it("D3: √2 não é racional", () => {
+    expect(certa("d3-sistemas-numericos-e-divisibilidade")).toBe("Não");
+  });
+
+  it("D4: 3·2 + 1 = 7", () => {
+    expect(certa("d4-sistemas-numericos-e-divisibilidade")).toBe("7");
+  });
+
+  it("D5: sinais de 4 e 6 s coincidem em mmc(4, 6) = 12 s", () => {
+    expect(certa("d5-sistemas-numericos-e-divisibilidade")).toBe("12");
+  });
+});

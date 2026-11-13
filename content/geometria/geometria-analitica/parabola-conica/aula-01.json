@@ -1,0 +1,583 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Parábola como lugar geométrico e cônica",
+  "subtitulo": "Entre o foco e a reta",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-analitica",
+    "unidade": "parabola-conica"
+  },
+  "outro": "Você traçou pontos equidistantes de um foco e de uma reta: a parábola x² = 4py, a mesma da função quadrática.",
+  "glossario": {
+    "c1": {
+      "nome": "Foco",
+      "resumo": "O ponto fixo F de onde se mede uma das distâncias."
+    },
+    "c2": {
+      "nome": "Diretriz",
+      "resumo": "A reta fixa de onde se mede a outra distância."
+    },
+    "c3": {
+      "nome": "Parábola",
+      "resumo": "Todos os pontos à mesma distância do foco e da diretriz."
+    },
+    "c4": {
+      "nome": "Distâncias de P",
+      "resumo": "Os dois segmentos que P compara: até o foco e até a reta."
+    }
+  },
+  "steps": [
+    {
+      "id": "vertice",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "parabola",
+        "p": 1,
+        "prender_no_eixo": true
+      },
+      "lines": {
+        "intro": "O foco está em (0; 1) e a diretriz é y = −1. Que ponto do eixo y fica à mesma distância dos dois?",
+        "done": "A origem: 1 até o foco e 1 até a reta. É o vértice, o ponto mais simples da curva."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Toda cônica nasce assim, de distâncias?",
+        "resposta": "Sim, cada uma com sua regra: elipse soma, hipérbole subtrai. Hoje, parábola."
+      },
+      "complete_when": {
+        "metric": "vertice_achado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "tracar",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "parabola",
+        "p": 1
+      },
+      "lines": {
+        "intro": "Procure outros pontos à mesma distância do foco e da diretriz. Teste (2; 1): quanto mede cada distância?",
+        "done": "Em (2; 1) as duas valem 2. Os pontos achados desenham uma parábola que abraça o foco."
+      },
+      "complete_when": {
+        "metric": "pontos_sobre",
+        "gte": 4
+      }
+    },
+    {
+      "id": "igualar",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "parabola",
+        "p": 1
+      },
+      "lines": {
+        "intro": "Escreva as duas distâncias de um ponto qualquer (x; y). O que sobra quando você iguala?",
+        "done": "x² + (y − 1)² = (y + 1)² simplifica para x² = 4y. É a parábola y = x²/4 da função quadrática."
+      },
+      "complete_when": {
+        "metric": "igualou",
+        "gte": 1
+      }
+    },
+    {
+      "id": "afastar-foco",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "parabola",
+        "p": "$p",
+        "fantasma": {
+          "p": 1
+        }
+      },
+      "controls": [
+        {
+          "id": "p",
+          "label": "Foco até o vértice",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Afaste o foco da diretriz. A parábola fica mais aberta ou mais fechada?",
+        "done": "Mais aberta: em x² = 4py, com p maior, y cresce mais devagar. Foco perto da reta deixa a curva fechada."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o foco ficar abaixo da diretriz?",
+        "resposta": "A parábola vira para baixo: x² = −4py. Ela sempre abraça o foco."
+      },
+      "complete_when": {
+        "metric": "p",
+        "gte": 3
+      }
+    },
+    {
+      "id": "desafio-foco",
+      "type": "micro_challenge",
+      "prompt": "Qual é o foco da parábola x² = 8y?",
+      "lines": {
+        "intro": "Compare com a equação fundamental x² = 4py: determine quanto vale p."
+      },
+      "figure": {
+        "widget": "lugar_figura",
+        "params": {
+          "modo": "parabola",
+          "p": 2,
+          "focos": false
+        }
+      },
+      "options": [
+        {
+          "id": "f02",
+          "label": "(0; 2)",
+          "correct": true,
+          "feedback": "Isso. 4p = 8, logo p = 2 e o foco fica em (0; 2)."
+        },
+        {
+          "id": "f08",
+          "label": "(0; 8)",
+          "correct": false,
+          "feedback": "8 é 4p. O foco fica na altura p = 8/4 = 2: (0; 2)."
+        },
+        {
+          "id": "f20",
+          "label": "(2; 0)",
+          "correct": false,
+          "feedback": "O eixo da parábola é vertical: o foco fica no eixo y: (0; 2)."
+        },
+        {
+          "id": "f04",
+          "label": "(0; 4)",
+          "correct": false,
+          "feedback": "Divida por 4, não por 2: p = 8/4 = 2, logo (0; 2)."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "lugar_figura",
+        "params": {
+          "modo": "parabola",
+          "p": 1
+        }
+      },
+      "formula": [
+        {
+          "text": "x² = 4 · "
+        },
+        {
+          "text": "p",
+          "ref": "c1"
+        },
+        {
+          "text": " · y ;  diretriz "
+        },
+        {
+          "text": "y = −p",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Parábola",
+          "text": "Pontos do plano que estão à mesma distância do foco e da reta diretriz."
+        },
+        {
+          "term": "Vértice",
+          "text": "O ponto da curva exatamente no meio do caminho entre o foco e a diretriz."
+        },
+        {
+          "term": "Parâmetro p",
+          "text": "Distância do vértice ao foco (e do vértice até a reta diretriz)."
+        }
+      ],
+      "lines": {
+        "intro": "Igualar as duas distâncias faz os quadrados de y se cancelarem. Por isso sobra x² = 4py.",
+        "hint": "Toque em uma letra para ver o que ela é no desenho."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "vertice-x2-4y",
+        "prompt": "Qual é o vértice da parábola x² = 4y?",
+        "options": [
+          {
+            "id": "v00",
+            "label": "(0; 0)",
+            "correct": true,
+            "feedback": "Isso. No ponto médio entre o foco (0; 1) e a diretriz y = −1."
+          },
+          {
+            "id": "v01",
+            "label": "(0; 1)",
+            "correct": false,
+            "feedback": "(0; 1) é o foco. O vértice fica na origem (0; 0)."
+          },
+          {
+            "id": "v04",
+            "label": "(0; 4)",
+            "correct": false,
+            "feedback": "4 é 4p. O vértice da parábola padrão é a origem (0; 0)."
+          },
+          {
+            "id": "v0m1",
+            "label": "(0; −1)",
+            "correct": false,
+            "feedback": "y = −1 é a diretriz. O vértice é a origem (0; 0)."
+          }
+        ]
+      },
+      {
+        "id": "definicao",
+        "prompt": "A parábola é o conjunto dos pontos equidistantes de:",
+        "options": [
+          {
+            "id": "ponto-reta",
+            "label": "Um ponto e uma reta",
+            "correct": true,
+            "feedback": "Certo. Um ponto fixo (foco) e uma reta fixa (diretriz)."
+          },
+          {
+            "id": "dois-pontos",
+            "label": "Dois pontos fixos",
+            "correct": false,
+            "feedback": "Equidistantes de dois pontos formam uma reta mediatriz. Parábola: ponto e reta."
+          },
+          {
+            "id": "centro",
+            "label": "Um ponto central",
+            "correct": false,
+            "feedback": "Distância fixa a um ponto central define a circunferência. Parábola: ponto e reta."
+          },
+          {
+            "id": "duas-retas",
+            "label": "Duas retas paralelas",
+            "correct": false,
+            "feedback": "Equidistantes de duas retas formam retas bissetrizes. Parábola: ponto e reta."
+          }
+        ]
+      },
+      {
+        "id": "ponto-na-curva",
+        "prompt": "Na parábola x² = 4y, qual é a ordenada y do ponto com x = 2?",
+        "options": [
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Isso. 2² = 4y ⇒ 4 = 4y ⇒ y = 1."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é x². Dividindo por 4: y = 4/4 = 1."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "x² = 4, então y = 4/4 = 1."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "Você multiplicou em vez de dividir. y = 4/4 = 1."
+          }
+        ]
+      },
+      {
+        "id": "foco-x2-4y",
+        "prompt": "Qual é o foco da parábola x² = 4y?",
+        "options": [
+          {
+            "id": "f01",
+            "label": "(0; 1)",
+            "correct": true,
+            "feedback": "Certo. 4p = 4 ⇒ p = 1, foco em (0; 1)."
+          },
+          {
+            "id": "f04",
+            "label": "(0; 4)",
+            "correct": false,
+            "feedback": "4 é 4p. O foco fica na altura p = 1: (0; 1)."
+          },
+          {
+            "id": "f10",
+            "label": "(1; 0)",
+            "correct": false,
+            "feedback": "O eixo da curva é vertical: o foco fica no eixo y, em (0; 1)."
+          },
+          {
+            "id": "f00",
+            "label": "(0; 0)",
+            "correct": false,
+            "feedback": "(0; 0) é o vértice da parábola. O foco está em (0; 1)."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "diretriz-x2-12y",
+        "prompt": "Qual é a equação da diretriz da parábola x² = 12y?",
+        "options": [
+          {
+            "id": "ym3",
+            "label": "y = −3",
+            "correct": true,
+            "feedback": "Isso. 4p = 12 ⇒ p = 3, diretriz horizontal em y = −3."
+          },
+          {
+            "id": "y3",
+            "label": "y = 3",
+            "correct": false,
+            "feedback": "y = 3 passa pelo foco. A diretriz fica simétrica abaixo: y = −3."
+          },
+          {
+            "id": "ym12",
+            "label": "y = −12",
+            "correct": false,
+            "feedback": "12 é 4p. Com p = 3, a diretriz é y = −3."
+          },
+          {
+            "id": "xm3",
+            "label": "x = −3",
+            "correct": false,
+            "feedback": "Com eixo vertical, a diretriz é uma reta horizontal: y = −3."
+          }
+        ]
+      },
+      {
+        "id": "equacao-foco-0-2",
+        "prompt": "Qual a equação da parábola com foco (0; 2) e diretriz y = −2?",
+        "options": [
+          {
+            "id": "x8y",
+            "label": "x² = 8y",
+            "correct": true,
+            "feedback": "Certo. p = 2 ⇒ 4p = 8: x² = 8y."
+          },
+          {
+            "id": "x2y",
+            "label": "x² = 2y",
+            "correct": false,
+            "feedback": "O coeficiente é 4p, não p: x² = 8y."
+          },
+          {
+            "id": "x4y",
+            "label": "x² = 4y",
+            "correct": false,
+            "feedback": "x² = 4y tem p = 1. Para p = 2 temos x² = 8y."
+          },
+          {
+            "id": "y8x",
+            "label": "y² = 8x",
+            "correct": false,
+            "feedback": "Isso abriria para a direita. Com foco em (0; 2) no eixo y: x² = 8y."
+          }
+        ]
+      },
+      {
+        "id": "distancia-a-diretriz",
+        "prompt": "O ponto (4; 4) pertence à parábola x² = 4y. Qual sua distância até a diretriz y = −1?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Isso. De y = 4 até y = −1 temos 4 − (−1) = 5 (igual à distância ao foco)."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é a altura do ponto. Até a diretriz y = −1 são 4 + 1 = 5."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "A diretriz está abaixo do eixo: 4 − (−1) = 4 + 1 = 5."
+          },
+          {
+            "id": "a-raiz32",
+            "label": "√32",
+            "correct": false,
+            "feedback": "√32 é a distância até a origem. A distância até a reta diretriz é 5."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "para-baixo",
+        "prompt": "Qual a equação da parábola com foco (0; −1) e diretriz y = 1?",
+        "options": [
+          {
+            "id": "xm4y",
+            "label": "x² = −4y",
+            "correct": true,
+            "feedback": "Certo. O foco está abaixo da diretriz, logo a curva abre para baixo: x² = −4y."
+          },
+          {
+            "id": "x4y",
+            "label": "x² = 4y",
+            "correct": false,
+            "feedback": "Essa abre para cima, com foco (0; 1). Com foco em (0; −1): x² = −4y."
+          },
+          {
+            "id": "ym4x",
+            "label": "y² = −4x",
+            "correct": false,
+            "feedback": "Essa abriria para a esquerda. Foco no eixo vertical: x² = −4y."
+          },
+          {
+            "id": "xm1y",
+            "label": "x² = −y",
+            "correct": false,
+            "feedback": "O coeficiente é 4p = 4: x² = −4y."
+          }
+        ]
+      },
+      {
+        "id": "x-para-y9",
+        "prompt": "Na parábola x² = 4y, quais pontos têm ordenada y = 9?",
+        "options": [
+          {
+            "id": "pm6",
+            "label": "(6; 9) e (−6; 9)",
+            "correct": true,
+            "feedback": "Isso. x² = 4·9 = 36 ⇒ x = ±6: dois pontos simétricos."
+          },
+          {
+            "id": "p6",
+            "label": "Apenas (6; 9)",
+            "correct": false,
+            "feedback": "−6 também satisfaz a equação: (−6)² = 36. São dois pontos: (6; 9) e (−6; 9)."
+          },
+          {
+            "id": "p36",
+            "label": "(36; 9)",
+            "correct": false,
+            "feedback": "36 é x². Tirando a raiz quadrada temos x = ±6."
+          },
+          {
+            "id": "p3",
+            "label": "(3; 9) e (−3; 9)",
+            "correct": false,
+            "feedback": "(±3)² dá 9, não 36. Para 4y = 36 temos x = ±6."
+          }
+        ]
+      },
+      {
+        "id": "farol",
+        "prompt": "Num espelho parabólico, onde a fonte de luz deve ficar para o feixe sair paralelo ao eixo?",
+        "options": [
+          {
+            "id": "foco",
+            "label": "No foco",
+            "correct": true,
+            "feedback": "Certo. Todos os raios que partem do foco refletem paralelamente ao eixo da parábola."
+          },
+          {
+            "id": "vertice",
+            "label": "No vértice",
+            "correct": false,
+            "feedback": "No vértice os raios se espalhariam em várias direções. A lâmpada vai no foco."
+          },
+          {
+            "id": "diretriz",
+            "label": "Na diretriz",
+            "correct": false,
+            "feedback": "A diretriz fica atrás do espelho. A lâmpada deve ficar no foco."
+          },
+          {
+            "id": "qualquer",
+            "label": "Em qualquer ponto da curva",
+            "correct": false,
+            "feedback": "Apenas a posição no foco produz reflexão com raios paralelos."
+          }
+        ]
+      },
+      {
+        "id": "distancia-10",
+        "prompt": "Um ponto da parábola x² = 4y está a 10 unidades do foco. Qual é a sua ordenada y?",
+        "fala": "A distância ao foco é exatamente igual à distância até a diretriz.",
+        "options": [
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": true,
+            "feedback": "Isso. A distância até y = −1 é y − (−1) = y + 1 = 10, logo y = 9."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "A distância até y = −1 é y + 1 = 10, logo y = 9."
+          },
+          {
+            "id": "a11",
+            "label": "11",
+            "correct": false,
+            "feedback": "A diretriz está em y = −1: y − (−1) = 10 ⇒ y + 1 = 10 ⇒ y = 9."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "Basta usar a definição: distância à diretriz y = −1 vale 10, portanto y = 9."
+          }
+        ]
+      },
+      {
+        "id": "mais-aberta",
+        "prompt": "Qual parábola é mais aberta: x² = 4y ou x² = 12y?",
+        "fala": "Última. Compare o parâmetro p, que é a distância do foco ao vértice.",
+        "options": [
+          {
+            "id": "x12y",
+            "label": "x² = 12y",
+            "correct": true,
+            "feedback": "Certo. p = 3 contra p = 1: foco mais afastado da diretriz abre mais a curva."
+          },
+          {
+            "id": "x4y",
+            "label": "x² = 4y",
+            "correct": false,
+            "feedback": "Com p = 1 a curva é mais fechada. x² = 12y tem p = 3 e é mais aberta."
+          },
+          {
+            "id": "iguais",
+            "label": "Têm a mesma abertura",
+            "correct": false,
+            "feedback": "Os parâmetros p são diferentes (1 e 3), logo a abertura é diferente."
+          },
+          {
+            "id": "nenhuma",
+            "label": "Não é possível comparar",
+            "correct": false,
+            "feedback": "Quanto maior p em x² = 4py, mais aberta é a parábola: x² = 12y."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

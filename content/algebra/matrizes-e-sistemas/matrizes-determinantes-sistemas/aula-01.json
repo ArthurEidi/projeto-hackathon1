@@ -1,0 +1,566 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Tabelas que Operam",
+  "subtitulo": "Matrizes e suas operações",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "matrizes-e-sistemas",
+    "unidade": "matrizes-determinantes-sistemas"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Vetor de entrada",
+      "resumo": "Par de coordenadas antes da transformação."
+    },
+    "c2": {
+      "nome": "Matriz A",
+      "resumo": "Tabela que combina as coordenadas de entrada."
+    },
+    "c3": {
+      "nome": "Vetor de saída",
+      "resumo": "Par de coordenadas depois da transformação."
+    },
+    "c4": {
+      "nome": "Determinante",
+      "resumo": "Fator de área orientada da transformação."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "x",
+          "label": "Entrada horizontal x",
+          "min": -2,
+          "max": 2,
+          "step": 1,
+          "initial": 0,
+          "color": "c1"
+        }
+      ],
+      "params": {
+        "x": [-3, 3],
+        "y": [-2, 3],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "cor": "c3",
+            "rotulo": "y = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": "$x",
+          "cor": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro A=I, o vetor muda? Leve x até 2.",
+        "done": "Não; cada coluna da identidade preserva sua direção."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Matrizes têm soma, produto e inversa; aqui usamos máquinas 2×2, área e um sistema de duas equações."
+      }
+    },
+    {
+      "id": "esticar-coluna",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "a",
+          "label": "Escala horizontal a",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-1, 4],
+        "y": [-1, 3],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "fantasma": true,
+            "rotulo": "y = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": "$a",
+          "cor": "c3"
+        }
+      },
+      "complete_when": {
+        "metric": "a",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Se a primeira coluna dobrar, a altura também dobra? Leve a a 2.",
+        "done": "Não; só x dobra, por isso (1;1) vira (2;1) e a área dobra."
+      }
+    },
+    {
+      "id": "compor-maquinas",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "a",
+          "label": "Escala após B",
+          "min": 1,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-1, 5],
+        "y": [-1, 3],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "cor": "c3",
+            "rotulo": "y = 1"
+          }
+        ]
+      },
+      "complete_when": {
+        "metric": "a",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "B soma y ao x; se A dobrar o x depois disso, (1;1) chega onde? Leve a a 2.",
+        "done": "Chega a (4;1); o produto AB aplica B primeiro e A depois, por isso a ordem importa."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Como se somam matrizes da mesma ordem?",
+        "resposta": "Entrada por entrada; por exemplo, I+diag(2;3)=diag(3;4)."
+      }
+    },
+    {
+      "id": "resolver-sistema",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [-1, 4],
+        "y": [-2, 5],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": -1,
+            "b": 3,
+            "cor": "c3",
+            "rotulo": "x + y = 3"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": -1,
+            "cor": "ink",
+            "rotulo": "x − y = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "passo": 1,
+          "cor": "c1"
+        },
+        "marcar": {
+          "encontro": true
+        },
+        "cores": {
+          "encontro": "c1"
+        }
+      },
+      "complete_when": {
+        "metric": "no_encontro",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Qual entrada satisfaz x+y=3 e x−y=1? Arraste até o encontro.",
+        "done": "É (2;1), pois 2+1=3 e 2−1=1; as duas condições valem juntas."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Determinante zero significa nenhuma solução?",
+        "resposta": "Não; também pode haver infinitas, se as condições forem dependentes e compatíveis."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-1, 4],
+          "y": [-1, 5],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 3,
+              "cor": "c3",
+              "rotulo": "y = 3"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "cor": "c3"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "A=diag(2;1) leva (1;3) a qual vetor?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "(2;6)",
+          "correct": false,
+          "feedback": "Você dobrou as duas direções; só x dobra, então a imagem é (2;3)."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "(2;3)",
+          "correct": true,
+          "feedback": "Certo: (2;3); (2·1;1·3)=(2;3)."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-1, 4],
+          "y": [-2, 5],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": -1,
+              "b": 3,
+              "cor": "c3",
+              "rotulo": "x + y = 3"
+            },
+            {
+              "tipo": "afim",
+              "a": 1,
+              "b": -1,
+              "cor": "ink",
+              "rotulo": "x − y = 1"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "cor": "c1"
+          },
+          "marcar": {
+            "encontro": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "A",
+          "ref": "c2"
+        },
+        {
+          "text": " · "
+        },
+        {
+          "text": "(x; y)",
+          "ref": "c1"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "(ax + by; cx + dy)",
+          "ref": "c3"
+        },
+        {
+          "text": "; det A = "
+        },
+        {
+          "text": "ad − bc",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Vetor de entrada",
+          "text": "Par de coordenadas antes da transformação."
+        },
+        {
+          "term": "Vetor de saída",
+          "text": "Par de coordenadas depois da transformação."
+        },
+        {
+          "term": "Determinante",
+          "text": "Fator de área orientada da transformação."
+        }
+      ],
+      "lines": {
+        "intro": "Cada coluna move uma direção; por isso a imagem é a combinação das colunas com pesos x e y.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-matrizes-determinantes-sistemas",
+        "prompt": "O que a matriz identidade faz a um vetor?",
+        "options": [
+          {
+            "id": "f1-matrizes-determinantes-sistemas-erro",
+            "label": "Zera",
+            "correct": false,
+            "feedback": "Você confundiu identidade com matriz nula. O certo é Mantém; I·v=v."
+          },
+          {
+            "id": "f1-matrizes-determinantes-sistemas-certa",
+            "label": "Mantém",
+            "correct": true,
+            "feedback": "Certo: Mantém; I·v=v."
+          }
+        ]
+      },
+      {
+        "id": "f2-matrizes-determinantes-sistemas",
+        "prompt": "Na matriz A, a primeira coluna é imagem de qual vetor?",
+        "options": [
+          {
+            "id": "f2-matrizes-determinantes-sistemas-certa",
+            "label": "(1;0)",
+            "correct": true,
+            "feedback": "Certo: (1;0); A(1;0)=coluna 1."
+          },
+          {
+            "id": "f2-matrizes-determinantes-sistemas-erro",
+            "label": "(0;1)",
+            "correct": false,
+            "feedback": "Você trocou as colunas. O certo é (1;0); A(1;0)=coluna 1."
+          }
+        ]
+      },
+      {
+        "id": "f3-matrizes-determinantes-sistemas",
+        "prompt": "diag(2;1) dobra qual coordenada?",
+        "options": [
+          {
+            "id": "f3-matrizes-determinantes-sistemas-erro",
+            "label": "y",
+            "correct": false,
+            "feedback": "Você trocou as posições da diagonal. O certo é x; (x;y)→(2x;y)."
+          },
+          {
+            "id": "f3-matrizes-determinantes-sistemas-certa",
+            "label": "x",
+            "correct": true,
+            "feedback": "Certo: x; (x;y)→(2x;y)."
+          }
+        ]
+      },
+      {
+        "id": "f4-matrizes-determinantes-sistemas",
+        "prompt": "Duas retas paralelas distintas têm quantos pontos comuns?",
+        "options": [
+          {
+            "id": "f4-matrizes-determinantes-sistemas-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; Não há interseção."
+          },
+          {
+            "id": "f4-matrizes-determinantes-sistemas-erro",
+            "label": "Infinitos",
+            "correct": false,
+            "feedback": "Você confundiu paralelas distintas com coincidentes. O certo é 0; Não há interseção."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-matrizes-determinantes-sistemas",
+        "prompt": "A=diag(2;1) envia (1;3) a qual vetor?",
+        "options": [
+          {
+            "id": "m1-matrizes-determinantes-sistemas-erro",
+            "label": "(2;6)",
+            "correct": false,
+            "feedback": "Você dobrou também a segunda coordenada. O certo é (2;3); (2·1;1·3)=(2;3)."
+          },
+          {
+            "id": "m1-matrizes-determinantes-sistemas-certa",
+            "label": "(2;3)",
+            "correct": true,
+            "feedback": "Certo: (2;3); (2·1;1·3)=(2;3)."
+          }
+        ]
+      },
+      {
+        "id": "m2-matrizes-determinantes-sistemas",
+        "prompt": "Qual det de diag(2;3)?",
+        "options": [
+          {
+            "id": "m2-matrizes-determinantes-sistemas-certa",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo: 6; 2·3−0=6."
+          },
+          {
+            "id": "m2-matrizes-determinantes-sistemas-erro",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você somou os fatores de área. O certo é 6; 2·3−0=6."
+          }
+        ]
+      },
+      {
+        "id": "m3-matrizes-determinantes-sistemas",
+        "prompt": "Resolva x+y=3 e x−y=1.",
+        "options": [
+          {
+            "id": "m3-matrizes-determinantes-sistemas-erro",
+            "label": "(1;2)",
+            "correct": false,
+            "feedback": "Você trocou x e y. O certo é (2;1); 2x=4; x=2; y=1."
+          },
+          {
+            "id": "m3-matrizes-determinantes-sistemas-certa",
+            "label": "(2;1)",
+            "correct": true,
+            "feedback": "Certo: (2;1); 2x=4; x=2; y=1."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-matrizes-determinantes-sistemas",
+        "prompt": "Qual entrada gera (1;1) por diag(2;1)?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-matrizes-determinantes-sistemas-certa",
+            "label": "(0,5;1)",
+            "correct": true,
+            "feedback": "Certo: (0,5;1); 2x=1; y=1."
+          },
+          {
+            "id": "d1-matrizes-determinantes-sistemas-erro",
+            "label": "(2;1)",
+            "correct": false,
+            "feedback": "Você aplicou a matriz em vez de desfazê-la. O certo é (0,5;1); 2x=1; y=1."
+          }
+        ]
+      },
+      {
+        "id": "d2-matrizes-determinantes-sistemas",
+        "prompt": "det A=0 garante sistema sem solução?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-matrizes-determinantes-sistemas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Sistemas singulares também podem ser compatíveis. O certo é Não; x+y=2 e 2x+2y=4 têm infinitas."
+          },
+          {
+            "id": "d2-matrizes-determinantes-sistemas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; x+y=2 e 2x+2y=4 têm infinitas."
+          }
+        ]
+      },
+      {
+        "id": "d3-matrizes-determinantes-sistemas",
+        "prompt": "Qual produto resulta de [[1,1],[0,1]] aplicado a (1;2)?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-matrizes-determinantes-sistemas-certa",
+            "label": "(3;2)",
+            "correct": true,
+            "feedback": "Certo: (3;2); (1+2;2)=(3;2)."
+          },
+          {
+            "id": "d3-matrizes-determinantes-sistemas-erro",
+            "label": "(1;3)",
+            "correct": false,
+            "feedback": "Você trocou as linhas no cálculo. O certo é (3;2); (1+2;2)=(3;2)."
+          }
+        ]
+      },
+      {
+        "id": "d4-matrizes-determinantes-sistemas",
+        "prompt": "A soma de [[1,0],[0,1]] e [[2,0],[0,3]] é qual?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-matrizes-determinantes-sistemas-erro",
+            "label": "diag(2;3)",
+            "correct": false,
+            "feedback": "Você multiplicou diagonais em vez de somar entradas. O certo é diag(3;4); 1+2=3; 1+3=4."
+          },
+          {
+            "id": "d4-matrizes-determinantes-sistemas-certa",
+            "label": "diag(3;4)",
+            "correct": true,
+            "feedback": "Certo: diag(3;4); 1+2=3; 1+3=4."
+          }
+        ]
+      },
+      {
+        "id": "d5-matrizes-determinantes-sistemas",
+        "prompt": "Se A=diag(2;1) e B=[[1,1],[0,1]], quanto é A(B(1;1))?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-matrizes-determinantes-sistemas-certa",
+            "label": "(4;1)",
+            "correct": true,
+            "feedback": "Certo: (4;1); B(1;1)=(2;1); A(2;1)=(4;1)."
+          },
+          {
+            "id": "d5-matrizes-determinantes-sistemas-erro",
+            "label": "(3;1)",
+            "correct": false,
+            "feedback": "Você inverteu a ordem das máquinas. O certo é (4;1); B(1;1)=(2;1); A(2;1)=(4;1)."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

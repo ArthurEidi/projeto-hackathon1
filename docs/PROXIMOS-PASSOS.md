@@ -4,7 +4,7 @@ Atualizado em 12/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim
 
 ## Estado
 
-- **86 de 103 capítulos** têm aula no app (87 unidades publicadas, contando Cones, o capítulo-modelo). Cada um tem `aula-01.json` e teste próprio.
+- **86 de 103 capítulos** têm aula no app (100 unidades publicadas, contando Cones, o capítulo-modelo). Cada um tem `aula-01.json` e teste próprio.
 - **Validações na última sessão:** `lint:content` ok, 99 arquivos de teste / 1569 testes passando, `typecheck` limpo, `build` ok.
 - **Widgets prontos** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, cada um com sua `*_figura`.
 - **Roteiros:** 103 planos em `docs/planos/`, `npm run lint:planos` com 0 erros. Gabaritos dos roteiros conferidos às cegas (1359/1359, `docs/REVISAO-GABARITOS.md`).
@@ -100,3 +100,9 @@ Ao terminar, informe o caminho do arquivo, o resultado das validações e as lac
 ## Fora do repositório (só na máquina original)
 
 `C:\Users\User\Hackathon\sprites` (arte-fonte dos personagens, 15 MB; os recortes usados pelo app já estão em `public/`) e `C:\Users\User\Hackathon\gabarito-cego` (pacotes e respostas da conferência às cegas; resultado em `docs/REVISAO-GABARITOS.md`, scripts em `scripts/gabarito-cego/`).
+
+## Integra??o Shell #2 ? 12/11/2026
+
+Registrados os 13 cap?tulos dos arquivos de entregas (10 cap?tulos adaptados e 3 c?nicas). Os itens correspondentes das filas 1 e 3 j? est?o entregues; falta limpar essas tabelas ap?s a integra??o final. Corrigido id de potencias-e-radicais para aula-01. Lugar geom?trico implementado (5 testes); revis?o visual pendente. Pr?ximo widget: pontos_no_plano.
+
+Validação da integração: 113 arquivos / 1776 testes passando, typecheck limpo. Lint e build executados com NODE_OPTIONS=--require=C:/Users/User/AppData/Local/Temp/app-matematica-os-userinfo.cjs: fallback temporário de os.userInfo, pois a API do Windows retorna uv_os_get_passwd ENOMEM. Nenhuma dependência ou arquivo de produção alterado por esse contorno.

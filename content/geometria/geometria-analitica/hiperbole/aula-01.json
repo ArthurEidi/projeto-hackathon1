@@ -1,0 +1,659 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Hipérbole como lugar geométrico",
+  "subtitulo": "A diferença que não muda",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-analitica",
+    "unidade": "hiperbole"
+  },
+  "outro": "Você fixou a diferença das distâncias: a hipérbole tem dois ramos, c² = a² + b² e assíntotas y = ±(b/a)x.",
+  "glossario": {
+    "c1": {
+      "nome": "Semieixo real",
+      "resumo": "a: do centro até cada vértice; a diferença é 2a."
+    },
+    "c2": {
+      "nome": "Semieixo imaginário",
+      "resumo": "b: metade do lado vertical do retângulo das assíntotas."
+    },
+    "c3": {
+      "nome": "Distância focal",
+      "resumo": "c: do centro até cada foco, o maior dos três."
+    },
+    "c4": {
+      "nome": "Diferença das distâncias",
+      "resumo": "|PF₁ − PF₂|, sempre igual a 2a."
+    }
+  },
+  "steps": [
+    {
+      "id": "diferenca-zero",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "hiperbole",
+        "c": 5,
+        "diferenca": "$diferenca"
+      },
+      "controls": [
+        {
+          "id": "diferenca",
+          "label": "Diferença 2a",
+          "min": 0,
+          "max": 6,
+          "step": 2,
+          "initial": 0,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Pontos à mesma distância dos dois focos têm diferença zero: que desenho formam? Depois aumente a diferença.",
+        "done": "Com diferença zero, a reta do meio. Com diferença 6, ela se parte em dois ramos curvos: uma hipérbole."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Onde isso aparece fora da matemática?",
+        "resposta": "Em leis do tipo um vezes o outro dá constante e em navegação por sinais. Hoje: a curva no plano."
+      },
+      "complete_when": {
+        "metric": "diferenca",
+        "gte": 6
+      }
+    },
+    {
+      "id": "diferenca-fixa",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "hiperbole",
+        "c": 5,
+        "a": 3,
+        "prender_na_curva": true
+      },
+      "lines": {
+        "intro": "Deslize P pelo ramo e leia PF₁ e PF₂. As duas mudam; o que fica fixo?",
+        "done": "A diferença: sempre 6. No vértice (3; 0), as distâncias são 8 e 2, e 8 − 2 = 6."
+      },
+      "complete_when": {
+        "metric": "pontos_vistos",
+        "gte": 3
+      }
+    },
+    {
+      "id": "triangulo-invertido",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "hiperbole",
+        "c": 5,
+        "a": 3,
+        "mostrar": {
+          "retangulo": true
+        }
+      },
+      "lines": {
+        "intro": "Na elipse, a era a hipotenusa. Na hipérbole, quem é o maior: a, b ou c?",
+        "done": "É c: o retângulo de lados a = 3 e b = 4 tem diagonal 5. Por isso c² = a² + b²."
+      },
+      "complete_when": {
+        "metric": "triangulo_ligado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "assintotas",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "hiperbole",
+        "c": 5,
+        "a": 3,
+        "zoom": "$zoom",
+        "mostrar": {
+          "assintotas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "zoom",
+          "label": "Afastar a câmera",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "initial": 1,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Afaste a câmera. Os ramos se aproximam de quais retas?",
+        "done": "De y = ±(4/3)x, as diagonais do retângulo. Longe do centro, a hipérbole quase vira essas retas."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se a diferença for maior que a distância entre os focos?",
+        "resposta": "Nenhum ponto consegue isso, e a curva some. Precisa ser 2a < 2c."
+      },
+      "complete_when": {
+        "metric": "zoom",
+        "gte": 4
+      }
+    },
+    {
+      "id": "desafio-focos",
+      "type": "micro_challenge",
+      "prompt": "Onde ficam os focos da hipérbole x²/9 − y²/16 = 1?",
+      "lines": {
+        "intro": "Na hipérbole, c é a hipotenusa do triângulo com a e b: some os quadrados."
+      },
+      "figure": {
+        "widget": "lugar_figura",
+        "params": {
+          "modo": "hiperbole",
+          "a": 3,
+          "c": 5,
+          "focos": false
+        }
+      },
+      "options": [
+        {
+          "id": "f5",
+          "label": "(±5; 0)",
+          "correct": true,
+          "feedback": "Isso. c² = 9 + 16 = 25, logo c = 5: focos em (±5; 0)."
+        },
+        {
+          "id": "f-raiz7",
+          "label": "(±√7; 0)",
+          "correct": false,
+          "feedback": "Você subtraiu como na elipse. Na hipérbole c² = a² + b² = 25, logo c = 5."
+        },
+        {
+          "id": "f3",
+          "label": "(±3; 0)",
+          "correct": false,
+          "feedback": "(±3; 0) são os vértices nas pontas. Os focos ficam em c = 5."
+        },
+        {
+          "id": "f4",
+          "label": "(±4; 0)",
+          "correct": false,
+          "feedback": "4 é b. Pelo triângulo retângulo c = √(9 + 16) = 5."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "lugar_figura",
+        "params": {
+          "modo": "hiperbole",
+          "a": 3,
+          "c": 5,
+          "mostrar": {
+            "retangulo": true,
+            "assintotas": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "x²/a²",
+          "ref": "c1"
+        },
+        {
+          "text": " − "
+        },
+        {
+          "text": "y²/b²",
+          "ref": "c2"
+        },
+        {
+          "text": " = 1 ; "
+        },
+        {
+          "text": "c² = a² + b²",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Hipérbole",
+          "text": "Pontos do plano cuja diferença das distâncias aos focos é constante: |PF₁ − PF₂| = 2a."
+        },
+        {
+          "term": "Relação fundamental",
+          "text": "No retângulo de lados 2a e 2b, a diagonal mede c: vale c² = a² + b²."
+        },
+        {
+          "term": "Assíntotas",
+          "text": "Retas y = ±(b/a)x das quais os ramos da hipérbole se aproximam no infinito."
+        }
+      ],
+      "lines": {
+        "intro": "No vértice, as distâncias diferem 2a. E como c é a diagonal do retângulo, c² = a² + b².",
+        "hint": "Toque em uma letra para ver o segmento no desenho."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "definicao",
+        "prompt": "Na hipérbole, o que é constante para todo ponto P?",
+        "options": [
+          {
+            "id": "diferenca",
+            "label": "A diferença das distâncias aos focos",
+            "correct": true,
+            "feedback": "Isso. |PF₁ − PF₂| = 2a é constante em todos os pontos."
+          },
+          {
+            "id": "soma",
+            "label": "A soma das distâncias",
+            "correct": false,
+            "feedback": "Soma constante define a elipse. Na hipérbole é a diferença: 2a."
+          },
+          {
+            "id": "centro",
+            "label": "A distância ao centro",
+            "correct": false,
+            "feedback": "Distância constante ao centro define a circunferência. Hipérbole: diferença aos focos."
+          },
+          {
+            "id": "foco-reta",
+            "label": "A distância a um foco e a uma reta",
+            "correct": false,
+            "feedback": "Isso define a parábola. Hipérbole: diferença das distâncias aos focos."
+          }
+        ]
+      },
+      {
+        "id": "vertices",
+        "prompt": "Quais são os vértices da hipérbole x²/9 − y²/16 = 1?",
+        "options": [
+          {
+            "id": "v3",
+            "label": "(±3; 0)",
+            "correct": true,
+            "feedback": "Certo. a² = 9 sob o termo positivo, logo a = 3 e os vértices são (±3; 0)."
+          },
+          {
+            "id": "v4",
+            "label": "(0; ±4)",
+            "correct": false,
+            "feedback": "b = 4 não marca vértice: a curva não cruza o eixo y. Vértices: (±3; 0)."
+          },
+          {
+            "id": "v5",
+            "label": "(±5; 0)",
+            "correct": false,
+            "feedback": "(±5; 0) são os focos. Os vértices da curva ficam em a = 3: (±3; 0)."
+          },
+          {
+            "id": "v9",
+            "label": "(±9; 0)",
+            "correct": false,
+            "feedback": "9 é a². Tirando a raiz quadrada temos vértices em (±3; 0)."
+          }
+        ]
+      },
+      {
+        "id": "ramos",
+        "prompt": "Quantos ramos tem uma hipérbole?",
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Isso. Um ramo em torno de cada foco."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Um ramo só é a parábola. A hipérbole tem 2 ramos simétricos."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "As assíntotas formam 4 quadrantes, mas os ramos da curva são 2."
+          },
+          {
+            "id": "inf",
+            "label": "Infinitos",
+            "correct": false,
+            "feedback": "São exatamente 2 ramos, e cada ramo se estende ao infinito."
+          }
+        ]
+      },
+      {
+        "id": "um-sobre-x",
+        "prompt": "O gráfico da função y = 1/x é que tipo de curva?",
+        "options": [
+          {
+            "id": "hiperbole",
+            "label": "Hipérbole",
+            "correct": true,
+            "feedback": "Certo. É uma hipérbole equilátera girada, com os eixos como assíntotas."
+          },
+          {
+            "id": "parabola",
+            "label": "Parábola",
+            "correct": false,
+            "feedback": "A parábola tem um só ramo e não tem assíntotas. y = 1/x é hipérbole."
+          },
+          {
+            "id": "reta",
+            "label": "Reta",
+            "correct": false,
+            "feedback": "A inclinação muda ponto a ponto; trata-se de uma hipérbole."
+          },
+          {
+            "id": "elipse",
+            "label": "Elipse",
+            "correct": false,
+            "feedback": "A elipse é uma curva fechada. y = 1/x tem dois ramos abertos: hipérbole."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "c-3-4",
+        "prompt": "Uma hipérbole tem a = 3 e b = 4. Quanto vale a distância focal c?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Isso. c² = a² + b² = 9 + 16 = 25, logo c = 5 (diagonal do retângulo)."
+          },
+          {
+            "id": "a-raiz7",
+            "label": "√7",
+            "correct": false,
+            "feedback": "Você subtraiu como na elipse. Na hipérbole c² = a² + b² = 25, logo c = 5."
+          },
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": false,
+            "feedback": "3 + 4 não é a relação pitagórica. c² = 3² + 4² = 25, c = 5."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "25 é c². Tirando a raiz quadrada encontramos c = 5."
+          }
+        ]
+      },
+      {
+        "id": "assintotas-4-9",
+        "prompt": "Quais são as assíntotas da hipérbole x²/4 − y²/9 = 1?",
+        "options": [
+          {
+            "id": "a32",
+            "label": "y = ±(3/2)x",
+            "correct": true,
+            "feedback": "Certo. Com a = 2 e b = 3, as assíntotas são y = ±(b/a)x = ±(3/2)x."
+          },
+          {
+            "id": "a23",
+            "label": "y = ±(2/3)x",
+            "correct": false,
+            "feedback": "Inverteu a fração: a inclinação é b/a, logo y = ±(3/2)x."
+          },
+          {
+            "id": "a94",
+            "label": "y = ±(9/4)x",
+            "correct": false,
+            "feedback": "Use os semieixos b e a, não os quadrados b² e a²: y = ±(3/2)x."
+          },
+          {
+            "id": "a1",
+            "label": "y = ±x",
+            "correct": false,
+            "feedback": "y = ±x ocorre apenas quando a = b. Aqui b/a = 3/2: y = ±(3/2)x."
+          }
+        ]
+      },
+      {
+        "id": "diferenca-16-9",
+        "prompt": "Na hipérbole x²/16 − y²/9 = 1, quanto vale |PF₁ − PF₂|?",
+        "options": [
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": true,
+            "feedback": "Isso. a² = 16 implica a = 4, e a diferença constante é 2a = 8."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é o semieixo a. A diferença constante entre as distâncias é 2a = 8."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 é a distância focal total 2c. A diferença das distâncias é 2a = 8."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é 2b. A diferença das distâncias aos focos é 2a = 8."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "montar-equacao",
+        "prompt": "Qual a hipérbole com centro na origem, focos (±5; 0) e vértices (±4; 0)?",
+        "options": [
+          {
+            "id": "h16-9",
+            "label": "x²/16 − y²/9 = 1",
+            "correct": true,
+            "feedback": "Certo. a² = 16 e b² = c² − a² = 25 − 16 = 9: x²/16 − y²/9 = 1."
+          },
+          {
+            "id": "h16-25",
+            "label": "x²/16 − y²/25 = 1",
+            "correct": false,
+            "feedback": "25 é c². No denominador de y² vai b² = c² − a² = 9."
+          },
+          {
+            "id": "e16-9",
+            "label": "x²/16 + y²/9 = 1",
+            "correct": false,
+            "feedback": "Com sinal de mais temos uma elipse. A hipérbole tem sinal de menos."
+          },
+          {
+            "id": "h25-16",
+            "label": "x²/25 − y²/16 = 1",
+            "correct": false,
+            "feedback": "Assim os vértices seriam (±5; 0). Com vértices em (±4; 0): x²/16 − y²/9 = 1."
+          }
+        ]
+      },
+      {
+        "id": "vertical",
+        "prompt": "Onde ficam os focos da hipérbole y²/9 − x²/16 = 1?",
+        "fala": "Veja qual termo é positivo.",
+        "options": [
+          {
+            "id": "f05",
+            "label": "(0; ±5)",
+            "correct": true,
+            "feedback": "Isso. O termo positivo é y²: ramos para cima e para baixo, focos em (0; ±5)."
+          },
+          {
+            "id": "f50",
+            "label": "(±5; 0)",
+            "correct": false,
+            "feedback": "O termo positivo é y², então o eixo real é vertical: focos em (0; ±5)."
+          },
+          {
+            "id": "f03",
+            "label": "(0; ±3)",
+            "correct": false,
+            "feedback": "(0; ±3) são os vértices reais. Os focos ficam em c = 5: (0; ±5)."
+          },
+          {
+            "id": "f0r7",
+            "label": "(0; ±√7)",
+            "correct": false,
+            "feedback": "Na hipérbole c² = a² + b² = 9 + 16 = 25: focos em (0; ±5)."
+          }
+        ]
+      },
+      {
+        "id": "diferenca-zero",
+        "prompt": "Os pontos com diferença zero entre as distâncias a dois focos formam:",
+        "options": [
+          {
+            "id": "mediatriz",
+            "label": "A reta mediatriz entre os focos",
+            "correct": true,
+            "feedback": "Certo. PF₁ = PF₂ define a mediatriz do segmento F₁F₂."
+          },
+          {
+            "id": "hiperbole",
+            "label": "Uma hipérbole comum",
+            "correct": false,
+            "feedback": "Diferença zero achata os dois ramos na reta do meio: a mediatriz."
+          },
+          {
+            "id": "circ",
+            "label": "Uma circunferência",
+            "correct": false,
+            "feedback": "Pontos equidistantes de dois pontos fixos formam uma reta, a mediatriz."
+          },
+          {
+            "id": "nada",
+            "label": "Um conjunto vazio",
+            "correct": false,
+            "feedback": "Existem infinitos pontos equidistantes de F₁ e F₂: a mediatriz."
+          }
+        ]
+      },
+      {
+        "id": "qual-e-hiperbole",
+        "prompt": "Qual destas equações representa uma hipérbole?",
+        "options": [
+          {
+            "id": "xmy",
+            "label": "x² − y² = 1",
+            "correct": true,
+            "feedback": "Isso. Os termos quadráticos têm sinais opostos: x² − y² = 1."
+          },
+          {
+            "id": "xpy",
+            "label": "x² + y² = 1",
+            "correct": false,
+            "feedback": "Sinais iguais e coeficientes 1 representam uma circunferência."
+          },
+          {
+            "id": "x4y",
+            "label": "x² = 4y",
+            "correct": false,
+            "feedback": "Apenas uma variável ao quadrado representa uma parábola."
+          },
+          {
+            "id": "e",
+            "label": "x²/4 + y² = 1",
+            "correct": false,
+            "feedback": "Soma de quadrados com coeficientes diferentes representa uma elipse."
+          }
+        ]
+      },
+      {
+        "id": "equilatera",
+        "prompt": "Numa hipérbole com a = b, quais são as equações das assíntotas?",
+        "fala": "Última. Quanto vale a razão b/a?",
+        "options": [
+          {
+            "id": "yx",
+            "label": "y = ±x",
+            "correct": true,
+            "feedback": "Certo. Com a = b temos b/a = 1, e as assíntotas são y = ±x."
+          },
+          {
+            "id": "y2x",
+            "label": "y = ±2x",
+            "correct": false,
+            "feedback": "Como a = b, a razão b/a é igual a 1, gerando y = ±x."
+          },
+          {
+            "id": "y0",
+            "label": "y = 0",
+            "correct": false,
+            "feedback": "y = 0 é o eixo x. As assíntotas são retas inclinadas y = ±x."
+          },
+          {
+            "id": "nao-tem",
+            "label": "A curva não tem assíntotas",
+            "correct": false,
+            "feedback": "Toda hipérbole possui assíntotas. Com a = b elas são y = ±x."
+          }
+        ]
+      }
+    ],
+    "vestibular": [
+      {
+        "id": "enem-2017-hill",
+        "prompt": "A equação de Hill é (p + a)(v + b) = K, com a, b e K positivos. Que gráfico descreve v em função de p?",
+        "fala": "Um fator vezes o outro dá constante, como y = 1/x deslocada.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2017,
+          "adaptada": true,
+          "adaptacao": "Enunciado resumido sem contexto biológico; alternativas e gabarito mantidos.",
+          "urls": [
+            "https://projetoagathaedu.com.br/questoes-vestibular/matematica/geometria-analitica/conicas.php"
+          ]
+        },
+        "options": [
+          {
+            "id": "hiperbole",
+            "label": "Ramo de hipérbole",
+            "correct": true,
+            "feedback": "Isso. É y = k/x deslocada, e só um ramo tem sentido físico."
+          },
+          {
+            "id": "obliqua",
+            "label": "Semirreta oblíqua",
+            "correct": false,
+            "feedback": "Produto constante não dá reta: v = K/(p + a) − b é ramo de hipérbole."
+          },
+          {
+            "id": "horizontal",
+            "label": "Semirreta horizontal",
+            "correct": false,
+            "feedback": "v muda com p. A relação produto = K desenha um ramo de hipérbole."
+          },
+          {
+            "id": "parabola",
+            "label": "Ramo de parábola",
+            "correct": false,
+            "feedback": "Parábola teria um termo ao quadrado. Produto constante: hipérbole."
+          },
+          {
+            "id": "circ",
+            "label": "Arco de circunferência",
+            "correct": false,
+            "feedback": "Circunferência soma quadrados. Aqui é produto constante: hipérbole."
+          }
+        ]
+      }
+    ]
+  }
+}

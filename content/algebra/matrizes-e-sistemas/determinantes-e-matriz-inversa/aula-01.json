@@ -1,0 +1,508 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Determinantes, área orientada e matriz inversa",
+  "subtitulo": "Área revela a possibilidade de voltar",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "matrizes-e-sistemas",
+    "unidade": "determinantes-e-matriz-inversa"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Vetor de entrada",
+      "resumo": "Par de coordenadas que a máquina recebe."
+    },
+    "c2": {
+      "nome": "Matriz A",
+      "resumo": "Transformação que pode ou não ter inversa."
+    },
+    "c3": {
+      "nome": "Imagem",
+      "resumo": "Ponto produzido pela transformação."
+    },
+    "c4": {
+      "nome": "Determinante",
+      "resumo": "Área orientada da imagem do quadrado unitário."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "a",
+          "label": "Escala horizontal a",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-1, 4],
+        "y": [-1, 3],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "fantasma": true,
+            "rotulo": "y = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": "$a",
+          "cor": "c4",
+          "retangulo": true,
+          "corRetangulo": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "a",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro A=I, a área é 1; se a for 2, qual área aparece?",
+        "done": "A área vira 2 porque a largura dobrou e a altura permaneceu 1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Determinantes existem em ordens maiores; aqui usamos área orientada, inversa 2×2 e o caso singular."
+      }
+    },
+    {
+      "id": "inverter-orientacao",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "a",
+          "label": "Escala horizontal a",
+          "min": -1,
+          "max": 1,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-3, 3],
+        "y": [-1, 3],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "fantasma": true,
+            "rotulo": "y = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": "$a",
+          "cor": "c4",
+          "retangulo": true,
+          "corRetangulo": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "a",
+        "lte": -1
+      },
+      "lines": {
+        "intro": "Com a=−1, a área geométrica fica negativa? Arraste até −1.",
+        "done": "Não; a área é 1, mas o determinante é −1 porque a orientação se inverteu."
+      }
+    },
+    {
+      "id": "perder-informacao",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "controls": [
+        {
+          "id": "a",
+          "label": "Escala horizontal a",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "params": {
+        "x": [-1, 3],
+        "y": [-1, 3],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": 1,
+            "fantasma": true,
+            "rotulo": "y = 1"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": "$a",
+          "cor": "c3",
+          "retangulo": true,
+          "corRetangulo": "c4"
+        }
+      },
+      "complete_when": {
+        "metric": "a",
+        "lte": 0
+      },
+      "lines": {
+        "intro": "Se a zerar, dá para descobrir qual das duas entradas gerou a imagem?",
+        "done": "Não; duas entradas viram o mesmo ponto, por isso a matriz com determinante zero não tem inversa."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Determinante 1 conserva todo comprimento?",
+        "resposta": "Não; uma deformação pode conservar a área e mudar lados e ângulos."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-1, 3],
+          "y": [-1, 3],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 1,
+              "rotulo": "y = 1"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 0.5,
+            "cor": "c2",
+            "retangulo": true,
+            "corRetangulo": "c4"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual é a inversa de diag(2;1)?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "diag(−2;−1)",
+          "correct": false,
+          "feedback": "Você trocou sinais; desfazer a escala pede 2·0,5=1, então a inversa é diag(0,5;1)."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "diag(0,5;1)",
+          "correct": true,
+          "feedback": "Certo: diag(0,5;1); 2·0,5=1 e 1·1=1."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [-1, 4],
+          "y": [-1, 3],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 0,
+              "b": 1,
+              "rotulo": "y = 1"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 2,
+            "cor": "c2",
+            "retangulo": true,
+            "corRetangulo": "c4"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "A⁻¹",
+          "ref": "c2"
+        },
+        {
+          "text": " = (1 / "
+        },
+        {
+          "text": "(ad − bc)",
+          "ref": "c4"
+        },
+        {
+          "text": ") · [[d, −b], [−c, a]]; ad − bc ≠ 0"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Vetor de entrada",
+          "text": "Par de coordenadas que a máquina recebe."
+        },
+        {
+          "term": "Imagem",
+          "text": "Ponto produzido pela transformação."
+        },
+        {
+          "term": "Determinante",
+          "text": "Área orientada da imagem do quadrado unitário."
+        }
+      ],
+      "lines": {
+        "intro": "O determinante mede a área orientada; por isso só uma transformação sem colapso pode ter inversa.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-determinantes-e-matriz-inversa",
+        "prompt": "Qual é o determinante da identidade 2×2?",
+        "options": [
+          {
+            "id": "f1-determinantes-e-matriz-inversa-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você esqueceu o produto da diagonal principal. O certo é 1; 1·1−0·0=1."
+          },
+          {
+            "id": "f1-determinantes-e-matriz-inversa-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; 1·1−0·0=1."
+          }
+        ]
+      },
+      {
+        "id": "f2-determinantes-e-matriz-inversa",
+        "prompt": "Determinante negativo significa área geométrica negativa?",
+        "options": [
+          {
+            "id": "f2-determinantes-e-matriz-inversa-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; Área=∣det A∣≥0."
+          },
+          {
+            "id": "f2-determinantes-e-matriz-inversa-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Você confundiu área com orientação. O certo é Não; Área=∣det A∣≥0."
+          }
+        ]
+      },
+      {
+        "id": "f3-determinantes-e-matriz-inversa",
+        "prompt": "Uma matriz com det=0 tem inversa?",
+        "options": [
+          {
+            "id": "f3-determinantes-e-matriz-inversa-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O colapso perde informação de entrada. O certo é Não; det(A)·det(A⁻¹)=1 seria impossível."
+          },
+          {
+            "id": "f3-determinantes-e-matriz-inversa-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; det(A)·det(A⁻¹)=1 seria impossível."
+          }
+        ]
+      },
+      {
+        "id": "f4-determinantes-e-matriz-inversa",
+        "prompt": "Qual é a inversa da identidade?",
+        "options": [
+          {
+            "id": "f4-determinantes-e-matriz-inversa-certa",
+            "label": "A própria identidade",
+            "correct": true,
+            "feedback": "Certo: A própria identidade; I·I=I."
+          },
+          {
+            "id": "f4-determinantes-e-matriz-inversa-erro",
+            "label": "Matriz nula",
+            "correct": false,
+            "feedback": "A matriz nula não recupera a entrada. O certo é A própria identidade; I·I=I."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-determinantes-e-matriz-inversa",
+        "prompt": "Calcule det [[1,2],[0,3]].",
+        "options": [
+          {
+            "id": "m1-determinantes-e-matriz-inversa-erro",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você somou entradas em vez de cruzar produtos. O certo é 3; 1·3−2·0=3."
+          },
+          {
+            "id": "m1-determinantes-e-matriz-inversa-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 1·3−2·0=3."
+          }
+        ]
+      },
+      {
+        "id": "m2-determinantes-e-matriz-inversa",
+        "prompt": "Qual é a inversa de diag(2;1)?",
+        "options": [
+          {
+            "id": "m2-determinantes-e-matriz-inversa-certa",
+            "label": "diag(0,5;1)",
+            "correct": true,
+            "feedback": "Certo: diag(0,5;1); 2·0,5=1."
+          },
+          {
+            "id": "m2-determinantes-e-matriz-inversa-erro",
+            "label": "diag(−2;−1)",
+            "correct": false,
+            "feedback": "Negar entradas não desfaz uma escala. O certo é diag(0,5;1); 2·0,5=1."
+          }
+        ]
+      },
+      {
+        "id": "m3-determinantes-e-matriz-inversa",
+        "prompt": "Calcule det [[0,1],[1,0]].",
+        "options": [
+          {
+            "id": "m3-determinantes-e-matriz-inversa-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você esqueceu o sinal do produto secundário. O certo é −1; 0·0−1·1=−1."
+          },
+          {
+            "id": "m3-determinantes-e-matriz-inversa-certa",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo: −1; 0·0−1·1=−1."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-determinantes-e-matriz-inversa",
+        "prompt": "Qual k torna [[1,2],[2,k]] singular?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-determinantes-e-matriz-inversa-certa",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: 4; det=k−4=0."
+          },
+          {
+            "id": "d1-determinantes-e-matriz-inversa-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você igualou entradas em vez de zerar o determinante. O certo é 4; det=k−4=0."
+          }
+        ]
+      },
+      {
+        "id": "d2-determinantes-e-matriz-inversa",
+        "prompt": "Se det A=−2, qual área resulta de um quadrado unitário?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-determinantes-e-matriz-inversa-erro",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Você usou área orientada como área geométrica. O certo é 2; ∣−2∣=2."
+          },
+          {
+            "id": "d2-determinantes-e-matriz-inversa-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; ∣−2∣=2."
+          }
+        ]
+      },
+      {
+        "id": "d3-determinantes-e-matriz-inversa",
+        "prompt": "Qual é a inversa de [[1,1],[0,1]]?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-determinantes-e-matriz-inversa-certa",
+            "label": "[[1,−1],[0,1]]",
+            "correct": true,
+            "feedback": "Certo: [[1,−1],[0,1]]; (x+y;y)→(x;y) subtraindo y."
+          },
+          {
+            "id": "d3-determinantes-e-matriz-inversa-erro",
+            "label": "[[−1,−1],[0,−1]]",
+            "correct": false,
+            "feedback": "Você negou toda a matriz. O certo é [[1,−1],[0,1]]; (x+y;y)→(x;y) subtraindo y."
+          }
+        ]
+      },
+      {
+        "id": "d4-determinantes-e-matriz-inversa",
+        "prompt": "Uma matriz 2×2 tem det A=3; qual é det(2A)?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-determinantes-e-matriz-inversa-erro",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você escalou apenas uma direção. O certo é 12; 2²·3=12."
+          },
+          {
+            "id": "d4-determinantes-e-matriz-inversa-certa",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo: 12; 2²·3=12."
+          }
+        ]
+      },
+      {
+        "id": "d5-determinantes-e-matriz-inversa",
+        "prompt": "A=[[1,1],[0,1]] envia uma entrada para (3;2); qual era a entrada e qual área unitária resulta?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-determinantes-e-matriz-inversa-certa",
+            "label": "(1;2), área 1",
+            "correct": true,
+            "feedback": "Certo: (1;2), área 1; x+2=3; x=1; det A=1."
+          },
+          {
+            "id": "d5-determinantes-e-matriz-inversa-erro",
+            "label": "(3;2), área 2",
+            "correct": false,
+            "feedback": "Você ignorou o cisalhamento e confundiu lado com área. O certo é (1;2), área 1; x+2=3; x=1; det A=1."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

@@ -1,0 +1,612 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Elipse como lugar geométrico",
+  "subtitulo": "O barbante preso em dois pontos",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-analitica",
+    "unidade": "elipse"
+  },
+  "outro": "Você esticou um barbante entre dois focos: a soma das distâncias é 2a, e a² = b² + c² sai do triângulo do topo.",
+  "glossario": {
+    "c1": {
+      "nome": "Semieixo maior",
+      "resumo": "a: metade do eixo maior, metade do barbante."
+    },
+    "c2": {
+      "nome": "Semieixo menor",
+      "resumo": "b: a meia altura da elipse."
+    },
+    "c3": {
+      "nome": "Distância focal",
+      "resumo": "c: do centro até cada foco."
+    },
+    "c4": {
+      "nome": "Soma das distâncias",
+      "resumo": "PF₁ + PF₂, sempre igual a 2a."
+    }
+  },
+  "steps": [
+    {
+      "id": "focos-juntos",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "elipse",
+        "a": 5,
+        "c": "$c",
+        "fantasma": {
+          "c": 0
+        }
+      },
+      "controls": [
+        {
+          "id": "c",
+          "label": "Afastar os focos",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Com os dois focos juntos, um barbante de 10 desenha que curva? Depois separe os focos.",
+        "done": "Juntos, desenham uma circunferência de raio 5. Separados, a curva se achata: é uma elipse."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Onde aparece uma elipse de verdade?",
+        "resposta": "Nas órbitas dos planetas, com o Sol num foco. Hoje: a elipse com centro na origem."
+      },
+      "complete_when": {
+        "metric": "c",
+        "gte": 3
+      }
+    },
+    {
+      "id": "barbante",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "elipse",
+        "a": 5,
+        "c": 3,
+        "prender_na_curva": true
+      },
+      "lines": {
+        "intro": "O barbante tem 10 e as pontas presas nos focos. Estique com o lápis e dê a volta: as duas distâncias mudam, e a soma?",
+        "done": "A soma é sempre 10, o comprimento do barbante. Esse é o teste da elipse: PF₁ + PF₂ = 2a."
+      },
+      "complete_when": {
+        "metric": "pontos_sobre",
+        "gte": 4
+      }
+    },
+    {
+      "id": "topo-e-pitagoras",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "elipse",
+        "a": 5,
+        "c": 3,
+        "prender_na_curva": true
+      },
+      "lines": {
+        "intro": "No topo da elipse, P está à mesma distância dos dois focos. Quanto vale cada distância, e qual é a altura?",
+        "done": "Cada distância vale 5, metade de 10. Com c = 3, Pitágoras dá a altura 4: a² = b² + c²."
+      },
+      "complete_when": {
+        "metric": "topo_tocado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "achatar",
+      "type": "interactive_canvas",
+      "widget": "lugar_geometrico",
+      "params": {
+        "modo": "elipse",
+        "a": 5,
+        "c": "$c",
+        "fantasma": {
+          "c": 3
+        }
+      },
+      "controls": [
+        {
+          "id": "c",
+          "label": "Afastar os focos",
+          "min": 3,
+          "max": 4,
+          "step": 1,
+          "initial": 3,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Afaste os focos para perto das pontas. O que acontece com a altura?",
+        "done": "Com c = 4, b = 3: a elipse achata. Se os focos chegassem às pontas, ela viraria um segmento."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o barbante for menor que a distância entre os focos?",
+        "resposta": "Aí não dá para esticar: não existe elipse real."
+      },
+      "complete_when": {
+        "metric": "c",
+        "gte": 4
+      }
+    },
+    {
+      "id": "desafio-focos",
+      "type": "micro_challenge",
+      "prompt": "Onde ficam os focos da elipse x²/25 + y²/9 = 1?",
+      "lines": {
+        "intro": "Leia os semieixos a e b nos denominadores e use Pitágoras para achar c."
+      },
+      "figure": {
+        "widget": "lugar_figura",
+        "params": {
+          "modo": "elipse",
+          "a": 5,
+          "c": 4,
+          "focos": false
+        }
+      },
+      "options": [
+        {
+          "id": "f4",
+          "label": "(±4; 0)",
+          "correct": true,
+          "feedback": "Isso. c² = 25 − 9 = 16, logo c = 4: focos em (±4; 0)."
+        },
+        {
+          "id": "f5",
+          "label": "(±5; 0)",
+          "correct": false,
+          "feedback": "(±5; 0) são os vértices nas pontas. Os focos ficam em c = √(25 − 9) = 4."
+        },
+        {
+          "id": "f3",
+          "label": "(±3; 0)",
+          "correct": false,
+          "feedback": "3 é o semieixo menor b. Os focos ficam em c = √(25 − 9) = 4."
+        },
+        {
+          "id": "f34",
+          "label": "(±√34; 0)",
+          "correct": false,
+          "feedback": "Você somou 25 + 9. Na elipse temos c² = a² − b² = 16, logo c = 4."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "lugar_figura",
+        "params": {
+          "modo": "elipse",
+          "a": 5,
+          "c": 3,
+          "mostrar": {
+            "triangulo": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "x²/a²",
+          "ref": "c1"
+        },
+        {
+          "text": " + "
+        },
+        {
+          "text": "y²/b²",
+          "ref": "c2"
+        },
+        {
+          "text": " = 1 ; "
+        },
+        {
+          "text": "a² = b² + c²",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Elipse",
+          "text": "Pontos do plano cuja soma das distâncias aos dois focos é constante: PF₁ + PF₂ = 2a."
+        },
+        {
+          "term": "Relação fundamental",
+          "text": "No triângulo retângulo do topo da elipse, vale a relação pitagórica: a² = b² + c²."
+        },
+        {
+          "term": "Caso neutro",
+          "text": "Com os focos coincidentes (c = 0), a = b e a elipse torna-se uma circunferência."
+        }
+      ],
+      "lines": {
+        "intro": "No topo, cada distância vale a e forma um triângulo com b e c. Por isso a² = b² + c².",
+        "hint": "Toque em uma letra para ver o segmento na elipse."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "definicao",
+        "prompt": "Na elipse, o que é constante para todo ponto P da curva?",
+        "options": [
+          {
+            "id": "soma",
+            "label": "A soma das distâncias aos focos",
+            "correct": true,
+            "feedback": "Isso. É o comprimento do barbante esticado: PF₁ + PF₂ = 2a."
+          },
+          {
+            "id": "diferenca",
+            "label": "A diferença das distâncias",
+            "correct": false,
+            "feedback": "Diferença constante define a hipérbole. Na elipse, é a soma: 2a."
+          },
+          {
+            "id": "distancia-centro",
+            "label": "A distância ao centro",
+            "correct": false,
+            "feedback": "Distância constante ao centro define a circunferência. Na elipse, soma aos focos."
+          },
+          {
+            "id": "foco-reta",
+            "label": "A distância a um foco e a uma reta",
+            "correct": false,
+            "feedback": "Isso define a parábola. Na elipse é a soma das distâncias aos dois focos."
+          }
+        ]
+      },
+      {
+        "id": "semieixo-maior",
+        "prompt": "Qual é o semieixo maior da elipse x²/25 + y²/16 = 1?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. O maior denominador é a² = 25, logo o semieixo maior é a = 5."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "25 é a²; tirando a raiz quadrada encontramos o semieixo a = 5."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é o semieixo menor b (√16). O semieixo maior é a = 5."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é a distância focal c. O semieixo maior vale a = 5."
+          }
+        ]
+      },
+      {
+        "id": "focos-juntos",
+        "prompt": "Uma elipse com os dois focos no mesmo ponto (c = 0) é:",
+        "options": [
+          {
+            "id": "circ",
+            "label": "Uma circunferência",
+            "correct": true,
+            "feedback": "Isso. Com c = 0 temos a = b, e a curva é uma circunferência de raio a."
+          },
+          {
+            "id": "segmento",
+            "label": "Um segmento de reta",
+            "correct": false,
+            "feedback": "Vira segmento quando os focos chegam às pontas (c = a). Com c = 0 é circunferência."
+          },
+          {
+            "id": "parabola",
+            "label": "Uma parábola",
+            "correct": false,
+            "feedback": "Com os focos juntos a curva é perfeitamente redonda: uma circunferência."
+          },
+          {
+            "id": "nada",
+            "label": "Um conjunto vazio",
+            "correct": false,
+            "feedback": "Ainda existe curva: uma circunferência de raio r = a."
+          }
+        ]
+      },
+      {
+        "id": "soma-x2-9",
+        "prompt": "Na elipse x²/9 + y²/4 = 1, quanto vale a soma PF₁ + PF₂?",
+        "options": [
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Certo. O maior denominador é a² = 9, então a = 3 e a soma é 2a = 6."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é o semieixo a. A soma das distâncias é o eixo maior todo: 2a = 6."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é a². A soma das distâncias aos focos vale 2a = 6."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é 2b (eixo menor). A soma das distâncias é o eixo maior: 2a = 6."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "c-de-25-16",
+        "prompt": "Na elipse x²/25 + y²/16 = 1, quanto vale a distância focal c?",
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. c² = a² − b² = 25 − 16 = 9, logo c = 3."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é c². Tirando a raiz quadrada temos c = 3."
+          },
+          {
+            "id": "a-raiz41",
+            "label": "√41",
+            "correct": false,
+            "feedback": "Você somou em vez de subtrair: na elipse a é a hipotenusa, c² = 25 − 16 = 9."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Não subtraia 5 − 4 direto. Pelo teorema pitagórico c² = 25 − 16 = 9, logo c = 3."
+          }
+        ]
+      },
+      {
+        "id": "vertices",
+        "prompt": "Quais são os vértices no eixo x da elipse x²/16 + y²/9 = 1?",
+        "options": [
+          {
+            "id": "v4",
+            "label": "(±4; 0)",
+            "correct": true,
+            "feedback": "Certo. Sob x² está a² = 16, logo a = 4 e os vértices são (±4; 0)."
+          },
+          {
+            "id": "v16",
+            "label": "(±16; 0)",
+            "correct": false,
+            "feedback": "16 é a². Os vértices ficam em a = √16 = 4: (±4; 0)."
+          },
+          {
+            "id": "v3",
+            "label": "(±3; 0)",
+            "correct": false,
+            "feedback": "3 é o semieixo b no eixo y: (0; ±3). No eixo x os vértices são (±4; 0)."
+          },
+          {
+            "id": "v-raiz7",
+            "label": "(±√7; 0)",
+            "correct": false,
+            "feedback": "√7 é c, a posição dos focos. Os vértices nas extremidades são (±4; 0)."
+          }
+        ]
+      },
+      {
+        "id": "b-por-pitagoras",
+        "prompt": "Uma elipse tem a = 10 e c = 6. Quanto vale o semieixo menor b?",
+        "options": [
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": true,
+            "feedback": "Isso. b² = a² − c² = 100 − 36 = 64, logo b = 8 (triângulo 6, 8, 10)."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Não faça 10 − 6. Pelo triângulo pitagórico b² = 100 − 36 = 64, logo b = 8."
+          },
+          {
+            "id": "a-raiz136",
+            "label": "√136",
+            "correct": false,
+            "feedback": "Você somou os quadrados. Na elipse a² = b² + c², então b² = 100 − 36 = 64."
+          },
+          {
+            "id": "a64",
+            "label": "64",
+            "correct": false,
+            "feedback": "64 é b². Tirando a raiz quadrada temos b = 8."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "montar-equacao",
+        "prompt": "Qual a equação da elipse com centro na origem, a = 5 e focos em (±4; 0)?",
+        "options": [
+          {
+            "id": "e25-9",
+            "label": "x²/25 + y²/9 = 1",
+            "correct": true,
+            "feedback": "Certo. a² = 25 e b² = a² − c² = 25 − 16 = 9: x²/25 + y²/9 = 1."
+          },
+          {
+            "id": "e25-16",
+            "label": "x²/25 + y²/16 = 1",
+            "correct": false,
+            "feedback": "16 é c². O denominador de y² deve ser b² = 25 − 16 = 9."
+          },
+          {
+            "id": "e5-3",
+            "label": "x²/5 + y²/3 = 1",
+            "correct": false,
+            "feedback": "Os denominadores são os quadrados a² e b²: 25 e 9."
+          },
+          {
+            "id": "e9-25",
+            "label": "x²/9 + y²/25 = 1",
+            "correct": false,
+            "feedback": "Com 25 sob y² o eixo seria vertical. Focos no eixo x pedem x²/25 + y²/9 = 1."
+          }
+        ]
+      },
+      {
+        "id": "vertical",
+        "prompt": "Onde ficam os focos da elipse x²/9 + y²/25 = 1?",
+        "fala": "Veja sob qual letra está o maior denominador.",
+        "options": [
+          {
+            "id": "f0m4",
+            "label": "(0; ±4)",
+            "correct": true,
+            "feedback": "Isso. Como 25 está sob y², o eixo maior é vertical e c = 4: (0; ±4)."
+          },
+          {
+            "id": "fm40",
+            "label": "(±4; 0)",
+            "correct": false,
+            "feedback": "O maior denominador está sob y²: eixo vertical, focos em (0; ±4)."
+          },
+          {
+            "id": "f0m5",
+            "label": "(0; ±5)",
+            "correct": false,
+            "feedback": "(0; ±5) são os vértices no eixo y. Os focos ficam em c = √(25 − 9) = 4."
+          },
+          {
+            "id": "f0m3",
+            "label": "(0; ±3)",
+            "correct": false,
+            "feedback": "3 é o semieixo menor b. Os focos ficam em c = 4: (0; ±4)."
+          }
+        ]
+      },
+      {
+        "id": "forma-inteira",
+        "prompt": "Qual é o semieixo maior da elipse 9x² + 16y² = 144?",
+        "fala": "Divida tudo por 144 para chegar à forma com 1 no lado direito.",
+        "options": [
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo. Dividindo por 144 temos x²/16 + y²/9 = 1, logo a = √16 = 4."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 é a² sob x². O semieixo maior é a = √16 = 4."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é √144. Dividindo todos os termos por 144 chegamos a a = 4."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é o semieixo menor b (√9). O maior é a = 4."
+          }
+        ]
+      },
+      {
+        "id": "mais-achatada",
+        "prompt": "Duas elipses têm a = 5; uma tem c = 1 e a outra tem c = 4. Qual é mais achatada?",
+        "options": [
+          {
+            "id": "c4",
+            "label": "A de c = 4",
+            "correct": true,
+            "feedback": "Isso. Com c = 4 temos b = 3, bem mais achatada que b = √24 ≈ 4,9."
+          },
+          {
+            "id": "c1",
+            "label": "A de c = 1",
+            "correct": false,
+            "feedback": "Com c = 1 os focos estão quase juntos e a elipse quase redonda: c = 4 é mais achatada."
+          },
+          {
+            "id": "iguais",
+            "label": "Têm o mesmo achatamento",
+            "correct": false,
+            "feedback": "Mesmo valor de a não significa mesma forma: quanto maior c, mais achatada."
+          },
+          {
+            "id": "impossivel",
+            "label": "Não é possível comparar",
+            "correct": false,
+            "feedback": "Com c = 4 a meia altura é b = 3, muito mais achatada do que com c = 1."
+          }
+        ]
+      },
+      {
+        "id": "orbita",
+        "prompt": "Uma órbita elíptica tem a = 5 e c = 3, com o Sol num foco. Qual a menor distância do planeta ao Sol?",
+        "fala": "Última. O ponto mais próximo é a ponta do lado do Sol.",
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo. Da ponta (5; 0) ao foco (3; 0), a distância mínima é a − c = 5 − 3 = 2."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 = a + c é a distância máxima (afélio). A mínima (periélio) é a − c = 2."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é o semieixo menor b. A menor distância ao Sol é a − c = 2."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 é o semieixo maior a até o centro. Até o foco Sol é a − c = 2."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

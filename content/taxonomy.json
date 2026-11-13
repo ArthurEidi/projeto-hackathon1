@@ -9,6 +9,20 @@
           "titulo": "Conjuntos",
           "unidades": [
             {
+              "id": "sistemas-numericos-e-divisibilidade",
+              "titulo": "Conjuntos numéricos, divisibilidade e fatoração prima",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Conjuntos numéricos, divisibilidade e fatoração prima",
+                  "subtitulo": "Números que cabem em grupos",
+                  "arquivo": "aritmetica/conjuntos/sistemas-numericos-e-divisibilidade/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "conjuntos-e-intervalos",
               "titulo": "Conjuntos e Intervalos",
               "icone": "conjunto",
@@ -30,6 +44,34 @@
               ]
             },
             {
+              "id": "fracoes-e-decimais",
+              "titulo": "Frações, decimais e comparação de racionais",
+              "icone": "conjunto",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Frações, decimais e comparação de racionais",
+                  "subtitulo": "O mesmo ponto, várias escritas",
+                  "arquivo": "aritmetica/conjuntos/fracoes-e-decimais/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "potencias-e-radicais",
+              "titulo": "Potenciação, propriedades e radicais",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Potenciação, propriedades e radicais",
+                  "subtitulo": "Repetir fatores e desfazer áreas",
+                  "arquivo": "aritmetica/conjuntos/potencias-e-radicais/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "valor-absoluto-e-distancia",
               "titulo": "Valor absoluto como distância",
               "icone": "conjunto",
@@ -44,16 +86,16 @@
               ]
             },
             {
-              "id": "fracoes-e-decimais",
-              "titulo": "Frações, decimais e comparação de racionais",
-              "icone": "conjunto",
+              "id": "notacao-cientifica-e-ordem-grandeza",
+              "titulo": "Notação científica, estimativa e arredondamento",
+              "icone": "curva",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Frações, decimais e comparação de racionais",
-                  "subtitulo": "O mesmo ponto, várias escritas",
-                  "arquivo": "aritmetica/conjuntos/fracoes-e-decimais/aula-01.json"
+                  "titulo": "Notação científica, estimativa e arredondamento",
+                  "subtitulo": "Mover a vírgula sem mudar o número",
+                  "arquivo": "aritmetica/conjuntos/notacao-cientifica-e-ordem-grandeza/aula-01.json"
                 }
               ]
             }
@@ -99,6 +141,20 @@
               ]
             },
             {
+              "id": "unidades-conversoes-e-escalas",
+              "titulo": "Unidades, conversões, escala e erro de medida",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Unidades, conversões, escala e erro de medida",
+                  "subtitulo": "A unidade muda, o objeto permanece",
+                  "arquivo": "aritmetica/proporcionalidade/unidades-conversoes-e-escalas/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "matematica-financeira",
               "titulo": "Matemática Financeira",
               "icone": "porcento",
@@ -113,20 +169,6 @@
               ]
             },
             {
-              "id": "taxas-equivalentes-e-inflacao",
-              "titulo": "Taxas Equivalentes e Inflação",
-              "icone": "porcento",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Taxa, Tempo e Valor Real",
-                  "subtitulo": "Equivalência e inflação",
-                  "arquivo": "aritmetica/proporcionalidade/taxas-equivalentes-e-inflacao/aula-01.json"
-                }
-              ]
-            },
-            {
               "id": "descontos-acrescimos-e-indices",
               "titulo": "Descontos, Acréscimos e Índices",
               "icone": "porcento",
@@ -137,6 +179,20 @@
                   "titulo": "Fatores em Sequência",
                   "subtitulo": "Descontos, acréscimos e índices",
                   "arquivo": "aritmetica/proporcionalidade/descontos-acrescimos-e-indices/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "taxas-equivalentes-e-inflacao",
+              "titulo": "Taxas Equivalentes e Inflação",
+              "icone": "porcento",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Taxa, Tempo e Valor Real",
+                  "subtitulo": "Equivalência e inflação",
+                  "arquivo": "aritmetica/proporcionalidade/taxas-equivalentes-e-inflacao/aula-01.json"
                 }
               ]
             }
@@ -494,20 +550,6 @@
               ]
             },
             {
-              "id": "transformacoes-graficos-de-funcoes",
-              "titulo": "Transformações de Gráficos",
-              "icone": "curva",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Translações, Reflexões e Escalas de Gráficos",
-                  "subtitulo": "Transformações de gráficos de funções",
-                  "arquivo": "algebra/funcoes/transformacoes-graficos-de-funcoes/aula-01.json"
-                }
-              ]
-            },
-            {
               "id": "funcao-composta-e-inversa",
               "titulo": "Função composta e inversa",
               "icone": "curva",
@@ -520,6 +562,20 @@
                   "arquivo": "algebra/funcoes/funcao-composta-e-inversa/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "transformacoes-graficos-de-funcoes",
+              "titulo": "Transformações de Gráficos",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Translações, Reflexões e Escalas de Gráficos",
+                  "subtitulo": "Transformações de gráficos de funções",
+                  "arquivo": "algebra/funcoes/transformacoes-graficos-de-funcoes/aula-01.json"
+                }
+              ]
             }
           ]
         },
@@ -527,6 +583,34 @@
           "id": "equacoes-e-inequacoes",
           "titulo": "Equações e Inequações",
           "unidades": [
+            {
+              "id": "expressoes-algebricas-e-produtos-notaveis",
+              "titulo": "Expressões algébricas e produtos notáveis",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Expressões Algébricas e Produtos Notáveis",
+                  "subtitulo": "Desmontar um quadrado",
+                  "arquivo": "algebra/equacoes-e-inequacoes/expressoes-algebricas-e-produtos-notaveis/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "fatoracao-algebrica",
+              "titulo": "Fatoração e zeros de expressões",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Fatoração e zeros de expressões",
+                  "subtitulo": "Os fatores mostram onde zerar",
+                  "arquivo": "algebra/equacoes-e-inequacoes/fatoracao-algebrica/aula-01.json"
+                }
+              ]
+            },
             {
               "id": "equacoes-primeiro-grau",
               "titulo": "Equações do Primeiro Grau",
@@ -542,6 +626,20 @@
               ]
             },
             {
+              "id": "inequacoes-primeiro-grau",
+              "titulo": "Inequações do primeiro grau e intervalos-solução",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações do Primeiro Grau",
+                  "subtitulo": "A fronteira separa os lados",
+                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-primeiro-grau/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "equacoes-quadraticas",
               "titulo": "Equações Quadráticas",
               "icone": "parabola",
@@ -552,6 +650,48 @@
                   "titulo": "Equações Quadráticas e Interpretação das Raízes",
                   "subtitulo": "Contar encontros com o eixo",
                   "arquivo": "algebra/equacoes-e-inequacoes/equacoes-quadraticas/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "inequacoes-quadraticas",
+              "titulo": "Inequações quadráticas",
+              "icone": "parabola",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações Quadráticas",
+                  "subtitulo": "Ler o sinal entre raízes",
+                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-quadraticas/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "inequacoes-produto-quociente",
+              "titulo": "Inequações-produto e inequações-quociente",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações-produto e inequações-quociente",
+                  "subtitulo": "Zeros não são buracos",
+                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-produto-quociente/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "equacoes-racionais",
+              "titulo": "Equações Racionais",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações Racionais e Restrições do Denominador",
+                  "subtitulo": "Conferir antes de cancelar",
+                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-racionais/aula-01.json"
                 }
               ]
             },
@@ -584,6 +724,20 @@
               ]
             },
             {
+              "id": "inequacoes-modulares",
+              "titulo": "Inequações modulares",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações Modulares",
+                  "subtitulo": "Dentro ou fora do alcance",
+                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-modulares/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "equacoes-exponenciais",
               "titulo": "Equações Exponenciais",
               "icone": "curva",
@@ -608,76 +762,6 @@
                   "titulo": "Equações Logarítmicas e Condições de Existência",
                   "subtitulo": "O argumento precisa existir",
                   "arquivo": "algebra/equacoes-e-inequacoes/equacoes-logaritmicas/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "equacoes-racionais",
-              "titulo": "Equações Racionais",
-              "icone": "curva",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Equações Racionais e Restrições do Denominador",
-                  "subtitulo": "Conferir antes de cancelar",
-                  "arquivo": "algebra/equacoes-e-inequacoes/equacoes-racionais/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "inequacoes-primeiro-grau",
-              "titulo": "Inequações do primeiro grau e intervalos-solução",
-              "icone": "reta",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Inequações do Primeiro Grau",
-                  "subtitulo": "A fronteira separa os lados",
-                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-primeiro-grau/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "inequacoes-quadraticas",
-              "titulo": "Inequações quadráticas",
-              "icone": "parabola",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Inequações Quadráticas",
-                  "subtitulo": "Ler o sinal entre raízes",
-                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-quadraticas/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "inequacoes-modulares",
-              "titulo": "Inequações modulares",
-              "icone": "reta",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Inequações Modulares",
-                  "subtitulo": "Dentro ou fora do alcance",
-                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-modulares/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "inequacoes-produto-quociente",
-              "titulo": "Inequações-produto e inequações-quociente",
-              "icone": "reta",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Inequações-produto e inequações-quociente",
-                  "subtitulo": "Zeros não são buracos",
-                  "arquivo": "algebra/equacoes-e-inequacoes/inequacoes-produto-quociente/aula-01.json"
                 }
               ]
             },
@@ -716,20 +800,6 @@
               ]
             },
             {
-              "id": "sequencias-recursivas-e-padroes",
-              "titulo": "Sequências Recursivas e Padrões",
-              "icone": "sequencia",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "O Próximo Depende do Anterior",
-                  "subtitulo": "Recursão e padrões",
-                  "arquivo": "algebra/sequencias/sequencias-recursivas-e-padroes/aula-01.json"
-                }
-              ]
-            },
-            {
               "id": "somatorios-pa-pg",
               "titulo": "Somatórios de PA e PG",
               "icone": "sequencia",
@@ -756,6 +826,20 @@
                   "arquivo": "algebra/sequencias/soma-da-pg-infinita/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "sequencias-recursivas-e-padroes",
+              "titulo": "Sequências Recursivas e Padrões",
+              "icone": "sequencia",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Próximo Depende do Anterior",
+                  "subtitulo": "Recursão e padrões",
+                  "arquivo": "algebra/sequencias/sequencias-recursivas-e-padroes/aula-01.json"
+                }
+              ]
             }
           ]
         },
@@ -773,7 +857,7 @@
                   "numero": 1,
                   "titulo": "Tabelas que Operam",
                   "subtitulo": "Matrizes e suas operações",
-                  "arquivo": null
+                  "arquivo": "algebra/matrizes-e-sistemas/matrizes-determinantes-sistemas/aula-01.json"
                 },
                 {
                   "id": "aula-02",
@@ -781,6 +865,34 @@
                   "titulo": "Retas que se Encontram",
                   "subtitulo": "Sistemas lineares",
                   "arquivo": null
+                }
+              ]
+            },
+            {
+              "id": "determinantes-e-matriz-inversa",
+              "titulo": "Determinantes, área orientada e matriz inversa",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Determinantes, área orientada e matriz inversa",
+                  "subtitulo": "Área revela a possibilidade de voltar",
+                  "arquivo": "algebra/matrizes-e-sistemas/determinantes-e-matriz-inversa/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "sistemas-lineares-e-escalonamento",
+              "titulo": "Sistemas lineares, classificação e escalonamento",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Sistemas lineares, classificação e escalonamento",
+                  "subtitulo": "Eliminar sem perder soluções",
+                  "arquivo": "algebra/matrizes-e-sistemas/sistemas-lineares-e-escalonamento/aula-01.json"
                 }
               ]
             }
@@ -801,6 +913,20 @@
                   "titulo": "Somas de Potências",
                   "subtitulo": "Grau, raízes e divisão",
                   "arquivo": "algebra/polinomios-e-complexos/polinomios/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "divisao-polinomial-e-teorema-do-resto",
+              "titulo": "Divisão de polinômios e teorema do resto",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Divisão de polinômios e teorema do resto",
+                  "subtitulo": "O resto aparece como altura",
+                  "arquivo": "algebra/polinomios-e-complexos/divisao-polinomial-e-teorema-do-resto/aula-01.json"
                 }
               ]
             },
@@ -869,20 +995,6 @@
                   "titulo": "Triângulos, Congruência e Propriedades",
                   "subtitulo": "Três cantos travados em 180° · Soma interna, externo e lados",
                   "arquivo": "geometria/geometria-plana/triangulos-congruencia-e-propriedades/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "triangulos-notaveis-e-construcoes",
-              "titulo": "Triângulos notáveis e construções geométricas",
-              "icone": "triangulo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Triângulos Notáveis e Construções",
-                  "subtitulo": "Metade do quadrado e do equilátero · 45°-45°-90°, 30°-60°-90° e lugares geométricos",
-                  "arquivo": "geometria/geometria-plana/triangulos-notaveis-e-construcoes/aula-01.json"
                 }
               ]
             },
@@ -1025,6 +1137,20 @@
                   "arquivo": "geometria/geometria-plana/transformacoes-isometrias-e-homotetia/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "triangulos-notaveis-e-construcoes",
+              "titulo": "Triângulos notáveis e construções geométricas",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Triângulos Notáveis e Construções",
+                  "subtitulo": "Metade do quadrado e do equilátero · 45°-45°-90°, 30°-60°-90° e lugares geométricos",
+                  "arquivo": "geometria/geometria-plana/triangulos-notaveis-e-construcoes/aula-01.json"
+                }
+              ]
             }
           ]
         },
@@ -1032,6 +1158,48 @@
           "id": "trigonometria",
           "titulo": "Trigonometria",
           "unidades": [
+            {
+              "id": "equacoes-trigonometricas",
+              "titulo": "Equações trigonométricas",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações trigonométricas",
+                  "subtitulo": "Uma projeção, vários ângulos",
+                  "arquivo": "geometria/trigonometria/equacoes-trigonometricas/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "radianos-e-ciclo-trigonometrico",
+              "titulo": "Graus, radianos e ciclo trigonométrico",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Raio que Mede a Curva",
+                  "subtitulo": "Do grau ao radiano e às voltas no ciclo",
+                  "arquivo": "geometria/trigonometria/radianos-e-ciclo-trigonometrico/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "inequacoes-trigonometricas",
+              "titulo": "Inequações trigonométricas",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações trigonométricas",
+                  "subtitulo": "Arcos que satisfazem a comparação",
+                  "arquivo": "geometria/trigonometria/inequacoes-trigonometricas/aula-01.json"
+                }
+              ]
+            },
             {
               "id": "trigonometria-no-triangulo-retangulo",
               "titulo": "Trigonometria no triângulo retângulo",
@@ -1061,20 +1229,6 @@
               ]
             },
             {
-              "id": "radianos-e-ciclo-trigonometrico",
-              "titulo": "Graus, radianos e ciclo trigonométrico",
-              "icone": "circulo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "O Raio que Mede a Curva",
-                  "subtitulo": "Do grau ao radiano e às voltas no ciclo",
-                  "arquivo": "geometria/trigonometria/radianos-e-ciclo-trigonometrico/aula-01.json"
-                }
-              ]
-            },
-            {
               "id": "seno-cosseno-tangente-no-ciclo",
               "titulo": "Seno, cosseno, tangente e sinais por quadrante",
               "icone": "circulo",
@@ -1085,20 +1239,6 @@
                   "titulo": "Seno, Cosseno e Tangente no Ciclo",
                   "subtitulo": "Sombras nos eixos · Seno, cosseno, tangente e simetrias nos quatro quadrantes",
                   "arquivo": "geometria/trigonometria/seno-cosseno-tangente-no-ciclo/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "funcoes-trigonometricas",
-              "titulo": "Funções Trigonométricas",
-              "icone": "onda",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "A Volta que Vira Onda",
-                  "subtitulo": "Gráficos de seno e cosseno",
-                  "arquivo": "geometria/trigonometria/funcoes-trigonometricas/aula-01.json"
                 }
               ]
             },
@@ -1117,44 +1257,16 @@
               ]
             },
             {
-              "id": "formulas-de-adicao-e-arco-duplo",
-              "titulo": "Fórmulas de adição e arco duplo",
+              "id": "funcoes-trigonometricas",
+              "titulo": "Funções Trigonométricas",
               "icone": "onda",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Fórmulas de adição e arco duplo",
-                  "subtitulo": "Somar giros não é somar sombras",
-                  "arquivo": "geometria/trigonometria/formulas-de-adicao-e-arco-duplo/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "equacoes-trigonometricas",
-              "titulo": "Equações trigonométricas",
-              "icone": "onda",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Equações trigonométricas",
-                  "subtitulo": "Uma projeção, vários ângulos",
-                  "arquivo": "geometria/trigonometria/equacoes-trigonometricas/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "inequacoes-trigonometricas",
-              "titulo": "Inequações trigonométricas",
-              "icone": "onda",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Inequações trigonométricas",
-                  "subtitulo": "Arcos que satisfazem a comparação",
-                  "arquivo": "geometria/trigonometria/inequacoes-trigonometricas/aula-01.json"
+                  "titulo": "A Volta que Vira Onda",
+                  "subtitulo": "Gráficos de seno e cosseno",
+                  "arquivo": "geometria/trigonometria/funcoes-trigonometricas/aula-01.json"
                 }
               ]
             },
@@ -1171,6 +1283,20 @@
                   "arquivo": "geometria/trigonometria/modelos-periodicos-e-amplitude/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "formulas-de-adicao-e-arco-duplo",
+              "titulo": "Fórmulas de adição e arco duplo",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Fórmulas de adição e arco duplo",
+                  "subtitulo": "Somar giros não é somar sombras",
+                  "arquivo": "geometria/trigonometria/formulas-de-adicao-e-arco-duplo/aula-01.json"
+                }
+              ]
             }
           ]
         },
@@ -1178,6 +1304,34 @@
           "id": "geometria-espacial",
           "titulo": "Geometria Espacial",
           "unidades": [
+            {
+              "id": "posicoes-relativas-no-espaco",
+              "titulo": "Retas, planos, paralelismo e perpendicularidade no espaço",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Quando Sair do Papel Muda Tudo",
+                  "subtitulo": "Paralelas, concorrentes, reversas e planos",
+                  "arquivo": "geometria/geometria-espacial/posicoes-relativas-no-espaco/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "projecoes-cortes-e-planificacoes",
+              "titulo": "Vistas, projeções, cortes e planificações",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Desmontar e Fatiar o 3D",
+                  "subtitulo": "Vistas ortogonais, cortes planos e moldes",
+                  "arquivo": "geometria/geometria-espacial/projecoes-cortes-e-planificacoes/aula-01.json"
+                }
+              ]
+            },
             {
               "id": "poliedros-e-relacao-de-euler",
               "titulo": "Poliedros, elementos e relação de Euler",
@@ -1217,6 +1371,20 @@
                   "titulo": "Três Pirâmides num Prisma",
                   "subtitulo": "Apótemas, área lateral e o fator 1/3",
                   "arquivo": "geometria/geometria-espacial/piramides/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "troncos-de-solidos",
+              "titulo": "Troncos de pirâmides e cones",
+              "icone": "cubo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Cortar o Topo e Ficar com a Base",
+                  "subtitulo": "Escala k, k², k³ e o volume do tronco",
+                  "arquivo": "geometria/geometria-espacial/troncos-de-solidos/aula-01.json"
                 }
               ]
             },
@@ -1270,34 +1438,6 @@
               ]
             },
             {
-              "id": "posicoes-relativas-no-espaco",
-              "titulo": "Retas, planos, paralelismo e perpendicularidade no espaço",
-              "icone": "cubo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Quando Sair do Papel Muda Tudo",
-                  "subtitulo": "Paralelas, concorrentes, reversas e planos",
-                  "arquivo": "geometria/geometria-espacial/posicoes-relativas-no-espaco/aula-01.json"
-                }
-              ]
-            },
-            {
-              "id": "projecoes-cortes-e-planificacoes",
-              "titulo": "Vistas, projeções, cortes e planificações",
-              "icone": "cubo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Desmontar e Fatiar o 3D",
-                  "subtitulo": "Vistas ortogonais, cortes planos e moldes",
-                  "arquivo": "geometria/geometria-espacial/projecoes-cortes-e-planificacoes/aula-01.json"
-                }
-              ]
-            },
-            {
               "id": "solidos-de-revolucao",
               "titulo": "Sólidos de revolução e secções",
               "icone": "cubo",
@@ -1324,20 +1464,6 @@
                   "arquivo": "geometria/geometria-espacial/areas-e-volumes-por-composicao/aula-01.json"
                 }
               ]
-            },
-            {
-              "id": "troncos-de-solidos",
-              "titulo": "Troncos de pirâmides e cones",
-              "icone": "cubo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Cortar o Topo e Ficar com a Base",
-                  "subtitulo": "Escala k, k², k³ e o volume do tronco",
-                  "arquivo": "geometria/geometria-espacial/troncos-de-solidos/aula-01.json"
-                }
-              ]
             }
           ]
         },
@@ -1345,6 +1471,20 @@
           "id": "geometria-analitica",
           "titulo": "Geometria Analítica",
           "unidades": [
+            {
+              "id": "circunferencia-analitica",
+              "titulo": "Circunferência no Plano",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Todos à Mesma Distância",
+                  "subtitulo": "Equação da circunferência",
+                  "arquivo": null
+                }
+              ]
+            },
             {
               "id": "reta-equacao-e-inclinacao",
               "titulo": "Equação da reta, inclinação e interceptos",
@@ -1374,30 +1514,44 @@
               ]
             },
             {
-              "id": "circunferencia-analitica",
-              "titulo": "Circunferência no Plano",
-              "icone": "circulo",
+              "id": "parabola-conica",
+              "titulo": "Parábola como lugar geométrico e cônica",
+              "icone": "curva",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Todos à Mesma Distância",
-                  "subtitulo": "Equação da circunferência",
-                  "arquivo": null
+                  "titulo": "Parábola como lugar geométrico e cônica",
+                  "subtitulo": "Entre o foco e a reta",
+                  "arquivo": "geometria/geometria-analitica/parabola-conica/aula-01.json"
                 }
               ]
             },
             {
-              "id": "conicas",
-              "titulo": "Cônicas",
-              "icone": "parabola",
+              "id": "elipse",
+              "titulo": "Elipse como lugar geométrico",
+              "icone": "curva",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Cortes no Cone",
-                  "subtitulo": "Elipse, hipérbole e parábola",
-                  "arquivo": null
+                  "titulo": "Elipse como lugar geométrico",
+                  "subtitulo": "O barbante preso em dois pontos",
+                  "arquivo": "geometria/geometria-analitica/elipse/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "hiperbole",
+              "titulo": "Hipérbole como lugar geométrico",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Hipérbole como lugar geométrico",
+                  "subtitulo": "A diferença que não muda",
+                  "arquivo": "geometria/geometria-analitica/hiperbole/aula-01.json"
                 }
               ]
             }

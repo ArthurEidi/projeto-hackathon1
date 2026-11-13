@@ -1,0 +1,468 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Expressões Algébricas e Produtos Notáveis",
+  "subtitulo": "Desmontar um quadrado",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "expressoes-algebricas-e-produtos-notaveis"
+  },
+  "outro": "Você montou produtos por áreas e viu por que o termo 2ab ocupa duas faixas.",
+  "glossario": {
+    "c1": {
+      "nome": "Lado a",
+      "resumo": "Lado do quadrado inicial."
+    },
+    "c2": {
+      "nome": "Acréscimo b",
+      "resumo": "Quanto se acrescenta a cada lado."
+    },
+    "c3": {
+      "nome": "Área total",
+      "resumo": "Soma das áreas das quatro peças."
+    },
+    "c4": {
+      "nome": "Área de referência",
+      "resumo": "Área anterior, usada para comparar."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "malha",
+        "forma": "retangulo",
+        "b": "$lado",
+        "h": "$lado",
+        "fantasma": [2, 2],
+        "mostrar": {
+          "area": true,
+          "perimetro": true,
+          "alturas": false
+        }
+      },
+      "controls": [
+        {
+          "id": "b",
+          "label": "Acréscimo b",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "No caso neutro, b = 0, só há o quadrado inicial; ao levar b a 1, quantas peças novas aparecem?",
+        "done": "Aparecem três peças: 2, 2 e 1; por isso a área passa de 4 para 9."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Produtos notáveis também incluem diferenças e cubos; aqui vamos montar quadrados e desfazer áreas."
+      },
+      "complete_when": {
+        "metric": "b",
+        "gte": 1
+      }
+    },
+    {
+      "id": "separar-faixas",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "malha",
+        "forma": "retangulo",
+        "b": "$lado",
+        "h": "$lado",
+        "fantasma": [3, 3],
+        "mostrar": {
+          "area": true,
+          "perimetro": true,
+          "alturas": false
+        }
+      },
+      "controls": [
+        {
+          "id": "b",
+          "label": "Acréscimo b",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Se b chegar a 2, somar apenas a² e b² cobre tudo? Faça a previsão e arraste.",
+        "done": "Não; faltam duas faixas de área ab, por isso (a+b)² = a² + 2ab + b²."
+      },
+      "complete_when": {
+        "metric": "b",
+        "gte": 2
+      }
+    },
+    {
+      "id": "testar-diferenca",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "malha",
+        "forma": "retangulo",
+        "b": "$restante",
+        "h": "$restante",
+        "fantasma": [2, 2],
+        "mostrar": {
+          "area": true,
+          "perimetro": true,
+          "alturas": false
+        }
+      },
+      "controls": [
+        {
+          "id": "b",
+          "label": "Retirada b",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Ao retirar b = 2 de um lado de tamanho 2, sobra algum quadrado?",
+        "done": "Não sobra área porque o novo lado é zero; retirar mais sairia do modelo de comprimentos."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Posso usar b negativo?",
+        "resposta": "Na álgebra, sim; no desenho, comprimentos negativos precisam de outra representação."
+      },
+      "complete_when": {
+        "metric": "b",
+        "gte": 2
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "malha",
+          "forma": "retangulo",
+          "b": 3,
+          "h": 3,
+          "fantasma": [2, 2],
+          "mostrar": {
+            "area": true,
+            "perimetro": true,
+            "alturas": false
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual é a área do quadrado de lado 2+1?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "5",
+          "correct": false,
+          "feedback": "Faltaram as duas faixas; 4+2+2+1 = 9."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "9",
+          "correct": true,
+          "feedback": "Certo: 9; 4+2+2+1=9."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "malha",
+          "forma": "retangulo",
+          "b": 3,
+          "h": 3,
+          "fantasma": [2, 2],
+          "mostrar": {
+            "area": true,
+            "perimetro": true,
+            "alturas": false
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "(a",
+          "ref": "c1"
+        },
+        {
+          "text": "+b",
+          "ref": "c2"
+        },
+        {
+          "text": ")² = a² + 2ab + b²",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Lado a",
+          "text": "Lado do quadrado inicial."
+        },
+        {
+          "term": "Área total",
+          "text": "Soma das áreas das quatro peças."
+        },
+        {
+          "term": "Área de referência",
+          "text": "Área anterior, usada para comparar."
+        }
+      ],
+      "lines": {
+        "intro": "As quatro peças cobrem o quadrado; por isso (a+b)² contém duas faixas ab.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "No quadrado (a+b)², quantas faixas de área ab aparecem?",
+        "options": [
+          {
+            "id": "f1-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Faltou uma faixa. O certo é 2; ab+ab=2ab."
+          },
+          {
+            "id": "f1-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; ab+ab=2ab."
+          }
+        ]
+      },
+      {
+        "id": "f2-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Se b=0, quanto vale (a+b)²?",
+        "options": [
+          {
+            "id": "f2-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "a²",
+            "correct": true,
+            "feedback": "Certo: a²; (a+0)²=a²."
+          },
+          {
+            "id": "f2-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você apagou o lado a. O certo é a²; (a+0)²=a²."
+          }
+        ]
+      },
+      {
+        "id": "f3-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Qual termo ocupa o canto de lado b?",
+        "options": [
+          {
+            "id": "f3-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "2b",
+            "correct": false,
+            "feedback": "Você confundiu área com soma de lados. O certo é b²; b·b=b²."
+          },
+          {
+            "id": "f3-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "b²",
+            "correct": true,
+            "feedback": "Certo: b²; b·b=b²."
+          }
+        ]
+      },
+      {
+        "id": "f4-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Qual expansão representa (x+1)²?",
+        "options": [
+          {
+            "id": "f4-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "x²+2x+1",
+            "correct": true,
+            "feedback": "Certo: x²+2x+1; x·1+1·x=2x."
+          },
+          {
+            "id": "f4-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "x²+1",
+            "correct": false,
+            "feedback": "Faltaram os termos cruzados. O certo é x²+2x+1; x·1+1·x=2x."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Quanto vale (2+1)²?",
+        "options": [
+          {
+            "id": "m1-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você somou só os quadrados. O certo é 9; 4+4+1=9."
+          },
+          {
+            "id": "m1-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "9",
+            "correct": true,
+            "feedback": "Certo: 9; 4+4+1=9."
+          }
+        ]
+      },
+      {
+        "id": "m2-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Quanto vale (3−1)²?",
+        "options": [
+          {
+            "id": "m2-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: 4; (3−1)²=2²=4."
+          },
+          {
+            "id": "m2-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "8",
+            "correct": false,
+            "feedback": "Diferença de quadrados não é quadrado da diferença. O certo é 4; (3−1)²=2²=4."
+          }
+        ]
+      },
+      {
+        "id": "m3-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Simplifique (x+2)(x−2).",
+        "options": [
+          {
+            "id": "m3-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "x²+4",
+            "correct": false,
+            "feedback": "O produto das constantes tem sinal negativo. O certo é x²−4; 2x−2x=0; 2·(−2)=−4."
+          },
+          {
+            "id": "m3-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "x²−4",
+            "correct": true,
+            "feedback": "Certo: x²−4; 2x−2x=0; 2·(−2)=−4."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Um quadrado tem área 9 e lado 2+b, com b≥0; qual é b?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; 2+b=3; b=1."
+          },
+          {
+            "id": "d1-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "7",
+            "correct": false,
+            "feedback": "Você subtraiu lados de uma área. O certo é 1; 2+b=3; b=1."
+          }
+        ]
+      },
+      {
+        "id": "d2-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Para a=b=2, quanto vale (a−b)²?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "4",
+            "correct": false,
+            "feedback": "A diferença dos lados deve ser feita antes. O certo é 0; (2−2)²=0."
+          },
+          {
+            "id": "d2-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; (2−2)²=0."
+          }
+        ]
+      },
+      {
+        "id": "d3-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Quanto vale (1+0,5)²?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "2,25",
+            "correct": true,
+            "feedback": "Certo: 2,25; 1+1+0,25=2,25."
+          },
+          {
+            "id": "d3-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "1,25",
+            "correct": false,
+            "feedback": "Faltou o termo 2ab. O certo é 2,25; 1+1+0,25=2,25."
+          }
+        ]
+      },
+      {
+        "id": "d4-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "A identidade (a+b)²=a²+2ab+b² vale para a=−2 e b=1?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Comprimento negativo limita o desenho, não a identidade. O certo é Sim; (−1)²=4−4+1=1."
+          },
+          {
+            "id": "d4-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; (−1)²=4−4+1=1."
+          }
+        ]
+      },
+      {
+        "id": "d5-expressoes-algebricas-e-produtos-notaveis",
+        "prompt": "Um quadrado de lado 2 ganha 1 em cada lado; qual é o aumento da área?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-expressoes-algebricas-e-produtos-notaveis-certa",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo: 5; 3²−2²=9−4=5."
+          },
+          {
+            "id": "d5-expressoes-algebricas-e-produtos-notaveis-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você contou apenas o canto. O certo é 5; 3²−2²=9−4=5."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

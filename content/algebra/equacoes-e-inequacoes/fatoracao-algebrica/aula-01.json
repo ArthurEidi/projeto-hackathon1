@@ -1,0 +1,560 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Fatoração e zeros de expressões",
+  "subtitulo": "Os fatores mostram onde zerar",
+  "slug": "fatoracao-algebrica",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "equacoes-e-inequacoes",
+    "unidade": "fatoracao-algebrica"
+  },
+  "tempo_estimado": 10,
+  "prerequisitos": [
+    "expressoes-algebricas-e-produtos-notaveis"
+  ],
+  "glossario": {
+    "c1": {
+      "nome": "Entrada x",
+      "resumo": "Número que entra nos fatores."
+    },
+    "c2": {
+      "nome": "Fator x−2",
+      "resumo": "Fator que zera quando x=2."
+    },
+    "c3": {
+      "nome": "Produto P(x)",
+      "resumo": "Resultado de multiplicar os fatores."
+    },
+    "c4": {
+      "nome": "Zeros do produto",
+      "resumo": "Entradas que fazem o produto valer zero."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -3,
+          4
+        ],
+        "y": [
+          -3,
+          4
+        ],
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "cor": "c3",
+            "rotulo": "y = x"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": 0,
+          "arrastavel": true,
+          "passo": 1,
+          "rastro": true,
+          "coordenadas": true,
+          "cor": "ink"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro y = x, o que sai quando x chega a 2? Arraste o ponto.",
+        "done": "Sai 2 porque a identidade conserva cada entrada."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Há fator comum, agrupamento e produtos notáveis; aqui usamos fatores para localizar zeros e conferir expansões."
+      }
+    },
+    {
+      "id": "ligar-fator",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -3,
+          4
+        ],
+        "y": [
+          -3,
+          4
+        ],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": -2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = x² − 2x"
+          },
+          {
+            "tipo": "afim",
+            "a": 1,
+            "b": 0,
+            "fantasma": true,
+            "rotulo": "y = x"
+          }
+        ],
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        },
+        "ponto": {
+          "curva": 0,
+          "x": -1,
+          "arrastavel": true,
+          "passo": 1,
+          "rastro": true,
+          "coordenadas": true,
+          "cor": "ink"
+        }
+      },
+      "complete_when": {
+        "metric": "na_raiz",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Ao multiplicar x por x−2, onde o produto zera? Leve o ponto até 0.",
+        "done": "Em 0 o primeiro fator zera; por isso x²−2x e x(x−2) têm a mesma raiz."
+      }
+    },
+    {
+      "id": "segunda-raiz",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -3,
+          4
+        ],
+        "y": [
+          -3,
+          4
+        ],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": 1,
+            "b": -2,
+            "c": 0,
+            "cor": "c3",
+            "rotulo": "y = x² − 2x"
+          }
+        ],
+        "marcar": {
+          "raizes": true
+        },
+        "cores": {
+          "raiz": "c4"
+        },
+        "ponto": {
+          "curva": 0,
+          "x": 1,
+          "arrastavel": true,
+          "passo": 1,
+          "rastro": true,
+          "coordenadas": true,
+          "cor": "ink"
+        }
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "O produto já é negativo em 1; o que acontece em 2? Arraste até lá.",
+        "done": "Em 2 o segundo fator zera; dividir antes por x perderia a outra solução, x=0."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Posso cancelar x na equação?",
+        "resposta": "Só se x≠0; esse cancelamento excluiria a raiz zero."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -3,
+            4
+          ],
+          "y": [
+            -3,
+            4
+          ],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": 1,
+              "b": -2,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = x² − 2x"
+            }
+          ],
+          "marcar": {
+            "raizes": true
+          },
+          "cores": {
+            "raiz": "c4"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Quais entradas zeram x(x−2)?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "Só 2",
+          "correct": false,
+          "feedback": "Você dividiu por x e perdeu zero; as raízes são 0 e 2.",
+          "figure": {
+            "highlight": [
+              "c4"
+            ]
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "0 e 2",
+          "correct": true,
+          "feedback": "Certo: 0 e 2; Um produto zera se um dos fatores zera.",
+          "figure": {
+            "highlight": [
+              "c4"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -3,
+            4
+          ],
+          "y": [
+            -3,
+            4
+          ],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": 1,
+              "b": -2,
+              "c": 0,
+              "cor": "c3",
+              "rotulo": "y = x² − 2x"
+            }
+          ],
+          "marcar": {
+            "raizes": true
+          },
+          "cores": {
+            "raiz": "c4"
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "x",
+          "ref": "c1"
+        },
+        {
+          "text": " · "
+        },
+        {
+          "text": "(x−2)",
+          "ref": "c2"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "P(x)",
+          "ref": "c3"
+        },
+        {
+          "text": "; raízes "
+        },
+        {
+          "text": "0 e 2",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Entrada x",
+          "text": "Número que entra nos fatores."
+        },
+        {
+          "term": "Produto P(x)",
+          "text": "Resultado de multiplicar os fatores."
+        },
+        {
+          "term": "Zeros do produto",
+          "text": "Entradas que fazem o produto valer zero."
+        }
+      ],
+      "lines": {
+        "intro": "Basta um fator zerar; por isso x(x−2) tem raízes 0 e 2.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-fatoracao-algebrica",
+        "prompt": "Em x(x−2), x=0 zera qual fator?",
+        "options": [
+          {
+            "id": "f1-fatoracao-algebrica-erro",
+            "label": "x−2",
+            "correct": false,
+            "feedback": "Você trocou os fatores. O certo é x; x=0; x−2=−2."
+          },
+          {
+            "id": "f1-fatoracao-algebrica-certa",
+            "label": "x",
+            "correct": true,
+            "feedback": "Certo: x; x=0; x−2=−2."
+          }
+        ]
+      },
+      {
+        "id": "f2-fatoracao-algebrica",
+        "prompt": "Qual entrada zera x−2?",
+        "options": [
+          {
+            "id": "f2-fatoracao-algebrica-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; 2−2=0."
+          },
+          {
+            "id": "f2-fatoracao-algebrica-erro",
+            "label": "−2",
+            "correct": false,
+            "feedback": "O sinal foi trocado. O certo é 2; 2−2=0."
+          }
+        ]
+      },
+      {
+        "id": "f3-fatoracao-algebrica",
+        "prompt": "Como fatorar x²−2x?",
+        "options": [
+          {
+            "id": "f3-fatoracao-algebrica-erro",
+            "label": "x(x−1)",
+            "correct": false,
+            "feedback": "O coeficiente 2 foi perdido. O certo é x(x−2); x·x−x·2=x²−2x."
+          },
+          {
+            "id": "f3-fatoracao-algebrica-certa",
+            "label": "x(x−2)",
+            "correct": true,
+            "feedback": "Certo: x(x−2); x·x−x·2=x²−2x."
+          }
+        ]
+      },
+      {
+        "id": "f4-fatoracao-algebrica",
+        "prompt": "Um produto zero exige que todos os fatores sejam zero?",
+        "options": [
+          {
+            "id": "f4-fatoracao-algebrica-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 0·3=0."
+          },
+          {
+            "id": "f4-fatoracao-algebrica-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Basta um fator nulo. O certo é Não; 0·3=0."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-fatoracao-algebrica",
+        "prompt": "Quais são as raízes de (x−1)(x+2)?",
+        "options": [
+          {
+            "id": "m1-fatoracao-algebrica-erro",
+            "label": "−1 e 2",
+            "correct": false,
+            "feedback": "Você trocou os sinais das raízes. O certo é 1 e −2; 1−1=0; −2+2=0."
+          },
+          {
+            "id": "m1-fatoracao-algebrica-certa",
+            "label": "1 e −2",
+            "correct": true,
+            "feedback": "Certo: 1 e −2; 1−1=0; −2+2=0."
+          }
+        ]
+      },
+      {
+        "id": "m2-fatoracao-algebrica",
+        "prompt": "Fatore x²−9.",
+        "options": [
+          {
+            "id": "m2-fatoracao-algebrica-certa",
+            "label": "(x−3)(x+3)",
+            "correct": true,
+            "feedback": "Certo: (x−3)(x+3); 9=3²."
+          },
+          {
+            "id": "m2-fatoracao-algebrica-erro",
+            "label": "(x−9)(x+9)",
+            "correct": false,
+            "feedback": "Você usou a área como lado. O certo é (x−3)(x+3); 9=3²."
+          }
+        ]
+      },
+      {
+        "id": "m3-fatoracao-algebrica",
+        "prompt": "Quanto vale x(x−2) em x=1?",
+        "options": [
+          {
+            "id": "m3-fatoracao-algebrica-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Faltou o sinal do segundo fator. O certo é −1; 1·(1−2)=−1."
+          },
+          {
+            "id": "m3-fatoracao-algebrica-certa",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo: −1; 1·(1−2)=−1."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-fatoracao-algebrica",
+        "prompt": "Resolver x²=2x dividindo por x perde qual solução?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-fatoracao-algebrica-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; x(x−2)=0; x=0 ou 2."
+          },
+          {
+            "id": "d1-fatoracao-algebrica-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "A divisão exclui x=0. O certo é 0; x(x−2)=0; x=0 ou 2."
+          }
+        ]
+      },
+      {
+        "id": "d2-fatoracao-algebrica",
+        "prompt": "Quais são as raízes de 2x²−x?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-fatoracao-algebrica-erro",
+            "label": "Só 0,5",
+            "correct": false,
+            "feedback": "Você cancelou x e perdeu zero. O certo é 0 e 0,5; x(2x−1)=0."
+          },
+          {
+            "id": "d2-fatoracao-algebrica-certa",
+            "label": "0 e 0,5",
+            "correct": true,
+            "feedback": "Certo: 0 e 0,5; x(2x−1)=0."
+          }
+        ]
+      },
+      {
+        "id": "d3-fatoracao-algebrica",
+        "prompt": "Se (x−a)(x+1) zera em x=2, qual é a?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-fatoracao-algebrica-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; (2−a)·3=0."
+          },
+          {
+            "id": "d3-fatoracao-algebrica-erro",
+            "label": "−1",
+            "correct": false,
+            "feedback": "O segundo fator vale 3, não zero. O certo é 2; (2−a)·3=0."
+          }
+        ]
+      },
+      {
+        "id": "d4-fatoracao-algebrica",
+        "prompt": "Em x²+1=0 há raiz real?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-fatoracao-algebrica-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Um quadrado real não pode valer −1. O certo é Não; x²+1≥1."
+          },
+          {
+            "id": "d4-fatoracao-algebrica-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; x²+1≥1."
+          }
+        ]
+      },
+      {
+        "id": "d5-fatoracao-algebrica",
+        "prompt": "Um retângulo tem área x²−4 e lados positivos x−2 e x+2; se a área é 5, qual x serve?",
+        "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-fatoracao-algebrica-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; x²=9; x>2; x=3."
+          },
+          {
+            "id": "d5-fatoracao-algebrica-erro",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Você aceitou um comprimento negativo. O certo é 3; x²=9; x>2; x=3."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  },
+  "outro": "Você trocou soma por produto sem perder raízes e leu os zeros em cada fator."
+}
