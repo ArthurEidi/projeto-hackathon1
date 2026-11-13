@@ -197,16 +197,28 @@
         "prompt": "Se f(x) = x + 3, qual é a saída para a entrada x = 2?",
         "options": [
           {
+            "id": "f1-e",
+            "label": "6",
+            "correct": false,
+            "feedback": "Resposta: 5; Você multiplicou em vez de somar 3: f(2) = 2 + 3 = 5."
+          },
+          {
             "id": "f1-c",
             "label": "5",
             "correct": true,
             "feedback": "Correto! f(2) = 2 + 3 = 5; cada entrada tem uma única saída."
           },
           {
-            "id": "f1-e",
-            "label": "6",
+            "id": "f1-e2",
+            "label": "−1",
             "correct": false,
-            "feedback": "Resposta: 5; Você multiplicou em vez de somar 3: f(2) = 2 + 3 = 5."
+            "feedback": "Você subtraiu 3 em vez de somar. O certo é 5; f(2) = 2 + 3 = 5."
+          },
+          {
+            "id": "f1-e3",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você repetiu a entrada x = 2 sem somar 3. O certo é 5; f(2) = 2 + 3 = 5."
           }
         ]
       },
@@ -251,16 +263,28 @@
         "prompt": "Qual é o conjunto de todas as entradas permitidas de uma função?",
         "options": [
           {
+            "id": "f4-e",
+            "label": "Imagem",
+            "correct": false,
+            "feedback": "Resposta: Domínio; Imagem é o conjunto das saídas realmente alcançadas."
+          },
+          {
+            "id": "f4-e2",
+            "label": "Contradomínio",
+            "correct": false,
+            "feedback": "Contradomínio é o conjunto de chegada das saídas. As entradas formam o Domínio."
+          },
+          {
             "id": "f4-c",
             "label": "Domínio",
             "correct": true,
             "feedback": "Correto! O domínio reúne os valores de x para os quais a função está definida."
           },
           {
-            "id": "f4-e",
-            "label": "Imagem",
+            "id": "f4-e3",
+            "label": "Gráfico",
             "correct": false,
-            "feedback": "Resposta: Domínio; Imagem é o conjunto das saídas realmente alcançadas."
+            "feedback": "O gráfico reúne os pares (x; y), não só as entradas. O certo é Domínio."
           }
         ]
       }
@@ -281,6 +305,18 @@
             "label": "14",
             "correct": false,
             "feedback": "Resposta: 10; Cuidado com o sinal: 3·4 − 2 = 12 − 2 = 10 (não somar 2)."
+          },
+          {
+            "id": "m1-e2",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você somou 3 + 4 em vez de multiplicar 3·4. O certo é 10; 3·4 − 2 = 10."
+          },
+          {
+            "id": "m1-e3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você subtraiu 2 antes de multiplicar por 3. O certo é 10; 3·4 − 2 = 10."
           }
         ]
       },
@@ -289,16 +325,28 @@
         "prompt": "Para qual valor de x a função f(x) = 2x + 5 tem saída f(x) = 11?",
         "options": [
           {
+            "id": "m2-e",
+            "label": "8",
+            "correct": false,
+            "feedback": "Resposta: 3; Subtraia 5 e depois divida por 2: (11 − 5)/2 = 3."
+          },
+          {
+            "id": "m2-e2",
+            "label": "27",
+            "correct": false,
+            "feedback": "Você calculou f(11) = 27 em vez de achar x. De 2x + 5 = 11 sai x = 3."
+          },
+          {
             "id": "m2-c",
             "label": "3",
             "correct": true,
             "feedback": "Exato! 2x + 5 = 11 ⇒ 2x = 6 ⇒ x = 3."
           },
           {
-            "id": "m2-e",
-            "label": "8",
+            "id": "m2-e3",
+            "label": "6",
             "correct": false,
-            "feedback": "Resposta: 3; Subtraia 5 e depois divida por 2: (11 − 5)/2 = 3."
+            "feedback": "Você subtraiu 5 mas esqueceu de dividir por 2. De 2x = 6 sai x = 3."
           }
         ]
       },
@@ -307,16 +355,28 @@
         "prompt": "Qual é o maior domínio real da função f(x) = 1 / (x − 2)?",
         "options": [
           {
+            "id": "m3-e",
+            "label": "Todos os reais",
+            "correct": false,
+            "feedback": "Resposta: Todos os reais exceto 2; Em x = 2 o denominador zera (divisão impossível)."
+          },
+          {
             "id": "m3-c",
             "label": "Todos os reais exceto 2",
             "correct": true,
             "feedback": "Correto! Não podemos dividir por zero: x − 2 ≠ 0 ⇒ x ≠ 2."
           },
           {
-            "id": "m3-e",
-            "label": "Todos os reais",
+            "id": "m3-e2",
+            "label": "Todos os reais exceto −2",
             "correct": false,
-            "feedback": "Resposta: Todos os reais exceto 2; Em x = 2 o denominador zera (divisão impossível)."
+            "feedback": "Em x = −2 temos 1/(−4), que existe. O zero do denominador é x = 2."
+          },
+          {
+            "id": "m3-e3",
+            "label": "Apenas x > 2",
+            "correct": false,
+            "feedback": "Denominador só proíbe zero, não valores menores que 2. O certo é Todos os reais exceto 2."
           }
         ]
       }
@@ -327,16 +387,28 @@
         "prompt": "Qual é o maior domínio real da função f(x) = √(x − 3)?",
         "options": [
           {
-            "id": "d1-c",
-            "label": "x ≥ 3",
-            "correct": true,
-            "feedback": "Exato! Raiz quadrada nos reais exige radicando não negativo: x − 3 ≥ 0 ⇒ x ≥ 3."
-          },
-          {
             "id": "d1-e",
             "label": "x > 3",
             "correct": false,
             "feedback": "Resposta: x ≥ 3; Em x = 3 temos √0 = 0, que é um valor real válido."
+          },
+          {
+            "id": "d1-e2",
+            "label": "x ≥ −3",
+            "correct": false,
+            "feedback": "Você trocou o sinal: x − 3 ≥ 0 dá x ≥ 3, não −3."
+          },
+          {
+            "id": "d1-e3",
+            "label": "x ≠ 3",
+            "correct": false,
+            "feedback": "Em x = 2 teríamos √(−1), que não é real. A raiz exige x − 3 ≥ 0, ou seja, x ≥ 3."
+          },
+          {
+            "id": "d1-c",
+            "label": "x ≥ 3",
+            "correct": true,
+            "feedback": "Exato! Raiz quadrada nos reais exige radicando não negativo: x − 3 ≥ 0 ⇒ x ≥ 3."
           }
         ]
       },
@@ -345,16 +417,28 @@
         "prompt": "Se f(x) = x² − 1 tem domínio {−2, 0, 2}, qual é o conjunto imagem?",
         "options": [
           {
+            "id": "d2-e",
+            "label": "{−1, 1, 3}",
+            "correct": false,
+            "feedback": "Resposta: {−1, 3}; Nenhuma das três entradas produz saída 1."
+          },
+          {
             "id": "d2-c",
             "label": "{−1, 3}",
             "correct": true,
             "feedback": "Isso! f(0) = −1 e f(−2) = f(2) = 4 − 1 = 3; a imagem é {−1, 3}."
           },
           {
-            "id": "d2-e",
-            "label": "{−1, 1, 3}",
+            "id": "d2-e2",
+            "label": "{−5, −1, 3}",
             "correct": false,
-            "feedback": "Resposta: {−1, 3}; Nenhuma das três entradas produz saída 1."
+            "feedback": "Cuidado: (−2)² = +4, não −4. Então f(−2) = 4 − 1 = 3, e a imagem é {−1, 3}."
+          },
+          {
+            "id": "d2-e3",
+            "label": "{0, 3}",
+            "correct": false,
+            "feedback": "Para x = 0 temos 0² − 1 = −1, não 0. A imagem correta é {−1, 3}."
           }
         ]
       },
@@ -363,16 +447,28 @@
         "prompt": "Se f(x + 1) = 2x + 3, quanto vale f(4)?",
         "options": [
           {
+            "id": "d3-e",
+            "label": "11",
+            "correct": false,
+            "feedback": "Resposta: 9; Você substituiu x = 4 na fórmula em vez de igualar x + 1 = 4."
+          },
+          {
+            "id": "d3-e2",
+            "label": "13",
+            "correct": false,
+            "feedback": "x + 1 = 4 dá x = 3, não 5. Substituindo x = 3: 2·3 + 3 = 9."
+          },
+          {
             "id": "d3-c",
             "label": "9",
             "correct": true,
             "feedback": "Exato! Para f(4), fazemos x + 1 = 4 ⇒ x = 3; então 2·3 + 3 = 9."
           },
           {
-            "id": "d3-e",
-            "label": "11",
+            "id": "d3-e3",
+            "label": "7",
             "correct": false,
-            "feedback": "Resposta: 9; Você substituiu x = 4 na fórmula em vez de igualar x + 1 = 4."
+            "feedback": "Para x + 1 = 4 temos x = 3, então f(4) = 2·3 + 3 = 9, não 7."
           }
         ]
       },
@@ -381,16 +477,28 @@
         "prompt": "Qual relação não define y como função de x?",
         "options": [
           {
-            "id": "d4-c",
-            "label": "x² + y² = 1",
-            "correct": true,
-            "feedback": "Correto! Para x = 0, temos y = 1 e y = −1 (duas saídas para uma entrada)."
-          },
-          {
             "id": "d4-e",
             "label": "y = x²",
             "correct": false,
             "feedback": "Resposta: x² + y² = 1; y = x² é função porque cada x tem apenas uma saída."
+          },
+          {
+            "id": "d4-e2",
+            "label": "y = 2x + 1",
+            "correct": false,
+            "feedback": "y = 2x + 1 é função afim: cada x gera um único y. A que falha é x² + y² = 1."
+          },
+          {
+            "id": "d4-e3",
+            "label": "y = |x|",
+            "correct": false,
+            "feedback": "y = |x| dá uma única saída por x. Em x² + y² = 1, x = 0 gera y = ±1."
+          },
+          {
+            "id": "d4-c",
+            "label": "x² + y² = 1",
+            "correct": true,
+            "feedback": "Correto! Para x = 0, temos y = 1 e y = −1 (duas saídas para uma entrada)."
           }
         ]
       },
@@ -399,16 +507,28 @@
         "prompt": "Se f(x) = 2x + 1 e f(x) = 7, qual é o valor de x?",
         "options": [
           {
+            "id": "d5-e",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 3; Subtraia 1 e depois divida por 2: (7 − 1)/2 = 3."
+          },
+          {
             "id": "d5-c",
             "label": "3",
             "correct": true,
             "feedback": "Exato! 2x + 1 = 7 ⇒ 2x = 6 ⇒ x = 3."
           },
           {
-            "id": "d5-e",
-            "label": "4",
+            "id": "d5-e2",
+            "label": "15",
             "correct": false,
-            "feedback": "Resposta: 3; Subtraia 1 e depois divida por 2: (7 − 1)/2 = 3."
+            "feedback": "Você calculou f(7) = 15 em vez de resolver 2x + 1 = 7. O certo é x = 3."
+          },
+          {
+            "id": "d5-e3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você subtraiu 1 mas esqueceu de dividir por 2. De 2x = 6 sai x = 3."
           }
         ]
       }

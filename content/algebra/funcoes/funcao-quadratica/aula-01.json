@@ -153,7 +153,9 @@
         "prompt": "Em x², quanto vale (−3)²?",
         "options": [
           { "id": "e", "label": "−9", "correct": false, "feedback": "O quadrado apaga o sinal: (−3)·(−3) = 9, não −9." },
-          { "id": "c", "label": "9", "correct": true, "feedback": "Isso. (−3)² = (−3)·(−3) = 9: menos com menos dá mais." }
+          { "id": "c", "label": "9", "correct": true, "feedback": "Isso. (−3)² = (−3)·(−3) = 9: menos com menos dá mais." },
+          { "id": "e2", "label": "−6", "correct": false, "feedback": "Você multiplicou −3 por 2 em vez de elevar ao quadrado. O certo é 9; (−3)² = 9." },
+          { "id": "e3", "label": "6", "correct": false, "feedback": "3·2 = 6 dobra em vez de elevar ao quadrado. O certo é 9; (−3)·(−3) = 9." }
         ]
       },
       {
@@ -169,7 +171,9 @@
         "prompt": "Em f(x) = x² − 4, quanto vale f(0)?",
         "options": [
           { "id": "e", "label": "4", "correct": false, "feedback": "O −4 mantém o sinal: 0² − 4 = −4." },
-          { "id": "c", "label": "−4", "correct": true, "feedback": "Isso. Com x = 0 o quadrado some e sobra o termo constante: −4." }
+          { "id": "e2", "label": "0", "correct": false, "feedback": "Você ignorou o termo constante −4. Em x = 0, f(0) = 0² − 4 = −4." },
+          { "id": "c", "label": "−4", "correct": true, "feedback": "Isso. Com x = 0 o quadrado some e sobra o termo constante: −4." },
+          { "id": "e3", "label": "−2", "correct": false, "feedback": "−2 é uma das raízes de x² − 4, não f(0). Em x = 0, sobra −4." }
         ]
       },
       {
@@ -177,7 +181,9 @@
         "prompt": "Qual é o eixo de simetria de f(x) = (x − 2)²?",
         "options": [
           { "id": "c", "label": "x = 2", "correct": true, "feedback": "Isso. O quadrado zera em x = 2, e a parábola é simétrica em torno dessa reta." },
-          { "id": "e", "label": "x = −2", "correct": false, "feedback": "O sinal dentro do quadrado vem invertido: (x − 2)² zera em x = 2, e esse é o eixo." }
+          { "id": "e", "label": "x = −2", "correct": false, "feedback": "O sinal dentro do quadrado vem invertido: (x − 2)² zera em x = 2, e esse é o eixo." },
+          { "id": "e2", "label": "x = 4", "correct": false, "feedback": "4 é f(0), não o eixo de simetria. (x − 2)² zera em x = 2." },
+          { "id": "e3", "label": "x = 0", "correct": false, "feedback": "O deslocamento −2 move o eixo para a direita. O certo é x = 2." }
         ]
       }
     ],
@@ -187,15 +193,19 @@
         "prompt": "Quais são as raízes de x² − 9 = 0?",
         "options": [
           { "id": "e", "label": "0 e 9", "correct": false, "feedback": "9 não é raiz: x² = 9 pede x = 3 ou x = −3. As raízes são −3 e 3." },
-          { "id": "c", "label": "−3 e 3", "correct": true, "feedback": "Isso. x² = 9 dá x = 3 ou x = −3." }
+          { "id": "e2", "label": "3", "correct": false, "feedback": "Faltou a raiz negativa: (−3)² também vale 9. As raízes são −3 e 3." },
+          { "id": "c", "label": "−3 e 3", "correct": true, "feedback": "Isso. x² = 9 dá x = 3 ou x = −3." },
+          { "id": "e3", "label": "−9 e 9", "correct": false, "feedback": "Você esqueceu de tirar a raiz quadrada de 9. Como 3² = 9, as raízes são −3 e 3." }
         ]
       },
       {
         "id": "m2-funcao-quadratica",
         "prompt": "Qual é o vértice de f(x) = (x − 1)² + 2?",
         "options": [
+          { "id": "e", "label": "(−1; 2)", "correct": false, "feedback": "O sinal em x vem invertido: o quadrado zera em x = 1. O vértice é (1; 2)." },
           { "id": "c", "label": "(1; 2)", "correct": true, "feedback": "Isso. O quadrado zera em x = 1, e a saída mínima é 2." },
-          { "id": "e", "label": "(−1; 2)", "correct": false, "feedback": "O sinal em x vem invertido: o quadrado zera em x = 1. O vértice é (1; 2)." }
+          { "id": "e2", "label": "(1; −2)", "correct": false, "feedback": "O valor em x = 1 é 0 + 2 = 2, não −2. O vértice é (1; 2)." },
+          { "id": "e3", "label": "(2; 1)", "correct": false, "feedback": "Você trocou as coordenadas x e y. O vértice é (1; 2)." }
         ]
       },
       {
@@ -203,7 +213,8 @@
         "prompt": "Quantas raízes reais tem x² + 1 = 0?",
         "options": [
           { "id": "e", "label": "Duas", "correct": false, "feedback": "x² nunca é negativo nos reais, então x² + 1 ≥ 1 e nunca zera. Nenhuma raiz real." },
-          { "id": "c", "label": "Nenhuma", "correct": true, "feedback": "Isso. x² ≥ 0, logo x² + 1 ≥ 1 e a saída nunca zera." }
+          { "id": "c", "label": "Nenhuma", "correct": true, "feedback": "Isso. x² ≥ 0, logo x² + 1 ≥ 1 e a saída nunca zera." },
+          { "id": "e2", "label": "Uma", "correct": false, "feedback": "Em x = 0 dá 1 e em x = −1 dá 2. Como x² + 1 ≥ 1, não há nenhuma raiz real." }
         ]
       }
     ],
@@ -214,6 +225,8 @@
         "fala": "Complete o quadrado: ache o x que zera a parte quadrada.",
         "options": [
           { "id": "e", "label": "(−2; 3)", "correct": false, "feedback": "Cuidado com os sinais: x² − 4x + 3 = (x − 2)² − 1, então V = (2; −1)." },
+          { "id": "e2", "label": "(2; 3)", "correct": false, "feedback": "3 é f(0), não f(2). Calculando f(2) = 4 − 8 + 3 = −1, temos V = (2; −1)." },
+          { "id": "e3", "label": "(4; 3)", "correct": false, "feedback": "Você esqueceu de dividir por 2 em −b/(2a). O certo é V = (2; −1)." },
           { "id": "c", "label": "(2; −1)", "correct": true, "feedback": "Isso. x² − 4x + 3 = (x − 2)² − 1, com vértice em (2; −1)." }
         ]
       },
@@ -221,8 +234,10 @@
         "id": "d2-funcao-quadratica",
         "prompt": "Quais são as raízes de x² − 5x + 6 = 0?",
         "options": [
+          { "id": "e", "label": "−2 e −3", "correct": false, "feedback": "Os sinais estão trocados: x² − 5x + 6 = (x − 2)(x − 3), com raízes 2 e 3." },
           { "id": "c", "label": "2 e 3", "correct": true, "feedback": "Isso. (x − 2)(x − 3) = 0 dá x = 2 ou x = 3." },
-          { "id": "e", "label": "−2 e −3", "correct": false, "feedback": "Os sinais estão trocados: x² − 5x + 6 = (x − 2)(x − 3), com raízes 2 e 3." }
+          { "id": "e2", "label": "1 e 6", "correct": false, "feedback": "1 + 6 = 7 ≠ 5, pois 1 e 6 não somam 5. Fatorando (x − 2)(x − 3), temos 2 e 3." },
+          { "id": "e3", "label": "−1 e 6", "correct": false, "feedback": "Produto (−1)·6 = −6 ≠ 6. Os números com soma 5 e produto 6 são 2 e 3." }
         ]
       },
       {
@@ -238,8 +253,9 @@
         "id": "d4-funcao-quadratica",
         "prompt": "Quantos pontos em comum com o eixo x tem o gráfico de f(x) = (x − 2)²?",
         "options": [
+          { "id": "e", "label": "Dois", "correct": false, "feedback": "(x − 2)² = 0 só em x = 2: a parábola apenas toca o eixo, em um ponto." },
           { "id": "c", "label": "Um", "correct": true, "feedback": "Isso. O vértice (2; 0) está sobre o eixo x: um único ponto em comum." },
-          { "id": "e", "label": "Dois", "correct": false, "feedback": "(x − 2)² = 0 só em x = 2: a parábola apenas toca o eixo, em um ponto." }
+          { "id": "e2", "label": "Nenhum", "correct": false, "feedback": "Em x = 2 temos f(2) = 0, logo o vértice toca o eixo x. Há um ponto em comum." }
         ]
       },
       {
@@ -248,7 +264,9 @@
         "fala": "Última. Fatore, ache as duas raízes e só então some.",
         "options": [
           { "id": "e", "label": "3", "correct": false, "feedback": "3 é o produto das raízes. Como x² − 4x + 3 = (x − 1)(x − 3), as raízes são 1 e 3 e a soma é 4." },
-          { "id": "c", "label": "4", "correct": true, "feedback": "Isso. (x − 1)(x − 3) = 0 tem raízes 1 e 3, e 1 + 3 = 4." }
+          { "id": "e2", "label": "−4", "correct": false, "feedback": "Na soma −b/a o sinal se inverte: −(−4)/1 = 4. As raízes são 1 e 3, soma 4." },
+          { "id": "c", "label": "4", "correct": true, "feedback": "Isso. (x − 1)(x − 3) = 0 tem raízes 1 e 3, e 1 + 3 = 4." },
+          { "id": "e3", "label": "2", "correct": false, "feedback": "2 é o x do vértice (a média das raízes). A soma 1 + 3 vale 4." }
         ]
       }
     ],

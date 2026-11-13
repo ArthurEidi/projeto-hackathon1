@@ -150,15 +150,19 @@
         "prompt": "Quanto vale 2⁰?",
         "options": [
           { "id": "e", "label": "0", "correct": false, "feedback": "Zero passos deixam o neutro da multiplicação: 2⁰ = 1, não 0." },
-          { "id": "c", "label": "1", "correct": true, "feedback": "Isso. Sem passos nada foi multiplicado, então a saída é 1." }
+          { "id": "c", "label": "1", "correct": true, "feedback": "Isso. Sem passos nada foi multiplicado, então a saída é 1." },
+          { "id": "e2", "label": "2", "correct": false, "feedback": "2 é 2¹; no expoente zero nenhuma multiplicação ocorreu. O certo é 1; 2⁰ = 1." },
+          { "id": "e3", "label": "−1", "correct": false, "feedback": "Expoente zero não muda sinal. O certo é 1; 2⁰ = 1." }
         ]
       },
       {
         "id": "f2-funcao-exponencial",
         "prompt": "Em f(x) = 3ˣ, por qual fator a saída muda ao avançar 1 na entrada?",
         "options": [
+          { "id": "e", "label": "1", "correct": false, "feedback": "1 é quanto a entrada avança. A saída é multiplicada por 3: 3ˣ⁺¹ = 3·3ˣ." },
+          { "id": "e2", "label": "9", "correct": false, "feedback": "9 vale para dois passos (3²). Em um passo, a saída multiplica por 3: 3ˣ⁺¹ = 3·3ˣ." },
           { "id": "c", "label": "3", "correct": true, "feedback": "Isso. Cada passo multiplica por 3: 3ˣ⁺¹ = 3·3ˣ." },
-          { "id": "e", "label": "1", "correct": false, "feedback": "1 é quanto a entrada avança. A saída é multiplicada por 3: 3ˣ⁺¹ = 3·3ˣ." }
+          { "id": "e3", "label": "1/3", "correct": false, "feedback": "1/3 ocorre ao recuar 1 na entrada. Ao avançar 1, multiplica por 3: 3ˣ⁺¹ = 3·3ˣ." }
         ]
       },
       {
@@ -166,7 +170,9 @@
         "prompt": "Quanto vale 2⁻²?",
         "options": [
           { "id": "e", "label": "−4", "correct": false, "feedback": "O expoente negativo não troca o sinal da saída: 2⁻² = 1/2² = 1/4." },
-          { "id": "c", "label": "1/4", "correct": true, "feedback": "Isso. Voltar dois passos divide por 2 duas vezes: 1/2² = 1/4." }
+          { "id": "c", "label": "1/4", "correct": true, "feedback": "Isso. Voltar dois passos divide por 2 duas vezes: 1/2² = 1/4." },
+          { "id": "e2", "label": "4", "correct": false, "feedback": "Você ignorou o sinal negativo do expoente. O certo é 1/4; 2⁻² = 1/2² = 1/4." },
+          { "id": "e3", "label": "−1/4", "correct": false, "feedback": "Expoente negativo inverte a base, não troca o sinal. O certo é 1/4; 2⁻² = 1/4." }
         ]
       },
       {
@@ -174,7 +180,9 @@
         "prompt": "Qual base gera decaimento?",
         "options": [
           { "id": "c", "label": "1/2", "correct": true, "feedback": "Isso. Com 0 < 1/2 < 1, cada passo encolhe a saída." },
-          { "id": "e", "label": "2", "correct": false, "feedback": "Base maior que 1 cresce. O decaimento vem de uma base entre 0 e 1, como 1/2." }
+          { "id": "e", "label": "2", "correct": false, "feedback": "Base maior que 1 cresce. O decaimento vem de uma base entre 0 e 1, como 1/2." },
+          { "id": "e2", "label": "1", "correct": false, "feedback": "Com base 1 a saída fica sempre igual a 1. O decaimento pede 0 < b < 1, como 1/2." },
+          { "id": "e3", "label": "0", "correct": false, "feedback": "Base 0 zera para x > 0 e não define exponencial. O decaimento pede 0 < b < 1: 1/2." }
         ]
       }
     ],
@@ -191,8 +199,10 @@
         "id": "m2-funcao-exponencial",
         "prompt": "Uma quantidade 4 triplica duas vezes seguidas. Qual é o total?",
         "options": [
+          { "id": "e", "label": "24", "correct": false, "feedback": "24 é 4·3·2: o expoente virou fator. Triplicar duas vezes dá 4·3² = 36." },
+          { "id": "e2", "label": "12", "correct": false, "feedback": "12 triplica apenas uma vez (4·3). Duas vezes seguidas dá 4·3² = 36." },
           { "id": "c", "label": "36", "correct": true, "feedback": "Isso. Triplicar duas vezes é multiplicar por 3 duas vezes: 4·3² = 36." },
-          { "id": "e", "label": "24", "correct": false, "feedback": "24 é 4·3·2: o expoente virou fator. Triplicar duas vezes dá 4·3² = 36." }
+          { "id": "e3", "label": "10", "correct": false, "feedback": "Você somou 4 + 3 + 3 em vez de multiplicar. Triplicar duas vezes dá 4·3² = 36." }
         ]
       },
       {
@@ -200,6 +210,8 @@
         "prompt": "Quanto vale (1/2)³?",
         "options": [
           { "id": "e", "label": "1/6", "correct": false, "feedback": "1/6 multiplica 2 por 3. O cubo vale 1/2³ = 1/8." },
+          { "id": "e2", "label": "3/2", "correct": false, "feedback": "Você multiplicou 1/2 por 3 em vez de elevar ao cubo. O certo é 1/8; 1/2³ = 1/8." },
+          { "id": "e3", "label": "3/8", "correct": false, "feedback": "1³ continua 1, não 3. O certo é 1/8; (1/2)³ = 1³/2³ = 1/8." },
           { "id": "c", "label": "1/8", "correct": true, "feedback": "Isso. (1/2)³ = 1/2 · 1/2 · 1/2 = 1/8." }
         ]
       }
@@ -209,8 +221,10 @@
         "id": "d1-funcao-exponencial",
         "prompt": "Se f(x) = 2ˣ, quanto vale f(3)?",
         "options": [
+          { "id": "e", "label": "6", "correct": false, "feedback": "6 é 2·3: base vezes expoente. O expoente conta repetições, então 2³ = 8." },
           { "id": "c", "label": "8", "correct": true, "feedback": "Isso. 2³ = 2·2·2 = 8." },
-          { "id": "e", "label": "6", "correct": false, "feedback": "6 é 2·3: base vezes expoente. O expoente conta repetições, então 2³ = 8." }
+          { "id": "e2", "label": "9", "correct": false, "feedback": "Você inverteu base e expoente (3² = 9). Em f(3) = 2³, o certo é 8." },
+          { "id": "e3", "label": "5", "correct": false, "feedback": "Você somou 2 + 3 em vez de calcular a potência. O certo é 8; 2³ = 8." }
         ]
       },
       {
@@ -218,6 +232,8 @@
         "prompt": "Há 3 células e o número dobra 3 vezes seguidas. Quantas ficam?",
         "options": [
           { "id": "e", "label": "18", "correct": false, "feedback": "18 é 3·2·3. Dobrar 3 vezes multiplica por 2³ = 8: 3·8 = 24." },
+          { "id": "e2", "label": "6", "correct": false, "feedback": "6 dobra apenas uma vez (3·2). Dobrar 3 vezes dá 3·2³ = 24." },
+          { "id": "e3", "label": "12", "correct": false, "feedback": "12 dobra apenas duas vezes (3·2²). Em 3 vezes fica 3·2³ = 24." },
           { "id": "c", "label": "24", "correct": true, "feedback": "Isso. Dobrar 3 vezes é multiplicar por 2³ = 8, e 3·8 = 24." }
         ]
       },
@@ -227,7 +243,9 @@
         "fala": "Teste x = 1 e x = −1 antes de decidir.",
         "options": [
           { "id": "e", "label": "Duas: x = ±1", "correct": false, "feedback": "x = 1 dá 2 e x = −1 dá 1/2, nenhum dá 1. Só x = 0 serve: 2⁰ = 1." },
-          { "id": "c", "label": "Uma: x = 0", "correct": true, "feedback": "Isso. 2⁰ = 1, e a curva é crescente: nenhum outro x dá 1." }
+          { "id": "e2", "label": "Nenhuma", "correct": false, "feedback": "Todo número não nulo elevado a 0 vale 1. Há uma solução: x = 0 (2⁰ = 1)." },
+          { "id": "c", "label": "Uma: x = 0", "correct": true, "feedback": "Isso. 2⁰ = 1, e a curva é crescente: nenhum outro x dá 1." },
+          { "id": "e3", "label": "Uma: x = 1", "correct": false, "feedback": "Para x = 1 temos 2¹ = 2, não 1. A única solução é x = 0, pois 2⁰ = 1." }
         ]
       },
       {
@@ -236,7 +254,9 @@
         "fala": "Pergunte: a saída pode chegar a zero ou ficar negativa?",
         "options": [
           { "id": "c", "label": "(0; ∞)", "correct": true, "feedback": "Isso. Toda potência de base positiva é maior que 0, e a curva nunca toca o zero." },
-          { "id": "e", "label": "[0; ∞)", "correct": false, "feedback": "A curva nunca toca o zero: toda potência positiva é maior que 0. A imagem é (0; ∞)." }
+          { "id": "e", "label": "[0; ∞)", "correct": false, "feedback": "A curva nunca toca o zero: toda potência positiva é maior que 0. A imagem é (0; ∞)." },
+          { "id": "e2", "label": "(−∞; ∞)", "correct": false, "feedback": "Os reais são o domínio; potência de base positiva nunca é negativa ou zero. A imagem é (0; ∞)." },
+          { "id": "e3", "label": "(0; 1]", "correct": false, "feedback": "Para x < 0 a saída passa de 1, como (1/3)⁻¹ = 3. A imagem é (0; ∞)." }
         ]
       },
       {
@@ -245,7 +265,9 @@
         "fala": "Última. Isole 2ˣ e pergunte: quantos 2 multiplicados dão esse valor?",
         "options": [
           { "id": "e", "label": "8", "correct": false, "feedback": "8 é o valor de 2ˣ, não de x. Como 2ˣ = 8 = 2³, x = 3." },
-          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. 40 ÷ 5 = 8 = 2³, logo x = 3." }
+          { "id": "e2", "label": "4", "correct": false, "feedback": "2⁴ vale 16, não 8. Como 40 ÷ 5 = 8 = 2³, o certo é x = 3." },
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. 40 ÷ 5 = 8 = 2³, logo x = 3." },
+          { "id": "e3", "label": "2", "correct": false, "feedback": "2² vale 4, não 8. Como 2ˣ = 8 = 2³, temos x = 3." }
         ]
       }
     ],

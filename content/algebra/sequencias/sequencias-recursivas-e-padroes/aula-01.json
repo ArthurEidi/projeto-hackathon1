@@ -306,16 +306,28 @@
         "prompt": "Uma sequência começa em 5 e repete o termo anterior. Qual é a₃?",
         "options": [
           {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Somou sem que a regra mandasse. A regra repete: a₃ = 5."
+          },
+          {
             "id": "o1",
             "label": "5",
             "correct": true,
             "feedback": "Certo. 5 → 5 → 5."
           },
           {
-            "id": "o2",
-            "label": "10",
+            "id": "o3",
+            "label": "15",
             "correct": false,
-            "feedback": "Somou sem que a regra mandasse. A regra repete: a₃ = 5."
+            "feedback": "Você multiplicou 5 pela posição 3. Como a regra apenas repete, a₃ = 5."
+          },
+          {
+            "id": "o4",
+            "label": "0",
+            "correct": false,
+            "feedback": "A regra repete o termo, não subtrai 5. O terceiro termo continua 5."
           }
         ]
       },
@@ -330,10 +342,22 @@
             "feedback": "Somou 4 em um passo. Sempre +3: 2, 5, 8, 11."
           },
           {
+            "id": "o3",
+            "label": "2, 6, 18, 54",
+            "correct": false,
+            "feedback": "Você multiplicou por 3 em vez de somar 3. Somando 3: 2, 5, 8, 11."
+          },
+          {
             "id": "o1",
             "label": "2, 5, 8, 11",
             "correct": true,
             "feedback": "Certo. 2 → 5 → 8 → 11."
+          },
+          {
+            "id": "o4",
+            "label": "3, 6, 9, 12",
+            "correct": false,
+            "feedback": "A sequência começa em 2, não em 3. Somando 3: 2, 5, 8, 11."
           }
         ]
       },
@@ -352,6 +376,18 @@
             "label": "1",
             "correct": false,
             "feedback": "Copiou um termo em vez de somar os dois: 1 + 1 = 2."
+          },
+          {
+            "id": "o3",
+            "label": "3",
+            "correct": false,
+            "feedback": "a₂ também vale 1, não 2. Logo a₃ = 1 + 1 = 2."
+          },
+          {
+            "id": "o4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Os dois primeiros termos são 1 e 1, então a₃ = 1 + 1 = 2."
           }
         ]
       },
@@ -366,10 +402,22 @@
             "feedback": "Repetiu +1 no segundo passo. A alternância dá 3 → 4 → 6 → 7."
           },
           {
+            "id": "o3",
+            "label": "8",
+            "correct": false,
+            "feedback": "No terceiro passo volta a ser +1, não +2. A sequência é 3, 4, 6, 7."
+          },
+          {
             "id": "o1",
             "label": "7",
             "correct": true,
             "feedback": "Certo. 3 → 4 → 6 → 7."
+          },
+          {
+            "id": "o4",
+            "label": "9",
+            "correct": false,
+            "feedback": "Você somou 2 em todos os passos sem alternar. O certo é 3 → 4 → 6 → 7."
           }
         ]
       }
@@ -390,6 +438,18 @@
             "label": "5",
             "correct": true,
             "feedback": "Certo. 1, 1, 2, 3, 5."
+          },
+          {
+            "id": "o3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é o quarto termo (a₄). Mais um passo: a₅ = 2 + 3 = 5."
+          },
+          {
+            "id": "o4",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 já é o sexto termo (a₆). A quinta posição é 1, 1, 2, 3, 5."
           }
         ]
       },
@@ -398,16 +458,28 @@
         "prompt": "Começa em 16 e divide por 2 a cada passo. Qual é a₅?",
         "options": [
           {
+            "id": "o2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Fez três divisões em vez de quatro. 16 → 8 → 4 → 2 → 1."
+          },
+          {
+            "id": "o3",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é o terceiro termo (a₃). Para a₅ são quatro divisões: 16 → 8 → 4 → 2 → 1."
+          },
+          {
             "id": "o1",
             "label": "1",
             "correct": true,
             "feedback": "Certo. 16 → 8 → 4 → 2 → 1."
           },
           {
-            "id": "o2",
-            "label": "2",
+            "id": "o4",
+            "label": "1/2",
             "correct": false,
-            "feedback": "Fez três divisões em vez de quatro. 16 → 8 → 4 → 2 → 1."
+            "feedback": "1/2 já é o sexto termo (a₆). Com quatro divisões chegamos a a₅ = 1."
           }
         ]
       },
@@ -420,6 +492,18 @@
             "label": "11",
             "correct": false,
             "feedback": "11 é a₃. Falta mais um passo: 2 · 11 + 1 = 23."
+          },
+          {
+            "id": "o3",
+            "label": "47",
+            "correct": false,
+            "feedback": "47 já é o quinto termo (a₅). Em quatro termos: 2 → 5 → 11 → 23."
+          },
+          {
+            "id": "o4",
+            "label": "22",
+            "correct": false,
+            "feedback": "Você dobrou 11 e esqueceu de somar 1. O certo é 2·11 + 1 = 23."
           },
           {
             "id": "o1",
@@ -436,16 +520,28 @@
         "prompt": "a₁ = 2 e a₂ = 5; cada termo soma os dois anteriores. Qual é a₄?",
         "options": [
           {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Somou só o anterior. a₃ = 2 + 5 = 7 e a₄ = 5 + 7 = 12."
+          },
+          {
             "id": "o1",
             "label": "12",
             "correct": true,
             "feedback": "Certo. a₃ = 7 e a₄ = 5 + 7 = 12."
           },
           {
-            "id": "o2",
-            "label": "10",
+            "id": "o3",
+            "label": "7",
             "correct": false,
-            "feedback": "Somou só o anterior. a₃ = 2 + 5 = 7 e a₄ = 5 + 7 = 12."
+            "feedback": "7 é apenas o terceiro termo (a₃). Para a₄: 5 + 7 = 12."
+          },
+          {
+            "id": "o4",
+            "label": "19",
+            "correct": false,
+            "feedback": "19 é o quinto termo (a₅). O quarto termo é a₄ = 5 + 7 = 12."
           }
         ]
       },
@@ -460,10 +556,22 @@
             "feedback": "Contou três subtrações, não quatro. a₅ = −2."
           },
           {
+            "id": "o3",
+            "label": "−5",
+            "correct": false,
+            "feedback": "−5 já é o sexto termo (a₆). Com quatro subtrações: 10 − 4·3 = −2."
+          },
+          {
             "id": "o1",
             "label": "−2",
             "correct": true,
             "feedback": "Certo. 10 → 7 → 4 → 1 → −2."
+          },
+          {
+            "id": "o4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é o terceiro termo (a₃). Para a₅ subtraímos 3 quatro vezes: −2."
           }
         ]
       },
@@ -482,6 +590,18 @@
             "label": "5",
             "correct": false,
             "feedback": "Aplicou ×2 duas vezes seguidas. A alternância dá 1 → 2 → 3 → 6."
+          },
+          {
+            "id": "o3",
+            "label": "4",
+            "correct": false,
+            "feedback": "No terceiro passo volta a ser ×2, não +1. A sequência é 1 → 2 → 3 → 6."
+          },
+          {
+            "id": "o4",
+            "label": "8",
+            "correct": false,
+            "feedback": "Você multiplicou por 2 em todos os passos sem alternar. O certo é 1 → 2 → 3 → 6."
           }
         ]
       },
@@ -496,10 +616,22 @@
             "feedback": "A regra consulta dois termos. Precisa de 2 inícios: a₃ requer a₁ e a₂."
           },
           {
+            "id": "o3",
+            "label": "3",
+            "correct": false,
+            "feedback": "a₃ já é calculado pela regra usando a₁ e a₂. Bastam 2 termos iniciais."
+          },
+          {
             "id": "o1",
             "label": "2",
             "correct": true,
             "feedback": "Certo. a₃ requer a₁ e a₂."
+          },
+          {
+            "id": "o4",
+            "label": "0",
+            "correct": false,
+            "feedback": "Sem valores iniciais a regra não tem onde começar. São necessários 2 termos."
           }
         ]
       },
@@ -509,16 +641,28 @@
         "fala": "Última. Posição e número de avanços não são a mesma coisa.",
         "options": [
           {
+            "id": "o2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Contou avanços, não posições. 1, 2, 4, 8, 16 coloca o 16 em n = 5."
+          },
+          {
             "id": "o1",
             "label": "5",
             "correct": true,
             "feedback": "Certo. 1, 2, 4, 8, 16: n = 5."
           },
           {
-            "id": "o2",
-            "label": "4",
+            "id": "o3",
+            "label": "6",
             "correct": false,
-            "feedback": "Contou avanços, não posições. 1, 2, 4, 8, 16 coloca o 16 em n = 5."
+            "feedback": "Na posição 6 o termo já é 32. Listando: 1, 2, 4, 8, 16 dá n = 5."
+          },
+          {
+            "id": "o4",
+            "label": "8",
+            "correct": false,
+            "feedback": "A sequência dobra a cada passo, não soma 2. Em 1, 2, 4, 8, 16 temos n = 5."
           }
         ]
       }

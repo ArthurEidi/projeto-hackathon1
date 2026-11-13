@@ -155,15 +155,19 @@
         "prompt": "Quanto vale |−4|?",
         "options": [
           { "id": "e", "label": "−4", "correct": false, "feedback": "O módulo é distância, não posição: |−4| = 4." },
-          { "id": "c", "label": "4", "correct": true, "feedback": "Isso. A distância de −4 até zero é 4." }
+          { "id": "c", "label": "4", "correct": true, "feedback": "Isso. A distância de −4 até zero é 4." },
+          { "id": "e2", "label": "0", "correct": false, "feedback": "Módulo só zera em x = 0. A distância de −4 até zero é 4." },
+          { "id": "e3", "label": "2", "correct": false, "feedback": "O módulo não divide o número, apenas mede a distância até zero: |−4| = 4." }
         ]
       },
       {
         "id": "f2-funcao-modular",
         "prompt": "Qual é o vértice de f(x) = |x − 3|?",
         "options": [
+          { "id": "e", "label": "(−3; 0)", "correct": false, "feedback": "O sinal dentro do módulo vem invertido: |x − 3| zera em x = 3. O vértice é (3; 0)." },
+          { "id": "e2", "label": "(0; 3)", "correct": false, "feedback": "Você trocou as coordenadas x e y. O módulo zera em x = 3, então o vértice é (3; 0)." },
           { "id": "c", "label": "(3; 0)", "correct": true, "feedback": "Isso. |x − 3| zera em x = 3, e a saída ali é 0." },
-          { "id": "e", "label": "(−3; 0)", "correct": false, "feedback": "O sinal dentro do módulo vem invertido: |x − 3| zera em x = 3. O vértice é (3; 0)." }
+          { "id": "e3", "label": "(0; −3)", "correct": false, "feedback": "−3 é o deslocamento horizontal, não a saída em x = 0. O vértice é (3; 0)." }
         ]
       },
       {
@@ -171,7 +175,9 @@
         "prompt": "Quanto vale |0| + 2?",
         "options": [
           { "id": "e", "label": "0", "correct": false, "feedback": "Faltou o +2, que desloca a saída: |0| + 2 = 2." },
-          { "id": "c", "label": "2", "correct": true, "feedback": "Isso. |0| = 0, e o deslocamento soma 2." }
+          { "id": "c", "label": "2", "correct": true, "feedback": "Isso. |0| = 0, e o deslocamento soma 2." },
+          { "id": "e2", "label": "−2", "correct": false, "feedback": "O deslocamento é +2, não −2. Como |0| = 0, |0| + 2 = 2." },
+          { "id": "e3", "label": "1", "correct": false, "feedback": "|0| vale 0, não −1. Assim, |0| + 2 = 0 + 2 = 2." }
         ]
       },
       {
@@ -179,7 +185,9 @@
         "prompt": "Quais x satisfazem |x| = 3?",
         "options": [
           { "id": "c", "label": "−3 e 3", "correct": true, "feedback": "Isso. A distância 3 até zero vale para os dois lados: x = ±3." },
-          { "id": "e", "label": "3", "correct": false, "feedback": "Só o lado positivo não basta: −3 também fica a 3 de zero. As soluções são −3 e 3." }
+          { "id": "e", "label": "3", "correct": false, "feedback": "Só o lado positivo não basta: −3 também fica a 3 de zero. As soluções são −3 e 3." },
+          { "id": "e2", "label": "−3", "correct": false, "feedback": "Faltou o lado positivo: 3 também fica a 3 de zero. As soluções são −3 e 3." },
+          { "id": "e3", "label": "0 e 3", "correct": false, "feedback": "|0| = 0, não 3. Os pontos a distância 3 de zero são −3 e 3." }
         ]
       }
     ],
@@ -189,7 +197,9 @@
         "prompt": "Qual é a imagem de f(x) = |x| + 1?",
         "options": [
           { "id": "e", "label": "y ≤ 1", "correct": false, "feedback": "O V abre para cima, então a saída só sobe a partir do vértice: |x| ≥ 0 e |x| + 1 ≥ 1." },
-          { "id": "c", "label": "y ≥ 1", "correct": true, "feedback": "Isso. |x| ≥ 0, logo |x| + 1 ≥ 1." }
+          { "id": "e2", "label": "y ≥ 0", "correct": false, "feedback": "Você esqueceu de somar 1 à imagem de |x| ≥ 0. Somando 1, temos y ≥ 1." },
+          { "id": "c", "label": "y ≥ 1", "correct": true, "feedback": "Isso. |x| ≥ 0, logo |x| + 1 ≥ 1." },
+          { "id": "e3", "label": "y ≥ −1", "correct": false, "feedback": "O deslocamento é +1, não −1. Como |x| ≥ 0, a imagem é y ≥ 1." }
         ]
       },
       {
@@ -204,8 +214,10 @@
         "id": "m3-funcao-modular",
         "prompt": "Quantas soluções tem |x − 2| = 0?",
         "options": [
+          { "id": "e", "label": "Duas", "correct": false, "feedback": "Duas soluções vêm de distância positiva. Com raio zero há uma só: x = 2." },
           { "id": "c", "label": "Uma", "correct": true, "feedback": "Isso. Distância zero só acontece em x = 2." },
-          { "id": "e", "label": "Duas", "correct": false, "feedback": "Duas soluções vêm de distância positiva. Com raio zero há uma só: x = 2." }
+          { "id": "e2", "label": "Nenhuma", "correct": false, "feedback": "O módulo zera quando o que está dentro vale 0: x = 2. Há uma solução." },
+          { "id": "e3", "label": "Infinitas", "correct": false, "feedback": "Só x = 2 zera x − 2, não todo real. Há apenas uma solução." }
         ]
       }
     ],
@@ -216,6 +228,8 @@
         "fala": "Ache o x que zera o módulo e depois leia a saída ali.",
         "options": [
           { "id": "e", "label": "(1; 3)", "correct": false, "feedback": "Os sinais de h e k saíram trocados: x + 1 zera em −1 e a saída ali é −3. V = (−1; −3)." },
+          { "id": "e2", "label": "(1; −3)", "correct": false, "feedback": "x + 1 zera em −1, não em 1. O vértice fica em (−1; −3)." },
+          { "id": "e3", "label": "(−1; 3)", "correct": false, "feedback": "Com x = −1, a saída é 2·0 − 3 = −3, não 3. O vértice é (−1; −3)." },
           { "id": "c", "label": "(−1; −3)", "correct": true, "feedback": "Isso. x + 1 zera em x = −1, e a saída mínima é −3." }
         ]
       },
@@ -223,8 +237,10 @@
         "id": "d2-funcao-modular",
         "prompt": "Quais são as soluções de |x − 1| = 4?",
         "options": [
+          { "id": "e", "label": "3 e 5", "correct": false, "feedback": "Os pontos ficam 4 para cada lado de 1, não só à direita: 1 − 4 = −3 e 1 + 4 = 5." },
+          { "id": "e2", "label": "−5 e 3", "correct": false, "feedback": "Você usou centro −1 em vez de 1. A 4 de 1 ficam 1 − 4 = −3 e 1 + 4 = 5." },
           { "id": "c", "label": "−3 e 5", "correct": true, "feedback": "Isso. Os pontos ficam 4 para cada lado de 1: 1 − 4 = −3 e 1 + 4 = 5." },
-          { "id": "e", "label": "3 e 5", "correct": false, "feedback": "Os pontos ficam 4 para cada lado de 1, não só à direita: 1 − 4 = −3 e 1 + 4 = 5." }
+          { "id": "e3", "label": "−4 e 4", "correct": false, "feedback": "O centro é 1, não 0. A distância 4 de 1 dá −3 e 5." }
         ]
       },
       {
@@ -233,15 +249,18 @@
         "fala": "Pergunte: existe distância negativa?",
         "options": [
           { "id": "e", "label": "Duas", "correct": false, "feedback": "Distância não é negativa: |x| ≥ 0 nunca vale −2. Não há solução." },
-          { "id": "c", "label": "Nenhuma", "correct": true, "feedback": "Isso. |x| ≥ 0, então nunca vale −2." }
+          { "id": "c", "label": "Nenhuma", "correct": true, "feedback": "Isso. |x| ≥ 0, então nunca vale −2." },
+          { "id": "e2", "label": "Uma", "correct": false, "feedback": "Para x = −2 temos |−2| = 2, não −2. Como |x| ≥ 0, não há solução." }
         ]
       },
       {
         "id": "d4-funcao-modular",
         "prompt": "Qual é a imagem de f(x) = −2|x − 3| + 1?",
         "options": [
+          { "id": "e", "label": "y ≥ 1", "correct": false, "feedback": "Com a = −2 o V abre para baixo e 1 é o máximo: |x − 3| ≥ 0 dá −2|x − 3| + 1 ≤ 1." },
           { "id": "c", "label": "y ≤ 1", "correct": true, "feedback": "Isso. |x − 3| ≥ 0, então −2|x − 3| + 1 ≤ 1: o vértice é o máximo." },
-          { "id": "e", "label": "y ≥ 1", "correct": false, "feedback": "Com a = −2 o V abre para baixo e 1 é o máximo: |x − 3| ≥ 0 dá −2|x − 3| + 1 ≤ 1." }
+          { "id": "e2", "label": "y ≤ 3", "correct": false, "feedback": "3 é a coordenada x do vértice, não a altura y. Com k = 1 e a = −2, y ≤ 1." },
+          { "id": "e3", "label": "y ≤ −2", "correct": false, "feedback": "−2 é a inclinação, não o máximo. Em x = 3 a saída é 1, então y ≤ 1." }
         ]
       },
       {
@@ -250,6 +269,8 @@
         "fala": "Última. Separe em 2x − 4 = 6 e 2x − 4 = −6.",
         "options": [
           { "id": "e", "label": "1 e 5", "correct": false, "feedback": "Cuidado no sinal: 2x − 4 = −6 dá 2x = −2, x = −1. As soluções são −1 e 5." },
+          { "id": "e2", "label": "−5 e 1", "correct": false, "feedback": "Testando 1: |2 − 4| = 2 ≠ 6. De 2x − 4 = ±6 saem −1 e 5." },
+          { "id": "e3", "label": "−2 e 10", "correct": false, "feedback": "Você esqueceu de dividir por 2: 2x = 10 dá x = 5 e 2x = −2 dá x = −1." },
           { "id": "c", "label": "−1 e 5", "correct": true, "feedback": "Isso. 2x − 4 = 6 dá x = 5, e 2x − 4 = −6 dá x = −1." }
         ]
       }

@@ -285,6 +285,18 @@
             "label": "0",
             "correct": true,
             "feedback": "Certo: resposta 0; conferência: Denominador x=0 em x=0."
+          },
+          {
+            "id": "f1-funcao-racional-e2",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Em x = −1 temos 1/(−1) = −1, válido. Só é proibido zerar o denominador: x = 0."
+          },
+          {
+            "id": "f1-funcao-racional-e3",
+            "label": "Nenhum",
+            "correct": false,
+            "feedback": "Não existe divisão por zero. O valor x = 0 zera o denominador e é proibido."
           }
         ]
       },
@@ -299,10 +311,22 @@
             "feedback": "Resposta: −1/2; Ignora o sinal do denominador; conferência: 1÷(−2)=−1/2."
           },
           {
+            "id": "f2-funcao-racional-e2",
+            "label": "−2",
+            "correct": false,
+            "feedback": "−2 é o oposto de 2, não o inverso multiplicativo. 1 ÷ (−2) = −1/2."
+          },
+          {
             "id": "f2-funcao-racional-c",
             "label": "−1/2",
             "correct": true,
             "feedback": "Certo: resposta −1/2; conferência: 1÷(−2)=−1/2."
+          },
+          {
+            "id": "f2-funcao-racional-e3",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você inverteu a fração e trocou o sinal. O certo é −1/2; 1 ÷ (−2) = −1/2."
           }
         ]
       },
@@ -311,16 +335,28 @@
         "prompt": "Assíntota vertical de 1/(x−3)?",
         "options": [
           {
+            "id": "f3-funcao-racional-c",
+            "label": "x=3",
+            "correct": true,
+            "feedback": "Certo: resposta x=3; conferência: x−3=0 ⇒ x=3."
+          },
+          {
             "id": "f3-funcao-racional-e",
             "label": "x=−3",
             "correct": false,
             "feedback": "Resposta: x=3; Erra sinal ao resolver x−3=0; conferência: x−3=0 ⇒ x=3."
           },
           {
-            "id": "f3-funcao-racional-c",
-            "label": "x=3",
-            "correct": true,
-            "feedback": "Certo: resposta x=3; conferência: x−3=0 ⇒ x=3."
+            "id": "f3-funcao-racional-e2",
+            "label": "x=0",
+            "correct": false,
+            "feedback": "x = 0 é a assíntota de 1/x; aqui o denominador zera em x = 3."
+          },
+          {
+            "id": "f3-funcao-racional-e3",
+            "label": "y=3",
+            "correct": false,
+            "feedback": "Assíntota vertical é uma reta x = constante, não y. O certo é x = 3."
           }
         ]
       },
@@ -335,10 +371,22 @@
             "feedback": "Resposta: x≠−2; Erra sinal da raiz do denominador; conferência: x+2=0 ⇒ x=−2; exclua."
           },
           {
+            "id": "f4-funcao-racional-e2",
+            "label": "x≠0",
+            "correct": false,
+            "feedback": "Em x = 0 temos 1/2, válido. O denominador x + 2 zera em x = −2, então x ≠ −2."
+          },
+          {
             "id": "f4-funcao-racional-c",
             "label": "x≠−2",
             "correct": true,
             "feedback": "Certo: resposta x≠−2; conferência: x+2=0 ⇒ x=−2; exclua."
+          },
+          {
+            "id": "f4-funcao-racional-e3",
+            "label": "x>−2",
+            "correct": false,
+            "feedback": "Denominador só proíbe zero, não negativos. O domínio é x ≠ −2."
           }
         ]
       }
@@ -359,6 +407,18 @@
             "label": "3/2",
             "correct": true,
             "feedback": "Certo: resposta 3/2; conferência: 1/2+2/2=3/2."
+          },
+          {
+            "id": "m1-funcao-racional-e2",
+            "label": "2/3",
+            "correct": false,
+            "feedback": "Você somou numeradores e denominadores (1+1)/(2+1). O certo é 3/2; 1/2 + 2/2 = 3/2."
+          },
+          {
+            "id": "m1-funcao-racional-e3",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "Você somou 1 ao denominador em vez de igualar denominadores. 1/2 + 2/2 = 3/2."
           }
         ]
       },
@@ -371,6 +431,18 @@
             "label": "y=0",
             "correct": false,
             "feedback": "Resposta: y=2; Ignora a translação vertical; conferência: 1/x→0; então y→2."
+          },
+          {
+            "id": "m2-funcao-racional-e2",
+            "label": "y=−2",
+            "correct": false,
+            "feedback": "A translação vertical é +2, não −2. Como 1/x → 0, y → 2."
+          },
+          {
+            "id": "m2-funcao-racional-e3",
+            "label": "x=2",
+            "correct": false,
+            "feedback": "Assíntota horizontal é uma reta y = constante. Como 1/x → 0, o certo é y = 2."
           },
           {
             "id": "m2-funcao-racional-c",
@@ -395,6 +467,18 @@
             "label": "1",
             "correct": true,
             "feedback": "Certo: resposta 1; conferência: Para x≠1, razão de iguais vale 1."
+          },
+          {
+            "id": "m3-funcao-racional-e2",
+            "label": "x−1",
+            "correct": false,
+            "feedback": "Numerador e denominador são iguais e não nulos (x ≠ 1), então a razão vale 1."
+          },
+          {
+            "id": "m3-funcao-racional-e3",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Os sinais são idênticos no numerador e denominador. Para x ≠ 1, a razão é 1."
           }
         ]
       }
@@ -411,10 +495,22 @@
             "feedback": "Resposta: x≠2; Exclui zero do numerador, não do denominador; conferência: x−2=0 ⇒ x=2 proibido."
           },
           {
+            "id": "d1-funcao-racional-e2",
+            "label": "x≠−2",
+            "correct": false,
+            "feedback": "x − 2 zera em x = 2, não em −2. O domínio é x ≠ 2."
+          },
+          {
             "id": "d1-funcao-racional-c",
             "label": "x≠2",
             "correct": true,
             "feedback": "Certo: resposta x≠2; conferência: x−2=0 ⇒ x=2 proibido."
+          },
+          {
+            "id": "d1-funcao-racional-e3",
+            "label": "x≠−1 e x≠2",
+            "correct": false,
+            "feedback": "Zerar o numerador é permitido (dá 0). Só proibimos x − 2 = 0, logo x ≠ 2."
           }
         ]
       },
@@ -433,6 +529,18 @@
             "label": "1",
             "correct": true,
             "feedback": "Certo: resposta 1; conferência: 2/(3−1)=1."
+          },
+          {
+            "id": "d2-funcao-racional-e2",
+            "label": "2/3",
+            "correct": false,
+            "feedback": "Você ignorou o −1 no denominador. Em x = 3: 2/(3 − 1) = 2/2 = 1."
+          },
+          {
+            "id": "d2-funcao-racional-e3",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "2 dividido por 3 − 1 = 2 dá 1, não 1/2. O certo é 1."
           }
         ]
       },
@@ -445,6 +553,18 @@
             "label": "y=2",
             "correct": false,
             "feedback": "Resposta: y=−2; Inverte sinal da constante; conferência: 1/(x+1)→0; logo y→−2."
+          },
+          {
+            "id": "d3-funcao-racional-e2",
+            "label": "y=0",
+            "correct": false,
+            "feedback": "Faltou a translação −2: quando 1/(x + 1) → 0, sobra y = −2."
+          },
+          {
+            "id": "d3-funcao-racional-e3",
+            "label": "x=−1",
+            "correct": false,
+            "feedback": "x = −1 é a assíntota vertical. A horizontal vem de 1/(x + 1) → 0: y = −2."
           },
           {
             "id": "d3-funcao-racional-c",
@@ -465,10 +585,22 @@
             "feedback": "Resposta: (2;1); Confunde valor removido com zero; conferência: Fora de x=2, f=1; falta (2;1)."
           },
           {
+            "id": "d4-funcao-racional-e2",
+            "label": "(−2;1)",
+            "correct": false,
+            "feedback": "O ponto excluído é x = 2, onde x − 2 zera. O buraco fica em (2; 1)."
+          },
+          {
             "id": "d4-funcao-racional-c",
             "label": "(2;1)",
             "correct": true,
             "feedback": "Certo: resposta (2;1); conferência: Fora de x=2, f=1; falta (2;1)."
+          },
+          {
+            "id": "d4-funcao-racional-e3",
+            "label": "(1;2)",
+            "correct": false,
+            "feedback": "Você trocou as coordenadas x e y. Em x = 2 a curva simplificada valeria 1: (2; 1)."
           }
         ]
       },
@@ -477,16 +609,28 @@
         "prompt": "Resolva 3/(x−1)=1.",
         "options": [
           {
+            "id": "d5-funcao-racional-c",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: resposta 4; conferência: 3=x−1 ⇒ x=4."
+          },
+          {
             "id": "d5-funcao-racional-e",
             "label": "2",
             "correct": false,
             "feedback": "Resposta: 4; Erra o sinal, fazendo 3=x+1; conferência: 3=x−1 ⇒ x=4."
           },
           {
-            "id": "d5-funcao-racional-c",
-            "label": "4",
-            "correct": true,
-            "feedback": "Certo: resposta 4; conferência: 3=x−1 ⇒ x=4."
+            "id": "d5-funcao-racional-e2",
+            "label": "3",
+            "correct": false,
+            "feedback": "Em x = 3 temos 3/(3 − 1) = 3/2 ≠ 1. De 3 = x − 1 sai x = 4."
+          },
+          {
+            "id": "d5-funcao-racional-e3",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Você trocou o sinal para −3. De 3 = x − 1, somando 1 temos x = 4."
           }
         ]
       }

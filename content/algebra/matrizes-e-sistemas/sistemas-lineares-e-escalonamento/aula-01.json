@@ -382,6 +382,18 @@
             "label": "Impossibilidade",
             "correct": true,
             "feedback": "Certo: Impossibilidade; 0≠1."
+          },
+          {
+            "id": "f1-sistemas-lineares-e-escalonamento-erro2",
+            "label": "Solução única",
+            "correct": false,
+            "feedback": "Solução única exige pivô em cada incógnita, sem contradição. O certo é Impossibilidade; 0≠1."
+          },
+          {
+            "id": "f1-sistemas-lineares-e-escalonamento-erro3",
+            "label": "Infinitas soluções",
+            "correct": false,
+            "feedback": "Infinitas soluções ocorrem com 0=0, não com 0=1. O certo é Impossibilidade; 0≠1."
           }
         ]
       },
@@ -452,10 +464,22 @@
             "feedback": "Você trocou as incógnitas. O certo é (1;2); L₂−L₁: x=1; y=2."
           },
           {
+            "id": "m1-sistemas-lineares-e-escalonamento-erro2",
+            "label": "(1;1)",
+            "correct": false,
+            "feedback": "Não satisfez x+y=3 (1+1=2). O certo é (1;2); L₂−L₁: x=1; y=2."
+          },
+          {
             "id": "m1-sistemas-lineares-e-escalonamento-certa",
             "label": "(1;2)",
             "correct": true,
             "feedback": "Certo: (1;2); L₂−L₁: x=1; y=2."
+          },
+          {
+            "id": "m1-sistemas-lineares-e-escalonamento-erro3",
+            "label": "(−1;4)",
+            "correct": false,
+            "feedback": "Você fez L₁−L₂ e errou o sinal de x. O certo é (1;2); L₂−L₁: x=1; y=2."
           }
         ]
       },
@@ -474,6 +498,18 @@
             "label": "Uma",
             "correct": false,
             "feedback": "Você contou duas equações dependentes como independentes. O certo é Infinitas; L₂−2L₁ dá 0=0."
+          },
+          {
+            "id": "m2-sistemas-lineares-e-escalonamento-erro2",
+            "label": "Nenhuma",
+            "correct": false,
+            "feedback": "Nenhuma solução ocorreria se desse 0=1, mas dá 0=0. O certo é Infinitas; L₂−2L₁ dá 0=0."
+          },
+          {
+            "id": "m2-sistemas-lineares-e-escalonamento-erro3",
+            "label": "Duas",
+            "correct": false,
+            "feedback": "Sistema linear nunca tem exatamente duas soluções. O certo é Infinitas; L₂−2L₁ dá 0=0."
           }
         ]
       },
@@ -486,6 +522,18 @@
             "label": "Infinitas",
             "correct": false,
             "feedback": "Você ignorou a última coluna. O certo é Nenhuma; L₂−2L₁ dá 0=1."
+          },
+          {
+            "id": "m3-sistemas-lineares-e-escalonamento-erro2",
+            "label": "Uma",
+            "correct": false,
+            "feedback": "As equações têm coeficientes proporcionais, sem interseção única. O certo é Nenhuma; L₂−2L₁ dá 0=1."
+          },
+          {
+            "id": "m3-sistemas-lineares-e-escalonamento-erro3",
+            "label": "Duas",
+            "correct": false,
+            "feedback": "Sistema linear nunca tem exatamente duas soluções. O certo é Nenhuma; L₂−2L₁ dá 0=1."
           },
           {
             "id": "m3-sistemas-lineares-e-escalonamento-certa",
@@ -503,16 +551,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d1-sistemas-lineares-e-escalonamento-erro",
+            "label": "(1;1)",
+            "correct": false,
+            "feedback": "Você esqueceu o coeficiente 2. O certo é (0,5;1); 2x=1; x=1/2."
+          },
+          {
             "id": "d1-sistemas-lineares-e-escalonamento-certa",
             "label": "(0,5;1)",
             "correct": true,
             "feedback": "Certo: (0,5;1); 2x=1; x=1/2."
           },
           {
-            "id": "d1-sistemas-lineares-e-escalonamento-erro",
-            "label": "(1;1)",
+            "id": "d1-sistemas-lineares-e-escalonamento-erro2",
+            "label": "(1,5;1)",
             "correct": false,
-            "feedback": "Você esqueceu o coeficiente 2. O certo é (0,5;1); 2x=1; x=1/2."
+            "feedback": "Você somou 1 ao 2 em vez de subtrair (2x=3). O certo é (0,5;1); 2x=1; x=1/2."
+          },
+          {
+            "id": "d1-sistemas-lineares-e-escalonamento-erro3",
+            "label": "(2;1)",
+            "correct": false,
+            "feedback": "Você não subtraiu y=1 nem dividiu por 2. O certo é (0,5;1); 2x=1; x=1/2."
           }
         ]
       },
@@ -528,10 +588,22 @@
             "feedback": "Você escolheu uma variável determinada. O certo é z; x=1; y=2−z."
           },
           {
+            "id": "d2-sistemas-lineares-e-escalonamento-erro2",
+            "label": "Nenhuma",
+            "correct": false,
+            "feedback": "Com 2 equações e 3 variáveis, sobra uma variável livre. O certo é z; x=1; y=2−z."
+          },
+          {
             "id": "d2-sistemas-lineares-e-escalonamento-certa",
             "label": "z",
             "correct": true,
             "feedback": "Certo: z; x=1; y=2−z."
+          },
+          {
+            "id": "d2-sistemas-lineares-e-escalonamento-erro3",
+            "label": "Todas",
+            "correct": false,
+            "feedback": "A variável x é fixa (x=1), logo nem todas são livres. O certo é z; x=1; y=2−z."
           }
         ]
       },
@@ -551,6 +623,18 @@
             "label": "(3;2;1)",
             "correct": false,
             "feedback": "Você leu os termos independentes como incógnitas. O certo é (1;1;1); z=1; y=1; x=1."
+          },
+          {
+            "id": "d3-sistemas-lineares-e-escalonamento-erro2",
+            "label": "(1;2;1)",
+            "correct": false,
+            "feedback": "Você esqueceu de subtrair z=1 em y+z=2. O certo é (1;1;1); z=1; y=1; x=1."
+          },
+          {
+            "id": "d3-sistemas-lineares-e-escalonamento-erro3",
+            "label": "(0;1;1)",
+            "correct": false,
+            "feedback": "Não satisfez x+y+z=3 (0+1+1=2). O certo é (1;1;1); z=1; y=1; x=1."
           }
         ]
       },
@@ -566,6 +650,18 @@
             "feedback": "Você confundiu coeficiente com termo independente. O certo é 2; L₂−2L₁: (k−2)y=0."
           },
           {
+            "id": "d4-sistemas-lineares-e-escalonamento-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Com k=1, as retas se cruzam em (2;0) e dão solução única. O certo é 2; L₂−2L₁: (k−2)y=0."
+          },
+          {
+            "id": "d4-sistemas-lineares-e-escalonamento-erro3",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Com k=−2, as retas não são proporcionais e dão solução única. O certo é 2; L₂−2L₁: (k−2)y=0."
+          },
+          {
             "id": "d4-sistemas-lineares-e-escalonamento-certa",
             "label": "2",
             "correct": true,
@@ -579,16 +675,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d5-sistemas-lineares-e-escalonamento-erro",
+            "label": "(1;1;1) apenas",
+            "correct": false,
+            "feedback": "Você fixou sem motivo a variável livre. O certo é (3−2t;t;t), t∈R; z=t; y=t; x=3−2t."
+          },
+          {
             "id": "d5-sistemas-lineares-e-escalonamento-certa",
             "label": "(3−2t;t;t), t∈R",
             "correct": true,
             "feedback": "Certo: (3−2t;t;t), t∈R; z=t; y=t; x=3−2t."
           },
           {
-            "id": "d5-sistemas-lineares-e-escalonamento-erro",
-            "label": "(1;1;1) apenas",
+            "id": "d5-sistemas-lineares-e-escalonamento-erro2",
+            "label": "(3;t;t), t∈R",
             "correct": false,
-            "feedback": "Você fixou sem motivo a variável livre. O certo é (3−2t;t;t), t∈R; z=t; y=t; x=3−2t."
+            "feedback": "Você esqueceu de subtrair y+z=2t ao isolar x. O certo é (3−2t;t;t), t∈R; z=t; y=t; x=3−2t."
+          },
+          {
+            "id": "d5-sistemas-lineares-e-escalonamento-erro3",
+            "label": "(3−t;−t;t), t∈R",
+            "correct": false,
+            "feedback": "Você errou o sinal de y ao passar z em y−z=0. O certo é (3−2t;t;t), t∈R."
           }
         ]
       }

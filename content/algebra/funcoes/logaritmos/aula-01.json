@@ -169,15 +169,19 @@
         "prompt": "Quanto vale log₂(8)?",
         "options": [
           { "id": "e", "label": "8", "correct": false, "feedback": "8 é o argumento. O log procura o expoente: 2³ = 8, então log₂(8) = 3." },
-          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. 2³ = 8, então log₂(8) = 3." }
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. 2³ = 8, então log₂(8) = 3." },
+          { "id": "e2", "label": "4", "correct": false, "feedback": "4 é 8 ÷ 2. O log procura o expoente: 2³ = 8, então log₂(8) = 3." },
+          { "id": "e3", "label": "2", "correct": false, "feedback": "2 é a base, não o expoente. Como 2³ = 8, log₂(8) = 3." }
         ]
       },
       {
         "id": "f2-logaritmos",
         "prompt": "Quanto vale log₅(1)?",
         "options": [
+          { "id": "e", "label": "1", "correct": false, "feedback": "1 é o argumento. Procure o expoente: 5⁰ = 1, então log₅(1) = 0." },
+          { "id": "e2", "label": "5", "correct": false, "feedback": "5 é a base; 5⁵ não vale 1. O expoente que dá 1 é 0, pois 5⁰ = 1." },
           { "id": "c", "label": "0", "correct": true, "feedback": "Isso. 5⁰ = 1, então log₅(1) = 0: o caso neutro." },
-          { "id": "e", "label": "1", "correct": false, "feedback": "1 é o argumento. Procure o expoente: 5⁰ = 1, então log₅(1) = 0." }
+          { "id": "e3", "label": "1/5", "correct": false, "feedback": "1/5 não é o expoente de 5⁰ = 1. Como 5⁰ = 1, log₅(1) = 0." }
         ]
       },
       {
@@ -185,7 +189,9 @@
         "prompt": "log₃(9) = 2 equivale a qual potência?",
         "options": [
           { "id": "e", "label": "3·2 = 9", "correct": false, "feedback": "O log dá um expoente, não um fator: log₃(9) = 2 significa 3² = 9." },
-          { "id": "c", "label": "3² = 9", "correct": true, "feedback": "Isso. Pela definição, log₃(9) = 2 equivale a 3² = 9." }
+          { "id": "c", "label": "3² = 9", "correct": true, "feedback": "Isso. Pela definição, log₃(9) = 2 equivale a 3² = 9." },
+          { "id": "e2", "label": "2³ = 9", "correct": false, "feedback": "Você trocou base e expoente (2³ = 8 ≠ 9). A base do log é 3: 3² = 9." },
+          { "id": "e3", "label": "9² = 3", "correct": false, "feedback": "A base da potência é a base do log (3), não 9. O certo é 3² = 9." }
         ]
       },
       {
@@ -193,7 +199,9 @@
         "prompt": "Qual argumento está no domínio de log₂(x)?",
         "options": [
           { "id": "c", "label": "1/2", "correct": true, "feedback": "Isso. 1/2 > 0, e o domínio exige argumento positivo." },
-          { "id": "e", "label": "0", "correct": false, "feedback": "Zero não está no domínio: o argumento precisa ser positivo. Serve 1/2, pois 1/2 > 0." }
+          { "id": "e", "label": "0", "correct": false, "feedback": "Zero não está no domínio: o argumento precisa ser positivo. Serve 1/2, pois 1/2 > 0." },
+          { "id": "e2", "label": "−2", "correct": false, "feedback": "Argumento negativo não existe nos reais para log. O certo é 1/2, pois 1/2 > 0." },
+          { "id": "e3", "label": "−1/2", "correct": false, "feedback": "Mesmo em fração, o argumento não pode ser negativo. O certo é 1/2." }
         ]
       }
     ],
@@ -203,15 +211,19 @@
         "prompt": "Quanto vale log₂(4) + log₂(2)?",
         "options": [
           { "id": "e", "label": "6", "correct": false, "feedback": "6 soma os argumentos, 4 + 2. Some os expoentes: 2 + 1 = 3, que também é log₂(8)." },
-          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. log₂(4) = 2 e log₂(2) = 1, então 2 + 1 = 3." }
+          { "id": "e2", "label": "8", "correct": false, "feedback": "8 é 4·2, o argumento do produto; falta tirar o log₂(8) = 3." },
+          { "id": "c", "label": "3", "correct": true, "feedback": "Isso. log₂(4) = 2 e log₂(2) = 1, então 2 + 1 = 3." },
+          { "id": "e3", "label": "2", "correct": false, "feedback": "Soma de logs soma os expoentes, não multiplica. 2 + 1 = 3." }
         ]
       },
       {
         "id": "m2-logaritmos",
         "prompt": "Qual destas bases não serve para um logaritmo?",
         "options": [
+          { "id": "e", "label": "2", "correct": false, "feedback": "A base 2 serve. A inválida é 1: 1ʸ = 1 para todo y, sem inversa." },
           { "id": "c", "label": "1", "correct": true, "feedback": "Isso. 1ʸ = 1 para todo y, então não há inversa: a base precisa ser diferente de 1." },
-          { "id": "e", "label": "2", "correct": false, "feedback": "A base 2 serve. A inválida é 1: 1ʸ = 1 para todo y, sem inversa." }
+          { "id": "e2", "label": "1/2", "correct": false, "feedback": "1/2 é positiva e diferente de 1, logo serve como base. A inválida é 1." },
+          { "id": "e3", "label": "10", "correct": false, "feedback": "10 é positiva e diferente de 1, muito usada no log decimal. A inválida é 1." }
         ]
       },
       {
@@ -219,6 +231,8 @@
         "prompt": "Quanto vale log₃(27)?",
         "options": [
           { "id": "e", "label": "9", "correct": false, "feedback": "9 é 27 ÷ 3. Procure o expoente: 3³ = 27, então log₃(27) = 3." },
+          { "id": "e2", "label": "24", "correct": false, "feedback": "Você subtraiu 27 − 3 em vez de achar o expoente. Como 3³ = 27, log₃(27) = 3." },
+          { "id": "e3", "label": "4", "correct": false, "feedback": "3⁴ vale 81, não 27. Como 3³ = 27, o certo é 3." },
           { "id": "c", "label": "3", "correct": true, "feedback": "Isso. 3·3·3 = 27, então o expoente é 3." }
         ]
       }
@@ -229,8 +243,10 @@
         "prompt": "Resolva log₂(x) = 4.",
         "fala": "Volte pela definição: log₂(x) = 4 equivale a 2⁴ = x.",
         "options": [
+          { "id": "e", "label": "8", "correct": false, "feedback": "8 usa 2³. Com log₂(x) = 4, x = 2⁴ = 16." },
           { "id": "c", "label": "16", "correct": true, "feedback": "Isso. log₂(x) = 4 equivale a x = 2⁴ = 16." },
-          { "id": "e", "label": "8", "correct": false, "feedback": "8 usa 2³. Com log₂(x) = 4, x = 2⁴ = 16." }
+          { "id": "e2", "label": "2", "correct": false, "feedback": "2⁴ vale 16, não 2. Pela definição, log₂(x) = 4 dá x = 2⁴ = 16." },
+          { "id": "e3", "label": "6", "correct": false, "feedback": "Você somou 2 + 4 em vez de calcular 2⁴. O certo é 16; 2⁴ = 16." }
         ]
       },
       {
@@ -239,7 +255,9 @@
         "fala": "Escreva 0,1 como potência de 10.",
         "options": [
           { "id": "e", "label": "1", "correct": false, "feedback": "10¹ = 10, não 0,1. Como 10⁻¹ = 0,1, o log vale −1." },
-          { "id": "c", "label": "−1", "correct": true, "feedback": "Isso. 10⁻¹ = 1/10 = 0,1, então o expoente é −1." }
+          { "id": "e2", "label": "0", "correct": false, "feedback": "10⁰ vale 1, não 0,1. Como 0,1 = 1/10 = 10⁻¹, log₁₀(0,1) = −1." },
+          { "id": "c", "label": "−1", "correct": true, "feedback": "Isso. 10⁻¹ = 1/10 = 0,1, então o expoente é −1." },
+          { "id": "e3", "label": "−10", "correct": false, "feedback": "O log é o expoente, não −10. Como 10⁻¹ = 0,1, o certo é −1." }
         ]
       },
       {
@@ -248,7 +266,9 @@
         "fala": "O que está dentro do log precisa ser positivo.",
         "options": [
           { "id": "c", "label": "x > 2", "correct": true, "feedback": "Isso. x − 2 > 0 dá x > 2." },
-          { "id": "e", "label": "x ≥ 2", "correct": false, "feedback": "Com x = 2 o argumento vira 0, fora do domínio. É preciso x − 2 > 0, ou seja, x > 2." }
+          { "id": "e", "label": "x ≥ 2", "correct": false, "feedback": "Com x = 2 o argumento vira 0, fora do domínio. É preciso x − 2 > 0, ou seja, x > 2." },
+          { "id": "e2", "label": "x > −2", "correct": false, "feedback": "Você trocou o sinal: x − 2 > 0 dá x > 2, não −2." },
+          { "id": "e3", "label": "x ≠ 2", "correct": false, "feedback": "Para x = 1 o argumento fica negativo (−1). Log exige x − 2 > 0, logo x > 2." }
         ]
       },
       {
@@ -257,6 +277,8 @@
         "fala": "Ache x primeiro e depois o expoente de 4x.",
         "options": [
           { "id": "e", "label": "12", "correct": false, "feedback": "12 multiplica 4 por 3. Aqui x = 8, 4x = 32 = 2⁵, e log₂(32) = 5." },
+          { "id": "e2", "label": "6", "correct": false, "feedback": "Log do produto soma os logs, não multiplica: 2 + 3 = 5, não 6." },
+          { "id": "e3", "label": "7", "correct": false, "feedback": "Você somou 4 + 3 em vez de usar log₂(4) = 2. O certo é 5; 2 + 3 = 5." },
           { "id": "c", "label": "5", "correct": true, "feedback": "Isso. x = 2³ = 8, então 4x = 32 = 2⁵ e log₂(32) = 5." }
         ]
       },
@@ -265,8 +287,10 @@
         "prompt": "Resolva log₃(x) + log₃(3) = 2.",
         "fala": "Última. Calcule log₃(3) primeiro e isole log₃(x).",
         "options": [
+          { "id": "e", "label": "9", "correct": false, "feedback": "9 esquece o log₃(3) = 1. Fica log₃(x) + 1 = 2, então log₃(x) = 1 e x = 3." },
           { "id": "c", "label": "3", "correct": true, "feedback": "Isso. log₃(3) = 1, então log₃(x) = 1 e x = 3." },
-          { "id": "e", "label": "9", "correct": false, "feedback": "9 esquece o log₃(3) = 1. Fica log₃(x) + 1 = 2, então log₃(x) = 1 e x = 3." }
+          { "id": "e2", "label": "1", "correct": false, "feedback": "1 é o valor de log₃(x), não de x. De log₃(x) = 1 sai x = 3¹ = 3." },
+          { "id": "e3", "label": "6", "correct": false, "feedback": "Soma de logs multiplica argumentos (3x = 9), não soma. O certo é 3." }
         ]
       }
     ],

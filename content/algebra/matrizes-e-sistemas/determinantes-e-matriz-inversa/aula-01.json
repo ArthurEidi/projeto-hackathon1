@@ -292,6 +292,18 @@
             "label": "1",
             "correct": true,
             "feedback": "Certo: 1; 1·1−0·0=1."
+          },
+          {
+            "id": "f1-determinantes-e-matriz-inversa-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você somou os elementos da diagonal (1+1). O certo é 1; 1·1−0·0=1."
+          },
+          {
+            "id": "f1-determinantes-e-matriz-inversa-erro3",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Você trocou o sinal do produto principal. O certo é 1; 1·1−0·0=1."
           }
         ]
       },
@@ -336,16 +348,28 @@
         "prompt": "Qual é a inversa da identidade?",
         "options": [
           {
+            "id": "f4-determinantes-e-matriz-inversa-erro",
+            "label": "Matriz nula",
+            "correct": false,
+            "feedback": "A matriz nula não recupera a entrada. O certo é A própria identidade; I·I=I."
+          },
+          {
+            "id": "f4-determinantes-e-matriz-inversa-erro2",
+            "label": "−I",
+            "correct": false,
+            "feedback": "Negar a identidade dá I·(−I)=−I, não I. O certo é A própria identidade; I·I=I."
+          },
+          {
             "id": "f4-determinantes-e-matriz-inversa-certa",
             "label": "A própria identidade",
             "correct": true,
             "feedback": "Certo: A própria identidade; I·I=I."
           },
           {
-            "id": "f4-determinantes-e-matriz-inversa-erro",
-            "label": "Matriz nula",
+            "id": "f4-determinantes-e-matriz-inversa-erro3",
+            "label": "2I",
             "correct": false,
-            "feedback": "A matriz nula não recupera a entrada. O certo é A própria identidade; I·I=I."
+            "feedback": "Dobrar a diagonal dá I·(2I)=2I, não I. O certo é A própria identidade; I·I=I."
           }
         ]
       }
@@ -356,16 +380,28 @@
         "prompt": "Calcule det [[1,2],[0,3]].",
         "options": [
           {
+            "id": "m1-determinantes-e-matriz-inversa-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; 1·3−2·0=3."
+          },
+          {
             "id": "m1-determinantes-e-matriz-inversa-erro",
             "label": "5",
             "correct": false,
             "feedback": "Você somou entradas em vez de cruzar produtos. O certo é 3; 1·3−2·0=3."
           },
           {
-            "id": "m1-determinantes-e-matriz-inversa-certa",
-            "label": "3",
-            "correct": true,
-            "feedback": "Certo: 3; 1·3−2·0=3."
+            "id": "m1-determinantes-e-matriz-inversa-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você subtraiu o elemento 2 sem multiplicar por 0 (3−2). O certo é 3; 1·3−2·0=3."
+          },
+          {
+            "id": "m1-determinantes-e-matriz-inversa-erro3",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Você inverteu a subtração (2·0−1·3). O certo é 3; 1·3−2·0=3."
           }
         ]
       },
@@ -374,16 +410,28 @@
         "prompt": "Qual é a inversa de diag(2;1)?",
         "options": [
           {
-            "id": "m2-determinantes-e-matriz-inversa-certa",
-            "label": "diag(0,5;1)",
-            "correct": true,
-            "feedback": "Certo: diag(0,5;1); 2·0,5=1."
-          },
-          {
             "id": "m2-determinantes-e-matriz-inversa-erro",
             "label": "diag(−2;−1)",
             "correct": false,
             "feedback": "Negar entradas não desfaz uma escala. O certo é diag(0,5;1); 2·0,5=1."
+          },
+          {
+            "id": "m2-determinantes-e-matriz-inversa-erro2",
+            "label": "diag(2;1)",
+            "correct": false,
+            "feedback": "A própria matriz amplia novamente por 2. O certo é diag(0,5;1); 2·0,5=1."
+          },
+          {
+            "id": "m2-determinantes-e-matriz-inversa-erro3",
+            "label": "diag(1;0,5)",
+            "correct": false,
+            "feedback": "Você trocou as posições da diagonal na inversa. O certo é diag(0,5;1); 2·0,5=1."
+          },
+          {
+            "id": "m2-determinantes-e-matriz-inversa-certa",
+            "label": "diag(0,5;1)",
+            "correct": true,
+            "feedback": "Certo: diag(0,5;1); 2·0,5=1."
           }
         ]
       },
@@ -402,6 +450,18 @@
             "label": "−1",
             "correct": true,
             "feedback": "Certo: −1; 0·0−1·1=−1."
+          },
+          {
+            "id": "m3-determinantes-e-matriz-inversa-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você calculou só a diagonal principal (0·0). O certo é −1; 0·0−1·1=−1."
+          },
+          {
+            "id": "m3-determinantes-e-matriz-inversa-erro3",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você somou os elementos da diagonal secundária (1+1). O certo é −1; 0·0−1·1=−1."
           }
         ]
       }
@@ -413,16 +473,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d1-determinantes-e-matriz-inversa-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você igualou entradas em vez de zerar o determinante. O certo é 4; det=k−4=0."
+          },
+          {
+            "id": "d1-determinantes-e-matriz-inversa-erro2",
+            "label": "−4",
+            "correct": false,
+            "feedback": "Você somou os produtos (k+4=0) em vez de subtrair. O certo é 4; det=k−4=0."
+          },
+          {
             "id": "d1-determinantes-e-matriz-inversa-certa",
             "label": "4",
             "correct": true,
             "feedback": "Certo: 4; det=k−4=0."
           },
           {
-            "id": "d1-determinantes-e-matriz-inversa-erro",
-            "label": "2",
+            "id": "d1-determinantes-e-matriz-inversa-erro3",
+            "label": "0",
             "correct": false,
-            "feedback": "Você igualou entradas em vez de zerar o determinante. O certo é 4; det=k−4=0."
+            "feedback": "Você zerou o elemento k em vez do determinante. O certo é 4; det=k−4=0."
           }
         ]
       },
@@ -432,16 +504,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d2-determinantes-e-matriz-inversa-certa",
+            "label": "2",
+            "correct": true,
+            "feedback": "Certo: 2; ∣−2∣=2."
+          },
+          {
             "id": "d2-determinantes-e-matriz-inversa-erro",
             "label": "−2",
             "correct": false,
             "feedback": "Você usou área orientada como área geométrica. O certo é 2; ∣−2∣=2."
           },
           {
-            "id": "d2-determinantes-e-matriz-inversa-certa",
-            "label": "2",
-            "correct": true,
-            "feedback": "Certo: 2; ∣−2∣=2."
+            "id": "d2-determinantes-e-matriz-inversa-erro2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você elevou o determinante ao quadrado ((−2)²). O certo é 2; ∣−2∣=2."
+          },
+          {
+            "id": "d2-determinantes-e-matriz-inversa-erro3",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Você inverteu o valor em vez de tomar o módulo. O certo é 2; ∣−2∣=2."
           }
         ]
       },
@@ -451,16 +535,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
-            "id": "d3-determinantes-e-matriz-inversa-certa",
-            "label": "[[1,−1],[0,1]]",
-            "correct": true,
-            "feedback": "Certo: [[1,−1],[0,1]]; (x+y;y)→(x;y) subtraindo y."
-          },
-          {
             "id": "d3-determinantes-e-matriz-inversa-erro",
             "label": "[[−1,−1],[0,−1]]",
             "correct": false,
             "feedback": "Você negou toda a matriz. O certo é [[1,−1],[0,1]]; (x+y;y)→(x;y) subtraindo y."
+          },
+          {
+            "id": "d3-determinantes-e-matriz-inversa-erro2",
+            "label": "[[1,0],[1,1]]",
+            "correct": false,
+            "feedback": "Você transpoz a matriz em vez de inverter o sinal fora da diagonal. O certo é [[1,−1],[0,1]]."
+          },
+          {
+            "id": "d3-determinantes-e-matriz-inversa-erro3",
+            "label": "[[1,1],[0,1]]",
+            "correct": false,
+            "feedback": "A própria matriz dobra o cisalhamento em vez de desfazê-lo. O certo é [[1,−1],[0,1]]."
+          },
+          {
+            "id": "d3-determinantes-e-matriz-inversa-certa",
+            "label": "[[1,−1],[0,1]]",
+            "correct": true,
+            "feedback": "Certo: [[1,−1],[0,1]]; (x+y;y)→(x;y) subtraindo y."
           }
         ]
       },
@@ -480,6 +576,18 @@
             "label": "12",
             "correct": true,
             "feedback": "Certo: 12; 2²·3=12."
+          },
+          {
+            "id": "d4-determinantes-e-matriz-inversa-erro2",
+            "label": "24",
+            "correct": false,
+            "feedback": "Você multiplicou por 2³ como em matriz 3×3. O certo é 12; 2²·3=12."
+          },
+          {
+            "id": "d4-determinantes-e-matriz-inversa-erro3",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você somou 2+3 em vez de multiplicar por 2². O certo é 12; 2²·3=12."
           }
         ]
       },
@@ -489,16 +597,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d5-determinantes-e-matriz-inversa-erro",
+            "label": "(3;2), área 2",
+            "correct": false,
+            "feedback": "Você ignorou o cisalhamento e confundiu lado com área. O certo é (1;2), área 1; x+2=3; x=1; det A=1."
+          },
+          {
+            "id": "d5-determinantes-e-matriz-inversa-erro2",
+            "label": "(5;2), área 1",
+            "correct": false,
+            "feedback": "Você aplicou A direto em (3;2) em vez da inversa (3+2=5). O certo é (1;2), área 1."
+          },
+          {
             "id": "d5-determinantes-e-matriz-inversa-certa",
             "label": "(1;2), área 1",
             "correct": true,
             "feedback": "Certo: (1;2), área 1; x+2=3; x=1; det A=1."
           },
           {
-            "id": "d5-determinantes-e-matriz-inversa-erro",
-            "label": "(3;2), área 2",
+            "id": "d5-determinantes-e-matriz-inversa-erro3",
+            "label": "(1;2), área 2",
             "correct": false,
-            "feedback": "Você ignorou o cisalhamento e confundiu lado com área. O certo é (1;2), área 1; x+2=3; x=1; det A=1."
+            "feedback": "A entrada (1;2) está certa, mas det A=1 preserva área. O certo é (1;2), área 1."
           }
         ]
       }

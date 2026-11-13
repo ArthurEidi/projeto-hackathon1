@@ -282,16 +282,28 @@
         "prompt": "Qual é a soma de 1, 2, 3, 4, 5?",
         "options": [
           {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Somou só quatro termos. São cinco: 15."
+          },
+          {
             "id": "o1",
             "label": "15",
             "correct": true,
             "feedback": "Certo. 1 + 2 + 3 + 4 + 5 = 15."
           },
           {
-            "id": "o2",
-            "label": "10",
+            "id": "o3",
+            "label": "20",
             "correct": false,
-            "feedback": "Somou só quatro termos. São cinco: 15."
+            "feedback": "Multiplicou 5·4 sem dividir por 2. S₅ = 5·(1 + 5) ÷ 2 = 15."
+          },
+          {
+            "id": "o4",
+            "label": "6",
+            "correct": false,
+            "feedback": "Somou só os extremos (1 + 5). São 5 termos: 1 + 2 + 3 + 4 + 5 = 15."
           }
         ]
       },
@@ -306,10 +318,22 @@
             "feedback": "Esqueceu o último termo: 2 + 4 = 6. Com o 8: 14."
           },
           {
+            "id": "o3",
+            "label": "12",
+            "correct": false,
+            "feedback": "Somou 4 + 8 e esqueceu o 2. S₃ = 2 + 4 + 8 = 14."
+          },
+          {
             "id": "o1",
             "label": "14",
             "correct": true,
             "feedback": "Certo. 2 + 4 + 8 = 14."
+          },
+          {
+            "id": "o4",
+            "label": "16",
+            "correct": false,
+            "feedback": "Calculou o próximo termo (8·2) em vez da soma. S₃ = 2 + 4 + 8 = 14."
           }
         ]
       },
@@ -328,6 +352,18 @@
             "label": "16",
             "correct": false,
             "feedback": "16 soma só os extremos. S₅ = 5·16 ÷ 2 = 40."
+          },
+          {
+            "id": "o3",
+            "label": "80",
+            "correct": false,
+            "feedback": "Esqueceu de dividir por 2 na fórmula da PA. S₅ = 5·(2 + 14) ÷ 2 = 40."
+          },
+          {
+            "id": "o4",
+            "label": "32",
+            "correct": false,
+            "feedback": "Usou n = 4 em vez de n = 5 (4·16 ÷ 2). S₅ = 5·16 ÷ 2 = 40."
           }
         ]
       },
@@ -340,6 +376,18 @@
             "label": "8",
             "correct": false,
             "feedback": "8 é só o último termo, não o total. S₄ = 15."
+          },
+          {
+            "id": "o3",
+            "label": "16",
+            "correct": false,
+            "feedback": "Calculou 2⁴ em vez de 2⁴ − 1. S₄ = 1 + 2 + 4 + 8 = 15."
+          },
+          {
+            "id": "o4",
+            "label": "14",
+            "correct": false,
+            "feedback": "Esqueceu o primeiro termo (1). S₄ = 1 + 2 + 4 + 8 = 15."
           },
           {
             "id": "o1",
@@ -366,6 +414,18 @@
             "label": "24",
             "correct": true,
             "feedback": "Certo. 3 + 5 + 7 + 9 = 24."
+          },
+          {
+            "id": "o3",
+            "label": "12",
+            "correct": false,
+            "feedback": "Somou só os extremos (3 + 9). S₄ = 4·(3 + 9) ÷ 2 = 24."
+          },
+          {
+            "id": "o4",
+            "label": "48",
+            "correct": false,
+            "feedback": "Esqueceu de dividir por 2 na fórmula (4·12). S₄ = 48 ÷ 2 = 24."
           }
         ]
       },
@@ -374,16 +434,28 @@
         "prompt": "Na PG com a₁ = 3 e q = 2, quanto vale S₃?",
         "options": [
           {
+            "id": "o2",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é só o terceiro termo. S₃ = 3 + 6 + 12 = 21."
+          },
+          {
+            "id": "o3",
+            "label": "9",
+            "correct": false,
+            "feedback": "Somou só os dois primeiros termos (3 + 6). S₃ = 3 + 6 + 12 = 21."
+          },
+          {
             "id": "o1",
             "label": "21",
             "correct": true,
             "feedback": "Certo. 3 + 6 + 12 = 21."
           },
           {
-            "id": "o2",
-            "label": "12",
+            "id": "o4",
+            "label": "18",
             "correct": false,
-            "feedback": "12 é só o terceiro termo. S₃ = 3 + 6 + 12 = 21."
+            "feedback": "Usou PA de razão 3 (3 + 6 + 9) em vez de PG. S₃ = 3 + 6 + 12 = 21."
           }
         ]
       },
@@ -392,16 +464,28 @@
         "prompt": "Na PA com a₁ = 4, d = 3 e n = 6, qual é S₆?",
         "options": [
           {
+            "id": "o1",
+            "label": "69",
+            "correct": true,
+            "feedback": "Certo. a₆ = 19 e S₆ = 6·(4 + 19) ÷ 2 = 69."
+          },
+          {
             "id": "o2",
             "label": "19",
             "correct": false,
             "feedback": "19 é o sexto termo, não a soma. S₆ = 6·(4 + 19) ÷ 2 = 69."
           },
           {
-            "id": "o1",
-            "label": "69",
-            "correct": true,
-            "feedback": "Certo. a₆ = 19 e S₆ = 6·(4 + 19) ÷ 2 = 69."
+            "id": "o3",
+            "label": "138",
+            "correct": false,
+            "feedback": "Esqueceu de dividir por 2: 6·(4 + 19) = 138. Dividindo por 2 dá 69."
+          },
+          {
+            "id": "o4",
+            "label": "50",
+            "correct": false,
+            "feedback": "Parou em n = 5 (4 + 7 + 10 + 13 + 16). Com a₆ = 19, S₆ = 69."
           }
         ]
       }
@@ -412,16 +496,28 @@
         "prompt": "Qual é S₄ da PG 5, 10, 20, 40?",
         "options": [
           {
-            "id": "o1",
-            "label": "75",
-            "correct": true,
-            "feedback": "Certo. 5 + 10 + 20 + 40 = 75."
-          },
-          {
             "id": "o2",
             "label": "40",
             "correct": false,
             "feedback": "Usou só a última parcela. S₄ = 75."
+          },
+          {
+            "id": "o3",
+            "label": "80",
+            "correct": false,
+            "feedback": "Calculou 5·2⁴ em vez de 5·(2⁴ − 1). S₄ = 5 + 10 + 20 + 40 = 75."
+          },
+          {
+            "id": "o4",
+            "label": "70",
+            "correct": false,
+            "feedback": "Esqueceu de somar o primeiro termo (5). S₄ = 5 + 10 + 20 + 40 = 75."
+          },
+          {
+            "id": "o1",
+            "label": "75",
+            "correct": true,
+            "feedback": "Certo. 5 + 10 + 20 + 40 = 75."
           }
         ]
       },
@@ -440,6 +536,18 @@
             "label": "28",
             "correct": true,
             "feedback": "Certo. 10 + 8 + 6 + 4 = 28."
+          },
+          {
+            "id": "o3",
+            "label": "52",
+            "correct": false,
+            "feedback": "Somou d = +2 em vez de −2 (10 + 12 + 14 + 16). S₄ = 10 + 8 + 6 + 4 = 28."
+          },
+          {
+            "id": "o4",
+            "label": "24",
+            "correct": false,
+            "feedback": "Somou só os três primeiros termos (10 + 8 + 6). Com o 4 dá 28."
           }
         ]
       },
@@ -448,16 +556,28 @@
         "prompt": "Qual é S₃ da PG 2, 6, 18?",
         "options": [
           {
+            "id": "o2",
+            "label": "18",
+            "correct": false,
+            "feedback": "Usou apenas o terceiro termo. S₃ = 26."
+          },
+          {
+            "id": "o3",
+            "label": "54",
+            "correct": false,
+            "feedback": "Calculou o quarto termo (18·3) em vez da soma. S₃ = 2 + 6 + 18 = 26."
+          },
+          {
             "id": "o1",
             "label": "26",
             "correct": true,
             "feedback": "Certo. 2 + 6 + 18 = 26."
           },
           {
-            "id": "o2",
-            "label": "18",
+            "id": "o4",
+            "label": "24",
             "correct": false,
-            "feedback": "Usou apenas o terceiro termo. S₃ = 26."
+            "feedback": "Esqueceu o primeiro termo (2). S₃ = 2 + 6 + 18 = 26."
           }
         ]
       },
@@ -467,16 +587,28 @@
         "fala": "Com q = 1 a fórmula do divisor não serve.",
         "options": [
           {
+            "id": "o1",
+            "label": "20",
+            "correct": true,
+            "feedback": "Certo. Com q = 1, S₅ = 5·4 = 20."
+          },
+          {
             "id": "o2",
             "label": "16",
             "correct": false,
             "feedback": "Contou só quatro termos. Com q = 1 são cinco parcelas de 4: 20."
           },
           {
-            "id": "o1",
-            "label": "20",
-            "correct": true,
-            "feedback": "Certo. Com q = 1, S₅ = 5·4 = 20."
+            "id": "o3",
+            "label": "4",
+            "correct": false,
+            "feedback": "Deu apenas o primeiro termo, não a soma dos 5. S₅ = 5·4 = 20."
+          },
+          {
+            "id": "o4",
+            "label": "24",
+            "correct": false,
+            "feedback": "Somou seis parcelas de 4 em vez de cinco. S₅ = 5·4 = 20."
           }
         ]
       },
@@ -486,16 +618,28 @@
         "fala": "Última. Compare as somas, não os últimos termos.",
         "options": [
           {
+            "id": "o2",
+            "label": "PA, por 3",
+            "correct": false,
+            "feedback": "3 é a diferença dos últimos termos (7 − 4). Comparando somas: 12 − 7 = 5."
+          },
+          {
             "id": "o1",
             "label": "PA, por 5",
             "correct": true,
             "feedback": "Certo. PA = 12; PG = 7; diferença 5."
           },
           {
-            "id": "o2",
-            "label": "PA, por 3",
+            "id": "o3",
+            "label": "PG, por 5",
             "correct": false,
-            "feedback": "3 é a diferença dos últimos termos (7 − 4). Comparando somas: 12 − 7 = 5."
+            "feedback": "Inverteu quem é maior: PA soma 12 e PG soma 7. Logo, PA, por 5."
+          },
+          {
+            "id": "o4",
+            "label": "Iguais",
+            "correct": false,
+            "feedback": "As somas são diferentes: PA = 12 e PG = 7. A PA é maior por 5."
           }
         ]
       }

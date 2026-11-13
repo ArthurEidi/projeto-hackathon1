@@ -288,16 +288,28 @@
         "prompt": "Qual é o próximo termo da PA 2, 5, 8?",
         "options": [
           {
+            "id": "o2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Somou 2, não 3. A diferença é 3: 8 + 3 = 11."
+          },
+          {
             "id": "o1",
             "label": "11",
             "correct": true,
             "feedback": "Certo. d = 3; 8 + 3 = 11."
           },
           {
-            "id": "o2",
-            "label": "10",
+            "id": "o3",
+            "label": "13",
             "correct": false,
-            "feedback": "Somou 2, não 3. A diferença é 3: 8 + 3 = 11."
+            "feedback": "Você somou 5 + 8 em vez de manter a diferença d = 3. O próximo é 8 + 3 = 11."
+          },
+          {
+            "id": "o4",
+            "label": "16",
+            "correct": false,
+            "feedback": "Você dobrou 8 em vez de somar a razão d = 3. O próximo é 8 + 3 = 11."
           }
         ]
       },
@@ -312,10 +324,22 @@
             "feedback": "Somou 6 em vez de multiplicar por 2. O próximo é 12 · 2 = 24."
           },
           {
+            "id": "o3",
+            "label": "15",
+            "correct": false,
+            "feedback": "Você somou 3 como numa PA em vez de multiplicar por q = 2. O certo é 12·2 = 24."
+          },
+          {
             "id": "o1",
             "label": "24",
             "correct": true,
             "feedback": "Certo. q = 2; 12 · 2 = 24."
+          },
+          {
+            "id": "o4",
+            "label": "36",
+            "correct": false,
+            "feedback": "Você multiplicou por 3 em vez da razão q = 2. O próximo é 12·2 = 24."
           }
         ]
       },
@@ -334,6 +358,18 @@
             "label": "12",
             "correct": false,
             "feedback": "Contou quatro avanços, mas são três. a₄ = 4 + 3 · 2 = 10."
+          },
+          {
+            "id": "o3",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 é o terceiro termo (a₃). Para a₄ são três avanços: 4 + 3·2 = 10."
+          },
+          {
+            "id": "o4",
+            "label": "32",
+            "correct": false,
+            "feedback": "Você multiplicou por 2 como numa PG em vez de somar d = 2. a₄ = 4 + 3·2 = 10."
           }
         ]
       },
@@ -348,10 +384,22 @@
             "feedback": "Parou no segundo termo. a₃ = 2 · 3² = 18."
           },
           {
+            "id": "o3",
+            "label": "54",
+            "correct": false,
+            "feedback": "54 é o quarto termo (a₄). Para a₃ são dois avanços: 2·3² = 18."
+          },
+          {
             "id": "o1",
             "label": "18",
             "correct": true,
             "feedback": "Certo. 2 · 3² = 18."
+          },
+          {
+            "id": "o4",
+            "label": "8",
+            "correct": false,
+            "feedback": "Você somou 3 como numa PA em vez de multiplicar. Em PG, a₃ = 2·3² = 18."
           }
         ]
       }
@@ -372,6 +420,18 @@
             "label": "Sim, −2",
             "correct": true,
             "feedback": "Certo. 5 − 7 = −2 e 3 − 5 = −2."
+          },
+          {
+            "id": "o3",
+            "label": "Não é PA",
+            "correct": false,
+            "feedback": "Diferença negativa também forma PA, pois cai sempre 2. O certo é Sim, −2."
+          },
+          {
+            "id": "o4",
+            "label": "Sim, −3",
+            "correct": false,
+            "feedback": "De 7 para 5 a queda é 2, não 3. A razão é d = 5 − 7 = −2."
           }
         ]
       },
@@ -380,16 +440,28 @@
         "prompt": "Na PG com a₁ = 16 e q = 1/2, quanto vale a₄?",
         "options": [
           {
+            "id": "o2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Fez dois avanços; são três. 16 → 8 → 4 → 2."
+          },
+          {
+            "id": "o3",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é o quinto termo (a₅). Para a₄ são três divisões por 2: 16 → 8 → 4 → 2."
+          },
+          {
             "id": "o1",
             "label": "2",
             "correct": true,
             "feedback": "Certo. 16 → 8 → 4 → 2."
           },
           {
-            "id": "o2",
-            "label": "4",
+            "id": "o4",
+            "label": "8",
             "correct": false,
-            "feedback": "Fez dois avanços; são três. 16 → 8 → 4 → 2."
+            "feedback": "8 é o segundo termo (a₂). Para a₄ são três avanços: 16·(1/2)³ = 2."
           }
         ]
       },
@@ -402,6 +474,18 @@
             "label": "27",
             "correct": false,
             "feedback": "Somou seis vezes em vez de cinco: 3 + 6 · 4 = 27. De a₁ a a₆ são 5 avanços: 23."
+          },
+          {
+            "id": "o3",
+            "label": "19",
+            "correct": false,
+            "feedback": "19 é o quinto termo (a₅). Para a₆ são cinco avanços: 3 + 5·4 = 23."
+          },
+          {
+            "id": "o4",
+            "label": "24",
+            "correct": false,
+            "feedback": "Você multiplicou 6·4 e esqueceu o termo inicial 3. a₆ = 3 + 5·4 = 23."
           },
           {
             "id": "o1",
@@ -418,16 +502,28 @@
         "prompt": "Na PG com a₁ = 5 e q = −2, qual é a₄?",
         "options": [
           {
+            "id": "o2",
+            "label": "40",
+            "correct": false,
+            "feedback": "Ignorou o sinal da razão: (−2)³ = −8. a₄ = −40."
+          },
+          {
             "id": "o1",
             "label": "−40",
             "correct": true,
             "feedback": "Certo. 5 · (−2)³ = −40."
           },
           {
-            "id": "o2",
-            "label": "40",
+            "id": "o3",
+            "label": "20",
             "correct": false,
-            "feedback": "Ignorou o sinal da razão: (−2)³ = −8. a₄ = −40."
+            "feedback": "20 é o terceiro termo (a₃). Para a₄ multiplicamos por −2: 5·(−2)³ = −40."
+          },
+          {
+            "id": "o4",
+            "label": "−10",
+            "correct": false,
+            "feedback": "−10 é o segundo termo (a₂). Para a₄ são três passos: 5·(−2)³ = −40."
           }
         ]
       },
@@ -442,10 +538,22 @@
             "feedback": "O mesmo padrão tem duas leituras: diferença 0 (PA) e quociente 1 (PG). Resposta: sim."
           },
           {
+            "id": "o3",
+            "label": "Não, só PG",
+            "correct": false,
+            "feedback": "PA permite razão d = 0 (soma zero). Como q = 1 também vale, é PA e PG."
+          },
+          {
             "id": "o1",
             "label": "Sim: d = 0 e q = 1",
             "correct": true,
             "feedback": "Certo. Diferença 0; quociente 1."
+          },
+          {
+            "id": "o4",
+            "label": "Não, é constante",
+            "correct": false,
+            "feedback": "Sequência constante não nula é PA com d = 0 e PG com q = 1. Resposta: sim."
           }
         ]
       },
@@ -465,6 +573,18 @@
             "label": "3",
             "correct": false,
             "feedback": "Contou dois avanços, mas são três. 10 + 3 · (−3) = 1 em n = 4."
+          },
+          {
+            "id": "o3",
+            "label": "5",
+            "correct": false,
+            "feedback": "Em n = 5 o termo já passa para −2. Três avanços dão n = 4: 10 + 3·(−3) = 1."
+          },
+          {
+            "id": "o4",
+            "label": "2",
+            "correct": false,
+            "feedback": "Em n = 2 o termo ainda é 7. De 10 até 1 são 3 passos de −3, logo n = 4."
           }
         ]
       },
@@ -479,10 +599,22 @@
             "feedback": "3 é a₄: faltou a quarta divisão por 3. a₅ = 1."
           },
           {
+            "id": "o3",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é o terceiro termo (a₃). Para a₅ são quatro divisões por 3: 81·(1/3)⁴ = 1."
+          },
+          {
             "id": "o1",
             "label": "1",
             "correct": true,
             "feedback": "Certo. 81 → 27 → 9 → 3 → 1."
+          },
+          {
+            "id": "o4",
+            "label": "1/3",
+            "correct": false,
+            "feedback": "1/3 é o sexto termo (a₆). Para a₅ são quatro divisões por 3: a₅ = 1."
           }
         ]
       },
@@ -492,16 +624,28 @@
         "fala": "Última. Somar zero e multiplicar por zero fazem coisas diferentes.",
         "options": [
           {
+            "id": "o2",
+            "label": "Ambas 2, 2, 2",
+            "correct": false,
+            "feedback": "Tratou q = 0 como q = 1. Resposta: PA 2, 2, 2 e PG 2, 0, 0."
+          },
+          {
             "id": "o1",
             "label": "PA: 2, 2, 2; PG: 2, 0, 0",
             "correct": true,
             "feedback": "Certo. A PA soma zero; a PG multiplica por zero."
           },
           {
-            "id": "o2",
-            "label": "Ambas 2, 2, 2",
+            "id": "o3",
+            "label": "Ambas 2, 0, 0",
             "correct": false,
-            "feedback": "Tratou q = 0 como q = 1. Resposta: PA 2, 2, 2 e PG 2, 0, 0."
+            "feedback": "Na PA, d = 0 soma 0 e mantém 2, 2, 2. Só a PG zera: PA 2, 2, 2 e PG 2, 0, 0."
+          },
+          {
+            "id": "o4",
+            "label": "PA: 2, 0, 0; PG: 2, 2, 2",
+            "correct": false,
+            "feedback": "Você trocou PA e PG: somar 0 mantém 2, multiplicar por 0 zera. O certo é PA: 2, 2, 2; PG: 2, 0, 0."
           }
         ]
       }

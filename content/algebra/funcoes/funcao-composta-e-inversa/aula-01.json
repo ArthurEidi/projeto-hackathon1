@@ -206,16 +206,28 @@
         "prompt": "Se f(x) = x e g(x) = 3, quanto vale (f∘g)(2)?",
         "options": [
           {
+            "id": "f1-e",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 3; Aplique g primeiro: g(2) = 3 e f(3) = 3."
+          },
+          {
             "id": "f1-c",
             "label": "3",
             "correct": true,
             "feedback": "Certo! Primeiro g(2) = 3; depois f(3) = 3."
           },
           {
-            "id": "f1-e",
-            "label": "2",
+            "id": "f1-e2",
+            "label": "5",
             "correct": false,
-            "feedback": "Resposta: 3; Aplique g primeiro: g(2) = 3 e f(3) = 3."
+            "feedback": "Você somou entrada e saída em vez de compor. O certo é 3; g(2) = 3 e f(3) = 3."
+          },
+          {
+            "id": "f1-e3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você multiplicou 2 por 3 em vez de compor. O certo é 3; g(2) = 3 e f(3) = 3."
           }
         ]
       },
@@ -224,16 +236,22 @@
         "prompt": "Se f(x) = 2x e g(x) = x + 1, quanto vale f(g(1))?",
         "options": [
           {
-            "id": "f2-c",
-            "label": "4",
-            "correct": true,
-            "feedback": "Certo! g(1) = 1 + 1 = 2; então f(2) = 2·2 = 4."
-          },
-          {
             "id": "f2-e",
             "label": "3",
             "correct": false,
             "feedback": "Resposta: 4; Calcule g(1) = 2 primeiro, depois f(2) = 4."
+          },
+          {
+            "id": "f2-e2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você parou em g(1) = 2 e esqueceu de aplicar f. O certo é 4; f(2) = 2·2 = 4."
+          },
+          {
+            "id": "f2-c",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo! g(1) = 1 + 1 = 2; então f(2) = 2·2 = 4."
           }
         ]
       },
@@ -242,16 +260,28 @@
         "prompt": "Qual é a função inversa de f(x) = x + 2?",
         "options": [
           {
+            "id": "f3-e",
+            "label": "x + 2",
+            "correct": false,
+            "feedback": "Resposta: x − 2; A inversa desfaz a soma subtraindo: x − 2."
+          },
+          {
             "id": "f3-c",
             "label": "x − 2",
             "correct": true,
             "feedback": "Certo! y = x + 2 ⇒ x = y − 2; logo f⁻¹(x) = x − 2."
           },
           {
-            "id": "f3-e",
-            "label": "x + 2",
+            "id": "f3-e2",
+            "label": "−x − 2",
             "correct": false,
-            "feedback": "Resposta: x − 2; A inversa desfaz a soma subtraindo: x − 2."
+            "feedback": "Você trocou o sinal de x também. O certo é x − 2; y = x + 2 dá x = y − 2."
+          },
+          {
+            "id": "f3-e3",
+            "label": "x/2",
+            "correct": false,
+            "feedback": "Você dividiu por 2 em vez de subtrair 2. O certo é x − 2; f⁻¹(x) = x − 2."
           }
         ]
       },
@@ -260,16 +290,28 @@
         "prompt": "Se f(x) = 2x, quanto vale f⁻¹(6)?",
         "options": [
           {
-            "id": "f4-c",
-            "label": "3",
-            "correct": true,
-            "feedback": "Certo! 2x = 6 ⇒ x = 6/2 = 3."
-          },
-          {
             "id": "f4-e",
             "label": "12",
             "correct": false,
             "feedback": "Resposta: 3; A inversa divide por 2 em vez de multiplicar: 6/2 = 3."
+          },
+          {
+            "id": "f4-e2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você subtraiu 2 em vez de dividir por 2. O certo é 3; 2x = 6 dá x = 3."
+          },
+          {
+            "id": "f4-e3",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Você trocou o sinal na inversa. O certo é 3; 2x = 6 dá x = 6/2 = 3."
+          },
+          {
+            "id": "f4-c",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo! 2x = 6 ⇒ x = 6/2 = 3."
           }
         ]
       }
@@ -290,6 +332,18 @@
             "label": "5",
             "correct": false,
             "feedback": "Resposta: 6; Na ordem g(f(2)), calculamos f(2) = 3 e g(3) = 6."
+          },
+          {
+            "id": "m1-e2",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você parou em f(2) = 3 e esqueceu de aplicar g. O certo é 6; g(3) = 2·3 = 6."
+          },
+          {
+            "id": "m1-e3",
+            "label": "7",
+            "correct": false,
+            "feedback": "Você somou f(2) + g(2) = 3 + 4 em vez de compor. O certo é 6; g(3) = 6."
           }
         ]
       },
@@ -298,16 +352,28 @@
         "prompt": "Qual das funções abaixo é a sua própria inversa?",
         "options": [
           {
+            "id": "m2-e",
+            "label": "f(x) = x + 1",
+            "correct": false,
+            "feedback": "Resposta: f(x) = x; A inversa de x + 1 é x − 1, que não coincide com x + 1."
+          },
+          {
+            "id": "m2-e2",
+            "label": "f(x) = 2x",
+            "correct": false,
+            "feedback": "A inversa de 2x é x/2, que difere de 2x. O certo é f(x) = x; f(f(x)) = x."
+          },
+          {
             "id": "m2-c",
             "label": "f(x) = x",
             "correct": true,
             "feedback": "Certo! A identidade composta consigo mesma continua sendo x."
           },
           {
-            "id": "m2-e",
-            "label": "f(x) = x + 1",
+            "id": "m2-e3",
+            "label": "f(x) = x²",
             "correct": false,
-            "feedback": "Resposta: f(x) = x; A inversa de x + 1 é x − 1, que não coincide com x + 1."
+            "feedback": "A volta de x² é √x para x ≥ 0, não x². O certo é f(x) = x; f⁻¹(x) = x."
           }
         ]
       },
@@ -316,16 +382,28 @@
         "prompt": "Qual é a função inversa de f(x) = 3x?",
         "options": [
           {
+            "id": "m3-e",
+            "label": "3x",
+            "correct": false,
+            "feedback": "Resposta: x/3; A inversa desfaz a multiplicação por 3 dividindo por 3."
+          },
+          {
             "id": "m3-c",
             "label": "x/3",
             "correct": true,
             "feedback": "Certo! y = 3x ⇒ x = y/3; logo f⁻¹(x) = x/3."
           },
           {
-            "id": "m3-e",
-            "label": "3x",
+            "id": "m3-e2",
+            "label": "x − 3",
             "correct": false,
-            "feedback": "Resposta: x/3; A inversa desfaz a multiplicação por 3 dividindo por 3."
+            "feedback": "Você subtraiu 3 em vez de dividir por 3. O certo é x/3; y = 3x dá x = y/3."
+          },
+          {
+            "id": "m3-e3",
+            "label": "−3x",
+            "correct": false,
+            "feedback": "Você trocou o sinal em vez de dividir por 3. O certo é x/3; f⁻¹(x) = x/3."
           }
         ]
       }
@@ -336,16 +414,28 @@
         "prompt": "Se f(x) = x² com domínio restrito a x ≥ 0, qual é a inversa f⁻¹(x)?",
         "options": [
           {
+            "id": "d1-e",
+            "label": "±√x",
+            "correct": false,
+            "feedback": "Resposta: √x; O domínio x ≥ 0 descarta o ramo negativo −√x."
+          },
+          {
+            "id": "d1-e2",
+            "label": "−√x",
+            "correct": false,
+            "feedback": "O sinal negativo viola a restrição x ≥ 0. O certo é √x; f⁻¹(x) = √x."
+          },
+          {
             "id": "d1-c",
             "label": "√x",
             "correct": true,
             "feedback": "Certo! Como x ≥ 0, a inversa é unívoca: f⁻¹(x) = √x."
           },
           {
-            "id": "d1-e",
-            "label": "±√x",
+            "id": "d1-e3",
+            "label": "x/2",
             "correct": false,
-            "feedback": "Resposta: √x; O domínio x ≥ 0 descarta o ramo negativo −√x."
+            "feedback": "Você dividiu por 2 em vez de tirar a raiz. O certo é √x; y = x² dá x = √y."
           }
         ]
       },
@@ -354,16 +444,28 @@
         "prompt": "Se f(x) = x + 2 e g(x) = 3x, quanto vale (f∘g)(2)?",
         "options": [
           {
+            "id": "d2-e",
+            "label": "12",
+            "correct": false,
+            "feedback": "Resposta: 8; Primeiro g(2) = 6, depois f(6) = 6 + 2 = 8."
+          },
+          {
             "id": "d2-c",
             "label": "8",
             "correct": true,
             "feedback": "Certo! g(2) = 3·2 = 6; depois f(6) = 6 + 2 = 8."
           },
           {
-            "id": "d2-e",
-            "label": "12",
+            "id": "d2-e2",
+            "label": "6",
             "correct": false,
-            "feedback": "Resposta: 8; Primeiro g(2) = 6, depois f(6) = 6 + 2 = 8."
+            "feedback": "Você parou em g(2) = 6 e esqueceu de aplicar f. O certo é 8; f(6) = 6 + 2 = 8."
+          },
+          {
+            "id": "d2-e3",
+            "label": "10",
+            "correct": false,
+            "feedback": "Você somou f(2) + g(2) = 4 + 6 em vez de compor. O certo é 8; f(6) = 8."
           }
         ]
       },
@@ -372,16 +474,28 @@
         "prompt": "Qual é a função inversa de f(x) = 2x − 4?",
         "options": [
           {
-            "id": "d3-c",
-            "label": "(x + 4)/2",
-            "correct": true,
-            "feedback": "Certo! y = 2x − 4 ⇒ 2x = y + 4 ⇒ x = (y + 4)/2."
-          },
-          {
             "id": "d3-e",
             "label": "(x − 4)/2",
             "correct": false,
             "feedback": "Resposta: (x + 4)/2; Desfazemos a subtração somando 4 antes de dividir por 2."
+          },
+          {
+            "id": "d3-e2",
+            "label": "x/2 + 4",
+            "correct": false,
+            "feedback": "Você esqueceu de dividir o 4 por 2. O certo é (x + 4)/2; 2x = y + 4 dá (y + 4)/2."
+          },
+          {
+            "id": "d3-e3",
+            "label": "2x + 4",
+            "correct": false,
+            "feedback": "Você só trocou o sinal sem desfazer o fator 2. O certo é (x + 4)/2; x = (y + 4)/2."
+          },
+          {
+            "id": "d3-c",
+            "label": "(x + 4)/2",
+            "correct": true,
+            "feedback": "Certo! y = 2x − 4 ⇒ 2x = y + 4 ⇒ x = (y + 4)/2."
           }
         ]
       },
@@ -408,16 +522,28 @@
         "prompt": "Se f(x) = 2x + 1, quanto vale f⁻¹(7)?",
         "options": [
           {
+            "id": "d5-e",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 3; Subtraia 1 e divida por 2: (7 − 1)/2 = 3."
+          },
+          {
             "id": "d5-c",
             "label": "3",
             "correct": true,
             "feedback": "Certo! Igualamos 2x + 1 = 7 ⇒ 2x = 6 ⇒ x = 3."
           },
           {
-            "id": "d5-e",
-            "label": "4",
+            "id": "d5-e2",
+            "label": "15",
             "correct": false,
-            "feedback": "Resposta: 3; Subtraia 1 e divida por 2: (7 − 1)/2 = 3."
+            "feedback": "Você calculou f(7) = 15 em vez da inversa. O certo é 3; 2x + 1 = 7 dá x = 3."
+          },
+          {
+            "id": "d5-e3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você subtraiu 1 mas esqueceu de dividir por 2. O certo é 3; (7 − 1)/2 = 3."
           }
         ]
       }

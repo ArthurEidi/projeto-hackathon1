@@ -260,16 +260,28 @@
         "prompt": "Na PG infinita com a₁ = 8 e q = 1/2, qual é a soma?",
         "options": [
           {
+            "id": "o2",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é a soma de só duas parcelas. A soma infinita é 8 ÷ (1 − 1/2) = 16."
+          },
+          {
             "id": "o1",
             "label": "16",
             "correct": true,
             "feedback": "Certo. 8 ÷ (1 − 1/2) = 16."
           },
           {
-            "id": "o2",
-            "label": "12",
+            "id": "o3",
+            "label": "4",
             "correct": false,
-            "feedback": "12 é a soma de só duas parcelas. A soma infinita é 8 ÷ (1 − 1/2) = 16."
+            "feedback": "Você multiplicou 8 por 1/2. A soma infinita é 8 ÷ (1 − 1/2) = 16."
+          },
+          {
+            "id": "o4",
+            "label": "14",
+            "correct": false,
+            "feedback": "14 é a soma dos três primeiros termos. A soma infinita é 8 ÷ (1 − 1/2) = 16."
           }
         ]
       },
@@ -284,10 +296,22 @@
             "feedback": "Razão zero não zera o primeiro termo. 3 + 0 + 0 + … = 3."
           },
           {
+            "id": "o3",
+            "label": "1",
+            "correct": false,
+            "feedback": "O primeiro termo 3 permanece na soma. 3 + 0 + 0 + … = 3."
+          },
+          {
             "id": "o1",
             "label": "3",
             "correct": true,
             "feedback": "Certo. 3 + 0 + 0 + … = 3."
+          },
+          {
+            "id": "o4",
+            "label": "Não converge",
+            "correct": false,
+            "feedback": "Como |0| < 1, a série converge para 3 ÷ (1 − 0) = 3."
           }
         ]
       },
@@ -306,6 +330,18 @@
             "label": "q > 1",
             "correct": false,
             "feedback": "q > 1 faz as parcelas crescerem. A condição é |q| < 1."
+          },
+          {
+            "id": "o3",
+            "label": "|q| ≤ 1",
+            "correct": false,
+            "feedback": "Em q = 1 o denominador 1 − q zera e a soma diverge. Exige-se |q| < 1."
+          },
+          {
+            "id": "o4",
+            "label": "q ≠ 0",
+            "correct": false,
+            "feedback": "Para q = 2 a série diverge. A condição é |q| < 1."
           }
         ]
       },
@@ -320,10 +356,22 @@
             "feedback": "7 soma só três parcelas. A soma infinita é 4 ÷ (1 − 1/2) = 8."
           },
           {
+            "id": "o3",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 soma apenas os dois primeiros termos. A soma infinita é 4 ÷ (1 − 1/2) = 8."
+          },
+          {
             "id": "o1",
             "label": "8",
             "correct": true,
             "feedback": "Certo. 4 ÷ (1 − 1/2) = 8."
+          },
+          {
+            "id": "o4",
+            "label": "16",
+            "correct": false,
+            "feedback": "A razão é 1/2, então 1 − q = 1/2 e 4 ÷ (1/2) = 8, não 16."
           }
         ]
       }
@@ -344,6 +392,18 @@
             "label": "12",
             "correct": true,
             "feedback": "Certo. 6 ÷ (1 − 1/2) = 12."
+          },
+          {
+            "id": "o3",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 soma apenas os dois primeiros termos. A soma infinita é 6 ÷ (1 − 1/2) = 12."
+          },
+          {
+            "id": "o4",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é apenas o segundo termo (a₂). A soma infinita é 6 ÷ (1 − 1/2) = 12."
           }
         ]
       },
@@ -352,16 +412,28 @@
         "prompt": "Qual é a soma de 5 + 1 + 0,2 + …, com q = 0,2?",
         "options": [
           {
+            "id": "o2",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 soma só duas parcelas, 5 + 1. A soma infinita é 5 ÷ 0,8 = 6,25."
+          },
+          {
+            "id": "o3",
+            "label": "6,2",
+            "correct": false,
+            "feedback": "6,2 para na terceira parcela. A soma infinita é 5 ÷ (1 − 0,2) = 6,25."
+          },
+          {
             "id": "o1",
             "label": "6,25",
             "correct": true,
             "feedback": "Certo. 5 ÷ (1 − 0,2) = 6,25."
           },
           {
-            "id": "o2",
-            "label": "6",
+            "id": "o4",
+            "label": "25",
             "correct": false,
-            "feedback": "6 soma só duas parcelas, 5 + 1. A soma infinita é 5 ÷ 0,8 = 6,25."
+            "feedback": "25 divide por q = 0,2 em vez de por 1 − q = 0,8. O certo é 5 ÷ 0,8 = 6,25."
           }
         ]
       },
@@ -374,6 +446,18 @@
             "label": "20",
             "correct": false,
             "feedback": "20 ignora o sinal de q: 1 − (−1/2) = 3/2. A soma é 10 ÷ 3/2 = 20/3."
+          },
+          {
+            "id": "o3",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 é a soma dos dois primeiros termos (10 − 5). A soma infinita é 10 ÷ (3/2) = 20/3."
+          },
+          {
+            "id": "o4",
+            "label": "−20",
+            "correct": false,
+            "feedback": "O sinal no denominador fica 1 − (−1/2) = 3/2 positivo. A soma é 20/3."
           },
           {
             "id": "o1",
@@ -418,6 +502,18 @@
             "label": "18",
             "correct": true,
             "feedback": "Certo. 12 ÷ (1 − 1/3) = 18."
+          },
+          {
+            "id": "o3",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 soma só dois termos (12 + 4). A soma infinita é 12 ÷ (2/3) = 18."
+          },
+          {
+            "id": "o4",
+            "label": "8",
+            "correct": false,
+            "feedback": "Você multiplicou por 1 − q = 2/3 em vez de dividir. O certo é 12 ÷ (2/3) = 18."
           }
         ]
       },
@@ -450,10 +546,22 @@
             "feedback": "27/2 usa 1 − 1/3. Com q = −1/3 o denominador é 1 + 1/3 = 4/3: 27/4."
           },
           {
+            "id": "o3",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é a soma de só dois termos (9 − 3). A soma infinita é 9 ÷ (4/3) = 27/4."
+          },
+          {
             "id": "o1",
             "label": "27/4",
             "correct": true,
             "feedback": "Certo. 9 ÷ (1 + 1/3) = 27/4."
+          },
+          {
+            "id": "o4",
+            "label": "12",
+            "correct": false,
+            "feedback": "Você multiplicou por 4/3 em vez de dividir. O certo é 9 ÷ (4/3) = 27/4."
           }
         ]
       },
@@ -463,16 +571,28 @@
         "fala": "Última. Compare a soma parcial com o limite.",
         "options": [
           {
+            "id": "o2",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é só a próxima parcela. A cauda toda soma 2: 16 − 14."
+          },
+          {
             "id": "o1",
             "label": "2",
             "correct": true,
             "feedback": "Certo. S₃ = 14, S∞ = 16, falta 2."
           },
           {
-            "id": "o2",
-            "label": "1",
+            "id": "o3",
+            "label": "4",
             "correct": false,
-            "feedback": "1 é só a próxima parcela. A cauda toda soma 2: 16 − 14."
+            "feedback": "4 falta após dois termos (8 + 4 = 12). Após três termos (S₃ = 14), faltam 2."
+          },
+          {
+            "id": "o4",
+            "label": "14",
+            "correct": false,
+            "feedback": "14 é a soma dos três primeiros termos (S₃). Falta 16 − 14 = 2 para o limite."
           }
         ]
       }
