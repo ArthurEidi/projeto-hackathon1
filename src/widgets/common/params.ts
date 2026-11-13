@@ -1,6 +1,7 @@
 // Contratos dos widgets comuns (plano cartesiano e reta numérica). Sem React: usado no Node.
 import { z } from "zod";
 import * as lugar from "./lugar/params";
+import * as pontos from "./pontos/params";
 import { CorTraco, Marca } from "../../ui/marcas";
 import * as barras from "./barras/params";
 import * as ciclo from "./ciclo/params";
@@ -242,6 +243,7 @@ export const RetaFigura = RetaNumerica.superRefine((p, ctx) => {
 });
 
 export const widgetParams = {
+  ...pontos.widgetParams,
   ...lugar.widgetParams,
   plano_cartesiano: PlanoCartesiano,
   reta_numerica: RetaNumerica,
@@ -255,6 +257,7 @@ export const widgetParams = {
 } as const;
 
 export const figureParams = {
+  ...pontos.figureParams,
   ...lugar.figureParams,
   plano_figura: PlanoFigura,
   reta_figura: RetaFigura,

@@ -106,3 +106,5 @@ Ao terminar, informe o caminho do arquivo, o resultado das validações e as lac
 Registrados os 13 cap?tulos dos arquivos de entregas (10 cap?tulos adaptados e 3 c?nicas). Os itens correspondentes das filas 1 e 3 j? est?o entregues; falta limpar essas tabelas ap?s a integra??o final. Corrigido id de potencias-e-radicais para aula-01. Lugar geom?trico implementado (5 testes); revis?o visual pendente. Pr?ximo widget: pontos_no_plano.
 
 Validação da integração: 113 arquivos / 1776 testes passando, typecheck limpo. Lint e build executados com NODE_OPTIONS=--require=C:/Users/User/AppData/Local/Temp/app-matematica-os-userinfo.cjs: fallback temporário de os.userInfo, pois a API do Windows retorna uv_os_get_passwd ENOMEM. Nenhuma dependência ou arquivo de produção alterado por esse contorno.
+
+Pontos no plano implementado e testado: 114 arquivos / 1781 testes; lint, typecheck e build ok com o contorno de os.userInfo descrito acima. Sem novas entregas nesta integra??o. Pull e push bloqueados por conex?o ao github.com:443. Pr?ximo widget: circunferencia_no_plano.

@@ -648,3 +648,16 @@ Elipse exige `0 <= c < a`; hipérbole exige `0 <= a < c`; parábola exige `p != 
 Métricas: `pontos_sobre` (posições distintas que satisfazem o lugar), `pontos_vistos`, `vertice_achado`, `topo_tocado`, `triangulo_ligado`, `igualou`. O estado inicial não conta como interação; visitas repetidas não aumentam contadores. Botões mostram triângulo/retângulo ou a igualdade algébrica da parábola. Sliders são métricas do motor.
 
 Conferência visual em 400 px pendente nesta máquina: portal Maestri ausente, navegador conectado indisponível e aprovação do Computer Use expirou.
+
+### 5.15 `pontos_no_plano` + `pontos_figura`
+
+`common/pontos/`: modos `segmento` (padrão) e `reta`. Campos `a`, `b`, `terceiro?` são pares de números/expressões; `fixos: ["a"]`, `passo: 1`, `prender_na_reta`, `mostrar: {degraus,quadrados,medio}`, `highlight`. Figura aceita só números.
+
+```json
+{"modo":"segmento","a":[1,2],"b":[5,2],"fixos":["a"],"mostrar":{"degraus":true}}
+```
+```json
+{"modo":"reta","a":[0,1],"b":[2,5],"prender_na_reta":true,"fixos":["a"]}
+```
+
+Métricas: `dx`, `dy`, `distancia`, `dx_zero` (vertical não degenerada), `quadrados_ligados`, `medio_ligado`, `pontos_vistos` (posições distintas após interação). A reta presa usa os pontos originais como referência; coincidência avisa que a reta é indeterminada. Botões revelam quadrados e ponto médio; os quadrados são construídos geometricamente sobre os lados. `terceiro` é marcador estático opcional. Revisão visual em 400 px pendente pelo bloqueio de automação registrado em §5.14.
