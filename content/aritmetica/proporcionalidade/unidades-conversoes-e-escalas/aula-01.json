@@ -297,16 +297,28 @@
         "prompt": "Quantos centímetros há em 1 metro?",
         "options": [
           {
+            "id": "f2-unidades-conversoes-e-escalas-erro",
+            "label": "10",
+            "correct": false,
+            "feedback": "Você converteu para decímetros. O certo é 100; 1 m=100 cm."
+          },
+          {
             "id": "f2-unidades-conversoes-e-escalas-certa",
             "label": "100",
             "correct": true,
             "feedback": "Certo: 100; 1 m=100 cm."
           },
           {
-            "id": "f2-unidades-conversoes-e-escalas-erro",
-            "label": "10",
+            "id": "f2-unidades-conversoes-e-escalas-erro2",
+            "label": "1000",
             "correct": false,
-            "feedback": "Você converteu para decímetros. O certo é 100; 1 m=100 cm."
+            "feedback": "Você converteu para milímetros em vez de centímetros. O certo é 100; 1 m=100 cm."
+          },
+          {
+            "id": "f2-unidades-conversoes-e-escalas-erro3",
+            "label": "0,01",
+            "correct": false,
+            "feedback": "Você dividiu por 100 em vez de multiplicar. O certo é 100; 1 m=100 cm."
           }
         ]
       },
@@ -321,10 +333,22 @@
             "feedback": "Você escalou uma dimensão só. O certo é 4; 2²=4."
           },
           {
+            "id": "f3-unidades-conversoes-e-escalas-erro2",
+            "label": "8",
+            "correct": false,
+            "feedback": "Você usou o fator cúbico (2³), que vale para volume. O certo é 4; 2²=4."
+          },
+          {
             "id": "f3-unidades-conversoes-e-escalas-certa",
             "label": "4",
             "correct": true,
             "feedback": "Certo: 4; 2²=4."
+          },
+          {
+            "id": "f3-unidades-conversoes-e-escalas-erro3",
+            "label": "16",
+            "correct": false,
+            "feedback": "Você elevou 2 à quarta potência sem motivo. O certo é 4; 2²=4."
           }
         ]
       },
@@ -363,6 +387,18 @@
             "label": "250 cm",
             "correct": true,
             "feedback": "Certo: 250 cm; 2,5·100=250."
+          },
+          {
+            "id": "m1-unidades-conversoes-e-escalas-erro2",
+            "label": "2500 cm",
+            "correct": false,
+            "feedback": "Você usou fator 1000 (milímetros) em vez de 100. O certo é 250 cm; 2,5·100=250."
+          },
+          {
+            "id": "m1-unidades-conversoes-e-escalas-erro3",
+            "label": "0,025 cm",
+            "correct": false,
+            "feedback": "Você dividiu por 100 em vez de multiplicar. O certo é 250 cm; 2,5·100=250."
           }
         ]
       },
@@ -371,16 +407,28 @@
         "prompt": "Converta 1 m² em cm².",
         "options": [
           {
+            "id": "m2-unidades-conversoes-e-escalas-erro",
+            "label": "100 cm²",
+            "correct": false,
+            "feedback": "Você esqueceu de converter as duas dimensões. O certo é 10 000 cm²; 100·100=10 000."
+          },
+          {
+            "id": "m2-unidades-conversoes-e-escalas-erro2",
+            "label": "1000 cm²",
+            "correct": false,
+            "feedback": "Você usou fator 1000 em vez de 100². O certo é 10 000 cm²; 100·100=10 000."
+          },
+          {
             "id": "m2-unidades-conversoes-e-escalas-certa",
             "label": "10 000 cm²",
             "correct": true,
             "feedback": "Certo: 10 000 cm²; 100·100=10 000."
           },
           {
-            "id": "m2-unidades-conversoes-e-escalas-erro",
-            "label": "100 cm²",
+            "id": "m2-unidades-conversoes-e-escalas-erro3",
+            "label": "1 000 000 cm²",
             "correct": false,
-            "feedback": "Você esqueceu de converter as duas dimensões. O certo é 10 000 cm²; 100·100=10 000."
+            "feedback": "Você usou o fator cúbico 100³, de volume. O certo é 10 000 cm²; 100·100=10 000."
           }
         ]
       },
@@ -399,6 +447,18 @@
             "label": "2 m",
             "correct": true,
             "feedback": "Certo: 2 m; 2·100=200 cm=2 m."
+          },
+          {
+            "id": "m3-unidades-conversoes-e-escalas-erro2",
+            "label": "20 m",
+            "correct": false,
+            "feedback": "Você dividiu 200 cm por 10 em vez de 100. O certo é 2 m; 2·100=200 cm=2 m."
+          },
+          {
+            "id": "m3-unidades-conversoes-e-escalas-erro3",
+            "label": "0,2 m",
+            "correct": false,
+            "feedback": "Você dividiu por 1000 em vez de 100. O certo é 2 m; 2·100=200 cm=2 m."
           }
         ]
       }
@@ -410,16 +470,28 @@
         "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d1-unidades-conversoes-e-escalas-erro",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Volume envolve três dimensões. O certo é 1/8; (1/2)³=1/8."
+          },
+          {
+            "id": "d1-unidades-conversoes-e-escalas-erro2",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "Você usou o fator quadrático (1/2)², que vale para área. O certo é 1/8; (1/2)³=1/8."
+          },
+          {
             "id": "d1-unidades-conversoes-e-escalas-certa",
             "label": "1/8",
             "correct": true,
             "feedback": "Certo: 1/8; (1/2)³=1/8."
           },
           {
-            "id": "d1-unidades-conversoes-e-escalas-erro",
-            "label": "1/2",
+            "id": "d1-unidades-conversoes-e-escalas-erro3",
+            "label": "1/6",
             "correct": false,
-            "feedback": "Volume envolve três dimensões. O certo é 1/8; (1/2)³=1/8."
+            "feedback": "Você multiplicou 2·3 no denominador em vez de calcular 2³. O certo é 1/8; (1/2)³=1/8."
           }
         ]
       },
@@ -448,16 +520,28 @@
         "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d3-unidades-conversoes-e-escalas-erro",
+            "label": "1 m²",
+            "correct": false,
+            "feedback": "Você somou dois lados em vez de multiplicar. O certo é 0,25 m²; 0,5·0,5=0,25."
+          },
+          {
             "id": "d3-unidades-conversoes-e-escalas-certa",
             "label": "0,25 m²",
             "correct": true,
             "feedback": "Certo: 0,25 m²; 0,5·0,5=0,25."
           },
           {
-            "id": "d3-unidades-conversoes-e-escalas-erro",
-            "label": "1 m²",
+            "id": "d3-unidades-conversoes-e-escalas-erro2",
+            "label": "2 m²",
             "correct": false,
-            "feedback": "Você somou dois lados em vez de multiplicar. O certo é 0,25 m²; 0,5·0,5=0,25."
+            "feedback": "Você calculou o perímetro (4·0,5) em vez da área. O certo é 0,25 m²; 0,5·0,5=0,25."
+          },
+          {
+            "id": "d3-unidades-conversoes-e-escalas-erro3",
+            "label": "2,5 m²",
+            "correct": false,
+            "feedback": "Você deslocou a vírgula uma casa para a direita em 0,25. O certo é 0,25 m²; 0,5·0,5=0,25."
           }
         ]
       },
@@ -473,10 +557,22 @@
             "feedback": "Você comparou unidades diferentes. O certo é 1:200; 6 m=600 cm; 3/600=1/200."
           },
           {
+            "id": "d4-unidades-conversoes-e-escalas-erro2",
+            "label": "1:20",
+            "correct": false,
+            "feedback": "Você converteu 6 m para 60 cm em vez de 600 cm. O certo é 1:200; 6 m=600 cm; 3/600=1/200."
+          },
+          {
             "id": "d4-unidades-conversoes-e-escalas-certa",
             "label": "1:200",
             "correct": true,
             "feedback": "Certo: 1:200; 6 m=600 cm; 3/600=1/200."
+          },
+          {
+            "id": "d4-unidades-conversoes-e-escalas-erro3",
+            "label": "1:2000",
+            "correct": false,
+            "feedback": "Você converteu 6 m para 6000 cm em vez de 600 cm. O certo é 1:200; 6 m=600 cm; 3/600=1/200."
           }
         ]
       },
@@ -486,16 +582,28 @@
         "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
-            "id": "d5-unidades-conversoes-e-escalas-certa",
-            "label": "6 m²",
-            "correct": true,
-            "feedback": "Certo: 6 m²; Lados reais 2 m e 3 m; área=6 m²."
-          },
-          {
             "id": "d5-unidades-conversoes-e-escalas-erro",
             "label": "600 m²",
             "correct": false,
             "feedback": "Você misturou escala linear com conversão de área. O certo é 6 m²; Lados reais 2 m e 3 m; área=6 m²."
+          },
+          {
+            "id": "d5-unidades-conversoes-e-escalas-erro2",
+            "label": "60 m²",
+            "correct": false,
+            "feedback": "Você dividiu 60 000 cm² por 1000 em vez de 10 000. O certo é 6 m²; Lados reais 2 m e 3 m; área=6 m²."
+          },
+          {
+            "id": "d5-unidades-conversoes-e-escalas-erro3",
+            "label": "0,6 m²",
+            "correct": false,
+            "feedback": "Você dividiu 6 m² por 10 sem motivo. O certo é 6 m²; Lados reais 2 m e 3 m; área=6 m²."
+          },
+          {
+            "id": "d5-unidades-conversoes-e-escalas-certa",
+            "label": "6 m²",
+            "correct": true,
+            "feedback": "Certo: 6 m²; Lados reais 2 m e 3 m; área=6 m²."
           }
         ]
       }

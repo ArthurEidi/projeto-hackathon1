@@ -70,7 +70,7 @@
       },
       "lines": {
         "intro": "No caso neutro y = x, o que sai quando x chega a 2? Arraste o ponto.",
-        "done": "Sai 2 porque a identidade conserva cada entrada."
+        "done": "Em x = 2 sai 2 porque a identidade conserva cada entrada."
       },
       "duvida": {
         "quando": "fim",

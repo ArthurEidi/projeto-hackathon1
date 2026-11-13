@@ -309,16 +309,28 @@
         "prompt": "Sem períodos transcorridos, quanto vale M se C = 100?",
         "options": [
           {
+            "id": "o2",
+            "label": "110",
+            "correct": false,
+            "feedback": "Acrescentou juros antes do tempo. Com t = 0, M = C = 100."
+          },
+          {
             "id": "o1",
             "label": "100",
             "correct": true,
             "feedback": "Certo. Com t = 0, M = C = 100."
           },
           {
-            "id": "o2",
-            "label": "110",
+            "id": "o3",
+            "label": "0",
             "correct": false,
-            "feedback": "Acrescentou juros antes do tempo. Com t = 0, M = C = 100."
+            "feedback": "Zerou o capital junto com o tempo t = 0. Com t = 0, M = C = 100."
+          },
+          {
+            "id": "o4",
+            "label": "10",
+            "correct": false,
+            "feedback": "Calculou apenas 10% sem manter o capital. Com t = 0, M = C = 100."
           }
         ]
       },
@@ -333,10 +345,22 @@
             "feedback": "Dividiu por 100 duas vezes. 10% de 100 é 0,10 · 100 = R$ 10."
           },
           {
+            "id": "o3",
+            "label": "R$ 90",
+            "correct": false,
+            "feedback": "Subtraiu 10% de 100 em vez de calcular 10%. 10% de 100 é 0,10 · 100 = R$ 10."
+          },
+          {
             "id": "o1",
             "label": "R$ 10",
             "correct": true,
             "feedback": "Certo. 0,10 · 100 = 10."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 110",
+            "correct": false,
+            "feedback": "Somou 10% ao capital em vez de isolar os 10%. 10% de 100 é 0,10 · 100 = R$ 10."
           }
         ]
       },
@@ -345,16 +369,28 @@
         "prompt": "R$ 100 a 10% simples por 2 períodos. Qual o montante?",
         "options": [
           {
-            "id": "o1",
-            "label": "R$ 120",
-            "correct": true,
-            "feedback": "Certo. J = 100 · 0,1 · 2 = 20; M = 120."
-          },
-          {
             "id": "o2",
             "label": "R$ 121",
             "correct": false,
             "feedback": "Usou capitalização composta. No simples, J = 20 e M = R$ 120."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 20",
+            "correct": false,
+            "feedback": "Deu apenas o juro, não o montante. No simples, J = 20 e M = R$ 120."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 110",
+            "correct": false,
+            "feedback": "Calculou apenas um período em vez de dois. No simples, J = 20 e M = R$ 120."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 120",
+            "correct": true,
+            "feedback": "Certo. J = 100 · 0,1 · 2 = 20; M = 120."
           }
         ]
       },
@@ -373,6 +409,18 @@
             "label": "R$ 121",
             "correct": true,
             "feedback": "Certo. 100 · 1,1² = 121."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 110",
+            "correct": false,
+            "feedback": "Calculou apenas um período em vez de dois. Composto: 100 · 1,1² = R$ 121."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 21",
+            "correct": false,
+            "feedback": "Deu apenas o juro composto, sem o capital. Composto: 100 · 1,1² = R$ 121."
           }
         ]
       }
@@ -389,10 +437,22 @@
             "feedback": "Confundiu o percentual com valor em reais. 5% de 200 = R$ 10."
           },
           {
+            "id": "o3",
+            "label": "R$ 210",
+            "correct": false,
+            "feedback": "Deu o montante em vez de só o juro. 5% de 200 = R$ 10."
+          },
+          {
             "id": "o1",
             "label": "R$ 10",
             "correct": true,
             "feedback": "Certo. 200 · 0,05 = 10."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 100",
+            "correct": false,
+            "feedback": "Calculou 50% em vez de 5% (0,5 em vez de 0,05). 5% de 200 = R$ 10."
           }
         ]
       },
@@ -401,16 +461,28 @@
         "prompt": "R$ 50 a 20% simples por 3 períodos. Qual o montante?",
         "options": [
           {
+            "id": "o2",
+            "label": "R$ 60",
+            "correct": false,
+            "feedback": "R$ 60 calcula só um período. Com 3 períodos, J = 30 e M = R$ 80."
+          },
+          {
             "id": "o1",
             "label": "R$ 80",
             "correct": true,
             "feedback": "Certo. J = 50 · 0,2 · 3 = 30; M = 80."
           },
           {
-            "id": "o2",
-            "label": "R$ 60",
+            "id": "o3",
+            "label": "R$ 30",
             "correct": false,
-            "feedback": "R$ 60 calcula só um período. Com 3 períodos, J = 30 e M = R$ 80."
+            "feedback": "Deu apenas os juros de 3 períodos, sem o capital. J = 30 e M = R$ 80."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 86,40",
+            "correct": false,
+            "feedback": "Usou capitalização composta em vez de simples. No simples, J = 30 e M = R$ 80."
           }
         ]
       },
@@ -423,6 +495,18 @@
             "label": "R$ 220",
             "correct": false,
             "feedback": "Usou juro simples no segundo período. Composto: 200 · 1,05² = R$ 220,50."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 210",
+            "correct": false,
+            "feedback": "Calculou apenas um período em vez de dois. Composto: 200 · 1,05² = R$ 220,50."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 20,50",
+            "correct": false,
+            "feedback": "Deu apenas os juros compostos, sem o capital. Composto: 200 · 1,05² = R$ 220,50."
           },
           {
             "id": "o1",
@@ -439,16 +523,28 @@
         "prompt": "R$ 100 a 10% composto por 3 períodos. Qual o montante?",
         "options": [
           {
+            "id": "o2",
+            "label": "R$ 130",
+            "correct": false,
+            "feedback": "Somou 10 três vezes na base inicial. Composto: 100 · 1,1³ = R$ 133,10."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 121",
+            "correct": false,
+            "feedback": "Calculou apenas dois períodos em vez de três. Composto: 100 · 1,1³ = R$ 133,10."
+          },
+          {
             "id": "o1",
             "label": "R$ 133,10",
             "correct": true,
             "feedback": "Certo. 100 · 1,1³ = 133,10."
           },
           {
-            "id": "o2",
-            "label": "R$ 130",
+            "id": "o4",
+            "label": "R$ 33,10",
             "correct": false,
-            "feedback": "Somou 10 três vezes na base inicial. Composto: 100 · 1,1³ = R$ 133,10."
+            "feedback": "Deu apenas os juros acumulados, sem o capital. Composto: 100 · 1,1³ = R$ 133,10."
           }
         ]
       },
@@ -467,6 +563,18 @@
             "label": "R$ 60",
             "correct": true,
             "feedback": "Certo. 300 · 0,04 · 5 = 60."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 360",
+            "correct": false,
+            "feedback": "Deu o montante, não apenas os juros. J = 300 · 0,04 · 5 = R$ 60."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 20",
+            "correct": false,
+            "feedback": "Calculou 4% · 5 = 20% sem multiplicar por 300. J = 300 · 0,04 · 5 = R$ 60."
           }
         ]
       },
@@ -475,16 +583,28 @@
         "prompt": "Um saldo de 100 cresce 10% composto. Qual o juro do segundo período?",
         "options": [
           {
+            "id": "o2",
+            "label": "R$ 10",
+            "correct": false,
+            "feedback": "Aplicou 10% em 100, não em 110. O juro é 0,10 · 110 = R$ 11."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 21",
+            "correct": false,
+            "feedback": "Somou os juros dos dois períodos em vez de isolar o segundo. O juro é 0,10 · 110 = R$ 11."
+          },
+          {
             "id": "o1",
             "label": "R$ 11",
             "correct": true,
             "feedback": "Certo. 0,10 · 110 = 11."
           },
           {
-            "id": "o2",
-            "label": "R$ 10",
+            "id": "o4",
+            "label": "R$ 121",
             "correct": false,
-            "feedback": "Aplicou 10% em 100, não em 110. O juro é 0,10 · 110 = R$ 11."
+            "feedback": "Deu o montante após dois períodos, não o juro do segundo. O juro é 0,10 · 110 = R$ 11."
           }
         ]
       },
@@ -503,6 +623,18 @@
             "label": "R$ 1",
             "correct": true,
             "feedback": "Certo. Simples 120; composto 121; diferença 1."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 10",
+            "correct": false,
+            "feedback": "Confundiu a diferença entre regimes com o juro de um período. Simples 120 e composto 121: diferença R$ 1."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 21",
+            "correct": false,
+            "feedback": "Deu o juro composto total em vez da diferença entre regimes. Simples 120 e composto 121: diferença R$ 1."
           }
         ]
       },
@@ -512,16 +644,28 @@
         "fala": "Última. Perder 10% do saldo é multiplicar por 0,9.",
         "options": [
           {
-            "id": "o1",
-            "label": "R$ 81",
-            "correct": true,
-            "feedback": "Certo. 100 · 0,9² = 81."
-          },
-          {
             "id": "o2",
             "label": "R$ 80",
             "correct": false,
             "feedback": "Subtraiu R$ 10 fixos em cada etapa. Sobre o saldo: 100 · 0,9² = R$ 81."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 90",
+            "correct": false,
+            "feedback": "Aplicou apenas um período de queda de 10%. Sobre o saldo: 100 · 0,9² = R$ 81."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 19",
+            "correct": false,
+            "feedback": "Deu o total perdido nos dois períodos, não o saldo restante. Sobre o saldo: 100 · 0,9² = R$ 81."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 81",
+            "correct": true,
+            "feedback": "Certo. 100 · 0,9² = 81."
           }
         ]
       }

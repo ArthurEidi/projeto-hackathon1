@@ -280,16 +280,28 @@
         "prompt": "R$ 100 recebem desconto de 10%. Qual o preço final?",
         "options": [
           {
+            "id": "o2",
+            "label": "R$ 10",
+            "correct": false,
+            "feedback": "Deu o desconto, não o preço final: 100 · 0,9 = R$ 90."
+          },
+          {
             "id": "o1",
             "label": "R$ 90",
             "correct": true,
             "feedback": "Certo. 100 · 0,9 = 90."
           },
           {
-            "id": "o2",
-            "label": "R$ 10",
+            "id": "o3",
+            "label": "R$ 110",
             "correct": false,
-            "feedback": "Deu o desconto, não o preço final: 100 · 0,9 = R$ 90."
+            "feedback": "Aplicou acréscimo em vez de desconto: 100 · 0,9 = R$ 90."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 99",
+            "correct": false,
+            "feedback": "Tirou só 1% em vez de 10%: 100 · 0,9 = R$ 90."
           }
         ]
       },
@@ -304,10 +316,22 @@
             "feedback": "Deu apenas o acréscimo: 50 · 1,2 = R$ 60."
           },
           {
+            "id": "o3",
+            "label": "R$ 70",
+            "correct": false,
+            "feedback": "Somou R$ 20 em vez de 20%: 50 · 1,2 = R$ 60."
+          },
+          {
             "id": "o1",
             "label": "R$ 60",
             "correct": true,
             "feedback": "Certo. 50 · 1,2 = 60."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 40",
+            "correct": false,
+            "feedback": "Aplicou desconto de 20% em vez de aumento: 50 · 1,2 = R$ 60."
           }
         ]
       },
@@ -326,6 +350,18 @@
             "label": "110%",
             "correct": false,
             "feedback": "Tomou o índice final como variação: (110 − 100) ÷ 100 = 10%."
+          },
+          {
+            "id": "o3",
+            "label": "9,1%",
+            "correct": false,
+            "feedback": "Dividiu o aumento por 110 em vez da base 100: (110 − 100) ÷ 100 = 10%."
+          },
+          {
+            "id": "o4",
+            "label": "1%",
+            "correct": false,
+            "feedback": "Deslocou a vírgula uma casa para a esquerda: (110 − 100) ÷ 100 = 10%."
           }
         ]
       },
@@ -338,6 +374,18 @@
             "label": "R$ 50",
             "correct": false,
             "feedback": "Deu só o valor descontado: 200 · 0,75 = R$ 150."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 175",
+            "correct": false,
+            "feedback": "Subtraiu R$ 25 em vez de 25%: 200 · 0,75 = R$ 150."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 250",
+            "correct": false,
+            "feedback": "Somou 25% em vez de descontar: 200 · 0,75 = R$ 150."
           },
           {
             "id": "o1",
@@ -364,6 +412,18 @@
             "label": "R$ 88",
             "correct": true,
             "feedback": "Certo. 80 · 1,1 = 88."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 90",
+            "correct": false,
+            "feedback": "Somou R$ 10 em vez de 10%: 80 · 1,1 = R$ 88."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 72",
+            "correct": false,
+            "feedback": "Aplicou desconto de 10% em vez de aumento: 80 · 1,1 = R$ 88."
           }
         ]
       },
@@ -372,16 +432,28 @@
         "prompt": "Após um desconto de 20%, que parte do preço resta?",
         "options": [
           {
+            "id": "o2",
+            "label": "20%",
+            "correct": false,
+            "feedback": "Confundiu desconto com a parte que resta: 100% − 20% = 80%."
+          },
+          {
+            "id": "o3",
+            "label": "120%",
+            "correct": false,
+            "feedback": "Somou 20% como se fosse acréscimo: 100% − 20% = 80%."
+          },
+          {
             "id": "o1",
             "label": "80%",
             "correct": true,
             "feedback": "Certo. 100% − 20% = 80%."
           },
           {
-            "id": "o2",
-            "label": "20%",
+            "id": "o4",
+            "label": "0,8%",
             "correct": false,
-            "feedback": "Confundiu desconto com a parte que resta: 100% − 20% = 80%."
+            "feedback": "Confundiu fator 0,8 com 0,8%: 100% − 20% = 80%."
           }
         ]
       },
@@ -400,6 +472,18 @@
             "label": "R$ 99",
             "correct": true,
             "feedback": "Certo. 100 · 1,1 · 0,9 = 99."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 101",
+            "correct": false,
+            "feedback": "Somou 1 em vez de subtrair ao multiplicar 1,1 · 0,9: 100 · 1,1 · 0,9 = R$ 99."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 90",
+            "correct": false,
+            "feedback": "Aplicou só a queda de 10% sobre 100: 100 · 1,1 · 0,9 = R$ 99."
           }
         ]
       }
@@ -410,16 +494,28 @@
         "prompt": "R$ 200 caem 10% duas vezes. Quanto ficam?",
         "options": [
           {
+            "id": "o2",
+            "label": "R$ 160",
+            "correct": false,
+            "feedback": "Somou dois descontos sobre a base inicial. Sobre o valor corrente: 200 · 0,9² = R$ 162."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 180",
+            "correct": false,
+            "feedback": "Aplicou apenas um desconto de 10%: 200 · 0,9² = R$ 162."
+          },
+          {
             "id": "o1",
             "label": "R$ 162",
             "correct": true,
             "feedback": "Certo. 200 · 0,9² = 162."
           },
           {
-            "id": "o2",
-            "label": "R$ 160",
+            "id": "o4",
+            "label": "R$ 198",
             "correct": false,
-            "feedback": "Somou dois descontos sobre a base inicial. Sobre o valor corrente: 200 · 0,9² = R$ 162."
+            "feedback": "Multiplicou por 0,99 em vez de 0,81: 200 · 0,9² = R$ 162."
           }
         ]
       },
@@ -438,6 +534,18 @@
             "label": "10%",
             "correct": true,
             "feedback": "Certo. 12 ÷ 120 = 10%."
+          },
+          {
+            "id": "o3",
+            "label": "9,1%",
+            "correct": false,
+            "feedback": "Dividiu o aumento por 132 em vez da base 120: 12 ÷ 120 = 10%."
+          },
+          {
+            "id": "o4",
+            "label": "110%",
+            "correct": false,
+            "feedback": "Deu o índice relativo final, não a variação: 12 ÷ 120 = 10%."
           }
         ]
       },
@@ -446,16 +554,28 @@
         "prompt": "R$ 250 recebem acréscimo de 8%. Qual o preço?",
         "options": [
           {
-            "id": "o1",
-            "label": "R$ 270",
-            "correct": true,
-            "feedback": "Certo. 250 · 1,08 = 270."
-          },
-          {
             "id": "o2",
             "label": "R$ 258",
             "correct": false,
             "feedback": "Somou R$ 8, não 8% do preço: 250 · 1,08 = R$ 270."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 230",
+            "correct": false,
+            "feedback": "Aplicou desconto de 8% em vez de acréscimo: 250 · 1,08 = R$ 270."
+          },
+          {
+            "id": "o4",
+            "label": "R$ 20",
+            "correct": false,
+            "feedback": "Deu apenas o valor do acréscimo, não o total: 250 · 1,08 = R$ 270."
+          },
+          {
+            "id": "o1",
+            "label": "R$ 270",
+            "correct": true,
+            "feedback": "Certo. 250 · 1,08 = 270."
           }
         ]
       },
@@ -470,10 +590,22 @@
             "feedback": "Supôs que variações opostas se cancelam: 1,2 · 0,8 = 0,96."
           },
           {
+            "id": "o3",
+            "label": "1,04",
+            "correct": false,
+            "feedback": "Somou 0,04 em vez de subtrair ao calcular 1 − 0,04: 1,2 · 0,8 = 0,96."
+          },
+          {
             "id": "o1",
             "label": "0,96",
             "correct": true,
             "feedback": "Certo. 1,2 · 0,8 = 0,96."
+          },
+          {
+            "id": "o4",
+            "label": "0,8",
+            "correct": false,
+            "feedback": "Usou apenas o fator da queda de 20%: 1,2 · 0,8 = 0,96."
           }
         ]
       },
@@ -483,16 +615,28 @@
         "fala": "Última. Divida o aumento pela base.",
         "options": [
           {
+            "id": "o2",
+            "label": "150%",
+            "correct": false,
+            "feedback": "150 é o preço final, não o aumento: (150 − 100) ÷ 100 = 50%."
+          },
+          {
             "id": "o1",
             "label": "50%",
             "correct": true,
             "feedback": "Certo. (150 − 100) ÷ 100 = 50%."
           },
           {
-            "id": "o2",
-            "label": "150%",
+            "id": "o3",
+            "label": "33,3%",
             "correct": false,
-            "feedback": "150 é o preço final, não o aumento: (150 − 100) ÷ 100 = 50%."
+            "feedback": "Dividiu o aumento 50 pelo valor final 150 em vez de 100: (150 − 100) ÷ 100 = 50%."
+          },
+          {
+            "id": "o4",
+            "label": "0,5%",
+            "correct": false,
+            "feedback": "Esqueceu de multiplicar 0,5 por 100%: (150 − 100) ÷ 100 = 50%."
           }
         ]
       }

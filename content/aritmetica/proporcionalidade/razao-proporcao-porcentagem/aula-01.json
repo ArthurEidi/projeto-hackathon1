@@ -240,10 +240,22 @@
             "feedback": "Você confundiu razão 1 com percentual 1. O certo é 100%; 1·100=100%."
           },
           {
+            "id": "f1-razao-proporcao-porcentagem-erro2",
+            "label": "10%",
+            "correct": false,
+            "feedback": "Você deslocou uma casa na conversão para porcentagem. O certo é 100%; 1·100=100%."
+          },
+          {
             "id": "f1-razao-proporcao-porcentagem-certa",
             "label": "100%",
             "correct": true,
             "feedback": "Certo: 100%; 1·100=100%."
+          },
+          {
+            "id": "f1-razao-proporcao-porcentagem-erro3",
+            "label": "50%",
+            "correct": false,
+            "feedback": "50% corresponde à metade do todo, não ao todo inteiro. O certo é 100%; 1·100=100%."
           }
         ]
       },
@@ -252,16 +264,28 @@
         "prompt": "Que fração representa 50%?",
         "options": [
           {
+            "id": "f2-razao-proporcao-porcentagem-erro",
+            "label": "1/50",
+            "correct": false,
+            "feedback": "Por cento significa dividir por 100. O certo é 1/2; 50/100=1/2."
+          },
+          {
             "id": "f2-razao-proporcao-porcentagem-certa",
             "label": "1/2",
             "correct": true,
             "feedback": "Certo: 1/2; 50/100=1/2."
           },
           {
-            "id": "f2-razao-proporcao-porcentagem-erro",
-            "label": "1/50",
+            "id": "f2-razao-proporcao-porcentagem-erro2",
+            "label": "1/5",
             "correct": false,
-            "feedback": "Por cento significa dividir por 100. O certo é 1/2; 50/100=1/2."
+            "feedback": "1/5 equivale a 20%, não a 50%. O certo é 1/2; 50/100=1/2."
+          },
+          {
+            "id": "f2-razao-proporcao-porcentagem-erro3",
+            "label": "1/20",
+            "correct": false,
+            "feedback": "1/20 equivale a 5%, não a 50%. O certo é 1/2; 50/100=1/2."
           }
         ]
       },
@@ -314,10 +338,22 @@
             "feedback": "Você calculou 50%. O certo é 2; 8·25/100=2."
           },
           {
+            "id": "m1-razao-proporcao-porcentagem-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você calculou 12,5% em vez de 25%. O certo é 2; 8·25/100=2."
+          },
+          {
             "id": "m1-razao-proporcao-porcentagem-certa",
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; 8·25/100=2."
+          },
+          {
+            "id": "m1-razao-proporcao-porcentagem-erro3",
+            "label": "200",
+            "correct": false,
+            "feedback": "Você multiplicou 8·25 sem dividir por 100. O certo é 2; 8·25/100=2."
           }
         ]
       },
@@ -326,16 +362,28 @@
         "prompt": "2 é quantos por cento de 8?",
         "options": [
           {
+            "id": "m2-razao-proporcao-porcentagem-erro",
+            "label": "400%",
+            "correct": false,
+            "feedback": "Você inverteu parte e todo. O certo é 25%; 100·2/8=25."
+          },
+          {
             "id": "m2-razao-proporcao-porcentagem-certa",
             "label": "25%",
             "correct": true,
             "feedback": "Certo: 25%; 100·2/8=25."
           },
           {
-            "id": "m2-razao-proporcao-porcentagem-erro",
-            "label": "400%",
+            "id": "m2-razao-proporcao-porcentagem-erro2",
+            "label": "16%",
             "correct": false,
-            "feedback": "Você inverteu parte e todo. O certo é 25%; 100·2/8=25."
+            "feedback": "Você multiplicou 2·8 em vez de dividir 2 por 8. O certo é 25%; 100·2/8=25."
+          },
+          {
+            "id": "m2-razao-proporcao-porcentagem-erro3",
+            "label": "20%",
+            "correct": false,
+            "feedback": "Você dividiu 2 por 10 em vez de 8. O certo é 25%; 100·2/8=25."
           }
         ]
       },
@@ -350,10 +398,22 @@
             "feedback": "Você multiplicou pelo inverso da razão. O certo é 3; x=6/2=3."
           },
           {
+            "id": "m3-razao-proporcao-porcentagem-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você manteve o denominador 2 da fração direita. O certo é 3; x=6/2=3."
+          },
+          {
             "id": "m3-razao-proporcao-porcentagem-certa",
             "label": "3",
             "correct": true,
             "feedback": "Certo: 3; x=6/2=3."
+          },
+          {
+            "id": "m3-razao-proporcao-porcentagem-erro3",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você subtraiu 6−2 em vez de dividir. O certo é 3; x=6/2=3."
           }
         ]
       }
@@ -364,16 +424,28 @@
         "prompt": "Um preço de 20 sobe 10%; qual é o novo preço?",
         "options": [
           {
+            "id": "d1-razao-proporcao-porcentagem-erro",
+            "label": "30",
+            "correct": false,
+            "feedback": "Você somou 10 unidades em vez de 10%. O certo é 22; 20·1,1=22."
+          },
+          {
             "id": "d1-razao-proporcao-porcentagem-certa",
             "label": "22",
             "correct": true,
             "feedback": "Certo: 22; 20·1,1=22."
           },
           {
-            "id": "d1-razao-proporcao-porcentagem-erro",
-            "label": "30",
+            "id": "d1-razao-proporcao-porcentagem-erro2",
+            "label": "20,2",
             "correct": false,
-            "feedback": "Você somou 10 unidades em vez de 10%. O certo é 22; 20·1,1=22."
+            "feedback": "Você somou 1% em vez de 10%. O certo é 22; 20·1,1=22."
+          },
+          {
+            "id": "d1-razao-proporcao-porcentagem-erro3",
+            "label": "18",
+            "correct": false,
+            "feedback": "Você aplicou desconto de 10% em vez de aumento. O certo é 22; 20·1,1=22."
           }
         ]
       },
@@ -400,16 +472,28 @@
         "prompt": "Quanto é 12,5% de 4?",
         "options": [
           {
+            "id": "d3-razao-proporcao-porcentagem-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você confundiu 12,5% com 50%. O certo é 0,5; 12,5%=1/8; 4/8=0,5."
+          },
+          {
+            "id": "d3-razao-proporcao-porcentagem-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você calculou 25% de 4 em vez de 12,5%. O certo é 0,5; 12,5%=1/8; 4/8=0,5."
+          },
+          {
             "id": "d3-razao-proporcao-porcentagem-certa",
             "label": "0,5",
             "correct": true,
             "feedback": "Certo: 0,5; 12,5%=1/8; 4/8=0,5."
           },
           {
-            "id": "d3-razao-proporcao-porcentagem-erro",
-            "label": "2",
+            "id": "d3-razao-proporcao-porcentagem-erro3",
+            "label": "50",
             "correct": false,
-            "feedback": "Você confundiu 12,5% com 50%. O certo é 0,5; 12,5%=1/8; 4/8=0,5."
+            "feedback": "Você multiplicou 12,5·4 sem dividir por 100. O certo é 0,5; 12,5%=1/8; 4/8=0,5."
           }
         ]
       },
@@ -428,6 +512,18 @@
             "label": "10",
             "correct": true,
             "feedback": "Certo: 10; 0,8T=8; T=10."
+          },
+          {
+            "id": "d4-razao-proporcao-porcentagem-erro2",
+            "label": "6,4",
+            "correct": false,
+            "feedback": "Você aplicou novo desconto de 20% sobre 8 em vez de reverter. O certo é 10; 0,8T=8; T=10."
+          },
+          {
+            "id": "d4-razao-proporcao-porcentagem-erro3",
+            "label": "28",
+            "correct": false,
+            "feedback": "Você somou 20 ao preço final 8. O certo é 10; 0,8T=8; T=10."
           }
         ]
       },
@@ -436,16 +532,28 @@
         "prompt": "Uma turma tem 8 alunos e 25% faltam; depois chega metade dos ausentes; qual percentual continua ausente?",
         "options": [
           {
-            "id": "d5-razao-proporcao-porcentagem-certa",
-            "label": "12,5%",
-            "correct": true,
-            "feedback": "Certo: 12,5%; Faltavam 2; sobra 1; 1/8=12,5%."
-          },
-          {
             "id": "d5-razao-proporcao-porcentagem-erro",
             "label": "50%",
             "correct": false,
             "feedback": "Você usou só os ausentes como novo todo. O certo é 12,5%; Faltavam 2; sobra 1; 1/8=12,5%."
+          },
+          {
+            "id": "d5-razao-proporcao-porcentagem-erro2",
+            "label": "25%",
+            "correct": false,
+            "feedback": "Você manteve os 25% iniciais sem contar quem chegou. O certo é 12,5%; Faltavam 2; sobra 1; 1/8=12,5%."
+          },
+          {
+            "id": "d5-razao-proporcao-porcentagem-erro3",
+            "label": "10%",
+            "correct": false,
+            "feedback": "Você dividiu 1 aluno por 10 em vez de 8. O certo é 12,5%; Faltavam 2; sobra 1; 1/8=12,5%."
+          },
+          {
+            "id": "d5-razao-proporcao-porcentagem-certa",
+            "label": "12,5%",
+            "correct": true,
+            "feedback": "Certo: 12,5%; Faltavam 2; sobra 1; 1/8=12,5%."
           }
         ]
       }

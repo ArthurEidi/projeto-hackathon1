@@ -365,10 +365,22 @@
             "feedback": "Você confundiu expoente 1 com expoente 0. O certo é 2; 2¹=2."
           },
           {
+            "id": "f1-potencias-e-radicais-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você zerou a potência ao ver expoente 1. O certo é 2; 2¹=2."
+          },
+          {
             "id": "f1-potencias-e-radicais-certa",
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; 2¹=2."
+          },
+          {
+            "id": "f1-potencias-e-radicais-erro3",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você dobrou a base sem motivo. O certo é 2; 2¹=2."
           }
         ]
       },
@@ -377,16 +389,28 @@
         "prompt": "Quanto vale 2⁰?",
         "options": [
           {
+            "id": "f2-potencias-e-radicais-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Expoente zero não zera base não nula. O certo é 1; 2²/2²=2⁰=1."
+          },
+          {
             "id": "f2-potencias-e-radicais-certa",
             "label": "1",
             "correct": true,
             "feedback": "Certo: 1; 2²/2²=2⁰=1."
           },
           {
-            "id": "f2-potencias-e-radicais-erro",
-            "label": "0",
+            "id": "f2-potencias-e-radicais-erro2",
+            "label": "2",
             "correct": false,
-            "feedback": "Expoente zero não zera base não nula. O certo é 1; 2²/2²=2⁰=1."
+            "feedback": "Você manteve a base como se o expoente fosse 1. O certo é 1; 2²/2²=2⁰=1."
+          },
+          {
+            "id": "f2-potencias-e-radicais-erro3",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Você trocou o sinal em vez de usar a razão 2²/2². O certo é 1; 2²/2²=2⁰=1."
           }
         ]
       },
@@ -401,10 +425,22 @@
             "feedback": "Expoente negativo indica inverso. O certo é 0,5; 2⁻¹=1/2."
           },
           {
+            "id": "f3-potencias-e-radicais-erro2",
+            "label": "−0,5",
+            "correct": false,
+            "feedback": "Você inverteu a base e ainda trocou o sinal. O certo é 0,5; 2⁻¹=1/2=0,5."
+          },
+          {
             "id": "f3-potencias-e-radicais-certa",
             "label": "0,5",
             "correct": true,
             "feedback": "Certo: 0,5; 2⁻¹=1/2."
+          },
+          {
+            "id": "f3-potencias-e-radicais-erro3",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você ignorou o sinal negativo do expoente. O certo é 0,5; 2⁻¹=1/2=0,5."
           }
         ]
       },
@@ -413,16 +449,28 @@
         "prompt": "Quanto vale a raiz principal √9?",
         "options": [
           {
-            "id": "f4-potencias-e-radicais-certa",
-            "label": "3",
-            "correct": true,
-            "feedback": "Certo: 3; √9=3≥0."
-          },
-          {
             "id": "f4-potencias-e-radicais-erro",
             "label": "±3",
             "correct": false,
             "feedback": "Você confundiu raiz principal com equação quadrática. O certo é 3; √9=3≥0."
+          },
+          {
+            "id": "f4-potencias-e-radicais-erro2",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Raiz principal é sempre não negativa. O certo é 3; √9=3≥0."
+          },
+          {
+            "id": "f4-potencias-e-radicais-erro3",
+            "label": "4,5",
+            "correct": false,
+            "feedback": "Você dividiu 9 por 2 em vez de tirar a raiz quadrada. O certo é 3; 3²=9."
+          },
+          {
+            "id": "f4-potencias-e-radicais-certa",
+            "label": "3",
+            "correct": true,
+            "feedback": "Certo: 3; √9=3≥0."
           }
         ]
       }
@@ -443,6 +491,18 @@
             "label": "32",
             "correct": true,
             "feedback": "Certo: 32; 2²⁺³=2⁵=32."
+          },
+          {
+            "id": "m1-potencias-e-radicais-erro2",
+            "label": "16",
+            "correct": false,
+            "feedback": "Você contou um fator 2 a menos no produto. O certo é 32; 2²⁺³=2⁵=32."
+          },
+          {
+            "id": "m1-potencias-e-radicais-erro3",
+            "label": "12",
+            "correct": false,
+            "feedback": "Você somou as potências (4+8) em vez de multiplicar. O certo é 32; 2²⁺³=2⁵=32."
           }
         ]
       },
@@ -457,10 +517,22 @@
             "feedback": "Você somou expoentes em uma potência de potência. O certo é 64; (2²)³=2⁶=64."
           },
           {
+            "id": "m2-potencias-e-radicais-erro2",
+            "label": "16",
+            "correct": false,
+            "feedback": "Você reduziu o expoente para 4 em vez de multiplicar 2·3. O certo é 64; (2²)³=2⁶=64."
+          },
+          {
             "id": "m2-potencias-e-radicais-certa",
             "label": "64",
             "correct": true,
             "feedback": "Certo: 64; (2²)³=2⁶=64."
+          },
+          {
+            "id": "m2-potencias-e-radicais-erro3",
+            "label": "256",
+            "correct": false,
+            "feedback": "Você calculou 2^(2³)=2⁸ em vez de (2²)³=2⁶. O certo é 64; (2²)³=2⁶=64."
           }
         ]
       },
@@ -479,6 +551,18 @@
             "label": "5",
             "correct": true,
             "feedback": "Certo: 5; 2+3=5."
+          },
+          {
+            "id": "m3-potencias-e-radicais-erro2",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você multiplicou as raízes (2·3) em vez de somar. O certo é 5; 2+3=5."
+          },
+          {
+            "id": "m3-potencias-e-radicais-erro3",
+            "label": "13",
+            "correct": false,
+            "feedback": "Você somou 4+9 e esqueceu a raiz. O certo é 5; 2+3=5."
           }
         ]
       }
@@ -490,16 +574,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d1-potencias-e-radicais-erro",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Você esqueceu o módulo ao desfazer o quadrado. O certo é 3; √9=3."
+          },
+          {
+            "id": "d1-potencias-e-radicais-erro2",
+            "label": "±3",
+            "correct": false,
+            "feedback": "A raiz principal tem valor único não negativo. O certo é 3; √9=3."
+          },
+          {
             "id": "d1-potencias-e-radicais-certa",
             "label": "3",
             "correct": true,
             "feedback": "Certo: 3; √9=3."
           },
           {
-            "id": "d1-potencias-e-radicais-erro",
-            "label": "−3",
+            "id": "d1-potencias-e-radicais-erro3",
+            "label": "9",
             "correct": false,
-            "feedback": "Você esqueceu o módulo ao desfazer o quadrado. O certo é 3; √9=3."
+            "feedback": "Você elevou ao quadrado e esqueceu de extrair a raiz. O certo é 3; √9=3."
           }
         ]
       },
@@ -528,16 +624,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d3-potencias-e-radicais-erro",
+            "label": "Não existe real",
+            "correct": false,
+            "feedback": "A restrição de sinal vale para índice par. O certo é −2; (−2)³=−8."
+          },
+          {
             "id": "d3-potencias-e-radicais-certa",
             "label": "−2",
             "correct": true,
             "feedback": "Certo: −2; (−2)³=−8."
           },
           {
-            "id": "d3-potencias-e-radicais-erro",
-            "label": "Não existe real",
+            "id": "d3-potencias-e-radicais-erro2",
+            "label": "2",
             "correct": false,
-            "feedback": "A restrição de sinal vale para índice par. O certo é −2; (−2)³=−8."
+            "feedback": "Você ignorou o sinal negativo do radicando. O certo é −2; (−2)³=−8."
+          },
+          {
+            "id": "d3-potencias-e-radicais-erro3",
+            "label": "−4",
+            "correct": false,
+            "feedback": "Você dividiu 8 por 2 em vez de tirar a raiz cúbica. O certo é −2; (−2)³=−8."
           }
         ]
       },
@@ -553,10 +661,22 @@
             "feedback": "Você não inverteu o fator de expoente negativo. O certo é 1; √4·(1/2)=2/2=1."
           },
           {
+            "id": "d4-potencias-e-radicais-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você calculou apenas 4¹ᐟ² e esqueceu o fator 2⁻¹. O certo é 1; √4·(1/2)=2/2=1."
+          },
+          {
             "id": "d4-potencias-e-radicais-certa",
             "label": "1",
             "correct": true,
             "feedback": "Certo: 1; √4·(1/2)=2/2=1."
+          },
+          {
+            "id": "d4-potencias-e-radicais-erro3",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Expoente −1 indica inverso, não sinal negativo. O certo é 1; √4·(1/2)=2/2=1."
           }
         ]
       },
@@ -566,16 +686,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
-            "id": "d5-potencias-e-radicais-certa",
-            "label": "2√2 e 4√2",
-            "correct": true,
-            "feedback": "Certo: 2√2 e 4√2; √8=2√2; 2·2√2=4√2."
-          },
-          {
             "id": "d5-potencias-e-radicais-erro",
             "label": "4 e 8",
             "correct": false,
             "feedback": "Você dividiu a área por 2 em vez de extrair a raiz. O certo é 2√2 e 4√2; √8=2√2; 2·2√2=4√2."
+          },
+          {
+            "id": "d5-potencias-e-radicais-erro2",
+            "label": "√2 e 2√2",
+            "correct": false,
+            "feedback": "Você simplificou √8 errado para √2. O certo é 2√2 e 4√2; √8=2√2; 2·2√2=4√2."
+          },
+          {
+            "id": "d5-potencias-e-radicais-erro3",
+            "label": "2√2 e 4",
+            "correct": false,
+            "feedback": "Você multiplicou por √2 em vez de dobrar 2√2. O certo é 2√2 e 4√2; √8=2√2; 2·2√2=4√2."
+          },
+          {
+            "id": "d5-potencias-e-radicais-certa",
+            "label": "2√2 e 4√2",
+            "correct": true,
+            "feedback": "Certo: 2√2 e 4√2; √8=2√2; 2·2√2=4√2."
           }
         ]
       }

@@ -334,16 +334,28 @@
         "prompt": "Qual é o resultado de A ∪ ∅?",
         "options": [
           {
+            "id": "f4-vazio",
+            "label": "∅",
+            "correct": false,
+            "feedback": "Resposta: A; O vazio não remove os elementos de A: A ∪ ∅ = A."
+          },
+          {
             "id": "f4-a",
             "label": "A",
             "correct": true,
             "feedback": "Certo: A; o conjunto vazio não acrescenta elementos."
           },
           {
-            "id": "f4-vazio",
-            "label": "∅",
+            "id": "f4-chave",
+            "label": "{∅}",
             "correct": false,
-            "feedback": "Resposta: A; O vazio não remove os elementos de A: A ∪ ∅ = A."
+            "feedback": "Resposta: A; O vazio não entra como elemento de A: A ∪ ∅ = A."
+          },
+          {
+            "id": "f4-u",
+            "label": "U",
+            "correct": false,
+            "feedback": "Resposta: A; A ∪ ∅ não vira o universo U: o vazio nada acrescenta."
           }
         ]
       }

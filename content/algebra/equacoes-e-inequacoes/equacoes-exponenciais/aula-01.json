@@ -58,7 +58,7 @@
       },
       "lines": {
         "intro": "No caso neutro x=0 a saída é 1; quanto sai após dois passos? Arraste até 2.",
-        "done": "Sai 4 porque cada passo multiplica por 2: 1·2·2=4."
+        "done": "Em x = 2 sai 4 porque cada passo multiplica por 2: 1·2·2 = 4."
       },
       "duvida": {
         "quando": "fim",

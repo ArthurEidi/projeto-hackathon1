@@ -253,10 +253,22 @@
             "feedback": "Você confundiu direta com inversa. O certo é y/x; y/x=2 para x≠0."
           },
           {
+            "id": "f1-grandezas-direta-e-inversa-erro2",
+            "label": "y−x",
+            "correct": false,
+            "feedback": "Você subtraiu as grandezas em vez de dividir. O certo é y/x; y/x=2 para x≠0."
+          },
+          {
             "id": "f1-grandezas-direta-e-inversa-certa",
             "label": "y/x",
             "correct": true,
             "feedback": "Certo: y/x; y/x=2 para x≠0."
+          },
+          {
+            "id": "f1-grandezas-direta-e-inversa-erro3",
+            "label": "x+y",
+            "correct": false,
+            "feedback": "Você somou as grandezas em vez de dividir. O certo é y/x; y/x=2 para x≠0."
           }
         ]
       },
@@ -265,16 +277,28 @@
         "prompt": "Em xy=6, qual quantidade fica constante?",
         "options": [
           {
+            "id": "f2-grandezas-direta-e-inversa-erro",
+            "label": "Razão",
+            "correct": false,
+            "feedback": "Na inversa o produto é fixo. O certo é Produto; xy=6."
+          },
+          {
             "id": "f2-grandezas-direta-e-inversa-certa",
             "label": "Produto",
             "correct": true,
             "feedback": "Certo: Produto; xy=6."
           },
           {
-            "id": "f2-grandezas-direta-e-inversa-erro",
-            "label": "Razão",
+            "id": "f2-grandezas-direta-e-inversa-erro2",
+            "label": "Soma",
             "correct": false,
-            "feedback": "Na inversa o produto é fixo. O certo é Produto; xy=6."
+            "feedback": "Na inversa o produto é fixo, não a soma. O certo é Produto; xy=6."
+          },
+          {
+            "id": "f2-grandezas-direta-e-inversa-erro3",
+            "label": "Diferença",
+            "correct": false,
+            "feedback": "Na inversa o produto é fixo, não a diferença. O certo é Produto; xy=6."
           }
         ]
       },
@@ -331,6 +355,18 @@
             "label": "6",
             "correct": true,
             "feedback": "Certo: 6; y=3·2=6."
+          },
+          {
+            "id": "m1-grandezas-direta-e-inversa-erro2",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você somou 3+2 em vez de multiplicar. O certo é 6; y=3·2=6."
+          },
+          {
+            "id": "m1-grandezas-direta-e-inversa-erro3",
+            "label": "9",
+            "correct": false,
+            "feedback": "Você elevou 3 ao quadrado em vez de multiplicar por 2. O certo é 6; y=3·2=6."
           }
         ]
       },
@@ -339,16 +375,28 @@
         "prompt": "Se xy=6 e x=2, quanto vale y?",
         "options": [
           {
+            "id": "m2-grandezas-direta-e-inversa-erro",
+            "label": "12",
+            "correct": false,
+            "feedback": "Você usou uma regra direta. O certo é 3; y=6/2=3."
+          },
+          {
+            "id": "m2-grandezas-direta-e-inversa-erro2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você subtraiu 6−2 em vez de dividir. O certo é 3; y=6/2=3."
+          },
+          {
             "id": "m2-grandezas-direta-e-inversa-certa",
             "label": "3",
             "correct": true,
             "feedback": "Certo: 3; y=6/2=3."
           },
           {
-            "id": "m2-grandezas-direta-e-inversa-erro",
-            "label": "12",
+            "id": "m2-grandezas-direta-e-inversa-erro3",
+            "label": "8",
             "correct": false,
-            "feedback": "Você usou uma regra direta. O certo é 3; y=6/2=3."
+            "feedback": "Você somou 6+2 em vez de dividir. O certo é 3; y=6/2=3."
           }
         ]
       },
@@ -367,6 +415,18 @@
             "label": "9",
             "correct": true,
             "feedback": "Certo: 9; Unidade=6/2=3; total=3·3=9."
+          },
+          {
+            "id": "m3-grandezas-direta-e-inversa-erro2",
+            "label": "7",
+            "correct": false,
+            "feedback": "Você somou 1 ao preço em vez de somar o preço de 1 caderno (3). O certo é 9; Unidade=6/2=3; total=3·3=9."
+          },
+          {
+            "id": "m3-grandezas-direta-e-inversa-erro3",
+            "label": "12",
+            "correct": false,
+            "feedback": "Você dobrou o valor de 2 cadernos. O certo é 9; Unidade=6/2=3; total=3·3=9."
           }
         ]
       }
@@ -416,16 +476,28 @@
         "prompt": "Uma relação direta passa por (2;1); quanto vale y em x=1?",
         "options": [
           {
+            "id": "d3-grandezas-direta-e-inversa-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você inverteu a constante de proporcionalidade. O certo é 0,5; k=1/2; y=0,5·1."
+          },
+          {
+            "id": "d3-grandezas-direta-e-inversa-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você subtraiu 1 de x e de y igualmente (1−1=0). O certo é 0,5; k=1/2; y=0,5·1."
+          },
+          {
             "id": "d3-grandezas-direta-e-inversa-certa",
             "label": "0,5",
             "correct": true,
             "feedback": "Certo: 0,5; k=1/2; y=0,5·1."
           },
           {
-            "id": "d3-grandezas-direta-e-inversa-erro",
-            "label": "2",
+            "id": "d3-grandezas-direta-e-inversa-erro3",
+            "label": "1",
             "correct": false,
-            "feedback": "Você inverteu a constante de proporcionalidade. O certo é 0,5; k=1/2; y=0,5·1."
+            "feedback": "Você manteve y=1 ao mudar x. O certo é 0,5; k=1/2; y=0,5·1."
           }
         ]
       },
@@ -445,6 +517,18 @@
             "label": "Divide por 3",
             "correct": true,
             "feedback": "Certo: Divide por 3; (3x)·(y/3)=xy."
+          },
+          {
+            "id": "d4-grandezas-direta-e-inversa-erro2",
+            "label": "Diminui 3 unidades",
+            "correct": false,
+            "feedback": "Proporção inversa divide pelo fator, não subtrai 3. O certo é Divide por 3; (3x)·(y/3)=xy."
+          },
+          {
+            "id": "d4-grandezas-direta-e-inversa-erro3",
+            "label": "Fica igual",
+            "correct": false,
+            "feedback": "Se y não mudasse, o produto triplicaria. O certo é Divide por 3; (3x)·(y/3)=xy."
           }
         ]
       },
@@ -454,16 +538,28 @@
         "prompt": "Duas máquinas iguais terminam uma tarefa em 6 horas; com três máquinas de mesma eficiência, quantas horas são necessárias?",
         "options": [
           {
-            "id": "d5-grandezas-direta-e-inversa-certa",
-            "label": "4",
-            "correct": true,
-            "feedback": "Certo: 4; Trabalho=2·6=12; tempo=12/3=4."
-          },
-          {
             "id": "d5-grandezas-direta-e-inversa-erro",
             "label": "9",
             "correct": false,
             "feedback": "Você aplicou proporção direta ao tempo. O certo é 4; Trabalho=2·6=12; tempo=12/3=4."
+          },
+          {
+            "id": "d5-grandezas-direta-e-inversa-erro2",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você subtraiu 1 hora por máquina adicionada. O certo é 4; Trabalho=2·6=12; tempo=12/3=4."
+          },
+          {
+            "id": "d5-grandezas-direta-e-inversa-erro3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você dividiu 6 por 2 sem multiplicar antes por 2. O certo é 4; Trabalho=2·6=12; tempo=12/3=4."
+          },
+          {
+            "id": "d5-grandezas-direta-e-inversa-certa",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo: 4; Trabalho=2·6=12; tempo=12/3=4."
           }
         ]
       }

@@ -57,7 +57,7 @@
       },
       "lines": {
         "intro": "No caso neutro log₂1=0, qual saída aparece em 2? Arraste até lá.",
-        "done": "Sai 1 porque 2¹=2."
+        "done": "Em x = 2 sai 1 porque 2¹ = 2."
       },
       "duvida": {
         "quando": "fim",

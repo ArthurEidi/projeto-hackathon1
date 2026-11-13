@@ -288,16 +288,28 @@
         "prompt": "Qual é o módulo de −2?",
         "options": [
           {
+            "id": "f1-erro",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Resposta: 2; Módulo mede distância não negativa: ∣−2∣ = 2."
+          },
+          {
             "id": "f1-certa",
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; ∣−2∣ = 2."
           },
           {
-            "id": "f1-erro",
-            "label": "−2",
+            "id": "f1-erro2",
+            "label": "0",
             "correct": false,
-            "feedback": "Resposta: 2; Módulo mede distância não negativa: ∣−2∣ = 2."
+            "feedback": "Resposta: 2; Só o módulo de zero vale zero: ∣−2∣ = 2."
+          },
+          {
+            "id": "f1-erro3",
+            "label": "−4",
+            "correct": false,
+            "feedback": "Resposta: 2; Módulo não dobra nem mantém sinal: ∣−2∣ = 2."
           }
         ]
       },
@@ -306,16 +318,28 @@
         "prompt": "Quanto vale ∣0∣?",
         "options": [
           {
+            "id": "f2-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 0; A distância de zero até ele mesmo é zero: ∣0∣ = 0."
+          },
+          {
+            "id": "f2-erro2",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Resposta: 0; Módulo nunca é negativo e ∣0∣ = 0."
+          },
+          {
             "id": "f2-certa",
             "label": "0",
             "correct": true,
             "feedback": "Certo: 0; a distância de 0 a 0 é 0."
           },
           {
-            "id": "f2-erro",
-            "label": "1",
+            "id": "f2-erro3",
+            "label": "Não existe",
             "correct": false,
-            "feedback": "Resposta: 0; A distância de zero até ele mesmo é zero: ∣0∣ = 0."
+            "feedback": "Resposta: 0; Zero tem módulo definido e vale ∣0∣ = 0."
           }
         ]
       },

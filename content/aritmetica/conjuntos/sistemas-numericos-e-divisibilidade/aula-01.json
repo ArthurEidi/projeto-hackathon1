@@ -330,16 +330,28 @@
         "prompt": "Qual conjunto contém −2, mas não contém 0,5?",
         "options": [
           {
+            "id": "f2-sistemas-numericos-e-divisibilidade-erro",
+            "label": "N",
+            "correct": false,
+            "feedback": "Naturais não incluem negativos. O certo é Z; −2 é inteiro; 0,5 não é inteiro."
+          },
+          {
             "id": "f2-sistemas-numericos-e-divisibilidade-certa",
             "label": "Z",
             "correct": true,
             "feedback": "Certo: Z; −2 é inteiro; 0,5 não é inteiro."
           },
           {
-            "id": "f2-sistemas-numericos-e-divisibilidade-erro",
-            "label": "N",
+            "id": "f2-sistemas-numericos-e-divisibilidade-erro2",
+            "label": "Q",
             "correct": false,
-            "feedback": "Naturais não incluem negativos. O certo é Z; −2 é inteiro; 0,5 não é inteiro."
+            "feedback": "Os racionais contêm −2 e também 0,5. O certo é Z; −2 é inteiro; 0,5 não é inteiro."
+          },
+          {
+            "id": "f2-sistemas-numericos-e-divisibilidade-erro3",
+            "label": "R",
+            "correct": false,
+            "feedback": "Os reais contêm −2 e também 0,5. O certo é Z; −2 é inteiro; 0,5 não é inteiro."
           }
         ]
       },
@@ -392,10 +404,22 @@
             "feedback": "Você respondeu o quociente. O certo é 1; 7=3·2+1."
           },
           {
+            "id": "m1-sistemas-numericos-e-divisibilidade-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "7 não é múltiplo de 3, então o resto não é zero. O certo é 1; 7=3·2+1."
+          },
+          {
             "id": "m1-sistemas-numericos-e-divisibilidade-certa",
             "label": "1",
             "correct": true,
             "feedback": "Certo: 1; 7=3·2+1."
+          },
+          {
+            "id": "m1-sistemas-numericos-e-divisibilidade-erro3",
+            "label": "3",
+            "correct": false,
+            "feedback": "O resto deve ser menor que o divisor 3. O certo é 1; 7=3·2+1."
           }
         ]
       },
@@ -404,16 +428,28 @@
         "prompt": "Qual é a fatoração prima de 12?",
         "options": [
           {
+            "id": "m2-sistemas-numericos-e-divisibilidade-erro",
+            "label": "2·6",
+            "correct": false,
+            "feedback": "Você deixou um fator composto. O certo é 2²·3; 12=2·2·3."
+          },
+          {
             "id": "m2-sistemas-numericos-e-divisibilidade-certa",
             "label": "2²·3",
             "correct": true,
             "feedback": "Certo: 2²·3; 12=2·2·3."
           },
           {
-            "id": "m2-sistemas-numericos-e-divisibilidade-erro",
-            "label": "2·6",
+            "id": "m2-sistemas-numericos-e-divisibilidade-erro2",
+            "label": "2·3²",
             "correct": false,
-            "feedback": "Você deixou um fator composto. O certo é 2²·3; 12=2·2·3."
+            "feedback": "Você trocou os expoentes de 2 e 3 (2·3²=18). O certo é 2²·3; 12=2·2·3."
+          },
+          {
+            "id": "m2-sistemas-numericos-e-divisibilidade-erro3",
+            "label": "3·4",
+            "correct": false,
+            "feedback": "Você deixou 4 sem fatorar em primos. O certo é 2²·3; 12=2·2·3."
           }
         ]
       },
@@ -428,10 +464,22 @@
             "feedback": "Você confundiu divisor comum com múltiplo comum. O certo é 2; Divisores comuns: 1 e 2."
           },
           {
+            "id": "m3-sistemas-numericos-e-divisibilidade-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 divide ambos, mas não é o maior divisor comum. O certo é 2; Divisores comuns: 1 e 2."
+          },
+          {
             "id": "m3-sistemas-numericos-e-divisibilidade-certa",
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; Divisores comuns: 1 e 2."
+          },
+          {
+            "id": "m3-sistemas-numericos-e-divisibilidade-erro3",
+            "label": "48",
+            "correct": false,
+            "feedback": "Você multiplicou 6·8 em vez de buscar o mdc. O certo é 2; Divisores comuns: 1 e 2."
           }
         ]
       }
@@ -443,16 +491,28 @@
         "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d1-sistemas-numericos-e-divisibilidade-erro",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você calculou o máximo divisor comum. O certo é 12; 12=4·3=6·2."
+          },
+          {
+            "id": "d1-sistemas-numericos-e-divisibilidade-erro2",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 é múltiplo comum, mas não é o menor positivo. O certo é 12; 12=4·3=6·2."
+          },
+          {
             "id": "d1-sistemas-numericos-e-divisibilidade-certa",
             "label": "12",
             "correct": true,
             "feedback": "Certo: 12; 12=4·3=6·2."
           },
           {
-            "id": "d1-sistemas-numericos-e-divisibilidade-erro",
-            "label": "2",
+            "id": "d1-sistemas-numericos-e-divisibilidade-erro3",
+            "label": "10",
             "correct": false,
-            "feedback": "Você calculou o máximo divisor comum. O certo é 12; 12=4·3=6·2."
+            "feedback": "Você somou 4+6 em vez de calcular o mmc. O certo é 12; 12=4·3=6·2."
           }
         ]
       },
@@ -510,6 +570,18 @@
             "label": "7",
             "correct": true,
             "feedback": "Certo: 7; n=3·2+1=7."
+          },
+          {
+            "id": "d4-sistemas-numericos-e-divisibilidade-erro2",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você subtraiu o resto em vez de somar (3·2−1). O certo é 7; n=3·2+1=7."
+          },
+          {
+            "id": "d4-sistemas-numericos-e-divisibilidade-erro3",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você somou divisor e resto (3+1) e ignorou o quociente 2. O certo é 7; n=3·2+1=7."
           }
         ]
       },
@@ -519,16 +591,28 @@
         "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
-            "id": "d5-sistemas-numericos-e-divisibilidade-certa",
-            "label": "12",
-            "correct": true,
-            "feedback": "Certo: 12; mmc(4;6)=12."
-          },
-          {
             "id": "d5-sistemas-numericos-e-divisibilidade-erro",
             "label": "24",
             "correct": false,
             "feedback": "Você multiplicou sem procurar o primeiro múltiplo comum. O certo é 12; mmc(4;6)=12."
+          },
+          {
+            "id": "d5-sistemas-numericos-e-divisibilidade-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você calculou o mdc em vez do mmc. O certo é 12; mmc(4;6)=12."
+          },
+          {
+            "id": "d5-sistemas-numericos-e-divisibilidade-erro3",
+            "label": "10",
+            "correct": false,
+            "feedback": "Você somou os períodos em vez de buscar o mmc. O certo é 12; mmc(4;6)=12."
+          },
+          {
+            "id": "d5-sistemas-numericos-e-divisibilidade-certa",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo: 12; mmc(4;6)=12."
           }
         ]
       }

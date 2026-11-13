@@ -125,7 +125,7 @@
       },
       "lines": {
         "intro": "Se o outro fator for x+1, qual sinal aparece à direita de 1? Arraste até 2.",
-        "done": "O produto é positivo porque os fatores 1 e 3 têm o mesmo sinal."
+        "done": "Em x = 2 o produto é positivo porque os fatores 1 e 3 têm o mesmo sinal."
       },
       "complete_when": {
         "metric": "ponto_x",

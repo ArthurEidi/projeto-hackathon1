@@ -315,6 +315,18 @@
             "label": "21%",
             "correct": true,
             "feedback": "Certo. 1,1² − 1 = 21%."
+          },
+          {
+            "id": "o3",
+            "label": "10%",
+            "correct": false,
+            "feedback": "Manteve a taxa de um único semestre. O certo é 1,1² − 1 = 21%."
+          },
+          {
+            "id": "o4",
+            "label": "121%",
+            "correct": false,
+            "feedback": "Deu o fator acumulado 1,21 sem subtrair 1. O certo é 1,1² − 1 = 21%."
           }
         ]
       },
@@ -323,16 +335,28 @@
         "prompt": "Salário e preços sobem 10%. O poder de compra muda?",
         "options": [
           {
+            "id": "o2",
+            "label": "Sobe 10%",
+            "correct": false,
+            "feedback": "Olhou só o salário nominal. Com preços também em 1,10, o poder fica igual."
+          },
+          {
+            "id": "o3",
+            "label": "Cai 10%",
+            "correct": false,
+            "feedback": "Considerou apenas a inflação nos preços. Com ambos em 1,10, o poder fica igual."
+          },
+          {
             "id": "o1",
             "label": "Fica igual",
             "correct": true,
             "feedback": "Certo. 1,10 ÷ 1,10 = 1."
           },
           {
-            "id": "o2",
-            "label": "Sobe 10%",
+            "id": "o4",
+            "label": "Sobe 20%",
             "correct": false,
-            "feedback": "Olhou só o salário nominal. Com preços também em 1,10, o poder fica igual."
+            "feedback": "Somou os dois aumentos em vez de dividir fatores. Com ambos em 1,10, o poder fica igual."
           }
         ]
       },
@@ -345,6 +369,18 @@
             "label": "20%",
             "correct": false,
             "feedback": "Somou taxas sem composição. O certo é 1,05⁴ − 1 ≈ 21,55%."
+          },
+          {
+            "id": "o3",
+            "label": "5%",
+            "correct": false,
+            "feedback": "Manteve a taxa trimestral sem acumular os 4 trimestres. O certo é 1,05⁴ − 1 ≈ 21,55%."
+          },
+          {
+            "id": "o4",
+            "label": "121,55%",
+            "correct": false,
+            "feedback": "Deu o fator 1,2155 em vez da taxa sem subtrair 1. O certo é 1,05⁴ − 1 ≈ 21,55%."
           },
           {
             "id": "o1",
@@ -371,6 +407,18 @@
             "label": "110",
             "correct": true,
             "feedback": "Certo. 100 · 1,10 = 110."
+          },
+          {
+            "id": "o3",
+            "label": "90",
+            "correct": false,
+            "feedback": "Aplicou queda de 10% em vez de inflação. 100 · 1,10 = 110."
+          },
+          {
+            "id": "o4",
+            "label": "101",
+            "correct": false,
+            "feedback": "Somou 1% em vez de 10%. 100 · 1,10 = 110."
           }
         ]
       },
@@ -379,16 +427,28 @@
         "prompt": "O salário sobe 20% e os preços sobem 10%. Qual é o fator real?",
         "options": [
           {
+            "id": "o2",
+            "label": "1,10/1,20",
+            "correct": false,
+            "feedback": "Inverteu salário e preços. O fator real é 1,20 ÷ 1,10 ≈ 1,091."
+          },
+          {
+            "id": "o3",
+            "label": "1,10",
+            "correct": false,
+            "feedback": "Subtraiu 20% − 10% em vez de dividir fatores. O fator real é 1,20 ÷ 1,10 ≈ 1,091."
+          },
+          {
             "id": "o1",
             "label": "1,20/1,10 ≈ 1,091",
             "correct": true,
             "feedback": "Certo. 1,20 ÷ 1,10 ≈ 1,091."
           },
           {
-            "id": "o2",
-            "label": "1,10/1,20",
+            "id": "o4",
+            "label": "1,30",
             "correct": false,
-            "feedback": "Inverteu salário e preços. O fator real é 1,20 ÷ 1,10 ≈ 1,091."
+            "feedback": "Somou as taxas de salário e preços. O fator real é 1,20 ÷ 1,10 ≈ 1,091."
           }
         ]
       },
@@ -407,6 +467,18 @@
             "label": "2,01%",
             "correct": true,
             "feedback": "Certo. 1,01² − 1 = 2,01%."
+          },
+          {
+            "id": "o3",
+            "label": "1,02%",
+            "correct": false,
+            "feedback": "Dividiu o resultado por 2 ou confundiu o fator. O certo é 1,01² − 1 = 2,01%."
+          },
+          {
+            "id": "o4",
+            "label": "2,1%",
+            "correct": false,
+            "feedback": "Deslocou uma casa decimal no termo 0,01². O certo é 1,01² − 1 = 2,01%."
           }
         ]
       }
@@ -417,16 +489,28 @@
         "prompt": "Você tem R$ 110 nominais e os preços dobraram. Qual o valor real?",
         "options": [
           {
+            "id": "o2",
+            "label": "R$ 220",
+            "correct": false,
+            "feedback": "Multiplicou pelo índice em vez de dividir. O valor real é 110 ÷ 2 = R$ 55."
+          },
+          {
+            "id": "o3",
+            "label": "R$ 110",
+            "correct": false,
+            "feedback": "Ignorou a alta de preços sobre o poder de compra. O valor real é 110 ÷ 2 = R$ 55."
+          },
+          {
             "id": "o1",
             "label": "R$ 55",
             "correct": true,
             "feedback": "Certo. 110 ÷ 2 = 55."
           },
           {
-            "id": "o2",
-            "label": "R$ 220",
+            "id": "o4",
+            "label": "R$ 108",
             "correct": false,
-            "feedback": "Multiplicou pelo índice em vez de dividir. O valor real é 110 ÷ 2 = R$ 55."
+            "feedback": "Subtraiu R$ 2 em vez de dividir por 2. O valor real é 110 ÷ 2 = R$ 55."
           }
         ]
       },
@@ -445,6 +529,18 @@
             "label": "10%",
             "correct": true,
             "feedback": "Certo. (1 + i)² = 1,21 dá i = 10%."
+          },
+          {
+            "id": "o3",
+            "label": "11%",
+            "correct": false,
+            "feedback": "Arredondou para cima sem resolver (1 + i)² = 1,21. De (1 + i)² = 1,21, i = 10%."
+          },
+          {
+            "id": "o4",
+            "label": "21%",
+            "correct": false,
+            "feedback": "Manteve a taxa anual sem converter para o semestre. De (1 + i)² = 1,21, i = 10%."
           }
         ]
       },
@@ -453,16 +549,28 @@
         "prompt": "O índice de preços sobe de 120 a 126. Qual a inflação?",
         "options": [
           {
-            "id": "o1",
-            "label": "5%",
-            "correct": true,
-            "feedback": "Certo. 6 ÷ 120 = 5%."
-          },
-          {
             "id": "o2",
             "label": "6%",
             "correct": false,
             "feedback": "Não dividiu o aumento pela base. 6 ÷ 120 = 5%."
+          },
+          {
+            "id": "o3",
+            "label": "4,76%",
+            "correct": false,
+            "feedback": "Dividiu o aumento 6 pelo índice final 126 em vez de 120. 6 ÷ 120 = 5%."
+          },
+          {
+            "id": "o4",
+            "label": "105%",
+            "correct": false,
+            "feedback": "Deu o índice relativo final em vez da inflação. 6 ÷ 120 = 5%."
+          },
+          {
+            "id": "o1",
+            "label": "5%",
+            "correct": true,
+            "feedback": "Certo. 6 ÷ 120 = 5%."
           }
         ]
       },
@@ -477,10 +585,22 @@
             "feedback": "Subtraiu taxas em vez de dividir fatores. O exato é 1,10 ÷ 1,05 − 1 ≈ 4,76%."
           },
           {
+            "id": "o3",
+            "label": "≈ 5,24%",
+            "correct": false,
+            "feedback": "Somou a diferença em vez de dividir 1,10 por 1,05. O exato é 1,10 ÷ 1,05 − 1 ≈ 4,76%."
+          },
+          {
             "id": "o1",
             "label": "≈ 4,76%",
             "correct": true,
             "feedback": "Certo. 1,10 ÷ 1,05 − 1 = 1/21 ≈ 4,76%."
+          },
+          {
+            "id": "o4",
+            "label": "15%",
+            "correct": false,
+            "feedback": "Somou rendimento nominal e inflação. O exato é 1,10 ÷ 1,05 − 1 ≈ 4,76%."
           }
         ]
       },

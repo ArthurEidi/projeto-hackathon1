@@ -52,7 +52,7 @@
       ],
       "lines": {
         "intro": "No caso neutro, b = 0, só há o quadrado inicial; ao levar b a 1, quantas peças novas aparecem?",
-        "done": "Aparecem três peças: 2, 2 e 1; por isso a área passa de 4 para 9."
+        "done": "Aparecem três peças: duas faixas de área 2b e um canto b², levando a área de 4 para (2 + b)²."
       },
       "duvida": {
         "quando": "fim",

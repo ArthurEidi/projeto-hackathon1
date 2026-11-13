@@ -62,7 +62,7 @@
       },
       "lines": {
         "intro": "No caso neutro com x ≥ 0, √(x²) = x; o que sai se você arrastar até −1?",
-        "done": "Sai 1 porque a raiz principal é não negativa; √(x²) é o módulo de x."
+        "done": "Em x = −1 sai 1 porque a raiz principal é não negativa; √(x²) é o módulo de x."
       },
       "duvida": {
         "quando": "fim",
@@ -145,7 +145,7 @@
       },
       "lines": {
         "intro": "A conta ao quadrado também deu −1; ele passa no original? Arraste até −1.",
-        "done": "Não; 1 ≠ −1, por isso elevar ao quadrado exige conferir o sinal no original."
+        "done": "Não; em x = −1, 1 ≠ −1, por isso elevar ao quadrado exige conferir o sinal."
       },
       "duvida": {
         "quando": "fim",

@@ -265,10 +265,22 @@
             "feedback": "Você confundiu expoente zero com valor zero. O certo é 1; 10⁰ = 1."
           },
           {
+            "id": "f1-erro2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Você confundiu expoente zero com expoente um. O certo é 1; 10⁰ = 1."
+          },
+          {
             "id": "f1-certa",
             "label": "1",
             "correct": true,
             "feedback": "Certo: 1; 10⁰ = 1."
+          },
+          {
+            "id": "f1-erro3",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Você trocou o expoente nulo por sinal negativo. O certo é 1; 10⁰ = 1."
           }
         ]
       },
@@ -287,6 +299,18 @@
             "label": "3",
             "correct": true,
             "feedback": "Certo: 3; n = 3."
+          },
+          {
+            "id": "f2-erro2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Você pegou a base da potência, não o expoente. O certo é 3; n = 3."
+          },
+          {
+            "id": "f2-erro3",
+            "label": "10³",
+            "correct": false,
+            "feedback": "Você pegou a potência inteira em vez de só o expoente. O certo é 3; n = 3."
           }
         ]
       },
@@ -339,10 +363,22 @@
             "feedback": "Você contou uma casa a mais. O certo é 3·10²; 3·100 = 300."
           },
           {
+            "id": "m1-erro2",
+            "label": "30·10¹",
+            "correct": false,
+            "feedback": "Você não normalizou o coeficiente entre 1 e 10. O certo é 3·10²; 3·100 = 300."
+          },
+          {
             "id": "m1-certa",
             "label": "3·10²",
             "correct": true,
             "feedback": "Certo: 3·10²; 3·100 = 300."
+          },
+          {
+            "id": "m1-erro3",
+            "label": "3·10⁻²",
+            "correct": false,
+            "feedback": "Você trocou o sinal do expoente ao deslocar a vírgula. O certo é 3·10²; 3·100 = 300."
           }
         ]
       },
@@ -361,6 +397,18 @@
             "label": "2·10⁻²",
             "correct": true,
             "feedback": "Certo: 2·10⁻²; 2/100 = 0,02."
+          },
+          {
+            "id": "m2-erro2",
+            "label": "0,2·10⁻¹",
+            "correct": false,
+            "feedback": "Você deixou o coeficiente menor que 1, sem normalizar. O certo é 2·10⁻²; 2/100 = 0,02."
+          },
+          {
+            "id": "m2-erro3",
+            "label": "2·10⁻¹",
+            "correct": false,
+            "feedback": "Você contou uma casa decimal a menos. O certo é 2·10⁻²; 2/100 = 0,02."
           }
         ]
       },
@@ -375,10 +423,22 @@
             "feedback": "Você somou coeficientes em um produto. O certo é 6·10³; 2·3 = 6 e 10²·10¹ = 10³."
           },
           {
+            "id": "m3-erro2",
+            "label": "6·10²",
+            "correct": false,
+            "feedback": "Você multiplicou os expoentes em vez de somar. O certo é 6·10³; 2·3 = 6 e 10²·10¹ = 10³."
+          },
+          {
             "id": "m3-certa",
             "label": "6·10³",
             "correct": true,
             "feedback": "Certo: 6·10³; 2·3 = 6 e 10²·10¹ = 10³."
+          },
+          {
+            "id": "m3-erro3",
+            "label": "5·10²",
+            "correct": false,
+            "feedback": "Você somou coeficientes e multiplicou expoentes. O certo é 6·10³; 2·3 = 6 e 10²·10¹ = 10³."
           }
         ]
       }
@@ -399,6 +459,18 @@
             "label": "1,0·10³",
             "correct": true,
             "feedback": "Certo: 1,0·10³; 9,96 arredonda para 10 e 10·10² = 1,0·10³."
+          },
+          {
+            "id": "d1-erro2",
+            "label": "10·10²",
+            "correct": false,
+            "feedback": "Você arredondou certo, mas esqueceu de normalizar o coeficiente. O certo é 1,0·10³; 10·10² = 1,0·10³."
+          },
+          {
+            "id": "d1-erro3",
+            "label": "9,9·10³",
+            "correct": false,
+            "feedback": "Você truncou o coeficiente e ainda subiu o expoente. O certo é 1,0·10³; 9,96·10² ≈ 1,0·10³."
           }
         ]
       },
@@ -431,10 +503,22 @@
             "feedback": "Você tomou o expoente sem comparar o coeficiente. O certo é 10³; 4 > √10, então sobe uma ordem."
           },
           {
+            "id": "d3-erro2",
+            "label": "10⁴",
+            "correct": false,
+            "feedback": "Você subiu duas ordens de grandeza em vez de uma. O certo é 10³; 4 > √10, então 10² sobe para 10³."
+          },
+          {
             "id": "d3-certa",
             "label": "10³",
             "correct": true,
             "feedback": "Certo: 10³; 4 > √10, então sobe uma ordem."
+          },
+          {
+            "id": "d3-erro3",
+            "label": "4·10²",
+            "correct": false,
+            "feedback": "Você deu a notação científica em vez da ordem de grandeza. O certo é 10³; 4 > √10, então sobe uma ordem."
           }
         ]
       },
@@ -453,6 +537,18 @@
             "label": "5·10⁻²",
             "correct": true,
             "feedback": "Certo: 5·10⁻²; 300/6000 = 0,05 = 5·10⁻²."
+          },
+          {
+            "id": "d4-erro2",
+            "label": "5·10⁰",
+            "correct": false,
+            "feedback": "Você somou 1 ao expoente ao normalizar 0,5 em vez de subtrair 1. O certo é 5·10⁻²; 300/6000 = 5·10⁻²."
+          },
+          {
+            "id": "d4-erro3",
+            "label": "2·10⁻¹",
+            "correct": false,
+            "feedback": "Você dividiu 6 por 3 em vez de 3 por 6. O certo é 5·10⁻²; 300/6000 = 0,05 = 5·10⁻²."
           }
         ]
       },
@@ -467,10 +563,22 @@
             "feedback": "Você dividiu pela metade em vez de multiplicar o volume. O certo é 1·10³; ordem 10³; 2000·0,5 = 1000 = 1·10³."
           },
           {
+            "id": "d5-erro2",
+            "label": "1·10⁴; ordem 10⁴",
+            "correct": false,
+            "feedback": "Você subiu o expoente ao multiplicar por 0,5. O certo é 1·10³; ordem 10³; 2000·0,5 = 1000 = 1·10³."
+          },
+          {
             "id": "d5-certa",
             "label": "1·10³; ordem 10³",
             "correct": true,
             "feedback": "Certo: 1·10³; 2000·0,5 = 1000 = 1·10³."
+          },
+          {
+            "id": "d5-erro3",
+            "label": "1·10²; ordem 10²",
+            "correct": false,
+            "feedback": "Você reduziu o expoente ao calcular 2·0,5 = 1. O certo é 1·10³; ordem 10³; 2000·0,5 = 1000 = 1·10³."
           }
         ]
       }
