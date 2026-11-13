@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "manim": "python manim/render.py"
+    "manim": "python manim/render.py",
+    "publicar": "bash scripts/publicar.sh"
   },
   "dependencies": {
     "react": "^19.3.1",

@@ -1,0 +1,7 @@
+import { expect, it } from "vitest";
+import { alternar, cadeia, contagens } from "./calc";
+import { Maquinas, MaquinasFigura } from "./params";
+it("duas entradas podem compartilhar saída; duas saídas quebram unicidade", () => { let l = alternar([], 0, 0); l = alternar(l, 1, 0); expect(contagens(2, l)).toEqual([1, 1]); l = alternar(l, 0, 1); expect(contagens(2, l)).toEqual([2, 1]); expect(contagens(2, alternar(l, 0, 1))).toEqual([1, 1]); });
+it("identidade devolve entradas distintas", () => { const p = Maquinas.parse({ modo: "maquinas" }); if (p.modo !== "maquinas") throw Error(); for (const x of [-1, 2]) expect(cadeia(p, {}, x).valores).toEqual([x, x]); });
+it("g depois f e f depois g produzem 4 e 3 em x=1", () => { const p = Maquinas.parse({ modo: "maquinas", maquinas: [{ nome: "g", a: 1, b: 1 }, { nome: "f", a: 2, b: 0 }] }); if (p.modo !== "maquinas") throw Error(); expect(cadeia(p, {}, 1).valores).toEqual([1, 2, 4]); expect(cadeia(p, {}, 1, true).valores).toEqual([1, 2, 3]); for (const x of [-3, 0, 2]) expect(cadeia(p, {}, x, false, true).valores.at(-1)).toBe(x); });
+it("constante não tem inversa e referências inválidas são rejeitadas", () => { const p = Maquinas.parse({ modo: "maquinas", maquinas: [{ a: 0, b: 3 }] }); if (p.modo !== "maquinas") throw Error(); expect(cadeia(p, {}, 2, false, true).invertivel).toBe(false); expect(Maquinas.safeParse({ modo: "flechas", ligacoes: [[2, 0]] }).success).toBe(false); expect(MaquinasFigura.safeParse({ modo: "maquinas", x: "$x" }).success).toBe(false); });

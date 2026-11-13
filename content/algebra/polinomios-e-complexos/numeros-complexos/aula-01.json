@@ -1,0 +1,498 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "polinomios-e-complexos",
+    "unidade": "numeros-complexos"
+  },
+  "titulo": "Girar no Plano",
+  "subtitulo": "A unidade imaginária e o plano complexo",
+  "glossario": {
+    "c1": {
+      "nome": "Parte real a",
+      "resumo": "Coordenada no eixo real horizontal."
+    },
+    "c2": {
+      "nome": "Parte imaginária b",
+      "resumo": "Coeficiente de i, lido no eixo vertical."
+    },
+    "c3": {
+      "nome": "Complexo z",
+      "resumo": "Ponto ou vetor a+bi no plano."
+    },
+    "c4": {
+      "nome": "Módulo",
+      "resumo": "Distância do ponto à origem: √(a² + b²)."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "vetores_no_plano",
+      "params": {
+        "modo": "complexo",
+        "z": ["$a", 1],
+        "passo": 1
+      },
+      "controls": [
+        {
+          "id": "a",
+          "label": "Parte real",
+          "min": 0,
+          "max": 2,
+          "step": 1,
+          "initial": 0,
+          "marca": "c1"
+        }
+      ],
+      "complete_when": {
+        "metric": "a",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "No caso neutro z·1, o ponto se move em relação à entrada? Leve a até 2.",
+        "done": "Não; multiplicar por 1 preserva ambas as coordenadas."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Complexos têm forma algébrica e polar; aqui usamos soma, produto, conjugado, módulo e divisão."
+      }
+    },
+    {
+      "id": "girar-por-i",
+      "type": "interactive_canvas",
+      "widget": "vetores_no_plano",
+      "params": {
+        "modo": "complexo",
+        "z": [1, 0],
+        "potencia_i": "$n",
+        "passo": 1
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Giros por i",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "marca": "c3"
+        }
+      ],
+      "complete_when": {
+        "metric": "n",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Duas multiplicações por i levam 1 a qual ponto? Leve n a 2.",
+        "done": "Chegam a −1; por isso i²=−1 representa meia-volta."
+      }
+    },
+    {
+      "id": "somar-e-dividir",
+      "type": "interactive_canvas",
+      "widget": "vetores_no_plano",
+      "params": {
+        "modo": "complexo",
+        "z": [2, 1],
+        "w": ["$t", -1],
+        "mostrar": {
+          "soma": true
+        },
+        "passo": 1
+      },
+      "controls": [
+        {
+          "id": "t",
+          "label": "Parte real de w",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "marca": "c1"
+        }
+      ],
+      "complete_when": {
+        "metric": "t",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Se somarmos 1−i a 2+i, o resultado fica no eixo real? Leve t até 1.",
+        "done": "Sim; (2+1)+(1−1)i=3, porque somamos cada coordenada separadamente."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Como dividir 1 por 1+i?",
+        "resposta": "Multiplique por (1−i)/(1−i); o resultado é (1−i)/2, pois (1+i)(1−i)=2."
+      }
+    },
+    {
+      "id": "conjugado-e-modulo",
+      "type": "interactive_canvas",
+      "widget": "vetores_no_plano",
+      "params": {
+        "modo": "complexo",
+        "z": [3, "$b"],
+        "mostrar": {
+          "conjugado": true,
+          "modulo": true
+        },
+        "passo": 1
+      },
+      "controls": [
+        {
+          "id": "b",
+          "label": "Parte imaginária",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "marca": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "b",
+        "gte": 4
+      },
+      "lines": {
+        "intro": "Ao levar b a 4, o conjugado muda a distância até zero?",
+        "done": "Não; 3²+4²=25 nos dois casos, por isso o módulo é 5 e z·z̄=25."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Posso dividir por z=0?",
+        "resposta": "Não; o denominador a²+b² zera e a divisão deixa de existir."
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "vetores_figura",
+        "params": {
+          "modo": "complexo",
+          "z": [3, 4],
+          "mostrar": {
+            "conjugado": true,
+            "modulo": true
+          }
+        }
+      },
+      "prompt": "Qual é o módulo de 3+4i?",
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "7",
+          "correct": false,
+          "feedback": "Você somou os catetos; √(9+16)=5, então o módulo é 5."
+        },
+        {
+          "id": "micro-acerto",
+          "label": "5",
+          "correct": true,
+          "feedback": "Certo: 5; √(3²+4²)=√25=5.",
+          "figure": {
+            "highlight": ["c4"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "vetores_figura",
+        "params": {
+          "modo": "complexo",
+          "z": [3, 4],
+          "mostrar": {
+            "conjugado": true,
+            "modulo": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "z",
+          "ref": "c3"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "a",
+          "ref": "c1"
+        },
+        {
+          "text": " + "
+        },
+        {
+          "text": "b",
+          "ref": "c2"
+        },
+        {
+          "text": "i ; |z|",
+          "ref": "c4"
+        },
+        {
+          "text": " = √(a² + b²)"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Parte real a",
+          "text": "Coordenada a no eixo real horizontal."
+        },
+        {
+          "term": "Complexo z",
+          "text": "Ponto ou vetor a+bi no plano complexo."
+        },
+        {
+          "term": "Módulo |z|",
+          "text": "Distância do ponto à origem: √(a² + b²)."
+        }
+      ],
+      "lines": {
+        "intro": "O conjugado cancela a parte imaginária no produto; por isso z·z̄=a²+b² dá o quadrado do módulo.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-numeros-complexos",
+        "prompt": "Qual ponto representa 3+2i?",
+        "options": [
+          {
+            "id": "f1-numeros-complexos-erro",
+            "label": "(2; 3)",
+            "correct": false,
+            "feedback": "Você trocou os eixos real e imaginário. O certo é (3; 2); Re=3; Im=2."
+          },
+          {
+            "id": "f1-numeros-complexos-certa",
+            "label": "(3; 2)",
+            "correct": true,
+            "feedback": "Certo: (3; 2); Re=3; Im=2."
+          }
+        ]
+      },
+      {
+        "id": "f2-numeros-complexos",
+        "prompt": "Quanto vale i²?",
+        "options": [
+          {
+            "id": "f2-numeros-complexos-certa",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo: −1; i·i=−1."
+          },
+          {
+            "id": "f2-numeros-complexos-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Duas rotações de 90° fazem meia-volta. O certo é −1; i·i=−1."
+          }
+        ]
+      },
+      {
+        "id": "f3-numeros-complexos",
+        "prompt": "Multiplicar z por 1 altera o ponto?",
+        "options": [
+          {
+            "id": "f3-numeros-complexos-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "1 é o neutro multiplicativo. O certo é Não; z·1=z."
+          },
+          {
+            "id": "f3-numeros-complexos-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; z·1=z."
+          }
+        ]
+      },
+      {
+        "id": "f4-numeros-complexos",
+        "prompt": "Qual é o conjugado de 4−2i?",
+        "options": [
+          {
+            "id": "f4-numeros-complexos-certa",
+            "label": "4+2i",
+            "correct": true,
+            "feedback": "Certo: 4+2i; Conjugação muda só o sinal imaginário."
+          },
+          {
+            "id": "f4-numeros-complexos-erro",
+            "label": "−4+2i",
+            "correct": false,
+            "feedback": "Você trocou também a parte real. O certo é 4+2i; Conjugação muda só o sinal imaginário."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-numeros-complexos",
+        "prompt": "Some (2+i)+(1+3i).",
+        "options": [
+          {
+            "id": "m1-numeros-complexos-erro",
+            "label": "3+3i",
+            "correct": false,
+            "feedback": "Você esqueceu o primeiro i. O certo é 3+4i; 2+1=3; 1+3=4."
+          },
+          {
+            "id": "m1-numeros-complexos-certa",
+            "label": "3+4i",
+            "correct": true,
+            "feedback": "Certo: 3+4i; 2+1=3; 1+3=4."
+          }
+        ]
+      },
+      {
+        "id": "m2-numeros-complexos",
+        "prompt": "Calcule i(3+2i).",
+        "options": [
+          {
+            "id": "m2-numeros-complexos-certa",
+            "label": "−2+3i",
+            "correct": true,
+            "feedback": "Certo: −2+3i; 3i+2i²=−2+3i."
+          },
+          {
+            "id": "m2-numeros-complexos-erro",
+            "label": "2+3i",
+            "correct": false,
+            "feedback": "Você tratou i² como 1. O certo é −2+3i; 3i+2i²=−2+3i."
+          }
+        ]
+      },
+      {
+        "id": "m3-numeros-complexos",
+        "prompt": "Qual é o módulo de 3+4i?",
+        "options": [
+          {
+            "id": "m3-numeros-complexos-erro",
+            "label": "7",
+            "correct": false,
+            "feedback": "Você somou catetos em vez de usar Pitágoras. O certo é 5; √(9+16)=5."
+          },
+          {
+            "id": "m3-numeros-complexos-certa",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo: 5; √(9+16)=5."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-numeros-complexos",
+        "prompt": "Quanto vale 1/(1+i)?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-numeros-complexos-certa",
+            "label": "0,5−0,5i",
+            "correct": true,
+            "feedback": "Certo: 0,5−0,5i; (1−i)/(1+1)=(1−i)/2."
+          },
+          {
+            "id": "d1-numeros-complexos-erro",
+            "label": "1−i",
+            "correct": false,
+            "feedback": "Você esqueceu o denominador do conjugado. O certo é 0,5−0,5i; (1−i)/(1+1)=(1−i)/2."
+          }
+        ]
+      },
+      {
+        "id": "d2-numeros-complexos",
+        "prompt": "É permitido dividir um complexo por zero?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-numeros-complexos-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O conjugado não elimina denominador zero. O certo é Não; 0²+0²=0."
+          },
+          {
+            "id": "d2-numeros-complexos-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; 0²+0²=0."
+          }
+        ]
+      },
+      {
+        "id": "d3-numeros-complexos",
+        "prompt": "Resolva z²+1=0 em C.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-numeros-complexos-certa",
+            "label": "±i",
+            "correct": true,
+            "feedback": "Certo: ±i; i²=(−i)²=−1."
+          },
+          {
+            "id": "d3-numeros-complexos-erro",
+            "label": "±1",
+            "correct": false,
+            "feedback": "Você ignorou que o quadrado deve valer −1. O certo é ±i; i²=(−i)²=−1."
+          }
+        ]
+      },
+      {
+        "id": "d4-numeros-complexos",
+        "prompt": "Quanto vale (1+i)²?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-numeros-complexos-erro",
+            "label": "2+2i",
+            "correct": false,
+            "feedback": "Você tratou i² como 1. O certo é 2i; 1+2i+i²=2i."
+          },
+          {
+            "id": "d4-numeros-complexos-certa",
+            "label": "2i",
+            "correct": true,
+            "feedback": "Certo: 2i; 1+2i+i²=2i."
+          }
+        ]
+      },
+      {
+        "id": "d5-numeros-complexos",
+        "prompt": "Se (1+i)z=2 e depois somamos i ao resultado z, qual complexo obtemos?",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-numeros-complexos-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; z=1−i; z+i=1."
+          },
+          {
+            "id": "d5-numeros-complexos-erro",
+            "label": "1+i",
+            "correct": false,
+            "feedback": "Você esqueceu a parte imaginária negativa de z. O certo é 1; z=1−i; z+i=1."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

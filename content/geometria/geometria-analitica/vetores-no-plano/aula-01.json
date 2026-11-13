@@ -1,0 +1,664 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-analitica",
+    "unidade": "vetores-no-plano"
+  },
+  "titulo": "Setas que se Encaixam",
+  "subtitulo": "Vetores, soma, escalar e módulo",
+  "glossario": {
+    "c1": {
+      "nome": "Componente horizontal",
+      "resumo": "Quanto o vetor anda em x: a, em (a; b)."
+    },
+    "c2": {
+      "nome": "Componente vertical",
+      "resumo": "Quanto o vetor anda em y: b, em (a; b)."
+    },
+    "c3": {
+      "nome": "Resultante",
+      "resumo": "A seta da soma: da cauda da primeira à ponta da última."
+    },
+    "c4": {
+      "nome": "Módulo",
+      "resumo": "Comprimento da seta: √(a² + b²)."
+    }
+  },
+  "steps": [
+    {
+      "id": "mesmo-vetor",
+      "type": "interactive_canvas",
+      "widget": "vetores_no_plano",
+      "params": {
+        "modo": "vetores",
+        "vetores": [
+          {
+            "id": "u",
+            "cauda": [0, 0],
+            "comp": [3, 1],
+            "arrastavel": "cauda"
+          }
+        ],
+        "passo": 1
+      },
+      "controls": [],
+      "complete_when": {
+        "metric": "origens_vistas",
+        "gte": 3
+      },
+      "lines": {
+        "intro": "Esta seta manda andar 3 para a direita e 1 para cima. Se você mudar o ponto de partida, a seta muda?",
+        "done": "Muda de lugar, não de efeito: é sempre (3; 1). Um vetor é um deslocamento, não um lugar."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Para que servem vetores?",
+        "resposta": "Força, velocidade, deslocamento, até em 3D. Hoje: somar, esticar e medir no plano."
+      }
+    },
+    {
+      "id": "somar-encaixando",
+      "type": "interactive_canvas",
+      "widget": "vetores_no_plano",
+      "params": {
+        "modo": "vetores",
+        "vetores": [
+          {
+            "id": "u",
+            "cauda": [0, 0],
+            "comp": [3, 1],
+            "arrastavel": "nenhum"
+          },
+          {
+            "id": "v",
+            "comp": [0, 0],
+            "arrastavel": "ponta",
+            "preso_em": "u"
+          }
+        ],
+        "mostrar_soma": true,
+        "passo": 1
+      },
+      "controls": [],
+      "complete_when": {
+        "metric": "v_comprimento",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "v começa nulo: quanto dá u + v? Agora arraste a ponta de v e veja a soma andar.",
+        "done": "Com v nulo, u + v = u. Com v = (1; 2), a soma chega em (4; 3): componente com componente."
+      }
+    },
+    {
+      "id": "esticar",
+      "type": "interactive_canvas",
+      "widget": "vetores_no_plano",
+      "params": {
+        "modo": "vetores",
+        "vetores": [
+          {
+            "id": "u",
+            "cauda": [0, 0],
+            "comp": [3, 1],
+            "arrastavel": "nenhum"
+          }
+        ],
+        "escalar": "$k",
+        "passo": 1
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Multiplica por k",
+          "min": -2,
+          "max": 3,
+          "step": 1,
+          "initial": 1,
+          "marca": "c3"
+        }
+      ],
+      "complete_when": {
+        "metric": "k",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Multiplique u por k. Com k = 2, a seta muda de direção ou só de tamanho?",
+        "done": "Só de tamanho: 2u = (6; 2), mesma direção e o dobro do comprimento."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E com k negativo?",
+        "resposta": "A seta vira para o lado oposto. Com k = 0, vira o vetor nulo, um ponto."
+      }
+    },
+    {
+      "id": "modulo",
+      "type": "interactive_canvas",
+      "widget": "vetores_no_plano",
+      "params": {
+        "modo": "vetores",
+        "vetores": [
+          {
+            "id": "w",
+            "cauda": [0, 0],
+            "comp": [3, 4],
+            "arrastavel": "nenhum"
+          }
+        ],
+        "mostrar": {
+          "modulo": false
+        },
+        "passo": 1
+      },
+      "controls": [],
+      "complete_when": {
+        "metric": "modulo_ligado",
+        "gte": 1
+      },
+      "lines": {
+        "intro": "Quanto mede a seta (3; 4)? Os componentes formam os degraus de um triângulo.",
+        "done": "Módulo √(9 + 16) = 5: o comprimento é a hipotenusa dos componentes."
+      }
+    },
+    {
+      "id": "desafio-soma",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "vetores_figura",
+        "params": {
+          "modo": "vetores",
+          "vetores": [
+            {
+              "id": "u",
+              "cauda": [0, 0],
+              "comp": [2, 3],
+              "arrastavel": "nenhum"
+            },
+            {
+              "id": "v",
+              "cauda": [0, 0],
+              "comp": [4, -1],
+              "arrastavel": "nenhum"
+            }
+          ],
+          "mostrar_soma": false
+        }
+      },
+      "prompt": "Quanto vale u + v, com u = (2; 3) e v = (4; −1)?",
+      "lines": {
+        "intro": "Encaixe v na ponta de u de cabeça."
+      },
+      "options": [
+        {
+          "id": "s62",
+          "label": "(6; 2)",
+          "correct": true,
+          "feedback": "Isso. 2 + 4 e 3 + (−1).",
+          "figure": {
+            "mostrar_soma": true
+          }
+        },
+        {
+          "id": "s8m3",
+          "label": "(8; −3)",
+          "correct": false,
+          "feedback": "Isso multiplica componentes. A soma é (2 + 4; 3 − 1) = (6; 2)."
+        },
+        {
+          "id": "s2m4",
+          "label": "(2; −4)",
+          "correct": false,
+          "feedback": "Isso é v − u. A soma é (6; 2)."
+        },
+        {
+          "id": "s64",
+          "label": "(6; 4)",
+          "correct": false,
+          "feedback": "O −1 de v desce. 3 + (−1) = 2: (6; 2)."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "vetores_figura",
+        "params": {
+          "modo": "vetores",
+          "vetores": [
+            {
+              "id": "u",
+              "cauda": [0, 0],
+              "comp": [2, 3],
+              "arrastavel": "nenhum"
+            },
+            {
+              "id": "v",
+              "comp": [4, -1],
+              "arrastavel": "nenhum",
+              "preso_em": "u"
+            }
+          ],
+          "mostrar_soma": true,
+          "mostrar": {
+            "modulo": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "|u|",
+          "ref": "c4"
+        },
+        {
+          "text": " = √("
+        },
+        {
+          "text": "a²",
+          "ref": "c1"
+        },
+        {
+          "text": " + "
+        },
+        {
+          "text": "b²",
+          "ref": "c2"
+        },
+        {
+          "text": ")"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Vetor",
+          "text": "Deslocamento (a; b), igual em qualquer ponto de partida."
+        },
+        {
+          "term": "Soma de vetores",
+          "text": "Ponta com cauda: (a; b) + (c; d) = (a + c; b + d)."
+        },
+        {
+          "term": "Produto por escalar",
+          "text": "k(a; b) = (ka; kb): estica ou inverte a seta."
+        }
+      ],
+      "lines": {
+        "intro": "Horizontal e vertical não se misturam. Por isso a soma é componente com componente, e o módulo é Pitágoras.",
+        "hint": "Toque em uma parte da fórmula para ver a seta no plano."
+      }
+    }
+  ],
+  "outro": "Você encaixou setas: vetores somam componente com componente, k estica ou inverte, e o módulo é a hipotenusa.",
+  "treino": {
+    "faceis": [
+      {
+        "id": "soma-simples",
+        "prompt": "Quanto vale (1; 2) + (3; 4)?",
+        "options": [
+          {
+            "id": "s46",
+            "label": "(4; 6)",
+            "correct": true,
+            "feedback": "Isso. 1 + 3 e 2 + 4."
+          },
+          {
+            "id": "s38",
+            "label": "(3; 8)",
+            "correct": false,
+            "feedback": "Isso multiplica. A soma é (4; 6)."
+          },
+          {
+            "id": "s10",
+            "label": "10",
+            "correct": false,
+            "feedback": "Vetor somado é vetor: (4; 6)."
+          },
+          {
+            "id": "s22",
+            "label": "(2; 2)",
+            "correct": false,
+            "feedback": "Isso é a diferença. A soma é (4; 6)."
+          }
+        ]
+      },
+      {
+        "id": "dobro",
+        "prompt": "Quanto vale 2 · (1; 3)?",
+        "options": [
+          {
+            "id": "s26",
+            "label": "(2; 6)",
+            "correct": true,
+            "feedback": "Certo. Cada componente dobra."
+          },
+          {
+            "id": "s23",
+            "label": "(2; 3)",
+            "correct": false,
+            "feedback": "O 3 também dobra: (2; 6)."
+          },
+          {
+            "id": "s35",
+            "label": "(3; 5)",
+            "correct": false,
+            "feedback": "Somar 2 não é multiplicar. 2 · (1; 3) = (2; 6)."
+          },
+          {
+            "id": "s16",
+            "label": "(1; 6)",
+            "correct": false,
+            "feedback": "O 1 também dobra: (2; 6)."
+          }
+        ]
+      },
+      {
+        "id": "modulo-vertical",
+        "prompt": "Qual o módulo do vetor (0; 5)?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Isso. Só anda na vertical."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Ele anda 5 para cima: módulo 5."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "25 é o quadrado. Módulo 5."
+          },
+          {
+            "id": "a-raiz5",
+            "label": "√5",
+            "correct": false,
+            "feedback": "√(0 + 25) = 5."
+          }
+        ]
+      },
+      {
+        "id": "vetor-ab",
+        "prompt": "Qual o vetor que leva A(1; 1) até B(4; 3)?",
+        "options": [
+          {
+            "id": "s32",
+            "label": "(3; 2)",
+            "correct": true,
+            "feedback": "Certo. Ponta menos cauda."
+          },
+          {
+            "id": "s54",
+            "label": "(5; 4)",
+            "correct": false,
+            "feedback": "Isso soma os pontos. O vetor é B − A = (3; 2)."
+          },
+          {
+            "id": "sm3m2",
+            "label": "(−3; −2)",
+            "correct": false,
+            "feedback": "Isso vai de B para A. De A para B: (3; 2)."
+          },
+          {
+            "id": "s43",
+            "label": "(4; 3)",
+            "correct": false,
+            "feedback": "(4; 3) é o ponto B. O deslocamento é (3; 2)."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "modulo-6-8",
+        "prompt": "Qual o módulo do vetor (6; 8)?",
+        "options": [
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Isso. √100."
+          },
+          {
+            "id": "a14",
+            "label": "14",
+            "correct": false,
+            "feedback": "14 soma os componentes. √(36 + 64) = 10."
+          },
+          {
+            "id": "a100",
+            "label": "100",
+            "correct": false,
+            "feedback": "100 é o quadrado do módulo. Módulo 10."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "8 − 6 não é módulo. Pitágoras: 10."
+          }
+        ]
+      },
+      {
+        "id": "subtracao",
+        "prompt": "Quanto vale (5; 2) − (1; 3)?",
+        "options": [
+          {
+            "id": "s4m1",
+            "label": "(4; −1)",
+            "correct": true,
+            "feedback": "Certo. 5 − 1 e 2 − 3."
+          },
+          {
+            "id": "s41",
+            "label": "(4; 1)",
+            "correct": false,
+            "feedback": "2 − 3 = −1: (4; −1)."
+          },
+          {
+            "id": "s65",
+            "label": "(6; 5)",
+            "correct": false,
+            "feedback": "Isso é a soma. A diferença é (4; −1)."
+          },
+          {
+            "id": "sm41",
+            "label": "(−4; 1)",
+            "correct": false,
+            "feedback": "Isso é (1; 3) − (5; 2). Pedido: (4; −1)."
+          }
+        ]
+      },
+      {
+        "id": "oposto",
+        "prompt": "Quanto vale −1 · (2; −3)?",
+        "options": [
+          {
+            "id": "sm23",
+            "label": "(−2; 3)",
+            "correct": true,
+            "feedback": "Isso. A seta vira para o lado oposto."
+          },
+          {
+            "id": "s2m3",
+            "label": "(2; −3)",
+            "correct": false,
+            "feedback": "Multiplicar por −1 troca os dois sinais: (−2; 3)."
+          },
+          {
+            "id": "sm2m3",
+            "label": "(−2; −3)",
+            "correct": false,
+            "feedback": "O −3 também troca de sinal: (−2; 3)."
+          },
+          {
+            "id": "s13",
+            "label": "(1; −4)",
+            "correct": false,
+            "feedback": "Somar −1 não é multiplicar. (−2; 3)."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "achar-oposto",
+        "prompt": "Com u = (3; −2), qual vetor v faz u + v = (0; 0)?",
+        "options": [
+          {
+            "id": "sm32",
+            "label": "(−3; 2)",
+            "correct": true,
+            "feedback": "Certo. O oposto anula o deslocamento."
+          },
+          {
+            "id": "s3m2",
+            "label": "(3; −2)",
+            "correct": false,
+            "feedback": "u + u = (6; −4). Para voltar ao início: (−3; 2)."
+          },
+          {
+            "id": "s00",
+            "label": "(0; 0)",
+            "correct": false,
+            "feedback": "Com v nulo, a soma seria u. Precisa de (−3; 2)."
+          },
+          {
+            "id": "s23",
+            "label": "(2; 3)",
+            "correct": false,
+            "feedback": "Trocar a ordem não anula. v = (−3; 2)."
+          }
+        ]
+      },
+      {
+        "id": "qual-k",
+        "prompt": "Para qual k temos k · (2; 1) = (6; 3)?",
+        "options": [
+          {
+            "id": "k3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. 2 · 3 = 6 e 1 · 3 = 3."
+          },
+          {
+            "id": "k4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é 6 − 2. O fator é 3."
+          },
+          {
+            "id": "k2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Com k = 2 dá (4; 2). Precisa k = 3."
+          },
+          {
+            "id": "k6",
+            "label": "6",
+            "correct": false,
+            "feedback": "Com k = 6 dá (12; 6). k = 3."
+          }
+        ]
+      },
+      {
+        "id": "modulo-da-soma",
+        "prompt": "Qual o módulo de (1; 2) + (2; 2)?",
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. A soma é (3; 4), de módulo 5."
+          },
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": false,
+            "feedback": "7 soma os componentes. |(3; 4)| = 5."
+          },
+          {
+            "id": "soma-modulos",
+            "label": "√5 + √8",
+            "correct": false,
+            "feedback": "Módulos não se somam assim. Some os vetores primeiro: |(3; 4)| = 5."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "25 é o quadrado. Módulo 5."
+          }
+        ]
+      },
+      {
+        "id": "mesma-direcao",
+        "prompt": "Qual destes vetores tem a mesma direção e sentido de (1; 2)?",
+        "options": [
+          {
+            "id": "s36",
+            "label": "(3; 6)",
+            "correct": true,
+            "feedback": "Isso. É 3 vezes (1; 2)."
+          },
+          {
+            "id": "s21",
+            "label": "(2; 1)",
+            "correct": false,
+            "feedback": "(2; 1) troca os componentes e muda a direção. (3; 6) = 3 · (1; 2)."
+          },
+          {
+            "id": "s34",
+            "label": "(3; 4)",
+            "correct": false,
+            "feedback": "3/1 ≠ 4/2: direção diferente. (3; 6) é múltiplo."
+          },
+          {
+            "id": "sm1m2",
+            "label": "(−1; −2)",
+            "correct": false,
+            "feedback": "Mesma direção, mas sentido oposto. (3; 6) mantém o sentido."
+          }
+        ]
+      },
+      {
+        "id": "volta-ao-inicio",
+        "prompt": "Num triângulo ABC, quanto vale AB + BC + CA?",
+        "fala": "Última. Siga as setas e veja onde você termina.",
+        "options": [
+          {
+            "id": "nulo",
+            "label": "O vetor nulo",
+            "correct": true,
+            "feedback": "Certo. A volta termina onde começou."
+          },
+          {
+            "id": "perimetro",
+            "label": "O perímetro",
+            "correct": false,
+            "feedback": "O perímetro soma comprimentos. As setas somadas voltam ao início: vetor nulo."
+          },
+          {
+            "id": "2ab",
+            "label": "2 · AB",
+            "correct": false,
+            "feedback": "Seguindo as três setas você volta para A: soma (0; 0)."
+          },
+          {
+            "id": "ac",
+            "label": "AC",
+            "correct": false,
+            "feedback": "AB + BC = AC; somando CA volta a A: vetor nulo."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

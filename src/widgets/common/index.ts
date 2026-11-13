@@ -10,6 +10,8 @@ import { VetoresWidget } from "./vetores/VetoresWidget";
 import { VetoresFigura } from "./vetores/VetoresFigura";
 import { AreasWidget } from "./areas/AreasWidget";
 import { AreasFigura } from "./areas/AreasFigura";
+import { MaquinasWidget } from "./maquinas/MaquinasWidget";
+import { MaquinasFigura } from "./maquinas/MaquinasFigura";
 import { BarrasWidget } from "./barras/BarrasWidget";
 import { GradeFigura } from "./grade/GradeFigura";
 import { GradeWidget } from "./grade/GradeWidget";
@@ -28,6 +30,7 @@ import { PlanoFigura } from "./PlanoFigura";
 import { RetaFigura, RetaNumericaWidget } from "./RetaNumericaWidget";
 
 export const widgets = {
+  maquinas_funcao: MaquinasWidget,
   retangulo_areas: AreasWidget,
   vetores_no_plano: VetoresWidget,
   circunferencia_no_plano: CircunferenciaWidget,
@@ -45,6 +48,7 @@ export const widgets = {
 };
 
 export const figures = {
+  maquinas_figura: MaquinasFigura,
   retangulo_areas_figura: AreasFigura,
   vetores_figura: VetoresFigura,
   circunferencia_figura: CircunferenciaFigura,

@@ -954,7 +954,7 @@
                   "numero": 1,
                   "titulo": "Girar no Plano",
                   "subtitulo": "A unidade imaginária e o plano complexo",
-                  "arquivo": null
+                  "arquivo": "algebra/polinomios-e-complexos/numeros-complexos/aula-01.json"
                 }
               ]
             }
@@ -1566,6 +1566,20 @@
                   "titulo": "Todos à Mesma Distância",
                   "subtitulo": "Equação da circunferência e posições relativas",
                   "arquivo": "geometria/geometria-analitica/circunferencia-equacao-e-posicoes/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "vetores-no-plano",
+              "titulo": "Vetores no plano e operações",
+              "icone": "reta",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Setas que se Encaixam",
+                  "subtitulo": "Vetores, soma, escalar e módulo",
+                  "arquivo": "geometria/geometria-analitica/vetores-no-plano/aula-01.json"
                 }
               ]
             }
