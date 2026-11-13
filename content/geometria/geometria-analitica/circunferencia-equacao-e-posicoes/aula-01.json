@@ -1,0 +1,640 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-analitica",
+    "unidade": "circunferencia-equacao-e-posicoes"
+  },
+  "titulo": "Todos à Mesma Distância",
+  "subtitulo": "Equação da circunferência e posições relativas",
+  "glossario": {
+    "c1": {
+      "nome": "Centro",
+      "resumo": "O ponto (a; b) de onde todas as distâncias são medidas."
+    },
+    "c2": {
+      "nome": "Raio",
+      "resumo": "A distância fixa r entre o centro e a curva."
+    },
+    "c3": {
+      "nome": "Circunferência",
+      "resumo": "Todos os pontos a distância r do centro."
+    },
+    "c4": {
+      "nome": "Distância ao centro",
+      "resumo": "Quanto um ponto está longe do centro: compara-se com r."
+    }
+  },
+  "steps": [
+    {
+      "id": "mesma-distancia",
+      "type": "interactive_canvas",
+      "widget": "circunferencia_no_plano",
+      "params": {
+        "centro": [
+          0,
+          0
+        ],
+        "raio": 5,
+        "ponto": [
+          1,
+          1
+        ],
+        "curva_oculta": true,
+        "ponto_arrastavel": true,
+        "passo": 1
+      },
+      "controls": [],
+      "complete_when": {
+        "metric": "pontos_sobre",
+        "gte": 4
+      },
+      "lines": {
+        "intro": "Arraste P para lugares que ficam a 5 da origem. Que desenho esses pontos começam a formar?",
+        "done": "Uma circunferência de raio 5. Todo ponto dela cumpre x² + y² = 25: é Pitágoras com a distância."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E elipse e parábola, também são assim?",
+        "resposta": "São parentes, as cônicas, com regras de distância diferentes. Hoje: circunferência."
+      }
+    },
+    {
+      "id": "mover-centro",
+      "type": "interactive_canvas",
+      "widget": "circunferencia_no_plano",
+      "params": {
+        "centro": [
+          "$a",
+          0
+        ],
+        "raio": 5,
+        "ponto": [
+          1,
+          1
+        ],
+        "curva_oculta": false,
+        "ponto_arrastavel": false,
+        "passo": 1
+      },
+      "controls": [
+        {
+          "id": "a",
+          "label": "Centro em x",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "marca": "c1"
+        }
+      ],
+      "complete_when": {
+        "metric": "a",
+        "gte": 3
+      },
+      "lines": {
+        "intro": "Agora mova o centro para a direita. O que muda na equação?",
+        "done": "A distância agora é medida a partir de (3; 0): (x − 3)² + y² = 25. O centro entra subtraindo dentro dos parênteses."
+      }
+    },
+    {
+      "id": "dentro-sobre-fora",
+      "type": "interactive_canvas",
+      "widget": "circunferencia_no_plano",
+      "params": {
+        "centro": [
+          0,
+          0
+        ],
+        "raio": 5,
+        "ponto": [
+          1,
+          1
+        ],
+        "curva_oculta": false,
+        "ponto_arrastavel": true,
+        "passo": 1
+      },
+      "controls": [],
+      "complete_when": {
+        "metric": "estados_vistos",
+        "gte": 3
+      },
+      "lines": {
+        "intro": "Leve P para dentro, para cima da linha e para fora. Compare a distância até o centro com o raio.",
+        "done": "Dentro, d < r; sobre, d = r; fora, d > r. A posição do ponto é só comparar a distância com o raio."
+      }
+    },
+    {
+      "id": "reta-sobe",
+      "type": "interactive_canvas",
+      "widget": "circunferencia_no_plano",
+      "params": {
+        "centro": [
+          0,
+          0
+        ],
+        "raio": 3,
+        "ponto": [
+          1,
+          1
+        ],
+        "curva_oculta": false,
+        "ponto_arrastavel": false,
+        "reta_y": "$k",
+        "passo": 1
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Altura da reta",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "initial": 0,
+          "marca": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "k",
+        "gte": 4
+      },
+      "lines": {
+        "intro": "Suba a reta y = k. Quantos pontos ela divide com a circunferência em cada altura?",
+        "done": "Abaixo de 3 são 2 pontos, em 3 só 1 (tangente), acima nenhum. Tudo é comparar a distância do centro à reta com o raio."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E duas circunferências?",
+        "resposta": "Mesma ideia: compare a distância entre os centros com a soma dos raios."
+      }
+    },
+    {
+      "id": "desafio-ler-equacao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "circunferencia_figura",
+        "params": {
+          "centro": [
+            2,
+            -1
+          ],
+          "raio": 3,
+          "ponto": [
+            2,
+            2
+          ],
+          "rotulos": false
+        }
+      },
+      "prompt": "Quais são o centro e o raio de (x − 2)² + (y + 1)² = 9?",
+      "lines": {
+        "intro": "O centro entra subtraindo. Cuidado com o sinal do y."
+      },
+      "options": [
+        {
+          "id": "c2m1r3",
+          "label": "(2; −1) e 3",
+          "correct": true,
+          "feedback": "Isso. y + 1 = y − (−1), e r = √9 = 3.",
+          "figure": {
+            "rotulos": true,
+            "highlight": [
+              "c1",
+              "c2"
+            ]
+          }
+        },
+        {
+          "id": "cm21r3",
+          "label": "(−2; 1) e 3",
+          "correct": false,
+          "feedback": "Os sinais saem trocados: x − 2 dá a = 2 e y + 1 dá b = −1."
+        },
+        {
+          "id": "c2m1r9",
+          "label": "(2; −1) e 9",
+          "correct": false,
+          "feedback": "9 é r². O raio é 3."
+        },
+        {
+          "id": "c21r3",
+          "label": "(2; 1) e 3",
+          "correct": false,
+          "feedback": "y + 1 = y − (−1): b = −1, não 1."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "circunferencia_figura",
+        "params": {
+          "centro": [
+            3,
+            0
+          ],
+          "raio": 5,
+          "ponto": [
+            3,
+            5
+          ],
+          "rotulos": true
+        }
+      },
+      "formula": [
+        {
+          "text": "(x − a)² + (y − b)²",
+          "ref": "c4"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "r²",
+          "ref": "c2"
+        },
+        {
+          "text": ", centro "
+        },
+        {
+          "text": "(a; b)",
+          "ref": "c1"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Circunferência",
+          "text": "Pontos a distância r do centro: (x − a)² + (y − b)² = r²."
+        },
+        {
+          "term": "Ponto e raio",
+          "text": "Dentro (d < r), sobre (d = r) ou fora (d > r) da circunferência."
+        },
+        {
+          "term": "Reta e raio",
+          "text": "Secante (d < r), tangente (d = r) ou exterior (d > r)."
+        }
+      ],
+      "lines": {
+        "intro": "Estar na circunferência é estar a distância r do centro. Por isso a equação é a fórmula da distância ao quadrado.",
+        "hint": "Toque em uma parte da fórmula para ver o que ela mede no plano."
+      }
+    }
+  ],
+  "outro": "Você desenhou pontos à mesma distância do centro: (x − a)² + (y − b)² = r², e toda posição relativa é distância contra raio.",
+  "treino": {
+    "faceis": [
+      {
+        "id": "raio-16",
+        "prompt": "Qual o raio de x² + y² = 16?",
+        "options": [
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Isso. r² = 16, então r = 4."
+          },
+          {
+            "id": "a16",
+            "label": "16",
+            "correct": false,
+            "feedback": "16 é r². O raio é 4."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "16 / 2 não é raiz. r = 4."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 seria com r² = 4. Aqui r = 4."
+          }
+        ]
+      },
+      {
+        "id": "centro-1-5",
+        "prompt": "Qual o centro de (x − 1)² + (y − 5)² = 4?",
+        "options": [
+          {
+            "id": "c15",
+            "label": "(1; 5)",
+            "correct": true,
+            "feedback": "Certo. Os números subtraídos são o centro."
+          },
+          {
+            "id": "cm1m5",
+            "label": "(−1; −5)",
+            "correct": false,
+            "feedback": "x − 1 indica a = 1, não −1. Centro (1; 5)."
+          },
+          {
+            "id": "c00",
+            "label": "(0; 0)",
+            "correct": false,
+            "feedback": "O centro foi deslocado para (1; 5)."
+          },
+          {
+            "id": "c51",
+            "label": "(5; 1)",
+            "correct": false,
+            "feedback": "O 1 vai com x e o 5 com y: (1; 5)."
+          }
+        ]
+      },
+      {
+        "id": "ponto-3-4",
+        "prompt": "O ponto (3; 4) está dentro, sobre ou fora de x² + y² = 25?",
+        "options": [
+          {
+            "id": "sobre",
+            "label": "Sobre",
+            "correct": true,
+            "feedback": "Isso. Distância 5, igual ao raio."
+          },
+          {
+            "id": "dentro",
+            "label": "Dentro",
+            "correct": false,
+            "feedback": "9 + 16 = 25 = r²: a distância é igual ao raio. Sobre."
+          },
+          {
+            "id": "fora",
+            "label": "Fora",
+            "correct": false,
+            "feedback": "A distância √25 = 5 é igual ao raio: sobre."
+          }
+        ]
+      },
+      {
+        "id": "equacao-raio-2",
+        "prompt": "Qual a equação da circunferência de centro na origem e raio 2?",
+        "options": [
+          {
+            "id": "e4",
+            "label": "x² + y² = 4",
+            "correct": true,
+            "feedback": "Certo. r² = 4."
+          },
+          {
+            "id": "e2",
+            "label": "x² + y² = 2",
+            "correct": false,
+            "feedback": "À direita vai r², não r: 4."
+          },
+          {
+            "id": "exy2",
+            "label": "x + y = 2",
+            "correct": false,
+            "feedback": "Isso é uma reta. Circunferência: x² + y² = 4."
+          },
+          {
+            "id": "e16",
+            "label": "x² + y² = 16",
+            "correct": false,
+            "feedback": "16 seria raio 4. Com raio 2: 4."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "ponto-1-1",
+        "prompt": "O ponto (1; 1) está dentro, sobre ou fora de x² + y² = 9?",
+        "options": [
+          {
+            "id": "dentro",
+            "label": "Dentro",
+            "correct": true,
+            "feedback": "Isso. d = √2 < 3."
+          },
+          {
+            "id": "sobre",
+            "label": "Sobre",
+            "correct": false,
+            "feedback": "1 + 1 = 2, longe de 9. Dentro."
+          },
+          {
+            "id": "fora",
+            "label": "Fora",
+            "correct": false,
+            "feedback": "d = √2 ≈ 1,4, menor que 3: dentro."
+          }
+        ]
+      },
+      {
+        "id": "equacao-2-3-5",
+        "prompt": "Qual a equação da circunferência de centro (2; 3) e raio 5?",
+        "options": [
+          {
+            "id": "certa",
+            "label": "(x − 2)² + (y − 3)² = 25",
+            "correct": true,
+            "feedback": "Certo. Centro subtraindo, r² = 25."
+          },
+          {
+            "id": "sinal",
+            "label": "(x + 2)² + (y + 3)² = 25",
+            "correct": false,
+            "feedback": "Com + o centro seria (−2; −3). Para (2; 3): (x − 2)² + (y − 3)² = 25."
+          },
+          {
+            "id": "r5",
+            "label": "(x − 2)² + (y − 3)² = 5",
+            "correct": false,
+            "feedback": "À direita vai r² = 25."
+          },
+          {
+            "id": "troca",
+            "label": "(x − 3)² + (y − 2)² = 25",
+            "correct": false,
+            "feedback": "O 2 vai com x e o 3 com y."
+          }
+        ]
+      },
+      {
+        "id": "centro-negativo",
+        "prompt": "Qual o centro de (x + 3)² + y² = 1?",
+        "options": [
+          {
+            "id": "cm30",
+            "label": "(−3; 0)",
+            "correct": true,
+            "feedback": "Isso. x + 3 = x − (−3)."
+          },
+          {
+            "id": "c30",
+            "label": "(3; 0)",
+            "correct": false,
+            "feedback": "x + 3 indica a = −3: (−3; 0)."
+          },
+          {
+            "id": "c03",
+            "label": "(0; 3)",
+            "correct": false,
+            "feedback": "O 3 está com o x: (−3; 0)."
+          },
+          {
+            "id": "cm31",
+            "label": "(−3; 1)",
+            "correct": false,
+            "feedback": "y² é (y − 0)²: b = 0. Centro (−3; 0)."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "reta-y5",
+        "prompt": "Qual a posição da reta y = 5 em relação a x² + y² = 25?",
+        "options": [
+          {
+            "id": "tangente",
+            "label": "Tangente",
+            "correct": true,
+            "feedback": "Certo. Ela encosta só em (0; 5)."
+          },
+          {
+            "id": "secante",
+            "label": "Secante",
+            "correct": false,
+            "feedback": "A reta está a 5 do centro, igual ao raio: toca em um ponto só."
+          },
+          {
+            "id": "exterior",
+            "label": "Exterior",
+            "correct": false,
+            "feedback": "Ela toca o topo, (0; 5). É tangente."
+          }
+        ]
+      },
+      {
+        "id": "duas-circunferencias",
+        "prompt": "Duas circunferências têm raios 2 e 3, e seus centros estão a 5 de distância. Como elas ficam?",
+        "options": [
+          {
+            "id": "tang-ext",
+            "label": "Tangentes por fora",
+            "correct": true,
+            "feedback": "Isso. 2 + 3 = 5: se tocam num ponto."
+          },
+          {
+            "id": "secantes",
+            "label": "Secantes",
+            "correct": false,
+            "feedback": "Secantes pediriam d < 5. Com d = 5, se tocam por fora."
+          },
+          {
+            "id": "separadas",
+            "label": "Separadas",
+            "correct": false,
+            "feedback": "Separadas pediriam d > 5. Com d = 5, tangentes."
+          },
+          {
+            "id": "concentricas",
+            "label": "Uma dentro da outra",
+            "correct": false,
+            "feedback": "Com d = r₁ + r₂ elas ficam lado a lado, tangentes por fora."
+          }
+        ]
+      },
+      {
+        "id": "raio-por-ponto",
+        "prompt": "Uma circunferência de centro na origem passa por (6; 8). Qual sua equação?",
+        "options": [
+          {
+            "id": "e100",
+            "label": "x² + y² = 100",
+            "correct": true,
+            "feedback": "Certo. O raio é a distância até (6; 8): 10."
+          },
+          {
+            "id": "e10",
+            "label": "x² + y² = 10",
+            "correct": false,
+            "feedback": "À direita vai r² = 100."
+          },
+          {
+            "id": "e14",
+            "label": "x² + y² = 14",
+            "correct": false,
+            "feedback": "6 + 8 não é o raio. r² = 36 + 64 = 100."
+          },
+          {
+            "id": "e48",
+            "label": "x² + y² = 48",
+            "correct": false,
+            "feedback": "r² = 6² + 8² = 100."
+          }
+        ]
+      },
+      {
+        "id": "por-diametro",
+        "prompt": "O segmento de A(0; 0) a B(4; 0) é um diâmetro. Quais o centro e o raio?",
+        "options": [
+          {
+            "id": "c20r2",
+            "label": "(2; 0) e 2",
+            "correct": true,
+            "feedback": "Isso. Centro no meio, raio metade do diâmetro."
+          },
+          {
+            "id": "c20r4",
+            "label": "(2; 0) e 4",
+            "correct": false,
+            "feedback": "4 é o diâmetro. O raio é 2."
+          },
+          {
+            "id": "c00r4",
+            "label": "(0; 0) e 4",
+            "correct": false,
+            "feedback": "O centro é o meio de AB, (2; 0), e o raio 2."
+          },
+          {
+            "id": "c40r2",
+            "label": "(4; 0) e 2",
+            "correct": false,
+            "feedback": "(4; 0) é a ponta B. Centro (2; 0)."
+          }
+        ]
+      },
+      {
+        "id": "completar-quadrado",
+        "prompt": "Qual o centro de x² + y² − 6x = 0?",
+        "fala": "Última. x² − 6x é o começo de (x − 3)².",
+        "options": [
+          {
+            "id": "c30",
+            "label": "(3; 0)",
+            "correct": true,
+            "feedback": "Certo. x² − 6x + 9 = (x − 3)²; a equação vira (x − 3)² + y² = 9."
+          },
+          {
+            "id": "c60",
+            "label": "(6; 0)",
+            "correct": false,
+            "feedback": "O centro é metade do 6: (x − 3)². Centro (3; 0)."
+          },
+          {
+            "id": "cm30",
+            "label": "(−3; 0)",
+            "correct": false,
+            "feedback": "−6x vem de (x − 3)²: centro (3; 0)."
+          },
+          {
+            "id": "c00",
+            "label": "(0; 0)",
+            "correct": false,
+            "feedback": "O termo −6x desloca o centro para (3; 0)."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

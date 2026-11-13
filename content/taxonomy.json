@@ -1472,20 +1472,6 @@
           "titulo": "Geometria Analítica",
           "unidades": [
             {
-              "id": "circunferencia-analitica",
-              "titulo": "Circunferência no Plano",
-              "icone": "circulo",
-              "aulas": [
-                {
-                  "id": "aula-01",
-                  "numero": 1,
-                  "titulo": "Todos à Mesma Distância",
-                  "subtitulo": "Equação da circunferência",
-                  "arquivo": null
-                }
-              ]
-            },
-            {
               "id": "reta-equacao-e-inclinacao",
               "titulo": "Equação da reta, inclinação e interceptos",
               "icone": "reta",
@@ -1566,6 +1552,20 @@
                   "titulo": "O Triângulo Escondido Entre Dois Pontos",
                   "subtitulo": "Distância e ponto médio",
                   "arquivo": "geometria/geometria-analitica/plano-cartesiano-distancia-e-ponto-medio/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "circunferencia-equacao-e-posicoes",
+              "titulo": "Equação e posições relativas de circunferências",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Todos à Mesma Distância",
+                  "subtitulo": "Equação da circunferência e posições relativas",
+                  "arquivo": "geometria/geometria-analitica/circunferencia-equacao-e-posicoes/aula-01.json"
                 }
               ]
             }
