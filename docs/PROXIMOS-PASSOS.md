@@ -5,7 +5,7 @@ Atualizado em 12/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim
 ## Estado
 
 - **86 de 103 capítulos** têm aula no app (87 unidades publicadas, contando Cones, o capítulo-modelo). Cada um tem `aula-01.json` e teste próprio.
-- **Validações na última sessão:** `lint:content` ok, 99 arquivos de teste / 1566 testes passando, `typecheck` limpo, `build` ok.
+- **Validações na última sessão:** `lint:content` ok, 99 arquivos de teste / 1569 testes passando, `typecheck` limpo, `build` ok.
 - **Widgets prontos** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, cada um com sua `*_figura`.
 - **Roteiros:** 103 planos em `docs/planos/`, `npm run lint:planos` com 0 erros. Gabaritos dos roteiros conferidos às cegas (1359/1359, `docs/REVISAO-GABARITOS.md`).
 - **Vestibular:** 20 questões com fonte real; 392 marcadas `PENDENTE-FONTE` nos roteiros.
