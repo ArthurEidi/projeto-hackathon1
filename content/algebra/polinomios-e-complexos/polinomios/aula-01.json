@@ -304,7 +304,7 @@
             "id": "f2-polinomios-erro",
             "label": "6",
             "correct": false,
-            "feedback": "Você somou expoentes. O certo é 3; Maior expoente não nulo: 3."
+            "feedback": "Você somou os valores absolutos dos coeficientes (3+2+1=6) em vez de olhar o maior expoente. O certo é 3; Maior expoente não nulo: 3."
           },
           {
             "id": "f2-polinomios-erro2",

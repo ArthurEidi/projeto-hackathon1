@@ -237,7 +237,7 @@
         "id": "d2-funcao-modular",
         "prompt": "Quais são as soluções de |x − 1| = 4?",
         "options": [
-          { "id": "e", "label": "3 e 5", "correct": false, "feedback": "Os pontos ficam 4 para cada lado de 1, não só à direita: 1 − 4 = −3 e 1 + 4 = 5." },
+          { "id": "e", "label": "3 e 5", "correct": false, "feedback": "Você fez 4 − 1 = 3 e 4 + 1 = 5 em vez de 1 − 4 e 1 + 4. O certo é −3 e 5." },
           { "id": "e2", "label": "−5 e 3", "correct": false, "feedback": "Você usou centro −1 em vez de 1. A 4 de 1 ficam 1 − 4 = −3 e 1 + 4 = 5." },
           { "id": "c", "label": "−3 e 5", "correct": true, "feedback": "Isso. Os pontos ficam 4 para cada lado de 1: 1 − 4 = −3 e 1 + 4 = 5." },
           { "id": "e3", "label": "−4 e 4", "correct": false, "feedback": "O centro é 1, não 0. A distância 4 de 1 dá −3 e 5." }
@@ -269,7 +269,7 @@
         "fala": "Última. Separe em 2x − 4 = 6 e 2x − 4 = −6.",
         "options": [
           { "id": "e", "label": "1 e 5", "correct": false, "feedback": "Cuidado no sinal: 2x − 4 = −6 dá 2x = −2, x = −1. As soluções são −1 e 5." },
-          { "id": "e2", "label": "−5 e 1", "correct": false, "feedback": "Testando 1: |2 − 4| = 2 ≠ 6. De 2x − 4 = ±6 saem −1 e 5." },
+          { "id": "e2", "label": "−5 e 1", "correct": false, "feedback": "Você trocou os sinais das duas soluções (como em |2x + 4| = 6). O certo é −1 e 5; 2x − 4 = ±6." },
           { "id": "e3", "label": "−2 e 10", "correct": false, "feedback": "Você esqueceu de dividir por 2: 2x = 10 dá x = 5 e 2x = −2 dá x = −1." },
           { "id": "c", "label": "−1 e 5", "correct": true, "feedback": "Isso. 2x − 4 = 6 dá x = 5, e 2x − 4 = −6 dá x = −1." }
         ]

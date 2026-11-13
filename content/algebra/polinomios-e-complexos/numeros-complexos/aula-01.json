@@ -427,7 +427,7 @@
             "id": "m2-numeros-complexos-erro2",
             "label": "3−2i",
             "correct": false,
-            "feedback": "Você multiplicou i só pelo 2i e esqueceu o 3. O certo é −2+3i; 3i+2i²=−2+3i."
+            "feedback": "Você conjugou 3+2i em vez de multiplicar por i. O certo é −2+3i; 3i+2i²=−2+3i."
           },
           {
             "id": "m2-numeros-complexos-erro3",

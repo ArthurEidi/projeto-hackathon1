@@ -399,7 +399,7 @@
             "id": "o2",
             "label": "6",
             "correct": false,
-            "feedback": "Repetiu +1 no segundo passo. A alternância dá 3 → 4 → 6 → 7."
+            "feedback": "Você somou 1 em todos os passos (3 → 4 → 5 → 6) em vez de alternar +1 e +2. O certo é 3 → 4 → 6 → 7."
           },
           {
             "id": "o3",
@@ -662,7 +662,7 @@
             "id": "o4",
             "label": "8",
             "correct": false,
-            "feedback": "A sequência dobra a cada passo, não soma 2. Em 1, 2, 4, 8, 16 temos n = 5."
+            "feedback": "Você dividiu 16 por 2 em vez de contar os termos da PG: 1, 2, 4, 8, 16 dá n = 5."
           }
         ]
       }

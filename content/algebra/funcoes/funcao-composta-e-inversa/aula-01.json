@@ -209,7 +209,7 @@
             "id": "f1-e",
             "label": "2",
             "correct": false,
-            "feedback": "Resposta: 3; Aplique g primeiro: g(2) = 3 e f(3) = 3."
+            "feedback": "Você aplicou apenas f(2) = 2, ignorando g(x) = 3. O certo é 3; g(2) = 3 e f(3) = 3."
           },
           {
             "id": "f1-c",
@@ -239,7 +239,7 @@
             "id": "f2-e",
             "label": "3",
             "correct": false,
-            "feedback": "Resposta: 4; Calcule g(1) = 2 primeiro, depois f(2) = 4."
+            "feedback": "Você inverteu a ordem para g(f(1)) = 2·1 + 1 = 3. O certo é 4; g(1) = 2 e f(2) = 4."
           },
           {
             "id": "f2-e2",
@@ -263,7 +263,7 @@
             "id": "f3-e",
             "label": "x + 2",
             "correct": false,
-            "feedback": "Resposta: x − 2; A inversa desfaz a soma subtraindo: x − 2."
+            "feedback": "Você repetiu a própria f(x) sem desfazer a soma. O certo é x − 2; y = x + 2 dá x = y − 2."
           },
           {
             "id": "f3-c",
@@ -331,7 +331,7 @@
             "id": "m1-e",
             "label": "5",
             "correct": false,
-            "feedback": "Resposta: 6; Na ordem g(f(2)), calculamos f(2) = 3 e g(3) = 6."
+            "feedback": "Você inverteu a ordem e calculou f(g(2)) = 2·2 + 1 = 5. O certo é 6; f(2) = 3 e g(3) = 6."
           },
           {
             "id": "m1-e2",
@@ -447,7 +447,7 @@
             "id": "d2-e",
             "label": "12",
             "correct": false,
-            "feedback": "Resposta: 8; Primeiro g(2) = 6, depois f(6) = 6 + 2 = 8."
+            "feedback": "Você inverteu a ordem e calculou g(f(2)) = 3·(2 + 2) = 12. O certo é 8; g(2) = 6 e f(6) = 8."
           },
           {
             "id": "d2-c",
@@ -525,7 +525,7 @@
             "id": "d5-e",
             "label": "4",
             "correct": false,
-            "feedback": "Resposta: 3; Subtraia 1 e divida por 2: (7 − 1)/2 = 3."
+            "feedback": "Você somou 1 em vez de subtrair: (7 + 1)/2 = 4. O certo é 3; (7 − 1)/2 = 3."
           },
           {
             "id": "d5-c",

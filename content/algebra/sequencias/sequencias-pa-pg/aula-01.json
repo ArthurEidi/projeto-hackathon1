@@ -572,7 +572,7 @@
             "id": "o2",
             "label": "3",
             "correct": false,
-            "feedback": "Contou dois avanços, mas são três. 10 + 3 · (−3) = 1 em n = 4."
+            "feedback": "3 é o número de avanços (9 ÷ 3), não a posição n. Como parte de a₁ = 10, n = 3 + 1 = 4."
           },
           {
             "id": "o3",

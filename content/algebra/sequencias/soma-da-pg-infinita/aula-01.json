@@ -371,7 +371,7 @@
             "id": "o4",
             "label": "16",
             "correct": false,
-            "feedback": "A razão é 1/2, então 1 − q = 1/2 e 4 ÷ (1/2) = 8, não 16."
+            "feedback": "Você dividiu 4 por (1/2)² = 1/4 em vez de por 1 − 1/2 = 1/2. O certo é 4 ÷ (1/2) = 8."
           }
         ]
       }
@@ -457,7 +457,7 @@
             "id": "o4",
             "label": "−20",
             "correct": false,
-            "feedback": "O sinal no denominador fica 1 − (−1/2) = 3/2 positivo. A soma é 20/3."
+            "feedback": "Você dividiu 10 por q = −1/2 em vez de por 1 − (−1/2) = 3/2. O certo é 10 ÷ (3/2) = 20/3."
           },
           {
             "id": "o1",
