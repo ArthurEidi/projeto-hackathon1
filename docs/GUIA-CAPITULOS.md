@@ -731,17 +731,16 @@ Métricas: `entradas_com_uma_saida` (no modo `flechas`), `entradas_testadas`, `o
 
 ### 5.20 `transformacao_plano` + `transformacao_figura`
 
-Pasta `common/transformacao/`: transformações no plano cartesiano (isometrias, homotetia e matrizes 2×2). `transformacao_figura` recusa `"$slider"`. Aceita `highlight`.
+Pasta `common/transformacao/`: transformações lineares 2×2 no plano cartesiano (malha deformada, colunas da matriz, quadrado unitário e composição). `transformacao_figura` recusa `"$slider"`. Aceita `highlight`.
 
-- **Modos**: `translacao` (`dx`, `dy`), `rotacao` (`angulo`, `cx`, `cy`), `reflexao` (`eixo`: `"x" | "y" | "y=x" | "y=-x"` ou `"$slider"` 0..3), `homotetia` (`k`, `cx`, `cy`), `matriz` (`m: [[a,b],[c,d]]`).
-- **Campos comuns**: `figura` (vértices `[{x,y}]`; padrão triângulo `[(1,1),(3,1),(2,3)]`), `eixo_centro?: [cx, cy]`, `mostrar?: { vetores, malha, area, matriz, determinante }`, `caixa?: [x0, x1, y0, y1]`.
+- **Campos**: `matriz: [[a,b],[c,d]]` (aceita expressões com sliders; padrão identidade), `depois?: [[a,b],[c,d]]` (segunda matriz opcional, desenha 3 painéis: `v`, `M₁v`, `M₂(M₁v)`), `vetor?: [x, y]`, `vetores?: [[x, y], ...]`, `janela?: [min, max]` (padrão `[-3, 4]`), `mostrar?: { malha, quadrado, colunas, det, identidade }`.
 
 ```json
-{"modo":"rotacao","angulo":"$ang","cx":0,"cy":0,"mostrar":{"vetores":true,"area":true}}
+{"matriz":[["$a",0],[0,"$d"]],"vetor":[1,1],"mostrar":{"malha":true,"quadrado":true,"det":true}}
 ```
 ```json
-{"modo":"matriz","m":[["$a",0],[0,"$d"]],"mostrar":{"malha":true,"determinante":true,"area":true}}
+{"matriz":[[0,-1],[1,0]],"depois":[[2,0],[0,1]],"vetor":[1,1]}
 ```
 
-Métricas: `det`, `razao_area` (`|det|`), `area_original`, `area_imagem`, `preserva_orientacao` (`1` se `det >= 0`, `0` se inverte), `distancia_centro` (para translação/rotação/homotetia). Cores: original `c1`, malha deformada `c2`, imagem `c3`, centro/eixo/vetores `c4`.
+Métricas: `det`, `area` (`|det|`), `orientacao` (`1` se `det > 0`, `-1` se `det < 0`, `0` se `det == 0`), `v_x`, `v_y`. Cores: original/vetor `c1`, malha deformada `c2`, imagem/colunas `c3`, determinante/área `c4`.
 
