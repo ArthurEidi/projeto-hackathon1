@@ -1,0 +1,644 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Inequações trigonométricas",
+  "subtitulo": "Arcos que satisfazem a comparação",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "trigonometria",
+    "unidade": "inequacoes-trigonometricas"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Ângulo θ",
+      "resumo": "Giro do raio unitário."
+    },
+    "c2": {
+      "nome": "Limite comparado",
+      "resumo": "Altura ou coordenada usada como fronteira."
+    },
+    "c3": {
+      "nome": "Projeção",
+      "resumo": "Seno, cosseno ou tangente da posição."
+    },
+    "c4": {
+      "nome": "Arcos-solução",
+      "resumo": "Partes do ciclo que satisfazem a comparação."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$angulo",
+        "unidade": "ambos",
+        "arco": {
+          "de": 0,
+          "ate": 180,
+          "abreDe": true,
+          "abreAte": true
+        },
+        "mostrar": {
+          "seno": true,
+          "cosseno": false,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Giro em graus",
+          "min": 0,
+          "max": 360,
+          "step": 30,
+          "initial": 0,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "No caso neutro θ = 0, o seno é zero; ao girar até 90°, ele se torna positivo?",
+        "done": "Sim; acima do eixo a altura é positiva, por isso todo o arco superior serve."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Seno, cosseno e tangente geram arcos distintos; aqui resolvemos uma volta e estendemos pelo período."
+      },
+      "complete_when": {
+        "metric": "angulo",
+        "gte": 90
+      }
+    },
+    {
+      "id": "cruzar-fronteira",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$angulo",
+        "unidade": "ambos",
+        "arco": {
+          "de": 0,
+          "ate": 180,
+          "abreDe": true,
+          "abreAte": true
+        },
+        "mostrar": {
+          "seno": true,
+          "cosseno": false,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Giro em graus",
+          "min": 90,
+          "max": 360,
+          "step": 30,
+          "initial": 90,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Depois de passar 180°, o seno ainda é positivo? Leve o raio a 270°.",
+        "done": "Não; o ponto está abaixo do eixo, então a altura é negativa."
+      },
+      "complete_when": {
+        "metric": "angulo",
+        "gte": 270
+      }
+    },
+    {
+      "id": "limite-meio",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$angulo",
+        "unidade": "ambos",
+        "alvo": {
+          "seno": 0.5
+        },
+        "arco": {
+          "de": 30,
+          "ate": 150,
+          "abreDe": false,
+          "abreAte": false
+        },
+        "mostrar": {
+          "seno": true,
+          "cosseno": false,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Giro em graus",
+          "min": 0,
+          "max": 180,
+          "step": 30,
+          "initial": 0,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Para sen θ ≥ 0,5, 30° entra? Arraste até essa fronteira.",
+        "done": "Entra; a comparação aceita igualdade, por isso o arco inclui 30° e 150°."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Tangente também existe em 90°?",
+        "resposta": "Não; ali o cosseno zera, e dividir por ele é proibido."
+      },
+      "complete_when": {
+        "metric": "dentro",
+        "gte": 1
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "prompt": "Em [0; 2π), onde sen θ > 0?",
+      "lines": {
+        "intro": "Observe onde o seno fica acima do eixo horizontal e preste atenção aos extremos do arco."
+      },
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 90,
+          "unidade": "ambos",
+          "arco": {
+            "de": 0,
+            "ate": 180,
+            "abreDe": true,
+            "abreAte": true
+          },
+          "mostrar": {
+            "seno": true,
+            "cosseno": false,
+            "marcos": true
+          }
+        }
+      },
+      "options": [
+        {
+          "id": "micro-acerto",
+          "label": "(0; π)",
+          "correct": true,
+          "feedback": "Certo: (0; π); A altura é positiva apenas no arco superior aberto."
+        },
+        {
+          "id": "micro-erro",
+          "label": "[0; π]",
+          "correct": false,
+          "feedback": "Você incluiu seno zero; a solução é (0; π), com extremos abertos."
+        },
+        {
+          "id": "micro-erro-2",
+          "label": "(0; 2π)",
+          "correct": false,
+          "feedback": "No arco inferior (π; 2π) o seno é negativo: a solução é apenas (0; π)."
+        },
+        {
+          "id": "micro-erro-3",
+          "label": "[π; 2π)",
+          "correct": false,
+          "feedback": "Nessa metade o seno é negativo ou nulo. O seno positivo fica em (0; π)."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 90,
+          "unidade": "ambos",
+          "arco": {
+            "de": 0,
+            "ate": 180,
+            "abreDe": true,
+            "abreAte": true
+          },
+          "mostrar": {
+            "seno": true,
+            "cosseno": false,
+            "marcos": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "sen θ",
+          "ref": "c3"
+        },
+        {
+          "text": " > 0 ⇔ "
+        },
+        {
+          "text": "2kπ < θ < π + 2kπ",
+          "ref": "c4"
+        },
+        {
+          "text": ",  k ∈ ℤ"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Ângulo θ",
+          "text": "Giro do raio unitário no ciclo trigonométrico."
+        },
+        {
+          "term": "Projeção",
+          "text": "Seno, cosseno ou tangente da posição no ciclo."
+        },
+        {
+          "term": "Arcos-solução",
+          "text": "Partes contínuas do ciclo que satisfazem a comparação."
+        }
+      ],
+      "lines": {
+        "intro": "Seno é altura; por isso sua positividade ocupa o arco superior, repetido a cada volta.",
+        "hint": "Toque em uma letra para ver o que ela faz no ciclo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-inequacoes-trigonometricas",
+        "prompt": "Em qual metade do ciclo trigonométrico sen θ é positivo?",
+        "options": [
+          {
+            "id": "f1-inequacoes-trigonometricas-certa",
+            "label": "Superior",
+            "correct": true,
+            "feedback": "Certo: Superior; Acima do eixo: y > 0."
+          },
+          {
+            "id": "f1-inequacoes-trigonometricas-erro",
+            "label": "Inferior",
+            "correct": false,
+            "feedback": "Você trocou o sinal da altura. O certo é Superior; Acima do eixo: y > 0."
+          },
+          {
+            "id": "f1-erro-2",
+            "label": "Direita",
+            "correct": false,
+            "feedback": "O lado direito corresponde a cosseno positivo. Seno positivo fica na metade superior."
+          },
+          {
+            "id": "f1-erro-3",
+            "label": "Esquerda",
+            "correct": false,
+            "feedback": "O lado esquerdo corresponde a cosseno negativo. Seno positivo é na metade superior."
+          }
+        ]
+      },
+      {
+        "id": "f2-inequacoes-trigonometricas",
+        "prompt": "Na inequação sen θ > 0, o ângulo θ = 0 entra na solução?",
+        "options": [
+          {
+            "id": "f2-inequacoes-trigonometricas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; sen 0 = 0."
+          },
+          {
+            "id": "f2-inequacoes-trigonometricas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O sinal estrito não permite zero. O certo é Não; sen 0 = 0."
+          },
+          {
+            "id": "f2-erro-2",
+            "label": "Apenas se for em graus",
+            "correct": false,
+            "feedback": "Em graus ou radianos sen 0 = 0, que não é estritamente maior que 0."
+          },
+          {
+            "id": "f2-erro-3",
+            "label": "Depende do quadrante",
+            "correct": false,
+            "feedback": "No ângulo zero a altura é exatamente 0: não satisfaz sen θ > 0."
+          }
+        ]
+      },
+      {
+        "id": "f3-inequacoes-trigonometricas",
+        "prompt": "O cosseno é positivo no lado direito do ciclo?",
+        "options": [
+          {
+            "id": "f3-inequacoes-trigonometricas-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; x > 0 no lado direito."
+          },
+          {
+            "id": "f3-inequacoes-trigonometricas-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Cosseno é a coordenada horizontal. O certo é Sim; x > 0 no lado direito."
+          },
+          {
+            "id": "f3-erro-2",
+            "label": "Apenas no topo",
+            "correct": false,
+            "feedback": "No topo (90°) o cosseno zera. Ele é positivo em todo o lado direito (x > 0)."
+          },
+          {
+            "id": "f3-erro-3",
+            "label": "Apenas no 2º quadrante",
+            "correct": false,
+            "feedback": "No 2º quadrante x < 0 (cosseno negativo). Cosseno positivo é no lado direito."
+          }
+        ]
+      },
+      {
+        "id": "f4-inequacoes-trigonometricas",
+        "prompt": "A tangente existe em θ = π/2?",
+        "options": [
+          {
+            "id": "f4-inequacoes-trigonometricas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; tg θ = sen θ / cos θ."
+          },
+          {
+            "id": "f4-inequacoes-trigonometricas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "O denominador cosseno zera. O certo é Não; tg θ = sen θ / cos θ."
+          },
+          {
+            "id": "f4-erro-2",
+            "label": "Sim, vale 1",
+            "correct": false,
+            "feedback": "Em π/4 a tangente vale 1. Em π/2 ela não existe por divisão por zero."
+          },
+          {
+            "id": "f4-erro-3",
+            "label": "Sim, vale 0",
+            "correct": false,
+            "feedback": "Quem vale zero é o cosseno, tornando a tangente indefinida."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-inequacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a inequação sen θ > 0.",
+        "options": [
+          {
+            "id": "m1-inequacoes-trigonometricas-certa",
+            "label": "(0; π)",
+            "correct": true,
+            "feedback": "Certo: (0; π); Parte superior sem extremos."
+          },
+          {
+            "id": "m1-inequacoes-trigonometricas-erro",
+            "label": "[0; π]",
+            "correct": false,
+            "feedback": "Você incluiu as alturas zero. O certo é (0; π); Parte superior sem extremos."
+          },
+          {
+            "id": "m1-erro-2",
+            "label": "[0; 2π)",
+            "correct": false,
+            "feedback": "No semiciclo inferior o seno é negativo: a solução é apenas (0; π)."
+          },
+          {
+            "id": "m1-erro-3",
+            "label": "(π/2; 3π/2)",
+            "correct": false,
+            "feedback": "Esse é o intervalo onde cos θ < 0. Para sen θ > 0 a solução é (0; π)."
+          }
+        ]
+      },
+      {
+        "id": "m2-inequacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a inequação sen θ ≤ 0.",
+        "options": [
+          {
+            "id": "m2-inequacoes-trigonometricas-certa",
+            "label": "{0} ∪ [π; 2π)",
+            "correct": true,
+            "feedback": "Certo: {0} ∪ [π; 2π); sen 0 = 0 e seno ≤ 0 na metade inferior."
+          },
+          {
+            "id": "m2-inequacoes-trigonometricas-erro",
+            "label": "[π; 2π)",
+            "correct": false,
+            "feedback": "Você esqueceu a igualdade em zero. O certo é {0} ∪ [π; 2π); sen 0 = 0 e seno ≤ 0 na metade inferior."
+          },
+          {
+            "id": "m2-erro-2",
+            "label": "(π; 2π)",
+            "correct": false,
+            "feedback": "Os pontos onde sen θ = 0 também entram por causa do sinal ≤: {0} ∪ [π; 2π)."
+          },
+          {
+            "id": "m2-erro-3",
+            "label": "[0; π]",
+            "correct": false,
+            "feedback": "Em [0; π] o seno é positivo ou nulo. Para sen θ ≤ 0 a solução é {0} ∪ [π; 2π)."
+          }
+        ]
+      },
+      {
+        "id": "m3-inequacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a inequação cos θ < 0.",
+        "options": [
+          {
+            "id": "m3-inequacoes-trigonometricas-certa",
+            "label": "(π/2; 3π/2)",
+            "correct": true,
+            "feedback": "Certo: (π/2; 3π/2); Lado esquerdo do ciclo."
+          },
+          {
+            "id": "m3-inequacoes-trigonometricas-erro",
+            "label": "(0; π)",
+            "correct": false,
+            "feedback": "Você leu altura em vez de coordenada horizontal. O certo é (π/2; 3π/2); Lado esquerdo do ciclo."
+          },
+          {
+            "id": "m3-erro-2",
+            "label": "[π/2; 3π/2]",
+            "correct": false,
+            "feedback": "Em π/2 e 3π/2 o cosseno é zero (desigualdade estrita): (π/2; 3π/2)."
+          },
+          {
+            "id": "m3-erro-3",
+            "label": "(π; 2π)",
+            "correct": false,
+            "feedback": "Nesse intervalo o cosseno muda de sinal. Negativo apenas no lado esquerdo: (π/2; 3π/2)."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-inequacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a inequação sen θ ≥ 0,5.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-inequacoes-trigonometricas-certa",
+            "label": "[π/6; 5π/6]",
+            "correct": true,
+            "feedback": "Certo: [π/6; 5π/6]; Arco acima de y = 0,5, com extremos."
+          },
+          {
+            "id": "d1-inequacoes-trigonometricas-erro",
+            "label": "(π/6; 5π/6)",
+            "correct": false,
+            "feedback": "Você retirou a igualdade. O certo é [π/6; 5π/6]; Arco acima de y = 0,5, com extremos."
+          },
+          {
+            "id": "d1-erro-2",
+            "label": "[π/3; 2π/3]",
+            "correct": false,
+            "feedback": "sen(π/3) = √3/2 ≈ 0,866. A fronteira em 0,5 ocorre em π/6 e 5π/6: [π/6; 5π/6]."
+          },
+          {
+            "id": "d1-erro-3",
+            "label": "[0; π/6]",
+            "correct": false,
+            "feedback": "Nesse arco o seno vai de 0 a 0,5, ficando abaixo da fronteira. A solução é [π/6; 5π/6]."
+          }
+        ]
+      },
+      {
+        "id": "d2-inequacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a inequação sen θ > 1.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-inequacoes-trigonometricas-certa",
+            "label": "∅",
+            "correct": true,
+            "feedback": "Certo: ∅; sen θ ≤ 1."
+          },
+          {
+            "id": "d2-inequacoes-trigonometricas-erro",
+            "label": "{π/2}",
+            "correct": false,
+            "feedback": "O máximo 1 não é maior que 1. O certo é ∅; sen θ ≤ 1."
+          },
+          {
+            "id": "d2-erro-2",
+            "label": "[0; 2π)",
+            "correct": false,
+            "feedback": "O seno nunca ultrapassa 1 em nenhum ponto do ciclo. Conjunto vazio: ∅."
+          },
+          {
+            "id": "d2-erro-3",
+            "label": "{0}",
+            "correct": false,
+            "feedback": "sen 0 = 0, que não é maior que 1. Não há nenhuma solução: ∅."
+          }
+        ]
+      },
+      {
+        "id": "d3-inequacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a inequação tg θ > 0.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-inequacoes-trigonometricas-certa",
+            "label": "(0; π/2) ∪ (π; 3π/2)",
+            "correct": true,
+            "feedback": "Certo: (0; π/2) ∪ (π; 3π/2); Positiva nos quadrantes I e III."
+          },
+          {
+            "id": "d3-inequacoes-trigonometricas-erro",
+            "label": "(0; π)",
+            "correct": false,
+            "feedback": "Tangente exige seno e cosseno com mesmo sinal. O certo é (0; π/2) ∪ (π; 3π/2); Positiva nos quadrantes I e III."
+          },
+          {
+            "id": "d3-erro-2",
+            "label": "[0; π/2] ∪ [π; 3π/2]",
+            "correct": false,
+            "feedback": "Em 0 e π a tangente é zero e em π/2 e 3π/2 não existe: intervalos abertos."
+          },
+          {
+            "id": "d3-erro-3",
+            "label": "(π/2; π) ∪ (3π/2; 2π)",
+            "correct": false,
+            "feedback": "Nos quadrantes II e IV seno e cosseno têm sinais opostos (tg < 0). Solução: I e III."
+          }
+        ]
+      },
+      {
+        "id": "d4-inequacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a inequação cos θ ≥ 1.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-inequacoes-trigonometricas-certa",
+            "label": "{0}",
+            "correct": true,
+            "feedback": "Certo: {0}; cos θ ≤ 1; 2π não entra."
+          },
+          {
+            "id": "d4-inequacoes-trigonometricas-erro",
+            "label": "{0; 2π}",
+            "correct": false,
+            "feedback": "Você incluiu o extremo excluído do domínio. O certo é {0}; cos θ ≤ 1; 2π não entra."
+          },
+          {
+            "id": "d4-erro-2",
+            "label": "∅",
+            "correct": false,
+            "feedback": "cos 0 = 1, logo θ = 0 satisfaz a igualdade em cos θ ≥ 1: {0}."
+          },
+          {
+            "id": "d4-erro-3",
+            "label": "[0; π/2]",
+            "correct": false,
+            "feedback": "Para θ > 0 temos cos θ < 1. Apenas em θ = 0 atinge-se o valor 1: {0}."
+          }
+        ]
+      },
+      {
+        "id": "d5-inequacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a inequação sen(2θ) > 0.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-inequacoes-trigonometricas-certa",
+            "label": "(0; π/2) ∪ (π; 3π/2)",
+            "correct": true,
+            "feedback": "Certo: (0; π/2) ∪ (π; 3π/2); 2θ ∈ (0; π) ∪ (2π; 3π)."
+          },
+          {
+            "id": "d5-inequacoes-trigonometricas-erro",
+            "label": "(0; π)",
+            "correct": false,
+            "feedback": "Você esqueceu de dividir os arcos por 2. O certo é (0; π/2) ∪ (π; 3π/2); 2θ ∈ (0; π) ∪ (2π; 3π)."
+          },
+          {
+            "id": "d5-erro-2",
+            "label": "(0; 2π)",
+            "correct": false,
+            "feedback": "sen(2θ) oscila duas vezes no período, tornando-se negativo em duas faixas: (0; π/2) ∪ (π; 3π/2)."
+          },
+          {
+            "id": "d5-erro-3",
+            "label": "[0; π/2] ∪ [π; 3π/2]",
+            "correct": false,
+            "feedback": "A desigualdade é estrita, então os extremos não entram: (0; π/2) ∪ (π; 3π/2)."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

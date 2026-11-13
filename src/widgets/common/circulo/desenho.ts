@@ -56,7 +56,7 @@ export function aspectoCirculo(p: Circulos): number {
     case "arcos":
       return p.mostrar.medidas ? 1 : 0.92;
     case "roda":
-      return p.variante === "giro" || p.variante === "razao" ? 0.62 : 0.78;
+      return p.variante === "giro" || p.variante === "razao" ? 0.62 : p.variante === "voltas" ? 0.5 : 0.78;
     case "fatias":
       return p.variante === "disco" ? 0.98 : 0.9;
   }
@@ -99,7 +99,7 @@ function dArcos(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"arcos">
     segMundo(ctx, v, { x: 0, y: 0 }, g.A, tinta("c2"), espessura(hl, "c2", 3));
     segMundo(ctx, v, { x: 0, y: 0 }, g.B, tinta("c2"), espessura(hl, "c2", 3));
     const mid = rad(g.inicio + g.alfa / 2);
-    etiqueta(ctx, hits, { x: O.x + Math.cos(mid) * R * 0.5, y: O.y - Math.sin(mid) * R * 0.5 }, `${fmt(g.alfa, 0)}°`, "c2");
+    etiqueta(ctx, hits, { x: O.x + Math.cos(mid) * R * 0.4, y: O.y - Math.sin(mid) * R * 0.4 + (g.alfa >= 170 && g.alfa <= 190 ? 26 : 0) }, `${fmt(g.alfa, 0)}°`, "c2");
   }
   if (m.corda) segMundo(ctx, v, g.A, g.B, tinta("c4"), espessura(hl, "c4", 4));
   // Ângulo inscrito em V.
@@ -125,7 +125,7 @@ function dArcos(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"arcos">
       ctx.stroke();
     } else arco(ctx, V, 24, a0, a1, tinta("c3"), 3, tintaClara("c3"));
     const mid = rad((a0 + a1) / 2);
-    etiqueta(ctx, hits, { x: V.x + Math.cos(mid) * 48, y: V.y - Math.sin(mid) * 48 }, `${fmt(g.inscrito, 0)}°`, "c3");
+    etiqueta(ctx, hits, { x: V.x + Math.cos(mid) * 60, y: V.y - Math.sin(mid) * 60 }, `${fmt(g.inscrito, 0)}°`, "c3");
   }
   // Arco AB.
   if (m.arco && g.alfa > 1e-6) arco(ctx, O, R, g.inicio, g.inicio + g.alfa, tinta("c1"), espessura(hl, "c1", 7));
@@ -133,11 +133,11 @@ function dArcos(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"arcos">
   for (const [q, nome] of [[A, "A"], [B, "B"]] as const) {
     dot(ctx, q, 6, palette.ink);
     const a = nome === "A" ? g.inicio : g.inicio + g.alfa;
-    nota(ctx, { x: q.x + Math.cos(rad(a)) * 16, y: q.y - Math.sin(rad(a)) * 16 }, nome, "ink", 16);
+    nota(ctx, { x: q.x + Math.cos(rad(a)) * 24, y: q.y - Math.sin(rad(a)) * 24 }, nome, "ink", 16);
   }
   if (m.inscrito || p.arrastaveis.includes("V")) {
     dot(ctx, V, 6, palette.ink);
-    nota(ctx, { x: V.x + Math.cos(rad(g.posV)) * 16, y: V.y - Math.sin(rad(g.posV)) * 16 }, "V", "ink", 16);
+    nota(ctx, { x: V.x + Math.cos(rad(g.posV)) * 24, y: V.y - Math.sin(rad(g.posV)) * 24 }, "V", "ink", 16);
   }
   const alvos: Alvo[] = [];
   if (p.arrastaveis.includes("B")) {
@@ -197,7 +197,7 @@ function dRoda(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"roda">, 
   }
   if (p.variante === "voltas") {
     // Uma roda e, ao lado, o percurso feito em voltas: cada trecho vale uma circunferência.
-    const rpx = Math.min(34, h * 0.18);
+    const rpx = Math.min(40, h * 0.22);
     const cx = rpx + 14;
     const cy = 20 + rpx;
     circulo(ctx, { x: cx, y: cy }, rpx, tintaClara("c2"), tinta("c2"), espessura(hl, "c2", 3));
@@ -225,7 +225,7 @@ function dRoda(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"roda">, 
   // giro e razão: pista graduada com 1, 2, 3 e π.
   const xmax = Math.max(4.4, Math.PI * g.d + 0.8);
   const ymax = Math.max(g.d, 1) + 0.5;
-  const v = criarVista(w, h - banda(1), { x0: -0.8, x1: xmax, y0: -1.2, y1: ymax }, 12);
+  const v = criarVista(w, h - banda(1), { x0: -0.8, x1: xmax, y0: -1.9, y1: ymax }, 12);
   segMundo(ctx, v, { x: -0.3, y: 0 }, { x: xmax - 0.2, y: 0 }, palette.ink, 3);
   for (let i = 0; i <= Math.floor(xmax - 0.2); i++) {
     segMundo(ctx, v, { x: i, y: 0 }, { x: i, y: -0.15 }, palette.ink, 2);
@@ -244,7 +244,7 @@ function dRoda(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"roda">, 
     segMundo(ctx, v, { x: r, y: r }, { x: r + r * Math.cos(rad(40)), y: r + r * Math.sin(rad(40)) }, tinta("c1"), 3);
     etiqueta(ctx, hits, v.p(r, r), `d = ${fmt(g.d)}`, "c2");
     segMundo(ctx, v, { x: 0, y: -1.08 }, { x: g.C, y: -1.08 }, tinta("c3"), espessura(hl, "c3", 6));
-    etiqueta(ctx, hits, v.p(Math.max(g.C / 2, 1.2), -0.72), `C = ${fmt(g.C)}${un}`, "c3");
+    etiqueta(ctx, hits, v.p(Math.max(g.C / 2, 1.2), -1.6), `C = ${fmt(g.C)}${un}`, "c3");
     rodape(ctx, w, h, [{ t: `C / d = ${fmt(g.C)} / ${fmt(g.d)} = ${fmt(g.razao)}`, c: "c3" }]);
     return { alvos: [], vista: v };
   }

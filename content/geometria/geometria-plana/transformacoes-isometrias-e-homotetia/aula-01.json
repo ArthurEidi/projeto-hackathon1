@@ -1,0 +1,512 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Mover sem Deformar vs Ampliar",
+  "subtitulo": "Translação, reflexão, rotação e homotetia",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "transformacoes-isometrias-e-homotetia"
+  },
+  "outro": "Você diferenciou translação, rotação e reflexão e viu como a homotetia escala lados por |k| e áreas por k².",
+  "glossario": {
+    "c1": {
+      "nome": "Isometria",
+      "resumo": "Transformação que preserva comprimentos, ângulos e áreas."
+    },
+    "c2": {
+      "nome": "Eixo de reflexão",
+      "resumo": "Reta-espelho que fica no meio a 90° entre cada ponto e sua imagem."
+    },
+    "c3": {
+      "nome": "Centro de giro",
+      "resumo": "Ponto fixo ao redor do qual a figura gira ou se amplia."
+    },
+    "c4": {
+      "nome": "Razão de homotetia (k)",
+      "resumo": "Fator que multiplica lados por |k| e áreas por k²."
+    }
+  },
+  "steps": [
+    {
+      "id": "translacao-e-rotacao",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "isometria",
+        "transformacao": "rotacao",
+        "figura": "F",
+        "angulo": "$angulo"
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Girar figura",
+          "min": 0,
+          "max": 180,
+          "step": 90,
+          "initial": 0,
+          "unit": "°",
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "No caso neutro 0°, a imagem está sobre o F original. Gire até 90° e 180°: o tamanho dos lados ou a área do F mudam durante o giro?",
+        "done": "Não mudam nada! Translação, rotação e reflexão são isometrias: movem a figura, mas preservam todas as medidas."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Qual é a diferença entre girar o F e olhar o F no espelho?",
+        "resposta": "No giro você desliza o F pelo plano; no espelho ele vira do avesso com os braços apontando para o outro lado."
+      },
+      "complete_when": {
+        "metric": "angulo",
+        "gte": 180
+      }
+    },
+    {
+      "id": "reflexao-no-espelho",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "isometria",
+        "transformacao": "reflexao",
+        "figura": "F",
+        "refletir": "$refletir",
+        "espelho": 0
+      },
+      "controls": [
+        {
+          "id": "refletir",
+          "label": "Refletir no espelho",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Se um canto do F está a 3 quadradinhos à esquerda do espelho, onde aparece o reflexo dele do outro lado?",
+        "done": "A exatos 3 quadradinhos à direita, em linha perpendicular ao espelho! As medidas continuam iguais, mas o sentido inverte."
+      },
+      "complete_when": {
+        "metric": "orientacao_trocada",
+        "gte": 1
+      }
+    },
+    {
+      "id": "homotetia-positiva-e-negativa",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "isometria",
+        "transformacao": "homotetia",
+        "figura": "triangulo",
+        "k": "$k"
+      },
+      "controls": [
+        {
+          "id": "k",
+          "label": "Razão de homotetia (k)",
+          "min": -1,
+          "max": 2,
+          "step": 1,
+          "initial": 1,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Em k = 1 a imagem tem área 2. Leve k até 2 para dobrar a distância ao centro O, e depois teste k = −1: o que acontece?",
+        "done": "Em k = 2 os lados dobram e a área multiplica por 2² = 4; já em k = −1 os raios atravessam o centro O e a imagem fica de cabeça para baixo!"
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que a foto numa câmara escura com furinho sai de cabeça para baixo?",
+        "resposta": "Porque os raios de luz se cruzam no furinho (centro O), fazendo uma homotetia de razão k negativa!"
+      },
+      "complete_when": {
+        "metric": "k",
+        "lte": -1
+      }
+    },
+    {
+      "id": "desafio-homotetia-area",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "isometria",
+          "transformacao": "homotetia",
+          "figura": "triangulo",
+          "k": 3
+        }
+      },
+      "lines": {
+        "intro": "Cuidado: perímetro é comprimento (× k), mas área é superfície (× k²)!"
+      },
+      "prompt": "Uma figura de área 6 cm² sofre uma homotetia de razão k = 3. Qual é a área da figura ampliada?",
+      "options": [
+        {
+          "id": "a54",
+          "label": "54 cm²",
+          "correct": true,
+          "feedback": "Exato. Na homotetia de razão k = 3, a área multiplica por k² = 3² = 9: 6 · 9 = 54 cm²."
+        },
+        {
+          "id": "a18",
+          "label": "18 cm²",
+          "correct": false,
+          "feedback": "Multiplicar por 3 vale para lados e perímetro. A área multiplica por 3² = 9: 6 · 9 = 54 cm²."
+        },
+        {
+          "id": "a24",
+          "label": "24 cm²",
+          "correct": false,
+          "feedback": "24 seria para k = 2 (×4). Para k = 3, multiplicamos por 3² = 9: 6 · 9 = 54 cm²."
+        },
+        {
+          "id": "a6",
+          "label": "6 cm²",
+          "correct": false,
+          "feedback": "6 cm² seria numa isometria (k = 1). Na homotetia k = 3, a área vai para 6 · 9 = 54 cm²."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "isometria",
+          "transformacao": "painel",
+          "figura": "F",
+          "k": 2
+        }
+      },
+      "formula": [
+        { "text": "Isometrias: L' = L, A' = A", "ref": "c1" },
+        { "text": " e " },
+        { "text": "Homotetia: L' = |k|·L, A' = k²·A", "ref": "c4" }
+      ],
+      "definitions": [
+        {
+          "term": "Isometrias",
+          "text": "Preservam distâncias, ângulos e áreas (figuras congruentes)."
+        },
+        {
+          "term": "Reflexão na reta",
+          "text": "Cada ponto e imagem ficam à mesma distância do espelho e invertem sentido."
+        },
+        {
+          "term": "Homotetia de razão k",
+          "text": "Preserva ângulos, multiplica comprimentos por |k| e áreas por k²."
+        }
+      ],
+      "lines": {
+        "intro": "Isometrias mantêm as distâncias e a homotetia estica as 2 dimensões por k; por isso isometrias conservam a área e a homotetia usa k².",
+        "hint": "Toque em cada transformação para comparar congruência e ampliação."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-qual-preserva-area",
+        "prompt": "Um triângulo de área 12 cm² sofre uma rotação de 90° e depois uma reflexão numa reta. Qual é a área da figura final?",
+        "options": [
+          {
+            "id": "a12",
+            "label": "12 cm²",
+            "correct": true,
+            "feedback": "Isso. Rotação e reflexão são isometrias: não alteram lados nem área (continua 12 cm²)."
+          },
+          {
+            "id": "a24",
+            "label": "24 cm²",
+            "correct": false,
+            "feedback": "Isometrias não ampliam a figura; a área permanece 12 cm²."
+          },
+          {
+            "id": "a6",
+            "label": "6 cm²",
+            "correct": false,
+            "feedback": "Girar ou espelhar mantém a figura congruente: a área continua 12 cm²."
+          }
+        ]
+      },
+      {
+        "id": "f2-eixos-simetria-quadrado",
+        "prompt": "Quantos eixos de simetria (linhas de dobra em que as duas metades coincidem) possui um quadrado?",
+        "options": [
+          {
+            "id": "e4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Certo! São 2 eixos pelos meios dos lados (vertical e horizontal) mais as 2 diagonais: 4."
+          },
+          {
+            "id": "e2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é num retângulo que não é quadrado. No quadrado as 2 diagonais também são eixos: 4."
+          },
+          {
+            "id": "e8",
+            "label": "8",
+            "correct": false,
+            "feedback": "São 2 pelos lados e 2 pelas diagonais: ao todo 4 eixos de simetria."
+          }
+        ]
+      },
+      {
+        "id": "f3-homotetia-perimetro",
+        "prompt": "Um quadrado de perímetro 20 cm sofre uma homotetia de razão k = 2. Qual é o perímetro do novo quadrado?",
+        "options": [
+          {
+            "id": "p40",
+            "label": "40 cm",
+            "correct": true,
+            "feedback": "Exato. O perímetro é soma de comprimentos, então multiplica por k = 2: 20 · 2 = 40 cm."
+          },
+          {
+            "id": "p80",
+            "label": "80 cm",
+            "correct": false,
+            "feedback": "Multiplicar por 2² = 4 é para a ÁREA. O perímetro é linear e multiplica por 2: 40 cm."
+          },
+          {
+            "id": "p20",
+            "label": "20 cm",
+            "correct": false,
+            "feedback": "Na homotetia k = 2 todos os lados dobram, então o perímetro dobra para 40 cm."
+          }
+        ]
+      },
+      {
+        "id": "f4-identificar-reflexao",
+        "prompt": "Quando uma palavra escrita num papel fica espelhada da direita para a esquerda, a transformação aplicada foi uma:",
+        "options": [
+          {
+            "id": "ref",
+            "label": "Reflexão",
+            "correct": true,
+            "feedback": "Isso. Só a reflexão (espelhamento) inverte a esquerda com a direita."
+          },
+          {
+            "id": "trans",
+            "label": "Translação",
+            "correct": false,
+            "feedback": "A translação apenas desliza a palavra sem espelhar as letras. Foi uma reflexão."
+          },
+          {
+            "id": "rot",
+            "label": "Rotação de 180°",
+            "correct": false,
+            "feedback": "Rotação de 180° deixa de cabeça para baixo, mas não espelha como um espelho vertical."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-reflexao-no-eixo-y",
+        "prompt": "No plano cartesiano, qual é a imagem do ponto P(3; 5) ao ser refletido em relação ao eixo vertical y (espelho em x = 0)?",
+        "options": [
+          {
+            "id": "pm35",
+            "label": "(−3; 5)",
+            "correct": true,
+            "feedback": "Certo. Atravessando o espelho vertical (eixo y), x troca de 3 para −3 e y continua 5."
+          },
+          {
+            "id": "p3m5",
+            "label": "(3; −5)",
+            "correct": false,
+            "feedback": "(3; −5) é a reflexão no eixo horizontal x. No eixo y, quem troca de sinal é o x: (−3; 5)."
+          },
+          {
+            "id": "pm3m5",
+            "label": "(−3; −5)",
+            "correct": false,
+            "feedback": "(−3; −5) é a reflexão na origem (rotação de 180°). No eixo y fica (−3; 5)."
+          }
+        ]
+      },
+      {
+        "id": "m2-homotetia-reducao-area",
+        "prompt": "Um triângulo de área 32 cm² sofre uma homotetia de redução de razão k = 1/2. Qual é a área do triângulo reduzido?",
+        "options": [
+          {
+            "id": "a8",
+            "label": "8 cm²",
+            "correct": true,
+            "feedback": "Exato. A área multiplica por k² = (1/2)² = 1/4: 32 / 4 = 8 cm²."
+          },
+          {
+            "id": "a16",
+            "label": "16 cm²",
+            "correct": false,
+            "feedback": "1/2 é a redução dos lados. A área cai para (1/2)² = 1/4: 32 / 4 = 8 cm²."
+          },
+          {
+            "id": "a4",
+            "label": "4 cm²",
+            "correct": false,
+            "feedback": "Multiplique por (1/2)² = 1/4: 32 / 4 = 8 cm²."
+          }
+        ]
+      },
+      {
+        "id": "m3-simetria-de-rotacao-triangulo",
+        "prompt": "Qual é o menor ângulo positivo de giro em torno do centro que faz um triângulo equilátero coincidir exatamente consigo mesmo?",
+        "options": [
+          {
+            "id": "g120",
+            "label": "120°",
+            "correct": true,
+            "feedback": "Isso. Como tem 3 vértices igualmente espaçados na volta, ele coincide a cada 360° / 3 = 120°."
+          },
+          {
+            "id": "g60",
+            "label": "60°",
+            "correct": false,
+            "feedback": "60° é o ângulo interno; girando 60°, uma ponta fica onde não havia ponta. O giro central é 360°/3 = 120°."
+          },
+          {
+            "id": "g180",
+            "label": "180°",
+            "correct": false,
+            "feedback": "Em 180° o triângulo fica de cabeça para baixo. Ele coincide em 360° / 3 = 120°."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-duas-reflexoes-paralelas",
+        "prompt": "Refletir uma figura num espelho vertical e depois noutro espelho paralelo ao primeiro equivale a qual transformação única?",
+        "fala": "O 1º espelho inverte o sentido e o 2º desinverte de volta!",
+        "options": [
+          {
+            "id": "trans",
+            "label": "Uma translação",
+            "correct": true,
+            "feedback": "Exato! A 2ª reflexão desfaz o espelhamento da 1ª e a figura apenas desliza (translação)."
+          },
+          {
+            "id": "ref",
+            "label": "Uma única reflexão",
+            "correct": false,
+            "feedback": "Espelhar duas vezes devolve a orientação original (não fica espelhada): equivale a uma translação."
+          },
+          {
+            "id": "hom",
+            "label": "Uma homotetia de razão 2",
+            "correct": false,
+            "feedback": "Reflexões são isometrias e não mudam o tamanho: o efeito final é uma translação."
+          }
+        ]
+      },
+      {
+        "id": "d2-homotetia-negativa",
+        "prompt": "Uma figura sofre uma homotetia de centro O e razão k = −2. O que acontece com seus comprimentos e sua orientação?",
+        "options": [
+          {
+            "id": "d2inv",
+            "label": "Lados dobram e a imagem fica invertida (180°) do outro lado de O",
+            "correct": true,
+            "feedback": "Certo! O módulo |−2| = 2 dobra as medidas, e o sinal negativo cruza o centro O invertendo a figura."
+          },
+          {
+            "id": "d2mes",
+            "label": "Lados dobram no mesmo sentido e mesmo lado",
+            "correct": false,
+            "feedback": "O sinal negativo faz os raios atravessarem o centro O, invertendo a imagem em 180°."
+          },
+          {
+            "id": "red",
+            "label": "Lados caem à metade",
+            "correct": false,
+            "feedback": "Redução à metade seria k = 1/2 (ou −1/2). Para k = −2, os lados dobram e a figura inverte."
+          }
+        ]
+      },
+      {
+        "id": "d3-achar-k-pelas-areas",
+        "prompt": "Após uma homotetia positiva, a área de um polígono passou de 5 cm² para 45 cm². Por qual fator k o PERÍMETRO foi multiplicado?",
+        "options": [
+          {
+            "id": "k3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Exato. A área multiplicou por 45 / 5 = 9 = k², logo a razão linear do perímetro é k = √9 = 3."
+          },
+          {
+            "id": "k9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é a razão das áreas (k²). O perímetro cresce com a razão linear k = √9 = 3."
+          },
+          {
+            "id": "k45",
+            "label": "4,5",
+            "correct": false,
+            "feedback": "Como k² = 45 / 5 = 9, tiramos a raiz quadrada: k = 3."
+          }
+        ]
+      },
+      {
+        "id": "d4-rotacao-90-anti-horario",
+        "prompt": "O ponto A(4; 0), sobre o eixo x positivo, gira 90° no sentido anti-horário em torno da origem (0; 0). Para qual posição ele vai?",
+        "options": [
+          {
+            "id": "p04",
+            "label": "(0; 4)",
+            "correct": true,
+            "feedback": "Isso. Girando 90° anti-horário a partir do eixo x positivo, o ponto de raio 4 para no eixo y positivo: (0; 4)."
+          },
+          {
+            "id": "pm40",
+            "label": "(−4; 0)",
+            "correct": false,
+            "feedback": "(−4; 0) é um giro de 180°. Em 90° anti-horário, ele para no eixo y em (0; 4)."
+          },
+          {
+            "id": "p0m4",
+            "label": "(0; −4)",
+            "correct": false,
+            "feedback": "(0; −4) é no sentido horário. No anti-horário vai para o topo: (0; 4)."
+          }
+        ]
+      },
+      {
+        "id": "d5-eixos-retangulo-nao-quadrado",
+        "prompt": "Por que a diagonal de um retângulo 6 cm × 2 cm (que não é quadrado) NÃO é um eixo de simetria de reflexão?",
+        "fala": "Tente dobrar uma folha A4 pela diagonal: as pontas batem ou ficam tortas?",
+        "options": [
+          {
+            "id": "nconj",
+            "label": "Porque os lados vizinhos (6 e 2) são diferentes e as pontas não coincidem ao dobrar",
+            "correct": true,
+            "feedback": "Exato! Só quando os 4 lados são iguais (losango/quadrado) a dobra pela diagonal casa os cantos."
+          },
+          {
+            "id": "area",
+            "label": "Porque a diagonal não divide a área ao meio",
+            "correct": false,
+            "feedback": "Ela divide a área em dois triângulos iguais, mas ao dobrar (refletir) as pontas ficam desencontradas!"
+          },
+          {
+            "id": "ang",
+            "label": "Porque os ângulos não são de 90°",
+            "correct": false,
+            "feedback": "Os ângulos são de 90°, mas como 6 ≠ 2, o reflexo da quina não cai sobre a outra quina."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

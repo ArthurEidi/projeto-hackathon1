@@ -63,7 +63,7 @@ export function aspectoPoligono(p: Poligonos): number {
     case "regular":
       return 0.98;
     case "isometria":
-      return p.transformacao === "painel" ? 0.55 : 0.95;
+      return p.transformacao === "painel" ? 0.42 : 0.95;
     case "paralelas":
       return 0.62;
   }
@@ -93,7 +93,7 @@ function dMalha(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"malha"
   const fant: Pt[] | null = p.fantasma ? [{ x: 0, y: 0 }, { x: p.fantasma[0], y: 0 }, { x: p.fantasma[0], y: p.fantasma[1] }, { x: 0, y: p.fantasma[1] }] : p.forma === "retangulo" && g.k !== 1 ? [{ x: 0, y: 0 }, { x: g.b, y: 0 }, { x: g.b, y: g.h }, { x: 0, y: g.h }] : null;
   if (fant) todos.push(...fant);
   const bx = caixaDe(todos, 0.5);
-  const cx: Caixa = { x0: Math.min(bx.x0, -0.8), x1: bx.x1, y0: Math.min(bx.y0, -0.9), y1: bx.y1 };
+  const cx: Caixa = { x0: Math.min(bx.x0, -0.8), x1: bx.x1, y0: Math.min(bx.y0, -0.9), y1: bx.y1 + 1.0 };
   const v = criarVista(w, h - banda(1), cx, 14);
   desenhaMalha(ctx, v, { x0: Math.ceil(cx.x0), x1: Math.floor(cx.x1), y0: Math.ceil(cx.y0), y1: Math.floor(cx.y1) }, 1);
   if (fant) poligonoMundo(ctx, v, fant, undefined, palette.muted, 2, [6, 5]);
@@ -131,11 +131,11 @@ function dMalha(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"malha"
   void baseW;
   const centro = { x: g.pts.reduce((a, q) => a + q.x, 0) / g.pts.length, y: g.pts.reduce((a, q) => a + q.y, 0) / g.pts.length };
   if (p.mostrar.area) etiqueta(ctx, hits, v.q(centro), `A = ${fmt(g.area)}`, "c3");
-  if (p.mostrar.perimetro && p.forma !== "retangulo") etiqueta(ctx, hits, v.p(centro.x, hh + 0.5), `P = ${fmt(g.perimetro)}`, "c4");
+  if (p.mostrar.perimetro && p.forma !== "retangulo") etiqueta(ctx, hits, v.p(centro.x, hh + (p.forma === "trapezio" ? 1.5 : 0.5)), `P = ${fmt(g.perimetro)}`, "c4");
   else if (p.mostrar.perimetro) etiqueta(ctx, hits, v.p(centro.x, hh + 0.5), `P = ${fmt(g.perimetro)}`, "c4");
   const formula =
     p.forma === "triangulo" ? `A = b · h / 2 = ${fmt(g.area)}` : p.forma === "trapezio" ? `A = (B + b) · h / 2 = ${fmt(g.area)}` : `A = b · h = ${fmt(g.area)}`;
-  rodape(ctx, w, h, [{ t: g.copia ? `${formula}  (dois iguais formam um paralelogramo de ${fmt(g.areaUniao)})` : g.k !== 1 && p.forma === "retangulo" ? `ampliar ${fmt(g.k)}× multiplica a área por ${fmt(g.razaoArea)}` : formula, c: "c3" }]);
+  rodape(ctx, w, h, [{ t: g.copia ? `${formula}  (2 cópias: ${fmt(g.areaUniao)})` : g.k !== 1 && p.forma === "retangulo" ? `ampliar ${fmt(g.k)}× multiplica a área por ${fmt(g.razaoArea)}` : formula, c: "c3" }]);
   return { vista: v };
 }
 
@@ -159,7 +159,7 @@ function dPoligono(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pol
     }
     etiqueta(ctx, hits, v.p(g.pts[0].x + 0.7, g.pts[0].y + 0.45), "d₁", "c4");
     etiqueta(ctx, hits, v.p(g.pts[1].x - 0.4, g.pts[1].y + 0.55), "d₂", "c4");
-    rodape(ctx, w, h, [{ t: `${g.nome}: d₁ = ${fmt(g.d1)} e d₂ = ${fmt(g.d2)}`, c: "c4" }, { t: [g.diagonaisIguais ? "diagonais iguais" : "diagonais diferentes", g.diagonaisPerpendiculares ? "diagonais perpendiculares" : null, g.ladosIguais ? "4 lados iguais" : null].filter(Boolean).join(" · "), c: "ink" }]);
+    rodape(ctx, w, h, [{ t: `${g.nome}: d₁ = ${fmt(g.d1)} e d₂ = ${fmt(g.d2)}`, c: "c4" }, { t: [g.diagonaisIguais ? "d₁ = d₂" : "d₁ ≠ d₂", g.diagonaisPerpendiculares ? "d₁ ⊥ d₂" : null, g.ladosIguais ? "lados iguais" : null].filter(Boolean).join(" · "), c: "ink" }]);
     return { vista: v };
   }
   const v = criarVista(w, h - banda(1), { x0: -1.35, x1: 1.35, y0: -1.35, y1: 1.35 }, 18);
@@ -183,7 +183,7 @@ function dPoligono(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pol
   poligonoMundo(ctx, v, pts, undefined, palette.ink, 3);
   if (p.diagonais && g.encolher < 100) for (let i = 2; i < pts.length - 1; i++) segMundo(ctx, v, pts[0], pts[i], palette.ink2, 2, [6, 5]);
   if (g.encolher < 100) pts.forEach((q) => dot(ctx, v.q(q), 4, palette.ink));
-  if (p.diagonais) etiqueta(ctx, hits, { x: 40, y: 22 }, `${g.triangulos} triângulos`, "c1");
+  if (p.diagonais) etiqueta(ctx, hits, { x: 62, y: 22 }, `${g.triangulos} triângulos`, "c1");
   if (p.externos) etiqueta(ctx, hits, { x: w - 70, y: 22 }, g.encolher >= 100 ? "360°" : "externos", "c3");
   rodape(ctx, w, h, [{ t: p.externos ? `soma dos externos = ${fmt(g.somaExternos, 0)}° (sempre)` : `n = ${g.n}: S = (n − 2) · 180° = ${g.triangulos} · 180° = ${fmt(g.somaInternos, 0)}°`, c: p.externos ? "c3" : "c1" }]);
   return { vista: v };
@@ -236,7 +236,7 @@ function dRegular(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"regu
   etiqueta(ctx, hits, { x: v0.x - 34, y: v0.y - 8 }, `${fmt(g.externo, 0)}°`, "c2");
   setor(ctx, v0, 30, h1, h1 + g.interno, tintaClara("c3"), tinta("c3"), espessura(hl, "c3", 3));
   etiqueta(ctx, hits, { x: v0.x + 12, y: v0.y + 52 }, `${fmt(g.interno, 0)}°`, "c3");
-  rodape(ctx, w, h, [{ t: `n = ${g.n}: externo 360° / n = ${fmt(g.externo, 1)}° e interno 180° − externo = ${fmt(g.interno, 1)}°`, c: "ink" }]);
+  rodape(ctx, w, h, [{ t: `n = ${g.n} · externo ${fmt(g.externo, 1)}° · interno ${fmt(g.interno, 1)}°`, c: "ink" }]);
   return { vista: v };
 }
 
@@ -270,7 +270,8 @@ function cuboIso(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"isome
   const g = isometria(p, cl);
   const hl = p.highlight;
   const corImg = COR_IMAGEM[p.transformacao] ?? "c3";
-  const caixa: Caixa = p.transformacao === "reflexao" ? { x0: -6.5, x1: 6.5, y0: -1, y1: 6.5 } : { x0: -6.5, x1: 6.5, y0: -6.5, y1: 6.5 };
+  const ext = Math.max(6.5, Math.ceil(Math.max(...g.base.concat(g.imagem).flatMap((q) => [Math.abs(q.x), Math.abs(q.y)]))) + 0.5);
+  const caixa: Caixa = p.transformacao === "reflexao" ? { x0: -6.5, x1: 6.5, y0: -1, y1: 6.5 } : { x0: -ext, x1: ext, y0: -ext, y1: ext };
   const v = criarVista(w, h - (rodapes ? banda(1) : 0), caixa, rodapes ? 12 : 6);
   const pequeno = !rodapes;
   desenhaMalha(ctx, v, { x0: Math.ceil(caixa.x0), x1: Math.floor(caixa.x1), y0: Math.ceil(caixa.y0), y1: Math.floor(caixa.y1) }, 1, palette.line);
@@ -334,7 +335,7 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
   const dirS = { x: Math.cos((g.desvio * Math.PI) / 180), y: Math.sin((g.desvio * Math.PI) / 180) };
   const tracoReta = (o: Pt, d: Pt, L: number, cor: string, lw: number, dash?: number[]) => segMundo(ctx, v, { x: o.x - d.x * L, y: o.y - d.y * L }, { x: o.x + d.x * L, y: o.y + d.y * L }, cor, lw, dash);
   tracoReta(g.X1, { x: 1, y: 0 }, 5, palette.ink, 3);
-  tracoReta(g.X2, dirS, 5, g.paralelas ? palette.ink : tintaEscura("c3"), 3);
+  if (!p.foco) tracoReta(g.X2, dirS, 5, g.paralelas ? palette.ink : tintaEscura("c3"), 3);
   if (!p.foco) {
     etiqueta(ctx, hits, v.p(4.6, 0.45), "r", "ink");
     etiqueta(ctx, hits, v.p(4.6 * dirS.x + g.X2.x, 4.6 * dirS.y + g.X2.y - 0.45 * 1), "s", "ink");

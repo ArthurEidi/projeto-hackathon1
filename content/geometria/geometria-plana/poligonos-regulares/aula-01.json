@@ -1,0 +1,510 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Dividir a Volta por Igual",
+  "subtitulo": "Ângulos do polígono regular e os 3 ladrilhos do plano",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "poligonos-regulares"
+  },
+  "outro": "Você calculou ângulos regulares pelo atalho do externo, abriu o hexágono em 6 equiláteros e descobriu por que as abelhas usam hexágonos.",
+  "glossario": {
+    "c1": {
+      "nome": "Ângulo central (a_c)",
+      "resumo": "Fatia da volta no centro: 360° / n."
+    },
+    "c2": {
+      "nome": "Ângulo externo (a_e)",
+      "resumo": "Desvio em cada quina: também vale 360° / n."
+    },
+    "c3": {
+      "nome": "Ângulo interno (a_i)",
+      "resumo": "Suplementar do externo: a_i = 180° − 360°/n."
+    },
+    "c4": {
+      "nome": "Encontro no vértice",
+      "resumo": "Soma dos ângulos das peças num canto; ladrilha se der 360°."
+    }
+  },
+  "steps": [
+    {
+      "id": "atalho-pelo-externo",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "regular",
+        "n": "$n",
+        "R": 4
+      },
+      "controls": [
+        {
+          "id": "n",
+          "label": "Número de lados (n)",
+          "min": 3,
+          "max": 8,
+          "step": 1,
+          "initial": 4,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "No quadrado, dividir 360° por 4 dá a_e = 90° e a_i = 90°. Leve n até 6: se o externo vira 360°/6 = 60°, quanto vale cada ângulo interno?",
+        "done": "Vale 180° − 60° = 120°! Achar o externo primeiro e tirar de 180° é o caminho mais rápido para qualquer regular."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se n crescer sem parar até 100 lados?",
+        "resposta": "O externo cai para 3,6° e o interno sobe para 176,4°; o polígono cola na circunferência."
+      },
+      "complete_when": {
+        "metric": "n",
+        "gte": 6
+      }
+    },
+    {
+      "id": "hexagono-seis-equilateros",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "regular",
+        "n": 6,
+        "R": 4,
+        "dividir": "$dividir_hex"
+      },
+      "controls": [
+        {
+          "id": "dividir_hex",
+          "label": "Revelar 6 triângulos",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "No hexágono regular, cada fatia central tem ângulo 360°/6 = 60° entre dois raios iguais R. Que tipo de triângulo são essas 6 fatias?",
+        "done": "São 6 triângulos equiláteros perfeitos! Por isso o lado do hexágono regular tem exatamente a mesma medida do raio R."
+      },
+      "complete_when": {
+        "metric": "dividido",
+        "gte": 1
+      }
+    },
+    {
+      "id": "teste-do-ladrilho",
+      "type": "interactive_canvas",
+      "widget": "geometria_poligono",
+      "params": {
+        "modo": "regular",
+        "n": "$peca_piso",
+        "R": 3,
+        "ladrilho": true
+      },
+      "controls": [
+        {
+          "id": "peca_piso",
+          "label": "Testar peça no piso (n)",
+          "min": 5,
+          "max": 6,
+          "step": 1,
+          "initial": 5,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Três pentágonos regulares (108° cada) juntos num canto somam 324° e deixam um buraco de 36°. Troque para n = 6 (hexágonos): o buraco fecha?",
+        "done": "3 · 120° = 360° cravado! Só ladrilham sozinhos os regulares cujo ângulo divide 360°: triângulo (60°), quadrado (90°) e hexágono (120°)."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se misturarmos octógonos (135°) com quadrados (90°)?",
+        "resposta": "Aí fecha! 2 octógonos (270°) mais 1 quadrado (90°) somam exatos 360° em cada quina."
+      },
+      "complete_when": {
+        "metric": "ladrilho_fechado",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-angulo-octogono",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "regular",
+          "n": 8,
+          "R": 4
+        }
+      },
+      "lines": {
+        "intro": "Use o atalho: calcule primeiro o ângulo externo 360° / 8 e tire de 180°!"
+      },
+      "prompt": "Quanto mede cada ângulo INTERNO de um octógono regular (n = 8)?",
+      "options": [
+        {
+          "id": "g135",
+          "label": "135°",
+          "correct": true,
+          "feedback": "Exato. O externo vale 360° / 8 = 45°, e o interno vale 180° − 45° = 135°."
+        },
+        {
+          "id": "g45",
+          "label": "45°",
+          "correct": false,
+          "feedback": "45° é o ângulo externo (360°/8). O interno é o suplementar: 180° − 45° = 135°."
+        },
+        {
+          "id": "g120",
+          "label": "120°",
+          "correct": false,
+          "feedback": "120° é do hexágono (n = 6). No octógono (n = 8), 180° − 45° = 135°."
+        },
+        {
+          "id": "g1080",
+          "label": "1080°",
+          "correct": false,
+          "feedback": "1080° é a soma de todos os 8 ângulos; dividindo por 8, cada um mede 135°."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_poligono_figura",
+        "params": {
+          "modo": "regular",
+          "n": 6,
+          "R": 4,
+          "dividir": 1
+        }
+      },
+      "formula": [
+        { "text": "a_e = a_c = 360°/n", "ref": "c2" },
+        { "text": ", " },
+        { "text": "a_i = 180° − a_e", "ref": "c3" },
+        { "text": " e " },
+        { "text": "Ladrilho: k · a_i = 360°", "ref": "c4" }
+      ],
+      "definitions": [
+        {
+          "term": "Ângulo externo a_e",
+          "text": "Fatia igual da volta completa: a_e = a_c = 360°/n."
+        },
+        {
+          "term": "Ângulo interno a_i",
+          "text": "Suplementar do externo: a_i = 180° − 360°/n."
+        },
+        {
+          "term": "Ladrilhamento",
+          "text": "Ocorre sozinho apenas para n = 3 (60°), n = 4 (90°) e n = 6 (120°)."
+        }
+      ],
+      "lines": {
+        "intro": "Os n cantos dividem 360° por igual e o piso exige fechar 360° no vértice; por isso a_e = 360°/n e só 60°, 90° e 120° ladrilham sós.",
+        "hint": "Toque em cada ângulo para destacá-lo no polígono e no ladrilho."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-angulo-externo-hexagono",
+        "prompt": "Quanto mede cada ângulo EXTERNO de um hexágono regular (n = 6)?",
+        "options": [
+          {
+            "id": "g60",
+            "label": "60°",
+            "correct": true,
+            "feedback": "Isso. Os 6 ângulos externos são iguais e somam 360°: 360° / 6 = 60°."
+          },
+          {
+            "id": "g120",
+            "label": "120°",
+            "correct": false,
+            "feedback": "120° é o ângulo interno. O externo é 360° / 6 = 60°."
+          },
+          {
+            "id": "g30",
+            "label": "30°",
+            "correct": false,
+            "feedback": "Divida a volta completa de 360° por 6: 360° / 6 = 60°."
+          }
+        ]
+      },
+      {
+        "id": "f2-angulo-interno-pentagono-regular",
+        "prompt": "Em um pentágono regular (n = 5), o ângulo externo mede 360°/5 = 72°. Quanto mede cada ângulo INTERNO?",
+        "options": [
+          {
+            "id": "g108",
+            "label": "108°",
+            "correct": true,
+            "feedback": "Certo. Interno e externo somam 180°: 180° − 72° = 108°."
+          },
+          {
+            "id": "g72",
+            "label": "72°",
+            "correct": false,
+            "feedback": "72° é o externo; o interno é 180° − 72° = 108°."
+          },
+          {
+            "id": "g120",
+            "label": "120°",
+            "correct": false,
+            "feedback": "120° é do hexágono. No pentágono é 180° − 72° = 108°."
+          }
+        ]
+      },
+      {
+        "id": "f3-quais-ladrilham-sozinhos",
+        "prompt": "Qual dos polígonos regulares abaixo NÃO consegue ladrilhar o plano usando apenas peças iguais a ele (sem deixar frestas)?",
+        "options": [
+          {
+            "id": "pent",
+            "label": "Pentágono regular",
+            "correct": true,
+            "feedback": "Exato. Seu ângulo interno é 108°, e 3·108° = 324° deixa uma fresta de 36°."
+          },
+          {
+            "id": "tri",
+            "label": "Triângulo equilátero",
+            "correct": false,
+            "feedback": "6 triângulos de 60° somam 360° e ladrilham perfeitamente. Quem falha é o pentágono."
+          },
+          {
+            "id": "hex",
+            "label": "Hexágono regular",
+            "correct": false,
+            "feedback": "3 hexágonos de 120° somam 360° (colmeia). Quem não ladrilha é o pentágono."
+          }
+        ]
+      },
+      {
+        "id": "f4-hexagono-inscrito-raio",
+        "prompt": "Um hexágono regular está inscrito numa circunferência de raio R = 5 cm. Quanto mede o lado desse hexágono?",
+        "options": [
+          {
+            "id": "l5",
+            "label": "5 cm",
+            "correct": true,
+            "feedback": "Isso. Como é formado por 6 triângulos equiláteros, o lado do hexágono é igual ao raio: 5 cm."
+          },
+          {
+            "id": "l10",
+            "label": "10 cm",
+            "correct": false,
+            "feedback": "10 cm é o diâmetro (a maior diagonal). O lado do hexágono regular mede R = 5 cm."
+          },
+          {
+            "id": "l25",
+            "label": "2,5 cm",
+            "correct": false,
+            "feedback": "O lado do hexágono regular é igual ao próprio raio R = 5 cm."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-achar-n-pelo-angulo-externo",
+        "prompt": "Cada ângulo externo de um polígono regular mede 36°. Quantos lados (n) tem esse polígono?",
+        "options": [
+          {
+            "id": "n10",
+            "label": "10",
+            "correct": true,
+            "feedback": "Certo. Como n · 36° = 360°, temos n = 360° / 36° = 10 lados."
+          },
+          {
+            "id": "n8",
+            "label": "8",
+            "correct": false,
+            "feedback": "No de 8 lados o externo é 45°. Para 36°, n = 360° / 36° = 10."
+          },
+          {
+            "id": "n12",
+            "label": "12",
+            "correct": false,
+            "feedback": "No de 12 lados o externo é 30°. Dividindo 360° por 36°, achamos 10."
+          }
+        ]
+      },
+      {
+        "id": "m2-achar-n-pelo-angulo-interno",
+        "prompt": "Cada ângulo interno de um polígono regular mede 150°. Quantos lados (n) ele possui?",
+        "options": [
+          {
+            "id": "n12",
+            "label": "12",
+            "correct": true,
+            "feedback": "Exato! Se o interno é 150°, o externo é 180° − 150° = 30°; logo n = 360° / 30° = 12."
+          },
+          {
+            "id": "n10",
+            "label": "10",
+            "correct": false,
+            "feedback": "No de 10 lados o interno é 144°. Com a_e = 30°, temos n = 360° / 30° = 12."
+          },
+          {
+            "id": "n15",
+            "label": "15",
+            "correct": false,
+            "feedback": "Use o suplementar: a_e = 180° − 150° = 30°, e 360° / 30° = 12 lados."
+          }
+        ]
+      },
+      {
+        "id": "m3-area-hexagono-seis-triangulos",
+        "prompt": "Se cada um dos 6 triângulos equiláteros que formam um hexágono regular tem área de 7 cm², qual é a área total do hexágono?",
+        "options": [
+          {
+            "id": "a42",
+            "label": "42 cm²",
+            "correct": true,
+            "feedback": "Isso. O hexágono regular é a união de 6 triângulos equiláteros iguais: 6 · 7 = 42 cm²."
+          },
+          {
+            "id": "a28",
+            "label": "28 cm²",
+            "correct": false,
+            "feedback": "São 6 triângulos (não 4): 6 · 7 = 42 cm²."
+          },
+          {
+            "id": "a35",
+            "label": "35 cm²",
+            "correct": false,
+            "feedback": "Multiplicando os 6 triângulos por 7 cm², temos 42 cm²."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-fresta-entre-tres-pentagonos",
+        "prompt": "Três pentágonos regulares (108° cada) encostam num mesmo vértice sobre uma mesa. Qual é o ângulo da fresta vazia que sobra?",
+        "fala": "Some os três ângulos de 108° e veja quanto falta para fechar a volta de 360°!",
+        "options": [
+          {
+            "id": "g36",
+            "label": "36°",
+            "correct": true,
+            "feedback": "Exato. Os 3 pentágonos ocupam 3 · 108° = 324°; para completar 360°, sobram 36°."
+          },
+          {
+            "id": "g72",
+            "label": "72°",
+            "correct": false,
+            "feedback": "72° é o suplementar de 1 pentágono só (180° − 108°). Entre os 3 pentágonos sobram 360° − 324° = 36°."
+          },
+          {
+            "id": "g54",
+            "label": "54°",
+            "correct": false,
+            "feedback": "3 · 108° = 324°, e 360° − 324° = 36°."
+          }
+        ]
+      },
+      {
+        "id": "d2-ladrilho-octogonos-e-quadrado",
+        "prompt": "Num piso, dois octógonos regulares (a_i = 135° cada) encontram outra peça regular no mesmo vértice. Qual é o ângulo dessa peça?",
+        "options": [
+          {
+            "id": "g90",
+            "label": "90° (quadrado)",
+            "correct": true,
+            "feedback": "Certo! Dois octógonos somam 2 · 135° = 270°; faltam 360° − 270° = 90° (um quadrado)."
+          },
+          {
+            "id": "g60",
+            "label": "60° (triângulo)",
+            "correct": false,
+            "feedback": "270° + 60° daria só 330°. Para fechar 360°, faltam 90° (quadrado)."
+          },
+          {
+            "id": "g120",
+            "label": "120° (hexágono)",
+            "correct": false,
+            "feedback": "270° + 120° = 390° (passa de 360°). O encaixe exato pede 90°."
+          }
+        ]
+      },
+      {
+        "id": "d3-interno-triplo-do-externo",
+        "prompt": "Em um polígono regular, o ângulo interno mede o TRIPLO do ângulo externo (a_i = 3·a_e). Quantos lados (n) tem esse polígono?",
+        "options": [
+          {
+            "id": "n8",
+            "label": "8",
+            "correct": true,
+            "feedback": "Exato. Como 3·a_e + a_e = 180°, temos a_e = 45°; logo n = 360° / 45° = 8 lados."
+          },
+          {
+            "id": "n6",
+            "label": "6",
+            "correct": false,
+            "feedback": "No hexágono a_i = 120° é o dobro de a_e = 60°. Para o triplo, a_e = 45° e n = 8."
+          },
+          {
+            "id": "n12",
+            "label": "12",
+            "correct": false,
+            "feedback": "No de 12 lados a_i = 150° é 5 vezes a_e = 30°. Para o triplo, n = 8."
+          }
+        ]
+      },
+      {
+        "id": "d4-maior-diagonal-hexagono",
+        "prompt": "Em um hexágono regular de lado L = 6 cm, quanto mede uma diagonal que passa pelo CENTRO do hexágono?",
+        "options": [
+          {
+            "id": "d12",
+            "label": "12 cm",
+            "correct": true,
+            "feedback": "Isso. A diagonal pelo centro soma dois raios dos triângulos equiláteros: 2 · 6 = 12 cm."
+          },
+          {
+            "id": "d6",
+            "label": "6 cm",
+            "correct": false,
+            "feedback": "6 cm é só até o centro (raio). De um vértice ao oposto mede 2 · 6 = 12 cm."
+          },
+          {
+            "id": "d18",
+            "label": "18 cm",
+            "correct": false,
+            "feedback": "A diagonal maior equivale a 2 lados: 2 · 6 = 12 cm."
+          }
+        ]
+      },
+      {
+        "id": "d5-estrela-entre-dois-hexagramas",
+        "prompt": "Dois hexágonos regulares (120°) e um triângulo equilátero (60°) somam 300° num vértice. Que peça regular fecha os 360° ali?",
+        "fala": "Quanto falta de 300° para 360°?",
+        "options": [
+          {
+            "id": "t1",
+            "label": "Mais 1 triângulo equilátero (60°)",
+            "correct": true,
+            "feedback": "Exato! 120° + 120° + 60° + 60° = 360°, formando o ladrilho de 2 hexágonos e 2 triângulos."
+          },
+          {
+            "id": "q1",
+            "label": "1 quadrado (90°)",
+            "correct": false,
+            "feedback": "300° + 90° = 390° (passa de 360°). Falta exatamente 60° (1 triângulo equilátero)."
+          },
+          {
+            "id": "h1",
+            "label": "Mais 1 hexágono (120°)",
+            "correct": false,
+            "feedback": "Com o triângulo já lá, faltam só 60° (1 triângulo equilátero) para fechar 360°."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

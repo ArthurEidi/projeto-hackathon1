@@ -1,0 +1,600 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Área do círculo, setores e coroas circulares",
+  "subtitulo": "Fatiar a pizza em paralelogramo",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "area-do-circulo-e-setores"
+  },
+  "outro": "Você deduziu πr² transformando o círculo num retângulo e calculou áreas de setores e coroas sem decorar regras soltas.",
+  "glossario": {
+    "c1": {
+      "nome": "Raio (r)",
+      "resumo": "Altura de cada fatia do círculo, do centro até a borda."
+    },
+    "c2": {
+      "nome": "Meia borda (πr)",
+      "resumo": "Base do retângulo formado ao encaixar metade das fatias embaixo."
+    },
+    "c3": {
+      "nome": "Setor circular",
+      "resumo": "Fatia de pizza com ângulo central α: fração (α / 360°) de πr²."
+    },
+    "c4": {
+      "nome": "Coroa circular",
+      "resumo": "Anel entre dois círculos concêntricos: subtrai-se o miolo, π(R² − r²)."
+    }
+  },
+  "steps": [
+    {
+      "id": "encaixar-fatias-retangulo",
+      "type": "interactive_canvas",
+      "widget": "geometria_circulo",
+      "params": {
+        "modo": "fatias",
+        "variante": "disco",
+        "r": 4,
+        "N": "$fatias"
+      },
+      "controls": [
+        {
+          "id": "fatias",
+          "label": "Número de fatias (N)",
+          "min": 4,
+          "max": 24,
+          "step": 4,
+          "initial": 4,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Cortamos a pizza e encaixamos metade das bordas embaixo e metade em cima. Aumente as fatias até 24: que figura plana aparece?",
+        "done": "Vira um retângulo de base πr e altura r! Multiplicando base por altura, nasce a área do círculo: (πr) · r = πr²."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "O 2 de 2πr some porque metade da borda foi para baixo e metade para cima?",
+        "resposta": "Exatamente! A circunferência toda é 2πr, então a base do retângulo fica só com metade: πr."
+      },
+      "complete_when": {
+        "metric": "fatias",
+        "gte": 24
+      }
+    },
+    {
+      "id": "setor-fatia-da-volta",
+      "type": "interactive_canvas",
+      "widget": "geometria_circulo",
+      "params": {
+        "modo": "fatias",
+        "variante": "setor",
+        "r": 6,
+        "alfa": "$alfa"
+      },
+      "controls": [
+        {
+          "id": "alfa",
+          "label": "Ângulo do setor (α)",
+          "min": 60,
+          "max": 360,
+          "step": 60,
+          "initial": 360,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "O círculo inteiro (360°) de raio 6 tem área 36π. Reduza o setor para α = 60°: que fração dos 36π sobra nessa fatia?",
+        "done": "60° é 1/6 de 360°, então a área do setor é 1/6 de 36π = 6π! Basta multiplicar πr² pela fração α / 360°."
+      },
+      "complete_when": {
+        "metric": "alfa",
+        "lte": 60
+      }
+    },
+    {
+      "id": "coroa-circular-anel",
+      "type": "interactive_canvas",
+      "widget": "geometria_circulo",
+      "params": {
+        "modo": "fatias",
+        "variante": "coroa",
+        "R": 5,
+        "furo": "$r_int"
+      },
+      "controls": [
+        {
+          "id": "r_int",
+          "label": "Raio do furo interno (r)",
+          "min": 0,
+          "max": 3,
+          "step": 1,
+          "initial": 0,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Num disco de raio R = 5 (área 25π), abra um furo central de raio r = 3 (área 9π): qual é a área do anel colorido que sobra?",
+        "done": "Sobra 25π − 9π = 16π! A área da coroa é o disco grande menos o pequeno: πR² − πr² = π(R² − r²)."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Posso subtrair os raios antes, fazendo (5 − 3)² = 4?",
+        "resposta": "Nunca: um disco de raio 2 tem área 4π, bem menor que o anel de 16π. Eleve ao quadrado antes: 5² − 3² = 16."
+      },
+      "complete_when": {
+        "metric": "r_int",
+        "gte": 3
+      }
+    },
+    {
+      "id": "desafio-setor-90",
+      "type": "micro_challenge",
+      "prompt": "Qual é a área de um setor circular de ângulo α = 90° e raio r = 4 cm?",
+      "lines": {
+        "intro": "Calcule a área do círculo inteiro com π·4² e pegue a fração correspondente a 90° em 360°."
+      },
+      "figure": {
+        "widget": "geometria_circulo_figura",
+        "params": {
+          "modo": "fatias",
+          "variante": "setor",
+          "r": 4,
+          "alfa": 90
+        }
+      },
+      "options": [
+        {
+          "id": "a4p",
+          "label": "4π cm²",
+          "correct": true,
+          "feedback": "Exato. O círculo todo tem π·4² = 16π cm², e 90° é 1/4 da volta: 16π / 4 = 4π cm²."
+        },
+        {
+          "id": "a16p",
+          "label": "16π cm²",
+          "correct": false,
+          "feedback": "16π cm² é o círculo inteiro (360°). Para 90° (1/4), dividimos por 4: 4π cm²."
+        },
+        {
+          "id": "a8p",
+          "label": "8π cm²",
+          "correct": false,
+          "feedback": "8π cm² é metade do círculo (180°). Para 90° (1/4 de 16π), dá 4π cm²."
+        },
+        {
+          "id": "a2p",
+          "label": "2π cm²",
+          "correct": false,
+          "feedback": "2π cm é o arco da borda. Na área fazemos (π·4²) / 4 = 4π cm²."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_circulo_figura",
+        "params": {
+          "modo": "fatias",
+          "variante": "disco",
+          "r": 4,
+          "N": 16
+        }
+      },
+      "formula": [
+        {
+          "text": "A = π · "
+        },
+        {
+          "text": "r²",
+          "ref": "c1"
+        },
+        {
+          "text": ",  A_setor = "
+        },
+        {
+          "text": "(α/360°)·πr²",
+          "ref": "c3"
+        },
+        {
+          "text": "  e  A_coroa = "
+        },
+        {
+          "text": "π(R² − r²)",
+          "ref": "c4"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Área do círculo (πr²)",
+          "text": "Equivale a um retângulo de base πr e altura r: A = (πr) · r = πr²."
+        },
+        {
+          "term": "Setor circular",
+          "text": "Fatia de pizza com ângulo central α, fração (α / 360°) da área total πr²."
+        },
+        {
+          "term": "Coroa circular",
+          "text": "Área do anel entre círculos concêntricos: subtrai-se o furo, π(R² − r²)."
+        }
+      ],
+      "lines": {
+        "intro": "As fatias montam um retângulo πr por r; por isso A = πr², o setor usa a fração α/360° e a coroa subtrai os discos.",
+        "hint": "Toque em cada fórmula para ver o círculo, a fatia do setor ou o anel da coroa."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "area-circulo-r5",
+        "prompt": "Qual é a área de um círculo de raio r = 5 cm?",
+        "options": [
+          {
+            "id": "a25p",
+            "label": "25π cm²",
+            "correct": true,
+            "feedback": "Isso. A = πr² = π · 5² = 25π cm²."
+          },
+          {
+            "id": "a10p",
+            "label": "10π cm²",
+            "correct": false,
+            "feedback": "10π é o comprimento da circunferência (2πr). A área é π · 5² = 25π cm²."
+          },
+          {
+            "id": "a5p",
+            "label": "5π cm²",
+            "correct": false,
+            "feedback": "Eleve o raio ao quadrado: π · 5² = 25π cm²."
+          },
+          {
+            "id": "a50p",
+            "label": "50π cm²",
+            "correct": false,
+            "feedback": "Não multiplique por 10; eleve ao quadrado: π · 5² = 25π cm²."
+          }
+        ]
+      },
+      {
+        "id": "area-pelo-diametro-6",
+        "prompt": "Uma praça circular tem diâmetro de 6 m. Qual é a sua área?",
+        "options": [
+          {
+            "id": "a9p",
+            "label": "9π m²",
+            "correct": true,
+            "feedback": "Certo. Diâmetro 6 m significa raio r = 3 m; logo A = π · 3² = 9π m²."
+          },
+          {
+            "id": "a36p",
+            "label": "36π m²",
+            "correct": false,
+            "feedback": "Você usou o diâmetro 6 como raio! O raio é a metade (3 m): π · 3² = 9π m²."
+          },
+          {
+            "id": "a6p",
+            "label": "6π m²",
+            "correct": false,
+            "feedback": "6π m é o comprimento da borda. Com r = 3 m, a área é π · 3² = 9π m²."
+          },
+          {
+            "id": "a12p",
+            "label": "12π m²",
+            "correct": false,
+            "feedback": "O raio é 3 m, então a área é π · 3² = 9π m²."
+          }
+        ]
+      },
+      {
+        "id": "area-semicirculo-r4",
+        "prompt": "Qual é a área de um semicírculo (setor de 180°) de raio r = 4 cm?",
+        "options": [
+          {
+            "id": "a8p",
+            "label": "8π cm²",
+            "correct": true,
+            "feedback": "Exato. O círculo todo tem 16π cm²; a metade (180°) tem 8π cm²."
+          },
+          {
+            "id": "a16p",
+            "label": "16π cm²",
+            "correct": false,
+            "feedback": "16π cm² é o círculo inteiro. No semicírculo dividimos por 2: 8π cm²."
+          },
+          {
+            "id": "a4p",
+            "label": "4π cm²",
+            "correct": false,
+            "feedback": "4π cm² seria um quarto (90°). A metade de 16π cm² é 8π cm²."
+          },
+          {
+            "id": "a2p",
+            "label": "2π cm²",
+            "correct": false,
+            "feedback": "Metade de 16π é 8π cm²."
+          }
+        ]
+      },
+      {
+        "id": "coroa-simples-4-e-2",
+        "prompt": "Qual é a área de uma coroa circular de raio externo R = 4 cm e raio interno r = 2 cm?",
+        "options": [
+          {
+            "id": "a12p",
+            "label": "12π cm²",
+            "correct": true,
+            "feedback": "Isso. Disco maior (16π) menos disco menor (4π) dá 12π cm²."
+          },
+          {
+            "id": "a4p",
+            "label": "4π cm²",
+            "correct": false,
+            "feedback": "Não faça (4 − 2)²! Subtraia as áreas dos discos: 16π − 4π = 12π cm²."
+          },
+          {
+            "id": "a20p",
+            "label": "20π cm²",
+            "correct": false,
+            "feedback": "O furo central é retirado, então subtraímos: 16π − 4π = 12π cm²."
+          },
+          {
+            "id": "a8p",
+            "label": "8π cm²",
+            "correct": false,
+            "feedback": "4² − 2² = 16 − 4 = 12, então a área é 12π cm²."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "setor-60-graus",
+        "prompt": "Qual é a área de um setor circular de ângulo α = 60° numa circunferência de raio r = 6 cm?",
+        "options": [
+          {
+            "id": "a6p",
+            "label": "6π cm²",
+            "correct": true,
+            "feedback": "Certo. 60° é 1/6 de 360°, e 1/6 de 36π cm² vale 6π cm²."
+          },
+          {
+            "id": "a36p",
+            "label": "36π cm²",
+            "correct": false,
+            "feedback": "36π cm² é o círculo todo (360°). Para 60° (1/6), a área é 6π cm²."
+          },
+          {
+            "id": "a12p",
+            "label": "12π cm²",
+            "correct": false,
+            "feedback": "12π seria para 120° (1/3). Para 60° (1/6 de 36π), dá 6π cm²."
+          },
+          {
+            "id": "a3p",
+            "label": "3π cm²",
+            "correct": false,
+            "feedback": "60° é 1/6 da volta: 36π / 6 = 6π cm²."
+          }
+        ]
+      },
+      {
+        "id": "achar-raio-pela-area",
+        "prompt": "A área de um disco circular é 49π cm². Quanto mede o diâmetro desse disco?",
+        "options": [
+          {
+            "id": "d14",
+            "label": "14 cm",
+            "correct": true,
+            "feedback": "Exato. De πr² = 49π tiramos o raio r = 7 cm, e o diâmetro é o dobro: 14 cm."
+          },
+          {
+            "id": "d7",
+            "label": "7 cm",
+            "correct": false,
+            "feedback": "7 cm é o raio (√49). O diâmetro pedido mede 2 · 7 = 14 cm."
+          },
+          {
+            "id": "d245",
+            "label": "24,5 cm",
+            "correct": false,
+            "feedback": "Tire a raiz quadrada de 49 para achar r = 7 cm, e dobre para o diâmetro: 14 cm."
+          },
+          {
+            "id": "d49",
+            "label": "49 cm",
+            "correct": false,
+            "feedback": "49 é r², logo r = 7 cm e o diâmetro é 14 cm."
+          }
+        ]
+      },
+      {
+        "id": "setor-120-graus",
+        "prompt": "Um limpador de para-brisa de 30 cm de comprimento gira 120° limpando um setor circular. Qual é a área limpa?",
+        "options": [
+          {
+            "id": "a300p",
+            "label": "300π cm²",
+            "correct": true,
+            "feedback": "Isso. 120° é 1/3 da volta, e (π · 30²) / 3 = 900π / 3 = 300π cm²."
+          },
+          {
+            "id": "a900p",
+            "label": "900π cm²",
+            "correct": false,
+            "feedback": "900π seria uma volta inteira de 360°. Em 120° (1/3), dá 300π cm²."
+          },
+          {
+            "id": "a100p",
+            "label": "100π cm²",
+            "correct": false,
+            "feedback": "30² = 900; dividindo por 3 (pois 120° = 1/3 de 360°), temos 300π cm²."
+          },
+          {
+            "id": "a450p",
+            "label": "450π cm²",
+            "correct": false,
+            "feedback": "120° é um terço de 360°: 900π / 3 = 300π cm²."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "pizza-dobro-do-diametro",
+        "prompt": "Uma pizza pequena tem 20 cm de diâmetro e a grande tem 40 cm (o dobro). Quantas pequenas têm a mesma área de 1 grande?",
+        "fala": "Dobrar o raio ou o diâmetro multiplica a área por 2² = 4!",
+        "options": [
+          {
+            "id": "p4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Exato! A pequena tem r = 10 (100π) e a grande tem R = 20 (400π): cabem 4 pequenas!"
+          },
+          {
+            "id": "p2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Dobrar o diâmetro multiplica a área por 2² = 4 (400π contra 100π), não por 2."
+          },
+          {
+            "id": "p8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 seria em 3D (volume). Na área plana (πr²), dobrar o raio multiplica por 2² = 4."
+          },
+          {
+            "id": "p16",
+            "label": "16",
+            "correct": false,
+            "feedback": "A razão das áreas é 2² = 4."
+          }
+        ]
+      },
+      {
+        "id": "pista-de-caminhada-em-volta",
+        "prompt": "Uma piscina circular de raio r = 4 m é cercada por uma faixa de piso de 1 m de largura (R = 5 m). Qual é a área desse piso?",
+        "options": [
+          {
+            "id": "a9p",
+            "label": "9π m²",
+            "correct": true,
+            "feedback": "Certo! O raio externo é 4 + 1 = 5 m, e a coroa tem área π(5² − 4²) = 9π m²."
+          },
+          {
+            "id": "a1p",
+            "label": "1π m²",
+            "correct": false,
+            "feedback": "Não faça (5 − 4)²! Subtraia os quadrados: π(25 − 16) = 9π m²."
+          },
+          {
+            "id": "a25p",
+            "label": "25π m²",
+            "correct": false,
+            "feedback": "25π m² inclui a piscina lá dentro. Descontando os 16π m² da piscina, sobram 9π m²."
+          },
+          {
+            "id": "a16p",
+            "label": "16π m²",
+            "correct": false,
+            "feedback": "16π m² é a área da piscina. O piso ao redor tem 25π − 16π = 9π m²."
+          }
+        ]
+      },
+      {
+        "id": "quadrado-menos-circulo-inscrito",
+        "prompt": "De uma chapa quadrada de lado 4 cm (área 16 cm²) recorta-se o maior círculo possível (raio 2 cm). Qual é a área das sobras?",
+        "options": [
+          {
+            "id": "s164p",
+            "label": "16 − 4π cm²",
+            "correct": true,
+            "feedback": "Exato. Quadrado de área 16 cm² menos o círculo inscrito de raio 2 cm (4π cm²): 16 − 4π cm²."
+          },
+          {
+            "id": "s1616p",
+            "label": "16 − 16π cm²",
+            "correct": false,
+            "feedback": "O diâmetro é 4 cm, então o raio do círculo é r = 2 cm (área 4π): 16 − 4π cm²."
+          },
+          {
+            "id": "s4p",
+            "label": "4π cm²",
+            "correct": false,
+            "feedback": "4π cm² é a área do círculo recortado. As sobras nos cantos medem 16 − 4π cm²."
+          },
+          {
+            "id": "s162p",
+            "label": "16 − 2π cm²",
+            "correct": false,
+            "feedback": "O raio é 2 cm, cuja área é π·2² = 4π cm²: sobram 16 − 4π cm²."
+          }
+        ]
+      },
+      {
+        "id": "achar-angulo-do-setor",
+        "prompt": "Em um círculo de raio r = 6 cm (área total 36π cm²), um setor circular tem área 9π cm². Qual é o ângulo central α desse setor?",
+        "options": [
+          {
+            "id": "g90",
+            "label": "90°",
+            "correct": true,
+            "feedback": "Isso. 9π é exatamente 1/4 da área total 36π, e 1/4 de 360° vale 90°."
+          },
+          {
+            "id": "g60",
+            "label": "60°",
+            "correct": false,
+            "feedback": "60° seria 1/6 (6π cm²). Como 9π / 36π = 1/4, o ângulo é 90°."
+          },
+          {
+            "id": "g45",
+            "label": "45°",
+            "correct": false,
+            "feedback": "45° é 1/8 da volta. Para 1/4 da volta (9π em 36π), o ângulo é 90°."
+          },
+          {
+            "id": "g120",
+            "label": "120°",
+            "correct": false,
+            "feedback": "120° daria 1/3 da área (12π cm²). Para 9π cm² é 1/4 (90°)."
+          }
+        ]
+      },
+      {
+        "id": "area-setor-pelo-arco",
+        "prompt": "Um setor circular tem arco L = 5π cm e raio r = 4 cm. Usando A = (L · r) / 2, qual é a sua área?",
+        "fala": "Basta fazer (arco × raio) / 2, igualzinho a (base × altura) / 2!",
+        "options": [
+          {
+            "id": "a10p",
+            "label": "10π cm²",
+            "correct": true,
+            "feedback": "Exato! Pela decomposição em fatias finas, A = (L · r) / 2 = (5π · 4) / 2 = 10π cm²."
+          },
+          {
+            "id": "a20p",
+            "label": "20π cm²",
+            "correct": false,
+            "feedback": "Faltou dividir por 2: A = (L · r) / 2 = (5π · 4) / 2 = 10π cm²."
+          },
+          {
+            "id": "a16p",
+            "label": "16π cm²",
+            "correct": false,
+            "feedback": "16π cm² é o círculo todo. Com arco 5π e raio 4, a área é (5π · 4)/2 = 10π cm²."
+          },
+          {
+            "id": "a5p",
+            "label": "5π cm²",
+            "correct": false,
+            "feedback": "A = (5π · 4) / 2 = 20π / 2 = 10π cm²."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

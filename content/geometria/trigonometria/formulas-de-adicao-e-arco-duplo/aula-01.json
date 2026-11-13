@@ -1,0 +1,609 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Fórmulas de adição e arco duplo",
+  "subtitulo": "Somar giros não é somar sombras",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "trigonometria",
+    "unidade": "formulas-de-adicao-e-arco-duplo"
+  },
+  "outro": "Você viu por que somar ângulos não é somar senos, decompôs os giros de α + β e deduziu as fórmulas de adição e de arco duplo.",
+  "glossario": {
+    "c1": {
+      "nome": "Primeiro giro α",
+      "resumo": "Ângulo base a partir do eixo horizontal positivo."
+    },
+    "c2": {
+      "nome": "Segundo giro β",
+      "resumo": "Ângulo somado ou subtraído a partir de onde o giro α parou."
+    },
+    "c3": {
+      "nome": "Seno da soma",
+      "resumo": "Altura final sen(α + β) = sen α·cos β + sen β·cos α."
+    },
+    "c4": {
+      "nome": "Cosseno da soma",
+      "resumo": "Posição horizontal cos(α + β) = cos α·cos β − sen α·sen β."
+    }
+  },
+  "steps": [
+    {
+      "id": "ilusao-da-soma",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "soma": {
+          "alfa": 30,
+          "beta": "$beta"
+        },
+        "blocos": 0,
+        "unidade": "ambos"
+      },
+      "controls": [
+        {
+          "id": "beta",
+          "label": "Segundo giro β (°)",
+          "min": 0,
+          "max": 60,
+          "step": 30,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Com α = 30° e β = 0°, sen(30° + 0°) = 0,5. Leve β até 60°: sen(30° + 60°) é igual a sen 30° + sen 60°?",
+        "done": "Não é igual: sen 90° = 1, mas sen 30° + sen 60° ≈ 1,37. Como o ciclo curva, somar giros nunca é somar senos."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Então como fazemos para calcular o seno de 75° = 45° + 30°?",
+        "resposta": "Usamos as fórmulas de adição de arcos, que também nos darão o arco duplo 2α."
+      },
+      "complete_when": {
+        "metric": "beta",
+        "gte": 60
+      }
+    },
+    {
+      "id": "blocos-da-adicao",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "soma": {
+          "alfa": 30,
+          "beta": 60
+        },
+        "blocos": "$mostrar_blocos",
+        "unidade": "ambos"
+      },
+      "controls": [
+        {
+          "id": "mostrar_blocos",
+          "label": "Decompor projeções",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "O triângulo do giro β está inclinado sobre α. Ligue a decomposição: quais dois pedaços formam a altura sen(α + β)?",
+        "done": "A altura soma sen α·cos β + sen β·cos α. Já na horizontal o segundo giro recua para a esquerda, dando cos α·cos β − sen α·sen β."
+      },
+      "complete_when": {
+        "metric": "mostrar_blocos",
+        "gte": 1
+      }
+    },
+    {
+      "id": "arco-duplo",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "soma": {
+          "alfa": "$alfa",
+          "beta": "$alfa"
+        },
+        "blocos": 1,
+        "unidade": "ambos"
+      },
+      "controls": [
+        {
+          "id": "alfa",
+          "label": "Ângulo α (°)",
+          "min": 15,
+          "max": 45,
+          "step": 15,
+          "initial": 15,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Quando β = α, somamos α + α = 2α. Leve α para 45° (onde 2α = 90°): quanto dão 2·sen α·cos α e cos²α − sen²α?",
+        "done": "Em α = 45°, sen(2α) = 2·sen 45°·cos 45° = 1 e cos(2α) = cos²45° − sen²45° = 0, cravando o ponto de 90°."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se em vez de somar α + β a gente subtrair α − β?",
+        "resposta": "No seno fica sen α·cos β − sen β·cos α, e no cosseno vira soma cos α·cos β + sen α·sen β."
+      },
+      "complete_when": {
+        "metric": "alfa",
+        "gte": 45
+      }
+    },
+    {
+      "id": "desafio-arco-duplo",
+      "type": "micro_challenge",
+      "prompt": "Sabendo que sen α = 3/5 e cos α = 4/5, quanto vale sen(2α)?",
+      "lines": {
+        "intro": "Cuidado para não dobrar o 3/5 direto: use sen(2α) = 2 · sen α · cos α."
+      },
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "soma": {
+            "alfa": 36.87,
+            "beta": 36.87
+          },
+          "blocos": 1,
+          "unidade": "ambos"
+        }
+      },
+      "options": [
+        {
+          "id": "s2425",
+          "label": "24/25",
+          "correct": true,
+          "feedback": "Isso. sen(2α) = 2 · sen α · cos α = 2 · (3/5) · (4/5) = 24/25."
+        },
+        {
+          "id": "s65",
+          "label": "6/5",
+          "correct": false,
+          "feedback": "sen(2α) não é 2·sen α (6/5 até passa de 1!). Use 2 · (3/5) · (4/5) = 24/25."
+        },
+        {
+          "id": "s1225",
+          "label": "12/25",
+          "correct": false,
+          "feedback": "12/25 é apenas sen α · cos α; faltou multiplicar por 2: 24/25."
+        },
+        {
+          "id": "s725",
+          "label": "7/25",
+          "correct": false,
+          "feedback": "7/25 é cos(2α) = cos²α − sen²α. Para o seno: 2 · (3/5) · (4/5) = 24/25."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "soma": {
+            "alfa": 30,
+            "beta": 45
+          },
+          "blocos": 1,
+          "unidade": "ambos"
+        }
+      },
+      "formula": [
+        {
+          "text": "sen(α + β)",
+          "ref": "c3"
+        },
+        {
+          "text": " = sen α·cos β + sen β·cos α ; "
+        },
+        {
+          "text": "cos(α + β)",
+          "ref": "c4"
+        },
+        {
+          "text": " = cos α·cos β − sen α·sen β ; "
+        },
+        {
+          "text": "sen(2α)",
+          "ref": "c3"
+        },
+        {
+          "text": " = 2·sen α·cos α"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Seno da soma/diferença",
+          "text": "sen(α ± β) = sen α·cos β ± sen β·cos α (mantém o sinal da operação)."
+        },
+        {
+          "term": "Cosseno da soma/diferença",
+          "text": "cos(α ± β) = cos α·cos β ∓ sen α·sen β (inverte o sinal da operação)."
+        },
+        {
+          "term": "Arco duplo",
+          "text": "sen(2α) = 2·sen α·cos α e cos(2α) = cos²α − sen²α."
+        }
+      ],
+      "lines": {
+        "intro": "O segundo giro acontece sobre um raio já inclinado, misturando senos e cossenos dos dois arcos.",
+        "hint": "Toque em cada fórmula para ver os blocos geométricos correspondentes no ciclo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "reconhecer-seno-soma",
+        "prompt": "A expressão sen 20° · cos 10° + sen 10° · cos 20° é igual a:",
+        "options": [
+          {
+            "id": "s30",
+            "label": "sen 30° = 0,5",
+            "correct": true,
+            "feedback": "Certo. É a fórmula de sen(20° + 10°) = sen 30° = 0,5."
+          },
+          {
+            "id": "s10",
+            "label": "sen 10°",
+            "correct": false,
+            "feedback": "Com sinal de + entre os produtos, somamos os arcos: sen(20° + 10°) = sen 30° = 0,5."
+          },
+          {
+            "id": "c30",
+            "label": "cos 30°",
+            "correct": false,
+            "feedback": "Mistura de seno com cosseno é a fórmula do seno da soma: sen 30° = 0,5."
+          },
+          {
+            "id": "s200",
+            "label": "sen 200°",
+            "correct": false,
+            "feedback": "Somamos 20° + 10° = 30°, resultando em sen 30° = 0,5."
+          }
+        ]
+      },
+      {
+        "id": "reconhecer-cosseno-soma",
+        "prompt": "A expressão cos 40° · cos 20° − sen 40° · sen 20° equivale a:",
+        "options": [
+          {
+            "id": "c60",
+            "label": "cos 60° = 0,5",
+            "correct": true,
+            "feedback": "Isso. No cosseno da soma o sinal no meio é −: cos(40° + 20°) = cos 60° = 0,5."
+          },
+          {
+            "id": "c20",
+            "label": "cos 20°",
+            "correct": false,
+            "feedback": "No cosseno o sinal inverte: o sinal − indica soma dos arcos, cos(40° + 20°) = cos 60° = 0,5."
+          },
+          {
+            "id": "s60",
+            "label": "sen 60°",
+            "correct": false,
+            "feedback": "Produto cos·cos − sen·sen é o cosseno da soma: cos 60° = 0,5."
+          },
+          {
+            "id": "cm60",
+            "label": "−cos 60°",
+            "correct": false,
+            "feedback": "Pela fórmula de cos(α + β), o resultado é +cos(40° + 20°) = cos 60° = 0,5."
+          }
+        ]
+      },
+      {
+        "id": "arco-duplo-30",
+        "prompt": "Pela fórmula do arco duplo, a expressão 2 · sen 15° · cos 15° vale:",
+        "options": [
+          {
+            "id": "v05",
+            "label": "sen 30° = 0,5",
+            "correct": true,
+            "feedback": "Exato. 2 · sen α · cos α = sen(2α), logo vale sen 30° = 0,5."
+          },
+          {
+            "id": "v15",
+            "label": "2 · sen 15°",
+            "correct": false,
+            "feedback": "2 · sen 15° · cos 15° fecha o arco duplo sen(30°) = 0,5."
+          },
+          {
+            "id": "vc30",
+            "label": "cos 30°",
+            "correct": false,
+            "feedback": "2 · sen α · cos α é a fórmula de sen(2α): sen 30° = 0,5."
+          },
+          {
+            "id": "v1",
+            "label": "sen 60°",
+            "correct": false,
+            "feedback": "O dobro de 15° é 30°, portanto vale sen 30° = 0,5."
+          }
+        ]
+      },
+      {
+        "id": "cos-2a-identidade",
+        "prompt": "Qual das expressões abaixo representa corretamente cos(2α)?",
+        "options": [
+          {
+            "id": "c2ms2",
+            "label": "cos²α − sen²α",
+            "correct": true,
+            "feedback": "Certo. Fazendo β = α em cos(α + β), temos cos α·cos α − sen α·sen α = cos²α − sen²α."
+          },
+          {
+            "id": "c2ps2",
+            "label": "cos²α + sen²α",
+            "correct": false,
+            "feedback": "cos²α + sen²α vale sempre 1. Para cos(2α), há um sinal de menos: cos²α − sen²α."
+          },
+          {
+            "id": "dcos",
+            "label": "2 · cos α",
+            "correct": false,
+            "feedback": "O fator 2 não sai de dentro do cosseno. A fórmula é cos²α − sen²α."
+          },
+          {
+            "id": "s2mc2",
+            "label": "sen²α − cos²α",
+            "correct": false,
+            "feedback": "A ordem é cosseno primeiro: cos(2α) = cos²α − sen²α."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "calcular-cos-2a",
+        "prompt": "Se num triângulo temos cos α = 3/5 e sen α = 4/5, quanto vale cos(2α)?",
+        "options": [
+          {
+            "id": "cm725",
+            "label": "−7/25",
+            "correct": true,
+            "feedback": "Isso. cos(2α) = (3/5)² − (4/5)² = 9/25 − 16/25 = −7/25."
+          },
+          {
+            "id": "cp725",
+            "label": "7/25",
+            "correct": false,
+            "feedback": "Cuidado com a ordem: cos²α − sen²α = 9/25 − 16/25 = −7/25."
+          },
+          {
+            "id": "c2425",
+            "label": "24/25",
+            "correct": false,
+            "feedback": "24/25 é sen(2α) = 2·sen α·cos α. Para o cosseno: 9/25 − 16/25 = −7/25."
+          },
+          {
+            "id": "c65",
+            "label": "6/5",
+            "correct": false,
+            "feedback": "cos(2α) não é 2·cos α. Use cos²α − sen²α = −7/25."
+          }
+        ]
+      },
+      {
+        "id": "calcular-sen-15",
+        "prompt": "Escrevendo 15° = 45° − 30°, qual expressão calcula sen 15°?",
+        "options": [
+          {
+            "id": "r6mr2",
+            "label": "(√6 − √2) / 4",
+            "correct": true,
+            "feedback": "Certo. (√2/2)·(√3/2) − (1/2)·(√2/2) = (√6 − √2) / 4."
+          },
+          {
+            "id": "r6pr2",
+            "label": "(√6 + √2) / 4",
+            "correct": false,
+            "feedback": "(√6 + √2)/4 é sen 75° (soma). Na diferença 45° − 30°, fica (√6 − √2) / 4."
+          },
+          {
+            "id": "r2m1",
+            "label": "(√2 − 1) / 2",
+            "correct": false,
+            "feedback": "Não faça sen 45° − sen 30°! Pela fórmula da diferença, dá (√6 − √2) / 4."
+          },
+          {
+            "id": "r3m1",
+            "label": "√3 / 4",
+            "correct": false,
+            "feedback": "Substituindo os notáveis em sen 45°·cos 30° − sen 30°·cos 45°, obtemos (√6 − √2) / 4."
+          }
+        ]
+      },
+      {
+        "id": "cosseno-complementar-soma",
+        "prompt": "Simplificando cos(π/2 − x) pelo cosseno da diferença, obtemos:",
+        "options": [
+          {
+            "id": "senx",
+            "label": "sen x",
+            "correct": true,
+            "feedback": "Exato. 0 · cos x + 1 · sen x = sen x (o cosseno do complementar é o seno)."
+          },
+          {
+            "id": "msenx",
+            "label": "−sen x",
+            "correct": false,
+            "feedback": "Em cos(α − β) o sinal do meio é +: 0·cos x + 1·sen x = +sen x."
+          },
+          {
+            "id": "cosx",
+            "label": "cos x",
+            "correct": false,
+            "feedback": "Como cos(π/2) = 0, o termo com cos x some e sobra 1 · sen x = sen x."
+          },
+          {
+            "id": "mcosx",
+            "label": "−cos x",
+            "correct": false,
+            "feedback": "cos(π/2) = 0 anula o cos x, e sen(π/2) = 1 multiplica sen x, dando sen x."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "cos-2a-so-com-seno",
+        "prompt": "Sabendo apenas que sen α = 1/3, quanto vale cos(2α)?",
+        "options": [
+          {
+            "id": "c79",
+            "label": "7/9",
+            "correct": true,
+            "feedback": "Isso. Como cos²α = 8/9, temos cos(2α) = 8/9 − 1/9 = 7/9."
+          },
+          {
+            "id": "c89",
+            "label": "8/9",
+            "correct": false,
+            "feedback": "8/9 é cos²α. Ainda falta subtrair sen²α = 1/9: 8/9 − 1/9 = 7/9."
+          },
+          {
+            "id": "cm79",
+            "label": "−7/9",
+            "correct": false,
+            "feedback": "cos²α = 8/9 é maior que sen²α = 1/9, então 8/9 − 1/9 = +7/9."
+          },
+          {
+            "id": "c23",
+            "label": "2/3",
+            "correct": false,
+            "feedback": "Use cos(2α) = 1 − 2·sen²α = 1 − 2/9 = 7/9."
+          }
+        ]
+      },
+      {
+        "id": "soma-de-dois-arcos",
+        "prompt": "No 1º quadrante, sen α = 3/5 (cos α = 4/5) e sen β = 5/13 (cos β = 12/13). Quanto vale sen(α + β)?",
+        "options": [
+          {
+            "id": "s5665",
+            "label": "56/65",
+            "correct": true,
+            "feedback": "Certo. (3/5)·(12/13) + (5/13)·(4/5) = 36/65 + 20/65 = 56/65."
+          },
+          {
+            "id": "s1665",
+            "label": "16/65",
+            "correct": false,
+            "feedback": "16/65 é 36/65 − 20/65, que seria sen(α − β). Na soma dá 36/65 + 20/65 = 56/65."
+          },
+          {
+            "id": "s3365",
+            "label": "33/65",
+            "correct": false,
+            "feedback": "33/65 é cos(α + β) = 48/65 − 15/65. Para sen(α + β), o valor é 56/65."
+          },
+          {
+            "id": "s818",
+            "label": "8/18",
+            "correct": false,
+            "feedback": "Não some as frações direto; aplique sen α·cos β + sen β·cos α = 56/65."
+          }
+        ]
+      },
+      {
+        "id": "tangente-da-soma",
+        "prompt": "Pela fórmula da tangente da soma, se tg α = 1/2 e tg β = 1/3, quanto vale tg(α + β)?",
+        "options": [
+          {
+            "id": "t1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Exato. Numerador 1/2 + 1/3 = 5/6 e denominador 1 − 1/6 = 5/6; a divisão dá 1 (α + β = 45°)."
+          },
+          {
+            "id": "t56",
+            "label": "5/6",
+            "correct": false,
+            "feedback": "5/6 é apenas a soma tg α + tg β; dividindo por 1 − 1/6 = 5/6, o resultado é 1."
+          },
+          {
+            "id": "t25",
+            "label": "2/5",
+            "correct": false,
+            "feedback": "Some com MMC no numerador (5/6) e divida por 1 − 1/6 (5/6): dá 1."
+          },
+          {
+            "id": "t57",
+            "label": "5/7",
+            "correct": false,
+            "feedback": "No denominador subtrai-se o produto: 1 − 1/6 = 5/6, e (5/6)/(5/6) = 1."
+          }
+        ]
+      },
+      {
+        "id": "simplificar-sen2x-sobre-cosx",
+        "prompt": "Simplificando a expressão sen(2x) / (2 · cos x), para cos x ≠ 0, encontramos:",
+        "options": [
+          {
+            "id": "senx",
+            "label": "sen x",
+            "correct": true,
+            "feedback": "Isso. Trocando sen(2x) por 2·sen x·cos x, o fator 2·cos x cancela e sobra sen x."
+          },
+          {
+            "id": "tgx",
+            "label": "tg x",
+            "correct": false,
+            "feedback": "Como sen(2x) = 2·sen x·cos x, o cos x do denominador cancela, sobrando apenas sen x."
+          },
+          {
+            "id": "d2senx",
+            "label": "2 · sen x",
+            "correct": false,
+            "feedback": "O fator 2 do numerador cancela com o 2 do denominador, restando sen x."
+          },
+          {
+            "id": "cosx",
+            "label": "cos x",
+            "correct": false,
+            "feedback": "Quem cancela é o cos x; o que sobra no numerador é sen x."
+          }
+        ]
+      },
+      {
+        "id": "periodo-produto-seno-cosseno",
+        "prompt": "Reescreva a função f(x) = 6 · sen x · cos x usando o arco duplo e determine sua imagem e seu período.",
+        "fala": "Note que 6 · sen x · cos x = 3 · (2 · sen x · cos x).",
+        "options": [
+          {
+            "id": "f3sp",
+            "label": "f(x) = 3·sen(2x); Im = [−3; 3] e T = π",
+            "correct": true,
+            "feedback": "Exato. Como 2·sen x·cos x = sen(2x), fica 3·sen(2x), com amplitude 3 e período 2π/2 = π."
+          },
+          {
+            "id": "f6sp",
+            "label": "f(x) = 6·sen(2x); Im = [−6; 6] e T = π",
+            "correct": false,
+            "feedback": "O fator 2 entra na fórmula de sen(2x), sobrando 6 / 2 = 3 na frente: Im = [−3; 3] e T = π."
+          },
+          {
+            "id": "f3s2p",
+            "label": "f(x) = 3·sen(2x); Im = [−3; 3] e T = 2π",
+            "correct": false,
+            "feedback": "Com 2x dentro do seno, o período divide por 2: T = 2π / 2 = π (e Im = [−3; 3])."
+          },
+          {
+            "id": "f6s2p",
+            "label": "f(x) = 6·sen(x); Im = [−6; 6] e T = 2π",
+            "correct": false,
+            "feedback": "Pelo arco duplo, 6·sen x·cos x = 3·sen(2x), dando Im = [−3; 3] e T = π."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

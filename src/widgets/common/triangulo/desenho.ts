@@ -148,7 +148,7 @@ function dPitagoras(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"p
     const desl = e.chaves.has("deslizar");
     const pecas = provaPecas(b, cc, desl);
     poligonoMundo(ctx, v, [{ x: 0, y: 0 }, { x: s, y: 0 }, { x: s, y: s }, { x: 0, y: s }], palette.surface);
-    for (const t of pecas.triangulos) poligonoMundo(ctx, v, t, tintaClara("ink"), palette.ink2, 2);
+    for (const t of pecas.triangulos) poligonoMundo(ctx, v, t, tintaClara("c4"), palette.ink2, 2);
     const centro = (pts: Pt[]) => ({ x: pts.reduce((a, q) => a + q.x, 0) / pts.length, y: pts.reduce((a, q) => a + q.y, 0) / pts.length });
     for (const q of pecas.quadrados) {
       const cor = q.lado === "a" ? "c3" : q.lado === "b" ? "c1" : "c2";
@@ -397,7 +397,7 @@ function dAngulos(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"ang
     const aB = dirGraus(B, C);
     anguloMarcado(ctx, hits, v.q(B), 0, g.alfa, 30, `${fmt(g.alfa, 0)}°`, "c1");
     anguloMarcado(ctx, hits, v.q(B), g.alfa, aB, 30, `${fmt(g.gama, 0)}°`, "c2");
-    anguloMarcado(ctx, hits, v.q(B), 0, aB, 52, `e = ${fmt(g.externo, 0)}°`, "c3", false);
+    anguloMarcado(ctx, hits, v.q(B), 0, aB, 66, `e = ${fmt(g.externo, 0)}°`, "c3", false);
   }
   const rA = 30;
   anguloMarcado(ctx, hits, v.q(A), 0, g.alfa, rA, `${fmt(g.alfa, 0)}°`, "c1");

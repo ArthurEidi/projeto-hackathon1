@@ -1,0 +1,605 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Gráficos das Funções Trigonométricas",
+  "subtitulo": "Do giro à onda · Senoide, cossenoide, período e assíntotas",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "trigonometria",
+    "unidade": "funcoes-trigonometricas"
+  },
+  "outro": "Você desenrolou o ciclo no plano cartesiano e comparou os gráficos, períodos e imagens de seno, cosseno e tangente.",
+  "glossario": {
+    "c1": {
+      "nome": "Onda do seno",
+      "resumo": "Gráfico de f(x) = sen x, que parte de (0; 0) com período 2π."
+    },
+    "c2": {
+      "nome": "Onda do cosseno",
+      "resumo": "Gráfico de g(x) = cos x, que parte de (0; 1) com período 2π."
+    },
+    "c3": {
+      "nome": "Imagem [−1; 1]",
+      "resumo": "Faixa vertical entre o mínimo −1 e o máximo 1 das ondas de seno e cosseno."
+    },
+    "c4": {
+      "nome": "Período",
+      "resumo": "Menor intervalo em x após o qual o gráfico se repete (2π no seno e cosseno; π na tangente)."
+    }
+  },
+  "steps": [
+    {
+      "id": "desenrolar-seno",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$x_rad * 45",
+        "grafico": "sen",
+        "mostrar": {
+          "seno": true,
+          "cosseno": false,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "x_rad",
+          "label": "Arco x (em quartos de π)",
+          "min": 0,
+          "max": 8,
+          "step": 2,
+          "initial": 0,
+          "cor": "c1"
+        }
+      ],
+      "complete_when": {
+        "metric": "x_rad",
+        "gte": 8
+      },
+      "lines": {
+        "intro": "Em x = 0, sen 0 = 0. Gire até completar uma volta em 2π (8 quartos de π): onde a onda atinge o máximo 1 e o mínimo −1?",
+        "done": "Bate no máximo 1 em π/2, zera em π, desce a −1 em 3π/2 e volta a 0 em 2π. A altura no ciclo vira a onda no gráfico."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "O que acontece se a gente continuar girando depois de 2π?",
+        "resposta": "A onda se repete infinitamente a cada 2π, e mais adiante ajustaremos a amplitude e o ritmo dela."
+      }
+    },
+    {
+      "id": "comparar-seno-cosseno",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$x_rad * 45",
+        "grafico": "cos",
+        "mostrar": {
+          "seno": false,
+          "cosseno": true,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "x_rad",
+          "label": "Arco x (em quartos de π)",
+          "min": 0,
+          "max": 8,
+          "step": 2,
+          "initial": 0,
+          "cor": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "x_rad",
+        "gte": 8
+      },
+      "lines": {
+        "intro": "O seno começou em 0, mas cos 0 = 1. Leve x até 2π (8 quartos de π): quantas ondas completas o cosseno faz?",
+        "done": "Faz a onda completa em 2π. Seno e cosseno têm a mesma forma e período 2π, mudando apenas onde começam."
+      }
+    },
+    {
+      "id": "grafico-tangente",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$theta",
+        "mostrar": {
+          "seno": false,
+          "cosseno": false,
+          "tangente": true,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Arco x (graus)",
+          "min": 0,
+          "max": 180,
+          "step": 45,
+          "initial": 0,
+          "cor": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "theta",
+        "gte": 180
+      },
+      "lines": {
+        "intro": "Na tangente, cos 90° = 0 cria uma barreira vertical em 90°. Avance até 180°: a altura na reta já começou a se repetir?",
+        "done": "Sim: a tangente se repete a cada 180° (π), metade do período do seno. Como sobe e desce sem fim, sua imagem é ℝ."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A reta do raio chega a encostar na linha da tangente em 90°?",
+        "resposta": "Nunca encosta: em 90° o raio fica perfeitamente vertical e paralelo à reta tangente x = 1."
+      }
+    },
+    {
+      "id": "desafio-identificar-curva",
+      "type": "micro_challenge",
+      "prompt": "O gráfico da figura começa em (0; 1), vale −1 em x = π e volta a 1 em x = 2π. Qual é essa função?",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 360,
+          "grafico": "cos",
+          "mostrar": {
+            "seno": false,
+            "cosseno": true,
+            "marcos": true
+          },
+          "highlight": ["c2"]
+        }
+      },
+      "lines": {
+        "intro": "Olhe para o ponto onde a curva corta o eixo y (em x = 0)."
+      },
+      "options": [
+        {
+          "id": "cos",
+          "label": "f(x) = cos x",
+          "correct": true,
+          "feedback": "Isso. Como cos 0 = 1 e cos π = −1, essa é a curva do cosseno.",
+          "override": {
+            "highlight": ["c2"]
+          }
+        },
+        {
+          "id": "sen",
+          "label": "f(x) = sen x",
+          "correct": false,
+          "feedback": "Resposta: f(x) = cos x; O seno começa em (0; 0). Quem começa em (0; 1) é f(x) = cos x."
+        },
+        {
+          "id": "tg",
+          "label": "f(x) = tg x",
+          "correct": false,
+          "feedback": "Resposta: f(x) = cos x; A tangente parte de (0; 0) e tem assíntotas. Essa onda é f(x) = cos x."
+        },
+        {
+          "id": "msen",
+          "label": "f(x) = −sen x",
+          "correct": false,
+          "feedback": "Resposta: f(x) = cos x; −sen x também vale 0 em x = 0. Quem vale 1 em x = 0 é f(x) = cos x."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 360,
+          "grafico": "sen",
+          "mostrar": {
+            "seno": true,
+            "cosseno": true,
+            "marcos": true
+          },
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "sen(x + 2π)", "ref": "c1" },
+        { "text": "=" },
+        { "text": "sen x", "ref": "c1" },
+        { "text": ";" },
+        { "text": "Im = [−1; 1]", "ref": "c3" },
+        { "text": ";" },
+        { "text": "T = 2π", "ref": "c4" }
+      ],
+      "definitions": [
+        {
+          "term": "Seno e cosseno",
+          "text": "Domínio ℝ, imagem [−1; 1] e período fundamental T = 2π."
+        },
+        {
+          "term": "Raízes em [0; 2π]",
+          "text": "sen x zera em 0, π e 2π; cos x zera em π/2 e 3π/2."
+        },
+        {
+          "term": "Tangente",
+          "text": "Imagem ℝ, período T = π e assíntotas onde cos x = 0."
+        }
+      ],
+      "lines": {
+        "intro": "Cada volta de 2π no ciclo repete as coordenadas do ponto, por isso sen x e cos x têm período 2π e imagem [−1; 1].",
+        "hint": "Toque nos elementos da fórmula para destacar as ondas e o período."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "imagem-do-seno",
+        "prompt": "Qual é o conjunto imagem (valores mínimo e máximo de y) da função f(x) = sen x?",
+        "options": [
+          {
+            "id": "im11",
+            "label": "[−1; 1]",
+            "correct": true,
+            "feedback": "Certo. No ciclo de raio 1, o seno varia sempre entre −1 e 1."
+          },
+          {
+            "id": "i01",
+            "label": "[0; 1]",
+            "correct": false,
+            "feedback": "Resposta: [−1; 1]; No 3º e 4º quadrantes o seno é negativo, chegando a −1: a imagem é [−1; 1]."
+          },
+          {
+            "id": "i02p",
+            "label": "[0; 2π]",
+            "correct": false,
+            "feedback": "Resposta: [−1; 1]; [0; 2π] é um período no eixo x. No eixo y, a imagem é [−1; 1]."
+          },
+          {
+            "id": "ir",
+            "label": "Todos os reais",
+            "correct": false,
+            "feedback": "Resposta: [−1; 1]; Todos os reais é a imagem da tangente. A imagem de sen x é [−1; 1]."
+          }
+        ]
+      },
+      {
+        "id": "periodo-cosseno",
+        "prompt": "Qual é o período fundamental da função g(x) = cos x?",
+        "options": [
+          {
+            "id": "p2p",
+            "label": "2π",
+            "correct": true,
+            "feedback": "Isso. O cosseno repete seu ciclo a cada volta completa de 2π radianos."
+          },
+          {
+            "id": "pp",
+            "label": "π",
+            "correct": false,
+            "feedback": "Resposta: 2π; π é o período da tangente. O período de cos x é 2π."
+          },
+          {
+            "id": "p2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 2π; 2 é a largura entre −1 e 1. O período horizontal é 2π."
+          },
+          {
+            "id": "p1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 2π; 1 é o valor máximo de cos x. O período é 2π."
+          }
+        ]
+      },
+      {
+        "id": "ponto-inicial-seno-cosseno",
+        "prompt": "Em x = 0, os gráficos de f(x) = sen x e g(x) = cos x passam pelas alturas y iguais a:",
+        "options": [
+          {
+            "id": "z0e1",
+            "label": "0 e 1",
+            "correct": true,
+            "feedback": "Exato. sen 0 = 0 (sai da origem) e cos 0 = 1 (sai do topo)."
+          },
+          {
+            "id": "u1e0",
+            "label": "1 e 0",
+            "correct": false,
+            "feedback": "Resposta: 0 e 1; Você inverteu: quem vale 0 é sen 0, e quem vale 1 é cos 0."
+          },
+          {
+            "id": "z0e0",
+            "label": "0 e 0",
+            "correct": false,
+            "feedback": "Resposta: 0 e 1; Apenas o seno sai de 0; cos 0 = 1. A resposta é 0 e 1."
+          },
+          {
+            "id": "u1e1",
+            "label": "1 e 1",
+            "correct": false,
+            "feedback": "Resposta: 0 e 1; Em x = 0 temos sen 0 = 0 e cos 0 = 1."
+          }
+        ]
+      },
+      {
+        "id": "periodo-tangente",
+        "prompt": "Qual é o período da função h(x) = tg x?",
+        "options": [
+          {
+            "id": "tp",
+            "label": "π",
+            "correct": true,
+            "feedback": "Certo. A tangente se repete a cada meia-volta: seu período é π."
+          },
+          {
+            "id": "t2p",
+            "label": "2π",
+            "correct": false,
+            "feedback": "Resposta: π; 2π é o período de seno e cosseno. A tangente repete a cada π."
+          },
+          {
+            "id": "tp2",
+            "label": "π/2",
+            "correct": false,
+            "feedback": "Resposta: π; π/2 é onde fica a primeira assíntota; o período entre elas é π."
+          },
+          {
+            "id": "t4p",
+            "label": "4π",
+            "correct": false,
+            "feedback": "Resposta: π; O ramo principal da tangente vai de −π/2 a π/2, tendo período π."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "raizes-do-cosseno",
+        "prompt": "No intervalo [0; 2π], em quais valores de x o gráfico de g(x) = cos x corta o eixo x?",
+        "options": [
+          {
+            "id": "p2e3p2",
+            "label": "π/2 e 3π/2",
+            "correct": true,
+            "feedback": "Isso. Em 90° (π/2) e 270° (3π/2) o cosseno vale zero."
+          },
+          {
+            "id": "z0p2p",
+            "label": "0, π e 2π",
+            "correct": false,
+            "feedback": "Resposta: π/2 e 3π/2; 0, π e 2π são as raízes do seno. O cosseno zera em π/2 e 3π/2."
+          },
+          {
+            "id": "sop",
+            "label": "Apenas π",
+            "correct": false,
+            "feedback": "Resposta: π/2 e 3π/2; Em x = π temos cos π = −1. Ele zera em π/2 e 3π/2."
+          },
+          {
+            "id": "z0ep",
+            "label": "0 e π",
+            "correct": false,
+            "feedback": "Resposta: π/2 e 3π/2; Em 0 e π o cosseno vale 1 e −1. As raízes são π/2 e 3π/2."
+          }
+        ]
+      },
+      {
+        "id": "onde-seno-decresce",
+        "prompt": "Em [0; 2π], o gráfico de f(x) = sen x vai do pico mais alto (1) ao mais baixo (−1) em qual trecho?",
+        "options": [
+          {
+            "id": "p2a3p2",
+            "label": "De π/2 a 3π/2",
+            "correct": true,
+            "feedback": "Certo. Ele bate 1 em π/2 e desce continuamente até −1 em 3π/2."
+          },
+          {
+            "id": "z0ap",
+            "label": "De 0 a π",
+            "correct": false,
+            "feedback": "Resposta: De π/2 a 3π/2; De 0 a π/2 ele sobe (de 0 a 1). Ele desce de π/2 até 3π/2."
+          },
+          {
+            "id": "pa2p",
+            "label": "De π a 2π",
+            "correct": false,
+            "feedback": "Resposta: De π/2 a 3π/2; De 3π/2 a 2π ele sobe de −1 para 0. Ele desce de π/2 a 3π/2."
+          },
+          {
+            "id": "z0ap2",
+            "label": "De 0 a π/2",
+            "correct": false,
+            "feedback": "Resposta: De π/2 a 3π/2; De 0 a π/2 o seno sobe de 0 até 1. Ele desce de π/2 a 3π/2."
+          }
+        ]
+      },
+      {
+        "id": "encontro-seno-cosseno-1q",
+        "prompt": "No 1º quadrante (entre 0 e π/2), em qual valor de x os gráficos de sen x e cos x se cruzam?",
+        "options": [
+          {
+            "id": "xp4",
+            "label": "π/4",
+            "correct": true,
+            "feedback": "Exato. Em π/4 (45°), sen(π/4) = cos(π/4) = √2/2."
+          },
+          {
+            "id": "xp2",
+            "label": "π/2",
+            "correct": false,
+            "feedback": "Resposta: π/4; Em π/2 o seno é 1 e o cosseno é 0. Eles empatam na metade: π/4."
+          },
+          {
+            "id": "xp6",
+            "label": "π/6",
+            "correct": false,
+            "feedback": "Resposta: π/4; Em π/6 (30°), sen = 1/2 e cos = √3/2. O cruzamento é em π/4 (45°)."
+          },
+          {
+            "id": "xp3",
+            "label": "π/3",
+            "correct": false,
+            "feedback": "Resposta: π/4; Em π/3 (60°), sen = √3/2 e cos = 1/2. O encontro é em π/4."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "quantas-raizes-seno",
+        "prompt": "Quantas vezes o gráfico de f(x) = sen x toca ou cruza o eixo x no intervalo fechado [0; 2π]?",
+        "options": [
+          {
+            "id": "n3",
+            "label": "3 vezes (0, π e 2π)",
+            "correct": true,
+            "feedback": "Isso. Nas duas pontas (0 e 2π) e bem no meio da volta (π): 3 vezes."
+          },
+          {
+            "id": "n2",
+            "label": "2 vezes (0 e π)",
+            "correct": false,
+            "feedback": "Resposta: 3 vezes (0, π e 2π); Como o intervalo é fechado em 2π, sen 2π = 0 também entra."
+          },
+          {
+            "id": "n1",
+            "label": "1 vez (apenas π)",
+            "correct": false,
+            "feedback": "Resposta: 3 vezes (0, π e 2π); Em x = 0 e x = 2π o seno também vale zero: são 3 vezes."
+          },
+          {
+            "id": "n4",
+            "label": "4 vezes",
+            "correct": false,
+            "feedback": "Resposta: 3 vezes (0, π e 2π); Em π/2 e 3π/2 o seno vale 1 e −1: zera em 0, π e 2π."
+          }
+        ]
+      },
+      {
+        "id": "periodicidade-grande",
+        "prompt": "Usando o período T = 2π do cosseno, quanto vale f(20π + π/3) se f(x) = cos x?",
+        "options": [
+          {
+            "id": "c05",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Certo. 20π são 10 períodos completos de 2π, então cos(20π + π/3) = cos(π/3) = 1/2."
+          },
+          {
+            "id": "cm05",
+            "label": "−1/2",
+            "correct": false,
+            "feedback": "Resposta: 1/2; 20π é múltiplo par de π (10 voltas inteiras), logo vale +cos(π/3) = 1/2."
+          },
+          {
+            "id": "cr3",
+            "label": "√3/2",
+            "correct": false,
+            "feedback": "Resposta: 1/2; √3/2 é sen(π/3). Para o cosseno, cos(π/3) = 1/2."
+          },
+          {
+            "id": "c1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 1/2; cos 20π = 1, mas somamos π/3 no arco: cos(π/3) = 1/2."
+          }
+        ]
+      },
+      {
+        "id": "fronteira-dominio-tangente",
+        "prompt": "Qual dos valores abaixo NÃO pertence ao domínio da função h(x) = tg x?",
+        "options": [
+          {
+            "id": "a5p2",
+            "label": "5π/2",
+            "correct": true,
+            "feedback": "Exato. 5π/2 = 2π + π/2 cai no topo do ciclo (cos = 0), onde há assíntota."
+          },
+          {
+            "id": "a2p",
+            "label": "2π",
+            "correct": false,
+            "feedback": "Resposta: 5π/2; Em 2π temos tg 2π = 0. Quem não está no domínio é 5π/2."
+          },
+          {
+            "id": "ap",
+            "label": "π",
+            "correct": false,
+            "feedback": "Resposta: 5π/2; Em π temos tg π = 0. A assíntota está em 5π/2."
+          },
+          {
+            "id": "ap4",
+            "label": "π/4",
+            "correct": false,
+            "feedback": "Resposta: 5π/2; Em π/4 temos tg(π/4) = 1. O ponto fora do domínio é 5π/2."
+          }
+        ]
+      },
+      {
+        "id": "paridade-seno-cosseno",
+        "prompt": "Olhando para a simetria no ciclo em torno de x = 0, quanto valem sen(−x) e cos(−x)?",
+        "options": [
+          {
+            "id": "imparpar",
+            "label": "−sen x e cos x",
+            "correct": true,
+            "feedback": "Isso. Girar para baixo inverte o y (seno é ímpar) mas mantém o x (cosseno é par)."
+          },
+          {
+            "id": "parimpar",
+            "label": "sen x e −cos x",
+            "correct": false,
+            "feedback": "Resposta: −sen x e cos x; No 4º quadrante o x continua positivo e o y fica negativo."
+          },
+          {
+            "id": "ambosneg",
+            "label": "−sen x e −cos x",
+            "correct": false,
+            "feedback": "Resposta: −sen x e cos x; O cosseno de −x tem a mesma projeção horizontal que x."
+          },
+          {
+            "id": "ambospos",
+            "label": "sen x e cos x",
+            "correct": false,
+            "feedback": "Resposta: −sen x e cos x; O seno muda de sinal quando invertemos o sentido do giro."
+          }
+        ]
+      },
+      {
+        "id": "diferenca-max-min-intervalo",
+        "prompt": "Se f(x) = sen x está restrita a [0; π], qual é sua imagem e onde ocorre o máximo?",
+        "paco": "Em [0; π] estamos só na metade de cima do ciclo (1º e 2º quadrantes).",
+        "options": [
+          {
+            "id": "i01p2",
+            "label": "[0; 1], máximo em π/2",
+            "correct": true,
+            "feedback": "Exato. Entre 0 e π o seno não fica negativo: varia de 0 a 1 com pico em π/2."
+          },
+          {
+            "id": "im11p2",
+            "label": "[−1; 1], máximo em π/2",
+            "correct": false,
+            "feedback": "Resposta: [0; 1], máximo em π/2; O seno só chega a −1 em 3π/2 (fora do intervalo)."
+          },
+          {
+            "id": "i01p",
+            "label": "[0; 1], máximo em π",
+            "correct": false,
+            "feedback": "Resposta: [0; 1], máximo em π/2; Em x = π temos sen π = 0. O máximo 1 ocorre em x = π/2."
+          },
+          {
+            "id": "im10",
+            "label": "[−1; 0], máximo em 0",
+            "correct": false,
+            "feedback": "Resposta: [0; 1], máximo em π/2; Entre 0 e π o seno é positivo ou zero."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

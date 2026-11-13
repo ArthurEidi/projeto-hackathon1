@@ -1,0 +1,660 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Circunferência, arcos e ângulos",
+  "subtitulo": "Do centro à borda",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "geometria-plana",
+    "unidade": "circunferencia-arcos-e-angulos"
+  },
+  "outro": "Você relacionou arco, ângulo central e ângulo inscrito e descobriu por que o diâmetro sempre enxerga 90° na borda.",
+  "glossario": {
+    "c1": {
+      "nome": "Arco AB",
+      "resumo": "Trecho da circunferência compreendido entre os pontos A e B."
+    },
+    "c2": {
+      "nome": "Ângulo central (α)",
+      "resumo": "Ângulo com vértice no centro O; tem a mesma medida em graus do arco AB."
+    },
+    "c3": {
+      "nome": "Ângulo inscrito (β)",
+      "resumo": "Ângulo com vértice V na borda; vale metade do ângulo central (α / 2)."
+    },
+    "c4": {
+      "nome": "Diâmetro / Corda",
+      "resumo": "Segmento que une dois pontos da borda; passando por O, é o diâmetro (2r)."
+    }
+  },
+  "steps": [
+    {
+      "id": "arco-e-central",
+      "type": "interactive_canvas",
+      "widget": "geometria_circulo",
+      "params": {
+        "modo": "arcos",
+        "alfa": "$alfa",
+        "mostrar": {
+          "arco": true,
+          "central": true,
+          "inscrito": false,
+          "corda": false,
+          "isosceles": false,
+          "medidas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "alfa",
+          "label": "Arco AB (α)",
+          "min": 0,
+          "max": 180,
+          "step": 10,
+          "initial": 0,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Com A e B juntos, o arco é 0°. Abra o arco até 80°: quanto mede o ângulo central lá no centro O?",
+        "done": "Mede os mesmos 80°. Por definição, a medida em graus do arco AB é igual à do ângulo central α que o enxerga."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o vértice do ângulo sair do centro?",
+        "resposta": "Ele pode ir para a borda (inscrito), para dentro ou para fora da circunferência. Hoje investigamos o ângulo inscrito na borda."
+      },
+      "complete_when": {
+        "metric": "alfa",
+        "gte": 80
+      }
+    },
+    {
+      "id": "angulo-inscrito-metade",
+      "type": "interactive_canvas",
+      "widget": "geometria_circulo",
+      "params": {
+        "modo": "arcos",
+        "alfa": "$alfa",
+        "mostrar": {
+          "arco": true,
+          "central": true,
+          "inscrito": true,
+          "corda": false,
+          "isosceles": true,
+          "medidas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "alfa",
+          "label": "Ângulo central α",
+          "min": 40,
+          "max": 160,
+          "step": 20,
+          "initial": 80,
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "O vértice V recuou do centro para a borda oposta. Leve α até 120°: quanto vale o ângulo inscrito β em relação a α?",
+        "done": "Vale 60°, a metade. Como os raios OA, OB e OV são iguais, os triângulos isósceles dobram o ângulo ao chegar no centro: β = α / 2."
+      },
+      "complete_when": {
+        "metric": "alfa",
+        "gte": 120
+      }
+    },
+    {
+      "id": "passeio-na-borda",
+      "type": "interactive_canvas",
+      "widget": "geometria_circulo",
+      "params": {
+        "modo": "arcos",
+        "alfa": 100,
+        "pos_v": "$pos_v",
+        "mostrar": {
+          "arco": true,
+          "central": true,
+          "inscrito": true,
+          "corda": false,
+          "isosceles": false,
+          "medidas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "pos_v",
+          "label": "Posição de V",
+          "min": 120,
+          "max": 300,
+          "step": 20,
+          "initial": 180,
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Deixe o arco AB fixo em 100° e passeie com o vértice V pela borda. O ângulo inscrito β muda de valor no caminho?",
+        "done": "Não muda: fica cravado em 50° em todo o arco maior, pois V continua enxergando o mesmo arco de 100°."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se V entrar dentro do próprio arco de 100°?",
+        "resposta": "Aí ele passa a enxergar o arco de trás, de 260°, e o ângulo vira 260° / 2 = 130°, o suplementar de 50°."
+      },
+      "complete_when": {
+        "metric": "pos_v",
+        "gte": 260
+      }
+    },
+    {
+      "id": "semicircunferencia-90",
+      "type": "interactive_canvas",
+      "widget": "geometria_circulo",
+      "params": {
+        "modo": "arcos",
+        "alfa": "$alfa",
+        "mostrar": {
+          "arco": true,
+          "central": true,
+          "inscrito": true,
+          "corda": true,
+          "isosceles": false,
+          "medidas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "alfa",
+          "label": "Abertura AB (α)",
+          "min": 100,
+          "max": 180,
+          "step": 20,
+          "initial": 120,
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Abra a corda AB até ela passar pelo centro e virar um diâmetro (α = 180°). Que ângulo aparece no vértice V?",
+        "done": "Aparece um ângulo reto de 180° / 2 = 90°. Todo triângulo inscrito numa semicircunferência, com o diâmetro como lado, é retângulo."
+      },
+      "complete_when": {
+        "metric": "alfa",
+        "gte": 180
+      }
+    },
+    {
+      "id": "desafio-inscrito",
+      "type": "micro_challenge",
+      "prompt": "O ângulo inscrito AV̂B mede 35°. Quanto mede o ângulo central AÔB que enxerga o mesmo arco?",
+      "lines": {
+        "intro": "Veja quem está na borda e quem está no centro antes de fazer a conta."
+      },
+      "figure": {
+        "widget": "geometria_circulo_figura",
+        "params": {
+          "modo": "arcos",
+          "alfa": 70,
+          "mostrar": {
+            "arco": true,
+            "central": true,
+            "inscrito": true,
+            "corda": false,
+            "isosceles": false,
+            "medidas": true
+          }
+        }
+      },
+      "options": [
+        {
+          "id": "a70",
+          "label": "70°",
+          "correct": true,
+          "feedback": "Isso. O central é o dobro do inscrito: 2·35° = 70°."
+        },
+        {
+          "id": "a175",
+          "label": "17,5°",
+          "correct": false,
+          "feedback": "Você dividiu por 2, mas 35° já é o inscrito na borda. O central é o dobro: 70°."
+        },
+        {
+          "id": "a35",
+          "label": "35°",
+          "correct": false,
+          "feedback": "35° é o inscrito na borda. No centro o ângulo dobra: 2·35° = 70°."
+        },
+        {
+          "id": "a145",
+          "label": "145°",
+          "correct": false,
+          "feedback": "145° é o suplementar (180° − 35°). O central vale o dobro do inscrito: 70°."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "geometria_circulo_figura",
+        "params": {
+          "modo": "arcos",
+          "alfa": 100,
+          "mostrar": {
+            "arco": true,
+            "central": true,
+            "inscrito": true,
+            "corda": true,
+            "isosceles": false,
+            "medidas": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "β",
+          "ref": "c3"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "α",
+          "ref": "c2"
+        },
+        {
+          "text": " / 2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Ângulo central (α)",
+          "text": "Vértice no centro; mede o mesmo que o arco AB."
+        },
+        {
+          "term": "Ângulo inscrito (β)",
+          "text": "Vértice na borda; vale metade do central (α / 2)."
+        },
+        {
+          "term": "Arco AB",
+          "text": "Trecho da circunferência compreendido entre os pontos A e B."
+        }
+      ],
+      "lines": {
+        "intro": "Os raios formam triângulos isósceles do centro até a borda, por isso o ângulo inscrito vale sempre metade do ângulo central.",
+        "hint": "Toque em cada letra para destacar o arco, o ângulo central e o ângulo inscrito."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "central-para-inscrito",
+        "prompt": "Em uma circunferência, o ângulo central AÔB mede 80°. Quanto mede o ângulo inscrito AV̂B no mesmo arco?",
+        "options": [
+          {
+            "id": "a40",
+            "label": "40°",
+            "correct": true,
+            "feedback": "Certo. O ângulo inscrito é metade do central: 80° / 2 = 40°."
+          },
+          {
+            "id": "a80",
+            "label": "80°",
+            "correct": false,
+            "feedback": "80° é o central e o arco. Na borda, o inscrito vale metade: 40°."
+          },
+          {
+            "id": "a160",
+            "label": "160°",
+            "correct": false,
+            "feedback": "160° dobra o central. O inscrito divide por 2: 80° / 2 = 40°."
+          },
+          {
+            "id": "a100",
+            "label": "100°",
+            "correct": false,
+            "feedback": "100° é 180° − 80°. O inscrito vale metade do central: 40°."
+          }
+        ]
+      },
+      {
+        "id": "inscrito-para-arco",
+        "prompt": "Um ângulo inscrito mede 25°. Qual é a medida em graus do arco que ele enxerga?",
+        "options": [
+          {
+            "id": "a50",
+            "label": "50°",
+            "correct": true,
+            "feedback": "Isso. O arco tem o dobro do ângulo inscrito: 2·25° = 50°."
+          },
+          {
+            "id": "a25",
+            "label": "25°",
+            "correct": false,
+            "feedback": "25° é na borda. O arco e o ângulo central valem o dobro: 50°."
+          },
+          {
+            "id": "a125",
+            "label": "12,5°",
+            "correct": false,
+            "feedback": "Não divida por 2; do inscrito para o arco multiplica-se por 2: 50°."
+          },
+          {
+            "id": "a75",
+            "label": "75°",
+            "correct": false,
+            "feedback": "O arco mede o dobro do inscrito: 2·25° = 50°."
+          }
+        ]
+      },
+      {
+        "id": "diametro-e-raio",
+        "prompt": "Uma circunferência tem raio de 6 cm. Qual é o comprimento da maior corda que podemos traçar nela?",
+        "options": [
+          {
+            "id": "a12",
+            "label": "12 cm",
+            "correct": true,
+            "feedback": "Exato. A maior corda é o diâmetro, que vale dois raios: 2·6 = 12 cm."
+          },
+          {
+            "id": "a6",
+            "label": "6 cm",
+            "correct": false,
+            "feedback": "6 cm é o raio. A maior corda passa pelo centro (diâmetro): 2·6 = 12 cm."
+          },
+          {
+            "id": "a3",
+            "label": "3 cm",
+            "correct": false,
+            "feedback": "3 cm é metade do raio. O diâmetro vale o dobro do raio: 12 cm."
+          },
+          {
+            "id": "a36",
+            "label": "36 cm",
+            "correct": false,
+            "feedback": "36 é 6². O diâmetro é o dobro do raio: 2·6 = 12 cm."
+          }
+        ]
+      },
+      {
+        "id": "triangulo-no-diametro",
+        "prompt": "Um triângulo está inscrito numa circunferência e um de seus lados é o diâmetro. Quanto mede o ângulo oposto ao diâmetro?",
+        "options": [
+          {
+            "id": "a90",
+            "label": "90°",
+            "correct": true,
+            "feedback": "Certo. O diâmetro determina um arco de 180°, e o inscrito vale 180° / 2 = 90°."
+          },
+          {
+            "id": "a180",
+            "label": "180°",
+            "correct": false,
+            "feedback": "180° é o arco da semicircunferência. O ângulo inscrito vale metade: 90°."
+          },
+          {
+            "id": "a60",
+            "label": "60°",
+            "correct": false,
+            "feedback": "60° é do triângulo equilátero. Sobre o diâmetro, o ângulo é sempre 90°."
+          },
+          {
+            "id": "a45",
+            "label": "45°",
+            "correct": false,
+            "feedback": "45° são os outros ângulos se for isósceles. O oposto ao diâmetro mede 90°."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "dois-inscritos-mesmo-arco",
+        "prompt": "Os ângulos inscritos AV̂B e AŴB enxergam o mesmo arco AB. Se AV̂B = 42°, quanto mede AŴB?",
+        "options": [
+          {
+            "id": "a42",
+            "label": "42°",
+            "correct": true,
+            "feedback": "Isso. Ângulos inscritos que enxergam o mesmo arco têm a mesma medida: 42°."
+          },
+          {
+            "id": "a84",
+            "label": "84°",
+            "correct": false,
+            "feedback": "84° é o ângulo central e o arco AB. Na borda, AŴB também mede 42°."
+          },
+          {
+            "id": "a21",
+            "label": "21°",
+            "correct": false,
+            "feedback": "Ambos estão na borda e valem metade do arco de 84°, logo AŴB = 42°."
+          },
+          {
+            "id": "a138",
+            "label": "138°",
+            "correct": false,
+            "feedback": "138° seria no arco menor oposto. No mesmo arco, AŴB = 42°."
+          }
+        ]
+      },
+      {
+        "id": "triangulo-semicirculo-angulos",
+        "prompt": "AB é diâmetro e C está na circunferência. Se o ângulo CÂB mede 30°, quanto mede o ângulo CBA?",
+        "options": [
+          {
+            "id": "a60",
+            "label": "60°",
+            "correct": true,
+            "feedback": "Exato. Como AĈB = 90° (oposto ao diâmetro), sobra 90° − 30° = 60°."
+          },
+          {
+            "id": "a90",
+            "label": "90°",
+            "correct": false,
+            "feedback": "90° é o ângulo em C. Em B sobra 180° − 90° − 30° = 60°."
+          },
+          {
+            "id": "a30",
+            "label": "30°",
+            "correct": false,
+            "feedback": "Com 30° e 90° a soma daria 150°. Faltam 60° para completar 180°."
+          },
+          {
+            "id": "a150",
+            "label": "150°",
+            "correct": false,
+            "feedback": "Esqueceu o ângulo reto em C (90°). O ângulo em B mede 90° − 30° = 60°."
+          }
+        ]
+      },
+      {
+        "id": "poligono-regular-arco",
+        "prompt": "Um hexágono regular divide a circunferência em 6 arcos iguais. Quanto mede cada arco e o ângulo inscrito que enxerga um lado?",
+        "options": [
+          {
+            "id": "a60-30",
+            "label": "Arco 60° e inscrito 30°",
+            "correct": true,
+            "feedback": "Certo. 360° / 6 = 60° por arco, e o inscrito vale metade: 30°."
+          },
+          {
+            "id": "a60-60",
+            "label": "Arco 60° e inscrito 60°",
+            "correct": false,
+            "feedback": "60° é o central. O inscrito vale metade do arco: 60° e 30°."
+          },
+          {
+            "id": "a120-60",
+            "label": "Arco 120° e inscrito 60°",
+            "correct": false,
+            "feedback": "120° é o ângulo interno do hexágono. Um arco só mede 360° / 6 = 60°, e o inscrito 30°."
+          },
+          {
+            "id": "a30-15",
+            "label": "Arco 30° e inscrito 15°",
+            "correct": false,
+            "feedback": "São 6 lados, não 12: 360° / 6 = 60° de arco e 30° de ângulo inscrito."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "triangulo-isosceles-raios",
+        "prompt": "O ângulo central AÔB mede 100°. No triângulo OAB (formado por dois raios e a corda AB), quanto mede o ângulo OÂB?",
+        "options": [
+          {
+            "id": "a40",
+            "label": "40°",
+            "correct": true,
+            "feedback": "Isso. Como OA = OB (raios), o triângulo é isósceles: (180° − 100°) / 2 = 40°."
+          },
+          {
+            "id": "a50",
+            "label": "50°",
+            "correct": false,
+            "feedback": "50° seria o ângulo inscrito na borda. No triângulo OAB, (180° − 100°) / 2 = 40°."
+          },
+          {
+            "id": "a80",
+            "label": "80°",
+            "correct": false,
+            "feedback": "80° é a soma dos dois ângulos da base (180° − 100°). Cada um mede 40°."
+          },
+          {
+            "id": "a100",
+            "label": "100°",
+            "correct": false,
+            "feedback": "100° é o ângulo no centro O. Na base, cada ângulo mede (180° − 100°) / 2 = 40°."
+          }
+        ]
+      },
+      {
+        "id": "quadrilatero-inscrito-fronteira",
+        "prompt": "O arco menor AB mede 110°. Se o ponto V está DENTRO desse arco menor AB, quanto mede o ângulo AV̂B?",
+        "fala": "Atenção à fronteira: quando V entra no arco menor, ele olha para o arco maior de trás.",
+        "options": [
+          {
+            "id": "a125",
+            "label": "125°",
+            "correct": true,
+            "feedback": "Exato. V enxerga o arco maior de 360° − 110° = 250°, logo 250° / 2 = 125°."
+          },
+          {
+            "id": "a55",
+            "label": "55°",
+            "correct": false,
+            "feedback": "55° é para V no arco maior. No arco menor, vale o suplementar: 180° − 55° = 125°."
+          },
+          {
+            "id": "a110",
+            "label": "110°",
+            "correct": false,
+            "feedback": "110° é o arco menor. V enxerga os 250° restantes, dando 250° / 2 = 125°."
+          },
+          {
+            "id": "a250",
+            "label": "250°",
+            "correct": false,
+            "feedback": "250° é o arco maior inteiro. O ângulo inscrito vale metade: 125°."
+          }
+        ]
+      },
+      {
+        "id": "soma-central-e-inscrito",
+        "prompt": "A soma de um ângulo central com o ângulo inscrito que enxerga o mesmo arco é 105°. Quanto mede o ângulo inscrito?",
+        "options": [
+          {
+            "id": "a35",
+            "label": "35°",
+            "correct": true,
+            "feedback": "Certo. Como α = 2β, temos 2β + β = 3β = 105°, logo β = 35°."
+          },
+          {
+            "id": "a70",
+            "label": "70°",
+            "correct": false,
+            "feedback": "70° é o ângulo central (2·35°). O inscrito vale um terço da soma: 35°."
+          },
+          {
+            "id": "a525",
+            "label": "52,5°",
+            "correct": false,
+            "feedback": "52,5° divide 105° por 2, mas α = 2β (soma 3β). Divida por 3: β = 35°."
+          },
+          {
+            "id": "a30",
+            "label": "30°",
+            "correct": false,
+            "feedback": "Com 30° a soma seria 30° + 60° = 90°. Para dar 105°, β = 105° / 3 = 35°."
+          }
+        ]
+      },
+      {
+        "id": "arco-nao-inteiro",
+        "prompt": "Uma roda-gigante tem 8 cabines igualmente espaçadas. Qual é o ângulo inscrito em uma cabine que enxerga duas cabines vizinhas (1 arco)?",
+        "options": [
+          {
+            "id": "a225",
+            "label": "22,5°",
+            "correct": true,
+            "feedback": "Isso. Cada arco mede 360° / 8 = 45°, e o inscrito vale metade: 22,5°."
+          },
+          {
+            "id": "a45",
+            "label": "45°",
+            "correct": false,
+            "feedback": "45° é o ângulo central no eixo da roda. Na cabine da borda é metade: 22,5°."
+          },
+          {
+            "id": "a90",
+            "label": "90°",
+            "correct": false,
+            "feedback": "90° são dois arcos no centro. Um arco visto da borda mede 45° / 2 = 22,5°."
+          },
+          {
+            "id": "a1125",
+            "label": "11,25°",
+            "correct": false,
+            "feedback": "Você dividiu 45° por 4. O inscrito é metade do arco de 45°: 22,5°."
+          }
+        ]
+      },
+      {
+        "id": "cruzamento-diametro-inscrito",
+        "prompt": "AB é diâmetro e C e D estão na circunferência. Se o arco AC mede 70°, quanto mede o ângulo inscrito AD̂B mais o ângulo CD̂B?",
+        "fala": "Última. Calcule cada ângulo inscrito pela metade do arco que ele enxerga.",
+        "options": [
+          {
+            "id": "a145",
+            "label": "145°",
+            "correct": true,
+            "feedback": "Exato. AD̂B = 90° (diâmetro) e o arco CB = 110° dá CD̂B = 55°; juntos somam 145°."
+          },
+          {
+            "id": "a125",
+            "label": "125°",
+            "correct": false,
+            "feedback": "125° soma 90° + 35° (arco AC). O arco CB mede 180° − 70° = 110°, logo 90° + 55° = 145°."
+          },
+          {
+            "id": "a90",
+            "label": "90°",
+            "correct": false,
+            "feedback": "90° é só AD̂B. Somando CD̂B = (180° − 70°) / 2 = 55°, temos 145°."
+          },
+          {
+            "id": "a160",
+            "label": "160°",
+            "correct": false,
+            "feedback": "CD̂B vale metade de 110° (55°), não 70°. A soma é 90° + 55° = 145°."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

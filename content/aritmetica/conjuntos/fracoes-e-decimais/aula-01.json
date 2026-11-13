@@ -1,0 +1,448 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Frações, decimais e comparação de racionais",
+  "subtitulo": "O mesmo ponto, várias escritas",
+  "caminho": {
+    "pilar": "aritmetica",
+    "setor": "conjuntos",
+    "unidade": "fracoes-e-decimais"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Numerador a",
+      "resumo": "Quantidade de partes tomadas."
+    },
+    "c2": {
+      "nome": "Denominador b",
+      "resumo": "Quantidade de partes iguais em uma unidade."
+    },
+    "c3": {
+      "nome": "Valor da fração",
+      "resumo": "Ponto da reta representado pela divisão."
+    },
+    "c4": {
+      "nome": "Referência equivalente",
+      "resumo": "Outra escrita que ocupa o mesmo ponto."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [0, 2],
+        "marcas": 4,
+        "pontos": [
+          { "x": 1, "cor": "c4", "rotulo": "1" }
+        ],
+        "ponto": {
+          "x": 1,
+          "arrastavel": true,
+          "passo": 0.5,
+          "cor": "c3",
+          "distanciaZero": false
+        }
+      },
+      "lines": {
+        "intro": "No caso neutro 1/1 temos uma unidade; onde fica metade dela? Arraste de 1 até 0,5.",
+        "done": "Fica em 0,5; metade é uma de duas partes iguais, por isso 1/2=0,5."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Frações podem gerar decimais finitos ou periódicos; aqui comparamos, somamos e reconhecemos escritas equivalentes."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "lte": 0.5
+      }
+    },
+    {
+      "id": "subdividir-sem-mover",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [0, 1],
+        "marcas": 2,
+        "trechos": [
+          { "de": 0, "ate": 1, "cor": "c3", "rotulo": "1/2" }
+        ],
+        "ponto": {
+          "x": 0.5,
+          "arrastavel": true,
+          "passo": 0.25,
+          "cor": "c1",
+          "distanciaZero": false
+        }
+      },
+      "lines": {
+        "intro": "Se cada metade se partir em duas, a parte pintada muda? Leve k a 2.",
+        "done": "Não; duplicamos peças pintadas e peças totais, por isso 1/2=2/4."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 0.5
+      }
+    },
+    {
+      "id": "medir-em-meias",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [0, 1],
+        "marcas": 4,
+        "trechos": [
+          { "de": 0, "ate": 1, "cor": "c3", "rotulo": "1/2" }
+        ],
+        "ponto": {
+          "x": 0.75,
+          "arrastavel": true,
+          "passo": 0.25,
+          "cor": "c1",
+          "distanciaZero": false
+        }
+      },
+      "lines": {
+        "intro": "Quantas meias unidades cabem em 3/4? Leve k de 1 a 3.",
+        "done": "Cabem 1,5 meias; por isso (3/4)÷(1/2)=(3/4)·2=3/2."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 0.75
+      }
+    },
+    {
+      "id": "somar-partes",
+      "type": "interactive_canvas",
+      "widget": "reta_numerica",
+      "params": {
+        "intervalo": [0, 1],
+        "marcas": 4,
+        "trechos": [
+          { "de": 0, "ate": 0.5, "cor": "c3", "rotulo": "1/2" },
+          { "de": 0.5, "ate": 0.75, "cor": "c4", "rotulo": "1/4" }
+        ],
+        "ponto": {
+          "x": 0.5,
+          "arrastavel": true,
+          "passo": 0.25,
+          "cor": "c1",
+          "distanciaZero": false
+        }
+      },
+      "lines": {
+        "intro": "Ao juntar 1/2 com 1/4, o denominador deve virar 6? Adicione um quarto.",
+        "done": "Não; a unidade continua dividida em quatro, então 2/4+1/4=3/4."
+      },
+      "complete_when": {
+        "metric": "ponto_x",
+        "gte": 0.75
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [0, 1],
+          "marcas": 10,
+          "pontos": [
+            { "x": 0.5, "cor": "c3", "rotulo": "0,5" }
+          ],
+          "trechos": [
+            { "de": 0, "ate": 0.5, "cor": "c4", "rotulo": "1/2" }
+          ]
+        }
+      },
+      "lines": {
+        "intro": "Que previsão você faz ao comparar a figura com as condições do problema?"
+      },
+      "prompt": "Qual escrita ocupa o mesmo ponto que 1/2?",
+      "options": [
+        {
+          "id": "micro-erro",
+          "label": "0,2",
+          "correct": false,
+          "feedback": "Você leu o denominador como décimo; 1÷2=0,5.",
+          "figure": {
+            "trechos": [{ "de": 0, "ate": 0.2, "cor": "c3" }]
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "0,5",
+          "correct": true,
+          "feedback": "Certo: 0,5; 1÷2=0,5.",
+          "figure": {
+            "trechos": [{ "de": 0, "ate": 0.5, "cor": "c4" }]
+          }
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "reta_figura",
+        "params": {
+          "intervalo": [0, 1],
+          "marcas": 10,
+          "pontos": [
+            { "x": 0.5, "cor": "c3", "rotulo": "0,5" }
+          ],
+          "trechos": [
+            { "de": 0, "ate": 0.5, "cor": "c4", "rotulo": "1/2" }
+          ]
+        }
+      },
+      "formula": [
+        { "text": "a", "ref": "c1" },
+        { "text": "/" },
+        { "text": "b", "ref": "c2" },
+        { "text": "=" },
+        { "text": "(k·a)", "ref": "c1" },
+        { "text": "/" },
+        { "text": "(k·b)", "ref": "c2" },
+        { "text": ", b≠0 e k≠0" }
+      ],
+      "definitions": [
+        { "term": "Numerador a", "text": "Quantidade de partes tomadas." },
+        { "term": "Valor da fração", "text": "Ponto da reta representado pela divisão." },
+        { "term": "Referência equivalente", "text": "Outra escrita que ocupa o mesmo ponto." }
+      ],
+      "lines": {
+        "intro": "Subdividir cada parte conserva o comprimento; por isso multiplicar os dois termos mantém a fração.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-fracoes-e-decimais",
+        "prompt": "Qual decimal representa 1/2?",
+        "options": [
+          {
+            "id": "f1-fracoes-e-decimais-erro",
+            "label": "0,2",
+            "correct": false,
+            "feedback": "Você tomou o denominador como décimo. O certo é 0,5; 1÷2=0,5."
+          },
+          {
+            "id": "f1-fracoes-e-decimais-certa",
+            "label": "0,5",
+            "correct": true,
+            "feedback": "Certo: 0,5; 1÷2=0,5."
+          }
+        ]
+      },
+      {
+        "id": "f2-fracoes-e-decimais",
+        "prompt": "2/4 e 1/2 ocupam o mesmo ponto?",
+        "options": [
+          {
+            "id": "f2-fracoes-e-decimais-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; 2/4=1/2."
+          },
+          {
+            "id": "f2-fracoes-e-decimais-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Você comparou só o número de pedaços. O certo é Sim; 2/4=1/2."
+          }
+        ]
+      },
+      {
+        "id": "f3-fracoes-e-decimais",
+        "prompt": "Qual é maior: 1/4 ou 1/2?",
+        "options": [
+          {
+            "id": "f3-fracoes-e-decimais-erro",
+            "label": "1/4",
+            "correct": false,
+            "feedback": "Mais divisões tornam cada pedaço menor. O certo é 1/2; 0,5>0,25."
+          },
+          {
+            "id": "f3-fracoes-e-decimais-certa",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Certo: 1/2; 0,5>0,25."
+          }
+        ]
+      },
+      {
+        "id": "f4-fracoes-e-decimais",
+        "prompt": "É permitido usar denominador zero?",
+        "options": [
+          {
+            "id": "f4-fracoes-e-decimais-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; b≠0 em a/b."
+          },
+          {
+            "id": "f4-fracoes-e-decimais-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "Divisão por zero não define fração. O certo é Não; b≠0 em a/b."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-fracoes-e-decimais",
+        "prompt": "Quanto é 1/2+1/4?",
+        "options": [
+          {
+            "id": "m1-fracoes-e-decimais-erro",
+            "label": "2/6",
+            "correct": false,
+            "feedback": "Você somou denominadores de unidades diferentes. O certo é 3/4; 2/4+1/4=3/4."
+          },
+          {
+            "id": "m1-fracoes-e-decimais-certa",
+            "label": "3/4",
+            "correct": true,
+            "feedback": "Certo: 3/4; 2/4+1/4=3/4."
+          }
+        ]
+      },
+      {
+        "id": "m2-fracoes-e-decimais",
+        "prompt": "Quanto é 3/4−1/2?",
+        "options": [
+          {
+            "id": "m2-fracoes-e-decimais-certa",
+            "label": "1/4",
+            "correct": true,
+            "feedback": "Certo: 1/4; 3/4−2/4=1/4."
+          },
+          {
+            "id": "m2-fracoes-e-decimais-erro",
+            "label": "2/2",
+            "correct": false,
+            "feedback": "Você subtraiu denominadores. O certo é 1/4; 3/4−2/4=1/4."
+          }
+        ]
+      },
+      {
+        "id": "m3-fracoes-e-decimais",
+        "prompt": "Quanto é (1/2)·(2/3)?",
+        "options": [
+          {
+            "id": "m3-fracoes-e-decimais-certa",
+            "label": "1/3",
+            "correct": true,
+            "feedback": "Certo: 1/3; 2/6=1/3."
+          },
+          {
+            "id": "m3-fracoes-e-decimais-erro",
+            "label": "3/5",
+            "correct": false,
+            "feedback": "Você somou em vez de multiplicar. O certo é 1/3; 2/6=1/3."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-fracoes-e-decimais",
+        "prompt": "Quanto é (3/4)÷(1/2)?",
+        "options": [
+          {
+            "id": "d1-fracoes-e-decimais-certa",
+            "label": "1,5",
+            "correct": true,
+            "feedback": "Certo: 1,5; (3/4)·2=3/2."
+          },
+          {
+            "id": "d1-fracoes-e-decimais-erro",
+            "label": "0,375",
+            "correct": false,
+            "feedback": "Você multiplicou sem inverter o divisor. O certo é 1,5; (3/4)·2=3/2."
+          }
+        ]
+      },
+      {
+        "id": "d2-fracoes-e-decimais",
+        "prompt": "A escrita 0,333… representa um racional?",
+        "options": [
+          {
+            "id": "d2-fracoes-e-decimais-certa",
+            "label": "Sim",
+            "correct": true,
+            "feedback": "Certo: Sim; 0,333…=1/3."
+          },
+          {
+            "id": "d2-fracoes-e-decimais-erro",
+            "label": "Não",
+            "correct": false,
+            "feedback": "Período infinito não implica irracionalidade. O certo é Sim; 0,333…=1/3."
+          }
+        ]
+      },
+      {
+        "id": "d3-fracoes-e-decimais",
+        "prompt": "Quanto vale 0,999…?",
+        "options": [
+          {
+            "id": "d3-fracoes-e-decimais-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; 3·(1/3)=3·0,333…=1."
+          },
+          {
+            "id": "d3-fracoes-e-decimais-erro",
+            "label": "Menos que 1",
+            "correct": false,
+            "feedback": "Você tratou a dízima como uma aproximação finita. O certo é 1; 3·(1/3)=3·0,333…=1."
+          }
+        ]
+      },
+      {
+        "id": "d4-fracoes-e-decimais",
+        "prompt": "Entre −1/2 e −1/4, qual é maior?",
+        "options": [
+          {
+            "id": "d4-fracoes-e-decimais-certa",
+            "label": "−1/4",
+            "correct": true,
+            "feedback": "Entre negativos, o mais perto de zero é maior. O certo é −1/4; −0,25>−0,5."
+          },
+          {
+            "id": "d4-fracoes-e-decimais-erro",
+            "label": "−1/2",
+            "correct": false,
+            "feedback": "Entre negativos, o mais perto de zero é maior. O certo é −1/4; −0,25>−0,5."
+          }
+        ]
+      },
+      {
+        "id": "d5-fracoes-e-decimais",
+        "prompt": "Uma fita mede 2 m; cortam-se 1/2 m e depois 3/4 m; quanto sobra?",
+        "options": [
+          {
+            "id": "d5-fracoes-e-decimais-certa",
+            "label": "3/4 m",
+            "correct": true,
+            "feedback": "Certo: 3/4 m; 2−1/2−3/4=8/4−2/4−3/4=3/4."
+          },
+          {
+            "id": "d5-fracoes-e-decimais-erro",
+            "label": "1/4 m",
+            "correct": false,
+            "feedback": "Você descontou uma metade do total em vez de 1/2 m. O certo é 3/4 m; 2−1/2−3/4=8/4−2/4−3/4=3/4."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

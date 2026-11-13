@@ -1,0 +1,611 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Identidades Trigonométricas",
+  "subtitulo": "A soma que sempre dá um · Pitágoras no ciclo, tangente e secante",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "trigonometria",
+    "unidade": "identidades-trigonometricas"
+  },
+  "outro": "Você viu que sen²θ + cos²θ dá sempre 1 pelo Teorema de Pitágoras no ciclo e calculou cosseno, tangente e secante.",
+  "glossario": {
+    "c1": {
+      "nome": "Quadrado do seno",
+      "resumo": "Valor de sen²θ, sempre entre 0 e 1 (nunca negativo)."
+    },
+    "c2": {
+      "nome": "Quadrado do cosseno",
+      "resumo": "Valor de cos²θ, que completa sen²θ para somar 1."
+    },
+    "c3": {
+      "nome": "Relação fundamental",
+      "resumo": "A soma invariante sen²θ + cos²θ = 1 (hipotenusa unitária ao quadrado)."
+    },
+    "c4": {
+      "nome": "Secante (sec θ)",
+      "resumo": "Inverso do cosseno (1 / cos θ); hipotenusa até a reta tangente."
+    }
+  },
+  "steps": [
+    {
+      "id": "soma-constante-1",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$theta",
+        "mostrar": {
+          "seno": true,
+          "cosseno": true,
+          "pitagorica": true,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Ângulo θ (graus)",
+          "min": 0,
+          "max": 90,
+          "step": 15,
+          "initial": 0,
+          "cor": "c3"
+        }
+      ],
+      "complete_when": {
+        "metric": "theta",
+        "gte": 90
+      },
+      "lines": {
+        "intro": "Em 0°, cos²θ = 1 e sen²θ = 0. Gire θ até 45° e depois 90°: quanto dá a soma sen²θ + cos²θ durante o giro?",
+        "done": "Dá sempre 1: em 45° fica 0,5 + 0,5 = 1, e em 90° fica 1 + 0 = 1. É o Teorema de Pitágoras dentro do ciclo de raio 1."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Para que serve saber que sen²θ + cos²θ = 1?",
+        "resposta": "Serve para descobrir o cosseno e a tangente conhecendo só o seno, e para simplificar expressões."
+      }
+    },
+    {
+      "id": "sinal-pelo-quadrante",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "quadrante": "$quad",
+        "seno_fixo": 0.6,
+        "mostrar": {
+          "seno": true,
+          "cosseno": true,
+          "pitagorica": true,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "quad",
+          "label": "Quadrante do arco",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "initial": 1,
+          "cor": "c2"
+        }
+      ],
+      "complete_when": {
+        "metric": "quad",
+        "gte": 2
+      },
+      "lines": {
+        "intro": "Se sen θ = 0,6, temos cos²θ = 1 − 0,36 = 0,64. Mude para o 2º quadrante: cos θ vale +0,8 ou −0,8?",
+        "done": "No 2º quadrante vale −0,8. A relação sen²θ + cos²θ = 1 dá o módulo 0,8, mas quem escolhe o sinal é o quadrante."
+      }
+    },
+    {
+      "id": "tangente-e-secante",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$theta",
+        "mostrar": {
+          "seno": false,
+          "cosseno": false,
+          "tangente": true,
+          "secante": true,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "theta",
+          "label": "Ângulo θ (graus)",
+          "min": 0,
+          "max": 60,
+          "step": 30,
+          "initial": 0,
+          "cor": "c4"
+        }
+      ],
+      "complete_when": {
+        "metric": "theta",
+        "gte": 60
+      },
+      "lines": {
+        "intro": "Dividindo sen²θ + cos²θ = 1 por cos²θ, surge sec θ = 1 / cos θ. Leve θ a 60° (cos 60° = 0,5): quanto vale sec 60°?",
+        "done": "Vale 2, que é o inverso de 1/2. No triângulo da tangente, Pitágoras garante que 1 + tg²θ = sec²θ."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A secante existe para qualquer ângulo?",
+        "resposta": "Não: como sec θ = 1 / cos θ, ela não existe em 90° e 270°, onde cos θ = 0."
+      }
+    },
+    {
+      "id": "desafio-achar-cosseno",
+      "type": "micro_challenge",
+      "prompt": "Sabendo que sen θ = 3/5 e que θ está no 1º quadrante, quanto vale cos θ?",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 36.87,
+          "mostrar": {
+            "seno": true,
+            "cosseno": true,
+            "pitagorica": true,
+            "marcos": true
+          },
+          "highlight": ["c1", "c2"]
+        }
+      },
+      "lines": {
+        "intro": "Use sen²θ + cos²θ = 1 e lembre que no 1º quadrante o cosseno é positivo."
+      },
+      "options": [
+        {
+          "id": "c45",
+          "label": "4/5",
+          "correct": true,
+          "feedback": "Isso. cos²θ = 1 − 9/25 = 16/25; no 1º quadrante, cos θ = 4/5.",
+          "override": {
+            "highlight": ["c2"]
+          }
+        },
+        {
+          "id": "c25",
+          "label": "2/5",
+          "correct": false,
+          "feedback": "Resposta: 4/5; Não faça 1 − 3/5: eleve ao quadrado. 1 − 9/25 = 16/25, raiz = 4/5."
+        },
+        {
+          "id": "c1625",
+          "label": "16/25",
+          "correct": false,
+          "feedback": "Resposta: 4/5; 16/25 é cos²θ. Tirando a raiz quadrada, cos θ = 4/5."
+        },
+        {
+          "id": "cm45",
+          "label": "−4/5",
+          "correct": false,
+          "feedback": "Resposta: 4/5; No 1º quadrante o cosseno é positivo: cos θ = +4/5."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 45,
+          "mostrar": {
+            "seno": true,
+            "cosseno": true,
+            "tangente": true,
+            "secante": true,
+            "pitagorica": true,
+            "marcos": true
+          },
+          "highlight": ["c1", "c2", "c3", "c4"]
+        }
+      },
+      "formula": [
+        { "text": "sen²θ", "ref": "c1" },
+        { "text": "+" },
+        { "text": "cos²θ", "ref": "c2" },
+        { "text": "=" },
+        { "text": "1", "ref": "c3" },
+        { "text": ";" },
+        { "text": "1 + tg²θ" },
+        { "text": "=" },
+        { "text": "sec²θ", "ref": "c4" }
+      ],
+      "definitions": [
+        {
+          "term": "Relação fundamental",
+          "text": "sen²θ + cos²θ = 1 vale para qualquer θ real."
+        },
+        {
+          "term": "Secante e cossecante",
+          "text": "sec θ = 1 / cos θ e cossec θ = 1 / sen θ."
+        },
+        {
+          "term": "Identidade da tangente",
+          "text": "1 + tg²θ = sec²θ (para cos θ ≠ 0)."
+        }
+      ],
+      "lines": {
+        "intro": "Os catetos no ciclo medem |sen θ| e |cos θ| com hipotenusa 1, por isso a soma dos quadrados dá sempre 1.",
+        "hint": "Toque em cada termo da fórmula para ver o segmento no ciclo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "soma-quadrados-37",
+        "prompt": "Quanto vale o número sen²37° + cos²37°?",
+        "options": [
+          {
+            "id": "v1",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo. Pela relação fundamental, sen²θ + cos²θ = 1 para qualquer ângulo."
+          },
+          {
+            "id": "v37",
+            "label": "37",
+            "correct": false,
+            "feedback": "Resposta: 1; Não importa o ângulo: sen²θ + cos²θ vale sempre 1."
+          },
+          {
+            "id": "v0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: 1; A soma dos quadrados dos catetos no ciclo de raio 1 dá sempre 1."
+          },
+          {
+            "id": "v2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 1; Cada quadrado é menor que 1, e a soma deles é sempre 1."
+          }
+        ]
+      },
+      {
+        "id": "isolar-cos2",
+        "prompt": "Se sen²θ = 0,3, quanto vale cos²θ?",
+        "options": [
+          {
+            "id": "c07",
+            "label": "0,7",
+            "correct": true,
+            "feedback": "Isso. Como sen²θ + cos²θ = 1, temos cos²θ = 1 − 0,3 = 0,7."
+          },
+          {
+            "id": "c03",
+            "label": "0,3",
+            "correct": false,
+            "feedback": "Resposta: 0,7; 0,3 é sen²θ. O que falta para completar 1 é cos²θ = 0,7."
+          },
+          {
+            "id": "c091",
+            "label": "0,91",
+            "correct": false,
+            "feedback": "Resposta: 0,7; O dado já é sen²θ = 0,3 (já ao quadrado): 1 − 0,3 = 0,7."
+          },
+          {
+            "id": "c13",
+            "label": "1,3",
+            "correct": false,
+            "feedback": "Resposta: 0,7; Subtraia de 1 em vez de somar: cos²θ = 1 − 0,3 = 0,7."
+          }
+        ]
+      },
+      {
+        "id": "calcular-secante",
+        "prompt": "Sabendo que sec θ = 1 / cos θ, quanto vale sec θ quando cos θ = 2/5?",
+        "options": [
+          {
+            "id": "s52",
+            "label": "5/2",
+            "correct": true,
+            "feedback": "Exato. A secante é o inverso do cosseno: basta inverter 2/5 para 5/2."
+          },
+          {
+            "id": "s25",
+            "label": "2/5",
+            "correct": false,
+            "feedback": "Resposta: 5/2; 2/5 é o próprio cosseno. Invertendo a fração, sec θ = 5/2."
+          },
+          {
+            "id": "s35",
+            "label": "3/5",
+            "correct": false,
+            "feedback": "Resposta: 5/2; Não é complementar a 1; sec θ é o inverso multiplicativo: 5/2."
+          },
+          {
+            "id": "sm25",
+            "label": "−2/5",
+            "correct": false,
+            "feedback": "Resposta: 5/2; Inverso não é trocar o sinal, é inverter a fração: sec θ = 5/2."
+          }
+        ]
+      },
+      {
+        "id": "tangente-por-seno-cosseno",
+        "prompt": "Se para um ângulo θ temos sen θ = 0,6 e cos θ = 0,8, quanto vale tg θ?",
+        "options": [
+          {
+            "id": "t34",
+            "label": "3/4",
+            "correct": true,
+            "feedback": "Certo. tg θ = sen θ / cos θ = 0,6 / 0,8 = 3/4."
+          },
+          {
+            "id": "t43",
+            "label": "4/3",
+            "correct": false,
+            "feedback": "Resposta: 3/4; 4/3 é cos θ / sen θ (cotangente). A tangente é sen θ / cos θ = 3/4."
+          },
+          {
+            "id": "t14",
+            "label": "1,4",
+            "correct": false,
+            "feedback": "Resposta: 3/4; Divida sen θ por cos θ em vez de somar: 0,6 / 0,8 = 3/4."
+          },
+          {
+            "id": "t048",
+            "label": "0,48",
+            "correct": false,
+            "feedback": "Resposta: 3/4; Divida em vez de multiplicar: tg θ = 0,6 / 0,8 = 3/4."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "cosseno-no-2q",
+        "prompt": "Sabendo que sen θ = 4/5 e que θ está no 2º quadrante, quanto vale cos θ?",
+        "options": [
+          {
+            "id": "cm35",
+            "label": "−3/5",
+            "correct": true,
+            "feedback": "Isso. cos²θ = 9/25 e, como θ está no 2º quadrante, cos θ = −3/5."
+          },
+          {
+            "id": "cp35",
+            "label": "3/5",
+            "correct": false,
+            "feedback": "Resposta: −3/5; No 2º quadrante o cosseno é negativo, portanto cos θ = −3/5."
+          },
+          {
+            "id": "cm925",
+            "label": "−9/25",
+            "correct": false,
+            "feedback": "Resposta: −3/5; 9/25 é cos²θ. Extraindo a raiz com o sinal do 2º Q, cos θ = −3/5."
+          },
+          {
+            "id": "cm15",
+            "label": "−1/5",
+            "correct": false,
+            "feedback": "Resposta: −3/5; Eleve ao quadrado: 1 − 16/25 = 9/25, logo cos θ = −3/5."
+          }
+        ]
+      },
+      {
+        "id": "secante-pela-tangente",
+        "prompt": "Se tg θ = 2, quanto vale sec²θ?",
+        "options": [
+          {
+            "id": "s5",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo. Pela identidade sec²θ = 1 + tg²θ, temos 1 + 4 = 5."
+          },
+          {
+            "id": "s3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Resposta: 5; Eleve a tangente ao quadrado: 1 + 2² = 1 + 4 = 5."
+          },
+          {
+            "id": "s4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Resposta: 5; 4 é apenas tg²θ. Somando 1, sec²θ = 1 + 4 = 5."
+          },
+          {
+            "id": "sr5",
+            "label": "√5",
+            "correct": false,
+            "feedback": "Resposta: 5; A pergunta pede sec²θ (já ao quadrado), que vale 1 + 4 = 5."
+          }
+        ]
+      },
+      {
+        "id": "simplificar-expressao",
+        "prompt": "Simplificando a expressão (1 − cos²θ) / cos²θ (para cos θ ≠ 0), obtemos:",
+        "options": [
+          {
+            "id": "tg2",
+            "label": "tg²θ",
+            "correct": true,
+            "feedback": "Exato. Como 1 − cos²θ = sen²θ, fica sen²θ / cos²θ = tg²θ."
+          },
+          {
+            "id": "sen2",
+            "label": "sen²θ",
+            "correct": false,
+            "feedback": "Resposta: tg²θ; 1 − cos²θ é sen²θ, mas ainda está dividido por cos²θ, dando tg²θ."
+          },
+          {
+            "id": "sec2",
+            "label": "sec²θ",
+            "correct": false,
+            "feedback": "Resposta: tg²θ; sec²θ seria 1 / cos²θ. Como o numerador é sen²θ, o resultado é tg²θ."
+          },
+          {
+            "id": "um",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: tg²θ; 1 − cos²θ vale sen²θ, e sen²θ / cos²θ = tg²θ."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "achar-tangente-3q",
+        "prompt": "Se cos θ = −12/13 e θ está no 3º quadrante, quanto vale tg θ?",
+        "options": [
+          {
+            "id": "t512",
+            "label": "5/12",
+            "correct": true,
+            "feedback": "Isso. sen θ = −5/13 e, no 3º quadrante, tg θ = (−5/13)/(−12/13) = +5/12."
+          },
+          {
+            "id": "tm512",
+            "label": "−5/12",
+            "correct": false,
+            "feedback": "Resposta: 5/12; No 3º quadrante seno e cosseno são negativos, então a tangente é positiva: 5/12."
+          },
+          {
+            "id": "t513",
+            "label": "−5/13",
+            "correct": false,
+            "feedback": "Resposta: 5/12; −5/13 é o sen θ. Dividindo por cos θ = −12/13, obtemos tg θ = 5/12."
+          },
+          {
+            "id": "t125",
+            "label": "12/5",
+            "correct": false,
+            "feedback": "Resposta: 5/12; 12/5 é a cotangente (cos/sen). A tangente é sen/cos = 5/12."
+          }
+        ]
+      },
+      {
+        "id": "quadrado-da-soma",
+        "prompt": "Sabendo que sen θ · cos θ = 0,2, quanto vale (sen θ + cos θ)²?",
+        "options": [
+          {
+            "id": "v14",
+            "label": "1,4",
+            "correct": true,
+            "feedback": "Certo. (sen θ + cos θ)² = (sen²θ + cos²θ) + 2·sen θ·cos θ = 1 + 0,4 = 1,4."
+          },
+          {
+            "id": "v1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 1,4; Faltou o termo do meio 2·sen θ·cos θ = 0,4. O total é 1 + 0,4 = 1,4."
+          },
+          {
+            "id": "v12",
+            "label": "1,2",
+            "correct": false,
+            "feedback": "Resposta: 1,4; O termo do meio tem fator 2: 1 + 2·0,2 = 1,4."
+          },
+          {
+            "id": "v04",
+            "label": "0,4",
+            "correct": false,
+            "feedback": "Resposta: 1,4; 0,4 é só 2·sen θ·cos θ; somando sen²θ + cos²θ = 1, dá 1,4."
+          }
+        ]
+      },
+      {
+        "id": "fronteira-cossecante",
+        "prompt": "A cossecante é cossec θ = 1 / sen θ. Qual dos valores abaixo ela NUNCA pode assumir?",
+        "options": [
+          {
+            "id": "v05",
+            "label": "0,5",
+            "correct": true,
+            "feedback": "Exato. Se 1 / sen θ = 0,5, teríamos sen θ = 2, o que é impossível."
+          },
+          {
+            "id": "v1",
+            "label": "1",
+            "correct": false,
+            "feedback": "Resposta: 0,5; Quando sen θ = 1 (em 90°), cossec θ = 1. O valor impossível é 0,5."
+          },
+          {
+            "id": "v2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Resposta: 0,5; Quando sen θ = 0,5 (em 30°), cossec θ = 2. O impossível é 0,5."
+          },
+          {
+            "id": "vm2",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Resposta: 0,5; Quando sen θ = −0,5, cossec θ = −2. O impossível é 0,5."
+          }
+        ]
+      },
+      {
+        "id": "fatoracao-3-vezes",
+        "prompt": "Quanto vale a expressão 3·sen²θ + 3·cos²θ − 1 para qualquer ângulo θ?",
+        "options": [
+          {
+            "id": "r2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Isso. Colocando 3 em evidência: 3·(sen²θ + cos²θ) − 1 = 3·1 − 1 = 2."
+          },
+          {
+            "id": "r3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Resposta: 2; 3·(sen²θ + cos²θ) dá 3, mas ainda é preciso subtrair 1: 3 − 1 = 2."
+          },
+          {
+            "id": "r0",
+            "label": "0",
+            "correct": false,
+            "feedback": "Resposta: 2; 3·(sen²θ + cos²θ) = 3·1 = 3, e 3 − 1 = 2."
+          },
+          {
+            "id": "r5",
+            "label": "5",
+            "correct": false,
+            "feedback": "Resposta: 2; Não some os coeficientes 3 + 3; sen²θ + cos²θ = 1, logo 3·1 − 1 = 2."
+          }
+        ]
+      },
+      {
+        "id": "cosseno-pela-tangente",
+        "prompt": "Sabendo que tg θ = √3 e que θ está no 3º quadrante, quanto valem sec θ e cos θ?",
+        "paco": "Ache sec²θ = 1 + tg²θ, escolha o sinal do 3º quadrante e depois inverta.",
+        "options": [
+          {
+            "id": "sm2cm",
+            "label": "−2 e −1/2",
+            "correct": true,
+            "feedback": "Exato. sec²θ = 1 + 3 = 4; no 3º quadrante ambos são negativos: sec θ = −2 e cos θ = −1/2."
+          },
+          {
+            "id": "sp2cp",
+            "label": "2 e 1/2",
+            "correct": false,
+            "feedback": "Resposta: −2 e −1/2; No 3º quadrante o cosseno e a secante são negativos: −2 e −1/2."
+          },
+          {
+            "id": "sm4cm",
+            "label": "−4 e −1/4",
+            "correct": false,
+            "feedback": "Resposta: −2 e −1/2; 4 é sec²θ. Tirando a raiz no 3º quadrante: sec θ = −2 e cos θ = −1/2."
+          },
+          {
+            "id": "sm2cp",
+            "label": "−2 e 1/2",
+            "correct": false,
+            "feedback": "Resposta: −2 e −1/2; Secante e cosseno têm sempre o mesmo sinal: no 3º Q, −2 e −1/2."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

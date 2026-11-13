@@ -1,0 +1,629 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Equações trigonométricas",
+  "subtitulo": "Uma projeção, vários ângulos",
+  "caminho": {
+    "pilar": "geometria",
+    "setor": "trigonometria",
+    "unidade": "equacoes-trigonometricas"
+  },
+  "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra.",
+  "glossario": {
+    "c1": {
+      "nome": "Ângulo θ",
+      "resumo": "Giro do raio, mostrado em graus e radianos."
+    },
+    "c2": {
+      "nome": "Altura-alvo",
+      "resumo": "Valor pedido para a projeção."
+    },
+    "c3": {
+      "nome": "Projeção",
+      "resumo": "Coordenada lida no ciclo."
+    },
+    "c4": {
+      "nome": "Ângulos-solução",
+      "resumo": "Giros que produzem a projeção pedida."
+    }
+  },
+  "steps": [
+    {
+      "id": "caso-neutro",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$angulo",
+        "unidade": "ambos",
+        "mostrar": {
+          "seno": true,
+          "cosseno": false,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Giro em graus",
+          "min": 0,
+          "max": 360,
+          "step": 30,
+          "initial": 0,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "No caso neutro, sem giro, a altura é zero; onde ela chega em 90°? Arraste o controle.",
+        "done": "Chega a 1 porque o raio aponta todo para cima."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Esse assunto tem outras versões?",
+        "resposta": "Seno, cosseno e tangente repetem valores; aqui encontramos soluções em uma volta e depois somamos períodos."
+      },
+      "complete_when": {
+        "metric": "angulo",
+        "gte": 90
+      }
+    },
+    {
+      "id": "altura-repetida",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$angulo",
+        "alvo": {
+          "seno": 0.5
+        },
+        "mostrar": {
+          "seno": true,
+          "cosseno": false,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Giro em graus",
+          "min": 30,
+          "max": 180,
+          "step": 30,
+          "initial": 30,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "A altura de 30° reaparece antes de 180°? Leve o raio até 150°.",
+        "done": "Sim; 150° = 180° − 30° tem a mesma altura, por isso há duas soluções nessa volta."
+      },
+      "complete_when": {
+        "metric": "angulo",
+        "gte": 150
+      }
+    },
+    {
+      "id": "repetir-volta",
+      "type": "interactive_canvas",
+      "widget": "ciclo_trigonometrico",
+      "params": {
+        "angulo": "$angulo",
+        "alvo": {
+          "seno": 0.5
+        },
+        "mostrar": {
+          "seno": true,
+          "cosseno": false,
+          "voltas": true,
+          "marcos": true
+        }
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Giro em graus",
+          "min": 30,
+          "max": 390,
+          "step": 30,
+          "initial": 30,
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "Após uma volta, 390° muda a altura de 30°? Arraste até 390°.",
+        "done": "Não; somar 360° repete o ponto, por isso somamos 2kπ às soluções."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E se o seno pedido for 2?",
+        "resposta": "Não há solução real; a projeção no ciclo fica entre −1 e 1."
+      },
+      "complete_when": {
+        "metric": "angulo",
+        "gte": 390
+      }
+    },
+    {
+      "id": "conferir-previsao",
+      "type": "micro_challenge",
+      "prompt": "Em [0; 2π), sen θ = 0,5 tem quais soluções?",
+      "lines": {
+        "intro": "Lembre-se da simetria no ciclo trigonométrico para encontrar todos os ângulos no intervalo dado."
+      },
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 30,
+          "alvo": {
+            "seno": 0.5
+          },
+          "marcadas": [0, 1],
+          "mostrar": {
+            "seno": true,
+            "cosseno": false,
+            "marcos": true
+          }
+        }
+      },
+      "options": [
+        {
+          "id": "micro-acerto",
+          "label": "π/6 e 5π/6",
+          "correct": true,
+          "feedback": "Certo: π/6 e 5π/6; Os pontos de 30° e 150° têm a mesma altura."
+        },
+        {
+          "id": "micro-erro",
+          "label": "Só π/6",
+          "correct": false,
+          "feedback": "Você esqueceu a simetria; as soluções são π/6 e 5π/6."
+        },
+        {
+          "id": "micro-erro-2",
+          "label": "π/3 e 2π/3",
+          "correct": false,
+          "feedback": "60° tem seno √3/2. Para seno 0,5 os ângulos são π/6 e 5π/6."
+        },
+        {
+          "id": "micro-erro-3",
+          "label": "π/6 e 7π/6",
+          "correct": false,
+          "feedback": "7π/6 fica no 3º quadrante e tem seno negativo (−0,5): as soluções são π/6 e 5π/6."
+        }
+      ]
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "ciclo_trigonometrico_figura",
+        "params": {
+          "angulo": 30,
+          "alvo": {
+            "seno": 0.5
+          },
+          "marcadas": [0, 1],
+          "mostrar": {
+            "seno": true,
+            "cosseno": false,
+            "marcos": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "sen θ",
+          "ref": "c3"
+        },
+        {
+          "text": " = "
+        },
+        {
+          "text": "sen α",
+          "ref": "c2"
+        },
+        {
+          "text": " ⇒ "
+        },
+        {
+          "text": "θ = α + 2kπ  ou  θ = π − α + 2kπ",
+          "ref": "c4"
+        },
+        {
+          "text": ",  k ∈ ℤ"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Ângulo θ",
+          "text": "Giro do raio no ciclo trigonométrico, medido em graus ou radianos."
+        },
+        {
+          "term": "Projeção",
+          "text": "Coordenada vertical (seno) ou horizontal (cosseno) lida no ciclo."
+        },
+        {
+          "term": "Ângulos-solução",
+          "text": "Todos os giros que produzem a projeção pedida, repetindo a cada 2kπ."
+        }
+      ],
+      "lines": {
+        "intro": "A simetria conserva a altura e a volta repete o ponto; por isso juntamos as duas famílias com período 2π.",
+        "hint": "Toque em uma letra para ver o que ela faz no ciclo."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "f1-equacoes-trigonometricas",
+        "prompt": "No ciclo trigonométrico, quanto vale sen 0?",
+        "options": [
+          {
+            "id": "f1-equacoes-trigonometricas-certa",
+            "label": "0",
+            "correct": true,
+            "feedback": "Certo: 0; (cos 0; sen 0) = (1; 0)."
+          },
+          {
+            "id": "f1-equacoes-trigonometricas-erro",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você leu a coordenada horizontal. O certo é 0; (cos 0; sen 0) = (1; 0)."
+          },
+          {
+            "id": "f1-erro-2",
+            "label": "−1",
+            "correct": false,
+            "feedback": "No ângulo 0 o ponto está em (1; 0), com altura 0."
+          },
+          {
+            "id": "f1-erro-3",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Em 0 rad a altura no eixo vertical é zero."
+          }
+        ]
+      },
+      {
+        "id": "f2-equacoes-trigonometricas",
+        "prompt": "Quanto vale sen(π/2)?",
+        "options": [
+          {
+            "id": "f2-equacoes-trigonometricas-certa",
+            "label": "1",
+            "correct": true,
+            "feedback": "Certo: 1; Ponto (0; 1)."
+          },
+          {
+            "id": "f2-equacoes-trigonometricas-erro",
+            "label": "0",
+            "correct": false,
+            "feedback": "Você trocou seno por cosseno. O certo é 1; Ponto (0; 1)."
+          },
+          {
+            "id": "f2-erro-2",
+            "label": "−1",
+            "correct": false,
+            "feedback": "π/2 aponta para cima no ciclo, onde a coordenada y vale 1."
+          },
+          {
+            "id": "f2-erro-3",
+            "label": "1/2",
+            "correct": false,
+            "feedback": "Em 90° o raio aponta todo para cima: sen(π/2) = 1."
+          }
+        ]
+      },
+      {
+        "id": "f3-equacoes-trigonometricas",
+        "prompt": "Quantos graus equivalem a uma volta completa no ciclo?",
+        "options": [
+          {
+            "id": "f3-equacoes-trigonometricas-certa",
+            "label": "360°",
+            "correct": true,
+            "feedback": "Certo: 360°; 2π rad = 360°."
+          },
+          {
+            "id": "f3-equacoes-trigonometricas-erro",
+            "label": "180°",
+            "correct": false,
+            "feedback": "Você contou apenas meia-volta. O certo é 360°; 2π rad = 360°."
+          },
+          {
+            "id": "f3-erro-2",
+            "label": "90°",
+            "correct": false,
+            "feedback": "90° é um quarto de volta. A volta completa mede 360°."
+          },
+          {
+            "id": "f3-erro-3",
+            "label": "720°",
+            "correct": false,
+            "feedback": "720° são duas voltas completas. Uma volta mede 360°."
+          }
+        ]
+      },
+      {
+        "id": "f4-equacoes-trigonometricas",
+        "prompt": "A equação sen θ = 2 tem solução real?",
+        "options": [
+          {
+            "id": "f4-equacoes-trigonometricas-certa",
+            "label": "Não",
+            "correct": true,
+            "feedback": "Certo: Não; −1 ≤ sen θ ≤ 1."
+          },
+          {
+            "id": "f4-equacoes-trigonometricas-erro",
+            "label": "Sim",
+            "correct": false,
+            "feedback": "A projeção unitária não chega a 2. O certo é Não; −1 ≤ sen θ ≤ 1."
+          },
+          {
+            "id": "f4-erro-2",
+            "label": "Apenas para θ = 90°",
+            "correct": false,
+            "feedback": "Em 90° o seno vale 1, nunca 2. Não há solução real."
+          },
+          {
+            "id": "f4-erro-3",
+            "label": "Apenas no 2º quadrante",
+            "correct": false,
+            "feedback": "O raio do ciclo é 1, então o seno nunca passa de 1."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "m1-equacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a equação sen θ = 0.",
+        "options": [
+          {
+            "id": "m1-equacoes-trigonometricas-certa",
+            "label": "0 e π",
+            "correct": true,
+            "feedback": "Certo: 0 e π; sen θ = 0 em kπ; 2π fica fora."
+          },
+          {
+            "id": "m1-equacoes-trigonometricas-erro",
+            "label": "0, π e 2π",
+            "correct": false,
+            "feedback": "Você incluiu o extremo excluído. O certo é 0 e π; sen θ = 0 em kπ; 2π fica fora."
+          },
+          {
+            "id": "m1-erro-2",
+            "label": "Apenas 0",
+            "correct": false,
+            "feedback": "Em π rad (180°) o seno também zera: as soluções são 0 e π."
+          },
+          {
+            "id": "m1-erro-3",
+            "label": "π/2 e 3π/2",
+            "correct": false,
+            "feedback": "Em π/2 e 3π/2 quem zera é o cosseno. Para sen θ = 0 as soluções são 0 e π."
+          }
+        ]
+      },
+      {
+        "id": "m2-equacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a equação cos θ = 0.",
+        "options": [
+          {
+            "id": "m2-equacoes-trigonometricas-certa",
+            "label": "π/2 e 3π/2",
+            "correct": true,
+            "feedback": "Certo: π/2 e 3π/2; Coordenada horizontal zero."
+          },
+          {
+            "id": "m2-equacoes-trigonometricas-erro",
+            "label": "0 e π",
+            "correct": false,
+            "feedback": "Você zerou seno em vez de cosseno. O certo é π/2 e 3π/2; Coordenada horizontal zero."
+          },
+          {
+            "id": "m2-erro-2",
+            "label": "Apenas π/2",
+            "correct": false,
+            "feedback": "No ponto inferior (3π/2) o cosseno também é zero: soluções π/2 e 3π/2."
+          },
+          {
+            "id": "m2-erro-3",
+            "label": "0, π e 2π",
+            "correct": false,
+            "feedback": "Nesses pontos o cosseno vale 1 ou −1. Coordenada horizontal nula em π/2 e 3π/2."
+          }
+        ]
+      },
+      {
+        "id": "m3-equacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a equação sen θ = 0,5.",
+        "options": [
+          {
+            "id": "m3-equacoes-trigonometricas-certa",
+            "label": "π/6 e 5π/6",
+            "correct": true,
+            "feedback": "Certo: π/6 e 5π/6; sen(π − π/6) = sen(π/6)."
+          },
+          {
+            "id": "m3-equacoes-trigonometricas-erro",
+            "label": "Só π/6",
+            "correct": false,
+            "feedback": "Faltou a posição simétrica. O certo é π/6 e 5π/6; sen(π − π/6) = sen(π/6)."
+          },
+          {
+            "id": "m3-erro-2",
+            "label": "π/3 e 2π/3",
+            "correct": false,
+            "feedback": "sen(π/3) = √3/2 ≈ 0,866. Para seno igual a 0,5 as soluções são π/6 e 5π/6."
+          },
+          {
+            "id": "m3-erro-3",
+            "label": "π/6 e 7π/6",
+            "correct": false,
+            "feedback": "7π/6 tem seno negativo (−0,5). As soluções positivas são π/6 e 5π/6."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "d1-equacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a equação sen(2θ) = 0.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d1-equacoes-trigonometricas-certa",
+            "label": "0, π/2, π e 3π/2",
+            "correct": true,
+            "feedback": "Certo: 0, π/2, π e 3π/2; 2θ = kπ ⇒ θ = kπ/2."
+          },
+          {
+            "id": "d1-equacoes-trigonometricas-erro",
+            "label": "0 e π",
+            "correct": false,
+            "feedback": "Você esqueceu a frequência dobrada. O certo é 0, π/2, π e 3π/2; 2θ = kπ ⇒ θ = kπ/2."
+          },
+          {
+            "id": "d1-erro-2",
+            "label": "Apenas 0",
+            "correct": false,
+            "feedback": "Como o argumento é 2θ, temos quatro soluções no intervalo [0; 2π)."
+          },
+          {
+            "id": "d1-erro-3",
+            "label": "π/4, 3π/4, 5π/4 e 7π/4",
+            "correct": false,
+            "feedback": "Em π/4 temos sen(2·π/4) = sen(π/2) = 1, não 0. Soluções: 0, π/2, π e 3π/2."
+          }
+        ]
+      },
+      {
+        "id": "d2-equacoes-trigonometricas",
+        "prompt": "No intervalo fechado [0; 2π], resolva cos θ = 1.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d2-equacoes-trigonometricas-certa",
+            "label": "0 e 2π",
+            "correct": true,
+            "feedback": "Certo: 0 e 2π; cos 0 = cos 2π = 1."
+          },
+          {
+            "id": "d2-equacoes-trigonometricas-erro",
+            "label": "Só 0",
+            "correct": false,
+            "feedback": "O extremo final agora está incluído. O certo é 0 e 2π; cos 0 = cos 2π = 1."
+          },
+          {
+            "id": "d2-erro-2",
+            "label": "0, π e 2π",
+            "correct": false,
+            "feedback": "Em π rad o cosseno vale −1, não 1. Soluções: 0 e 2π."
+          },
+          {
+            "id": "d2-erro-3",
+            "label": "Apenas 2π",
+            "correct": false,
+            "feedback": "0 também pertence a [0; 2π] e cos 0 = 1: soluções 0 e 2π."
+          }
+        ]
+      },
+      {
+        "id": "d3-equacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva a equação tg θ = 1.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d3-equacoes-trigonometricas-certa",
+            "label": "π/4 e 5π/4",
+            "correct": true,
+            "feedback": "Certo: π/4 e 5π/4; Período da tangente é π."
+          },
+          {
+            "id": "d3-equacoes-trigonometricas-erro",
+            "label": "π/4 e 3π/4",
+            "correct": false,
+            "feedback": "Você usou simetria do seno para tangente. O certo é π/4 e 5π/4; Período da tangente é π."
+          },
+          {
+            "id": "d3-erro-2",
+            "label": "Só π/4",
+            "correct": false,
+            "feedback": "No 3º quadrante seno e cosseno são ambos negativos, logo tg(5π/4) = 1: π/4 e 5π/4."
+          },
+          {
+            "id": "d3-erro-3",
+            "label": "3π/4 e 7π/4",
+            "correct": false,
+            "feedback": "Nesses quadrantes a tangente vale −1. Para tg θ = 1: π/4 e 5π/4."
+          }
+        ]
+      },
+      {
+        "id": "d4-equacoes-trigonometricas",
+        "prompt": "Resolva a equação sen θ = 0 para todos os números reais.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d4-equacoes-trigonometricas-certa",
+            "label": "θ = kπ, k ∈ ℤ",
+            "correct": true,
+            "feedback": "Certo: θ = kπ, k ∈ ℤ; sen(kπ) = 0."
+          },
+          {
+            "id": "d4-equacoes-trigonometricas-erro",
+            "label": "θ = 2kπ, k ∈ ℤ",
+            "correct": false,
+            "feedback": "Você perdeu as meias-voltas ímpares. O certo é θ = kπ, k ∈ ℤ; sen(kπ) = 0."
+          },
+          {
+            "id": "d4-erro-2",
+            "label": "θ = π/2 + kπ, k ∈ ℤ",
+            "correct": false,
+            "feedback": "Essa fórmula é para cos θ = 0. Para sen θ = 0 é θ = kπ, k ∈ ℤ."
+          },
+          {
+            "id": "d4-erro-3",
+            "label": "θ = 2kπ ou θ = π, k ∈ ℤ",
+            "correct": false,
+            "feedback": "Escreve-se compactamente como θ = kπ, com k ∈ ℤ."
+          }
+        ]
+      },
+      {
+        "id": "d5-equacoes-trigonometricas",
+        "prompt": "No intervalo [0; 2π), resolva 2sen²θ − 1 = 0.",
+        "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
+        "options": [
+          {
+            "id": "d5-equacoes-trigonometricas-certa",
+            "label": "π/4, 3π/4, 5π/4 e 7π/4",
+            "correct": true,
+            "feedback": "Certo: π/4, 3π/4, 5π/4 e 7π/4; sen θ = ±√2/2."
+          },
+          {
+            "id": "d5-equacoes-trigonometricas-erro",
+            "label": "Só π/4 e 3π/4",
+            "correct": false,
+            "feedback": "Você descartou o seno negativo ao tirar a raiz. O certo é π/4, 3π/4, 5π/4 e 7π/4; sen θ = ±√2/2."
+          },
+          {
+            "id": "d5-erro-2",
+            "label": "π/6, 5π/6, 7π/6 e 11π/6",
+            "correct": false,
+            "feedback": "Esses ângulos têm seno ±1/2, e ao quadrado dariam 1/4. A raiz é ±√2/2: família π/4."
+          },
+          {
+            "id": "d5-erro-3",
+            "label": "Só π/4",
+            "correct": false,
+            "feedback": "Há 4 quadrantes onde sen²θ = 1/2: π/4, 3π/4, 5π/4 e 7π/4."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

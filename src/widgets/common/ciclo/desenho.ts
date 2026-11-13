@@ -60,7 +60,7 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
   const bandaFita = p.mostrar.fita ? 46 : 0;
   const alturaCiclo = h - bandaFita - (rodapes.length ? banda(rodapes.length) : 0);
   const x1 = p.grafico ? X_GRAF + DOIS_PI * ESC_GRAF + 0.4 : temBarras ? 3.5 : 1.5;
-  const v = criarVista(w, alturaCiclo, { x0: -1.5, x1, y0: -1.5, y1: 1.5 }, 12);
+  const v = criarVista(w, alturaCiclo, { x0: p.grafico ? -2.1 : -1.5, x1, y0: -1.5, y1: 1.5 }, 12);
   const O = v.p(0, 0);
   const R = v.k;
 
@@ -118,7 +118,7 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
     const k = m.alvo.k;
     if (m.alvo.tipo === "seno") segMundo(ctx, v, { x: -1.45, y: k }, { x: 1.45, y: k }, tinta(cor.alvo), espessura(hl, cor.alvo, 3), [8, 5]);
     else segMundo(ctx, v, { x: k, y: -1.45 }, { x: k, y: 1.45 }, tinta(cor.alvo), espessura(hl, cor.alvo, 3), [8, 5]);
-    etiqueta(ctx, hits, m.alvo.tipo === "seno" ? { x: v.p(1.35, k).x - 8, y: v.p(1.35, k).y - 18 } : { x: v.p(k, 1.35).x + 22, y: v.p(k, 1.35).y }, `${m.alvo.tipo === "seno" ? "y" : "x"} = ${fmt(k)}`, cor.alvo);
+    etiqueta(ctx, hits, m.alvo.tipo === "seno" ? { x: v.p(0, k).x, y: v.p(0, k).y - 18 } : { x: v.p(k, 0).x + 26, y: v.p(k, 0).y + 40 }, `${m.alvo.tipo === "seno" ? "y" : "x"} = ${fmt(k)}`, cor.alvo);
     m.alvo.solucoes.forEach((s, i) => {
       const q = v.q(noCiclo(s));
       const marcada = e.marcadas.has(i);
@@ -237,8 +237,8 @@ function desenharBarras(ctx: G, v: Vista, hits: Hit[], p: Ciclo, m: Modelo, cor:
   };
   if (p.mostrar.pitagorica) {
     barra(1.95, [{ v: m.sen * m.sen, c: cor.seno }, { v: m.cos * m.cos, c: cor.cosseno }], "1", "c3");
-    nota(ctx, v.p(2.6, base + m.sen * m.sen * esc * 0.5), `sen² = ${fmt(m.sen * m.sen)}`, cor.seno, 12);
-    nota(ctx, v.p(2.6, base + (m.sen * m.sen + m.cos * m.cos * 0.5) * esc), `cos² = ${fmt(m.cos * m.cos)}`, cor.cosseno, 12);
+    notaEsq(ctx, v.p(2.42, base + m.sen * m.sen * esc * 0.5), `sen² = ${fmt(m.sen * m.sen)}`, tintaEscura(cor.seno), 12);
+    notaEsq(ctx, v.p(2.42, base + (m.sen * m.sen + m.cos * m.cos * 0.5) * esc), `cos² = ${fmt(m.cos * m.cos)}`, tintaEscura(cor.cosseno), 12);
   }
   if (p.soma && m.soma) {
     const s = m.soma;

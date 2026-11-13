@@ -42,6 +42,20 @@
                   "arquivo": "aritmetica/conjuntos/valor-absoluto-e-distancia/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "fracoes-e-decimais",
+              "titulo": "Frações, decimais e comparação de racionais",
+              "icone": "conjunto",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Frações, decimais e comparação de racionais",
+                  "subtitulo": "O mesmo ponto, várias escritas",
+                  "arquivo": "aritmetica/conjuntos/fracoes-e-decimais/aula-01.json"
+                }
+              ]
             }
           ]
         },
@@ -831,6 +845,20 @@
           "titulo": "Geometria Plana",
           "unidades": [
             {
+              "id": "angulos-retas-paralelas",
+              "titulo": "Ângulos, retas paralelas e transversais",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Uma Transversal, Dois Valores",
+                  "subtitulo": "Correspondentes, alternos e suplementares",
+                  "arquivo": "geometria/geometria-plana/angulos-retas-paralelas/aula-01.json"
+                }
+              ]
+            },
+            {
               "id": "triangulos-congruencia-e-propriedades",
               "titulo": "Triângulos, congruência e propriedades",
               "icone": "triangulo",
@@ -901,16 +929,30 @@
               ]
             },
             {
-              "id": "circunferencia",
-              "titulo": "Circunferência e Círculo",
-              "icone": "circulo",
+              "id": "poligonos-e-quadrilateros",
+              "titulo": "Polígonos e quadriláteros: propriedades e ângulos",
+              "icone": "triangulo",
               "aulas": [
                 {
                   "id": "aula-01",
                   "numero": 1,
-                  "titulo": "Quantos Diâmetros Cabem",
-                  "subtitulo": "Comprimento e área do círculo",
-                  "arquivo": null
+                  "titulo": "Fatiar em Triângulos e Dar a Volta",
+                  "subtitulo": "Soma dos ângulos (n − 2)·180° e família dos quadriláteros",
+                  "arquivo": "geometria/geometria-plana/poligonos-e-quadrilateros/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "poligonos-regulares",
+              "titulo": "Polígonos regulares e ladrilhamentos",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Dividir a Volta por Igual",
+                  "subtitulo": "Ângulos do polígono regular e os 3 ladrilhos do plano",
+                  "arquivo": "geometria/geometria-plana/poligonos-regulares/aula-01.json"
                 }
               ]
             },
@@ -925,6 +967,62 @@
                   "titulo": "Contorno e Preenchimento",
                   "subtitulo": "Perímetro, área por corte e escala k²",
                   "arquivo": "geometria/geometria-plana/perimetro-e-area-de-figuras-planas/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "circunferencia-arcos-e-angulos",
+              "titulo": "Circunferência, arcos e ângulos",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Circunferência, arcos e ângulos",
+                  "subtitulo": "Do centro à borda",
+                  "arquivo": "geometria/geometria-plana/circunferencia-arcos-e-angulos/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "comprimento-da-circunferencia",
+              "titulo": "Comprimento da circunferência",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Comprimento da circunferência",
+                  "subtitulo": "A roda desenrolada",
+                  "arquivo": "geometria/geometria-plana/comprimento-da-circunferencia/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "area-do-circulo-e-setores",
+              "titulo": "Área do círculo, setores e coroas circulares",
+              "icone": "circulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Área do círculo, setores e coroas circulares",
+                  "subtitulo": "Fatiar a pizza em paralelogramo",
+                  "arquivo": "geometria/geometria-plana/area-do-circulo-e-setores/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "transformacoes-isometrias-e-homotetia",
+              "titulo": "Simetrias, isometrias e homotetia",
+              "icone": "triangulo",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Mover sem Deformar vs Ampliar",
+                  "subtitulo": "Translação, reflexão, rotação e homotetia",
+                  "arquivo": "geometria/geometria-plana/transformacoes-isometrias-e-homotetia/aula-01.json"
                 }
               ]
             }
@@ -1000,7 +1098,63 @@
                   "numero": 1,
                   "titulo": "A Volta que Vira Onda",
                   "subtitulo": "Gráficos de seno e cosseno",
-                  "arquivo": null
+                  "arquivo": "geometria/trigonometria/funcoes-trigonometricas/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "identidades-trigonometricas",
+              "titulo": "Relações fundamentais e identidades trigonométricas",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Identidades Trigonométricas",
+                  "subtitulo": "A soma que sempre dá um · Pitágoras no ciclo, tangente e secante",
+                  "arquivo": "geometria/trigonometria/identidades-trigonometricas/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "formulas-de-adicao-e-arco-duplo",
+              "titulo": "Fórmulas de adição e arco duplo",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Fórmulas de adição e arco duplo",
+                  "subtitulo": "Somar giros não é somar sombras",
+                  "arquivo": "geometria/trigonometria/formulas-de-adicao-e-arco-duplo/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "equacoes-trigonometricas",
+              "titulo": "Equações trigonométricas",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Equações trigonométricas",
+                  "subtitulo": "Uma projeção, vários ângulos",
+                  "arquivo": "geometria/trigonometria/equacoes-trigonometricas/aula-01.json"
+                }
+              ]
+            },
+            {
+              "id": "inequacoes-trigonometricas",
+              "titulo": "Inequações trigonométricas",
+              "icone": "onda",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "Inequações trigonométricas",
+                  "subtitulo": "Arcos que satisfazem a comparação",
+                  "arquivo": "geometria/trigonometria/inequacoes-trigonometricas/aula-01.json"
                 }
               ]
             },
