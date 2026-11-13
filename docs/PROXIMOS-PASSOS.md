@@ -4,7 +4,7 @@ Atualizado em 12/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim
 
 ## Estado
 
-- **86 de 103 capítulos** têm aula no app (100 unidades publicadas, contando Cones, o capítulo-modelo). Cada um tem `aula-01.json` e teste próprio.
+- **86 de 103 capítulos** têm aula no app (101 unidades publicadas, contando Cones, o capítulo-modelo). Cada um tem `aula-01.json` e teste próprio.
 - **Validações na última sessão:** `lint:content` ok, 99 arquivos de teste / 1569 testes passando, `typecheck` limpo, `build` ok.
 - **Widgets prontos** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, cada um com sua `*_figura`.
 - **Roteiros:** 103 planos em `docs/planos/`, `npm run lint:planos` com 0 erros. Gabaritos dos roteiros conferidos às cegas (1359/1359, `docs/REVISAO-GABARITOS.md`).
@@ -108,3 +108,5 @@ Registrados os 13 cap?tulos dos arquivos de entregas (10 cap?tulos adaptados e 3
 Validação da integração: 113 arquivos / 1776 testes passando, typecheck limpo. Lint e build executados com NODE_OPTIONS=--require=C:/Users/User/AppData/Local/Temp/app-matematica-os-userinfo.cjs: fallback temporário de os.userInfo, pois a API do Windows retorna uv_os_get_passwd ENOMEM. Nenhuma dependência ou arquivo de produção alterado por esse contorno.
 
 Pontos no plano implementado e testado: 114 arquivos / 1781 testes; lint, typecheck e build ok com o contorno de os.userInfo descrito acima. Sem novas entregas nesta integra??o. Pull e push bloqueados por conex?o ao github.com:443. Pr?ximo widget: circunferencia_no_plano.
+
+Circunferencia no plano implementado (4 testes). Integrado plano-cartesiano-distancia-e-ponto-medio com id corrigido para aula-01. Lint, typecheck e build ok; 116 arquivos / 1809 testes. Proximo: vetores_no_plano e modo complexo. Revisao visual e sincronizacao GitHub continuam bloqueadas.

@@ -661,3 +661,19 @@ Conferência visual em 400 px pendente nesta máquina: portal Maestri ausente, n
 ```
 
 Métricas: `dx`, `dy`, `distancia`, `dx_zero` (vertical não degenerada), `quadrados_ligados`, `medio_ligado`, `pontos_vistos` (posições distintas após interação). A reta presa usa os pontos originais como referência; coincidência avisa que a reta é indeterminada. Botões revelam quadrados e ponto médio; os quadrados são construídos geometricamente sobre os lados. `terceiro` é marcador estático opcional. Revisão visual em 400 px pendente pelo bloqueio de automação registrado em §5.14.
+
+### 5.16 `circunferencia_no_plano` + `circunferencia_figura`
+
+`common/circunferencia/`: `centro: [a,b]`, `raio`, `ponto: [x,y]`, `reta_y?`, `segunda?: {centro,raio}` aceitam expressões; figura exige números. `centro_arrastavel` começa false, `ponto_arrastavel` true, `passo` 1. `curva_oculta` guarda pontos descobertos; `rotulos: false` oculta as etiquetas e equação. `highlight` destaca marcas.
+
+```json
+{"centro":[0,0],"raio":5,"ponto":[1,1],"curva_oculta":true}
+```
+```json
+{"centro":["$a",0],"raio":3,"reta_y":"$k","centro_arrastavel":false}
+```
+```json
+{"centro":[0,0],"raio":3,"segunda":{"centro":[6,0],"raio":3}}
+```
+
+Métricas: `pontos_sobre` (distintos após toque/arraste), `estados_vistos` (dentro/sobre/fora), `centro_x`, `k` quando há reta. O ponto encaixa na malha; raio precisa ser positivo. A posição inicial não aumenta contadores. Arrastar o centro limpa descobertas anteriores. Cores: centro c1, raio c2, curva c3, distância/reta c4. Revisão visual em 400 px pendente pelo bloqueio descrito em §5.14.

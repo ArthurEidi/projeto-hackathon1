@@ -1,0 +1,10 @@
+import { z } from "zod";
+import { Marca } from "../../../ui/marcas";
+import { Expr } from "../expr";
+import { temSlider } from "../geo/base";
+const Par = z.tuple([Expr, Expr]);
+export const Circunferencia = z.object({ centro: Par.default([0, 0]), raio: Expr.default(5), ponto: Par.default([1, 1]), centro_arrastavel: z.boolean().default(false), ponto_arrastavel: z.boolean().default(true), passo: z.number().positive().default(1), curva_oculta: z.boolean().default(false), reta_y: Expr.optional(), segunda: z.object({ centro: Par, raio: Expr }).optional(), rotulos: z.boolean().default(true), highlight: z.array(Marca).default([]) });
+export type Circunferencia = z.output<typeof Circunferencia>;
+export const CircunferenciaFigura = Circunferencia.superRefine((p, ctx) => { if (temSlider(p)) ctx.addIssue({ code: "custom", message: "circunferencia_figura exige números" }); });
+export const widgetParams = { circunferencia_no_plano: Circunferencia } as const;
+export const figureParams = { circunferencia_figura: CircunferenciaFigura } as const;

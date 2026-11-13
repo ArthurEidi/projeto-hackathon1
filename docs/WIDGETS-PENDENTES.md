@@ -296,7 +296,7 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 13 | `transformacao_plano` (17) | 2 | pendente |
 | 14 | `vetores_no_plano` + `complexo` (4 + 18) | 2 | pendente |
 | 15 | `maquinas_funcao` (20) | 2 | pendente |
-| 16 | `circunferencia_no_plano` (5) | 1 | pendente |
+| 16 | `circunferencia_no_plano` (5) | 1 | implementado e testado (GUIA ?5.16); revis?o visual pendente |
 | 17 | `escala_decimal`, `divisao_polinomial`, `sistema_escalonado`, `grupos_inteiros` (21) | 1 cada | pendente |
 
 Capítulos que já andam com `plano_cartesiano` / `reta_numerica`: funções afim, quadrática, exponencial, modular, logaritmos; equações e inequações de 1º e 2º grau, modulares, exponenciais e logarítmicas, produto-quociente; fatoração.
