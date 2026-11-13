@@ -97,7 +97,7 @@
       ],
       "lines": {
         "intro": "Com a₁ = 8 e q = 1/2, quanto vale o segundo termo? Leve m até 2 e confira.",
-        "done": "Vale 4: cada parcela é metade da anterior, e o total passa a ter um teto."
+        "done": "Com m ≥ 2 a razão q = 1/m fica menor que 1 (com m = 2, o segundo termo vale 4): as parcelas encolhem e o total passa a ter um teto."
       },
       "complete_when": {
         "metric": "m",

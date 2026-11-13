@@ -71,45 +71,45 @@
       "params": {
         "intervalo": [-4, 5],
         "marcas": 1,
-        "trechos": [
-          {
+        "operacao": {
+          "a": {
             "de": -2,
             "ate": 3,
             "cor": "c1",
             "rotulo": "A = [−2; 3]"
           },
-          {
+          "b": {
             "de": 1,
             "ate": 4,
             "cor": "c2",
             "rotulo": "B = [1; 4]"
-          }
-        ],
-        "pontos": [
-          {
-            "x": 1,
-            "cor": "c4",
-            "rotulo": "1"
           },
-          {
-            "x": 3,
-            "cor": "c4",
-            "rotulo": "3"
-          }
-        ],
+          "modo": "$modo"
+        },
         "ponto": {
-          "x": -1,
+          "x": 2,
           "arrastavel": true,
           "passo": 1,
           "cor": "c3"
         }
       },
+      "controls": [
+        {
+          "id": "modo",
+          "label": "União ou interseção",
+          "min": 0,
+          "max": 1,
+          "step": 1,
+          "initial": 0,
+          "color": "ink"
+        }
+      ],
       "complete_when": {
-        "metric": "ponto_x",
-        "gte": 2
+        "metric": "modo",
+        "gte": 1
       },
       "lines": {
-        "intro": "Se exigirmos pertencer a A e a B, a faixa aumenta? Arraste até a região comum x = 2.",
+        "intro": "Se exigirmos pertencer a A e a B, a faixa aumenta? Mude para interseção (modo = 1).",
         "done": "Diminui: a interseção guarda só [1; 3], onde os dois filtros aceitam ao mesmo tempo."
       }
     },
@@ -120,25 +120,23 @@
       "params": {
         "intervalo": [-4, 5],
         "marcas": 1,
-        "trechos": [
-          {
+        "operacao": {
+          "a": {
             "de": -2,
-            "ate": 1,
-            "abreAte": true,
-            "cor": "c4",
-            "rotulo": "A \\ B = [−2; 1)"
-          }
-        ],
-        "pontos": [
-          {
-            "x": 1,
+            "ate": 3,
+            "cor": "c1",
+            "rotulo": "A = [−2; 3]"
+          },
+          "b": {
+            "de": 1,
+            "ate": 4,
             "cor": "c2",
-            "rotulo": "1 ∈ B",
-            "aberto": false
-          }
-        ],
+            "rotulo": "B = [1; 4]"
+          },
+          "modo": "diferenca"
+        },
         "ponto": {
-          "x": -1,
+          "x": 0,
           "arrastavel": true,
           "passo": 1,
           "cor": "c3"
@@ -193,14 +191,22 @@
           "correct": true,
           "feedback": "Certo: [2; 3]; Só de 2 a 3 os dois conjuntos aceitam.",
           "override": {
-            "trechos": [
-              {
-                "de": 2,
+            "trechos": [],
+            "operacao": {
+              "a": {
+                "de": 0,
                 "ate": 3,
-                "cor": "c4",
-                "rotulo": "A ∩ B = [2; 3]"
-              }
-            ],
+                "cor": "c1",
+                "rotulo": "A = [0; 3]"
+              },
+              "b": {
+                "de": 2,
+                "ate": 5,
+                "cor": "c2",
+                "rotulo": "B = [2; 5]"
+              },
+              "modo": "intersecao"
+            },
             "highlight": ["c4"]
           }
         },
@@ -210,14 +216,22 @@
           "correct": false,
           "feedback": "Resposta: [2; 3]; Você fez a união; a interseção exige os dois filtros: [2; 3].",
           "override": {
-            "trechos": [
-              {
+            "trechos": [],
+            "operacao": {
+              "a": {
                 "de": 0,
+                "ate": 3,
+                "cor": "c1",
+                "rotulo": "A = [0; 3]"
+              },
+              "b": {
+                "de": 2,
                 "ate": 5,
-                "cor": "c3",
-                "rotulo": "A ∪ B = [0; 5]"
-              }
-            ],
+                "cor": "c2",
+                "rotulo": "B = [2; 5]"
+              },
+              "modo": "uniao"
+            },
             "highlight": ["c1", "c2"]
           }
         }
@@ -231,14 +245,21 @@
         "params": {
           "intervalo": [-1, 6],
           "marcas": 1,
-          "trechos": [
-            {
-              "de": 2,
+          "operacao": {
+            "a": {
+              "de": 0,
               "ate": 3,
-              "cor": "c4",
-              "rotulo": "A ∩ B"
-            }
-          ],
+              "cor": "c1",
+              "rotulo": "A = [0; 3]"
+            },
+            "b": {
+              "de": 2,
+              "ate": 5,
+              "cor": "c2",
+              "rotulo": "B = [2; 5]"
+            },
+            "modo": "intersecao"
+          },
           "highlight": ["c1", "c2", "c3", "c4"]
         }
       },

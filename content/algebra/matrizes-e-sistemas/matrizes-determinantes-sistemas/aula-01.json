@@ -31,7 +31,7 @@
     {
       "id": "caso-neutro",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "transformacao_plano",
       "controls": [
         {
           "id": "x",
@@ -44,21 +44,18 @@
         }
       ],
       "params": {
-        "x": [-3, 3],
-        "y": [-2, 3],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 1,
-            "cor": "c3",
-            "rotulo": "y = 1"
-          }
+        "matriz": [
+          [1, 0],
+          [0, 1]
         ],
-        "ponto": {
-          "curva": 0,
-          "x": "$x",
-          "cor": "c1"
+        "vetor": ["$x", 1],
+        "janela": [-3, 3],
+        "mostrar": {
+          "malha": true,
+          "quadrado": true,
+          "colunas": true,
+          "det": false,
+          "identidade": true
         }
       },
       "complete_when": {
@@ -78,7 +75,7 @@
     {
       "id": "esticar-coluna",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "transformacao_plano",
       "controls": [
         {
           "id": "a",
@@ -91,21 +88,18 @@
         }
       ],
       "params": {
-        "x": [-1, 4],
-        "y": [-1, 3],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 1,
-            "fantasma": true,
-            "rotulo": "y = 1"
-          }
+        "matriz": [
+          ["$a", 0],
+          [0, 1]
         ],
-        "ponto": {
-          "curva": 0,
-          "x": "$a",
-          "cor": "c3"
+        "vetor": [1, 1],
+        "janela": [-1, 4],
+        "mostrar": {
+          "malha": true,
+          "quadrado": true,
+          "colunas": true,
+          "det": true,
+          "identidade": true
         }
       },
       "complete_when": {
@@ -120,7 +114,7 @@
     {
       "id": "compor-maquinas",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "transformacao_plano",
       "controls": [
         {
           "id": "a",
@@ -133,17 +127,23 @@
         }
       ],
       "params": {
-        "x": [-1, 5],
-        "y": [-1, 3],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 1,
-            "cor": "c3",
-            "rotulo": "y = 1"
-          }
-        ]
+        "matriz": [
+          [1, 1],
+          [0, 1]
+        ],
+        "depois": [
+          ["$a", 0],
+          [0, 1]
+        ],
+        "vetor": [1, 1],
+        "janela": [-1, 5],
+        "mostrar": {
+          "malha": true,
+          "quadrado": true,
+          "colunas": true,
+          "det": true,
+          "identidade": false
+        }
       },
       "complete_when": {
         "metric": "a",
@@ -213,23 +213,20 @@
       "id": "conferir-previsao",
       "type": "micro_challenge",
       "figure": {
-        "widget": "plano_figura",
+        "widget": "transformacao_figura",
         "params": {
-          "x": [-1, 4],
-          "y": [-1, 5],
-          "curvas": [
-            {
-              "tipo": "afim",
-              "a": 0,
-              "b": 3,
-              "cor": "c3",
-              "rotulo": "y = 3"
-            }
+          "matriz": [
+            [2, 0],
+            [0, 1]
           ],
-          "ponto": {
-            "curva": 0,
-            "x": 2,
-            "cor": "c3"
+          "vetor": [1, 3],
+          "janela": [-1, 4],
+          "mostrar": {
+            "malha": true,
+            "quadrado": true,
+            "colunas": true,
+            "det": true,
+            "identidade": true
           }
         }
       },
@@ -242,13 +239,19 @@
           "id": "micro-erro",
           "label": "(2;6)",
           "correct": false,
-          "feedback": "Você dobrou as duas direções; só x dobra, então a imagem é (2;3)."
+          "feedback": "Você dobrou as duas direções; só x dobra, então a imagem é (2;3).",
+          "override": {
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "micro-acerto",
           "label": "(2;3)",
           "correct": true,
-          "feedback": "Certo: (2;3); (2·1;1·3)=(2;3)."
+          "feedback": "Certo: (2;3); (2·1;1·3)=(2;3).",
+          "override": {
+            "highlight": ["c2", "c3"]
+          }
         }
       ]
     },
@@ -256,34 +259,22 @@
       "id": "fechamento",
       "type": "concept_lock",
       "figure": {
-        "widget": "plano_figura",
+        "widget": "transformacao_figura",
         "params": {
-          "x": [-1, 4],
-          "y": [-2, 5],
-          "curvas": [
-            {
-              "tipo": "afim",
-              "a": -1,
-              "b": 3,
-              "cor": "c3",
-              "rotulo": "x + y = 3"
-            },
-            {
-              "tipo": "afim",
-              "a": 1,
-              "b": -1,
-              "cor": "ink",
-              "rotulo": "x − y = 1"
-            }
+          "matriz": [
+            [2, 0],
+            [0, 1]
           ],
-          "ponto": {
-            "curva": 0,
-            "x": 2,
-            "cor": "c1"
+          "vetor": [1, 3],
+          "janela": [-1, 4],
+          "mostrar": {
+            "malha": true,
+            "quadrado": true,
+            "colunas": true,
+            "det": true,
+            "identidade": true
           },
-          "marcar": {
-            "encontro": true
-          }
+          "highlight": ["c1", "c2", "c3", "c4"]
         }
       },
       "formula": [

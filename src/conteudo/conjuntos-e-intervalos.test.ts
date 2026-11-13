@@ -28,8 +28,11 @@ describe("passos da aula de conjuntos e intervalos", () => {
     for (const s of L.steps) {
       if (s.type !== "interactive_canvas") continue;
       const { metric, gte, lte } = s.complete_when;
-      expect(["dentro", "ponto_x", "faixa_x"]).toContain(metric);
+      expect(["dentro", "ponto_x", "faixa_x", "pertence", "modo"]).toContain(metric);
       if (metric === "dentro") {
+        expect(gte).toBe(1);
+      }
+      if (metric === "modo") {
         expect(gte).toBe(1);
       }
       if (metric === "ponto_x") {

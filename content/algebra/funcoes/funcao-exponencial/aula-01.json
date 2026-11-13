@@ -48,7 +48,7 @@
       "controls": [{ "id": "b", "label": "Base", "min": 0.5, "max": 3, "step": 0.5, "initial": 1, "color": "c3" }],
       "lines": {
         "intro": "Com b = 1 a saída fica sempre 1, pois nada multiplica. Leve b até 2 e veja o que cada passo faz com a saída.",
-        "done": "A cada passo a saída se multiplica por 2: em x = 1, 2 e 3 ela vale 2, 4 e 8."
+        "done": "A cada passo a saída se multiplica pela base b: com b = 2, por exemplo, em x = 1, 2 e 3 ela vale 2, 4 e 8."
       },
       "duvida": {
         "quando": "fim",

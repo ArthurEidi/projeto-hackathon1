@@ -47,7 +47,7 @@
       "controls": [{ "id": "h", "label": "Referência", "min": -2, "max": 2, "step": 1, "initial": 0, "color": "c4" }],
       "lines": {
         "intro": "Agora a distância é medida até h: f(x) = |x − h|; onde ela zera para h = 1? Leve h até 1.",
-        "done": "O vértice foi para x = 1, porque |x − 1| só zera ali. O V inteiro andou 1 para a direita."
+        "done": "O vértice foi para x = h, porque |x − h| só zera ali. Com h positivo, o V anda para a direita."
       },
       "duvida": {
         "quando": "fim",

@@ -97,7 +97,7 @@
       ],
       "lines": {
         "intro": "Na PA de a₁ = 1, quanto cada barra sobe por passo? Leve d até 2 e compare com a PG de razão 2, em cinza.",
-        "done": "Com d = 2, cada passo soma 2: 1, 3, 5, 7, 9. Na PG cinza, cada passo multiplica por 2: 1, 2, 4, 8, 16."
+        "done": "Na PA de diferença d, cada passo soma d (com d = 2: 1, 3, 5, 7, 9). Na PG cinza, cada passo multiplica por 2: 1, 2, 4, 8, 16."
       },
       "complete_when": {
         "metric": "d",

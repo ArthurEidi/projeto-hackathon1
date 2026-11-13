@@ -31,7 +31,7 @@
     {
       "id": "caso-neutro",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "transformacao_plano",
       "controls": [
         {
           "id": "a",
@@ -44,23 +44,17 @@
         }
       ],
       "params": {
-        "x": [-1, 4],
-        "y": [-1, 3],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 1,
-            "fantasma": true,
-            "rotulo": "y = 1"
-          }
+        "matriz": [
+          ["$a", 0],
+          [0, 1]
         ],
-        "ponto": {
-          "curva": 0,
-          "x": "$a",
-          "cor": "c4",
-          "retangulo": true,
-          "corRetangulo": "c4"
+        "janela": [-1, 4],
+        "mostrar": {
+          "malha": true,
+          "quadrado": true,
+          "colunas": true,
+          "det": true,
+          "identidade": true
         }
       },
       "complete_when": {
@@ -80,7 +74,7 @@
     {
       "id": "inverter-orientacao",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "transformacao_plano",
       "controls": [
         {
           "id": "a",
@@ -93,23 +87,17 @@
         }
       ],
       "params": {
-        "x": [-3, 3],
-        "y": [-1, 3],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 1,
-            "fantasma": true,
-            "rotulo": "y = 1"
-          }
+        "matriz": [
+          ["$a", 0],
+          [0, 1]
         ],
-        "ponto": {
-          "curva": 0,
-          "x": "$a",
-          "cor": "c4",
-          "retangulo": true,
-          "corRetangulo": "c4"
+        "janela": [-3, 3],
+        "mostrar": {
+          "malha": true,
+          "quadrado": true,
+          "colunas": true,
+          "det": true,
+          "identidade": true
         }
       },
       "complete_when": {
@@ -124,7 +112,7 @@
     {
       "id": "perder-informacao",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "transformacao_plano",
       "controls": [
         {
           "id": "a",
@@ -137,23 +125,19 @@
         }
       ],
       "params": {
-        "x": [-1, 3],
-        "y": [-1, 3],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 1,
-            "fantasma": true,
-            "rotulo": "y = 1"
-          }
+        "matriz": [
+          ["$a", 0],
+          [0, 1]
         ],
-        "ponto": {
-          "curva": 0,
-          "x": "$a",
-          "cor": "c3",
-          "retangulo": true,
-          "corRetangulo": "c4"
+        "vetor": [1, 1],
+        "vetores": [[2, 1]],
+        "janela": [-1, 3],
+        "mostrar": {
+          "malha": true,
+          "quadrado": true,
+          "colunas": true,
+          "det": true,
+          "identidade": true
         }
       },
       "complete_when": {
@@ -174,24 +158,20 @@
       "id": "conferir-previsao",
       "type": "micro_challenge",
       "figure": {
-        "widget": "plano_figura",
+        "widget": "transformacao_figura",
         "params": {
-          "x": [-1, 3],
-          "y": [-1, 3],
-          "curvas": [
-            {
-              "tipo": "afim",
-              "a": 0,
-              "b": 1,
-              "rotulo": "y = 1"
-            }
+          "matriz": [
+            [2, 0],
+            [0, 1]
           ],
-          "ponto": {
-            "curva": 0,
-            "x": 0.5,
-            "cor": "c2",
-            "retangulo": true,
-            "corRetangulo": "c4"
+          "vetor": [1, 1],
+          "janela": [-1, 3],
+          "mostrar": {
+            "malha": true,
+            "quadrado": true,
+            "colunas": true,
+            "det": true,
+            "identidade": true
           }
         }
       },
@@ -204,13 +184,28 @@
           "id": "micro-erro",
           "label": "diag(−2;−1)",
           "correct": false,
-          "feedback": "Você trocou sinais; desfazer a escala pede 2·0,5=1, então a inversa é diag(0,5;1)."
+          "feedback": "Você trocou sinais; desfazer a escala pede 2·0,5=1, então a inversa é diag(0,5;1).",
+          "override": {
+            "depois": [
+              [-2, 0],
+              [0, -1]
+            ],
+            "janela": [-3, 3],
+            "highlight": ["c4"]
+          }
         },
         {
           "id": "micro-acerto",
           "label": "diag(0,5;1)",
           "correct": true,
-          "feedback": "Certo: diag(0,5;1); 2·0,5=1 e 1·1=1."
+          "feedback": "Certo: diag(0,5;1); 2·0,5=1 e 1·1=1.",
+          "override": {
+            "depois": [
+              [0.5, 0],
+              [0, 1]
+            ],
+            "highlight": ["c2", "c4"]
+          }
         }
       ]
     },
@@ -218,25 +213,26 @@
       "id": "fechamento",
       "type": "concept_lock",
       "figure": {
-        "widget": "plano_figura",
+        "widget": "transformacao_figura",
         "params": {
-          "x": [-1, 4],
-          "y": [-1, 3],
-          "curvas": [
-            {
-              "tipo": "afim",
-              "a": 0,
-              "b": 1,
-              "rotulo": "y = 1"
-            }
+          "matriz": [
+            [2, 0],
+            [0, 1]
           ],
-          "ponto": {
-            "curva": 0,
-            "x": 2,
-            "cor": "c2",
-            "retangulo": true,
-            "corRetangulo": "c4"
-          }
+          "depois": [
+            [0.5, 0],
+            [0, 1]
+          ],
+          "vetor": [1, 1],
+          "janela": [-1, 4],
+          "mostrar": {
+            "malha": true,
+            "quadrado": true,
+            "colunas": true,
+            "det": true,
+            "identidade": true
+          },
+          "highlight": ["c1", "c2", "c3", "c4"]
         }
       },
       "formula": [

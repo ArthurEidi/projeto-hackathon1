@@ -520,7 +520,7 @@
             "id": "d1-equacoes-exponenciais-erro3",
             "label": "0,5",
             "correct": false,
-            "feedback": "Você inverteu a razão dos expoentes: 1/2. O certo é 1,5; 2²ˣ=2³; x=3/2."
+            "feedback": "Você dividiu a base pelo resultado: 4/8=0,5. O certo é 1,5; 2²ˣ=2³; x=3/2."
           }
         ]
       },
