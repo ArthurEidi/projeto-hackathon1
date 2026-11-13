@@ -677,3 +677,20 @@ Métricas: `dx`, `dy`, `distancia`, `dx_zero` (vertical não degenerada), `quadr
 ```
 
 Métricas: `pontos_sobre` (distintos após toque/arraste), `estados_vistos` (dentro/sobre/fora), `centro_x`, `k` quando há reta. O ponto encaixa na malha; raio precisa ser positivo. A posição inicial não aumenta contadores. Arrastar o centro limpa descobertas anteriores. Cores: centro c1, raio c2, curva c3, distância/reta c4. Revisão visual em 400 px pendente pelo bloqueio descrito em §5.14.
+
+### 5.17 `vetores_no_plano` + `vetores_figura`
+
+`common/vetores/`: união discriminada por `modo`, `vetores` (padrão) ou `complexo`. Pares numéricos aceitam expressões com sliders; figura só números; `highlight` e `passo` (1) comuns.
+
+```json
+{"modo":"vetores","vetores":[{"id":"u","cauda":[0,0],"comp":[3,1],"arrastavel":"cauda"},{"id":"v","comp":[0,0],"preso_em":"u","arrastavel":"ponta"}],"mostrar_soma":true}
+```
+
+`arrastavel`: `cauda`, `ponta`, `nenhum`. `preso_em` referencia um vetor anterior (ids únicos, sem ciclos). `escalar: "$k"` multiplica componentes e mostra original cinza; zero impede arrastar ponta, pois o vetor é nulo. `mostrar: {modulo,soma,conjugado}`.
+
+```json
+{"modo":"complexo","z":[3,"$b"],"w":[1,-1],"potencia_i":"$n","mostrar":{"conjugado":true,"modulo":true,"soma":true}}
+```
+
+`z`, `w?` são pares Re/Im; `potencia_i` aplica giros inteiros de 90 graus (use slider inteiro). Mostra rastro dos giros e eixos Re/Im. Conjugado reflete a parte imaginária.
+Métricas: `origens_vistas`, `<id>_comprimento` (inclui `v_comprimento`), `modulo_ligado`, `modulo`, `re`, `im`, `giros`. Contador de origens registra posições distintas após arraste da cauda. Cores: componentes c1/c2, vetor/resultante c3, módulo c4. Revisão visual em 400 px pendente pelo bloqueio de §5.14.

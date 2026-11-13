@@ -6,6 +6,8 @@ import { PontosWidget } from "./pontos/PontosWidget";
 import { PontosFigura } from "./pontos/PontosFigura";
 import { CircunferenciaWidget } from "./circunferencia/CircunferenciaWidget";
 import { CircunferenciaFigura } from "./circunferencia/CircunferenciaFigura";
+import { VetoresWidget } from "./vetores/VetoresWidget";
+import { VetoresFigura } from "./vetores/VetoresFigura";
 import { BarrasWidget } from "./barras/BarrasWidget";
 import { GradeFigura } from "./grade/GradeFigura";
 import { GradeWidget } from "./grade/GradeWidget";
@@ -24,6 +26,7 @@ import { PlanoFigura } from "./PlanoFigura";
 import { RetaFigura, RetaNumericaWidget } from "./RetaNumericaWidget";
 
 export const widgets = {
+  vetores_no_plano: VetoresWidget,
   circunferencia_no_plano: CircunferenciaWidget,
   pontos_no_plano: PontosWidget,
   lugar_geometrico: LugarWidget,
@@ -39,6 +42,7 @@ export const widgets = {
 };
 
 export const figures = {
+  vetores_figura: VetoresFigura,
   circunferencia_figura: CircunferenciaFigura,
   pontos_figura: PontosFigura,
   lugar_figura: LugarFigura,

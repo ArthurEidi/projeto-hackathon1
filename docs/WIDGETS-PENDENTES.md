@@ -294,7 +294,7 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 11 | `pontos_no_plano` (3) | 2 | implementado e testado (GUIA ?5.15); revis?o visual pendente |
 | 12 | Extensões da `reta_numerica` (11) | 2 | pendente |
 | 13 | `transformacao_plano` (17) | 2 | pendente |
-| 14 | `vetores_no_plano` + `complexo` (4 + 18) | 2 | pendente |
+| 14 | `vetores_no_plano` + `complexo` (4 + 18) | 2 | implementado e testado (GUIA ?5.17); revis?o visual pendente |
 | 15 | `maquinas_funcao` (20) | 2 | pendente |
 | 16 | `circunferencia_no_plano` (5) | 1 | implementado e testado (GUIA ?5.16); revis?o visual pendente |
 | 17 | `escala_decimal`, `divisao_polinomial`, `sistema_escalonado`, `grupos_inteiros` (21) | 1 cada | pendente |
