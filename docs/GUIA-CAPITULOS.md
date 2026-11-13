@@ -711,3 +711,20 @@ Pasta `common/areas/`; modos `produto`, `raiz`, `escala`. Dimensões aceitam exp
 
 Produto desenha a², ab, ab, b²; `retirar: true` desenha as duas faixas retiradas, o canto compensado e o quadrado restante. Exige a,b não negativos e, na retirada, b <= a. Raiz exige A >= 0. Escala exige L,k >= 0; `unidade: true` troca o quadrado por segmento fixo L em m/dm/cm conforme e = 0/1/2. Use ids de slider minúsculos, mesmo quando o campo é A/L.
 Métricas: `area`, `lado`, `pecas` (quantidade da decomposição), `razao_area`; sliders pelo motor. Valores inválidos mostram aviso. O canvas mantém a escala até ultrapassar `limite`, e o original aparece tracejado. Revisão visual em 400 px pendente pelo bloqueio de §5.14.
+
+### 5.19 `maquinas_funcao` + `maquinas_figura`
+
+Pasta `common/maquinas/`: modos `flechas` e `maquinas`. `maquinas_figura` exige números (recusa `"$slider"`). Aceita `highlight`.
+
+- **`flechas`**: `entradas` e `saidas` (1..6 números ou textos até 12 caracteres), `ligacoes: [[iEntrada, iSaida], ...]`, `rotulos?: { entradas, saidas }`. O aluno escolhe uma entrada e liga/desliga saídas; mais de uma seta na mesma entrada destaca o conflito em `c4`.
+- **`maquinas`**: `maquinas: [{ nome, a, b }]` (1..3 máquinas afins `ax + b`; coeficientes aceitam expressões), `entradas` (botões `x = n`), `x` (inicial), `ordem_invertida`, `inversa`, `mostrar?: { inverter, inversa }`.
+
+```json
+{"modo":"flechas","entradas":[1,2,3],"saidas":[2,4],"ligacoes":[]}
+```
+```json
+{"modo":"maquinas","maquinas":[{"nome":"g","a":1,"b":1},{"nome":"f","a":2,"b":0}],"entradas":[-1,1,2],"x":1}
+```
+
+Métricas: `entradas_com_uma_saida` (no modo `flechas`), `entradas_testadas`, `ordens_testadas`, `inversa_testada` (no modo `maquinas`). Cores: entradas `c1`, saídas `c2`, setas/máquinas `c3`, conflito/inversa `c4`.
+

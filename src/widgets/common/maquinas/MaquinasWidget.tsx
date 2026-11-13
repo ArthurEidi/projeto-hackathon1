@@ -1,30 +1,137 @@
+// Widget maquinas_funcao. Métricas por modo:
+//   flechas   entradas_com_uma_saida
+//   maquinas  entradas_testadas, ordens_testadas, inversa_testada
 import { useEffect, useMemo, useState } from "react";
 import { Dica } from "../../../ui/Dica";
 import { useCanvas } from "../../canvas";
 import type { WidgetProps } from "../../types";
 import { avaliarExpr } from "../expr";
+import { fmt } from "../geo/base";
 import { Chave, linhaDeChaves } from "../geo/Controles";
-import { alternar, cadeia, contagens } from "./calc";
-import { desenhar } from "./desenho";
+import { alternar, cadeia, estadoInicial, metricasMaquinas } from "./calc";
+import { aspectoMaquinas, desenharMaquinas } from "./desenho";
 import { Maquinas } from "./params";
+
 export function MaquinasWidget({ params, controls, onMetric, onInteract }: WidgetProps) {
   const p = useMemo(() => Maquinas.parse(params), [params]);
-  const [s, setS] = useState({ ligacoes: p.modo === "flechas" ? p.ligacoes : [] as [number, number][], entrada: 0, x: null as number | null, ordem: p.modo === "maquinas" && p.ordem_invertida, inversa: p.modo === "maquinas" && p.inversa, testadas: [] as number[], ordens: [] as boolean[], inversaTestada: false });
-  const x = s.x ?? (p.modo === "maquinas" ? avaliarExpr(p.x, controls) : 0);
-  const { ref, hover, size } = useCanvas(1.05, (ctx, w, h, hits) => desenhar(ctx, w, h, hits, p, controls, s.ligacoes, x, s.ordem, s.inversa));
+  const [estado, setEstado] = useState(() => estadoInicial(p));
+
+  const x = estado.x ?? (p.modo === "maquinas" ? avaliarExpr(p.x, controls) : 0);
+
+  const { ref, hover, size } = useCanvas(aspectoMaquinas(p), (ctx, w, h, hits) => {
+    desenharMaquinas(
+      ctx,
+      w,
+      h,
+      hits,
+      p,
+      controls,
+      estado.ligacoes,
+      x,
+      estado.ordem,
+      estado.inversa,
+      p.modo === "flechas" ? estado.entradaAtiva : null,
+    );
+  });
+
   useEffect(() => {
-    onMetric("entradas_com_uma_saida", p.modo === "flechas" ? contagens(p.entradas.length, s.ligacoes).filter(n => n === 1).length : 0);
-    onMetric("entradas_testadas", s.testadas.length); onMetric("ordens_testadas", s.ordens.length); onMetric("inversa_testada", Number(s.inversaTestada));
-  }, [p, s, onMetric]);
-  const testar = () => { onInteract(); if (p.modo !== "maquinas") return; const c = cadeia(p, controls, x, s.ordem, s.inversa); if (s.inversa && !c.invertivel) return; setS(old => ({ ...old, testadas: old.testadas.includes(x) ? old.testadas : [...old.testadas, x], ordens: old.ordens.includes(old.ordem) ? old.ordens : [...old.ordens, old.ordem], inversaTestada: old.inversaTestada || old.inversa })); };
-  return <><canvas ref={ref} aria-label="Relações e máquinas de função" />{hover && <Dica termo={hover.key} alvo={hover} largura={size.w} />}
-    {p.modo === "flechas" ? <>
-      <p style={{ textAlign: "center" }}>Escolha a entrada e toque nas saídas para ligar ou desligar.</p>
-      <div style={linhaDeChaves}>{p.entradas.map((a, i) => <Chave key={i} cor="c1" ligada={s.entrada === i} onClick={() => { onInteract(); setS(old => ({ ...old, entrada: i })); }}>Entrada {a}</Chave>)}</div>
-      <div style={linhaDeChaves}>{p.saidas.map((b, i) => <Chave key={i} cor="c2" ligada={s.ligacoes.some(l => l[0] === s.entrada && l[1] === i)} onClick={() => { onInteract(); setS(old => ({ ...old, ligacoes: alternar(old.ligacoes, old.entrada, i) })); }}>Saída {b}</Chave>)}</div>
-    </> : <>
-      <div style={linhaDeChaves}>{p.entradas.map((n, i) => <Chave key={i} ligada={x === n} onClick={() => { onInteract(); setS(old => ({ ...old, x: n })); }}>x = {n}</Chave>)}</div>
-      <div style={linhaDeChaves}><Chave ligada={s.ordem} onClick={() => { onInteract(); setS(old => ({ ...old, ordem: !old.ordem })); }}>Inverter ordem</Chave><Chave ligada={s.inversa} onClick={() => { onInteract(); setS(old => ({ ...old, inversa: !old.inversa })); }}>Máquina inversa</Chave><Chave ligada={false} onClick={testar}>Testar entrada</Chave></div>
-    </>}
-  </>;
+    const m = metricasMaquinas(p, controls, estado);
+    for (const [k, v] of Object.entries(m)) onMetric(k, Number.isFinite(v) ? v : 0);
+  }, [p, controls, estado, onMetric]);
+
+  const escolherEntrada = (n: number) => {
+    onInteract();
+    if (p.modo !== "flechas") {
+      const c = cadeia(p, controls, n, estado.ordem, estado.inversa);
+      setEstado((old) => {
+        const testadas = new Set(old.testadas);
+        if (!old.inversa || c.invertivel) testadas.add(n);
+        return { ...old, x: n, testadas };
+      });
+    } else {
+      setEstado((old) => ({ ...old, entradaAtiva: n }));
+    }
+  };
+
+  const alternarOrdem = () => {
+    onInteract();
+    setEstado((old) => {
+      const proxima = !old.ordem;
+      const ordens = new Set(old.ordens);
+      ordens.add(old.ordem);
+      ordens.add(proxima);
+      return { ...old, ordem: proxima, ordens };
+    });
+  };
+
+  const alternarInversa = () => {
+    onInteract();
+    if (p.modo !== "maquinas") return;
+    setEstado((old) => {
+      const proxima = !old.inversa;
+      const c = cadeia(p, controls, x, old.ordem, proxima);
+      return {
+        ...old,
+        inversa: proxima,
+        inversaTestada: old.inversaTestada || (proxima && c.invertivel),
+      };
+    });
+  };
+
+  return (
+    <>
+      <canvas ref={ref} aria-label="Relações e máquinas de função" />
+      {hover && <Dica termo={hover.key} alvo={hover} largura={size.w} />}
+      {p.modo === "flechas" ? (
+        <>
+          <div style={linhaDeChaves}>
+            {p.entradas.map((a, i) => (
+              <Chave key={i} cor="c1" ligada={estado.entradaAtiva === i} onClick={() => escolherEntrada(i)}>
+                Entrada {String(a)}
+              </Chave>
+            ))}
+          </div>
+          <div style={linhaDeChaves}>
+            {p.saidas.map((b, i) => (
+              <Chave
+                key={i}
+                cor="c2"
+                ligada={estado.ligacoes.some(([ea, eb]) => ea === estado.entradaAtiva && eb === i)}
+                onClick={() => {
+                  onInteract();
+                  setEstado((old) => ({ ...old, ligacoes: alternar(old.ligacoes, old.entradaAtiva, i) }));
+                }}
+              >
+                Saída {String(b)}
+              </Chave>
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <div style={linhaDeChaves}>
+            {p.entradas.map((n, i) => (
+              <Chave key={i} cor="c1" ligada={x === n && estado.testadas.has(n)} onClick={() => escolherEntrada(n)}>
+                x = {fmt(n)}
+              </Chave>
+            ))}
+          </div>
+          {( (p.mostrar.inverter && p.maquinas.length >= 2) || p.mostrar.inversa ) && (
+            <div style={linhaDeChaves}>
+              {p.mostrar.inverter && p.maquinas.length >= 2 && (
+                <Chave cor="c3" ligada={estado.ordem} onClick={alternarOrdem}>
+                  Inverter ordem
+                </Chave>
+              )}
+              {p.mostrar.inversa && (
+                <Chave cor="c4" ligada={estado.inversa} onClick={alternarInversa}>
+                  Máquina inversa
+                </Chave>
+              )}
+            </div>
+          )}
+        </>
+      )}
+    </>
+  );
 }
