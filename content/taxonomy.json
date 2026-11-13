@@ -1554,6 +1554,20 @@
                   "arquivo": "geometria/geometria-analitica/hiperbole/aula-01.json"
                 }
               ]
+            },
+            {
+              "id": "plano-cartesiano-distancia-e-ponto-medio",
+              "titulo": "Coordenadas, distância e ponto médio",
+              "icone": "curva",
+              "aulas": [
+                {
+                  "id": "aula-01",
+                  "numero": 1,
+                  "titulo": "O Triângulo Escondido Entre Dois Pontos",
+                  "subtitulo": "Distância e ponto médio",
+                  "arquivo": "geometria/geometria-analitica/plano-cartesiano-distancia-e-ponto-medio/aula-01.json"
+                }
+              ]
             }
           ]
         }
