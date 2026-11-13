@@ -173,8 +173,10 @@
         "id": "f2-inequacoes-quadraticas",
         "prompt": "Onde x² − 1 zera?",
         "options": [
+          { "id": "f2-erro2", "label": "Só 1", "correct": false, "feedback": "Faltou a raiz negativa: (−1)² − 1 = 0. O certo é −1 e 1." },
           { "id": "f2-certa", "label": "−1 e 1", "correct": true, "feedback": "Certo: −1 e 1, pois x² = 1 resulta em x = 1 ou x = −1." },
-          { "id": "f2-erro", "label": "0 e 1", "correct": false, "feedback": "Você confundiu o vértice com uma raiz. O certo é −1 e 1." }
+          { "id": "f2-erro", "label": "0 e 1", "correct": false, "feedback": "Você confundiu o vértice com uma raiz. O certo é −1 e 1." },
+          { "id": "f2-erro3", "label": "−1 e 0", "correct": false, "feedback": "Em x = 0 temos 0² − 1 = −1 ≠ 0. O certo é −1 e 1." }
         ]
       },
       {
@@ -199,8 +201,10 @@
         "id": "m1-inequacoes-quadraticas",
         "prompt": "Resolva x² − 4 < 0.",
         "options": [
+          { "id": "m1-erro2", "label": "[−2; 2]", "correct": false, "feedback": "A desigualdade estrita < exclui as raízes −2 e 2. O certo é (−2; 2)." },
+          { "id": "m1-erro", "label": "(−∞; −2) ∪ (2; +∞)", "correct": false, "feedback": "Você escolheu a parte positiva. O certo é (−2; 2)." },
           { "id": "m1-certa", "label": "(−2; 2)", "correct": true, "feedback": "Certo: (−2; 2), pois x² < 4 resulta em −2 < x < 2." },
-          { "id": "m1-erro", "label": "(−∞; −2) ∪ (2; +∞)", "correct": false, "feedback": "Você escolheu a parte positiva. O certo é (−2; 2)." }
+          { "id": "m1-erro3", "label": "(−4; 4)", "correct": false, "feedback": "Você esqueceu de tirar a raiz quadrada de 4. O certo é (−2; 2)." }
         ]
       },
       {
@@ -208,15 +212,19 @@
         "prompt": "Resolva x² − 1 ≥ 0.",
         "options": [
           { "id": "m2-certa", "label": "(−∞; −1] ∪ [1; +∞)", "correct": true, "feedback": "Certo: (−∞; −1] ∪ [1; +∞), pois x² ≥ 1 fora do intervalo das raízes." },
-          { "id": "m2-erro", "label": "[−1; 1]", "correct": false, "feedback": "O interior tem sinal negativo. O certo é (−∞; −1] ∪ [1; +∞)." }
+          { "id": "m2-erro", "label": "[−1; 1]", "correct": false, "feedback": "O interior tem sinal negativo. O certo é (−∞; −1] ∪ [1; +∞)." },
+          { "id": "m2-erro2", "label": "(−∞; −1) ∪ (1; +∞)", "correct": false, "feedback": "A igualdade ≥ permite incluir as raízes −1 e 1. O certo é (−∞; −1] ∪ [1; +∞)." },
+          { "id": "m2-erro3", "label": "[1; +∞)", "correct": false, "feedback": "Faltou o trecho x ≤ −1, onde o quadrado também é ≥ 1. O certo é (−∞; −1] ∪ [1; +∞)." }
         ]
       },
       {
         "id": "m3-inequacoes-quadraticas",
         "prompt": "Resolva 1 − x² ≥ 0.",
         "options": [
+          { "id": "m3-erro2", "label": "(−∞; −1] ∪ [1; +∞)", "correct": false, "feedback": "Você inverteu a concavidade e escolheu o trecho negativo. O certo é [−1; 1]." },
           { "id": "m3-certa", "label": "[−1; 1]", "correct": true, "feedback": "Certo: [−1; 1], pois 1 − x² ≥ 0 equivale a x² ≤ 1." },
-          { "id": "m3-erro", "label": "(−1; 1)", "correct": false, "feedback": "Você retirou igualdades válidas. O certo é [−1; 1], incluindo as raízes." }
+          { "id": "m3-erro", "label": "(−1; 1)", "correct": false, "feedback": "Você retirou igualdades válidas. O certo é [−1; 1], incluindo as raízes." },
+          { "id": "m3-erro3", "label": "[0; 1]", "correct": false, "feedback": "Para −1 ≤ x < 0 temos 1 − x² ≥ 0 também. O certo é [−1; 1]." }
         ]
       }
     ],
@@ -226,8 +234,10 @@
         "prompt": "Resolva (x − 1)² ≤ 0.",
         "fala": "Lembre que um quadrado perfeito real nunca é estritamente negativo.",
         "options": [
-          { "id": "d1-certa", "label": "{1}", "correct": true, "feedback": "Certo: {1}, pois um quadrado real nunca é negativo, mas zera em x = 1." },
-          { "id": "d1-erro", "label": "∅", "correct": false, "feedback": "O quadrado pode ser zero. O certo é {1}, pois (1 − 1)² = 0." }
+          { "id": "d1-erro2", "label": "(−∞; 1]", "correct": false, "feedback": "Para x < 1 temos (x − 1)² > 0, não ≤ 0. O certo é {1}." },
+          { "id": "d1-erro", "label": "∅", "correct": false, "feedback": "O quadrado pode ser zero. O certo é {1}, pois (1 − 1)² = 0." },
+          { "id": "d1-erro3", "label": "R", "correct": false, "feedback": "Só em x = 1 o quadrado zera; fora dele é positivo. O certo é {1}." },
+          { "id": "d1-certa", "label": "{1}", "correct": true, "feedback": "Certo: {1}, pois um quadrado real nunca é negativo, mas zera em x = 1." }
         ]
       },
       {
@@ -236,7 +246,9 @@
         "fala": "Pense no menor valor que x² + 1 pode atingir.",
         "options": [
           { "id": "d2-certa", "label": "∅", "correct": true, "feedback": "Certo: ∅, pois x² ≥ 0 implica x² + 1 ≥ 1, nunca menor que zero." },
-          { "id": "d2-erro", "label": "R", "correct": false, "feedback": "Um quadrado real somado a 1 nunca é negativo. O certo é ∅." }
+          { "id": "d2-erro", "label": "R", "correct": false, "feedback": "Um quadrado real somado a 1 nunca é negativo. O certo é ∅." },
+          { "id": "d2-erro2", "label": "(−1; 1)", "correct": false, "feedback": "Em x = 0 temos 0² + 1 = 1 > 0. O certo é ∅, pois x² + 1 ≥ 1." },
+          { "id": "d2-erro3", "label": "{−1}", "correct": false, "feedback": "Em x = −1 temos (−1)² + 1 = 2 > 0. O certo é ∅, pois x² + 1 ≥ 1." }
         ]
       },
       {
@@ -244,8 +256,10 @@
         "prompt": "Resolva 4x² − 1 < 0.",
         "fala": "Isole x² e encontre a raiz quadrada da fração.",
         "options": [
+          { "id": "d3-erro2", "label": "[−0,5; 0,5]", "correct": false, "feedback": "A desigualdade estrita < exclui −0,5 e 0,5. O certo é (−0,5; 0,5)." },
           { "id": "d3-certa", "label": "(−0,5; 0,5)", "correct": true, "feedback": "Certo: (−0,5; 0,5), pois x² < 1/4 resulta em −0,5 < x < 0,5." },
-          { "id": "d3-erro", "label": "(−0,25; 0,25)", "correct": false, "feedback": "Você não tirou a raiz de 1/4. O certo é (−0,5; 0,5)." }
+          { "id": "d3-erro", "label": "(−0,25; 0,25)", "correct": false, "feedback": "Você não tirou a raiz de 1/4. O certo é (−0,5; 0,5)." },
+          { "id": "d3-erro3", "label": "(−∞; −0,5) ∪ (0,5; +∞)", "correct": false, "feedback": "Você escolheu a região onde 4x² − 1 é positivo. O certo é (−0,5; 0,5)." }
         ]
       },
       {
@@ -253,8 +267,10 @@
         "prompt": "Resolva −(x − 2)² ≥ 0.",
         "fala": "Um número com sinal negativo pode ser maior ou igual a zero?",
         "options": [
+          { "id": "d4-erro2", "label": "∅", "correct": false, "feedback": "Em x = 2 temos −0² = 0 ≥ 0, que é válido. O certo é {2}." },
+          { "id": "d4-erro", "label": "R", "correct": false, "feedback": "O sinal negativo torna as outras saídas negativas. O certo é {2}." },
           { "id": "d4-certa", "label": "{2}", "correct": true, "feedback": "Certo: {2}, pois o oposto de um quadrado só não é negativo quando zera em x = 2." },
-          { "id": "d4-erro", "label": "R", "correct": false, "feedback": "O sinal negativo torna as outras saídas negativas. O certo é {2}." }
+          { "id": "d4-erro3", "label": "[2; +∞)", "correct": false, "feedback": "Para x > 2 temos −(x − 2)² < 0. O certo é {2}." }
         ]
       },
       {
@@ -262,8 +278,10 @@
         "prompt": "Uma área vale x(x + 1) com x ≥ 0. Para ela ser no máximo 6, qual x serve?",
         "fala": "Monte x² + x − 6 ≤ 0 e lembre que x não pode ser negativo.",
         "options": [
-          { "id": "d5-certa", "label": "[0; 2]", "correct": true, "feedback": "Certo: [0; 2], pois (x + 3)(x − 2) ≤ 0 com x ≥ 0 dá 0 ≤ x ≤ 2." },
-          { "id": "d5-erro", "label": "[−3; 2]", "correct": false, "feedback": "Você aceitou uma dimensão negativa. O certo é [0; 2], pois x ≥ 0." }
+          { "id": "d5-erro2", "label": "[0; 2)", "correct": false, "feedback": "Para x = 2 a área vale 2 · 3 = 6, que é permitido por ≤ 6. O certo é [0; 2]." },
+          { "id": "d5-erro", "label": "[−3; 2]", "correct": false, "feedback": "Você aceitou uma dimensão negativa. O certo é [0; 2], pois x ≥ 0." },
+          { "id": "d5-erro3", "label": "[0; 3]", "correct": false, "feedback": "Com x = 3 a área seria 3 · 4 = 12 > 6. O certo é [0; 2]." },
+          { "id": "d5-certa", "label": "[0; 2]", "correct": true, "feedback": "Certo: [0; 2], pois (x + 3)(x − 2) ≤ 0 com x ≥ 0 dá 0 ≤ x ≤ 2." }
         ]
       }
     ],

@@ -339,10 +339,22 @@
             "feedback": "Você trocou os fatores. O certo é x; x=0; x−2=−2."
           },
           {
+            "id": "f1-fatoracao-algebrica-erro2",
+            "label": "Ambos",
+            "correct": false,
+            "feedback": "Em x=0 o fator x−2 vale −2, não zero. O certo é x; x=0; x−2=−2."
+          },
+          {
             "id": "f1-fatoracao-algebrica-certa",
             "label": "x",
             "correct": true,
             "feedback": "Certo: x; x=0; x−2=−2."
+          },
+          {
+            "id": "f1-fatoracao-algebrica-erro3",
+            "label": "Nenhum",
+            "correct": false,
+            "feedback": "O primeiro fator é o próprio x, que vale 0. O certo é x; x=0; x−2=−2."
           }
         ]
       },
@@ -361,6 +373,18 @@
             "label": "−2",
             "correct": false,
             "feedback": "O sinal foi trocado. O certo é 2; 2−2=0."
+          },
+          {
+            "id": "f2-fatoracao-algebrica-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Em x=0 temos 0−2=−2≠0. O certo é 2; 2−2=0."
+          },
+          {
+            "id": "f2-fatoracao-algebrica-erro3",
+            "label": "1",
+            "correct": false,
+            "feedback": "Em x=1 temos 1−2=−1≠0. O certo é 2; 2−2=0."
           }
         ]
       },
@@ -375,10 +399,22 @@
             "feedback": "O coeficiente 2 foi perdido. O certo é x(x−2); x·x−x·2=x²−2x."
           },
           {
+            "id": "f3-fatoracao-algebrica-erro2",
+            "label": "x(x+2)",
+            "correct": false,
+            "feedback": "Você trocou o sinal do termo −2x. O certo é x(x−2); x·x−x·2=x²−2x."
+          },
+          {
             "id": "f3-fatoracao-algebrica-certa",
             "label": "x(x−2)",
             "correct": true,
             "feedback": "Certo: x(x−2); x·x−x·2=x²−2x."
+          },
+          {
+            "id": "f3-fatoracao-algebrica-erro3",
+            "label": "2(x²−x)",
+            "correct": false,
+            "feedback": "Você colocou 2 em evidência em x², mas x² não tem fator 2. O certo é x(x−2); x·x−x·2=x²−2x."
           }
         ]
       },
@@ -413,10 +449,22 @@
             "feedback": "Você trocou os sinais das raízes. O certo é 1 e −2; 1−1=0; −2+2=0."
           },
           {
+            "id": "m1-fatoracao-algebrica-erro2",
+            "label": "−1 e −2",
+            "correct": false,
+            "feedback": "Você manteve o sinal negativo em x−1=0. O certo é 1 e −2; 1−1=0; −2+2=0."
+          },
+          {
             "id": "m1-fatoracao-algebrica-certa",
             "label": "1 e −2",
             "correct": true,
             "feedback": "Certo: 1 e −2; 1−1=0; −2+2=0."
+          },
+          {
+            "id": "m1-fatoracao-algebrica-erro3",
+            "label": "1 e 2",
+            "correct": false,
+            "feedback": "Você esqueceu de inverter o sinal em x+2=0. O certo é 1 e −2; 1−1=0; −2+2=0."
           }
         ]
       },
@@ -435,6 +483,18 @@
             "label": "(x−9)(x+9)",
             "correct": false,
             "feedback": "Você usou a área como lado. O certo é (x−3)(x+3); 9=3²."
+          },
+          {
+            "id": "m2-fatoracao-algebrica-erro2",
+            "label": "(x−3)²",
+            "correct": false,
+            "feedback": "A expansão (x−3)² tem termo −6x, não é x²−9. O certo é (x−3)(x+3); 9=3²."
+          },
+          {
+            "id": "m2-fatoracao-algebrica-erro3",
+            "label": "(x+3)²",
+            "correct": false,
+            "feedback": "A soma de quadrados expandida dá x²+6x+9. O certo é (x−3)(x+3); 9=3²."
           }
         ]
       },
@@ -447,6 +507,18 @@
             "label": "1",
             "correct": false,
             "feedback": "Faltou o sinal do segundo fator. O certo é −1; 1·(1−2)=−1."
+          },
+          {
+            "id": "m3-fatoracao-algebrica-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Em x=1 nenhum dos fatores é zero. O certo é −1; 1·(1−2)=−1."
+          },
+          {
+            "id": "m3-fatoracao-algebrica-erro3",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Você esqueceu de subtrair 1 em 1−2. O certo é −1; 1·(1−2)=−1."
           },
           {
             "id": "m3-fatoracao-algebrica-certa",
@@ -464,6 +536,12 @@
         "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d1-fatoracao-algebrica-erro2",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Em x=−2 temos (−2)²=4≠−4, não é solução. O certo é 0; x(x−2)=0; x=0 ou 2."
+          },
+          {
             "id": "d1-fatoracao-algebrica-certa",
             "label": "0",
             "correct": true,
@@ -474,6 +552,12 @@
             "label": "2",
             "correct": false,
             "feedback": "A divisão exclui x=0. O certo é 0; x(x−2)=0; x=0 ou 2."
+          },
+          {
+            "id": "d1-fatoracao-algebrica-erro3",
+            "label": "1",
+            "correct": false,
+            "feedback": "Em x=1 temos 1²=1≠2, não é solução. O certo é 0; x(x−2)=0; x=0 ou 2."
           }
         ]
       },
@@ -489,10 +573,22 @@
             "feedback": "Você cancelou x e perdeu zero. O certo é 0 e 0,5; x(2x−1)=0."
           },
           {
+            "id": "d2-fatoracao-algebrica-erro2",
+            "label": "0 e 2",
+            "correct": false,
+            "feedback": "Você dividiu errado: 2x−1=0 dá x=0,5, não 2. O certo é 0 e 0,5; x(2x−1)=0."
+          },
+          {
             "id": "d2-fatoracao-algebrica-certa",
             "label": "0 e 0,5",
             "correct": true,
             "feedback": "Certo: 0 e 0,5; x(2x−1)=0."
+          },
+          {
+            "id": "d2-fatoracao-algebrica-erro3",
+            "label": "−0,5 e 0",
+            "correct": false,
+            "feedback": "Você trocou o sinal ao resolver 2x−1=0. O certo é 0 e 0,5; x(2x−1)=0."
           }
         ]
       },
@@ -512,6 +608,18 @@
             "label": "−1",
             "correct": false,
             "feedback": "O segundo fator vale 3, não zero. O certo é 2; (2−a)·3=0."
+          },
+          {
+            "id": "d3-fatoracao-algebrica-erro2",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Com a=−2 o primeiro fator dá 2−(−2)=4≠0. O certo é 2; (2−a)·3=0."
+          },
+          {
+            "id": "d3-fatoracao-algebrica-erro3",
+            "label": "0",
+            "correct": false,
+            "feedback": "Com a=0 temos (2−0)·3=6≠0. O certo é 2; (2−a)·3=0."
           }
         ]
       },
@@ -540,6 +648,12 @@
         "paco": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d5-fatoracao-algebrica-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Em x=1 o lado x−2 vale −1, que é negativo. O certo é 3; x²=9; x>2; x=3."
+          },
+          {
             "id": "d5-fatoracao-algebrica-certa",
             "label": "3",
             "correct": true,
@@ -550,6 +664,12 @@
             "label": "−3",
             "correct": false,
             "feedback": "Você aceitou um comprimento negativo. O certo é 3; x²=9; x>2; x=3."
+          },
+          {
+            "id": "d5-fatoracao-algebrica-erro3",
+            "label": "5",
+            "correct": false,
+            "feedback": "Com x=5 a área seria 25−4=21, não 5. O certo é 3; x²=9; x>2; x=3."
           }
         ]
       }

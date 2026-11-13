@@ -206,24 +206,30 @@
         "id": "m1-inequacoes-primeiro-grau",
         "prompt": "Resolva 2x − 2 > 0.",
         "options": [
+          { "id": "m1-erro2", "label": "x ≥ 1", "correct": false, "feedback": "Em x = 1 temos 2(1) − 2 = 0, não maior que zero. O certo é x > 1: 2x > 2." },
           { "id": "m1-certa", "label": "x > 1", "correct": true, "feedback": "Certo: 2x > 2 resulta em x > 1." },
-          { "id": "m1-erro", "label": "x < 1", "correct": false, "feedback": "Você inverteu ao dividir por positivo. O certo é x > 1: 2x > 2." }
+          { "id": "m1-erro", "label": "x < 1", "correct": false, "feedback": "Você inverteu ao dividir por positivo. O certo é x > 1: 2x > 2." },
+          { "id": "m1-erro3", "label": "x > −1", "correct": false, "feedback": "Você errou o sinal ao passar −2 para o outro lado. O certo é x > 1: 2x > 2." }
         ]
       },
       {
         "id": "m2-inequacoes-primeiro-grau",
         "prompt": "Resolva −2x + 2 > 0.",
         "options": [
+          { "id": "m2-erro2", "label": "x ≤ 1", "correct": false, "feedback": "A comparação estrita > exclui x = 1. O certo é x < 1." },
+          { "id": "m2-erro", "label": "x > 1", "correct": false, "feedback": "Faltou inverter ao dividir por negativo. O certo é x < 1." },
           { "id": "m2-certa", "label": "x < 1", "correct": true, "feedback": "Certo: −2x > −2 ao dividir por −2 inverte o sinal para x < 1." },
-          { "id": "m2-erro", "label": "x > 1", "correct": false, "feedback": "Faltou inverter ao dividir por negativo. O certo é x < 1." }
+          { "id": "m2-erro3", "label": "x < −1", "correct": false, "feedback": "Você dividiu −2 por 2 em vez de −2. O certo é x < 1." }
         ]
       },
       {
         "id": "m3-inequacoes-primeiro-grau",
         "prompt": "Resolva 3x ≤ 6.",
         "options": [
-          { "id": "m3-certa", "label": "x ≤ 2", "correct": true, "feedback": "Certo: dividindo por 3 temos x ≤ 2." },
-          { "id": "m3-erro", "label": "x < 2", "correct": false, "feedback": "Você retirou a igualdade. O certo é x ≤ 2, pois o sinal era menor ou igual." }
+          { "id": "m3-erro2", "label": "x ≥ 2", "correct": false, "feedback": "Você inverteu a desigualdade ao dividir por número positivo. O certo é x ≤ 2." },
+          { "id": "m3-erro", "label": "x < 2", "correct": false, "feedback": "Você retirou a igualdade. O certo é x ≤ 2, pois o sinal era menor ou igual." },
+          { "id": "m3-erro3", "label": "x ≤ 3", "correct": false, "feedback": "Você subtraiu 3 de 6 em vez de dividir. O certo é x ≤ 2." },
+          { "id": "m3-certa", "label": "x ≤ 2", "correct": true, "feedback": "Certo: dividindo por 3 temos x ≤ 2." }
         ]
       }
     ],
@@ -234,7 +240,9 @@
         "fala": "Subtraia x dos dois lados e depois isole o número.",
         "options": [
           { "id": "d1-certa", "label": "x ≤ 2", "correct": true, "feedback": "Certo: 2x − x ≤ 3 − 1 resulta em x ≤ 2." },
-          { "id": "d1-erro", "label": "x ≥ 2", "correct": false, "feedback": "Você trocou o lado da solução. O certo é x ≤ 2." }
+          { "id": "d1-erro", "label": "x ≥ 2", "correct": false, "feedback": "Você trocou o lado da solução. O certo é x ≤ 2." },
+          { "id": "d1-erro2", "label": "x < 2", "correct": false, "feedback": "A desigualdade ≤ inclui a igualdade x = 2. O certo é x ≤ 2." },
+          { "id": "d1-erro3", "label": "x ≤ 4", "correct": false, "feedback": "Você somou 3 + 1 em vez de subtrair 1. O certo é x ≤ 2." }
         ]
       },
       {
@@ -242,8 +250,10 @@
         "prompt": "Quais números reais satisfazem 0x + 1 > 0?",
         "fala": "Calcule 0 vezes qualquer número e veja se a sentença é verdadeira.",
         "options": [
+          { "id": "d2-erro2", "label": "x > −1", "correct": false, "feedback": "O coeficiente de x é zero, logo x não aparece em 1 > 0. O certo é Todos." },
           { "id": "d2-certa", "label": "Todos", "correct": true, "feedback": "Certo: 0x é zero e 1 > 0 é sempre verdadeiro para todo x real." },
-          { "id": "d2-erro", "label": "Nenhum", "correct": false, "feedback": "A sentença 1 > 0 é sempre verdadeira, independentemente de x: são Todos." }
+          { "id": "d2-erro", "label": "Nenhum", "correct": false, "feedback": "A sentença 1 > 0 é sempre verdadeira, independentemente de x: são Todos." },
+          { "id": "d2-erro3", "label": "x > 0", "correct": false, "feedback": "Em x = −5 temos 0(−5) + 1 = 1 > 0, também serve. O certo é Todos." }
         ]
       },
       {
@@ -251,8 +261,10 @@
         "prompt": "Quais números reais satisfazem 0x − 1 ≥ 0?",
         "fala": "Calcule 0 vezes x e veja se a desigualdade é possível.",
         "options": [
+          { "id": "d3-erro2", "label": "x ≥ 1", "correct": false, "feedback": "Para x = 2 temos 0(2) − 1 = −1 < 0, não serve. O certo é Nenhum." },
+          { "id": "d3-erro", "label": "Todos", "correct": false, "feedback": "−1 ≥ 0 é sempre falso, portanto a resposta é Nenhum." },
           { "id": "d3-certa", "label": "Nenhum", "correct": true, "feedback": "Certo: 0x é zero e −1 ≥ 0 é impossível, logo nenhum número satisfaz." },
-          { "id": "d3-erro", "label": "Todos", "correct": false, "feedback": "−1 ≥ 0 é sempre falso, portanto a resposta é Nenhum." }
+          { "id": "d3-erro3", "label": "{0}", "correct": false, "feedback": "Em x = 0 temos −1 ≥ 0, que é falso. O certo é Nenhum." }
         ]
       },
       {
@@ -260,8 +272,10 @@
         "prompt": "Resolva −2x < 1.",
         "fala": "Atenção ao dividir por número negativo.",
         "options": [
-          { "id": "d4-certa", "label": "x > −0,5", "correct": true, "feedback": "Certo: dividindo por −2 invertemos o sinal para x > −0,5." },
-          { "id": "d4-erro", "label": "x < −0,5", "correct": false, "feedback": "Faltou inverter a desigualdade ao dividir por −2. O certo é x > −0,5." }
+          { "id": "d4-erro2", "label": "x > 0,5", "correct": false, "feedback": "Você esqueceu o sinal negativo de −2 na divisão. O certo é x > −0,5." },
+          { "id": "d4-erro", "label": "x < −0,5", "correct": false, "feedback": "Faltou inverter a desigualdade ao dividir por −2. O certo é x > −0,5." },
+          { "id": "d4-erro3", "label": "x ≥ −0,5", "correct": false, "feedback": "A desigualdade estrita < exclui x = −0,5. O certo é x > −0,5." },
+          { "id": "d4-certa", "label": "x > −0,5", "correct": true, "feedback": "Certo: dividindo por −2 invertemos o sinal para x > −0,5." }
         ]
       },
       {
@@ -270,7 +284,9 @@
         "fala": "Monte 3 + 2x ≤ 8 e lembre que a distância x não pode ser negativa.",
         "options": [
           { "id": "d5-certa", "label": "[0; 2,5]", "correct": true, "feedback": "Certo: 2x ≤ 5 dá x ≤ 2,5; como x ≥ 0, temos [0; 2,5]." },
-          { "id": "d5-erro", "label": "(−∞; 2,5]", "correct": false, "feedback": "Você aceitou distância negativa. O certo é [0; 2,5], pois x ≥ 0." }
+          { "id": "d5-erro", "label": "(−∞; 2,5]", "correct": false, "feedback": "Você aceitou distância negativa. O certo é [0; 2,5], pois x ≥ 0." },
+          { "id": "d5-erro2", "label": "[0; 2,5)", "correct": false, "feedback": "Com até 8 reais o extremo 2,5 é permitido (3 + 5 = 8). O certo é [0; 2,5]." },
+          { "id": "d5-erro3", "label": "[0; 4]", "correct": false, "feedback": "Você esqueceu da taxa fixa 3 e dividiu 8 por 2. O certo é [0; 2,5], pois 2x ≤ 5." }
         ]
       }
     ],

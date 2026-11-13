@@ -364,10 +364,22 @@
             "feedback": "Você contou a raiz repetida duas vezes como ponto. O certo é 1; x²=0 ⇒ x=0."
           },
           {
+            "id": "f1-equacoes-quadraticas-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "A parábola toca o eixo x no vértice (0;0). O certo é 1; x²=0 ⇒ x=0."
+          },
+          {
             "id": "f1-equacoes-quadraticas-certa",
             "label": "1",
             "correct": true,
             "feedback": "Certo: 1; x²=0 ⇒ x=0."
+          },
+          {
+            "id": "f1-equacoes-quadraticas-erro3",
+            "label": "Infinitos",
+            "correct": false,
+            "feedback": "Só x=0 zera x², não todos os reais. O certo é 1; x²=0 ⇒ x=0."
           }
         ]
       },
@@ -398,6 +410,18 @@
             "label": "Só 1",
             "correct": false,
             "feedback": "Faltou a raiz negativa. O certo é −1 e 1; (−1)²=1²=1."
+          },
+          {
+            "id": "f3-equacoes-quadraticas-erro2",
+            "label": "0 e 1",
+            "correct": false,
+            "feedback": "Em x=0 temos 0²−1=−1≠0. O certo é −1 e 1; (−1)²=1²=1."
+          },
+          {
+            "id": "f3-equacoes-quadraticas-erro3",
+            "label": "Só −1",
+            "correct": false,
+            "feedback": "Você pegou apenas a raiz negativa. O certo é −1 e 1; (−1)²=1²=1."
           },
           {
             "id": "f3-equacoes-quadraticas-certa",
@@ -442,6 +466,18 @@
             "label": "−2 e 2",
             "correct": true,
             "feedback": "Certo: −2 e 2; x²=4; x=±2."
+          },
+          {
+            "id": "m1-equacoes-quadraticas-erro2",
+            "label": "Só 2",
+            "correct": false,
+            "feedback": "Faltou a raiz negativa. O certo é −2 e 2; x²=4; x=±2."
+          },
+          {
+            "id": "m1-equacoes-quadraticas-erro3",
+            "label": "0 e 2",
+            "correct": false,
+            "feedback": "Em x=0 temos 0²−4=−4≠0. O certo é −2 e 2; x²=4; x=±2."
           }
         ]
       },
@@ -460,6 +496,18 @@
             "label": "−1 e −2",
             "correct": false,
             "feedback": "Você trocou os sinais dos fatores. O certo é 1 e 2; (x−1)(x−2)=0."
+          },
+          {
+            "id": "m2-equacoes-quadraticas-erro2",
+            "label": "−2 e 1",
+            "correct": false,
+            "feedback": "Você errou os sinais na fatoração. O certo é 1 e 2; (x−1)(x−2)=0."
+          },
+          {
+            "id": "m2-equacoes-quadraticas-erro3",
+            "label": "0 e 3",
+            "correct": false,
+            "feedback": "Em x=0 temos 2≠0; 3 é a soma das raízes. O certo é 1 e 2; (x−1)(x−2)=0."
           }
         ]
       },
@@ -474,10 +522,22 @@
             "feedback": "O quadrado pode valer zero. O certo é 1; (x−1)²=0; x=1."
           },
           {
+            "id": "m3-equacoes-quadraticas-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "A raiz x=1 é dupla, não são duas distintas. O certo é 1; (x−1)²=0; x=1."
+          },
+          {
             "id": "m3-equacoes-quadraticas-certa",
             "label": "1",
             "correct": true,
             "feedback": "Certo: 1; (x−1)²=0; x=1."
+          },
+          {
+            "id": "m3-equacoes-quadraticas-erro3",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Quantidade de raízes não pode ser negativa. O certo é 1; (x−1)²=0; x=1."
           }
         ]
       }
@@ -489,6 +549,12 @@
         "prompt": "Qual k faz x²−2x+k=0 ter raiz dupla?",
         "options": [
           {
+            "id": "d1-equacoes-quadraticas-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Com k=0 temos Δ=4>0, duas raízes distintas. O certo é 1; Δ=4−4k=0; k=1."
+          },
+          {
             "id": "d1-equacoes-quadraticas-certa",
             "label": "1",
             "correct": true,
@@ -499,6 +565,12 @@
             "label": "2",
             "correct": false,
             "feedback": "Você confundiu o coeficiente linear com o termo constante. O certo é 1; Δ=4−4k=0; k=1."
+          },
+          {
+            "id": "d1-equacoes-quadraticas-erro3",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você esqueceu o fator 4 em 4k no discriminante. O certo é 1; Δ=4−4k=0; k=1."
           }
         ]
       },
@@ -512,6 +584,18 @@
             "label": "−0,25 e 0,25",
             "correct": false,
             "feedback": "Você parou no valor de x². O certo é −0,5 e 0,5; x²=1/4; x=±1/2."
+          },
+          {
+            "id": "d2-equacoes-quadraticas-erro2",
+            "label": "−2 e 2",
+            "correct": false,
+            "feedback": "Você multiplicou por 4 em vez de dividir. O certo é −0,5 e 0,5; x²=1/4; x=±1/2."
+          },
+          {
+            "id": "d2-equacoes-quadraticas-erro3",
+            "label": "Só 0,5",
+            "correct": false,
+            "feedback": "Faltou a solução negativa. O certo é −0,5 e 0,5; x²=1/4; x=±1/2."
           },
           {
             "id": "d2-equacoes-quadraticas-certa",
@@ -537,6 +621,18 @@
             "label": "{−1}",
             "correct": false,
             "feedback": "Você confundiu vértice com raiz. O certo é ∅; (x+1)²+1>0."
+          },
+          {
+            "id": "d3-equacoes-quadraticas-erro2",
+            "label": "{−1; −2}",
+            "correct": false,
+            "feedback": "Em x=−2 temos 4−4+2=2≠0. O certo é ∅; (x+1)²+1>0."
+          },
+          {
+            "id": "d3-equacoes-quadraticas-erro3",
+            "label": "{1}",
+            "correct": false,
+            "feedback": "Em x=1 temos 1+2+2=5≠0. O certo é ∅; (x+1)²+1>0."
           }
         ]
       },
@@ -552,10 +648,22 @@
             "feedback": "A soma das raízes entra com sinal negativo. O certo é x²−4x+3=0; (x−1)(x−3)=x²−4x+3."
           },
           {
+            "id": "d4-equacoes-quadraticas-erro2",
+            "label": "x²−3x+4=0",
+            "correct": false,
+            "feedback": "Você trocou soma e produto das raízes. O certo é x²−4x+3=0; (x−1)(x−3)=x²−4x+3."
+          },
+          {
             "id": "d4-equacoes-quadraticas-certa",
             "label": "x²−4x+3=0",
             "correct": true,
             "feedback": "Certo: x²−4x+3=0; (x−1)(x−3)=x²−4x+3."
+          },
+          {
+            "id": "d4-equacoes-quadraticas-erro3",
+            "label": "x²−4x−3=0",
+            "correct": false,
+            "feedback": "O produto 1·3 é +3, não −3. O certo é x²−4x+3=0; (x−1)(x−3)=x²−4x+3."
           }
         ]
       },
@@ -564,6 +672,12 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "prompt": "Um retângulo de lados x e x+1 tem área 6; qual comprimento x>0 serve?",
         "options": [
+          {
+            "id": "d5-equacoes-quadraticas-erro2",
+            "label": "3",
+            "correct": false,
+            "feedback": "Com x=3 os lados seriam 3 e 4, dando área 12. O certo é 2; x²+x−6=(x−2)(x+3)=0."
+          },
           {
             "id": "d5-equacoes-quadraticas-certa",
             "label": "2",
@@ -575,6 +689,12 @@
             "label": "−3",
             "correct": false,
             "feedback": "Você aceitou comprimento negativo. O certo é 2; x²+x−6=(x−2)(x+3)=0."
+          },
+          {
+            "id": "d5-equacoes-quadraticas-erro3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você igualou o lado menor à área total. O certo é 2; x²+x−6=(x−2)(x+3)=0."
           }
         ]
       }

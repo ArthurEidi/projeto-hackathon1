@@ -412,6 +412,12 @@
         "prompt": "Resolva 2ˣ>4.",
         "options": [
           {
+            "id": "m1-inequacoes-exponenciais-logaritmicas-erro2",
+            "label": "x≥2",
+            "correct": false,
+            "feedback": "Em x=2 temos 2²=4, não maior que 4. O certo é x>2; 4=2²."
+          },
+          {
             "id": "m1-inequacoes-exponenciais-logaritmicas-certa",
             "label": "x>2",
             "correct": true,
@@ -422,6 +428,12 @@
             "label": "x<2",
             "correct": false,
             "feedback": "Você inverteu uma função crescente. O certo é x>2; 4=2²."
+          },
+          {
+            "id": "m1-inequacoes-exponenciais-logaritmicas-erro3",
+            "label": "x>4",
+            "correct": false,
+            "feedback": "Você confundiu o alvo 4 com o expoente. O certo é x>2; 4=2²."
           }
         ]
       },
@@ -430,16 +442,28 @@
         "prompt": "Resolva (0,5)ˣ≥0,25.",
         "options": [
           {
-            "id": "m2-inequacoes-exponenciais-logaritmicas-certa",
-            "label": "x≤2",
-            "correct": true,
-            "feedback": "Certo: x≤2; 0,25=(0,5)²."
+            "id": "m2-inequacoes-exponenciais-logaritmicas-erro2",
+            "label": "x<2",
+            "correct": false,
+            "feedback": "A desigualdade ≥ inclui a fronteira x=2. O certo é x≤2; 0,25=(0,5)²."
           },
           {
             "id": "m2-inequacoes-exponenciais-logaritmicas-erro",
             "label": "x≥2",
             "correct": false,
             "feedback": "Faltou inverter a ordem na base decrescente. O certo é x≤2; 0,25=(0,5)²."
+          },
+          {
+            "id": "m2-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "x≤2",
+            "correct": true,
+            "feedback": "Certo: x≤2; 0,25=(0,5)²."
+          },
+          {
+            "id": "m2-inequacoes-exponenciais-logaritmicas-erro3",
+            "label": "x≤0,5",
+            "correct": false,
+            "feedback": "Você dividiu 0,25 por 0,5 em vez de igualar expoentes. O certo é x≤2; 0,25=(0,5)²."
           }
         ]
       },
@@ -458,6 +482,18 @@
             "label": "x≤2",
             "correct": false,
             "feedback": "Você incluiu argumentos não positivos. O certo é 0<x≤2; x>0 e x≤2¹."
+          },
+          {
+            "id": "m3-inequacoes-exponenciais-logaritmicas-erro2",
+            "label": "0<x<2",
+            "correct": false,
+            "feedback": "A desigualdade ≤ permite x=2, onde log₂2=1. O certo é 0<x≤2; x>0 e x≤2¹."
+          },
+          {
+            "id": "m3-inequacoes-exponenciais-logaritmicas-erro3",
+            "label": "x≥2",
+            "correct": false,
+            "feedback": "Você inverteu a ordem de uma base crescente. O certo é 0<x≤2; x>0 e x≤2¹."
           }
         ]
       }
@@ -469,6 +505,12 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d1-inequacoes-exponenciais-logaritmicas-erro2",
+            "label": "x<1",
+            "correct": false,
+            "feedback": "Você esqueceu a condição de existência x>0. O certo é 0<x<1; log₀,₅1=0; função decrescente."
+          },
+          {
             "id": "d1-inequacoes-exponenciais-logaritmicas-certa",
             "label": "0<x<1",
             "correct": true,
@@ -479,6 +521,12 @@
             "label": "x>1",
             "correct": false,
             "feedback": "Você tratou a base como crescente. O certo é 0<x<1; log₀,₅1=0; função decrescente."
+          },
+          {
+            "id": "d1-inequacoes-exponenciais-logaritmicas-erro3",
+            "label": "0<x≤1",
+            "correct": false,
+            "feedback": "Em x=1 o logaritmo vale 0, e a comparação é estrita. O certo é 0<x<1; log₀,₅1=0; função decrescente."
           }
         ]
       },
@@ -488,16 +536,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d2-inequacoes-exponenciais-logaritmicas-erro",
+            "label": "x>0",
+            "correct": false,
+            "feedback": "Você usou monotonicidade na base 1. O certo é ∅; 1ˣ=1, nunca maior."
+          },
+          {
+            "id": "d2-inequacoes-exponenciais-logaritmicas-erro2",
+            "label": "R",
+            "correct": false,
+            "feedback": "1ˣ vale sempre 1, nunca é estritamente maior que 1. O certo é ∅; 1ˣ=1, nunca maior."
+          },
+          {
             "id": "d2-inequacoes-exponenciais-logaritmicas-certa",
             "label": "∅",
             "correct": true,
             "feedback": "Certo: ∅; 1ˣ=1, nunca maior."
           },
           {
-            "id": "d2-inequacoes-exponenciais-logaritmicas-erro",
-            "label": "x>0",
+            "id": "d2-inequacoes-exponenciais-logaritmicas-erro3",
+            "label": "x>1",
             "correct": false,
-            "feedback": "Você usou monotonicidade na base 1. O certo é ∅; 1ˣ=1, nunca maior."
+            "feedback": "Mesmo para x>1, 1ˣ continua sendo 1. O certo é ∅; 1ˣ=1, nunca maior."
           }
         ]
       },
@@ -507,16 +567,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
-            "id": "d3-inequacoes-exponenciais-logaritmicas-certa",
-            "label": "x<0,5",
-            "correct": true,
-            "feedback": "Certo: x<0,5; 2²ˣ<2¹; 2x<1."
+            "id": "d3-inequacoes-exponenciais-logaritmicas-erro2",
+            "label": "x>0,5",
+            "correct": false,
+            "feedback": "Você inverteu a desigualdade numa base maior que 1. O certo é x<0,5; 2²ˣ<2¹; 2x<1."
           },
           {
             "id": "d3-inequacoes-exponenciais-logaritmicas-erro",
             "label": "x<2",
             "correct": false,
             "feedback": "Você não reescreveu as bases. O certo é x<0,5; 2²ˣ<2¹; 2x<1."
+          },
+          {
+            "id": "d3-inequacoes-exponenciais-logaritmicas-erro3",
+            "label": "x≤0,5",
+            "correct": false,
+            "feedback": "Em x=0,5 temos 4⁰,⁵=2, que não é menor que 2. O certo é x<0,5; 2²ˣ<2¹; 2x<1."
+          },
+          {
+            "id": "d3-inequacoes-exponenciais-logaritmicas-certa",
+            "label": "x<0,5",
+            "correct": true,
+            "feedback": "Certo: x<0,5; 2²ˣ<2¹; 2x<1."
           }
         ]
       },
@@ -536,6 +608,18 @@
             "label": "x<3",
             "correct": false,
             "feedback": "Você esqueceu a condição do argumento. O certo é 1<x<3; 0<x−1<2."
+          },
+          {
+            "id": "d4-inequacoes-exponenciais-logaritmicas-erro2",
+            "label": "0<x<3",
+            "correct": false,
+            "feedback": "Você exigiu x>0 em vez de x−1>0. O certo é 1<x<3; 0<x−1<2."
+          },
+          {
+            "id": "d4-inequacoes-exponenciais-logaritmicas-erro3",
+            "label": "1<x≤3",
+            "correct": false,
+            "feedback": "A comparação é estrita, logo x=3 não entra. O certo é 1<x<3; 0<x−1<2."
           }
         ]
       },
@@ -544,6 +628,12 @@
         "prompt": "Uma dose inicial 8 cai pela metade a cada hora; a partir de qual t≥0 ela fica ≤2?",
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
+          {
+            "id": "d5-inequacoes-exponenciais-logaritmicas-erro2",
+            "label": "t≥4",
+            "correct": false,
+            "feedback": "Você dividiu 8 por 2 sem usar potências de 0,5. O certo é t≥2; 8·(0,5)ᵗ≤2; t≥2."
+          },
           {
             "id": "d5-inequacoes-exponenciais-logaritmicas-certa",
             "label": "t≥2",
@@ -555,6 +645,12 @@
             "label": "t≤2",
             "correct": false,
             "feedback": "Você não inverteu a ordem da exponencial decrescente. O certo é t≥2; 8·(0,5)ᵗ≤2; t≥2."
+          },
+          {
+            "id": "d5-inequacoes-exponenciais-logaritmicas-erro3",
+            "label": "t>2",
+            "correct": false,
+            "feedback": "Em t=2 a dose vale 2, que já satisfaz ≤2. O certo é t≥2; 8·(0,5)ᵗ≤2; t≥2."
           }
         ]
       }

@@ -248,10 +248,22 @@
             "feedback": "Faltou uma faixa. O certo é 2; ab+ab=2ab."
           },
           {
+            "id": "f1-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Os termos cruzados existem sempre que a e b são não nulos. O certo é 2; ab+ab=2ab."
+          },
+          {
             "id": "f1-expressoes-algebricas-e-produtos-notaveis-certa",
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; ab+ab=2ab."
+          },
+          {
+            "id": "f1-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você contou os quatro lados em vez das duas faixas ab. O certo é 2; ab+ab=2ab."
           }
         ]
       },
@@ -270,6 +282,18 @@
             "label": "0",
             "correct": false,
             "feedback": "Você apagou o lado a. O certo é a²; (a+0)²=a²."
+          },
+          {
+            "id": "f2-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "2a",
+            "correct": false,
+            "feedback": "Você confundiu potência com dobro do lado. O certo é a²; (a+0)²=a²."
+          },
+          {
+            "id": "f2-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "a",
+            "correct": false,
+            "feedback": "Você esqueceu de elevar o lado a ao quadrado. O certo é a²; (a+0)²=a²."
           }
         ]
       },
@@ -284,10 +308,22 @@
             "feedback": "Você confundiu área com soma de lados. O certo é b²; b·b=b²."
           },
           {
+            "id": "f3-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "ab",
+            "correct": false,
+            "feedback": "As faixas ab têm lados a e b, o canto é quadrado de lado b. O certo é b²; b·b=b²."
+          },
+          {
             "id": "f3-expressoes-algebricas-e-produtos-notaveis-certa",
             "label": "b²",
             "correct": true,
             "feedback": "Certo: b²; b·b=b²."
+          },
+          {
+            "id": "f3-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "b",
+            "correct": false,
+            "feedback": "Lado é comprimento; a área do canto é b·b. O certo é b²; b·b=b²."
           }
         ]
       },
@@ -295,6 +331,12 @@
         "id": "f4-expressoes-algebricas-e-produtos-notaveis",
         "prompt": "Qual expansão representa (x+1)²?",
         "options": [
+          {
+            "id": "f4-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "x²+x+1",
+            "correct": false,
+            "feedback": "Você contou apenas uma faixa de área x·1. O certo é x²+2x+1; x·1+1·x=2x."
+          },
           {
             "id": "f4-expressoes-algebricas-e-produtos-notaveis-certa",
             "label": "x²+2x+1",
@@ -306,6 +348,12 @@
             "label": "x²+1",
             "correct": false,
             "feedback": "Faltaram os termos cruzados. O certo é x²+2x+1; x·1+1·x=2x."
+          },
+          {
+            "id": "f4-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "x²+2x+2",
+            "correct": false,
+            "feedback": "O canto 1·1 vale 1, não 2. O certo é x²+2x+1; x·1+1·x=2x."
           }
         ]
       }
@@ -320,6 +368,18 @@
             "label": "5",
             "correct": false,
             "feedback": "Você somou só os quadrados. O certo é 9; 4+4+1=9."
+          },
+          {
+            "id": "m1-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "7",
+            "correct": false,
+            "feedback": "Você contou apenas uma faixa 2·1 em vez de duas. O certo é 9; 4+4+1=9."
+          },
+          {
+            "id": "m1-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você multiplicou 3 por 2 em vez de elevar ao quadrado. O certo é 9; 4+4+1=9."
           },
           {
             "id": "m1-expressoes-algebricas-e-produtos-notaveis-certa",
@@ -344,6 +404,18 @@
             "label": "8",
             "correct": false,
             "feedback": "Diferença de quadrados não é quadrado da diferença. O certo é 4; (3−1)²=2²=4."
+          },
+          {
+            "id": "m2-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "10",
+            "correct": false,
+            "feedback": "Você somou os quadrados 9+1=10 em vez de subtrair 1 antes. O certo é 4; (3−1)²=2²=4."
+          },
+          {
+            "id": "m2-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "16",
+            "correct": false,
+            "feedback": "Você calculou (3+1)²=16 em vez de (3−1)². O certo é 4; (3−1)²=2²=4."
           }
         ]
       },
@@ -358,10 +430,22 @@
             "feedback": "O produto das constantes tem sinal negativo. O certo é x²−4; 2x−2x=0; 2·(−2)=−4."
           },
           {
+            "id": "m3-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "x²−4x−4",
+            "correct": false,
+            "feedback": "Os termos +2x e −2x se cancelam. O certo é x²−4; 2x−2x=0; 2·(−2)=−4."
+          },
+          {
             "id": "m3-expressoes-algebricas-e-produtos-notaveis-certa",
             "label": "x²−4",
             "correct": true,
             "feedback": "Certo: x²−4; 2x−2x=0; 2·(−2)=−4."
+          },
+          {
+            "id": "m3-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "x²−2",
+            "correct": false,
+            "feedback": "Você esqueceu de multiplicar 2 por 2. O certo é x²−4; 2x−2x=0; 2·(−2)=−4."
           }
         ]
       }
@@ -373,6 +457,12 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d1-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 é o lado total 2+b, falta subtrair 2. O certo é 1; 2+b=3; b=1."
+          },
+          {
             "id": "d1-expressoes-algebricas-e-produtos-notaveis-certa",
             "label": "1",
             "correct": true,
@@ -383,6 +473,12 @@
             "label": "7",
             "correct": false,
             "feedback": "Você subtraiu lados de uma área. O certo é 1; 2+b=3; b=1."
+          },
+          {
+            "id": "d1-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você tirou 9−4=5 sem extrair a raiz da área. O certo é 1; 2+b=3; b=1."
           }
         ]
       },
@@ -396,6 +492,18 @@
             "label": "4",
             "correct": false,
             "feedback": "A diferença dos lados deve ser feita antes. O certo é 0; (2−2)²=0."
+          },
+          {
+            "id": "d2-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "8",
+            "correct": false,
+            "feedback": "Você somou 2²+2²=8 em vez de subtrair a−b antes. O certo é 0; (2−2)²=0."
+          },
+          {
+            "id": "d2-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "−4",
+            "correct": false,
+            "feedback": "Um quadrado real nunca é negativo. O certo é 0; (2−2)²=0."
           },
           {
             "id": "d2-expressoes-algebricas-e-produtos-notaveis-certa",
@@ -421,6 +529,18 @@
             "label": "1,25",
             "correct": false,
             "feedback": "Faltou o termo 2ab. O certo é 2,25; 1+1+0,25=2,25."
+          },
+          {
+            "id": "d3-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "1,75",
+            "correct": false,
+            "feedback": "Você contou só uma faixa 1·0,5 em vez de duas. O certo é 2,25; 1+1+0,25=2,25."
+          },
+          {
+            "id": "d3-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você multiplicou 1,5 por 2 em vez de elevar ao quadrado. O certo é 2,25; 1+1+0,25=2,25."
           }
         ]
       },
@@ -449,6 +569,12 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
+            "id": "d5-expressoes-algebricas-e-produtos-notaveis-erro2",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é a área final, falta subtrair a área inicial 4. O certo é 5; 3²−2²=9−4=5."
+          },
+          {
             "id": "d5-expressoes-algebricas-e-produtos-notaveis-certa",
             "label": "5",
             "correct": true,
@@ -459,6 +585,12 @@
             "label": "1",
             "correct": false,
             "feedback": "Você contou apenas o canto. O certo é 5; 3²−2²=9−4=5."
+          },
+          {
+            "id": "d5-expressoes-algebricas-e-produtos-notaveis-erro3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você contou uma faixa e o canto (2+1), faltou a outra faixa. O certo é 5; 3²−2²=9−4=5."
           }
         ]
       }

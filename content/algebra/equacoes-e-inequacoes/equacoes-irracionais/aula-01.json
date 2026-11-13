@@ -293,6 +293,18 @@
             "label": "3",
             "correct": true,
             "feedback": "Certo: 3; √9=3≥0."
+          },
+          {
+            "id": "f1-equacoes-irracionais-erro2",
+            "label": "−3",
+            "correct": false,
+            "feedback": "Você escolheu só a raiz negativa. O certo é 3; √9=3≥0."
+          },
+          {
+            "id": "f1-equacoes-irracionais-erro3",
+            "label": "9",
+            "correct": false,
+            "feedback": "Você esqueceu de extrair a raiz quadrada. O certo é 3; √9=3≥0."
           }
         ]
       },
@@ -325,10 +337,22 @@
             "feedback": "Você retirou o quadrado sem considerar o módulo. O certo é 2; √4=2."
           },
           {
+            "id": "f3-equacoes-irracionais-erro2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você elevou ao quadrado sem tirar a raiz. O certo é 2; √4=2."
+          },
+          {
             "id": "f3-equacoes-irracionais-certa",
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; √4=2."
+          },
+          {
+            "id": "f3-equacoes-irracionais-erro3",
+            "label": "±2",
+            "correct": false,
+            "feedback": "A raiz principal devolve apenas o valor não negativo. O certo é 2; √4=2."
           }
         ]
       },
@@ -363,10 +387,22 @@
             "feedback": "Você não elevou o alvo ao quadrado. O certo é 4; x=2²=4."
           },
           {
+            "id": "m1-equacoes-irracionais-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você subtraiu em vez de elevar ao quadrado. O certo é 4; x=2²=4."
+          },
+          {
             "id": "m1-equacoes-irracionais-certa",
             "label": "4",
             "correct": true,
             "feedback": "Certo: 4; x=2²=4."
+          },
+          {
+            "id": "m1-equacoes-irracionais-erro3",
+            "label": "16",
+            "correct": false,
+            "feedback": "Você elevou à quarta potência em vez do quadrado. O certo é 4; x=2²=4."
           }
         ]
       },
@@ -385,6 +421,18 @@
             "label": "10",
             "correct": false,
             "feedback": "Você somou 1 após elevar ao quadrado. O certo é 8; x+1=9; x=8."
+          },
+          {
+            "id": "m2-equacoes-irracionais-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você não elevou 3 ao quadrado: 3−1=2. O certo é 8; x+1=9; x=8."
+          },
+          {
+            "id": "m2-equacoes-irracionais-erro3",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você multiplicou 3 por 2 em vez de elevar ao quadrado. O certo é 8; x+1=9; x=8."
           }
         ]
       },
@@ -392,6 +440,12 @@
         "id": "m3-equacoes-irracionais",
         "prompt": "Resolva √(2x)=2.",
         "options": [
+          {
+            "id": "m3-equacoes-irracionais-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você não elevou o lado direito ao quadrado: 2/2=1. O certo é 2; 2x=4; x=2."
+          },
           {
             "id": "m3-equacoes-irracionais-erro",
             "label": "4",
@@ -403,6 +457,12 @@
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; 2x=4; x=2."
+          },
+          {
+            "id": "m3-equacoes-irracionais-erro3",
+            "label": "8",
+            "correct": false,
+            "feedback": "Você multiplicou por 2 em vez de dividir por 2. O certo é 2; 2x=4; x=2."
           }
         ]
       }
@@ -424,6 +484,18 @@
             "label": "{−1; 2}",
             "correct": false,
             "feedback": "Você aceitou o candidato de lado direito negativo. O certo é {2}; x²−x−2=0; x≥0."
+          },
+          {
+            "id": "d1-equacoes-irracionais-erro2",
+            "label": "{−1}",
+            "correct": false,
+            "feedback": "Você escolheu justamente a raiz espúria. O certo é {2}; x²−x−2=0; x≥0."
+          },
+          {
+            "id": "d1-equacoes-irracionais-erro3",
+            "label": "∅",
+            "correct": false,
+            "feedback": "O candidato x=2 satisfaz √4=2. O certo é {2}; x²−x−2=0; x≥0."
           }
         ]
       },
@@ -439,10 +511,22 @@
             "feedback": "A raiz principal não pode valer −1. O certo é ∅; √(x−1)≥0."
           },
           {
+            "id": "d2-equacoes-irracionais-erro2",
+            "label": "{0}",
+            "correct": false,
+            "feedback": "Em x=0 o radicando é negativo (−1). O certo é ∅; √(x−1)≥0."
+          },
+          {
             "id": "d2-equacoes-irracionais-certa",
             "label": "∅",
             "correct": true,
             "feedback": "Certo: ∅; √(x−1)≥0."
+          },
+          {
+            "id": "d2-equacoes-irracionais-erro3",
+            "label": "{1}",
+            "correct": false,
+            "feedback": "Em x=1 temos √0=0, diferente de −1. O certo é ∅; √(x−1)≥0."
           }
         ]
       },
@@ -451,6 +535,12 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "prompt": "Resolva √(2x+1)=2.",
         "options": [
+          {
+            "id": "d3-equacoes-irracionais-erro2",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Você não elevou 2 ao quadrado: (2−1)/2=0,5. O certo é 1,5; 2x+1=4; x=3/2."
+          },
           {
             "id": "d3-equacoes-irracionais-certa",
             "label": "1,5",
@@ -462,6 +552,12 @@
             "label": "2,5",
             "correct": false,
             "feedback": "Você somou 1 ao isolar x. O certo é 1,5; 2x+1=4; x=3/2."
+          },
+          {
+            "id": "d3-equacoes-irracionais-erro3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você esqueceu de dividir por 2 após 4−1=3. O certo é 1,5; 2x+1=4; x=3/2."
           }
         ]
       },
@@ -477,6 +573,18 @@
             "feedback": "Para x negativo a raiz devolve −x. O certo é x≥0; √(x²)=∣x∣; ∣x∣=x se x≥0."
           },
           {
+            "id": "d4-equacoes-irracionais-erro2",
+            "label": "x≤0",
+            "correct": false,
+            "feedback": "Para negativos, √(x²)=−x, não x. O certo é x≥0; √(x²)=∣x∣; ∣x∣=x se x≥0."
+          },
+          {
+            "id": "d4-equacoes-irracionais-erro3",
+            "label": "{0; 1}",
+            "correct": false,
+            "feedback": "Qualquer número não negativo satisfaz, não só 0 e 1. O certo é x≥0; √(x²)=∣x∣; ∣x∣=x se x≥0."
+          },
+          {
             "id": "d4-equacoes-irracionais-certa",
             "label": "x≥0",
             "correct": true,
@@ -490,6 +598,12 @@
         "prompt": "Resolva √(x+2)=x−4.",
         "options": [
           {
+            "id": "d5-equacoes-irracionais-erro2",
+            "label": "{2}",
+            "correct": false,
+            "feedback": "Em x=2 temos √4=2 e 2−4=−2, logo é espúria. O certo é {7}; x²−9x+14=0; x≥4; x=7."
+          },
+          {
             "id": "d5-equacoes-irracionais-certa",
             "label": "{7}",
             "correct": true,
@@ -500,6 +614,12 @@
             "label": "{2; 7}",
             "correct": false,
             "feedback": "Você aceitou um lado direito negativo. O certo é {7}; x²−9x+14=0; x≥4; x=7."
+          },
+          {
+            "id": "d5-equacoes-irracionais-erro3",
+            "label": "∅",
+            "correct": false,
+            "feedback": "O candidato x=7 satisfaz √9=3=7−4. O certo é {7}; x²−9x+14=0; x≥4; x=7."
           }
         ]
       }

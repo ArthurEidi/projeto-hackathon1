@@ -314,10 +314,22 @@
             "feedback": "Distância não leva sinal negativo. O certo é 2; ∣−2∣=2."
           },
           {
+            "id": "f1-equacoes-modulares-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "A distância de −2 até 0 não é nula. O certo é 2; ∣−2∣=2."
+          },
+          {
             "id": "f1-equacoes-modulares-certa",
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; ∣−2∣=2."
+          },
+          {
+            "id": "f1-equacoes-modulares-erro3",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você dobrou a distância ao somar −2 com 2. O certo é 2; ∣−2∣=2."
           }
         ]
       },
@@ -336,6 +348,18 @@
             "label": "2",
             "correct": false,
             "feedback": "Os dois candidatos coincidem em zero. O certo é 1; x=±0=0."
+          },
+          {
+            "id": "f2-equacoes-modulares-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "O próprio zero satisfaz ∣0∣=0, logo há solução. O certo é 1; x=±0=0."
+          },
+          {
+            "id": "f2-equacoes-modulares-erro3",
+            "label": "Infinitas",
+            "correct": false,
+            "feedback": "Só x=0 tem distância zero até a origem. O certo é 1; x=±0=0."
           }
         ]
       },
@@ -350,10 +374,22 @@
             "feedback": "O centro tem distância zero. O certo é −2 e 2; ∣−2∣=∣2∣=2."
           },
           {
+            "id": "f3-equacoes-modulares-erro2",
+            "label": "Só 2",
+            "correct": false,
+            "feedback": "Você esqueceu o lado negativo da reta. O certo é −2 e 2; ∣−2∣=∣2∣=2."
+          },
+          {
             "id": "f3-equacoes-modulares-certa",
             "label": "−2 e 2",
             "correct": true,
             "feedback": "Certo: −2 e 2; ∣−2∣=∣2∣=2."
+          },
+          {
+            "id": "f3-equacoes-modulares-erro3",
+            "label": "−2 e 0",
+            "correct": false,
+            "feedback": "O ponto 0 fica a distância 0 da origem, não 2. O certo é −2 e 2; ∣−2∣=∣2∣=2."
           }
         ]
       },
@@ -361,6 +397,12 @@
         "id": "f4-equacoes-modulares",
         "prompt": "Em ∣x−1∣=2, qual é o centro?",
         "options": [
+          {
+            "id": "f4-equacoes-modulares-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você confundiu o centro com o raio 2. O certo é 1; x−1=0 em x=1."
+          },
           {
             "id": "f4-equacoes-modulares-certa",
             "label": "1",
@@ -372,6 +414,12 @@
             "label": "−1",
             "correct": false,
             "feedback": "Você trocou o sinal ao zerar x−1. O certo é 1; x−1=0 em x=1."
+          },
+          {
+            "id": "f4-equacoes-modulares-erro3",
+            "label": "0",
+            "correct": false,
+            "feedback": "O módulo foi deslocado para x=1, não está na origem. O certo é 1; x−1=0 em x=1."
           }
         ]
       }
@@ -386,6 +434,18 @@
             "label": "Só 3",
             "correct": false,
             "feedback": "Faltou o lado esquerdo. O certo é −3 e 3; x=±3."
+          },
+          {
+            "id": "m1-equacoes-modulares-erro2",
+            "label": "Só −3",
+            "correct": false,
+            "feedback": "Você pegou apenas o lado negativo. O certo é −3 e 3; x=±3."
+          },
+          {
+            "id": "m1-equacoes-modulares-erro3",
+            "label": "0 e 3",
+            "correct": false,
+            "feedback": "Em x=0 temos ∣0∣=0≠3. O certo é −3 e 3; x=±3."
           },
           {
             "id": "m1-equacoes-modulares-certa",
@@ -410,6 +470,18 @@
             "label": "−1 e 1",
             "correct": false,
             "feedback": "Você esqueceu o centro 2. O certo é 1 e 3; x=2±1."
+          },
+          {
+            "id": "m2-equacoes-modulares-erro2",
+            "label": "−3 e −1",
+            "correct": false,
+            "feedback": "Você inverteu o sinal do centro para −2. O certo é 1 e 3; x=2±1."
+          },
+          {
+            "id": "m2-equacoes-modulares-erro3",
+            "label": "Só 3",
+            "correct": false,
+            "feedback": "Faltou o ponto à esquerda do centro: 2−1=1. O certo é 1 e 3; x=2±1."
           }
         ]
       },
@@ -428,6 +500,18 @@
             "label": "−3 e 1",
             "correct": true,
             "feedback": "Certo: −3 e 1; x=−1±2."
+          },
+          {
+            "id": "m3-equacoes-modulares-erro2",
+            "label": "−2 e 2",
+            "correct": false,
+            "feedback": "Você ignorou o centro −1 na conta. O certo é −3 e 1; x=−1±2."
+          },
+          {
+            "id": "m3-equacoes-modulares-erro3",
+            "label": "Só 1",
+            "correct": false,
+            "feedback": "Faltou o ponto à esquerda do centro: −1−2=−3. O certo é −3 e 1; x=−1±2."
           }
         ]
       }
@@ -439,6 +523,12 @@
         "prompt": "Resolva ∣2x−1∣=0.",
         "options": [
           {
+            "id": "d1-equacoes-modulares-erro2",
+            "label": "−0,5",
+            "correct": false,
+            "feedback": "Você trocou o sinal ao isolar x. O certo é 0,5; 2x−1=0; x=1/2."
+          },
+          {
             "id": "d1-equacoes-modulares-certa",
             "label": "0,5",
             "correct": true,
@@ -449,6 +539,12 @@
             "label": "1",
             "correct": false,
             "feedback": "Você não dividiu pelo coeficiente 2. O certo é 0,5; 2x−1=0; x=1/2."
+          },
+          {
+            "id": "d1-equacoes-modulares-erro3",
+            "label": "0",
+            "correct": false,
+            "feedback": "Em x=0 temos ∣−1∣=1≠0. O certo é 0,5; 2x−1=0; x=1/2."
           }
         ]
       },
@@ -464,10 +560,22 @@
             "feedback": "Você tratou uma distância negativa como positiva. O certo é ∅; ∣x−2∣≥0."
           },
           {
+            "id": "d2-equacoes-modulares-erro2",
+            "label": "{2}",
+            "correct": false,
+            "feedback": "Em x=2 temos ∣0∣=0, não −1. O certo é ∅; ∣x−2∣≥0."
+          },
+          {
             "id": "d2-equacoes-modulares-certa",
             "label": "∅",
             "correct": true,
             "feedback": "Certo: ∅; ∣x−2∣≥0."
+          },
+          {
+            "id": "d2-equacoes-modulares-erro3",
+            "label": "{−1}",
+            "correct": false,
+            "feedback": "Em x=−1 temos ∣−3∣=3, não −1. O certo é ∅; ∣x−2∣≥0."
           }
         ]
       },
@@ -487,6 +595,18 @@
             "label": "2",
             "correct": false,
             "feedback": "Você confundiu centro com raio. O certo é 1; (−1+3)/2=1."
+          },
+          {
+            "id": "d3-equacoes-modulares-erro2",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Você pegou uma das extremidades em vez do ponto médio. O certo é 1; (−1+3)/2=1."
+          },
+          {
+            "id": "d3-equacoes-modulares-erro3",
+            "label": "0",
+            "correct": false,
+            "feedback": "O ponto médio entre −1 e 3 é 1, não 0. O certo é 1; (−1+3)/2=1."
           }
         ]
       },
@@ -502,10 +622,22 @@
             "feedback": "Você multiplicou por 2 em vez de dividir. O certo é −0,5 e 0,5; 2x=±1; x=±1/2."
           },
           {
+            "id": "d4-equacoes-modulares-erro2",
+            "label": "Só 0,5",
+            "correct": false,
+            "feedback": "Faltou a solução negativa. O certo é −0,5 e 0,5; 2x=±1; x=±1/2."
+          },
+          {
             "id": "d4-equacoes-modulares-certa",
             "label": "−0,5 e 0,5",
             "correct": true,
             "feedback": "Certo: −0,5 e 0,5; 2x=±1; x=±1/2."
+          },
+          {
+            "id": "d4-equacoes-modulares-erro3",
+            "label": "−1 e 1",
+            "correct": false,
+            "feedback": "Você esqueceu de dividir pelo coeficiente 2. O certo é −0,5 e 0,5; 2x=±1; x=±1/2."
           }
         ]
       },
@@ -515,16 +647,28 @@
         "prompt": "Um sensor está em x=2 e detecta pontos a distância 3; restringindo x≥0, qual ponto resta?",
         "options": [
           {
-            "id": "d5-equacoes-modulares-certa",
-            "label": "5",
-            "correct": true,
-            "feedback": "Certo: 5; x=2±3; x≥0 ⇒ x=5."
+            "id": "d5-equacoes-modulares-erro2",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Você escolheu o ponto negativo excluído por x≥0. O certo é 5; x=2±3; x≥0 ⇒ x=5."
           },
           {
             "id": "d5-equacoes-modulares-erro",
             "label": "−1 e 5",
             "correct": false,
             "feedback": "Você ignorou a restrição do modelo. O certo é 5; x=2±3; x≥0 ⇒ x=5."
+          },
+          {
+            "id": "d5-equacoes-modulares-erro3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você respondeu com a distância em vez da posição 2+3. O certo é 5; x=2±3; x≥0 ⇒ x=5."
+          },
+          {
+            "id": "d5-equacoes-modulares-certa",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo: 5; x=2±3; x≥0 ⇒ x=5."
           }
         ]
       }

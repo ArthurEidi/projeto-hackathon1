@@ -314,10 +314,22 @@
             "feedback": "Você confundiu expoente zero com base zero. O certo é 1; b⁰=1 para b≠0."
           },
           {
+            "id": "f1-equacoes-exponenciais-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você manteve a base como resultado. O certo é 1; b⁰=1 para b≠0."
+          },
+          {
             "id": "f1-equacoes-exponenciais-certa",
             "label": "1",
             "correct": true,
             "feedback": "Certo: 1; b⁰=1 para b≠0."
+          },
+          {
+            "id": "f1-equacoes-exponenciais-erro3",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Expoente zero não gera sinal negativo. O certo é 1; b⁰=1 para b≠0."
           }
         ]
       },
@@ -336,6 +348,18 @@
             "label": "1",
             "correct": false,
             "feedback": "Avançar o expoente multiplica pela base. O certo é 2; 2ˣ⁺¹=2·2ˣ."
+          },
+          {
+            "id": "f2-equacoes-exponenciais-erro2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você elevou a base ao quadrado. O certo é 2; 2ˣ⁺¹=2·2ˣ."
+          },
+          {
+            "id": "f2-equacoes-exponenciais-erro3",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Você dividiu pela base em vez de multiplicar. O certo é 2; 2ˣ⁺¹=2·2ˣ."
           }
         ]
       },
@@ -392,6 +416,18 @@
             "label": "3",
             "correct": true,
             "feedback": "Certo: 3; 8=2³."
+          },
+          {
+            "id": "m1-equacoes-exponenciais-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você subestimou a potência: 2²=4. O certo é 3; 8=2³."
+          },
+          {
+            "id": "m1-equacoes-exponenciais-erro3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você subtraiu a base da altura: 8−2=6. O certo é 3; 8=2³."
           }
         ]
       },
@@ -399,6 +435,12 @@
         "id": "m2-equacoes-exponenciais",
         "prompt": "Resolva 3ˣ=9.",
         "options": [
+          {
+            "id": "m2-equacoes-exponenciais-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Com expoente 1 resulta 3¹=3. O certo é 2; 9=3²."
+          },
           {
             "id": "m2-equacoes-exponenciais-certa",
             "label": "2",
@@ -410,6 +452,12 @@
             "label": "3",
             "correct": false,
             "feedback": "Você usou divisão no lugar de potência. O certo é 2; 9=3²."
+          },
+          {
+            "id": "m2-equacoes-exponenciais-erro3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você subtraiu 3 de 9 em vez de achar o expoente. O certo é 2; 9=3²."
           }
         ]
       },
@@ -424,10 +472,22 @@
             "feedback": "Você esqueceu o +1 do expoente. O certo é 2; x+1=3; x=2."
           },
           {
+            "id": "m3-equacoes-exponenciais-erro2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você somou 1 em vez de subtrair de 3. O certo é 2; x+1=3; x=2."
+          },
+          {
             "id": "m3-equacoes-exponenciais-certa",
             "label": "2",
             "correct": true,
             "feedback": "Certo: 2; x+1=3; x=2."
+          },
+          {
+            "id": "m3-equacoes-exponenciais-erro3",
+            "label": "1",
+            "correct": false,
+            "feedback": "Com x=1 temos 2²=4. O certo é 2; x+1=3; x=2."
           }
         ]
       }
@@ -449,6 +509,18 @@
             "label": "2",
             "correct": false,
             "feedback": "Você igualou bases diferentes diretamente. O certo é 1,5; 2²ˣ=2³; x=3/2."
+          },
+          {
+            "id": "d1-equacoes-exponenciais-erro2",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você subtraiu as bases em vez de igualar: 8−4=4. O certo é 1,5; 2²ˣ=2³; x=3/2."
+          },
+          {
+            "id": "d1-equacoes-exponenciais-erro3",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Você inverteu a razão dos expoentes: 1/2. O certo é 1,5; 2²ˣ=2³; x=3/2."
           }
         ]
       },
@@ -464,10 +536,22 @@
             "feedback": "A base 1 é constante. O certo é Todas; 1ˣ=1 para todo x."
           },
           {
+            "id": "d2-equacoes-exponenciais-erro2",
+            "label": "Só 1",
+            "correct": false,
+            "feedback": "Você testou só x=1, mas 1ˣ=1 vale sempre. O certo é Todas; 1ˣ=1 para todo x."
+          },
+          {
             "id": "d2-equacoes-exponenciais-certa",
             "label": "Todas",
             "correct": true,
             "feedback": "Certo: Todas; 1ˣ=1 para todo x."
+          },
+          {
+            "id": "d2-equacoes-exponenciais-erro3",
+            "label": "∅",
+            "correct": false,
+            "feedback": "A igualdade vale para todo real, não é impossível. O certo é Todas; 1ˣ=1 para todo x."
           }
         ]
       },
@@ -476,6 +560,12 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "prompt": "Resolva 2ˣ=−2.",
         "options": [
+          {
+            "id": "d3-equacoes-exponenciais-erro2",
+            "label": "{1}",
+            "correct": false,
+            "feedback": "Potência positiva nunca dá −2, nem em x=1. O certo é ∅; 2ˣ>0."
+          },
           {
             "id": "d3-equacoes-exponenciais-certa",
             "label": "∅",
@@ -487,6 +577,12 @@
             "label": "{−1}",
             "correct": false,
             "feedback": "Expoente negativo não produz valor negativo. O certo é ∅; 2ˣ>0."
+          },
+          {
+            "id": "d3-equacoes-exponenciais-erro3",
+            "label": "{0}",
+            "correct": false,
+            "feedback": "Em x=0 temos 2⁰=1, não −2. O certo é ∅; 2ˣ>0."
           }
         ]
       },
@@ -502,6 +598,18 @@
             "feedback": "Você parou nos valores de 2ˣ. O certo é 0 e 1; t=2ˣ; t=1 ou 2; x=0 ou 1."
           },
           {
+            "id": "d4-equacoes-exponenciais-erro2",
+            "label": "−1 e 0",
+            "correct": false,
+            "feedback": "Você trocou o sinal das raízes de x. O certo é 0 e 1; t=2ˣ; t=1 ou 2; x=0 ou 1."
+          },
+          {
+            "id": "d4-equacoes-exponenciais-erro3",
+            "label": "1 e 3",
+            "correct": false,
+            "feedback": "Você confundiu coeficientes com soluções. O certo é 0 e 1; t=2ˣ; t=1 ou 2; x=0 ou 1."
+          },
+          {
             "id": "d4-equacoes-exponenciais-certa",
             "label": "0 e 1",
             "correct": true,
@@ -515,6 +623,12 @@
         "prompt": "Uma população começa em 2 e dobra por dia; em quantos dias chega a 16?",
         "options": [
           {
+            "id": "d5-equacoes-exponenciais-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Em 2 dias chega a 2·2²=8, ainda falta dobrar uma vez. O certo é 3; 2·2ᵗ=16; 2ᵗ=8; t=3."
+          },
+          {
             "id": "d5-equacoes-exponenciais-certa",
             "label": "3",
             "correct": true,
@@ -525,6 +639,12 @@
             "label": "4",
             "correct": false,
             "feedback": "Você esqueceu a população inicial. O certo é 3; 2·2ᵗ=16; 2ᵗ=8; t=3."
+          },
+          {
+            "id": "d5-equacoes-exponenciais-erro3",
+            "label": "8",
+            "correct": false,
+            "feedback": "Você dividiu 16 por 2 em vez de contar dobramentos. O certo é 3; 2·2ᵗ=16; 2ᵗ=8; t=3."
           }
         ]
       }

@@ -386,6 +386,12 @@
         "prompt": "No produto (x−1)(x+1), onde o fator x+1 zera?",
         "options": [
           {
+            "id": "f1-inequacoes-produto-quociente-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Em x=0 temos 0+1=1≠0. O certo é −1; −1+1=0."
+          },
+          {
             "id": "f1-inequacoes-produto-quociente-certa",
             "label": "−1",
             "correct": true,
@@ -396,6 +402,12 @@
             "label": "1",
             "correct": false,
             "feedback": "Você trocou o sinal da raiz. O certo é −1; −1+1=0."
+          },
+          {
+            "id": "f1-inequacoes-produto-quociente-erro3",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Em x=−2 temos −2+1=−1≠0. O certo é −1; −1+1=0."
           }
         ]
       },
@@ -404,16 +416,28 @@
         "prompt": "Em (x−1)/(x+1), qual entrada é proibida?",
         "options": [
           {
-            "id": "f2-inequacoes-produto-quociente-certa",
-            "label": "−1",
-            "correct": true,
-            "feedback": "Certo: −1; x+1=0 ⇒ x=−1."
+            "id": "f2-inequacoes-produto-quociente-erro2",
+            "label": "0",
+            "correct": false,
+            "feedback": "Em x=0 o denominador vale 0+1=1≠0. O certo é −1; x+1=0 ⇒ x=−1."
           },
           {
             "id": "f2-inequacoes-produto-quociente-erro",
             "label": "1",
             "correct": false,
             "feedback": "Você confundiu zero do numerador com o do denominador. O certo é −1; x+1=0 ⇒ x=−1."
+          },
+          {
+            "id": "f2-inequacoes-produto-quociente-certa",
+            "label": "−1",
+            "correct": true,
+            "feedback": "Certo: −1; x+1=0 ⇒ x=−1."
+          },
+          {
+            "id": "f2-inequacoes-produto-quociente-erro3",
+            "label": "Nenhuma",
+            "correct": false,
+            "feedback": "Não é possível dividir por zero, logo x=−1 é proibido. O certo é −1; x+1=0 ⇒ x=−1."
           }
         ]
       },
@@ -470,6 +494,18 @@
             "label": "−1<x<1",
             "correct": false,
             "feedback": "Você escolheu fatores de sinais opostos. O certo é x<−1 ou x>1; Fora das raízes os sinais coincidem."
+          },
+          {
+            "id": "m1-inequacoes-produto-quociente-erro2",
+            "label": "x≤−1 ou x≥1",
+            "correct": false,
+            "feedback": "A comparação estrita > exclui as raízes −1 e 1. O certo é x<−1 ou x>1; Fora das raízes os sinais coincidem."
+          },
+          {
+            "id": "m1-inequacoes-produto-quociente-erro3",
+            "label": "x>1",
+            "correct": false,
+            "feedback": "Faltou o trecho x<−1, onde ambos os fatores são negativos. O certo é x<−1 ou x>1; Fora das raízes os sinais coincidem."
           }
         ]
       },
@@ -477,6 +513,12 @@
         "id": "m2-inequacoes-produto-quociente",
         "prompt": "Resolva (x−1)/(x+1)≥0.",
         "options": [
+          {
+            "id": "m2-inequacoes-produto-quociente-erro2",
+            "label": "x<−1 ou x>1",
+            "correct": false,
+            "feedback": "O numerador pode zerar em x=1, pois a comparação é ≥0. O certo é x<−1 ou x≥1; x=−1 é proibido; x=1 zera."
+          },
           {
             "id": "m2-inequacoes-produto-quociente-certa",
             "label": "x<−1 ou x≥1",
@@ -488,6 +530,12 @@
             "label": "x≤−1 ou x≥1",
             "correct": false,
             "feedback": "Você incluiu o polo −1. O certo é x<−1 ou x≥1; x=−1 é proibido; x=1 zera."
+          },
+          {
+            "id": "m2-inequacoes-produto-quociente-erro3",
+            "label": "−1<x≤1",
+            "correct": false,
+            "feedback": "Entre −1 e 1 os sinais são opostos, dando quociente negativo. O certo é x<−1 ou x≥1; x=−1 é proibido; x=1 zera."
           }
         ]
       },
@@ -496,16 +544,28 @@
         "prompt": "Resolva x/(x−2)<0.",
         "options": [
           {
-            "id": "m3-inequacoes-produto-quociente-certa",
-            "label": "(0;2)",
-            "correct": true,
-            "feedback": "Certo: (0;2); Em 1: 1/(−1)<0."
+            "id": "m3-inequacoes-produto-quociente-erro2",
+            "label": "[0;2)",
+            "correct": false,
+            "feedback": "A desigualdade estrita < exclui a raiz x=0. O certo é (0;2); Em 1: 1/(−1)<0."
           },
           {
             "id": "m3-inequacoes-produto-quociente-erro",
             "label": "(−∞;0)∪(2;+∞)",
             "correct": false,
             "feedback": "Você escolheu sinais iguais. O certo é (0;2); Em 1: 1/(−1)<0."
+          },
+          {
+            "id": "m3-inequacoes-produto-quociente-certa",
+            "label": "(0;2)",
+            "correct": true,
+            "feedback": "Certo: (0;2); Em 1: 1/(−1)<0."
+          },
+          {
+            "id": "m3-inequacoes-produto-quociente-erro3",
+            "label": "(0;2]",
+            "correct": false,
+            "feedback": "Em x=2 o denominador zera, é proibido. O certo é (0;2); Em 1: 1/(−1)<0."
           }
         ]
       }
@@ -517,16 +577,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
-            "id": "d1-inequacoes-produto-quociente-certa",
-            "label": "(−1;1)∪(1;+∞)",
-            "correct": true,
-            "feedback": "Certo: (−1;1)∪(1;+∞); x>−1 e x≠1."
+            "id": "d1-inequacoes-produto-quociente-erro2",
+            "label": "(1;+∞)",
+            "correct": false,
+            "feedback": "Para −1<x<1 o quadrado é positivo e x+1>0, também serve. O certo é (−1;1)∪(1;+∞); x>−1 e x≠1."
           },
           {
             "id": "d1-inequacoes-produto-quociente-erro",
             "label": "(−1;+∞)",
             "correct": false,
             "feedback": "Você incluiu o zero do numerador. O certo é (−1;1)∪(1;+∞); x>−1 e x≠1."
+          },
+          {
+            "id": "d1-inequacoes-produto-quociente-erro3",
+            "label": "[−1;1)∪(1;+∞)",
+            "correct": false,
+            "feedback": "Em x=−1 o denominador zera, não pode entrar. O certo é (−1;1)∪(1;+∞); x>−1 e x≠1."
+          },
+          {
+            "id": "d1-inequacoes-produto-quociente-certa",
+            "label": "(−1;1)∪(1;+∞)",
+            "correct": true,
+            "feedback": "Certo: (−1;1)∪(1;+∞); x>−1 e x≠1."
           }
         ]
       },
@@ -546,6 +618,18 @@
             "label": "(−∞;1]",
             "correct": false,
             "feedback": "Você incluiu denominador zero. O certo é (−∞;1); x²≥0; x−1<0; zero em x=0."
+          },
+          {
+            "id": "d2-inequacoes-produto-quociente-erro2",
+            "label": "(−∞;0)∪(0;1)",
+            "correct": false,
+            "feedback": "Em x=0 a fração vale 0, que satisfaz ≤0. O certo é (−∞;1); x²≥0; x−1<0; zero em x=0."
+          },
+          {
+            "id": "d2-inequacoes-produto-quociente-erro3",
+            "label": "(0;1)",
+            "correct": false,
+            "feedback": "Para x<0 temos x²>0 e x−1<0, mantendo o quociente negativo. O certo é (−∞;1); x²≥0; x−1<0; zero em x=0."
           }
         ]
       },
@@ -554,6 +638,12 @@
         "prompt": "Resolva (2x−1)/(x+1)≤0.",
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
+          {
+            "id": "d3-inequacoes-produto-quociente-erro2",
+            "label": "(−1;0,5)",
+            "correct": false,
+            "feedback": "Em x=0,5 o numerador zera, e 0≤0 é válido. O certo é (−1;0,5]; Polo −1; zero 1/2."
+          },
           {
             "id": "d3-inequacoes-produto-quociente-certa",
             "label": "(−1;0,5]",
@@ -565,6 +655,12 @@
             "label": "[−1;0,5]",
             "correct": false,
             "feedback": "Você fechou o ponto proibido. O certo é (−1;0,5]; Polo −1; zero 1/2."
+          },
+          {
+            "id": "d3-inequacoes-produto-quociente-erro3",
+            "label": "(−∞;−1)∪[0,5;+∞)",
+            "correct": false,
+            "feedback": "Você escolheu o sinal positivo em vez do negativo. O certo é (−1;0,5]; Polo −1; zero 1/2."
           }
         ]
       },
@@ -574,16 +670,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
-            "id": "d4-inequacoes-produto-quociente-certa",
-            "label": "R",
-            "correct": true,
-            "feedback": "Certo: R; Todo quadrado real é ≥0."
+            "id": "d4-inequacoes-produto-quociente-erro2",
+            "label": "R sem {1}",
+            "correct": false,
+            "feedback": "Em x=1 temos 0²=0, que satisfaz ≥0. O certo é R; Todo quadrado real é ≥0."
           },
           {
             "id": "d4-inequacoes-produto-quociente-erro",
             "label": "x≥1",
             "correct": false,
             "feedback": "Você alternou sinais numa raiz dupla. O certo é R; Todo quadrado real é ≥0."
+          },
+          {
+            "id": "d4-inequacoes-produto-quociente-certa",
+            "label": "R",
+            "correct": true,
+            "feedback": "Certo: R; Todo quadrado real é ≥0."
+          },
+          {
+            "id": "d4-inequacoes-produto-quociente-erro3",
+            "label": "{1}",
+            "correct": false,
+            "feedback": "Você resolveu (x−1)²≤0 em vez de ≥0. O certo é R; Todo quadrado real é ≥0."
           }
         ]
       },
@@ -593,16 +701,28 @@
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
           {
-            "id": "d5-inequacoes-produto-quociente-certa",
-            "label": "(−1;1)∪(1;+∞)",
-            "correct": true,
-            "feedback": "Certo: (−1;1)∪(1;+∞); x+1>0; x≠1."
+            "id": "d5-inequacoes-produto-quociente-erro2",
+            "label": "(1;+∞)",
+            "correct": false,
+            "feedback": "Entre −1 e 1 temos x+1>0, logo o quociente é positivo. O certo é (−1;1)∪(1;+∞); x+1>0; x≠1."
           },
           {
             "id": "d5-inequacoes-produto-quociente-erro",
             "label": "(−1;+∞)",
             "correct": false,
             "feedback": "O cancelamento não devolve x=1 ao domínio. O certo é (−1;1)∪(1;+∞); x+1>0; x≠1."
+          },
+          {
+            "id": "d5-inequacoes-produto-quociente-erro3",
+            "label": "[−1;1)∪(1;+∞)",
+            "correct": false,
+            "feedback": "Em x=−1 a expressão vale 0, que não é >0. O certo é (−1;1)∪(1;+∞); x+1>0; x≠1."
+          },
+          {
+            "id": "d5-inequacoes-produto-quociente-certa",
+            "label": "(−1;1)∪(1;+∞)",
+            "correct": true,
+            "feedback": "Certo: (−1;1)∪(1;+∞); x+1>0; x≠1."
           }
         ]
       }

@@ -197,16 +197,20 @@
         "id": "f3-inequacoes-modulares",
         "prompt": "O conjunto |x| ≤ 0 contém quantos pontos?",
         "options": [
+          { "id": "f3-erro2", "label": "2", "correct": false, "feedback": "A desigualdade |x| ≤ 0 só vale em x = 0, não em dois pontos. O certo é 1: apenas x = 0." },
           { "id": "f3-certa", "label": "1", "correct": true, "feedback": "Certo: 1, pois apenas x = 0 tem distância zero." },
-          { "id": "f3-erro", "label": "0", "correct": false, "feedback": "A igualdade admite a distância zero. O certo é 1: apenas x = 0." }
+          { "id": "f3-erro", "label": "0", "correct": false, "feedback": "A igualdade admite a distância zero. O certo é 1: apenas x = 0." },
+          { "id": "f3-erro3", "label": "Infinitos", "correct": false, "feedback": "Nenhum número não nulo tem módulo ≤ 0. O certo é 1: apenas x = 0." }
         ]
       },
       {
         "id": "f4-inequacoes-modulares",
         "prompt": "Em |x − 1| < 2, qual é o centro da desigualdade?",
         "options": [
+          { "id": "f4-erro2", "label": "2", "correct": false, "feedback": "Você confundiu o centro com o raio 2. O certo é 1, pois x − 1 = 0 em x = 1." },
+          { "id": "f4-erro", "label": "−1", "correct": false, "feedback": "Você trocou o sinal do centro. O certo é 1, pois x − 1 = 0 em x = 1." },
           { "id": "f4-certa", "label": "1", "correct": true, "feedback": "Certo: 1, pois x − 1 zera em x = 1." },
-          { "id": "f4-erro", "label": "−1", "correct": false, "feedback": "Você trocou o sinal do centro. O certo é 1, pois x − 1 = 0 em x = 1." }
+          { "id": "f4-erro3", "label": "0", "correct": false, "feedback": "O centro foi deslocado de 0 para 1. O certo é 1, pois x − 1 = 0 em x = 1." }
         ]
       }
     ],
@@ -216,23 +220,29 @@
         "prompt": "Resolva |x| ≤ 3.",
         "options": [
           { "id": "m1-certa", "label": "[−3; 3]", "correct": true, "feedback": "Certo: [−3; 3], incluindo as fronteiras −3 e 3." },
-          { "id": "m1-erro", "label": "(−3; 3)", "correct": false, "feedback": "Você excluiu a igualdade. O certo é [−3; 3], com extremos inclusos." }
+          { "id": "m1-erro", "label": "(−3; 3)", "correct": false, "feedback": "Você excluiu a igualdade. O certo é [−3; 3], com extremos inclusos." },
+          { "id": "m1-erro2", "label": "x ≤ −3 ou x ≥ 3", "correct": false, "feedback": "Você escolheu o exterior em vez do interior. O certo é [−3; 3], com extremos inclusos." },
+          { "id": "m1-erro3", "label": "[0; 3]", "correct": false, "feedback": "Você ignorou os valores negativos cujo módulo é ≤ 3. O certo é [−3; 3], com extremos inclusos." }
         ]
       },
       {
         "id": "m2-inequacoes-modulares",
         "prompt": "Resolva |x − 1| < 2.",
         "options": [
+          { "id": "m2-erro2", "label": "[−1; 3]", "correct": false, "feedback": "A desigualdade estrita < exclui os extremos −1 e 3. O certo é (−1; 3)." },
           { "id": "m2-certa", "label": "(−1; 3)", "correct": true, "feedback": "Certo: (−1; 3), pois 1 − 2 < x < 1 + 2." },
-          { "id": "m2-erro", "label": "(−2; 2)", "correct": false, "feedback": "Você esqueceu de deslocar o centro 1. O certo é (−1; 3)." }
+          { "id": "m2-erro", "label": "(−2; 2)", "correct": false, "feedback": "Você esqueceu de deslocar o centro 1. O certo é (−1; 3)." },
+          { "id": "m2-erro3", "label": "(−3; 1)", "correct": false, "feedback": "Você deslocou o centro para −1 em vez de +1. O certo é (−1; 3)." }
         ]
       },
       {
         "id": "m3-inequacoes-modulares",
         "prompt": "Resolva |x| > 1.",
         "options": [
+          { "id": "m3-erro2", "label": "x ≤ −1 ou x ≥ 1", "correct": false, "feedback": "A comparação estrita > exclui −1 e 1. O certo é x < −1 ou x > 1." },
+          { "id": "m3-erro", "label": "−1 < x < 1", "correct": false, "feedback": "Você escolheu o interior. O certo é o exterior: x < −1 ou x > 1." },
           { "id": "m3-certa", "label": "x < −1 ou x > 1", "correct": true, "feedback": "Certo: x < −1 ou x > 1, ou seja, o exterior de [−1; 1]." },
-          { "id": "m3-erro", "label": "−1 < x < 1", "correct": false, "feedback": "Você escolheu o interior. O certo é o exterior: x < −1 ou x > 1." }
+          { "id": "m3-erro3", "label": "x > 1", "correct": false, "feedback": "Faltou o lado negativo, onde |x| também é maior que 1. O certo é x < −1 ou x > 1." }
         ]
       }
     ],
@@ -242,8 +252,10 @@
         "prompt": "Resolva |2x − 1| ≤ 1.",
         "fala": "Abra a desigualdade dupla −1 ≤ 2x − 1 ≤ 1 e some 1 em tudo.",
         "options": [
-          { "id": "d1-certa", "label": "[0; 1]", "correct": true, "feedback": "Certo: [0; 1], pois −1 ≤ 2x − 1 ≤ 1 leva a 0 ≤ 2x ≤ 2 e 0 ≤ x ≤ 1." },
-          { "id": "d1-erro", "label": "[−1; 1]", "correct": false, "feedback": "Você ignorou a escala e o deslocamento. O certo é [0; 1]." }
+          { "id": "d1-erro2", "label": "(0; 1)", "correct": false, "feedback": "A desigualdade ≤ inclui os extremos 0 e 1. O certo é [0; 1]." },
+          { "id": "d1-erro", "label": "[−1; 1]", "correct": false, "feedback": "Você ignorou a escala e o deslocamento. O certo é [0; 1]." },
+          { "id": "d1-erro3", "label": "[0; 2]", "correct": false, "feedback": "Você esqueceu de dividir por 2 após somar 1. O certo é [0; 1]." },
+          { "id": "d1-certa", "label": "[0; 1]", "correct": true, "feedback": "Certo: [0; 1], pois −1 ≤ 2x − 1 ≤ 1 leva a 0 ≤ 2x ≤ 2 e 0 ≤ x ≤ 1." }
         ]
       },
       {
@@ -252,7 +264,9 @@
         "fala": "Lembre que o módulo de um número real nunca é estritamente negativo.",
         "options": [
           { "id": "d2-certa", "label": "∅", "correct": true, "feedback": "Certo: ∅, pois o módulo é sempre maior ou igual a zero." },
-          { "id": "d2-erro", "label": "{2}", "correct": false, "feedback": "Desigualdade estrita não aceita zero. O certo é ∅." }
+          { "id": "d2-erro", "label": "{2}", "correct": false, "feedback": "Desigualdade estrita não aceita zero. O certo é ∅." },
+          { "id": "d2-erro2", "label": "(−∞; 2)", "correct": false, "feedback": "Para x < 2 o módulo continua positivo. O certo é ∅, pois |x − 2| ≥ 0." },
+          { "id": "d2-erro3", "label": "R", "correct": false, "feedback": "Nenhum real tem módulo estritamente negativo. O certo é ∅, pois |x − 2| ≥ 0." }
         ]
       },
       {
@@ -260,8 +274,10 @@
         "prompt": "Resolva |x| ≤ −1.",
         "fala": "Pense se uma distância pode ser menor ou igual a −1.",
         "options": [
+          { "id": "d3-erro2", "label": "(−∞; −1]", "correct": false, "feedback": "Módulo de número negativo também é positivo. O certo é ∅, pois |x| ≥ 0." },
           { "id": "d3-certa", "label": "∅", "correct": true, "feedback": "Certo: ∅, pois |x| ≥ 0 nunca é menor ou igual a −1." },
-          { "id": "d3-erro", "label": "[−1; 1]", "correct": false, "feedback": "Você trocou o raio negativo por positivo. O certo é ∅." }
+          { "id": "d3-erro", "label": "[−1; 1]", "correct": false, "feedback": "Você trocou o raio negativo por positivo. O certo é ∅." },
+          { "id": "d3-erro3", "label": "{−1}", "correct": false, "feedback": "Em x = −1 temos |−1| = 1, que não é ≤ −1. O certo é ∅, pois |x| ≥ 0." }
         ]
       },
       {
@@ -269,8 +285,10 @@
         "prompt": "Resolva |2x| < 1.",
         "fala": "Escreva −1 < 2x < 1 e divida por 2.",
         "options": [
+          { "id": "d4-erro2", "label": "[−0,5; 0,5]", "correct": false, "feedback": "A desigualdade estrita < exclui −0,5 e 0,5. O certo é (−0,5; 0,5)." },
+          { "id": "d4-erro", "label": "(−2; 2)", "correct": false, "feedback": "Você multiplicou o limite em vez de dividir. O certo é (−0,5; 0,5)." },
           { "id": "d4-certa", "label": "(−0,5; 0,5)", "correct": true, "feedback": "Certo: (−0,5; 0,5), pois −1 < 2x < 1 dá −0,5 < x < 0,5." },
-          { "id": "d4-erro", "label": "(−2; 2)", "correct": false, "feedback": "Você multiplicou o limite em vez de dividir. O certo é (−0,5; 0,5)." }
+          { "id": "d4-erro3", "label": "(−1; 1)", "correct": false, "feedback": "Você esqueceu de dividir os extremos por 2. O certo é (−0,5; 0,5)." }
         ]
       },
       {
@@ -278,8 +296,10 @@
         "prompt": "Uma peça mede x cm e deve ficar a no máximo 0,5 cm de 2 cm. Qual intervalo é aceito?",
         "fala": "Monte |x − 2| ≤ 0,5.",
         "options": [
-          { "id": "d5-certa", "label": "[1,5; 2,5]", "correct": true, "feedback": "Certo: [1,5; 2,5], pois 2 − 0,5 ≤ x ≤ 2 + 0,5." },
-          { "id": "d5-erro", "label": "(1,5; 2,5)", "correct": false, "feedback": "A tolerância máxima admite igualdade. O certo é [1,5; 2,5]." }
+          { "id": "d5-erro2", "label": "[−0,5; 0,5]", "correct": false, "feedback": "Você esqueceu de somar o centro 2 cm. O certo é [1,5; 2,5]." },
+          { "id": "d5-erro", "label": "(1,5; 2,5)", "correct": false, "feedback": "A tolerância máxima admite igualdade. O certo é [1,5; 2,5]." },
+          { "id": "d5-erro3", "label": "[1; 3]", "correct": false, "feedback": "Você dobrou a tolerância de 0,5 para 1. O certo é [1,5; 2,5]." },
+          { "id": "d5-certa", "label": "[1,5; 2,5]", "correct": true, "feedback": "Certo: [1,5; 2,5], pois 2 − 0,5 ≤ x ≤ 2 + 0,5." }
         ]
       }
     ],

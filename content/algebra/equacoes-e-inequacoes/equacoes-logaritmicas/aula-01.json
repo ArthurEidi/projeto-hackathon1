@@ -322,10 +322,22 @@
             "feedback": "Você confundiu argumento com expoente. O certo é 0; 2⁰=1."
           },
           {
+            "id": "f1-equacoes-logaritmicas-erro2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Você devolveu a base como resposta. O certo é 0; 2⁰=1."
+          },
+          {
             "id": "f1-equacoes-logaritmicas-certa",
             "label": "0",
             "correct": true,
             "feedback": "Certo: 0; 2⁰=1."
+          },
+          {
+            "id": "f1-equacoes-logaritmicas-erro3",
+            "label": "0,5",
+            "correct": false,
+            "feedback": "Você dividiu 1 por 2 em vez de achar o expoente. O certo é 0; 2⁰=1."
           }
         ]
       },
@@ -380,6 +392,18 @@
             "label": "x=2·2²",
             "correct": false,
             "feedback": "Você acrescentou um fator à definição. O certo é x=2²; log_b A=c ⇔ A=bᶜ."
+          },
+          {
+            "id": "f4-equacoes-logaritmicas-erro2",
+            "label": "x=2·2",
+            "correct": false,
+            "feedback": "Você multiplicou base por expoente em vez de elevar. O certo é x=2²; log_b A=c ⇔ A=bᶜ."
+          },
+          {
+            "id": "f4-equacoes-logaritmicas-erro3",
+            "label": "x=2⁻¹",
+            "correct": false,
+            "feedback": "Você inverteu o sinal do expoente. O certo é x=2²; log_b A=c ⇔ A=bᶜ."
           }
         ]
       }
@@ -396,10 +420,22 @@
             "feedback": "Você multiplicou base por expoente. O certo é 8; x=2³=8."
           },
           {
+            "id": "m1-equacoes-logaritmicas-erro2",
+            "label": "9",
+            "correct": false,
+            "feedback": "Você trocou base e expoente: 3²=9. O certo é 8; x=2³=8."
+          },
+          {
             "id": "m1-equacoes-logaritmicas-certa",
             "label": "8",
             "correct": true,
             "feedback": "Certo: 8; x=2³=8."
+          },
+          {
+            "id": "m1-equacoes-logaritmicas-erro3",
+            "label": "5",
+            "correct": false,
+            "feedback": "Você somou base e expoente: 2+3=5. O certo é 8; x=2³=8."
           }
         ]
       },
@@ -407,6 +443,12 @@
         "id": "m2-equacoes-logaritmicas",
         "prompt": "Resolva log₂(x−1)=1.",
         "options": [
+          {
+            "id": "m2-equacoes-logaritmicas-erro2",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você subtraiu 1 em vez de somar: 2−1=1. O certo é 3; x−1=2; x=3."
+          },
           {
             "id": "m2-equacoes-logaritmicas-certa",
             "label": "3",
@@ -418,6 +460,12 @@
             "label": "2",
             "correct": false,
             "feedback": "Você esqueceu o deslocamento. O certo é 3; x−1=2; x=3."
+          },
+          {
+            "id": "m2-equacoes-logaritmicas-erro3",
+            "label": "4",
+            "correct": false,
+            "feedback": "Você usou 2²=4 em vez de 2¹=2. O certo é 3; x−1=2; x=3."
           }
         ]
       },
@@ -430,6 +478,18 @@
             "label": "0",
             "correct": false,
             "feedback": "Expoente zero produz 1, não zero. O certo é 1; x=3⁰=1."
+          },
+          {
+            "id": "m3-equacoes-logaritmicas-erro2",
+            "label": "3",
+            "correct": false,
+            "feedback": "Você devolveu a base em vez de 3⁰. O certo é 1; x=3⁰=1."
+          },
+          {
+            "id": "m3-equacoes-logaritmicas-erro3",
+            "label": "−1",
+            "correct": false,
+            "feedback": "Expoente zero não gera número negativo. O certo é 1; x=3⁰=1."
           },
           {
             "id": "m3-equacoes-logaritmicas-certa",
@@ -457,6 +517,18 @@
             "label": "x>−1",
             "correct": false,
             "feedback": "Você verificou apenas um argumento. O certo é x>1; x−1>0 e x+1>0."
+          },
+          {
+            "id": "d1-equacoes-logaritmicas-erro2",
+            "label": "x≥1",
+            "correct": false,
+            "feedback": "Em x=1 o primeiro argumento zera, o que é proibido. O certo é x>1; x−1>0 e x+1>0."
+          },
+          {
+            "id": "d1-equacoes-logaritmicas-erro3",
+            "label": "R",
+            "correct": false,
+            "feedback": "Logaritmo real exige argumento positivo. O certo é x>1; x−1>0 e x+1>0."
           }
         ]
       },
@@ -472,10 +544,22 @@
             "feedback": "Você aceitou argumentos negativos. O certo é {2}; x(x−1)=2; x>1; x=2."
           },
           {
+            "id": "d2-equacoes-logaritmicas-erro2",
+            "label": "{−1}",
+            "correct": false,
+            "feedback": "Você escolheu a raiz negativa que anula o domínio. O certo é {2}; x(x−1)=2; x>1; x=2."
+          },
+          {
             "id": "d2-equacoes-logaritmicas-certa",
             "label": "{2}",
             "correct": true,
             "feedback": "Certo: {2}; x(x−1)=2; x>1; x=2."
+          },
+          {
+            "id": "d2-equacoes-logaritmicas-erro3",
+            "label": "{1;2}",
+            "correct": false,
+            "feedback": "Em x=1 temos log₂0, que não existe. O certo é {2}; x(x−1)=2; x>1; x=2."
           }
         ]
       },
@@ -484,6 +568,12 @@
         "prompt": "Resolva log₄x=0,5.",
         "fala": "Antes de escolher, confira as condições e substitua a resposta na relação do problema.",
         "options": [
+          {
+            "id": "d3-equacoes-logaritmicas-erro2",
+            "label": "16",
+            "correct": false,
+            "feedback": "Você elevou 4 ao quadrado em vez de 4¹ᐟ². O certo é 2; x=4¹ᐟ²=2."
+          },
           {
             "id": "d3-equacoes-logaritmicas-certa",
             "label": "2",
@@ -495,6 +585,12 @@
             "label": "0,125",
             "correct": false,
             "feedback": "Você inverteu a potência. O certo é 2; x=4¹ᐟ²=2."
+          },
+          {
+            "id": "d3-equacoes-logaritmicas-erro3",
+            "label": "−2",
+            "correct": false,
+            "feedback": "Potência de base positiva nunca é negativa. O certo é 2; x=4¹ᐟ²=2."
           }
         ]
       },
@@ -508,6 +604,18 @@
             "label": "{1;3}",
             "correct": false,
             "feedback": "Você aceitou argumentos zero. O certo é {2}; x−1=3−x; 1<x<3."
+          },
+          {
+            "id": "d4-equacoes-logaritmicas-erro2",
+            "label": "∅",
+            "correct": false,
+            "feedback": "Em x=2 os dois lados valem log₂1=0. O certo é {2}; x−1=3−x; 1<x<3."
+          },
+          {
+            "id": "d4-equacoes-logaritmicas-erro3",
+            "label": "{4}",
+            "correct": false,
+            "feedback": "Em x=4 o segundo argumento fica negativo: 3−4=−1. O certo é {2}; x−1=3−x; 1<x<3."
           },
           {
             "id": "d4-equacoes-logaritmicas-certa",
@@ -533,6 +641,18 @@
             "label": "2",
             "correct": false,
             "feedback": "Você confundiu variação do índice com razão das grandezas. O certo é 4; N passa de 2 para 8; 8/2=4."
+          },
+          {
+            "id": "d5-equacoes-logaritmicas-erro2",
+            "label": "8",
+            "correct": false,
+            "feedback": "Você deu o valor final de N, não o fator de aumento. O certo é 4; N passa de 2 para 8; 8/2=4."
+          },
+          {
+            "id": "d5-equacoes-logaritmicas-erro3",
+            "label": "6",
+            "correct": false,
+            "feedback": "Você somou a variação ao valor inicial: 2+4=6. O certo é 4; N passa de 2 para 8; 8/2=4."
           }
         ]
       }
