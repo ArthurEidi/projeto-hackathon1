@@ -28,7 +28,7 @@ Este arquivo é a **reserva de frentes**. Serve para duas máquinas (ou dois coo
 
 Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo no passo 3 de `elipse`"). Formato: data, quem pede, para quem, o quê.
 
-- (vazio)
+- 13/11, coordenador A → dono dos widgets (A): `retangulo_areas` modo `produto` desenha pequeno e descentralizado (ocupa cerca de 1/3 da área, colado à esquerda) e as peças não têm rótulo dentro (a², ab, b²). Visto em `expressoes-algebricas-e-produtos-notaveis`, passo 1, em 400 px.
 
 ## Concluídas
 
