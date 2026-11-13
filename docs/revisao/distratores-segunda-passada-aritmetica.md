@@ -27,3 +27,5 @@ experimentos-binomial-e-repetidos | 36 | 0 | f3 0,09 (0,3² = 0,09); m3 1/3 (1/6
 fatorial-e-permutacoes | 36 | 1 | d2 96: "Com o bloco há 4 itens, não 5. 4! · 2 = 48." → "96 = 4! · 4 multiplica pelas 4 posições em vez de 2! no bloco. O certo é 4! · 2 = 48."
 principio-fundamental-da-contagem | 36 | 0 | m2 504 (9 · 8 · 7 = 504); d3 24 (6 · 2 · 2 = 24); d4 62 (26 + 26 + 10 = 62)
 probabilidade-condicional | 34 | 0 | m3 0,048 (0,12 · 0,4 = 0,048); d1 1/18 (2/36 = 1/18); d3 3/10 (3/5 · 2/4 = 3/10)
+probabilidade-espaco-amostral | 36 | 0 | f4 8 (2 + 6 = 8); d2 1/18 (2/36 = 1/18); d5 1/4 (1 de 4 'tipos' de 0 a 3 caras)
+probabilidade-uniao-e-intersecao | 36 | 0 | d1 5/6 (25/30 = 5/6); d3 0,2 (0,8 − 0,6 = 0,2); d4 1/4 ((20 − 15)/20 = 1/4)
