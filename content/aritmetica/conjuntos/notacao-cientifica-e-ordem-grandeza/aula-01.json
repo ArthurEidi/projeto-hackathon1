@@ -173,8 +173,8 @@
             "pintadas": 20
           },
           "rotulos": {
-            "parte": "2·10²",
-            "todo": "2·10²"
+            "parte": "200",
+            "todo": "200"
           }
         }
       },
@@ -188,6 +188,9 @@
           "correct": true,
           "feedback": "Certo: 2·10²; 200 = 2·10², com 1 ≤ 2 < 10.",
           "figure": {
+            "rotulos": {
+              "parte": "2·10²"
+            },
             "highlight": ["c1"]
           }
         },

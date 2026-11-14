@@ -156,12 +156,9 @@
             {
               "nome": "+10%",
               "valor": 110
-            },
-            {
-              "nome": "−10%",
-              "valor": 99
             }
           ],
+          "eixo_fim": 120,
           "cor": "ink"
         }
       },
@@ -176,6 +173,20 @@
           "correct": true,
           "feedback": "Certo. 100 · 1,1 · 0,9 = 99.",
           "figure": {
+            "categorias": [
+              {
+                "nome": "Início",
+                "valor": 100
+              },
+              {
+                "nome": "+10%",
+                "valor": 110
+              },
+              {
+                "nome": "−10%",
+                "valor": 99
+              }
+            ],
             "acesas": [
               2
             ]
@@ -187,6 +198,20 @@
           "correct": false,
           "feedback": "As bases são diferentes e não se cancelam: o −10% incide em 110. O final é R$ 99.",
           "figure": {
+            "categorias": [
+              {
+                "nome": "Início",
+                "valor": 100
+              },
+              {
+                "nome": "+10%",
+                "valor": 110
+              },
+              {
+                "nome": "−10%",
+                "valor": 99
+              }
+            ],
             "acesas": [
               1
             ]
@@ -220,10 +245,7 @@
       },
       "formula": [
         {
-          "text": "V"
-        },
-        {
-          "text": "novo",
+          "text": "V'",
           "ref": "c1"
         },
         {
@@ -244,8 +266,7 @@
           "ref": "c2"
         },
         {
-          "text": ")",
-          "ref": "c3"
+          "text": ")"
         }
       ],
       "definitions": [

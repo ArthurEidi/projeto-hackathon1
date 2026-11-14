@@ -182,8 +182,7 @@
               "cor": "c2"
             }
           ],
-          "n": 4,
-          "agrupar": true
+          "n": 4
         }
       },
       "prompt": "Qual é o coeficiente de x² em (x + 1)⁴?",
@@ -197,6 +196,7 @@
           "correct": false,
           "feedback": "4 é o expoente. x² sai escolhendo x em 2 dos 4 fatores: C(4, 2) = 6.",
           "figure": {
+            "agrupar": true,
             "acender_k": 1
           }
         },
@@ -206,6 +206,7 @@
           "correct": false,
           "feedback": "2 é o expoente do termo. Os caminhos com dois x são C(4, 2) = 6.",
           "figure": {
+            "agrupar": true,
             "acesas": [
               0,
               1
@@ -218,6 +219,7 @@
           "correct": true,
           "feedback": "Isso. Escolher 2 dos 4 fatores para dar x: C(4, 2) = 6.",
           "figure": {
+            "agrupar": true,
             "acender_k": 2
           }
         },
@@ -227,6 +229,7 @@
           "correct": false,
           "feedback": "1 é o coeficiente de x⁴. Para x² são C(4, 2) = 6 caminhos.",
           "figure": {
+            "agrupar": true,
             "acender_k": 4
           }
         }

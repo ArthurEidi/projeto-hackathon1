@@ -160,7 +160,7 @@
           "a1": 100,
           "q": 1.1,
           "termos": 3,
-          "n": 3,
+          "n": 2,
           "fantasma": {
             "regra": "pa",
             "a1": 100,
@@ -180,6 +180,7 @@
           "correct": true,
           "feedback": "Certo. 100·1,1² = 121; o segundo juro incide em 110.",
           "figure": {
+            "n": 3,
             "acesos": [
               3
             ]
@@ -191,6 +192,7 @@
           "correct": false,
           "feedback": "R$ 120 é simples; composto dá 100·1,1² = 121.",
           "figure": {
+            "n": 3,
             "acesos": [
               2,
               3
@@ -272,8 +274,10 @@
           "ref": "c2"
         },
         {
-          "text": ")",
-          "sup": "t",
+          "text": ")"
+        },
+        {
+          "text": "ᵗ",
           "ref": "c3"
         }
       ],

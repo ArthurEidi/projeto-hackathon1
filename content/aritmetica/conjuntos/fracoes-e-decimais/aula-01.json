@@ -34,7 +34,7 @@
       "widget": "reta_numerica",
       "params": {
         "intervalo": [0, 2],
-        "marcas": 4,
+        "marcas": 0.5,
         "pontos": [
           { "x": 1, "cor": "c4", "rotulo": "1" }
         ],
@@ -66,7 +66,7 @@
       "widget": "reta_numerica",
       "params": {
         "intervalo": [0, 1],
-        "marcas": 2,
+        "marcas": 0.5,
         "trechos": [
           { "de": 0, "ate": 0.5, "cor": "c3", "rotulo": "1/2" }
         ],
@@ -93,7 +93,7 @@
       "widget": "reta_numerica",
       "params": {
         "intervalo": [0, 1],
-        "marcas": 4,
+        "marcas": 0.25,
         "trechos": [
           { "de": 0, "ate": 0.5, "cor": "c3", "rotulo": "1/2" }
         ],
@@ -120,7 +120,7 @@
       "widget": "reta_numerica",
       "params": {
         "intervalo": [0, 1],
-        "marcas": 4,
+        "marcas": 0.25,
         "trechos": [
           { "de": 0, "ate": 0.5, "cor": "c3", "rotulo": "1/2" },
           { "de": 0.5, "ate": 0.75, "cor": "c4", "rotulo": "1/4" }
@@ -149,10 +149,7 @@
         "widget": "reta_figura",
         "params": {
           "intervalo": [0, 1],
-          "marcas": 10,
-          "pontos": [
-            { "x": 0.5, "cor": "c3", "rotulo": "0,5" }
-          ],
+          "marcas": 0.5,
           "trechos": [
             { "de": 0, "ate": 0.5, "cor": "c4", "rotulo": "1/2" }
           ]
@@ -169,6 +166,7 @@
           "correct": false,
           "feedback": "Você leu o denominador como décimo; 1÷2=0,5.",
           "figure": {
+            "pontos": [{ "x": 0.2, "cor": "c3", "rotulo": "0,2" }],
             "trechos": [{ "de": 0, "ate": 0.2, "cor": "c3" }]
           }
         },
@@ -178,7 +176,8 @@
           "correct": true,
           "feedback": "Certo: 0,5; 1÷2=0,5.",
           "figure": {
-            "trechos": [{ "de": 0, "ate": 0.5, "cor": "c4" }]
+            "pontos": [{ "x": 0.5, "cor": "c3", "rotulo": "0,5" }],
+            "trechos": [{ "de": 0, "ate": 0.5, "cor": "c4", "rotulo": "1/2" }]
           }
         }
       ]
@@ -190,7 +189,7 @@
         "widget": "reta_figura",
         "params": {
           "intervalo": [0, 1],
-          "marcas": 10,
+          "marcas": 0.5,
           "pontos": [
             { "x": 0.5, "cor": "c3", "rotulo": "0,5" }
           ],

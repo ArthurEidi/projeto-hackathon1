@@ -156,8 +156,7 @@
         "params": {
           "modo": "parte_todo",
           "partes": 4,
-          "pintadas": 1,
-          "todo": 8
+          "pintadas": 1
         }
       },
       "lines": {

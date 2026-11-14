@@ -179,7 +179,7 @@
           "forma": "retangulo",
           "b": 2,
           "h": 2,
-          "k": 2,
+          "k": 1,
           "fantasma": [
             2,
             2
@@ -198,13 +198,19 @@
           "id": "micro-erro",
           "label": "8",
           "correct": false,
-          "feedback": "Você dobrou só uma dimensão; (2·2)²=16."
+          "feedback": "Você dobrou só uma dimensão; (2·2)²=16.",
+          "figure": {
+            "k": 2
+          }
         },
         {
           "id": "micro-acerto",
           "label": "16",
           "correct": true,
-          "feedback": "Certo: 16; (2·2)²=16."
+          "feedback": "Certo: 16; (2·2)²=16.",
+          "figure": {
+            "k": 2
+          }
         }
       ]
     },
@@ -249,7 +255,34 @@
           "ref": "c3"
         },
         {
-          "text": " = k²A; V′ = k³V; escala = L desenho / L real"
+          "text": "="
+        },
+        {
+          "text": "k²A;"
+        },
+        {
+          "text": "V′"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "k³V;"
+        },
+        {
+          "text": "escala"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "L desenho"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "L real"
         }
       ],
       "definitions": [

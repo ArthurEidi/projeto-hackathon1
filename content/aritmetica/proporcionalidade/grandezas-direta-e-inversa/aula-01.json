@@ -161,7 +161,7 @@
           ],
           "ponto": {
             "curva": 0,
-            "x": 2,
+            "x": 1,
             "retangulo": true,
             "corRetangulo": "c4"
           }
@@ -176,13 +176,29 @@
           "id": "micro-erro",
           "label": "12",
           "correct": false,
-          "feedback": "Você aplicou proporcionalidade direta; o produto exige y = 6/2 = 3."
+          "feedback": "Você aplicou proporcionalidade direta; o produto exige y = 6/2 = 3.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 2,
+              "retangulo": true,
+              "corRetangulo": "c4"
+            }
+          }
         },
         {
           "id": "micro-acerto",
           "label": "3",
           "correct": true,
-          "feedback": "Certo: 3; 2 · 3 = 6."
+          "feedback": "Certo: 3; 2 · 3 = 6.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 2,
+              "retangulo": true,
+              "corRetangulo": "c4"
+            }
+          }
         }
       ]
     },
@@ -218,7 +234,8 @@
         { "text": "k", "ref": "c2" },
         { "text": "x", "ref": "c1" },
         { "text": " (y/x = k)", "ref": "c4" },
-        { "text": "; inversa: xy = k", "ref": "c4" }
+        { "text": "; " },
+        { "text": "inversa: xy = k", "ref": "c4" }
       ],
       "definitions": [
         {

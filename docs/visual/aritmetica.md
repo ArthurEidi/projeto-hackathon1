@@ -1,0 +1,76 @@
+# Conferência visual: Aritmética (27 capítulos)
+
+Inspeção de todos os 27 capítulos de `content/aritmetica/**` em largura móvel (400 x 860 px), via capturas de tela dos estados iniciais de cada passo e revisão dos respectivos `aula-01.json`.
+
+## Tabela de achados
+
+| slug | passo (número e id) | defeito (o que se vê na imagem, concreto) | tipo | corrigido? |
+| :--- | :--- | :--- | :--- | :--- |
+| conjuntos-e-intervalos | p2 (`unir-e-intersectar`) | Badge roxo `A ∪ B` encoberto pelo rótulo `2` do ponto e pelo badge `B = [1; 4]`; badge `A = [-2; 3]` parcialmente encoberto pelo trecho e badge `B = [1; 4]`. | widget | não |
+| conjuntos-e-intervalos | p3 (`retirar-e-testar-pontas`) | Badge roxo `A \ B` encoberto pelo rótulo `0` (só aparece `A \`); badge `A = [-2; 3]` parcialmente encoberto pelo trecho `B = [1; 4]`. | widget | não |
+| conjuntos-e-intervalos | p4 (`conferir-previsao`) | Badge azul `A = [0; 3]` parcialmente encoberto pela ponta/trecho laranja `B = [2; 5]`. | widget | não |
+| conjuntos-e-intervalos | p5 (`fechamento`) | Badge roxo `A ∩ B` sobrepõe o badge `B = [2; 5]`; badge `A = [0; 3]` parcialmente encoberto pelo trecho `B = [2; 5]`. | widget | não |
+| fracoes-e-decimais | p1 a p6 (`caso-neutro` a `fechamento`) | Parâmetro `marcas` estava `4`, `2` ou `10` em intervalos `[0, 2]` e `[0, 1]`, escondendo todas as marcações intermediárias (só aparecia `0`). | conteúdo | sim (`marcas` ajustado para `0.5` em p1, p2, p5, p6 e `0.25` em p3, p4) |
+| fracoes-e-decimais | p5 (`conferir-previsao`) | Figura inicial mostrava simultaneamente o trecho `1/2` e o ponto `0,5`, entregando a resposta de "Qual escrita ocupa o mesmo ponto que 1/2?". | conteúdo | sim (removido `pontos` da figura inicial e movido `0,5` / `0,2` para o `figure` das opções) |
+| fracoes-e-decimais | p1, p5 (`caso-neutro`, `conferir-previsao`) | Rótulo roxo `1` (p1) e `0,5` (p5) abaixo da reta encosta/corta levemente na borda inferior do cartão. | widget | não |
+| notacao-cientifica-e-ordem-grandeza | p1 (`caso-neutro`) | Cinco rótulos (`2·10⁻²`, `2·10⁻¹`, `n = 0`, `2·10¹`, `2·10²`) em `x = -2..2` se sobrepõem abaixo da reta. | widget | não |
+| notacao-cientifica-e-ordem-grandeza | p2 (`normalizar`) | Texto cinza `20/200` no topo fica atrás do badge azul `20/200` e badge laranja `2·10² = 200` corta levemente na borda inferior. | widget | não |
+| notacao-cientifica-e-ordem-grandeza | p3 (`ordem-e-arredondamento`) | Badge laranja `a = 2` encoberto por `corte √10` (e `a = 3` fica totalmente oculto atrás dele). | widget | não |
+| notacao-cientifica-e-ordem-grandeza | p4 (`conferir-previsao`) | Figura inicial mostrava `2·10² = 200` nos dois rótulos antes da resposta, entregando "Qual é a notação científica de 200?". | conteúdo | sim (`rotulos` iniciais trocados para `"200"`, revelando `"2·10²"` no `figure` de `micro-acerto`) |
+| notacao-cientifica-e-ordem-grandeza | p4, p5 (`conferir-previsao`, `fechamento`) | Texto cinza `20/200` encoberto pelo badge azul `200/200` e badge inferior laranja corta levemente na borda. | widget | não |
+| potencias-e-radicais | p5 (`fechamento`) | Fórmula tinha ficha solta `a` no início e faltavam separadores `/` e `;`, exibindo `a aᵐ · aⁿ = aᵐ⁺ⁿ a⁻ⁿ = 1 aⁿ √ a² = |a|`. | conteúdo | sim (corrigido para `aᵐ · aⁿ = aᵐ⁺ⁿ ; a⁻ⁿ = 1 / aⁿ ; √( a² ) = |a|`) |
+| sistemas-numericos-e-divisibilidade | p1 a p6 (6 imagens) | sem achados | - | - |
+| valor-absoluto-e-distancia | p2 (`espelhar-ponto`) | Badge roxo da distância `2` abaixo do segmento `[0, 2]` cortado na borda inferior do cartão. | widget | não |
+| valor-absoluto-e-distancia | p4 (`conferir-previsao`) | Badge roxo da distância `3` quase todo cortado na borda inferior; badge `-2` toca/sobrepõe a seta rosa. | widget | não |
+| valor-absoluto-e-distancia | p5 (`fechamento`) | Badge roxo da distância `3` quase todo cortado na borda inferior; badges `x = -2` e `c = 1` sobrepõem o segmento roxo. | widget | não |
+| arranjos-e-combinacoes | p1 a p6 (6 imagens) | sem achados | - | - |
+| binomio-de-newton | p5 (`desafio-x-quadrado`) | `agrupar: true` na figura inicial exibia as barras com `6` em `k = 2`, entregando o coeficiente de `x²` em `(x + 1)⁴`. | conteúdo | sim (removido `agrupar: true` da figura inicial e movido para o `figure` das opções) |
+| combinacoes-com-repeticao | p4 (`pelo-menos-uma`) | Lista à direita com 21 tuplas `(5, 0, 0)`..`(0, 0, 5)` fica comprimida verticalmente, com textos sobrepostos às pílulas vizinhas e encostando na borda superior. | widget | não |
+| combinacoes-com-repeticao | p5 (`desafio-equacao`) | Figura inicial mostrava a pílula rosa `C(6, 2) = 15`, entregando a resposta. | conteúdo | sim (adicionado `"contador_apos": 999` para ocultar o contador antes da resposta) |
+| eventos-independentes | p4 (`moeda-sem-memoria`) | Pílula rosa `1/2` na base da árvore corta levemente na borda inferior do cartão. | widget | não |
+| eventos-independentes | p6 (`fechamento`) | Pílula laranja `1/3` no canto superior direito da grade sobrepõe o rótulo da coluna `6`. | widget | não |
+| experimentos-binomial-e-repetidos | p3, p6 (`dado-sucesso-6`, `fechamento`) | Na árvore de 3 níveis com `6` e `não`, 4 das 8 folhas (`6nãonão`, `não6não`, `nãonão6`, `nãonãonão`) não exibem rótulo abaixo do círculo. | widget | não |
+| fatorial-e-permutacoes | p5 (`desafio-prateleira`) | Modo `escada` exibe `5 × 4 × 3 × 2 × 1 = 120` antes da resposta, entregando o resultado (o modo não tem `contador: false`). | widget | não |
+| principio-fundamental-da-contagem | p2 (`tres-etapas`) | Rótulos cinzas de nível à direita (`Bermuda`, `Boné`) sobrepõem os nós `2` e `y` do último ramo. | widget | não |
+| principio-fundamental-da-contagem | p5 (`desafio-lanche`) | Modo `colunas` exibe `3 × 4 × 2 = 24` antes da resposta, entregando o resultado (o modo não tem `contador: false`). | widget | não |
+| probabilidade-condicional | p1 a p6 (6 imagens) | sem achados | - | - |
+| probabilidade-espaco-amostral | p1 (`um-dado`) | Régua `0..1` já marca `1/2` no estado inicial com todas as casas apagadas, entregando a fração pedida na fala. | widget | não |
+| probabilidade-uniao-e-intersecao | p5 (`desafio-2-ou-5`) | Fila de 20 círculos (`1`..`20`) em uma única linha deixa os números minúsculos e `10`/`20` com listras rosa ficam ilegíveis. | widget | não |
+| distribuicao-de-frequencias-e-amostragem | p1 a p6 (6 imagens) | sem achados | - | - |
+| leitura-de-tabelas-e-graficos | p1 a p6 (6 imagens) | sem achados | - | - |
+| medidas-de-dispersao | p1 a p6 (6 imagens) | sem achados | - | - |
+| medidas-de-tendencia-central | p1 (`todos-iguais`) | Com 5 notas em `6`, os círculos de arraste se empilham, o badge cinza `moda` encosta na borda superior e `mediana 6` sobrepõe a pilha `6`. | widget | não |
+| medidas-de-tendencia-central | p3 (`valor-extremo`) | Na régua `0..30`, os pesos `4, 5, 6, 7` ficam espremidos e os números ficam sobrepostos/cortados atrás do anel de `8` e da linha da mediana `6`. | widget | não |
+| quartis-percentis-e-boxplot | p2 a p6 (`quartis`, `desenhar-caixa`, `extremo-estica`, `desafio-q1`, `fechamento`) | As linhas verticais de corte `Q1`, `Q2`, `Q3` passam por cima dos dígitos nas caixinhas (`1`, `3`, `6`, `7`, `9`, `12`); em p4 o ponto arrastável `12` também sobrepõe a régua. | widget | não |
+| descontos-acrescimos-e-indices | p4 (`micro-desafio`) | Figura inicial mostrava a barra `−10%` com valor `99`, entregando a resposta de "R$ 100 sobem 10% e depois caem 10%. Qual é o valor final?". | conteúdo | sim (removida a 3ª barra da figura inicial com `eixo_fim: 120` e movida para o `figure` das opções) |
+| descontos-acrescimos-e-indices | p5 (`fechamento`) | Fórmula tinha `V` fora da ficha e `novo` na ficha `c1`, além de `)` dentro da ficha `c3` enquanto `(1 ∓` ficava fora. | conteúdo | sim (ajustado para `V'` (`c1`) `= V` (`c1`) `· (1 ∓ p` (`c2`) `)`) |
+| grandezas-direta-e-inversa | p4 (`conferir-previsao`) | Figura inicial mostrava o ponto `(2; 3)` e retângulo `2 · 3 = 6`, entregando "Se xy = 6 e x passa de 1 para 2, quanto vale y?". | conteúdo | sim (ponto inicial ajustado para `x: 1` e `x: 2` movido para o `figure` das opções) |
+| grandezas-direta-e-inversa | p5 (`fechamento`) | Separador `;` estava dentro da ficha `c4` (`; inversa: xy = k`). | conteúdo | sim (`; ` separado fora da ficha) |
+| matematica-financeira | p4 (`micro-desafio`) | Figura inicial mostrava `n = 3` com `121` no topo da 3ª barra, entregando o montante de "R$ 100 a 10% composto por dois períodos". | conteúdo | sim (`n` inicial ajustado para `2` e `n: 3` movido para o `figure` das opções) |
+| matematica-financeira | p5 (`fechamento`) | Parêntese `)` com `sup: "t"` estava dentro da ficha `c3` enquanto `(1 +` ficava fora, exibindo `) t` dentro da ficha rosa. | conteúdo | sim (`)` colocado fora da ficha, seguido de `ᵗ` em `c3`) |
+| razao-proporcao-porcentagem | p2, p3 (`escalar-os-dois`, `mudar-a-base`) | Badge laranja `T = 4` abaixo da barra corta na borda inferior do cartão (levemente em p2 e cerca de 1/3 em p3). | widget | não |
+| razao-proporcao-porcentagem | p4 (`conferir-previsao`) | Figura inicial com `todo: 8` exibia `2` em cada quarta parte e `P = 2`, entregando "Quanto é 25% de 8?". | conteúdo | sim (removido `todo: 8` da figura inicial, mantendo apenas `1/4 = 25%`, e mantido `todo: 8` nas opções) |
+| taxas-equivalentes-e-inflacao | p4 (`micro-desafio`) | Figura inicial mostrava a 3ª barra `Valor real` com `104,8`, entregando o ganho real de "Rendimento nominal de 10% com inflação de 5%". | conteúdo | sim (removida a 3ª barra da figura inicial com `eixo_fim: 120` e movida para o `figure` das opções) |
+| taxas-equivalentes-e-inflacao | p5 (`fechamento`) | Parêntese `)` com `sup: "n"` estava dentro da ficha `c2` enquanto `(1 +` ficava fora, quebrando os parênteses. | conteúdo | sim (`)` colocado fora da ficha, seguido de `ⁿ` em `c2`) |
+| unidades-conversoes-e-escalas | p2 (`converter-unidade`) | Badge azul `200 cm` na extremidade direita (`x = 2`) corta na borda direita e inferior do cartão; `2 m` e `20 dm` encostam na borda inferior. | widget | não |
+| unidades-conversoes-e-escalas | p4 (`conferir-previsao`) | Figura inicial tinha `k: 2`, exibindo `A = 16` e legenda "ampliar 2× multiplica a área por 4" antes da resposta. | conteúdo | sim (`k` inicial ajustado para `1` e `k: 2` movido para o `figure` das opções) |
+| unidades-conversoes-e-escalas | p5 (`fechamento`) | Segunda linha da fórmula (`= k²A; V′ = k³V; escala = L desenho / L real`) em um único bloco causava corte lateral (`L real` cortado). | conteúdo | sim (quebrado em tokens menores para permitir quebra de linha sem corte) |
+
+## Resumo
+
+- **Total de capítulos:** 27 (6 sem achados; 21 com achados).
+- **Total de achados:** 43 (17 de `conteúdo`, todos corrigidos e confirmados em nova captura + `vitest` + `lint:content`; 26 de `widget`, apenas registrados).
+
+### Padrões que se repetem
+1. **Sobreposição e corte na borda inferior em `reta_numerica` / `reta_figura`:** badges de distância, rótulos inferiores (`200 cm`, `T = 4`, `0,5`, `1`) e rótulos de intervalos/pontos colidem entre si ou encostam/cortam na borda inferior e direita do cartão (`conjuntos-e-intervalos`, `valor-absoluto-e-distancia`, `fracoes-e-decimais`, `notacao-cientifica-e-ordem-grandeza`, `razao-proporcao-porcentagem`, `unidades-conversoes-e-escalas`).
+2. **Figuras de `micro_challenge` entregando a resposta (conteúdo):** padrão recorrente em que a figura inicial já trazia o estado final (`n: 3`, `k: 2`, `x: 2`, 3ª barra com o resultado, `agrupar: true` ou `todo: 8`) em vez de deixar o estado final para o `figure` das alternativas. Todos os 8 casos de conteúdo foram corrigidos.
+3. **Faltar controle de contador em `grade_resultados` (`escada` e `colunas`):** os modos `escada` e `colunas` não possuem parâmetro para ocultar o produto acumulado no estado inicial de desafios (`fatorial-e-permutacoes` p5 e `principio-fundamental-da-contagem` p5).
+4. **Quebra ou corte em fórmulas de `concept_lock` (conteúdo):** parêntese de fechamento `)` ou separador `;` colocados dentro de fichas coloridas (`descontos-acrescimos-e-indices`, `matematica-financeira`, `taxas-equivalentes-e-inflacao`, `grandezas-direta-e-inversa`) e texto longo em bloco único cortado nas bordas (`unidades-conversoes-e-escalas`). Todos corrigidos.
+5. **Sobreposição de rótulos e linhas em `barras` (`fila` / `pontos`) e `grade_resultados` (`arvore` / `caixas`):** linhas verticais de `Q1`/`Q2`/`Q3` passando sobre os dígitos das caixinhas (`quartis-percentis-e-boxplot`), árvore de 3 níveis omitindo rótulos de folhas (`experimentos-binomial-e-repetidos`) e lista de 21 tuplas comprimida (`combinacoes-com-repeticao`).
+
+### Os 5 piores defeitos (entre os pendentes de widget)
+1. **`valor-absoluto-e-distancia` (p4 e p5):** badge roxo da distância `3` aparece quase todo cortado na borda inferior do cartão e badges `x = -2` / `c = 1` sobrepõem o segmento roxo.
+2. **`conjuntos-e-intervalos` (p2 e p3):** badges `A ∪ B` e `A \ B` ficam encobertos pelos números da reta e pelos badges dos intervalos (em p3 aparece apenas `A \`).
+3. **`combinacoes-com-repeticao` (p4):** lista à direita com 21 tuplas fica espremida na vertical, com texto sobreposto às pílulas vizinhas e encostando na borda superior.
+4. **`probabilidade-uniao-e-intersecao` (p5):** 20 círculos em uma única linha deixam os algarismos minúsculos e tornam `10` e `20` com listras rosa ilegíveis.
+5. **`experimentos-binomial-e-repetidos` (p3 e p6):** na árvore de 3 níveis, metade das folhas (`6nãonão`, `não6não`, `nãonão6`, `nãonãonão`) fica sem rótulo abaixo do círculo.

@@ -148,7 +148,8 @@
             "x",
             "y",
             "z"
-          ]
+          ],
+          "contador_apos": 999
         }
       },
       "prompt": "Quantas soluções com números naturais tem x + y + z = 4?",
@@ -212,7 +213,8 @@
             "x",
             "y",
             "z"
-          ]
+          ],
+          "contador_apos": 999
         }
       },
       "formula": [
