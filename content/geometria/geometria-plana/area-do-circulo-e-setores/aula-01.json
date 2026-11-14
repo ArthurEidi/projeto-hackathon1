@@ -149,25 +149,44 @@
           "id": "a4p",
           "label": "4π cm²",
           "correct": true,
-          "feedback": "Exato. O círculo todo tem π·4² = 16π cm², e 90° é 1/4 da volta: 16π / 4 = 4π cm²."
+          "feedback": "Exato. O círculo todo tem π·4² = 16π cm², e 90° é 1/4 da volta: 16π / 4 = 4π cm².",
+          "figure": {
+            "alfa": 90,
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "a16p",
           "label": "16π cm²",
           "correct": false,
-          "feedback": "16π cm² é o círculo inteiro (360°). Para 90° (1/4), dividimos por 4: 4π cm²."
+          "feedback": "16π cm² é o círculo inteiro (360°). Para 90° (1/4), dividimos por 4: 4π cm².",
+          "figure": {
+            "alfa": 360,
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "a8p",
           "label": "8π cm²",
           "correct": false,
-          "feedback": "8π cm² é metade do círculo (180°). Para 90° (1/4 de 16π), dá 4π cm²."
+          "feedback": "8π cm² é metade do círculo (180°). Para 90° (1/4 de 16π), dá 4π cm².",
+          "figure": {
+            "alfa": 180,
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "a2p",
           "label": "2π cm²",
           "correct": false,
-          "feedback": "2π cm é o arco da borda. Na área fazemos (π·4²) / 4 = 4π cm²."
+          "feedback": "2π cm é o arco da borda. Na área fazemos (π·4²) / 4 = 4π cm².",
+          "figure": {
+            "modo": "roda",
+            "variante": "arco",
+            "r": 4,
+            "alfa": 90,
+            "highlight": ["c3"]
+          }
         }
       ]
     },
@@ -184,27 +203,10 @@
         }
       },
       "formula": [
-        {
-          "text": "A = π · "
-        },
-        {
-          "text": "r²",
-          "ref": "c1"
-        },
-        {
-          "text": ",  A_setor = "
-        },
-        {
-          "text": "(α/360°)·πr²",
-          "ref": "c3"
-        },
-        {
-          "text": "  e  A_coroa = "
-        },
-        {
-          "text": "π(R² − r²)",
-          "ref": "c4"
-        }
+        { "text": "A = π" },
+        { "text": "r²", "ref": "c1" },
+        { "text": "·" },
+        { "text": "(α/360°)πr²", "ref": "c3" }
       ],
       "definitions": [
         {

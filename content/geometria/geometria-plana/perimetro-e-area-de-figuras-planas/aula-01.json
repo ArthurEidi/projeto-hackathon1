@@ -60,12 +60,12 @@
           "min": 1,
           "max": 5,
           "step": 1,
-          "initial": 1,
+          "initial": 3,
           "color": "c2"
         }
       ],
       "lines": {
-        "intro": "O quadradinho 1 por 1 é nossa unidade. Leve b até 4 e h até 3: quantos quadradinhos preenchem o retângulo e quanto mede o contorno?",
+        "intro": "O quadradinho 1 por 1 é nossa unidade. Com h = 3, leve b até 4: quantos quadradinhos preenchem o retângulo e quanto mede o contorno?",
         "done": "A área conta as b colunas de h linhas (b·h; em 4×3 dá 12), enquanto o perímetro soma o contorno: 2·(b + h)."
       },
       "duvida": {
@@ -217,8 +217,8 @@
           "h": 3,
           "inc": 1,
           "mostrar": {
-            "area": true,
-            "perimetro": true,
+            "area": false,
+            "perimetro": false,
             "alturas": true
           }
         }
@@ -234,7 +234,12 @@
           "correct": true,
           "feedback": "Isso. (6 + 4)·3 / 2 = 30 / 2 = 15.",
           "figure": {
-            "duplicar": 1
+            "duplicar": 1,
+            "mostrar": {
+              "area": true,
+              "perimetro": false,
+              "alturas": true
+            }
           }
         },
         {
@@ -243,20 +248,42 @@
           "correct": false,
           "feedback": "30 é a área de dois trapézios juntos. Divida por 2: (6 + 4)·3 / 2 = 15.",
           "figure": {
-            "duplicar": 1
+            "duplicar": 1,
+            "mostrar": {
+              "area": true,
+              "perimetro": false,
+              "alturas": true
+            }
           }
         },
         {
           "id": "a18",
           "label": "18",
           "correct": false,
-          "feedback": "18 usa só a base maior (6·3). Some as bases e divida por 2: (6 + 4)·3 / 2 = 15."
+          "feedback": "18 usa só a base maior (6·3). Some as bases e divida por 2: (6 + 4)·3 / 2 = 15.",
+          "figure": {
+            "B": 6,
+            "b": 6,
+            "h": 3,
+            "mostrar": {
+              "area": true,
+              "perimetro": false,
+              "alturas": true
+            }
+          }
         },
         {
           "id": "a13",
           "label": "13",
           "correct": false,
-          "feedback": "13 soma 6 + 4 + 3. A área é (6 + 4)·3 / 2 = 15."
+          "feedback": "13 soma 6 + 4 + 3. A área é (6 + 4)·3 / 2 = 15.",
+          "figure": {
+            "mostrar": {
+              "area": true,
+              "perimetro": true,
+              "alturas": true
+            }
+          }
         }
       ]
     },

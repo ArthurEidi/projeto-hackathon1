@@ -15,7 +15,7 @@
       "resumo": "Quantidade de triângulos em que um vértice fatia o polígono."
     },
     "c2": {
-      "nome": "Soma interna (S_i)",
+      "nome": "Soma interna (Sᵢ)",
       "resumo": "Soma de todos os ângulos internos: (n − 2) · 180°."
     },
     "c3": {
@@ -113,8 +113,8 @@
         }
       ],
       "lines": {
-        "intro": "No paralelogramo as diagonais se cortam ao meio. O que acontece com elas quando ele vira retângulo, losango e quadrado?",
-        "done": "Retângulo tem diagonais iguais; losango tem diagonais perpendiculares (90°); e o quadrado herda as duas propriedades!"
+        "intro": "No paralelogramo as diagonais se cortam ao meio. O que acontece com elas quando ele vira retângulo ou losango?",
+        "done": "Retângulo tem diagonais iguais, losango tem diagonais perpendiculares (90°), e o quadrado reúne os dois casos."
       },
       "duvida": {
         "quando": "fim",
@@ -134,11 +134,11 @@
         "params": {
           "modo": "poligono",
           "n": 5,
-          "diagonais": true
+          "diagonais": false
         }
       },
       "lines": {
-        "intro": "Conte em quantos triângulos as diagonais de um vértice dividem o pentágono."
+        "intro": "Imagine quantos triângulos se formam ao ligar um vértice aos outros."
       },
       "prompt": "Qual é a soma dos ângulos internos de um pentágono convexo (n = 5)?",
       "options": [
@@ -146,25 +146,41 @@
           "id": "g540",
           "label": "540°",
           "correct": true,
-          "feedback": "Exato. São 5 − 2 = 3 triângulos internos: 3 · 180° = 540°."
+          "feedback": "Exato. São 5 − 2 = 3 triângulos internos: 3 · 180° = 540°.",
+          "figure": {
+            "n": 5,
+            "diagonais": true
+          }
         },
         {
           "id": "g360",
           "label": "360°",
           "correct": false,
-          "feedback": "360° é a soma dos externos (ou do quadrilátero). No pentágono são 3 · 180° = 540°."
+          "feedback": "360° é a soma dos externos (ou do quadrilátero). No pentágono são 3 · 180° = 540°.",
+          "figure": {
+            "n": 4,
+            "diagonais": true
+          }
         },
         {
           "id": "g720",
           "label": "720°",
           "correct": false,
-          "feedback": "720° é do hexágono (4 triângulos). No pentágono são (5 − 2) · 180° = 540°."
+          "feedback": "720° é do hexágono (4 triângulos). No pentágono são (5 − 2) · 180° = 540°.",
+          "figure": {
+            "n": 6,
+            "diagonais": true
+          }
         },
         {
           "id": "g900",
           "label": "900°",
           "correct": false,
-          "feedback": "Você multiplicou 5 · 180° sem descontar 2: é (5 − 2) · 180° = 540°."
+          "feedback": "Você multiplicou 5 · 180° sem descontar 2: é (5 − 2) · 180° = 540°.",
+          "figure": {
+            "n": 7,
+            "diagonais": true
+          }
         }
       ]
     },
@@ -180,21 +196,18 @@
         }
       },
       "formula": [
-        { "text": "S_i", "ref": "c2" },
-        { "text": " = " },
-        { "text": "(n − 2)", "ref": "c1" },
-        { "text": " · 180°, " },
-        { "text": "S_e = 360°", "ref": "c3" },
-        { "text": " e " },
-        { "text": "d = n(n − 3)/2", "ref": "c4" }
+        { "text": "Sᵢ", "ref": "c2" },
+        { "text": "= (n−2)·180°" },
+        { "text": "·" },
+        { "text": "Sₑ = 360°", "ref": "c3" }
       ],
       "definitions": [
         {
-          "term": "Soma interna S_i",
+          "term": "Soma interna Sᵢ",
           "text": "(n − 2) triângulos vezes 180°."
         },
         {
-          "term": "Soma externa S_e",
+          "term": "Soma externa Sₑ",
           "text": "Sempre 360° em qualquer polígono convexo."
         },
         {
@@ -203,7 +216,7 @@
         }
       ],
       "lines": {
-        "intro": "Um vértice fatia o polígono em n − 2 triângulos e o contorno dá uma volta; por isso S_i = (n − 2)·180° e S_e = 360°.",
+        "intro": "Um vértice fatia o polígono em n − 2 triângulos e o contorno dá uma volta; por isso Sᵢ = (n − 2)·180° e Sₑ = 360°.",
         "hint": "Toque em cada parte da fórmula para ver os triângulos, o giro externo ou as diagonais."
       }
     }
@@ -421,7 +434,7 @@
             "id": "tri",
             "label": "Triângulo (n = 3)",
             "correct": false,
-            "feedback": "No triângulo S_i = 180° e S_e = 360°. Empatam em 360° no quadrilátero (n = 4)."
+            "feedback": "No triângulo Sᵢ = 180° e Sₑ = 360°. Empatam em 360° no quadrilátero (n = 4)."
           },
           {
             "id": "hex",

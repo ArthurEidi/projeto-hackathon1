@@ -201,7 +201,7 @@
             "inscrito": true,
             "corda": false,
             "isosceles": false,
-            "medidas": true
+            "medidas": false
           }
         }
       },
@@ -210,25 +210,72 @@
           "id": "a70",
           "label": "70°",
           "correct": true,
-          "feedback": "Isso. O central é o dobro do inscrito: 2·35° = 70°."
+          "feedback": "Isso. O central é o dobro do inscrito: 2·35° = 70°.",
+          "figure": {
+            "mostrar": {
+              "arco": true,
+              "central": true,
+              "inscrito": true,
+              "corda": false,
+              "isosceles": false,
+              "medidas": true
+            },
+            "highlight": ["c2"]
+          }
         },
         {
           "id": "a175",
           "label": "17,5°",
           "correct": false,
-          "feedback": "Você dividiu por 2, mas 35° já é o inscrito na borda. O central é o dobro: 70°."
+          "feedback": "Você dividiu por 2, mas 35° já é o inscrito na borda. O central é o dobro: 70°.",
+          "figure": {
+            "alfa": 35,
+            "mostrar": {
+              "arco": true,
+              "central": false,
+              "inscrito": true,
+              "corda": false,
+              "isosceles": false,
+              "medidas": true
+            },
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "a35",
           "label": "35°",
           "correct": false,
-          "feedback": "35° é o inscrito na borda. No centro o ângulo dobra: 2·35° = 70°."
+          "feedback": "35° é o inscrito na borda. No centro o ângulo dobra: 2·35° = 70°.",
+          "figure": {
+            "alfa": 35,
+            "mostrar": {
+              "arco": true,
+              "central": true,
+              "inscrito": true,
+              "corda": false,
+              "isosceles": false,
+              "medidas": true
+            },
+            "highlight": ["c2", "c3"]
+          }
         },
         {
           "id": "a145",
           "label": "145°",
           "correct": false,
-          "feedback": "145° é o suplementar (180° − 35°). O central vale o dobro do inscrito: 70°."
+          "feedback": "145° é o suplementar (180° − 35°). O central vale o dobro do inscrito: 70°.",
+          "figure": {
+            "alfa": 145,
+            "mostrar": {
+              "arco": true,
+              "central": true,
+              "inscrito": false,
+              "corda": false,
+              "isosceles": false,
+              "medidas": true
+            },
+            "highlight": ["c2"]
+          }
         }
       ]
     },

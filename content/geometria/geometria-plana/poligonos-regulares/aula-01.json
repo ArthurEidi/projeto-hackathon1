@@ -11,16 +11,16 @@
   "outro": "Você calculou ângulos regulares pelo atalho do externo, abriu o hexágono em 6 equiláteros e descobriu por que as abelhas usam hexágonos.",
   "glossario": {
     "c1": {
-      "nome": "Ângulo central (a_c)",
+      "nome": "Ângulo central",
       "resumo": "Fatia da volta no centro: 360° / n."
     },
     "c2": {
-      "nome": "Ângulo externo (a_e)",
+      "nome": "Ângulo externo (aₑ)",
       "resumo": "Desvio em cada quina: também vale 360° / n."
     },
     "c3": {
-      "nome": "Ângulo interno (a_i)",
-      "resumo": "Suplementar do externo: a_i = 180° − 360°/n."
+      "nome": "Ângulo interno (aᵢ)",
+      "resumo": "Suplementar do externo: aᵢ = 180° − 360°/n."
     },
     "c4": {
       "nome": "Encontro no vértice",
@@ -49,7 +49,7 @@
         }
       ],
       "lines": {
-        "intro": "No quadrado, dividir 360° por 4 dá a_e = 90° e a_i = 90°. Leve n até 6: se o externo vira 360°/6 = 60°, quanto vale cada ângulo interno?",
+        "intro": "No quadrado, dividir 360° por 4 dá aₑ = 90° e aᵢ = 90°. Leve n até 6: se o externo vira 360°/6 = 60°, quanto vale cada ângulo interno?",
         "done": "Vale 180° − 360°/n (em n = 6, 180° − 60° = 120°)! Achar o externo e tirar de 180° funciona para qualquer regular."
       },
       "duvida": {
@@ -147,25 +147,38 @@
           "id": "g135",
           "label": "135°",
           "correct": true,
-          "feedback": "Exato. O externo vale 360° / 8 = 45°, e o interno vale 180° − 45° = 135°."
+          "feedback": "Exato. O externo vale 360° / 8 = 45°, e o interno vale 180° − 45° = 135°.",
+          "figure": {
+            "n": 8
+          }
         },
         {
           "id": "g45",
           "label": "45°",
           "correct": false,
-          "feedback": "45° é o ângulo externo (360°/8). O interno é o suplementar: 180° − 45° = 135°."
+          "feedback": "45° é o ângulo externo (360°/8). O interno é o suplementar: 180° − 45° = 135°.",
+          "figure": {
+            "n": 8
+          }
         },
         {
           "id": "g120",
           "label": "120°",
           "correct": false,
-          "feedback": "120° é do hexágono (n = 6). No octógono (n = 8), 180° − 45° = 135°."
+          "feedback": "120° é do hexágono (n = 6). No octógono (n = 8), 180° − 45° = 135°.",
+          "figure": {
+            "n": 6
+          }
         },
         {
           "id": "g1080",
           "label": "1080°",
           "correct": false,
-          "feedback": "1080° é a soma de todos os 8 ângulos; dividindo por 8, cada um mede 135°."
+          "feedback": "1080° é a soma de todos os 8 ângulos; dividindo por 8, cada um mede 135°.",
+          "figure": {
+            "n": 8,
+            "dividir": 1
+          }
         }
       ]
     },
@@ -182,20 +195,18 @@
         }
       },
       "formula": [
-        { "text": "a_e = a_c = 360°/n", "ref": "c2" },
-        { "text": ", " },
-        { "text": "a_i = 180° − a_e", "ref": "c3" },
-        { "text": " e " },
-        { "text": "Ladrilho: k · a_i = 360°", "ref": "c4" }
+        { "text": "aₑ = 360°/n", "ref": "c2" },
+        { "text": "·" },
+        { "text": "aᵢ = 180° − aₑ", "ref": "c3" }
       ],
       "definitions": [
         {
-          "term": "Ângulo externo a_e",
-          "text": "Fatia igual da volta completa: a_e = a_c = 360°/n."
+          "term": "Ângulo externo aₑ",
+          "text": "Fatia igual da volta completa: aₑ = 360°/n."
         },
         {
-          "term": "Ângulo interno a_i",
-          "text": "Suplementar do externo: a_i = 180° − 360°/n."
+          "term": "Ângulo interno aᵢ",
+          "text": "Suplementar do externo: aᵢ = 180° − 360°/n."
         },
         {
           "term": "Ladrilhamento",
@@ -203,7 +214,7 @@
         }
       ],
       "lines": {
-        "intro": "Os n cantos dividem 360° por igual e o piso exige fechar 360° no vértice; por isso a_e = 360°/n e só 60°, 90° e 120° ladrilham sós.",
+        "intro": "Os n cantos dividem 360° por igual e o piso exige fechar 360° no vértice; por isso aₑ = 360°/n e só 60°, 90° e 120° ladrilham sós.",
         "hint": "Toque em cada ângulo para destacá-lo no polígono e no ladrilho."
       }
     }
@@ -346,13 +357,13 @@
             "id": "n10",
             "label": "10",
             "correct": false,
-            "feedback": "No de 10 lados o interno é 144°. Com a_e = 30°, temos n = 360° / 30° = 12."
+            "feedback": "No de 10 lados o interno é 144°. Com aₑ = 30°, temos n = 360° / 30° = 12."
           },
           {
             "id": "n15",
             "label": "15",
             "correct": false,
-            "feedback": "Você dividiu 150 por 10 (150 / 10 = 15). O certo: a_e = 180° − 150° = 30° e n = 360° / 30° = 12."
+            "feedback": "Você dividiu 150 por 10 (150 / 10 = 15). O certo: aₑ = 180° − 150° = 30° e n = 360° / 30° = 12."
           }
         ]
       },
@@ -409,7 +420,7 @@
       },
       {
         "id": "d2-ladrilho-octogonos-e-quadrado",
-        "prompt": "Num piso, dois octógonos regulares (a_i = 135° cada) encontram outra peça regular no mesmo vértice. Qual é o ângulo dessa peça?",
+        "prompt": "Num piso, dois octógonos regulares (aᵢ = 135° cada) encontram outra peça regular no mesmo vértice. Qual é o ângulo dessa peça?",
         "options": [
           {
             "id": "g90",
@@ -433,25 +444,25 @@
       },
       {
         "id": "d3-interno-triplo-do-externo",
-        "prompt": "Em um polígono regular, o ângulo interno mede o TRIPLO do ângulo externo (a_i = 3·a_e). Quantos lados (n) tem esse polígono?",
+        "prompt": "Em um polígono regular, o ângulo interno mede o TRIPLO do ângulo externo (aᵢ = 3·aₑ). Quantos lados (n) tem esse polígono?",
         "options": [
           {
             "id": "n8",
             "label": "8",
             "correct": true,
-            "feedback": "Exato. Como 3·a_e + a_e = 180°, temos a_e = 45°; logo n = 360° / 45° = 8 lados."
+            "feedback": "Exato. Como 3·aₑ + aₑ = 180°, temos aₑ = 45°; logo n = 360° / 45° = 8 lados."
           },
           {
             "id": "n6",
             "label": "6",
             "correct": false,
-            "feedback": "No hexágono a_i = 120° é o dobro de a_e = 60°. Para o triplo, a_e = 45° e n = 8."
+            "feedback": "No hexágono aᵢ = 120° é o dobro de aₑ = 60°. Para o triplo, aₑ = 45° e n = 8."
           },
           {
             "id": "n12",
             "label": "12",
             "correct": false,
-            "feedback": "No de 12 lados a_i = 150° é 5 vezes a_e = 30°. Para o triplo, n = 8."
+            "feedback": "No de 12 lados aᵢ = 150° é 5 vezes aₑ = 30°. Para o triplo, n = 8."
           }
         ]
       },

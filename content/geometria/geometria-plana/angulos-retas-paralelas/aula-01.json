@@ -159,7 +159,7 @@
           "alfa": 65,
           "destacar": "colaterais",
           "rotulos": {
-            "s-se": "x"
+            "r-se": "x"
           }
         }
       },
@@ -172,25 +172,43 @@
           "id": "a115",
           "label": "115°",
           "correct": true,
-          "feedback": "Isso. Colaterais internos são suplementares: 180° − 65° = 115°."
+          "feedback": "Isso. Colaterais internos são suplementares: 180° − 65° = 115°.",
+          "figure": {
+            "rotulos": { "r-se": "115°" },
+            "highlight": ["c2"]
+          }
         },
         {
           "id": "a65",
           "label": "65°",
           "correct": false,
-          "feedback": "65° seria o alterno interno, do outro lado. Do mesmo lado soma 180°: x = 115°."
+          "feedback": "65° seria o alterno interno, do outro lado. Do mesmo lado soma 180°: x = 115°.",
+          "figure": {
+            "destacar": "alternos",
+            "rotulos": { "r-sw": "65°", "s-ne": "65°" },
+            "highlight": ["c4"]
+          }
         },
         {
           "id": "a25",
           "label": "25°",
           "correct": false,
-          "feedback": "25° soma 90° (complementar). Na reta a meia-volta é 180°: 180° − 65° = 115°."
+          "feedback": "25° soma 90° (complementar). Na reta a meia-volta é 180°: 180° − 65° = 115°.",
+          "figure": {
+            "fantasma": true,
+            "rotulos": { "r-se": "25°?" },
+            "highlight": ["c2"]
+          }
         },
         {
           "id": "a125",
           "label": "125°",
           "correct": false,
-          "feedback": "Confira a subtração: 180° − 65° = 115°, não 125°."
+          "feedback": "Confira a subtração: 180° − 65° = 115°, não 125°.",
+          "figure": {
+            "rotulos": { "r-se": "125°?" },
+            "highlight": ["c2"]
+          }
         }
       ]
     },
@@ -207,12 +225,9 @@
       },
       "formula": [
         { "text": "α", "ref": "c1" },
-        { "text": " + " },
+        { "text": "+" },
         { "text": "β", "ref": "c2" },
-        { "text": " = 180°; " },
-        { "text": "α", "ref": "c3" },
-        { "text": " = " },
-        { "text": "α", "ref": "c4" }
+        { "text": "= 180°" }
       ],
       "definitions": [
         {

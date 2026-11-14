@@ -181,25 +181,43 @@
           "id": "a628",
           "label": "62,8 m",
           "correct": true,
-          "feedback": "Isso. C = 2·3,14·10 = 62,8 m."
+          "feedback": "Isso. C = 2·3,14·10 = 62,8 m.",
+          "figure": {
+            "alfa": 360,
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "a314",
           "label": "31,4 m",
           "correct": false,
-          "feedback": "31,4 m usa só um raio (π·r). Uma volta usa o diâmetro 2r = 20 m: 62,8 m."
+          "feedback": "31,4 m usa só um raio (π·r). Uma volta usa o diâmetro 2r = 20 m: 62,8 m.",
+          "figure": {
+            "alfa": 180,
+            "highlight": ["c4"]
+          }
         },
         {
           "id": "a3140",
           "label": "314 m",
           "correct": false,
-          "feedback": "314 m² é a área (π·r²). O comprimento é 2·π·r = 2·3,14·10 = 62,8 m."
+          "feedback": "314 m² é a área (π·r²). O comprimento é 2·π·r = 2·3,14·10 = 62,8 m.",
+          "figure": {
+            "r": 50,
+            "alfa": 360,
+            "highlight": ["c1"]
+          }
         },
         {
           "id": "a20",
           "label": "20 m",
           "correct": false,
-          "feedback": "20 m é o diâmetro em linha reta. Pela borda circular, multiplica-se por 3,14: 62,8 m."
+          "feedback": "20 m é o diâmetro em linha reta. Pela borda circular, multiplica-se por 3,14: 62,8 m.",
+          "figure": {
+            "variante": "razao",
+            "d": 20,
+            "highlight": ["c2"]
+          }
         }
       ]
     },
