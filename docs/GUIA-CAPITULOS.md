@@ -539,6 +539,8 @@ Exemplos (`params`):
 { "modo": "semelhanca", "variante": "paralela", "lados": [6, 8, 10], "k": "$k", "giro": "$giro" }
 ```
 
+**Acréscimos de 14/11.** Em `angulos` com `externo: true`, o externo em B vale α + γ (os dois internos não adjacentes) e o rótulo mostra esse valor. Em `notaveis`, a diagonal aparece como `5√2 ≈ 7,07` (nunca `5 · 1,41 = 7,07`).
+
 ### 5.11 `ciclo_trigonometrico` + `ciclo_trigonometrico_figura` — PRONTOS
 
 Arquivos: `common/ciclo/params.ts`, `calc.ts` (ângulo, quadrantes, soma, alvo, arco; testado), `desenho.ts`, `CicloTrigonometricoWidget.tsx`, `CicloTrigonometricoFigura.tsx`. Um só modo: circunferência de raio 1 com o ponto P(cos θ; sen θ); cada elemento liga por um campo. Valores numéricos aceitam `"$id"` (slider minúsculo); a figura só aceita números.
@@ -571,6 +573,8 @@ Exemplos (`params`):
 { "angulo": "$angulo", "arco": { "de": 30, "ate": 150 }, "alvo": { "seno": 0.5 } }   // inequações: dentro (0/1)
 { "rad": "$x_rad*0.785398", "grafico": "sen" }                                       // ponto no ciclo traça y = sen x
 ```
+
+**Acréscimos de 14/11.** Os rótulos de `marcos_rad` saem como fração de π quando o valor é múltiplo de π/12 (`π/6`, `π/2`, `π`, `2π`) e com até 2 casas nos demais (`0,5 rad`); não há mais arredondamento para inteiro.
 
 ### 5.12 `geometria_poligono` + `geometria_poligono_figura` — PRONTOS
 
@@ -629,6 +633,8 @@ Exemplos (`params`):
 { "modo": "fatias", "variante": "coroa", "R": 5, "furo": "$r_int" }
 ```
 
+**Acréscimos de 14/11.** As legendas usam π e ≈ (`10 · π ≈ 31,42 m`), nunca uma conta com 3,14 que não fecha.
+
 ### 5.14 `lugar_geometrico` + `lugar_figura`
 
 Pasta `common/lugar/`: matemática pura em `calc.ts`, desenho em `desenho.ts`, widget e figura separados.
@@ -652,6 +658,8 @@ Métricas: `pontos_sobre` (posições distintas que satisfazem o lugar), `pontos
 
 Conferência visual em 400 px pendente nesta máquina: portal Maestri ausente, navegador conectado indisponível e aprovação do Computer Use expirou.
 
+**Acréscimos de 14/11.** `mostrar.dimensoes` (padrão `true`): esconde a linha `a = ...; b = ...; c = ...` em `elipse` e `hiperbole`. `mostrar.equacao` (padrão `true`): em `parabola`, com `false` a equação `x² = 4py` só aparece depois de "Igualar distâncias". Use `false` sempre que a pergunta do passo ou do desafio for justamente esse valor. Com `focos: false`, P e os chips de distância ficam ocultos.
+
 ### 5.15 `pontos_no_plano` + `pontos_figura`
 
 `common/pontos/`: modos `segmento` (padrão) e `reta`. Campos `a`, `b`, `terceiro?` são pares de números/expressões; `fixos: ["a"]`, `passo: 1`, `prender_na_reta`, `mostrar: {degraus,quadrados,medio}`, `highlight`. Figura aceita só números.
@@ -664,6 +672,8 @@ Conferência visual em 400 px pendente nesta máquina: portal Maestri ausente, n
 ```
 
 Métricas: `dx`, `dy`, `distancia`, `dx_zero` (vertical não degenerada), `quadrados_ligados`, `medio_ligado`, `pontos_vistos` (posições distintas após interação). A reta presa usa os pontos originais como referência; coincidência avisa que a reta é indeterminada. Botões revelam quadrados e ponto médio; os quadrados são construídos geometricamente sobre os lados. `terceiro` é marcador estático opcional. Revisão visual em 400 px pendente pelo bloqueio de automação registrado em §5.14.
+
+**Acréscimos de 14/11.** `mostrar.distancia` (padrão `true`): esconde o chip `d = ...` no modo `segmento`; use `false` quando a pergunta for a distância. `rotulos` (`[string, string]`, padrão `["A", "B"]`): nomes dos dois pontos. No modo `reta` o widget não mostra os botões Quadrados e Ponto médio nem o `d`, destaca `m = ...; n = ...` e corta a reta na borda da malha.
 
 ### 5.16 `circunferencia_no_plano` + `circunferencia_figura`
 
@@ -680,6 +690,8 @@ Métricas: `dx`, `dy`, `distancia`, `dx_zero` (vertical não degenerada), `quadr
 ```
 
 Métricas: `pontos_sobre` (distintos após toque/arraste), `estados_vistos` (dentro/sobre/fora), `centro_x`, `k` quando há reta. O ponto encaixa na malha; raio precisa ser positivo. A posição inicial não aumenta contadores. Arrastar o centro limpa descobertas anteriores. Cores: centro c1, raio c2, curva c3, distância/reta c4. Revisão visual em 400 px pendente pelo bloqueio descrito em §5.14.
+
+**Acréscimos de 14/11.** Rótulos C e P se afastam quando os pontos ficam próximos; a equação sai sem parênteses nem zeros sobrando (`x² + y² = 25`).
 
 ### 5.17 `vetores_no_plano` + `vetores_figura`
 
