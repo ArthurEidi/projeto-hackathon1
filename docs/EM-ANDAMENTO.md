@@ -34,8 +34,10 @@ Por instrução do usuário (14/11, 17h), a Máquina A chegou ao limite e a **M�
 | B2. Correções da reconferência de geometria (analítica) e reconferência visual de plana, espacial e trigonometria | Antigravity | 14/11 | `content/geometria/**`, `src/conteudo/<slug de geometria>.test.ts`, `docs/visual/geometria.md`, `docs/revisao/geometria-*.md` |
 | B3. Vestibular de geometria: candidatas do ENEM (plana e trigonometria) | Antigravity #2 | 14/11 | `docs/fontes-candidatas/<slug de geometria>.md` (só arquivos novos) |
 | B4. Vestibular de geometria: candidatas do ENEM (espacial e analítica) | Antigravity #3 | 14/11 | `docs/fontes-candidatas/<slug de geometria>.md` (só arquivos novos) |
-| B5. Trocar adaptações por `retangulo_areas` em `fatoracao-algebrica` e `potencias-e-radicais` | Antigravity #4 | 14/11 | a aula e o teste desses dois capítulos, `docs/revisao/adaptacoes.md` |
-| B6. Auditoria por modelo forte das 40 questões do ENEM de 14/11; revisão e integração de tudo; inserir o vestibular de geometria nas aulas depois da conferência | maestro (Claude Code) | 14/11 | `docs/revisao/auditoria-claude.md`, `treino.vestibular` das aulas, docs de coordenação |
+| ~~B5. Trocar adaptações por `retangulo_areas`~~ concluída 14/11 (f44d529): `potencias-e-radicais` passo 3 trocado; `fatoracao-algebrica` não precisa | Antigravity #4 | 14/11 | — |
+| B7. Vestibular de aritmética e álgebra: candidatas do ENEM para os 39 capítulos ainda sem questão e substitutas das questões repetidas | Antigravity #4 | 14/11 | `docs/fontes-candidatas/<slug de aritmética ou álgebra>.md` (só acréscimos) |
+| B8. Reconferência visual das correções de plana, espacial e trigonometria (só relatório) | Antigravity #2 | 14/11 | `docs/visual/geometria-reconferencia-b8.md` |
+| B6. Auditoria das 40 questões do ENEM de 14/11 (feita: 50dc335, 26 feedbacks corrigidos); revisão e integração de tudo; inserir o vestibular de geometria nas aulas depois da conferência | maestro (Claude Code) | 14/11 | `docs/revisao/auditoria-claude.md`, `treino.vestibular` das aulas, docs de coordenação |
 
 ## Pedidos entre máquinas
 
