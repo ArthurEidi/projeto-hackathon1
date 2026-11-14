@@ -33,7 +33,7 @@
       "type": "interactive_canvas",
       "widget": "ciclo_trigonometrico",
       "params": {
-        "angulo": "$rad",
+        "rad": "$rad",
         "unidade": "ambos",
         "mostrar": {
           "fita": true
@@ -413,7 +413,7 @@
             "id": "g30",
             "label": "30°",
             "correct": false,
-            "feedback": "780° − 720° = 60° (duas voltas completas mais 60°)."
+            "feedback": "Você dividiu 60° por 2 (ou errou a subtração). 780° − 720° = 60°."
           },
           {
             "id": "g2",
@@ -449,7 +449,7 @@
             "id": "m66",
             "label": "6,6 m",
             "correct": false,
-            "feedback": "Multiplique o raio pelo ângulo em radianos: 10 · 1,5 = 15 m."
+            "feedback": "Você dividiu o raio pelo ângulo (10 / 1,5 ≈ 6,6). Multiplique: 10 · 1,5 = 15 m."
           }
         ]
       }
@@ -481,7 +481,7 @@
             "id": "g230",
             "label": "230°",
             "correct": false,
-            "feedback": "Some 360° ao arco negativo: −50° + 360° = 310°."
+            "feedback": "Você somou 180° + 50° = 230° em vez de usar 360°: −50° + 360° = 310°."
           }
         ]
       },
@@ -499,7 +499,7 @@
             "id": "r3p4",
             "label": "3π/4 rad",
             "correct": false,
-            "feedback": "Desconte uma volta de 2π = 8π/4: 9π/4 − 8π/4 = π/4 rad."
+            "feedback": "Você descontou 3π/2 (6π/4) em vez de uma volta (8π/4): 9π/4 − 8π/4 = π/4 rad."
           },
           {
             "id": "r5p4",

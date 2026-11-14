@@ -252,7 +252,7 @@
             "id": "s10",
             "label": "sen 10°",
             "correct": false,
-            "feedback": "Com sinal de + entre os produtos, somamos os arcos: sen(20° + 10°) = sen 30° = 0,5."
+            "feedback": "Você subtraiu os arcos (20° − 10° = 10°). Com sinal de +, somamos: sen(20° + 10°) = sen 30° = 0,5."
           },
           {
             "id": "c30",
@@ -264,7 +264,7 @@
             "id": "s200",
             "label": "sen 200°",
             "correct": false,
-            "feedback": "Somamos 20° + 10° = 30°, resultando em sen 30° = 0,5."
+            "feedback": "Você multiplicou os ângulos (20 · 10 = 200). A fórmula soma os arcos: sen(20° + 10°) = sen 30° = 0,5."
           }
         ]
       },
@@ -312,7 +312,7 @@
             "id": "v15",
             "label": "2 · sen 15°",
             "correct": false,
-            "feedback": "2 · sen 15° · cos 15° fecha o arco duplo sen(30°) = 0,5."
+            "feedback": "Você ignorou o cos 15°. Na verdade, 2 · sen 15° · cos 15° = sen(2 · 15°) = sen 30° = 0,5."
           },
           {
             "id": "vc30",
@@ -324,7 +324,7 @@
             "id": "v1",
             "label": "sen 60°",
             "correct": false,
-            "feedback": "O dobro de 15° é 30°, portanto vale sen 30° = 0,5."
+            "feedback": "Você dobrou o ângulo duas vezes (60°) ou trocou 30° por 60°. O certo é sen(2·15°) = sen 30° = 0,5."
           }
         ]
       },
@@ -416,7 +416,7 @@
             "id": "r3m1",
             "label": "√3 / 4",
             "correct": false,
-            "feedback": "Substituindo os notáveis em sen 45°·cos 30° − sen 30°·cos 45°, obtemos (√6 − √2) / 4."
+            "feedback": "Você calculou sen 30°·cos 30° = √3/4 em vez da fórmula da diferença. O certo é (√6 − √2) / 4."
           }
         ]
       },
@@ -478,7 +478,7 @@
             "id": "c23",
             "label": "2/3",
             "correct": false,
-            "feedback": "Use cos(2α) = 1 − 2·sen²α = 1 − 2/9 = 7/9."
+            "feedback": "Você calculou 2·sen α = 2/3 (ou 1 − 1/3) sem elevar ao quadrado. O certo é 1 − 2/9 = 7/9."
           }
         ]
       },
@@ -508,7 +508,7 @@
             "id": "s818",
             "label": "8/18",
             "correct": false,
-            "feedback": "Não some as frações direto; aplique sen α·cos β + sen β·cos α = 56/65."
+            "feedback": "Você somou numeradores e denominadores ((3+5)/(5+13) = 8/18). Aplique sen(α + β) = 56/65."
           }
         ]
       },
@@ -532,13 +532,13 @@
             "id": "t25",
             "label": "2/5",
             "correct": false,
-            "feedback": "Some com MMC no numerador (5/6) e divida por 1 − 1/6 (5/6): dá 1."
+            "feedback": "Você somou numeradores e denominadores ((1+1)/(2+3) = 2/5). Use (5/6)/(5/6) = 1."
           },
           {
             "id": "t57",
             "label": "5/7",
             "correct": false,
-            "feedback": "No denominador subtrai-se o produto: 1 − 1/6 = 5/6, e (5/6)/(5/6) = 1."
+            "feedback": "Você somou no denominador (1 + 1/6 = 7/6, dando 5/7). O certo é 1 − 1/6 = 5/6 e resultado 1."
           }
         ]
       },

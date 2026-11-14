@@ -274,13 +274,13 @@
             "id": "f1-erro-2",
             "label": "−1",
             "correct": false,
-            "feedback": "No ângulo 0 o ponto está em (1; 0), com altura 0."
+            "feedback": "Você leu o extremo inferior (3π/2), onde o seno é −1. O certo é 0, pois (cos 0; sen 0) = (1; 0)."
           },
           {
             "id": "f1-erro-3",
             "label": "1/2",
             "correct": false,
-            "feedback": "Em 0 rad a altura no eixo vertical é zero."
+            "feedback": "1/2 é o seno de π/6 (30°), não de 0. O certo é 0, pois em 0 rad o ponto é (1; 0)."
           }
         ]
       },
@@ -304,13 +304,13 @@
             "id": "f2-erro-2",
             "label": "−1",
             "correct": false,
-            "feedback": "π/2 aponta para cima no ciclo, onde a coordenada y vale 1."
+            "feedback": "Você confundiu π/2 (acima) com 3π/2 (abaixo), onde y = −1. O certo é 1; ponto (0; 1)."
           },
           {
             "id": "f2-erro-3",
             "label": "1/2",
             "correct": false,
-            "feedback": "Em 90° o raio aponta todo para cima: sen(π/2) = 1."
+            "feedback": "Você usou sen 30° = 1/2 em vez de sen 90°. O certo é 1; ponto (0; 1)."
           }
         ]
       },
@@ -370,7 +370,7 @@
             "id": "f4-erro-3",
             "label": "Apenas no 2º quadrante",
             "correct": false,
-            "feedback": "O raio do ciclo é 1, então o seno nunca passa de 1."
+            "feedback": "Mesmo no 2º quadrante o seno fica entre 0 e 1. O certo é Não, pois −1 ≤ sen θ ≤ 1."
           }
         ]
       }
@@ -489,7 +489,7 @@
             "id": "d1-erro-2",
             "label": "Apenas 0",
             "correct": false,
-            "feedback": "Como o argumento é 2θ, temos quatro soluções no intervalo [0; 2π)."
+            "feedback": "Você achou só θ = 0 (k = 0) e esqueceu as outras voltas. O certo é 0, π/2, π e 3π/2."
           },
           {
             "id": "d1-erro-3",
@@ -588,7 +588,7 @@
             "id": "d4-erro-3",
             "label": "θ = 2kπ ou θ = π, k ∈ ℤ",
             "correct": false,
-            "feedback": "Escreve-se compactamente como θ = kπ, com k ∈ ℤ."
+            "feedback": "Faltou somar + 2kπ ao π, perdendo 3π, 5π etc. O certo é θ = kπ, k ∈ ℤ."
           }
         ]
       },
@@ -613,7 +613,7 @@
             "id": "d5-erro-2",
             "label": "π/6, 5π/6, 7π/6 e 11π/6",
             "correct": false,
-            "feedback": "Esses ângulos têm seno ±1/2, e ao quadrado dariam 1/4. A raiz é ±√2/2: família π/4."
+            "feedback": "Você esqueceu a raiz e usou sen θ = ±1/2 (que dá 2·1/4 ≠ 1). O certo é π/4, 3π/4, 5π/4 e 7π/4."
           },
           {
             "id": "d5-erro-3",

@@ -385,7 +385,7 @@
             "id": "f4-erro-3",
             "label": "Sim, vale 0",
             "correct": false,
-            "feedback": "Quem vale zero é o cosseno, tornando a tangente indefinida."
+            "feedback": "Quem vale zero é o cosseno, tornando a tangente indefinida. O certo é Não."
           }
         ]
       }

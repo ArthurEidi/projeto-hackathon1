@@ -267,13 +267,13 @@
             "id": "som",
             "label": "a² = b² + c² + 2bc",
             "correct": false,
-            "feedback": "Com cos 90° = 0 o produto zera: fica a² = b² + c²."
+            "feedback": "Isso seria cos A = −1. Como cos 90° = 0, o produto zera e fica a² = b² + c²."
           },
           {
             "id": "sen",
             "label": "a / sen A = 0",
             "correct": false,
-            "feedback": "Em 90° o termo com cosseno some, restando a² = b² + c²."
+            "feedback": "Em 90° quem zera é cos A, não a/sen A = 2R. Na lei dos cossenos resta a² = b² + c²."
           }
         ]
       },
@@ -297,7 +297,7 @@
             "id": "r3",
             "label": "3",
             "correct": false,
-            "feedback": "Multiplique o raio por 2: a / sen A = 2R = 12."
+            "feedback": "Você dividiu o raio por 2 (6/2 = 3) em vez de dobrar. O certo é a / sen A = 2R = 12."
           },
           {
             "id": "r36",
@@ -363,7 +363,7 @@
             "id": "ig7",
             "label": "Igual a 7",
             "correct": false,
-            "feedback": "Com A > 90° o termo −2bc·cos A é positivo, então a² > 25."
+            "feedback": "Você somou 3 + 4 = 7 em vez de usar a² = 3² + 4² − 2bc·cos A. Com A > 90°, a² > 25."
           }
         ]
       }
@@ -577,7 +577,7 @@
             "id": "s2",
             "label": "2",
             "correct": false,
-            "feedback": "Seno nunca passa de 1; aqui 2R = 16, então sen A = 16 / 16 = 1."
+            "feedback": "Você dividiu o lado 16 pelo raio 8 (16/8 = 2), mas é pelo diâmetro 2R = 16: sen A = 1."
           }
         ]
       },
@@ -596,13 +596,13 @@
             "id": "c16e4",
             "label": "a = 16 e 2R = 4/√7",
             "correct": false,
-            "feedback": "16 é a², então a = 4; dividindo por √7/4, temos 2R = 16/√7."
+            "feedback": "Você não tirou a raiz de a² = 16 e, para 2R, usou só 1 / sen A = 4/√7. Certo: a = 4 e 2R = a / sen A = 16/√7."
           },
           {
             "id": "c4e4",
             "label": "a = 4 e 2R = √7",
             "correct": false,
-            "feedback": "Para achar 2R, divida a = 4 por sen A = √7/4: 2R = 16/√7."
+            "feedback": "Você multiplicou a por sen A (4 · √7/4 = √7) em vez de dividir. Pela lei dos senos, 2R = a / sen A = 4 / (√7/4) = 16/√7."
           },
           {
             "id": "c8e16",

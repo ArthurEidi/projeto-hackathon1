@@ -203,7 +203,7 @@
         "prompt": "Qual é o período T da função f(x) = sen(4x)?",
         "options": [
           { "id": "t8p", "label": "8π", "correct": false, "feedback": "Divida 2π por 4 em vez de multiplicar: T = 2π / 4 = π/2." },
-          { "id": "t4p", "label": "4π", "correct": false, "feedback": "Use T = 2π / B com B = 4: T = 2π / 4 = π/2." },
+          { "id": "t4p", "label": "4π", "correct": false, "feedback": "Você multiplicou π por 4 (4π) em vez de dividir 2π por 4. O certo é T = 2π / 4 = π/2." },
           { "id": "tp2", "label": "π/2", "correct": true, "feedback": "Exato. T = 2π / 4 = π/2." },
           { "id": "t2p", "label": "2π", "correct": false, "feedback": "2π é para sen(1x). Com B = 4, o período encurta para 2π / 4 = π/2." }
         ]
@@ -227,7 +227,7 @@
           { "id": "i6a10", "label": "[6; 10]", "correct": false, "feedback": "Quando cos(2x) = −1, temos 10 − 4·(−1) = 14. A imagem é [6; 14]." },
           { "id": "i6a14", "label": "[6; 14]", "correct": true, "feedback": "Isso. Como cos(2x) varia de −1 a 1, f(x) varia entre 10 − 4 = 6 e 10 + 4 = 14." },
           { "id": "im4a4", "label": "[−4; 4]", "correct": false, "feedback": "Faltou somar a linha média 10: a imagem vai de 10 − 4 = 6 a 10 + 4 = 14." },
-          { "id": "i8a12", "label": "[8; 12]", "correct": false, "feedback": "O 2 dentro de cos(2x) muda só o período; a amplitude é 4, dando [6; 14]." }
+          { "id": "i8a12", "label": "[8; 12]", "correct": false, "feedback": "Você dividiu a amplitude 4 pelo 2 de cos(2x), achando [8; 12]. O 2 muda só o período; a imagem é [6; 14]." }
         ]
       },
       {
@@ -236,7 +236,7 @@
         "options": [
           { "id": "h6", "label": "6 horas", "correct": false, "feedback": "Em t = 6 o arco vale π (meio ciclo). O ciclo completo de 2π leva 12 horas." },
           { "id": "h3", "label": "3 horas", "correct": false, "feedback": "3 é a altura média. O período é T = 2π / (π/6) = 12 horas." },
-          { "id": "h24", "label": "24 horas", "correct": false, "feedback": "Para πt / 6 atingir 2π, basta t = 12 horas." },
+          { "id": "h24", "label": "24 horas", "correct": false, "feedback": "Você dobrou o período para 24 h (ou usou 4·6). Para πt / 6 atingir 2π, basta t = 12 horas." },
           { "id": "h12", "label": "12 horas", "correct": true, "feedback": "Certo. T = 2π / (π/6) = 2 · 6 = 12 horas." }
         ]
       },
@@ -259,7 +259,7 @@
         "options": [
           { "id": "bp40", "label": "π/40", "correct": false, "feedback": "A volta completa corresponde a 2π, não a π: B = 2π / 40 = π/20." },
           { "id": "b40", "label": "40", "correct": false, "feedback": "40 é o período T. O coeficiente B vale 2π / T = π/20." },
-          { "id": "b20p", "label": "20π", "correct": false, "feedback": "Divida 2π por 40: B = 2π / 40 = π/20." },
+          { "id": "b20p", "label": "20π", "correct": false, "feedback": "Você dividiu 40 por 2 em vez de dividir 2π por 40: B = 2π / 40 = π/20." },
           { "id": "bp20", "label": "π/20", "correct": true, "feedback": "Isso. Como T = 2π / B = 40, temos B = 2π / 40 = π/20." }
         ]
       },
@@ -282,7 +282,7 @@
           { "id": "d13h2", "label": "Diâmetro 13 m e base a 2 m", "correct": false, "feedback": "13 m é o raio da roda (a amplitude). O diâmetro é o dobro: 26 m, e a base fica a 2 m." },
           { "id": "d26h2", "label": "Diâmetro 26 m e base a 2 m", "correct": true, "feedback": "Exato. A amplitude 13 m é o raio (diâmetro 26 m), e o ponto mais baixo é 15 − 13 = 2 m." },
           { "id": "d26h15", "label": "Diâmetro 26 m e base a 15 m", "correct": false, "feedback": "15 m é a altura do eixo central. A base fica em 15 − 13 = 2 m (diâmetro 26 m)." },
-          { "id": "d30h2", "label": "Diâmetro 30 m e base a 2 m", "correct": false, "feedback": "O raio é a amplitude 13 m, então o diâmetro é 2 · 13 = 26 m e a base está a 2 m." }
+          { "id": "d30h2", "label": "Diâmetro 30 m e base a 2 m", "correct": false, "feedback": "30 m é o dobro da linha média 15 m. O raio é a amplitude 13 m, logo o diâmetro é 26 m e a base está a 2 m." }
         ]
       },
       {

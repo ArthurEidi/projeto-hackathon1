@@ -52,7 +52,7 @@
       ],
       "lines": {
         "intro": "Em 45°, os dois catetos são iguais e CO / CA = 1. Aumente a escala k: o que acontece com a divisão CO / CA?",
-        "done": "Os lados triplicaram, mas 3 / 3 continua dando 1. Triângulos semelhantes mantêm a mesma razão entre os lados."
+        "done": "Os lados triplicaram, mas CO e CA seguem iguais e CO / CA continua 1. Triângulos semelhantes mantêm a razão."
       },
       "duvida": {
         "quando": "fim",
@@ -512,7 +512,7 @@
             "id": "h105",
             "label": "10,5 cm",
             "correct": false,
-            "feedback": "Como sen 30° = 7 / HIP = 0,5, a hipotenusa mede 14 cm."
+            "feedback": "10,5 cm soma 7 + 3,5. Como sen 30° = 7 / HIP = 0,5, a hipotenusa mede 7 / 0,5 = 14 cm."
           }
         ]
       },
@@ -596,7 +596,7 @@
             "id": "p65",
             "label": "6,5 m",
             "correct": false,
-            "feedback": "Use tg 30° ≈ 0,58: 10 · 0,58 + 1,5 = 7,3 m."
+            "feedback": "6,5 m usa 0,5 (10·0,5 + 1,5) em vez de tg 30° ≈ 0,58: 10 · 0,58 + 1,5 = 7,3 m."
           },
           {
             "id": "p115",
@@ -633,7 +633,7 @@
             "id": "b10",
             "label": "10 m",
             "correct": false,
-            "feedback": "Com tg 30° ≈ 0,5, d2 = 20 / 0,5 = 40 m; logo 40 − 20 = 20 m."
+            "feedback": "Você multiplicou 20 · 0,5 = 10 m em vez de dividir (20 / 0,5 = 40 m). Logo 40 − 20 = 20 m."
           }
         ]
       }

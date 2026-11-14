@@ -571,7 +571,7 @@
             "id": "em2",
             "label": "−2",
             "correct": false,
-            "feedback": "Resposta: 2; sen 90° = 1, cos 180° = −1, sen 270° = −1 e cos 0° = 1: soma = 2."
+            "feedback": "Resposta: 2; Você trocou o sinal de cada termo (−1 + 1 − 1 − 1 = −2). Certo: 1 + (−1) − (−1) + 1 = 2."
           }
         ]
       },

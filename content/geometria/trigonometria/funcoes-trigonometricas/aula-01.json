@@ -350,7 +350,7 @@
             "id": "t4p",
             "label": "4π",
             "correct": false,
-            "feedback": "Resposta: π; O ramo principal da tangente vai de −π/2 a π/2, tendo período π."
+            "feedback": "Resposta: π; Você dobrou 2π para 4π, mas o ramo principal vai de −π/2 a π/2, tendo período π."
           }
         ]
       }
@@ -474,7 +474,7 @@
             "id": "n4",
             "label": "4 vezes",
             "correct": false,
-            "feedback": "Resposta: 3 vezes (0, π e 2π); Em π/2 e 3π/2 o seno vale 1 e −1: zera em 0, π e 2π."
+            "feedback": "Resposta: 3 vezes (0, π e 2π); Você contou os 4 quadrantes, mas sen x só zera em 0, π e 2π."
           }
         ]
       },
