@@ -182,3 +182,30 @@ Em `reta-equacao-e-inclinacao` (passos 1, 2 e 4), o widget mostra os botões "Qu
 - Nos passos com slider, o valor foi posto pelo teclado (setas, Home e End). O arraste do polegar do slider não foi testado.
 - Os desafios foram vistos com todas as opções. Nos fechamentos, a tela foi rolada até o fim, mas as letras da fórmula não foram tocadas uma a uma.
 - Não editei nenhuma aula, conforme a instrução (os agentes Gemini estão editando o texto).
+
+## Reconferência das correções
+
+Mesmo método (vite 5191 + Chrome headless, 400 × 860). Só os passos e desafios listados nas seções "Correções da conferência visual" de `docs/revisao/geometria-analitica.md`, `geometria-plana.md` e `geometria-espacial.md`; para chegar direto ao passo, o índice do `LessonPlayer` foi trocado pelo estado do React (sem editar o app). Cada desafio foi respondido com todas as erradas e a certa. Trigonometria não foi aberta.
+
+| slug | passo | resultado | detalhe |
+|---|---|---|---|
+| plano-cartesiano-distancia-e-ponto-medio | 4 `ponto-medio` | ok | B não arrasta mais (`fixos: ["a","b"]`); "Ponto médio" conclui e a fala M = (3; 3,5) vale. |
+| reta-equacao-e-inclinacao | 3 `corte-no-eixo-y` e 6 `fechamento` | defeito novo | Os dois "1" se separaram, mas com o triângulo em x = 1 o degrau vai até y = 5, topo da janela: o rótulo da curva "y = 2x + 1" cobre o topo do degrau e encosta no chip "+2". Sugestão: `y: [-5, 6]` ou triângulo em x = −1. |
+| reta-equacao-e-inclinacao | 5 `desafio-equacao` | ok | "y = 4x − 1": o "+2" aparece inteiro (sobra o chip "1" do degrau colado ao pegador do ponto, sem cobrir nada importante). "y = x + 2": "(3; 7)" já não encosta no rótulo da curva. |
+| reta-equacao-e-inclinacao | 6 `fechamento` (fórmula) | ok | "y = m x + n" cabe numa linha. |
+| posicoes-relativas-de-retas | 3 `achar-encontro` | ok | Sem encontro nem quadrantes no início; ao chegar em (2; 3) aparece um rótulo só. |
+| posicoes-relativas-de-retas | 4 `angulo-reto` | ok | Exige m₂ = −1. Pelo teclado, descer para −2 passa por −1 e conclui (o passo não "desconclui"); a fala começa com "Quando m₂ = −1", então segue verdadeira. |
+| posicoes-relativas-de-retas | 5 `desafio-posicao` | ainda com defeito | Respondendo à pergunta: **não aparece nada de sensato** em "Concorrentes" (`marcar.encontro` em retas paralelas não desenha nada, a figura fica igual) nem em "Perpendiculares" (`marcar.angulo` também não desenha nada para retas paralelas). "Coincidentes" engrossa a reta laranja, que é pouco, mas visível. Para mostrar o erro, a figura teria de desenhar o caso que o aluno imaginou (ex.: uma terceira reta tracejada de outra inclinação cruzando, ou a reta y = −x/2 + 1 para "perpendicular"). Os rótulos "Concorrentes" e "Perpendiculares" continuam cortados na grade 2×2 (UI). |
+| circunferencia-equacao-e-posicoes | 1 a 4 | ok | P começa em (2; −3), longe de C; pegadores e chips separados. |
+| circunferencia-equacao-e-posicoes | 5 `desafio-ler-equacao` | ainda com defeito | As três erradas mostram a mesma figura: a circunferência certa, com rótulos e a equação "(y − (−1))²" (só o `highlight` muda). Nenhuma desenha o centro errado (−2; 1) ou (2; 1) nem o raio 9; o chip "P" continua empilhado sobre o "C" (widget). |
+| circunferencia-equacao-e-posicoes | 6 `fechamento` | ainda com defeito | Ficou menor, mas "(x − a)²" e "(y − b)²" ainda quebram em 2 linhas dentro do botão em 400 px. |
+| vetores-no-plano | 5 `desafio-soma` | ok, com ressalva | Certa: v encaixado na ponta de u, soma desenhada. "(2; −4)": desenha d = v − u entre as pontas, que mostra o erro. "(8; −3)" e "(6; 4)" só mudam `highlight` (v um pouco mais grosso) e não mostram o erro. |
+| parabola-conica | 1 `vertice` e 2 `tracar` | ok, com ressalva | A curva está oculta. A equação "x² = 4y" continua escrita desde o passo 1 (widget, já anotado). |
+| parabola-conica | 5 `desafio-foco` | ainda com defeito | Figura base inalterada (P solto com "PF₁ = 2; Pd = 4"). "(0; 8)": o ponto fica em y = 8, **fora da janela**; só se vê uma linha vertical saindo pelo topo. "(2; 0)": mostra P em (2; 0) com PF ≠ Pd, faz sentido. **Na certa**, P vai para cima do foco e a tela mostra "PF₁ = 0; Pd = 4; Diferença = 4", que parece um erro (defeito novo). Sugestão: na certa, P num ponto da curva, como (4; 2), com PF = Pd = 4. |
+| parabola-conica | 6 `fechamento` | ok | "x² = 4 p y" cabe. |
+| elipse | 1, 4, 6 | ok | P sobre a curva: "Soma = 10; 2a = 10" em todos. |
+| elipse | 5 `desafio-focos` | ok, com ressalva | "(±5; 0)" põe P no vértice com 9 + 1, mostra bem que 5 é o vértice. "(±√34; 0)" só engrossa a curva. A linha "c = 4" ainda entrega a resposta (widget). |
+| elipse | 6 `fechamento` (fórmula) | ok | "x²/a² + y²/b² = 1" cabe. |
+| hiperbole | 1, 3, 4, 6 | ok | P sobre a curva (diferença 0 no passo 1, 6 nos demais); retângulo escondido até o botão no passo 3. |
+| hiperbole | 5 `desafio-focos` | ok, com ressalva | "(±√7; 0)" mostra retângulo e triângulo; "(±3; 0)" põe P no vértice (8 − 2 = 6); "(±4; 0)" destaca o triângulo. "c = 5" ainda na tela (widget). |
+| hiperbole | 6 `fechamento` (fórmula) | ok | Cabe. |
