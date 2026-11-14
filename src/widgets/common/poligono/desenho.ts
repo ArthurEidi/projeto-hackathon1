@@ -65,7 +65,7 @@ export function aspectoPoligono(p: Poligonos): number {
     case "isometria":
       return p.transformacao === "painel" ? 0.42 : 0.95;
     case "paralelas":
-      return 0.62;
+      return 0.70;
   }
 }
 
@@ -329,21 +329,27 @@ function cuboIso(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"isome
 function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"paralelas">, cl: Ctl, e: EstadoPol): GeoPol {
   const g = paralelas(p, cl, e);
   const hl = p.highlight;
-  const v = criarVista(w, h - banda(1), { x0: -5.2, x1: 5.2, y0: -3.5, y1: 1.5 }, 10);
+  const midX = (g.X1.x + g.X2.x) / 2;
+  const spanX = Math.max(4.6, Math.abs(g.X2.x - g.X1.x) / 2 + 2.8);
+  const caixa = { x0: midX - spanX, x1: midX + spanX, y0: -3.6, y1: 1.5 };
+  const v = criarVista(w, h - banda(1), caixa, 10);
   const u = g.u;
   // Retas r e s (s pode estar girada por `desvio`).
   const dirS = { x: Math.cos((g.desvio * Math.PI) / 180), y: Math.sin((g.desvio * Math.PI) / 180) };
   const tracoReta = (o: Pt, d: Pt, L: number, cor: string, lw: number, dash?: number[]) => segMundo(ctx, v, { x: o.x - d.x * L, y: o.y - d.y * L }, { x: o.x + d.x * L, y: o.y + d.y * L }, cor, lw, dash);
-  tracoReta(g.X1, { x: 1, y: 0 }, 5, palette.ink, 3);
-  if (!p.foco) tracoReta(g.X2, dirS, 5, g.paralelas ? palette.ink : tintaEscura("c3"), 3);
+  const compReta = spanX * 2;
+  tracoReta(g.X1, { x: 1, y: 0 }, compReta, palette.ink, 3);
+  if (!p.foco) tracoReta(g.X2, dirS, compReta, g.paralelas ? palette.ink : tintaEscura("c3"), 3);
   if (!p.foco) {
-    etiqueta(ctx, hits, v.p(4.6, 0.45), "r", "ink");
-    etiqueta(ctx, hits, v.p(4.6 * dirS.x + g.X2.x, 4.6 * dirS.y + g.X2.y - 0.45 * 1), "s", "ink");
+    const xRot = caixa.x1 - 0.45;
+    etiqueta(ctx, hits, v.p(xRot, 0.38), "r", "ink");
+    const tS = Math.abs(dirS.x) > 0.2 ? (xRot - g.X2.x) / dirS.x : 4.2;
+    etiqueta(ctx, hits, v.p(g.X2.x + tS * dirS.x, g.X2.y + tS * dirS.y - 0.38), "s", "ink");
   }
   if (p.fantasma) segMundo(ctx, v, { x: 0, y: 1.3 }, { x: 0, y: -2.9 }, palette.lineDark, 2, [6, 5]);
   // Transversal t.
-  segMundo(ctx, v, { x: g.X2.x - u.x * 1.0, y: g.X2.y - u.y * 1.0 }, { x: g.X1.x + u.x * 1.2, y: g.X1.y + u.y * 1.2 }, palette.ink, 3);
-  etiqueta(ctx, hits, v.p(g.X1.x + u.x * 1.5, g.X1.y + u.y * 1.4), "t", "ink");
+  segMundo(ctx, v, { x: g.X2.x - u.x * 1.1, y: g.X2.y - u.y * 1.1 }, { x: g.X1.x + u.x * 1.25, y: g.X1.y + u.y * 1.25 }, palette.ink, 3);
+  etiqueta(ctx, hits, v.p(g.X1.x + u.x * 1.15 + 0.32, g.X1.y + u.y * 1.15), "t", "ink");
   // Destaques.
   const par = {
     opostos: [["r-ne", "c1"], ["r-sw", "c1"], ["r-nw", "c2"], ["r-se", "c2"]],
@@ -372,13 +378,13 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
       const ativo = p.destacar === "nenhum" || dest !== undefined;
       const cor: CorTraco = dest ?? (cz.id === "s" && !g.paralelas ? "c3" : base[k]);
       const [a0, a1] = pos[k];
-      const raio = 26 + (k === "nw" || k === "se" ? 6 : 0);
+      const raio = 21 + (k === "nw" || k === "se" ? 5 : 0);
       if (ativo) arco(ctx, X, raio, a0, a1, tinta(cor), espessura(hl, cor, 3), tintaClara(cor));
       else arco(ctx, X, raio, a0, a1, palette.lineDark, 1.5);
       if (ativo && !p.ocultar.includes(id)) {
         const m = ((a0 + a1) / 2) * (Math.PI / 180);
         const txt = p.rotulos[id] ?? `${fmt(cz.ang[k], 0)}°`;
-        etiqueta(ctx, hits, { x: X.x + Math.cos(m) * (raio + 24), y: X.y - Math.sin(m) * (raio + 24) }, txt, cor);
+        etiqueta(ctx, hits, { x: X.x + Math.cos(m) * (raio + 18), y: X.y - Math.sin(m) * (raio + 18) }, txt, cor);
       }
     }
   }

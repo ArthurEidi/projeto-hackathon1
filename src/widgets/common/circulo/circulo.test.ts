@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { arcos, estadoInicial, fatias, metricasCirculo, roda, setoresRearranjados } from "./calc";
-import { desenharCirculo } from "./desenho";
+import { aspectoCirculo, desenharCirculo } from "./desenho";
 import { GeometriaCirculo, GeometriaCirculoFigura, type CirculoDe } from "./params";
 
 const circ = (o: object) => GeometriaCirculo.parse(o);
@@ -151,5 +151,27 @@ describe("métricas e figura", () => {
     const r = GeometriaCirculoFigura.safeParse(c);
     expect(r.success, r.success ? "" : r.error.message).toBe(true);
     expect(() => desenharCirculo(ctx, 400, 360, [], r.data!, {}, estadoInicial())).not.toThrow();
+  });
+  it("voltas usa π e ≈ na legenda em vez de 3,14 = e fatias divide legenda em 2 linhas", () => {
+    const textos: string[] = [];
+    const spyCtx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) => {
+        if (k === "measureText") return () => ({ width: 30 });
+        if (k === "fillText") return (t: string) => textos.push(t);
+        return () => undefined;
+      },
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+
+    const pVoltas = GeometriaCirculoFigura.parse({ modo: "roda", variante: "voltas", voltas: 10, unidade: "m" });
+    desenharCirculo(spyCtx, 400, Math.round(400 * aspectoCirculo(pVoltas)), [], pVoltas, {}, estadoInicial());
+    expect(textos.some((t) => t.includes("10 · π ≈ 31,42 m"))).toBe(true);
+    expect(textos.some((t) => t.includes("3,14 ="))).toBe(false);
+
+    textos.length = 0;
+    const pDisco = GeometriaCirculoFigura.parse({ modo: "fatias", N: 16, r: 4 });
+    desenharCirculo(spyCtx, 400, Math.round(400 * aspectoCirculo(pDisco)), [], pDisco, {}, estadoInicial());
+    expect(textos).toContain("16 setores: base ≈ πr, altura r");
+    expect(textos).toContain("área ≈ πr · r = πr² = 16π");
   });
 });

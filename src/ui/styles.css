@@ -407,19 +407,28 @@ button {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+.options--lista {
+  grid-template-columns: 1fr;
+}
+.options--lista .card {
+  min-height: 56px;
+}
 
 /* ---------- Fechamento ---------- */
 .formula {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  max-width: 100%;
   font-size: 28px;
   font-weight: 900;
 }
 .formula__op {
   color: var(--ink2);
   padding: 0 2px;
+  white-space: nowrap;
 }
 .formula .btn {
   min-height: 56px;
@@ -428,6 +437,7 @@ button {
   font-size: 28px;
   text-transform: none;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 .formula sup {
   font-size: 0.55em;

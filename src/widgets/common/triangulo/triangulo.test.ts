@@ -94,13 +94,13 @@ describe("lei dos cossenos e dos senos", () => {
 });
 
 describe("ângulos", () => {
-  it("a soma é 180° em qualquer vértice, e o externo vale α + β", () => {
+  it("a soma é 180° em qualquer vértice, e o externo vale α + γ", () => {
     const p = tri({ modo: "angulos" }) as TrianguloDe<"angulos">;
     const e = estadoInicial(p);
     for (const C of [{ x: 0, y: 3 * Math.sqrt(3) }, { x: 1, y: 2 }, { x: -3, y: 4 }, { x: 2.5, y: 0.75 }]) {
       const g = angulos(p, {}, { ...e, vertice: C });
       expect(g.alfa + g.beta + g.gama).toBeCloseTo(180, 9);
-      expect(g.externo).toBeCloseTo(g.alfa + g.beta, 12);
+      expect(g.externo).toBeCloseTo(g.alfa + g.gama, 12);
     }
     const eq = angulos(p, {}, e);
     expect([eq.alfa, eq.beta, eq.gama].map((x) => Math.round(x))).toEqual([60, 60, 60]);
@@ -212,5 +212,28 @@ describe("métricas emitidas e figura", () => {
     const r = GeometriaTrianguloFigura.safeParse(c);
     expect(r.success, r.success ? "" : r.error.message).toBe(true);
     expect(() => desenharTriangulo(ctx, 400, 360, [], r.data!, {}, estadoInicial(r.data!))).not.toThrow();
+  });
+  it("legenda da diagonal usa √2 e ≈ coerente (sem 1,41 = 7,07)", () => {
+    const textos: string[] = [];
+    const capCtx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) =>
+        k === "measureText"
+          ? () => ({ width: 30 })
+          : k === "fillText"
+            ? (s: string) => textos.push(s)
+            : () => undefined,
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+    const p = tri({ modo: "notaveis", figura: "quadrado", L: 5 });
+    desenharTriangulo(capCtx, 400, 360, [], p, {}, estadoInicial(p));
+    expect(textos.some((t) => t.includes("5√2 ≈ 7,07"))).toBe(true);
+    expect(textos.some((t) => t.includes("1,41 ="))).toBe(false);
+  });
+  it("razoes com k fixo ocupa toda a largura disponível em vez de encolher por k_max", () => {
+    const pFixo = tri({ modo: "razoes", angulo: 30, k: 1, hip: 5 });
+    const pDin = tri({ modo: "razoes", angulo: 30, k: "$k", k_max: 3, hip: 5 });
+    const gFixo = desenharTriangulo(ctx, 400, 360, [], pFixo, {}, estadoInicial(pFixo));
+    const gDin = desenharTriangulo(ctx, 400, 360, [], pDin, { k: 1 }, estadoInicial(pDin));
+    expect(gFixo.vista.k).toBeGreaterThan(gDin.vista.k * 2);
   });
 });

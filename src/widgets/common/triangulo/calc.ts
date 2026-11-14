@@ -159,7 +159,7 @@ export function angulos(p: TrianguloDe<"angulos">, c: Ctl, e: EstadoTri) {
   const alfa = anguloEm(BASE_A, BASE_B, C);
   const beta = anguloEm(BASE_B, BASE_A, C);
   const gama = 180 - alfa - beta;
-  return { C, alfa, beta, gama, soma: alfa + beta + gama, externo: alfa + beta };
+  return { C, alfa, beta, gama, soma: alfa + beta + gama, externo: alfa + gama };
 }
 
 // ---------- Desigualdade triangular ----------

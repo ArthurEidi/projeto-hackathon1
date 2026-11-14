@@ -1,6 +1,6 @@
 // Geometria e métricas do widget ciclo_trigonometrico (sem React e sem DOM). Testado em ciclo.test.ts.
 import { avaliarExpr, type Controles } from "../expr";
-import { graus, rad } from "../geo/base";
+import { fmt, graus, rad } from "../geo/base";
 import type { Ciclo } from "./params";
 
 export type Ctl = Controles;
@@ -32,6 +32,16 @@ export function fracaoPi(g: number): string {
   const den = 180 / d;
   const sinal = gi < 0 ? "−" : "";
   return `${sinal}${n === 1 ? "" : n}π${den === 1 ? "" : `/${den}`}`;
+}
+
+/** Formata marco em radianos: múltiplos de π/12 (até 0,0035) saem como fração de π; demais com até 2 casas. */
+export function rotuloMarcoRad(r: number): string {
+  if (Math.abs(r) < 1e-6) return "0";
+  const k12 = Math.round((r * 12) / Math.PI);
+  if (k12 !== 0 && Math.abs(r - (k12 * Math.PI) / 12) < 0.0035) {
+    return fracaoPi(k12 * 15);
+  }
+  return `${fmt(r)} rad`;
 }
 
 const ang180 = (a: number, b: number) => Math.abs(mod(a - b + 180, 360) - 180);

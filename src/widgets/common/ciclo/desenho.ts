@@ -20,7 +20,7 @@ import {
   type Alvo,
   type Vista,
 } from "../geo/base";
-import { fracaoPi, modeloCiclo, type Ctl, type EstadoCiclo } from "./calc";
+import { fracaoPi, modeloCiclo, rotuloMarcoRad, type Ctl, type EstadoCiclo } from "./calc";
 import type { Ciclo } from "./params";
 
 type G = CanvasRenderingContext2D;
@@ -93,7 +93,7 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
     const q = v.q(polar(1, (r * 180) / Math.PI));
     dot(ctx, q, 5, palette.muted);
     const t = v.q(polar(1.2, (r * 180) / Math.PI));
-    nota(ctx, t, `${fmt(r, 0)} rad`, "muted", 12);
+    nota(ctx, t, rotuloMarcoRad(r), "muted", 12);
   }
 
   // Arco solução e retas-alvo.

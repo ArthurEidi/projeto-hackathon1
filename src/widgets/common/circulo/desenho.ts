@@ -56,7 +56,7 @@ export function aspectoCirculo(p: Circulos): number {
     case "arcos":
       return p.mostrar.medidas ? 1 : 0.92;
     case "roda":
-      return p.variante === "giro" || p.variante === "razao" ? 0.62 : p.variante === "voltas" ? 0.5 : 0.78;
+      return p.variante === "giro" || p.variante === "razao" ? 0.62 : p.variante === "voltas" ? 0.68 : 0.78;
     case "fatias":
       return p.variante === "disco" ? 0.98 : 0.9;
   }
@@ -197,15 +197,15 @@ function dRoda(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"roda">, 
   }
   if (p.variante === "voltas") {
     // Uma roda e, ao lado, o percurso feito em voltas: cada trecho vale uma circunferência.
-    const rpx = Math.min(40, h * 0.22);
+    const rpx = Math.min(36, h * 0.16);
     const cx = rpx + 14;
-    const cy = 20 + rpx;
+    const cy = 16 + rpx;
     circulo(ctx, { x: cx, y: cy }, rpx, tintaClara("c2"), tinta("c2"), espessura(hl, "c2", 3));
     seg(ctx, { x: cx - rpx - 8, y: cy + rpx }, { x: cx + rpx + 8, y: cy + rpx }, palette.ink, 3);
     nota(ctx, { x: cx, y: cy }, `d = ${fmt(g.d)}`, "c2", 13);
     const x0 = 16;
     const x1 = w - 16;
-    const y = cy + rpx + 52;
+    const y = cy + rpx + 54;
     const total = p.voltas_max;
     const n = Math.max(0, Math.min(total, g.voltas));
     const larg = (x1 - x0) / total;
@@ -216,35 +216,36 @@ function dRoda(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"roda">, 
     ctx.strokeStyle = palette.ink;
     ctx.lineWidth = 2;
     ctx.strokeRect(x0, y - 14, x1 - x0, 28);
-    nota(ctx, { x: x0 + 14, y: y + 30 }, "0", "muted", 12);
-    nota(ctx, { x: x1 - 24, y: y + 30 }, `${fmt(total * g.C)}${un}`, "muted", 12);
-    nota(ctx, { x: w / 2, y: y - 36 }, `cada trecho = 1 volta = C = π · d = ${fmt(g.C)}${un}`, "c3", 14);
-    nota(ctx, { x: w / 2, y: h - 26 }, `${fmt(g.voltas, 0)} ${g.voltas === 1 ? "volta" : "voltas"} → ${fmt(g.voltas, 0)} · ${fmt(g.C)} = ${fmt(g.percurso)}${un}`, "c3", 15);
+    nota(ctx, { x: x0 + 14, y: y + 28 }, "0", "muted", 12);
+    nota(ctx, { x: x1 - 24, y: y + 28 }, `${fmt(total * g.C)}${un}`, "muted", 12);
+    const piExpr = Math.abs(g.d - 1) < 1e-9 ? "π" : `${fmt(g.d)}π`;
+    nota(ctx, { x: w / 2, y: y - 34 }, `cada trecho = 1 volta = C = ${piExpr} ≈ ${fmt(g.C)}${un}`, "c3", 14);
+    nota(ctx, { x: w / 2, y: h - 22 }, `${fmt(g.voltas, 0)} ${g.voltas === 1 ? "volta" : "voltas"} → ${fmt(g.voltas, 0)} · ${piExpr} ≈ ${fmt(g.percurso)}${un}`, "c3", 15);
     return vazio;
   }
   // giro e razão: pista graduada com 1, 2, 3 e π.
   const xmax = Math.max(4.4, Math.PI * g.d + 0.8);
   const ymax = Math.max(g.d, 1) + 0.5;
-  const v = criarVista(w, h - banda(1), { x0: -0.8, x1: xmax, y0: -1.9, y1: ymax }, 12);
+  const v = criarVista(w, h - banda(1), { x0: -0.8, x1: xmax, y0: -2.15, y1: ymax }, 12);
   segMundo(ctx, v, { x: -0.3, y: 0 }, { x: xmax - 0.2, y: 0 }, palette.ink, 3);
   for (let i = 0; i <= Math.floor(xmax - 0.2); i++) {
     segMundo(ctx, v, { x: i, y: 0 }, { x: i, y: -0.15 }, palette.ink, 2);
-    nota(ctx, v.p(i, -0.38), String(i), "muted", 12);
+    nota(ctx, v.p(i, -0.36), String(i), "muted", 12);
   }
   segMundo(ctx, v, { x: Math.PI, y: 0 }, { x: Math.PI, y: -0.28 }, tinta("c3"), 3);
-  nota(ctx, v.p(Math.PI, -0.62), "π", "c3", 14);
+  nota(ctx, v.p(Math.PI, -0.64), "π", "c3", 14);
   const r = g.d / 2;
   if (p.variante === "razao") {
     // Roda de diâmetro 1 (cinza) e a roda d, cada uma com a volta inteira desenrolada.
     circulo(ctx, v.p(0.5, 0.5), 0.5 * v.k, undefined, palette.muted, 2);
-    segMundo(ctx, v, { x: 0, y: -0.92 }, { x: Math.PI, y: -0.92 }, palette.muted, 4);
+    segMundo(ctx, v, { x: 0, y: -0.96 }, { x: Math.PI, y: -0.96 }, palette.muted, 4);
     const cc = v.p(r, r);
     circulo(ctx, cc, r * v.k, tintaClara("c2"), tinta("c2"), espessura(hl, "c2", 3));
     segMundo(ctx, v, { x: 0, y: r }, { x: g.d, y: r }, tinta("c2"), espessura(hl, "c2", 4));
     segMundo(ctx, v, { x: r, y: r }, { x: r + r * Math.cos(rad(40)), y: r + r * Math.sin(rad(40)) }, tinta("c1"), 3);
     etiqueta(ctx, hits, v.p(r, r), `d = ${fmt(g.d)}`, "c2");
-    segMundo(ctx, v, { x: 0, y: -1.08 }, { x: g.C, y: -1.08 }, tinta("c3"), espessura(hl, "c3", 6));
-    etiqueta(ctx, hits, v.p(Math.max(g.C / 2, 1.2), -1.6), `C = ${fmt(g.C)}${un}`, "c3");
+    segMundo(ctx, v, { x: 0, y: -1.24 }, { x: g.C, y: -1.24 }, tinta("c3"), espessura(hl, "c3", 6));
+    etiqueta(ctx, hits, v.p(Math.max(g.C / 2, 1.2), -1.78), `C = ${fmt(g.C)}${un}`, "c3");
     rodape(ctx, w, h, [{ t: `C / d = ${fmt(g.C)} / ${fmt(g.d)} = ${fmt(g.razao)}`, c: "c3" }]);
     return { alvos: [], vista: v };
   }
@@ -302,7 +303,7 @@ function dFatias(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"fatias
   // Disco: N setores rearranjados em fila; a base tende a πr e a altura é r.
   const r = g.r;
   const caixa = { x0: -0.25 * r, x1: 3.6 * r, y0: -0.5 * r, y1: 3.5 * r };
-  const v = criarVista(w, h - banda(1), caixa, 10);
+  const v = criarVista(w, h - banda(2), caixa, 10);
   const centro = { x: 1.7 * r, y: 2.45 * r };
   const O = v.q(centro);
   for (let i = 0; i < g.N; i++) {
@@ -319,7 +320,10 @@ function dFatias(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"fatias
   segMundo(ctx, v, { x: x0 + r * Math.sin(Math.PI / g.N), y: -0.12 * r }, { x: x0 + r * Math.sin(Math.PI / g.N) + baseLarg, y: -0.12 * r }, tinta("c2"), espessura(hl, "c2", 4));
   etiqueta(ctx, hits, v.p(x0 + r * Math.sin(Math.PI / g.N) + baseLarg / 2, -0.38 * r), `${fmt(g.razaoBase * 100, 0)}% de πr`, "c2");
   etiqueta(ctx, hits, v.p(x0 - 0.02 * r, r * 0.5), `r`, "c1");
-  rodape(ctx, w, h, [{ t: `${g.N} setores: base ≈ πr, altura r, área ≈ πr · r = π r² = ${fmt(r * r)}π`, c: "c3" }]);
+  rodape(ctx, w, h, [
+    { t: `${g.N} setores: base ≈ πr, altura r`, c: "c3" },
+    { t: `área ≈ πr · r = πr² = ${fmt(r * r)}π`, c: "c3" },
+  ]);
   return { alvos: [], vista: v };
 }
 

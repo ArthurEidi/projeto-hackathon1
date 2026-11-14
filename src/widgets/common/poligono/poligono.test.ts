@@ -205,6 +205,9 @@ describe("figura e desenho", () => {
     { modo: "paralelas", alfa: 60, foco: true },
     { modo: "paralelas", alfa: 60, destacar: "alternos", deslizar: 0.5 },
     { modo: "paralelas", alfa: 60, desvio: 10, fantasma: true },
+    { modo: "paralelas", alfa: 90 },
+    { modo: "paralelas", alfa: 150 },
+    { modo: "paralelas", alfa: 25 },
   ];
   it.each(casos)("desenha sem erro: %j", (c) => {
     const r = GeometriaPoligonoFigura.safeParse(c);

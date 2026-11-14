@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { estadoInicial, fracaoPi, metricasCiclo, modeloCiclo, mod, quadranteDe } from "./calc";
+import { estadoInicial, fracaoPi, metricasCiclo, modeloCiclo, mod, quadranteDe, rotuloMarcoRad } from "./calc";
 import { desenharCiclo } from "./desenho";
 import { CicloTrigonometrico, CicloTrigonometricoFigura } from "./params";
 
@@ -145,6 +145,16 @@ describe("métricas emitidas e figura", () => {
     { angulo: 400, grafico: "cos", unidade: "graus" },
     { quadrante: 2, mostrar: { pitagorica: true } },
   ];
+  it("marcos em radianos: múltiplos de π viram fração de π e demais têm até 2 casas", () => {
+    expect(rotuloMarcoRad(0.5)).toBe("0,5 rad");
+    expect(rotuloMarcoRad(0.8)).toBe("0,8 rad");
+    expect(rotuloMarcoRad(1)).toBe("1 rad");
+    expect(rotuloMarcoRad(1.05)).toBe("π/3");
+    expect(rotuloMarcoRad(1.57)).toBe("π/2");
+    expect(rotuloMarcoRad(3.14)).toBe("π");
+    expect(rotuloMarcoRad(6.28)).toBe("2π");
+    expect(rotuloMarcoRad(Math.PI / 6)).toBe("π/6");
+  });
   it.each(casos)("desenha sem erro: %j", (c) => {
     const r = CicloTrigonometricoFigura.safeParse(c);
     expect(r.success, r.success ? "" : r.error.message).toBe(true);

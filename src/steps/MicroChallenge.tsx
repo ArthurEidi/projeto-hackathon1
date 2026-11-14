@@ -67,6 +67,9 @@ export function MicroChallenge({ step, onNext }: StepProps<MicroChallengeStep>) 
       </>
     );
 
+  const opcoesDeTexto = step.options.some((o) => [...o.label].length > 4);
+  const opcoesLongas = step.options.some((o) => [...o.label].length > 10);
+
   return (
     <StepLayout
       paco={paco}
@@ -77,7 +80,11 @@ export function MicroChallenge({ step, onNext }: StepProps<MicroChallengeStep>) 
         <Figure state={figState} />
       </div>
       <p className="prompt">{step.prompt}</p>
-      <div className="options" role="group" aria-label="Alternativas">
+      <div
+        className={`options${opcoesDeTexto ? " options--texto" : ""}${opcoesLongas ? " options--lista" : ""}`}
+        role="group"
+        aria-label="Alternativas"
+      >
         {step.options.map((o) => (
           <TactileCard
             key={o.id}

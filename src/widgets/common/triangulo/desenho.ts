@@ -216,8 +216,14 @@ function dPitagoras(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"p
 
 function dRazoes(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"razoes">, cl: Ctl): GeoTri {
   const g = razoes(p, cl);
-  const hipMax = Math.max(avaliarMax(p), 0.5);
-  const caixa: Caixa = { x0: -0.4, x1: hipMax + 0.4, y0: -0.8, y1: hipMax * 0.95 + 0.2 };
+  const kDinamico = typeof p.k === "string";
+  const hipMax = Math.max(kDinamico ? avaliarMax(p) : g.hip, 0.5);
+  const caixa: Caixa = {
+    x0: -hipMax * 0.08,
+    x1: hipMax * 1.18,
+    y0: -hipMax * 0.18,
+    y1: hipMax * (p.painel ? 1.05 : 0.92),
+  };
   const v = criarVista(w, h, caixa, 22);
   if (p.malha) malha(ctx, v, { x0: 0, x1: hipMax, y0: 0, y1: hipMax * 0.95 }, hipMax > 8 ? 2 : 1);
   const A = { x: 0, y: 0 };
@@ -234,10 +240,15 @@ function dRazoes(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"razo
   segMundo(ctx, v, A, Bb, tinta("c3"), espessura(p.highlight, "c3", 4));
   if (g.ca > 0 && g.co > 0) retoNoMundo(ctx, v, Cc, A, Bb);
   if (g.hip > 0) {
-    anguloMarcado(ctx, hits, v.q(A), 0, g.angulo, 34, `${fmt(g.angulo, 0)}°`, "c4");
-    lado(ctx, hits, v, Cc, Bb, A, `CO ${fmt(g.co, 1)}`, "c1", 28);
-    lado(ctx, hits, v, A, Cc, Bb, `CA ${fmt(g.ca, 1)}`, "c2", 22);
-    lado(ctx, hits, v, A, Bb, Cc, `HIP ${fmt(g.hip, 1)}`, "c3", 30);
+    const hipPx = Math.hypot(v.q(Bb).x - v.q(A).x, v.q(Bb).y - v.q(A).y);
+    const rAng = Math.min(34, Math.max(16, hipPx * 0.16));
+    anguloMarcado(ctx, hits, v.q(A), 0, g.angulo, rAng, null, "c4");
+    const mAng = (g.angulo * Math.PI) / 360;
+    const dRot = Math.min(rAng + 20, Math.max(rAng + 8, hipPx * 0.38));
+    etiqueta(ctx, hits, { x: v.q(A).x + Math.cos(mAng) * dRot, y: v.q(A).y - Math.sin(mAng) * dRot }, `${fmt(g.angulo, 0)}°`, "c4");
+    lado(ctx, hits, v, Cc, Bb, A, `CO ${fmt(g.co, 1)}`, "c1", 34);
+    lado(ctx, hits, v, A, Cc, Bb, `CA ${fmt(g.ca, 1)}`, "c2", 20);
+    lado(ctx, hits, v, A, Bb, Cc, `HIP ${fmt(g.hip, 1)}`, "c3", 28);
   }
   if (p.painel) {
     const lin = [
@@ -565,7 +576,7 @@ function dNotaveis(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"no
       etiqueta(ctx, hits, v.p(L * 0.36, L * 0.62), `d = ${fmt(g.d)}`, "c1");
     }
     lado(ctx, hits, v, { x: 0, y: 0 }, { x: L, y: 0 }, { x: L / 2, y: L }, `L = ${fmt(L)}`, "c2", 20);
-    nota(ctx, { x: w / 2, y: h - 18 }, `d = L · √2 = ${fmt(L)} · 1,41 = ${fmt(g.d)}`, "c1", 14);
+    nota(ctx, { x: w / 2, y: h - 18 }, `d = L · √2 = ${fmt(L)}√2 ≈ ${fmt(g.d)}`, "c1", 14);
     return { alvos: [], vista: v };
   }
   if (p.figura === "equilatero") {
