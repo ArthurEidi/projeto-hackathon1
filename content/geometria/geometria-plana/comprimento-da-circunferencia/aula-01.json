@@ -306,7 +306,7 @@
             "id": "a3140",
             "label": "314 cm",
             "correct": false,
-            "feedback": "3,14·10 desloca a vírgula uma casa: 31,4 cm."
+            "feedback": "Você deslocou a vírgula duas casas em vez de uma (3,14·100 = 314). Em 3,14·10, fica 31,4 cm."
           }
         ]
       },
@@ -398,7 +398,7 @@
             "id": "a1200",
             "label": "1200 m",
             "correct": false,
-            "feedback": "20 m é o raio: 1 volta dá 120 m e 5 voltas dão 600 m."
+            "feedback": "Você dobrou a distância final (2·600 = 1200 m) ou usou r = 40 m. Com r = 20 m, 5 voltas dão 600 m."
           }
         ]
       },
@@ -581,7 +581,7 @@
             "id": "a942",
             "label": "9,42 cm",
             "correct": false,
-            "feedback": "15 minutos são 1/4 de 62,8 cm, o que dá 15,7 cm."
+            "feedback": "Você calculou 15% de 62,8 (0,15·62,8 = 9,42 cm), mas 15 min em 60 min é 1/4 da volta: 15,7 cm."
           }
         ]
       },
@@ -612,7 +612,7 @@
             "id": "a20",
             "label": "20 voltas",
             "correct": false,
-            "feedback": "A razão entre os raios é 15 / 5 = 3, logo 4·3 = 12 voltas."
+            "feedback": "Você multiplicou 4 voltas pelo raio menor (4·5 = 20). A razão é 15 / 5 = 3, logo 4·3 = 12 voltas."
           }
         ]
       }

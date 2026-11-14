@@ -87,7 +87,7 @@
       ],
       "lines": {
         "intro": "Olhe um cruzamento só. Leve α até 70°: quanto vale o vizinho que completa a meia-volta e quanto vale o oposto?",
-        "done": "O vizinho vale 110° porque meia-volta tem 180°. E o oposto pelo vértice também completa 180° com 110°, então volta a ser 70°."
+        "done": "O vizinho é 180° − α (em 70°, dá 110°). Como o oposto completa 180° com esse vizinho, ele volta a ser α."
       },
       "complete_when": {
         "metric": "alfa",
@@ -316,13 +316,13 @@
             "id": "a30",
             "label": "30°",
             "correct": false,
-            "feedback": "As paralelas têm a mesma direção; o correspondente mantém 60°."
+            "feedback": "Você dividiu o ângulo por 2 (60° / 2 = 30°). Como as paralelas têm a mesma direção, o correspondente mantém 60°."
           },
           {
             "id": "a90",
             "label": "90°",
             "correct": false,
-            "feedback": "A transversal está inclinada em 60°, então o correspondente também vale 60°."
+            "feedback": "Você assumiu que as retas são perpendiculares (90°). A transversal está inclinada em 60°, então o correspondente vale 60°."
           }
         ]
       },
@@ -352,7 +352,7 @@
             "id": "a90",
             "label": "90°",
             "correct": false,
-            "feedback": "Alternos internos têm a mesma medida: 110°."
+            "feedback": "Você assumiu ângulo reto (90°) em vez de manter a inclinação. Alternos internos têm a mesma medida: 110°."
           }
         ]
       }
@@ -378,13 +378,13 @@
             "id": "c65s155",
             "label": "65° e 155°",
             "correct": false,
-            "feedback": "Cuidado na conta: 90° − 35° = 55° e 180° − 35° = 145°."
+            "feedback": "Você esqueceu de emprestar a dezena ao subtrair 35° (fez 90−30+5 = 65° e 180−30+5 = 155°). O certo é 55° e 145°."
           },
           {
             "id": "c55s135",
             "label": "55° e 135°",
             "correct": false,
-            "feedback": "O suplemento é 180° − 35° = 145°, então fica 55° e 145°."
+            "feedback": "Você somou 80° ao complemento em vez de 90° (55° + 80° = 135°). O suplemento é 180° − 35° = 145°, ficando 55° e 145°."
           }
         ]
       },

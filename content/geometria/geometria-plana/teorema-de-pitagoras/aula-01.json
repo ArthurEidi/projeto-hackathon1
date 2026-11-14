@@ -277,7 +277,7 @@
             "id": "a1",
             "label": "1 cm",
             "correct": false,
-            "feedback": "A hipotenusa é o maior lado: raiz de (9 + 16) = 5 cm."
+            "feedback": "1 cm vem de subtrair 4 − 3. A hipotenusa soma os quadrados: √(9 + 16) = 5 cm."
           }
         ]
       },
@@ -337,7 +337,7 @@
             "id": "a8",
             "label": "8",
             "correct": false,
-            "feedback": "O cateto é menor que a hipotenusa 5: raiz de (25 − 9) = 4."
+            "feedback": "8 é a soma 5 + 3, mas 5 já é a hipotenusa. Subtraia os quadrados: √(25 − 9) = 4."
           }
         ]
       },
@@ -393,7 +393,7 @@
             "id": "a16",
             "label": "16 m",
             "correct": false,
-            "feedback": "A altura não pode passar do tamanho da escada (10 m). Vale 8 m."
+            "feedback": "16 m soma 10 + 6, mas a altura não pode passar da escada (10 m). Vale √(100 − 36) = 8 m."
           },
           {
             "id": "a64",
@@ -454,7 +454,7 @@
             "id": "a2",
             "label": "2 cm",
             "correct": false,
-            "feedback": "Use metade da base (3 cm) em Pitágoras: 5² − 3² = 16, então h = 4 cm."
+            "feedback": "2 cm subtrai 5 − 3 sem elevar ao quadrado. Em Pitágoras: 5² − 3² = 16, então h = 4 cm."
           },
           {
             "id": "a3",
@@ -518,7 +518,7 @@
             "id": "a12",
             "label": "12 cm²",
             "correct": false,
-            "feedback": "d² = 6² = 36, e dividindo por 2 encontramos L² = 18 cm²."
+            "feedback": "12 cm² dobra a diagonal (2 · 6) em vez de fazer 6² / 2. Como d² = 2·L², L² = 36 / 2 = 18 cm²."
           },
           {
             "id": "a9",
@@ -615,7 +615,7 @@
             "id": "a12",
             "label": "12 km",
             "correct": false,
-            "feedback": "Os catetos totais são 8 e 6: 8² + 6² = 100, então a distância é 10 km."
+            "feedback": "12 km soma só 4 + 8 (ou dobra 6), mas os catetos são 8 e 6: √(8² + 6²) = 10 km."
           }
         ]
       }

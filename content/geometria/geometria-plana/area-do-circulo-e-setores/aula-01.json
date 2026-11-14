@@ -248,13 +248,13 @@
             "id": "a5p",
             "label": "5π cm²",
             "correct": false,
-            "feedback": "Eleve o raio ao quadrado: π · 5² = 25π cm²."
+            "feedback": "Você só multiplicou π pelo raio (π · 5 = 5π) sem elevar ao quadrado. A área é π · 5² = 25π cm²."
           },
           {
             "id": "a50p",
             "label": "50π cm²",
             "correct": false,
-            "feedback": "Não multiplique por 10; eleve ao quadrado: π · 5² = 25π cm²."
+            "feedback": "Você multiplicou por 2 além de elevar ao quadrado (2π · 5² = 50π). A área é só π · 5² = 25π cm²."
           }
         ]
       },
@@ -284,7 +284,7 @@
             "id": "a12p",
             "label": "12π m²",
             "correct": false,
-            "feedback": "O raio é 3 m, então a área é π · 3² = 9π m²."
+            "feedback": "Você usou o diâmetro como raio na fórmula do comprimento (2π · 6 = 12π). A área é πr² com r = 3 m: π · 3² = 9π m²."
           }
         ]
       },
@@ -314,7 +314,7 @@
             "id": "a2p",
             "label": "2π cm²",
             "correct": false,
-            "feedback": "Metade de 16π é 8π cm²."
+            "feedback": "Você fez π·4 / 2 = 2π sem elevar o raio ao quadrado. A área é (π · 4²) / 2 = 8π cm²."
           }
         ]
       },
@@ -344,7 +344,7 @@
             "id": "a8p",
             "label": "8π cm²",
             "correct": false,
-            "feedback": "4² − 2² = 16 − 4 = 12, então a área é 12π cm²."
+            "feedback": "Você multiplicou os raios (4 · 2 · π = 8π) em vez de subtrair os quadrados: π(4² − 2²) = 12π cm²."
           }
         ]
       }
@@ -376,7 +376,7 @@
             "id": "a3p",
             "label": "3π cm²",
             "correct": false,
-            "feedback": "60° é 1/6 da volta: 36π / 6 = 6π cm²."
+            "feedback": "Você dividiu 36π por 12 em vez de 6 (60° é 1/6 de 360°, não 1/12): 36π / 6 = 6π cm²."
           }
         ]
       },
@@ -400,7 +400,7 @@
             "id": "d245",
             "label": "24,5 cm",
             "correct": false,
-            "feedback": "Tire a raiz quadrada de 49 para achar r = 7 cm, e dobre para o diâmetro: 14 cm."
+            "feedback": "Você dividiu 49 por 2 (49 / 2 = 24,5) em vez de tirar a raiz quadrada. Como r = √49 = 7 cm, o diâmetro é 14 cm."
           },
           {
             "id": "d49",
@@ -430,13 +430,13 @@
             "id": "a100p",
             "label": "100π cm²",
             "correct": false,
-            "feedback": "30² = 900; dividindo por 3 (pois 120° = 1/3 de 360°), temos 300π cm²."
+            "feedback": "Você calculou 30 · 10 = 300 em vez de 30² = 900 antes de dividir por 3. O certo é 900π / 3 = 300π cm²."
           },
           {
             "id": "a450p",
             "label": "450π cm²",
             "correct": false,
-            "feedback": "120° é um terço de 360°: 900π / 3 = 300π cm²."
+            "feedback": "450π cm² é metade da volta (900π / 2, ou 180°). Para 120° (1/3 de 360°), dividimos por 3: 300π cm²."
           }
         ]
       }
@@ -469,7 +469,7 @@
             "id": "p16",
             "label": "16",
             "correct": false,
-            "feedback": "A razão das áreas é 2² = 4."
+            "feedback": "Você elevou ao quadrado duas vezes (2² = 4 e 4² = 16). A razão dos diâmetros é 2, então a das áreas é 2² = 4."
           }
         ]
       },
@@ -529,7 +529,7 @@
             "id": "s162p",
             "label": "16 − 2π cm²",
             "correct": false,
-            "feedback": "O raio é 2 cm, cuja área é π·2² = 4π cm²: sobram 16 − 4π cm²."
+            "feedback": "Você calculou π · 2 = 2π sem elevar o raio ao quadrado. A área do círculo é π·2² = 4π, sobrando 16 − 4π cm²."
           }
         ]
       },
@@ -590,7 +590,7 @@
             "id": "a5p",
             "label": "5π cm²",
             "correct": false,
-            "feedback": "A = (5π · 4) / 2 = 20π / 2 = 10π cm²."
+            "feedback": "Você repetiu o valor do arco L = 5π cm sem multiplicar por r / 2. A área é (5π · 4) / 2 = 10π cm²."
           }
         ]
       }

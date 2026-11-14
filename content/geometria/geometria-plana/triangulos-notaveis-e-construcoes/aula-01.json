@@ -380,7 +380,7 @@
             "id": "l14a196",
             "label": "L = 14 cm e A = 196 cm²",
             "correct": false,
-            "feedback": "Resposta: L = 7 cm e A = 49 cm²; Basta comparar L√2 com 7√2: o lado é 7 cm e a área é 49 cm²."
+            "feedback": "Resposta: L = 7 cm e A = 49 cm²; Você dobrou 7 para 14 (7·2 = 14). Comparando L√2 com 7√2, o lado é 7 cm e a área é 49 cm²."
           },
           {
             "id": "l7a98",
@@ -413,7 +413,7 @@
             "id": "a12",
             "label": "12 cm²",
             "correct": false,
-            "feedback": "Resposta: 18 cm²; Por Pitágoras, L² + L² = 6² = 36, logo a área L² = 18 cm²."
+            "feedback": "Resposta: 18 cm²; 12 cm² dobra a diagonal (2·6), mas L² + L² = 6² = 36, logo a área L² = 18 cm²."
           }
         ]
       },
@@ -510,7 +510,7 @@
             "id": "a12r3",
             "label": "12√3 cm²",
             "correct": false,
-            "feedback": "Resposta: 6√3 cm²; São 6 triângulos de √3 cm² cada: área total 6√3 cm²."
+            "feedback": "Resposta: 6√3 cm²; 12√3 dobra os 6 triângulos (6·2√3). Cada triângulo tem área √3, somando 6√3 cm²."
           }
         ]
       }

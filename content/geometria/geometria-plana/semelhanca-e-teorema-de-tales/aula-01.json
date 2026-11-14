@@ -55,7 +55,7 @@
       },
       "lines": {
         "intro": "Em k = 1 os dois triângulos empatam. Leve k até 0,5: os ângulos mudam ou só os lados encolhem?",
-        "done": "Os ângulos não mudam nada (são correspondentes na paralela), e todos os três lados caem exatamente pela metade."
+        "done": "Os ângulos não mudam nada (são correspondentes), e os três lados encolhem na mesma razão k (em 0,5, caem pela metade)."
       },
       "duvida": {
         "quando": "fim",
@@ -294,7 +294,7 @@
             "id": "a6",
             "label": "6",
             "correct": false,
-            "feedback": "Resposta: 9; A razão é 6 / 2 = 3, então x = 3 · 3 = 9."
+            "feedback": "Resposta: 9; 6 apenas copiou o segmento de baixo da primeira transversal. Como 6 / 2 = 3, temos x = 3 · 3 = 9."
           },
           {
             "id": "a1",
@@ -360,7 +360,7 @@
             "id": "a24",
             "label": "24 cm",
             "correct": false,
-            "feedback": "Resposta: 6 cm; O triângulo de cima é menor (metade), então mede 12 / 2 = 6 cm."
+            "feedback": "Resposta: 6 cm; 24 cm dobra a base (12 · 2) em vez de reduzir pela metade. Na metade dos lados, mede 6 cm."
           }
         ]
       }

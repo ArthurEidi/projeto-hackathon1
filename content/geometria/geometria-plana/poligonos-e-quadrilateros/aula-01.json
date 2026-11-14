@@ -254,7 +254,7 @@
             "id": "g1800",
             "label": "1800°",
             "correct": false,
-            "feedback": "Dar a volta por fora de qualquer polígono soma sempre 360°."
+            "feedback": "1800° é 10·180° (sem descontar 2 nem usar externos). A soma dos ângulos externos é sempre 360°."
           }
         ]
       },
@@ -278,7 +278,7 @@
             "id": "g90",
             "label": "90°",
             "correct": false,
-            "feedback": "A soma precisa dar 360°: 360° − 290° = 70°."
+            "feedback": "90° daria soma 290° + 90° = 380°, passando de 360°. O quarto ângulo é 360° − 290° = 70°."
           }
         ]
       },

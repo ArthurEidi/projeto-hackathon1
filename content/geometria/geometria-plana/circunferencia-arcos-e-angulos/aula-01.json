@@ -57,7 +57,7 @@
       ],
       "lines": {
         "intro": "Com A e B juntos, o arco é 0°. Abra o arco até 80°: quanto mede o ângulo central lá no centro O?",
-        "done": "Mede os mesmos 80°. Por definição, a medida em graus do arco AB é igual à do ângulo central α que o enxerga."
+        "done": "Mede os mesmos α (em 80°, dá 80°). Por definição, a medida em graus do arco AB é igual à do ângulo central α."
       },
       "duvida": {
         "quando": "fim",
@@ -98,7 +98,7 @@
       ],
       "lines": {
         "intro": "O vértice V recuou do centro para a borda oposta. Leve α até 120°: quanto vale o ângulo inscrito β em relação a α?",
-        "done": "Vale 60°, a metade. Como os raios OA, OB e OV são iguais, os triângulos isósceles dobram o ângulo ao chegar no centro: β = α / 2."
+        "done": "Vale sempre a metade (em 120°, dá 60°). Como OA = OB = OV, os triângulos isósceles garantem β = α / 2."
       },
       "complete_when": {
         "metric": "alfa",
@@ -344,7 +344,7 @@
             "id": "a75",
             "label": "75°",
             "correct": false,
-            "feedback": "O arco mede o dobro do inscrito: 2·25° = 50°."
+            "feedback": "75° soma o inscrito com o arco (25° + 50°). Só o arco já é o dobro do inscrito: 2·25° = 50°."
           }
         ]
       },
@@ -589,7 +589,7 @@
             "id": "a30",
             "label": "30°",
             "correct": false,
-            "feedback": "Com 30° a soma seria 30° + 60° = 90°. Para dar 105°, β = 105° / 3 = 35°."
+            "feedback": "30° seria se a soma fosse 90° (90° / 3 = 30°). Como a soma é 105°, temos β = 105° / 3 = 35°."
           }
         ]
       },

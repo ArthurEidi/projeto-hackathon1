@@ -226,13 +226,13 @@
             "id": "a24",
             "label": "24 cm²",
             "correct": false,
-            "feedback": "Isometrias não ampliam a figura; a área permanece 12 cm²."
+            "feedback": "24 cm² dobra a área pelas duas transformações (12 · 2). Isometrias preservam medidas: continua 12 cm²."
           },
           {
             "id": "a6",
             "label": "6 cm²",
             "correct": false,
-            "feedback": "Girar ou espelhar mantém a figura congruente: a área continua 12 cm²."
+            "feedback": "6 cm² divide a área ao meio (12 / 2). Girar ou espelhar mantém a figura congruente: continua 12 cm²."
           }
         ]
       },
@@ -256,7 +256,7 @@
             "id": "e8",
             "label": "8",
             "correct": false,
-            "feedback": "São 2 pelos lados e 2 pelas diagonais: ao todo 4 eixos de simetria."
+            "feedback": "8 conta cada metade de eixo separado (2 · 4 = 8). São 2 pelos meios dos lados e 2 pelas diagonais: 4 eixos."
           }
         ]
       },
@@ -354,7 +354,7 @@
             "id": "a4",
             "label": "4 cm²",
             "correct": false,
-            "feedback": "Multiplique por (1/2)² = 1/4: 32 / 4 = 8 cm²."
+            "feedback": "4 cm² divide por 8 (2³) em vez de 4 (2²). A área multiplica por (1/2)² = 1/4: 32 / 4 = 8 cm²."
           }
         ]
       },
@@ -453,7 +453,7 @@
             "id": "k45",
             "label": "4,5",
             "correct": false,
-            "feedback": "Como k² = 45 / 5 = 9, tiramos a raiz quadrada: k = 3."
+            "feedback": "4,5 divide k² = 9 por 2 em vez de tirar a raiz quadrada. Como k² = 45 / 5 = 9, temos k = √9 = 3."
           }
         ]
       },

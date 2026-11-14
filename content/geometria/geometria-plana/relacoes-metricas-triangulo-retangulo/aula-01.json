@@ -255,13 +255,13 @@
             "id": "a21",
             "label": "21 cm",
             "correct": false,
-            "feedback": "As duas projeções juntas formam a hipotenusa, então somamos: 3 + 7 = 10 cm."
+            "feedback": "21 cm multiplica as projeções (3 · 7). Como elas juntas formam a hipotenusa, somamos: 3 + 7 = 10 cm."
           },
           {
             "id": "a4",
             "label": "4 cm",
             "correct": false,
-            "feedback": "Some as duas sombras na base: a = 3 + 7 = 10 cm."
+            "feedback": "4 cm subtrai as projeções (7 − 3). Como estão lado a lado na base, somamos: 3 + 7 = 10 cm."
           }
         ]
       },
@@ -333,7 +333,7 @@
             "id": "p14",
             "label": "14",
             "correct": false,
-            "feedback": "Multiplique os catetos: a · h = 6 · 8 = 48."
+            "feedback": "14 soma os catetos (6 + 8) em vez de multiplicar. Como a · h = b · c, temos 6 · 8 = 48."
           }
         ]
       }
@@ -377,7 +377,7 @@
             "id": "m3",
             "label": "3 cm",
             "correct": false,
-            "feedback": "Use b² = a · m: 6² = 36, e 36 / 9 = 4 cm."
+            "feedback": "3 cm vem de subtrair 9 − 6 em vez de usar b² = a · m. Com 6² = 36, temos m = 36 / 9 = 4 cm."
           },
           {
             "id": "m5",
@@ -407,7 +407,7 @@
             "id": "n9",
             "label": "9 cm",
             "correct": false,
-            "feedback": "Usando h² = m · n: 36 = 3 · n ⇒ n = 12 cm."
+            "feedback": "9 cm soma 6 + 3 em vez de usar h² = m · n. Como 6² = 36, temos n = 36 / 3 = 12 cm."
           }
         ]
       }

@@ -50,7 +50,7 @@
       ],
       "lines": {
         "intro": "No quadrado, dividir 360° por 4 dá a_e = 90° e a_i = 90°. Leve n até 6: se o externo vira 360°/6 = 60°, quanto vale cada ângulo interno?",
-        "done": "Vale 180° − 60° = 120°! Achar o externo primeiro e tirar de 180° é o caminho mais rápido para qualquer regular."
+        "done": "Vale 180° − 360°/n (em n = 6, 180° − 60° = 120°)! Achar o externo e tirar de 180° funciona para qualquer regular."
       },
       "duvida": {
         "quando": "fim",
@@ -230,7 +230,7 @@
             "id": "g30",
             "label": "30°",
             "correct": false,
-            "feedback": "Divida a volta completa de 360° por 6: 360° / 6 = 60°."
+            "feedback": "30° seria dividir por 12 ou cortar 60° ao meio. Divida 360° pelos 6 vértices: 360° / 6 = 60°."
           }
         ]
       },
@@ -302,7 +302,7 @@
             "id": "l25",
             "label": "2,5 cm",
             "correct": false,
-            "feedback": "O lado do hexágono regular é igual ao próprio raio R = 5 cm."
+            "feedback": "2,5 cm é metade do raio (5 / 2). Como forma 6 triângulos equiláteros, o lado é igual ao raio: 5 cm."
           }
         ]
       }
@@ -352,7 +352,7 @@
             "id": "n15",
             "label": "15",
             "correct": false,
-            "feedback": "Use o suplementar: a_e = 180° − 150° = 30°, e 360° / 30° = 12 lados."
+            "feedback": "Você dividiu 150 por 10 (150 / 10 = 15). O certo: a_e = 180° − 150° = 30° e n = 360° / 30° = 12."
           }
         ]
       },
@@ -376,7 +376,7 @@
             "id": "a35",
             "label": "35 cm²",
             "correct": false,
-            "feedback": "Multiplicando os 6 triângulos por 7 cm², temos 42 cm²."
+            "feedback": "35 cm² multiplica por 5 triângulos (5 · 7). O hexágono tem 6 triângulos equiláteros: 6 · 7 = 42 cm²."
           }
         ]
       }
@@ -403,7 +403,7 @@
             "id": "g54",
             "label": "54°",
             "correct": false,
-            "feedback": "3 · 108° = 324°, e 360° − 324° = 36°."
+            "feedback": "54° é metade de 108°, não a fresta. Três pentágonos somam 324°, sobrando 360° − 324° = 36°."
           }
         ]
       },
@@ -475,7 +475,7 @@
             "id": "d18",
             "label": "18 cm",
             "correct": false,
-            "feedback": "A diagonal maior equivale a 2 lados: 2 · 6 = 12 cm."
+            "feedback": "18 cm multiplica o lado por 3 (3 · 6). A diagonal pelo centro equivale a 2 raios: 2 · 6 = 12 cm."
           }
         ]
       },

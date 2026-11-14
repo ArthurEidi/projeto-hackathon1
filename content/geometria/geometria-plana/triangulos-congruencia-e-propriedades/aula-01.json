@@ -81,7 +81,7 @@
       },
       "lines": {
         "intro": "O ângulo externo e o interno γ formam meia-volta (180°). Mude α para 70° (com β = 40°): quanto vale o externo e?",
-        "done": "Vale 110°, exatamente 70° + 40°. Como o externo e α + β completam 180° com γ, o externo é sempre α + β."
+        "done": "Vale sempre α + 40° (em 70°, dá 110°). Como o externo e α + β completam 180° com γ, o externo é sempre α + β."
       }
     },
     {
@@ -111,7 +111,7 @@
       },
       "lines": {
         "intro": "A base mede 8 e um braço mede 5. Diminua o outro braço c até 2: o triângulo ainda consegue fechar?",
-        "done": "Não fecha: 5 + 2 = 7, que não alcança 8. O caminho reto é o mais curto, então dois lados juntos precisam passar do terceiro."
+        "done": "Não fecha: 5 + c ≤ 7, que não alcança 8. O caminho reto é o mais curto, então dois lados juntos precisam passar do terceiro."
       }
     },
     {
@@ -260,7 +260,7 @@
             "id": "a90",
             "label": "90°",
             "correct": false,
-            "feedback": "Resposta: 70°; A soma precisa dar 180°: 180° − 110° = 70°."
+            "feedback": "Resposta: 70°; 90° seria se o triângulo fosse retângulo, mas 50° + 60° + 90° = 200°. O certo é 180° − 110° = 70°."
           }
         ]
       },
@@ -412,7 +412,7 @@
             "id": "a120",
             "label": "120°",
             "correct": false,
-            "feedback": "Resposta: 90°; A soma é 6x = 180°, então x = 30° e o maior (3x) mede 90°."
+            "feedback": "Resposta: 90°; 120° usa x = 40° (ou 180° − 60°), mas a soma é x + 2x + 3x = 6x = 180°, dando x = 30° e 3x = 90°."
           }
         ]
       },
@@ -442,7 +442,7 @@
             "id": "a65",
             "label": "65°",
             "correct": false,
-            "feedback": "Resposta: 75°; Confira a subtração: 130° − 55° = 75°, não 65°."
+            "feedback": "Resposta: 75°; 65° é metade de 130° (ou erro de empréstimo em 130° − 55°). O certo é 130° − 55° = 75°."
           }
         ]
       }
@@ -536,7 +536,7 @@
             "id": "a140",
             "label": "140°",
             "correct": false,
-            "feedback": "Resposta: 130°; B + C = 100° e metade é 50°; portanto BPC = 180° − 50° = 130°."
+            "feedback": "Resposta: 130°; 140° faz 180° − 80°/2, mas somamos as metades de B e C (50°), dando 180° − 50° = 130°."
           }
         ]
       },

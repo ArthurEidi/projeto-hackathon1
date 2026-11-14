@@ -66,7 +66,7 @@
       ],
       "lines": {
         "intro": "O quadradinho 1 por 1 é nossa unidade. Leve b até 4 e h até 3: quantos quadradinhos preenchem o retângulo e quanto mede o contorno?",
-        "done": "São 4 colunas de 3: área 4·3 = 12 quadradinhos, enquanto o perímetro soma o contorno: 4 + 3 + 4 + 3 = 14."
+        "done": "A área conta as b colunas de h linhas (b·h; em 4×3 dá 12), enquanto o perímetro soma o contorno: 2·(b + h)."
       },
       "duvida": {
         "quando": "fim",
@@ -517,7 +517,7 @@
             "id": "a1",
             "label": "1 cm",
             "correct": false,
-            "feedback": "Substituindo na fórmula: 9·h = 36, logo h = 4 cm."
+            "feedback": "Você dividiu 18 / 9 = 2 e dividiu por 2 de novo (2 / 2 = 1) em vez de dobrar. O certo é 36 / 9 = 4 cm."
           }
         ]
       }
@@ -671,7 +671,7 @@
             "id": "a6",
             "label": "6",
             "correct": false,
-            "feedback": "108 / 12 = 9, e √9 = 3. O perímetro foi multiplicado por 3."
+            "feedback": "Você fez 3 + 3 = 6 (ou 12 / 2) em vez de tirar a raiz de 108 / 12 = 9. Como √9 = 3, o fator k é 3."
           }
         ]
       }
