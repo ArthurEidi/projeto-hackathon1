@@ -4,9 +4,11 @@ import { LessonPlayer } from "./engine/LessonPlayer";
 import { Home } from "./Home";
 
 // Rotas por hash: "#/" trilha, "#/aula/<pilar>/<setor>/<unidade>/<aula>" aula.
+// Só em desenvolvimento: "?passo=N" no fim abre a aula direto no passo N (1 = primeiro), para conferência visual.
 const readRoute = () => {
-  const m = location.hash.match(/^#\/aula\/(.+)$/);
-  return m ? { aula: decodeURIComponent(m[1]) } : { aula: null };
+  const m = location.hash.match(/^#\/aula\/([^?]+)(?:\?passo=(\d+))?$/);
+  if (!m) return { aula: null, passo: 0 };
+  return { aula: decodeURIComponent(m[1]), passo: import.meta.env.DEV && m[2] ? Math.max(0, Number(m[2]) - 1) : 0 };
 };
 
 export function App() {
@@ -36,7 +38,7 @@ export function App() {
   return (
     <div className="app">
       {loaded?.ok ? (
-        <LessonPlayer key={route.aula} lesson={loaded.lesson} aulaKey={route.aula} onExit={() => go("#/")} />
+        <LessonPlayer key={`${route.aula}#${route.passo}`} lesson={loaded.lesson} aulaKey={route.aula} passoInicial={route.passo} onExit={() => go("#/")} />
       ) : (
         <>
           <pre className="error-box">{loaded ? loaded.error : `Aula não encontrada: ${route.aula}`}</pre>

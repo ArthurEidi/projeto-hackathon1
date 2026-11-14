@@ -11,11 +11,13 @@ import { StepRenderer } from "./StepRenderer";
 interface LessonPlayerProps {
   lesson: Lesson;
   aulaKey: string;
+  /** Passo em que a aula abre (só usado em desenvolvimento, via "?passo=N"). */
+  passoInicial?: number;
   onExit: () => void;
 }
 
-export function LessonPlayer({ lesson, aulaKey, onExit }: LessonPlayerProps) {
-  const [index, setIndex] = useState(0);
+export function LessonPlayer({ lesson, aulaKey, passoInicial = 0, onExit }: LessonPlayerProps) {
+  const [index, setIndex] = useState(Math.min(passoInicial, lesson.steps.length - 1));
   const [treinando, setTreinando] = useState(false);
   const finished = index >= lesson.steps.length;
   const step = lesson.steps[index];
