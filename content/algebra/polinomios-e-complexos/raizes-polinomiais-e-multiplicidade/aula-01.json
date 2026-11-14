@@ -203,7 +203,24 @@
           "id": "micro-erro",
           "label": "−2",
           "correct": false,
-          "feedback": "Você confundiu o outro fator; (x−1)² repete a raiz 1 duas vezes."
+          "feedback": "Você confundiu o outro fator; (x−1)² repete a raiz 1 duas vezes.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -2,
+              "coordenadas": true,
+              "cor": "c1"
+            },
+            "guias": {
+              "verticais": [
+                {
+                  "v": -2,
+                  "rotulo": "cruza em −2",
+                  "cor": "c1"
+                }
+              ]
+            }
+          }
         },
         {
           "id": "micro-acerto",

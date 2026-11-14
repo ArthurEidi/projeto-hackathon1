@@ -202,7 +202,29 @@
           "id": "micro-erro",
           "label": "6",
           "correct": false,
-          "feedback": "Você somou expoentes; o maior expoente não nulo é 3, então o grau é 3."
+          "feedback": "Você somou expoentes; o maior expoente não nulo é 3, então o grau é 3.",
+          "figure": {
+            "curvas": [
+              {
+                "tipo": "cubica",
+                "a": 3,
+                "b": 0,
+                "c": -2,
+                "d": 1,
+                "cor": "c3",
+                "rotulo": "3x³ − 2x + 1"
+              },
+              {
+                "tipo": "potencia",
+                "a": 1,
+                "b": 0,
+                "n": 6,
+                "c": 0,
+                "cor": "c1",
+                "rotulo": "x⁶ (grau 6)"
+              }
+            ]
+          }
         },
         {
           "id": "micro-acerto",

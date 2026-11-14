@@ -218,9 +218,33 @@
           "correct": false,
           "feedback": "Aplica o trecho de x≥0 a uma entrada negativa; −2<0; usa f(x)=x, logo f(−2)=−2.",
           "figure": {
+            "y": [-5, 4],
+            "curvas": [
+              {
+                "tipo": "afim",
+                "a": 1,
+                "b": 0,
+                "dominio": {
+                  "de": null,
+                  "ate": 0,
+                  "abreDe": false,
+                  "abreAte": true
+                },
+                "cor": "c3",
+                "rotulo": "x"
+              },
+              {
+                "tipo": "afim",
+                "a": 2,
+                "b": 0,
+                "cor": "c2",
+                "rotulo": "2x"
+              }
+            ],
             "ponto": {
               "curva": 1,
               "x": -2,
+              "coordenadas": true,
               "cor": "c1"
             }
           }

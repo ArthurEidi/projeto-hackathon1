@@ -139,7 +139,9 @@
               { "tipo": "afim", "a": 1, "b": 1, "cor": "c3", "rotulo": "y = x + 1" },
               { "tipo": "afim", "a": 1, "b": 3, "cor": "c4", "rotulo": "y = x + 3" }
             ],
-            "ponto": { "curva": null, "x": 1, "coordenadas": true, "cor": "c1" }
+            "ponto": { "curva": null, "x": 1, "coordenadas": true, "cor": "c1" },
+            "guias": { "verticais": [{ "v": 1, "rotulo": "x = 1", "cor": "c4" }] },
+            "highlight": ["c1"]
           }
         }
       ]

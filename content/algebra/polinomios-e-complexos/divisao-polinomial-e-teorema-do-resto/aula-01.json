@@ -229,7 +229,24 @@
           "id": "micro-erro",
           "label": "0",
           "correct": false,
-          "feedback": "Você confundiu 2 com raiz; P(2)=4−1=3, então o resto é 3."
+          "feedback": "Você confundiu 2 com raiz; P(2)=4−1=3, então o resto é 3.",
+          "figure": {
+            "marcar": {
+              "raizes": true
+            },
+            "cores": {
+              "raiz": "c4"
+            },
+            "guias": {
+              "verticais": [
+                {
+                  "v": 2,
+                  "rotulo": "x = 2",
+                  "cor": "c1"
+                }
+              ]
+            }
+          }
         },
         {
           "id": "micro-acerto",

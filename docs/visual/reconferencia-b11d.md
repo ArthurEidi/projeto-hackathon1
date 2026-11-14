@@ -86,3 +86,19 @@ Escopo: 18 capítulos (`algebra/funcoes/*`, `algebra/polinomios-e-complexos/*`, 
 - `funcao-afim` (`p8`): chip preto `1` no eixo x muito próximo de `(0; 1)` e da pílula `−0,5`.
 - `raizes-polinomiais-e-multiplicidade` (`p1`): pílula `(0; −1)` toca levemente o eixo x/`−1` e a alça `o` fica sobre `−1` do eixo y.
 - `funcao-racional` (`p5`), `logaritmos` (`p5`), `soma-da-pg-infinita` (`p5`): quebra de linha na barra de fórmula do `concept_lock` em 400 px deixa vírgula, `=` ou `)` isolados na transição de linha.
+
+## Correções B11d-fix
+
+Ajuste aplicado apenas ao campo `figure` das alternativas erradas nos 6 passos em que a figura permanecia idêntica à inicial (mantendo feedbacks intactos conforme critério ajustado para desafios de 2 alternativas):
+
+| slug | passo | antes | depois |
+| :--- | :--- | :--- | :--- |
+| funcao-definida-por-partes | p4 (`erro`, `"−4"`) | `figure` só com `ponto: { curva: 1, x: -2, cor: "c1" }` (não plotava por estar fora do `dominio` de `2x`) | `y: [-5, 4]`, `curvas` com `2x` sem restrição de domínio e `ponto: { curva: 1, x: -2, coordenadas: true, cor: "c1" }`, exibindo `(−2; −4)` sobre `2x` |
+| introducao-a-funcoes | p4 (`d-e`, `"É função"`) | `figure` repetia exatamente `curvas` e `ponto` da figura inicial | Mantém `curvas` e `ponto`, acrescentando `guias.verticais` em `x = 1` (`c4`) e `highlight: ["c1"]`, evidenciando a reta vertical cortando `(1; 2)` e `(1; 4)` |
+| divisao-polinomial-e-teorema-do-resto | p5 (`micro-erro`, `"0"`) | Sem `figure` (ficava igual à inicial) | `marcar: { raizes: true }`, `cores: { raiz: "c4" }` e `guias.verticais` em `x = 2` (`c1`), mostrando as raízes reais `−1` e `1` e que `x = 2` não zera `P(x)` |
+| numeros-complexos | p5 (`micro-erro`, `"7"`) | Sem `figure` (ficava igual à inicial) | `highlight: ["c1", "c2"]`, destacando os catetos `x = 3` e `y = 4` com `modulo: false` para ilustrar a soma `3 + 4` |
+| polinomios | p4 (`micro-erro`, `"6"`) | Sem `figure` (ficava igual à inicial) | `curvas` comparando `3x³ − 2x + 1` (`c3`) com `potencia` `x⁶ (grau 6)` (`c1`), contrastando o comportamento par em U com a cúbica |
+| raizes-polinomiais-e-multiplicidade | p4 (`micro-erro`, `"−2"`) | Sem `figure` (ficava igual à inicial) | `ponto: { curva: 0, x: -2, coordenadas: true, cor: "c1" }` e `guias.verticais` em `v: -2` (`rotulo: "cruza em −2"`), evidenciando o cruzamento simples em `(−2; 0)` |
+
+Validações pós-edição: `npm run lint:content` (`conteúdo ok`), `npx vitest run` nos 6 capítulos (6 arquivos, 69 testes passaram) e `npm run typecheck` (exit 0); todas as 6 novas capturas abertas e conferidas em 400 px sem sobreposições ou cortes.
+

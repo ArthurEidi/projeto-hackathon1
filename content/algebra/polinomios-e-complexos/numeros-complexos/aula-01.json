@@ -190,7 +190,10 @@
           "id": "micro-erro",
           "label": "7",
           "correct": false,
-          "feedback": "Você somou os catetos; √(9+16)=5, então o módulo é 5."
+          "feedback": "Você somou os catetos; √(9+16)=5, então o módulo é 5.",
+          "figure": {
+            "highlight": ["c1", "c2"]
+          }
         },
         {
           "id": "micro-acerto",
