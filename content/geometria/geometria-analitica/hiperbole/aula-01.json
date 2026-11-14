@@ -647,9 +647,9 @@
           "banca": "ENEM",
           "ano": 2017,
           "adaptada": true,
-          "adaptacao": "Enunciado resumido sem contexto biológico; alternativas e gabarito mantidos.",
+          "adaptacao": "Questão 162: enunciado resumido sem contexto biológico; alternativas e gabarito (Ramo de hipérbole) mantidos.",
           "urls": [
-            "https://projetoagathaedu.com.br/questoes-vestibular/matematica/geometria-analitica/conicas.php"
+            "https://api.enem.dev/v1/exams/2017/questions/162"
           ]
         },
         "options": [

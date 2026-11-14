@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
-import { certaDe, fechamentoOk, passosConcluiveis, semVestibular } from "./util";
+import { certaDe, fechamentoOk, passosConcluiveis } from "./util";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -88,7 +88,8 @@ describe("gabaritos do treino", () => {
     expect(certa("area-lateral-tronco-cone")).toBe(`${alAbajur}π cm²`);
   });
 
-  it("vestibular pendente de fontes reais", () => {
-    semVestibular(L);
+  it("vestibular confere gabaritos ENEM", () => {
+    expect(certa("enem-2020-kukulkan")).toBe("2 quadrados e 4 trapézios isósceles");
+    expect(certa("enem-2009-vela")).toBe("189 cm³");
   });
 });

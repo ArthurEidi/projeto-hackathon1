@@ -639,6 +639,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2009-projecao",
+        "prompt": "P sai de (r; 0) na circunferência de raio r e percorre um arco d ≤ r no sentido anti-horário. Quanto anda sua projeção Q no eixo x?",
+        "fala": "O ângulo central em radianos é θ = d/r. Calcule a variação da abscissa de Q desde x = r.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 174: enunciado resumido explicitando a partida em (R; 0); alternativas e gabarito (R( 1 - cos d/r )) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2009/questions/174"]
+        },
+        "options": [
+          { "id": "sen", "label": "r(1 − sen(d/r))", "correct": false, "feedback": "r · sen(d/r) é a altura y de P, não a abscissa de Q. Como x cai de r para r · cos(d/r), Q anda r(1 − cos(d/r))." },
+          { "id": "cos", "label": "r(1 − cos(d/r))", "correct": true, "feedback": "Isso. Com ângulo θ = d/r rad, Q vai de r até r · cos(d/r), andando r(1 − cos(d/r))." },
+          { "id": "tag", "label": "r(1 − tg(d/r))", "correct": false, "feedback": "tg(d/r) não projeta P no eixo x. A projeção horizontal usa cosseno: r(1 − cos(d/r))." },
+          { "id": "rsen", "label": "r · sen(r/d)", "correct": false, "feedback": "Inverteu a razão para r/d (o ângulo é arco/raio = d/r) e usou seno. O certo é r(1 − cos(d/r))." },
+          { "id": "rcos", "label": "r · cos(r/d)", "correct": false, "feedback": "Além de inverter para r/d: r · cos(d/r) seria a posição final de Q, não o quanto ele andou desde x = r. O certo é r(1 − cos(d/r))." }
+        ]
+      }
+    ]
   }
 }

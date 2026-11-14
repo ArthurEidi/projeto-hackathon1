@@ -567,6 +567,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2022-piscina",
+        "prompt": "Piscina sem tampa, 90 m³ (altura × largura × comprimento): I 1,8×2×25; II 2×5×9; III 1×6×15; IV 1,5×15×4; V 2,5×3×12. Qual tem menor área?",
+        "fala": "Calcule L·C + 2·P·(L + C) para cada projeto, lembrando que não há tampa.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 172: enunciado resumido; alternativas e gabarito (II) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/172"]
+        },
+        "options": [
+          { "id": "i", "label": "I", "correct": false, "feedback": "O projeto I tem área 2·25 + 2·1,8·(2+25) = 147,2 m², a maior de todas. A menor é a do projeto II (101 m²)." },
+          { "id": "ii", "label": "II", "correct": true, "feedback": "Isso. Fundo 5·9 = 45 m² e 4 paredes 2·2·(5+9) = 56 m² somam 101 m², a menor área entre os cinco." },
+          { "id": "iii", "label": "III", "correct": false, "feedback": "O projeto III tem área 6·15 + 2·1·(6+15) = 132 m², maior que os 101 m² do projeto II." },
+          { "id": "iv", "label": "IV", "correct": false, "feedback": "O projeto IV tem área 15·4 + 2·1,5·(15+4) = 117 m², maior que os 101 m² do projeto II." },
+          { "id": "v", "label": "V", "correct": false, "feedback": "O projeto V tem área 3·12 + 2·2,5·(3+12) = 111 m², maior que os 101 m² do projeto II." }
+        ]
+      },
+      {
+        "id": "enem-2021-conteiner",
+        "prompt": "Em um contêiner retangular, dobram-se o comprimento e a largura mantendo a altura. Como mudam a área das 4 paredes e a do piso?",
+        "fala": "As paredes têm perímetro × altura (1D × fixa), enquanto o piso é comprimento × largura (2D).",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 166: enunciado resumido; as alternativas trazem a resposta de cada fornecedor (I a V); gabarito (fornecedor II) mantido.",
+          "urls": ["https://api.enem.dev/v1/exams/2021/questions/166"]
+        },
+        "options": [
+          { "id": "i", "label": "O dobro nas paredes e no piso", "correct": false, "feedback": "As paredes dobram, mas o piso C · L vira 2C · 2L = 4 · C · L. O certo é o dobro nas paredes e 4 vezes no piso." },
+          { "id": "ii", "label": "O dobro nas paredes e 4 vezes no piso", "correct": true, "feedback": "Exato. Com H fixa, as paredes medem 2H(C + L), que dobra; o piso C · L vira 2C · 2L = 4 · C · L." },
+          { "id": "iii", "label": "4 vezes nas paredes e no piso", "correct": false, "feedback": "O piso quadruplica, mas as paredes 2H(C + L) só dobram, porque a altura H não mudou. O certo é o dobro nas paredes e 4 vezes no piso." },
+          { "id": "iv", "label": "4 vezes nas paredes e o dobro no piso", "correct": false, "feedback": "Está invertido: com H fixa, as paredes 2H(C + L) dobram e o piso C · L quadruplica." },
+          { "id": "v", "label": "8 vezes nas paredes e 4 vezes no piso", "correct": false, "feedback": "8 = 2³ seria o volume se as três medidas dobrassem. Aqui a altura fica fixa: as paredes dobram e o piso quadruplica." }
+        ]
+      },
+      {
+        "id": "enem-2012-ceramica",
+        "prompt": "Uma travessa cúbica de argila de aresta a e volume V sofre contração linear de 20% no cozimento. Em quantos por cento diminui o volume?",
+        "fala": "Se cada aresta cai para 0,8a, eleve 0,8 ao cubo para achar o novo volume.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Questão 180: enunciado resumido; alternativas e gabarito (C) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2012/questions/180"]
+        },
+        "options": [
+          { "id": "a20", "label": "20% menor que V, uma vez que o volume do cubo é diretamente proporcional ao comprimento de seu lado", "correct": false, "feedback": "20% é a redução linear da aresta. O volume cai com o cubo: (0,8a)³ = 0,512a³, logo diminui 48,8%." },
+          { "id": "a36", "label": "36% menor que V, porque a área da base diminui de a² para ((1 − 0,2)a)²", "correct": false, "feedback": "36% (1 − 0,64) é a redução da área da base. No volume em 3D, (0,8)³ = 0,512, logo cai 48,8%." },
+          { "id": "a488", "label": "48,8% menor que V, porque o volume diminui de a³ para (0,8a)³", "correct": true, "feedback": "Isso. A aresta passa a 0,8a e o volume a (0,8a)³ = 0,512V; a redução é 1 − 0,512 = 0,488 = 48,8%." },
+          { "id": "a512", "label": "51,2% menor que V, porque cada lado diminui para 80% do comprimento original", "correct": false, "feedback": "51,2% (0,512V) é o volume que SOBRA, não o que diminuiu. A diminuição é 100% − 51,2% = 48,8%." },
+          { "id": "a60", "label": "60% menor que V, porque cada lado diminui 20%", "correct": false, "feedback": "60% soma 3 · 20% em vez de multiplicar 0,8 · 0,8 · 0,8 = 0,512. O volume diminui 48,8%." }
+        ]
+      }
+    ]
   }
 }

@@ -149,5 +149,9 @@ describe("gabaritos do treino", () => {
 
     // alinhados: (0; 1), (1; 3) e (2; k) alinhados -> m = 2 -> k = 5
     expect(certa("alinhados")).toBe("5");
+
+    // V1 enem-2018-rampa: 20% de 8 m = 160 cm; 200 - 160 = 40 cm
+    expect(200 - 0.2 * 800).toBe(40);
+    expect(certa("enem-2018-rampa")).toBe("Elevado em 40 cm");
   });
 });

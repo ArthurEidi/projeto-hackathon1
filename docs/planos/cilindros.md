@@ -227,17 +227,29 @@ Comparar duas folhas retangulares iguais `A × B` enroladas de dois jeitos difer
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** comparar capacidade de embalagens cilíndricas ao alterar raio e altura.
-- **Onde procurar:** ENEM (questões recorrentes de substituir reservatório/embalagem cilíndrica mantendo ou aumentando o volume).
+#### V1 — `enem-2022-caixas`
+- **Enunciado (resumido):** Cilindro I tem altura P, área A_b e raio r. Qual tem maior volume: II (2P, A_b/2), III (2P, r/2), IV (P/2, 2A_b) ou V (P/2, 2r)?
+- **Fala do Paco:** "Escreva o volume de cada modelo em função de V_I = πr²P."
+- **Fonte:** ENEM 2022, Questão 169 — `https://api.enem.dev/v1/exams/2022/questions/169`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (V) mantidos.
+- **Conta de conferência:** `V_I = πr²P`; `V_II = V_I`; `V_III = V_I/2`; `V_IV = V_I`; `V_V = π(2r)²(P/2) = 2V_I`.
+- **Opções e feedback:** I, II, III, IV, V (correta).
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular volume e consumo de água em cisternas cilíndricas (com aproximação de `π` e conversão `m³ → L`).
-- **Onde procurar:** ENEM, Unesp, Unicamp.
+#### V2 — `enem-2010-manilha`
+- **Enunciado (resumido):** Um cilindro de 2 m de diâmetro e 4 m de altura recebe camada de concreto de 20 cm. A R$ 10/m³ e π = 3,1, quanto custa a manilha?
+- **Fala do Paco:** "Calcule o volume da casca subtraindo o cilindro interno (r = 1 m) do externo (R = 1,2 m)."
+- **Fonte:** ENEM 2010, Questão 157 — `https://api.enem.dev/v1/exams/2010/questions/157`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (R$ 54,56) mantidos.
+- **Conta de conferência:** `r = 1 m, R = 1,2 m, h = 4 m => V = 3,1·(1,44 - 1)·4 = 5,456 m³`; `5,456 · 10 = R$ 54,56`.
+- **Opções e feedback:** R$ 230,40, R$ 124,00, R$ 104,16, R$ 54,56 (correta), R$ 49,60.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** relacionar a planificação lateral do cilindro (`2πr × h`) com o volume gerado.
-- **Onde procurar:** Fuvest, UFPR, UFRGS, ENEM.
+#### V3 — `enem-2021-reservatorio`
+- **Enunciado (resumido):** Reservatório cilíndrico de 5 m de diâmetro atende 100 pessoas por 7 dias a 120 L/dia por pessoa. Com π = 3, qual a altura mínima em m?
+- **Fala do Paco:** "Converta os litros totais para m³ (1.000 L = 1 m³) e use r = 2,5 m."
+- **Fonte:** ENEM 2021, Questão 167 — `https://api.enem.dev/v1/exams/2021/questions/167`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (4,48) mantidos.
+- **Conta de conferência:** `100·120·7 = 84 000 L = 84 m³`; `3·2,5²·h = 18,75h = 84 => h = 4,48 m`.
+- **Opções e feedback:** 1,12, 3,10, 4,35, 4,48 (correta), 5,60.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** cilindro equilátero e transferência de líquido entre cilindros de raios diferentes.

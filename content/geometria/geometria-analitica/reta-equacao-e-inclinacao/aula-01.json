@@ -723,6 +723,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2018-rampa",
+        "prompt": "Rampa de garagem tem 8 m na horizontal e desce 2 m. Para respeitar inclinação máxima de 20% mantendo os 8 m, como ajustar o nível?",
+        "fala": "Calcule 20% de 8 m para achar o desnível máximo permitido e compare com os 2 m atuais.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 149: enunciado resumido; alternativas e gabarito (Elevado em 40 cm) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2018/questions/149"]
+        },
+        "options": [
+          { "id": "e40", "label": "Elevado em 40 cm", "correct": true, "feedback": "Isso. 20% de 8 m é 1,60 m = 160 cm; como estava 200 cm abaixo, sobe 200 − 160 = 40 cm." },
+          { "id": "e50", "label": "Elevado em 50 cm", "correct": false, "feedback": "Subir 50 cm deixaria o desnível em 150 cm (18,75%), além do necessário. Para 20% em 8 m o desnível é 160 cm: elevado em 40 cm." },
+          { "id": "m0", "label": "Mantido no mesmo nível", "correct": false, "feedback": "Com 2 m em 8 m, a inclinação é 200 cm / 8 m = 25%, acima dos 20%. Deve ser elevado em 40 cm." },
+          { "id": "r40", "label": "Rebaixado em 40 cm", "correct": false, "feedback": "Rebaixar 40 cm aumentaria o desnível para 240 cm (30%). Para cair de 200 cm para 160 cm, deve ser elevado em 40 cm." },
+          { "id": "r50", "label": "Rebaixado em 50 cm", "correct": false, "feedback": "Rebaixar 50 cm levaria o desnível a 250 cm (31,25%). O certo é elevado em 40 cm." }
+        ]
+      }
+    ]
   }
 }

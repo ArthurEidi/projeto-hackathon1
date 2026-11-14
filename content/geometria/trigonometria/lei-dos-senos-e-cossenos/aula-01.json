@@ -584,6 +584,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2023-pizzas",
+        "prompt": "Diâmetros a, b, c de três pizzas formam um triângulo com ângulo α oposto a a. Para área(a) > área(b) + área(c), qual o intervalo de α?",
+        "fala": "A área é proporcional ao quadrado do diâmetro: escreva a² > b² + c² na lei dos cossenos.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "Questão 172: enunciado resumido; alternativas e gabarito (90° < a < 180°) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2023/questions/172"]
+        },
+        "options": [
+          { "id": "agudo", "label": "0° < α < 90°", "correct": false, "feedback": "Para 0° < α < 90°, cos α > 0, então a² = b² + c² − 2bc·cos α < b² + c² (área menor). O certo é 90° < α < 180°." },
+          { "id": "reto", "label": "α = 90°", "correct": false, "feedback": "Com α = 90°, cos 90° = 0 e a² = b² + c² (áreas iguais). Para ser maior, 90° < α < 180°." },
+          { "id": "obtuso", "label": "90° < α < 180°", "correct": true, "feedback": "Isso. a² > b² + c² exige −2bc·cos α > 0, ou seja, cos α < 0: 90° < α < 180°." },
+          { "id": "raso", "label": "α = 180°", "correct": false, "feedback": "Com α = 180°, os segmentos ficam colineares (a = b + c) e não há triângulo. O intervalo é 90° < α < 180°." },
+          { "id": "reentrante", "label": "180° < α < 360°", "correct": false, "feedback": "Nenhum ângulo interno de triângulo passa de 180°. Para cos α < 0 no triângulo: 90° < α < 180°." }
+        ]
+      }
+    ]
   }
 }

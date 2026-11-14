@@ -538,6 +538,45 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2022-esferas-rolamento",
+        "prompt": "Um cilindro maciço de raio 4 cm e altura 50 cm é derretido para fazer esferas de diâmetro 1 cm. Quantas esferas serão obtidas?",
+        "fala": "Lembre que diâmetro 1 cm significa raio 0,5 cm = 1/2 cm.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 174: enunciado resumido; alternativas e gabarito (4800) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/174"]
+        },
+        "options": [
+          { "id": "a800", "label": "800", "correct": false, "feedback": "800 é apenas o coeficiente de π no cilindro (800π cm³). Dividindo pelo volume da esfera (π/6 cm³), dá 4800." },
+          { "id": "a1200", "label": "1200", "correct": false, "feedback": "1200 é um quarto do certo (800π / (2π/3)). Com r = 0,5 cm, cada esfera tem π/6 cm³, dando 800π / (π/6) = 4800." },
+          { "id": "a2400", "label": "2400", "correct": false, "feedback": "2400 divide 800π por π/3 (metade do certo). O volume da esfera de raio 1/2 cm é (4/3)π(1/8) = π/6, dando 4800." },
+          { "id": "a4800", "label": "4800", "correct": true, "feedback": "Isso. V_cil = π·4²·50 = 800π cm³; V_esf = (4/3)π(1/2)³ = π/6 cm³; logo 800π / (π/6) = 4800." },
+          { "id": "a6400", "label": "6400", "correct": false, "feedback": "6400 (800 / (1/8)) eleva 1/2 ao cubo mas esquece o fator 4/3 da esfera. Com 4/3, dá 800 / (1/6) = 4800." }
+        ]
+      },
+      {
+        "id": "enem-2022-docinhos",
+        "prompt": "Uma porção de massa rende 50 docinhos esféricos de diâmetro 2 cm. Quantas porções são necessárias para 150 docinhos de diâmetro 4 cm?",
+        "fala": "Compare a razão dos raios ao cubo (2³) e multiplique pela razão das quantidades (150 / 50).",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 178: enunciado resumido; alternativas e gabarito (24) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/178"]
+        },
+        "options": [
+          { "id": "a2", "label": "2", "correct": false, "feedback": "2 é só a razão dos diâmetros (4 / 2). O volume cresce com 2³ = 8, e ainda são 3 vezes mais docinhos: 3·8 = 24." },
+          { "id": "a3", "label": "3", "correct": false, "feedback": "3 é só a razão das quantidades (150 / 50), ignorando que dobrar o diâmetro multiplica o volume por 2³ = 8. Total: 24." },
+          { "id": "a6", "label": "6", "correct": false, "feedback": "6 multiplica 3 · 2 usando escala linear para o volume. Em 3D o fator é 2³ = 8, dando 3 · 8 = 24 porções." },
+          { "id": "a12", "label": "12", "correct": false, "feedback": "12 multiplica 3 · 2² usando escala de área. Para esferas (volume 3D), usa-se 2³ = 8: 3 · 8 = 24 porções." },
+          { "id": "a24", "label": "24", "correct": true, "feedback": "Exato. Dobrar o diâmetro multiplica o volume por 2³ = 8, e 150 / 50 = 3 vezes a quantidade: 3 · 8 = 24 porções." }
+        ]
+      }
+    ]
   }
 }

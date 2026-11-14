@@ -631,6 +631,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2017-lago",
+        "prompt": "A intensidade luminosa em um lago é I(x) = k·sen(x), para 0° < x ≤ 90°. Quando x = 30°, a intensidade é qual percentual do valor máximo?",
+        "fala": "Compare I(30°) = k·sen 30° com o valor máximo de sen(x) em (0°; 90°].",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2017,
+          "adaptada": true,
+          "adaptacao": "Questão 138: enunciado resumido; alternativas e gabarito (50%) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2017/questions/138"]
+        },
+        "options": [
+          { "id": "p33", "label": "33%", "correct": false, "feedback": "33% faz 30°/90° = 1/3 como se I(x) fosse linear. Como sen 30° = 0,5 e o máximo é em 90° (sen 90° = 1), dá 50%." },
+          { "id": "p50", "label": "50%", "correct": true, "feedback": "Isso. O máximo é I(90°) = k, e I(30°) = k·sen 30° = 0,5k = 50% do máximo." },
+          { "id": "p57", "label": "57%", "correct": false, "feedback": "57% ≈ 1/√3 = tg 30° usa tangente em vez de seno. Com sen 30° = 0,5, a razão é 50%." },
+          { "id": "p70", "label": "70%", "correct": false, "feedback": "70% ≈ √2/2 = sen 45° calcula para 45° em vez de 30°. Para x = 30°, sen 30° = 0,5 = 50%." },
+          { "id": "p86", "label": "86%", "correct": false, "feedback": "86% ≈ √3/2 = cos 30° usa cosseno em vez de seno. Com sen 30° = 0,5, dá 50%." }
+        ]
+      }
+    ]
   }
 }

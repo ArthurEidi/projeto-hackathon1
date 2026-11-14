@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
-import { certaDe, fechamentoOk, passosConcluiveis, semVestibular } from "./util";
+import { certaDe, fechamentoOk, passosConcluiveis } from "./util";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -88,7 +88,8 @@ describe("gabaritos do treino", () => {
     expect(certa("esferas-no-cilindro-nivel")).toBe(`${Math.round(vVazio / Math.PI)}π cm³`);
   });
 
-  it("vestibular pendente de fontes reais", () => {
-    semVestibular(L);
+  it("vestibular confere gabaritos ENEM", () => {
+    expect(certa("enem-2022-esferas-rolamento")).toBe("4800");
+    expect(certa("enem-2022-docinhos")).toBe("24");
   });
 });

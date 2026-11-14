@@ -249,13 +249,21 @@ Se o giro é α = 0°, a roda não sai do lugar e L = 0; em α = 360° fecha uma
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** número de voltas de um pneu ou roda em uma distância dada.
-- **Onde procurar:** ENEM (questões de bicicleta, odômetro e esteira).
+#### V1 — `enem-2010-rolos`
+- **Enunciado (resumido):** Um bloco apoia-se sobre rolos cilíndricos de raio R. Qual o deslocamento horizontal do bloco após um rolo dar 1 volta completa sem deslizar?
+- **Fala do Paco:** "Some o avanço do centro do rolo sobre o chão com o avanço do bloco sobre o topo do rolo."
+- **Fonte:** ENEM 2010, Questão 163 — `https://api.enem.dev/v1/exams/2010/questions/163`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`Y = 4πR`) mantidos.
+- **Conta de conferência:** `2πR` (centro no chão) `+ 2πR` (bloco sobre o rolo) `= 4πR`.
+- **Opções e feedback:** `Y = R`, `Y = 2R`, `Y = πR`, `Y = 2πR`, `Y = 4πR` (correta).
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** diferença de percurso em raias concêntricas de pista de atletismo.
-- **Onde procurar:** ENEM, Fuvest, Unicamp.
+#### V2 — `enem-2019-catraca`
+- **Enunciado (resumido):** Uma bicicleta tem catraca de 7 cm de diâmetro. Para avançar 50% a mais por pedalada, qual deve ser o diâmetro da nova catraca?
+- **Fala do Paco:** "Com o mesmo comprimento de corrente puxado, mais voltas (×1,5) exigem uma catraca menor na mesma razão."
+- **Fonte:** ENEM 2019, Questão 145 — `https://api.enem.dev/v1/exams/2019/questions/145`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`4,7`) mantidos.
+- **Conta de conferência:** `d = 7 / 1,5 = 4,666... ≈ 4,7 cm`.
+- **Opções e feedback:** `2,3`, `3,5`, `4,7` (correta), `5,3`, `10,5`.
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** comprimento de arco a partir do ângulo central (ponteiros, pêndulos ou setores).

@@ -605,6 +605,45 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2018-camera",
+        "prompt": "Uma câmera aponta para Oeste (180°) e gira: 135° anti-horário, 60° horário e 45° anti-horário. Qual o menor giro até Noroeste (135°)?",
+        "fala": "Some os giros anti-horários e subtraia o horário a partir de 180° para achar a posição final.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 171: enunciado resumido; alternativas e gabarito (165° no sentido horário) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2018/questions/171"]
+        },
+        "options": [
+          { "id": "h75", "label": "75° no sentido horário", "correct": false, "feedback": "75° horário levaria de 300° para 225° (Sudoeste), não 135° (NO). De 300° até 135° são 165° no sentido horário." },
+          { "id": "ah105", "label": "105° no sentido anti-horário", "correct": false, "feedback": "105° anti-horário levaria de 300° para 45° (Nordeste), não 135°. De 300° a 135° são 165° no sentido horário." },
+          { "id": "ah120", "label": "120° no sentido anti-horário", "correct": false, "feedback": "120° é o giro líquido (135° − 60° + 45°), sem partir de Oeste (180°). Da posição 300° a 135° são 165° no sentido horário." },
+          { "id": "ah135", "label": "135° no sentido anti-horário", "correct": false, "feedback": "135° anti-horário levaria de 300° para 75°, não 135° (NO). O menor giro é 165° no sentido horário." },
+          { "id": "h165", "label": "165° no sentido horário", "correct": true, "feedback": "Isso. 180° + 135° − 60° + 45° = 300°; girando 165° no sentido horário chega a 135° (NO)." }
+        ]
+      },
+      {
+        "id": "enem-2012-vulcao",
+        "prompt": "Um vulcão está na longitude 124° 3' 0\", sabendo que 1° = 60' e 1' = 60\". Qual é essa medida em graus na forma decimal?",
+        "fala": "Divida os 3 minutos por 60 para converter em fração de grau.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Questão 171: enunciado resumido; alternativas e gabarito (124,05°) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2012/questions/171"]
+        },
+        "options": [
+          { "id": "g02", "label": "124,02°", "correct": false, "feedback": "124,02° equivaleria a 0,02 · 60 = 1,2 minuto, não 3'. Como 3/60 = 0,05, dá 124,05°." },
+          { "id": "g05", "label": "124,05°", "correct": true, "feedback": "Isso. 3' = 3/60° = 0,05°, logo 124° 3' = 124,05°." },
+          { "id": "g20", "label": "124,20°", "correct": false, "feedback": "124,20° equivaleria a 0,20 · 60 = 12' (ou inverter 60/3 = 20 na casa decimal). Dividindo 3 por 60: 124,05°." },
+          { "id": "g30", "label": "124,30°", "correct": false, "feedback": "124,30° trata 1° como 10' (0,3 · 60 = 18'). Em base 60, 3/60 = 0,05: 124,05°." },
+          { "id": "g50", "label": "124,50°", "correct": false, "feedback": "124,50° corresponde a 30' (meio grau), não 3'. O certo é 124,05°." }
+        ]
+      }
+    ]
   }
 }

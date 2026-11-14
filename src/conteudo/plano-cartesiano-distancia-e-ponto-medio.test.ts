@@ -165,4 +165,10 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(2 - dy).toBe(-2);
     expect(certa("ufrr-2017-valor-de-y")).toBe("6 e −2");
   });
+
+  it("V3 enem-2011-metro: (-3, 1) pertence a y = x + 4 e dista sqrt(20) < 5 de (-5, 5)", () => {
+    expect(-3 + 4).toBe(1);
+    expect(Math.hypot(-3 - -5, 1 - 5)).toBeLessThan(5);
+    expect(certa("enem-2011-metro")).toBe("(–3, 1)");
+  });
 });

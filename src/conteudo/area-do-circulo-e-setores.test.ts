@@ -140,4 +140,19 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect((5 * 4) / 2).toBe(10);
     expect(certa("area-setor-pelo-arco")).toBe("10π cm²");
   });
+
+  it("V1 enem-2019-praca: 3 * (7^2 - 3^2) = 120 m² > 100 m²", () => {
+    expect(3 * (7 ** 2 - 3 ** 2)).toBe(120);
+    expect(certa("enem-2019-praca")).toBe("Não será suficiente, pois a área da nova região a ser pavimentada mede 120 m²");
+  });
+
+  it("V2 enem-2018-chafariz: R^2 - r^2 = (16/2)^2 = 64 => 64π", () => {
+    expect((16 / 2) ** 2).toBe(64);
+    expect(certa("enem-2018-chafariz")).toBe("64π");
+  });
+
+  it("V3 enem-2021-cartao: círculo 3*5^2 = 75 cm² <= 80 cm² vence", () => {
+    expect(3 * 5 ** 2).toBe(75);
+    expect(certa("enem-2021-cartao")).toBe("Círculo");
+  });
 });

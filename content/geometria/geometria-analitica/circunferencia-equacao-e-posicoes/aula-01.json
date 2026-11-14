@@ -678,6 +678,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2018-tiros",
+        "prompt": "Por O(0; 0), cada alvo atingido vale 1 (reta) ou 2 (circunferência): A(0; 4), B(4; 4), C(4; 0), D(2; 2), E(0; 2). Por A, qual rende mais?",
+        "fala": "Teste O(0; 0) e A(0; 4) em cada equação e conte quantos dos outros pontos também pertencem a ela.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 138: enunciado resumido; alternativas e gabarito ((x -2 )² + ( y - 2 )² = 8) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2018/questions/138"]
+        },
+        "options": [
+          { "id": "x0", "label": "x = 0", "correct": false, "feedback": "x = 0 passa por O, A(0; 4) e E(0; 2): 2 pontos · 1 = 2 pontos. A circunferência (x − 2)² + (y − 2)² = 8 faz 6 pontos." },
+          { "id": "y0", "label": "y = 0", "correct": false, "feedback": "y = 0 passa por O e C(4; 0), mas não passa por A(0; 4). A maior pontuação é 6 com (x − 2)² + (y − 2)² = 8." },
+          { "id": "c16", "label": "x² + y² = 16", "correct": false, "feedback": "x² + y² = 16 passa por A(0; 4) e C(4; 0), mas não passa pela origem O(0; 0) (0 + 0 ≠ 16). A certa é (x − 2)² + (y − 2)² = 8." },
+          { "id": "c4", "label": "x² + (y − 2)² = 4", "correct": false, "feedback": "x² + (y − 2)² = 4 passa por O, A(0; 4) e D(2; 2) (E(0; 2) é o centro, dá 0 ≠ 4): 2 · 2 = 4 pontos. Já (x − 2)² + (y − 2)² = 8 faz 6 pontos." },
+          { "id": "c8", "label": "(x − 2)² + (y − 2)² = 8", "correct": true, "feedback": "Isso. Passa por O(0; 0), A(0; 4), B(4; 4) e C(4; 0): 3 pontos · 2 = 6 pontos." }
+        ]
+      }
+    ]
   }
 }

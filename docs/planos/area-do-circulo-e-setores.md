@@ -235,10 +235,26 @@ Na coroa circular de raios `R` e `r`, quando `r → 0` recuperamos o disco cheio
 - **Habilidade-alvo:** calcular a área de setores circulares (alcance de farol, limpador de para-brisa, câmera de segurança).
 - **Onde procurar:** ENEM, Unesp, Unicamp, UERJ.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular área de coroa circular ou regiões sombreadas entre polígonos e círculos.
-- **Onde procurar:** ENEM, Fuvest, UFRGS, UFPR.
+#### V3 — `enem-2019-praca`
+- **Enunciado (resumido):** Uma praça circular de 6 m de diâmetro será ampliada em 8 m no diâmetro (π = 3). Um estoque para 100 m² basta para a nova faixa?
+- **Fala do Paco:** "Calcule o raio inicial e o raio final (com o aumento de 8 m no diâmetro) e subtraia as áreas dos dois círculos."
+- **Fonte:** ENEM 2019, Questão 142 — `https://api.enem.dev/v1/exams/2019/questions/142`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`Não será suficiente, pois a área da nova região a ser pavimentada mede 120 m²`) mantidos.
+- **Conta de conferência:** `r = 3 m`, `R = (6 + 8)/2 = 7 m`; `3·(7² − 3²) = 3·40 = 120 m² > 100 m²`.
+- **Opções e feedback:** 21 m², 24 m², 48 m², 108 m², 120 m² (correta).
 
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** otimização ou cobertura de área circular usando aproximação de `π`.
-- **Onde procurar:** ENEM, Unicamp.
+#### V4 — `enem-2018-chafariz`
+- **Enunciado (resumido):** Numa coroa circular entre dois círculos concêntricos, uma corda tangente ao círculo interno mede 16 m. Qual é a área da coroa?
+- **Fala do Paco:** "O raio interno até o ponto de tangência é perpendicular à corda e a divide ao meio: aplique Pitágoras com R, r e 8 m."
+- **Fonte:** ENEM 2018, Questão 153 — `https://api.enem.dev/v1/exams/2018/questions/153`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`64π`) mantidos.
+- **Conta de conferência:** `R² − r² = (16/2)² = 64 ⇒ Área = 64π m²`.
+- **Opções e feedback:** `4π`, `8π`, `48π`, `64π` (correta), `192π`.
+
+#### V5 — `enem-2021-cartao`
+- **Enunciado (resumido):** Cartão custa R$ 0,01/cm² (máx 80 cm², π = 3, √3 = 1,7). Entre triângulo eq. L = 12, quadrado L = 8, retângulo 11 × 8, hexágono L = 6 e círculo d = 10, qual vence?
+- **Fala do Paco:** "Calcule a área de cada opção e escolha a maior que não ultrapasse 80 cm²."
+- **Fonte:** ENEM 2021, Questão 171 — `https://api.enem.dev/v1/exams/2021/questions/171`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`Círculo`) mantidos.
+- **Conta de conferência:** triângulo `61,2 cm²`, quadrado `64 cm²`, retângulo `88 cm² (>80)`, hexágono `91,8 cm² (>80)`, círculo `3·5² = 75 cm²`.
+- **Opções e feedback:** `Triângulo`, `Quadrado`, `Retângulo`, `Hexágono`, `Círculo` (correta).

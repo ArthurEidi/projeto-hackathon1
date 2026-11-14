@@ -249,17 +249,29 @@ Inclinar o paralelogramo mantendo b e h fixos estica os lados inclinados: o per�
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** área de figuras compostas (retângulos e trapézios) em plantas baixas ou terrenos.
-- **Onde procurar:** ENEM (questões de ladrilhos, terrenos e plantas de apartamentos).
+#### V1 — `enem-2023-calcada`
+- **Enunciado (resumido):** Uma piscina quadrada tem área de 400 m² e receberá ao redor uma calçada de 5 m de largura. Qual é a área da calçada?
+- **Fala do Paco:** "Ache o lado da piscina, some 5 m de cada lado (10 m ao todo) para o quadrado externo e subtraia as áreas."
+- **Fonte:** ENEM 2023, Questão 155 — `https://api.enem.dev/v1/exams/2023/questions/155`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`500`) mantidos.
+- **Conta de conferência:** `L = √400 = 20 m`; `(20 + 2·5)² − 400 = 900 − 400 = 500 m²`.
+- **Opções e feedback:** `1.000`, `900`, `600`, `500` (correta), `400`.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** contraste entre perímetro e área em problemas de cercamento.
-- **Onde procurar:** ENEM, Vunesp, Fuvest.
+#### V2 — `enem-2013-placas`
+- **Enunciado (resumido):** Uma caixa com N placas quadradas de lado y cobre área S. Se o lado das placas triplicar, quantas placas cobrem a mesma área S?
+- **Fala do Paco:** "Se o lado multiplica por 3, por quanto multiplica a área de cada placa?"
+- **Fonte:** ENEM 2013, Questão 156 — `https://api.enem.dev/v1/exams/2013/questions/156`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`N/9`) mantidos.
+- **Conta de conferência:** `S = N·y² = X·(3y)² = 9X·y² ⇒ X = N/9`.
+- **Opções e feedback:** `N/9` (correta), `N/6`, `N/3`, `3N`, `9N`.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** área de triângulo ou paralelogramo em malha quadriculada.
-- **Onde procurar:** ENEM, OBMEP, Unicamp.
+#### V3 — `enem-2013-argila`
+- **Enunciado (resumido):** Uma base retangular de 30 cm por 15 cm teve seus lados reduzidos em 20% após o cozimento. Em quantos por cento a área reduziu?
+- **Fala do Paco:** "Multiplique os dois fatores de redução (0,8 × 0,8) para achar quanto da área original restou."
+- **Fonte:** ENEM 2013, Questão 167 — `https://api.enem.dev/v1/exams/2013/questions/167`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`36%`) mantidos.
+- **Conta de conferência:** `24 · 12 = 288` de `450` (`0,8 · 0,8 = 0,64 ⇒ 1 − 0,64 = 36%`).
+- **Opções e feedback:** `4%`, `20%`, `36%` (correta), `64%`, `96%`.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** efeito da escala k sobre a área (fator k²) em mapas e maquetes.

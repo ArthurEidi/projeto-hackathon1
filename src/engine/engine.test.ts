@@ -93,7 +93,8 @@ describe("treino pós-aula", () => {
     expect(certa("geratriz-3-3")).toBe("3√2");
     expect(Math.sqrt(50 - 25)).toBe(Number(certa("altura-5-5raiz2")));
     expect(g(12, 9) - g(12, 5)).toBe(Number(certa("dois-cones")));
-    expect(`${g(6, 8)} m`).toBe(certa("ufpr-reservatorio"));
+    // ENEM 2022/153: altura fixa e volume 81% → r = √0,81 · 4 = 3,60
+    expect((Math.sqrt(0.81) * 4).toFixed(2).replace(".", ",")).toBe(certa("enem-2022-cone"));
     const gCefet = (16 - 2 * 3) / 2;
     expect(`${Math.sqrt(gCefet ** 2 - 9)} m`).toBe(certa("cefetpr-secao-meridiana"));
     const r = Math.sqrt(3); // cone equilátero: g = 2r = 2√3

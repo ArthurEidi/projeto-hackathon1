@@ -144,4 +144,13 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(4 * (15 / 5)).toBe(12);
     expect(certa("duas-engrenagens")).toBe("12 voltas");
   });
+
+  it("V1 enem-2010-rolos: 2πR + 2πR = 4πR", () => {
+    expect(certa("enem-2010-rolos")).toBe("Y = 4πR");
+  });
+
+  it("V2 enem-2019-catraca: 7 / 1,5 ≈ 4,7 cm", () => {
+    expect(7 / 1.5).toBeCloseTo(4.6667, 3);
+    expect(certa("enem-2019-catraca")).toBe("4,7");
+  });
 });

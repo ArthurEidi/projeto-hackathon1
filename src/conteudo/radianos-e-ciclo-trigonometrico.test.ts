@@ -47,6 +47,18 @@ describe("passos da aula", () => {
     if (s.type !== "concept_lock") throw new Error();
     for (const t of s.formula) if (t.ref) expect(L.glossario?.[t.ref], t.text).toBeDefined();
   });
+
+  it("V1 enem-2018-camera: 180 + 135 - 60 + 45 = 300 => 300 - 135 = 165° horário", () => {
+    const pos = 180 + 135 - 60 + 45;
+    expect(pos).toBe(300);
+    expect(pos - 135).toBe(165);
+    expect(certa("enem-2018-camera")).toBe("165° no sentido horário");
+  });
+
+  it("V2 enem-2012-vulcao: 124° 3' = 124 + 3/60 = 124,05°", () => {
+    expect(124 + 3 / 60).toBeCloseTo(124.05, 9);
+    expect(certa("enem-2012-vulcao")).toBe("124,05°");
+  });
 });
 
 describe("gabaritos do treino", () => {
@@ -66,5 +78,17 @@ describe("gabaritos do treino", () => {
     expect(certa("ponteiro-minutos")).toBe("2π/3 rad");
     expect(certa("quadrante-de-3-rad")).toBe("2º quadrante");
     expect(certa("bicicleta-voltas")).toBe("5 voltas e 12 m");
+  });
+
+  it("V1 enem-2018-camera: 180 + 135 - 60 + 45 = 300 => 300 - 135 = 165° horário", () => {
+    const pos = 180 + 135 - 60 + 45;
+    expect(pos).toBe(300);
+    expect(pos - 135).toBe(165);
+    expect(certa("enem-2018-camera")).toBe("165° no sentido horário");
+  });
+
+  it("V2 enem-2012-vulcao: 124° 3' = 124 + 3/60 = 124,05°", () => {
+    expect(124 + 3 / 60).toBeCloseTo(124.05, 9);
+    expect(certa("enem-2012-vulcao")).toBe("124,05°");
   });
 });

@@ -229,13 +229,21 @@ Arrastar `h'` de `0` a `H` mostra como `k³` cresce devagar no começo e dispara
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** comparar volume de líquido em taça cônica na metade da altura (`k³ = 1/8`).
-- **Onde procurar:** ENEM, Fuvest, Unicamp, Unesp (questão clássica da taça de champanhe).
+#### V1 — `enem-2020-kukulkan`
+- **Enunciado (resumido):** O Templo de Kukulkán tem formato de tronco reto de pirâmide de base quadrada. Quais figuras planas formam esse sólido?
+- **Fala do Paco:** "Conte as duas tampas paralelas e as quatro paredes inclinadas laterais."
+- **Fonte:** ENEM 2020, Questão 151 — `https://api.enem.dev/v1/exams/2020/questions/151`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (2 quadrados e 4 trapézios isósceles) mantidos.
+- **Conta de conferência:** tronco reto de pirâmide quadrangular regular tem 2 bases quadradas e 4 faces laterais em trapézio isósceles.
+- **Opções e feedback:** 2 quad + 4 ret, 1 ret + 4 tri isósc, 2 quad + 4 trap isósc (correta), 1 quad + 3 ret + 2 trap ret, 2 ret + 2 quad + 2 trap ret.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular volume de copo/balde em forma de tronco de cone.
-- **Onde procurar:** ENEM (questões de copos descartáveis, vasos e baldes).
+#### V2 — `enem-2009-vela`
+- **Enunciado (resumido):** Pirâmide (base 6 cm, altura 19 cm) tem 4 blocos iguais espaçados de 1 cm. Retirando a ponta (base 1,5 cm), qual o volume?
+- **Fala do Paco:** "Desconte os 3 espaços de 1 cm para achar a altura útil (16 cm) e use semelhança k = 1,5 / 6 = 1/4."
+- **Fonte:** ENEM 2009, Questão 173 — `https://api.enem.dev/v1/exams/2009/questions/173`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (189 cm³) mantidos.
+- **Conta de conferência:** `H_útil = 19 - 3 = 16 cm`; `V_total = (36·16)/3 = 192 cm³`; `k = 1,5/6 = 1/4 => V_ponta = (1/4)³·192 = 3 cm³`; `192 - 3 = 189 cm³`.
+- **Opções e feedback:** 156 cm³, 189 cm³ (correta), 192 cm³, 216 cm³, 540 cm³.
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** relacionar área da seção transversal com altura do corte em pirâmides/cones.

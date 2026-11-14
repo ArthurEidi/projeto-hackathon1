@@ -238,9 +238,13 @@ O aluno arrasta x de 0 a 4π para ver dois períodos completos da senoide e test
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** reconhecer o gráfico de sen x ou cos x, identificando período e imagem.
-- **Onde procurar:** ENEM, UFRGS, Vunesp, UFPR.
+#### V1 — `enem-2017-lago`
+- **Enunciado (resumido):** A intensidade luminosa em um lago é I(x) = k·sen(x), para 0° < x ≤ 90°. Quando x = 30°, a intensidade é qual percentual do valor máximo?
+- **Fala do Paco:** "Compare I(30°) = k·sen 30° com o valor máximo de sen(x) em (0°; 90°]."
+- **Fonte:** ENEM 2017, Questão 138 — `https://api.enem.dev/v1/exams/2017/questions/138`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`50%`) mantidos.
+- **Conta de conferência:** `I_max = I(90°) = k·1 = k`; `I(30°) = k·0,5 = 50%` de `k`.
+- **Opções e feedback:** `33%`, `50%` (correta), `57%`, `70%`, `86%`.
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** determinar o número de soluções (interseções) de sen x = k ou sen x = cos x num intervalo dado.

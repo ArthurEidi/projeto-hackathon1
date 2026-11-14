@@ -134,4 +134,9 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(20 / 0.5 - 20 / 1).toBe(20);
     expect(certa("dois-angulos-predio")).toBe("20 m");
   });
+
+  it("V1 enem-2020-pergolado: 15 / tg(30°) = 15*sqrt(3) ≈ 26 cm", () => {
+    expect(Math.round(15 / Math.tan(Math.PI / 6))).toBe(26);
+    expect(certa("enem-2020-pergolado")).toBe("26");
+  });
 });

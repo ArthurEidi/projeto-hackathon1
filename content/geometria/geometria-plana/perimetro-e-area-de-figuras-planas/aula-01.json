@@ -703,6 +703,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2023-calcada",
+        "prompt": "Uma piscina quadrada tem área de 400 m² e receberá ao redor uma calçada de 5 m de largura. Qual é a área da calçada?",
+        "fala": "Ache o lado da piscina, some 5 m de cada lado (10 m ao todo) para o quadrado externo e subtraia as áreas.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "Questão 155: enunciado resumido; alternativas e gabarito (500) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2023/questions/155"]
+        },
+        "options": [
+          { "id": "a1000", "label": "1.000", "correct": false, "feedback": "1 000 = 600 + 400 soma sem descontar a piscina ou os cantos. Lado externo: 20 + 2·5 = 30 m, logo 30² − 400 = 500 m²." },
+          { "id": "a900", "label": "900", "correct": false, "feedback": "900 = 30² é a área total (piscina + calçada). Descontando os 400 m² da piscina, a calçada mede 500 m²." },
+          { "id": "a600", "label": "600", "correct": false, "feedback": "600 = 4 · (30 · 5) conta quatro faixas de 30 × 5 sem descontar os quatro cantos de 5 × 5 (100 m²) sobrepostos. O certo é 500 m²." },
+          { "id": "a500", "label": "500", "correct": true, "feedback": "Isso. Lado da piscina = √400 = 20 m; lado externo = 20 + 2·5 = 30 m; calçada = 30² − 400 = 500 m²." },
+          { "id": "a400", "label": "400", "correct": false, "feedback": "400 = 4 · (20 · 5) conta só as quatro faixas junto às bordas e esquece os quatro cantos de 5 × 5 (100 m²). Total: 500 m²." }
+        ]
+      },
+      {
+        "id": "enem-2013-placas",
+        "prompt": "Uma caixa com N placas quadradas de lado y cobre área S. Se o lado das placas triplicar, quantas placas cobrem a mesma área S?",
+        "fala": "Se o lado multiplica por 3, por quanto multiplica a área de cada placa?",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2013,
+          "adaptada": true,
+          "adaptacao": "Questão 156: enunciado resumido; alternativas e gabarito (N/9) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2013/questions/156"]
+        },
+        "options": [
+          { "id": "n9", "label": "N/9", "correct": true, "feedback": "Isso. Com lado 3y, cada placa tem área (3y)² = 9y²; para manter S = N·y², bastam N/9 placas." },
+          { "id": "n6", "label": "N/6", "correct": false, "feedback": "N/6 divide por 2·3 = 6 em vez de 3² = 9. Como a área escala com o quadrado do lado, dá N/9." },
+          { "id": "n3", "label": "N/3", "correct": false, "feedback": "N/3 divide por 3 (escala linear) em vez de 3² = 9 (escala de área). O certo é N/9." },
+          { "id": "3n", "label": "3N", "correct": false, "feedback": "3N multiplica por 3 em vez de dividir por 9 (placas maiores exigem menos unidades). O certo é N/9." },
+          { "id": "9n", "label": "9N", "correct": false, "feedback": "9N multiplica por 9 em vez de dividir por 9. Como cada placa cobre 9 vezes mais, usa-se N/9." }
+        ]
+      },
+      {
+        "id": "enem-2013-argila",
+        "prompt": "Uma base retangular de 30 cm por 15 cm teve seus lados reduzidos em 20% após o cozimento. Em quantos por cento a área reduziu?",
+        "fala": "Multiplique os dois fatores de redução (0,8 × 0,8) para achar quanto da área original restou.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2013,
+          "adaptada": true,
+          "adaptacao": "Questão 167: enunciado resumido; alternativas e gabarito (36%) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2013/questions/167"]
+        },
+        "options": [
+          { "id": "p4", "label": "4%", "correct": false, "feedback": "4% = 0,20 · 0,20 calcula apenas o produto das reduções sem somar as duas faixas (20% + 20% − 4% = 36%)." },
+          { "id": "p20", "label": "20%", "correct": false, "feedback": "20% é a redução de cada lado isoladamente. Nos dois lados, resta 0,8 · 0,8 = 64% da área, redução de 36%." },
+          { "id": "p36", "label": "36%", "correct": true, "feedback": "Isso. 24 · 12 = 288 cm² contra 450 cm² (ou 0,8 · 0,8 = 0,64): a área reduziu 36%." },
+          { "id": "p64", "label": "64%", "correct": false, "feedback": "64% = 0,8 · 0,8 é a porcentagem da área que restou após o cozimento, não a redução (100% − 64% = 36%)." },
+          { "id": "p96", "label": "96%", "correct": false, "feedback": "96% = 100% − 4% toma 0,2² = 4% como o que restou. A redução real é 100% − 64% = 36%." }
+        ]
+      }
+    ]
   }
 }

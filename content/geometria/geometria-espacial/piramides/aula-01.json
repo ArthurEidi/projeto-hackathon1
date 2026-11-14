@@ -545,6 +545,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2009-piramide-pentagonal",
+        "prompt": "Um artesão corta uma pirâmide de base quadrada com um plano e obtém uma face pentagonal. Qual argumento justifica esse resultado?",
+        "fala": "A interseção do plano com cada face atingida gera um lado do polígono de corte.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 177: enunciado resumido e rótulos das alternativas encurtados mantendo o sentido; gabarito (C) mantido.",
+          "urls": ["https://api.enem.dev/v1/exams/2009/questions/177"]
+        },
+        "options": [
+          { "id": "a4a", "label": "Tem 4 arestas laterais; o plano corta as 4 e forma um polígono de 4 lados", "correct": false, "feedback": "Cortar só as 4 arestas laterais daria 4 lados, não 5. A pirâmide tem 5 faces; se o plano cortar todas, forma 5 lados." },
+          { "id": "a4f", "label": "Tem 4 faces triangulares; o corte gera triângulo e trapézio (4 lados)", "correct": false, "feedback": "Isso vale se cortar só as 4 faces laterais. Como a pirâmide tem 5 faces (com a base), cortar todas gera 5 lados." },
+          { "id": "a5f", "label": "Tem 5 faces; se o plano interceptar todas, a interseção tem 5 lados", "correct": true, "feedback": "Isso. A pirâmide quadrangular tem 5 faces; cada face cortada gera 1 segmento, formando um pentágono." },
+          { "id": "a5s", "label": "Qualquer corte em pirâmide de 5 faces sempre gera um polígono de 5 lados", "correct": false, "feedback": "Nem todo corte atinge todas as faces: paralelo à base dá quadrado (4 lados), só quando corta as 5 faces dá pentágono." },
+          { "id": "a4s", "label": "Qualquer corte sempre tem lados iguais às 4 arestas laterais (4 lados)", "correct": false, "feedback": "O corte pode atingir 3, 4 ou 5 faces; como a pirâmide tem 5 faces, interceptar todas gera 5 lados." }
+        ]
+      }
+    ]
   }
 }

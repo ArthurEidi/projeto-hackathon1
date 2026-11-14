@@ -252,7 +252,8 @@ Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o pl
 #### V1 — `enem-2017-hill`
 - **Enunciado (resumido):** "A equação de Hill é (p + a)(v + b) = K, com a, b e K constantes positivas. Que gráfico descreve v em função de p?"
 - **Fala do Paco:** "Um fator vezes o outro dá constante, como y = 1/x deslocada."
-- **Fonte:** ENEM 2017 (adaptada) — **Adaptação:** enunciado resumido (contexto da contração muscular omitido); alternativas e gabarito (ramo de hipérbole) mantidos — **URL:** https://projetoagathaedu.com.br/questoes-vestibular/matematica/geometria-analitica/conicas.php
+- **Fonte:** ENEM 2017, Questão 162 — `https://api.enem.dev/v1/exams/2017/questions/162`
+- **Adaptação:** enunciado resumido (contexto da contração muscular omitido); alternativas e gabarito (ramo de hipérbole) mantidos.
 - **Conta de conferência:** v = K/(p + a) − b: hipérbole deslocada, com p restrito a um lado da assíntota
 
 | id | Rótulo | Certa? | Feedback |

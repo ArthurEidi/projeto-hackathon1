@@ -288,6 +288,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2023-escultura",
+        "prompt": "De um cone (h=36 cm, D=18 cm) retira-se cone menor (d=6 cm) e perfura-se cilindro central (d=6 cm). A 0,6 g/cm³ e π=3, qual a massa?",
+        "fala": "Ache a altura do cone retirado por semelhança (d/D = 1/3) antes de subtrair o cilindro.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "Questão 136: enunciado resumido; alternativas e gabarito (1.296,0) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2023/questions/136"]
+        },
+        "options": [
+          { "id": "a1198", "label": "1.198,8", "correct": false, "feedback": "1.198,8 g corresponde a um volume de 1.998 cm³ (162 cm³ a menos). O volume restante é 2.160 cm³, dando 2.160 · 0,6 = 1.296,0 g." },
+          { "id": "a1296", "label": "1.296,0", "correct": true, "feedback": "Isso. Cone maior 2.916 − cone menor 108 − cilindro 648 = 2.160 cm³; massa = 2.160 · 0,6 = 1.296,0 g." },
+          { "id": "a1360", "label": "1.360,8", "correct": false, "feedback": "1.360,8 g (2.268 cm³) esquece de subtrair o cone menor de 108 cm³ (2.916 − 648). Descontando 108 cm³, dá 1.296,0 g." },
+          { "id": "a4665", "label": "4.665,6", "correct": false, "feedback": "4.665,6 g (7.776 cm³) não dividiu o volume do cone por 3 (8.748 − 324 − 648). Com 1/3 no cone, a massa é 1.296,0 g." },
+          { "id": "a4860", "label": "4.860,0", "correct": false, "feedback": "4.860,0 g (8.100 cm³) não dividiu o cone por 3 nem tirou o cone menor (8.748 − 648). O certo é 1.296,0 g." }
+        ]
+      },
+      {
+        "id": "enem-2019-reservatorios",
+        "prompt": "Cilindro central cheio (r=2 m, h=3,30 m) liga-se a 4 cilindros (r=1,5 m, h=1,5 m) por 4 canos (d=0,10 m, L=20 m). Qual a altura final?",
+        "fala": "Desconte o volume dos 4 canos e divida o restante pela soma das 5 áreas de base.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 175: enunciado resumido; alternativas e gabarito (1,00) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/175"]
+        },
+        "options": [
+          { "id": "a144", "label": "1,44", "correct": false, "feedback": "1,44 (13π / 9π) divide o volume só pelas 4 bases auxiliares, esquecendo o cilindro central (4π). Com os 5: 13π / 13π = 1,00 m." },
+          { "id": "a116", "label": "1,16", "correct": false, "feedback": "Com 1,16 m nos 5 reservatórios seriam 1,16 · 13π = 15,08π m³, acima dos 13,2π m³ iniciais. A altura correta é 1,00 m." },
+          { "id": "a110", "label": "1,10", "correct": false, "feedback": "Com 1,10 m nos 5 reservatórios seriam 1,10 · 13π = 14,3π m³, acima dos 13,2π m³ disponíveis. O certo é 1,00 m." },
+          { "id": "a100", "label": "1,00", "correct": true, "feedback": "Exato. 13,2π − 4·π·0,05²·20 = 13π m³; dividindo pela soma das 5 bases (4π + 9π = 13π m²), resulta em 1,00 m." },
+          { "id": "a095", "label": "0,95", "correct": false, "feedback": "0,95 (12,4π / 13π) usa o diâmetro 0,10 m do cano como raio (0,8π nos canos em vez de 0,2π). Com r = 0,05 m, dá 1,00 m." }
+        ]
+      },
+      {
+        "id": "enem-2010-perfuracao",
+        "prompt": "Um prisma reto de base triangular 6 cm, 8 cm e 10 cm e altura 10 cm tem perfuração cilíndrica tangente às faces laterais. Qual o raio?",
+        "fala": "A base é um triângulo retângulo 6-8-10; o raio do círculo inscrito vale A / p.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2010,
+          "adaptada": true,
+          "adaptacao": "Questão 164: enunciado resumido; alternativas e gabarito (2 cm) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2010/questions/164"]
+        },
+        "options": [
+          { "id": "a1", "label": "1 cm", "correct": false, "feedback": "1 cm divide a área (24 cm²) pelo perímetro inteiro (24 cm) em vez do semiperímetro (12 cm). O certo é r = 24 / 12 = 2 cm." },
+          { "id": "a2", "label": "2 cm", "correct": true, "feedback": "Isso. Base retangular (6² + 8² = 10²) tem área 24 cm² e semiperímetro 12 cm; logo r = 24 / 12 = 2 cm." },
+          { "id": "a3", "label": "3 cm", "correct": false, "feedback": "3 cm é a metade do menor cateto (6 / 2); um círculo desse raio não fica tangente às três faces. O raio inscrito é (6 + 8 − 10) / 2 = 2 cm." },
+          { "id": "a4", "label": "4 cm", "correct": false, "feedback": "4 cm é 6 + 8 − 10 sem dividir por 2 (ou metade do cateto 8). O raio do círculo inscrito vale (6 + 8 − 10) / 2 = 2 cm." },
+          { "id": "a5", "label": "5 cm", "correct": false, "feedback": "5 cm é o raio da circunferência circunscrita (metade da hipotenusa 10). O raio inscrito é r = 24 / 12 = 2 cm." }
+        ]
+      }
+    ]
   }
 }

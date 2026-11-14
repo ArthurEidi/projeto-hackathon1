@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
-import { certaDe, fechamentoOk, passosConcluiveis, semVestibular } from "./util";
+import { certaDe, fechamentoOk, passosConcluiveis } from "./util";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -95,7 +95,9 @@ describe("gabaritos do treino", () => {
     expect(certa("octaedro-duas-piramides")).toBe(`${vOctaedro} cm³`);
   });
 
-  it("vestibular pendente de fontes reais", () => {
-    semVestibular(L);
+  it("vestibular confere gabarito ENEM", () => {
+    expect(certa("enem-2009-piramide-pentagonal")).toBe(
+      "Tem 5 faces; se o plano interceptar todas, a interseção tem 5 lados",
+    );
   });
 });

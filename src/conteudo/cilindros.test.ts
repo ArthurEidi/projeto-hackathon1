@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
-import { certaDe, fechamentoOk, passosConcluiveis, semVestibular } from "./util";
+import { certaDe, fechamentoOk, passosConcluiveis } from "./util";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -92,7 +92,9 @@ describe("gabaritos do treino", () => {
     expect(certa("enrolar-folha-dois-jeitos")).toBe(`${vEnrolar}π cm³`);
   });
 
-  it("vestibular pendente de fontes reais", () => {
-    semVestibular(L);
+  it("vestibular confere gabaritos ENEM", () => {
+    expect(certa("enem-2022-caixas")).toBe("V");
+    expect(certa("enem-2010-manilha")).toBe("R$ 54,56");
+    expect(certa("enem-2021-reservatorio")).toBe("4,48");
   });
 });

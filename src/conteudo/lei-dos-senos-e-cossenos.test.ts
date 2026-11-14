@@ -131,4 +131,9 @@ describe("treino: gabaritos conferidos por conta", () => {
   it("D5 combinar-seno-cosseno: a = 4 e 2R = 16/√7", () => {
     expect(certa("combinar-seno-cosseno")).toBe("a = 4 e 2R = 16/√7");
   });
+
+  it("V1 enem-2023-pizzas: a^2 > b^2 + c^2 => cos alpha < 0 => 90° < a < 180°", () => {
+    expect(Math.cos((120 * Math.PI) / 180)).toBeLessThan(0);
+    expect(certa("enem-2023-pizzas")).toBe("90° < α < 180°");
+  });
 });

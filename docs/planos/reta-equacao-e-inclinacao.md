@@ -252,9 +252,13 @@ m negativo: a reta desce para a direita. Pontos na mesma vertical: Δx = 0, a di
 - **Habilidade-alvo:** equação da reta por dois pontos. (Questão UEA 2018 encontrada depende de gráficos em imagem; não usar sem o caderno.)
 - **Onde procurar:** UFRGS, PUC-RJ, Unesp.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** interceptos de uma reta.
-- **Onde procurar:** ENEM, UFPR.
+#### V2 — `enem-2018-rampa`
+- **Enunciado (resumido):** Uma rampa de garagem tem 8 m na horizontal e desce 2 m. Para respeitar inclinação máxima de 20% mantendo os 8 m, como ajustar o nível da garagem?
+- **Fala do Paco:** "Calcule 20% de 8 m para achar o desnível máximo permitido e compare com os 2 m atuais."
+- **Fonte:** ENEM 2018, Questão 149 — `https://api.enem.dev/v1/exams/2018/questions/149`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`Elevado em 40 cm`) mantidos.
+- **Conta de conferência:** `0,20 · 8 m = 1,60 m = 160 cm`; `200 − 160 = 40 cm`.
+- **Opções e feedback:** `Elevado em 40 cm` (correta), `Elevado em 50 cm`, `Mantido no mesmo nível`, `Rebaixado em 40 cm`, `Rebaixado em 50 cm`.
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** condição de alinhamento de três pontos.

@@ -96,4 +96,9 @@ describe("gabaritos do treino", () => {
     // d5: f(x) = sen x em [0; π] tem imagem [0; 1] com máximo em π/2
     expect(certa("diferenca-max-min-intervalo")).toBe("[0; 1], máximo em π/2");
   });
+
+  it("V1 enem-2017-lago: sen(30°) / sen(90°) = 0,5 = 50%", () => {
+    expect(Math.sin(Math.PI / 6) / Math.sin(Math.PI / 2)).toBeCloseTo(0.5, 9);
+    expect(certa("enem-2017-lago")).toBe("50%");
+  });
 });

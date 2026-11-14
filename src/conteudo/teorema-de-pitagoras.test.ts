@@ -141,4 +141,9 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(Math.hypot(8, 6)).toBe(10);
     expect(certa("caminho-em-l")).toBe("10 km");
   });
+
+  it("V1 enem-2020-arvore: mangueira 100/20 = 5 m, h = 3 m => r = 4,00 m", () => {
+    expect(Math.sqrt((100 / 20) ** 2 - 3 ** 2)).toBe(4);
+    expect(certa("enem-2020-arvore")).toBe("4,00");
+  });
 });

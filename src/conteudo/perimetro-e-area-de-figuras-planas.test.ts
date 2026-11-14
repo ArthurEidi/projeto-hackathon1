@@ -103,4 +103,19 @@ describe("gabaritos dos desafios", () => {
   it("D5: área 12 para 108 -> k² = 9 -> k = 3", () => {
     expect(certa("d5-escala-reversa")).toBe("3");
   });
+
+  it("V1 enem-2023-calcada: 30^2 - 400 = 500 m²", () => {
+    expect((Math.sqrt(400) + 2 * 5) ** 2 - 400).toBe(500);
+    expect(certa("enem-2023-calcada")).toBe("500");
+  });
+
+  it("V2 enem-2013-placas: lado 3x => área 9x => N/9 placas", () => {
+    expect(3 ** 2).toBe(9);
+    expect(certa("enem-2013-placas")).toBe("N/9");
+  });
+
+  it("V3 enem-2013-argila: (450 - 24*12)/450 = 36%", () => {
+    expect((450 - 24 * 12) / 450).toBeCloseTo(0.36, 9);
+    expect(certa("enem-2013-argila")).toBe("36%");
+  });
 });

@@ -238,13 +238,21 @@ O aluno gira P além de 360° (ex.: 420° = 60° + 360°) e no sentido horário 
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** converter medidas entre graus e radianos e relacionar comprimento de arco ao raio (l = θ·r).
-- **Onde procurar:** ENEM, Vunesp, UFRGS (questões de pista circular, engrenagens ou pêndulo).
+#### V1 — `enem-2018-camera`
+- **Enunciado (resumido):** Uma câmera aponta para Oeste (180°) e gira: 135° anti-horário, 60° horário e 45° anti-horário. Qual o menor giro até Noroeste (135°)?
+- **Fala do Paco:** "Some os giros anti-horários e subtraia o horário a partir de 180° para achar a posição final."
+- **Fonte:** ENEM 2018, Questão 171 — `https://api.enem.dev/v1/exams/2018/questions/171`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`165° no sentido horário`) mantidos.
+- **Conta de conferência:** `180° + 135° − 60° + 45° = 300°`; menor giro até `135°`: `300° − 135° = 165°` no sentido horário.
+- **Opções e feedback:** `75° no sentido horário`, `105° no sentido anti-horário`, `120° no sentido anti-horário`, `135° no sentido anti-horário`, `165° no sentido horário` (correta).
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** encontrar a primeira determinação positiva (arco côngruo) após várias voltas numa circunferência.
-- **Onde procurar:** ENEM (caminhada em pista circular com postos numerados), UFPR, Unicamp.
+#### V2 — `enem-2012-vulcao`
+- **Enunciado (resumido):** Um vulcão está na longitude 124° 3' 0", sabendo que 1° = 60' e 1' = 60". Qual é essa medida em graus na forma decimal?
+- **Fala do Paco:** "Divida os 3 minutos por 60 para converter em fração de grau."
+- **Fonte:** ENEM 2012, Questão 171 — `https://api.enem.dev/v1/exams/2012/questions/171`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`124,05°`) mantidos.
+- **Conta de conferência:** `3' = 3/60° = 0,05° ⇒ 124° + 0,05° = 124,05°`.
+- **Opções e feedback:** `124,02°`, `124,05°` (correta), `124,20°`, `124,30°`, `124,50°`.
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** calcular ângulo entre ponteiros de relógio ou giro de ponteiro em radianos.

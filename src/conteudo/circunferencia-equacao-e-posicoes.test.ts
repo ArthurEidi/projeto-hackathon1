@@ -145,4 +145,10 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(-(-6) / 2).toBe(3);
     expect(certa("completar-quadrado")).toBe("(3; 0)");
   });
+
+  it("V1 enem-2018-tiros: (x-2)^2 + (y-2)^2 = 8 passa por O, A, B, C (6 pts)", () => {
+    const naCirc = (x: number, y: number) => (x - 2) ** 2 + (y - 2) ** 2 === 8;
+    expect(naCirc(0, 0) && naCirc(0, 4) && naCirc(4, 4) && naCirc(4, 0)).toBe(true);
+    expect(certa("enem-2018-tiros")).toBe("(x − 2)² + (y − 2)² = 8");
+  });
 });

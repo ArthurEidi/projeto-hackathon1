@@ -238,9 +238,13 @@ O aluno arrasta k para testar que o tamanho do triângulo não afeta as razões.
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular altura ou distância usando seno, cosseno ou tangente de ângulo notável (30°, 45°, 60°).
-- **Onde procurar:** ENEM (questões de rampa, escada, acessibilidade ou telhado).
+#### V1 — `enem-2020-pergolado`
+- **Enunciado (resumido):** Vigas de pergolado têm vãos de 30 cm. Com sol a 30° da vertical, a sombra cobre metade do vão (15 cm). Qual a altura das vigas?
+- **Fala do Paco:** "No triângulo retângulo da sombra, 15 cm é o cateto oposto a 30° e a altura h é o adjacente."
+- **Fonte:** ENEM 2020, Questão 173 — `https://api.enem.dev/v1/exams/2020/questions/173`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`26`) mantidos.
+- **Conta de conferência:** `tg(30°) = 15/h ⇒ h = 15/(√3/3) = 15√3 ≈ 26 cm`.
+- **Opções e feedback:** `9`, `15`, `26` (correta), `52`, `60`.
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** aplicar tangente em problema com altura do observador ou sombra.

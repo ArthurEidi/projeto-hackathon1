@@ -227,13 +227,21 @@ Testar o limite de `d`: para `0 ≤ d < R` a interseção é um círculo; na fro
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular raio ou área de seção plana de uma esfera usando Pitágoras (`R² = d² + r²`).
-- **Onde procurar:** ENEM, Fuvest, Unicamp, Unesp.
+#### V1 — `enem-2022-esferas-rolamento`
+- **Enunciado (resumido):** Um cilindro maciço de raio 4 cm e altura 50 cm é derretido para fazer esferas de diâmetro 1 cm. Quantas esferas serão obtidas?
+- **Fala do Paco:** "Lembre que diâmetro 1 cm significa raio 0,5 cm = 1/2 cm."
+- **Fonte:** ENEM 2022, Questão 174 — `https://api.enem.dev/v1/exams/2022/questions/174`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (4800) mantidos.
+- **Conta de conferência:** `V_cil = π·4²·50 = 800π cm³`; `V_esf = (4/3)π(1/2)³ = π/6 cm³`; `800π / (π/6) = 4800`.
+- **Opções e feedback:** 800, 1200, 2400, 4800 (correta), 6400.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** relacionar volumes ao fundir/dividir esferas (escala cúbica `k³`).
-- **Onde procurar:** ENEM (questões de bombons esféricos, gotas ou bolas de gude).
+#### V2 — `enem-2022-docinhos`
+- **Enunciado (resumido):** Uma porção de massa rende 50 docinhos esféricos de diâmetro 2 cm. Quantas porções são necessárias para 150 docinhos de diâmetro 4 cm?
+- **Fala do Paco:** "Compare a razão dos raios ao cubo (2³) e multiplique pela razão das quantidades (150 / 50)."
+- **Fonte:** ENEM 2022, Questão 178 — `https://api.enem.dev/v1/exams/2022/questions/178`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (24) mantidos.
+- **Conta de conferência:** `(4/2)³ · (150/50) = 8 · 3 = 24 porções`.
+- **Opções e feedback:** 2, 3, 6, 12, 24 (correta).
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** cálculo de área e volume de semiesferas, fusos e cunhas esféricas.

@@ -625,6 +625,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2020-arvore",
+        "prompt": "Vinte mangueiras iguais somam 100 m e vão do topo de um poste de 3 m até pontos de uma circunferência no chão. Qual é o raio dela?",
+        "fala": "Divida 100 m por 20 para achar a hipotenusa e aplique Pitágoras com a altura 3 m.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "Questão 172: enunciado resumido; alternativas e gabarito (4,00) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2020/questions/172"]
+        },
+        "options": [
+          { "id": "r400", "label": "4,00", "correct": true, "feedback": "Isso. Cada mangueira mede 100/20 = 5 m; com altura 3 m, r = √(5² − 3²) = 4,00 m." },
+          { "id": "r487", "label": "4,87", "correct": false, "feedback": "4,87 não fecha o triângulo retângulo de hipotenusa 5 m e cateto 3 m: r = √(25 − 9) = 4,00 m." },
+          { "id": "r500", "label": "5,00", "correct": false, "feedback": "5,00 = 100/20 é o comprimento de cada mangueira (a hipotenusa), não o raio no chão. O certo é 4,00 m." },
+          { "id": "r583", "label": "5,83", "correct": false, "feedback": "5,83 ≈ √(5² + 3²) = √34 somou os quadrados em vez de subtrair (tratou a mangueira de 5 m como cateto). Como 5 m é a hipotenusa, r = 4,00 m." },
+          { "id": "r626", "label": "6,26", "correct": false, "feedback": "6,26 supera até a própria mangueira de 5 m, o que é impossível para um cateto. O certo é √(5² − 3²) = 4,00 m." }
+        ]
+      }
+    ]
   }
 }

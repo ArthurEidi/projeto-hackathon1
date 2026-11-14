@@ -599,6 +599,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2020-pergolado",
+        "prompt": "Vigas de pergolado têm vãos de 30 cm; com sol a 30° da vertical, a sombra cobre metade do vão (15 cm). Qual a altura das vigas?",
+        "fala": "No triângulo retângulo da sombra, 15 cm é o cateto oposto a 30° e a altura h é o adjacente.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "Questão 173: enunciado resumido; alternativas e gabarito (26) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2020/questions/173"]
+        },
+        "options": [
+          { "id": "a9", "label": "9", "correct": false, "feedback": "9 ≈ 15 · (√3/3) = 8,66 vem de multiplicar 15 por tg(30°) em vez de dividir. Como tg(30°) = 15/h, h = 15√3 ≈ 26 cm." },
+          { "id": "a15", "label": "15", "correct": false, "feedback": "15 é a metade do vão (o cateto oposto a 30°). Com ângulo de 30°, h = 15/tg(30°) = 15√3 ≈ 26 cm." },
+          { "id": "a26", "label": "26", "correct": true, "feedback": "Isso. tg(30°) = 15/h dá h = 15 / (√3/3) = 15√3 ≈ 26 cm." },
+          { "id": "a52", "label": "52", "correct": false, "feedback": "52 ≈ 30√3 usa o vão inteiro de 30 cm em vez da metade (15 cm). Com 15 cm, h ≈ 26 cm." },
+          { "id": "a60", "label": "60", "correct": false, "feedback": "60 = 30 / 0,5 usa o vão de 30 cm e sen(30°) = 0,5 em vez de tg(30°) com 15 cm. O certo é 26." }
+        ]
+      }
+    ]
   }
 }

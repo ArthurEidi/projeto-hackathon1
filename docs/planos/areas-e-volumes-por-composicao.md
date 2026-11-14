@@ -227,17 +227,29 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular o volume de silos, reservatórios ou cápsulas compostos por cilindro + cone ou cilindro + semiesferas.
-- **Onde procurar:** ENEM (questões recorrentes de silos de grãos, cápsulas de medicamentos e caminhões-tanque).
+#### V1 — `enem-2023-escultura`
+- **Enunciado (resumido):** De um cone (h = 36 cm, D = 18 cm) retira-se cone menor (d = 6 cm) e perfura-se cilindro central (d = 6 cm). A 0,6 g/cm³ e π = 3, qual a massa?
+- **Fala do Paco:** "Ache a altura do cone retirado por semelhança (d/D = 1/3) antes de subtrair o cilindro."
+- **Fonte:** ENEM 2023, Questão 136 — `https://api.enem.dev/v1/exams/2023/questions/136`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (1.296,0) mantidos.
+- **Conta de conferência:** `r/R = 3/9 = 1/3 => h_menor = 12, h_tronco = 24`; `V = 2916 - 108 - 648 = 2160 cm³`; `2160 · 0,6 = 1.296,0 g`.
+- **Opções e feedback:** 1.198,8, 1.296,0 (correta), 1.360,8, 4.665,6, 4.860,0.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular a área externa de sólidos colados descontando as faces de contato.
-- **Onde procurar:** ENEM, Fuvest, Unicamp, Unesp.
+#### V2 — `enem-2019-reservatorios`
+- **Enunciado (resumido):** Cilindro central cheio (r = 2 m, h = 3,30 m) liga-se a 4 cilindros (r = 1,5 m, h = 1,5 m) por 4 canos (d = 0,10 m, L = 20 m). Qual a altura final?
+- **Fala do Paco:** "Desconte o volume dos 4 canos e divida o restante pela soma das 5 áreas de base."
+- **Fonte:** ENEM 2019, Questão 175 — `https://api.enem.dev/v1/exams/2019/questions/175`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (1,00) mantidos.
+- **Conta de conferência:** `13,2π - 4·π·0,05²·20 = 13π m³`; `bases = 4π + 9π = 13π m² => h = 1,00 m`.
+- **Opções e feedback:** 1,44, 1,16, 1,10, 1,00 (correta), 0,95.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** volume e área total de sólido com cavidade escavada (ex.: cilindro com furo cônico/semiesférico).
-- **Onde procurar:** Fuvest, UFPR, UFRGS, ITA.
+#### V3 — `enem-2010-perfuracao`
+- **Enunciado (resumido):** Um prisma reto de base triangular 6 cm, 8 cm e 10 cm e altura 10 cm tem perfuração cilíndrica tangente às faces laterais. Qual o raio?
+- **Fala do Paco:** "A base é um triângulo retângulo 6-8-10; o raio do círculo inscrito vale A / p."
+- **Fonte:** ENEM 2010, Questão 164 — `https://api.enem.dev/v1/exams/2010/questions/164`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (2 cm) mantidos.
+- **Conta de conferência:** `A = (6·8)/2 = 24 cm²`, `p = (6+8+10)/2 = 12 cm => r = 24 / 12 = 2 cm`.
+- **Opções e feedback:** 1 cm, 2 cm (correta), 3 cm, 4 cm, 5 cm.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** conservação de volume ao derreter ou transferir líquidos entre sólidos de formatos diferentes.

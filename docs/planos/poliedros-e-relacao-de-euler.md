@@ -227,9 +227,13 @@ Testar por que só existem **5 poliedros regulares (Platão)**: para fechar uma 
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** aplicar a relação de Euler `V − A + F = 2` a partir da contagem de faces poligonais.
-- **Onde procurar:** ENEM, Fuvest, Unesp, UERJ.
+#### V1 — `enem-2019-tetraedro-truncado`
+- **Enunciado (resumido):** Corta-se cada quina de um tetraedro regular removendo 1/3 das arestas em cada corte paralelo à face oposta. Quais faces terá o sólido?
+- **Fala do Paco:** "Conte quantos vértices foram cortados (novos triângulos) e quantos lados sobram em cada face antiga."
+- **Fonte:** ENEM 2019, Questão 157 — `https://api.enem.dev/v1/exams/2019/questions/157`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (4 hexágonos regulares e 4 triângulos equiláteros) mantidos.
+- **Conta de conferência:** 4 vértices cortados => 4 triângulos equiláteros; 4 faces originais perdem 3 cantos => 4 hexágonos regulares.
+- **Opções e feedback:** 4 hex + 4 tri eq (correta), 2 hex + 4 tri eq, 4 quad + 4 tri isósc, 3 quad + 4 tri isósc, 3 hex + 4 tri eq.
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** calcular vértices e arestas de um poliedro truncado (ex.: icosaedro truncado / fulereno C60).

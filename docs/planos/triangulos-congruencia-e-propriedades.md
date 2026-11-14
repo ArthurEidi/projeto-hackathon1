@@ -250,9 +250,13 @@ Quando a soma de dois lados empata com o terceiro (b + c = a), o triângulo acha
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** aplicar a soma dos ângulos internos (180°) e propriedades do triângulo isósceles em situação contextualizada.
-- **Onde procurar:** ENEM, OBMEP, Vunesp.
+#### V1 — `enem-2018-remos`
+- **Enunciado (resumido):** Dois remos de mesmo tamanho encontram-se no ponto A e formam um triângulo ABC com ângulo A = 170°. Como se classifica esse triângulo?
+- **Fala do Paco:** "Observe ao mesmo tempo os dois lados iguais (AB = AC) e o ângulo A = 170° > 90°."
+- **Fonte:** ENEM 2018, Questão 155 — `https://api.enem.dev/v1/exams/2018/questions/155`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`Obtusângulo isósceles`) mantidos.
+- **Conta de conferência:** `AB = AC` (isósceles) e `A = 170° > 90°` (obtusângulo).
+- **Opções e feedback:** `Retângulo escaleno`, `Acutângulo escaleno`, `Acutângulo isósceles`, `Obtusângulo escaleno`, `Obtusângulo isósceles` (correta).
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** usar o teorema do ângulo externo em cadeia de triângulos isósceles.

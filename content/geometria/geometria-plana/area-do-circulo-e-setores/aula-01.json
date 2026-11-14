@@ -598,6 +598,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2019-praca",
+        "prompt": "Uma praça circular de 6 m de diâmetro será ampliada em 8 m no diâmetro (π = 3). Um estoque para 100 m² basta para a nova faixa?",
+        "fala": "Calcule o raio inicial e o raio final (com o aumento de 8 m no diâmetro) e subtraia as áreas dos dois círculos.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 142: enunciado resumido; alternativas e gabarito (Não será suficiente, pois a área da nova região a ser pavimentada mede 120 m²) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/142"]
+        },
+        "options": [
+          { "id": "s21", "label": "Será suficiente, pois a área da nova região a ser pavimentada mede 21 m²", "correct": false, "feedback": "21 = 3·7 usa π·R sem elevar ao quadrado nem tirar o círculo interno. A coroa mede 3·(7² − 3²) = 120 m² (não basta)." },
+          { "id": "s24", "label": "Será suficiente, pois a área da nova região a ser pavimentada mede 24 m²", "correct": false, "feedback": "24 = 3 · 8 multiplica π pelo aumento do diâmetro (8 m). A coroa mede 3·(7² − 3²) = 120 m² (não suficiente)." },
+          { "id": "s48", "label": "Será suficiente, pois a área da nova região a ser pavimentada mede 48 m²", "correct": false, "feedback": "48 = 3 · 4² usa metade do aumento (4 m) como se fosse o raio da coroa. A diferença 3·(7² − 3²) é 120 m² (não suficiente)." },
+          { "id": "n108", "label": "Não será suficiente, pois a área da nova região a ser pavimentada mede 108 m²", "correct": false, "feedback": "108 = 3 · 6² toma o diâmetro inicial (6 m) como raio. Com R = 7 e r = 3, 3·(49 − 9) = 120 m²." },
+          { "id": "n120", "label": "Não será suficiente, pois a área da nova região a ser pavimentada mede 120 m²", "correct": true, "feedback": "Isso. r = 3 m e R = (6 + 8)/2 = 7 m; a coroa mede 3·(7² − 3²) = 120 m² > 100 m²." }
+        ]
+      },
+      {
+        "id": "enem-2018-chafariz",
+        "prompt": "Numa coroa circular entre dois círculos concêntricos, uma corda tangente ao círculo interno mede 16 m. Qual é a área da coroa?",
+        "fala": "O raio interno até o ponto de tangência é perpendicular à corda e a divide ao meio: aplique Pitágoras com R, r e 8 m.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 153: enunciado resumido; alternativas e gabarito (64π) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2018/questions/153"]
+        },
+        "options": [
+          { "id": "p4", "label": "4π", "correct": false, "feedback": "4π = π·2² (ou √16·π) tira raiz de 16 em vez de aplicar Pitágoras com a meia corda (8 m). Como R² − r² = 8² = 64, dá 64π." },
+          { "id": "p8", "label": "8π", "correct": false, "feedback": "8π usa a meia corda (8 m) sem elevar ao quadrado. Como R² − r² = 8², a área é 64π." },
+          { "id": "p48", "label": "48π", "correct": false, "feedback": "48π = π·(8² − 4²) subtrairia um raio interno 4 que não foi dado; 8² já é R² − r². O certo é 64π." },
+          { "id": "p64", "label": "64π", "correct": true, "feedback": "Isso. R, r e a meia corda (8 m) formam triângulo retângulo: R² − r² = 8² = 64, logo a coroa mede 64π m²." },
+          { "id": "p192", "label": "192π", "correct": false, "feedback": "192π = π·(16² − 8²) usa a corda inteira (16) como R e 8 como r. A área é π·8² = 64π." }
+        ]
+      },
+      {
+        "id": "enem-2021-cartao",
+        "prompt": "Até 80 cm² (π = 3; √3 = 1,7): triângulo equilátero de lado 12, quadrado 8, retângulo 11 × 8, hexágono 6 ou círculo d = 10. Qual a maior?",
+        "fala": "Calcule a área de cada opção e escolha a maior que não ultrapasse 80 cm².",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 171: enunciado resumido; alternativas e gabarito (Círculo) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2021/questions/171"]
+        },
+        "options": [
+          { "id": "tri", "label": "Triângulo", "correct": false, "feedback": "O triângulo equilátero de lado 12 cm tem área 144·1,7/4 = 61,2 cm², menor que a do círculo (75 cm²)." },
+          { "id": "qua", "label": "Quadrado", "correct": false, "feedback": "O quadrado de lado 8 cm tem área 64 cm², menor que a do círculo (3·5² = 75 cm²)." },
+          { "id": "ret", "label": "Retângulo", "correct": false, "feedback": "O retângulo 11 × 8 tem área 88 cm² (R$ 0,88), passando do limite de R$ 0,80 (80 cm²). Dentro do limite vence o círculo (75 cm²)." },
+          { "id": "hex", "label": "Hexágono", "correct": false, "feedback": "O hexágono de lado 6 cm tem área 6·36·1,7/4 = 91,8 cm², passando dos 80 cm² (R$ 0,80). Dentro do limite vence o círculo (75 cm²)." },
+          { "id": "cir", "label": "Círculo", "correct": true, "feedback": "Isso. Círculo r=5 dá 3·5²=75 cm² ≤ 80 cm², maior que quadrado (64) e triângulo (61,2); retângulo (88) e hexágono (91,8) estouram." }
+        ]
+      }
+    ]
   }
 }

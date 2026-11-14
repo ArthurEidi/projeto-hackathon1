@@ -549,6 +549,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2022-caixas",
+        "prompt": "Cilindro I tem altura P, área A_b e raio r. Qual tem maior volume: II (2P, A_b/2), III (2P, r/2), IV (P/2, 2A_b) ou V (P/2, 2r)?",
+        "fala": "Escreva o volume de cada modelo em função de V_I = πr²P.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 169: enunciado resumido; alternativas e gabarito (V) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/169"]
+        },
+        "options": [
+          { "id": "i", "label": "I", "correct": false, "feedback": "O modelo I tem volume V_I = πr²P, enquanto o modelo V alcança 2·V_I." },
+          { "id": "ii", "label": "II", "correct": false, "feedback": "O modelo II tem (A_b/2)·(2P) = V_I, igual ao I; o modelo V tem o dobro (2·V_I)." },
+          { "id": "iii", "label": "III", "correct": false, "feedback": "O modelo III tem π(r/2)²·(2P) = V_I/2, metade do I; o maior é o modelo V (2·V_I)." },
+          { "id": "iv", "label": "IV", "correct": false, "feedback": "O modelo IV tem (2A_b)·(P/2) = V_I, igual ao I; o modelo V alcança 2·V_I." },
+          { "id": "v", "label": "V", "correct": true, "feedback": "Isso. Dobrar o raio multiplica a área da base por 4, e dividir a altura por 2 deixa o volume em 4 · (1/2) = 2 vezes o de I." }
+        ]
+      },
+      {
+        "id": "enem-2010-manilha",
+        "prompt": "Um cilindro de 2 m de diâmetro e 4 m de altura recebe camada de concreto de 20 cm. A R$ 10/m³ e π = 3,1, quanto custa a manilha?",
+        "fala": "Calcule o volume da casca subtraindo o cilindro interno (r = 1 m) do externo (R = 1,2 m).",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2010,
+          "adaptada": true,
+          "adaptacao": "Questão 157: enunciado resumido; alternativas e gabarito (R$ 54,56) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2010/questions/157"]
+        },
+        "options": [
+          { "id": "a230", "label": "R$ 230,40", "correct": false, "feedback": "R$ 230,40 corresponde a 23,04 m³ de concreto; na casca cilíndrica, 3,1·(1,2² − 1²)·4 = 5,456 m³, custando R$ 54,56." },
+          { "id": "a124", "label": "R$ 124,00", "correct": false, "feedback": "R$ 124,00 (3,1·1²·4·10) calcula o volume oco interno em vez da camada externa de 20 cm. O certo é R$ 54,56." },
+          { "id": "a104", "label": "R$ 104,16", "correct": false, "feedback": "R$ 104,16 (3,1·(2,2² − 2²)·4·10) usa o diâmetro 2 m como raio interno em vez de 1 m. Com r = 1 m, custa R$ 54,56." },
+          { "id": "a54", "label": "R$ 54,56", "correct": true, "feedback": "Exato. r = 1 m e R = 1,2 m dão V = 3,1·(1,44 − 1)·4 = 5,456 m³; vezes R$ 10,00 dá R$ 54,56." },
+          { "id": "a49", "label": "R$ 49,60", "correct": false, "feedback": "R$ 49,60 (2·3,1·1·0,2·4·10) usa a área lateral interna vezes 0,2 m, desprezando o ganho de raio da casca. O certo é R$ 54,56." }
+        ]
+      },
+      {
+        "id": "enem-2021-reservatorio",
+        "prompt": "Reservatório cilíndrico de 5 m de diâmetro atende 100 pessoas por 7 dias a 120 L/dia por pessoa. Com π = 3, qual a altura mínima em m?",
+        "fala": "Converta os litros totais para m³ (1.000 L = 1 m³) e use r = 2,5 m.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 167: enunciado resumido; alternativas e gabarito (4,48) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2021/questions/167"]
+        },
+        "options": [
+          { "id": "a112", "label": "1,12", "correct": false, "feedback": "1,12 m (84 / (3·5²)) usa o diâmetro 5 m como raio em vez de 2,5 m. Com r = 2,5 m, h = 84 / 18,75 = 4,48 m." },
+          { "id": "a310", "label": "3,10", "correct": false, "feedback": "Com 3,10 m o volume seria 3·2,5²·3,10 = 58,125 m³, insuficiente para os 84 m³ necessários. O certo é 4,48 m." },
+          { "id": "a435", "label": "4,35", "correct": false, "feedback": "Com 4,35 m o volume seria 3·2,5²·4,35 = 81,5625 m³, abaixo dos 84 m³ necessários. O certo é 4,48 m." },
+          { "id": "a448", "label": "4,48", "correct": true, "feedback": "Isso. 100·120·7 = 84 000 L = 84 m³; 3·2,5²·h = 18,75h = 84 dá h = 4,48 m." },
+          { "id": "a560", "label": "5,60", "correct": false, "feedback": "5,60 m (84 / (3·5)) esquece de elevar o raio ao quadrado (divide por 3·5 em vez de 3·2,5²). O certo é 4,48 m." }
+        ]
+      }
+    ]
   }
 }

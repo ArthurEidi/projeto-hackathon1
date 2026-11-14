@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
-import { certaDe, fechamentoOk, passosConcluiveis, semVestibular } from "./util";
+import { certaDe, fechamentoOk, passosConcluiveis } from "./util";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -91,7 +91,11 @@ describe("gabaritos do treino", () => {
     expect(certa("nivel-agua-pedra-arquimedes")).toBe(`${aguaPedra} cm³`);
   });
 
-  it("vestibular pendente de fontes reais", () => {
-    semVestibular(L);
+  it("vestibular confere gabaritos ENEM", () => {
+    expect(certa("enem-2022-piscina")).toBe("II");
+    expect(certa("enem-2021-conteiner")).toBe("O dobro nas paredes e 4 vezes no piso");
+    expect(certa("enem-2012-ceramica")).toBe(
+      "48,8% menor que V, porque o volume diminui de a³ para (0,8a)³",
+    );
   });
 });

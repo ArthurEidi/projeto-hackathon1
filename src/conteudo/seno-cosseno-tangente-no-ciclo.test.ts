@@ -98,4 +98,8 @@ describe("gabaritos do treino", () => {
     // d5: cos 40° + cos 140° + sen 210° = 0 - 0,5 = -0,5
     expect(certa("simetria-soma-zero")).toBe("−0,5");
   });
+
+  it("V1 enem-2009-projecao: x_Q vai de R a R*cos(d/R) => R(1 - cos d/r)", () => {
+    expect(certa("enem-2009-projecao")).toBe("r(1 − cos(d/r))");
+  });
 });

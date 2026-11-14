@@ -229,17 +229,29 @@ Inclinar a pilha de fatias para o lado (prisma oblíquo / princípio de Cavalier
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular volume e capacidade (em litros) de reservatórios paralelepipédicos.
-- **Onde procurar:** ENEM (questões de cisternas, caixas-d'água e piscinas).
+#### V1 — `enem-2022-piscina`
+- **Enunciado (resumido):** Piscina sem tampa (90 m³), qual tem menor área: I (1,8×2×25), II (2×5×9), III (1×6×15), IV (1,5×15×4) ou V (2,5×3×12)?
+- **Fala do Paco:** "Calcule L·C + 2·P·(L + C) para cada projeto, lembrando que não há tampa."
+- **Fonte:** ENEM 2022, Questão 172 — `https://api.enem.dev/v1/exams/2022/questions/172`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (II) mantidos.
+- **Conta de conferência:** `I: 147,2; II: 5·9 + 2·2·14 = 101 m²; III: 132; IV: 117; V: 111`.
+- **Opções e feedback:** I, II (correta), III, IV, V.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular área de papelão/azulejo em prismas com ou sem tampa.
-- **Onde procurar:** ENEM, Unesp, Unicamp.
+#### V2 — `enem-2021-conteiner`
+- **Enunciado (resumido):** Em um contêiner retangular, dobram-se o comprimento e a largura mantendo a altura. Como mudam a área das 4 paredes e a do piso?
+- **Fala do Paco:** "As paredes têm perímetro × altura (1D × fixa), enquanto o piso é comprimento × largura (2D)."
+- **Fonte:** ENEM 2021, Questão 166 — `https://api.enem.dev/v1/exams/2021/questions/166`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (II) mantidos.
+- **Conta de conferência:** `paredes = 4H(C+L)` (dobra com 2C, 2L); `piso = C·L` (quadruplica com 2C, 2L).
+- **Opções e feedback:** I, II (correta), III, IV, V.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** aplicar a diagonal do paralelepípedo ou cubo em problemas geométricos.
-- **Onde procurar:** Fuvest, UFRGS, UFPR.
+#### V3 — `enem-2012-ceramica`
+- **Enunciado (resumido):** Uma travessa cúbica de argila de aresta a e volume V sofre contração linear de 20% no cozimento. Em quantos por cento diminui o volume?
+- **Fala do Paco:** "Se cada aresta cai para 0,8a, eleve 0,8 ao cubo para achar o novo volume."
+- **Fonte:** ENEM 2012, Questão 180 — `https://api.enem.dev/v1/exams/2012/questions/180`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (C) mantidos.
+- **Conta de conferência:** `(0,8a)³ = 0,512a³ => 1 - 0,512 = 0,488 = 48,8% menor que V`.
+- **Opções e feedback:** A (20%), B (36%), C (48,8%, correta), D (51,2%), E (60%).
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** variação do nível de líquido em prisma ao imergir objetos (princípio de Arquimedes).

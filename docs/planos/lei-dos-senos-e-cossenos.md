@@ -250,6 +250,10 @@ O aluno abre A de 60° a 120° para ver o sinal de cos A inverter o ajuste em a�
 - **Habilidade-alvo:** descobrir o cosseno de um ângulo a partir das medidas dos três lados do triângulo.
 - **Onde procurar:** Fuvest, Unicamp, UFPR.
 
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** combinar soma dos ângulos internos com lei dos senos e lei dos cossenos num problema contextualizado.
-- **Onde procurar:** ENEM, Unesp, Unicamp.
+#### V4 — `enem-2023-pizzas`
+- **Enunciado (resumido):** Diâmetros a, b, c de três pizzas formam um triângulo com ângulo α oposto a a. Para área(a) > área(b) + área(c), qual o intervalo de α?
+- **Fala do Paco:** "A área é proporcional ao quadrado do diâmetro: escreva a² > b² + c² na lei dos cossenos."
+- **Fonte:** ENEM 2023, Questão 172 — `https://api.enem.dev/v1/exams/2023/questions/172`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`90° < a < 180°`) mantidos.
+- **Conta de conferência:** `a² > b² + c² ⇒ b² + c² − 2bc·cos α > b² + c² ⇒ cos α < 0 ⇒ 90° < α < 180°`.
+- **Opções e feedback:** `0° < a < 90°`, `A = 90°`, `90° < a < 180°` (correta), `A = 180°`, `180° < a < 360°`.

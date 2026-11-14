@@ -601,6 +601,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2018-remos",
+        "prompt": "Dois remos de mesmo tamanho encontram-se no ponto A e formam um triângulo ABC com ângulo A = 170°. Como se classifica esse triângulo?",
+        "fala": "Observe ao mesmo tempo os dois lados iguais (AB = AC) e o ângulo A = 170° > 90°.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 155: enunciado resumido; alternativas e gabarito (Obtusângulo isósceles) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2018/questions/155"]
+        },
+        "options": [
+          { "id": "ret-esc", "label": "Retângulo escaleno", "correct": false, "feedback": "Retângulo exigiria ângulo de 90° (aqui A = 170°) e escaleno exigiria lados distintos (os remos são iguais). É obtusângulo isósceles." },
+          { "id": "acu-esc", "label": "Acutângulo escaleno", "correct": false, "feedback": "Acutângulo exige todos os ângulos < 90° (aqui A = 170°) e escaleno exige lados diferentes. É obtusângulo isósceles." },
+          { "id": "acu-iso", "label": "Acutângulo isósceles", "correct": false, "feedback": "É isósceles pelos dois remos iguais, mas A = 170° > 90° o torna obtusângulo, não acutângulo." },
+          { "id": "obt-esc", "label": "Obtusângulo escaleno", "correct": false, "feedback": "É obtusângulo (170° > 90°), mas os dois remos têm o mesmo comprimento, então é isósceles: obtusângulo isósceles." },
+          { "id": "obt-iso", "label": "Obtusângulo isósceles", "correct": true, "feedback": "Isso. Dois remos iguais (AB = AC) dão triângulo isósceles, e A = 170° > 90° dá obtusângulo." }
+        ]
+      }
+    ]
   }
 }

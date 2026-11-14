@@ -280,6 +280,10 @@ Arrastar B pelos quatro quadrantes troca os sinais de Δx e Δy, mas a distânci
 - **Habilidade-alvo:** ponto médio e simetria.
 - **Onde procurar:** UFRGS, PUC-RJ, UFES.
 
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** distância em contexto (mapa, GPS) no ENEM.
-- **Onde procurar:** ENEM ("coordenadas", "plano cartesiano").
+#### V4 — `enem-2011-metro`
+- **Enunciado (resumido):** Uma linha de metrô segue a reta y = x + 4 e há um hospital em P(−5; 5). Qual ponto da reta fica a no máximo 5 km do hospital?
+- **Fala do Paco:** "Confira primeiro se o ponto pertence à reta y = x + 4 e depois calcule a distância até P(−5; 5)."
+- **Fonte:** ENEM 2011, Questão 150 — `https://api.enem.dev/v1/exams/2011/questions/150`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`(–3, 1)`) mantidos.
+- **Conta de conferência:** `1 = −3 + 4` (na reta) e `d = √((−3+5)² + (1−5)²) = √20 < 5`.
+- **Opções e feedback:** `(–5, 0)` (fora da reta), `(–3, 1)` (correta), `(–2, 1)` (fora da reta), `(0, 4)` (√26 > 5), `(2, 6)` (√50 > 5).

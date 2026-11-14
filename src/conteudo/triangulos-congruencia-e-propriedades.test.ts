@@ -119,4 +119,8 @@ describe("gabaritos do treino", () => {
     expect(angA).toBe(70);
     expect(certa("dois-isosceles-colados")).toBe("110° e 70°");
   });
+
+  it("V1 enem-2018-remos: dois lados iguais e ângulo 170° => Obtusângulo isósceles", () => {
+    expect(certa("enem-2018-remos")).toBe("Obtusângulo isósceles");
+  });
 });

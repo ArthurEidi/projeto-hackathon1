@@ -574,6 +574,45 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2020-kukulkan",
+        "prompt": "O Templo de Kukulkán tem formato de tronco reto de pirâmide de base quadrada. Quais figuras planas formam esse sólido?",
+        "fala": "Conte as duas tampas paralelas e as quatro paredes inclinadas laterais.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "Questão 151: enunciado resumido; alternativas e gabarito (2 quadrados e 4 trapézios isósceles) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2020/questions/151"]
+        },
+        "options": [
+          { "id": "q2r4", "label": "2 quadrados e 4 retângulos", "correct": false, "feedback": "Retângulos formam as laterais de um prisma reto, não de um tronco de pirâmide, cujas laterais afunilam em trapézios isósceles." },
+          { "id": "r1t4", "label": "1 retângulo e 4 triângulos isósceles", "correct": false, "feedback": "Triângulos formam uma pirâmide inteira; ao cortar o topo nascem 2 quadrados e 4 trapézios isósceles." },
+          { "id": "q2ti4", "label": "2 quadrados e 4 trapézios isósceles", "correct": true, "feedback": "Exato. O tronco reto de base quadrada tem 2 bases quadradas paralelas e 4 faces laterais em trapézio isósceles." },
+          { "id": "q1r3t2", "label": "1 quadrado, 3 retângulos e 2 trapézios retângulos", "correct": false, "feedback": "Por simetria da pirâmide reta de base quadrada, as 2 bases são quadradas e as 4 faces laterais são trapézios isósceles." },
+          { "id": "r2q2t2", "label": "2 retângulos, 2 quadrados e 2 trapézios retângulos", "correct": false, "feedback": "Não há retângulos nem trapézios retângulos: o tronco reto de base quadrada tem 2 quadrados e 4 trapézios isósceles." }
+        ]
+      },
+      {
+        "id": "enem-2009-vela",
+        "prompt": "Pirâmide (base 6 cm, altura 19 cm) tem 4 blocos iguais espaçados de 1 cm. Retirando a ponta (base 1,5 cm), qual o volume?",
+        "fala": "Desconte os 3 espaços de 1 cm para achar a altura útil (16 cm) e use semelhança k = 1,5 / 6 = 1/4.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 173: enunciado resumido; alternativas e gabarito (189 cm³) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2009/questions/173"]
+        },
+        "options": [
+          { "id": "v156", "label": "156 cm³", "correct": false, "feedback": "156 cm³ seria se a ponta retirada tivesse 36 cm³; com razão k = 1/4, a ponta tem (1/4)³·192 = 3 cm³, sobrando 192 − 3 = 189 cm³." },
+          { "id": "v189", "label": "189 cm³", "correct": true, "feedback": "Exato. Altura útil = 19 − 3 = 16 cm; V_total = (36·16)/3 = 192 cm³; ponta = (1/4)³·192 = 3 cm³; 192 − 3 = 189 cm³." },
+          { "id": "v192", "label": "192 cm³", "correct": false, "feedback": "192 cm³ é o volume da pirâmide inteira antes de retirar a ponta superior de 3 cm³: 192 − 3 = 189 cm³." },
+          { "id": "v216", "label": "216 cm³", "correct": false, "feedback": "216 cm³ ((36·18)/3) desconta apenas 1 espaço de 1 cm em vez dos 3 espaços entre os 4 blocos. O certo é 189 cm³." },
+          { "id": "v540", "label": "540 cm³", "correct": false, "feedback": "540 cm³ = 36 · 15 esquece o 1/3 do volume da pirâmide. O volume da pirâmide é (36·16)/3 = 192 cm³ menos 3 cm³ = 189 cm³." }
+        ]
+      }
+    ]
   }
 }

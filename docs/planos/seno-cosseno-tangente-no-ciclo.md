@@ -246,9 +246,13 @@ O aluno percorre os 4 quadrantes observando o sinal de x, y e y/x, compara os si
 - **Habilidade-alvo:** identificar o sinal de expressões trigonométricas a partir do quadrante do arco.
 - **Onde procurar:** Mackenzie, PUC, UERJ, UFRGS.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** determinar coordenadas de um ponto no ciclo trigonométrico após um giro dado em graus ou radianos.
-- **Onde procurar:** ENEM (objetos girando em roda-gigante ou radar), Unicamp.
+#### V3 — `enem-2009-projecao`
+- **Enunciado (resumido):** Na circunferência de raio R, o ponto P parte de (R; 0) e percorre arco d ≤ R no sentido anti-horário. Quanto anda sua projeção Q no eixo x?
+- **Fala do Paco:** "O ângulo central em radianos é θ = d/R. Calcule a variação da abscissa de Q desde x = R."
+- **Fonte:** ENEM 2009, Questão 174 — `https://api.enem.dev/v1/exams/2009/questions/174`
+- **Adaptação:** enunciado resumido explicitando a partida em (R; 0); alternativas e gabarito (`R( 1 - cos d/r )`) mantidos.
+- **Conta de conferência:** `θ = d/R rad`; `x_Q` varia de `R` para `R·cos(d/R)` ⇒ distância `R(1 − cos(d/R))`.
+- **Opções e feedback:** `R( 1 - sen d/r )`, `R( 1 - cos d/r )` (correta), `R( 1 - tag d/r )`, `Rsen (r/d)`, `Rcos (r/d)`.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** resolver equação trigonométrica elementar (ex.: sen x = 1/2 ou cos x = −1/2) no intervalo [0; 2π].

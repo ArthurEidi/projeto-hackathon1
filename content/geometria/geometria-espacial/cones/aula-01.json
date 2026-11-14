@@ -268,25 +268,6 @@
     ],
     "vestibular": [
       {
-        "id": "ufpr-reservatorio",
-        "prompt": "Um reservatório tem a forma de um cone reto com o vértice embaixo, altura 6 m e raio da base 8 m. Quanto mede a geratriz?",
-        "fala": "Agora são questões que já caíram em vestibulares. Você já tem tudo o que precisa.",
-        "fonte": {
-          "banca": "UFPR",
-          "adaptada": true,
-          "adaptacao": "Original de somatória com 4 afirmações; usamos só a (04), sobre a geratriz, e criamos as alternativas.",
-          "urls": [
-            "https://files.projetomedicina.com.br/wp-content/uploads/site/attachments/article/412/matematica_geometria_espacial_cones_exercicios.pdf"
-          ]
-        },
-        "options": [
-          { "id": "a10", "label": "10 m", "correct": true, "feedback": "Isso: 36 + 64 = 100, então g = 10 m. Na prova, a afirmação (04) era verdadeira." },
-          { "id": "a14", "label": "14 m", "correct": false, "feedback": "Você somou altura e raio. Somam-se os quadrados: 36 + 64 = 100, g = 10 m." },
-          { "id": "a2raiz7", "label": "2√7 m", "correct": false, "feedback": "Você subtraiu os quadrados. A geratriz é o maior lado: 36 + 64 = 100, g = 10 m." },
-          { "id": "a100", "label": "100 m", "correct": false, "feedback": "100 é g². Falta tirar a raiz: g = 10 m." }
-        ]
-      },
-      {
         "id": "cefetpr-secao-meridiana",
         "prompt": "O raio da base de um cone reto mede 3 m e o perímetro da sua seção meridiana mede 16 m. Quanto mede a altura do cone?",
         "fala": "A seção meridiana é o corte pelo eixo: um triângulo de lados g, g e 2r.",
@@ -343,6 +324,25 @@
           { "id": "a18", "label": "18 cm", "correct": false, "feedback": "18 cm é o raio. Como g = 5r/3, a geratriz mede 30 cm." },
           { "id": "a30", "label": "30 cm", "correct": true, "feedback": "Isso: g = 5r/3, então 2g + 2r = 16r/3 = 96 e r = 18. Logo g = 30 cm." },
           { "id": "a48", "label": "48 cm", "correct": false, "feedback": "48 é g + r, metade do perímetro. Com g = 5r/3, sai r = 18 e g = 30 cm." }
+        ]
+      },
+      {
+        "id": "enem-2022-cone",
+        "prompt": "Um chocolate cônico tem diâmetro 8 cm e altura 10 cm. Mantendo a altura e reduzindo o volume em 19%, qual será o novo raio da base?",
+        "fala": "Com altura fixa, o volume varia com r²: 1 − 0,19 = 0,81 = (r_novo / R)².",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 153: enunciado resumido; alternativas e gabarito (3,60) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/153"]
+        },
+        "options": [
+          { "id": "a152", "label": "1,52", "correct": false, "feedback": "1,52 é 0,19 · 8 (19% do diâmetro). O volume restante é 81% (0,81 = 0,9²), e o novo raio é 0,9 · 4 = 3,60 cm." },
+          { "id": "a324", "label": "3,24", "correct": false, "feedback": "3,24 é 0,81 · 4 (esqueceu de tirar a raiz quadrada de 0,81). Como √0,81 = 0,9, o raio é 0,9 · 4 = 3,60 cm." },
+          { "id": "a360", "label": "3,60", "correct": true, "feedback": "Exato. R = 4 cm; com h fixa, r² = 0,81·4² => r = 0,9·4 = 3,60 cm." },
+          { "id": "a648", "label": "6,48", "correct": false, "feedback": "6,48 é 0,81 · 8 (usou o diâmetro 8 cm e esqueceu a raiz de 0,81). O novo raio é 0,9 · 4 = 3,60 cm." },
+          { "id": "a720", "label": "7,20", "correct": false, "feedback": "7,20 cm (0,9 · 8) é o novo diâmetro, não o raio. Dividindo por 2, o raio é 3,60 cm." }
         ]
       }
     ]

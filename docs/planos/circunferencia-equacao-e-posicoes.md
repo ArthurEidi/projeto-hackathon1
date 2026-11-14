@@ -258,6 +258,10 @@ Raio zero reduz a curva a um ponto; r² negativo não desenha nada. Na forma ger
 - **Habilidade-alvo:** posição relativa de duas circunferências.
 - **Onde procurar:** UFPR, Mackenzie.
 
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** circunferência em contexto (alcance de antena, sinal).
-- **Onde procurar:** ENEM ("raio de alcance", "antena").
+#### V4 — `enem-2018-tiros`
+- **Enunciado (resumido):** Num jogo, uma reta vale 1 ponto e uma circunferência vale 2 pontos por ponto eliminado além de O(0; 0). Restam A(0; 4), B(4; 4), C(4; 0), D(2; 2) e E(0; 2). Passando por O e A, qual equação dá mais pontos?
+- **Fala do Paco:** "Teste O(0; 0) e A(0; 4) em cada equação e conte quantos dos outros pontos também pertencem a ela."
+- **Fonte:** ENEM 2018, Questão 138 — `https://api.enem.dev/v1/exams/2018/questions/138`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (`(x -2 )² + ( y - 2 )² = 8`) mantidos.
+- **Conta de conferência:** `(0−2)²+(0−2)²=8`, `(0−2)²+(4−2)²=8`, `(4−2)²+(4−2)²=8`, `(4−2)²+(0−2)²=8` → atinge A, B, C além de O: `3 · 2 = 6` pontos.
+- **Opções e feedback:** `X = 0` (2 pts), `Y = 0` (não passa por A), `X² + y² =16` (não passa por O), `X² + (y-2)² = 4` (4 pts), `(x -2 )² + ( y - 2 )² = 8` (correta).
