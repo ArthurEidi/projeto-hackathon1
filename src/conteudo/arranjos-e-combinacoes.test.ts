@@ -109,6 +109,7 @@ describe("gabaritos do treino", () => {
 
   it("vestibular", () => {
     eq(C(8, 4), "ueg-2005-provas");
+    eq(6 * 5 * (C(4, 2) / 2), "enem-2019-duplas");
     for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
   });
 });

@@ -1,6 +1,6 @@
 // Matemática Financeira · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("aritmetica/proporcionalidade/matematica-financeira/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -69,5 +69,13 @@ describe("gabaritos do treino", () => {
     expect(100 - 10 - 10).toBe(80);
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: contas e fontes conferidas", () => {
+    expect(((2 + 5.29) / 6 - 1) * 100).toBeCloseTo(21.5, 5);
+    expect(certa("enem-2023-financiamento")).toBe("21,5%");
+    expect(202 / 1.01 + 204.02 / 1.01 ** 2).toBeCloseTo(400, 10);
+    expect(reais(certa("enem-2019-nota-fiscal"))).toBe(400);
+    expect(1728 / 72).toBe(24);
+    expect(Number(certa("enem-2018-parcelas"))).toBe(24);
+    for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
+  });
 });

@@ -132,7 +132,14 @@ describe("gabaritos do treino", () => {
     expect(Number(certa("d5-grandezas-direta-e-inversa"))).toBe(4);
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: contas e fontes conferidas", () => {
+    expect((80 + 200 + 80) * 0.05 - (22 - 420 * 0.05)).toBeCloseTo(17, 10);
+    expect(Number(certa("enem-2020-moto"))).toBe(17);
+    expect((3 * 4) / 2).toBeCloseTo(6, 10);
+    expect(Number(certa("enem-2021-boxes").replace(",", "."))).toBe(6);
+    const k = 31000 / (1 / 2 + 1 / 3 + 1 / 5);
+    expect(k / 5).toBeCloseTo(6000, 10);
+    expect(certa("enem-2019-maquinas")).toBe("R$ 6.000,00");
+    for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
   });
 });

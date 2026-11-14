@@ -701,6 +701,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2023-tiquetes",
+        "prompt": "2 cartelas de 9 tíquetes azuis e 1 de 9 vermelhos custam R$ 32,40. Se azul − vermelho = vermelho + 0,05, quanto custa a cartela vermelha?",
+        "fala": "Divida tudo por 9 para achar o preço unitário: 2a + v = 3,60.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "Questão 175: enunciado resumido; alternativas e gabarito (6,30) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2023/questions/175"]
+        },
+        "options": [
+          { "id": "a468", "label": "4,68", "correct": false, "feedback": "4,68 dá R$ 0,52 por tíquete, mas 2(2v + 0,05) + v = 3,60 dá v = 0,70. A cartela custa 9 · 0,70 = 6,30." },
+          { "id": "a630", "label": "6,30", "correct": true, "feedback": "Isso. 2a + v = 3,60 e a = 2v + 0,05 dão 5v = 3,50, v = 0,70 e 9v = 6,30." },
+          { "id": "a930", "label": "9,30", "correct": false, "feedback": "9,30 dá v ≈ 1,03, que não fecha 2a + v = 3,60. Resolvendo: 5v = 3,50, v = 0,70 e 9v = 6,30." },
+          { "id": "a1050", "label": "10,50", "correct": false, "feedback": "10,50 vem de usar a − v = 0,05 (3v = 3,50) em vez de a = 2v + 0,05. O certo é 6,30." },
+          { "id": "a1065", "label": "10,65", "correct": false, "feedback": "10,65 vem de usar a = v − 0,05 (3v = 3,55) em vez de a = 2v + 0,05. O certo é 6,30." }
+        ]
+      },
+      {
+        "id": "enem-2022-circuitos",
+        "prompt": "3 voltas no circuito maior e 2 no menor dão 1 800 m; 2 maiores e 1 menor dão 1 100 m. Qual o maior total de voltas inteiras para 5 000 m?",
+        "fala": "Ache M e m pelo sistema e maximize x + y em 400x + 300y = 5 000.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 146: enunciado resumido; alternativas e gabarito (16) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/146"]
+        },
+        "options": [
+          { "id": "a10", "label": "10", "correct": false, "feedback": "10 voltas no maior dão só 4 000 m. Com 4x + 3y = 50, o máximo é (2; 14), soma 16." },
+          { "id": "a13", "label": "13", "correct": false, "feedback": "13 = 11 + 2 é o menor total possível em 4x + 3y = 50. O maior é 2 + 14 = 16." },
+          { "id": "a14", "label": "14", "correct": false, "feedback": "14 = 8 + 6 é uma solução de 4x + 3y = 50, mas não a maior. O máximo é 2 + 14 = 16." },
+          { "id": "a15", "label": "15", "correct": false, "feedback": "15 = 5 + 10 não é o máximo: trocando mais voltas para o circuito menor chega a 2 + 14 = 16." },
+          { "id": "a16", "label": "16", "correct": true, "feedback": "Certo. M = 400 m e m = 300 m; em 4x + 3y = 50, o maior y múltiplo dá (2; 14) e soma 16." }
+        ]
+      },
+      {
+        "id": "enem-2018-rifa",
+        "prompt": "Numa rifa, 80 faltaram, 45 compraram 2 bilhetes, alguns 3 e x compraram 1. Se x = 20% dos bilhetes B e B = alunos + 33, quanto vale x?",
+        "fala": "Escreva B e o total de alunos em função de x e y (quem comprou 3).",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 178: enunciado resumido; alternativas e gabarito (48) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2018/questions/178"]
+        },
+        "options": [
+          { "id": "a34", "label": "34", "correct": false, "feedback": "34 é y, quem comprou 3 bilhetes. Substituindo em 4x − y = 158, sai 4x = 192 e x = 48." },
+          { "id": "a42", "label": "42", "correct": false, "feedback": "42 daria B = 210, que não fecha o sistema. Subtraindo 4x − 3y = 90 de 4x − y = 158, x = 48." },
+          { "id": "a47", "label": "47", "correct": false, "feedback": "47 não fecha a paridade de 2y = 68. Do sistema 4x − 3y = 90 e 4x − y = 158 sai x = 48." },
+          { "id": "a48", "label": "48", "correct": true, "feedback": "Isso. 4x − 3y = 90 e 4x − y = 158 dão 2y = 68, y = 34 e 4x = 192, logo x = 48." },
+          { "id": "a79", "label": "79", "correct": false, "feedback": "79 soma ou divide errado 158 ÷ 2. Do sistema 4x − 3y = 90 e 4x − y = 158 sai x = 48." }
+        ]
+      }
+    ]
   }
 }

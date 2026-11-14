@@ -249,38 +249,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-unidades-conversoes-e-escalas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema unidades, conversões, escala e erro de medida.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2022-refrigerador`
+- **Enunciado:** "Na escala 1:50, o vão mede 3,8 cm por 1,6 cm; tirando 10 cm no topo e 10 cm de cada lado, quais as medidas máximas em m?"
+- **Fala do Paco:** "Multiplique por 50 para ir a cm reais, desconte as folgas (10 cm no topo e 20 cm na largura) e passe para metros."
+- **Fonte:** ENEM 2022 (adaptada); Questão 139: enunciado resumido; alternativas e gabarito (1,80 e 0,60) mantidos; https://api.enem.dev/v1/exams/2022/questions/139
+- **Conta de conferência:** 3,8 · 50 − 10 = 180 cm = 1,80 m; 1,6 · 50 − 20 = 60 cm = 0,60 m.
 
-#### V2 — `v2-unidades-conversoes-e-escalas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema unidades, conversões, escala e erro de medida.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2021-loteamento`
+- **Enunciado:** "De 3 ha (1 ha = 10 000 m²), 0,9 ha vai para ruas e o resto vira lotes de 300 m²; 20 a R$ 20 mil e os demais a R$ 30 mil; qual o total?"
+- **Fala do Paco:** "Converta os 2,1 ha restantes para m² multiplicando por 10 000 antes de dividir por 300 m²."
+- **Fonte:** ENEM 2021 (adaptada); Questão 178: enunciado resumido; alternativas e gabarito (1 900 000) mantidos; https://api.enem.dev/v1/exams/2021/questions/178
+- **Conta de conferência:** 21 000 / 300 = 70 lotes; 20 · 20 000 + 50 · 30 000 = 1 900 000.
 
-#### V3 — `v3-unidades-conversoes-e-escalas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema unidades, conversões, escala e erro de medida.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2020-maquete`
+- **Enunciado:** "Uma caixa-d'água de 28 080 L (1 dm³ = 1 L) mede 2 cm × 3,51 cm × 4 cm na maquete; qual foi a escala linear usada?"
+- **Fala do Paco:** "Passe 28 080 dm³ para cm³ (× 1 000) e tire a raiz cúbica da razão entre os volumes."
+- **Fonte:** ENEM 2020 (adaptada); Questão 138: enunciado resumido; alternativas e gabarito (1 : 100) mantidos; https://api.enem.dev/v1/exams/2020/questions/138
+- **Conta de conferência:** 28,08 / 28 080 000 = 1 / 1 000 000 = (1/100)³ => 1 : 100.
 
 #### V4 — `v4-unidades-conversoes-e-escalas`
 - **Estado:** **PENDENTE-FONTE**

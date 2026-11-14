@@ -564,6 +564,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2020-moto",
+        "prompt": "Moto faz 5 L/100 km (tanque 22 L) e sai cheia rumo a 500 km; no posto a 80 km do fim, quanto pôr para ir, rodar 200 km lá e voltar ao posto?",
+        "fala": "Calcule o que sobra no tanque após 420 km e compare com o gasto dos 360 km seguintes.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "Questão 160: enunciado resumido; alternativas e gabarito (17) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2020/questions/160"]
+        },
+        "options": [
+          { "id": "a13", "label": "13", "correct": false, "feedback": "13 esquece um trecho de 80 km (4 L); os 360 km exigem 18 L e resta 1 L: 18 − 1 = 17." },
+          { "id": "a14", "label": "14", "correct": false, "feedback": "14 não considera a volta de 80 km ao posto ou erra a sobra; o mínimo é 18 − 1 = 17 L." },
+          { "id": "a17", "label": "17", "correct": true, "feedback": "Exato. Até o posto gasta 21 L (sobra 1 L); para 360 km precisa 18 L, logo põe 17 L." },
+          { "id": "a18", "label": "18", "correct": false, "feedback": "18 L é o total necessário para 360 km, mas ainda havia 1 L no tanque: 18 − 1 = 17 L." },
+          { "id": "a21", "label": "21", "correct": false, "feedback": "21 L é quanto gastou na ida até o posto; para seguir e voltar ao posto bastam 17 L." }
+        ]
+      },
+      {
+        "id": "enem-2021-boxes",
+        "prompt": "Três pessoas trocam um pneu em 4 s (tempo inversamente proporcional à equipe); com um grupo reduzido a 2 pessoas, qual é o tempo total?",
+        "fala": "O produto pessoas × tempo é constante para trocar um pneu: 3 × 4 = 12.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 159: enunciado resumido; alternativas e gabarito (6,0) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2021/questions/159"]
+        },
+        "options": [
+          { "id": "a60", "label": "6,0", "correct": true, "feedback": "Isso. 3 × 4 = 2 × t dá t = 6,0 s, que determina o tempo total da parada." },
+          { "id": "a57", "label": "5,7", "correct": false, "feedback": "5,7 não conserva o produto 3 × 4 = 12; com 2 pessoas fica 12 ÷ 2 = 6,0 s." },
+          { "id": "a50", "label": "5,0", "correct": false, "feedback": "5,0 soma 1 s em vez de manter 3 × 4 = 12 constante; 12 ÷ 2 = 6,0 s." },
+          { "id": "a45", "label": "4,5", "correct": false, "feedback": "Os pneus são trocados em paralelo, mas o mais lento com 2 pessoas leva 12 ÷ 2 = 6,0 s." },
+          { "id": "a44", "label": "4,4", "correct": false, "feedback": "A equipe de 2 pessoas limita a parada toda e leva 3 × 4 ÷ 2 = 6,0 s." }
+        ]
+      },
+      {
+        "id": "enem-2019-maquinas",
+        "prompt": "R$ 31 000 serão divididos de forma inversamente proporcional às idades de 3 máquinas: 2, 3 e 5 anos; quanto recebe a de 5 anos?",
+        "fala": "Monte k/2 + k/3 + k/5 = 31 000 usando mmc(2, 3, 5) = 30.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 152: enunciado resumido; alternativas e gabarito (R$ 6.000,00) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/152"]
+        },
+        "options": [
+          { "id": "a3100", "label": "R$ 3.100,00", "correct": false, "feedback": "3.100 divide por 10 (soma direta); na inversa, 31k/30 = 31 000 dá k = 30 000 e 30 000 ÷ 5 = R$ 6.000,00." },
+          { "id": "a6000", "label": "R$ 6.000,00", "correct": true, "feedback": "Exato. 31k/30 = 31 000 dá k = 30 000, e a máquina de 5 anos recebe 30 000 ÷ 5 = R$ 6.000,00." },
+          { "id": "a6200", "label": "R$ 6.200,00", "correct": false, "feedback": "6.200 é 31 000 ÷ 5, proporcional direto a 2/10; inversamente proporcional dá R$ 6.000,00." },
+          { "id": "a15000", "label": "R$ 15.000,00", "correct": false, "feedback": "R$ 15.000,00 é a parte da máquina mais nova (2 anos: 30 000 ÷ 2); a de 5 anos recebe R$ 6.000,00." },
+          { "id": "a15500", "label": "R$ 15.500,00", "correct": false, "feedback": "15.500 é metade de 31 000 (proporcional direta para 5/10); o correto para 5 anos é R$ 6.000,00." }
+        ]
+      }
+    ]
   }
 }

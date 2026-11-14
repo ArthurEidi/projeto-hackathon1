@@ -670,6 +670,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2023-financiamento",
+        "prompt": "Item de R$ 1 500 sai com +20% em 3x de R$ 600 (1 no ato, 2 em 30 e 60 dias; √28 ≈ 5,29); qual a taxa mensal composta?",
+        "fala": "Depois da entrada de R$ 600, o saldo devedor é R$ 900 para pagar em duas parcelas de R$ 600.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "Questão 161: enunciado resumido; alternativas e gabarito (21,5%) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2023/questions/161"]
+        },
+        "options": [
+          { "id": "a67", "label": "6,7%", "correct": false, "feedback": "6,7% divide 20% por 3; com entrada no ato, 3x² − 2x − 2 = 0 dá x = 1,215, ou 21,5%." },
+          { "id": "a10", "label": "10%", "correct": false, "feedback": "10% divide 20% por 2 meses em juros simples; nos compostos, 900 = 600/x + 600/x² dá 21,5%." },
+          { "id": "a20", "label": "20%", "correct": false, "feedback": "20% é o acréscimo total sobre 1 500, mas parte é paga no ato; a taxa mensal é 21,5%." },
+          { "id": "a215", "label": "21,5%", "correct": true, "feedback": "Exato. 900 = 600/(1+i) + 600/(1+i)² dá 1 + i = (2 + 5,29)/6 = 1,215, logo 21,5%." },
+          { "id": "a233", "label": "23,3%", "correct": false, "feedback": "23,3% erra a aproximação na raiz; (2 + 5,29)/6 = 1,215, ou seja, 21,5%." }
+        ]
+      },
+      {
+        "id": "enem-2019-nota-fiscal",
+        "prompt": "Compra a juros compostos de 1% ao mês foi paga com R$ 202 após 1 mês e R$ 204,02 após 2 meses; qual era o valor à vista?",
+        "fala": "Traga cada pagamento ao instante zero dividindo por 1,01 e por 1,01².",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 150: enunciado resumido; alternativas e gabarito (400,00) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/150"]
+        },
+        "options": [
+          { "id": "a398", "label": "398,02", "correct": false, "feedback": "398,02 subtrai 1% e 2% em vez de dividir por 1,01 e 1,01²; 202/1,01 + 204,02/1,0201 = 400,00." },
+          { "id": "a400", "label": "400,00", "correct": true, "feedback": "Isso. 202 ÷ 1,01 = 200 e 204,02 ÷ 1,01² = 200; somando, 400,00." },
+          { "id": "a401", "label": "401,94", "correct": false, "feedback": "401,94 desconta apenas 1% da segunda parcela em vez de 1,01²; o valor presente é 400,00." },
+          { "id": "a404", "label": "404,00", "correct": false, "feedback": "404,00 usa juro simples errado; nos compostos cada parcela vale 200 à vista, dando 400,00." },
+          { "id": "a406", "label": "406,02", "correct": false, "feedback": "406,02 é a soma nominal das parcelas sem descontar os juros; à vista vale 400,00." }
+        ]
+      },
+      {
+        "id": "enem-2018-parcelas",
+        "prompt": "Um carro é pago em N parcelas iguais sem juros; com +5 parcelas cada uma cai R$ 200, e com −4 parcelas sobe R$ 232; qual é N?",
+        "fala": "Iguale (N + 5)(P − 200) = NP e (N − 4)(P + 232) = NP para eliminar P.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 175: enunciado resumido; alternativas e gabarito (24) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2018/questions/175"]
+        },
+        "options": [
+          { "id": "a20", "label": "20", "correct": false, "feedback": "Com N = 20 o sistema não fecha o mesmo valor total; resolvendo 72N = 1728 vem N = 24." },
+          { "id": "a24", "label": "24", "correct": true, "feedback": "Exato. P = 40N + 200 e 232N − 4P = 928 dão 72N = 1728, logo N = 24." },
+          { "id": "a29", "label": "29", "correct": false, "feedback": "29 é 24 + 5 (o prazo alongado); a proposta inicial tem N = 24 parcelas." },
+          { "id": "a40", "label": "40", "correct": false, "feedback": "40 é o coeficiente de P = 40N + 200; substituindo na segunda equação sai N = 24." },
+          { "id": "a58", "label": "58", "correct": false, "feedback": "58 vem de erro no sistema; 232N − 4(40N + 200) = 928 resulta em N = 24." }
+        ]
+      }
+    ]
   }
 }

@@ -248,17 +248,23 @@ A razão só vale com resultados igualmente prováveis: "cara-coroa" listado com
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** probabilidade com dois dados (somas).
-- **Onde procurar:** ENEM, Unicamp, UERJ.
+#### V1 — `enem-2023-urnas`
+- **Enunciado:** "Urna A tem 20% de chance de bola preta e B tem 4 pretas em 16; quantas brancas pôr em B para P(duas pretas) <= 1%?"
+- **Fala do Paco:** "Escreva 0,20 × 4/(16 + x) <= 0,01 e resolva para o mínimo x inteiro."
+- **Fonte:** ENEM 2023 (adaptada); Questão 138: enunciado resumido; alternativas e gabarito (64) mantidos; https://api.enem.dev/v1/exams/2023/questions/138
+- **Conta de conferência:** 0,20 · 4/(16 + x) <= 0,01 => 16 + x >= 80 => x = 64.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** sorteio em urna ou de números de uma faixa.
-- **Onde procurar:** ENEM ("sorteio", "urna").
+#### V2 — `enem-2021-dardos`
+- **Enunciado:** "Com chance 1/2 de acertar cada dardo, qual o mínimo de dardos por rodada para acertar pelo menos um com chance >= 9/10?"
+- **Fala do Paco:** "Use o evento complementar: errar todos os n dardos tem chance (1/2)ⁿ <= 1/10."
+- **Fonte:** ENEM 2021 (adaptada); Questão 142: enunciado resumido; alternativas e gabarito (4) mantidos; https://api.enem.dev/v1/exams/2021/questions/142
+- **Conta de conferência:** 1 − (1/2)ⁿ >= 9/10 => 2ⁿ >= 10 => n = 4.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** espaço amostral montado pelo princípio multiplicativo.
-- **Onde procurar:** Fuvest, Unesp.
+#### V3 — `enem-2018-cartoes`
+- **Enunciado:** "Uma urna tem 20 perguntas, sendo 25% fáceis; quantas fáceis acrescentar para que a chance de sortear uma fácil seja 75%?"
+- **Fala do Paco:** "Comece com 5 fáceis em 20 e resolva (5 + x)/(20 + x) = 3/4."
+- **Fonte:** ENEM 2018 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito (40) mantidos; https://api.enem.dev/v1/exams/2018/questions/167
+- **Conta de conferência:** (5 + x)/(20 + x) = 3/4 => 20 + 4x = 60 + 3x => x = 40.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** probabilidade lida em tabela ou gráfico.

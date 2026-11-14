@@ -719,6 +719,50 @@
             "https://projetoagathaedu.com.br/questoes-vestibular/matematica/algebra/analise-combinatoria.php"
           ]
         }
+      },
+      {
+        "id": "enem-2019-duplas",
+        "prompt": "Oito amigos, sendo dois canhotos, vão formar 4 duplas de vôlei sem juntar os dois canhotos na mesma dupla; de quantos modos?",
+        "fala": "Cada canhoto escolhe um destro; depois conte os pares entre os 4 destros que sobram.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 156: enunciado resumido; alternativas e gabarito (90) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/156"]
+        },
+        "options": [
+          {
+            "id": "a69",
+            "label": "69",
+            "correct": false,
+            "feedback": "69 erra a contagem das duplas restantes; os canhotos têm 6 × 5 opções e os 4 destros formam 3 pares: 90."
+          },
+          {
+            "id": "a70",
+            "label": "70",
+            "correct": false,
+            "feedback": "70 é C(8, 4), divisão em dois grupos de 4; em 4 duplas sem canhotos juntos são 6 × 5 × 3 = 90."
+          },
+          {
+            "id": "a90",
+            "label": "90",
+            "correct": true,
+            "feedback": "Isso. Os canhotos escolhem 6 e 5 destros; os 4 restantes formam 3 pares, dando 6 × 5 × 3 = 90."
+          },
+          {
+            "id": "a104",
+            "label": "104",
+            "correct": false,
+            "feedback": "104 subtrai apenas 1 caso de 105; com os canhotos juntos há 5 × 3 = 15 casos, restando 105 − 15 = 90."
+          },
+          {
+            "id": "a105",
+            "label": "105",
+            "correct": false,
+            "feedback": "105 é o total de partições em 4 duplas sem restrição; tirando os 15 casos com canhotos juntos, sobram 90."
+          }
+        ]
       }
     ]
   }

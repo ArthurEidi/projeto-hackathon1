@@ -99,7 +99,11 @@ describe("gabaritos do treino", () => {
     expect(lg(3, 9) + lg(3, 3)).not.toBeCloseTo(2, 5); // distrator 9
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: gabaritos conferidos por conta", () => {
+    expect(L.treino.vestibular).toHaveLength(1);
+    // V1 ENEM 2019/137: 7 < -log10(x) < 8 => 10^-8 < x < 10^-7
+    expect(-Math.log10(5e-8)).toBeGreaterThan(7);
+    expect(-Math.log10(5e-8)).toBeLessThan(8);
+    expect(certa("enem-2019-ph")).toBe("Entre 10⁻⁸ e 10⁻⁷");
   });
 });

@@ -238,19 +238,19 @@ n é inteiro positivo. Teste d=0, q=1, q=0, q<0 e a₁=0; com a₁=0, toda PG fi
 
 > PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
 
-#### V1 — `pendente-fonte-sequencias-pa-pg-v1`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V1 — `enem-2018-postes`
+- **Enunciado:** Postes são colocados em PA a partir de 80 m, de 20 em 20 m, até 1 380 m. A R$ 8 000 por poste, qual o gasto máximo?
+- **Fala do Paco:** "Conte os postes com 1 380 = 80 + (n − 1) · 20 e multiplique por R$ 8 000."
+- **Fonte:** ENEM 2018, Questão 141 — `https://api.enem.dev/v1/exams/2018/questions/141`
+- **Conta de conferência:** `1 380 = 80 + (n − 1)·20 => n = 66`; `66 · 8 000 = R$ 528 000,00`.
+- **Alternativas e feedback:** R$ 512 000,00, R$ 520 000,00, R$ 528 000,00 (correta), R$ 552 000,00, R$ 584 000,00.
 
-#### V2 — `pendente-fonte-sequencias-pa-pg-v2`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V2 — `enem-2019-autopecas`
+- **Enunciado:** Bloco (5,4,3,2,1,2,3,4) repete com 1:rolamento, 2:pastilha, 3:direção, 4:catalisador, 5:amortecedor. Qual é o 2 015º item?
+- **Fala do Paco:** "Divida 2 015 pelo tamanho do bloco (8) e use o resto para achar a posição."
+- **Fonte:** ENEM 2019, Questão 155 — `https://api.enem.dev/v1/exams/2019/questions/155`
+- **Conta de conferência:** `2 015 = 8 · 251 + 7`; 7º termo do bloco `(5,4,3,2,1,2,3,4)` é `3` (Caixa de direção).
+- **Alternativas e feedback:** Rolamento, Catalisador, Amortecedor, Pastilha de freio, Caixa de direção (correta).
 
 #### V3 — `pendente-fonte-sequencias-pa-pg-v3`
 - **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.

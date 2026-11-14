@@ -238,26 +238,23 @@ Percentuais incidem no valor corrente; índice compara uma base declarada. Troca
 
 > PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
 
-#### V1 — `pendente-fonte-descontos-acrescimos-e-indices-v1`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V1 — `enem-2022-geladeira`
+- **Enunciado:** "Sobre R$ 1 000,00 aplicam-se +10% e depois -2%; qual a diferença entre esse valor e um acréscimo direto de +8%?"
+- **Fala do Paco:** "Calcule 1000 × 1,10 × 0,98 e compare com 1000 × 1,08."
+- **Fonte:** ENEM 2022 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito (R$ 2,00 menor) mantidos; https://api.enem.dev/v1/exams/2022/questions/167
+- **Conta de conferência:** 1000 · 1,10 · 0,98 = 1078 vs 1000 · 1,08 = 1080 (R$ 2,00 menor).
 
-#### V2 — `pendente-fonte-descontos-acrescimos-e-indices-v2`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V2 — `enem-2019-ibge`
+- **Enunciado:** "Um rendimento de R$ 1.250,00 sobe 7,2% numa década e mais 10% na seguinte; qual é o valor final?"
+- **Fala do Paco:** "Taxas sucessivas multiplicam os fatores: 1,072 × 1,10."
+- **Fonte:** ENEM 2019 (adaptada); Questão 153: enunciado resumido; alternativas e gabarito (R$ 1.474,00) mantidos; https://api.enem.dev/v1/exams/2019/questions/153
+- **Conta de conferência:** 1250 · 1,072 · 1,10 = 1474.
 
-#### V3 — `pendente-fonte-descontos-acrescimos-e-indices-v3`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V3 — `enem-2019-piscina`
+- **Enunciado:** "Projeto (R$ 10 mil) cai 50%, obra (R$ 100 mil) sobe 25%; qual desconto nos R$ 40 mil fixos reduz o total de R$ 150 mil em 10%?"
+- **Fala do Paco:** "Calcule a meta (90% de 150 mil) e subtraia o novo projeto e a nova obra."
+- **Fonte:** ENEM 2019 (adaptada); Questão 176: enunciado resumido; alternativas e gabarito (87,5%) mantidos; https://api.enem.dev/v1/exams/2019/questions/176
+- **Conta de conferência:** 150 000 · 0,9 − (5 000 + 125 000) = 5 000; (40 000 − 5 000)/40 000 = 87,5%.
 
 #### V4 — `pendente-fonte-descontos-acrescimos-e-indices-v4`
 - **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.

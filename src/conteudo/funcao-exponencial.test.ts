@@ -93,7 +93,10 @@ describe("gabaritos do treino", () => {
     expect(5 * 2 ** Number(certa("d5-funcao-exponencial"))).toBe(40);
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: gabaritos conferidos por conta", () => {
+    expect(L.treino.vestibular).toHaveLength(1);
+    // V1 ENEM 2023/159: 100 * 10^(t/3) = 5 * 200_000 = 10^6 => t = 12
+    expect(100 * 10 ** (12 / 3)).toBe(5 * 200_000);
+    expect(certa("enem-2023-larvas")).toBe("12");
   });
 });

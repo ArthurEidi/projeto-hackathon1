@@ -641,6 +641,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2022-geladeira",
+        "prompt": "Sobre R$ 1 000,00 aplicam-se +10% e depois -2%; qual a diferença entre esse valor e um acréscimo direto de +8%?",
+        "fala": "Calcule 1000 × 1,10 × 0,98 e compare com 1000 × 1,08.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 167: enunciado resumido; alternativas e gabarito (R$ 2,00 menor) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/167"]
+        },
+        "options": [
+          { "id": "a2men", "label": "R$ 2,00 menor", "correct": true, "feedback": "Exato. 1000 × 1,10 × 0,98 = 1078, que é R$ 2,00 menor que 1080." },
+          { "id": "a100men", "label": "R$ 100,00 menor", "correct": false, "feedback": "100 é 10% de 1000; após -2% sobre 1100 o valor é 1078, R$ 2,00 menor que 1080." },
+          { "id": "a200men", "label": "R$ 200,00 menor", "correct": false, "feedback": "Não há desconto de 20%; 1100 × 0,98 = 1078, que é R$ 2,00 menor que 1080." },
+          { "id": "a42mai", "label": "R$ 42,00 maior", "correct": false, "feedback": "42 confunde percentuais; o valor da loja é 1078, R$ 2,00 menor que 1080." },
+          { "id": "a80mai", "label": "R$ 80,00 maior", "correct": false, "feedback": "80 é o acréscimo de 8% sobre 1000; o correto comparado é 1078 contra 1080: R$ 2,00 menor." }
+        ]
+      },
+      {
+        "id": "enem-2019-ibge",
+        "prompt": "Um rendimento de R$ 1.250,00 sobe 7,2% numa década e mais 10% na seguinte; qual é o valor final?",
+        "fala": "Taxas sucessivas multiplicam os fatores: 1,072 × 1,10.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 153: enunciado resumido; alternativas e gabarito (R$ 1.474,00) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/153"]
+        },
+        "options": [
+          { "id": "a1340", "label": "R$ 1.340,00", "correct": false, "feedback": "1.340,00 é o valor após os 7,2%; falta aplicar +10%: 1340 × 1,10 = R$ 1.474,00." },
+          { "id": "a1349", "label": "R$ 1.349,00", "correct": false, "feedback": "Não some 9 reais; multiplique 1340 por 1,10 para obter R$ 1.474,00." },
+          { "id": "a1375", "label": "R$ 1.375,00", "correct": false, "feedback": "1.375,00 aplica só +10% em 1250; com +7,2% e +10%, dá R$ 1.474,00." },
+          { "id": "a1465", "label": "R$ 1.465,00", "correct": false, "feedback": "1.465,00 soma as taxas (17,2%) em 1250; taxas sucessivas dão 1,072 × 1,10 = R$ 1.474,00." },
+          { "id": "a1474", "label": "R$ 1.474,00", "correct": true, "feedback": "Isso. 1250 × 1,072 = 1340, e 1340 × 1,10 = R$ 1.474,00." }
+        ]
+      },
+      {
+        "id": "enem-2019-piscina",
+        "prompt": "Projeto (R$ 10 mil) cai 50%, obra (R$ 100 mil) sobe 25%; qual desconto nos R$ 40 mil fixos reduz o total de R$ 150 mil em 10%?",
+        "fala": "Calcule a meta (90% de 150 mil) e subtraia o novo projeto e a nova obra.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 176: enunciado resumido; alternativas e gabarito (87,5%) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/176"]
+        },
+        "options": [
+          { "id": "a233", "label": "23,3%", "correct": false, "feedback": "23,3% divide pelo total de 150 mil em vez dos 40 mil fixos; 35 mil ÷ 40 mil = 87,5%." },
+          { "id": "a250", "label": "25,0%", "correct": false, "feedback": "O desconto é sobre os 40 mil fixos: sobram 5 mil para eles, logo desconto de 87,5%." },
+          { "id": "a500", "label": "50,0%", "correct": false, "feedback": "50% é a redução do projeto; nos custos fixos de 40 mil é preciso cortar 35 mil: 87,5%." },
+          { "id": "a875", "label": "87,5%", "correct": true, "feedback": "Exato. Meta é 135 mil; projeto (5 mil) + obra (125 mil) deixam 5 mil de fixos, queda de 87,5%." },
+          { "id": "a1000", "label": "100,0%", "correct": false, "feedback": "Não zera os fixos; ainda restam R$ 5 mil dos R$ 40 mil, dando desconto de 87,5%." }
+        ]
+      }
+    ]
   }
 }

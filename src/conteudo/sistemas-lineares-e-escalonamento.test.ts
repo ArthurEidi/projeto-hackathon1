@@ -137,4 +137,23 @@ describe("gabaritos do treino: sistemas-lineares-e-escalonamento", () => {
     // D5: x+y+z=3, y-z=0, 0=0 => z=t => y=t => x=3-2t => (3-2t; t; t)
     expect(certa("d5-sistemas-lineares-e-escalonamento")).toBe("(3−2t;t;t), t∈R");
   });
+
+  it("vestibular: gabaritos conferidos por conta", () => {
+    expect(L.treino.vestibular).toHaveLength(3);
+    // V1 ENEM 2023/175: 2a + v = 3.60, a = 2v + 0.05 => 5v = 3.50 => v = 0.70 => 9v = 6.30
+    const v = 3.5 / 5;
+    expect(9 * v).toBeCloseTo(6.3, 10);
+    expect(certa("enem-2023-tiquetes")).toBe("6,30");
+
+    // V2 ENEM 2022/146: M = 400, m = 300; 4x + 3y = 50 => x = 2, y = 14 => 16
+    expect(400 * 2 + 300 * 14).toBe(5000);
+    expect(certa("enem-2022-circuitos")).toBe("16");
+
+    // V3 ENEM 2018/178: 4x - 3y = 90, 4x - y = 158 => y = 34, x = 48
+    const y = (158 - 90) / 2;
+    const x = (158 + y) / 4;
+    expect(y).toBe(34);
+    expect(x).toBe(48);
+    expect(certa("enem-2018-rifa")).toBe("48");
+  });
 });

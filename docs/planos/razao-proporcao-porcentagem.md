@@ -247,38 +247,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-razao-proporcao-porcentagem`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema razão, proporção e porcentagem.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2023-papel`
+- **Enunciado:** "Escola comprava 6 000 folhas para 1 200 alunos e agora tem 1 150, a R$ 4 por 100; para gastar R$ 220, qual o desconto (%)?"
+- **Fala do Paco:** "Ache o total de folhas por aluno, arredonde para pacotes inteiros de 100 e calcule o desconto sobre o valor cheio."
+- **Fonte:** ENEM 2023 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito ((5,0 ; 5,5)) mantidos; https://api.enem.dev/v1/exams/2023/questions/167
+- **Conta de conferência:** 1 150 × 5 = 5 750 => 58 pacotes × R$ 4 = R$ 232; (232 − 220)/232 ≈ 5,17%.
 
-#### V2 — `v2-razao-proporcao-porcentagem`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema razão, proporção e porcentagem.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2022-geladeira`
+- **Enunciado:** "Geladeira de R$ 1 000 tem preço normal +10% e -2% no cartão; qual a diferença para quem somou +8% direto sobre R$ 1 000?"
+- **Fala do Paco:** "Aplique −2% sobre R$ 1 100 e compare com R$ 1 080."
+- **Fonte:** ENEM 2022 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito (R$ 2,00 menor) mantidos; https://api.enem.dev/v1/exams/2022/questions/167
+- **Conta de conferência:** 1 100 × 0,98 = 1 078 vs 1 080 => R$ 2,00 menor.
 
-#### V3 — `v3-razao-proporcao-porcentagem`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema razão, proporção e porcentagem.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2022-caged`
+- **Enunciado:** "Em janeiro de 2013 foram criadas 28 900 vagas, uma queda de 75% ante 2012; quantas vagas foram criadas em 2012?"
+- **Fala do Paco:** "Se caiu 75%, o valor de 2013 representa apenas 25% (1/4) do total de 2012."
+- **Fonte:** ENEM 2022 (adaptada); Questão 154: enunciado resumido; alternativas e gabarito (115 600) mantidos; https://api.enem.dev/v1/exams/2022/questions/154
+- **Conta de conferência:** 28 900 / 0,25 = 115 600.
 
 #### V4 — `v4-razao-proporcao-porcentagem`
 - **Estado:** **PENDENTE-FONTE**

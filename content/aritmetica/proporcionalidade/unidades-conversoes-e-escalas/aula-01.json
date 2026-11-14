@@ -608,7 +608,65 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2022-refrigerador",
+        "prompt": "Na escala 1:50, o vão mede 3,8 cm por 1,6 cm; tirando 10 cm no topo e 10 cm de cada lado, quais as medidas máximas em m?",
+        "fala": "Multiplique por 50 para ir a cm reais, desconte as folgas (10 cm no topo e 20 cm na largura) e passe para metros.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 139: enunciado resumido; alternativas e gabarito (1,80 e 0,60) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/139"]
+        },
+        "options": [
+          { "id": "a180_060", "label": "1,80 e 0,60", "correct": true, "feedback": "Exato. 190 − 10 = 180 cm (1,80 m) e 80 − 20 = 60 cm (0,60 m)." },
+          { "id": "a180_070", "label": "1,80 e 0,70", "correct": false, "feedback": "0,70 desconta 10 cm de um lado só; são 10 cm em cada lateral (80 − 20 = 60 cm = 0,60 m)." },
+          { "id": "a190_080", "label": "1,90 e 0,80", "correct": false, "feedback": "1,90 e 0,80 são as medidas do vão sem descontar as folgas; com as folgas dá 1,80 e 0,60." },
+          { "id": "a200_090", "label": "2,00 e 0,90", "correct": false, "feedback": "2,00 e 0,90 somam 10 cm em vez de subtrair; o máximo é 1,80 e 0,60." },
+          { "id": "a200_100", "label": "2,00 e 1,00", "correct": false, "feedback": "2,00 e 1,00 somam as folgas em vez de descontar; o correto é 1,80 e 0,60." }
+        ]
+      },
+      {
+        "id": "enem-2021-loteamento",
+        "prompt": "De 3 ha (1 ha = 10 000 m²), 0,9 ha vai para ruas e o resto vira lotes de 300 m²; 20 a R$ 20 mil e os demais a R$ 30 mil; qual o total?",
+        "fala": "Converta os 2,1 ha restantes para m² multiplicando por 10 000 antes de dividir por 300 m².",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 178: enunciado resumido; alternativas e gabarito (1 900 000) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2021/questions/178"]
+        },
+        "options": [
+          { "id": "a700k", "label": "700 000", "correct": false, "feedback": "700 000 erra a conversão de hectare para m²; 2,1 ha = 21 000 m² dão 70 lotes e 1 900 000." },
+          { "id": "a1600k", "label": "1 600 000", "correct": false, "feedback": "1 600 000 erra os 50 lotes restantes; 20 × 20 000 + 50 × 30 000 = 1 900 000." },
+          { "id": "a1900k", "label": "1 900 000", "correct": true, "feedback": "Isso. 21 000 ÷ 300 = 70 lotes: 400 000 + 1 500 000 = 1 900 000." },
+          { "id": "a2200k", "label": "2 200 000", "correct": false, "feedback": "2 200 000 não desconta 0,9 ha de ruas; com 70 lotes úteis dá 1 900 000." },
+          { "id": "a2800k", "label": "2 800 000", "correct": false, "feedback": "2 800 000 usa os 3 ha inteiros; descontando 0,9 ha de ruas dá 1 900 000." }
+        ]
+      },
+      {
+        "id": "enem-2020-maquete",
+        "prompt": "Uma caixa-d'água de 28 080 L (1 dm³ = 1 L) mede 2 cm × 3,51 cm × 4 cm na maquete; qual foi a escala linear usada?",
+        "fala": "Passe 28 080 dm³ para cm³ (× 1 000) e tire a raiz cúbica da razão entre os volumes.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "Questão 138: enunciado resumido; alternativas e gabarito (1 : 100) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2020/questions/138"]
+        },
+        "options": [
+          { "id": "a10", "label": "1 : 10", "correct": false, "feedback": "1 : 10 daria razão volumétrica 1 : 1 000; aqui 28,08 ÷ 28 080 000 = 1 : 1 000 000, logo 1 : 100." },
+          { "id": "a100", "label": "1 : 100", "correct": true, "feedback": "Exato. 28,08 cm³ / 28 080 000 cm³ = 1 / 10⁶ = (1 / 100)³, escala 1 : 100." },
+          { "id": "a1000", "label": "1 : 1 000", "correct": false, "feedback": "1 : 1 000 compara cm³ com dm³ sem converter ou esquece a raiz cúbica; o certo é 1 : 100." },
+          { "id": "a10000", "label": "1 : 10 000", "correct": false, "feedback": "1 : 10 000 daria razão de volumes 1 : 10¹²; tirando a raiz cúbica de 10⁻⁶ vem 1 : 100." },
+          { "id": "a100000", "label": "1 : 100 000", "correct": false, "feedback": "1 : 100 000 exagera a escala; a raiz cúbica de 1 000 000 é 100, logo 1 : 100." }
+        ]
+      }
+    ]
   },
   "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra."
 }

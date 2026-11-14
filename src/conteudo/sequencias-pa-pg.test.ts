@@ -1,6 +1,6 @@
 // Sequências PA e PG · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("algebra/sequencias/sequencias-pa-pg/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -77,5 +77,17 @@ describe("gabaritos do treino", () => {
     expect(certa("sequencias-pa-pg-d5")).toBe("PA: 2, 2, 2; PG: 2, 0, 0");
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: gabaritos conferidos por conta", () => {
+    expect(L.treino.vestibular).toHaveLength(2);
+    // V1 ENEM 2018/141: a1=80, d=20, an=1380 => n=66 => 66*8000 = 528000
+    const n = (1380 - 80) / 20 + 1;
+    expect(pa(80, 20, n)).toBe(1380);
+    expect(n * 8000).toBe(528_000);
+    expect(certa("enem-2018-postes")).toBe("R$ 528 000,00");
+
+    // V2 ENEM 2019/155: bloco [5,4,3,2,1,2,3,4], 2015 % 8 = 7 => 7o item = 3 (Caixa de direção)
+    const bloco = [5, 4, 3, 2, 1, 2, 3, 4];
+    expect(bloco[(2015 - 1) % 8]).toBe(3);
+    expect(certa("enem-2019-autopecas")).toBe("Caixa de direção");
+  });
 });

@@ -265,9 +265,11 @@ k = 0 e k = n dão 1 grupo (o vazio e o completo). Os valores sobem até o meio 
 | `a128` | 128 | não | "128 é 2⁷. O certo é escolher 4 de 8: C(8, 4) = 70." |
 | `a70` | 70 | **sim** | "Isso. C(8, 4) = 70, e o resto vai para o outro dia." |
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** distinguir arranjo de combinação (cargos × comissão).
-- **Onde procurar:** ENEM ("comissão", "chapa"), Fuvest, Unicamp.
+#### V2 — `enem-2019-duplas`
+- **Enunciado (resumido):** "Oito amigos, sendo dois canhotos, vão formar 4 duplas de vôlei sem juntar os dois canhotos na mesma dupla; de quantos modos?"
+- **Fala do Paco:** "Cada canhoto escolhe um destro; depois conte os pares entre os 4 destros que sobram."
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 156: enunciado resumido; alternativas e gabarito (90) mantidos — **URL:** https://api.enem.dev/v1/exams/2019/questions/156
+- **Conta de conferência:** 6 · 5 · C(4, 2) / 2! = 6 · 5 · 3 = 90 (ou 105 − 15 = 90).
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** combinação com restrição "pelo menos um" (complemento).

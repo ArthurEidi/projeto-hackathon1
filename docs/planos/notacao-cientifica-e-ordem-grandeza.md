@@ -249,27 +249,17 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-notacao-cientifica-e-ordem-grandeza`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema notação científica, estimativa e arredondamento.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2019-virus`
+- **Enunciado:** "O vírus influenza tem diâmetro interno de 0,00011 mm; como escrever essa medida em notação científica?"
+- **Fala do Paco:** "Conte quantas casas a vírgula anda para a direita até ficar entre o 1 e o 1."
+- **Fonte:** ENEM 2019 (adaptada); Questão 140: enunciado resumido; alternativas e gabarito (1,1 × 10⁻⁴) mantidos; https://api.enem.dev/v1/exams/2019/questions/140
+- **Conta de conferência:** 0,00011 = 1,1 · 10⁻⁴.
 
-#### V2 — `v2-notacao-cientifica-e-ordem-grandeza`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema notação científica, estimativa e arredondamento.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2022-bilhao`
+- **Enunciado:** "Um filme arrecadou R$ 1,35 bilhão em bilheteria; como escrever essa quantia com todos os seus algarismos?"
+- **Fala do Paco:** "1 bilhão vale 10⁹ (um 1 seguido de 9 zeros)."
+- **Fonte:** ENEM 2022 (adaptada); Questão 175: enunciado resumido; alternativas e gabarito (1 350 000 000,00) mantidos; https://api.enem.dev/v1/exams/2022/questions/175
+- **Conta de conferência:** 1,35 · 10⁹ = 1 350 000 000,00.
 
 #### V3 — `v3-notacao-cientifica-e-ordem-grandeza`
 - **Estado:** **PENDENTE-FONTE**

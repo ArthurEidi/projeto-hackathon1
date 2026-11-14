@@ -260,38 +260,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-fracoes-e-decimais`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema frações, decimais e comparação de racionais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2016-fibras`
+- **Enunciado:** "Fibras por pão: A 2/50, B 5/40, C 5/100, D 6/90 e E 7/70; qual marca tem a maior concentração de fibras?"
+- **Fala do Paco:** "Converta cada fração para decimal ou compare com 1/10 = 0,10."
+- **Fonte:** ENEM 2016 (adaptada); Questão 154: enunciado resumido; alternativas e gabarito (B) mantidos; https://api.enem.dev/v1/exams/2016/questions/154
+- **Conta de conferência:** A = 0,04; B = 0,125; C = 0,05; D ≈ 0,067; E = 0,10 -> B.
 
-#### V2 — `v2-fracoes-e-decimais`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema frações, decimais e comparação de racionais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2022-borrifador`
+- **Enunciado:** "Um frasco de 360 mL dura 60 dias com 1 jato a cada 48 minutos; quantos mililitros saem por acionamento?"
+- **Fala do Paco:** "Converta 60 dias em minutos, divida por 48 e depois divida 360 mL pelo total de jatos."
+- **Fonte:** ENEM 2022 (adaptada); Questão 164: enunciado resumido; alternativas e gabarito (0,200) mantidos; https://api.enem.dev/v1/exams/2022/questions/164
+- **Conta de conferência:** 360 / (60 · 24 · 60 / 48) = 360 / 1800 = 0,200 mL.
 
-#### V3 — `v3-fracoes-e-decimais`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema frações, decimais e comparação de racionais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2021-loteamento`
+- **Enunciado:** "De 3 ha (30 000 m²), 0,9 ha vai para ruas e o resto vira lotes de 300 m²; 20 a R$ 20 mil e os demais a R$ 30 mil; qual o total?"
+- **Fala do Paco:** "Subtraia 0,9 de 3 para achar a área útil em m² e divida por 300."
+- **Fonte:** ENEM 2021 (adaptada); Questão 178: enunciado resumido; alternativas e gabarito (1 900 000) mantidos; https://api.enem.dev/v1/exams/2021/questions/178
+- **Conta de conferência:** (30 000 − 9 000) / 300 = 70 lotes; 20 · 20 000 + 50 · 30 000 = 1 900 000.
 
 #### V4 — `v4-fracoes-e-decimais`
 - **Estado:** **PENDENTE-FONTE**

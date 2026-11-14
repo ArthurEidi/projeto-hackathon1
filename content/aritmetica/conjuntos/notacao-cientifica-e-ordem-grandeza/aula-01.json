@@ -583,6 +583,45 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2019-virus",
+        "prompt": "O vírus influenza tem diâmetro interno de 0,00011 mm; como escrever essa medida em notação científica?",
+        "fala": "Conte quantas casas a vírgula anda para a direita até ficar entre o 1 e o 1.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 140: enunciado resumido; alternativas e gabarito (1,1 × 10⁻⁴) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/140"]
+        },
+        "options": [
+          { "id": "a1", "label": "1,1 × 10⁻¹", "correct": false, "feedback": "10⁻¹ desloca apenas 1 casa (0,11); até 0,00011 são 4 casas: 1,1 × 10⁻⁴." },
+          { "id": "a2", "label": "1,1 × 10⁻²", "correct": false, "feedback": "10⁻² dá 0,011; contando os 4 deslocamentos até 1,1 dá 1,1 × 10⁻⁴." },
+          { "id": "a3", "label": "1,1 × 10⁻³", "correct": false, "feedback": "10⁻³ dá 0,0011 (três zeros antes do 1); aqui há 4 zeros, logo 1,1 × 10⁻⁴." },
+          { "id": "a4", "label": "1,1 × 10⁻⁴", "correct": true, "feedback": "Isso. A vírgula anda 4 casas para a direita até 1,1, logo o expoente é −4." },
+          { "id": "a5", "label": "1,1 × 10⁻⁵", "correct": false, "feedback": "10⁻⁵ seria 0,000011; de 0,00011 até 1,1 são 4 casas, logo 1,1 × 10⁻⁴." }
+        ]
+      },
+      {
+        "id": "enem-2022-bilhao",
+        "prompt": "Um filme arrecadou R$ 1,35 bilhão em bilheteria; como escrever essa quantia com todos os seus algarismos?",
+        "fala": "1 bilhão vale 10⁹ (um 1 seguido de 9 zeros).",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 175: enunciado resumido; alternativas e gabarito (1 350 000 000,00) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/175"]
+        },
+        "options": [
+          { "id": "a135k", "label": "135 000,00", "correct": false, "feedback": "135 000 é 135 mil; 1,35 bilhão tem 9 casas após o 1: 1 350 000 000,00." },
+          { "id": "a135m", "label": "1 350 000,00", "correct": false, "feedback": "1 350 000 é 1,35 milhão (10⁶); bilhão é 10⁹, logo 1 350 000 000,00." },
+          { "id": "a13m", "label": "13 500 000,00", "correct": false, "feedback": "13 500 000 é 13,5 milhões; 1,35 × 10⁹ é 1 350 000 000,00." },
+          { "id": "a135mi", "label": "135 000 000,00", "correct": false, "feedback": "135 milhões é 1,35 × 10⁸; falta um zero para 10⁹: 1 350 000 000,00." },
+          { "id": "a135bi", "label": "1 350 000 000,00", "correct": true, "feedback": "Exato. 1,35 × 10⁹ desloca a vírgula 9 casas: 1 350 000 000,00." }
+        ]
+      }
+    ]
   }
 }

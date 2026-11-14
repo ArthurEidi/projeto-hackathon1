@@ -696,6 +696,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2023-urnas",
+        "prompt": "P(preta em A) = 20%; B tem 4 pretas e 12 brancas (25%); quantas brancas pôr em B para P(duas pretas) <= 1%?",
+        "fala": "Escreva P(A e B) = 0,20 × 4/(16 + x) <= 0,01 e isole x.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "Questão 138: enunciado resumido; alternativas e gabarito (64) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2023/questions/138"]
+        },
+        "options": [
+          { "id": "a20", "label": "20", "correct": false, "feedback": "Com 20 brancas a mais, B teria 36 bolas e 0,20 × 4/36 ≈ 2,2% > 1%; precisa 16 + x >= 80, logo x = 64." },
+          { "id": "a60", "label": "60", "correct": false, "feedback": "Com 60, B teria 76 bolas e 0,8/76 ≈ 1,05% > 1%; faltam 4 para chegar a 80: 64." },
+          { "id": "a64", "label": "64", "correct": true, "feedback": "Exato. 0,20 × 4/(16 + x) <= 0,01 dá 16 + x >= 80, logo x = 64." },
+          { "id": "a68", "label": "68", "correct": false, "feedback": "68 esquece que já há 12 brancas em B; como 16 + x >= 80, o mínimo é 80 − 16 = 64." },
+          { "id": "a80", "label": "80", "correct": false, "feedback": "80 é o total final de bolas em B, não as adicionadas; tirando as 16 iniciais, são 64." }
+        ]
+      },
+      {
+        "id": "enem-2021-dardos",
+        "prompt": "Cada dardo acerta o alvo com chance 1/2; quantos dardos lançar para acertar pelo menos um com chance >= 9/10?",
+        "fala": "Use o complementar: a chance de errar todos os n dardos é (1/2)ⁿ <= 1/10.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 142: enunciado resumido; alternativas e gabarito (4) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2021/questions/142"]
+        },
+        "options": [
+          { "id": "a2", "label": "2", "correct": false, "feedback": "Com 2 dardos, 1 − 1/4 = 3/4 = 0,75 < 0,9; precisa de 2ⁿ >= 10, logo n = 4." },
+          { "id": "a4", "label": "4", "correct": true, "feedback": "Isso. 1 − (1/2)⁴ = 15/16 = 0,9375 >= 0,9, e com 3 dardos daria 7/8 = 0,875." },
+          { "id": "a6", "label": "6", "correct": false, "feedback": "Com 6 passa de 9/10, mas 4 já basta: 1 − 1/16 = 15/16 >= 9/10." },
+          { "id": "a9", "label": "9", "correct": false, "feedback": "Não some 1/2 nove vezes; multiplique os erros: (1/2)⁴ = 1/16 <= 1/10, então n = 4." },
+          { "id": "a10", "label": "10", "correct": false, "feedback": "10 vem de comparar 1/n <= 1/10; o decaimento é exponencial (1/2)ⁿ, então n = 4." }
+        ]
+      },
+      {
+        "id": "enem-2019-placas",
+        "prompt": "Cada placa é vista com chance 1/2 e já existe 1 placa; quantas novas instalar para ver ao menos uma com chance > 99/100?",
+        "fala": "Ache o total n com (1/2)ⁿ < 1/100 e lembre de descontar a placa que já existe.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 159: enunciado resumido; alternativas e gabarito (6) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/159"]
+        },
+        "options": [
+          { "id": "a99", "label": "99", "correct": false, "feedback": "99 trata como linear; com 2ⁿ > 100, bastam 7 placas ao todo, ou 6 novas." },
+          { "id": "a51", "label": "51", "correct": false, "feedback": "Não divida 100 por 2; em (1/2)ⁿ < 1/100, 2⁷ = 128 > 100 dá 7 no total, 6 novas." },
+          { "id": "a50", "label": "50", "correct": false, "feedback": "O erro não cai linearmente; como 2⁷ = 128 > 100, precisa de 7 placas, logo 6 novas." },
+          { "id": "a6", "label": "6", "correct": true, "feedback": "Exato. 2⁷ = 128 > 100 exige 7 placas no total; descontando 1 existente, são 6 novas." },
+          { "id": "a1", "label": "1", "correct": false, "feedback": "Com 1 nova seriam 2 placas e chance 3/4 = 75%; para > 99% são 7 no total, 6 novas." }
+        ]
+      }
+    ]
   }
 }

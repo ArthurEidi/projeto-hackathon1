@@ -138,7 +138,16 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-funcao-definida-por-partes")).toBe("5");
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: gabaritos conferidos por conta", () => {
+    expect(L.treino.vestibular).toHaveLength(2);
+    // V1 ENEM 2016/145: 10 + x >= 0.05*(1200 + x) => x >= 50/0.95 = 52.63 => 53
+    expect(Math.ceil(50 / 0.95)).toBe(53);
+    expect(certa("enem-2016-cotas")).toBe("53");
+
+    // V2 ENEM 2023/158: lucro(n) = 0.96 * 5 * (300 + 100*(n - 1)) - 900 - 250*n
+    const lucro = (n: number) => 0.96 * 5 * (300 + 100 * (n - 1)) - 900 - 250 * n;
+    expect(lucro(3)).toBe(750);
+    expect(lucro(4)).toBe(980);
+    expect(certa("enem-2023-pescador")).toBe("4");
   });
 });

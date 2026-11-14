@@ -1,6 +1,6 @@
 // Somatórios de PA e PG · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("algebra/sequencias/somatorios-pa-pg/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -80,5 +80,10 @@ describe("gabaritos do treino", () => {
     expect(certa("somatorios-pa-pg-d5")).toBe("PA, por 5");
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: gabaritos conferidos por conta", () => {
+    expect(L.treino.vestibular).toHaveLength(1);
+    // V1 ENEM 2018/162: 128 tenistas => 64 + 32 + 16 + 8 + 4 + 2 + 1 = 127 partidas
+    expect(soma([64, 32, 16, 8, 4, 2, 1])).toBe(127);
+    expect(certa("enem-2018-tenis")).toBe("64 + 32 + 16 + 8 + 4 + 2 + 1");
+  });
 });

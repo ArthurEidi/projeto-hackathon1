@@ -239,13 +239,13 @@ Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {
 
 > Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
 
-#### V1 — `pendente-fonte-funcao-exponencial-1`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V1 — `enem-2023-larvas`
+- **Enunciado (resumido):** Uma população de 100 larvas multiplica-se por 10 a cada 3 dias. Com 5 L de produto (1 L por 200 000 larvas), em quantos dias aplicar?
+- **Fala do Paco:** "Calcule o limite de larvas para 5 L e escreva 100 · 10^(t/3) = 10⁶."
+- **Fonte:** ENEM 2023, Questão 159 — `https://api.enem.dev/v1/exams/2023/questions/159`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (12) mantidos.
+- **Conta de conferência:** `5 · 200 000 = 10⁶`; `100 · 10^(t/3) = 10⁶ => 10^(t/3) = 10⁴ => t/3 = 4 => t = 12`.
+- **Opções e feedback:** 2, 4, 6, 12 (correta), 18.
 #### V2 — `pendente-fonte-funcao-exponencial-2`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"

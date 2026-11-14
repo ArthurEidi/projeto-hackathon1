@@ -294,6 +294,26 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2019-ph",
+        "prompt": "Sabendo que pH = −log₁₀(x) e a flor rosa mais valorizada exige 7 < pH < 8, em que intervalo deve estar x?",
+        "fala": "Troque o sinal em 7 < −log₁₀(x) < 8 e aplique a base 10 nos dois extremos.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 137: enunciado resumido; alternativas e gabarito (entre 10⁻⁸ e 10⁻⁷) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2019/questions/137"]
+        },
+        "options": [
+          { "id": "a", "label": "Maiores que 10⁻⁸", "correct": false, "feedback": "x > 10⁻⁸ só garante pH < 8; falta limitar x < 10⁻⁷ para pH > 7. O certo é entre 10⁻⁸ e 10⁻⁷." },
+          { "id": "b", "label": "Positivos menores que 10⁻⁷", "correct": false, "feedback": "x < 10⁻⁷ só garante pH > 7; falta limitar x > 10⁻⁸ para pH < 8. O certo é entre 10⁻⁸ e 10⁻⁷." },
+          { "id": "c", "label": "Entre 7 e 8", "correct": false, "feedback": "7 e 8 são os valores do pH, não de x; −log₁₀(x) está entre 7 e 8. O certo é entre 10⁻⁸ e 10⁻⁷." },
+          { "id": "d", "label": "Entre 70 e 80", "correct": false, "feedback": "70 e 80 multiplica o pH por 10 em vez de usar potência 10^(−pH). O certo é entre 10⁻⁸ e 10⁻⁷." },
+          { "id": "e", "label": "Entre 10⁻⁸ e 10⁻⁷", "correct": true, "feedback": "Isso. 7 < −log₁₀(x) < 8 dá −8 < log₁₀(x) < −7, logo 10⁻⁸ < x < 10⁻⁷." }
+        ]
+      }
+    ]
   }
 }

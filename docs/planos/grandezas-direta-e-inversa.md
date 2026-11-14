@@ -249,38 +249,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-grandezas-direta-e-inversa`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema grandezas diretamente e inversamente proporcionais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2020-moto`
+- **Enunciado:** "Moto faz 5 L/100 km (tanque 22 L) e sai cheia rumo a 500 km; no posto a 80 km do fim, quanto pôr para ir, rodar 200 km lá e voltar ao posto?"
+- **Fala do Paco:** "Calcule o que sobra no tanque após 420 km e compare com o gasto dos 360 km seguintes."
+- **Fonte:** ENEM 2020 (adaptada); Questão 160: enunciado resumido; alternativas e gabarito (17) mantidos; https://api.enem.dev/v1/exams/2020/questions/160
+- **Conta de conferência:** 420 km -> 21 L (sobra 1 L); 360 km -> 18 L; abastecer 18 − 1 = 17 L.
 
-#### V2 — `v2-grandezas-direta-e-inversa`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema grandezas diretamente e inversamente proporcionais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2021-boxes`
+- **Enunciado:** "Três pessoas trocam um pneu em 4 s (tempo inversamente proporcional à equipe); com um grupo reduzido a 2 pessoas, qual é o tempo total?"
+- **Fala do Paco:** "O produto pessoas × tempo é constante para trocar um pneu: 3 × 4 = 12."
+- **Fonte:** ENEM 2021 (adaptada); Questão 159: enunciado resumido; alternativas e gabarito (6,0) mantidos; https://api.enem.dev/v1/exams/2021/questions/159
+- **Conta de conferência:** 3 · 4 = 2 · t => t = 6,0 s.
 
-#### V3 — `v3-grandezas-direta-e-inversa`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema grandezas diretamente e inversamente proporcionais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2019-maquinas`
+- **Enunciado:** "R$ 31 000 serão divididos de forma inversamente proporcional às idades de 3 máquinas: 2, 3 e 5 anos; quanto recebe a de 5 anos?"
+- **Fala do Paco:** "Monte k/2 + k/3 + k/5 = 31 000 usando mmc(2, 3, 5) = 30."
+- **Fonte:** ENEM 2019 (adaptada); Questão 152: enunciado resumido; alternativas e gabarito (R$ 6.000,00) mantidos; https://api.enem.dev/v1/exams/2019/questions/152
+- **Conta de conferência:** 31k/30 = 31 000 => k = 30 000; 30 000 / 5 = R$ 6.000,00.
 
 #### V4 — `v4-grandezas-direta-e-inversa`
 - **Estado:** **PENDENTE-FONTE**

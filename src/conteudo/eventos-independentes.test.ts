@@ -121,6 +121,9 @@ describe("gabaritos do treino", () => {
   });
 
   it("vestibular", () => {
-    expect(L.treino.vestibular).toEqual([]);
+    eq(80 - 16, "enem-2023-urnas");
+    eq(4, "enem-2021-dardos");
+    eq(7 - 1, "enem-2019-placas");
+    for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
   });
 });

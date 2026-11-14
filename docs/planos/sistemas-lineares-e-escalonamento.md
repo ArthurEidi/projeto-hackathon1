@@ -261,38 +261,29 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-sistemas-lineares-e-escalonamento`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema sistemas lineares, classificação e escalonamento.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2023-tiquetes`
+- **Enunciado (resumido):** 2 cartelas de 9 tíquetes azuis e 1 de 9 vermelhos custam R$ 32,40. Se azul − vermelho = vermelho + 0,05, quanto custa a cartela vermelha?
+- **Fala do Paco:** "Divida tudo por 9 para achar o preço unitário: 2a + v = 3,60."
+- **Fonte:** ENEM 2023, Questão 175 — `https://api.enem.dev/v1/exams/2023/questions/175`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (6,30) mantidos.
+- **Conta de conferência:** `18a + 9v = 32,40 => 2a + v = 3,60`; `a = 2v + 0,05 => 5v = 3,50 => v = 0,70 => 9v = 6,30`.
+- **Opções e feedback:** 4,68, 6,30 (correta), 9,30, 10,50, 10,65.
 
-#### V2 — `v2-sistemas-lineares-e-escalonamento`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema sistemas lineares, classificação e escalonamento.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2022-circuitos`
+- **Enunciado (resumido):** 3 voltas no circuito maior e 2 no menor dão 1 800 m; 2 maiores e 1 menor dão 1 100 m. Qual o maior total de voltas inteiras para 5 000 m?
+- **Fala do Paco:** "Ache M e m pelo sistema e maximize x + y em 400x + 300y = 5 000."
+- **Fonte:** ENEM 2022, Questão 146 — `https://api.enem.dev/v1/exams/2022/questions/146`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (16) mantidos.
+- **Conta de conferência:** `3M + 2m = 1 800` e `2M + m = 1 100 => M = 400, m = 300`; `4x + 3y = 50 => (x, y) = (2, 14) => 16`.
+- **Opções e feedback:** 10, 13, 14, 15, 16 (correta).
 
-#### V3 — `v3-sistemas-lineares-e-escalonamento`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema sistemas lineares, classificação e escalonamento.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2018-rifa`
+- **Enunciado (resumido):** Numa rifa, 80 faltaram, 45 compraram 2 bilhetes, alguns 3 e x compraram 1. Se x = 20% dos bilhetes B e B = alunos + 33, quanto vale x?
+- **Fala do Paco:** "Escreva B e o total de alunos em função de x e y (quem comprou 3)."
+- **Fonte:** ENEM 2018, Questão 178 — `https://api.enem.dev/v1/exams/2018/questions/178`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (48) mantidos.
+- **Conta de conferência:** `B = 5x = x + 90 + 3y => 4x − 3y = 90`; `5x = x + y + 125 + 33 => 4x − y = 158`; `2y = 68 => y = 34 => x = 48`.
+- **Opções e feedback:** 34, 42, 47, 48 (correta), 79.
 
 #### V4 — `v4-sistemas-lineares-e-escalonamento`
 - **Estado:** **PENDENTE-FONTE**

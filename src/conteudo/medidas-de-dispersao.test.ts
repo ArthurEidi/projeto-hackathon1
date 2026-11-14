@@ -1,6 +1,6 @@
 // Medidas de Dispersão · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("aritmetica/estatistica/medidas-de-dispersao/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -98,5 +98,9 @@ describe("gabaritos do treino", () => {
     expect(ampl([4, 6, 4, 6])).toBe(2);
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: conta e fonte conferidas", () => {
+    expect(1.5 / (1 / 10)).toBeCloseTo(15, 10);
+    expect(num(certa("enem-2021-racao"))).toBe(15);
+    for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
+  });
 });

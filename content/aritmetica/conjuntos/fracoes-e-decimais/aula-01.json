@@ -515,6 +515,64 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2016-fibras",
+        "prompt": "Fibras por pão: A 2/50, B 5/40, C 5/100, D 6/90 e E 7/70; qual marca tem a maior concentração de fibras?",
+        "fala": "Converta cada fração para decimal ou compare com 1/10 = 0,10.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2016,
+          "adaptada": true,
+          "adaptacao": "Questão 154: enunciado resumido; alternativas e gabarito (B) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2016/questions/154"]
+        },
+        "options": [
+          { "id": "aa", "label": "A", "correct": false, "feedback": "A dá 2/50 = 0,04; a maior é B, com 5/40 = 0,125." },
+          { "id": "ab", "label": "B", "correct": true, "feedback": "Exato. 5/40 = 0,125 supera todas as outras (A=0,04; C=0,05; D≈0,067; E=0,10)." },
+          { "id": "ac", "label": "C", "correct": false, "feedback": "C dá 5/100 = 0,05; com o mesmo numerador 5, dividir por 40 (B) dá 0,125." },
+          { "id": "ad", "label": "D", "correct": false, "feedback": "D dá 6/90 ≈ 0,067, menor que 0,10; a maior é B, com 5/40 = 0,125." },
+          { "id": "ae", "label": "E", "correct": false, "feedback": "E dá 7/70 = 0,10; B tem 5/40 = 0,125, que é maior." }
+        ]
+      },
+      {
+        "id": "enem-2022-borrifador",
+        "prompt": "Um frasco de 360 mL dura 60 dias com 1 jato a cada 48 minutos; quantos mililitros saem por acionamento?",
+        "fala": "Converta 60 dias em minutos, divida por 48 e depois divida 360 mL pelo total de jatos.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 164: enunciado resumido; alternativas e gabarito (0,200) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2022/questions/164"]
+        },
+        "options": [
+          { "id": "a0125", "label": "0,125", "correct": false, "feedback": "0,125 erra o total de minutos; 60 × 24 × 60 ÷ 48 = 1800 jatos e 360 ÷ 1800 = 0,200." },
+          { "id": "a0200", "label": "0,200", "correct": true, "feedback": "Isso. São 86 400 ÷ 48 = 1800 acionamentos, e 360 ÷ 1800 = 0,200 mL." },
+          { "id": "a4800", "label": "4,800", "correct": false, "feedback": "4,800 esquece as 24 horas por dia; com 86 400 minutos, são 1800 jatos e 0,200 mL." },
+          { "id": "a6000", "label": "6,000", "correct": false, "feedback": "6,000 é 360 ÷ 60 (mL por dia); em 30 jatos por dia dá 6 ÷ 30 = 0,200 mL." },
+          { "id": "a12000", "label": "12,000", "correct": false, "feedback": "12,000 divide por 30 jatos diários em vez de 1800 no total; o certo é 0,200 mL." }
+        ]
+      },
+      {
+        "id": "enem-2021-loteamento",
+        "prompt": "De 3 ha (30 000 m²), 0,9 ha vai para ruas e o resto vira lotes de 300 m²; 20 a R$ 20 mil e os demais a R$ 30 mil; qual o total?",
+        "fala": "Subtraia 0,9 de 3 para achar a área útil em m² e divida por 300.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 178: enunciado resumido; alternativas e gabarito (1 900 000) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2021/questions/178"]
+        },
+        "options": [
+          { "id": "a700", "label": "700 000", "correct": false, "feedback": "700 000 erra a quantidade de lotes; são 21 000 ÷ 300 = 70 lotes e total 1 900 000." },
+          { "id": "a1600", "label": "1 600 000", "correct": false, "feedback": "1 600 000 erra os 50 lotes de 30 mil; 20 × 20 000 + 50 × 30 000 = 1 900 000." },
+          { "id": "a1900", "label": "1 900 000", "correct": true, "feedback": "Exato. 21 000 ÷ 300 = 70 lotes: 400 000 + 1 500 000 = 1 900 000." },
+          { "id": "a2200", "label": "2 200 000", "correct": false, "feedback": "2 200 000 não descontou 0,9 ha de ruas; com 70 lotes úteis dá 1 900 000." },
+          { "id": "a2800", "label": "2 800 000", "correct": false, "feedback": "2 800 000 usou todos os 3 ha sem descontar ruas; o correto é 1 900 000." }
+        ]
+      }
+    ]
   }
 }

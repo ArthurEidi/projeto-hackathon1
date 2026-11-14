@@ -239,20 +239,20 @@ O domínio reúne os intervalos declarados. Testamos abaixo, na fronteira e acim
 
 > Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
 
-#### V1 — `pendente-fonte-funcao-definida-por-partes-1`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V2 — `pendente-fonte-funcao-definida-por-partes-2`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V1 — `enem-2016-cotas`
+- **Enunciado (resumido):** A lei exige cota por faixa (5% acima de 1 000 empregados). Com 1 200 funcionários e 10 cotistas, quantos cotistas contratar no mínimo?
+- **Fala do Paco:** "Os novos contratados aumentam também o total da empresa: 1 200 + x."
+- **Fonte:** ENEM 2016, Questão 145 — `https://api.enem.dev/v1/exams/2016/questions/145`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (53) mantidos.
+- **Conta de conferência:** `10 + x >= 0,05(1 200 + x) => 0,95x >= 50 => x >= 52,63`, logo mínimo `53`.
+- **Opções e feedback:** 74, 70, 64, 60, 53 (correta).
+#### V2 — `enem-2023-pescador`
+- **Enunciado (resumido):** Peixe a R$ 5/kg: com 1 ajudante pesca 300 kg, e +100 kg por extra; custo R$ 900 + 250n + 4% da venda. Quantos n dão lucro ≥ R$ 800?
+- **Fala do Paco:** "Para n ≥ 1, a pesca é 300 + 100(n − 1) kg e sobram 96% da venda."
+- **Fonte:** ENEM 2023, Questão 158 — `https://api.enem.dev/v1/exams/2023/questions/158`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (4) mantidos.
+- **Conta de conferência:** `n = 3: 0,96·2 500 − 900 − 750 = 750 < 800`; `n = 4: 0,96·3 000 − 900 − 1 000 = 980 >= 800`, logo `4`.
+- **Opções e feedback:** 1, 2, 3, 4 (correta), 5.
 #### V3 — `pendente-fonte-funcao-definida-por-partes-3`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"

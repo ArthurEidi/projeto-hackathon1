@@ -291,9 +291,11 @@ Com quantidade par, a mediana é a média dos dois centrais. Pode haver duas mod
 | `a50` | 50% | não | "Com 50% a média seria 8,8. Para 9,0 os aprovados são 60%." |
 | `a60` | 60% | **sim** | "Isso. A = 1,5 E, então A é 60% do total." |
 
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** mediana ou moda lidas em tabela de frequências.
-- **Onde procurar:** ENEM (questões de "mediana" sem imagem).
+#### V4 — `enem-2020-basquete`
+- **Enunciado:** "Time de 15 atletas tem média 1,93 m e quer ir a 1,99 m trocando 4 baixos (soma 7,30 m) por 1 de 2,02 m e 3 novos; qual a média dos 3?"
+- **Fala do Paco:** "Calcule o ganho na soma das alturas (15 × 0,06 m) e some aos 7,30 m que saíram."
+- **Fonte:** ENEM 2020 (adaptada); Questão 165: enunciado resumido; alternativas e gabarito (2,06) mantidos; https://api.enem.dev/v1/exams/2020/questions/165
+- **Conta de conferência:** (7,30 + 15 · 0,06 − 2,02) / 3 = 6,18 / 3 = 2,06.
 
 ---
 **Notas da implementação (JSON):** `barras` modo `pontos` (apoio arrastável no passo 2 com `apoio_inicial` 2; maior peso arrastável no passo 3; `chaves: ["fila"]` e `tocar_meios` no passo 4). Vestibular: V1-V3 do plano incluídos (ENEM 2018, UFT 2013, EsSA 2012) com as URLs do plano; conferi só as contas, não reabri as fontes; V4 PENDENTE-FONTE fora. Lacunas: o alerta "mediana sem ordenar" do item g) não foi implementado (nenhum parâmetro o pede); c1 (soma) e c2 (quantidade) do fechamento não têm elemento desenhado na régua.

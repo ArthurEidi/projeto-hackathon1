@@ -1,6 +1,6 @@
 // Descontos, Acréscimos e Índices · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passosConcluiveis } from "./util";
 
 const L = carregar("aritmetica/proporcionalidade/descontos-acrescimos-e-indices/aula-01.json");
 const certa = (id: string) => certaDe(L, "descontos-acrescimos-e-indices-" + id);
@@ -40,5 +40,12 @@ describe("gabaritos do treino", () => {
     expect(1.2 * 0.8).toBeCloseTo(num(certa("d4")), 12);
     expect(((150 - 100) / 100) * 100).toBe(num(certa("d5")));
   });
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: contas e fontes conferidas", () => {
+    expect(1000 * 1.08 - 1000 * 1.1 * 0.98).toBeCloseTo(2, 10);
+    expect(certaDe(L, "enem-2022-geladeira")).toBe("R$ 2,00 menor");
+    expect(1250 * 1.072 * 1.1).toBeCloseTo(1474, 10);
+    expect(certaDe(L, "enem-2019-ibge")).toBe("R$ 1.474,00");
+    expect(((40000 - (150000 * 0.9 - 5000 - 125000)) / 40000) * 100).toBeCloseTo(num(certaDe(L, "enem-2019-piscina")), 10);
+    for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
+  });
 });

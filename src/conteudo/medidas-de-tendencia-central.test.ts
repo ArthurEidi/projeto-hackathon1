@@ -115,8 +115,9 @@ describe("gabaritos do treino", () => {
     expect(9.8 * 0.5 + 7.8 * 0.5).toBeCloseTo(8.8, 10);
   });
 
-  it("vestibular: três itens com fonte e URL (conferidos pelo plano, não rebuscados)", () => {
-    expect(L.treino.vestibular).toHaveLength(3);
+  it("vestibular: quatro itens com fonte e URL (conferidos pelo plano e API)", () => {
+    expect((7.3 + 15 * 0.06 - 2.02) / 3).toBeCloseTo(num(certa("enem-2020-basquete")), 10);
+    expect(L.treino.vestibular).toHaveLength(4);
     for (const v of L.treino.vestibular) {
       expect(v.fala, v.id).toBeTruthy();
       expect(v.fonte.urls.length, v.id).toBeGreaterThan(0);

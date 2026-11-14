@@ -239,13 +239,13 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 
 > Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
 
-#### V1 — `pendente-fonte-logaritmos-1`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V1 — `enem-2019-ph`
+- **Enunciado (resumido):** Sabendo que pH = −log₁₀(x) e a flor rosa mais valorizada exige 7 < pH < 8, em que intervalo deve estar x?
+- **Fala do Paco:** "Troque o sinal em 7 < −log₁₀(x) < 8 e aplique a base 10 nos dois extremos."
+- **Fonte:** ENEM 2019, Questão 137 — `https://api.enem.dev/v1/exams/2019/questions/137`
+- **Adaptação:** enunciado resumido; alternativas e gabarito (entre 10⁻⁸ e 10⁻⁷) mantidos.
+- **Conta de conferência:** `7 < −log₁₀(x) < 8 => −8 < log₁₀(x) < −7 => 10⁻⁸ < x < 10⁻⁷`.
+- **Opções e feedback:** Maiores que 10⁻⁸, Positivos menores que 10⁻⁷, Entre 7 e 8, Entre 70 e 80, Entre 10⁻⁸ e 10⁻⁷ (correta).
 #### V2 — `pendente-fonte-logaritmos-2`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"

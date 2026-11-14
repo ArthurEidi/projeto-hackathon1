@@ -1,6 +1,6 @@
 // Taxas Equivalentes e Inflação · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("aritmetica/proporcionalidade/taxas-equivalentes-e-inflacao/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -61,5 +61,9 @@ describe("gabaritos do treino", () => {
     expect(certa("taxas-equivalentes-e-inflacao-d5")).toBe("Não; 1,02¹² − 1");
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: conta e fonte conferidas", () => {
+    expect(1250 * 1.072 * 1.1).toBeCloseTo(1474, 10);
+    expect(certa("enem-2019-ibge")).toBe("R$ 1.474,00");
+    for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
+  });
 });

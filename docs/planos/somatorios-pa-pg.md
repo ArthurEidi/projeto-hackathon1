@@ -238,12 +238,12 @@ n é inteiro positivo. A fórmula da PG com 1−q exige q≠1; q=0 deixa apenas 
 
 > PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
 
-#### V1 — `pendente-fonte-somatorios-pa-pg-v1`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V1 — `enem-2018-tenis`
+- **Enunciado:** Em um torneio eliminatório simples com 128 tenistas, qual expressão dá o total de partidas até definir o campeão?
+- **Fala do Paco:** "Na 1ª fase, 128 tenistas formam 64 duplas (64 jogos); depois 32, 16 e assim por diante."
+- **Fonte:** ENEM 2018, Questão 162 — `https://api.enem.dev/v1/exams/2018/questions/162`
+- **Conta de conferência:** `128 / 2 = 64`; fases seguintes `32 + 16 + 8 + 4 + 2 + 1`, total `64 + 32 + 16 + 8 + 4 + 2 + 1 = 127`.
+- **Alternativas e feedback:** 2 · 128, 64 + ... + 2, 128 + ... + 1, 128 + ... + 2, 64 + 32 + 16 + 8 + 4 + 2 + 1 (correta).
 
 #### V2 — `pendente-fonte-somatorios-pa-pg-v2`
 - **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.

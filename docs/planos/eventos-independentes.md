@@ -245,17 +245,23 @@ Tirar sem reposição cria dependência: a segunda retirada vê uma urna diferen
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** regra do produto para eventos independentes (lançamentos).
-- **Onde procurar:** ENEM, UERJ, Unesp.
+#### V1 — `enem-2023-urnas`
+- **Enunciado:** "P(preta em A) = 20%; B tem 4 pretas e 12 brancas (25%); quantas brancas pôr em B para P(duas pretas) <= 1%?"
+- **Fala do Paco:** "Escreva P(A e B) = 0,20 × 4/(16 + x) <= 0,01 e isole x."
+- **Fonte:** ENEM 2023 (adaptada); Questão 138: enunciado resumido; alternativas e gabarito (64) mantidos; https://api.enem.dev/v1/exams/2023/questions/138
+- **Conta de conferência:** 0,20 · 4 / (16 + x) <= 0,01 => 16 + x >= 80 => x >= 64.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** com e sem reposição.
-- **Onde procurar:** Fuvest, UFRGS ("sem reposição").
+#### V2 — `enem-2021-dardos`
+- **Enunciado:** "Cada dardo acerta o alvo com chance 1/2; quantos dardos lançar para acertar pelo menos um com chance >= 9/10?"
+- **Fala do Paco:** "Use o complementar: a chance de errar todos os n dardos é (1/2)ⁿ <= 1/10."
+- **Fonte:** ENEM 2021 (adaptada); Questão 142: enunciado resumido; alternativas e gabarito (4) mantidos; https://api.enem.dev/v1/exams/2021/questions/142
+- **Conta de conferência:** 1 − (1/2)ⁿ >= 9/10 => 2ⁿ >= 10 => n = 4.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** pelo menos um sucesso em n tentativas independentes.
-- **Onde procurar:** ENEM ("pelo menos um"), Unicamp.
+#### V3 — `enem-2019-placas`
+- **Enunciado:** "Cada placa é vista com chance 1/2 e já existe 1 placa; quantas novas instalar para ver ao menos uma com chance > 99/100?"
+- **Fala do Paco:** "Ache o total n com (1/2)ⁿ < 1/100 e lembre de descontar a placa que já existe."
+- **Fonte:** ENEM 2019 (adaptada); Questão 159: enunciado resumido; alternativas e gabarito (6) mantidos; https://api.enem.dev/v1/exams/2019/questions/159
+- **Conta de conferência:** 1 − (1/2)ⁿ > 99/100 => 2ⁿ > 100 => n = 7; novas = 7 − 1 = 6.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** decidir se dois eventos são independentes.
