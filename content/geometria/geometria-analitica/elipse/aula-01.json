@@ -36,6 +36,7 @@
         "modo": "elipse",
         "a": 5,
         "c": "$c",
+        "prender_na_curva": true,
         "fantasma": {
           "c": 0
         }
@@ -111,6 +112,7 @@
         "modo": "elipse",
         "a": 5,
         "c": "$c",
+        "prender_na_curva": true,
         "fantasma": {
           "c": 3
         }
@@ -153,7 +155,8 @@
           "modo": "elipse",
           "a": 5,
           "c": 4,
-          "focos": false
+          "focos": false,
+          "prender_na_curva": true
         }
       },
       "options": [
@@ -161,25 +164,43 @@
           "id": "f4",
           "label": "(±4; 0)",
           "correct": true,
-          "feedback": "Isso. c² = 25 − 9 = 16, logo c = 4: focos em (±4; 0)."
+          "feedback": "Isso. c² = 25 − 9 = 16, logo c = 4: focos em (±4; 0).",
+          "figure": {
+            "focos": true,
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "f5",
           "label": "(±5; 0)",
           "correct": false,
-          "feedback": "(±5; 0) são os vértices nas pontas. Os focos ficam em c = √(25 − 9) = 4."
+          "feedback": "(±5; 0) são os vértices nas pontas. Os focos ficam em c = √(25 − 9) = 4.",
+          "figure": {
+            "focos": true,
+            "ponto": [5, 0],
+            "highlight": ["c1"]
+          }
         },
         {
           "id": "f3",
           "label": "(±3; 0)",
           "correct": false,
-          "feedback": "3 é o semieixo menor b. Os focos ficam em c = √(25 − 9) = 4."
+          "feedback": "3 é o semieixo menor b. Os focos ficam em c = √(25 − 9) = 4.",
+          "figure": {
+            "focos": true,
+            "ponto": [0, 3],
+            "highlight": ["c2"]
+          }
         },
         {
           "id": "f34",
           "label": "(±√34; 0)",
           "correct": false,
-          "feedback": "Você somou 25 + 9. Na elipse temos c² = a² − b² = 16, logo c = 4."
+          "feedback": "Você somou 25 + 9. Na elipse temos c² = a² − b² = 16, logo c = 4.",
+          "figure": {
+            "focos": true,
+            "highlight": ["c1", "c2", "c3"]
+          }
         }
       ]
     },
@@ -192,6 +213,7 @@
           "modo": "elipse",
           "a": 5,
           "c": 3,
+          "prender_na_curva": true,
           "mostrar": {
             "triangulo": true
           }
@@ -203,18 +225,17 @@
           "ref": "c1"
         },
         {
-          "text": " + "
+          "text": "+"
         },
         {
           "text": "y²/b²",
           "ref": "c2"
         },
         {
-          "text": " = 1 ; "
+          "text": "="
         },
         {
-          "text": "a² = b² + c²",
-          "ref": "c3"
+          "text": "1"
         }
       ],
       "definitions": [

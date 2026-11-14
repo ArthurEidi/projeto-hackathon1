@@ -35,7 +35,8 @@
       "params": {
         "modo": "hiperbole",
         "c": 5,
-        "diferenca": "$diferenca"
+        "diferenca": "$diferenca",
+        "prender_na_curva": true
       },
       "controls": [
         {
@@ -89,8 +90,9 @@
         "modo": "hiperbole",
         "c": 5,
         "a": 3,
+        "prender_na_curva": true,
         "mostrar": {
-          "retangulo": true
+          "retangulo": false
         }
       },
       "lines": {
@@ -111,6 +113,7 @@
         "c": 5,
         "a": 3,
         "zoom": "$zoom",
+        "prender_na_curva": true,
         "mostrar": {
           "assintotas": true
         }
@@ -153,7 +156,8 @@
           "modo": "hiperbole",
           "a": 3,
           "c": 5,
-          "focos": false
+          "focos": false,
+          "prender_na_curva": true
         }
       },
       "options": [
@@ -161,25 +165,48 @@
           "id": "f5",
           "label": "(±5; 0)",
           "correct": true,
-          "feedback": "Isso. c² = 9 + 16 = 25, logo c = 5: focos em (±5; 0)."
+          "feedback": "Isso. c² = 9 + 16 = 25, logo c = 5: focos em (±5; 0).",
+          "figure": {
+            "focos": true,
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "f-raiz7",
           "label": "(±√7; 0)",
           "correct": false,
-          "feedback": "Você subtraiu como na elipse. Na hipérbole c² = a² + b² = 25, logo c = 5."
+          "feedback": "Você subtraiu como na elipse. Na hipérbole c² = a² + b² = 25, logo c = 5.",
+          "figure": {
+            "focos": true,
+            "mostrar": {
+              "retangulo": true
+            },
+            "highlight": ["c1", "c2", "c3"]
+          }
         },
         {
           "id": "f3",
           "label": "(±3; 0)",
           "correct": false,
-          "feedback": "(±3; 0) são os vértices nas pontas. Os focos ficam em c = 5."
+          "feedback": "(±3; 0) são os vértices nas pontas. Os focos ficam em c = 5.",
+          "figure": {
+            "focos": true,
+            "ponto": [3, 0],
+            "highlight": ["c1"]
+          }
         },
         {
           "id": "f4",
           "label": "(±4; 0)",
           "correct": false,
-          "feedback": "4 é b. Pelo triângulo retângulo c = √(9 + 16) = 5."
+          "feedback": "4 é b. Pelo triângulo retângulo c = √(9 + 16) = 5.",
+          "figure": {
+            "focos": true,
+            "mostrar": {
+              "retangulo": true
+            },
+            "highlight": ["c2"]
+          }
         }
       ]
     },
@@ -192,6 +219,7 @@
           "modo": "hiperbole",
           "a": 3,
           "c": 5,
+          "prender_na_curva": true,
           "mostrar": {
             "retangulo": true,
             "assintotas": true
@@ -204,18 +232,17 @@
           "ref": "c1"
         },
         {
-          "text": " − "
+          "text": "−"
         },
         {
           "text": "y²/b²",
           "ref": "c2"
         },
         {
-          "text": " = 1 ; "
+          "text": "="
         },
         {
-          "text": "c² = a² + b²",
-          "ref": "c3"
+          "text": "1"
         }
       ],
       "definitions": [

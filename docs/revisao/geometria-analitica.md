@@ -27,6 +27,23 @@ Conferência em `docs/visual/geometria.md` (apenas itens de tipo `conteúdo`):
 - `reta-equacao-e-inclinacao` · passo 5 `desafio-equacao`, alt. `"y = 4x − 1"`: adicionado `"ponto": { "curva": 0, "x": 1, "coordenadas": false }` em `figure` para não esconder o chip `"+2"` do triângulo atrás do rótulo `"(1; 3)"`.
 - `reta-equacao-e-inclinacao` · passo 5 `desafio-equacao`, alt. `"y = x + 2"`: janela `y` ampliada de `[-2, 8]` para `[-2, 9]` para dar folga no topo entre `"(3; 7)"` e `"y = 2x + 1"`.
 - `reta-equacao-e-inclinacao` · passo 6 `fechamento`: fórmula encurtada de 12 peças (`y = m x + n ; m = Δy / Δx`) para 6 peças (`y = m x + n`, mantendo `n` ligado a `c4`), cabendo em 400 px (a razão `m = Δy/Δx` já consta na definição de Coeficiente angular).
+- `posicoes-relativas-de-retas` · passo 3 `achar-encontro`: removidos `marcar.encontro`, `marcar.quadrantes` e `cores.encontro` para não revelar `(2; 3)` antes de o aluno arrastar o ponto nem tingir os quadrantes.
+- `posicoes-relativas-de-retas` · passo 4 `angulo-reto`: `complete_when` ajustado para `{ "metric": "m2", "gte": -1, "lte": -1 }`, exigindo `m₂ = −1` exato.
+- `posicoes-relativas-de-retas` · passo 5 `desafio-posicao`: adicionadas `figure` às 4 opções (`highlight: ["c1", "c2"]` na certa; `marcar.encontro` em Concorrentes; `highlight: ["c2"]` em Coincidentes; `marcar.angulo` em Perpendiculares).
+- `circunferencia-equacao-e-posicoes` · passos 1 a 4: `ponto` inicial movido de `[1, 1]` para `[2, -3]`, evitando sobreposição dos pegadores/rótulos de `C` e `P`.
+- `circunferencia-equacao-e-posicoes` · passo 5 `desafio-ler-equacao`: adicionadas `figure` às 3 opções erradas (`rotulos: true` + `highlight: ["c1"]` ou `["c2"]`).
+- `circunferencia-equacao-e-posicoes` · passo 6 `fechamento`: fórmula quebrada em 5 tokens curtos `(x − a)² + (y − b)² = r²` (com `c1` e `c2`) para não quebrar dentro dos botões em 400 px.
+- `vetores-no-plano` · passo 5 `desafio-soma`: na opção certa (`(6; 2)`), `v` agora usa `preso_em: "u"` para mostrar o encaixe na ponta de `u`; adicionadas `figure` às 3 opções erradas (incluindo `d = (2; −4)` em `(2; −4)` = `v − u`).
+- `parabola-conica` · passos 1 `vertice` e 2 `tracar`: adicionado `curva_oculta: true` para preservar a descoberta da curva.
+- `parabola-conica` · passo 5 `desafio-foco`: adicionadas `figure` às 4 opções (`focos: true` na certa em `(0; 2)`, e `focos: true` + `ponto` correspondente nas 3 erradas).
+- `parabola-conica` · passo 6 `fechamento`: fórmula encurtada para 5 tokens `x² = 4 p y` (`p` em `c1`) para caber em uma linha em 400 px.
+- `elipse` · passos 1 `focos-juntos`, 4 `achatar`, 5 `desafio-focos` e 6 `fechamento`: adicionado `prender_na_curva: true` para `P` permanecer sobre a curva (`PF₁ + PF₂ = 2a`).
+- `elipse` · passo 5 `desafio-focos`: adicionadas `figure` às 4 opções (`focos: true` + `highlight` / `ponto` em `(5; 0)` e `(0; 3)`).
+- `elipse` · passo 6 `fechamento`: fórmula encurtada para 5 tokens `x²/a² + y²/b² = 1` (`c1`, `c2`), mantendo `a² = b² + c²` na definição.
+- `hiperbole` · passos 1, 3, 4, 5 e 6: adicionado `prender_na_curva: true` para `P` permanecer sobre os ramos da curva.
+- `hiperbole` · passo 3 `triangulo-invertido`: `mostrar.retangulo` alterado de `true` para `false`, mantendo a descoberta ao clicar no botão.
+- `hiperbole` · passo 5 `desafio-focos`: adicionadas `figure` às 4 opções (`focos: true` + `highlight` / `mostrar.retangulo` / `ponto`).
+- `hiperbole` · passo 6 `fechamento`: fórmula encurtada para 5 tokens `x²/a² − y²/b² = 1` (`c1`, `c2`), mantendo `c² = a² + b²` na definição.
 
 
 ## Auditoria do maestro (Claude, Máquina B, 13/11)

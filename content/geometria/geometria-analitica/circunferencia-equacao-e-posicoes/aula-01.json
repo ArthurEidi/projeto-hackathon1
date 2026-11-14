@@ -38,8 +38,8 @@
         ],
         "raio": 5,
         "ponto": [
-          1,
-          1
+          2,
+          -3
         ],
         "curva_oculta": true,
         "ponto_arrastavel": true,
@@ -71,8 +71,8 @@
         ],
         "raio": 5,
         "ponto": [
-          1,
-          1
+          2,
+          -3
         ],
         "curva_oculta": false,
         "ponto_arrastavel": false,
@@ -109,8 +109,8 @@
         ],
         "raio": 5,
         "ponto": [
-          1,
-          1
+          2,
+          -3
         ],
         "curva_oculta": false,
         "ponto_arrastavel": true,
@@ -137,8 +137,8 @@
         ],
         "raio": 3,
         "ponto": [
-          1,
-          1
+          2,
+          -3
         ],
         "curva_oculta": false,
         "ponto_arrastavel": false,
@@ -210,19 +210,37 @@
           "id": "cm21r3",
           "label": "(−2; 1) e 3",
           "correct": false,
-          "feedback": "Os sinais saem trocados: x − 2 dá a = 2 e y + 1 dá b = −1."
+          "feedback": "Os sinais saem trocados: x − 2 dá a = 2 e y + 1 dá b = −1.",
+          "figure": {
+            "rotulos": true,
+            "highlight": [
+              "c1"
+            ]
+          }
         },
         {
           "id": "c2m1r9",
           "label": "(2; −1) e 9",
           "correct": false,
-          "feedback": "9 é r². O raio é 3."
+          "feedback": "9 é r². O raio é 3.",
+          "figure": {
+            "rotulos": true,
+            "highlight": [
+              "c2"
+            ]
+          }
         },
         {
           "id": "c21r3",
           "label": "(2; 1) e 3",
           "correct": false,
-          "feedback": "y + 1 = y − (−1): b = −1, não 1."
+          "feedback": "y + 1 = y − (−1): b = −1, não 1.",
+          "figure": {
+            "rotulos": true,
+            "highlight": [
+              "c1"
+            ]
+          }
         }
       ]
     },
@@ -246,22 +264,22 @@
       },
       "formula": [
         {
-          "text": "(x − a)² + (y − b)²",
-          "ref": "c4"
+          "text": "(x − a)²",
+          "ref": "c1"
         },
         {
-          "text": " = "
+          "text": "+"
+        },
+        {
+          "text": "(y − b)²",
+          "ref": "c1"
+        },
+        {
+          "text": "="
         },
         {
           "text": "r²",
           "ref": "c2"
-        },
-        {
-          "text": ", centro "
-        },
-        {
-          "text": "(a; b)",
-          "ref": "c1"
         }
       ],
       "definitions": [

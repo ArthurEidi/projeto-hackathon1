@@ -154,13 +154,6 @@
           "curva": 0,
           "x": 0,
           "passo": 0.5
-        },
-        "marcar": {
-          "encontro": true,
-          "quadrantes": true
-        },
-        "cores": {
-          "encontro": "c3"
         }
       },
       "complete_when": {
@@ -215,6 +208,7 @@
       },
       "complete_when": {
         "metric": "m2",
+        "gte": -1,
         "lte": -1
       },
       "lines": {
@@ -262,25 +256,44 @@
           "id": "paralelas",
           "label": "Paralelas",
           "correct": true,
-          "feedback": "Isso. Mesmo m, cortes diferentes: nunca se encontram."
+          "feedback": "Isso. Mesmo m, cortes diferentes: nunca se encontram.",
+          "figure": {
+            "highlight": ["c1", "c2"]
+          }
         },
         {
           "id": "concorrentes",
           "label": "Concorrentes",
           "correct": false,
-          "feedback": "Concorrentes precisam de m diferentes. Aqui ambos são 2: paralelas."
+          "feedback": "Concorrentes precisam de m diferentes. Aqui ambos são 2: paralelas.",
+          "figure": {
+            "marcar": {
+              "encontro": true
+            }
+          }
         },
         {
           "id": "coincidentes",
           "label": "Coincidentes",
           "correct": false,
-          "feedback": "Os cortes são 1 e −3, então não são a mesma reta. Paralelas."
+          "feedback": "Os cortes são 1 e −3, então não são a mesma reta. Paralelas.",
+          "figure": {
+            "highlight": ["c2"]
+          }
         },
         {
           "id": "perpendiculares",
           "label": "Perpendiculares",
           "correct": false,
-          "feedback": "2 · 2 = 4, não −1. Com o mesmo m, são paralelas."
+          "feedback": "2 · 2 = 4, não −1. Com o mesmo m, são paralelas.",
+          "figure": {
+            "marcar": {
+              "angulo": true
+            },
+            "cores": {
+              "angulo": "c4"
+            }
+          }
         }
       ]
     },

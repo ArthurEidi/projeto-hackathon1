@@ -197,6 +197,20 @@
           "correct": true,
           "feedback": "Isso. 2 + 4 e 3 + (−1).",
           "figure": {
+            "vetores": [
+              {
+                "id": "u",
+                "cauda": [0, 0],
+                "comp": [2, 3],
+                "arrastavel": "nenhum"
+              },
+              {
+                "id": "v",
+                "comp": [4, -1],
+                "arrastavel": "nenhum",
+                "preso_em": "u"
+              }
+            ],
             "mostrar_soma": true
           }
         },
@@ -204,19 +218,48 @@
           "id": "s8m3",
           "label": "(8; −3)",
           "correct": false,
-          "feedback": "Isso multiplica componentes. A soma é (2 + 4; 3 − 1) = (6; 2)."
+          "feedback": "Isso multiplica componentes. A soma é (2 + 4; 3 − 1) = (6; 2).",
+          "figure": {
+            "highlight": ["c1", "c2"]
+          }
         },
         {
           "id": "s2m4",
           "label": "(2; −4)",
           "correct": false,
-          "feedback": "Isso é v − u. A soma é (6; 2)."
+          "feedback": "Isso é v − u. A soma é (6; 2).",
+          "figure": {
+            "vetores": [
+              {
+                "id": "u",
+                "cauda": [0, 0],
+                "comp": [2, 3],
+                "arrastavel": "nenhum"
+              },
+              {
+                "id": "v",
+                "cauda": [0, 0],
+                "comp": [4, -1],
+                "arrastavel": "nenhum"
+              },
+              {
+                "id": "d",
+                "cauda": [2, 3],
+                "comp": [2, -4],
+                "arrastavel": "nenhum"
+              }
+            ],
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "s64",
           "label": "(6; 4)",
           "correct": false,
-          "feedback": "O −1 de v desce. 3 + (−1) = 2: (6; 2)."
+          "feedback": "O −1 de v desce. 3 + (−1) = 2: (6; 2).",
+          "figure": {
+            "highlight": ["c2"]
+          }
         }
       ]
     },

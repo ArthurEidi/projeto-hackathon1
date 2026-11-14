@@ -35,7 +35,8 @@
       "params": {
         "modo": "parabola",
         "p": 1,
-        "prender_no_eixo": true
+        "prender_no_eixo": true,
+        "curva_oculta": true
       },
       "lines": {
         "intro": "O foco está em (0; 1) e a diretriz é y = −1. Que ponto do eixo y fica à mesma distância dos dois?",
@@ -57,7 +58,8 @@
       "widget": "lugar_geometrico",
       "params": {
         "modo": "parabola",
-        "p": 1
+        "p": 1,
+        "curva_oculta": true
       },
       "lines": {
         "intro": "Procure outros pontos à mesma distância do foco e da diretriz. Teste (2; 1): quanto mede cada distância?",
@@ -141,25 +143,45 @@
           "id": "f02",
           "label": "(0; 2)",
           "correct": true,
-          "feedback": "Isso. 4p = 8, logo p = 2 e o foco fica em (0; 2)."
+          "feedback": "Isso. 4p = 8, logo p = 2 e o foco fica em (0; 2).",
+          "figure": {
+            "focos": true,
+            "ponto": [0, 2],
+            "highlight": ["c1"]
+          }
         },
         {
           "id": "f08",
           "label": "(0; 8)",
           "correct": false,
-          "feedback": "8 é 4p. O foco fica na altura p = 8/4 = 2: (0; 2)."
+          "feedback": "8 é 4p. O foco fica na altura p = 8/4 = 2: (0; 2).",
+          "figure": {
+            "focos": true,
+            "ponto": [0, 8],
+            "highlight": ["c1"]
+          }
         },
         {
           "id": "f20",
           "label": "(2; 0)",
           "correct": false,
-          "feedback": "O eixo da parábola é vertical: o foco fica no eixo y: (0; 2)."
+          "feedback": "O eixo da parábola é vertical: o foco fica no eixo y: (0; 2).",
+          "figure": {
+            "focos": true,
+            "ponto": [2, 0],
+            "highlight": ["c1"]
+          }
         },
         {
           "id": "f04",
           "label": "(0; 4)",
           "correct": false,
-          "feedback": "Divida por 4, não por 2: p = 8/4 = 2, logo (0; 2)."
+          "feedback": "Divida por 4, não por 2: p = 8/4 = 2, logo (0; 2).",
+          "figure": {
+            "focos": true,
+            "ponto": [0, 4],
+            "highlight": ["c1"]
+          }
         }
       ]
     },
@@ -175,18 +197,20 @@
       },
       "formula": [
         {
-          "text": "x² = 4 · "
+          "text": "x²"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "4"
         },
         {
           "text": "p",
           "ref": "c1"
         },
         {
-          "text": " · y ;  diretriz "
-        },
-        {
-          "text": "y = −p",
-          "ref": "c2"
+          "text": "y"
         }
       ],
       "definitions": [
