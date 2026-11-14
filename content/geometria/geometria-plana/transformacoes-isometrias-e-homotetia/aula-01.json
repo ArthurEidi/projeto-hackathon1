@@ -118,7 +118,7 @@
       ],
       "lines": {
         "intro": "Em k = 1 a imagem tem área 2. Leve k até 2 para dobrar a distância ao centro O, e depois teste k = −1: o que acontece?",
-        "done": "Em k = 2 os lados dobram e a área multiplica por 2² = 4; já em k = −1 os raios atravessam o centro O e a imagem fica de cabeça para baixo!"
+        "done": "Em k ≤ −1 os raios atravessam o centro O e a imagem vira de ponta-cabeça! Em geral, |k| escala os lados e k² escala a área."
       },
       "duvida": {
         "quando": "fim",
@@ -139,7 +139,7 @@
           "modo": "isometria",
           "transformacao": "homotetia",
           "figura": "triangulo",
-          "k": 3
+          "k": 1
         }
       },
       "lines": {
@@ -151,25 +151,29 @@
           "id": "a54",
           "label": "54 cm²",
           "correct": true,
-          "feedback": "Exato. Na homotetia de razão k = 3, a área multiplica por k² = 3² = 9: 6 · 9 = 54 cm²."
+          "feedback": "Exato. Na homotetia de razão k = 3, a área multiplica por k² = 3² = 9: 6 · 9 = 54 cm².",
+          "figure": { "k": 3, "highlight": ["c4"] }
         },
         {
           "id": "a18",
           "label": "18 cm²",
           "correct": false,
-          "feedback": "Multiplicar por 3 vale para lados e perímetro. A área multiplica por 3² = 9: 6 · 9 = 54 cm²."
+          "feedback": "Multiplicar por 3 vale para lados e perímetro. A área multiplica por 3² = 9: 6 · 9 = 54 cm².",
+          "figure": { "k": 1, "highlight": ["c4"] }
         },
         {
           "id": "a24",
           "label": "24 cm²",
           "correct": false,
-          "feedback": "24 seria para k = 2 (×4). Para k = 3, multiplicamos por 3² = 9: 6 · 9 = 54 cm²."
+          "feedback": "24 seria para k = 2 (×4). Para k = 3, multiplicamos por 3² = 9: 6 · 9 = 54 cm².",
+          "figure": { "k": 2, "highlight": ["c4"] }
         },
         {
           "id": "a6",
           "label": "6 cm²",
           "correct": false,
-          "feedback": "6 cm² seria numa isometria (k = 1). Na homotetia k = 3, a área vai para 6 · 9 = 54 cm²."
+          "feedback": "6 cm² seria numa isometria (k = 1). Na homotetia k = 3, a área vai para 6 · 9 = 54 cm².",
+          "figure": { "k": 1, "highlight": ["c1"] }
         }
       ]
     },
@@ -186,9 +190,9 @@
         }
       },
       "formula": [
-        { "text": "Isometrias: L' = L, A' = A", "ref": "c1" },
-        { "text": " e " },
-        { "text": "Homotetia: L' = |k|·L, A' = k²·A", "ref": "c4" }
+        { "text": "L′ = L, A′ = A", "ref": "c1" },
+        { "text": ";" },
+        { "text": "L′ = |k|L, A′ = k²A", "ref": "c4" }
       ],
       "definitions": [
         {

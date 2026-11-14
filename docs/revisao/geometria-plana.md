@@ -30,3 +30,55 @@ Conferidas uma a uma todas as alterações deste setor (cerca de 60 feedbacks e 
 - `area-do-circulo-e-setores` pizza alt. "16": → "Você elevou ao quadrado duas vezes (2² = 4 e 4² = 16)..."
 - `area-do-circulo-e-setores` área pelo diâmetro alt. "12π": → "usou o diâmetro como raio na fórmula do comprimento (2π · 6 = 12π)..."
 As falas de passo generalizadas conferem com os `complete_when`.
+
+## Correções da conferência visual
+
+### Gemini 4 Hydrogen (primeiros 7 capítulos)
+
+- `angulos-retas-paralelas`:
+  - `desafio-colaterais`: `rotulos` ajustado de `"s-se": "x"` para `"r-se": "x"` (chave ativa no foco `colaterais`) e adicionadas `figure` coerentes nas 4 alternativas (`a115`, `a65`, `a25`, `a125`).
+  - `fechamento`: `formula` encurtada para caber em 400 px (`α`, `+`, `β`, `= 180°`).
+- `area-do-circulo-e-setores`:
+  - `desafio-setor-90`: adicionadas `figure` coerentes nas 4 alternativas (`a4p`, `a16p`, `a8p`, `a2p`).
+  - `fechamento`: `formula` encurtada para caber em 400 px e removidos sublinhados crus (`A_setor`, `A_coroa`).
+- `circunferencia-arcos-e-angulos`:
+  - `desafio-inscrito`: ocultada a medida na figura base (`mostrar.medidas: false`) e adicionadas `figure` com `medidas: true` nas 4 alternativas (`a70`, `a175`, `a35`, `a145`).
+- `comprimento-da-circunferencia`:
+  - `desafio-comprimento`: adicionadas `figure` coerentes nas 4 alternativas (`a628`, `a314`, `a3140`, `a20`); contas com `3,14` já fechavam.
+- `perimetro-e-area-de-figuras-planas`:
+  - `retangulo-malha`: `h.initial` alterado de `1` para `3` e `lines.intro` ajustado para alinhar com `b >= 4` e `4×3 = 12`.
+  - `desafio-trapezio`: ocultadas área e perímetro na figura base (`mostrar.area: false`, `perimetro: false`, `alturas: true`) e adicionadas `figure` coerentes nas 4 alternativas (`a15`, `a30`, `a18`, `a13`).
+- `poligonos-e-quadrilateros`:
+  - `diagonais-dos-quadrilateros`: `lines.intro` e `lines.done` ajustados para não prometer quadrado no controle deslizante (que vai até losango).
+  - `desafio-soma-pentagono`: `diagonais: false` na figura base e adicionadas `figure` com `diagonais: true` nas 4 alternativas (`g540`, `g360`, `g720`, `g900`).
+  - `fechamento` e demais ocorrências (`glossario`, `treino`): `formula` encurtada e substituídos `S_i`/`S_e` por `Sᵢ`/`Sₑ`.
+- `poligonos-regulares`:
+  - `desafio-angulo-octogono`: adicionadas `figure` coerentes nas 4 alternativas (`g135`, `g45`, `g120`, `g1080`).
+  - `fechamento` e demais ocorrências (`glossario`, `atalho-pelo-externo`, `treino`): `formula` encurtada e substituídos `a_c`/`a_e`/`a_i` por `central`/`aₑ`/`aᵢ`.
+
+Verificação: `npx vitest run --configLoader runner` nos 7 testes de capítulo (7 arquivos, 112 testes) e `npm run lint:content` (`conteúdo ok`) passaram após as edições.
+
+
+### Antigravity #2 (6 capítulos finais)
+
+- `relacoes-metricas-triangulo-retangulo`:
+  - `desafio-altura-hipotenusa`: adicionadas `figure` reativas (`highlight`) nas 4 alternativas (`h6`, `h13`, `h36`, `h65`); ocultação do rótulo `h` depende do widget (Máquina A).
+  - `fechamento`: `formula` encurtada para caber em 400 px (`h²`, `=`, `m·n`, `;`, `b²`, `=`, `a·m`).
+- `semelhanca-e-teorema-de-tales`:
+  - `desafio-tales`: corrigido `"override"` para `"figure"` em `a9` e adicionadas `figure` coerentes nas outras 3 alternativas (`a8`, `a4`, `a10`); ocultação do rótulo `9` depende do widget (Máquina A) e prefixo `"Resposta: 9;"` preservado.
+  - `fechamento`: `formula` encurtada para 5 tokens (`a′/a`, `=`, `b′/b`, `=`, `k`).
+- `teorema-de-pitagoras`:
+  - `ternas-e-diagonal`: `lines.intro` e `lines.done` ajustados para valerem com o botão `"Quadrado e diagonal"` sem supor que `b = 6` foi testado antes nem citar `"lado 5"`.
+  - `desafio-achar-cateto`: `quadrados: false` na figura base para não entregar `"c² = 36"` e adicionadas `figure` nas 4 alternativas (`a6`, `a36`, `a2`, `a12-8`).
+- `transformacoes-isometrias-e-homotetia`:
+  - `homotetia-positiva-e-negativa`: `lines.done` ajustado para `complete_when` (`k <= -1`), sem assumir que `k = 2` foi visitado.
+  - `desafio-homotetia-area`: figura base ajustada para `k: 1` (sem vazar `k² = 9`) e adicionadas `figure` nas 4 alternativas (`a54`, `a18`, `a24`, `a6`).
+  - `fechamento`: `formula` encurtada para caber em 400 px (`L′ = L, A′ = A`, `;`, `L′ = |k|L, A′ = k²A`).
+- `triangulos-congruencia-e-propriedades`:
+  - `angulo-externo` e `fechamento`: texto corrigido para o que o widget desenha (externo em B forma meia-volta com `β = 40°` e vale `α + γ`, não `α + β`); `formula` do fechamento encurtada para 6 tokens (`α+β`, `+`, `γ`, `=180°;`, `e`, `=α+γ`).
+  - `desafio-isosceles-externo`: corrigido `"override"` para `"figure"` em `a70` e adicionadas `figure` nas outras 3 alternativas (`a140`, `a40`, `a50`); prefixo `"Resposta: 70°;"` preservado.
+- `triangulos-notaveis-e-construcoes`:
+  - `desafio-triangulo-30-60`: `cortar: 0` na figura base (não entrega `"L/2 = 5"` e `"h = 8,66"`), corrigido `"override"` para `"figure"` em `c55r3` e adicionadas `figure` nas 4 alternativas (`c55r3`, `c5r35`, `c55r2`, `c10r3`); prefixo `"Resposta: 5 cm e 5√3 cm;"` preservado.
+  - `fechamento`: `formula` encurtada para caber em 400 px (`d=L√2`, `;`, `c=L/2`, `;`, `h=L√3/2`).
+
+Verificação: `npx vitest run` nos 6 testes de capítulo (6 arquivos, 69 testes: `relacoes-metricas` 18, `semelhanca` 6, `pitagoras` 19, `transformacoes` 14, `triangulos-congruencia` 6, `triangulos-notaveis` 6) e `npm run lint:content` (`conteúdo ok`) passaram após as edições.

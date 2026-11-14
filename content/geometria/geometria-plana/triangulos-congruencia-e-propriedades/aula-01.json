@@ -80,8 +80,8 @@
         "gte": 70
       },
       "lines": {
-        "intro": "O ângulo externo e o interno γ formam meia-volta (180°). Mude α para 70° (com β = 40°): quanto vale o externo e?",
-        "done": "Vale sempre α + 40° (em 70°, dá 110°). Como o externo e α + β completam 180° com γ, o externo é sempre α + β."
+        "intro": "O ângulo externo em B e o interno β = 40° formam meia-volta (180°). Mude α até 70°: a soma α + γ muda ou fica igual ao externo?",
+        "done": "Fica sempre igual a 140°! Como β = 40° completa 180° tanto com o externo quanto com α + γ, o externo em B é sempre α + γ."
       }
     },
     {
@@ -162,27 +162,28 @@
           "label": "70°",
           "correct": true,
           "feedback": "Isso. Faltam 180° − 40° = 140°, divididos igualmente nos dois da base: 70° cada.",
-          "override": {
-            "highlight": ["c1", "c2"]
-          }
+          "figure": { "highlight": ["c1", "c2"] }
         },
         {
           "id": "a140",
           "label": "140°",
           "correct": false,
-          "feedback": "Resposta: 70°; 140° é a soma dos dois da base. Como são iguais, cada um mede 140° / 2 = 70°."
+          "feedback": "Resposta: 70°; 140° é a soma dos dois da base. Como são iguais, cada um mede 140° / 2 = 70°.",
+          "figure": { "highlight": ["c1"] }
         },
         {
           "id": "a40",
           "label": "40°",
           "correct": false,
-          "feedback": "Resposta: 70°; Três de 40° somariam 120°, não 180°. Na base cada um mede (180° − 40°) / 2 = 70°."
+          "feedback": "Resposta: 70°; Três de 40° somariam 120°, não 180°. Na base cada um mede (180° − 40°) / 2 = 70°.",
+          "figure": { "alfa": 40, "beta": 40, "highlight": ["c1"] }
         },
         {
           "id": "a50",
           "label": "50°",
           "correct": false,
-          "feedback": "Resposta: 70°; 50° + 50° + 40° dá 140°. Para fechar 180°, cada ângulo da base mede 70°."
+          "feedback": "Resposta: 70°; 50° + 50° + 40° dá 140°. Para fechar 180°, cada ângulo da base mede 70°.",
+          "figure": { "alfa": 50, "beta": 50, "highlight": ["c1", "c2"] }
         }
       ]
     },
@@ -202,15 +203,12 @@
         }
       },
       "formula": [
-        { "text": "α + β", "ref": "c1" },
+        { "text": "α+β", "ref": "c1" },
         { "text": "+" },
         { "text": "γ", "ref": "c2" },
-        { "text": "=" },
-        { "text": "180°" },
-        { "text": ";" },
+        { "text": "=180°;" },
         { "text": "e", "ref": "c3" },
-        { "text": "=" },
-        { "text": "α + β", "ref": "c1" }
+        { "text": "=α+γ" }
       ],
       "definitions": [
         {
@@ -227,7 +225,7 @@
         }
       ],
       "lines": {
-        "intro": "A paralela no topo junta os três ângulos internos numa meia-volta, por isso a soma dá 180° e o externo vale α + β.",
+        "intro": "A paralela no topo junta os três ângulos internos numa meia-volta, por isso a soma dá 180° e o externo em B vale α + γ.",
         "hint": "Toque nos símbolos da fórmula para ver cada parte no triângulo."
       }
     }

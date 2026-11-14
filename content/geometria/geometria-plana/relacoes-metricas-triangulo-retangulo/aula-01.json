@@ -149,25 +149,29 @@
           "id": "h6",
           "label": "6 cm",
           "correct": true,
-          "feedback": "Exato. Como h² = m · n = 4 · 9 = 36, temos h = √36 = 6 cm."
+          "feedback": "Exato. Como h² = m · n = 4 · 9 = 36, temos h = √36 = 6 cm.",
+          "figure": { "highlight": ["c3"] }
         },
         {
           "id": "h13",
           "label": "13 cm",
           "correct": false,
-          "feedback": "13 cm é a hipotenusa a = 4 + 9. A altura é h = √(4 · 9) = 6 cm."
+          "feedback": "13 cm é a hipotenusa a = 4 + 9. A altura é h = √(4 · 9) = 6 cm.",
+          "figure": { "highlight": ["c1"] }
         },
         {
           "id": "h36",
           "label": "36 cm",
           "correct": false,
-          "feedback": "36 é h² (4 · 9). Tirando a raiz quadrada, h = 6 cm."
+          "feedback": "36 é h² (4 · 9). Tirando a raiz quadrada, h = 6 cm.",
+          "figure": { "highlight": ["c2", "c3"] }
         },
         {
           "id": "h65",
           "label": "6,5 cm",
           "correct": false,
-          "feedback": "6,5 é a metade da hipotenusa (média aritmética). A altura é √(4 · 9) = 6 cm."
+          "feedback": "6,5 é a metade da hipotenusa (média aritmética). A altura é √(4 · 9) = 6 cm.",
+          "figure": { "highlight": ["c1", "c2"] }
         }
       ]
     },
@@ -183,41 +187,13 @@
         }
       },
       "formula": [
-        {
-          "text": "h²",
-          "ref": "c3"
-        },
-        {
-          "text": " = "
-        },
-        {
-          "text": "m · n",
-          "ref": "c2"
-        },
-        {
-          "text": ", "
-        },
-        {
-          "text": "b²",
-          "ref": "c4"
-        },
-        {
-          "text": " = "
-        },
-        {
-          "text": "a",
-          "ref": "c1"
-        },
-        {
-          "text": " · "
-        },
-        {
-          "text": "m",
-          "ref": "c2"
-        },
-        {
-          "text": " e a · h = b · c"
-        }
+        { "text": "h²", "ref": "c3" },
+        { "text": "=" },
+        { "text": "m·n", "ref": "c2" },
+        { "text": ";" },
+        { "text": "b²", "ref": "c4" },
+        { "text": "=" },
+        { "text": "a·m", "ref": "c1" }
       ],
       "definitions": [
         {

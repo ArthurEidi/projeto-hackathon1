@@ -139,7 +139,7 @@
           "modo": "notaveis",
           "figura": "equilatero",
           "L": 10,
-          "cortar": 1,
+          "cortar": 0,
           "highlight": ["c2", "c3"]
         }
       },
@@ -152,27 +152,28 @@
           "label": "5 cm e 5√3 cm",
           "correct": true,
           "feedback": "Exato. Oposto a 30° é metade da hipotenusa (5 cm), e oposto a 60° é L√3/2 = 5√3 cm.",
-          "override": {
-            "highlight": ["c2", "c3"]
-          }
+          "figure": { "cortar": 1, "highlight": ["c2", "c3"] }
         },
         {
           "id": "c5r35",
           "label": "5√3 cm e 5 cm",
           "correct": false,
-          "feedback": "Resposta: 5 cm e 5√3 cm; O menor ângulo (30°) enxerga o menor lado (5 cm), e o de 60° enxerga 5√3 cm."
+          "feedback": "Resposta: 5 cm e 5√3 cm; O menor ângulo (30°) enxerga o menor lado (5 cm), e o de 60° enxerga 5√3 cm.",
+          "figure": { "cortar": 1, "highlight": ["c2"] }
         },
         {
           "id": "c55r2",
           "label": "5 cm e 5√2 cm",
           "correct": false,
-          "feedback": "Resposta: 5 cm e 5√3 cm; √2 é na diagonal do quadrado (45°). No 30°-60°-90° usamos √3: 5 cm e 5√3 cm."
+          "feedback": "Resposta: 5 cm e 5√3 cm; √2 é na diagonal do quadrado (45°). No 30°-60°-90° usamos √3: 5 cm e 5√3 cm.",
+          "figure": { "figura": "quadrado", "L": 5, "diagonal": true, "highlight": ["c1"] }
         },
         {
           "id": "c10r3",
           "label": "10 cm e 10√3 cm",
           "correct": false,
-          "feedback": "Resposta: 5 cm e 5√3 cm; Faltou dividir por 2: L/2 = 5 cm e L√3/2 = 5√3 cm."
+          "feedback": "Resposta: 5 cm e 5√3 cm; Faltou dividir por 2: L/2 = 5 cm e L√3/2 = 5√3 cm.",
+          "figure": { "L": 20, "cortar": 1, "highlight": ["c2", "c3"] }
         }
       ]
     },
@@ -190,13 +191,11 @@
         }
       },
       "formula": [
-        { "text": "d = L√2", "ref": "c1" },
+        { "text": "d=L√2", "ref": "c1" },
         { "text": ";" },
-        { "text": "c = L/2", "ref": "c2" },
+        { "text": "c=L/2", "ref": "c2" },
         { "text": ";" },
-        { "text": "h = L√3/2", "ref": "c3" },
-        { "text": "e" },
-        { "text": "A = L²√3/4" }
+        { "text": "h=L√3/2", "ref": "c3" }
       ],
       "definitions": [
         {

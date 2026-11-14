@@ -110,8 +110,8 @@
         }
       ],
       "lines": {
-        "intro": "Dobre a terna 3-4-5 para catetos 6 e 8 e veja a hipotenusa; depois toque na diagonal do quadrado de lado 5.",
-        "done": "Dobrando 3-4-5 nasce a terna 6-8-10. E no quadrado de lados iguais L, d² = L² + L² = 2L²."
+        "intro": "Teste dobrar a terna 3-4-5 para 6-8-10 com o controle e toque em \"Quadrado e diagonal\" para ver o caso de catetos iguais.",
+        "done": "Qualquer múltiplo da terna 3-4-5 fecha um triângulo retângulo (como 6-8-10). E no quadrado de lado L, d² = L² + L² = 2L²."
       },
       "complete_when": {
         "metric": "testou_diagonal",
@@ -167,7 +167,7 @@
           "modo": "pitagoras",
           "b": 8,
           "c": 6,
-          "quadrados": true
+          "quadrados": false
         }
       },
       "options": [
@@ -175,25 +175,29 @@
           "id": "a6",
           "label": "6",
           "correct": true,
-          "feedback": "Isso. 8² + x² = 10², então 64 + x² = 100, x² = 36 e x = 6 (terna 6-8-10)."
+          "feedback": "Isso. 8² + x² = 10², então 64 + x² = 100, x² = 36 e x = 6 (terna 6-8-10).",
+          "figure": { "quadrados": true, "highlight": ["c2"] }
         },
         {
           "id": "a36",
           "label": "36",
           "correct": false,
-          "feedback": "36 é a área do quadrado (x²). Tirando a raiz quadrada de 36, o cateto mede 6."
+          "feedback": "36 é a área do quadrado (x²). Tirando a raiz quadrada de 36, o cateto mede 6.",
+          "figure": { "quadrados": true, "highlight": ["c1", "c2", "c3"] }
         },
         {
           "id": "a2",
           "label": "2",
           "correct": false,
-          "feedback": "Você subtraiu os lados (10 − 8 = 2). Subtraia os quadrados: 100 − 64 = 36, cuja raiz é 6."
+          "feedback": "Você subtraiu os lados (10 − 8 = 2). Subtraia os quadrados: 100 − 64 = 36, cuja raiz é 6.",
+          "figure": { "b": 8, "c": 2, "quadrados": false, "highlight": ["c2"] }
         },
         {
           "id": "a12-8",
           "label": "12,8",
           "correct": false,
-          "feedback": "Você somou 10² + 8² = 164 como se x fosse a hipotenusa. O 10 é a hipotenusa: 100 − 64 = 36, x = 6."
+          "feedback": "Você somou 10² + 8² = 164 como se x fosse a hipotenusa. O 10 é a hipotenusa: 100 − 64 = 36, x = 6.",
+          "figure": { "b": 8, "c": 12.8, "quadrados": false, "highlight": ["c2"] }
         }
       ]
     },
