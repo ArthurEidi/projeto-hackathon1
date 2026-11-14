@@ -158,6 +158,8 @@ const Escada = z.object({
   iguais: z.boolean().default(false),
   /** Operação mostrada na legenda e métrica total ("produto" ou "soma"). */
   operacao: z.enum(["produto", "soma"]).default("produto"),
+  /** Mostra a etiqueta com a conta e o resultado. */
+  contador: z.boolean().default(true),
   cores: z.object({ degrau: CorTraco.default("c2"), produto: CorTraco.default("c3") }).default({ degrau: "c2", produto: "c3" }),
   highlight: Highlight,
 });
@@ -228,6 +230,8 @@ const Colunas = z.object({
   colunas: z.array(z.object({ titulo: z.string(), itens: z.array(z.string()).min(1), cor: CorTraco.default("ink") })).min(1),
   /** "e": produto; "ou": soma. */
   ou: z.boolean().default(false),
+  /** Mostra a etiqueta com a conta e o resultado. */
+  contador: z.boolean().default(true),
   cor_total: CorTraco.default("c3"),
   highlight: Highlight,
 });

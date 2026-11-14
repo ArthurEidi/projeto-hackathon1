@@ -195,4 +195,82 @@ describe("schemas e desenho", () => {
     expect(g45.casas).toHaveLength(20);
     expect(GradeFigura.safeParse({ modo: "urna", bolas: [{ cor: "c1", quantidade: 5 }], retiradas: "$r" }).success).toBe(false);
   });
+
+  it("escada e colunas aceitam contador: false (padrao true) e omitem o total", () => {
+    const textos: string[] = [];
+    const spyCtx = new Proxy(
+      {
+        save() {}, restore() {}, beginPath() {}, closePath() {}, moveTo() {}, lineTo() {}, arc() {},
+        roundRect() {}, fill() {}, stroke() {}, fillRect() {}, setLineDash() {}, translate() {}, rotate() {},
+        fillText(s: string) { textos.push(s); },
+        measureText: (s: string) => ({ width: s.length * 6 }),
+      },
+      { get: (t, k) => (k in t ? t[k as keyof typeof t] : () => {}), set: () => true },
+    ) as unknown as CanvasRenderingContext2D;
+
+    const escSem = GradeFigura.parse({ modo: "escada", n: 5, contador: false });
+    desenharGrade(spyCtx, 400, 360, [], escSem, {});
+    expect(textos.some((t) => t.includes("="))).toBe(false);
+
+    const colSem = GradeFigura.parse({
+      modo: "colunas",
+      colunas: [{ titulo: "A", itens: ["1", "2"] }, { titulo: "B", itens: ["x", "y", "z"] }],
+      contador: false,
+    });
+    desenharGrade(spyCtx, 400, 360, [], colSem, {});
+    expect(textos.some((t) => t.includes("="))).toBe(false);
+
+    expect((GradeFigura.parse({ modo: "escada", n: 5 }) as GradeDe<"escada">).contador).toBe(true);
+    expect((GradeFigura.parse({ modo: "colunas", colunas: [{ titulo: "A", itens: ["1"] }] }) as GradeDe<"colunas">).contador).toBe(true);
+  });
+
+  it("arvore 3 niveis exibe todas as 8 folhas e caixas 21 tuplas cria 21 alvos", () => {
+    const textos: string[] = [];
+    const spyCtx = new Proxy(
+      {
+        save() {}, restore() {}, beginPath() {}, closePath() {}, moveTo() {}, lineTo() {}, arc() {},
+        roundRect() {}, fill() {}, stroke() {}, fillRect() {}, setLineDash() {}, translate() {}, rotate() {},
+        fillText(s: string) { textos.push(s); },
+        measureText: (s: string) => ({ width: s.length * 6 }),
+      },
+      { get: (t, k) => (k in t ? t[k as keyof typeof t] : () => {}), set: () => true },
+    ) as unknown as CanvasRenderingContext2D;
+
+    const arv = GradeFigura.parse({
+      modo: "arvore",
+      galhos: [{ rotulo: "6", cor: "c3", sucesso: true }, { rotulo: "não", cor: "ink" }],
+      n: 3,
+      caminho: "sucessos",
+    });
+    desenharGrade(spyCtx, 360, 260, [], arv, {});
+    expect(textos).toContain("6nãonão");
+    expect(textos).toContain("nãonãonão");
+
+    const cx = GradeFigura.parse({ modo: "caixas", itens: 5, n: 3 });
+    const geoCx = desenharGrade(spyCtx, 360, 260, [], cx, {});
+    expect(geoCx.alvos.filter((a) => a.tipo === "distribuicao")).toHaveLength(21);
+  });
+
+  it("casas 20 itens quebra em 2 linhas e regua com evento sem acesas marca 0", () => {
+    const textos: string[] = [];
+    const spyCtx = new Proxy(
+      {
+        save() {}, restore() {}, beginPath() {}, closePath() {}, moveTo() {}, lineTo() {}, arc() {},
+        roundRect() {}, fill() {}, stroke() {}, fillRect() {}, setLineDash() {}, translate() {}, rotate() {},
+        fillText(s: string) { textos.push(s); },
+        measureText: (s: string) => ({ width: s.length * 6 }),
+      },
+      { get: (t, k) => (k in t ? t[k as keyof typeof t] : () => {}), set: () => true },
+    ) as unknown as CanvasRenderingContext2D;
+
+    const c20 = GradeFigura.parse({ modo: "casas", linhas: 20, etapas: 1 });
+    const geo20 = desenharGrade(spyCtx, 360, 240, [], c20, {});
+    const ys = new Set(geo20.alvos.map((a) => Math.round(a.r.y)));
+    expect(ys.size).toBe(2);
+
+    const cEv = GradeFigura.parse({ modo: "casas", linhas: 6, etapas: 1, evento: { casas: ["2", "4"] }, regua: true });
+    desenharGrade(spyCtx, 360, 240, [], cEv, {});
+    expect(textos).toContain("0");
+    expect(textos).not.toContain("1/3");
+  });
 });

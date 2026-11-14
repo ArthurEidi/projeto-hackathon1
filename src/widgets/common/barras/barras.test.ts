@@ -192,4 +192,32 @@ describe("desenho não quebra em nenhum modo", () => {
     expect(termos2(1, 1, 1, 1, 6)).toEqual([1, 1, 2, 3, 5, 8]);
     expect(termos2(2, 3, 2, -1, 5)).toEqual([2, 3, 4, 5, 6]);
   });
+
+  it("pontos empilhados e proximos evitam colisao e fila desenha cortes antes das fichas", () => {
+    const ops: string[] = [];
+    const spyCtx = new Proxy(
+      {
+        save() {}, restore() {}, beginPath() {}, closePath() {}, moveTo() {}, lineTo() {}, arc() {},
+        roundRect() { ops.push("roundRect"); },
+        fill() { ops.push("fill"); },
+        stroke() { ops.push("stroke"); },
+        fillRect() {}, setLineDash() {}, translate() {}, rotate() {}, fillText() {},
+        measureText: (s: string) => ({ width: s.length * 7 }),
+      },
+      { get: (t, k) => (k in t ? t[k as keyof typeof t] : () => {}), set: () => true },
+    ) as unknown as CanvasRenderingContext2D;
+
+    const pProximos = Barras.parse({ modo: "pontos", valores: [4, 5, 6, 7, 8], regua: [0, 30] });
+    const gProx = desenharBarras(spyCtx, 360, 260, [], pProximos, {}, {});
+    expect(gProx.pesos).toHaveLength(5);
+    expect(gProx.pesos![1].y).not.toBe(gProx.pesos![0].y);
+
+    ops.length = 0;
+    const pFila = Barras.parse({ modo: "fila", valores: [1, 3, 4, 6, 8, 9, 12], ordenada: true, fixos: ["q1", "q2", "q3"] });
+    desenharBarras(spyCtx, 360, 260, [], pFila, {}, {});
+    const primeiroStroke = ops.indexOf("stroke");
+    const primeiroRoundRect = ops.indexOf("roundRect");
+    expect(primeiroStroke).toBeGreaterThanOrEqual(0);
+    expect(primeiroStroke).toBeLessThan(primeiroRoundRect);
+  });
 });

@@ -102,11 +102,11 @@ function listras(ctx: CanvasRenderingContext2D, r: Rect, cor: string) {
   ctx.restore();
 }
 
-/** Texto que cabe na largura: diminui a fonte até caber (mínimo 9 px). */
-function textoCabe(ctx: CanvasRenderingContext2D, p: Pt, s: string, cor: string, largura: number, max = 15) {
+/** Texto que cabe na largura: diminui a fonte até caber (mínimo `min` px). */
+function textoCabe(ctx: CanvasRenderingContext2D, p: Pt, s: string, cor: string, largura: number, max = 15, min = 9) {
   let px = max;
   ctx.font = FONTE(px);
-  while (px > 9 && ctx.measureText(s).width > largura) ctx.font = FONTE(--px);
+  while (px > min && ctx.measureText(s).width > largura) ctx.font = FONTE(--px);
   text(ctx, p, s, cor, px);
 }
 
@@ -223,12 +223,15 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
   const alvos: Alvo[] = [];
   const temRegua = p.regua;
   const baixo = (temRegua ? 74 : 0) + (p.contador ? 36 : 0) + 6;
-  const nCols = m.colunas ? m.colunas.length : m.casas.length;
-  const nLins = m.colunas ? m.linhas.length : 1;
+  const emDuasLinhas = !m.colunas && m.casas.length > 10;
+  const nCols = m.colunas ? m.colunas.length : emDuasLinhas ? Math.ceil(m.casas.length / 2) : m.casas.length;
+  const nLins = m.colunas ? m.linhas.length : emDuasLinhas ? 2 : 1;
   const esq = m.colunas ? 40 : 12;
+  const temInterBorda = mostrar.inter && m.colunas && p.a && p.b;
+  const dir = temInterBorda ? 44 : 12;
   const topo = m.colunas ? 46 : 30;
-  const s = Math.min(58, (w - esq - 12) / nCols, (h - topo - baixo) / nLins);
-  const gx = esq + (w - esq - 12 - s * nCols) / 2;
+  const s = Math.min(58, (w - esq - dir) / nCols, (h - topo - baixo) / nLins);
+  const gx = esq + (w - esq - dir - s * nCols) / 2;
   const gy = topo;
 
   // Rótulos das etapas.
@@ -247,8 +250,8 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
 
   const listradas: Rect[] = [];
   m.casas.forEach((k, idx) => {
-    const i = m.colunas ? k.i : 0;
-    const j = m.colunas ? k.j : idx;
+    const i = m.colunas ? k.i : emDuasLinhas ? Math.floor(idx / nCols) : 0;
+    const j = m.colunas ? k.j : emDuasLinhas ? idx % nCols : idx;
     const r = { x: gx + s * j + 2, y: gy + s * i + 2, w: s - 4, h: s - 4 };
     const valida = m.valida(k);
     const fora = m.fora(k);
@@ -311,10 +314,10 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
     if (mostrar.uniao && !mostrar.sem) chip(ctx, { x: r.x + r.w - 6, y: r.y + 6 }, "×2", cor(p.cores.intersecao).main, cor(p.cores.intersecao).dark);
   }
   // Interseção: frações nas bordas.
-  if (mostrar.inter && m.colunas && p.a && p.b) {
+  if (temInterBorda) {
     const nl = m.linhas.filter((l) => m.casas.some((k) => k.linha === l && m.emA(k))).length;
-    const nc = m.colunas.filter((col) => m.casas.some((k) => k.coluna === col && m.emB(k))).length;
-    etiqueta(ctx, hits, { x: gx + s * nCols + 2, y: gy - 14 }, fracao(nc, m.colunas.length), p.cores.b);
+    const nc = m.colunas!.filter((col) => m.casas.some((k) => k.coluna === col && m.emB(k))).length;
+    etiqueta(ctx, hits, { x: gx + s * nCols + 22, y: gy + s * 0.5 }, fracao(nc, m.colunas!.length), p.cores.b);
     etiqueta(ctx, hits, { x: gx - 18, y: gy + s * nLins + 18 }, fracao(nl, m.linhas.length), p.cores.a);
   }
 
@@ -349,7 +352,7 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
     } else if (mostrar.comp && p.a) {
       const [a, n] = conta((k) => !m.emA(k), validas);
       marcas.push({ v: a / n, s: fracao(a, n), cor: p.cores.fora });
-    } else if (e.botao !== undefined || p.evento) {
+    } else if (e.botao !== undefined) {
       const [a, n] = conta(m.emEvento, validas);
       marcas.push({ v: a / n, s: fracao(a, n), cor: p.cores.regua });
     } else if (p.a) {
@@ -465,9 +468,12 @@ function desenharArvore(ctx: CanvasRenderingContext2D, w: number, h: number, hit
   const nN = m.niveis.length;
   const pontas = e.pontas ?? new Set(p.acesas);
   const um = e.um ?? false;
-  const yBase = p.agrupar ? h * 0.56 : h - 46;
+  const temRodape = um || p.mostrar_produto || p.caminho === "sucessos";
+  const yBase = p.agrupar ? h * 0.56 : temRodape ? h - 56 : h - 46;
   const dy = (yBase - 26) / nN;
-  const esp = (w - 20) / L;
+  const temTitulos = m.niveis.some((nv) => Boolean(nv.titulo));
+  const dir = temTitulos ? 64 : 10;
+  const esp = (w - 10 - dir) / L;
   const xPonta = (i: number) => 10 + esp * (i + 0.5);
   // Posição de cada nó: média das pontas abaixo dele.
   const posNo = (nivel: number, prefixo: readonly number[]) => {
@@ -508,7 +514,16 @@ function desenharArvore(ctx: CanvasRenderingContext2D, w: number, h: number, hit
   desenharGalhos(false);
   desenharGalhos(true);
   dot(ctx, posNo(0, []), 7, c.ink2);
-  m.niveis.forEach((nv, i) => nv.titulo && text(ctx, { x: w - 8 - 3 * nv.titulo.length, y: 26 + dy * (i + 0.5) }, nv.titulo, c.muted, 11));
+  m.niveis.forEach((nv, i) => {
+    if (!nv.titulo) return;
+    ctx.save();
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.font = FONTE(11);
+    ctx.fillStyle = c.muted;
+    ctx.fillText(nv.titulo, w - 8, 26 + dy * (i + 0.5));
+    ctx.restore();
+  });
 
   const alvos: Alvo[] = [];
   const r0 = Math.max(4, Math.min(10, esp / 2.6));
@@ -523,18 +538,18 @@ function desenharArvore(ctx: CanvasRenderingContext2D, w: number, h: number, hit
     ctx.lineWidth = 2;
     ctx.stroke();
     const rot = um ? "1" : cam.map((g, nv) => m.niveis[nv].galhos[g].rotulo).join("");
-    if (esp > 7 * rot.length + 4 || um) textoCabe(ctx, { x: P.x, y: P.y + r0 + 11 }, rot, aceso ? kp.dark : c.ink2, esp - 2, 12);
+    if (esp >= 22 || um) textoCabe(ctx, { x: P.x, y: P.y + r0 + 11 }, rot, aceso ? kp.dark : c.ink2, esp - 2, 12, 7);
     alvos.push({ tipo: "ponta", id: String(i), r: { x: P.x - Math.max(esp / 2, 10), y: P.y - 18, w: Math.max(esp, 20), h: 40 } });
     if (pontas.has(i) && p.mostrar_produto) {
       const pr = cam.map((g, nv) => m.niveis[nv].galhos[g].p);
       if (pr.every((x) => x !== undefined)) produto.push(`${pr.map((x) => fracaoDe(x!)).join(" · ")} = ${fracaoDe(m.prob(cam)!)}`);
     }
   });
-  if (um) etiqueta(ctx, hits, { x: w / 2, y: yBase + 40 }, `soma = ${L}`, p.cor_ponta);
-  if (produto.length) chip(ctx, { x: w / 2, y: yBase + 40 }, produto[produto.length - 1], c.ink2, c.ink);
+  if (um) etiqueta(ctx, hits, { x: w / 2, y: yBase + 38 }, `soma = ${L}`, p.cor_ponta);
+  if (produto.length) chip(ctx, { x: w / 2, y: yBase + 38 }, produto[produto.length - 1], c.ink2, c.ink);
   if (p.caminho === "sucessos") {
     const pr = m.prob(m.caminhos.find((cam) => m.sucessos(cam) === nN) ?? []);
-    etiqueta(ctx, hits, { x: w / 2, y: yBase + 40 }, pr !== null ? fracaoDe(pr) : fracao(1, L), p.cor_ponta);
+    etiqueta(ctx, hits, { x: w / 2, y: yBase + 38 }, pr !== null ? fracaoDe(pr) : fracao(1, L), p.cor_ponta);
   }
 
   if (p.agrupar) {
@@ -684,10 +699,12 @@ function desenharEscada(ctx: CanvasRenderingContext2D, w: number, h: number, hit
     text(ctx, { x: x + slot * 0.35, y: area.y + area.h - bh - 12 }, String(v), kd.dark, 15);
   });
   seg(ctx, { x: area.x, y: area.y + area.h }, { x: area.x + area.w, y: area.y + area.h }, c.axis, 2);
-  const ehSoma = p.operacao === "soma";
-  const total = d.reduce((s, v) => (ehSoma ? s + v : s * v), ehSoma ? 0 : 1);
-  const sep = ehSoma ? " + " : " × ";
-  etiqueta(ctx, hits, { x: w / 2, y: h - 30 }, d.length ? `${d.join(sep)} = ${total}` : ehSoma ? "0" : "1", p.cores.produto);
+  if (p.contador) {
+    const ehSoma = p.operacao === "soma";
+    const total = d.reduce((s, v) => (ehSoma ? s + v : s * v), ehSoma ? 0 : 1);
+    const sep = ehSoma ? " + " : " × ";
+    etiqueta(ctx, hits, { x: w / 2, y: h - 30 }, d.length ? `${d.join(sep)} = ${total}` : ehSoma ? "0" : "1", p.cores.produto);
+  }
   return { alvos: [] };
 }
 
@@ -867,7 +884,8 @@ function desenharCaixas(ctx: CanvasRenderingContext2D, w: number, h: number, hit
   const atual = lista[Math.min(e.distribuicao ?? 0, lista.length - 1)] ?? Array<number>(n).fill(0);
   const ki = corDoTraco(p.cores.item);
   const km = corDoTraco(p.cores.minimo);
-  const cxw = Math.min(96, (w * 0.62) / n - 10);
+  const duasCols = lista.length > 10;
+  const cxw = Math.min(96, (w * (duasCols ? 0.52 : 0.62)) / n - 10);
   const alvos: Alvo[] = [];
   atual.forEach((v, i) => {
     const r = { x: 10 + i * (cxw + 10), y: 30, w: cxw, h: 110 };
@@ -881,17 +899,22 @@ function desenharCaixas(ctx: CanvasRenderingContext2D, w: number, h: number, hit
     }
   });
   // Lista das distribuições à direita.
-  const xl = w * 0.66;
-  const rh = Math.min(22, (h - 60) / Math.max(1, lista.length));
+  const xl = duasCols ? w * 0.56 : w * 0.66;
+  const cols = duasCols ? 2 : 1;
+  const rows = Math.ceil(lista.length / cols);
+  const rh = Math.min(22, Math.max(15, (h - 52) / Math.max(1, rows)));
+  const cw = (w - xl - 8 - (duasCols ? 4 : 0)) / cols;
   lista.forEach((d, i) => {
-    const r = { x: xl, y: 10 + i * rh, w: w - xl - 8, h: rh - 2 };
-    if (r.y + r.h > h - 40) return;
+    const col = duasCols ? i % 2 : 0;
+    const row = duasCols ? Math.floor(i / 2) : i;
+    const r = { x: xl + col * (cw + 4), y: 12 + row * rh, w: cw, h: rh - 2 };
+    if (r.y + r.h > h - 36) return;
     const sel = i === (e.distribuicao ?? 0);
     caixa(ctx, r, sel ? ki.tint : c.bg, sel ? ki.main : c.line, 1.5, 4);
-    textoCabe(ctx, { x: r.x + r.w / 2, y: r.y + r.h / 2 + 1 }, `(${d.join(", ")})`, c.ink, r.w - 6, 13);
+    textoCabe(ctx, { x: r.x + r.w / 2, y: r.y + r.h / 2 + 1 }, `(${d.join(", ")})`, c.ink, r.w - 4, Math.min(13, r.h - 3), 7);
     alvos.push({ tipo: "distribuicao", id: String(i), r });
   });
-  etiqueta(ctx, hits, { x: w * 0.33, y: h - 20 }, `${lista.length} maneira${lista.length === 1 ? "" : "s"}`, p.cores.total);
+  etiqueta(ctx, hits, { x: w * (duasCols ? 0.28 : 0.33), y: h - 20 }, `${lista.length} maneira${lista.length === 1 ? "" : "s"}`, p.cores.total);
   return { alvos };
 }
 
@@ -913,9 +936,11 @@ function desenharColunas(ctx: CanvasRenderingContext2D, w: number, h: number, hi
       textoCabe(ctx, { x: r.x + r.w / 2, y: r.y + r.h / 2 + 1 }, it, c.ink, r.w - 6, 14);
     });
   });
-  const ns = p.colunas.map((col) => col.itens.length);
-  const total = ou ? ns.reduce((s, v) => s + v, 0) : ns.reduce((s, v) => s * v, 1);
-  etiqueta(ctx, hits, { x: w / 2, y: h - 22 }, `${ns.join(ou ? " + " : " × ")} = ${total}`, p.cor_total);
+  if (p.contador) {
+    const ns = p.colunas.map((col) => col.itens.length);
+    const total = ou ? ns.reduce((s, v) => s + v, 0) : ns.reduce((s, v) => s * v, 1);
+    etiqueta(ctx, hits, { x: w / 2, y: h - 22 }, `${ns.join(ou ? " + " : " × ")} = ${total}`, p.cor_total);
+  }
   return { alvos: [] };
 }
 

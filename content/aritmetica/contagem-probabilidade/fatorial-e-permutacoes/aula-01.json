@@ -146,7 +146,8 @@
         "widget": "grade_figura",
         "params": {
           "modo": "escada",
-          "n": 5
+          "n": 5,
+          "contador": false
         }
       },
       "prompt": "De quantos jeitos 5 livros diferentes podem ficar lado a lado numa prateleira?",
@@ -160,6 +161,7 @@
           "correct": false,
           "feedback": "25 é 5 · 5, como se todo lugar tivesse 5 livros. Cada livro usado sai: 5! = 120.",
           "figure": {
+            "contador": true,
             "highlight": [
               "c2"
             ]
@@ -171,6 +173,7 @@
           "correct": false,
           "feedback": "15 soma 5 + 4 + 3 + 2 + 1. Os degraus se multiplicam: 120.",
           "figure": {
+            "contador": true,
             "highlight": [
               "c1"
             ]
@@ -182,6 +185,7 @@
           "correct": true,
           "feedback": "Isso. 5 · 4 · 3 · 2 · 1 = 120.",
           "figure": {
+            "contador": true,
             "highlight": [
               "c3"
             ]
@@ -193,6 +197,7 @@
           "correct": false,
           "feedback": "5 é o número de livros. As ordens são 5! = 120.",
           "figure": {
+            "contador": true,
             "k": 1
           }
         }

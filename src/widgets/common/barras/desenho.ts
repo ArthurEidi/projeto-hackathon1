@@ -329,11 +329,16 @@ function desenharPontos(ctx: CanvasRenderingContext2D, w: number, h: number, hit
   const hl = p.highlight;
   const pad = 30;
   const temQuadrados = mostrar.quadrados && !p.grupo_b;
-  const yViga = p.grupo_b ? h * 0.36 : mostrar.fila ? h * 0.5 : temQuadrados ? h * 0.36 : h * 0.55;
+  const contagens = new Map<number, number>();
+  for (const v of vals) contagens.set(v, (contagens.get(v) ?? 0) + 1);
+  const maxPilha = Math.max(1, ...contagens.values());
+  const yViga = p.grupo_b ? h * 0.36 : mostrar.fila ? h * 0.5 : temQuadrados ? h * 0.36 : maxPilha >= 4 ? h * 0.66 : h * 0.55;
   const k = (w - 2 * pad) / (p.regua[1] - p.regua[0]);
   const X = (v: number) => pad + (v - p.regua[0]) * k;
   const xDe = (px: number) => p.regua[0] + (px - pad) / k;
   const alvos: Rect[] = [];
+  const lado = Math.max(18, Math.min(24, k * 1.8));
+  const gapPeso = lado + 2;
 
   const viga = (valores: readonly number[], apoioV: number, y: number, moveis: readonly number[], principal: boolean) => {
     const ang = inclinacao(valores, apoioV, p.regua[1] - p.regua[0]);
@@ -349,14 +354,17 @@ function desenharPontos(ctx: CanvasRenderingContext2D, w: number, h: number, hit
     // Apoio (triângulo).
     const corA = corDoTraco(p.cores.apoio);
     poly(ctx, [{ x: piv.x, y: y + 2 }, { x: piv.x - 13, y: y + 24 }, { x: piv.x + 13, y: y + 24 }], corA.main, corA.dark, espessura(p.cores.apoio, 2, hl));
-    // Pesos empilhados por valor.
-    const pilha = new Map<number, number>();
+    // Pesos empilhados quando colidem na horizontal.
+    const colocados: { x: number; nivel: number }[] = [];
     const centros: Pt[] = [];
-    const lado = 24;
+    const niveis: number[] = [];
     valores.forEach((v, i) => {
-      const nivel = pilha.get(v) ?? 0;
-      pilha.set(v, nivel + 1);
-      const ctr = rot(v, -lado / 2 - 3 - nivel * (lado + 2));
+      const xv = X(v);
+      let nivel = 0;
+      while (colocados.some((c2) => c2.nivel === nivel && Math.abs(c2.x - xv) < gapPeso)) nivel++;
+      colocados.push({ x: xv, nivel });
+      niveis.push(nivel);
+      const ctr = rot(v, -lado / 2 - 3 - nivel * gapPeso);
       centros.push(ctr);
       const movel = moveis.includes(i);
       ctx.save();
@@ -372,13 +380,13 @@ function desenharPontos(ctx: CanvasRenderingContext2D, w: number, h: number, hit
         ctx.stroke();
       }
       ctx.fillStyle = c.bg;
-      ctx.font = "900 13px Nunito, system-ui, sans-serif";
+      ctx.font = `900 ${lado <= 19 ? 11 : 13}px Nunito, system-ui, sans-serif`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(principal && p.incognita === i ? "?" : num(v, 1), 0, 1);
       ctx.restore();
     });
-    return { centros, piv, ang };
+    return { centros, niveis, piv, ang };
   };
 
   const principal = viga(vals, apoio, yViga, p.arrastaveis, true);
@@ -405,14 +413,17 @@ function desenharPontos(ctx: CanvasRenderingContext2D, w: number, h: number, hit
     const md = mediana(vals);
     const cor = corDoTraco(p.cores.mediana);
     const xm = X(md);
-    seg(ctx, { x: xm, y: yViga - 8 }, { x: xm, y: yViga - 96 }, cor.main, espessura(p.cores.mediana, 3, hl));
-    poly(ctx, [{ x: xm, y: yViga - 96 }, { x: xm + 18, y: yViga - 89 }, { x: xm, y: yViga - 82 }], cor.main);
-    etiqueta(ctx, hits, { x: xm + 30, y: yViga - 108 }, `mediana ${num(md, 2)}`, p.cores.mediana);
+    const maxNiv = Math.max(0, ...principal.niveis);
+    const yTopo = Math.max(24, Math.min(yViga - 96, yViga - (maxNiv + 1) * gapPeso - 8));
+    seg(ctx, { x: xm, y: yViga - 8 }, { x: xm, y: yTopo }, cor.main, espessura(p.cores.mediana, 3, hl));
+    poly(ctx, [{ x: xm, y: yTopo }, { x: xm + 18, y: yTopo + 7 }, { x: xm, y: yTopo + 14 }], cor.main);
+    const xEtq = xm < w * 0.6 ? xm + 70 : xm - 70;
+    etiqueta(ctx, hits, { x: xEtq, y: Math.max(16, yTopo - 10) }, `mediana ${num(md, 2)}`, p.cores.mediana);
   }
   if (mostrar.moda) {
     for (const mo of modas(vals)) {
-      const cnt = vals.filter((v) => v === mo).length;
-      chip(ctx, { x: X(mo), y: yViga - cnt * 26 - 22 }, "moda", c.lineDark, c.muted, c.ink);
+      const cnt = vals.reduce((mx, v, i) => (v === mo ? Math.max(mx, principal.niveis[i] + 1) : mx), 0);
+      chip(ctx, { x: X(mo), y: Math.max(16, yViga - cnt * gapPeso - 18) }, "moda", c.lineDark, c.muted, c.ink);
     }
   }
 
@@ -530,6 +541,22 @@ function desenharFila(ctx: CanvasRenderingContext2D, w: number, h: number, hits:
   const cxFicha = (i: number) => x0 + i * (fw + 6) + fw / 2;
   const posX = (pos: number) => (pos % 2 === 0 ? cxFicha(pos / 2) : (cxFicha((pos - 1) / 2) + cxFicha((pos + 1) / 2)) / 2);
   const yF = h * 0.2;
+  const yM: [number, number] = [yF - 12, yF + 70];
+  const marcadoresVisiveis: { q: "q1" | "q2" | "q3"; pos: number; x: number }[] = [];
+  if (ordenada) {
+    const certos = posicoesQuartis(n);
+    const visiveis = new Set<Quartil>([...p.fixos, ...p.arrastaveis]);
+    for (const q of ["q1", "q2", "q3"] as const) {
+      if (!visiveis.has(q)) continue;
+      const pos = p.fixos.includes(q) ? certos[q] : (e.marcadores?.[q] ?? null);
+      if (pos === null) continue;
+      const x = posX(pos);
+      const cor = corDoTraco(p.cores[q]);
+      // Linha vertical desenhada antes das fichas para passar atrás dos dígitos.
+      seg(ctx, { x, y: yM[0] }, { x, y: yM[1] - 16 }, cor.main, espessura(p.cores[q], 4, hl));
+      marcadoresVisiveis.push({ q, pos, x });
+    }
+  }
   const alvos: Rect[] = [];
   fila.forEach((v, i) => {
     const r = { x: cxFicha(i) - fw / 2, y: yF, w: fw, h: 34 };
@@ -545,20 +572,9 @@ function desenharFila(ctx: CanvasRenderingContext2D, w: number, h: number, hits:
     alvos.push(r);
   });
 
-  const yM: [number, number] = [yF - 12, yF + 70];
   if (ordenada) {
-    const certos = posicoesQuartis(n);
-    const visiveis = new Set<Quartil>([...p.fixos, ...p.arrastaveis]);
-    for (const q of ["q1", "q2", "q3"] as const) {
-      if (!visiveis.has(q)) continue;
-      const pos = p.fixos.includes(q) ? certos[q] : (e.marcadores?.[q] ?? null);
+    for (const { q, pos, x } of marcadoresVisiveis) {
       const cor = corDoTraco(p.cores[q]);
-      if (pos === null) {
-        // Marcador ainda na prateleira, à esquerda: o aluno o arrasta para a fila.
-        continue;
-      }
-      const x = posX(pos);
-      seg(ctx, { x, y: yM[0] }, { x, y: yM[1] - 16 }, cor.main, espessura(p.cores[q], 4, hl));
       etiqueta(ctx, hits, { x, y: yM[1] }, q.toUpperCase(), p.cores[q]);
       text(ctx, { x, y: yM[1] + 24 }, num(valorNaPosicao(ordenar(base), pos), 1), cor.dark, 13);
     }

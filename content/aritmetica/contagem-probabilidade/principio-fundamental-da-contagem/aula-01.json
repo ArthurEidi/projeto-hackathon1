@@ -254,7 +254,8 @@
               ],
               "cor": "ink"
             }
-          ]
+          ],
+          "contador": false
         }
       },
       "prompt": "Um lanche tem 3 pães, 4 recheios e 2 molhos, um de cada. Quantos lanches diferentes existem?",
@@ -268,6 +269,7 @@
           "correct": false,
           "feedback": "Você somou as opções. Um lanche usa pão E recheio E molho, então multiplica.",
           "figure": {
+            "contador": true,
             "ou": true
           }
         },
@@ -277,6 +279,7 @@
           "correct": false,
           "feedback": "12 é pão com recheio. Falta o molho: cada um dos 12 vira 2 lanches.",
           "figure": {
+            "contador": true,
             "colunas": [
               {
                 "titulo": "Pães",
@@ -306,6 +309,7 @@
           "correct": true,
           "feedback": "Isso. 3 · 4 · 2 = 24: cada etapa multiplica o que já existia.",
           "figure": {
+            "contador": true,
             "highlight": [
               "c3"
             ]
@@ -317,6 +321,7 @@
           "correct": false,
           "feedback": "Somar o molho no fim não basta: ele se combina com cada um dos 12. Fica 24.",
           "figure": {
+            "contador": true,
             "ou": true,
             "colunas": [
               {

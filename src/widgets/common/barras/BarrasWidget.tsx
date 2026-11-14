@@ -190,11 +190,13 @@ export function BarrasWidget({ params, controls, onMetric, onInteract }: WidgetP
     // Convite ao arraste nos pesos móveis.
     const g = geo.current;
     if (!tocou && p.modo === "pontos" && g.pesos) {
+      const pilha = p.arrastaveis.length > 2;
       for (const i of p.arrastaveis) {
         const c = g.pesos[i];
         if (!c) continue;
+        if (pilha && p.arrastaveis.some((j) => j !== i && g.pesos![j] && Math.abs(g.pesos![j].x - c.x) < 12 && g.pesos![j].y < c.y)) continue;
         ctx.beginPath();
-        ctx.arc(c.x, c.y, 22, 0, Math.PI * 2);
+        ctx.arc(c.x, c.y, pilha ? 18 : 22, 0, Math.PI * 2);
         ctx.strokeStyle = palette.lineDark;
         ctx.lineWidth = 3;
         ctx.stroke();
