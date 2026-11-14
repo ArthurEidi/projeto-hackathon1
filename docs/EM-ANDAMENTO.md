@@ -30,7 +30,7 @@ Por instrução do usuário (14/11, 17h), a Máquina A chegou ao limite e a **M�
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B1. Widgets pendentes dos relatórios visuais (`plano_cartesiano`, `retangulo_areas_figura`, `barras`, balão do Paco, rótulos de `numeros-complexos`) com recaptura | Claude Code #2 | 14/11 | `src/widgets/common/**`, `src/steps/**`, `src/ui/**`, GUIA §5, coluna "corrigido?" de `docs/visual/*.md` |
+| ~~B1~~ concluída 14/11 (d44d18b). **B1b em andamento:** defeitos de widget da reconferência B8, escala do `vetores_no_plano`, e no `solido_3d` esconder g no meridiano (troncos p3) e destacar face do dado (projeções p4, com os `params` desses dois passos) | Claude Code #2 | 14/11 | `src/widgets/common/**`, `src/steps/**`, `src/ui/**`, GUIA §5, linhas de widget de `docs/visual/*.md`; em `content/` só os 2 passos citados |
 | B2. Correções da reconferência de geometria (analítica) e reconferência visual de plana, espacial e trigonometria | Antigravity | 14/11 | `content/geometria/**`, `src/conteudo/<slug de geometria>.test.ts`, `docs/visual/geometria.md`, `docs/revisao/geometria-*.md` |
 | B3. Vestibular de geometria: candidatas do ENEM (plana e trigonometria) | Antigravity #2 | 14/11 | `docs/fontes-candidatas/<slug de geometria>.md` (só arquivos novos) |
 | B4. Vestibular de geometria: candidatas do ENEM (espacial e analítica) | Antigravity #3 | 14/11 | `docs/fontes-candidatas/<slug de geometria>.md` (só arquivos novos) |
@@ -41,7 +41,7 @@ Por instrução do usuário (14/11, 17h), a Máquina A chegou ao limite e a **M�
 | ~~B7~~ concluída 14/11 (4ea797c): 39 candidatas conferidas contra a api.enem.dev; 21 capítulos sem candidata registrados com o motivo | Antigravity #4 | 14/11 | — |
 | ~~B10a/B10b. Vestibular nas aulas de aritmética e álgebra~~ concluídas 14/11 (d9c8598, 50101e9): 31 questões do ENEM em 14 capítulos, 5 repetidas trocadas; auditoria do maestro reescreveu 29 feedbacks | Antigravity / Antigravity #3 | 14/11 | — |
 | ~~B8. Reconferência visual~~ concluída 14/11 (0166572): 77 passos, 60 ok; relatório `docs/visual/geometria-reconferencia-b8.md` | Antigravity #2 | 14/11 | — |
-| B8b. Correções de conteúdo do relatório B8 (prefixo "Resposta:" nos micro_challenge de 6 passos, troncos p3, 4 ressalvas de figura) | Antigravity #2 | 14/11, 19h | `content/geometria/<slugs do relatório B8>/aula-01.json` e testes deles, seção "Correções B8b" do relatório |
+| ~~B8b~~ concluída 14/11 (16014cd): 6 desafios sem "Resposta: …", 3 figuras de erradas; troncos p3 e projeções p4 passaram para o B1b (falta parâmetro no `solido_3d`) | Antigravity #2 | 14/11 | — |
 | B6. Auditoria das 40 questões do ENEM de 14/11 (feita: 50dc335, 26 feedbacks corrigidos); revisão e integração de tudo; inserir o vestibular de geometria nas aulas depois da conferência | maestro (Claude Code) | 14/11 | `docs/revisao/auditoria-claude.md`, `treino.vestibular` das aulas, docs de coordenação |
 
 ## Pedidos entre máquinas
