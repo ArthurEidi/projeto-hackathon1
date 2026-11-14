@@ -272,8 +272,31 @@
           "correct": false,
           "feedback": "Você tratou −1 como quadrado real; x²≥0, então não há raiz real.",
           "figure": {
+            "y": [-2, 5],
+            "curvas": [
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": 1,
+                "cor": "c3",
+                "fantasma": true,
+                "rotulo": "y = x² + 1"
+              },
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": -1,
+                "cor": "c4",
+                "rotulo": "y = x² − 1"
+              }
+            ],
+            "marcar": {
+              "raizes": true
+            },
             "highlight": [
-              "c3"
+              "c4"
             ]
           }
         },
@@ -283,6 +306,18 @@
           "correct": true,
           "feedback": "Certo: Nenhuma; x²+1≥1 para todo real.",
           "figure": {
+            "marcar": {
+              "vertice": true
+            },
+            "guias": {
+              "horizontais": [
+                {
+                  "v": 1,
+                  "rotulo": "mín = 1",
+                  "cor": "c4"
+                }
+              ]
+            },
             "highlight": [
               "c3"
             ]

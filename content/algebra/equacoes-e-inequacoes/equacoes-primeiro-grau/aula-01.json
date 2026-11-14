@@ -222,13 +222,30 @@
           "id": "micro-erro",
           "label": "−2",
           "correct": false,
-          "feedback": "O sinal mudou errado; 2x=4, então x=2."
+          "feedback": "O sinal mudou errado; 2x=4, então x=2.",
+          "figure": {
+            "x": [-3, 5],
+            "ponto": {
+              "curva": 0,
+              "x": -2,
+              "arrastavel": false,
+              "coordenadas": true,
+              "cor": "c4"
+            },
+            "highlight": ["c4"]
+          }
         },
         {
           "id": "micro-acerto",
           "label": "2",
           "correct": true,
-          "feedback": "Certo: 2; 2x=4 dá x=2."
+          "feedback": "Certo: 2; 2x=4 dá x=2.",
+          "figure": {
+            "marcar": {
+              "encontro": true
+            },
+            "highlight": ["c4"]
+          }
         }
       ]
     },

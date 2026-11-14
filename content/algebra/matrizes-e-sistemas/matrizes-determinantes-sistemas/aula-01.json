@@ -241,7 +241,20 @@
           "label": "(2;6)",
           "correct": false,
           "feedback": "Você dobrou as duas direções; só x dobra, então a imagem é (2;3).",
-          "override": {
+          "figure": {
+            "matriz": [
+              [2, 0],
+              [0, 2]
+            ],
+            "janela": [-1, 7],
+            "mostrar": {
+              "malha": true,
+              "quadrado": true,
+              "colunas": true,
+              "det": true,
+              "identidade": true,
+              "imagem": true
+            },
             "highlight": ["c3"]
           }
         },
@@ -250,7 +263,15 @@
           "label": "(2;3)",
           "correct": true,
           "feedback": "Certo: (2;3); (2·1;1·3)=(2;3).",
-          "override": {
+          "figure": {
+            "mostrar": {
+              "malha": true,
+              "quadrado": true,
+              "colunas": true,
+              "det": true,
+              "identidade": true,
+              "imagem": true
+            },
             "highlight": ["c2", "c3"]
           }
         }

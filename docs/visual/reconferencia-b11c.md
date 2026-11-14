@@ -68,3 +68,19 @@ Reconferência em viewport mobile (`400 × 860`, `overflowX = false` em todos os
   - **1 figura inicial que entrega a resposta:**
     8. `inequacoes-modulares` (`p4`, figura inicial já mostra o intervalo aberto `(−2; 2)` na reta numérica).
 - **Ressalvas leves (2):** `equacoes-logaritmicas p5` (`log_β` vs `b`) e `inequacoes-quadraticas p5` (`r1`/`r2` sem subscrito).
+
+
+## Correções B11c-fix
+
+| slug | passo | antes → depois |
+| --- | --- | --- |
+| `equacoes-primeiro-grau` | p4 (`conferir-previsao`) | **Antes:** opção `−2` sem `figure` (imagem idêntica à inicial). **Depois:** `−2` mostra o ponto `(−2; −8)` sobre `y = 2x − 4` (`x: [-3, 5]`, `highlight: ["c4"]`), evidenciando que `y ≠ 0`; opção `2` marca o encontro `(2; 0)`. |
+| `equacoes-quadraticas` | p5 (`conferir-previsao`) | **Antes:** opção `Duas` só tinha `highlight: ["c3"]`, idêntica à inicial e à certa. **Depois:** `Duas` mantém `y = x² + 1` tracejada (`fantasma: true`) e adiciona `y = x² − 1` com `marcar.raizes: true` (raízes `−1` e `1`); opção `Nenhuma` marca o vértice e a guia horizontal `mín = 1`. |
+| `expressoes-algebricas-e-produtos-notaveis` | p4 (`conferir-previsao`) | **Antes:** opção `5` sem `figure` (imagem idêntica à inicial). **Depois:** `5` usa `highlight: ["c1", "c3"]` (destaca apenas `a²` e `b²`, afinando as duas faixas `ab` que faltaram); opção `9` usa `highlight: ["c1", "c2", "c3"]` e `mostrar.total: true`. |
+| `fatoracao-algebrica` | p4 (`conferir-previsao`) | **Antes:** opção `Só 2` tinha apenas `highlight: ["c4"]` sem efeito visível. **Depois:** `Só 2` mantém `y = x² − 2x` tracejada (`fantasma: true`) e mostra `y = x − 2` com `marcar.raizes: true` (apenas raiz `2`, ilustrando a divisão por `x`); opção `0 e 2` marca as duas raízes da parábola. |
+| `inequacoes-modulares` | p4 (`conferir-previsao`) | **Antes:** figura inicial já desenhava o segmento `(−2; 2)` com bolinhas abertas, entregando a resposta. **Depois:** figura inicial mostra apenas a reta vazia `[-4, 4]`; opção `[−2; 2]` desenha segmento e bolinhas fechadas, e `(−2; 2)` desenha segmento e bolinhas abertas. |
+| `determinantes-e-matriz-inversa` | p4 (`conferir-previsao`) | **Antes:** alternativas usavam chave `"override"` (ignorada por `MicroChallenge.tsx`, que lê `"figure"`), mantendo a imagem igual à inicial. **Depois:** renomeado `"override"` → `"figure"` nas duas alternativas; `diag(−2; −1)` exibe os 3 painéis `v → Bv=(2;1) → A(Bv)=(−4;−1)` com `janela: [-3, 3]`. |
+| `matrizes-determinantes-sistemas` | p5 (`conferir-previsao`) | **Antes:** alternativas usavam chave `"override"` (ignorada por `MicroChallenge.tsx`), mantendo a imagem sem vetor imagem. **Depois:** renomeado `"override"` → `"figure"`; opção `(2;6)` mostra `matriz: [[2,0],[0,2]]` com `imagem: true` e `janela: [-1, 7]` (levando `(1;3)` a `(2;6)`, `det = 4`); opção `(2;3)` revela a imagem real `(2;3)` de `diag(2;1)`. |
+| `sistemas-lineares-e-escalonamento` | p5 (`conferir-previsao`) | **Antes:** opção `Infinitas` sem `figure` (imagem idêntica à inicial com duas retas paralelas distintas). **Depois:** `Infinitas` mostra retas coincidentes `x + y = 2` e `2x + 2y = 4` (`fantasma: true`), ilustrando `0 = 0`; opção `Nenhuma` destaca as duas retas paralelas distintas (`highlight: ["c3", "c4"]`). |
+| `equacoes-logaritmicas` | p5 (`fechamento`) | **Antes:** usava `logᵦ` (beta grego) em `formula` e `lines.intro`. **Depois:** trocado para `log_b` (b latino, igual ao restante da aula). **Nota para o maestro:** `ConceptLock.tsx` (`partesTextoFormula` / `SUBSCRITOS`) só converte caracteres Unicode já subscritos para `<sub>`, e o Unicode não possui `b` latino subscrito; por isso `log_b` aparece literalmente com `_b` até que `ConceptLock.tsx` passe a tratar `_b` (não alterado aqui por ser código em `src/`). |
+| `inequacoes-quadraticas` | p5 (`fechamento`) | **Antes:** fórmula usava `r1` e `r2` sem subscrito. **Depois:** atualizado para `r₁` e `r₂` (renderizados como subscrito em `ConceptLock.tsx`). |

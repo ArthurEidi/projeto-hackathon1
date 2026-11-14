@@ -144,9 +144,9 @@
       "formula": [
         { "text": "a", "ref": "c2" },
         { "text": "· (x" },
-        { "text": "− r1)(x − r2) ≤ 0" },
+        { "text": "− r₁)(x − r₂) ≤ 0" },
         { "text": "⇔" },
-        { "text": "r1 ≤ x ≤ r2", "ref": "c4" }
+        { "text": "r₁ ≤ x ≤ r₂", "ref": "c4" }
       ],
       "definitions": [
         { "term": "Entrada x", "text": "Número usado na comparação." },

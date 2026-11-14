@@ -75,7 +75,7 @@ const ChallengeOption = z.object({
   correct: z.boolean(),
   feedback: Line,
   figure: z.record(z.string(), z.unknown()).default({}),
-});
+}).strict(); // chave desconhecida (ex.: "override") seria descartada em silêncio e a figura da errada ficaria igual à inicial
 
 const MicroChallengeStep = z
   .object({

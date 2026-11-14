@@ -156,13 +156,22 @@
           "id": "micro-erro",
           "label": "5",
           "correct": false,
-          "feedback": "Faltaram as duas faixas; 4+2+2+1 = 9."
+          "feedback": "Faltaram as duas faixas; 4+2+2+1 = 9.",
+          "figure": {
+            "highlight": ["c1", "c3"]
+          }
         },
         {
           "id": "micro-acerto",
           "label": "9",
           "correct": true,
-          "feedback": "Certo: 9; 4+2+2+1=9."
+          "feedback": "Certo: 9; 4+2+2+1=9.",
+          "figure": {
+            "highlight": ["c1", "c2", "c3"],
+            "mostrar": {
+              "total": true
+            }
+          }
         }
       ]
     },

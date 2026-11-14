@@ -223,6 +223,27 @@
           "correct": false,
           "feedback": "Você dividiu por x e perdeu zero; as raízes são 0 e 2.",
           "figure": {
+            "curvas": [
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": -2,
+                "c": 0,
+                "cor": "c3",
+                "fantasma": true,
+                "rotulo": "y = x² − 2x"
+              },
+              {
+                "tipo": "afim",
+                "a": 1,
+                "b": -2,
+                "cor": "c4",
+                "rotulo": "y = x − 2"
+              }
+            ],
+            "marcar": {
+              "raizes": true
+            },
             "highlight": [
               "c4"
             ]
@@ -234,6 +255,9 @@
           "correct": true,
           "feedback": "Certo: 0 e 2; Um produto zera se um dos fatores zera.",
           "figure": {
+            "marcar": {
+              "raizes": true
+            },
             "highlight": [
               "c4"
             ]

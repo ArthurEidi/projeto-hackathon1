@@ -226,7 +226,19 @@
           "id": "micro-erro",
           "label": "2",
           "correct": false,
-          "feedback": "Você confundiu quociente com resto; 6=3·2+0."
+          "feedback": "Você confundiu quociente com resto; 6=3·2+0.",
+          "figure": {
+            "partes": 2,
+            "pintadas": 2,
+            "todo": 6,
+            "rotulos": {
+              "parte": "2×3",
+              "todo": "n"
+            },
+            "highlight": [
+              "c2"
+            ]
+          }
         },
         {
           "id": "micro-acerto",

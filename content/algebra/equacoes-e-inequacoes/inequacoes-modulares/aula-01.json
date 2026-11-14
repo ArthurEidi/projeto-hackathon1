@@ -99,14 +99,7 @@
         "widget": "reta_figura",
         "params": {
           "intervalo": [-4, 4],
-          "marcas": 1,
-          "trechos": [
-            { "de": -2, "ate": 2, "abreDe": true, "abreAte": true, "cor": "c4" }
-          ],
-          "pontos": [
-            { "x": -2, "cor": "c4", "rotulo": "-2", "aberto": true },
-            { "x": 2, "cor": "c4", "rotulo": "2", "aberto": true }
-          ]
+          "marcas": 1
         }
       },
       "prompt": "Qual conjunto resolve |x| < 2?",
@@ -120,9 +113,12 @@
           "correct": false,
           "feedback": "Você incluiu a igualdade; o certo é (−2; 2), com os extremos abertos.",
           "figure": {
+            "trechos": [
+              { "de": -2, "ate": 2, "abreDe": false, "abreAte": false, "cor": "c4" }
+            ],
             "pontos": [
-              { "x": -2, "cor": "c4", "rotulo": "-2" },
-              { "x": 2, "cor": "c4", "rotulo": "2" }
+              { "x": -2, "cor": "c4", "rotulo": "−2", "aberto": false },
+              { "x": 2, "cor": "c4", "rotulo": "2", "aberto": false }
             ]
           }
         },
@@ -134,6 +130,10 @@
           "figure": {
             "trechos": [
               { "de": -2, "ate": 2, "abreDe": true, "abreAte": true, "cor": "c4" }
+            ],
+            "pontos": [
+              { "x": -2, "cor": "c4", "rotulo": "−2", "aberto": true },
+              { "x": 2, "cor": "c4", "rotulo": "2", "aberto": true }
             ]
           }
         }

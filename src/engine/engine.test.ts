@@ -104,6 +104,13 @@ describe("treino pós-aula", () => {
     expect(`${Math.round((5 / 3) * rUpe * 1e9) / 1e9} cm`).toBe(certa("upe-perimetro-96"));
   });
 
+  it("schema recusa chave desconhecida na opção do desafio (ex.: override no lugar de figure)", () => {
+    const bad = structuredClone(lessonRaw);
+    const desafio = bad.steps.find((s: { type: string }) => s.type === "micro_challenge");
+    desafio.options[0].override = { highlight: ["c1"] };
+    expect(Lesson.safeParse(bad).success).toBe(false);
+  });
+
   it("schema recusa treino sem as 7 perguntas", () => {
     const bad = structuredClone(lessonRaw);
     bad.treino.medias.pop();

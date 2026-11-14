@@ -274,13 +274,36 @@
           "id": "micro-erro",
           "label": "Infinitas",
           "correct": false,
-          "feedback": "Você confundiu 0=1 com 0=0; a contradição dá nenhuma solução."
+          "feedback": "Você confundiu 0=1 com 0=0; a contradição dá nenhuma solução.",
+          "figure": {
+            "curvas": [
+              {
+                "tipo": "afim",
+                "a": -1,
+                "b": 2,
+                "cor": "c3",
+                "rotulo": "x + y = 2"
+              },
+              {
+                "tipo": "afim",
+                "a": -1,
+                "b": 2,
+                "cor": "c4",
+                "fantasma": true,
+                "rotulo": "2x + 2y = 4"
+              }
+            ],
+            "highlight": ["c4"]
+          }
         },
         {
           "id": "micro-acerto",
           "label": "Nenhuma",
           "correct": true,
-          "feedback": "Certo: Nenhuma; Zero nunca é igual a 1."
+          "feedback": "Certo: Nenhuma; Zero nunca é igual a 1.",
+          "figure": {
+            "highlight": ["c3", "c4"]
+          }
         }
       ]
     },

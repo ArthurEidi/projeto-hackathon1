@@ -183,7 +183,7 @@
           "label": "3",
           "correct": true,
           "feedback": "Certo: 3; ∣−2 − 1∣ = ∣−3∣ = 3.",
-          "override": {
+          "figure": {
             "mostrar": { "distancia": true },
             "highlight": ["c4"]
           }
@@ -192,9 +192,17 @@
           "id": "micro-erro",
           "label": "−3",
           "correct": false,
-          "feedback": "Resposta: 3; −3 é o deslocamento; a distância é não negativa: ∣−2 − 1∣ = 3.",
-          "override": {
-            "mostrar": { "distancia": true },
+          "feedback": "−3 é o deslocamento com sinal; a distância mede comprimento e é sempre não negativa.",
+          "figure": {
+            "trechos": [
+              {
+                "de": -2,
+                "ate": 1,
+                "cor": "c3",
+                "rotulo": "desloc. −3"
+              }
+            ],
+            "mostrar": { "distancia": false },
             "highlight": ["c3"]
           }
         }

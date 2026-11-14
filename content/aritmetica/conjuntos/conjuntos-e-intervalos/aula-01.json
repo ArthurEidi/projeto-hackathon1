@@ -190,7 +190,7 @@
           "label": "[2; 3]",
           "correct": true,
           "feedback": "Certo: [2; 3]; Só de 2 a 3 os dois conjuntos aceitam.",
-          "override": {
+          "figure": {
             "trechos": [],
             "operacao": {
               "a": {
@@ -214,8 +214,8 @@
           "id": "micro-erro",
           "label": "[0; 5]",
           "correct": false,
-          "feedback": "Resposta: [2; 3]; Você fez a união; a interseção exige os dois filtros: [2; 3].",
-          "override": {
+          "feedback": "Você fez a união, que junta os dois conjuntos; a interseção exige pertencer aos dois ao mesmo tempo.",
+          "figure": {
             "trechos": [],
             "operacao": {
               "a": {
