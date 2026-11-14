@@ -39,6 +39,41 @@ function renderTextoFormula(texto: string) {
   );
 }
 
+type Token = ConceptLockStep["formula"][number];
+
+const FECHA = /^\s*([,;.:)\]}]|[=⇔⇒]\s*\S)/; // não pode começar linha (nem "=10ⁿ se…" solto do termo)
+const ABRE = /[=+−\-·×÷/⇔⇒<>≤≥≠(\[{]\s*$/; // não pode terminar linha
+
+/**
+ * Agrupa as fichas da fórmula em blocos que não se separam na quebra de linha:
+ * um texto que começa com vírgula ou parêntese de fechamento fica com o anterior, e um texto que
+ * termina em "=", operador ou parêntese de abertura fica com o seguinte; "=" com o lado direito
+ * junto ("=10ⁿ se a<√10") fica com o termo da esquerda. Antes, o texto solto é
+ * partido logo depois de vírgula/ponto e vírgula, para a quebra preferir cair ali
+ * (", Q(x) ≠ 0" começava a 2ª linha com vírgula; "=" ficava no fim da linha).
+ */
+export function gruposFormula(tokens: readonly Token[]): Token[][] {
+  const pecas: Token[] = [];
+  for (const t of tokens) {
+    if (t.ref || t.sup) {
+      pecas.push(t);
+      continue;
+    }
+    const partes = t.text.split(/(?<=[,;])\s+/).filter((s) => s.trim() !== "");
+    partes.forEach((s) => pecas.push({ ...t, text: s }));
+  }
+  const grupos: Token[][] = [];
+  let colaNoProximo = false;
+  for (const t of pecas) {
+    const solto = !t.ref && !t.sup;
+    const colaNoAnterior = solto && FECHA.test(t.text);
+    if (grupos.length && (colaNoProximo || colaNoAnterior)) grupos[grupos.length - 1].push(t);
+    else grupos.push([t]);
+    colaNoProximo = solto && ABRE.test(t.text);
+  }
+  return grupos;
+}
+
 export function ConceptLock({ step, onNext }: StepProps<ConceptLockStep>) {
   const Figure = figures[step.figure.widget];
   const [active, setActive] = useState<Marca | null>(null);
@@ -72,7 +107,9 @@ export function ConceptLock({ step, onNext }: StepProps<ConceptLockStep>) {
         <Figure state={figState} />
       </div>
       <div ref={formulaRef} className="formula" aria-label="Fórmula">
-        {step.formula.map((tok, i) =>
+        {gruposFormula(step.formula).map((grupo, g) => (
+          <span key={g} className="formula__grupo">
+            {grupo.map((tok, i) =>
           tok.ref ? (
             <TactileButton
               key={i}
@@ -98,7 +135,9 @@ export function ConceptLock({ step, onNext }: StepProps<ConceptLockStep>) {
               </span>
             </Fragment>
           ),
-        )}
+            )}
+          </span>
+        ))}
         {dica && <Dica termo={dica.key} alvo={dica.alvo} largura={dica.largura} lado="acima" />}
       </div>
       <p className="hint">{step.lines.hint}</p>

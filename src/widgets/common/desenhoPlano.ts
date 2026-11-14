@@ -158,15 +158,25 @@ export function desenharPlano(
   seg(ctx, { x: eixoX, y: A.y + A.h + 6 }, { x: eixoX, y: A.y - 6 }, c.axis, 2);
   polyline(ctx, [{ x: A.x + A.w - 2, y: eixoY - 5 }, { x: A.x + A.w + 6, y: eixoY }, { x: A.x + A.w - 2, y: eixoY + 5 }], c.axis, 2);
   polyline(ctx, [{ x: eixoX - 5, y: A.y + 2 }, { x: eixoX, y: A.y - 6 }, { x: eixoX + 5, y: A.y + 2 }], c.axis, 2);
+  // Onde fica a alça do ponto arrastável: o número do eixo que ela cobriria não é escrito
+  // (a pílula do ponto já mostra a coordenada; antes a alça ficava sobre o "−1" do eixo y).
+  const alca = ((): Pt | null => {
+    if (!p.ponto || estado.pontoX === undefined) return null;
+    const yp = p.ponto.curva === null ? 0 : alturaDoPonto(curvas, p.ponto.curva, estado.pontoX).y;
+    return Number.isFinite(yp) ? { x: v.X(estado.pontoX), y: p.ponto.curva === null ? eixoY : v.Y(yp) } : null;
+  })();
+  const sobAlca = (q: Pt) => alca !== null && Math.abs(q.x - alca.x) < 22 && Math.abs(q.y - alca.y) < 18;
   for (const x of marcas(x0, x1, passo)) {
     if (x === 0 || x === x1) continue;
     seg(ctx, { x: v.X(x), y: eixoY - 4 }, { x: v.X(x), y: eixoY + 4 }, c.axis, 2);
-    text(ctx, { x: v.X(x), y: eixoY + 14 }, num(x), c.muted, 11);
+    const q = { x: v.X(x), y: eixoY + 14 };
+    if (!sobAlca(q)) text(ctx, q, num(x), c.muted, 11);
   }
   for (const y of marcas(y0, y1, passo)) {
     if (y === 0 || y === y1) continue;
     seg(ctx, { x: eixoX - 4, y: v.Y(y) }, { x: eixoX + 4, y: v.Y(y) }, c.axis, 2);
-    text(ctx, { x: eixoX - 13, y: v.Y(y) }, num(y), c.muted, 11);
+    const q = { x: eixoX - 13, y: v.Y(y) };
+    if (!sobAlca(q)) text(ctx, q, num(y), c.muted, 11);
   }
 
   if (p.marcar.quadrantes) {
@@ -199,6 +209,8 @@ export function desenharPlano(
   text(ctx, letraY, "y", c.ink2, 14);
   ocupados.push({ caixa: caixaDoCentro(letraX, 12, 16), folgaX: 2, folgaY: 2 });
   ocupados.push({ caixa: caixaDoCentro(letraY, 12, 16), folgaX: 2, folgaY: 2 });
+  // Linha do eixo x: chip nenhum fica atravessado nela (a pílula "(0; −1)" encostava no eixo).
+  if (temX) ocupados.push({ caixa: { x: A.x, y: eixoY - 1, w: A.w, h: 2 }, folgaX: 0, folgaY: 3 });
   const registrarPonto = (pt: Pt, raio: number) => {
     ocupados.push({ caixa: caixaDoCentro(pt, raio * 2, raio * 2), folgaX: 1, folgaY: 1 });
   };
@@ -364,10 +376,20 @@ export function desenharPlano(
       seg(ctx, Q, R, cor.main, espessura(t.cor, 4.5, hl));
       const sobe = yb - ya;
       triRotulos = () => {
+        // Na fila, com prioridade alta: "1" sob o degrau e o "+a" ao lado da subida, desviando
+        // dos chips de ponto (antes o "1" ficava colado em "(0; 1)" e na raiz "−0,5").
         const abaixo = sobe >= 0 ? 16 : -16;
-        chip(ctx, { x: (P.x + Q.x) / 2, y: P.y + abaixo }, "1", c.ink2, c.ink);
+        const meio = (P.x + Q.x) / 2;
+        const { w: w1, h: h1 } = medirChip("1");
+        pendentes.push({
+          prioridade: 0,
+          candidatos: [{ x: meio, y: P.y + abaixo }, { x: meio, y: P.y - abaixo }, { x: meio + 14, y: P.y + abaixo + 6 }],
+          w: w1,
+          h: h1,
+          draw: (pos) => chip(ctx, pos, "1", c.ink2, c.ink),
+        });
         const s = t.modo === "fator" ? `×${num(fatorPorPasso(k, xt))}` : sobe > 0 ? `+${num(sobe)}` : num(sobe);
-        etiqueta(ctx, hits, { x: Q.x + 22 + 4 * s.length, y: (Q.y + R.y) / 2 }, s, t.cor);
+        agendarChip({ x: Q.x, y: (Q.y + R.y) / 2 }, { x: Q.x + 22 + 4 * s.length, y: (Q.y + R.y) / 2 }, s, t.cor, 0);
       };
     }
   }

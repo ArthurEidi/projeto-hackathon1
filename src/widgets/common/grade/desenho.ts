@@ -238,17 +238,26 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
   if (m.colunas) {
     m.colunas.forEach((col, j) => textoCabe(ctx, { x: gx + s * (j + 0.5), y: gy - 12 }, col, cor(p.cores.colunas).dark, s - 2, 14));
     m.linhas.forEach((lin, i) => textoCabe(ctx, { x: gx - 18, y: gy + s * (i + 0.5) }, lin, cor(p.cores.linhas).dark, 34, 14));
-    if (p.titulos.colunas) text(ctx, { x: gx + (s * nCols) / 2, y: 12 }, p.titulos.colunas, cor(p.cores.colunas).main, 13);
+    if (p.titulos.colunas) text(ctx, { x: gx + (s * nCols) / 2, y: 13 }, p.titulos.colunas, cor(p.cores.colunas).main, p.titulos.colunas.length <= 4 ? 18 : 13);
     if (p.titulos.linhas) {
-      ctx.save();
-      ctx.translate(10, gy + (s * nLins) / 2);
-      ctx.rotate(-Math.PI / 2);
-      text(ctx, { x: 0, y: 0 }, p.titulos.linhas, cor(p.cores.linhas).main, 13);
-      ctx.restore();
+      // Título curto (ex.: "n₁") na horizontal, à esquerda dos rótulos, se couber; senão, girado.
+      // Antes ficava sempre girado em 13 px e "n₁" mal se lia.
+      const t = p.titulos.linhas;
+      const yt = gy + (s * nLins) / 2;
+      ctx.font = "900 16px Nunito, system-ui, sans-serif";
+      const tw = ctx.measureText(t).width;
+      if (tw <= 40 && gx - 40 - tw / 2 >= 4) text(ctx, { x: gx - 40, y: yt }, t, cor(p.cores.linhas).main, 18);
+      else {
+        ctx.save();
+        ctx.translate(11, yt);
+        ctx.rotate(-Math.PI / 2);
+        text(ctx, { x: 0, y: 0 }, t, cor(p.cores.linhas).main, 15);
+        ctx.restore();
+      }
     }
   } else if (p.titulos.linhas) text(ctx, { x: w / 2, y: 12 }, p.titulos.linhas, cor(p.cores.linhas).main, 13);
 
-  const listradas: Rect[] = [];
+  const listradas: { r: Rect; texto: string; tinta: string; y: number }[] = [];
   m.casas.forEach((k, idx) => {
     const i = m.colunas ? k.i : emDuasLinhas ? Math.floor(idx / nCols) : 0;
     const j = m.colunas ? k.j : emDuasLinhas ? idx % nCols : idx;
@@ -299,8 +308,12 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
       tinta = c.lineDark;
     }
     caixa(ctx, r, fill, stroke, lw);
-    if (a && b && !mostrar.inter && !acesa && valida && !fora) listradas.push(r);
-    textoCabe(ctx, { x: r.x + r.w / 2, y: r.y + r.h / 2 + 1 }, conteudoCasa(p, k, acesa, ordem), tinta, r.w - 6, Math.min(17, s * 0.36));
+    const listrada = a && b && !mostrar.inter && !acesa && valida && !fora;
+    // Casa contada duas vezes: o texto sobe e o "×2" vai para a borda de baixo (antes cobria o "K6").
+    const comX2 = listrada && mostrar.uniao && !mostrar.sem;
+    const yTexto = r.y + (comX2 ? r.h * 0.32 : r.h / 2 + 1);
+    if (listrada) listradas.push({ r, texto: conteudoCasa(p, k, acesa, ordem), tinta, y: yTexto });
+    textoCabe(ctx, { x: r.x + r.w / 2, y: yTexto }, conteudoCasa(p, k, acesa, ordem), tinta, r.w - 6, Math.min(17, s * 0.36));
     if (!valida) {
       // Casa apagada pela chave: um × na cor de "fora".
       const k4 = cor(p.cores.fora).main;
@@ -309,9 +322,11 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
     } else if (fora) seg(ctx, { x: r.x + 6, y: r.y + r.h - 6 }, { x: r.x + r.w - 6, y: r.y + 6 }, cor(p.cores.fora).main, 2);
     if (valida && !fora) alvos.push({ tipo: "casa", id: k.chave, r });
   });
-  for (const r of listradas) {
+  for (const { r, texto, tinta, y } of listradas) {
     listras(ctx, r, cor(p.cores.intersecao).main);
-    if (mostrar.uniao && !mostrar.sem) chip(ctx, { x: r.x + r.w - 6, y: r.y + 6 }, "×2", cor(p.cores.intersecao).main, cor(p.cores.intersecao).dark);
+    // O texto volta por cima das listras, para não ficar riscado.
+    textoCabe(ctx, { x: r.x + r.w / 2, y }, texto, tinta, r.w - 6, Math.min(17, s * 0.36));
+    if (mostrar.uniao && !mostrar.sem) chip(ctx, { x: r.x + r.w / 2, y: r.y + r.h - 11 }, "×2", cor(p.cores.intersecao).main, cor(p.cores.intersecao).dark);
   }
   // Interseção: frações nas bordas.
   if (temInterBorda) {
@@ -747,7 +762,9 @@ function desenharBarrasK(ctx: CanvasRenderingContext2D, w: number, h: number, hi
   const { n, pp, vals, k } = valoresBarras(p, ctl);
   const max = pp === null ? Math.max(...vals) : Math.max(1e-9, ...vals);
   const temItens = p.itens && k !== null;
-  const area = { x: 20, y: 30, w: w - 40, h: h - (temItens ? 120 : 70) };
+  // Com a pílula "C(n, k) = …" no alto, as barras descem: o número da barra mais alta ficava sob ela.
+  const topo = k !== null ? 52 : 30;
+  const area = { x: 20, y: topo, w: w - 40, h: h - (temItens ? 120 : 70) - (topo - 30) };
   const slot = area.w / (n + 1);
   const kb = corDoTraco(p.cores.barra);
   const ka = corDoTraco(p.cores.acesa);

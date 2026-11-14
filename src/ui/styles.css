@@ -935,3 +935,14 @@ button {
   visibility: hidden;
   pointer-events: none;
 }
+
+/* Bloco de fichas que não se separa na quebra de linha (ver gruposFormula em ConceptLock.tsx).
+   Se o bloco sozinho não cabe na largura, ainda quebra por dentro. */
+.formula__grupo {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+}
