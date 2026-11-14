@@ -11,7 +11,7 @@
   >
   > Para produzir a Hydrangea cor-de-rosa de maior valor comercial, deve-se preparar o solo de modo que x assuma
 - **Alternativas:**
-  - A) Qualquer valor acima de 10^{-8}10​−8 .
+  - A) Qualquer valor acima de 10^{-8}10​−8   	​​.
   - B) Qualquer valor positivo inferior a 10^{-7}10​−7​​.
   - C) Valores maiores que 7 e menores que 8.
   - D) Valores maiores que 70 e menores que 80.
