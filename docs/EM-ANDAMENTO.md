@@ -20,7 +20,7 @@ Este arquivo é a **reserva de frentes**. Serve para duas máquinas (ou dois coo
 |---|---|---|---|
 | Pendências 1 a 5 de "Pendências imediatas da Máquina A" em PROXIMOS-PASSOS (passos de álgebra, adaptações, fontes, visual de aritmética e álgebra) | A (Claude Code + agentes Maestri) | 13/11 | `content/aritmetica/**`, `content/algebra/**`, `docs/revisao/**`, `docs/fontes-candidatas/**` |
 | 3. Widgets (`maquinas_funcao`, acentos, `transformacao_plano`, `reta_numerica`) | A | 13/11 | `src/widgets/common/**`, GUIA §5, `WIDGETS-PENDENTES.md` |
-| 4. Revisão de texto: geometria | **B: reservada para a segunda máquina** (confirme trocando esta linha pelo seu nome e data) | — | `content/geometria/**`, `docs/revisao/geometria-*.md` |
+| 4. Revisão de texto: geometria (distratores, passos params × falas, segunda passada dos feedbacks), por setor | **B: Claude Code maestro + agentes Antigravity (Gemini), DESKTOP-M466PUL** | 13/11 | `content/geometria/**`, `docs/revisao/geometria-*.md` |
 | 5. Conferência visual: geometria | **B: reservada para a segunda máquina** | — | `docs/visual/geometria.md`, `content/geometria/**` |
 
 ## Pedidos entre máquinas
