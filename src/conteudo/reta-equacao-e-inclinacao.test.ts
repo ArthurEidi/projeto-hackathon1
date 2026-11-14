@@ -4,6 +4,8 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
 import { raizes, type CurvaResolvida } from "../widgets/common/plot2d";
+import { medidas, mover } from "../widgets/common/pontos/calc";
+import { PontosParams } from "../widgets/common/pontos/params";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -26,25 +28,60 @@ const certa = (id: string) =>
 const step = (id: string) => L.steps.find((s) => s.id === id)!;
 
 describe("passos da aula de reta e inclinação", () => {
-  it("cada interactive_canvas pode ser concluído", () => {
-    for (const s of L.steps) {
-      if (s.type !== "interactive_canvas") continue;
-      const { metric, gte, lte } = s.complete_when;
-      const slider = s.controls.find((c) => c.id === metric);
-      if (slider) {
-        if (gte !== undefined) expect(slider.max, s.id).toBeGreaterThanOrEqual(gte);
-        if (lte !== undefined) expect(slider.min, s.id).toBeLessThanOrEqual(lte);
-        expect(slider.initial, `${s.id} não pode começar concluído`).not.toBe(gte ?? lte);
-      } else {
-        expect(["quadrantes", "na_raiz", "no_encontro", "ponto_x", "intercepto_tocado"]).toContain(metric);
-      }
-    }
+  const pontos = (id: string) => {
+    const s = step(id);
+    if (s.type !== "interactive_canvas" || s.widget !== "pontos_no_plano") throw new Error(id);
+    const p = PontosParams.parse(s.params);
+    const a = { x: Number(p.a[0]), y: Number(p.a[1]) };
+    const b = { x: Number(p.b[0]), y: Number(p.b[1]) };
+    return { p, a, b, cw: s.complete_when };
+  };
+
+  it("mesma-altura: começa com m = 0 e conclui ao subir B 3 (fala vale em (4; 5))", () => {
+    const { p, a, b, cw } = pontos("mesma-altura");
+    expect(cw).toMatchObject({ metric: "dy", gte: 3 });
+    expect(medidas(a, b).m).toBe(0);
+    expect(medidas(a, b).dy).toBeLessThan(3);
+    const b2 = mover(p, {}, { x: 4, y: 5 });
+    expect(medidas(a, b2).dy).toBe(3);
+    expect(medidas(a, b2).m).toBe(1);
   });
 
-  it("desafio-fronteira: inclinação de reta vertical é indefinida", () => {
-    const s = step("desafio-fronteira");
+  it("razao-constante: B preso à reta mantém m = 2 em toda posição", () => {
+    const { p, a, cw } = pontos("razao-constante");
+    expect(cw).toMatchObject({ metric: "pontos_vistos", gte: 3 });
+    expect(p.prender_na_reta).toBe(true);
+    for (const x of [-3, -1, 1, 3, 4]) expect(medidas(a, mover(p, {}, { x, y: 0 })).m).toBe(2);
+  });
+
+  it("reta-vertical: B na vertical de A dá dx = 0 e m indefinido", () => {
+    const { p, a, b, cw } = pontos("reta-vertical");
+    expect(cw).toMatchObject({ metric: "dx_zero", gte: 1 });
+    expect(medidas(a, b).dx).not.toBe(0);
+    const b2 = mover(p, {}, { x: 1, y: 4 });
+    expect(medidas(a, b2).dx).toBe(0);
+    expect(medidas(a, b2).m).toBeNull();
+    expect(a.x).toBe(1);
+  });
+
+  it("corte-no-eixo-y: métrica de toque do plano_cartesiano", () => {
+    const s = step("corte-no-eixo-y");
+    if (s.type !== "interactive_canvas") throw new Error();
+    expect(s.complete_when.metric).toBe("intercepto_tocado");
+  });
+
+  it("desafio-equacao: reta por (1; 3) e (3; 7) e distratores", () => {
+    const s = step("desafio-equacao");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)!.label).toBe("Indefinida");
+    const m = (7 - 3) / (3 - 1);
+    const n = 3 - m * 1;
+    expect([m, n]).toEqual([2, 1]);
+    expect(s.options.find((o) => o.correct)!.label).toBe("y = 2x + 1");
+    // y = 4x − 1: m = Δy = 4, n = 3 − 4 = −1
+    expect(3 - 4 * 1).toBe(-1);
+    // y = x + 2 passa por (1; 3) mas não por (3; 7)
+    expect(1 + 2).toBe(3);
+    expect(3 + 2).not.toBe(7);
   });
 
   it("fechamento: termos referenciados existem no glossário", () => {

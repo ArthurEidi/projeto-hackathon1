@@ -8,74 +8,87 @@
     "setor": "geometria-analitica",
     "unidade": "reta-equacao-e-inclinacao"
   },
-  "outro": "Você dominou o coeficiente angular, o intercepto linear e a equação reduzida da reta no plano.",
+  "outro": "Dois pontos bastam: a razão Δy/Δx dá a inclinação, o corte no eixo y dá n, e a reta é y = mx + n.",
   "glossario": {
     "c1": {
-      "nome": "Coeficiente angular",
-      "resumo": "Quanto a reta sobe para cada passo de 1: m = Δy/Δx."
+      "nome": "Passo horizontal",
+      "resumo": "O degrau Δx entre os dois pontos: quanto se anda em x."
     },
     "c2": {
-      "nome": "Coeficiente linear",
-      "resumo": "Ordenada n do ponto de corte com o eixo vertical y."
+      "nome": "Passo vertical",
+      "resumo": "O degrau Δy entre os dois pontos; dividido por Δx, dá a inclinação m."
     },
     "c3": {
-      "nome": "Reta no plano",
-      "resumo": "Conjunto de todos os pontos (x; y) tais que y = mx + n."
+      "nome": "Reta",
+      "resumo": "Todos os pontos (x; y) com y = mx + n."
     },
     "c4": {
-      "nome": "Passo horizontal",
-      "resumo": "Deslocamento Δx entre dois pontos distintos da reta."
+      "nome": "Coeficiente linear",
+      "resumo": "Onde a reta corta o eixo y: o ponto (0; n)."
     }
   },
   "steps": [
     {
       "id": "mesma-altura",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "pontos_no_plano",
       "params": {
-        "curvas": [
-          { "tipo": "afim", "a": "$m", "b": 2, "cor": "c3", "rotulo": "y = mx + 2" }
+        "modo": "reta",
+        "a": [
+          1,
+          2
         ],
-        "ponto": { "curva": 0, "x": 1, "coordenadas": true, "cor": "c4" }
-      },
-      "controls": [
-        {
-          "id": "m",
-          "label": "Inclinação m",
-          "min": 0,
-          "max": 2,
-          "step": 1,
-          "initial": 0,
-          "color": "c1"
+        "b": [
+          4,
+          2
+        ],
+        "fixos": [
+          "a"
+        ],
+        "passo": 1,
+        "mostrar": {
+          "degraus": true
         }
-      ],
+      },
       "lines": {
-        "intro": "Com m = 0, a reta é horizontal na altura 2. Mude a inclinação para m = 1: quanto a reta sobe a cada passo de x?",
-        "done": "Com m = 1 a reta sobe 1 a cada passo de 1: a inclinação m = Δy/Δx mede o ritmo de subida."
+        "intro": "A e B estão na mesma altura: quanto a reta sobe a cada passo? Depois suba B três quadradinhos.",
+        "done": "Na mesma altura a reta não sobe: m = 0 e y = 2. Subindo B, Δy deixa de ser 0 e a reta gira; em (4; 5), m = 3/3 = 1."
       },
       "complete_when": {
-        "metric": "m",
-        "gte": 1
+        "metric": "dy",
+        "gte": 3
       }
     },
     {
       "id": "razao-constante",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "pontos_no_plano",
       "params": {
-        "curvas": [
-          { "tipo": "afim", "a": 2, "b": 1, "cor": "c3", "rotulo": "y = 2x + 1" }
+        "modo": "reta",
+        "a": [
+          0,
+          1
         ],
-        "triangulo": { "curva": 0, "x": 0, "cor": "c1" },
-        "ponto": { "curva": 0, "x": 0, "arrastavel": true, "passo": 0.5, "coordenadas": true, "cor": "c4" }
+        "b": [
+          2,
+          5
+        ],
+        "fixos": [
+          "a"
+        ],
+        "passo": 1,
+        "prender_na_reta": true,
+        "mostrar": {
+          "degraus": true
+        }
       },
       "lines": {
-        "intro": "A reta y = 2x + 1 tem inclinação 2. Arraste o ponto de x = 0 até x = 2 para acompanhar os degraus.",
-        "done": "Em qualquer par de pontos, a razão Δy/Δx continua valendo 2! A inclinação é constante em toda a reta."
+        "intro": "Arraste B pela reta. Δx e Δy mudam; a razão Δy/Δx também muda?",
+        "done": "Não: os triângulos de degraus são semelhantes, então Δy/Δx = 2 em qualquer par de pontos. Esse número é o coeficiente angular m."
       },
       "complete_when": {
-        "metric": "ponto_x",
-        "gte": 2
+        "metric": "pontos_vistos",
+        "gte": 3
       }
     },
     {
@@ -84,20 +97,34 @@
       "widget": "plano_cartesiano",
       "params": {
         "curvas": [
-          { "tipo": "afim", "a": 2, "b": 1, "cor": "c3", "rotulo": "y = 2x + 1" }
+          {
+            "tipo": "afim",
+            "a": 2,
+            "b": 1,
+            "cor": "c3",
+            "rotulo": "y = 2x + 1"
+          }
         ],
-        "marcar": { "interceptoY": true },
-        "cores": { "interceptoY": "c2" },
-        "ponto": { "curva": 0, "x": 0, "arrastavel": true, "passo": 0.5, "coordenadas": true, "cor": "c4" }
+        "triangulo": {
+          "curva": 0,
+          "x": 0,
+          "cor": "c2"
+        },
+        "marcar": {
+          "interceptoY": true
+        },
+        "cores": {
+          "interceptoY": "c4"
+        }
       },
       "lines": {
-        "intro": "A reta tem m = 2 e passa por (0; 1). Toque no ponto em que ela corta o eixo y.",
-        "done": "Corta em 1, então n = 1 e a reta é y = 2x + 1. É a função afim expressa geometricamente no plano."
+        "intro": "A reta tem m = 2: anda 1, sobe 2. Toque no ponto em que ela corta o eixo y.",
+        "done": "Corta em 1, então n = 1 e y = 2x + 1. É a mesma função afim, agora lida como reta no plano."
       },
       "duvida": {
         "quando": "fim",
-        "pergunta": "Toda reta corta o eixo y em exatamente um ponto?",
-        "resposta": "Quase todas! Retas verticais x = k paralelas ao eixo y nunca cortam o eixo y (exceto x = 0)."
+        "pergunta": "Toda reta é uma função afim?",
+        "resposta": "Quase: a reta vertical não é função. E há outras formas de equação, como ax + by + c = 0."
       },
       "complete_when": {
         "metric": "intercepto_tocado",
@@ -105,37 +132,136 @@
       }
     },
     {
-      "id": "desafio-fronteira",
-      "type": "micro_challenge",
-      "prompt": "Uma reta passa por (1; 1) e (1; 4). Qual é a sua inclinação?",
-      "figure": {
-        "widget": "plano_figura",
-        "params": {
-          "curvas": [],
-          "ponto": { "curva": null, "x": 1, "coordenadas": true }
+      "id": "reta-vertical",
+      "type": "interactive_canvas",
+      "widget": "pontos_no_plano",
+      "params": {
+        "modo": "reta",
+        "a": [
+          1,
+          1
+        ],
+        "b": [
+          3,
+          3
+        ],
+        "fixos": [
+          "a"
+        ],
+        "passo": 1,
+        "mostrar": {
+          "degraus": true
         }
       },
       "lines": {
-        "intro": "Calcule Δx = 1 − 1 e tente dividir Δy por Δx."
+        "intro": "Leve B para cima de A, na mesma vertical. O que acontece com Δy/Δx?",
+        "done": "Δx vira 0 e a divisão não existe: a reta é vertical, x = 1. A inclinação é indefinida."
+      },
+      "complete_when": {
+        "metric": "dx_zero",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-equacao",
+      "type": "micro_challenge",
+      "prompt": "Qual é a equação da reta que passa por (1; 3) e (3; 7)?",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -4,
+            6
+          ],
+          "y": [
+            -2,
+            8
+          ],
+          "curvas": [
+            {
+              "tipo": "afim",
+              "a": 2,
+              "b": 1,
+              "cor": "c3",
+              "rotulo": "y = 2x + 1"
+            }
+          ],
+          "ponto": {
+            "curva": 0,
+            "x": 1,
+            "coordenadas": true
+          },
+          "cores": {
+            "interceptoY": "c4"
+          }
+        }
+      },
+      "lines": {
+        "intro": "Primeiro a inclinação, depois o corte no eixo y."
       },
       "options": [
         {
-          "id": "indef",
-          "label": "Indefinida",
+          "id": "r2x1",
+          "label": "y = 2x + 1",
           "correct": true,
-          "feedback": "Exato: como Δx = 1 − 1 = 0 e não se divide por zero, a inclinação é indefinida (reta x = 1)."
+          "feedback": "Isso. m = (7 − 3)/(3 − 1) = 4/2 = 2 e 3 = 2 · 1 + n dá n = 1.",
+          "figure": {
+            "triangulo": {
+              "curva": 0,
+              "x": 1,
+              "cor": "c2"
+            },
+            "marcar": {
+              "interceptoY": true
+            },
+            "highlight": [
+              "c2",
+              "c4"
+            ]
+          }
         },
         {
-          "id": "m0",
-          "label": "0",
+          "id": "r4xm1",
+          "label": "y = 4x − 1",
           "correct": false,
-          "feedback": "0 seria com pontos na mesma altura (Δy = 0). Aqui Δx = 0: a inclinação é indefinida."
+          "feedback": "4 é Δy, não m: com m = 4 sai n = 3 − 4 = −1. Dividindo por Δx = 2, m = 2 e a reta é y = 2x + 1.",
+          "figure": {
+            "triangulo": {
+              "curva": 0,
+              "x": 1,
+              "cor": "c2"
+            },
+            "highlight": [
+              "c2"
+            ]
+          }
         },
         {
-          "id": "m3",
-          "label": "3",
+          "id": "rx2",
+          "label": "y = x + 2",
           "correct": false,
-          "feedback": "3 é Δy = 4 − 1. Mas Δx = 0: a divisão 3/0 não existe, a inclinação é indefinida."
+          "feedback": "Passa por (1; 3), mas em x = 3 dá 5, não 7. Com m = 4/2 = 2: y = 2x + 1.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 3,
+              "coordenadas": true
+            }
+          }
+        },
+        {
+          "id": "r2x3",
+          "label": "y = 2x + 3",
+          "correct": false,
+          "feedback": "m = 2 está certo, mas 3 é a altura em x = 1, não em x = 0. n = 3 − 2 = 1: y = 2x + 1.",
+          "figure": {
+            "marcar": {
+              "interceptoY": true
+            },
+            "highlight": [
+              "c4"
+            ]
+          }
         }
       ]
     },
@@ -146,48 +272,85 @@
         "widget": "plano_figura",
         "params": {
           "curvas": [
-            { "tipo": "afim", "a": 2, "b": 1, "cor": "c3", "rotulo": "y = 2x + 1" }
+            {
+              "tipo": "afim",
+              "a": 2,
+              "b": 1,
+              "cor": "c3",
+              "rotulo": "y = 2x + 1"
+            }
           ],
-          "triangulo": { "curva": 0, "x": 0, "cor": "c1" },
-          "marcar": { "interceptoY": true },
-          "cores": { "interceptoY": "c2" },
-          "highlight": ["c1", "c2", "c3", "c4"]
+          "triangulo": {
+            "curva": 0,
+            "x": 0,
+            "cor": "c2"
+          },
+          "marcar": {
+            "interceptoY": true
+          },
+          "cores": {
+            "interceptoY": "c4"
+          }
         }
       },
       "formula": [
-        { "text": "y" },
-        { "text": "=" },
-        { "text": "m", "ref": "c1" },
-        { "text": "x", "ref": "c4" },
-        { "text": "+" },
-        { "text": "n", "ref": "c2" },
-        { "text": ";" },
-        { "text": "m", "ref": "c1" },
-        { "text": "=" },
-        { "text": "Δy/Δx" }
+        {
+          "text": "y"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "m"
+        },
+        {
+          "text": "x"
+        },
+        {
+          "text": "+"
+        },
+        {
+          "text": "n",
+          "ref": "c4"
+        },
+        {
+          "text": ";"
+        },
+        {
+          "text": "m"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "Δy",
+          "ref": "c2"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "Δx",
+          "ref": "c1"
+        }
       ],
       "definitions": [
         {
           "term": "Coeficiente angular",
-          "text": "Inclinação da reta: quanto y varia para cada unidade que x anda (m = Δy/Δx)."
+          "text": "m = Δy/Δx, igual entre quaisquer dois pontos da reta."
         },
         {
           "term": "Coeficiente linear",
-          "text": "Ordenada do ponto em que a reta corta o eixo vertical y: (0; n)."
+          "text": "n, o corte no eixo y."
         },
         {
-          "term": "Equação reduzida",
-          "text": "Forma y = mx + n que expressa a reta como função afim no plano."
+          "term": "Reta vertical",
+          "text": "x = k, com inclinação indefinida."
         }
       ],
       "lines": {
-        "intro": "Dois pontos determinam a inclinação m e o corte n, fixando toda a reta.",
-        "hint": "Toque nas letras coloridas para destacar cada elemento."
-      },
-      "duvida": {
-        "quando": "inicio",
-        "pergunta": "Toda reta do plano tem equação da forma y = mx + n?",
-        "resposta": "Quase todas! Apenas retas verticais têm equação x = k, pois sua inclinação é indefinida."
+        "intro": "Todos os triângulos de degraus da reta são semelhantes. Por isso m é o mesmo em toda ela, e y = mx + n.",
+        "hint": "Toque em uma letra para ver o que ela faz no gráfico."
       }
     }
   ],
@@ -207,7 +370,7 @@
             "id": "a1",
             "label": "1",
             "correct": false,
-            "feedback": "Resposta: 0; Como Δy = 1 − 1 = 0, a inclinação é m = 0."
+            "feedback": "Resposta: 0; 1 é a altura comum dos dois pontos, não a inclinação. Δy = 1 − 1 = 0, então m = 0/2 = 0."
           },
           {
             "id": "indef",
@@ -237,19 +400,19 @@
             "id": "y1",
             "label": "y = 1",
             "correct": false,
-            "feedback": "Resposta: y = x; y = 1 é reta horizontal na altura 1. Na origem, n = 0 e y = x."
+            "feedback": "Resposta: y = x; Faltou o x junto do m: y = 1 é horizontal. Com m = 1 e n = 0: y = x."
           },
           {
             "id": "yx1",
             "label": "y = x + 1",
             "correct": false,
-            "feedback": "Resposta: y = x; A reta passa pela origem, logo o corte n é 0: y = x."
+            "feedback": "Resposta: y = x; Usou o 1 também como n, mas a reta passa pela origem: n = 0 e y = x."
           },
           {
             "id": "y2x",
             "label": "y = 2x",
             "correct": false,
-            "feedback": "Resposta: y = x; A inclinação dada é m = 1 (não 2): y = x."
+            "feedback": "Resposta: y = x; Somou o passo 1 com a subida 1. A inclinação é m = 1/1 = 1; com n = 0: y = x."
           }
         ]
       },
@@ -267,7 +430,7 @@
             "id": "p30",
             "label": "(3; 0)",
             "correct": false,
-            "feedback": "Resposta: (0; 3); No corte com o eixo y temos x = 0: (0; 3)."
+            "feedback": "Resposta: (0; 3); Trocou a ordem das coordenadas. No eixo y temos x = 0: (0; 3)."
           },
           {
             "id": "p02",
@@ -279,7 +442,7 @@
             "id": "p23",
             "label": "(2; 3)",
             "correct": false,
-            "feedback": "Resposta: (0; 3); No eixo vertical x vale sempre zero: (0; 3)."
+            "feedback": "Resposta: (0; 3); Juntou m = 2 e n = 3 num ponto. No eixo y, x = 0 e y = n = 3: (0; 3)."
           }
         ]
       },
@@ -300,16 +463,16 @@
             "feedback": "Resposta: Δx = 2 e Δy = 4; Você inverteu: x varia 3 − 1 = 2 e y varia 6 − 2 = 4."
           },
           {
-            "id": "dx1dy3",
-            "label": "Δx = 1 e Δy = 3",
+            "id": "dx4dy8",
+            "label": "Δx = 4 e Δy = 8",
             "correct": false,
-            "feedback": "Resposta: Δx = 2 e Δy = 4; Subtraia as coordenadas: 3 − 1 = 2 e 6 − 2 = 4."
+            "feedback": "Resposta: Δx = 2 e Δy = 4; Somou as coordenadas: 1 + 3 = 4 e 2 + 6 = 8. Δ é diferença: Δx = 3 − 1 = 2 e Δy = 6 − 2 = 4."
           },
           {
             "id": "dx3dy6",
             "label": "Δx = 3 e Δy = 6",
             "correct": false,
-            "feedback": "Resposta: Δx = 2 e Δy = 4; Subtraia o ponto inicial: Δx = 2 e Δy = 4."
+            "feedback": "Resposta: Δx = 2 e Δy = 4; 3 e 6 são as coordenadas de chegada. Subtraia as de partida: Δx = 3 − 1 = 2 e Δy = 6 − 2 = 4."
           }
         ]
       }
@@ -341,7 +504,7 @@
             "id": "a4",
             "label": "4",
             "correct": false,
-            "feedback": "Resposta: 3; m = (8 − 2)/(3 − 1) = 6/2 = 3."
+            "feedback": "Resposta: 3; Dividiu 8 por 2 sem subtrair o 2 de A. Δy = 8 − 2 = 6, e m = 6/2 = 3."
           }
         ]
       },
@@ -395,13 +558,13 @@
             "id": "a1",
             "label": "1",
             "correct": false,
-            "feedback": "Resposta: 5; Substituindo x = 2 temos 3·2 − 1 = 5."
+            "feedback": "Resposta: 5; Esqueceu o 3: fez 2 − 1 = 1. Substituindo x = 2: k = 3·2 − 1 = 5."
           },
           {
             "id": "a7",
             "label": "7",
             "correct": false,
-            "feedback": "Resposta: 5; 3·2 − 1 = 5 (não 7)."
+            "feedback": "Resposta: 5; Somou o 1 em vez de subtrair: 6 + 1 = 7. k = 3·2 − 1 = 5."
           }
         ]
       }
@@ -421,19 +584,19 @@
             "id": "r2x1",
             "label": "y = 2x + 1",
             "correct": false,
-            "feedback": "Resposta: y = 2x − 3; Para x = 2 daria 5, não 1: n = −3."
+            "feedback": "Resposta: y = 2x − 3; Usou o 1 de (2; 1) como n, mas ali x = 2, não 0. 1 = 2·2 + n dá n = −3."
           },
           {
             "id": "r4xm7",
             "label": "y = 4x − 7",
             "correct": false,
-            "feedback": "Resposta: y = 2x − 3; 4 é Δy; dividindo por Δx = 2, m = 2: y = 2x − 3."
+            "feedback": "Resposta: y = 2x − 3; Usou Δy = 4 como m e achou n = 1 − 8 = −7. Dividindo por Δx = 2, m = 2: y = 2x − 3."
           },
           {
             "id": "rx",
             "label": "y = x − 1",
             "correct": false,
-            "feedback": "Resposta: y = 2x − 3; A inclinação correta é m = 2: y = 2x − 3."
+            "feedback": "Resposta: y = 2x − 3; Dividiu Δy = 4 por 4, o x de B, e não por Δx = 2. Com m = 2, n = 1 − 4 = −3."
           }
         ]
       },
@@ -487,7 +650,7 @@
             "id": "xm3",
             "label": "x = −3",
             "correct": false,
-            "feedback": "Resposta: x = 3; Resolvendo −2x + 6 = 0 obtemos x = +3."
+            "feedback": "Resposta: x = 3; Trocou um sinal ao isolar e chegou a 2x = −6. De −2x + 6 = 0 vem −2x = −6, então x = 3."
           },
           {
             "id": "xm2",
@@ -517,7 +680,7 @@
             "id": "y4x",
             "label": "y = 4x",
             "correct": false,
-            "feedback": "Resposta: x = 1; Δx = 0, inclinação indefinida: a reta é x = 1."
+            "feedback": "Resposta: x = 1; Usou Δy = 4 como m, mas Δx = 0 e não há m. A reta é x = 1."
           },
           {
             "id": "y5",
@@ -542,19 +705,19 @@
             "id": "a4",
             "label": "4",
             "correct": false,
-            "feedback": "Resposta: 5; Com 4 a inclinação mudaria para 1. Mantendo m = 2: k = 5."
+            "feedback": "Resposta: 5; Somou só 1 ao 3. O ritmo é m = (3 − 1)/1 = 2, então k = 3 + 2 = 5."
           },
           {
             "id": "a6",
             "label": "6",
             "correct": false,
-            "feedback": "Resposta: 5; Com 6 o ritmo aumentaria para 3. Mantendo m = 2: k = 5."
+            "feedback": "Resposta: 5; Multiplicou 3 por m = 2 em vez de somar. Andando 1 passo, k = 3 + 2 = 5."
           },
           {
             "id": "a3",
             "label": "3",
             "correct": false,
-            "feedback": "Resposta: 5; Com 3 a reta seria horizontal a partir de (1; 3). O certo é k = 5."
+            "feedback": "Resposta: 5; Repetiu a altura 3: de (1; 3) a (2; 3) a reta ficaria horizontal. Com m = 2: k = 5."
           }
         ]
       }
