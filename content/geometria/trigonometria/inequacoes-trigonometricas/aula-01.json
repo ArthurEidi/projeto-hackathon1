@@ -69,7 +69,8 @@
       },
       "complete_when": {
         "metric": "angulo",
-        "gte": 90
+        "gte": 90,
+        "lte": 90
       }
     },
     {
@@ -108,7 +109,8 @@
       },
       "complete_when": {
         "metric": "angulo",
-        "gte": 270
+        "gte": 270,
+        "lte": 270
       }
     },
     {
@@ -146,7 +148,7 @@
       ],
       "lines": {
         "intro": "Para sen θ ≥ 0,5, 30° entra? Arraste até essa fronteira.",
-        "done": "Entra; a comparação aceita igualdade, por isso o arco inclui 30° e 150°."
+        "done": "Sim; todo ângulo de 30° a 150° satisfaz sen θ ≥ 0,5, incluindo as fronteiras 30° e 150° porque a comparação aceita igualdade."
       },
       "duvida": {
         "quando": "fim",
@@ -168,16 +170,10 @@
       "figure": {
         "widget": "ciclo_trigonometrico_figura",
         "params": {
-          "angulo": 90,
+          "angulo": 0,
           "unidade": "ambos",
-          "arco": {
-            "de": 0,
-            "ate": 180,
-            "abreDe": true,
-            "abreAte": true
-          },
           "mostrar": {
-            "seno": true,
+            "seno": false,
             "cosseno": false,
             "marcos": true
           }
@@ -188,25 +184,81 @@
           "id": "micro-acerto",
           "label": "(0; π)",
           "correct": true,
-          "feedback": "Certo: (0; π); A altura é positiva apenas no arco superior aberto."
+          "feedback": "Certo: (0; π); A altura é positiva apenas no arco superior aberto.",
+          "figure": {
+            "angulo": 90,
+            "arco": {
+              "de": 0,
+              "ate": 180,
+              "abreDe": true,
+              "abreAte": true
+            },
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "micro-erro",
           "label": "[0; π]",
           "correct": false,
-          "feedback": "Você incluiu seno zero; a solução é (0; π), com extremos abertos."
+          "feedback": "Você incluiu seno zero; a solução é (0; π), com extremos abertos.",
+          "figure": {
+            "angulo": 90,
+            "arco": {
+              "de": 0,
+              "ate": 180,
+              "abreDe": false,
+              "abreAte": false
+            },
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "micro-erro-2",
           "label": "(0; 2π)",
           "correct": false,
-          "feedback": "No arco inferior (π; 2π) o seno é negativo: a solução é apenas (0; π)."
+          "feedback": "No arco inferior (π; 2π) o seno é negativo: a solução é apenas (0; π).",
+          "figure": {
+            "angulo": 90,
+            "arco": {
+              "de": 0,
+              "ate": 360,
+              "abreDe": true,
+              "abreAte": true
+            },
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "micro-erro-3",
           "label": "[π; 2π)",
           "correct": false,
-          "feedback": "Nessa metade o seno é negativo ou nulo. O seno positivo fica em (0; π)."
+          "feedback": "Nessa metade o seno é negativo ou nulo. O seno positivo fica em (0; π).",
+          "figure": {
+            "angulo": 270,
+            "arco": {
+              "de": 180,
+              "ate": 360,
+              "abreDe": false,
+              "abreAte": true
+            },
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         }
       ]
     },

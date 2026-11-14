@@ -148,7 +148,7 @@
           "grafico": "cos",
           "mostrar": {
             "seno": false,
-            "cosseno": true,
+            "cosseno": false,
             "marcos": true
           },
           "highlight": ["c2"]
@@ -163,27 +163,59 @@
           "label": "f(x) = cos x",
           "correct": true,
           "feedback": "Isso. Como cos 0 = 1 e cos π = −1, essa é a curva do cosseno.",
-          "override": {
-            "highlight": ["c2"]
+          "figure": {
+            "grafico": "cos",
+            "mostrar": {
+              "seno": false,
+              "cosseno": true,
+              "marcos": true
+            }
           }
         },
         {
           "id": "sen",
           "label": "f(x) = sen x",
           "correct": false,
-          "feedback": "Resposta: f(x) = cos x; O seno começa em (0; 0). Quem começa em (0; 1) é f(x) = cos x."
+          "feedback": "Resposta: f(x) = cos x; O seno começa em (0; 0). Quem começa em (0; 1) é f(x) = cos x.",
+          "figure": {
+            "grafico": "sen",
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "tg",
           "label": "f(x) = tg x",
           "correct": false,
-          "feedback": "Resposta: f(x) = cos x; A tangente parte de (0; 0) e tem assíntotas. Essa onda é f(x) = cos x."
+          "feedback": "Resposta: f(x) = cos x; A tangente parte de (0; 0) e tem assíntotas. Essa onda é f(x) = cos x.",
+          "figure": {
+            "angulo": 45,
+            "grafico": "sen",
+            "mostrar": {
+              "seno": false,
+              "cosseno": false,
+              "tangente": true,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "msen",
           "label": "f(x) = −sen x",
           "correct": false,
-          "feedback": "Resposta: f(x) = cos x; −sen x também vale 0 em x = 0. Quem vale 1 em x = 0 é f(x) = cos x."
+          "feedback": "Resposta: f(x) = cos x; −sen x também vale 0 em x = 0. Quem vale 1 em x = 0 é f(x) = cos x.",
+          "figure": {
+            "angulo": 180,
+            "grafico": "sen",
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         }
       ]
     },
@@ -204,12 +236,10 @@
         }
       },
       "formula": [
-        { "text": "sen(x + 2π)", "ref": "c1" },
+        { "text": "sen(x+2π)", "ref": "c1" },
         { "text": "=" },
         { "text": "sen x", "ref": "c1" },
-        { "text": ";" },
-        { "text": "Im = [−1; 1]", "ref": "c3" },
-        { "text": ";" },
+        { "text": "·" },
         { "text": "T = 2π", "ref": "c4" }
       ],
       "definitions": [

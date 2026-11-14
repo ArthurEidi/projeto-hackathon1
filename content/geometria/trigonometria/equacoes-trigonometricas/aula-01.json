@@ -63,7 +63,8 @@
       },
       "complete_when": {
         "metric": "angulo",
-        "gte": 90
+        "gte": 90,
+        "lte": 90
       }
     },
     {
@@ -98,7 +99,8 @@
       },
       "complete_when": {
         "metric": "angulo",
-        "gte": 150
+        "gte": 150,
+        "lte": 150
       }
     },
     {
@@ -152,13 +154,13 @@
       "figure": {
         "widget": "ciclo_trigonometrico_figura",
         "params": {
-          "angulo": 30,
+          "angulo": 0,
           "alvo": {
             "seno": 0.5
           },
-          "marcadas": [0, 1],
+          "marcadas": [],
           "mostrar": {
-            "seno": true,
+            "seno": false,
             "cosseno": false,
             "marcos": true
           }
@@ -169,25 +171,67 @@
           "id": "micro-acerto",
           "label": "π/6 e 5π/6",
           "correct": true,
-          "feedback": "Certo: π/6 e 5π/6; Os pontos de 30° e 150° têm a mesma altura."
+          "feedback": "Certo: π/6 e 5π/6; Os pontos de 30° e 150° têm a mesma altura.",
+          "figure": {
+            "angulo": 30,
+            "marcadas": [0, 1],
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "micro-erro",
           "label": "Só π/6",
           "correct": false,
-          "feedback": "Você esqueceu a simetria; as soluções são π/6 e 5π/6."
+          "feedback": "Você esqueceu a simetria; as soluções são π/6 e 5π/6.",
+          "figure": {
+            "angulo": 30,
+            "marcadas": [0],
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "micro-erro-2",
           "label": "π/3 e 2π/3",
           "correct": false,
-          "feedback": "60° tem seno √3/2. Para seno 0,5 os ângulos são π/6 e 5π/6."
+          "feedback": "60° tem seno √3/2. Para seno 0,5 os ângulos são π/6 e 5π/6.",
+          "figure": {
+            "angulo": 60,
+            "alvo": {
+              "seno": 0.866
+            },
+            "marcadas": [0, 1],
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "micro-erro-3",
           "label": "π/6 e 7π/6",
           "correct": false,
-          "feedback": "7π/6 fica no 3º quadrante e tem seno negativo (−0,5): as soluções são π/6 e 5π/6."
+          "feedback": "7π/6 fica no 3º quadrante e tem seno negativo (−0,5): as soluções são π/6 e 5π/6.",
+          "figure": {
+            "angulo": 210,
+            "alvo": {
+              "seno": -0.5
+            },
+            "marcadas": [0, 1],
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         }
       ]
     },
@@ -215,21 +259,18 @@
           "ref": "c3"
         },
         {
-          "text": " = "
+          "text": "="
         },
         {
           "text": "sen α",
           "ref": "c2"
         },
         {
-          "text": " ⇒ "
+          "text": "⇒"
         },
         {
-          "text": "θ = α + 2kπ  ou  θ = π − α + 2kπ",
+          "text": "θ = α + 2kπ",
           "ref": "c4"
-        },
-        {
-          "text": ",  k ∈ ℤ"
         }
       ],
       "definitions": [
@@ -243,7 +284,7 @@
         },
         {
           "term": "Ângulos-solução",
-          "text": "Todos os giros que produzem a projeção pedida, repetindo a cada 2kπ."
+          "text": "θ = α + 2kπ ou θ = π − α + 2kπ (k ∈ ℤ), repetindo a cada volta."
         }
       ],
       "lines": {

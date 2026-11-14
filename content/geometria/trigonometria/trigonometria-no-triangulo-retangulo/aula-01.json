@@ -143,7 +143,8 @@
           "modo": "razoes",
           "angulo": 30,
           "hip": 10,
-          "k": 1
+          "k": 1,
+          "painel": false
         }
       },
       "options": [
@@ -151,25 +152,42 @@
           "id": "h5",
           "label": "5 m",
           "correct": true,
-          "feedback": "Isso. sen 30° = h / 10 = 0,5, então h = 5 m."
+          "feedback": "Isso. sen 30° = h / 10 = 0,5, então h = 5 m.",
+          "figure": {
+            "painel": true,
+            "highlight": ["c1"]
+          }
         },
         {
           "id": "h10",
           "label": "10 m",
           "correct": false,
-          "feedback": "10 m é a hipotenusa. Como sen 30° = 0,5, a altura é 10 · 0,5 = 5 m."
+          "feedback": "10 m é a hipotenusa. Como sen 30° = 0,5, a altura é 10 · 0,5 = 5 m.",
+          "figure": {
+            "painel": true,
+            "highlight": ["c3"]
+          }
         },
         {
           "id": "h20",
           "label": "20 m",
           "correct": false,
-          "feedback": "Você dividiu por 0,5; o cateto é menor que a hipotenusa: 10 · 0,5 = 5 m."
+          "feedback": "Você dividiu por 0,5; o cateto é menor que a hipotenusa: 10 · 0,5 = 5 m.",
+          "figure": {
+            "painel": true,
+            "k": 2,
+            "highlight": ["c1", "c3"]
+          }
         },
         {
           "id": "h86",
           "label": "8,66 m",
           "correct": false,
-          "feedback": "8,66 m usa cos 30° (base no chão). A altura é o oposto: 10 · 0,5 = 5 m."
+          "feedback": "8,66 m usa cos 30° (base no chão). A altura é o oposto: 10 · 0,5 = 5 m.",
+          "figure": {
+            "painel": true,
+            "highlight": ["c2"]
+          }
         }
       ]
     },
@@ -186,69 +204,11 @@
         }
       },
       "formula": [
-        {
-          "text": "sen "
-        },
-        {
-          "text": "θ",
-          "ref": "c4"
-        },
-        {
-          "text": " = "
-        },
-        {
-          "text": "CO",
-          "ref": "c1"
-        },
-        {
-          "text": " / "
-        },
-        {
-          "text": "HIP",
-          "ref": "c3"
-        },
-        {
-          "text": "; cos "
-        },
-        {
-          "text": "θ",
-          "ref": "c4"
-        },
-        {
-          "text": " = "
-        },
-        {
-          "text": "CA",
-          "ref": "c2"
-        },
-        {
-          "text": " / "
-        },
-        {
-          "text": "HIP",
-          "ref": "c3"
-        },
-        {
-          "text": "; tg "
-        },
-        {
-          "text": "θ",
-          "ref": "c4"
-        },
-        {
-          "text": " = "
-        },
-        {
-          "text": "CO",
-          "ref": "c1"
-        },
-        {
-          "text": " / "
-        },
-        {
-          "text": "CA",
-          "ref": "c2"
-        }
+        { "text": "sen=CO/HIP", "ref": "c1" },
+        { "text": ";" },
+        { "text": "cos=CA/HIP", "ref": "c2" },
+        { "text": ";" },
+        { "text": "tg=CO/CA", "ref": "c4" }
       ],
       "definitions": [
         {
