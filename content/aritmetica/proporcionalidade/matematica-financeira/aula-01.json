@@ -691,7 +691,7 @@
           { "id": "a10", "label": "10%", "correct": false, "feedback": "10% divide 20% por 2 meses em juros simples; nos compostos, 900 = 600/x + 600/x² dá 21,5%." },
           { "id": "a20", "label": "20%", "correct": false, "feedback": "20% é o acréscimo total sobre 1 500, mas parte é paga no ato; a taxa mensal é 21,5%." },
           { "id": "a215", "label": "21,5%", "correct": true, "feedback": "Exato. 900 = 600/(1+i) + 600/(1+i)² dá 1 + i = (2 + 5,29)/6 = 1,215, logo 21,5%." },
-          { "id": "a233", "label": "23,3%", "correct": false, "feedback": "23,3% erra a aproximação na raiz; (2 + 5,29)/6 = 1,215, ou seja, 21,5%." }
+          { "id": "a233", "label": "23,3%", "correct": false, "feedback": "Com 1 + i = 1,233: 600/1,233 + 600/1,233² ≈ 487 + 395 = 882, não 900. A raiz de 3x² − 2x − 2 = 0 é 1,215: 21,5%." }
         ]
       },
       {
@@ -706,10 +706,10 @@
           "urls": ["https://api.enem.dev/v1/exams/2019/questions/150"]
         },
         "options": [
-          { "id": "a398", "label": "398,02", "correct": false, "feedback": "398,02 subtrai 1% e 2% em vez de dividir por 1,01 e 1,01²; 202/1,01 + 204,02/1,0201 = 400,00." },
+          { "id": "a398", "label": "398,02", "correct": false, "feedback": "398,02 fica abaixo do valor certo. Trazendo cada parcela ao dia da compra: 202 ÷ 1,01 = 200 e 204,02 ÷ 1,01² = 200; total 400,00." },
           { "id": "a400", "label": "400,00", "correct": true, "feedback": "Isso. 202 ÷ 1,01 = 200 e 204,02 ÷ 1,01² = 200; somando, 400,00." },
-          { "id": "a401", "label": "401,94", "correct": false, "feedback": "401,94 desconta apenas 1% da segunda parcela em vez de 1,01²; o valor presente é 400,00." },
-          { "id": "a404", "label": "404,00", "correct": false, "feedback": "404,00 usa juro simples errado; nos compostos cada parcela vale 200 à vista, dando 400,00." },
+          { "id": "a401", "label": "401,94", "correct": false, "feedback": "401,94 não desconta a segunda parcela por 1,01². 204,02 ÷ 1,0201 = 200 e 202 ÷ 1,01 = 200; à vista, 400,00." },
+          { "id": "a404", "label": "404,00", "correct": false, "feedback": "404,00 é 2 × 202, como se as duas parcelas valessem 202 no dia da compra. Descontando os juros, cada uma vale 200: 400,00." },
           { "id": "a406", "label": "406,02", "correct": false, "feedback": "406,02 é a soma nominal das parcelas sem descontar os juros; à vista vale 400,00." }
         ]
       },

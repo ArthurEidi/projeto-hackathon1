@@ -595,7 +595,7 @@
         },
         "options": [
           { "id": "a13", "label": "13", "correct": false, "feedback": "13 esquece um trecho de 80 km (4 L); os 360 km exigem 18 L e resta 1 L: 18 − 1 = 17." },
-          { "id": "a14", "label": "14", "correct": false, "feedback": "14 não considera a volta de 80 km ao posto ou erra a sobra; o mínimo é 18 − 1 = 17 L." },
+          { "id": "a14", "label": "14", "correct": false, "feedback": "14 L cobre 280 km (80 até o destino + 200 lá), sem a volta de 80 km ao posto. São 360 km, 18 L, menos 1 L que sobrou: 17." },
           { "id": "a17", "label": "17", "correct": true, "feedback": "Exato. Até o posto gasta 21 L (sobra 1 L); para 360 km precisa 18 L, logo põe 17 L." },
           { "id": "a18", "label": "18", "correct": false, "feedback": "18 L é o total necessário para 360 km, mas ainda havia 1 L no tanque: 18 − 1 = 17 L." },
           { "id": "a21", "label": "21", "correct": false, "feedback": "21 L é quanto gastou na ida até o posto; para seguir e voltar ao posto bastam 17 L." }
@@ -634,7 +634,7 @@
         "options": [
           { "id": "a3100", "label": "R$ 3.100,00", "correct": false, "feedback": "3.100 divide por 10 (soma direta); na inversa, 31k/30 = 31 000 dá k = 30 000 e 30 000 ÷ 5 = R$ 6.000,00." },
           { "id": "a6000", "label": "R$ 6.000,00", "correct": true, "feedback": "Exato. 31k/30 = 31 000 dá k = 30 000, e a máquina de 5 anos recebe 30 000 ÷ 5 = R$ 6.000,00." },
-          { "id": "a6200", "label": "R$ 6.200,00", "correct": false, "feedback": "6.200 é 31 000 ÷ 5, proporcional direto a 2/10; inversamente proporcional dá R$ 6.000,00." },
+          { "id": "a6200", "label": "R$ 6.200,00", "correct": false, "feedback": "6.200 é 31 000 · 2/10, a parte da máquina de 2 anos numa divisão direta. Na inversa, k = 30 000 e a de 5 anos recebe 30 000 ÷ 5 = 6.000." },
           { "id": "a15000", "label": "R$ 15.000,00", "correct": false, "feedback": "R$ 15.000,00 é a parte da máquina mais nova (2 anos: 30 000 ÷ 2); a de 5 anos recebe R$ 6.000,00." },
           { "id": "a15500", "label": "R$ 15.500,00", "correct": false, "feedback": "15.500 é metade de 31 000 (proporcional direta para 5/10); o correto para 5 anos é R$ 6.000,00." }
         ]

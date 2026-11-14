@@ -695,7 +695,7 @@
         },
         "options": [
           { "id": "a1340", "label": "R$ 1.340,00", "correct": false, "feedback": "1.340,00 é o valor após os 7,2%; falta aplicar +10%: 1340 × 1,10 = R$ 1.474,00." },
-          { "id": "a1349", "label": "R$ 1.349,00", "correct": false, "feedback": "Não some 9 reais; multiplique 1340 por 1,10 para obter R$ 1.474,00." },
+          { "id": "a1349", "label": "R$ 1.349,00", "correct": false, "feedback": "1.349,00 não sai de nenhuma das taxas. Depois de +7,2% são R$ 1.340,00, e +10% sobre isso dá R$ 1.474,00." },
           { "id": "a1375", "label": "R$ 1.375,00", "correct": false, "feedback": "1.375,00 aplica só +10% em 1250; com +7,2% e +10%, dá R$ 1.474,00." },
           { "id": "a1465", "label": "R$ 1.465,00", "correct": false, "feedback": "1.465,00 soma as taxas (17,2%) em 1250; taxas sucessivas dão 1,072 × 1,10 = R$ 1.474,00." },
           { "id": "a1474", "label": "R$ 1.474,00", "correct": true, "feedback": "Isso. 1250 × 1,072 = 1340, e 1340 × 1,10 = R$ 1.474,00." }
@@ -714,7 +714,7 @@
         },
         "options": [
           { "id": "a233", "label": "23,3%", "correct": false, "feedback": "23,3% divide pelo total de 150 mil em vez dos 40 mil fixos; 35 mil ÷ 40 mil = 87,5%." },
-          { "id": "a250", "label": "25,0%", "correct": false, "feedback": "O desconto é sobre os 40 mil fixos: sobram 5 mil para eles, logo desconto de 87,5%." },
+          { "id": "a250", "label": "25,0%", "correct": false, "feedback": "25% é o aumento do metro quadrado, não o desconto. A meta de 135 mil deixa R$ 5 mil para os fixos: 35 mil de 40 mil é 87,5%." },
           { "id": "a500", "label": "50,0%", "correct": false, "feedback": "50% é a redução do projeto; nos custos fixos de 40 mil é preciso cortar 35 mil: 87,5%." },
           { "id": "a875", "label": "87,5%", "correct": true, "feedback": "Exato. Meta é 135 mil; projeto (5 mil) + obra (125 mil) deixam 5 mil de fixos, queda de 87,5%." },
           { "id": "a1000", "label": "100,0%", "correct": false, "feedback": "Não zera os fixos; ainda restam R$ 5 mil dos R$ 40 mil, dando desconto de 87,5%." }

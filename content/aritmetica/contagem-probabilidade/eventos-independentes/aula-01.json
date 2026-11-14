@@ -712,7 +712,7 @@
           { "id": "a20", "label": "20", "correct": false, "feedback": "Com 20 brancas a mais, B teria 36 bolas e 0,20 × 4/36 ≈ 2,2% > 1%; precisa 16 + x >= 80, logo x = 64." },
           { "id": "a60", "label": "60", "correct": false, "feedback": "Com 60, B teria 76 bolas e 0,8/76 ≈ 1,05% > 1%; faltam 4 para chegar a 80: 64." },
           { "id": "a64", "label": "64", "correct": true, "feedback": "Exato. 0,20 × 4/(16 + x) <= 0,01 dá 16 + x >= 80, logo x = 64." },
-          { "id": "a68", "label": "68", "correct": false, "feedback": "68 esquece que já há 12 brancas em B; como 16 + x >= 80, o mínimo é 80 − 16 = 64." },
+          { "id": "a68", "label": "68", "correct": false, "feedback": "68 = 80 − 12 desconta só as 12 brancas; as 4 pretas também já estão em B. De 16 para 80 bolas faltam 64." },
           { "id": "a80", "label": "80", "correct": false, "feedback": "80 é o total final de bolas em B, não as adicionadas; tirando as 16 iniciais, são 64." }
         ]
       },
@@ -731,7 +731,7 @@
           { "id": "a2", "label": "2", "correct": false, "feedback": "Com 2 dardos, 1 − 1/4 = 3/4 = 0,75 < 0,9; precisa de 2ⁿ >= 10, logo n = 4." },
           { "id": "a4", "label": "4", "correct": true, "feedback": "Isso. 1 − (1/2)⁴ = 15/16 = 0,9375 >= 0,9, e com 3 dardos daria 7/8 = 0,875." },
           { "id": "a6", "label": "6", "correct": false, "feedback": "Com 6 passa de 9/10, mas 4 já basta: 1 − 1/16 = 15/16 >= 9/10." },
-          { "id": "a9", "label": "9", "correct": false, "feedback": "Não some 1/2 nove vezes; multiplique os erros: (1/2)⁴ = 1/16 <= 1/10, então n = 4." },
+          { "id": "a9", "label": "9", "correct": false, "feedback": "9 vem do numerador de 9/10. O que se exige é errar todos com chance (1/2)ⁿ <= 1/10: 2⁴ = 16 >= 10, logo n = 4." },
           { "id": "a10", "label": "10", "correct": false, "feedback": "10 vem de comparar 1/n <= 1/10; o decaimento é exponencial (1/2)ⁿ, então n = 4." }
         ]
       },
@@ -748,8 +748,8 @@
         },
         "options": [
           { "id": "a99", "label": "99", "correct": false, "feedback": "99 trata como linear; com 2ⁿ > 100, bastam 7 placas ao todo, ou 6 novas." },
-          { "id": "a51", "label": "51", "correct": false, "feedback": "Não divida 100 por 2; em (1/2)ⁿ < 1/100, 2⁷ = 128 > 100 dá 7 no total, 6 novas." },
-          { "id": "a50", "label": "50", "correct": false, "feedback": "O erro não cai linearmente; como 2⁷ = 128 > 100, precisa de 7 placas, logo 6 novas." },
+          { "id": "a51", "label": "51", "correct": false, "feedback": "51 supõe que as chances de cada placa se somam. Multiplica-se a de não ver nenhuma: (1/2)⁷ < 1/100 com 7 placas, 6 novas." },
+          { "id": "a50", "label": "50", "correct": false, "feedback": "50 é 100 ÷ 2, como se cada placa somasse um pouco de chance. Não ver nenhuma tem chance (1/2)ⁿ; 2⁷ = 128 > 100: 7 placas, 6 novas." },
           { "id": "a6", "label": "6", "correct": true, "feedback": "Exato. 2⁷ = 128 > 100 exige 7 placas no total; descontando 1 existente, são 6 novas." },
           { "id": "a1", "label": "1", "correct": false, "feedback": "Com 1 nova seriam 2 placas e chance 3/4 = 75%; para > 99% são 7 no total, 6 novas." }
         ]

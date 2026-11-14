@@ -611,8 +611,8 @@
           { "id": "a16514", "label": "16 514", "correct": false, "feedback": "16 514 divide por 1,75 (como se tivesse subido 75%); queda de 75% divide por 0,25: 115 600." },
           { "id": "a86700", "label": "86 700", "correct": false, "feedback": "86 700 é 3 × 28 900 (a queda); o total de 2012 é 4 × 28 900 = 115 600." },
           { "id": "a115600", "label": "115 600", "correct": true, "feedback": "Exato. 28 900 = 0,25 × total de 2012, logo 28 900 × 4 = 115 600." },
-          { "id": "a441343", "label": "441 343", "correct": false, "feedback": "441 343 mistura o total de admissões; sobre o saldo de 28 900, 28 900 ÷ 0,25 = 115 600." },
-          { "id": "a448568", "label": "448 568", "correct": false, "feedback": "448 568 não usa o saldo de 28 900; 28 900 corresponde a 1/4 de 115 600." }
+          { "id": "a441343", "label": "441 343", "correct": false, "feedback": "441 343 aplica a queda aos desligamentos do mês (1 765 372 × 0,25). A queda é das vagas criadas: 28 900 ÷ 0,25 = 115 600." },
+          { "id": "a448568", "label": "448 568", "correct": false, "feedback": "448 568 aplica a queda às admissões do mês (1 794 272 × 0,25). A queda é das vagas criadas: 28 900 ÷ 0,25 = 115 600." }
         ]
       }
     ]

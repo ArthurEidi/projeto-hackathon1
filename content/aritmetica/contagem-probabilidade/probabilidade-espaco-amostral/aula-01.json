@@ -697,7 +697,7 @@
           { "id": "a20", "label": "20", "correct": false, "feedback": "Com 20 brancas extras, B teria 36 bolas e 0,20 × 4/36 ≈ 2,2% > 1%; exige 16 + x >= 80, logo 64." },
           { "id": "a60", "label": "60", "correct": false, "feedback": "Com 60 brancas extras, B teria 76 bolas e 0,8/76 ≈ 1,05% > 1%; faltam 4 para 80: 64." },
           { "id": "a64", "label": "64", "correct": true, "feedback": "Exato. 0,20 × 4/(16 + x) <= 0,01 dá 16 + x >= 80, logo x >= 64." },
-          { "id": "a68", "label": "68", "correct": false, "feedback": "68 ignora as 12 brancas já presentes em B; de 16 para 80 faltam 64." },
+          { "id": "a68", "label": "68", "correct": false, "feedback": "68 = 80 − 12 desconta só as 12 brancas; as 4 pretas também já estão em B. De 16 para 80 bolas faltam 64." },
           { "id": "a80", "label": "80", "correct": false, "feedback": "80 é o total final de bolas em B, não as adicionadas; tirando as 16 iniciais, são 64." }
         ]
       },
@@ -716,7 +716,7 @@
           { "id": "a2", "label": "2", "correct": false, "feedback": "Com 2 dardos, 1 − 1/4 = 3/4 = 0,75 < 0,9; precisa 2ⁿ >= 10, logo n = 4." },
           { "id": "a4", "label": "4", "correct": true, "feedback": "Isso. 1 − (1/2)⁴ = 15/16 = 0,9375 >= 0,9, e com 3 dardos daria apenas 7/8." },
           { "id": "a6", "label": "6", "correct": false, "feedback": "Com 6 passa de 9/10, mas 4 já basta pois 2⁴ = 16 >= 10." },
-          { "id": "a9", "label": "9", "correct": false, "feedback": "Não some 1/2 nove vezes; a chance complementar é (1/2)ⁿ <= 1/10, dando n = 4." },
+          { "id": "a9", "label": "9", "correct": false, "feedback": "9 vem do numerador de 9/10. O que se exige é errar todos com chance (1/2)ⁿ <= 1/10: 2⁴ = 16 >= 10, logo n = 4." },
           { "id": "a10", "label": "10", "correct": false, "feedback": "10 confunde (1/2)ⁿ com 1/n; como 2⁴ = 16 >= 10, bastam 4 dardos." }
         ]
       },

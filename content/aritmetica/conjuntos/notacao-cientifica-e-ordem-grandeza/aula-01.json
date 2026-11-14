@@ -590,7 +590,7 @@
       {
         "id": "enem-2019-virus",
         "prompt": "O vírus influenza tem diâmetro interno de 0,00011 mm; como escrever essa medida em notação científica?",
-        "fala": "Conte quantas casas a vírgula anda para a direita até ficar entre o 1 e o 1.",
+        "fala": "Conte quantas casas a vírgula anda para a direita até ficar logo depois do 1.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2019,

@@ -835,7 +835,7 @@
           "urls": ["https://api.enem.dev/v1/exams/2020/questions/165"]
         },
         "options": [
-          { "id": "a196", "label": "1,96", "correct": false, "feedback": "1,96 é a média dos 4 que entrariam sem o ganho total; os 3 novos somam 6,18 m: 2,06 m." },
+          { "id": "a196", "label": "1,96", "correct": false, "feedback": "Com 1,96, os 4 novos somam 2,02 + 5,88 = 7,90 m, só 0,60 m a mais; a média vai a 1,97. Para 1,99 é preciso 2,06." },
           { "id": "a198", "label": "1,98", "correct": false, "feedback": "1,98 não cobre o aumento de 0,90 m na soma; (8,20 − 2,02) ÷ 3 = 2,06 m." },
           { "id": "a205", "label": "2,05", "correct": false, "feedback": "2,05 é a média dos 4 novos juntos (8,20 ÷ 4); tirando o de 2,02 m, os 3 têm média 2,06 m." },
           { "id": "a206", "label": "2,06", "correct": true, "feedback": "Exato. Ganho = 15 × 0,06 = 0,90 m; 7,30 + 0,90 − 2,02 = 6,18 m, e 6,18 ÷ 3 = 2,06 m." },

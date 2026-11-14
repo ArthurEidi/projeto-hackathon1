@@ -673,10 +673,10 @@
           "urls": ["https://api.enem.dev/v1/exams/2021/questions/178"]
         },
         "options": [
-          { "id": "a700k", "label": "700 000", "correct": false, "feedback": "700 000 erra a conversão de hectare para m²; 2,1 ha = 21 000 m² dão 70 lotes e 1 900 000." },
+          { "id": "a700k", "label": "700 000", "correct": false, "feedback": "700 000 loteia os 0,9 ha das ruas: 9 000 m² ÷ 300 = 30 lotes. O resto, 2,1 ha = 21 000 m², dá 70 lotes e 1 900 000." },
           { "id": "a1600k", "label": "1 600 000", "correct": false, "feedback": "1 600 000 erra os 50 lotes restantes; 20 × 20 000 + 50 × 30 000 = 1 900 000." },
           { "id": "a1900k", "label": "1 900 000", "correct": true, "feedback": "Isso. 21 000 ÷ 300 = 70 lotes: 400 000 + 1 500 000 = 1 900 000." },
-          { "id": "a2200k", "label": "2 200 000", "correct": false, "feedback": "2 200 000 não desconta 0,9 ha de ruas; com 70 lotes úteis dá 1 900 000." },
+          { "id": "a2200k", "label": "2 200 000", "correct": false, "feedback": "2 200 000 seriam 80 lotes (20 a 20 mil e 60 a 30 mil). Com 2,1 ha = 21 000 m² são 70 lotes: 1 900 000." },
           { "id": "a2800k", "label": "2 800 000", "correct": false, "feedback": "2 800 000 usa os 3 ha inteiros; descontando 0,9 ha de ruas dá 1 900 000." }
         ]
       },
