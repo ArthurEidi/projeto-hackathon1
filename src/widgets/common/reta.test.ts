@@ -101,4 +101,80 @@ describe("reta_numerica: operacao de conjuntos", () => {
       expect(a.y + a.h).toBeLessThanOrEqual(h);
     }
   });
+
+  it("empilha trilhas de operação, distribui pontos em faixas e separa centro sem sobreposição", () => {
+    const ctx = new Proxy({ measureText: (s: string) => ({ width: s.length * 8 }) }, {
+      get: (o, k) => (k in o ? Reflect.get(o, k) : () => {}),
+      set: (o, k, v) => Reflect.set(o, k, v),
+    }) as unknown as CanvasRenderingContext2D;
+    const w = 336;
+    const semSobreposicao = (hits: Hit[], h: number) => {
+      for (const [i, a] of hits.entries()) {
+        expect(a.x).toBeGreaterThanOrEqual(0);
+        expect(a.x + a.w).toBeLessThanOrEqual(w);
+        expect(a.y).toBeGreaterThanOrEqual(0);
+        expect(a.y + a.h).toBeLessThanOrEqual(h);
+        for (const b of hits.slice(i + 1)) {
+          const intersecta = a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+          expect(intersecta).toBe(false);
+        }
+      }
+    };
+
+    const pOp = RetaNumerica.parse({
+      intervalo: [-4, 5],
+      operacao: { a: { de: -2, ate: 3, rotulo: "A = [-2; 3]" }, b: { de: 1, ate: 4, rotulo: "B = [1; 4]" }, modo: "uniao" },
+      ponto: { x: 2, cor: "c3" },
+    });
+    const hitsOp: Hit[] = [];
+    const hOp = Math.round(w * aspectoReta(pOp));
+    desenharReta(ctx, w, hOp, hitsOp, pOp, 2, { modoOp: "uniao" });
+    expect(hitsOp.length).toBeGreaterThanOrEqual(4);
+    semSobreposicao(hitsOp, hOp);
+
+    const pPts = RetaNumerica.parse({
+      intervalo: [-5, 5],
+      pontos: [
+        { x: -2, cor: "c1", rotulo: "2·10⁻²" },
+        { x: -1, cor: "c1", rotulo: "2·10⁻¹" },
+        { x: 0, cor: "c2", rotulo: "n = 0" },
+        { x: 1, cor: "c1", rotulo: "2·10¹" },
+        { x: 2, cor: "c1", rotulo: "2·10²" },
+      ],
+    });
+    const hitsPts: Hit[] = [];
+    const hPts = Math.round(w * aspectoReta(pPts));
+    desenharReta(ctx, w, hPts, hitsPts, pPts);
+    expect(hitsPts).toHaveLength(5);
+    semSobreposicao(hitsPts, hPts);
+
+    const pCentro = RetaNumerica.parse({
+      intervalo: [-4, 4],
+      pontos: [
+        { x: -2, cor: "c1", rotulo: "x = -2" },
+        { x: 1, cor: "c2", rotulo: "c = 1" },
+      ],
+      ponto: { x: -2, centro: 1, cor: "c1" },
+    });
+    const hitsCentro: Hit[] = [];
+    const hCentro = Math.round(w * aspectoReta(pCentro));
+    desenharReta(ctx, w, hCentro, hitsCentro, pCentro, -2, { centro: 1 });
+    expect(hitsCentro.length).toBeGreaterThanOrEqual(4);
+    semSobreposicao(hitsCentro, hCentro);
+
+    const pSemDist = RetaNumerica.parse({
+      intervalo: [-4, 4],
+      pontos: [
+        { x: -2, cor: "c1", rotulo: "x = -2" },
+        { x: 1, cor: "c2", rotulo: "c = 1" },
+      ],
+      ponto: { x: -2, centro: 1, cor: "c1" },
+      mostrar: { distancia: false },
+    });
+    const hitsSemDist: Hit[] = [];
+    const hSemDist = Math.round(w * aspectoReta(pSemDist));
+    desenharReta(ctx, w, hSemDist, hitsSemDist, pSemDist, -2, { centro: 1 });
+    expect(hitsSemDist.length).toBe(hitsCentro.length - 1);
+    semSobreposicao(hitsSemDist, hSemDist);
+  });
 });

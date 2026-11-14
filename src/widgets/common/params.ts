@@ -255,6 +255,11 @@ export const RetaNumerica = z.object({
   operacao: OperacaoConjuntos.optional(),
   pontos: z.array(PontoFixo).default([]),
   ponto: PontoMovel.optional(),
+  mostrar: z
+    .object({
+      distancia: z.boolean().default(true),
+    })
+    .default({ distancia: true }),
   highlight: z.array(Marca).default([]),
 });
 export type RetaNumerica = z.output<typeof RetaNumerica>;

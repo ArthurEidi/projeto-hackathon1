@@ -147,9 +147,46 @@ function desenharTrecho(
 }
 
 export function aspectoReta(p: RetaNumerica): number {
-  const temAbaixo =
-    p.pontos.some((pt) => Boolean(pt.rotulo)) || Boolean(p.ponto?.distanciaZero) || p.ponto?.centro !== undefined;
-  return temAbaixo ? 0.56 : 0.42;
+  const qtdPontosRotulo = p.pontos.filter((pt) => Boolean(pt.rotulo)).length;
+  const temPontosAbaixo = qtdPontosRotulo > 0;
+  const temDist = Boolean(p.ponto?.distanciaZero) || p.ponto?.centro !== undefined;
+  const muitasTrilhas = Boolean(p.operacao) || p.trechos.length > 1;
+  if (temPontosAbaixo && (temDist || qtdPontosRotulo >= 3)) return 0.64;
+  if (muitasTrilhas) return 0.68;
+  if (temPontosAbaixo || temDist) return 0.54;
+  return 0.42;
+}
+
+function desenharPontosAbaixo(
+  ctx: CanvasRenderingContext2D,
+  w: number,
+  hits: Hit[],
+  X: (x: number) => number,
+  pontos: RetaNumerica["pontos"],
+  yInicio: number,
+): number {
+  const comRotulo = pontos.filter((pt): pt is typeof pt & { rotulo: string } => Boolean(pt.rotulo));
+  if (comRotulo.length === 0) return 0;
+  const ordenados = [...comRotulo].sort((a, b) => a.x - b.x);
+  const lanes: number[] = [];
+  ctx.save();
+  ctx.font = "900 13px Nunito, system-ui, sans-serif";
+  for (const pf of ordenados) {
+    const cw = ctx.measureText(pf.rotulo).width + 22;
+    const cx = Math.max(cw / 2 + 6, Math.min(w - cw / 2 - 6, X(pf.x)));
+    const left = cx - cw / 2;
+    const right = cx + cw / 2;
+    let row = lanes.findIndex((fim) => left >= fim + 6);
+    if (row === -1) {
+      row = lanes.length;
+      lanes.push(right);
+    } else {
+      lanes[row] = right;
+    }
+    etiqueta(ctx, hits, cx, yInicio + row * 32, pf.rotulo, pf.cor);
+  }
+  ctx.restore();
+  return lanes.length;
 }
 
 export function desenharReta(
@@ -167,7 +204,14 @@ export function desenharReta(
   const X = (x: number) => pad + (x - x0) * k;
   const temPontosAbaixo = p.pontos.some((pt) => Boolean(pt.rotulo));
   const temDist = Boolean(p.ponto?.distanciaZero) || opcoes?.centro !== undefined;
-  const y = p.operacao ? h * 0.68 : temPontosAbaixo || temDist ? h * 0.46 : h * 0.62;
+  const muitasTrilhas = Boolean(p.operacao) || p.trechos.length > 1;
+  const y = muitasTrilhas
+    ? temPontosAbaixo || temDist
+      ? h * 0.6
+      : h * 0.78
+    : temPontosAbaixo || temDist
+      ? h * 0.36
+      : h * 0.62;
   const hl = p.highlight;
 
   // Linha com setas nas duas pontas e marcas numeradas.
@@ -180,8 +224,8 @@ export function desenharReta(
   }
 
   // Trechos empilhados acima da linha.
-  const passoTrilha = 18;
-  const baseY = p.ponto?.vertice ? y - 28 : y - 18;
+  const passoTrilha = muitasTrilhas ? 32 : 18;
+  const baseY = p.ponto?.vertice ? y - 28 : y - 20;
   p.trechos.forEach((t, i) => {
     desenharTrecho(ctx, hits, w, x0, x1, X, t, baseY - i * passoTrilha, hl);
   });
@@ -209,8 +253,9 @@ export function desenharReta(
   for (const pf of p.pontos) {
     const cor = corDoTraco(pf.cor);
     bolinha(ctx, X(pf.x), y, cor.main, pf.aberto);
-    if (pf.rotulo) etiqueta(ctx, hits, X(pf.x), y + 44, pf.rotulo, pf.cor);
   }
+  const linhasPontos = desenharPontosAbaixo(ctx, w, hits, X, p.pontos, y + 40);
+  const baseAbaixo = linhasPontos > 0 ? y + 40 + (linhasPontos - 1) * 32 + 22 : y + 34;
 
   if (p.ponto && pontoX !== undefined) {
     const pm = p.ponto;
@@ -226,7 +271,7 @@ export function desenharReta(
       }
       if (pontoX !== centro) {
         const corVetor = corDoTraco("c3");
-        const yVetor = y + 34;
+        const yVetor = baseAbaixo;
         seg(ctx, { x: cx, y: yVetor }, { x: px, y: yVetor }, corVetor.main, largura("c3", 3, hl));
         const dir = px > cx ? -1 : 1;
         polyline(
@@ -237,26 +282,31 @@ export function desenharReta(
         );
 
         const corDist = corDoTraco("c4");
-        const yDist = y + 48;
+        const yDist = yVetor + 14;
         seg(ctx, { x: cx, y: yDist }, { x: px, y: yDist }, corDist.main, largura("c4", 4, hl));
         seg(ctx, { x: cx, y: yDist - 5 }, { x: cx, y: yDist + 5 }, corDist.main, 2.5);
         seg(ctx, { x: px, y: yDist - 5 }, { x: px, y: yDist + 5 }, corDist.main, 2.5);
-        etiqueta(ctx, hits, (cx + px) / 2, yDist + 14, num(Math.abs(pontoX - centro)), "c4");
+        if (p.mostrar.distancia) {
+          etiqueta(ctx, hits, (cx + px) / 2, yDist + 16, num(Math.abs(pontoX - centro)), "c4");
+        }
       }
     } else if (pm.distanciaZero && pontoX !== 0) {
       const cor = corDoTraco(pm.corDistancia);
-      const yy = temPontosAbaixo ? y + 58 : y + 34;
+      const yy = baseAbaixo;
       seg(ctx, { x: X(0), y: yy }, { x: px, y: yy }, cor.main, largura(pm.corDistancia, 4, hl));
       seg(ctx, { x: X(0), y: yy - 6 }, { x: X(0), y: yy + 6 }, cor.main, 3);
       seg(ctx, { x: px, y: yy - 6 }, { x: px, y: yy + 6 }, cor.main, 3);
-      etiqueta(ctx, hits, (X(0) + px) / 2, yy + 18, num(Math.abs(pontoX)), pm.corDistancia);
+      if (p.mostrar.distancia) {
+        etiqueta(ctx, hits, (X(0) + px) / 2, yy + 18, num(Math.abs(pontoX)), pm.corDistancia);
+      }
     }
 
     const cor = corDoTraco(pm.cor);
     dot(ctx, { x: px, y: y + 3 }, 11, cor.dark);
     dot(ctx, { x: px, y }, 11, cor.main);
     dot(ctx, { x: px, y }, 5, c.bg);
-    const chipY = Math.max(14, baseY - totalTrilhas * passoTrilha - 8);
+    const topoUltimoChip = totalTrilhas > 0 ? baseY - (totalTrilhas - 1) * passoTrilha - 16 : baseY;
+    const chipY = totalTrilhas > 0 ? Math.max(16, topoUltimoChip - 32) : Math.max(16, baseY - 8);
     etiqueta(ctx, hits, px, chipY, num(pontoX), pm.cor);
   }
 

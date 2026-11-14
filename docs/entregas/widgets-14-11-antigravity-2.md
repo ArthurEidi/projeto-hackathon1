@@ -22,3 +22,13 @@ Pasta `common/transformacao/`; novo campo opcional dentro de `mostrar`:
 ```json
 {"matriz":[[2,0],[0,1]],"vetor":[1,3],"janela":[-1,4],"mostrar":{"malha":true,"quadrado":true,"colunas":true,"det":true,"identidade":true,"imagem":false}}
 ```
+
+### 5.2 `reta_numerica` + `reta_figura` (acréscimo)
+
+Arquivos `RetaNumericaWidget.tsx`, `desenhoReta.ts` e `params.ts`; novo campo opcional em `RetaNumerica`:
+
+- `mostrar?: { distancia?: boolean }`: padrão `{ distancia: true }`. Quando `distancia: false`, oculta o badge numérico da distância abaixo do segmento roxo (tanto com `ponto.centro` quanto com `ponto.distanciaZero`), mantendo o segmento, a seta de deslocamento e os rótulos dos pontos visíveis. Útil em `micro_challenge` em que a pergunta pede o valor da distância.
+
+```json
+{"intervalo":[-4,4],"marcas":1,"pontos":[{"x":-2,"cor":"c1","rotulo":"−2"},{"x":1,"cor":"c2","rotulo":"1"}],"ponto":{"x":-2,"arrastavel":false,"cor":"c1","centro":1,"corCentro":"c2","corDistancia":"c4"},"mostrar":{"distancia":false}}
+```
