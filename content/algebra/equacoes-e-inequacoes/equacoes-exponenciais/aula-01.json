@@ -195,9 +195,6 @@
               "rotulo": "y = 8"
             }
           ],
-          "marcar": {
-            "encontro": true
-          },
           "cores": {
             "encontro": "c4"
           }
@@ -264,11 +261,6 @@
           },
           "cores": {
             "encontro": "c4"
-          },
-          "ponto": {
-            "curva": 0,
-            "x": 3,
-            "cor": "c1"
           }
         }
       },
@@ -278,7 +270,7 @@
           "ref": "c2"
         },
         {
-          "text": "ᵘ = bᵛ ⇔ u = v (b > 0 e b ≠ 1)"
+          "text": "ᵘ = bᵛ ⇔ u = v"
         }
       ],
       "definitions": [

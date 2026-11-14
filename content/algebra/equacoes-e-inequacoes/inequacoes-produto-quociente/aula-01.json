@@ -207,37 +207,7 @@
             -4,
             4
           ],
-          "marcas": 1,
-          "trechos": [
-            {
-              "de": null,
-              "ate": -1,
-              "abreAte": true,
-              "cor": "c4",
-              "rotulo": "x < −1"
-            },
-            {
-              "de": 1,
-              "ate": null,
-              "abreDe": false,
-              "cor": "c4",
-              "rotulo": "x ≥ 1"
-            }
-          ],
-          "pontos": [
-            {
-              "x": -1,
-              "cor": "c4",
-              "rotulo": "−1",
-              "aberto": true
-            },
-            {
-              "x": 1,
-              "cor": "c4",
-              "rotulo": "1",
-              "aberto": false
-            }
-          ]
+          "marcas": 1
         }
       },
       "options": [

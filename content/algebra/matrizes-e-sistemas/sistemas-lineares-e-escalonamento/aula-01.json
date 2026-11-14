@@ -315,11 +315,6 @@
               "rotulo": "y = 2"
             }
           ],
-          "ponto": {
-            "curva": 0,
-            "x": 1,
-            "cor": "c1"
-          },
           "marcar": {
             "encontro": true
           }

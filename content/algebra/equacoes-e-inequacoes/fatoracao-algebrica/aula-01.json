@@ -209,13 +209,7 @@
               "cor": "c3",
               "rotulo": "y = x² − 2x"
             }
-          ],
-          "marcar": {
-            "raizes": true
-          },
-          "cores": {
-            "raiz": "c4"
-          }
+          ]
         }
       },
       "lines": {
@@ -270,13 +264,7 @@
               "cor": "c3",
               "rotulo": "y = x² − 2x"
             }
-          ],
-          "marcar": {
-            "raizes": true
-          },
-          "cores": {
-            "raiz": "c4"
-          }
+          ]
         }
       },
       "formula": [

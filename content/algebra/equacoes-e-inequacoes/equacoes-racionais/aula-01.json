@@ -242,11 +242,6 @@
               "rotulo": "y = 1"
             }
           ],
-          "ponto": {
-            "curva": 0,
-            "x": 2,
-            "cor": "c4"
-          },
           "marcar": {
             "encontro": true,
             "assintota": true

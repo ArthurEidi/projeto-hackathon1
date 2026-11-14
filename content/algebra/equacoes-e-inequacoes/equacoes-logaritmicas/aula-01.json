@@ -250,11 +250,6 @@
               "rotulo": "y = 2"
             }
           ],
-          "ponto": {
-            "curva": 0,
-            "x": 4,
-            "cor": "c4"
-          },
           "marcar": {
             "encontro": true
           },
@@ -265,7 +260,7 @@
       },
       "formula": [
         {
-          "text": "log_b",
+          "text": "logᵦ",
           "ref": "c2"
         },
         {
@@ -304,7 +299,7 @@
         }
       ],
       "lines": {
-        "intro": "O logaritmo devolve um expoente; por isso log_b A=c equivale a A=bᶜ, com base e argumento válidos.",
+        "intro": "O logaritmo devolve um expoente; por isso logᵦ(A)=c equivale a A=bᶜ, com base e argumento válidos.",
         "hint": "Toque em uma letra para ver o que ela faz no gráfico."
       }
     }

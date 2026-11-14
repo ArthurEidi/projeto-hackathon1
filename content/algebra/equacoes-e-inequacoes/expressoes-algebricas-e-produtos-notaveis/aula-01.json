@@ -178,15 +178,24 @@
       },
       "formula": [
         {
-          "text": "(a",
+          "text": "("
+        },
+        {
+          "text": "a",
           "ref": "c1"
         },
         {
-          "text": "+b",
+          "text": " + "
+        },
+        {
+          "text": "b",
           "ref": "c2"
         },
         {
-          "text": ")² = a² + 2ab + b²",
+          "text": ")² = "
+        },
+        {
+          "text": "a² + 2ab + b²",
           "ref": "c3"
         }
       ],

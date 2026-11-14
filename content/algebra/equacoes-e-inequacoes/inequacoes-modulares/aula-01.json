@@ -158,9 +158,10 @@
         }
       },
       "formula": [
-        { "text": "|x", "ref": "c1" },
-        { "text": "− c| < r", "ref": "c2" },
-        { "text": "⇔" },
+        { "text": "|" },
+        { "text": "x", "ref": "c1" },
+        { "text": " − c", "ref": "c2" },
+        { "text": "| < r ⇔" },
         { "text": "c − r < x < c + r", "ref": "c4" },
         { "text": "(r > 0)" }
       ],

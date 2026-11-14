@@ -290,11 +290,7 @@
       },
       "formula": [
         {
-          "text": "b",
-          "ref": "c2"
-        },
-        {
-          "text": "ᵘ > bᵛ ⇔ "
+          "text": "bᵘ > bᵛ ⇔ "
         },
         {
           "text": "u > v",

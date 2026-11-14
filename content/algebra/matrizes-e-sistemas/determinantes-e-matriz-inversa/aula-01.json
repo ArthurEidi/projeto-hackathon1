@@ -244,11 +244,14 @@
           "text": " = (1 / "
         },
         {
-          "text": "(ad − bc)",
+          "text": "ad − bc",
           "ref": "c4"
         },
         {
-          "text": ") · [[d, −b], [−c, a]]; ad − bc ≠ 0"
+          "text": ") ·"
+        },
+        {
+          "text": "[[d, −b], [−c, a]]"
         }
       ],
       "definitions": [

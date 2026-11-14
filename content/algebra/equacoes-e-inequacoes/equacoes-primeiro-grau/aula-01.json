@@ -208,9 +208,6 @@
               "rotulo": "y = 0"
             }
           ],
-          "marcar": {
-            "encontro": true
-          },
           "cores": {
             "encontro": "c4"
           }
@@ -264,11 +261,6 @@
           },
           "cores": {
             "encontro": "c4"
-          },
-          "ponto": {
-            "curva": 0,
-            "x": 2,
-            "cor": "c4"
           }
         }
       },

@@ -324,7 +324,7 @@
           "ref": "c1"
         },
         {
-          "text": " = (−b ± √Δ)/(2a); Δ = b² − 4ac; "
+          "text": " = (−b ± √Δ)/(2a); "
         },
         {
           "text": "raízes",
@@ -346,7 +346,7 @@
         }
       ],
       "lines": {
-        "intro": "O quadrado completo precisa ser não negativo; por isso Δ decide quantas raízes reais existem.",
+        "intro": "O quadrado completo precisa ser não negativo; Δ = b² − 4ac decide quantas raízes reais existem.",
         "hint": "Toque em uma letra para ver o que ela faz no gráfico."
       }
     }

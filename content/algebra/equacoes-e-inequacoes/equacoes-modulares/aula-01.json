@@ -186,9 +186,6 @@
               "rotulo": "y = 2"
             }
           ],
-          "marcar": {
-            "encontro": true
-          },
           "cores": {
             "encontro": "c4"
           }
@@ -250,9 +247,6 @@
               "rotulo": "y = 2"
             }
           ],
-          "marcar": {
-            "encontro": true
-          },
           "cores": {
             "encontro": "c4"
           }
@@ -260,7 +254,10 @@
       },
       "formula": [
         {
-          "text": "|x",
+          "text": "|"
+        },
+        {
+          "text": "x",
           "ref": "c1"
         },
         {

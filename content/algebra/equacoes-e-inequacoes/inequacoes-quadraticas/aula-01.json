@@ -45,7 +45,7 @@
       "widget": "plano_cartesiano",
       "params": {
         "x": [-3, 3],
-        "y": [-3, 3],
+        "y": [-3, 4],
         "curvas": [
           { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "fantasma": true, "rotulo": "y = x²" },
           { "tipo": "quadratica", "a": 1, "b": 0, "c": -1, "cor": "c3", "rotulo": "y = x² − 1" }
