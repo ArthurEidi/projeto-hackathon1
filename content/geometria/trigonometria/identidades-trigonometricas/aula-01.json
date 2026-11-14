@@ -93,7 +93,8 @@
       ],
       "complete_when": {
         "metric": "quad",
-        "gte": 2
+        "gte": 2,
+        "lte": 2
       },
       "lines": {
         "intro": "Se sen θ = 0,6, temos cos²θ = 1 − 0,36 = 0,64. Mude para o 2º quadrante: cos θ vale +0,8 ou −0,8?",
@@ -149,8 +150,8 @@
           "angulo": 36.87,
           "mostrar": {
             "seno": true,
-            "cosseno": true,
-            "pitagorica": true,
+            "cosseno": false,
+            "pitagorica": false,
             "marcos": true
           },
           "highlight": ["c1", "c2"]
@@ -165,27 +166,60 @@
           "label": "4/5",
           "correct": true,
           "feedback": "Isso. cos²θ = 1 − 9/25 = 16/25; no 1º quadrante, cos θ = 4/5.",
-          "override": {
-            "highlight": ["c2"]
+          "figure": {
+            "angulo": 36.87,
+            "mostrar": {
+              "seno": true,
+              "cosseno": true,
+              "pitagorica": true,
+              "marcos": true
+            }
           }
         },
         {
           "id": "c25",
           "label": "2/5",
           "correct": false,
-          "feedback": "Resposta: 4/5; Não faça 1 − 3/5: eleve ao quadrado. 1 − 9/25 = 16/25, raiz = 4/5."
+          "feedback": "Resposta: 4/5; Não faça 1 − 3/5: eleve ao quadrado. 1 − 9/25 = 16/25, raiz = 4/5.",
+          "figure": {
+            "angulo": 66.42,
+            "mostrar": {
+              "seno": true,
+              "cosseno": true,
+              "pitagorica": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "c1625",
           "label": "16/25",
           "correct": false,
-          "feedback": "Resposta: 4/5; 16/25 é cos²θ. Tirando a raiz quadrada, cos θ = 4/5."
+          "feedback": "Resposta: 4/5; 16/25 é cos²θ. Tirando a raiz quadrada, cos θ = 4/5.",
+          "figure": {
+            "angulo": 50.21,
+            "mostrar": {
+              "seno": true,
+              "cosseno": true,
+              "pitagorica": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "cm45",
           "label": "−4/5",
           "correct": false,
-          "feedback": "Resposta: 4/5; No 1º quadrante o cosseno é positivo: cos θ = +4/5."
+          "feedback": "Resposta: 4/5; No 1º quadrante o cosseno é positivo: cos θ = +4/5.",
+          "figure": {
+            "angulo": 143.13,
+            "mostrar": {
+              "seno": true,
+              "cosseno": true,
+              "pitagorica": true,
+              "marcos": true
+            }
+          }
         }
       ]
     },
@@ -212,11 +246,7 @@
         { "text": "+" },
         { "text": "cos²θ", "ref": "c2" },
         { "text": "=" },
-        { "text": "1", "ref": "c3" },
-        { "text": ";" },
-        { "text": "1 + tg²θ" },
-        { "text": "=" },
-        { "text": "sec²θ", "ref": "c4" }
+        { "text": "1", "ref": "c3" }
       ],
       "definitions": [
         {

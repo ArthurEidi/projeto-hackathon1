@@ -148,8 +148,8 @@
           "angulo": 150,
           "fantasma": 30,
           "mostrar": {
-            "seno": true,
-            "cosseno": true,
+            "seno": false,
+            "cosseno": false,
             "simetricos": true,
             "marcos": true
           },
@@ -165,7 +165,14 @@
           "label": "1/2 e −√3/2",
           "correct": true,
           "feedback": "Isso. No 2º quadrante y > 0 (seno positivo) e x < 0 (cosseno negativo).",
-          "override": {
+          "figure": {
+            "angulo": 150,
+            "mostrar": {
+              "seno": true,
+              "cosseno": true,
+              "simetricos": true,
+              "marcos": true
+            },
             "highlight": ["c1", "c2"]
           }
         },
@@ -173,19 +180,49 @@
           "id": "smcp",
           "label": "−1/2 e √3/2",
           "correct": false,
-          "feedback": "Resposta: 1/2 e −√3/2; No 2º quadrante o y (seno) é positivo e o x (cosseno) é negativo."
+          "feedback": "Resposta: 1/2 e −√3/2; No 2º quadrante o y (seno) é positivo e o x (cosseno) é negativo.",
+          "figure": {
+            "angulo": 330,
+            "mostrar": {
+              "seno": true,
+              "cosseno": true,
+              "simetricos": true,
+              "marcos": true
+            },
+            "highlight": ["c1", "c2"]
+          }
         },
         {
           "id": "spcp",
           "label": "1/2 e √3/2",
           "correct": false,
-          "feedback": "Resposta: 1/2 e −√3/2; Em 150° o ponto está à esquerda do eixo y, então cos 150° é negativo: −√3/2."
+          "feedback": "Resposta: 1/2 e −√3/2; Em 150° o ponto está à esquerda do eixo y, então cos 150° é negativo: −√3/2.",
+          "figure": {
+            "angulo": 30,
+            "mostrar": {
+              "seno": true,
+              "cosseno": true,
+              "simetricos": true,
+              "marcos": true
+            },
+            "highlight": ["c1", "c2"]
+          }
         },
         {
           "id": "smcm",
           "label": "−1/2 e −√3/2",
           "correct": false,
-          "feedback": "Resposta: 1/2 e −√3/2; Ambos negativos é no 3º quadrante (210°). Em 150° o seno é +1/2 e o cosseno é −√3/2."
+          "feedback": "Resposta: 1/2 e −√3/2; Ambos negativos é no 3º quadrante (210°). Em 150° o seno é +1/2 e o cosseno é −√3/2.",
+          "figure": {
+            "angulo": 210,
+            "mostrar": {
+              "seno": true,
+              "cosseno": true,
+              "simetricos": true,
+              "marcos": true
+            },
+            "highlight": ["c1", "c2"]
+          }
         }
       ]
     },
@@ -208,16 +245,11 @@
         }
       },
       "formula": [
-        { "text": "P = (" },
-        { "text": "cos θ", "ref": "c2" },
+        { "text": "x=cosθ", "ref": "c2" },
         { "text": ";" },
-        { "text": "sen θ", "ref": "c1" },
-        { "text": ");" },
-        { "text": "tg θ", "ref": "c3" },
-        { "text": "=" },
-        { "text": "sen θ", "ref": "c1" },
-        { "text": "/" },
-        { "text": "cos θ", "ref": "c2" }
+        { "text": "y=senθ", "ref": "c1" },
+        { "text": ";" },
+        { "text": "tgθ=y/x", "ref": "c3" }
       ],
       "definitions": [
         {

@@ -144,12 +144,13 @@
       "figure": {
         "widget": "ciclo_trigonometrico_figura",
         "params": {
-          "soma": {
-            "alfa": 36.87,
-            "beta": 36.87
-          },
-          "blocos": 1,
-          "unidade": "ambos"
+          "angulo": 36.87,
+          "unidade": "graus",
+          "mostrar": {
+            "seno": true,
+            "cosseno": true,
+            "marcos": true
+          }
         }
       },
       "options": [
@@ -157,25 +158,57 @@
           "id": "s2425",
           "label": "24/25",
           "correct": true,
-          "feedback": "Isso. sen(2α) = 2 · sen α · cos α = 2 · (3/5) · (4/5) = 24/25."
+          "feedback": "Isso. sen(2α) = 2 · sen α · cos α = 2 · (3/5) · (4/5) = 24/25.",
+          "figure": {
+            "soma": {
+              "alfa": 36.87,
+              "beta": 36.87
+            },
+            "blocos": 1,
+            "unidade": "ambos"
+          }
         },
         {
           "id": "s65",
           "label": "6/5",
           "correct": false,
-          "feedback": "sen(2α) não é 2·sen α (6/5 até passa de 1!). Use 2 · (3/5) · (4/5) = 24/25."
+          "feedback": "sen(2α) não é 2·sen α (6/5 até passa de 1!). Use 2 · (3/5) · (4/5) = 24/25.",
+          "figure": {
+            "soma": {
+              "alfa": 36.87,
+              "beta": 36.87
+            },
+            "blocos": 0,
+            "unidade": "ambos"
+          }
         },
         {
           "id": "s1225",
           "label": "12/25",
           "correct": false,
-          "feedback": "12/25 é apenas sen α · cos α; faltou multiplicar por 2: 24/25."
+          "feedback": "12/25 é apenas sen α · cos α; faltou multiplicar por 2: 24/25.",
+          "figure": {
+            "angulo": 28.69,
+            "mostrar": {
+              "seno": true,
+              "cosseno": false,
+              "marcos": true
+            }
+          }
         },
         {
           "id": "s725",
           "label": "7/25",
           "correct": false,
-          "feedback": "7/25 é cos(2α) = cos²α − sen²α. Para o seno: 2 · (3/5) · (4/5) = 24/25."
+          "feedback": "7/25 é cos(2α) = cos²α − sen²α. Para o seno: 2 · (3/5) · (4/5) = 24/25.",
+          "figure": {
+            "angulo": 73.74,
+            "mostrar": {
+              "seno": false,
+              "cosseno": true,
+              "marcos": true
+            }
+          }
         }
       ]
     },
@@ -195,25 +228,22 @@
       },
       "formula": [
         {
-          "text": "sen(α + β)",
+          "text": "sen(α+β)",
           "ref": "c3"
         },
         {
-          "text": " = sen α·cos β + sen β·cos α ; "
+          "text": "="
         },
         {
-          "text": "cos(α + β)",
-          "ref": "c4"
+          "text": "sen α·cos β",
+          "ref": "c1"
         },
         {
-          "text": " = cos α·cos β − sen α·sen β ; "
+          "text": "+"
         },
         {
-          "text": "sen(2α)",
-          "ref": "c3"
-        },
-        {
-          "text": " = 2·sen α·cos α"
+          "text": "sen β·cos α",
+          "ref": "c2"
         }
       ],
       "definitions": [

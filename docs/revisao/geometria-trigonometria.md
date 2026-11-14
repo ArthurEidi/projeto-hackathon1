@@ -26,3 +26,57 @@ Critério: segunda passada nos feedbacks de distratores (`treino.faceis`, `media
 - `radianos-e-ciclo-trigonometrico`, passo `um-radiano`: `"angulo": "$rad"` → `"rad": "$rad"` (GUIA §5.11: `angulo` é em graus; com o valor antigo o slider em 1 desenhava 1° e a métrica `rad` não chegava a 1). Teste 5/5.
 - `lei-dos-senos-e-cossenos`, `combinar-seno-cosseno`: alt. "a = 16 e 2R = 4/√7" → feedback descreve o erro que dá o rótulo (não tirou a raiz de a² = 16; para 2R usou só 1 / sen A = 4/√7); alt. "a = 4 e 2R = √7" → "multiplicou a por sen A (4 · √7/4 = √7) em vez de dividir".
 - Auditoria do maestro: conferidas uma a uma as 41 reescritas e a fala corrigida. Uma ainda não levava ao rótulo: `seno-cosseno-tangente-no-ciclo` `expressao-eixos` alt. "−2" (o feedback chegava a +2) → "Você trocou o sinal de cada termo (−1 + 1 − 1 − 1 = −2)...". As demais contas batem.
+
+## Correções da conferência visual
+
+### Antigravity #2
+
+- `lei-dos-senos-e-cossenos`:
+  - `desafio-cossenos`: adicionada `figure` reativa às 4 alternativas (`a7`, `a49`, `a89` com `angulo: 90`, `a11` com `angulo: 120`). Nota de widget: a legenda `"a = 7"` / `"a² = 49"` na figura base é limitação de `lei_senos_cossenos_figura`.
+  - `fechamento`: fórmula encurtada para 5 tokens (`a²=b²+c²`, `−2bc·cosA`, `;`, `a/senA`, `=2R`).
+  - Validação: `vitest` 18/18, `lint:content` ok.
+- `modelos-periodicos-e-amplitude`:
+  - `desafio-roda-gigante`: `figure` da alternativa `m12e10` atualizada para `{ "ponto": { "x": 0, "cor": "c1" }, "highlight": ["c1"] }`.
+  - `fechamento`: fórmula encurtada para 7 tokens (`y=`, `D`, `+`, `A`, `sen(Bx+C)`, `;`, `T=2π/B`).
+  - Validação: `vitest` 10/10, `lint:content` ok.
+- `radianos-e-ciclo-trigonometrico`:
+  - `um-radiano`: `complete_when` restringido para `{ "metric": "rad", "gte": 1, "lte": 1 }` (evita concluir em 2 ou 3 rad com a fala de 1 rad).
+  - `desafio-conversao`: já tinha `figure` nas 4 alternativas (`angulo` 120, 60, 270, 360). Nota de widget: cabeçalho `"θ = 120° = 2π/3"` sempre visível em `ciclo_trigonometrico_figura`.
+  - `fechamento`: `marcos_rad` alterado para `[1, 2, 3, 4, 5, 6]` (evita rótulos arredondados enganosos); fórmula encurtada e sem sublinhado cru (`π rad`, `=`, `180°`, `;`, `θ+2kπ`).
+  - Validação: `vitest` 5/5, `lint:content` ok.
+- `seno-cosseno-tangente-no-ciclo`:
+  - `desafio-reduzir-150`: ocultados `seno` e `cosseno` na `figure` base (`mostrar.seno: false`, `mostrar.cosseno: false`); adicionada `figure` reativa nas 4 alternativas (`150°`, `330°`, `30°`, `210°` com `seno: true, cosseno: true`).
+  - `fechamento`: fórmula encurtada para 5 tokens (`x=cosθ`, `;`, `y=senθ`, `;`, `tgθ=y/x`).
+  - Validação: `vitest` 6/6, `lint:content` ok.
+- `trigonometria-no-triangulo-retangulo`:
+  - `desafio-rampa`: adicionado `"painel": false` na `figure` base para ocultar `"sen θ = CO / HIP = 0,5"`; adicionada `figure` reativa nas 4 alternativas (`h5`, `h10`, `h20` com `k: 2`, `h86`). Nota de widget: `"CO 5"` no cateto permanece visível em `geometria_triangulo_figura` mesmo com `painel: false`.
+  - `fechamento`: fórmula encurtada para 5 tokens (`sen=CO/HIP`, `;`, `cos=CA/HIP`, `;`, `tg=CO/CA`).
+  - Validação: `vitest` 18/18, `lint:content` ok.
+
+### Gemini 4 Hydrogen
+
+- `equacoes-trigonometricas`:
+  - `caso-neutro` e `altura-repetida`: adicionados `"lte": 90` e `"lte": 150` em `complete_when` para não concluir em ângulos onde a fala `done` deixa de valer.
+  - `conferir-previsao`: ocultados os pontos marcados e o chip de seno na figura base (`marcadas: []`, `angulo: 0`, `mostrar.seno: false`); adicionadas `figure` coerentes às 4 alternativas (`micro-acerto`, `micro-erro`, `micro-erro-2`, `micro-erro-3`).
+  - `fechamento`: fórmula encurtada para caber em 400 px (`sen θ`, `=`, `sen α`, `⇒`, `θ = α + 2kπ`), movendo `θ = π − α + 2kπ (k ∈ ℤ)` para `definitions`.
+  - Validação: `vitest` 18/18, `lint:content` ok.
+- `formulas-de-adicao-e-arco-duplo`:
+  - `desafio-arco-duplo`: removida `soma` da figura base (mostrando só `angulo: 36.87` com `seno` e `cosseno`, sem entregar `0,96`); adicionadas `figure` coerentes às 4 alternativas (`s2425`, `s65`, `s1225`, `s725`).
+  - `fechamento`: fórmula encurtada para 5 tokens (`sen(α+β)`, `=`, `sen α·cos β`, `+`, `sen β·cos α`).
+  - Validação: `vitest` 18/18, `lint:content` ok.
+- `funcoes-trigonometricas`:
+  - `grafico-tangente`: nota de widget — `ciclo_trigonometrico` só aceita `grafico: "sen" | "cos"`, não existindo modo gráfico para tangente (o passo usa apenas o ciclo e a reta tangente).
+  - `desafio-identificar-curva`: ocultado o chip `cos 1` na figura base (`mostrar.cosseno: false`); substituído `override` por `figure` nas 4 alternativas (`cos`, `sen`, `tg`, `msen`).
+  - `fechamento`: fórmula encurtada para 5 tokens (`sen(x+2π)`, `=`, `sen x`, `·`, `T = 2π`).
+  - Validação: `vitest` 6/6, `lint:content` ok.
+- `identidades-trigonometricas`:
+  - `sinal-pelo-quadrante`: adicionado `"lte": 2` em `complete_when` para alinhar com a fala do 2º quadrante.
+  - `tangente-e-secante`: `mostrar.secante: true` já está ativo nos parâmetros; a ausência do rótulo de secante na tela é limitação do widget.
+  - `desafio-achar-cosseno`: ocultados `cosseno` e barra `pitagorica` na figura base; substituído `override` por `figure` coerentes nas 4 alternativas (`c45`, `c25`, `c1625`, `cm45`).
+  - `fechamento`: fórmula encurtada para 5 tokens (`sen²θ`, `+`, `cos²θ`, `=`, `1`).
+  - Validação: `vitest` 6/6, `lint:content` ok.
+- `inequacoes-trigonometricas`:
+  - `caso-neutro` e `cruzar-fronteira`: adicionados `"lte": 90` e `"lte": 270` em `complete_when` para não concluir em ângulos onde a fala `done` é falsa.
+  - `limite-meio`: mantido `complete_when: { metric: "dentro", gte: 1 }` (exigido pelo teste do capítulo) e generalizada `lines.done` para valer em todo `[30°; 150°]`. Nota de widget: bolinha vazia em 150° mesmo com `abreAte: false`.
+  - `conferir-previsao`: removido `arco` da figura base; adicionadas `figure` coerentes às 4 alternativas (`micro-acerto`, `micro-erro`, `micro-erro-2`, `micro-erro-3`).
+  - Validação: `vitest` 18/18, `lint:content` ok.

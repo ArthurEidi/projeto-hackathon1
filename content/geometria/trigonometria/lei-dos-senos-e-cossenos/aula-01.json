@@ -151,25 +151,29 @@
           "id": "a7",
           "label": "7",
           "correct": true,
-          "feedback": "Isso. a² = 25 + 64 − 2·5·8·0,5 = 89 − 40 = 49, logo a = 7."
+          "feedback": "Isso. a² = 25 + 64 − 2·5·8·0,5 = 89 − 40 = 49, logo a = 7.",
+          "figure": { "highlight": ["c1"] }
         },
         {
           "id": "a49",
           "label": "49",
           "correct": false,
-          "feedback": "49 é a². Tirando a raiz quadrada, o lado mede a = 7."
+          "feedback": "49 é a². Tirando a raiz quadrada, o lado mede a = 7.",
+          "figure": { "highlight": ["c1", "c2"] }
         },
         {
           "id": "a89",
           "label": "√89",
           "correct": false,
-          "feedback": "Faltou descontar 2bc·cos 60° = 40. Com o desconto: a² = 49 e a = 7."
+          "feedback": "Faltou descontar 2bc·cos 60° = 40. Com o desconto: a² = 49 e a = 7.",
+          "figure": { "angulo": 90, "highlight": ["c1", "c3"] }
         },
         {
           "id": "a11",
           "label": "√129",
           "correct": false,
-          "feedback": "Você somou 40 em vez de subtrair. Em 60° subtrai-se: a² = 49, a = 7."
+          "feedback": "Você somou 40 em vez de subtrair. Em 60° subtrai-se: a² = 49, a = 7.",
+          "figure": { "angulo": 120, "highlight": ["c1", "c3"] }
         }
       ]
     },
@@ -185,45 +189,11 @@
         }
       },
       "formula": [
-        {
-          "text": "a²",
-          "ref": "c1"
-        },
-        {
-          "text": " = "
-        },
-        {
-          "text": "b² + c²",
-          "ref": "c2"
-        },
-        {
-          "text": " − 2bc·cos "
-        },
-        {
-          "text": "A",
-          "ref": "c3"
-        },
-        {
-          "text": "; "
-        },
-        {
-          "text": "a",
-          "ref": "c1"
-        },
-        {
-          "text": " / sen "
-        },
-        {
-          "text": "A",
-          "ref": "c3"
-        },
-        {
-          "text": " = "
-        },
-        {
-          "text": "2R",
-          "ref": "c4"
-        }
+        { "text": "a²=b²+c²", "ref": "c2" },
+        { "text": "−2bc·cosA", "ref": "c3" },
+        { "text": ";" },
+        { "text": "a/senA", "ref": "c1" },
+        { "text": "=2R", "ref": "c4" }
       ],
       "definitions": [
         {
