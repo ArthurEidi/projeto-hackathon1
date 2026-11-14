@@ -151,7 +151,7 @@
         "params": {
           "modo": "sequencia",
           "casas": 0,
-          "acumular": true,
+          "acumular": false,
           "nome": "a",
           "regra": "pa",
           "a1": 2,

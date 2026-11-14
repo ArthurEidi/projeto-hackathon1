@@ -177,7 +177,7 @@
           "z": [3, 4],
           "mostrar": {
             "conjugado": true,
-            "modulo": true
+            "modulo": false
           }
         }
       },
@@ -237,7 +237,10 @@
           "ref": "c2"
         },
         {
-          "text": "i ; |z|",
+          "text": "i ; "
+        },
+        {
+          "text": "|z|",
           "ref": "c4"
         },
         {

@@ -240,7 +240,8 @@
       },
       "formula": [
         { "text": "P(x)", "ref": "c3" },
-        { "text": "= aₙ", "ref": "c2" },
+        { "text": " = " },
+        { "text": "aₙ", "ref": "c2" },
         { "text": "xⁿ", "ref": "c1" },
         { "text": " + … + a₁x + a₀; aₙ ≠ 0" }
       ],

@@ -134,21 +134,21 @@
             { "tipo": "logaritmo", "a": 1, "b": 2, "c": 0, "cor": "c2", "rotulo": "y = log₂(x)" },
             { "tipo": "afim", "a": 1, "b": 0, "cor": "c4", "rotulo": "y = x" }
           ],
-          "ponto": { "curva": 1, "x": 8, "cor": "c1" }
+          "ponto": { "curva": 1, "x": 4, "cor": "c1" }
         }
       },
       "formula": [
-        { "text": "log_b(x)", "ref": "c2" },
+        { "text": "logₐ(x)", "ref": "c2" },
         { "text": "=" },
         { "text": "y" },
         { "text": "⇔" },
-        { "text": "b", "sup": "y", "ref": "c3" },
+        { "text": "a", "sup": "y", "ref": "c3" },
         { "text": "=" },
         { "text": "x", "ref": "c1" }
       ],
       "definitions": [
         { "term": "Argumento x", "text": "precisa ser positivo." },
-        { "term": "Base b", "text": "positiva e diferente de 1." },
+        { "term": "Base a", "text": "positiva e diferente de 1." },
         { "term": "Logaritmo", "text": "expoente que produz o argumento." }
       ],
       "duvida": {
@@ -157,7 +157,7 @@
         "resposta": "É a volta dela. Por isso o gráfico é o espelho na diagonal e o domínio é x > 0."
       },
       "lines": {
-        "intro": "O log pergunta qual expoente de b dá x. Por isso log_b(x) = y equivale a bʸ = x, e os gráficos se espelham na diagonal.",
+        "intro": "O log pergunta qual expoente de a dá x. Por isso logₐ(x) = y equivale a aʸ = x, e os gráficos se espelham na diagonal.",
         "hint": "Toque em uma marca para ver o que ela representa no gráfico."
       }
     }

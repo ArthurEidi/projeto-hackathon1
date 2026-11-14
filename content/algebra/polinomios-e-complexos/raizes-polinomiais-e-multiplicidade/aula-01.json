@@ -247,9 +247,10 @@
       },
       "formula": [
         { "text": "P(x)", "ref": "c3" },
-        { "text": " = (x − r)", "ref": "c4" },
+        { "text": " = " },
+        { "text": "(x − r)", "ref": "c4" },
         { "text": "ᵐ", "ref": "c2" },
-        { "text": " · Q(x), Q(r) ≠ 0; m par toca, m ímpar cruza" }
+        { "text": " · Q(x), Q(r) ≠ 0" }
       ],
       "definitions": [
         {

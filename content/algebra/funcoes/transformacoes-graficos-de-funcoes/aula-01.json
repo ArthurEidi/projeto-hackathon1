@@ -222,7 +222,7 @@
             }
           ],
           "marcar": {
-            "vertice": true
+            "vertice": false
           }
         }
       },
@@ -297,7 +297,7 @@
             }
           ],
           "marcar": {
-            "vertice": true
+            "vertice": false
           }
         }
       },

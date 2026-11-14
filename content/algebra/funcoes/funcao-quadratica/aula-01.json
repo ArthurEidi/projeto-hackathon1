@@ -62,7 +62,7 @@
       "widget": "plano_cartesiano",
       "params": {
         "curvas": [{ "tipo": "quadratica", "a": 1, "b": -2, "c": 1, "cor": "c2", "rotulo": "f(x) = (x − 1)²" }],
-        "ponto": { "curva": 0, "x": -1, "passo": 0.5, "cor": "c1" }
+        "ponto": { "curva": 0, "x": 0, "passo": 0.5, "cor": "c1" }
       },
       "lines": {
         "intro": "Aqui f(x) = (x − 1)²; em qual entrada o quadrado zera? Arraste o ponto até lá e leia a saída.",

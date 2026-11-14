@@ -107,7 +107,7 @@
       "widget": "plano_cartesiano",
       "params": {
         "curvas": [{ "tipo": "afim", "a": -1, "b": 2, "cor": "c3", "rotulo": "f(x) = −x + 2" }],
-        "ponto": { "x": -2, "passo": 0.5 },
+        "ponto": { "x": 4, "passo": 0.5 },
         "marcar": { "quadrantes": true }
       },
       "lines": {
