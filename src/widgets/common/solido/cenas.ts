@@ -775,30 +775,43 @@ function cenaCorteCone(p: SolidoDe<"corte_cone">, ctl: Controles): Cena {
 }
 
 export function montarCena(p: Solido, ctl: Controles, e: EstadoSolido = {}): Cena {
+  let cena: Cena;
   switch (p.modo) {
     case "revolucao":
-      return cenaRevolucao(p, ctl, e);
+      cena = cenaRevolucao(p, ctl, e);
+      break;
     case "prisma":
-      return cenaPrisma(p, ctl);
+      cena = cenaPrisma(p, ctl);
+      break;
     case "piramide":
-      return cenaPiramide(p, ctl);
+      cena = cenaPiramide(p, ctl);
+      break;
     case "cilindro":
-      return cenaCilindro(p, ctl);
+      cena = cenaCilindro(p, ctl);
+      break;
     case "esfera":
-      return cenaEsfera(p, ctl, e);
+      cena = cenaEsfera(p, ctl, e);
+      break;
     case "tronco":
-      return cenaTronco(p, ctl);
+      cena = cenaTronco(p, ctl);
+      break;
     case "poliedro":
-      return cenaPoliedro(p, ctl, e);
+      cena = cenaPoliedro(p, ctl, e);
+      break;
     case "espaco":
-      return cenaEspaco(p, ctl);
+      cena = cenaEspaco(p, ctl);
+      break;
     case "vistas":
-      return cenaVistas(p, ctl, e);
+      cena = cenaVistas(p, ctl, e);
+      break;
     case "composicao":
-      return cenaComposicao(p, ctl);
+      cena = cenaComposicao(p, ctl);
+      break;
     case "corte_cone":
-      return cenaCorteCone(p, ctl);
+      cena = cenaCorteCone(p, ctl);
+      break;
   }
+  return p.placar ? cena : { ...cena, placar: [] };
 }
 
 export { malhaVistas, orientarPorCentro };

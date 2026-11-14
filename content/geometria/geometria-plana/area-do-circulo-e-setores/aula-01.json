@@ -141,7 +141,8 @@
           "modo": "fatias",
           "variante": "setor",
           "r": 4,
-          "alfa": 90
+          "alfa": 90,
+          "legenda": false
         }
       },
       "options": [

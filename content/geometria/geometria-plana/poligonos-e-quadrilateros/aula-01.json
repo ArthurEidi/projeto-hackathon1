@@ -134,7 +134,8 @@
         "params": {
           "modo": "poligono",
           "n": 5,
-          "diagonais": false
+          "diagonais": false,
+          "legenda": false
         }
       },
       "lines": {

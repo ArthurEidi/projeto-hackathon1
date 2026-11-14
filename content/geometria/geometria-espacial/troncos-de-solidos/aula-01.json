@@ -154,6 +154,7 @@
           "R": 4,
           "H": 12,
           "corte": 6,
+          "placar": false,
           "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
         }
       },

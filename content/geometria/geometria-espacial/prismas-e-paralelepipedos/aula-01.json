@@ -152,6 +152,7 @@
           "b": 2,
           "h": 6,
           "camadas": true,
+          "placar": false,
           "cores": { "base": "c1", "h": "c2", "lateral": "c3", "diagonal": "c4" }
         }
       },

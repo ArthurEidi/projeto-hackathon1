@@ -141,7 +141,8 @@
         "params": {
           "modo": "metricas",
           "a": 13,
-          "m": 4
+          "m": 4,
+          "ocultar": ["a", "b", "c", "h"]
         }
       },
       "options": [

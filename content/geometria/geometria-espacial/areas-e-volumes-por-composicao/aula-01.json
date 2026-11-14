@@ -99,7 +99,8 @@
           "r": 3,
           "h": 5,
           "hc": 3,
-          "juntar": 1
+          "juntar": 1,
+          "placar": false
         }
       },
       "prompt": "Qual é o volume total de um silo formado por um cilindro (r = 3 m, h = 5 m) e um telhado cônico (r = 3 m, h = 3 m)?",

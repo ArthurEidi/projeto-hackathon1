@@ -199,14 +199,14 @@ function dPitagoras(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"p
   }
   poligonoMundo(ctx, v, [O, B, C], palette.bg, palette.ink, 3);
   if (cc > 0 && b > 0) retoNoMundo(ctx, v, O, B, C);
-  if (b > 0) lado(ctx, hits, v, O, B, { x: b / 2, y: -b / 2 }, `b = ${fmt(b)}`, "c1", 18);
-  if (cc > 0) lado(ctx, hits, v, O, C, { x: -cc / 2, y: cc / 2 }, `c = ${fmt(cc)}`, "c2", 18);
+  if (b > 0 && !p.ocultar.includes("b")) lado(ctx, hits, v, O, B, { x: b / 2, y: -b / 2 }, `b = ${fmt(b)}`, "c1", 18);
+  if (cc > 0 && !p.ocultar.includes("c")) lado(ctx, hits, v, O, C, { x: -cc / 2, y: cc / 2 }, `c = ${fmt(cc)}`, "c2", 18);
   if (p.quadrados) {
-    if (b > 0) etiqueta(ctx, hits, v.p(b / 2, -b / 2), `b² = ${fmt(g.areaB)}`, "c1");
-    if (cc > 0) etiqueta(ctx, hits, v.p(-cc / 2, cc / 2), `c² = ${fmt(g.areaC)}`, "c2");
+    if (b > 0 && !p.ocultar.includes("b")) etiqueta(ctx, hits, v.p(b / 2, -b / 2), `b² = ${fmt(g.areaB)}`, "c1");
+    if (cc > 0 && !p.ocultar.includes("c")) etiqueta(ctx, hits, v.p(-cc / 2, cc / 2), `c² = ${fmt(g.areaC)}`, "c2");
     const cA = { x: (B.x + C.x) / 2 + (n.x * a) / 2, y: (B.y + C.y) / 2 + (n.y * a) / 2 };
-    etiqueta(ctx, hits, v.q(cA), `a² = ${fmt(g.areaA)}`, "c3");
-  } else {
+    if (!p.ocultar.includes("a")) etiqueta(ctx, hits, v.q(cA), `a² = ${fmt(g.areaA)}`, "c3");
+  } else if (!p.ocultar.includes("a")) {
     etiqueta(ctx, hits, ladoFora(v.q(B), v.q(C), v.q(O), 20), `a = ${fmt(a)}`, "c3");
   }
   return { alvos: [], vista: v };
@@ -324,7 +324,7 @@ function dRazoes(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"razo
     const rAng = Math.min(34, Math.max(16, hipPx * 0.16));
     anguloMarcado(ctx, hits, v.q(A), 0, g.angulo, rAng, null, "c4");
     for (const ch of layoutRazoes(v, A, Cc, Bb, g, w, h)) {
-      etiqueta(ctx, hits, ch.pos, ch.txt, ch.cor);
+      if (!p.ocultar.includes(ch.id)) etiqueta(ctx, hits, ch.pos, ch.txt, ch.cor);
     }
   }
   if (p.painel) {
@@ -366,12 +366,12 @@ function dMetricas(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"me
       retoNoMundo(ctx, v, C, A, Bp);
       retoNoMundo(ctx, v, H, A, C, 10);
     }
-    etiqueta(ctx, hits, v.p(g.a / 2, -g.a * 0.07), `a = ${fmt(g.a)}`, "c1");
-    if (g.m > 0) etiqueta(ctx, hits, v.p(g.m / 2, g.a * 0.045 + 0), `m = ${fmt(g.m)}`, "c2");
-    if (g.n > 0) etiqueta(ctx, hits, v.p(g.m + g.n / 2, g.a * 0.045), `n = ${fmt(g.n)}`, "c2");
-    if (g.h > 0) etiqueta(ctx, hits, v.p(g.m, g.h / 2), `h = ${fmt(g.h)}`, "c3");
-    if (g.m > 0 && g.h > 0) lado(ctx, hits, v, A, C, Bp, `b = ${fmt(g.b)}`, "c4", 22);
-    if (g.n > 0 && g.h > 0) lado(ctx, hits, v, C, Bp, A, `c = ${fmt(g.c)}`, "c4", 22);
+    if (!p.ocultar.includes("a")) etiqueta(ctx, hits, v.p(g.a / 2, -g.a * 0.07), `a = ${fmt(g.a)}`, "c1");
+    if (g.m > 0 && !p.ocultar.includes("m")) etiqueta(ctx, hits, v.p(g.m / 2, g.a * 0.045 + 0), `m = ${fmt(g.m)}`, "c2");
+    if (g.n > 0 && !p.ocultar.includes("n")) etiqueta(ctx, hits, v.p(g.m + g.n / 2, g.a * 0.045), `n = ${fmt(g.n)}`, "c2");
+    if (g.h > 0 && !p.ocultar.includes("h")) etiqueta(ctx, hits, v.p(g.m, g.h / 2), `h = ${fmt(g.h)}`, "c3");
+    if (g.m > 0 && g.h > 0 && !p.ocultar.includes("b")) lado(ctx, hits, v, A, C, Bp, `b = ${fmt(g.b)}`, "c4", 22);
+    if (g.n > 0 && g.h > 0 && !p.ocultar.includes("c")) lado(ctx, hits, v, C, Bp, A, `c = ${fmt(g.c)}`, "c4", 22);
     if (p.catetos) nota(ctx, { x: w / 2, y: topo - 12 }, `área = a · h / 2 = ${fmt((g.a * g.h) / 2)}`, "c3");
   } else {
     const [b, cc] = p.catetos!;
@@ -425,12 +425,14 @@ function dCossenos(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"co
   anguloMarcado(ctx, hits, v.q(A), 0, g.A, 30, `${fmt(g.A, 0)}°`, "c3");
   lado(ctx, hits, v, A, B, C, `c = ${fmt(g.c)}`, "c2", 18);
   lado(ctx, hits, v, A, C, B, `b = ${fmt(g.b)}`, "c2", 20);
-  lado(ctx, hits, v, B, C, A, `a = ${fmt(g.a)}`, "c1", 22);
-  rodape(ctx, w, h, [
-    { t: `b² + c² = ${fmt(g.soma)}` },
-    { t: `−2bc · cos A = ${fmt(g.termo)}`, c: "c3" },
-    { t: `a² = ${fmt(g.a2)}`, c: "c1" },
-  ]);
+  if (p.mostrar.a) lado(ctx, hits, v, B, C, A, `a = ${fmt(g.a)}`, "c1", 22);
+  if (p.mostrar.legenda) {
+    rodape(ctx, w, h, [
+      { t: `b² + c² = ${fmt(g.soma)}` },
+      { t: `−2bc · cos A = ${fmt(g.termo)}`, c: "c3" },
+      { t: `a² = ${fmt(g.a2)}`, c: "c1" },
+    ]);
+  }
   return { alvos: [], vista: v };
 }
 
@@ -488,8 +490,8 @@ function dAngulos(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"ang
     anguloMarcado(ctx, hits, v.q(B), 0, aB, 64, `e = ${fmt(g.externo, 0)}°`, "c3", false);
   }
   const rA = 30;
-  anguloMarcado(ctx, hits, v.q(A), 0, g.alfa, rA, `${fmt(g.alfa, 0)}°`, "c1");
-  anguloMarcado(ctx, hits, v.q(B), 180 - g.beta, 180, p.externo ? 24 : rA, `${fmt(g.beta, 0)}°`, "c1");
+  anguloMarcado(ctx, hits, v.q(A), 0, g.alfa, rA, p.ocultar.includes("alfa") ? null : `${fmt(g.alfa, 0)}°`, "c1");
+  anguloMarcado(ctx, hits, v.q(B), 180 - g.beta, 180, p.externo ? 24 : rA, p.ocultar.includes("beta") ? null : `${fmt(g.beta, 0)}°`, "c1");
   const aCA = dirGraus(C, A);
   const aCB = dirGraus(C, B);
   const aEsq = 180;
@@ -499,7 +501,7 @@ function dAngulos(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"ang
     anguloMarcado(ctx, hits, v.q(C), aEsq, cA, 26, `${fmt(g.alfa, 0)}°`, "c1");
     anguloMarcado(ctx, hits, v.q(C), cB, 360, 26, `${fmt(g.beta, 0)}°`, "c1");
   }
-  anguloMarcado(ctx, hits, v.q(C), cA, cB, 24, `${fmt(g.gama, 0)}°`, "c2");
+  anguloMarcado(ctx, hits, v.q(C), cA, cB, 24, p.ocultar.includes("gama") ? null : `${fmt(g.gama, 0)}°`, "c2");
   const alvos: Alvo[] = [];
   if (p.arrastavel && p.alfa === undefined) {
     const q = v.q(C);
@@ -653,7 +655,7 @@ function dNotaveis(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"no
       etiqueta(ctx, hits, v.p(L * 0.36, L * 0.62), `d = ${fmt(g.d)}`, "c1");
     }
     lado(ctx, hits, v, { x: 0, y: 0 }, { x: L, y: 0 }, { x: L / 2, y: L }, `L = ${fmt(L)}`, "c2", 20);
-    nota(ctx, { x: w / 2, y: h - 18 }, `d = L · √2 = ${fmt(L)}√2 ≈ ${fmt(g.d)}`, "c1", 14);
+    if (p.legenda) nota(ctx, { x: w / 2, y: h - 18 }, `d = L · √2 = ${fmt(L)}√2 ≈ ${fmt(g.d)}`, "c1", 14);
     return { alvos: [], vista: v };
   }
   if (p.figura === "equilatero") {
@@ -678,7 +680,7 @@ function dNotaveis(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"no
       for (const [q, a0, a1] of [[A, 0, 60], [B, 120, 180], [C, 240, 300]] as const) anguloMarcado(ctx, hits, v.q(q), a0, a1, 28, "60°", "c1");
       lado(ctx, hits, v, A, B, C, `L = ${fmt(L)}`, "c2", 20);
     }
-    nota(ctx, { x: w / 2, y: h - 18 }, `h = L · √3 / 2 = ${fmt(g.h)}`, "c3", 14);
+    if (p.legenda) nota(ctx, { x: w / 2, y: h - 18 }, `h = L · √3 / 2 = ${fmt(g.h)}`, "c3", 14);
     return { alvos: [], vista: v };
   }
   // Mediatriz com compasso: círculos de mesmo raio em A e B.
@@ -733,11 +735,11 @@ function dSemelhanca(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"
     const [e1, e2] = g.tales.esq;
     const [d1, d2] = g.tales.dir;
     const mid = (a: number, b: number) => (a + b) / 2;
-    if (e1 > 0) etiqueta(ctx, hits, v.p(xe(mid(T, yMid)) - 0.5, mid(T, yMid)), fmt(e1), "c1");
-    if (e2 > 0) etiqueta(ctx, hits, v.p(xe(mid(yMid, 0)) - 0.5, mid(yMid, 0)), fmt(e2), "c1");
-    if (d1 > 0) etiqueta(ctx, hits, v.p(xd(mid(T, yMid)) + 0.7, mid(T, yMid)), fmt(d1), "c2");
-    if (d2 > 0) etiqueta(ctx, hits, v.p(xd(mid(yMid, 0)) + 0.7, mid(yMid, 0)), fmt(d2), "c2");
-    nota(ctx, { x: w / 2, y: h - 18 }, `${fmt(e1)} / ${fmt(e2)} = ${fmt(d1)} / ${fmt(d2)}`, "c4", 15);
+    if (e1 > 0) etiqueta(ctx, hits, v.p(xe(mid(T, yMid)) - 0.5, mid(T, yMid)), p.incognita === "e1" ? "x" : fmt(e1), "c1");
+    if (e2 > 0) etiqueta(ctx, hits, v.p(xe(mid(yMid, 0)) - 0.5, mid(yMid, 0)), p.incognita === "e2" ? "x" : fmt(e2), "c1");
+    if (d1 > 0) etiqueta(ctx, hits, v.p(xd(mid(T, yMid)) + 0.7, mid(T, yMid)), p.incognita === "d1" ? "x" : fmt(d1), "c2");
+    if (d2 > 0) etiqueta(ctx, hits, v.p(xd(mid(yMid, 0)) + 0.7, mid(yMid, 0)), p.incognita === "d2" ? "x" : fmt(d2), "c2");
+    if (p.legenda) nota(ctx, { x: w / 2, y: h - 18 }, `${fmt(e1)} / ${fmt(e2)} = ${fmt(d1)} / ${fmt(d2)}`, "c4", 15);
     return { alvos: [], vista: v };
   }
   if (p.variante === "sombras") {

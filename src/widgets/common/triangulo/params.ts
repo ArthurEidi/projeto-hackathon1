@@ -33,6 +33,8 @@ const Pitagoras = z.object({
   diagonal: z.boolean().default(false),
   /** Chaves visíveis: deslizar (prova) e diagonal. */
   chaves: z.array(z.enum(["deslizar", "diagonal"])).default([]),
+  /** Esconde rótulos específicos dos lados. */
+  ocultar: z.array(z.enum(["a", "b", "c"])).default([]),
   highlight: Highlight,
 });
 
@@ -49,6 +51,8 @@ const Razoes = z.object({
   painel: z.boolean().default(true),
   /** Triângulo de referência em cinza (θ em graus, escala 1). */
   fantasma: z.number().min(1).max(89).optional(),
+  /** Esconde chips específicos (co, ca, hip, ang). */
+  ocultar: z.array(z.enum(["co", "ca", "hip", "ang"])).default([]),
   highlight: Highlight,
 });
 
@@ -62,6 +66,8 @@ const Metricas = z.object({
   apoio: Expr.default(1),
   /** Painel b² × a·m (quadrado e retângulo de mesma área). */
   comparar: z.boolean().default(false),
+  /** Esconde rótulos específicos (a, b, c, h, m, n). */
+  ocultar: z.array(z.enum(["a", "b", "c", "h", "m", "n"])).default([]),
   highlight: Highlight,
 });
 
@@ -73,6 +79,8 @@ const Cossenos = z.object({
   angulo: Expr.default(90),
   /** Triângulo com A = 90° em cinza tracejado. */
   fantasma: z.boolean().default(true),
+  /** Controla exibição do valor do lado a e da legenda com a conta. */
+  mostrar: z.object({ a: z.boolean().default(true), legenda: z.boolean().default(true) }).default({ a: true, legenda: true }),
   highlight: Highlight,
 });
 
@@ -100,6 +108,8 @@ const Angulos = z.object({
   /** Chave "fechar 3 barras": os 3 ângulos lado a lado formam a meia-volta. */
   chaves: z.array(z.enum(["fechar"])).default([]),
   fechado: z.boolean().default(false),
+  /** Esconde o valor de ângulos internos (alfa, beta, gama). */
+  ocultar: z.array(z.enum(["alfa", "beta", "gama"])).default([]),
   highlight: Highlight,
 });
 
@@ -134,6 +144,8 @@ const Notaveis = z.object({
   /** Mediatriz: distância AB e raio do compasso. */
   ab: z.number().positive().default(6),
   raio: Expr.default(2),
+  /** Mostra a legenda com a conta no rodapé. */
+  legenda: z.boolean().default(true),
   highlight: Highlight,
 });
 
@@ -156,6 +168,9 @@ const Semelhanca = z.object({
   sobrepor: z.boolean().default(false),
   chaves: z.array(z.enum(["sobrepor"])).default([]),
   fantasma: z.boolean().default(true),
+  /** tales: segmento mostrado como "x"; legenda no rodapé. */
+  incognita: z.enum(["e1", "e2", "d1", "d2"]).optional(),
+  legenda: z.boolean().default(true),
   highlight: Highlight,
 });
 

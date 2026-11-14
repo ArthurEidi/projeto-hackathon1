@@ -201,7 +201,8 @@
             "inscrito": true,
             "corda": false,
             "isosceles": false,
-            "medidas": false
+            "medidas": false,
+            "valor_central": false
           }
         }
       },

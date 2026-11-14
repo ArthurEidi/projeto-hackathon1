@@ -214,4 +214,27 @@ describe("figura e desenho", () => {
     expect(r.success, r.success ? "" : r.error.message).toBe(true);
     expect(() => desenharPoligono(ctx, 400, 360, [], r.data!, {}, estadoInicial(r.data!))).not.toThrow();
   });
+  it("esconde legendas e ângulos quando desabilitados para desafios", () => {
+    const textos: string[] = [];
+    const capCtx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) =>
+        k === "measureText"
+          ? () => ({ width: 30 })
+          : k === "fillText"
+            ? (t: string) => textos.push(t)
+            : () => undefined,
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+    for (const c of [
+      { modo: "malha", forma: "trapezio", b: 4, B: 6, h: 3, mostrar: { area: false, perimetro: false } },
+      { modo: "poligono", n: 5, diagonais: false, legenda: false },
+      { modo: "regular", n: 8, mostrar: { central: false, externo: false, interno: false, legenda: false } },
+      { modo: "paralelas", alfa: 65, destacar: "colaterais", rotulos: { "r-se": "x" }, legenda: false },
+    ]) {
+      textos.length = 0;
+      const r = GeometriaPoligonoFigura.parse(c);
+      desenharPoligono(capCtx, 400, 360, [], r, {}, estadoInicial(r));
+      expect(textos.some((t) => /15|540°|135°|115°/.test(t))).toBe(false);
+    }
+  });
 });

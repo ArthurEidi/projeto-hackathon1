@@ -283,7 +283,9 @@ function desenharGrafico(ctx: G, v: Vista, hits: Hit[], p: Ciclo, m: Modelo, P: 
   const ponto = v.p(X(t), f(t));
   segMundo(ctx, v, P, { x: X(t), y: f(t) }, palette.muted, 1.5, [4, 4]);
   dot(ctx, ponto, 6, tintaEscura(cor));
-  etiqueta(ctx, hits, { x: ponto.x, y: ponto.y + (f(t) >= 0 ? -20 : 20) }, `${p.grafico === "sen" ? "sen" : "cos"} ${fmt(f(t))}`, cor);
+  if (p.mostrar.grafico_rotulo) {
+    etiqueta(ctx, hits, { x: ponto.x, y: ponto.y + (f(t) >= 0 ? -20 : 20) }, `${p.grafico === "sen" ? "sen" : "cos"} ${fmt(f(t))}`, cor);
+  }
 }
 
 function desenharFita(ctx: G, w: number, h: number, radianos: number, c: Parameters<typeof tinta>[0]) {

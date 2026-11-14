@@ -162,6 +162,8 @@
           "esq": 10,
           "dir": 15,
           "corte": 4,
+          "incognita": "d2",
+          "legenda": false,
           "highlight": ["c1", "c2"]
         }
       },

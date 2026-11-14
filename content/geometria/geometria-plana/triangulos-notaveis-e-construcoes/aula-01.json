@@ -140,6 +140,7 @@
           "figura": "equilatero",
           "L": 10,
           "cortar": 0,
+          "legenda": false,
           "highlight": ["c2", "c3"]
         }
       },

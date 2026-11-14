@@ -160,4 +160,26 @@ describe("métricas emitidas e figura", () => {
     expect(r.success, r.success ? "" : r.error.message).toBe(true);
     expect(() => desenharCiclo(ctx, 400, 360, [], r.data!, {}, estadoInicial(r.data!))).not.toThrow();
   });
+  it("mostrar.grafico_rotulo controla o rótulo na ponta do gráfico", () => {
+    const texts: string[] = [];
+    const spyCtx = new Proxy(ctx, {
+      get(target, prop) {
+        if (prop === "fillText") {
+          return (t: string) => {
+            texts.push(String(t));
+          };
+        }
+        return (target as unknown as Record<string | symbol, unknown>)[prop];
+      },
+    });
+    const comRotulo = CicloTrigonometricoFigura.parse({ angulo: 360, grafico: "cos", mostrar: { seno: false, cosseno: false } });
+    expect(comRotulo.mostrar.grafico_rotulo).toBe(true);
+    desenharCiclo(spyCtx, 400, 360, [], comRotulo, {}, estadoInicial(comRotulo));
+    expect(texts).toContain("cos 1");
+
+    texts.length = 0;
+    const semRotulo = CicloTrigonometricoFigura.parse({ angulo: 360, grafico: "cos", mostrar: { seno: false, cosseno: false, grafico_rotulo: false } });
+    desenharCiclo(spyCtx, 400, 360, [], semRotulo, {}, estadoInicial(semRotulo));
+    expect(texts).not.toContain("cos 1");
+  });
 });

@@ -167,7 +167,8 @@
           "modo": "pitagoras",
           "b": 8,
           "c": 6,
-          "quadrados": false
+          "quadrados": false,
+          "ocultar": ["c"]
         }
       },
       "options": [

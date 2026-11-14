@@ -282,4 +282,30 @@ describe("métricas emitidas e figura", () => {
       expect(q.x).toBeLessThan(372 - 15);
     }
   });
+  it("esconde valores e legendas pedidos nos desafios", () => {
+    const textos: string[] = [];
+    const capCtx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) =>
+        k === "measureText"
+          ? () => ({ width: 30 })
+          : k === "fillText"
+            ? (t: string) => textos.push(t)
+            : () => undefined,
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+    for (const [c, proibido] of [
+      [{ modo: "metricas", a: 13, m: 4, ocultar: ["a", "b", "c", "h"] }, /h = 6|a = 13/],
+      [{ modo: "pitagoras", b: 8, c: 6, quadrados: false, ocultar: ["c"] }, /c = 6/],
+      [{ modo: "semelhanca", variante: "tales", esq: 10, dir: 15, corte: 4, incognita: "d2", legenda: false }, /^9$|6 \/ 9/],
+      [{ modo: "angulos", alfa: 70, beta: 70, paralela: false, ocultar: ["alfa", "beta"] }, /70°/],
+      [{ modo: "notaveis", figura: "equilatero", L: 10, cortar: 0, legenda: false }, /8,66/],
+      [{ modo: "cossenos", b: 5, c: 8, angulo: 60, fantasma: false, mostrar: { a: false, legenda: false } }, /a = 7|a² = 49/],
+      [{ modo: "razoes", angulo: 30, hip: 10, k: 1, painel: false, ocultar: ["co", "ca"] }, /CO 5|CA 8,7/],
+    ] as const) {
+      textos.length = 0;
+      const r = GeometriaTrianguloFigura.parse(c);
+      desenharTriangulo(capCtx, 400, 360, [], r, {}, estadoInicial(r));
+      expect(textos.some((t) => proibido.test(t)), JSON.stringify(c)).toBe(false);
+    }
+  });
 });

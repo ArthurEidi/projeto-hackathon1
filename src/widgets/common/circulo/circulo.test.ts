@@ -174,4 +174,26 @@ describe("métricas e figura", () => {
     expect(textos).toContain("16 setores: base ≈ πr, altura r");
     expect(textos).toContain("área ≈ πr · r = πr² = 16π");
   });
+  it("esconde legendas e valor_central quando desabilitados para desafios", () => {
+    const textos: string[] = [];
+    const capCtx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) =>
+        k === "measureText"
+          ? () => ({ width: 30 })
+          : k === "fillText"
+            ? (t: string) => textos.push(t)
+            : () => undefined,
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+    for (const [c, pattern] of [
+      [{ modo: "fatias", variante: "setor", r: 4, alfa: 90, legenda: false }, /4π/],
+      [{ modo: "arcos", alfa: 70, mostrar: { arco: true, central: true, inscrito: true, medidas: false, valor_central: false } }, /70°/],
+      [{ modo: "roda", variante: "arco", r: 10, alfa: 360, unidade: "m", legenda: false }, /62,83/],
+    ] as const) {
+      textos.length = 0;
+      const r = GeometriaCirculoFigura.parse(c);
+      desenharCirculo(capCtx, 400, 360, [], r, {}, estadoInicial());
+      expect(textos.some((t) => pattern.test(t))).toBe(false);
+    }
+  });
 });

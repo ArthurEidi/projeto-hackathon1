@@ -149,7 +149,8 @@
           "mostrar": {
             "seno": false,
             "cosseno": false,
-            "marcos": true
+            "marcos": true,
+            "grafico_rotulo": false
           },
           "highlight": ["c2"]
         }

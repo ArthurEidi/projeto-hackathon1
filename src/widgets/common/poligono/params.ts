@@ -47,6 +47,8 @@ const Poligono = z.object({
   encolher: Expr.default(0),
   /** Quadrilátero articulado: 1 paralelogramo, 2 retângulo, 3 losango (no lugar do n-ágono). */
   quadrilatero: Expr.optional(),
+  /** Mostra a legenda com a conta no rodapé. */
+  legenda: z.boolean().default(true),
   highlight: Highlight,
 });
 
@@ -59,6 +61,15 @@ const Regular = z.object({
   dividir: Expr.default(0),
   /** Peças em torno de um ponto (teste do ladrilho). */
   ladrilho: z.boolean().default(false),
+  /** Controla os ângulos e legenda exibidos. */
+  mostrar: z
+    .object({
+      central: z.boolean().default(true),
+      externo: z.boolean().default(true),
+      interno: z.boolean().default(true),
+      legenda: z.boolean().default(true),
+    })
+    .default({ central: true, externo: true, interno: true, legenda: true }),
   highlight: Highlight,
 });
 
@@ -100,6 +111,8 @@ const Paralelas = z.object({
   rotulos: z.record(z.string(), z.string()).default({}),
   /** Esconde o valor de alguns ângulos. */
   ocultar: z.array(z.string()).default([]),
+  /** Mostra a legenda com a conta no rodapé. */
+  legenda: z.boolean().default(true),
   highlight: Highlight,
 });
 export const POSICOES_ANGULO = ANGULOS;

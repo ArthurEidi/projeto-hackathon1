@@ -144,7 +144,8 @@
           "angulo": 30,
           "hip": 10,
           "k": 1,
-          "painel": false
+          "painel": false,
+          "ocultar": ["co", "ca"]
         }
       },
       "options": [

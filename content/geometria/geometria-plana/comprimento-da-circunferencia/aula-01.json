@@ -173,7 +173,8 @@
           "variante": "arco",
           "r": 10,
           "alfa": 360,
-          "unidade": "m"
+          "unidade": "m",
+          "legenda": false
         }
       },
       "options": [

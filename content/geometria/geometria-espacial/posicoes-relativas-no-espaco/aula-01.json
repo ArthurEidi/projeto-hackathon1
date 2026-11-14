@@ -108,6 +108,7 @@
             { "ponto": [4, 0, 4], "angulo": 0, "inclinacao": 90, "cor": "c2", "rotulo": "CG" }
           ],
           "planos": ["piso"],
+          "placar": false,
           "highlight": []
         }
       },

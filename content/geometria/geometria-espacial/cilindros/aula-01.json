@@ -149,6 +149,7 @@
           "modo": "cilindro",
           "r": 3,
           "h": 5,
+          "placar": false,
           "cores": { "r": "c1", "h": "c2", "lateral": "c3", "volume": "c4" }
         }
       },

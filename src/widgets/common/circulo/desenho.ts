@@ -99,7 +99,9 @@ function dArcos(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"arcos">
     segMundo(ctx, v, { x: 0, y: 0 }, g.A, tinta("c2"), espessura(hl, "c2", 3));
     segMundo(ctx, v, { x: 0, y: 0 }, g.B, tinta("c2"), espessura(hl, "c2", 3));
     const mid = rad(g.inicio + g.alfa / 2);
-    etiqueta(ctx, hits, { x: O.x + Math.cos(mid) * R * 0.4, y: O.y - Math.sin(mid) * R * 0.4 + (g.alfa >= 170 && g.alfa <= 190 ? 26 : 0) }, `${fmt(g.alfa, 0)}°`, "c2");
+    if (m.valor_central) {
+      etiqueta(ctx, hits, { x: O.x + Math.cos(mid) * R * 0.4, y: O.y - Math.sin(mid) * R * 0.4 + (g.alfa >= 170 && g.alfa <= 190 ? 26 : 0) }, `${fmt(g.alfa, 0)}°`, "c2");
+    }
   }
   if (m.corda) segMundo(ctx, v, g.A, g.B, tinta("c4"), espessura(hl, "c4", 4));
   // Ângulo inscrito em V.
@@ -192,7 +194,7 @@ function dRoda(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"roda">, 
     ctx.strokeStyle = palette.ink;
     ctx.lineWidth = 2;
     ctx.strokeRect(x0, y - 8, x1 - x0, 16);
-    nota(ctx, { x: w / 2, y: y + 22 }, `C = 2πr = ${fmt(g.voltaCompleta)}${un}   ·   L = ${fmt(g.comprimentoArco)}${un}`, "c4", 14);
+    if (p.legenda) nota(ctx, { x: w / 2, y: y + 22 }, `C = 2πr = ${fmt(g.voltaCompleta)}${un}   ·   L = ${fmt(g.comprimentoArco)}${un}`, "c4", 14);
     return { ...vazio, vista: v };
   }
   if (p.variante === "voltas") {
@@ -282,10 +284,12 @@ function dFatias(ctx: G, w: number, h: number, hits: Hit[], p: CirculoDe<"fatias
     }
     etiqueta(ctx, hits, v.q(polar(g.r * 0.5, Math.min(g.alfa, 359) / 2)), `${fmt(g.alfa, 0)}°`, "c3");
     etiqueta(ctx, hits, v.p(g.r / 2, -g.r * 0.12), `r = ${fmt(g.r)}`, "c1");
-    rodape(ctx, w, h, [
-      { t: `volta inteira: π · r² = ${fmt(g.r * g.r)}π`, c: "muted" },
-      { t: `setor: ${fmt(g.alfa, 0)}° / 360° · ${fmt(g.r * g.r)}π = ${fmt(g.coefSetor)}π`, c: "c3" },
-    ]);
+    if (p.legenda) {
+      rodape(ctx, w, h, [
+        { t: `volta inteira: π · r² = ${fmt(g.r * g.r)}π`, c: "muted" },
+        { t: `setor: ${fmt(g.alfa, 0)}° / 360° · ${fmt(g.r * g.r)}π = ${fmt(g.coefSetor)}π`, c: "c3" },
+      ]);
+    }
     return { alvos: [], vista: v };
   }
   if (p.variante === "coroa") {

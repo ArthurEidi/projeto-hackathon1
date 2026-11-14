@@ -144,6 +144,7 @@
           "L": 6,
           "h": 4,
           "apotemas": true,
+          "placar": false,
           "cores": { "h": "c1", "m": "c2", "ap": "c3", "volume": "c4" }
         }
       },

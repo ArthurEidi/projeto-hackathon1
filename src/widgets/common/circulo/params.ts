@@ -28,8 +28,10 @@ const Arcos = z.object({
       isosceles: z.boolean().default(false),
       /** Escreve as medidas no rodapé. */
       medidas: z.boolean().default(true),
+      /** Mostra o valor numérico do ângulo central. */
+      valor_central: z.boolean().default(true),
     })
-    .default({ arco: true, central: true, inscrito: false, corda: false, isosceles: false, medidas: true }),
+    .default({ arco: true, central: true, inscrito: false, corda: false, isosceles: false, medidas: true, valor_central: true }),
   /** Pontos que o aluno arrasta pela circunferência (encaixe em `passo` graus). */
   arrastaveis: z.array(z.enum(["B", "V"])).default([]),
   passo: z.number().positive().default(10),
@@ -52,6 +54,8 @@ const Roda = z.object({
   voltas_max: z.number().positive().default(10),
   /** Unidade escrita depois das medidas (por exemplo "m"). */
   unidade: z.string().default(""),
+  /** Mostra a legenda com a conta no rodapé. */
+  legenda: z.boolean().default(true),
   highlight: Highlight,
 });
 
@@ -66,6 +70,8 @@ const Fatias = z.object({
   /** coroa: raio maior e raio do furo. */
   R: Expr.default(5),
   furo: Expr.default(0),
+  /** Mostra a legenda com a conta no rodapé. */
+  legenda: z.boolean().default(true),
   highlight: Highlight,
 });
 

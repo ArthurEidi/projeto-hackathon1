@@ -136,6 +136,7 @@
         "widget": "ciclo_trigonometrico_figura",
         "params": {
           "angulo": 120,
+          "unidade": "graus",
           "mostrar": {
             "seno": true,
             "cosseno": true,

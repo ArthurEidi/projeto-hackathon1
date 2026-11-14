@@ -16,7 +16,7 @@ import { Expr, usaSlider } from "../expr";
 
 const Highlight = z.array(Marca).default([]);
 const Camera = z.object({ yaw: z.number().default(-35), pitch: z.number().default(22) }).default({ yaw: -35, pitch: 22 });
-const Base = { camera: Camera, highlight: Highlight };
+const Base = { camera: Camera, highlight: Highlight, placar: z.boolean().default(true) };
 
 export const PERFIS = ["retangulo", "triangulo", "trapezio", "semicirculo", "anel"] as const;
 

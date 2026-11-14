@@ -135,7 +135,9 @@ function dMalha(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"malha"
   else if (p.mostrar.perimetro) etiqueta(ctx, hits, v.p(centro.x, hh + 0.5), `P = ${fmt(g.perimetro)}`, "c4");
   const formula =
     p.forma === "triangulo" ? `A = b · h / 2 = ${fmt(g.area)}` : p.forma === "trapezio" ? `A = (B + b) · h / 2 = ${fmt(g.area)}` : `A = b · h = ${fmt(g.area)}`;
-  rodape(ctx, w, h, [{ t: g.copia ? `${formula}  (2 cópias: ${fmt(g.areaUniao)})` : g.k !== 1 && p.forma === "retangulo" ? `ampliar ${fmt(g.k)}× multiplica a área por ${fmt(g.razaoArea)}` : formula, c: "c3" }]);
+  if (p.mostrar.area) {
+    rodape(ctx, w, h, [{ t: g.copia ? `${formula}  (2 cópias: ${fmt(g.areaUniao)})` : g.k !== 1 && p.forma === "retangulo" ? `ampliar ${fmt(g.k)}× multiplica a área por ${fmt(g.razaoArea)}` : formula, c: "c3" }]);
+  }
   return { vista: v };
 }
 
@@ -185,7 +187,7 @@ function dPoligono(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pol
   if (g.encolher < 100) pts.forEach((q) => dot(ctx, v.q(q), 4, palette.ink));
   if (p.diagonais) etiqueta(ctx, hits, { x: 62, y: 22 }, `${g.triangulos} triângulos`, "c1");
   if (p.externos) etiqueta(ctx, hits, { x: w - 70, y: 22 }, g.encolher >= 100 ? "360°" : "externos", "c3");
-  rodape(ctx, w, h, [{ t: p.externos ? `soma dos externos = ${fmt(g.somaExternos, 0)}° (sempre)` : `n = ${g.n}: S = (n − 2) · 180° = ${g.triangulos} · 180° = ${fmt(g.somaInternos, 0)}°`, c: p.externos ? "c3" : "c1" }]);
+  if (p.legenda) rodape(ctx, w, h, [{ t: p.externos ? `soma dos externos = ${fmt(g.somaExternos, 0)}° (sempre)` : `n = ${g.n}: S = (n − 2) · 180° = ${g.triangulos} · 180° = ${fmt(g.somaInternos, 0)}°`, c: p.externos ? "c3" : "c1" }]);
   return { vista: v };
 }
 
@@ -228,15 +230,19 @@ function dRegular(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"regu
   }
   // Ângulo central entre os vértices 0 e 1.
   const aC = 90;
-  anguloMarcado(ctx, hits, O, aC, aC + g.central, Math.min(46, R * v.k * 0.35), `${fmt(g.central, 0)}°`, "c1");
+  if (p.mostrar.central) anguloMarcado(ctx, hits, O, aC, aC + g.central, Math.min(46, R * v.k * 0.35), `${fmt(g.central, 0)}°`, "c1");
   // Externo e interno no vértice 0.
   const v0 = v.q(g.pts[0]);
   const h1 = dirGraus(g.pts[0], g.pts[1]);
-  setor(ctx, v0, 30, h1 - g.externo, h1, tintaClara("c2"), tinta("c2"), espessura(hl, "c2", 3));
-  etiqueta(ctx, hits, { x: v0.x - 34, y: v0.y - 8 }, `${fmt(g.externo, 0)}°`, "c2");
-  setor(ctx, v0, 30, h1, h1 + g.interno, tintaClara("c3"), tinta("c3"), espessura(hl, "c3", 3));
-  etiqueta(ctx, hits, { x: v0.x + 12, y: v0.y + 52 }, `${fmt(g.interno, 0)}°`, "c3");
-  rodape(ctx, w, h, [{ t: `n = ${g.n} · externo ${fmt(g.externo, 1)}° · interno ${fmt(g.interno, 1)}°`, c: "ink" }]);
+  if (p.mostrar.externo) {
+    setor(ctx, v0, 30, h1 - g.externo, h1, tintaClara("c2"), tinta("c2"), espessura(hl, "c2", 3));
+    etiqueta(ctx, hits, { x: v0.x - 34, y: v0.y - 8 }, `${fmt(g.externo, 0)}°`, "c2");
+  }
+  if (p.mostrar.interno) {
+    setor(ctx, v0, 30, h1, h1 + g.interno, tintaClara("c3"), tinta("c3"), espessura(hl, "c3", 3));
+    etiqueta(ctx, hits, { x: v0.x + 12, y: v0.y + 52 }, `${fmt(g.interno, 0)}°`, "c3");
+  }
+  if (p.mostrar.legenda) rodape(ctx, w, h, [{ t: `n = ${g.n} · externo ${fmt(g.externo, 1)}° · interno ${fmt(g.interno, 1)}°`, c: "ink" }]);
   return { vista: v };
 }
 
@@ -418,12 +424,14 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
     arco(ctx, Q, 18, 0, g.alfa, tinta("c3"), 3, tintaClara("c3"));
     dot(ctx, Q, 4, tinta("c3"));
   }
-  rodape(ctx, w, h, [
-    {
-      t: g.paralelas ? `α = ${fmt(g.alfa, 0)}° e 180° − α = ${fmt(g.suplementar, 0)}°` : `s girou ${fmt(g.desvio, 0)}°: r e s deixaram de ser paralelas`,
-      c: g.paralelas ? "c1" : "c3",
-    },
-  ]);
+  if (p.legenda) {
+    rodape(ctx, w, h, [
+      {
+        t: g.paralelas ? `α = ${fmt(g.alfa, 0)}° e 180° − α = ${fmt(g.suplementar, 0)}°` : `s girou ${fmt(g.desvio, 0)}°: r e s deixaram de ser paralelas`,
+        c: g.paralelas ? "c1" : "c3",
+      },
+    ]);
+  }
   return { vista: v };
 }
 

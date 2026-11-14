@@ -26,8 +26,10 @@ const Mostrar = z
     pitagorica: z.boolean().default(false),
     /** Eixos e quatro marcos 0, π/2, π, 3π/2. */
     marcos: z.boolean().default(true),
+    /** Rótulo com o valor da função na ponta do gráfico (sen/cos). */
+    grafico_rotulo: z.boolean().default(true),
   })
-  .default({ seno: true, cosseno: true, tangente: false, secante: false, fita: false, voltas: false, simetricos: false, pitagorica: false, marcos: true });
+  .default({ seno: true, cosseno: true, tangente: false, secante: false, fita: false, voltas: false, simetricos: false, pitagorica: false, marcos: true, grafico_rotulo: true });
 
 const Cores = z
   .object({

@@ -88,6 +88,7 @@
           "modo": "poliedro",
           "solidos": ["octaedro"],
           "indice": 0,
+          "placar": false,
           "highlight": ["c2", "c3"]
         }
       },

@@ -150,6 +150,7 @@
           "paralela": false,
           "externo": false,
           "fantasma": false,
+          "ocultar": ["alfa", "beta"],
           "highlight": ["c2", "c4"]
         }
       },

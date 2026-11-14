@@ -85,4 +85,13 @@ describe("contas do solido_3d", () => {
     expect(Solido3dFigura.safeParse({ modo: "corte_cone", inclinacao: "$inc" }).success).toBe(false);
     expect(Solido3dFigura.safeParse({ modo: "corte_cone", inclinacao: 45, altura_do_corte: 1.5 }).success).toBe(true);
   });
+
+  it("placar: false esconde o placar sem mudar o padrão", () => {
+    const comPlacar = Solido3dFigura.parse({ modo: "cilindro", r: 3, h: 5 });
+    expect(comPlacar.placar).toBe(true);
+    expect(montarCena(comPlacar, {}).placar.length).toBeGreaterThan(0);
+
+    const semPlacar = Solido3dFigura.parse({ modo: "cilindro", r: 3, h: 5, placar: false });
+    expect(montarCena(semPlacar, {}).placar).toEqual([]);
+  });
 });

@@ -98,7 +98,8 @@
           "r": 2,
           "h": 2,
           "hc": 3,
-          "juntar": 1
+          "juntar": 1,
+          "placar": false
         }
       },
       "prompt": "Um retângulo (r = 2, h = 2) colado a um triângulo (r = 2, h = 3) gira no eixo comum. Que sólido nasce e qual seu volume?",
