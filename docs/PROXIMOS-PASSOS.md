@@ -23,6 +23,17 @@ O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets qu
 - **Widgets (pedidos da B):** `pontos_no_plano`, `lugar_geometrico` e `circunferencia_no_plano` ganharam `mostrar.distancia`, `mostrar.dimensoes`, `mostrar.equacao` e `rotulos`, já ligados em `plano-cartesiano-distancia-e-ponto-medio`, `elipse`, `hiperbole` e `parabola-conica`; modo `reta` sem botões e sem `d`; marcos de radiano como fração de π; externo do triângulo = α + γ; legendas com ≈; desafio em lista quando há rótulo com mais de 10 caracteres; fórmula do fechamento quebra entre fichas. Documentado no GUIA §5.10 a §5.16 ("Acréscimos de 14/11"). Conferido por screenshot pelo coordenador.
 - **Ferramenta de conferência visual:** `node scripts/captura-aula.mjs <porta> <pasta> <pilar/setor/slug>[:passos]` grava um PNG de 400 × 860 por passo (estado inicial). Usa o atalho `#/aula/<...>/aula-01?passo=N`, que só existe em modo dev. Não arrasta nem clica: para ver o estado final de um passo ainda é preciso dirigir o navegador.
 
+**Feito em 14/11, noite (Máquina B, sessão nova do maestro; a anterior caiu às 17h30).**
+
+- **Vestibular nas aulas:** 35 questões do ENEM em 21 aulas de geometria (62ce723), 31 em 14 aulas de aritmética e álgebra (d9c8598, 50101e9), com 5 repetidas trocadas; 39 candidatas novas em `docs/fontes-candidatas/` (4ea797c). O maestro refez a conta de todas as alternativas e reescreveu cerca de 30 feedbacks que descreviam um erro que não leva ao valor.
+- **Reconferência visual completa** com foto depois de VERIFICAR em cada errada dos desafios: geometria (B8, `docs/visual/geometria-reconferencia-b8.md`) e aritmética/álgebra (B11, `docs/visual/reconferencia-b11[a-d].md`). Defeitos de conteúdo e de widget corrigidos e publicados (até 750a557).
+- **Bug de schema:** a opção do desafio aceitava qualquer chave, e 4 aulas usavam `override` em vez de `figure` (a figura da errada ficava igual à inicial sem erro de lint). `ChallengeOption` agora é `.strict()`, com teste.
+- **Widgets (B1, B1b, B12, B13):** etiqueta do encontro só quando o aluno chega; balão do Paco com altura reservada; `retangulo_areas` na escala do maior valor dos sliders (`WidgetProps.faixas`); fórmula do fechamento sem pontuação órfã (`gruposFormula`); `solido_3d` com `mostrar.g` e `face_destaque`; `barras` com `mostrar.raiz` e `extremos`; `grade` com `mostrar.razao_partes`; escala do `vetores_no_plano` no modo complexo. Documentados no GUIA §5.
+- **Critério novo:** em desafio de 2 alternativas, o feedback da errada citar a certa não é defeito (só sobra a outra opção). Com 3 ou 4, o feedback explica o erro e dá pista sem o valor certo.
+- Validação ao fim: lint ok, 126 arquivos / 1996 testes, typecheck e build ok.
+
+**Decisões que esperam o usuário (próximo passo grande):** (a) hospedar o app (hoje só roda com `npm run dev`); (b) passar os desafios de álgebra de 2 para 3 ou 4 alternativas (34 de 35 têm só 2: metade se acerta no chute); (c) aula 02 de Cones e vídeos.
+
 **O que falta, em ordem de prioridade:**
 
 1. **Conferência visual de aritmética e álgebra (frente 6):** em andamento em 14/11 na Máquina A (relatórios em `docs/visual/aritmetica.md`, `algebra-equacoes.md`, `algebra-funcoes.md`). Ver o estado em `EM-ANDAMENTO.md`.
