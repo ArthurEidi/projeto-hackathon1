@@ -159,21 +159,21 @@
           "id": "c5r35",
           "label": "5√3 cm e 5 cm",
           "correct": false,
-          "feedback": "Resposta: 5 cm e 5√3 cm; O menor ângulo (30°) enxerga o menor lado (5 cm), e o de 60° enxerga 5√3 cm.",
+          "feedback": "Você trocou a ordem: o menor ângulo (30°) fica oposto ao menor cateto, e o de 60° fica oposto ao maior.",
           "figure": { "cortar": 1, "highlight": ["c2"] }
         },
         {
           "id": "c55r2",
           "label": "5 cm e 5√2 cm",
           "correct": false,
-          "feedback": "Resposta: 5 cm e 5√3 cm; √2 é na diagonal do quadrado (45°). No 30°-60°-90° usamos √3: 5 cm e 5√3 cm.",
+          "feedback": "√2 aparece na diagonal do quadrado (45°). No triângulo 30°-60°-90°, a altura do equilátero traz √3.",
           "figure": { "figura": "quadrado", "L": 5, "diagonal": true, "highlight": ["c1"] }
         },
         {
           "id": "c10r3",
           "label": "10 cm e 10√3 cm",
           "correct": false,
-          "feedback": "Resposta: 5 cm e 5√3 cm; Faltou dividir por 2: L/2 = 5 cm e L√3/2 = 5√3 cm.",
+          "feedback": "10 cm e 10√3 cm seriam para hipotenusa 20 cm: faltou dividir por 2 usando L = 10 cm.",
           "figure": { "L": 20, "cortar": 1, "highlight": ["c2", "c3"] }
         }
       ]

@@ -122,3 +122,20 @@ Totais: **77 passos vistos** — **60 ok**, **6 ok com ressalva** (3 de conteúd
   - `perimetro-e-area-de-figuras-planas` (`p1`): em `1×3`, `A = 3` cobre o `3` de `h = 3`.
   - `funcoes-trigonometricas` (`p5`): `sen 0` cobre parcialmente `2π` no eixo x.
   - `seno-cosseno-tangente-no-ciclo` (`p5`): `sen 0,87` cobre parcialmente `30°`.
+
+---
+
+## Correções B8b
+
+| slug | passo | antes → depois |
+| --- | --- | --- |
+| semelhanca-e-teorema-de-tales | p5 (desafio-tales) | **Antes:** feedbacks das erradas (`8`, `4`, `10`) começavam com `"Resposta: 9; ..."` e entregavam `x = 9`. **Depois:** prefixo removido e texto ajustado para explicar o erro e dar pista sem entregar `9`. |
+| triangulos-congruencia-e-propriedades | p5 (desafio-isosceles-externo) | **Antes:** feedbacks das erradas (`140°`, `40°`, `50°`) começavam com `"Resposta: 70°; ..."` e entregavam `70°`; opção `140°` tinha `figure: {"highlight": ["c1"]}` sem mostrar os ângulos. **Depois:** prefixos e resposta removidos dos feedbacks; opção `140°` passou a usar `{"ocultar": [], "highlight": ["c1", "c2"]}` para exibir os dois ângulos da base. |
+| triangulos-notaveis-e-construcoes | p4 (desafio-triangulo-30-60) | **Antes:** feedbacks das erradas (`5√3 cm e 5 cm`, `5 cm e 5√2 cm`, `10 cm e 10√3 cm`) começavam com `"Resposta: 5 cm e 5√3 cm; ..."` e entregavam a certa. **Depois:** prefixo e resposta removidos; mantidos erro e pista. |
+| funcoes-trigonometricas | p4 (desafio-identificar-curva) | **Antes:** feedbacks das erradas (`sen x`, `tg x`, `−sen x`) começavam com `"Resposta: f(x) = cos x; ..."` e entregavam `f(x) = cos x`. **Depois:** prefixo e resposta removidos; mantidos erro e pista. |
+| identidades-trigonometricas | p4 (desafio-achar-cosseno) | **Antes:** feedbacks das erradas (`2/5`, `16/25`, `−4/5`) começavam com `"Resposta: 4/5; ..."` e entregavam `4/5`. **Depois:** prefixo e resposta removidos; mantidos erro e pista. |
+| seno-cosseno-tangente-no-ciclo | p4 (desafio-reduzir-150) | **Antes:** feedbacks das erradas (`−1/2 e √3/2`, `1/2 e √3/2`, `−1/2 e −√3/2`) começavam com `"Resposta: 1/2 e −√3/2; ..."` e entregavam a certa. **Depois:** prefixo e resposta removidos; mantidos erro e pista. |
+| poligonos-regulares | p4 (desafio-angulo-octogono) | **Antes:** opção `45°` tinha `figure: {"n": 8}`. **Depois:** `figure` passou a `{"n": 8, "mostrar": {"central": false, "externo": true, "interno": false, "legenda": false}}` para exibir o ângulo externo de `45°`. |
+| modelos-periodicos-e-amplitude | p4 (desafio-roda-gigante) | **Antes:** opções `10 m e −10 m` e `22 m e 12 m` repetiam `{"ponto": {"x": 9, "cor": "c2"}, "highlight": ["c2"]}`. **Depois:** `10 m e −10 m` mostra a curva `10·sen` sem somar `D = 12` (`y: [-12, 26]`, `c: 0`), e `22 m e 12 m` marca `ponto: {"x": 6, "cor": "c1"}` (linha média `D = 12`). |
+| troncos-de-solidos | p3 (trapezio-meridiano) | **Não corrigido (limitação de widget):** em `src/widgets/common/solido/desenho.ts` (linha 245), o painel `meridiano` desenha `g = ...` incondicionalmente sempre que `meridiano: true`, e `Tronco` em `params.ts` não possui parâmetro para ocultar medidas. Registrado para o maestro sem inventar parâmetro. |
+| projecoes-cortes-e-planificacoes | p4 (desafio-face-oposta) | **Não corrigido (limitação de widget):** em `src/widgets/common/solido/cenas.ts` (`cenaVistas`, `dado`), só existem os parâmetros `fechar` e `cores.par`, sem suporte a destacar uma face individual (`2`, `3` ou `5`). Registrado para o maestro sem inventar parâmetro. |

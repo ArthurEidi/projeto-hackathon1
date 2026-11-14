@@ -169,21 +169,21 @@
           "id": "a140",
           "label": "140°",
           "correct": false,
-          "feedback": "Resposta: 70°; 140° é a soma dos dois da base. Como são iguais, cada um mede 140° / 2 = 70°.",
-          "figure": { "highlight": ["c1"] }
+          "feedback": "140° é a soma dos dois ângulos da base juntos. Como eles são iguais, divida esse total por 2.",
+          "figure": { "ocultar": [], "highlight": ["c1", "c2"] }
         },
         {
           "id": "a40",
           "label": "40°",
           "correct": false,
-          "feedback": "Resposta: 70°; Três de 40° somariam 120°, não 180°. Na base cada um mede (180° − 40°) / 2 = 70°.",
+          "feedback": "Três ângulos de 40° somariam 120°, não 180°. Tire 40° de 180° e divida igualmente entre os dois da base.",
           "figure": { "alfa": 40, "beta": 40, "highlight": ["c1"] }
         },
         {
           "id": "a50",
           "label": "50°",
           "correct": false,
-          "feedback": "Resposta: 70°; 50° + 50° + 40° dá 140°. Para fechar 180°, cada ângulo da base mede 70°.",
+          "feedback": "50° + 50° + 40° dá 140°, faltando para fechar 180°. Calcule (180° − 40°) / 2.",
           "figure": { "alfa": 50, "beta": 50, "highlight": ["c1", "c2"] }
         }
       ]

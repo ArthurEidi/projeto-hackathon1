@@ -180,7 +180,7 @@
           "id": "c25",
           "label": "2/5",
           "correct": false,
-          "feedback": "Resposta: 4/5; Não faça 1 − 3/5: eleve ao quadrado. 1 − 9/25 = 16/25, raiz = 4/5.",
+          "feedback": "Você subtraiu direto 1 − 3/5 em vez de elevar ao quadrado. Calcule 1 − (3/5)² e tire a raiz.",
           "figure": {
             "angulo": 66.42,
             "mostrar": {
@@ -195,7 +195,7 @@
           "id": "c1625",
           "label": "16/25",
           "correct": false,
-          "feedback": "Resposta: 4/5; 16/25 é cos²θ. Tirando a raiz quadrada, cos θ = 4/5.",
+          "feedback": "16/25 é o valor de cos²θ. Falta tirar a raiz quadrada para achar cos θ.",
           "figure": {
             "angulo": 50.21,
             "mostrar": {
@@ -210,7 +210,7 @@
           "id": "cm45",
           "label": "−4/5",
           "correct": false,
-          "feedback": "Resposta: 4/5; No 1º quadrante o cosseno é positivo: cos θ = +4/5.",
+          "feedback": "No 1º quadrante todas as coordenadas são positivas: confira o sinal de cos θ à direita do eixo y.",
           "figure": {
             "angulo": 143.13,
             "mostrar": {

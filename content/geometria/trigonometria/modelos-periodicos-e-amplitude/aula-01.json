@@ -122,14 +122,22 @@
           "label": "10 m e −10 m",
           "correct": false,
           "feedback": "Faltou somar a linha média 12: máximo 12 + 10 = 22 m e mínimo 12 − 10 = 2 m.",
-          "figure": { "ponto": { "x": 9, "cor": "c2" }, "highlight": ["c2"] }
+          "figure": {
+            "y": [-12, 26],
+            "curvas": [
+              { "tipo": "seno", "a": 10, "b": 0.5235987755982988, "c": 0, "cor": "c3", "rotulo": "10·sen" },
+              { "tipo": "afim", "a": 0, "b": 12, "cor": "c1", "fantasma": true, "rotulo": "D = 12" }
+            ],
+            "ponto": { "x": 3, "cor": "c2" },
+            "highlight": ["c2"]
+          }
         },
         {
           "id": "m22e12",
           "label": "22 m e 12 m",
           "correct": false,
           "feedback": "12 m é o meio da roda (sen = 0). No fundo (sen = −1), a altura é 12 − 10 = 2 m.",
-          "figure": { "ponto": { "x": 9, "cor": "c2" }, "highlight": ["c2"] }
+          "figure": { "ponto": { "x": 6, "cor": "c1" }, "highlight": ["c1"] }
         }
       ]
     },

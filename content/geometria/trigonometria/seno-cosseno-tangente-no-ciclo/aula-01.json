@@ -180,7 +180,7 @@
           "id": "smcp",
           "label": "−1/2 e √3/2",
           "correct": false,
-          "feedback": "Resposta: 1/2 e −√3/2; No 2º quadrante o y (seno) é positivo e o x (cosseno) é negativo.",
+          "feedback": "Você inverteu os sinais: no 2º quadrante, o ponto está acima do eixo x (seno positivo) e à esquerda do eixo y (cosseno negativo).",
           "figure": {
             "angulo": 330,
             "mostrar": {
@@ -196,7 +196,7 @@
           "id": "spcp",
           "label": "1/2 e √3/2",
           "correct": false,
-          "feedback": "Resposta: 1/2 e −√3/2; Em 150° o ponto está à esquerda do eixo y, então cos 150° é negativo: −√3/2.",
+          "feedback": "Em 150°, o ponto fica à esquerda do eixo y (30° fica à direita). Confira o sinal do cosseno no 2º quadrante.",
           "figure": {
             "angulo": 30,
             "mostrar": {
@@ -212,7 +212,7 @@
           "id": "smcm",
           "label": "−1/2 e −√3/2",
           "correct": false,
-          "feedback": "Resposta: 1/2 e −√3/2; Ambos negativos é no 3º quadrante (210°). Em 150° o seno é +1/2 e o cosseno é −√3/2.",
+          "feedback": "Ambos negativos ocorrem no 3º quadrante (210°). Em 150° o ponto está acima do eixo x, então o seno é positivo.",
           "figure": {
             "angulo": 210,
             "mostrar": {

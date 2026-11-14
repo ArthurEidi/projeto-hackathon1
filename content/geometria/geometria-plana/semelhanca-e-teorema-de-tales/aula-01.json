@@ -182,21 +182,21 @@
           "id": "a8",
           "label": "8",
           "correct": false,
-          "feedback": "Resposta: 9; Você somou 2 (4 + 2 = 6, 6 + 2 = 8). Tales usa proporção: 4/6 = 6/x dá x = 9.",
+          "feedback": "Você somou 2 em vez de multiplicar (4 + 2 = 6, 6 + 2 = 8). Tales usa razão: monte 4 / 6 = 6 / x e isole x.",
           "figure": { "dir": 14, "highlight": ["c2"] }
         },
         {
           "id": "a4",
           "label": "4",
           "correct": false,
-          "feedback": "Resposta: 9; 4 seria se os segmentos de cima fossem iguais. Como 6 é 1,5 vez 4, x = 1,5 · 6 = 9.",
+          "feedback": "4 seria se os segmentos de cima fossem iguais. Como 6 é maior que 4, multiplique o de baixo pela mesma razão 6 / 4.",
           "figure": { "dir": 10, "highlight": ["c2"] }
         },
         {
           "id": "a10",
           "label": "10",
           "correct": false,
-          "feedback": "Resposta: 9; 10 é a soma 4 + 6. Pela proporção 4 / 6 = 6 / x, temos x = 9.",
+          "feedback": "10 é a soma 4 + 6 da primeira transversal. Compare as duas razões de cima para baixo: 4 / 6 = 6 / x.",
           "figure": { "dir": 16, "highlight": ["c2"] }
         }
       ]

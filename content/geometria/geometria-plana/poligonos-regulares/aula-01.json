@@ -164,7 +164,13 @@
           "correct": false,
           "feedback": "45° é o ângulo externo (360°/8). O interno é o suplementar: 180° − 45° = 135°.",
           "figure": {
-            "n": 8
+            "n": 8,
+            "mostrar": {
+              "central": false,
+              "externo": true,
+              "interno": false,
+              "legenda": false
+            }
           }
         },
         {

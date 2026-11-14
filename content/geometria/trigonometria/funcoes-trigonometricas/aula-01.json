@@ -177,7 +177,7 @@
           "id": "sen",
           "label": "f(x) = sen x",
           "correct": false,
-          "feedback": "Resposta: f(x) = cos x; O seno começa em (0; 0). Quem começa em (0; 1) é f(x) = cos x.",
+          "feedback": "O seno começa em (0; 0). Observe qual função começa no ponto (0; 1).",
           "figure": {
             "grafico": "sen",
             "mostrar": {
@@ -191,7 +191,7 @@
           "id": "tg",
           "label": "f(x) = tg x",
           "correct": false,
-          "feedback": "Resposta: f(x) = cos x; A tangente parte de (0; 0) e tem assíntotas. Essa onda é f(x) = cos x.",
+          "feedback": "A tangente parte de (0; 0) e tem assíntotas verticais, não é uma onda contínua como a da figura.",
           "figure": {
             "angulo": 45,
             "grafico": "sen",
@@ -207,7 +207,7 @@
           "id": "msen",
           "label": "f(x) = −sen x",
           "correct": false,
-          "feedback": "Resposta: f(x) = cos x; −sen x também vale 0 em x = 0. Quem vale 1 em x = 0 é f(x) = cos x.",
+          "feedback": "−sen x também passa por (0; 0) no eixo y. Procure a função que vale 1 em x = 0.",
           "figure": {
             "angulo": 180,
             "grafico": "sen",
