@@ -48,3 +48,22 @@ Referência: `docs/visual/geometria.md` e `C:\Users\User\Hackathon\tarefas\taref
 ## Observações para o coordenador (sem edições em `content/**`)
 
 - Nenhuma alteração em `content/**` foi necessária para estas correções.
+
+## Ajustes complementares (tarefa 3 — `triangulo/**`)
+
+1. **`geometria_triangulo` (`razoes` com `k` em slider — `src/widgets/common/triangulo/desenho.ts`):**
+   - Janela dinâmica no modo `razoes` passou a usar `caMax` e `coMax` baseados no ângulo (em vez de `hipMax` bruto), aumentando o tamanho do triângulo no `k` mínimo mantendo `k_max` dentro da vista.
+   - Extraída e exportada `layoutRazoes(...)` para posicionar os 4 chips (`ang`, `ca`, `co`, `hip`) fora do triângulo quando `hipPx < 190` e resolver qualquer interseção entre caixas de chips, mantendo todos dentro dos limites do canvas.
+   - `src/widgets/common/triangulo/triangulo.test.ts`: teste unitário verificando `layoutRazoes` para `k` mínimo (`1`) e máximo (`3`) sem interseção entre caixas e dentro do canvas.
+
+2. **`geometria_triangulo` (`angulos` com `externo: true` — `src/widgets/common/triangulo/desenho.ts`):**
+   - Alargada a `caixa` quando `p.externo` é verdadeiro (`x0: -4.2, x1: 6.2`) e estendido o prolongamento de `B` até `x = 5.5` para que o chip `50°` à direita de `B` e `e = 140°` tenham margem confortável da borda direita.
+   - Mantido o rótulo do ângulo interno `β` em `B` (`40°`) mesmo com `externo: true`.
+   - `src/widgets/common/triangulo/triangulo.test.ts`: teste unitário verificando que `40°` e `e = 140°` são desenhados dentro dos limites horizontais do canvas.
+
+3. **Verificações após ajustes:**
+   - `npx vitest run src/widgets/common/triangulo/triangulo.test.ts`: **47 testes passaram (47)**.
+   - `npm run typecheck`: passou (código 0).
+   - `npm run lint:content`: passou (`conteúdo ok`).
+   - Screenshots 400 × 860 via `node scripts/captura-aula.mjs 5210 C:/Users/User/Hackathon/capturas/w4` inspecionados em `trigonometria-no-triangulo-retangulo-p1.png`, `trigonometria-no-triangulo-retangulo-p2.png` e `triangulos-congruencia-e-propriedades-p2.png`: sem sobreposição e sem corte.
+

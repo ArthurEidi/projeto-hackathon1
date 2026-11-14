@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { angulos, anguloEm, cossenos, desigualdade, estadoInicial, metricas, metricasTriangulo, notaveis, pitagoras, provaPecas, razoes, semelhanca, senos, trianguloPorLados } from "./calc";
-import { desenharTriangulo } from "./desenho";
+import { desenharTriangulo, layoutRazoes } from "./desenho";
+import { criarVista } from "../geo/base";
 import { GeometriaTriangulo, GeometriaTrianguloFigura, type TrianguloDe } from "./params";
 
 const tri = (o: object) => GeometriaTriangulo.parse(o);
@@ -235,5 +236,50 @@ describe("métricas emitidas e figura", () => {
     const gFixo = desenharTriangulo(ctx, 400, 360, [], pFixo, {}, estadoInicial(pFixo));
     const gDin = desenharTriangulo(ctx, 400, 360, [], pDin, { k: 1 }, estadoInicial(pDin));
     expect(gFixo.vista.k).toBeGreaterThan(gDin.vista.k * 2);
+  });
+  it("layoutRazoes mantém os 4 chips sem interseção e dentro do canvas para k mínimo e máximo", () => {
+    const pDin = tri({ modo: "razoes", angulo: 45, k: "$k", k_max: 3, hip: 5, painel: true }) as TrianguloDe<"razoes">;
+    const caMax = 15 * Math.cos(Math.PI / 4);
+    const coMax = 15 * Math.sin(Math.PI / 4);
+    const v = criarVista(400, 360, { x0: -caMax * 0.16, x1: caMax * 1.24, y0: -coMax * 0.18, y1: coMax * 1.22 }, 22);
+    for (const k of [1, 3]) {
+      const g = razoes(pDin, { k });
+      const chips = layoutRazoes(v, { x: 0, y: 0 }, { x: g.ca, y: 0 }, { x: g.ca, y: g.co }, g, 400, 360);
+      expect(chips).toHaveLength(4);
+      for (const c of chips) {
+        expect(c.box.x0).toBeGreaterThanOrEqual(0);
+        expect(c.box.x1).toBeLessThanOrEqual(400);
+        expect(c.box.y0).toBeGreaterThanOrEqual(0);
+        expect(c.box.y1).toBeLessThanOrEqual(360);
+      }
+      for (let i = 0; i < chips.length; i++) {
+        for (let j = i + 1; j < chips.length; j++) {
+          const a = chips[i].box;
+          const b = chips[j].box;
+          const inter = a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0;
+          expect(inter, `k=${k}: ${chips[i].id} e ${chips[j].id} se sobrepõem`).toBe(false);
+        }
+      }
+    }
+  });
+  it("angulos com externo: true rotula β em B e mantém todos os chips dentro do canvas", () => {
+    const textos: { t: string; x: number }[] = [];
+    const capCtx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) =>
+        k === "measureText"
+          ? () => ({ width: 32 })
+          : k === "fillText"
+            ? (t: string, x: number) => textos.push({ t, x })
+            : () => undefined,
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+    const p = tri({ modo: "angulos", alfa: 50, beta: 40, externo: true });
+    desenharTriangulo(capCtx, 372, 330, [], p, {}, estadoInicial(p));
+    expect(textos.some((q) => q.t === "40°")).toBe(true);
+    expect(textos.some((q) => q.t === "e = 140°")).toBe(true);
+    for (const q of textos) {
+      expect(q.x).toBeGreaterThan(15);
+      expect(q.x).toBeLessThan(372 - 15);
+    }
   });
 });

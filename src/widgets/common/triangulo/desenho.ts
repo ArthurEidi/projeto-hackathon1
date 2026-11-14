@@ -214,18 +214,98 @@ function dPitagoras(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"p
 
 // ---------- Razões trigonométricas ----------
 
+export interface ChipRazao {
+  id: "ang" | "ca" | "co" | "hip";
+  pos: Pt;
+  txt: string;
+  cor: Parameters<typeof etiqueta>[4];
+  box: { x0: number; y0: number; x1: number; y1: number };
+}
+
+function caixaChip(pos: Pt, txt: string) {
+  const w = Math.max(44, txt.length * 8.5 + 22);
+  const h = 24;
+  return { x0: pos.x - w / 2, y0: pos.y - h / 2, x1: pos.x + w / 2, y1: pos.y + h / 2 };
+}
+
+const sobrepoe = (a: ChipRazao["box"], b: ChipRazao["box"], folga = 4) =>
+  a.x0 - folga < b.x1 && a.x1 + folga > b.x0 && a.y0 - folga < b.y1 && a.y1 + folga > b.y0;
+
+export function layoutRazoes(
+  v: Vista,
+  A: Pt,
+  Cc: Pt,
+  Bb: Pt,
+  g: { angulo: number; ca: number; co: number; hip: number },
+  w: number,
+  h: number,
+): ChipRazao[] {
+  const pA = v.q(A);
+  const pC = v.q(Cc);
+  const pB = v.q(Bb);
+  const hipPx = Math.hypot(pB.x - pA.x, pB.y - pA.y);
+  const fora = hipPx < 190;
+  const rAng = Math.min(34, Math.max(16, hipPx * 0.16));
+  const mAng = (g.angulo * Math.PI) / 360;
+  const posAng: Pt = fora
+    ? { x: pA.x - 26, y: pA.y - 12 }
+    : { x: pA.x + Math.cos(mAng) * Math.min(rAng + 20, Math.max(rAng + 10, hipPx * 0.36)), y: pA.y - Math.sin(mAng) * Math.min(rAng + 20, Math.max(rAng + 10, hipPx * 0.36)) };
+
+  const raw: Omit<ChipRazao, "box">[] = [
+    { id: "ca", pos: ladoFora(pA, pC, pB, fora ? 22 : 20), txt: `CA ${fmt(g.ca, 1)}`, cor: "c2" },
+    { id: "co", pos: ladoFora(pC, pB, pA, fora ? 42 : 34), txt: `CO ${fmt(g.co, 1)}`, cor: "c1" },
+    { id: "hip", pos: ladoFora(pA, pB, pC, fora ? 34 : 28), txt: `HIP ${fmt(g.hip, 1)}`, cor: "c3" },
+    { id: "ang", pos: posAng, txt: `${fmt(g.angulo, 0)}°`, cor: "c4" },
+  ];
+
+  const dirSep: Record<ChipRazao["id"], Pt> = {
+    ca: { x: 0, y: 1 },
+    co: { x: 1, y: 0 },
+    hip: { x: -0.7, y: -0.7 },
+    ang: { x: -1, y: -0.4 },
+  };
+
+  const chips: ChipRazao[] = [];
+  for (const item of raw) {
+    const pos = { ...item.pos };
+    let box = caixaChip(pos, item.txt);
+    const d = dirSep[item.id];
+    for (let tent = 0; tent < 24 && chips.some((c) => sobrepoe(box, c.box)); tent++) {
+      pos.x += d.x * 8;
+      pos.y += d.y * 8;
+      box = caixaChip(pos, item.txt);
+    }
+    const hw = (box.x1 - box.x0) / 2;
+    const hh = (box.y1 - box.y0) / 2;
+    pos.x = Math.max(hw + 6, Math.min(w - hw - 6, pos.x));
+    pos.y = Math.max(hh + 6, Math.min(h - hh - 6, pos.y));
+    chips.push({ ...item, pos, box: caixaChip(pos, item.txt) });
+  }
+  return chips;
+}
+
 function dRazoes(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"razoes">, cl: Ctl): GeoTri {
   const g = razoes(p, cl);
   const kDinamico = typeof p.k === "string";
   const hipMax = Math.max(kDinamico ? avaliarMax(p) : g.hip, 0.5);
-  const caixa: Caixa = {
-    x0: -hipMax * 0.08,
-    x1: hipMax * 1.18,
-    y0: -hipMax * 0.18,
-    y1: hipMax * (p.painel ? 1.05 : 0.92),
-  };
+  const angFixo = typeof p.angulo === "number";
+  const caMax = angFixo ? Math.max(hipMax * Math.cos((g.angulo * Math.PI) / 180), hipMax * 0.35) : hipMax * 0.92;
+  const coMax = angFixo ? Math.max(hipMax * Math.sin((g.angulo * Math.PI) / 180), hipMax * 0.35) : hipMax * 0.92;
+  const caixa: Caixa = kDinamico
+    ? {
+        x0: -caMax * 0.16,
+        x1: caMax * 1.24,
+        y0: -coMax * 0.18,
+        y1: coMax * (p.painel ? 1.22 : 1.08),
+      }
+    : {
+        x0: -g.hip * 0.08,
+        x1: g.hip * 1.18,
+        y0: -g.hip * 0.18,
+        y1: g.hip * (p.painel ? 1.05 : 0.92),
+      };
   const v = criarVista(w, h, caixa, 22);
-  if (p.malha) malha(ctx, v, { x0: 0, x1: hipMax, y0: 0, y1: hipMax * 0.95 }, hipMax > 8 ? 2 : 1);
+  if (p.malha) malha(ctx, v, { x0: 0, x1: kDinamico ? caMax : hipMax, y0: 0, y1: kDinamico ? coMax : hipMax * 0.95 }, hipMax > 8 ? 2 : 1);
   const A = { x: 0, y: 0 };
   const Cc = { x: g.ca, y: 0 };
   const Bb = { x: g.ca, y: g.co };
@@ -243,12 +323,9 @@ function dRazoes(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"razo
     const hipPx = Math.hypot(v.q(Bb).x - v.q(A).x, v.q(Bb).y - v.q(A).y);
     const rAng = Math.min(34, Math.max(16, hipPx * 0.16));
     anguloMarcado(ctx, hits, v.q(A), 0, g.angulo, rAng, null, "c4");
-    const mAng = (g.angulo * Math.PI) / 360;
-    const dRot = Math.min(rAng + 20, Math.max(rAng + 8, hipPx * 0.38));
-    etiqueta(ctx, hits, { x: v.q(A).x + Math.cos(mAng) * dRot, y: v.q(A).y - Math.sin(mAng) * dRot }, `${fmt(g.angulo, 0)}°`, "c4");
-    lado(ctx, hits, v, Cc, Bb, A, `CO ${fmt(g.co, 1)}`, "c1", 34);
-    lado(ctx, hits, v, A, Cc, Bb, `CA ${fmt(g.ca, 1)}`, "c2", 20);
-    lado(ctx, hits, v, A, Bb, Cc, `HIP ${fmt(g.hip, 1)}`, "c3", 28);
+    for (const ch of layoutRazoes(v, A, Cc, Bb, g, w, h)) {
+      etiqueta(ctx, hits, ch.pos, ch.txt, ch.cor);
+    }
   }
   if (p.painel) {
     const lin = [
@@ -394,7 +471,7 @@ function dAngulos(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"ang
   const g = angulos(p, cl, e);
   const fechar = p.chaves.includes("fechar");
   const hh = h - (fechar ? 56 : 0);
-  const caixa: Caixa = { x0: -4.3, x1: 4.3, y0: -0.7, y1: 7 };
+  const caixa: Caixa = p.externo ? { x0: -4.2, x1: 6.2, y0: -0.9, y1: 6.5 } : { x0: -4.3, x1: 4.3, y0: -0.7, y1: 7 };
   const v = criarVista(w, hh, caixa, 14);
   const { C } = g;
   const A = BASE_A;
@@ -403,16 +480,16 @@ function dAngulos(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"ang
   if (p.paralela) segMundo(ctx, v, { x: -4.2, y: C.y }, { x: 4.2, y: C.y }, palette.lineDark, 2, [8, 6]);
   poligonoMundo(ctx, v, [A, B, C], tintaClara("c4"), palette.ink, 3);
   if (p.externo) {
-    segMundo(ctx, v, B, { x: 4.2, y: 0 }, palette.ink, 3);
+    segMundo(ctx, v, B, { x: 5.5, y: 0 }, palette.ink, 3);
     segMundo(ctx, v, B, { x: B.x + (C.x - A.x) * 0.5, y: B.y + (C.y - A.y) * 0.5 }, tinta("c1"), 2, [6, 5]);
     const aB = dirGraus(B, C);
     anguloMarcado(ctx, hits, v.q(B), 0, g.alfa, 30, `${fmt(g.alfa, 0)}°`, "c1");
     anguloMarcado(ctx, hits, v.q(B), g.alfa, aB, 30, `${fmt(g.gama, 0)}°`, "c2");
-    anguloMarcado(ctx, hits, v.q(B), 0, aB, 66, `e = ${fmt(g.externo, 0)}°`, "c3", false);
+    anguloMarcado(ctx, hits, v.q(B), 0, aB, 64, `e = ${fmt(g.externo, 0)}°`, "c3", false);
   }
   const rA = 30;
   anguloMarcado(ctx, hits, v.q(A), 0, g.alfa, rA, `${fmt(g.alfa, 0)}°`, "c1");
-  if (!p.externo) anguloMarcado(ctx, hits, v.q(B), 180 - g.beta, 180, rA, `${fmt(g.beta, 0)}°`, "c1");
+  anguloMarcado(ctx, hits, v.q(B), 180 - g.beta, 180, p.externo ? 24 : rA, `${fmt(g.beta, 0)}°`, "c1");
   const aCA = dirGraus(C, A);
   const aCB = dirGraus(C, B);
   const aEsq = 180;
