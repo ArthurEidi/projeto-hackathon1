@@ -20,8 +20,7 @@ Este arquivo é a **reserva de frentes**. Serve para duas máquinas (ou dois coo
 |---|---|---|---|
 | Pendências 1 a 5 de "Pendências imediatas da Máquina A" em PROXIMOS-PASSOS (passos de álgebra, adaptações, fontes, visual de aritmética e álgebra) | A (Claude Code + agentes Maestri) | 13/11 | `content/aritmetica/**`, `content/algebra/**`, `docs/revisao/**`, `docs/fontes-candidatas/**` |
 | 3. Widgets (`maquinas_funcao`, acentos, `transformacao_plano`, `reta_numerica`) | A | 13/11 | `src/widgets/common/**`, GUIA §5, `WIDGETS-PENDENTES.md` |
-| 4. Revisão de texto: geometria (distratores, passos params × falas, segunda passada dos feedbacks), por setor | **B: Claude Code maestro + agentes Antigravity (Gemini), DESKTOP-M466PUL** | 13/11 | `content/geometria/**`, `docs/revisao/geometria-*.md` |
-| 5. Conferência visual: geometria | **B: reservada para a segunda máquina** | — | `docs/visual/geometria.md`, `content/geometria/**` |
+| 5. Conferência visual: geometria (relatório apenas; correções de conteúdo depois) | **B: Claude Code #2 (Chrome headless, 400 px), DESKTOP-M466PUL** | 13/11 | `docs/visual/geometria.md`, depois `content/geometria/**` |
 
 ## Pedidos entre máquinas
 
@@ -29,7 +28,11 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 
 - 13/11, coordenador A → dono dos widgets (A): `retangulo_areas` modo `produto` desenha pequeno e descentralizado (ocupa cerca de 1/3 da área, colado à esquerda) e as peças não têm rótulo dentro (a², ab, b²). Visto em `expressoes-algebricas-e-produtos-notaveis`, passo 1, em 400 px.
 
+- 13/11, B → dono dos widgets (A): defeitos de widget achados na conferência visual da geometria estão em `docs/visual/geometria.md` (coluna "tipo" = widget). Os principais: `pontos_no_plano` sempre mostra "d = ..." (entrega a resposta no passo 2 e no desafio de `plano-cartesiano-distancia-e-ponto-medio`); no modo `reta` aparecem os botões Quadrados/Ponto médio e a reta passa da borda da malha; `pontos_figura` rotula sempre A e B; layout muda durante o arraste quando a fala de conclusão aparece.
+
 ## Concluídas
+
+- 13/11, B (Claude Code maestro + 4 Antigravity + Claude Code #2): frente 4 concluída. 42 capítulos de geometria: 1337 alternativas erradas conferidas pela conta, 162 feedbacks reescritos, 18 falas de passo generalizadas; `reta-equacao-e-inclinacao` passou a usar `pontos_no_plano`; `radianos-e-ciclo-trigonometrico` passo `um-radiano` desenhava 1° em vez de 1 rad (params corrigidos). Auditoria do maestro sobre todas as alterações (5 feedbacks ainda refeitos). Registros em `docs/revisao/geometria-*.md`. Pendente: vestibular de geometria não começou.
 
 - 13/11, A: frentes 1 e 2 (revisão de texto de aritmética e álgebra) e distratores de aritmética e álgebra.
 - 13/11, A: os 103 capítulos escritos e registrados; 14 widgets; repositório publicado.
