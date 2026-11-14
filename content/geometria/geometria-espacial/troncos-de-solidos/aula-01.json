@@ -53,7 +53,7 @@
       ],
       "lines": {
         "intro": "Na base (h' = 8), o corte tem área 36. Leve o corte para h' = 4: a área cai para a metade (18) ou um quarto (9)?",
-        "done": "Cai para 9 (um quarto)! Como as duas dimensões da base encolhem à metade (k = 0,5), a área cai com k² = 0,25."
+        "done": "A área cai com k²! Como as duas dimensões encolhem por k = h'/8, em h' = 4 (k = 0,5) a área cai para 36 · 0,25 = 9."
       },
       "duvida": {
         "quando": "fim",
@@ -421,7 +421,7 @@
             "id": "v120",
             "label": "120 cm³",
             "correct": false,
-            "feedback": "O tronco é o restante do sólido: 240 − 30 = 210 cm³."
+            "feedback": "Você dividiu o volume total por 2 (240 / 2 = 120). Subtraia a ponta retirada: 240 − 30 = 210 cm³."
           }
         ]
       },

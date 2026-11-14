@@ -259,7 +259,7 @@
           { "id": "r4", "label": "4", "correct": true, "feedback": "Isso. Das 11 outras, 3 são paralelas e 4 tocam A ou B; sobram 4 reversas." },
           { "id": "r8", "label": "8", "correct": false, "feedback": "4 dessas 8 encostam em A ou B (concorrentes). Sem tocar AB, sobram 4 reversas." },
           { "id": "r3", "label": "3", "correct": false, "feedback": "3 são as paralelas. As reversas a AB são 4." },
-          { "id": "r6", "label": "6", "correct": false, "feedback": "Tire de 11 as 3 paralelas e as 4 concorrentes em A e B: restam 4." }
+          { "id": "r6", "label": "6", "correct": false, "feedback": "Você descontou só 2 concorrentes em vez de 4 (11 − 3 − 2 = 6). Como 4 tocam A ou B, sobram 4 reversas." }
         ]
       },
       {
@@ -277,7 +277,7 @@
         "options": [
           { "id": "pto", "label": "Um único ponto", "correct": true, "feedback": "Exato. Como todo o bastão está na mesma vertical, todos os pontos caem no mesmo pé." },
           { "id": "seg1", "label": "Um segmento de 1 m", "correct": false, "feedback": "1 m seria se o bastão estivesse deitado paralelo ao chão. Em pé, projeta um ponto." },
-          { "id": "seg05", "label": "Um segmento de 0,5 m", "correct": false, "feedback": "Perpendicular ao piso, o topo projeta exatamente sobre a base: um único ponto." }
+          { "id": "seg05", "label": "Um segmento de 0,5 m", "correct": false, "feedback": "0,5 m seria se o bastão estivesse inclinado a 60°. Como está a 90° (em pé), projeta um único ponto." }
         ]
       },
       {

@@ -51,7 +51,7 @@
       ],
       "lines": {
         "intro": "No equador (d = 0), o corte tem o mesmo raio R = 5 da esfera. Suba para d = 3: qual é o raio r da fatia?",
-        "done": "Mede 4! Do centro até a borda do corte é o raio R = 5: por Pitágoras, r² + 3² = 5², logo r = 4."
+        "done": "Quanto maior d, menor o raio r do corte! Por Pitágoras, r² + d² = 5² (em d = 3, r = 4)."
       },
       "duvida": {
         "quando": "fim",
@@ -367,7 +367,7 @@
             "id": "r8",
             "label": "8 cm",
             "correct": false,
-            "feedback": "O raio da seção não pode ser maior que o raio da esfera (5 cm): r = 4 cm."
+            "feedback": "Você somou 5 + 3 = 8, mas o corte é menor que o raio (5 cm). Certo: r = √(25 − 9) = 4 cm."
           }
         ]
       },
@@ -514,7 +514,7 @@
             "id": "r4",
             "label": "4 cm",
             "correct": false,
-            "feedback": "Cancelando 4πR² em (4/3)πR³ = 4πR², obtemos R = 3 cm."
+            "feedback": "Você pegou o coeficiente 4 da fórmula. Cancelando 4πR² em (4/3)πR³ = 4πR², sobra R/3 = 1, logo R = 3 cm."
           }
         ]
       },

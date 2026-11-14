@@ -326,7 +326,7 @@
             "id": "h_4r",
             "label": "h = 4r",
             "correct": false,
-            "feedback": "O lado do quadrado no chão é 2r, logo a altura h precisa ser 2r."
+            "feedback": "Você dobrou o diâmetro (2·2r = 4r). A largura do corte já é 2r, então basta h = 2r."
           }
         ]
       },
@@ -424,7 +424,7 @@
             "id": "h6",
             "label": "6 m",
             "correct": false,
-            "feedback": "Divida o volume 36π pela área da base 4π: h = 36 / 4 = 9 m."
+            "feedback": "Você tirou a raiz de 36 (√36 = 6) em vez de dividir pela base 4π. Certo: 36 / 4 = 9 m."
           }
         ]
       }

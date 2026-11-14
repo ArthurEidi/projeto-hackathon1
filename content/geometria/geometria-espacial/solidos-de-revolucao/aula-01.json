@@ -78,7 +78,7 @@
       ],
       "lines": {
         "intro": "Quando o retângulo de largura 2 descola do eixo por uma distância d = 1, o que aparece no meio ao girar?",
-        "done": "Abre um furo de raio 1! O sólido vira um tubo de raio externo 3 e interno 1, com volume π(9 − 1)·5 = 40π."
+        "done": "Abre um furo de raio d! O tubo fica com raio externo 2 + d e interno d (em d = 1, π(3² − 1²)·5 = 40π)."
       },
       "duvida": {
         "quando": "fim",
@@ -245,7 +245,7 @@
         "options": [
           { "id": "v23p", "label": "2π/3 cm³", "correct": true, "feedback": "Certo. São dois cones de raio 1 cm e alturas 1 cm cada: 2 · (π·1²·1)/3 = 2π/3 cm³." },
           { "id": "v2p", "label": "2π cm³", "correct": false, "feedback": "Faltou dividir por 3 na fórmula do cone: V = 2π/3 cm³." },
-          { "id": "v43p", "label": "4π/3 cm³", "correct": false, "feedback": "Cada cone tem altura 1 (metade da hipotenusa 2), somando 2π/3 cm³." }
+          { "id": "v43p", "label": "4π/3 cm³", "correct": false, "feedback": "Você usou h = 2 em vez de 1 em cada cone (4π/3). Cada cone tem altura 1, somando 2π/3 cm³." }
         ]
       },
       {
@@ -273,7 +273,7 @@
         "options": [
           { "id": "v40p", "label": "40π cm³", "correct": true, "feedback": "Exato! Área 4 cm² vezes a volta do centro 2π·5 = 10π cm dá 4·10π = 40π cm³." },
           { "id": "v20p", "label": "20π cm³", "correct": false, "feedback": "Faltou o 2 de 2π·d_c na volta do centro: 4 · (2π·5) = 40π cm³." },
-          { "id": "v100p", "label": "100π cm³", "correct": false, "feedback": "Multiplique a área 4 pela circunferência 2π·5 = 10π: dá 40π cm³." }
+          { "id": "v100p", "label": "100π cm³", "correct": false, "feedback": "Você elevou d = 5 ao quadrado (4·π·5² = 100π). Em Pappus usa-se a volta 2π·5 = 10π, dando 40π cm³." }
         ]
       }
     ],

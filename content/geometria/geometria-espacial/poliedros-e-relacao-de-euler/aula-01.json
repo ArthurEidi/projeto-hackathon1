@@ -192,7 +192,7 @@
         "options": [
           { "id": "a6", "label": "6", "correct": true, "feedback": "Exato. 4 triângulos têm 12 lados soltos; colados dois a dois, dão 6 arestas." },
           { "id": "a12", "label": "12", "correct": false, "feedback": "12 é o total de lados soltos. Cada aresta une 2 lados: 12 / 2 = 6 arestas." },
-          { "id": "a7", "label": "7", "correct": false, "feedback": "Multiplique 4 por 3 lados e divida por 2: são 6 arestas no total." }
+          { "id": "a7", "label": "7", "correct": false, "feedback": "Você somou 4 + 3 = 7 em vez de multiplicar. São 4·3 = 12 lados divididos por 2, dando 6 arestas." }
         ]
       }
     ],
@@ -251,7 +251,7 @@
         "options": [
           { "id": "f14", "label": "14", "correct": true, "feedback": "Certo. As 6 faces originais continuam lá e ganham mais 8 triângulos: 6 + 8 = 14." },
           { "id": "f8", "label": "8", "correct": false, "feedback": "8 são apenas os triângulos novos nos cantos. Somando as 6 faces originais: 14." },
-          { "id": "f12", "label": "12", "correct": false, "feedback": "São 6 faces originais mais 8 quinas cortadas: 6 + 8 = 14 faces." }
+          { "id": "f12", "label": "12", "correct": false, "feedback": "12 é o total de arestas do cubo original. Somando as 6 faces e as 8 quinas cortadas: 6 + 8 = 14 faces." }
         ]
       },
       {

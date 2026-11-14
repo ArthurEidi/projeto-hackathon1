@@ -55,7 +55,7 @@
       ],
       "lines": {
         "intro": "Com 1 andar de altura, cabem 12 cubinhos. Se subirmos para 4 andares, quantos cubinhos teremos?",
-        "done": "Cada andar repete os mesmos 12 cubos da base: 12 · 4 = 48. Volume de prisma é a área da base vezes altura."
+        "done": "Cada andar repete os 12 cubos da base (para 4 andares, 12 · 4 = 48). Volume de prisma é área da base vezes altura."
       },
       "duvida": {
         "quando": "fim",
@@ -564,7 +564,7 @@
             "id": "v70",
             "label": "70 cm³",
             "correct": false,
-            "feedback": "Você somou 20 + 15 em vez de multiplicar: 20·15·2 = 600 cm³."
+            "feedback": "Você somou 20 + 15 e multiplicou por 2 (35·2 = 70). Multiplique tudo: 20·15·2 = 600 cm³."
           }
         ]
       }

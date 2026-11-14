@@ -189,8 +189,8 @@
         "prompt": "De um bloco de madeira de 200 cm³ é escavado um furo cilíndrico de 50 cm³. Qual é o volume de madeira restante?",
         "options": [
           { "id": "v150", "label": "150 cm³", "correct": true, "feedback": "Certo. Na cavidade retiramos material: 200 − 50 = 150 cm³." },
-          { "id": "v250", "label": "250 cm³", "correct": false, "feedback": "O furo retira madeira, então subtraímos: 200 − 50 = 150 cm³." },
-          { "id": "v100", "label": "100 cm³", "correct": false, "feedback": "Basta subtrair o volume do furo: 200 − 50 = 150 cm³." }
+          { "id": "v250", "label": "250 cm³", "correct": false, "feedback": "Você somou 200 + 50 = 250. O furo retira madeira, então subtraímos: 200 − 50 = 150 cm³." },
+          { "id": "v100", "label": "100 cm³", "correct": false, "feedback": "Você subtraiu o furo duas vezes (200 − 2·50 = 100). Subtraia só uma vez: 200 − 50 = 150 cm³." }
         ]
       },
       {
@@ -266,7 +266,7 @@
         "prompt": "Uma esfera de raio 3 cm derrete inteira dentro de um copo cilíndrico de raio 3 cm. Que altura h o líquido atinge no copo?",
         "options": [
           { "id": "h4", "label": "4 cm", "correct": true, "feedback": "Exato. Igualando 9π·h = (4/3)π·27 = 36π, achamos h = 36π / 9π = 4 cm." },
-          { "id": "h3", "label": "3 cm", "correct": false, "feedback": "O volume da esfera é 36π e a base do copo é 9π; dividindo, h = 4 cm." },
+          { "id": "h3", "label": "3 cm", "correct": false, "feedback": "Você usou πr³ = 27π para a esfera (27π / 9π = 3), faltou o 4/3. O volume é 36π, logo h = 4 cm." },
           { "id": "h6", "label": "6 cm", "correct": false, "feedback": "6 cm é a altura da bola inteira; como ela ocupa 2/3 daquela faixa, a água fica em 4 cm." }
         ]
       },
@@ -286,7 +286,7 @@
         "options": [
           { "id": "v2p", "label": "2π cm³", "correct": true, "feedback": "Exato! Os 3 cm cilíndricos tinham 3π cm³ e viraram um cone de 1π cm³, perdendo 2π cm³." },
           { "id": "v1p", "label": "1π cm³", "correct": false, "feedback": "1π cm³ é o volume da ponta cônica que ficou. O que saiu em aparas foi 3π − 1π = 2π cm³." },
-          { "id": "v8p", "label": "8π cm³", "correct": false, "feedback": "8π passa do trecho apontado, que só tinha 3π cm³. Saiu 3π − 1π = 2π cm³." }
+          { "id": "v8p", "label": "8π cm³", "correct": false, "feedback": "Você fez (h² − r²)π = (9 − 1)π = 8π, mas o trecho tinha só 3π cm³. Saiu 3π − 1π = 2π cm³." }
         ]
       }
     ],

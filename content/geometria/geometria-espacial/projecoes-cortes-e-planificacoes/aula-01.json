@@ -256,7 +256,7 @@
         "options": [
           { "id": "c8", "label": "8", "correct": true, "feedback": "Isso. Base 2×2 (4 colunas) com 2 cubos de altura em cada coluna: 4·2 = 8." },
           { "id": "c4", "label": "4", "correct": false, "feedback": "4 é só o primeiro andar visto de cima. Com 2 andares em cada, são 8 cubos." },
-          { "id": "c6", "label": "6", "correct": false, "feedback": "São 4 colunas de altura 2: 4·2 = 8 cubos." }
+          { "id": "c6", "label": "6", "correct": false, "feedback": "Você somou 4 + 2 = 6 em vez de multiplicar. São 4 colunas de altura 2: 4·2 = 8 cubos." }
         ]
       },
       {

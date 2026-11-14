@@ -250,7 +250,7 @@
         "options": [
           { "id": "a5raiz3", "label": "5√3", "correct": false, "feedback": "Você somou 50 + 25. A geratriz é o maior lado, então h² = 50 − 25 = 25 e h = 5." },
           { "id": "a25", "label": "25", "correct": false, "feedback": "25 é h², a área do quadrado. Falta a raiz: h = 5." },
-          { "id": "a10", "label": "10", "correct": false, "feedback": "Como (5√2)² = 50, fica h² = 50 − 25 = 25. Então h = 5." },
+          { "id": "a10", "label": "10", "correct": false, "feedback": "Você trocou √2 por 2 (5 · 2 = 10) e usou isso como altura. Como (5√2)² = 50, fica h² = 50 − 25 = 25, h = 5." },
           { "id": "a5", "label": "5", "correct": true, "feedback": "Isso: (5√2)² = 50, e 50 − 25 = 25. A altura é igual ao raio." }
         ]
       },
