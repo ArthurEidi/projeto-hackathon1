@@ -30,7 +30,7 @@ Por instrução do usuário (14/11, 17h), a Máquina A chegou ao limite e a **M�
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| ~~B1~~ concluída 14/11 (d44d18b). **B1b em andamento:** defeitos de widget da reconferência B8, escala do `vetores_no_plano`, e no `solido_3d` esconder g no meridiano (troncos p3) e destacar face do dado (projeções p4, com os `params` desses dois passos) | Claude Code #2 | 14/11 | `src/widgets/common/**`, `src/steps/**`, `src/ui/**`, GUIA §5, linhas de widget de `docs/visual/*.md`; em `content/` só os 2 passos citados |
+| ~~B1 e B1b~~ concluídas 14/11 (d44d18b, 908cc06): widgets dos relatórios visuais e da reconferência B8; `solido_3d` ganhou `mostrar.g` e `face_destaque`. Sem pendência de widget aberta nos relatórios | Claude Code #2 | 14/11 | — |
 | B2. Correções da reconferência de geometria (analítica) e reconferência visual de plana, espacial e trigonometria | Antigravity | 14/11 | `content/geometria/**`, `src/conteudo/<slug de geometria>.test.ts`, `docs/visual/geometria.md`, `docs/revisao/geometria-*.md` |
 | B3. Vestibular de geometria: candidatas do ENEM (plana e trigonometria) | Antigravity #2 | 14/11 | `docs/fontes-candidatas/<slug de geometria>.md` (só arquivos novos) |
 | B4. Vestibular de geometria: candidatas do ENEM (espacial e analítica) | Antigravity #3 | 14/11 | `docs/fontes-candidatas/<slug de geometria>.md` (só arquivos novos) |
