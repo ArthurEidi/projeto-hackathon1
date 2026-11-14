@@ -73,3 +73,21 @@
   Adaptada (Enem): Van de 15 lugares cobra R$ 60 mais R$ 2 por lugar vago x. Qual função dá o valor arrecadado V(x)?
 - **Conta que confirma o gabarito:**
   Número de passageiros = `15 - x`; preço por passageiro = `60 + 2x`. Logo `V(x) = (15 - x)(60 + 2x) = 900 + 30x - 60x - 2x² = 900 - 30x - 2x²`.
+
+## Questão 4 (cache ENEM, 14/11)
+- **Banca / Ano / Questão:** ENEM 2009 — Questão 155
+- **URL do enunciado:** https://api.enem.dev/v1/exams/2009/questions/155
+- **URL do gabarito:** https://api.enem.dev/v1/exams/2009/questions/155 (`correctAlternative: "D"`)
+- **Enunciado:**
+  > Um posto de combustível vende 10.000 litros de álcool por dia a R$ 1,50 cada litro. Seu proprietário percebeu que, para cada centavo de desconto que  concedia por litro, eram vendidos 100 litros a mais por dia. Por exemplo, no dia em que o preço do álcool foi R$ 1,48, foram vendidos 10.200 litros.
+  >
+  > Considerando x o valor, em centavos, do desconto dado no preço de cada litro, e V o valor, em R$, arrecadado por dia com a venda do álcool, então a expressão que relaciona V e x é
+- **Alternativas:**
+  - A) V = 10.000 + 50x – x².
+  - B) V = 10.000 + 50x + x².
+  - C) V = 15.000 – 50x – x².
+  - D) V = 15.000 + 50x – x².
+  - E) V = 15.000 – 50x + x².
+- **Gabarito:** D
+- **Resumo para o app (adaptada):** Um posto vende 10.000 L a R$ 1,50/L; cada R$ 0,01 de desconto (x centavos) aumenta as vendas em 100 L. Qual função dá a receita V(x)?
+- **Conferência matemática:** V(x) = (10.000 + 100x)·(1,50 − 0,01x) = 15.000 − 100x + 150x − x² = 15.000 + 50x − x². Gabarito D.

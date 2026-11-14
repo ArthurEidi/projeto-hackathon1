@@ -57,3 +57,23 @@
   Em janeiro de 2013 foram criadas 28 900 vagas, uma queda de 75% em relação a janeiro de 2012. Quantas vagas foram criadas em janeiro de 2012?
 - **Conta que confirma o gabarito:**
   Queda de 75% significa que 28 900 corresponde a 25% (0,25) do total de 2012. Logo, 28 900 / 0,25 = 28 900 × 4 = 115 600 vagas.
+
+## Substituta de ENEM 2022/167 (cache ENEM, 14/11)
+- **Banca / Ano / Questão:** ENEM 2017 — Questão 164
+- **URL do enunciado:** https://api.enem.dev/v1/exams/2017/questions/164
+- **URL do gabarito:** https://api.enem.dev/v1/exams/2017/questions/164 (`correctAlternative: "B"`)
+- **Enunciado:**
+  > A mensagem digitada no celular, enquanto você dirige, tira a sua atenção e, por isso, deve ser evitada. Pesquisas mostram que um motorista que dirige um carro a uma velocidade constante percorre “às cegas” (isto é, sem ter visão da pista) uma distância proporcional ao tempo gasto ao olhar para o celular durante a digitação da mensagem. Considere que isso de fato aconteça. Suponha que dois motoristas (_X_ e _Y_) dirigem com a mesma velocidade constante e digitam a mesma mensagem em seus celulares. Suponha, ainda, que o tempo gasto pelo motorista _X_ olhando para seu celular enquanto digita a mensagem corresponde a 25% do tempo gasto pelo motorista _Y_ para executar a mesma tarefa.
+  >
+  > Disponível em: http://g1.globo.com. Acesso em: 21 jul. 2012 (adaptado).
+  >
+  > A razão entre as distâncias percorridas às cegas por X e Y, nessa ordem, é igual a
+- **Alternativas:**
+  - A) 5/4
+  - B) 1/4
+  - C) 4/3
+  - D) 4/1
+  - E) 3/4
+- **Gabarito:** B
+- **Resumo para o app (adaptada):** Dois motoristas dirigem na mesma velocidade constante; X olha o celular 25% do tempo que Y olha. Qual a razão entre as distâncias de X e Y?
+- **Conferência matemática:** Distância proporcional ao tempo: t_X = 0,25·t_Y = (1/4)·t_Y, logo d_X/d_Y = 1/4. Gabarito B.

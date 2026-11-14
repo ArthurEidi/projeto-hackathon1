@@ -55,3 +55,43 @@
 - **Gabarito:** D
 - **Resumo para o app (adaptada):** Uma urna tem 20 perguntas, sendo 25% fáceis. Quantas perguntas fáceis acrescentar para que a chance de sortear uma fácil seja 75%?
 - **Conferência matemática:** Inicialmente há 25% de 20 = 5 perguntas fáceis e 15 não fáceis. Ao acrescentar x fáceis, (5 + x) / (20 + x) = 3/4 => 20 + 4x = 60 + 3x => x = 40.
+
+## Substituta de ENEM 2023/138 (cache ENEM, 14/11)
+- **Banca / Ano / Questão:** ENEM 2012 — Questão 178
+- **URL do enunciado:** https://api.enem.dev/v1/exams/2012/questions/178
+- **URL do gabarito:** https://api.enem.dev/v1/exams/2012/questions/178 (`correctAlternative: "D"`)
+- **Enunciado:**
+  > José, Paulo e Antônio estão jogando dados não viciados, nos quais, em cada uma das seis faces, há um número de 1 a 6. Cada um deles jogará dois dados simultaneamente. José acredita que, após jogar seus dados, os números das faces voltadas para cima lhe darão uma soma igual a 7. Já Paulo acredita que sua soma será igual a 4 e Antônio acredita que sua soma será igual a 8.
+  >
+  > Com essa escolha, quem tem a maior probabilidade de acertar sua respectiva soma é
+- **Alternativas:**
+  - A) Antônio, já que sua soma é a maior de todas as escolhidas.
+  - B) José e Antônio, já que há 6 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 4 possibilidades para a escolha de Paulo.
+  - C) José e Antônio, já que há 3 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 2 possibilidades para a escolha de Paulo.
+  - D) José, já que há 6 possibilidades para formar sua soma, 5 possibilidades para formar a soma de Antônio e apenas 3 possibilidades para formar a soma de Paulo.
+  - E) Paulo, já que sua soma é a menor de todas.
+- **Gabarito:** D
+- **Resumo para o app (adaptada):** Ao lançar dois dados comuns, José aposta na soma 7, Paulo na 4 e Antônio na 8. Quem tem maior probabilidade de acertar?
+- **Conferência matemática:** Soma 7 tem 6 pares ((1,6)..(6,1)); soma 8 tem 5 pares ((2,6)..(6,2)); soma 4 tem 3 pares ((1,3),(2,2),(3,1)). José tem a maior chance (6/36). Gabarito D.
+
+## Substituta de ENEM 2021/142 (cache ENEM, 14/11)
+- **Banca / Ano / Questão:** ENEM 2011 — Questão 168
+- **URL do enunciado:** https://api.enem.dev/v1/exams/2011/questions/168
+- **URL do gabarito:** https://api.enem.dev/v1/exams/2011/questions/168 (`correctAlternative: "C"`)
+- **Enunciado:**
+  > Em um jogo disputado em uma mesa de sinuca, há 16 bolas: 1 branca e 15 coloridas, as quais, de acordo com a coloração, valem de 1 a 15 pontos (um valor para cada bola colorida).
+  >
+  > O jogador acerta o taco na bola branca de forma que esta acerte as outras, com o objetivo de acertar duas das quinze bolas em quaisquer caçapas. Os valores dessas duas bolas são somados e devem resultar em um valor escolhido pelo jogador antes do início da jogada.
+  >
+  > Arthur, Bernardo e Caio escolhem os números 12, 17 e 22 como sendo resultados de suas respectivas somas.
+  >
+  > Com essa escolha, quem tem a maior probabilidade de ganhar o jogo é
+- **Alternativas:**
+  - A) Arthur, pois a soma que escolheu é a menor.
+  - B) Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 4 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio.
+  - C) Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio.
+  - D) Caio, pois há 10 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 8 possibilidades para a escolha de Bernardo.
+  - E) Caio, pois a soma que escolheu é a maior.
+- **Gabarito:** C
+- **Resumo para o app (adaptada):** De 15 bolas numeradas de 1 a 15, sorteiam-se duas distintas. Arthur escolhe soma 12, Bernardo 17 e Caio 22. Quem tem mais chance?
+- **Conferência matemática:** Soma 12: {1,11},{2,10},{3,9},{4,8},{5,7} (5 pares); soma 17: {2,15}..{8,9} (7 pares); soma 22: {7,15}..{10,12} (4 pares). Bernardo vence com 7 possibilidades. Gabarito C.

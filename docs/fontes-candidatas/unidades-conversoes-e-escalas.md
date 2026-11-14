@@ -66,3 +66,25 @@
   Adaptada (ENEM 2020): Uma caixa-d'água de 28 080 L mede 2 cm × 3,51 cm × 4 cm na maquete. Qual foi a escala usada?
 - **Conta que confirma o gabarito:**
   Volume na maquete: `2 · 3,51 · 4 = 28,08 cm³`. Volume real: `28 080 L = 28 080 dm³ = 28 080 000 cm³`. Razão volumétrica: `28,08 / 28 080 000 = 1 / 1 000 000 = (1 / 100)³`. Logo, a escala linear é `1 : 100`.
+
+## Substituta de ENEM 2021/178 (cache ENEM, 14/11)
+- **Banca / Ano / Questão:** ENEM 2019 — Questão 158
+- **URL do enunciado:** https://api.enem.dev/v1/exams/2019/questions/158
+- **URL do gabarito:** https://api.enem.dev/v1/exams/2019/questions/158 (`correctAlternative: "C"`)
+- **Enunciado:**
+  > Comum em lançamentos de empreendimentos imobiliários, as maquetes de condomínios funcionam como uma ótima ferramenta de marketing para as construtoras, pois, além de encantar clientes, auxiliam de maneira significativa os corretores na negociação e venda de imóveis.
+  >
+  > Um condomínio está sendo lançado em um novo bairro de uma cidade. Na maquete projetada pela construtora, em escala de 1 : 200, existe um reservatório de água com capacidade de 45 cm³.
+  >
+  > Quando todas as famílias estiverem residindo no condomínio, a estimativa é que, por dia, sejam consumidos 30.000 litros de água.
+  >
+  > Em uma eventual falta de água, o reservatório cheio será suficiente para abastecer o condomínio por quantos dias?
+- **Alternativas:**
+  - A) 30
+  - B) 15
+  - C) 12
+  - D) 6
+  - E) 3
+- **Gabarito:** C
+- **Resumo para o app (adaptada):** Numa maquete 1:200, um reservatório tem 45 cm³. Se o consumo diário real é 30.000 L, o reservatório cheio dura quantos dias?
+- **Conferência matemática:** Volume real = 45·200³ cm³ = 360.000.000 cm³ = 360.000 L. Duração = 360.000 / 30.000 = 12 dias. Gabarito C.
