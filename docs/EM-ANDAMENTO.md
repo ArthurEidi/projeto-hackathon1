@@ -43,7 +43,7 @@ Por instrução do usuário (14/11, 17h), a Máquina A chegou ao limite e a **M�
 | ~~B8. Reconferência visual~~ concluída 14/11 (0166572): 77 passos, 60 ok; relatório `docs/visual/geometria-reconferencia-b8.md` | Antigravity #2 | 14/11 | — |
 | ~~B8b~~ concluída 14/11 (16014cd): 6 desafios sem "Resposta: …", 3 figuras de erradas; troncos p3 e projeções p4 passaram para o B1b (falta parâmetro no `solido_3d`) | Antigravity #2 | 14/11 | — |
 | ~~B11. Reconferência visual de aritmética e álgebra~~ concluída 14/11: relatórios B11a–d e correções publicados (último: d89323c); `ChallengeOption` agora é estrito (a chave "override" era descartada em silêncio). Critério: em desafio de 2 alternativas, feedback que cita a certa não é defeito | 4 Antigravity + maestro | 14/11 | — |
-| B13. Parâmetros novos de widget para 3 erradas do B11b (variância sem a raiz em dispersão, mínimo marcado em quartis, razão parte : parte em espaço amostral) | Claude Code #2 | 14/11, 21h | `src/widgets/common/**`, GUIA §5, e o `figure` das erradas do p5 de medidas-de-dispersao, quartis-percentis-e-boxplot e probabilidade-espaco-amostral |
+| ~~B13~~ concluída 14/11 (750a557): `barras` com `mostrar.raiz` e `extremos` na fila, `grade` com `mostrar.razao_partes`. Máquina B sem frente aberta | Claude Code #2 | 14/11 | — |
 | B6. Auditoria das 40 questões do ENEM de 14/11 (feita: 50dc335, 26 feedbacks corrigidos); revisão e integração de tudo; inserir o vestibular de geometria nas aulas depois da conferência | maestro (Claude Code) | 14/11 | `docs/revisao/auditoria-claude.md`, `treino.vestibular` das aulas, docs de coordenação |
 
 ## Pedidos entre máquinas
