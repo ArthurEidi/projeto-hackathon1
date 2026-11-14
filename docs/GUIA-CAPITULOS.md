@@ -274,7 +274,7 @@ export const figureParams = { prismas_figura: PrismaParams.extend({ highlight: z
 ```
 ```tsx
 // src/widgets/prismas/CorteWidget.tsx
-import type { WidgetProps } from "../types";           // { params, controls, onMetric, onInteract, done }
+import type { WidgetProps } from "../types";           // { params, controls, faixas?, onMetric, onInteract, done }
 import { useCanvas, seg, dot, chip } from "../canvas"; // canvas nítido em HiDPI + primitivas chapadas
 import { Dica } from "../../ui/Dica";
 export function CorteWidget({ params, controls, onMetric, onInteract, done }: WidgetProps) {
@@ -413,7 +413,8 @@ Arquivos: `common/params.ts` (schemas), `common/plot2d.ts` (matemática pura, te
 }
 ```
 - **Tipos de curva** (sem `eval`): `afim` a·x+b · `quadratica` a·x²+b·x+c · `exponencial` a·bˣ+c · `logaritmo` a·log_b(x)+c · `modular` a·|x−b|+c · `seno`/`cosseno` a·sen(b·x)+c. Qualquer coeficiente aceita `"$slider"`.
-- **Marcações** (`interceptoY`, `raizes`) usam a primeira curva não fantasma; `encontro` usa as curvas 0 e 1.
+- **Marcações** (`interceptoY`, `raizes`) usam a primeira curva não fantasma; `encontro` usa as curvas 0 e 1. Com ponto arrastável no widget, o encontro aparece só como bolinha; a coordenada "(x; y)" só surge quando o ponto chega lá (e, se o ponto já mostra `coordenadas`, fica só a dele). Na figura e com ponto preso a slider, a etiqueta aparece sempre. `marcar.encontro` não é exigido pela métrica `no_encontro`.
+- **Rótulos das curvas** procuram lugar livre ao longo da curva, longe das letras dos eixos e das etiquetas de ponto; se não acham, tentam também perto das bordas (ex.: `y = 1` com y de 0 a 17).
 - **Métricas** do widget: `ponto_x`, `quadrantes` (0..4 visitados; com `marcar.quadrantes`, os visitados ficam tingidos), `faixa_x`, `na_raiz` (0/1), `no_encontro` (0/1). O arraste encaixa x em múltiplos de `passo`, então a resposta exata é alcançável.
 - `ponto.x: "$x"` faz o ponto seguir um slider (aí não é arrastável).
 - **`plano_figura`**: mesmos campos, só números. Em `micro_challenge`, cada opção sobrescreve campos inteiros (ex.: `{ "marcar": { "raizes": true }, "highlight": ["c4"] }` ou `{ "ponto": { "x": 0 } }`).
@@ -725,7 +726,7 @@ Pasta `common/areas/`; modos `produto`, `raiz`, `escala`. Dimensões aceitam exp
 ```
 
 Produto desenha a², ab, ab, b²; `retirar: true` desenha as duas faixas retiradas, o canto compensado e o quadrado restante. Exige a,b não negativos e, na retirada, b <= a. Raiz exige A >= 0. Escala exige L,k >= 0; `unidade: true` troca o quadrado por segmento fixo L em m/dm/cm conforme e = 0/1/2. Use ids de slider minúsculos, mesmo quando o campo é A/L.
-Métricas: `area`, `lado`, `pecas` (quantidade da decomposição), `razao_area`; sliders pelo motor. Valores inválidos mostram aviso. O canvas mantém a escala até ultrapassar `limite`, e o original aparece tracejado. Revisão visual em 400 px pendente pelo bloqueio de §5.14.
+Métricas: `area`, `lado`, `pecas` (quantidade da decomposição), `razao_area`; sliders pelo motor. Valores inválidos mostram aviso. No passo interativo, a escala é fixada pelo maior lado que os sliders alcançam (o motor passa `faixas` com min/max de cada slider), então a figura enche a vista no máximo e não muda de escala ao arrastar; sem faixas, vale `limite`. O original aparece tracejado. Peça de área zero (ex.: ab e b² com b = 0) não ganha rótulo. Revisão visual em 400 px pendente pelo bloqueio de §5.14.
 
 ### 5.19 `maquinas_funcao` + `maquinas_figura`
 

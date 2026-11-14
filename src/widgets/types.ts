@@ -7,4 +7,6 @@ export interface WidgetProps {
   /** Primeira interação do aluno, para o Paco passar a "thinking". */
   onInteract: () => void;
   done: boolean;
+  /** Faixa [min, max] de cada slider do passo, para o widget fixar a escala no maior valor possível. */
+  faixas?: Readonly<Record<string, { min: number; max: number }>>;
 }

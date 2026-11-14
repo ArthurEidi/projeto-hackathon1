@@ -3,15 +3,38 @@ import { criarVista, etiqueta, espessura, fmt, nota, poligonoMundo, segMundo, te
 import { calcular } from "./calc";
 import type { Areas } from "./params";
 
+export type Faixas = Readonly<Record<string, { min: number; max: number }>>;
+
+/** Maior extensão que a figura alcança com os sliders nas pontas e no meio das faixas. */
+export function maiorExtensao(p: Areas, ctl: Record<string, number>, faixas: Faixas): number {
+  const ids = Object.keys(faixas);
+  const valores = ids.map((id) => [faixas[id].min, (faixas[id].min + faixas[id].max) / 2, faixas[id].max]);
+  let maior = 0;
+  const visita = (i: number, atual: Record<string, number>) => {
+    if (i === ids.length) {
+      const d = calcular(p, atual);
+      const unidade = p.modo === "escala" && p.unidade;
+      const lado = unidade ? d.a : Math.max(d.lado, p.referencia || (p.modo === "produto" && p.retirar) ? d.referencia : 0);
+      if (d.valido && Number.isFinite(lado)) maior = Math.max(maior, lado);
+      return;
+    }
+    for (const v of valores[i]) visita(i + 1, { ...atual, [ids[i]]: v });
+  };
+  if (ids.length <= 6) visita(0, { ...ctl });
+  return maior;
+}
+
 /** Centro acompanha a figura; a escala não acompanha o valor de um slider.
- * Sem limites de controles no contrato do motor, `limite` continua sendo a
- * extensão fixa dos modos com expressões. Figuras numéricas cabem na vista.
+ * Com as faixas dos sliders (passo interativo), a escala é a do maior lado possível,
+ * e a figura ocupa a vista quando o slider chega ao máximo; sem elas, vale `limite`.
+ * Figuras numéricas cabem na vista.
  */
-export function vistaAreas(w: number, h: number, p: Areas, ctl: Record<string, number>) {
+export function vistaAreas(w: number, h: number, p: Areas, ctl: Record<string, number>, faixas?: Faixas) {
   const d = calcular(p, ctl);
   const unidade = p.modo === "escala" && p.unidade;
   const lado = unidade ? d.a : Math.max(d.lado, p.referencia || (p.modo === "produto" && p.retirar) ? d.referencia : 0);
-  const extensao = temSlider(p) ? p.limite : Math.max(lado, 1);
+  const alcance = temSlider(p) && faixas ? maiorExtensao(p, ctl, faixas) : 0;
+  const extensao = temSlider(p) ? (alcance > 0 ? Math.max(alcance, lado) : p.limite) : Math.max(lado, 1);
   const altura = h - 140;
   const v = criarVista(w, altura, {
     x0: lado / 2 - extensao / 2, x1: lado / 2 + extensao / 2,
@@ -24,10 +47,10 @@ export function vistaAreas(w: number, h: number, p: Areas, ctl: Record<string, n
     inv: (q: { x: number; y: number }) => v.inv({ x: q.x, y: q.y - 28 }) };
 }
 
-export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: Areas, ctl: Record<string, number>) {
+export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: Areas, ctl: Record<string, number>, faixas?: Faixas) {
   const d = calcular(p, ctl);
   if (!d.valido || !Number.isFinite(d.area)) { nota(ctx, { x: w / 2, y: h / 2 }, "Dimensões fora do domínio"); return; }
-  const v = vistaAreas(w, h, p, ctl);
+  const v = vistaAreas(w, h, p, ctl, faixas);
   const rect = (x: number, y: number, b: number, a: number, cor: "c1" | "c2" | "c3" | "c4" | "muted", preencher = true) => {
     if (b <= 0 || a <= 0) return;
     poligonoMundo(ctx, v, [{ x, y }, { x: x + b, y }, { x: x + b, y: y + a }, { x, y: y + a }], preencher ? tintaClara(cor) : undefined, tinta(cor), espessura(p.highlight, cor), cor === "muted" ? [5, 5] : undefined);
@@ -68,6 +91,11 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
     rect(0, 0, d.referencia, d.referencia, "muted", false);
     nota(ctx, { x: w / 2, y: 15 }, `Tracejado: referência de lado ${fmt(d.referencia)}`, "muted", 13);
   }
+  // Peça de área zero ainda não existe: sem rótulo (com b = 0 não há ab nem b² para mostrar).
+  // Na retirada, as faixas desenhadas medem b × a, então só somem com b = 0.
+  const existe = (q: Peca) =>
+    p.modo === "produto" && p.retirar ? (q.cor === "c4" ? d.lado > 1e-9 : d.b > 1e-9) : q.w > 1e-9 && q.h > 1e-9;
+  pecas = pecas.filter(existe);
   pecas.forEach((q, i) => {
     ctx.font = "900 16px Nunito, system-ui, sans-serif";
     const cabe = q.w * v.k >= ctx.measureText(q.texto).width + 24 && q.h * v.k >= 37;

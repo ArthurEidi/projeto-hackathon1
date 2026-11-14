@@ -12,10 +12,15 @@ interface StepLayoutProps {
   children: ReactNode;
   footer: ReactNode;
   footerTone?: "neutral" | "correct" | "wrong";
+  /**
+   * Outras falas que o Paco pode dizer neste passo (ex.: a de conclusão). O balão já nasce com a
+   * altura da mais longa, para o palco não pular quando a fala troca.
+   */
+  reservar?: readonly string[];
 }
 
 /** Moldura comum dos 4 tipos de passo: conversa do Paco (de jaleco) e da Tati, palco e rodapé de ação. */
-export function StepLayout({ paco, line, duvida, children, footer, footerTone = "neutral" }: StepLayoutProps) {
+export function StepLayout({ paco, line, duvida, children, footer, footerTone = "neutral", reservar = [] }: StepLayoutProps) {
   const footerCls = `step__footer${footerTone !== "neutral" ? ` step__footer--${footerTone}` : ""}`;
   const falas: Fala[] = [{ quem: "paco", texto: line, humor: paco }];
   if (duvida) {
@@ -25,7 +30,16 @@ export function StepLayout({ paco, line, duvida, children, footer, footerTone = 
   return (
     <div className="step">
       <div className="step__body">
-        <Conversa falas={falas} roupa="jaleco" />
+        <div className="conversa-reserva">
+          <Conversa falas={falas} roupa="jaleco" />
+          {reservar
+            .filter((t) => t !== line)
+            .map((t, i) => (
+              <div key={i} className="conversa-reserva__fantasma" aria-hidden="true">
+                <Conversa falas={[{ quem: "paco", texto: t, humor: paco }]} roupa="jaleco" />
+              </div>
+            ))}
+        </div>
         {children}
       </div>
       <div className={footerCls}>{footer}</div>

@@ -771,10 +771,51 @@ function desenharParteTodo(ctx: CanvasRenderingContext2D, w: number, h: number, 
   const hl = p.highlight;
   const x0 = 30;
   const L = w - 60;
-  const bh = 50;
   const corP = corDoTraco(p.cores.parte);
   const corT = corDoTraco(p.cores.todo);
   const todo = p.todo !== undefined ? avaliarExpr(p.todo, ctl) : undefined;
+
+  // Fração, razão e % no alto à direita (linha de 4 a 32 px).
+  const linha: [string, CorTraco][] = [];
+  if (p.mostrar.fracao) linha.push([`${pintadas}/${partes}`, p.cores.parte]);
+  if (p.mostrar.razao) {
+    const [a, b] = simplificar(pintadas, partes);
+    linha.push([`razão ${a}/${b}`, p.cores.razao]);
+  }
+  if (p.mostrar.porcento) linha.push([`${num(fracao * 100, 1)}%`, p.cores.porcento]);
+  ctx.font = FONTE;
+  const larguras = linha.map(([s]) => Math.max(28, ctx.measureText(s).width + 16));
+  const xLinha = w - 14 - larguras.reduce((s, l) => s + l + 8, -8);
+
+  // Layout vertical. Abaixo da barra principal vão as chaves: parte (+12, etiqueta até +44)
+  // e todo (+60, etiqueta até +94). Tudo tem de caber em h, senão a etiqueta do todo
+  // corta na borda (visto em razao-proporcao-porcentagem e notacao-cientifica, 400 px).
+  const TOPO = 38;
+  const ABAIXO = 94;
+  let bh = 50;
+  let yRef = 0;
+  let yBarra: number;
+  if (ref) {
+    // Texto "a/b" da barra cinza: na linha das etiquetas, à esquerda, se couber; senão, acima da barra.
+    const sRef = `${ref.pintadas}/${ref.partes}`;
+    ctx.font = "900 13px Nunito, system-ui, sans-serif";
+    const cabeNaLinha = x0 + ctx.measureText(sRef).width + 12 < (linha.length ? xLinha : w);
+    yRef = cabeNaLinha ? TOPO : TOPO + 18;
+    bh = Math.max(30, Math.min(50, Math.floor((h - 4 - ABAIXO - yRef - 22) / 2)));
+    yBarra = yRef + bh + 22;
+    if (cabeNaLinha) textoEsq(ctx, { x: x0, y: 18 }, sRef, c.muted, 13);
+    else text(ctx, { x: x0 + L / 2, y: yRef - 10 }, sRef, c.muted, 13);
+  } else {
+    bh = Math.max(30, Math.min(50, h - 4 - ABAIXO - TOPO));
+    yBarra = Math.max(TOPO, Math.min(h * 0.16 + 20, h - 4 - ABAIXO - bh));
+  }
+
+  // Centro de uma etiqueta sem deixá-la sair pelas laterais (parte pequena, colada à esquerda).
+  const dentroDaLargura = (x: number, s: string) => {
+    ctx.font = FONTE;
+    const meia = Math.max(28, ctx.measureText(s).width + 16) / 2;
+    return Math.min(w - 6 - meia, Math.max(6 + meia, x));
+  };
 
   const faixa = (y: number, np: number, npint: number, fill: string, stroke: string, lw: number) => {
     // Pode pintar mais que o todo (fração imprópria): a barra cresce além de 100%, até 2 todos.
@@ -788,13 +829,7 @@ function desenharParteTodo(ctx: CanvasRenderingContext2D, w: number, h: number, 
     return escala;
   };
 
-  let y = h * 0.16;
-  if (ref) {
-    faixa(y, ref.partes, ref.pintadas, c.lineDark, c.muted, 1.5);
-    text(ctx, { x: x0 + L / 2, y: y - 12 }, `${ref.pintadas}/${ref.partes}`, c.muted, 13);
-    y += bh + 34;
-  } else y += 20;
-  const yBarra = y;
+  if (ref) faixa(yRef, ref.partes, ref.pintadas, c.lineDark, c.muted, 1.5);
   const escala = faixa(yBarra, partes, pintadas, corP.main, corT.main, espessura(p.cores.todo, 2.5, hl));
   // Contorno do todo.
   retangulo(ctx, { x: x0, y: yBarra, w: L * escala, h: bh }, undefined, corT.dark, espessura(p.cores.todo, 3.5, hl));
@@ -808,11 +843,13 @@ function desenharParteTodo(ctx: CanvasRenderingContext2D, w: number, h: number, 
   if (pintadas > 0) {
     const xf = x0 + Math.min(pintadas, 2 * partes) * (L / partes) * escala;
     seg(ctx, { x: x0, y: yP }, { x: xf, y: yP }, corP.main, espessura(p.cores.parte, 4, hl));
-    etiqueta(ctx, hits, { x: (x0 + xf) / 2, y: yP + 18 }, `${p.rotulos.parte} = ${todo !== undefined ? num((todo / partes) * pintadas, 2) : pintadas}`, p.cores.parte);
+    const sP = `${p.rotulos.parte} = ${todo !== undefined ? num((todo / partes) * pintadas, 2) : pintadas}`;
+    etiqueta(ctx, hits, { x: dentroDaLargura((x0 + xf) / 2, sP), y: yP + 18 }, sP, p.cores.parte);
   }
   const yT = yP + 48;
   seg(ctx, { x: x0, y: yT }, { x: x0 + L * escala, y: yT }, corT.main, espessura(p.cores.todo, 4, hl));
-  etiqueta(ctx, hits, { x: x0 + (L * escala) / 2, y: yT + 18 }, `${p.rotulos.todo} = ${todo !== undefined ? num(todo, 2) : partes}`, p.cores.todo);
+  const sT = `${p.rotulos.todo} = ${todo !== undefined ? num(todo, 2) : partes}`;
+  etiqueta(ctx, hits, { x: dentroDaLargura(x0 + (L * escala) / 2, sT), y: yT + 18 }, sT, p.cores.todo);
 
   // Régua de % embaixo, com a marca da fração.
   const yR = yT + 62;
@@ -825,17 +862,7 @@ function desenharParteTodo(ctx: CanvasRenderingContext2D, w: number, h: number, 
     const xm = x0 + L * Math.min(fracao, 1);
     dot(ctx, { x: xm, y: yR }, 7, corDoTraco(p.cores.porcento).main);
   }
-  // Fração, razão e % no alto à direita.
-  const linha: [string, CorTraco][] = [];
-  if (p.mostrar.fracao) linha.push([`${pintadas}/${partes}`, p.cores.parte]);
-  if (p.mostrar.razao) {
-    const [a, b] = simplificar(pintadas, partes);
-    linha.push([`razão ${a}/${b}`, p.cores.razao]);
-  }
-  if (p.mostrar.porcento) linha.push([`${num(fracao * 100, 1)}%`, p.cores.porcento]);
-  ctx.font = FONTE;
-  const larguras = linha.map(([s]) => Math.max(28, ctx.measureText(s).width + 16));
-  let xx = w - 14 - larguras.reduce((s, l) => s + l + 8, -8);
+  let xx = xLinha;
   linha.forEach(([s, cor], i) => {
     etiqueta(ctx, hits, { x: xx + larguras[i] / 2, y: 18 }, s, cor);
     xx += larguras[i] + 8;

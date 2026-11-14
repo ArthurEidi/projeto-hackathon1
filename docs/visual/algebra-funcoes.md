@@ -19,7 +19,7 @@ Conferência em viewport 400 × 860 (`scripts/captura-aula.mjs`, estado inicial 
 | `transformacoes-graficos-de-funcoes` | `p4` (`desafio-fronteira`) | `marcar.vertice: true` exibia o vértice `(1; 2)` no desafio que pergunta onde vai o vértice | conteúdo | sim (`marcar.vertice: false`) |
 | `divisao-polinomial-e-teorema-do-resto` | `p4` (`encontrar-fator`) | Alça arrastável em `(0; −1)` colidia com chips das raízes `−1` e `1` | conteúdo | sim (`ponto.x: 0 -> 2`) |
 | `divisao-polinomial-e-teorema-do-resto` | `p5` (`conferir-previsao`) | Figura do desafio marcava `(2; 3)`, entregando a resposta do resto `3` | conteúdo | sim (`ponto` removido da figura) |
-| `numeros-complexos` | `p3` | Rótulos `z` e `w` sobrepostos parcialmente no plano | widget | não |
+| `numeros-complexos` | `p3` | Rótulos `z` e `w` sobrepostos parcialmente no plano | widget | sim (rótulo do vetor vai além da ponta, na direção dele, e foge dos outros rótulos (vetores/desenho.ts); z e w separados; B1, 14/11, recapturado em 400 px) |
 | `numeros-complexos` | `p5` (`conferir-previsao`) | Figura do desafio exibia `Módulo = 5`, entregando a resposta de `3+4i` | conteúdo | sim (`mostrar.modulo: false`) |
 | `numeros-complexos` | `p6` (`fechamento`) | Fórmula do `concept_lock` juntava `i ; \|z\|` no mesmo bloco colorido | conteúdo | sim (`i ; ` separado de `\|z\|`) |
 | `polinomios` | `p5` (`fechamento`) | Fórmula do `concept_lock` incluía `=` dentro do bloco de `aₙ` | conteúdo | sim (`=` movido para texto neutro) |

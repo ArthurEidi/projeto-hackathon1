@@ -921,3 +921,17 @@ button {
     transition: none !important;
   }
 }
+
+/* Balão do Paco com altura reservada: a fala atual e as alternativas (invisíveis) dividem a mesma
+   célula; a célula fica com a altura da mais longa e o palco não pula quando a fala troca. */
+.conversa-reserva {
+  display: grid;
+}
+.conversa-reserva > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+.conversa-reserva__fantasma {
+  visibility: hidden;
+  pointer-events: none;
+}

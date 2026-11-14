@@ -18,6 +18,10 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
   const [interacted, setInteracted] = useState(false);
   const [done, setDone] = useState(false);
 
+  const faixas = useMemo(
+    () => Object.fromEntries(step.controls.map((c) => [c.id, { min: c.min, max: c.max }])),
+    [step.controls],
+  );
   const metrics = useMemo(() => ({ ...widgetMetrics, ...controls }), [widgetMetrics, controls]);
 
   // Uma vez concluído, o passo continua concluído mesmo se o aluno voltar o controle.
@@ -39,6 +43,7 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
     <StepLayout
       paco={paco}
       line={done ? step.lines.done : step.lines.intro}
+      reservar={[step.lines.intro, step.lines.done]}
       duvida={duvidaLiberada(step.duvida, done)}
       footer={
         <TactileButton block disabled={!done} onClick={onNext}>
@@ -47,7 +52,7 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
       }
     >
       <div className="stage">
-        <Widget params={step.params} controls={controls} onMetric={onMetric} onInteract={onInteract} done={done} />
+        <Widget params={step.params} controls={controls} faixas={faixas} onMetric={onMetric} onInteract={onInteract} done={done} />
       </div>
       {step.controls.map((c) => (
         <Slider

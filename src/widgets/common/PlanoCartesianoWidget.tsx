@@ -117,7 +117,12 @@ export function PlanoCartesianoWidget({ params, controls, onMetric, onInteract }
   }, [pt, rastro, onMetric]);
 
   const { ref, size, hover } = useCanvas(0.86, (ctx, w, h, hits) => {
-    vista.current = desenharPlano(ctx, w, h, hits, p, controls, { pontoX, rastro, visitados });
+    vista.current = desenharPlano(ctx, w, h, hits, p, controls, {
+      pontoX,
+      rastro,
+      visitados,
+      arrasteAteEncontro: Boolean(pt && pt.arrastavel && !segueSlider),
+    });
     // Convite ao arraste: anel em volta do ponto até o primeiro toque.
     if (pt && pt.arrastavel && !segueSlider && !tocou && pontoX !== undefined && vista.current) {
       const y = alturaDoPonto(curvas, pt.curva, pontoX).y;

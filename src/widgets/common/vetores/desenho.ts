@@ -2,6 +2,7 @@ import { type Hit, type Pt } from "../../canvas";
 import { avaliarExpr } from "../expr";
 import { criarVista, etiqueta, espessura, fmt, malha, nota, pegador, segMundo, tinta, type Alvo } from "../geo/base";
 import { resolver } from "../pontos/calc";
+import { escolherPosicao, type Obstaculo } from "../rotulosPlano";
 import { girarI, somar, type Vetor } from "./calc";
 import type { Vetores } from "./params";
 export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: Vetores, ctl: Record<string, number>, vs: Vetor[], modulo: boolean) {
@@ -24,10 +25,29 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
     for (let i = 0; i <= Math.min(Math.abs(n), 4); i++) seta(zero, girarI(z, i * Math.sign(n)), "muted");
     if (p.mostrar.conjugado) seta(zero, { x: vs[0].comp.x, y: -vs[0].comp.y }, "muted");
   } else if (p.escalar !== undefined) p.vetores.forEach((q, i) => seta(vs[i].cauda, somar(vs[i].cauda, resolver(q.comp, ctl)), "muted"));
+  // Rótulo do vetor além da ponta, na direção dele; se bater em outro rótulo (z e w com pontas
+  // próximas, como z = 2 + i e w = −i encadeados), tenta os lados e acima/abaixo.
+  const rotulos: Obstaculo[] = [];
+  const limites = { x: 4, y: 4, w: w - 8, h: h - 88 };
   vs.forEach((q, i) => {
     seta(q.cauda, q.ponta, i === 0 ? "c3" : "c2");
     if (q.arrastavel !== "nenhum") { const t = q.arrastavel === "cauda" ? q.cauda : q.ponta; pegador(ctx, v.q(t), "c3"); alvos.push({ id: q.id, c: v.q(t), raio: 20 }); }
-    etiqueta(ctx, hits, { x: v.q(q.ponta).x, y: v.q(q.ponta).y - 20 }, q.id, i === 0 ? "c3" : "c2");
+    const A = v.q(q.cauda), B = v.q(q.ponta), n = Math.hypot(B.x - A.x, B.y - A.y);
+    const d = n < 1 ? { x: 0, y: -1 } : { x: (B.x - A.x) / n, y: (B.y - A.y) / n };
+    const r = 24;
+    const candidatos = [
+      { x: B.x + d.x * r, y: B.y + d.y * r },
+      { x: B.x - d.y * r, y: B.y + d.x * r },
+      { x: B.x + d.y * r, y: B.y - d.x * r },
+      { x: B.x, y: B.y - r },
+      { x: B.x, y: B.y + r },
+      { x: B.x + r + 8, y: B.y },
+      { x: B.x - r - 8, y: B.y },
+    ];
+    const lw = 12 * q.id.length + 16;
+    const { pos, caixa } = escolherPosicao(candidatos, lw, 29, rotulos, limites);
+    rotulos.push({ caixa });
+    etiqueta(ctx, hits, pos, q.id, i === 0 ? "c3" : "c2");
   });
   const q = vs[0];
   if (modulo || p.modo === "complexo" || vs.length === 1) { const canto = { x: q.ponta.x, y: q.cauda.y }; segMundo(ctx, v, q.cauda, canto, tinta("c1"), espessura(p.highlight, "c1")); segMundo(ctx, v, canto, q.ponta, tinta("c2"), espessura(p.highlight, "c2")); }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { desenharPlano } from "./desenhoPlano";
+import { desenharPlano, revelaEncontro } from "./desenhoPlano";
 import { PlanoCartesiano, PlanoFigura } from "./params";
 import {
   alturaDoPonto,
@@ -162,5 +162,43 @@ describe("schemas e desenho", () => {
   it.each(casos.map((c, i) => [i, c] as const))("caso %i desenha sem erro", (_, c) => {
     const p = PlanoCartesiano.parse(c);
     expect(() => desenharPlano(ctx, 400, 344, [], p, {}, { pontoX: 1, rastro: [0, 1] })).not.toThrow();
+  });
+});
+
+describe("etiqueta do encontro com ponto arrastável", () => {
+  const textos: string[] = [];
+  const ctx = new Proxy({} as Record<string, unknown>, {
+    get: (_, k) =>
+      k === "measureText" ? () => ({ width: 30 }) : k === "fillText" ? (s: string) => textos.push(s) : () => undefined,
+    set: () => true,
+  }) as unknown as CanvasRenderingContext2D;
+  // equacoes-exponenciais p2: 2ˣ = 8, encontro em (3; 8).
+  const base = {
+    x: [-2, 4],
+    y: [-1, 17],
+    curvas: [{ tipo: "exponencial", a: 1, b: 2 }, { tipo: "afim", a: 0, b: 8 }],
+    marcar: { encontro: true },
+  };
+  const desenha = (ponto: object | undefined, estado: object) => {
+    textos.length = 0;
+    desenharPlano(ctx, 400, 344, [], PlanoCartesiano.parse({ ...base, ponto }), {}, estado);
+    return textos.includes("(3; 8)");
+  };
+
+  it("figura (sem arraste): mostra (3; 8)", () => {
+    expect(desenha(undefined, {})).toBe(true);
+    expect(revelaEncontro({}, 3, true)).toBe(true);
+  });
+  it("antes do arraste não mostra; ao chegar em x = 3, mostra", () => {
+    const ponto = { x: 0, coordenadas: false };
+    expect(desenha(ponto, { pontoX: 0, arrasteAteEncontro: true })).toBe(false);
+    expect(desenha(ponto, { pontoX: 3, arrasteAteEncontro: true })).toBe(true);
+  });
+  it("ponto com coordenadas: só a etiqueta do próprio ponto, sem duplicar", () => {
+    const ponto = { x: 0 };
+    expect(desenha(ponto, { pontoX: 0, arrasteAteEncontro: true })).toBe(false);
+    textos.length = 0;
+    desenharPlano(ctx, 400, 344, [], PlanoCartesiano.parse({ ...base, ponto }), {}, { pontoX: 3, arrasteAteEncontro: true });
+    expect(textos.filter((s) => s === "(3; 8)")).toHaveLength(1);
   });
 });

@@ -28,7 +28,7 @@ it("figuras numéricas ocupam 80% da dimensão útil, sem depender do limite pad
   }
 });
 
-it("chips não se sobrepõem em 400 px, inclusive em peças nulas ou estreitas", () => {
+it("chips não se sobrepõem em 400 px; peça de área zero fica sem chip (com b = 0 só a² ou (a−b)²)", () => {
   const ctx = new Proxy({ measureText: (s: string) => ({ width: s.length * 9 }) }, {
     get: (o, k) => k in o ? Reflect.get(o, k) : () => {},
     set: (o, k, value) => Reflect.set(o, k, value),
@@ -36,7 +36,8 @@ it("chips não se sobrepõem em 400 px, inclusive em peças nulas ou estreitas",
   for (const retirar of [false, true]) for (const b of [0, 0.1, 1, 2]) {
     const hits: Hit[] = [];
     desenhar(ctx, 400, 400, hits, Areas.parse({ modo: "produto", a: 2, b, retirar }), {});
-    expect(hits).toHaveLength(6);
+    // 2 chips fixos (lado e área) + 1 peça com b = 0; as 4 peças com b > 0, menos (a−b)² quando b = a na retirada.
+    expect(hits).toHaveLength(b === 0 ? 3 : retirar && b === 2 ? 5 : 6);
     for (const [i, a] of hits.entries()) {
       expect(a.x).toBeGreaterThanOrEqual(0);
       expect(a.x + a.w).toBeLessThanOrEqual(400);
@@ -56,4 +57,14 @@ it("mostrar.total=false esconde Área e soma, mantendo Lado e peças", () => {
   const hitsSemTotal: Hit[] = [];
   desenhar(ctx, 400, 400, hitsSemTotal, Areas.parse({ modo: "produto", a: 2, b: 1, mostrar: { total: false } }), {});
   expect(hitsSemTotal).toHaveLength(5);
+});
+
+it("com as faixas dos sliders, a escala é a do maior lado possível (b de 0 a 3: lado 5 enche a vista)", () => {
+  const p = Areas.parse({ modo: "produto", a: 2, b: "$b" });
+  const faixas = { b: { min: 0, max: 3 } };
+  const escalas = [0, 1, 2, 3].map((b) => vistaAreas(400, 400, p, { b }, faixas).k);
+  expect(new Set(escalas).size).toBe(1);
+  expect(5 * escalas[0]).toBeCloseTo((400 - 140) * 0.8);
+  // Sem faixas, continua o limite (8).
+  expect(vistaAreas(400, 400, p, { b: 0 }).k * 8).toBeCloseTo((400 - 140) * 0.8);
 });

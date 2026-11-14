@@ -16,6 +16,7 @@ export function ManimVideo({ step, onNext }: StepProps<ManimVideoStep>) {
     <StepLayout
       paco={done ? "happy" : "thinking"}
       line={done ? step.lines.done : step.lines.intro}
+      reservar={[step.lines.intro, step.lines.done]}
       duvida={duvidaLiberada(step.duvida, done)}
       footer={
         <TactileButton block disabled={!done} onClick={onNext}>

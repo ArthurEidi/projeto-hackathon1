@@ -43,6 +43,21 @@ export interface EstadoPlano {
   rastro?: number[];
   /** Quadrantes já visitados (1..4), tingidos de leve. */
   visitados?: ReadonlySet<number>;
+  /**
+   * O aluno ainda precisa levar o ponto até lá (ponto arrastável no widget): a coordenada do
+   * encontro só aparece quando o ponto chega, para não entregar a resposta antes do arraste.
+   */
+  arrasteAteEncontro?: boolean;
+}
+
+/**
+ * Mostra a etiqueta "(x; y)" do encontro em xe? Na figura, sempre. Com ponto arrastável, só quando
+ * o ponto está no encontro, e só se o próprio ponto não mostra as coordenadas (evita etiqueta dupla).
+ */
+export function revelaEncontro(estado: EstadoPlano, xe: number, pontoComCoordenadas: boolean): boolean {
+  if (!estado.arrasteAteEncontro) return true;
+  if (pontoComCoordenadas) return false;
+  return estado.pontoX !== undefined && Math.abs(estado.pontoX - xe) < 1e-6;
 }
 
 /** Vista e onde ficaram os marcadores tocáveis. */
@@ -153,8 +168,6 @@ export function desenharPlano(
     seg(ctx, { x: eixoX - 4, y: v.Y(y) }, { x: eixoX + 4, y: v.Y(y) }, c.axis, 2);
     text(ctx, { x: eixoX - 13, y: v.Y(y) }, num(y), c.muted, 11);
   }
-  text(ctx, { x: A.x + A.w - 2, y: eixoY - 14 }, "x", c.ink2, 14);
-  text(ctx, { x: eixoX + 13, y: A.y + 4 }, "y", c.ink2, 14);
 
   if (p.marcar.quadrantes) {
     const nomes: [string, number, number][] = [
@@ -179,6 +192,13 @@ export function desenharPlano(
     draw: (pos: Pt) => void;
   };
   const pendentes: RotuloPendente[] = [];
+  // Letras dos eixos: desenhadas aqui e reservadas, para nenhum rótulo cair por cima.
+  const letraX = { x: A.x + A.w - 2, y: eixoY - 14 };
+  const letraY = { x: eixoX + 13, y: A.y + 4 };
+  text(ctx, letraX, "x", c.ink2, 14);
+  text(ctx, letraY, "y", c.ink2, 14);
+  ocupados.push({ caixa: caixaDoCentro(letraX, 12, 16), folgaX: 2, folgaY: 2 });
+  ocupados.push({ caixa: caixaDoCentro(letraY, 12, 16), folgaX: 2, folgaY: 2 });
   const registrarPonto = (pt: Pt, raio: number) => {
     ocupados.push({ caixa: caixaDoCentro(pt, raio * 2, raio * 2), folgaX: 1, folgaY: 1 });
   };
@@ -380,7 +400,9 @@ export function desenharPlano(
       const pe = { x: v.X(x), y: v.Y(y) };
       dot(ctx, pe, espessura(cor, 7, hl), corDoTraco(cor).main);
       registrarPonto(pe, 7);
-      agendarChip(pe, { x: pe.x + 44, y: pe.y + 18 }, `(${num(x)}; ${num(y)})`, cor, 1);
+      if (revelaEncontro(estado, x, p.ponto?.coordenadas ?? false)) {
+        agendarChip(pe, { x: pe.x + 44, y: pe.y + 18 }, `(${num(x)}; ${num(y)})`, cor, 1);
+      }
     }
   }
   if (p.marcar.angulo && curvas.length >= 2 && curvas[0].tipo === "afim" && curvas[1].tipo === "afim" && !iguais) {
@@ -550,14 +572,17 @@ export function desenharPlano(
     if (!cv.rotulo) return;
     const k = curvas[i];
     const { w: lw, h: lh } = medirChip(cv.rotulo);
-    for (const exigente of [true, false]) {
-      const deslocamentos = exigente ? [-22] : [-22, 22];
+    // 3 tentativas, cada uma mais tolerante: longe dos eixos; fora da faixa de 10% das bordas;
+    // qualquer altura (ex.: a reta y = 1 com y de 0 a 17, que antes ficava sem rótulo).
+    for (const modo of ["exigente", "normal", "livre"] as const) {
+      const deslocamentos = modo === "exigente" ? [-22] : [-22, 22];
       for (const dy of deslocamentos) {
         for (let j = 0; j <= 60; j++) {
           const x = x1 - (x1 - x0) * (0.16 + j / 80);
           const y = avaliar(k, x);
-          if (!Number.isFinite(y) || y < y0 + (y1 - y0) * 0.1 || y > y1 - (y1 - y0) * 0.1) continue;
-          if (exigente && (Math.abs(y) < (y1 - y0) * 0.2 || Math.abs(x) < (x1 - x0) * 0.08)) continue;
+          if (!Number.isFinite(y) || y < y0 || y > y1) continue;
+          if (modo !== "livre" && (y < y0 + (y1 - y0) * 0.1 || y > y1 - (y1 - y0) * 0.1)) continue;
+          if (modo === "exigente" && (Math.abs(y) < (y1 - y0) * 0.2 || Math.abs(x) < (x1 - x0) * 0.08)) continue;
           const pos = { x: v.X(x), y: v.Y(y) + dy };
           const r = caixaDoCentro(pos, lw, lh);
           if (!dentroDosLimites(r, limites) || colideComAlgum(r, ocupados)) continue;
