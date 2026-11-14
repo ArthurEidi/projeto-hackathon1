@@ -291,7 +291,7 @@
             "id": "a2",
             "label": "2",
             "correct": false,
-            "feedback": "x² = 4, então y = 4/4 = 1."
+            "feedback": "Você repetiu x = 2 (ou dividiu 4 por 2). Como 2² = 4y, y = 4/4 = 1."
           },
           {
             "id": "a16",
@@ -536,13 +536,13 @@
             "id": "a11",
             "label": "11",
             "correct": false,
-            "feedback": "A diretriz está em y = −1: y − (−1) = 10 ⇒ y + 1 = 10 ⇒ y = 9."
+            "feedback": "Você somou 10 + 1 = 11 em vez de subtrair 1: y + 1 = 10 ⇒ y = 9."
           },
           {
             "id": "a25",
             "label": "25",
             "correct": false,
-            "feedback": "Basta usar a definição: distância à diretriz y = −1 vale 10, portanto y = 9."
+            "feedback": "25 viria de x = 10 em x² = 4y. Pela definição, y + 1 = 10, logo y = 9."
           }
         ]
       },

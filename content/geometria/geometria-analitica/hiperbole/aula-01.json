@@ -559,19 +559,19 @@
             "id": "xpy",
             "label": "x² + y² = 1",
             "correct": false,
-            "feedback": "Sinais iguais e coeficientes 1 representam uma circunferência."
+            "feedback": "Sinais iguais e coeficientes 1 dão circunferência. Hipérbole: x² − y² = 1."
           },
           {
             "id": "x4y",
             "label": "x² = 4y",
             "correct": false,
-            "feedback": "Apenas uma variável ao quadrado representa uma parábola."
+            "feedback": "Só uma variável ao quadrado dá parábola. Hipérbole: x² − y² = 1."
           },
           {
             "id": "e",
             "label": "x²/4 + y² = 1",
             "correct": false,
-            "feedback": "Soma de quadrados com coeficientes diferentes representa uma elipse."
+            "feedback": "Soma de quadrados com pesos diferentes dá elipse. Hipérbole: x² − y² = 1."
           }
         ]
       },

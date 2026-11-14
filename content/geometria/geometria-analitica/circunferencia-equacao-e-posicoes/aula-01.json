@@ -95,7 +95,7 @@
       },
       "lines": {
         "intro": "Agora mova o centro para a direita. O que muda na equação?",
-        "done": "A distância agora é medida a partir de (3; 0): (x − 3)² + y² = 25. O centro entra subtraindo dentro dos parênteses."
+        "done": "A distância agora é medida a partir de (a; 0), como em (x − 3)² + y² = 25. O centro entra subtraindo dentro dos parênteses."
       }
     },
     {
@@ -313,7 +313,7 @@
             "id": "a2",
             "label": "2",
             "correct": false,
-            "feedback": "2 seria com r² = 4. Aqui r = 4."
+            "feedback": "Você tirou a raiz duas vezes (√16 = 4 e √4 = 2). O raio é 4."
           }
         ]
       },
@@ -337,7 +337,7 @@
             "id": "c00",
             "label": "(0; 0)",
             "correct": false,
-            "feedback": "O centro foi deslocado para (1; 5)."
+            "feedback": "Você usou a origem (0; 0), ignorando −1 e −5. O centro é (1; 5)."
           },
           {
             "id": "c51",
@@ -397,7 +397,7 @@
             "id": "e16",
             "label": "x² + y² = 16",
             "correct": false,
-            "feedback": "16 seria raio 4. Com raio 2: 4."
+            "feedback": "Você elevou ao quadrado duas vezes (2² = 4 e 4² = 16). Com raio 2, r² = 4."
           }
         ]
       }
@@ -453,7 +453,7 @@
             "id": "troca",
             "label": "(x − 3)² + (y − 2)² = 25",
             "correct": false,
-            "feedback": "O 2 vai com x e o 3 com y."
+            "feedback": "Você trocou x e y de lugar. O certo é (x − 2)² + (y − 3)² = 25."
           }
         ]
       },
@@ -477,7 +477,7 @@
             "id": "c03",
             "label": "(0; 3)",
             "correct": false,
-            "feedback": "O 3 está com o x: (−3; 0)."
+            "feedback": "Você trocou o sinal e pôs o 3 em y. O 3 está com x: (−3; 0)."
           },
           {
             "id": "cm31",
@@ -503,7 +503,7 @@
             "id": "secante",
             "label": "Secante",
             "correct": false,
-            "feedback": "A reta está a 5 do centro, igual ao raio: toca em um ponto só."
+            "feedback": "A reta está a 5 do centro, igual ao raio: toca em um ponto só, é tangente."
           },
           {
             "id": "exterior",
@@ -569,7 +569,7 @@
             "id": "e48",
             "label": "x² + y² = 48",
             "correct": false,
-            "feedback": "r² = 6² + 8² = 100."
+            "feedback": "Você multiplicou 6 · 8 = 48 em vez de somar os quadrados: r² = 6² + 8² = 100."
           }
         ]
       },

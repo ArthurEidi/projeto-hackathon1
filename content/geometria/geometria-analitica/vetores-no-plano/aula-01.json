@@ -88,7 +88,7 @@
       },
       "lines": {
         "intro": "v começa nulo: quanto dá u + v? Agora arraste a ponta de v e veja a soma andar.",
-        "done": "Com v nulo, u + v = u. Com v = (1; 2), a soma chega em (4; 3): componente com componente."
+        "done": "Com v nulo, u + v = u. Por exemplo, com v = (1; 2), a soma chega em (4; 3): componente com componente."
       }
     },
     {
@@ -125,7 +125,7 @@
       },
       "lines": {
         "intro": "Multiplique u por k. Com k = 2, a seta muda de direção ou só de tamanho?",
-        "done": "Só de tamanho: 2u = (6; 2), mesma direção e o dobro do comprimento."
+        "done": "Só de tamanho: k·u mantém a direção e multiplica o comprimento (ex.: 2u = (6; 2))."
       },
       "duvida": {
         "quando": "fim",

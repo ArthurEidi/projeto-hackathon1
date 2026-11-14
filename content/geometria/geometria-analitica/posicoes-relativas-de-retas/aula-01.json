@@ -219,7 +219,7 @@
       },
       "lines": {
         "intro": "A primeira reta tem m = 1. Gire a segunda até formar um ângulo reto: quanto vale m₂?",
-        "done": "Com m₂ = −1: m₁ · m₂ = 1 · (−1) = −1. Perpendiculares têm inclinações cujo produto é −1."
+        "done": "Quando m₂ = −1, temos m₁ · m₂ = 1 · (−1) = −1 e o ângulo fica reto. Perpendiculares têm produto das inclinações igual a −1."
       },
       "duvida": {
         "quando": "fim",
