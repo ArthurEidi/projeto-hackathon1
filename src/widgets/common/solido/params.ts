@@ -105,6 +105,8 @@ const Tronco = z.object({
   separar: Expr.default(0),
   /** Painel com o corte meridiano do tronco (trapézio e triângulo lateral). */
   meridiano: z.boolean().default(false),
+  /** O que o painel meridiano mostra; `g: false` escreve "g = ?" (quando a aula pergunta a geratriz). */
+  mostrar: z.object({ g: z.boolean().default(true) }).default({ g: true }),
   cores: z.object({ k: CorTraco.default("c1"), secao: CorTraco.default("c2"), ponta: CorTraco.default("c3"), tronco: CorTraco.default("c4") }).default({ k: "c1", secao: "c2", ponta: "c3", tronco: "c4" }),
   ...Base,
 });
@@ -160,6 +162,8 @@ const Vistas = z.object({
   chave_corte: z.boolean().default(false),
   /** 0..1: molde do dado fechando (solido: "dado"). */
   fechar: Expr.default(1),
+  /** Dado: número da face (1..6) pintada forte e contornada, para apontar a face de uma alternativa. */
+  face_destaque: z.number().int().min(1).max(6).optional(),
   cores: z.object({ frente: CorTraco.default("c1"), lado: CorTraco.default("c2"), topo: CorTraco.default("c3"), corte: CorTraco.default("c2"), par: CorTraco.default("c4") }).default({ frente: "c1", lado: "c2", topo: "c3", corte: "c2", par: "c4" }),
   ...Base,
 });

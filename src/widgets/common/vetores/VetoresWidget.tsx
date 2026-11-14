@@ -8,12 +8,12 @@ import { Chave, linhaDeChaves, useArrasto } from "../geo/Controles";
 import { metricas, resolverVetores, type Mudancas } from "./calc";
 import { desenhar } from "./desenho";
 import { VetoresParams } from "./params";
-export function VetoresWidget({ params, controls, onMetric, onInteract }: WidgetProps) {
+export function VetoresWidget({ params, controls, faixas, onMetric, onInteract }: WidgetProps) {
   const p = useMemo(() => VetoresParams.parse(params), [params]);
   const [s, setS] = useState<{ mud: Mudancas; origens: string[]; modulo: boolean }>({ mud: {}, origens: [], modulo: p.mostrar.modulo });
   const vs = useMemo(() => resolverVetores(p, controls, s.mud), [p, controls, s.mud]);
   const geo = useRef<ReturnType<typeof desenhar> | null>(null);
-  const { ref, hover, size } = useCanvas(1.05, (ctx, w, h, hits) => { geo.current = desenhar(ctx, w, h, hits, p, controls, vs, s.modulo); });
+  const { ref, hover, size } = useCanvas(1.05, (ctx, w, h, hits) => { geo.current = desenhar(ctx, w, h, hits, p, controls, vs, s.modulo, faixas); });
   useEffect(() => { for (const [k, v] of Object.entries(metricas(p, controls, vs, s.origens.length, s.modulo))) onMetric(k, v); }, [p, controls, vs, s.origens.length, s.modulo, onMetric]);
   const arrasto = useArrasto({ alvos: () => geo.current?.alvos ?? [], onInteract, onMove: (id, point) => {
     if (!geo.current || p.modo !== "vetores") return;

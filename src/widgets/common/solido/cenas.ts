@@ -427,7 +427,7 @@ function cenaTronco(p: SolidoDe<"tronco">, ctl: Controles): Cena {
       { s: `área ×${num(k * k, 3)}`, cor: p.cores.secao },
       { s: `volume ×${num(k ** 3, 3)}`, cor: p.cores.ponta },
     ],
-    painel: p.meridiano ? { tipo: "meridiano", dados: { R, r: rk, ht: yc, cor: p.cores.tronco, corK: p.cores.k } } : undefined,
+    painel: p.meridiano ? { tipo: "meridiano", dados: { R, r: rk, ht: yc, cor: p.cores.tronco, corK: p.cores.k, mostrarG: p.mostrar.g } } : undefined,
     metricas: { k, area_secao: cone ? Math.PI * rk * rk : (2 * rk) ** 2, volume_total: Vt, volume_menor: Vm, volume_tronco: Vt - Vm, separado: s },
   };
 }
@@ -632,8 +632,16 @@ function cenaVistas(p: SolidoDe<"vistas">, ctl: Controles, e: EstadoSolido): Cen
   if (nome === "dado") {
     const t = limitar(ex(p.fechar, ctl), 0, 1);
     const pares: Record<number, CorTraco> = { 1: "c1", 6: "c1", 2: "c2", 5: "c2", 3: p.cores.par, 4: p.cores.par };
-    const malhas: Malha[] = moldeDado(t).map((f) => ({ v: f.pts, f: [{ idx: [0, 1, 2, 3], grupo: -1, cor: tint(pares[f.numero]), n: unit3(normal(f.pts)) }] }));
-    moldeDado(t).forEach((f) => anotacoes.push({ tipo: "texto", p: media3(f.pts), s: String(f.numero) }));
+    const fd = p.face_destaque;
+    const malhas: Malha[] = moldeDado(t).map((f) => ({
+      v: f.pts,
+      f: [{ idx: [0, 1, 2, 3], grupo: -1, cor: f.numero === fd ? corDoTraco(pares[f.numero]).main : tint(pares[f.numero]), n: unit3(normal(f.pts)) }],
+    }));
+    moldeDado(t).forEach((f) => {
+      if (f.numero === fd) anotacoes.push({ tipo: "poligono", pts: f.pts, cor: pares[f.numero], forte: true });
+      anotacoes.push({ tipo: "texto", p: media3(f.pts), s: String(f.numero) });
+    });
+    if (fd !== undefined) metricas.face_destaque = fd;
     metricas.fechado = t;
     return { malhas, anotacoes, extras: [[-3, 0, -5], [3, 2, 3]], placar: [], metricas };
   }

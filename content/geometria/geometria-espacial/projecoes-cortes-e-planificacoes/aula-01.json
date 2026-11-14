@@ -110,21 +110,21 @@
           "label": "Face 2",
           "correct": false,
           "feedback": "A face 2 é vizinha direta da 1 (faz 90° na frente). Pulando a 5, a oposta à 1 é a 6.",
-          "figure": { "fechar": 0.5 }
+          "figure": { "fechar": 0.5, "face_destaque": 2 }
         },
         {
           "id": "f3",
           "label": "Face 3",
           "correct": false,
           "feedback": "A face 3 é aba lateral vizinha da 1 (oposta à 4). Na fila 2-1-5-6, a oposta à 1 é a 6.",
-          "figure": { "fechar": 0.5 }
+          "figure": { "fechar": 0.75, "face_destaque": 3 }
         },
         {
           "id": "f5",
           "label": "Face 5",
           "correct": false,
           "feedback": "A face 5 é vizinha de trás da 1 (oposta à 2). Pulando a 5, a oposta à 1 é a 6.",
-          "figure": { "fechar": 0.5 }
+          "figure": { "fechar": 0.5, "face_destaque": 5 }
         }
       ]
     },

@@ -489,6 +489,9 @@ Ver §5.11.
 
 ### 5.7 `solido_3d` + `solido_3d_figura` — PRONTOS
 Inclui os modos `revolucao`, `prisma`, `piramide`, `cilindro`, `esfera`, `tronco`, `poliedro`, `espaco`, `vistas`, `composicao` e `corte_cone` (`inclinacao` em graus, `altura_do_corte`, `r`, `h`; métricas `secao` 0..3 e `secoes_vistas` 0..4 para circunferência, elipse, parábola e hipérbole). `solido_3d_figura` recusa `"$slider"`.
+
+- **Esconder a medida pedida no tronco:** `mostrar: { "g": false }` (modo `tronco`, com `meridiano: true`) troca `g = 5` por `g = ?` no painel do corte meridiano. Padrão: `true`.
+- **Destacar uma face do dado:** `face_destaque: 1..6` (modo `vistas`, `solido: "dado"`) pinta a face com a cor forte do par e a contorna; serve para a figura de cada alternativa apontar a face escolhida (ex.: `{ "fechar": 0.5, "face_destaque": 2 }`). Métrica `face_destaque`.
 Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer perfil (retângulo → cilindro, semicírculo → esfera, trapézio → tronco) e acrescentar sólidos de faces planas; mesma câmera ortográfica e convenção de aresta oculta tracejada. Inclui planificação (Aula 02 de Cones já prevista na taxonomia).
 
 ### 5.8 Menores, mas úteis

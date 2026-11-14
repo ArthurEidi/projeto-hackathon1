@@ -95,3 +95,19 @@ describe("contas do solido_3d", () => {
     expect(montarCena(semPlacar, {}).placar).toEqual([]);
   });
 });
+
+describe("ocultar e destacar (B1b)", () => {
+  it("tronco: mostrar.g false leva o painel a escrever g = ?", () => {
+    const c = montarCena(Solido3d.parse({ modo: "tronco", solido: "cone", R: 6, H: 4.5, corte: 1.5, meridiano: true, mostrar: { g: false } }), {});
+    expect((c.painel?.dados as Record<string, unknown>).mostrarG).toBe(false);
+    const padrao = montarCena(Solido3d.parse({ modo: "tronco", meridiano: true }), {});
+    expect((padrao.painel?.dados as Record<string, unknown>).mostrarG).toBe(true);
+  });
+  it("dado: face_destaque contorna só a face pedida", () => {
+    const c = montarCena(Solido3dFigura.parse({ modo: "vistas", solido: "dado", fechar: 0.5, face_destaque: 2 }), {});
+    expect(c.metricas.face_destaque).toBe(2);
+    expect(c.anotacoes.filter((a) => a.tipo === "poligono")).toHaveLength(1);
+    expect(montarCena(Solido3dFigura.parse({ modo: "vistas", solido: "dado" }), {}).anotacoes.filter((a) => a.tipo === "poligono")).toHaveLength(0);
+    expect(Solido3dFigura.safeParse({ modo: "vistas", solido: "dado", face_destaque: 7 }).success).toBe(false);
+  });
+});

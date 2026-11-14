@@ -115,6 +115,7 @@
         "H": 4.5,
         "corte": 1.5,
         "meridiano": true,
+        "mostrar": { "g": false },
         "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
       },
       "controls": [

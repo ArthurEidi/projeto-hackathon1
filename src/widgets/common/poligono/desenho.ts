@@ -34,6 +34,7 @@ import {
   type EstadoPol,
 } from "./calc";
 import type { Poligonos, PoligonoDe } from "./params";
+import { filaDeRotulos } from "../geo/filaRotulos";
 
 type G = CanvasRenderingContext2D;
 export interface GeoPol {
@@ -116,23 +117,28 @@ function dMalha(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"malha"
   }
   const topoX = p.forma === "paralelogramo" ? g.inc : p.forma === "triangulo" ? g.inc : p.forma === "trapezio" ? g.inc : 0;
   const hh = g.pts.reduce((a, q) => Math.max(a, q.y), 0);
-  // Altura h tracejada e rótulos.
+  // Altura h tracejada e rótulos. Os chips vão para uma fila e desviam uns dos outros
+  // (em 1 × 3, "A = 3" no centro cobria o "3" de "h = 3").
+  const rot = filaDeRotulos(ctx, hits, { x: 2, y: 2, w: w - 4, h: h - banda(1) - 2 });
   if (p.mostrar.alturas) {
-    if (p.forma === "retangulo") etiqueta(ctx, hits, v.p(-0.45, hh / 2), `h = ${fmt(hh)}`, "c2");
-    else {
-      segMundo(ctx, v, { x: topoX, y: 0 }, { x: topoX, y: hh }, tinta("c2"), espessura(hl, "c2", 3), [7, 5]);
-      etiqueta(ctx, hits, v.p(topoX - 0.4, hh / 2), `h = ${fmt(hh)}`, "c2");
-    }
+    const xh = p.forma === "retangulo" ? 0 : topoX;
+    if (p.forma !== "retangulo") segMundo(ctx, v, { x: topoX, y: 0 }, { x: topoX, y: hh }, tinta("c2"), espessura(hl, "c2", 3), [7, 5]);
+    const ph = v.p(xh, hh / 2);
+    rot.agendar([{ x: ph.x - 36, y: ph.y }, { x: ph.x - 48, y: ph.y }, { x: ph.x - 36, y: ph.y - 30 }], `h = ${fmt(hh)}`, "c2", 0);
   }
   const baseW = Math.max(...g.pts.map((q) => q.x)) - Math.min(0, ...g.pts.map((q) => q.x));
   const baixo = p.forma === "trapezio" ? g.B : p.forma === "retangulo" ? g.b * g.k : g.b;
-  etiqueta(ctx, hits, v.p(baixo / 2, -0.5), p.forma === "trapezio" ? `B = ${fmt(g.B)}` : `b = ${fmt(baixo)}`, "c1");
-  if (p.forma === "trapezio") etiqueta(ctx, hits, v.p(topoX + g.b / 2, hh + 0.5), `b = ${fmt(g.b)}`, "c1");
+  rot.agendar([v.p(baixo / 2, -0.5)], p.forma === "trapezio" ? `B = ${fmt(g.B)}` : `b = ${fmt(baixo)}`, "c1", 0);
+  if (p.forma === "trapezio") rot.agendar([v.p(topoX + g.b / 2, hh + 0.5)], `b = ${fmt(g.b)}`, "c1", 0);
   void baseW;
   const centro = { x: g.pts.reduce((a, q) => a + q.x, 0) / g.pts.length, y: g.pts.reduce((a, q) => a + q.y, 0) / g.pts.length };
-  if (p.mostrar.area) etiqueta(ctx, hits, v.q(centro), `A = ${fmt(g.area)}`, "c3");
-  if (p.mostrar.perimetro && p.forma !== "retangulo") etiqueta(ctx, hits, v.p(centro.x, hh + (p.forma === "trapezio" ? 1.5 : 0.5)), `P = ${fmt(g.perimetro)}`, "c4");
-  else if (p.mostrar.perimetro) etiqueta(ctx, hits, v.p(centro.x, hh + 0.5), `P = ${fmt(g.perimetro)}`, "c4");
+  if (p.mostrar.perimetro && p.forma !== "retangulo") rot.agendar([v.p(centro.x, hh + (p.forma === "trapezio" ? 1.5 : 0.5))], `P = ${fmt(g.perimetro)}`, "c4", 1);
+  else if (p.mostrar.perimetro) rot.agendar([v.p(centro.x, hh + 0.5)], `P = ${fmt(g.perimetro)}`, "c4", 1);
+  if (p.mostrar.area) {
+    const pc = v.q(centro), dxA = Math.max(...g.pts.map((q) => v.p(q.x, 0).x)) - pc.x + 40;
+    rot.agendar([pc, { x: pc.x + dxA, y: pc.y }, { x: pc.x, y: pc.y - 34 }], `A = ${fmt(g.area)}`, "c3", 2);
+  }
+  rot.colocar();
   const formula =
     p.forma === "triangulo" ? `A = b · h / 2 = ${fmt(g.area)}` : p.forma === "trapezio" ? `A = (B + b) · h / 2 = ${fmt(g.area)}` : `A = b · h = ${fmt(g.area)}`;
   if (p.mostrar.area) {
@@ -225,23 +231,43 @@ function dRegular(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"regu
     g.pts.forEach((q, i) => {
       poligonoMundo(ctx, v, [{ x: 0, y: 0 }, q, g.pts[(i + 1) % g.n]], tintaClara("c1"), palette.ink2, 2);
     });
-    etiqueta(ctx, hits, v.q({ x: g.pts[0].x * 0.5 + g.pts[1].x * 0.5, y: g.pts[0].y * 0.5 + g.pts[1].y * 0.5 }), `${fmt(g.lado)}`, "c1");
-    etiqueta(ctx, hits, v.q({ x: g.pts[0].x * 0.5, y: g.pts[0].y * 0.5 }), `${fmt(R)}`, "c1");
+  }
+  // Chips em fila: lado, raio, central, externo e interno desviam uns dos outros
+  // (no hexágono, "120°" cobria o "60°" central e o raio).
+  const rot = filaDeRotulos(ctx, hits, { x: 2, y: 2, w: w - 4, h: h - banda(1) - 2 });
+  rot.reservar(O, 12, 12);
+  if (g.dividido) {
+    const ml = { x: (g.pts[0].x + g.pts[1].x) / 2, y: (g.pts[0].y + g.pts[1].y) / 2 };
+    rot.agendar([1, 1.18, 0.82].map((f) => v.q({ x: ml.x * f, y: ml.y * f })), `${fmt(g.lado)}`, "c1", 1);
+    const mr = v.q({ x: g.pts[0].x * 0.5, y: g.pts[0].y * 0.5 });
+    const d = { x: v.q(g.pts[0]).x - O.x, y: v.q(g.pts[0]).y - O.y }, nd = Math.hypot(d.x, d.y) || 1;
+    rot.agendar([mr, { x: mr.x - (d.y / nd) * 20, y: mr.y + (d.x / nd) * 20 }, { x: mr.x + (d.y / nd) * 20, y: mr.y - (d.x / nd) * 20 }], `${fmt(R)}`, "c1", 1);
   }
   // Ângulo central entre os vértices 0 e 1.
   const aC = 90;
-  if (p.mostrar.central) anguloMarcado(ctx, hits, O, aC, aC + g.central, Math.min(46, R * v.k * 0.35), `${fmt(g.central, 0)}°`, "c1");
+  if (p.mostrar.central) {
+    const rpx = Math.min(46, R * v.k * 0.35);
+    anguloMarcado(ctx, hits, O, aC, aC + g.central, rpx, null, "c1");
+    const m = ((aC + g.central / 2) * Math.PI) / 180;
+    rot.agendar([22, 40, 60].map((d) => ({ x: O.x + Math.cos(m) * (rpx + d), y: O.y - Math.sin(m) * (rpx + d) })), `${fmt(g.central, 0)}°`, "c1", 0);
+  }
   // Externo e interno no vértice 0.
   const v0 = v.q(g.pts[0]);
   const h1 = dirGraus(g.pts[0], g.pts[1]);
   if (p.mostrar.externo) {
     setor(ctx, v0, 30, h1 - g.externo, h1, tintaClara("c2"), tinta("c2"), espessura(hl, "c2", 3));
-    etiqueta(ctx, hits, { x: v0.x - 34, y: v0.y - 8 }, `${fmt(g.externo, 0)}°`, "c2");
+    rot.agendar([{ x: v0.x - 34, y: v0.y - 8 }, { x: v0.x - 34, y: v0.y - 30 }, { x: v0.x - 56, y: v0.y - 8 }], `${fmt(g.externo, 0)}°`, "c2", 0);
   }
   if (p.mostrar.interno) {
     setor(ctx, v0, 30, h1, h1 + g.interno, tintaClara("c3"), tinta("c3"), espessura(hl, "c3", 3));
-    etiqueta(ctx, hits, { x: v0.x + 12, y: v0.y + 52 }, `${fmt(g.interno, 0)}°`, "c3");
+    // Dentro do setor do interno, ao longo da bissetriz (o setor se abre para dentro do polígono).
+    const bi = ((h1 + g.interno / 2) * Math.PI) / 180;
+    rot.agendar(
+      [{ x: v0.x + 12, y: v0.y + 52 }, ...[52, 70, 90].map((d) => ({ x: v0.x + Math.cos(bi) * d, y: v0.y - Math.sin(bi) * d }))],
+      `${fmt(g.interno, 0)}°`, "c3", 1);
   }
+  rot.reservar(v0, 10, 10);
+  rot.colocar();
   if (p.mostrar.legenda) rodape(ctx, w, h, [{ t: `n = ${g.n} · externo ${fmt(g.externo, 1)}° · interno ${fmt(g.interno, 1)}°`, c: "ink" }]);
   return { vista: v };
 }

@@ -20,6 +20,7 @@ import {
   type Alvo,
   type Vista,
 } from "../geo/base";
+import { filaDeRotulos, type FilaRotulos } from "../geo/filaRotulos";
 import { fracaoPi, modeloCiclo, rotuloMarcoRad, type Ctl, type EstadoCiclo } from "./calc";
 import type { Ciclo } from "./params";
 
@@ -63,6 +64,7 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
   const v = criarVista(w, alturaCiclo, { x0: p.grafico ? -2.1 : -1.5, x1, y0: -1.5, y1: 1.5 }, 12);
   const O = v.p(0, 0);
   const R = v.k;
+  const rot = filaDeRotulos(ctx, hits, { x: 2, y: 2, w: w - 4, h: h - 4 });
 
   // Eixos, circunferência e marcos.
   segMundo(ctx, v, { x: -1.4, y: 0 }, { x: 1.4, y: 0 }, palette.lineDark, 1.5);
@@ -79,6 +81,7 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
     for (const [g, t] of marcos) {
       const q = v.q(polar(1.2, g));
       nota(ctx, { x: q.x + (g === 0 ? 4 : 0), y: q.y }, t, "muted", 12);
+      rot.reservar({ x: q.x + (g === 0 ? 4 : 0), y: q.y }, 8 * t.length + 6, 16);
     }
   }
 
@@ -94,6 +97,7 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
     dot(ctx, q, 5, palette.muted);
     const t = v.q(polar(1.2, (r * 180) / Math.PI));
     nota(ctx, t, rotuloMarcoRad(r), "muted", 12);
+    rot.reservar(t, 8 * rotuloMarcoRad(r).length + 6, 16);
   }
 
   // Arco solução e retas-alvo.
@@ -141,7 +145,8 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
     [base, 180 - base, 180 + base, 360 - base].forEach((g, i) => {
       dot(ctx, v.q(pts[i]), 5, tinta(cor.simetricos));
       const gn = ((g % 360) + 360) % 360;
-      etiqueta(ctx, hits, v.q(polar(1.28, g)), `${fmt(gn, 0)}°`, cor.simetricos);
+      const s1 = v.q(polar(1.28, g));
+      rot.agendar([s1, v.q(polar(1.42, g)), { x: s1.x, y: s1.y + (Math.sin(rad(g)) >= 0 ? -16 : 16) }], `${fmt(gn, 0)}°`, cor.simetricos, 0);
     });
   }
 
@@ -158,8 +163,9 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
     arco(ctx, O, R * 0.5, 0, m.soma.alfa, tinta(cor.alfa), 4, tintaClara(cor.alfa));
     arco(ctx, O, R * 0.62, m.soma.alfa, m.soma.alfa + m.soma.beta, tinta(cor.beta), 4, tintaClara(cor.beta));
     dot(ctx, v.q(noCiclo(m.soma.alfa)), 5, tinta(cor.alfa));
-    etiqueta(ctx, hits, v.q(polar(0.3, m.soma.alfa / 2)), "α", cor.alfa);
-    etiqueta(ctx, hits, v.q(polar(0.8, m.soma.alfa + m.soma.beta / 2)), "β", cor.beta);
+    rot.agendar([0.3, 0.38, 0.22].map((r) => v.q(polar(r, m.soma!.alfa / 2))), "α", cor.alfa, 0);
+    const mb = m.soma.alfa + m.soma.beta / 2;
+    rot.agendar([0.8, 0.95, 0.68].map((r) => v.q(polar(r, mb))), "β", cor.beta, 0);
   }
 
   // Triângulo de hipotenusa 1.
@@ -174,9 +180,20 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
       segMundo(ctx, v, { x: 0, y: 0 }, T, palette.ink2, 2, [6, 5]);
       if (p.mostrar.tangente) {
         segMundo(ctx, v, { x: 1, y: 0 }, T, tinta(cor.tangente), espessura(hl, cor.tangente, 5));
-        etiqueta(ctx, hits, { x: v.q(T).x + 36, y: v.q(T).y }, `tg ${fmt(m.tg)}`, cor.tangente);
+        const Tq = v.q(T);
+        rot.agendar([{ x: Tq.x + 36, y: Tq.y }, { x: Tq.x + 36, y: Tq.y - 24 }, { x: Tq.x + 36, y: Tq.y + 24 }], `tg ${fmt(m.tg)}`, cor.tangente, 1);
       }
-      if (p.mostrar.secante) etiqueta(ctx, hits, v.p(0.5, m.tg / 2), `sec ${fmt(m.sec)}`, "c4");
+      if (p.mostrar.secante) {
+        // Fora da linha O–T (o raio prolongado), de um lado ou do outro, ao longo dela.
+        const Tq = v.q(T);
+        const dx = Tq.x - O.x, dy = Tq.y - O.y, n = Math.hypot(dx, dy) || 1;
+        const nx = -dy / n, ny = dx / n;
+        const cands = [0.5, 0.35, 0.65].flatMap((f) => {
+          const c = { x: O.x + dx * f, y: O.y + dy * f };
+          return [{ x: c.x + nx * 20, y: c.y + ny * 20 }, { x: c.x - nx * 20, y: c.y - ny * 20 }];
+        });
+        rot.agendar(cands, `sec ${fmt(m.sec)}`, "c4", 2);
+      }
     } else if (p.mostrar.tangente) {
       nota(ctx, v.p(1, m.tg > 0 ? 1.35 : -1.35), `tg ${Number.isFinite(m.tg) ? fmt(m.tg) : "não existe"}`, cor.tangente, 13);
     }
@@ -191,9 +208,32 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
     pegador(ctx, Pq, "ink");
     alvos.push({ id: "P", c: Pq, raio: 28 });
   } else dot(ctx, Pq, 7, palette.ink);
-  if (p.mostrar.seno && Math.abs(m.sen) > 0.04) etiqueta(ctx, hits, { x: v.q(P).x + (P.x >= 0 ? 38 : -38), y: v.p(0, m.sen / 2).y }, `sen ${fmt(m.sen)}`, cor.seno);
-  if (p.mostrar.cosseno && Math.abs(m.cos) > 0.04) etiqueta(ctx, hits, { x: v.p(m.cos / 2, 0).x, y: O.y + (m.sen >= 0 ? 22 : -22) }, `cos ${fmt(m.cos)}`, cor.cosseno);
-  if (p.mostrar.pitagorica) etiqueta(ctx, hits, v.p(P.x / 2 - 0.12 * Math.sign(P.x || 1), P.y / 2 + 0.12), "1", "c3");
+  rot.reservar(Pq, 22, 22);
+  if (p.mostrar.seno && Math.abs(m.sen) > 0.04) {
+    const ys = v.p(0, m.sen / 2).y, fora = P.x >= 0 ? 1 : -1;
+    rot.agendar(
+      [38, -38, 62, -62].map((d) => ({ x: Pq.x + fora * d, y: ys })).concat([{ x: Pq.x + fora * 38, y: ys + (m.sen >= 0 ? 22 : -22) }]),
+      `sen ${fmt(m.sen)}`, cor.seno, 2);
+  }
+  if (p.mostrar.cosseno && Math.abs(m.cos) > 0.04) {
+    const xc = v.p(m.cos / 2, 0).x, lado = m.sen >= 0 ? 1 : -1;
+    rot.agendar([22, -22, 44].map((d) => ({ x: xc, y: O.y + lado * d })), `cos ${fmt(m.cos)}`, cor.cosseno, 2);
+  }
+  if (p.mostrar.pitagorica) {
+    const sx = Math.sign(P.x || 1);
+    rot.agendar(
+      [[-0.12, 0.12], [0.12, -0.12], [-0.22, 0.22], [-0.3, 0]].map(([ox, oy]) => v.p(P.x / 2 + ox * sx, P.y / 2 + oy)),
+      "1", "c3", 1);
+  }
+
+  // Gráfico ao lado: desenhado antes dos chips, que usam a mesma fila (ciclo e gráfico não se cobrem).
+  if (p.grafico) desenharGrafico(ctx, v, hits, p, m, P, rot);
+  // Coluna das barras laterais (desenhadas depois): nenhum chip do ciclo entra nela.
+  if (temBarras) {
+    const xb = v.p(p.soma ? 1.7 : 1.9, 0).x;
+    rot.reservar({ x: (xb + w) / 2, y: h / 2 }, w - xb, h);
+  }
+  rot.colocar();
 
   // Mostrador do ângulo.
   const linhas = [`θ = ${rotuloAng(m.angulo, p.unidade)}`];
@@ -205,8 +245,6 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
 
   // Barras laterais.
   if (temBarras) desenharBarras(ctx, v, hits, p, m, cor);
-  // Gráfico ao lado.
-  if (p.grafico) desenharGrafico(ctx, v, hits, p, m, P);
   // Fita do arco desenrolado em radianos.
   if (p.mostrar.fita) desenharFita(ctx, w, h - (rodapes.length ? banda(rodapes.length) : 0), m.rad, cor.fita);
   rodapes.forEach((l, i) => nota(ctx, { x: w / 2, y: h - banda(rodapes.length) + 14 + i * ALT_LINHA }, l.t, l.c, 14));
@@ -217,7 +255,10 @@ type Modelo = ReturnType<typeof modeloCiclo>;
 
 function desenharBarras(ctx: G, v: Vista, hits: Hit[], p: Ciclo, m: Modelo, cor: Ciclo["cores"]) {
   const base = -1.2;
-  const esc = 2.4;
+  // Altura 2,4 por unidade; se uma barra passa de 1 (sen α + sen β chega a 2), todas encolhem
+  // juntas para o topo e o rótulo caberem no quadro.
+  const maior = p.soma && m.soma ? Math.max(1, Math.sin(rad(m.soma.alfa)) + Math.sin(rad(m.soma.beta))) : 1;
+  const esc = 2.4 / maior;
   const barra = (x: number, partes: { v: number; c: Parameters<typeof tinta>[0] }[], rotulo: string, cc: Parameters<typeof tinta>[0]) => {
     let y = base;
     for (const parte of partes) {
@@ -248,14 +289,17 @@ function desenharBarras(ctx: G, v: Vista, hits: Hit[], p: Ciclo, m: Modelo, cor:
   }
 }
 
-function desenharGrafico(ctx: G, v: Vista, hits: Hit[], p: Ciclo, m: Modelo, P: Pt) {
+function desenharGrafico(ctx: G, v: Vista, _hits: Hit[], p: Ciclo, m: Modelo, P: Pt, rot: FilaRotulos) {
   const cor = p.grafico === "sen" ? p.cores.seno : p.cores.cosseno;
   const f = p.grafico === "sen" ? Math.sin : Math.cos;
   const X = (t: number) => X_GRAF + t * ESC_GRAF;
   segMundo(ctx, v, { x: X_GRAF - 0.1, y: 0 }, { x: X(DOIS_PI) + 0.15, y: 0 }, palette.lineDark, 1.5);
   segMundo(ctx, v, { x: X_GRAF, y: -1.3 }, { x: X_GRAF, y: 1.3 }, palette.lineDark, 1.5);
   for (const y of [-1, 1]) segMundo(ctx, v, { x: X_GRAF, y }, { x: X(DOIS_PI), y }, palette.line, 1.5, [4, 4]);
-  for (const [t, r] of [[Math.PI, "π"], [DOIS_PI, "2π"]] as const) nota(ctx, v.p(X(t), -0.2), r, "muted", 12);
+  for (const [t, r] of [[Math.PI, "π"], [DOIS_PI, "2π"]] as const) {
+    nota(ctx, v.p(X(t), -0.2), r, "muted", 12);
+    rot.reservar(v.p(X(t), -0.2), 8 * r.length + 6, 16);
+  }
   const passos = 96;
   const curva = (ate: number) => {
     const pts: Pt[] = [];
@@ -284,7 +328,12 @@ function desenharGrafico(ctx: G, v: Vista, hits: Hit[], p: Ciclo, m: Modelo, P: 
   segMundo(ctx, v, P, { x: X(t), y: f(t) }, palette.muted, 1.5, [4, 4]);
   dot(ctx, ponto, 6, tintaEscura(cor));
   if (p.mostrar.grafico_rotulo) {
-    etiqueta(ctx, hits, { x: ponto.x, y: ponto.y + (f(t) >= 0 ? -20 : 20) }, `${p.grafico === "sen" ? "sen" : "cos"} ${fmt(f(t))}`, cor);
+    const s0 = f(t) >= -1e-9 ? -1 : 1; // sen 2π dá −2,4·10⁻¹⁶: conta como 0
+    rot.reservar(ponto, 14, 14);
+    rot.agendar(
+      // Do lado de fora da onda; perto de 2π o chip centrado sai pela direita, então tenta à esquerda.
+      [0, -24, -44].map((dx) => ({ x: ponto.x + dx, y: ponto.y + s0 * 24 })).concat([{ x: ponto.x, y: ponto.y - s0 * 24 }, { x: ponto.x - 44, y: ponto.y - s0 * 24 }]),
+      `${p.grafico === "sen" ? "sen" : "cos"} ${fmt(f(t))}`, cor, 1);
   }
 }
 

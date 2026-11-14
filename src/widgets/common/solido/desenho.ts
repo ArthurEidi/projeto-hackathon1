@@ -242,7 +242,8 @@ function desenharPainel(ctx: CanvasRenderingContext2D, hits: Hit[], cena: Cena, 
       seg(ctx, pts[1], pts[2], kk.main, 3.5);
       etiqueta(ctx, hits, { x: (T[0].x + pts[1].x) / 2, y: yb + 2 }, num(R - rr), d.corK as unknown as CorTraco);
       etiqueta(ctx, hits, { x: T[0].x - 22, y: (yb + pts[2].y) / 2 }, num(ht), d.corK as unknown as CorTraco);
-      etiqueta(ctx, hits, { x: (pts[1].x + pts[2].x) / 2 + 30, y: (pts[1].y + pts[2].y) / 2 }, `g = ${num(Math.hypot(ht, R - rr))}`, d.cor as unknown as CorTraco);
+      const g = (d.mostrarG as unknown as boolean) === false ? "?" : num(Math.hypot(ht, R - rr));
+      etiqueta(ctx, hits, { x: (pts[1].x + pts[2].x) / 2 + 30, y: (pts[1].y + pts[2].y) / 2 }, `g = ${g}`, d.cor as unknown as CorTraco);
       break;
     }
     case "sombras": {

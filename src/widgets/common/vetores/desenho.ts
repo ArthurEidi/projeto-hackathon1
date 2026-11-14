@@ -3,11 +3,40 @@ import { avaliarExpr } from "../expr";
 import { criarVista, etiqueta, espessura, fmt, malha, nota, pegador, segMundo, tinta, type Alvo } from "../geo/base";
 import { resolver } from "../pontos/calc";
 import { escolherPosicao, type Obstaculo } from "../rotulosPlano";
-import { girarI, somar, type Vetor } from "./calc";
+import { girarI, resolverVetores, somar, type Vetor } from "./calc";
 import type { Vetores } from "./params";
-export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: Vetores, ctl: Record<string, number>, vs: Vetor[], modulo: boolean) {
+type Faixas = Readonly<Record<string, { min: number; max: number }>>;
+
+/** Maior coordenada (em módulo) que aparece no desenho: caudas, pontas, soma e, no complexo, z girado. */
+function extensao(p: Vetores, vs: Vetor[]): number {
   const soma = vs.reduce((s, v) => somar(s, v.comp), { x: 0, y: 0 });
-  const alcance = Math.max(6, ...vs.flatMap(v => [Math.abs(v.cauda.x), Math.abs(v.cauda.y), Math.abs(v.ponta.x), Math.abs(v.ponta.y)]), Math.abs(soma.x), Math.abs(soma.y)) + 1;
+  const zs = p.modo === "complexo" && vs[0] ? [Math.abs(vs[0].comp.x), Math.abs(vs[0].comp.y)] : [];
+  return Math.max(0, ...vs.flatMap(v => [Math.abs(v.cauda.x), Math.abs(v.cauda.y), Math.abs(v.ponta.x), Math.abs(v.ponta.y)]), Math.abs(soma.x), Math.abs(soma.y), ...zs);
+}
+
+/**
+ * Meia largura da vista. Modo vetores (com arraste): pelo menos 6, para haver espaço de arrastar.
+ * Modo complexo (sem arraste): a escala do maior valor que os sliders alcançam (faixas do passo),
+ * para z = 2 + i não ficar pequeno num plano de −7 a 7; mínimo 2.
+ */
+export function alcanceVetores(p: Vetores, ctl: Record<string, number>, vs: Vetor[], faixas?: Faixas): number {
+  if (p.modo !== "complexo") return Math.max(6, extensao(p, vs)) + 1;
+  let maior = extensao(p, vs);
+  const ids = faixas ? Object.keys(faixas) : [];
+  if (faixas && ids.length <= 6) {
+    const visita = (i: number, atual: Record<string, number>) => {
+      if (i === ids.length) { maior = Math.max(maior, extensao(p, resolverVetores(p, atual))); return; }
+      const { min, max } = faixas[ids[i]];
+      for (const v of [min, (min + max) / 2, max]) visita(i + 1, { ...atual, [ids[i]]: v });
+    };
+    visita(0, { ...ctl });
+  }
+  return Math.max(2, maior) + 1;
+}
+
+export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: Vetores, ctl: Record<string, number>, vs: Vetor[], modulo: boolean, faixas?: Faixas) {
+  const soma = vs.reduce((s, v) => somar(s, v.comp), { x: 0, y: 0 });
+  const alcance = alcanceVetores(p, ctl, vs, faixas);
   const caixa = { x0: -alcance, x1: alcance, y0: -alcance, y1: alcance }, v = criarVista(w, h - 80, caixa, 24), alvos: Alvo[] = [];
   malha(ctx, v, caixa, Math.max(1, Math.ceil(alcance / 8)));
   segMundo(ctx, v, { x: -alcance, y: 0 }, { x: alcance, y: 0 }, tinta("muted"), 1);
