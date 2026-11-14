@@ -4,6 +4,8 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
 import { PlanoCartesiano } from "../widgets/common/params";
+import { Areas } from "../widgets/common/areas/params";
+import { calcular as calcularAreas } from "../widgets/common/areas/calc";
 import { avaliar, resolverCurva } from "../widgets/common/plot2d";
 
 const L = Lesson.parse(
@@ -51,9 +53,10 @@ describe("passos da aula", () => {
     }
     const rl = step("recuperar-lado");
     if (rl.type !== "interactive_canvas") throw new Error();
-    const kl = resolverCurva(PlanoCartesiano.parse(rl.params).curvas[0], {});
-    expect(avaliar(kl, 3)).toBe(9);
-    expect(avaliar(kl, -3)).toBe(9);
+    const areas = Areas.parse(rl.params);
+    expect(areas.modo).toBe("raiz");
+    expect(calcularAreas(areas, { area: 1 })).toMatchObject({ lado: 1, area: 1, valido: true });
+    expect(calcularAreas(areas, { area: 9 })).toMatchObject({ lado: 3, area: 9, valido: true });
   });
 
   it("desafio: 0,5 é 2⁻¹", () => {

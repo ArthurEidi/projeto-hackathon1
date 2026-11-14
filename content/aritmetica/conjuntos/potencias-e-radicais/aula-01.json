@@ -120,51 +120,26 @@
     {
       "id": "recuperar-lado",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "retangulo_areas",
       "params": {
-        "x": [
-          -2,
-          3
-        ],
-        "y": [
-          0,
-          9
-        ],
-        "grade": true,
-        "curvas": [
-          {
-            "tipo": "quadratica",
-            "a": 1,
-            "b": 0,
-            "c": 0,
-            "cor": "c3",
-            "rotulo": "y = x²"
-          }
-        ],
-        "ponto": {
-          "curva": 0,
-          "x": "$s",
-          "arrastavel": false,
-          "passo": 0.1,
-          "coordenadas": true,
-          "rastro": true,
-          "cor": "c4",
-          "rotulo": "lado"
-        }
+        "modo": "raiz",
+        "A": "$area",
+        "referencia": true,
+        "limite": 4
       },
       "controls": [
         {
-          "id": "s",
-          "label": "Lado",
+          "id": "area",
+          "label": "Área",
           "min": 1,
-          "max": 3,
-          "step": 0.1,
+          "max": 9,
+          "step": 1,
           "initial": 1,
-          "color": "c1"
+          "color": "c3"
         }
       ],
       "lines": {
-        "intro": "Um quadrado de área 9 pode ter lado −3? Leve o lado a 3.",
+        "intro": "Um quadrado de área 9 pode ter lado −3? Leve a área a 9.",
         "done": "Não; comprimento é não negativo, por isso √9=3, embora x²=9 aceite x=±3."
       },
       "duvida": {
@@ -173,8 +148,8 @@
         "resposta": "Não; com a=−2, √4=2, então o resultado é ∣a∣."
       },
       "complete_when": {
-        "metric": "s",
-        "gte": 3
+        "metric": "area",
+        "gte": 9
       }
     },
     {
