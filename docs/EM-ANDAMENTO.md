@@ -24,6 +24,19 @@ Este arquivo é a **reserva de frentes**. Serve para duas máquinas (ou dois coo
 | 14/11: widgets, pedidos da B (esconder medidas em `pontos_no_plano`, `lugar_geometrico`, `circunferencia_no_plano`; rótulos de `ciclo_trigonometrico`, `geometria_triangulo`, `geometria_poligono`, `geometria_circulo`; grade do `MicroChallenge` e `ConceptLock` em 400 px). Inclui ligar os novos parâmetros nas aulas de geometria citadas em `docs/visual/geometria.md` (só `params`/`figure` desses passos) | A (Claude Code #2 + Antigravity #3 e #4) | 14/11 | `src/widgets/common/**`, `src/steps/**`, GUIA §5, e, em `content/geometria/**`, apenas os passos com achado "widget" no relatório visual |
 | 14/11: vestibular nas aulas de aritmética e álgebra (candidatas ENEM aprovadas pelo script → `treino.vestibular` + roteiro) | A (Antigravity e Antigravity #2) | 14/11 | `content/aritmetica/**`, `content/algebra/**`, `docs/planos/*.md` (seção de vestibular), `docs/revisao/vestibular-*.md` |
 
+### 14/11, tarde: Máquina A sem limite; Máquina B assume
+
+Por instrução do usuário (14/11, 17h), a Máquina A chegou ao limite e a **Máquina B (DESKTOP-M466PUL) orquestra o projeto inteiro** até a A voltar, inclusive os arquivos de dono fixo da A (`src/widgets/common/**`, `src/steps/**`, `src/ui/**`), um agente por vez em cada pasta. As reservas da A acima ficam suspensas (último commit da A: 13:24). Divisão da B:
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B1. Widgets pendentes dos relatórios visuais (`plano_cartesiano`, `retangulo_areas_figura`, `barras`, balão do Paco, rótulos de `numeros-complexos`) com recaptura | Claude Code #2 | 14/11 | `src/widgets/common/**`, `src/steps/**`, `src/ui/**`, GUIA §5, coluna "corrigido?" de `docs/visual/*.md` |
+| B2. Correções da reconferência de geometria (analítica) e reconferência visual de plana, espacial e trigonometria | Antigravity | 14/11 | `content/geometria/**`, `src/conteudo/<slug de geometria>.test.ts`, `docs/visual/geometria.md`, `docs/revisao/geometria-*.md` |
+| B3. Vestibular de geometria: candidatas do ENEM (plana e trigonometria) | Antigravity #2 | 14/11 | `docs/fontes-candidatas/<slug de geometria>.md` (só arquivos novos) |
+| B4. Vestibular de geometria: candidatas do ENEM (espacial e analítica) | Antigravity #3 | 14/11 | `docs/fontes-candidatas/<slug de geometria>.md` (só arquivos novos) |
+| B5. Trocar adaptações por `retangulo_areas` em `fatoracao-algebrica` e `potencias-e-radicais` | Antigravity #4 | 14/11 | a aula e o teste desses dois capítulos, `docs/revisao/adaptacoes.md` |
+| B6. Auditoria por modelo forte das 40 questões do ENEM de 14/11; revisão e integração de tudo; inserir o vestibular de geometria nas aulas depois da conferência | maestro (Claude Code) | 14/11 | `docs/revisao/auditoria-claude.md`, `treino.vestibular` das aulas, docs de coordenação |
+
 ## Pedidos entre máquinas
 
 Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo no passo 3 de `elipse`"). Formato: data, quem pede, para quem, o quê.
