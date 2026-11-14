@@ -107,7 +107,7 @@
         ],
         "triangulo": {
           "curva": 0,
-          "x": 0,
+          "x": 1,
           "cor": "c2"
         },
         "marcar": {
@@ -175,7 +175,7 @@
           ],
           "y": [
             -2,
-            8
+            9
           ],
           "curvas": [
             {
@@ -226,6 +226,11 @@
           "correct": false,
           "feedback": "4 é Δy, não m: com m = 4 sai n = 3 − 4 = −1. Dividindo por Δx = 2, m = 2 e a reta é y = 2x + 1.",
           "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 1,
+              "coordenadas": false
+            },
             "triangulo": {
               "curva": 0,
               "x": 1,
@@ -282,7 +287,7 @@
           ],
           "triangulo": {
             "curva": 0,
-            "x": 0,
+            "x": 1,
             "cor": "c2"
           },
           "marcar": {
@@ -312,26 +317,6 @@
         {
           "text": "n",
           "ref": "c4"
-        },
-        {
-          "text": ";"
-        },
-        {
-          "text": "m"
-        },
-        {
-          "text": "="
-        },
-        {
-          "text": "Δy",
-          "ref": "c2"
-        },
-        {
-          "text": "/"
-        },
-        {
-          "text": "Δx",
-          "ref": "c1"
         }
       ],
       "definitions": [

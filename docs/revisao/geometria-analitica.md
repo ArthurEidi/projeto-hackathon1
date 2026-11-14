@@ -18,6 +18,17 @@ Critério: segunda passada nos feedbacks de distratores de `treino` (`faceis`, `
 
 Nenhuma.
 
+## Correções da conferência visual
+
+Conferência em `docs/visual/geometria.md` (apenas itens de tipo `conteúdo`):
+
+- `plano-cartesiano-distancia-e-ponto-medio` · passo 4 `ponto-medio`: `fixos: ["a"]` → `fixos: ["a", "b"]` para impedir que B seja movido antes de ligar M e manter válida a fala `"M = (3; 3,5)"`.
+- `reta-equacao-e-inclinacao` · passos 3 `corte-no-eixo-y` e 6 `fechamento`: `triangulo.x` alterado de `0` para `1`, evitando que o chip `"1"` do degrau fique colado ao chip `"1"` do intercepto no eixo y.
+- `reta-equacao-e-inclinacao` · passo 5 `desafio-equacao`, alt. `"y = 4x − 1"`: adicionado `"ponto": { "curva": 0, "x": 1, "coordenadas": false }` em `figure` para não esconder o chip `"+2"` do triângulo atrás do rótulo `"(1; 3)"`.
+- `reta-equacao-e-inclinacao` · passo 5 `desafio-equacao`, alt. `"y = x + 2"`: janela `y` ampliada de `[-2, 8]` para `[-2, 9]` para dar folga no topo entre `"(3; 7)"` e `"y = 2x + 1"`.
+- `reta-equacao-e-inclinacao` · passo 6 `fechamento`: fórmula encurtada de 12 peças (`y = m x + n ; m = Δy / Δx`) para 6 peças (`y = m x + n`, mantendo `n` ligado a `c4`), cabendo em 400 px (a razão `m = Δy/Δx` já consta na definição de Coeficiente angular).
+
+
 ## Auditoria do maestro (Claude, Máquina B, 13/11)
 
 Conferidas uma a uma todas as alterações deste setor (18 feedbacks, 2 rótulos trocados, 5 falas). Todas as contas batem com os rótulos (ex.: "√89" = √(5² + 8²) somando coordenadas; "(2; 3)" = M − A). Nenhuma correção.
