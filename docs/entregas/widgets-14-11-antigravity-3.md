@@ -40,3 +40,14 @@ Correções em `common/circunferencia/desenho.ts`:
 - `elipse`: passo 3 `topo-e-pitagoras` (`mostrar.dimensoes: false`); passo 5 `desafio-focos` (`mostrar.dimensoes: false`).
 - `hiperbole`: passo 3 `triangulo-invertido` (`mostrar.dimensoes: false`); passo 5 `desafio-focos` (`mostrar.dimensoes: false`).
 - `parabola-conica`: passos 1 `vertice`, 2 `tracar` e 3 `igualar` (`mostrar.equacao: false`).
+
+## plano_cartesiano: rótulos sem colisão
+
+- Novo módulo puro em `src/widgets/common/rotulosPlano.ts` (`escolherPosicao`, `candidatosAoRedor`, `caixasColidem`, `dentroDosLimites`, `caixaDoCentro`) com testes unitários em `src/widgets/common/rotulosPlano.test.ts` cobrindo os casos de colisão e limites do canvas.
+- `src/widgets/common/desenhoPlano.ts`:
+  - Registra obstáculos dos pontos/alças/vértice/raízes antes do posicionamento de rótulos.
+  - Ordena o posicionamento dos rótulos ancorados por prioridade (chips de ponto/espelho, depois raízes/vértice/encontro/intercepto/ângulo/fase/período, depois rótulos de guias e diagonal `y = x`), tentando posições alternativas livres dentro dos limites do canvas.
+  - Posiciona os rótulos das curvas (`p.curvas`) por último contra a lista completa `ocupados` (tentando acima e abaixo da curva dentro da área útil), evitando sobreposição com chips de coordenadas e guias.
+- `src/steps/ConceptLock.tsx` + `src/ui/styles.css` + `src/steps/ConceptLock.test.ts`:
+  - `partesTextoFormula` converte subscritos Unicode consecutivos (ex.: `aₙ₋₁`, `logₐ(x)`) em `<sub>` de texto normal (`n−1`, `a`), evitando o glifo baixo de `₋` sem alterar os JSONs das aulas.
+- Não resolvido nesta entrega: `numeros-complexos` `p3` (sobreposição parcial entre `z` e `w` em `vetores_no_plano`, fora da lista de arquivos permitidos).

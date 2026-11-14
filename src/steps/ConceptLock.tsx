@@ -9,6 +9,36 @@ import { figures } from "../widgets/registry";
 import { duvidaLiberada, StepLayout } from "./StepLayout";
 import type { StepProps } from "./types";
 
+const SUBSCRITOS: Record<string, string> = {
+  "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4",
+  "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9",
+  "₊": "+", "₋": "−", "₌": "=", "₍": "(", "₎": ")",
+  "ₐ": "a", "ₑ": "e", "ₕ": "h", "ᵢ": "i", "ⱼ": "j",
+  "ₖ": "k", "ₗ": "l", "ₘ": "m", "ₙ": "n", "ₒ": "o",
+  "ₚ": "p", "ᵣ": "r", "ₛ": "s", "ₜ": "t", "ᵤ": "u",
+  "ᵥ": "v", "ₓ": "x",
+};
+
+/** Converte subscritos Unicode consecutivos em segmentos para renderizar com `<sub>`. */
+export function partesTextoFormula(texto: string): Array<{ text: string; sub: boolean }> {
+  const partes: Array<{ text: string; sub: boolean }> = [];
+  for (const ch of texto) {
+    const mapped = SUBSCRITOS[ch];
+    const sub = mapped !== undefined;
+    const valor = mapped ?? ch;
+    const ult = partes[partes.length - 1];
+    if (ult && ult.sub === sub) ult.text += valor;
+    else partes.push({ text: valor, sub });
+  }
+  return partes;
+}
+
+function renderTextoFormula(texto: string) {
+  return partesTextoFormula(texto).map((p, j) =>
+    p.sub ? <sub key={j}>{p.text}</sub> : <Fragment key={j}>{p.text}</Fragment>,
+  );
+}
+
 export function ConceptLock({ step, onNext }: StepProps<ConceptLockStep>) {
   const Figure = figures[step.figure.widget];
   const [active, setActive] = useState<Marca | null>(null);
@@ -57,13 +87,13 @@ export function ConceptLock({ step, onNext }: StepProps<ConceptLockStep>) {
                 setDica(ligar ? medir(tok.ref!, e.currentTarget) : null);
               }}
             >
-              {tok.text}
+              {renderTextoFormula(tok.text)}
               {tok.sup && <sup>{tok.sup}</sup>}
             </TactileButton>
           ) : (
             <Fragment key={i}>
               <span className="formula__op">
-                {tok.text}
+                {renderTextoFormula(tok.text)}
                 {tok.sup && <sup>{tok.sup}</sup>}
               </span>
             </Fragment>

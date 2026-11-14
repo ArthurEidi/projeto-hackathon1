@@ -443,6 +443,12 @@ button {
   font-size: 0.55em;
   margin-left: 1px;
 }
+.formula sub {
+  font-size: 0.55em;
+  position: relative;
+  top: 0.28em;
+  line-height: 0;
+}
 .formula .btn--off {
   --c: var(--bg);
 }

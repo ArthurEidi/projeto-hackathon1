@@ -4,6 +4,14 @@ import { palette as c } from "../../ui/palette";
 import { chip, dot, poly, polyline, seg, text, type Hit, type Pt } from "../canvas";
 import type { PlanoCartesiano } from "./params";
 import {
+  caixaDoCentro,
+  candidatosAoRedor,
+  colideComAlgum,
+  dentroDosLimites,
+  escolherPosicao,
+  type Obstaculo,
+} from "./rotulosPlano";
+import {
   alturaDoPonto,
   anguloEntreRetas,
   assintotas,
@@ -161,7 +169,37 @@ export function desenharPlano(
 
   const principal = curvas.findIndex((_, i) => !p.curvas[i].fantasma);
   const kp = principal >= 0 ? curvas[principal] : null;
-  const depois: (() => void)[] = [];
+  const limites = { x: 4, y: 4, w: w - 8, h: h - 8 };
+  const ocupados: Obstaculo[] = [];
+  type RotuloPendente = {
+    prioridade: number;
+    candidatos: Pt[];
+    w: number;
+    h: number;
+    draw: (pos: Pt) => void;
+  };
+  const pendentes: RotuloPendente[] = [];
+  const registrarPonto = (pt: Pt, raio: number) => {
+    ocupados.push({ caixa: caixaDoCentro(pt, raio * 2, raio * 2), folgaX: 1, folgaY: 1 });
+  };
+  const medirChip = (s: string) => {
+    ctx.font = "900 16px Nunito, system-ui, sans-serif";
+    return { w: Math.max(28, ctx.measureText(s).width + 16), h: 29 };
+  };
+  const medirTexto = (s: string, size = 12) => {
+    ctx.font = `900 ${size}px Nunito, system-ui, sans-serif`;
+    return { w: Math.max(16, ctx.measureText(s).width + 6), h: size + 4 };
+  };
+  const agendarChip = (ancora: Pt, preferido: Pt, s: string, cor: CorTraco, prioridade = 1) => {
+    const { w: cw, h: ch } = medirChip(s);
+    pendentes.push({
+      prioridade,
+      candidatos: candidatosAoRedor(ancora, preferido, cw, ch),
+      w: cw,
+      h: ch,
+      draw: (pos) => etiqueta(ctx, hits, pos, s, cor),
+    });
+  };
 
   // Guias, faixa da senoide e assíntotas: por baixo das curvas.
   ctx.save();
@@ -170,19 +208,68 @@ export function desenharPlano(
   ctx.clip();
   const guiaH = (y: number, cor: string, rotulo?: string, lw = 2) => {
     if (!dentroY(y)) return;
-    seg(ctx, { x: A.x, y: v.Y(y) }, { x: A.x + A.w, y: v.Y(y) }, cor, lw, [3, 5]);
-    if (rotulo) depois.push(() => text(ctx, { x: A.x + 26, y: v.Y(y) - 10 }, rotulo, c.ink2, 12));
+    const py = v.Y(y);
+    seg(ctx, { x: A.x, y: py }, { x: A.x + A.w, y: py }, cor, lw, [3, 5]);
+    if (rotulo) {
+      const { w: tw, h: th } = medirTexto(rotulo, 12);
+      pendentes.push({
+        prioridade: 2,
+        candidatos: [
+          { x: A.x + 26, y: py - 10 },
+          { x: A.x + A.w - 28, y: py - 10 },
+          { x: A.x + 26, y: py + 12 },
+          { x: A.x + A.w - 28, y: py + 12 },
+          { x: A.x + A.w * 0.5, y: py - 10 },
+        ],
+        w: tw,
+        h: th,
+        draw: (pos) => text(ctx, pos, rotulo, c.ink2, 12),
+      });
+    }
   };
   const guiaV = (x: number, cor: string, rotulo?: string, lw = 2) => {
     if (!dentroX(x)) return;
-    seg(ctx, { x: v.X(x), y: A.y }, { x: v.X(x), y: A.y + A.h }, cor, lw, [3, 5]);
-    if (rotulo) depois.push(() => text(ctx, { x: v.X(x) + 4 + 3.5 * rotulo.length, y: A.y + 12 }, rotulo, c.ink2, 12));
+    const px = v.X(x);
+    seg(ctx, { x: px, y: A.y }, { x: px, y: A.y + A.h }, cor, lw, [3, 5]);
+    if (rotulo) {
+      const { w: tw, h: th } = medirTexto(rotulo, 12);
+      const dx = 4 + 3.5 * rotulo.length;
+      pendentes.push({
+        prioridade: 2,
+        candidatos: [
+          { x: px + dx, y: A.y + 12 },
+          { x: px - dx, y: A.y + 12 },
+          { x: px + dx, y: A.y + A.h - 12 },
+          { x: px - dx, y: A.y + A.h - 12 },
+        ],
+        w: tw,
+        h: th,
+        draw: (pos) => text(ctx, pos, rotulo, c.ink2, 12),
+      });
+    }
   };
   if (p.guias.diagonal) {
     const a = Math.max(x0, y0);
     const b = Math.min(x1, y1);
     seg(ctx, { x: v.X(a), y: v.Y(a) }, { x: v.X(b), y: v.Y(b) }, c.lineDark, 2, [3, 5]);
-    depois.push(() => text(ctx, { x: v.X(b) - 22, y: v.Y(b) + 10 }, "y = x", c.muted, 12));
+    const { w: tw, h: th } = medirTexto("y = x", 12);
+    const xb = v.X(b);
+    const yb = v.Y(b);
+    const xa = v.X(a);
+    const ya = v.Y(a);
+    pendentes.push({
+      prioridade: 2,
+      candidatos: [
+        { x: xb - 22, y: yb + 10 },
+        { x: xb - 22 - 0.14 * (xb - xa), y: yb + 10 + 0.14 * (ya - yb) },
+        { x: xb - 22 - 0.3 * (xb - xa), y: yb + 10 + 0.3 * (ya - yb) },
+        { x: xb - 22 - 0.72 * (xb - xa), y: yb + 10 + 0.72 * (ya - yb) },
+        { x: xb - 22, y: yb - 12 },
+      ],
+      w: tw,
+      h: th,
+      draw: (pos) => text(ctx, pos, "y = x", c.muted, 12),
+    });
   }
   for (const g of p.guias.horizontais) guiaH(g.v, corDoTraco(g.cor).main, g.rotulo);
   for (const g of p.guias.verticais) guiaV(g.v, corDoTraco(g.cor).main, g.rotulo);
@@ -272,14 +359,17 @@ export function desenharPlano(
       const cor = p.cores.interceptoY;
       v.intercepto = { x: v.X(0), y: v.Y(y) };
       dot(ctx, v.intercepto, espessura(cor, 7, hl), corDoTraco(cor).main);
-      depois.push(() => etiqueta(ctx, hits, { x: v.X(0) - 26, y: v.Y(y) - 16 }, num(y), cor));
+      registrarPonto(v.intercepto, 7);
+      agendarChip(v.intercepto, { x: v.X(0) - 26, y: v.Y(y) - 16 }, num(y), cor, 1);
     }
   }
   if (kp && p.marcar.raizes && temX && !todaRaiz(kp)) {
     const cor = p.cores.raiz;
     for (const r of raizes(kp, x0, x1)) {
-      dot(ctx, { x: v.X(r), y: v.Y(0) }, espessura(cor, 7, hl), corDoTraco(cor).main);
-      depois.push(() => etiqueta(ctx, hits, { x: v.X(r) + 4, y: v.Y(0) + 22 }, num(r), cor));
+      const pr = { x: v.X(r), y: v.Y(0) };
+      dot(ctx, pr, espessura(cor, 7, hl), corDoTraco(cor).main);
+      registrarPonto(pr, 7);
+      agendarChip(pr, { x: pr.x + 4, y: pr.y + 22 }, num(r), cor, 1);
     }
   }
   if (p.marcar.encontro && curvas.length >= 2 && !iguais) {
@@ -287,8 +377,10 @@ export function desenharPlano(
     for (const x of encontros(curvas[0], curvas[1], x0, x1)) {
       const y = avaliar(curvas[0], x);
       if (!dentroY(y)) continue;
-      dot(ctx, { x: v.X(x), y: v.Y(y) }, espessura(cor, 7, hl), corDoTraco(cor).main);
-      depois.push(() => etiqueta(ctx, hits, { x: v.X(x) + 44, y: v.Y(y) + 18 }, `(${num(x)}; ${num(y)})`, cor));
+      const pe = { x: v.X(x), y: v.Y(y) };
+      dot(ctx, pe, espessura(cor, 7, hl), corDoTraco(cor).main);
+      registrarPonto(pe, 7);
+      agendarChip(pe, { x: pe.x + 44, y: pe.y + 18 }, `(${num(x)}; ${num(y)})`, cor, 1);
     }
   }
   if (p.marcar.angulo && curvas.length >= 2 && curvas[0].tipo === "afim" && curvas[1].tipo === "afim" && !iguais) {
@@ -327,7 +419,7 @@ export function desenharPlano(
         ctx.stroke();
       }
       const ang = anguloEntreRetas(k0.a, k1.a);
-      depois.push(() => etiqueta(ctx, hits, { x: O.x - 40, y: O.y - 26 }, `${num(ang, 1)}°`, p.cores.angulo));
+      agendarChip(O, { x: O.x - 40, y: O.y - 26 }, `${num(ang, 1)}°`, p.cores.angulo, 1);
     }
   }
   const vq = kp && (p.marcar.vertice || p.marcar.eixo) ? vertice(kp) : null;
@@ -335,16 +427,18 @@ export function desenharPlano(
     const cor = p.cores.vertice;
     if (p.marcar.eixo && dentroX(vq.x)) {
       seg(ctx, { x: v.X(vq.x), y: A.y }, { x: v.X(vq.x), y: A.y + A.h }, corDoTraco(cor).main, espessura(cor, 2.5, hl), [7, 6]);
-      depois.push(() => etiqueta(ctx, hits, { x: v.X(vq.x) + 34, y: A.y + 14 }, `x = ${num(vq.x)}`, cor));
+      agendarChip({ x: v.X(vq.x), y: A.y + 14 }, { x: v.X(vq.x) + 34, y: A.y + 14 }, `x = ${num(vq.x)}`, cor, 1);
     }
     if (p.marcar.vertice && dentroX(vq.x) && dentroY(vq.y)) {
-      dot(ctx, { x: v.X(vq.x), y: v.Y(vq.y) }, espessura(cor, 7.5, hl), corDoTraco(cor).main);
+      const pv = { x: v.X(vq.x), y: v.Y(vq.y) };
+      dot(ctx, pv, espessura(cor, 7.5, hl), corDoTraco(cor).main);
+      registrarPonto(pv, 7.5);
       const abaixo = (kp!.a ?? 1) * (kp!.t?.a ?? 1) > 0 ? 24 : -24;
-      depois.push(() => etiqueta(ctx, hits, { x: v.X(vq.x), y: v.Y(vq.y) + abaixo }, `(${num(vq.x)}; ${num(vq.y)})`, cor));
+      agendarChip(pv, { x: pv.x, y: pv.y + abaixo }, `(${num(vq.x)}; ${num(vq.y)})`, cor, 1);
     }
   }
   if (kp && p.marcar.base && (kp.tipo === "exponencial" || kp.tipo === "logaritmo")) {
-    depois.push(() => etiqueta(ctx, hits, { x: A.x + 44, y: A.y + 16 }, `base ${num(kp.b)}`, p.cores.base));
+    agendarChip({ x: A.x + 44, y: A.y + 16 }, { x: A.x + 44, y: A.y + 16 }, `base ${num(kp.b)}`, p.cores.base, 1);
   }
   if (kp && (kp.tipo === "seno" || kp.tipo === "cosseno") && (p.marcar.fase || p.marcar.periodo)) {
     const ta = kp.t?.a ?? 1;
@@ -357,7 +451,8 @@ export function desenharPlano(
       seg(ctx, { x: v.X(0), y }, { x: v.X(inicio), y }, cor.main, espessura(p.cores.fase, 4, hl));
       const s = Math.sign(inicio);
       polyline(ctx, [{ x: v.X(inicio) - s * 8, y: y - 6 }, { x: v.X(inicio), y }, { x: v.X(inicio) - s * 8, y: y + 6 }], cor.main, 3);
-      depois.push(() => etiqueta(ctx, hits, { x: (v.X(0) + v.X(inicio)) / 2, y: y + 20 }, `fase ${num(inicio)}`, p.cores.fase));
+      const pf = { x: (v.X(0) + v.X(inicio)) / 2, y };
+      agendarChip(pf, { x: pf.x, y: y + 20 }, `fase ${num(inicio)}`, p.cores.fase, 1);
     }
     const T = periodo(kp);
     if (p.marcar.periodo && Number.isFinite(T)) {
@@ -368,7 +463,8 @@ export function desenharPlano(
       seg(ctx, { x: xa, y }, { x: xb, y }, cor.main, espessura(p.cores.periodo, 3, hl));
       seg(ctx, { x: xa, y: y - 7 }, { x: xa, y: y + 7 }, cor.main, 3);
       seg(ctx, { x: xb, y: y - 7 }, { x: xb, y: y + 7 }, cor.main, 3);
-      depois.push(() => etiqueta(ctx, hits, { x: (xa + xb) / 2, y: y - 18 }, `T = ${num(T)}`, p.cores.periodo));
+      const ptT = { x: (xa + xb) / 2, y };
+      agendarChip(ptT, { x: ptT.x, y: y - 18 }, `T = ${num(T)}`, p.cores.periodo, 1);
     }
   }
 
@@ -392,13 +488,18 @@ export function desenharPlano(
         if (!Number.isFinite(y) || !dentroY(y)) return;
         const k = corDoTraco(cv.cor);
         seg(ctx, { x: px, y: eixoY }, { x: px, y: v.Y(y) }, k.main, 3);
-        dot(ctx, { x: px, y: v.Y(y) }, 7, k.main);
-        depois.push(() => etiqueta(ctx, hits, { x: px + (px > A.x + A.w * 0.7 ? -34 : 34), y: v.Y(y) }, num(y), cv.cor));
+        const py = v.Y(y);
+        dot(ctx, { x: px, y: py }, 7, k.main);
+        registrarPonto({ x: px, y: py }, 7);
+        agendarChip({ x: px, y: py }, { x: px + (px > A.x + A.w * 0.7 ? -34 : 34), y: py }, num(y), cv.cor, 0);
       });
       dot(ctx, { x: px, y: eixoY + 3 }, 11, cor.dark);
       dot(ctx, { x: px, y: eixoY }, 11, cor.main);
       dot(ctx, { x: px, y: eixoY }, 5, c.bg);
-      if (pt.coordenadas) depois.push(() => etiqueta(ctx, hits, { x: px, y: eixoY + 26 }, `x = ${num(x)}`, pt.cor));
+      registrarPonto({ x: px, y: eixoY }, 12);
+      if (pt.coordenadas) {
+        agendarChip({ x: px, y: eixoY }, { x: px, y: eixoY + 26 }, `x = ${num(x)}`, pt.cor, 0);
+      }
     } else {
       const y = alturaDoPonto(curvas, sel, x).y;
       if (Number.isFinite(y) && y >= y0 - 0.01 && y <= y1 + 0.01) {
@@ -407,7 +508,8 @@ export function desenharPlano(
           const k = corDoTraco(pt.corRetangulo);
           const O = { x: v.X(0), y: v.Y(0) };
           poly(ctx, [O, { x: P.x, y: O.y }, P, { x: O.x, y: P.y }], k.tint, k.main, espessura(pt.corRetangulo, 2.5, hl));
-          depois.push(() => etiqueta(ctx, hits, { x: (O.x + P.x) / 2, y: (O.y + P.y) / 2 }, `${num(x)} · ${num(y)} = ${num(x * y)}`, pt.corRetangulo));
+          const pm = { x: (O.x + P.x) / 2, y: (O.y + P.y) / 2 };
+          agendarChip(pm, pm, `${num(x)} · ${num(y)} = ${num(x * y)}`, pt.corRetangulo, 1);
         }
         seg(ctx, P, { x: P.x, y: eixoY }, c.muted, 2, [4, 5]);
         seg(ctx, P, { x: eixoX, y: P.y }, c.muted, 2, [4, 5]);
@@ -418,47 +520,54 @@ export function desenharPlano(
           dot(ctx, E, 10, cor.tint);
           dot(ctx, E, 10, cor.main);
           dot(ctx, E, 6, c.bg);
-          depois.push(() => etiqueta(ctx, hits, { x: E.x + 46, y: E.y + 18 }, `(${num(y)}; ${num(x)})`, pt.cor));
+          registrarPonto(E, 10);
+          agendarChip(E, { x: E.x + 46, y: E.y + 18 }, `(${num(y)}; ${num(x)})`, pt.cor, 0);
         }
         dot(ctx, { x: P.x, y: P.y + 3 }, 11, cor.dark);
         dot(ctx, P, 11, cor.main);
         dot(ctx, P, 5, c.bg);
+        registrarPonto(P, 12);
         if (pt.coordenadas) {
           const s = `(${num(x)}; ${num(y)})`;
           const dx = P.x > A.x + A.w * 0.7 ? -46 - 3 * s.length : 46 + 3 * s.length;
-          depois.push(() => etiqueta(ctx, hits, { x: P.x + dx, y: P.y - 18 }, s, pt.cor));
+          agendarChip(P, { x: P.x + dx, y: P.y - 18 }, s, pt.cor, 0);
         }
       }
     }
   }
 
-  // Rótulos por cima de tudo. O das curvas procura um lugar longe das bordas, dos eixos
-  // (é perto do eixo x que ficam as raízes) e dos rótulos já postos.
+  // Rótulos por cima de tudo: primeiro os ancorados (pontos, raízes, vértices, guias),
+  // registrando cada caixa em `ocupados`; por fim, os rótulos das curvas nos espaços livres.
   triRotulos?.();
-  const ocupados: { x: number; y: number; w: number; h: number }[] = [];
-  const colide = (r: { x: number; y: number; w: number; h: number }) =>
-    ocupados.some((o) => r.x < o.x + o.w + 6 && o.x < r.x + r.w + 6 && r.y < o.y + o.h + 4 && o.y < r.y + r.h + 4);
+  pendentes.sort((a, b) => a.prioridade - b.prioridade);
+  for (const item of pendentes) {
+    const res = escolherPosicao(item.candidatos, item.w, item.h, ocupados, limites);
+    ocupados.push({ caixa: res.caixa });
+    item.draw(res.pos);
+  }
   ctx.font = "900 16px Nunito, system-ui, sans-serif";
   p.curvas.forEach((cv, i) => {
     if (!cv.rotulo) return;
     const k = curvas[i];
-    const lw = Math.max(28, ctx.measureText(cv.rotulo).width + 16);
+    const { w: lw, h: lh } = medirChip(cv.rotulo);
     for (const exigente of [true, false]) {
-      for (let j = 0; j <= 60; j++) {
-        const x = x1 - (x1 - x0) * (0.16 + j / 80);
-        const y = avaliar(k, x);
-        if (!Number.isFinite(y) || y < y0 + (y1 - y0) * 0.1 || y > y1 - (y1 - y0) * 0.1) continue;
-        if (exigente && (Math.abs(y) < (y1 - y0) * 0.2 || Math.abs(x) < (x1 - x0) * 0.08)) continue;
-        const pos = { x: v.X(x), y: v.Y(y) - 22 };
-        const r = { x: pos.x - lw / 2, y: pos.y - 13, w: lw, h: 29 };
-        if (colide(r)) continue;
-        ocupados.push(r);
-        if (cv.fantasma) chip(ctx, pos, cv.rotulo, c.lineDark, c.muted, c.ink2);
-        else etiqueta(ctx, hits, pos, cv.rotulo, cv.cor);
-        return;
+      const deslocamentos = exigente ? [-22] : [-22, 22];
+      for (const dy of deslocamentos) {
+        for (let j = 0; j <= 60; j++) {
+          const x = x1 - (x1 - x0) * (0.16 + j / 80);
+          const y = avaliar(k, x);
+          if (!Number.isFinite(y) || y < y0 + (y1 - y0) * 0.1 || y > y1 - (y1 - y0) * 0.1) continue;
+          if (exigente && (Math.abs(y) < (y1 - y0) * 0.2 || Math.abs(x) < (x1 - x0) * 0.08)) continue;
+          const pos = { x: v.X(x), y: v.Y(y) + dy };
+          const r = caixaDoCentro(pos, lw, lh);
+          if (!dentroDosLimites(r, limites) || colideComAlgum(r, ocupados)) continue;
+          ocupados.push({ caixa: r });
+          if (cv.fantasma) chip(ctx, pos, cv.rotulo, c.lineDark, c.muted, c.ink2);
+          else etiqueta(ctx, hits, pos, cv.rotulo, cv.cor);
+          return;
+        }
       }
     }
   });
-  for (const f of depois) f();
   return v;
 }

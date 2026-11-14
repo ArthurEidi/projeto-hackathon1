@@ -7,11 +7,11 @@ Conferência em viewport 400 × 860 (`scripts/captura-aula.mjs`, estado inicial 
 | slug | passo | defeito | tipo | corrigido? |
 |---|---|---|---|---|
 | `funcao-afim` | `p5` (`achar-raiz`) | Pílula da curva `f(x) = −x + 2` cobria a alça arrastável em `(−2; 4)` | conteúdo | sim (`ponto.x: -2 -> 4`) |
-| `funcao-composta-e-inversa` | `p3` (`inversa`) | Chip `(0; 1)` sobreposto ao rótulo `f⁻¹(x) = (x−1)/2` | widget | não |
-| `funcao-composta-e-inversa` | `p4`, `p5` | Chip `(1; 3)` sobreposto ao rótulo `y = x` | widget | não |
+| `funcao-composta-e-inversa` | `p3` (`inversa`) | Chip `(0; 1)` sobreposto ao rótulo `f⁻¹(x) = (x−1)/2` | widget | sim (`rotulosPlano.ts` / `desenhoPlano.ts`) |
+| `funcao-composta-e-inversa` | `p4`, `p5` | Chip `(1; 3)` sobreposto ao rótulo `y = x` | widget | sim (`rotulosPlano.ts` / `desenhoPlano.ts`) |
 | `funcao-definida-por-partes` | `p2` (`trocar-trecho`) | Alça arrastável em `(−1; −1)` cobria o rótulo rosa `x` | conteúdo | sim (`ponto.x: -1 -> -2`) |
-| `funcao-exponencial` | `p1` | Chip `(0; 1)` cobria o rótulo tracejado `y = 1` | widget | não |
-| `funcao-modular` | `p5` (`fechamento`) | Chips de raízes `0,5` e `1,5` se sobrepõem e cobrem o vértice `(1; −1)` | widget | não |
+| `funcao-exponencial` | `p1` | Chip `(0; 1)` cobria o rótulo tracejado `y = 1` | widget | sim (`rotulosPlano.ts` / `desenhoPlano.ts`) |
+| `funcao-modular` | `p5` (`fechamento`) | Chips de raízes `0,5` e `1,5` se sobrepõem e cobrem o vértice `(1; −1)` | widget | sim (`rotulosPlano.ts` / `desenhoPlano.ts`) |
 | `funcao-quadratica` | `p3` | Chip `(−1; 4)` cobria o rótulo `f(x) = (x − 1)²` | conteúdo | sim (`ponto.x: -1 -> 0`) |
 | `funcao-racional` | `p4` (`desafio-fronteira`) | `marcar.assintota: true` exibia `x = 2` e `y = 1` no desafio que pede as assíntotas | conteúdo | sim (`marcar.assintota: false`) |
 | `introducao-a-funcoes` | — | sem achados (5 imagens vistas) | — | — |
@@ -23,11 +23,11 @@ Conferência em viewport 400 × 860 (`scripts/captura-aula.mjs`, estado inicial 
 | `numeros-complexos` | `p5` (`conferir-previsao`) | Figura do desafio exibia `Módulo = 5`, entregando a resposta de `3+4i` | conteúdo | sim (`mostrar.modulo: false`) |
 | `numeros-complexos` | `p6` (`fechamento`) | Fórmula do `concept_lock` juntava `i ; \|z\|` no mesmo bloco colorido | conteúdo | sim (`i ; ` separado de `\|z\|`) |
 | `polinomios` | `p5` (`fechamento`) | Fórmula do `concept_lock` incluía `=` dentro do bloco de `aₙ` | conteúdo | sim (`=` movido para texto neutro) |
-| `raizes-polinomiais-e-multiplicidade` | `p1`, `p3` | Chip `(0; −1)` cobria o chip da raiz `1` | widget | não |
+| `raizes-polinomiais-e-multiplicidade` | `p1`, `p3` | Chip `(0; −1)` cobria o chip da raiz `1` | widget | sim (`rotulosPlano.ts` / `desenhoPlano.ts`) |
 | `raizes-polinomiais-e-multiplicidade` | `p5` (`fechamento`) | Fórmula do `concept_lock` tinha prosa longa cortada na borda direita e `=` dentro de `(x − r)` | conteúdo | sim (prosa removida da fórmula e `=` separado) |
 | `sequencias-pa-pg` | `p4` (`micro-desafio`) | Figura do desafio mostrava `termos: 5` com barra `a₅ = −4`, entregando a resposta | conteúdo | sim (`termos: 4`) |
 | `sequencias-recursivas-e-padroes` | `p4` (`micro-desafio`) | Figura do desafio mostrava barra `a₅ = 5`, entregando a resposta | conteúdo | sim (`a₅` removido de `categorias`) |
-| `sequencias-recursivas-e-padroes` | `p5` (`fechamento`) | Subscrito `aₙ₋₁` e `aₙ₋₂` renderiza `₋` próximo a `_` pelo glifo da fonte | widget | não |
+| `sequencias-recursivas-e-padroes` | `p5` (`fechamento`) | Subscrito `aₙ₋₁` e `aₙ₋₂` renderiza `₋` próximo a `_` pelo glifo da fonte | widget | sim (`ConceptLock.tsx` + `styles.css`) |
 | `soma-da-pg-infinita` | `p4` (`micro-desafio`) | Figura do desafio mostrava `limite 16`, entregando a soma infinita | conteúdo | sim (`limite: false`) |
 | `somatorios-pa-pg` | `p4` (`micro-desafio`) | Figura do desafio mostrava barra acumulada `S₅ = 40`, entregando a resposta | conteúdo | sim (`acumular: false`) |
 
