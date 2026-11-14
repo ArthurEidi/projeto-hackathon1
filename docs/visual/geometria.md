@@ -136,3 +136,49 @@ Tipo: **conteúdo** = corrigível no `aula-01.json`; **widget** = só a Máquina
 | inequacoes-trigonometricas | 1 `caso-neutro` e 2 `cruzar-fronteira` | O slider passa do alvo (passo 1 conclui também de 120° a 360°, passo 2 também em 300°–360°); em 360° o ponto está no eixo, não "abaixo". | conteúdo |
 | inequacoes-trigonometricas | 3 `limite-meio` | O passo conclui em qualquer ângulo de 30° a 150° (`dentro`), mas a fala trata da fronteira ("Entra; a comparação aceita igualdade"). O extremo 150° é desenhado com bolinha vazia, como se estivesse fora, embora o arco seja fechado. | conteúdo e widget |
 | inequacoes-trigonometricas | 4 `conferir-previsao` | A figura entrega a resposta: o arco (0; π) com as bolinhas abertas em 0 e π já está desenhado. Nenhuma opção tem `figure`. | conteúdo |
+| lei-dos-senos-e-cossenos | 4 `desafio-cossenos` | A figura entrega a resposta: "a = 7" e "a² = 49" na legenda. Nenhuma opção tem `figure`. | conteúdo e widget (opção para esconder a legenda) |
+| lei-dos-senos-e-cossenos | 5 `fechamento` | Fórmula quebrada e cortada nas duas bordas ("−2bc·cos" em 2 linhas, "/ sen" solto, "A" cortado). | conteúdo e UI |
+| modelos-periodicos-e-amplitude | 4 `desafio-roda-gigante` | Rótulos longos ("12 m e 10 m") quebram em 2 linhas na grade 2×2 e a 2ª fileira fica abaixo da dobra. A figura da opção "12 m e 10 m" só muda `highlight`, sem efeito visível. | UI e conteúdo |
+| modelos-periodicos-e-amplitude | 5 `fechamento` | A fórmula "y = D + A·sen(Bx + C)" sai cortada nas duas bordas e o token "x +" empilha. | conteúdo e UI |
+| radianos-e-ciclo-trigonometrico | 5 `fechamento` | **Rótulos errados na figura:** `marcos_rad: [0.5, 0.8, 1.05, 1.57, 3.14, 6.28]` e o widget arredonda o rótulo para inteiro, então aparecem "1 rad" três vezes (em 0,5, 0,8 e 1,05 rad), "2 rad" em π/2, "3 rad" em π e "6 rad" em 2π, por cima dos rótulos π/2, π e 0. A fórmula usa "θ_geral" cru, sobreposto ao "180°", e sai cortada. | widget (`ciclo/desenho.ts` linha 96: `fmt(r, 0)`) e conteúdo (usar marcos inteiros ou rótulos próprios) |
+| radianos-e-ciclo-trigonometrico | 4 `desafio-conversao` | A figura entrega a resposta: cabeçalho "θ = 120° = 2π/3". | conteúdo e widget (cabeçalho sempre visível) |
+| radianos-e-ciclo-trigonometrico | 1 `um-radiano` | O slider vai até 3 rad e o passo conclui também em 2 ou 3 rad, onde a fala "tem exatamente 1 raio de comprimento… 57,3°" deixa de valer. | conteúdo |
+| seno-cosseno-tangente-no-ciclo | 4 `desafio-reduzir-150` | A figura entrega a resposta: "sen 0,5" e "cos −0,87" no ponto de 150°. Rótulos longos quebram em 2 linhas na grade 2×2. | conteúdo e UI |
+| seno-cosseno-tangente-no-ciclo | 5 `fechamento` | O chip "sen 0,87" cobre o "30°"; a fórmula sai cortada nas duas bordas. | widget, conteúdo e UI |
+| trigonometria-no-triangulo-retangulo | 1, 2, 3, 4, 5 | O triângulo é desenhado minúsculo no canto inferior esquerdo de uma malha grande e vazia; os chips "HIP", "30°" e "CO" se cobrem e o "CA" sai cortado na borda de baixo. | widget (`geometria_triangulo` modo trigonometria: escala e enquadramento) |
+| trigonometria-no-triangulo-retangulo | 4 `desafio-rampa` | A figura entrega a resposta: chip "CO 5" e a legenda "sen θ = CO / HIP = 0,5" com HIP 10. | conteúdo e widget |
+| trigonometria-no-triangulo-retangulo | 5 `fechamento` | A fórmula sai cortada nas duas bordas ("HIP", "tg"). | conteúdo e UI |
+
+## Resumo
+
+42 capítulos percorridos passo a passo em 400 px (8 de geometria analítica, 13 de plana, 11 de espacial e 10 de trigonometria); 139 achados, sem contar a linha de `cones`. Todos os passos interativos concluíram, por slider, botão, arraste ou toque. Nenhum passo ficou travado.
+
+### Graves (conta ou gabarito errado na tela)
+
+1. `projecoes-cortes-e-planificacoes`, desafio: o gabarito "Face 3" contradiz o molde desenhado. A oposta à 1 é a 6, que nem aparece como opção.
+2. `triangulos-congruencia-e-propriedades`, passos 2 e 6: o widget rotula o externo em B como α + β (110°), mas o ângulo desenhado mede α + γ (140°).
+3. `troncos-de-solidos`, passo 3: a fala diz altura 3, cateto 4, g = 5; a figura desenha altura 5, cateto 3, g = 5,83.
+4. `radianos-e-ciclo-trigonometrico`, fechamento: os marcos de radiano têm rótulos arredondados e errados ("1 rad" em 0,5 rad, "3 rad" em π).
+5. `solidos-de-revolucao`, desafio: a figura mostra um tronco de cone (V = 11,67π) para uma pergunta sobre cilindro + cone (12π).
+
+### Padrões (valem para muitos capítulos)
+
+- **A figura do desafio entrega a resposta** em cerca de 30 dos 42 capítulos, por chips de medida, legendas com a conta pronta ou pelo próprio ponto marcado. Isso acontece em `lugar_geometrico`, `pontos_figura`, `solido_3d_figura`, `geometria_*_figura` e `ciclo_trigonometrico_figura`. Para corrigir no conteúdo, use figura sem a medida pedida. Do lado do widget, faltam opções para esconder chips e legendas.
+- **As opções erradas não mudam a figura:** não têm `figure` ou só mudam `highlight`, que não altera nada visível. A figura de erro não mostra o erro.
+- **Fórmula do `concept_lock` que não cabe em 400 px** em cerca de 30 capítulos: tokens longos quebram em 3 a 7 linhas e o primeiro e o último saem cortados. Em vários aparece sublinhado cru ("S_i", "a_e", "A_b", "a_p", "A_m", "g_t", "θ_geral"), também em falas e definições. É conteúdo (tokens curtos) e UI (`ConceptLock` sem quebra nem rolagem).
+- **Grade 2×2 do `micro_challenge` com rótulo longo:** os rótulos são cortados ("Concorren") ou quebram em 3 linhas e empurram opções para baixo da dobra. O treino troca para lista nesse caso, mas o desafio não. É UI.
+- **Slider passa do alvo:** o `complete_when` só tem `gte` e o slider vai além do valor citado na fala. O passo conclui num estado em que a fala de conclusão é falsa (posicoes-relativas, equações e inequações trigonométricas, identidades, radianos, perímetro). É conteúdo.
+- **Rótulos que se cobrem ou saem da borda**, principalmente em `geometria_poligono` modo paralelas, `geometria_triangulo` (ângulos e trigonometria), `lugar_geometrico` (F sobre o vértice), `circunferencia_no_plano` (P sobre C) e legendas largas de `geometria_circulo`. É widget.
+- **Conta com π ou raiz exatos escrita com 3,14 ou 1,41 que não fecha** (10 · 3,14 = 31,42; 5 · 1,41 = 7,07). É widget.
+- **`micro_challenge` com feedback "Resposta: X;"** (formato do treino): entrega a certa no primeiro erro, embora o aluno possa tentar de novo. Ocorre em semelhança e triângulos. É conteúdo.
+
+### Botões do `pontos_no_plano` no modo reta
+
+Em `reta-equacao-e-inclinacao` (passos 1, 2 e 4), o widget mostra os botões "Quadrados" e "Ponto médio" e o chip "d = …", que não fazem parte da aula de reta. A linha "m = …; n = …" sai em letra pequena logo abaixo. Pedido à Máquina A: no modo reta, esconder as duas chaves e o d e dar destaque a m e n.
+
+### Limites desta conferência
+
+- Usei o Chrome headless com mouse emulado, não toque real. A dica (`Dica`) abre quando o cursor para sobre um rótulo; isso não foi contado como defeito.
+- Nos passos com slider, o valor foi posto pelo teclado (setas, Home e End). O arraste do polegar do slider não foi testado.
+- Os desafios foram vistos com todas as opções. Nos fechamentos, a tela foi rolada até o fim, mas as letras da fórmula não foram tocadas uma a uma.
+- Não editei nenhuma aula, conforme a instrução (os agentes Gemini estão editando o texto).
