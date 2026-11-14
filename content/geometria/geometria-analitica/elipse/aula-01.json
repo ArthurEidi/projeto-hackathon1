@@ -93,7 +93,10 @@
         "modo": "elipse",
         "a": 5,
         "c": 3,
-        "prender_na_curva": true
+        "prender_na_curva": true,
+        "mostrar": {
+          "dimensoes": false
+        }
       },
       "lines": {
         "intro": "No topo da elipse, P está à mesma distância dos dois focos. Quanto vale cada distância, e qual é a altura?",
@@ -156,7 +159,10 @@
           "a": 5,
           "c": 4,
           "focos": false,
-          "prender_na_curva": true
+          "prender_na_curva": true,
+          "mostrar": {
+            "dimensoes": false
+          }
         }
       },
       "options": [

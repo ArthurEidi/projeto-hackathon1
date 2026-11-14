@@ -92,7 +92,8 @@
         "a": 3,
         "prender_na_curva": true,
         "mostrar": {
-          "retangulo": false
+          "retangulo": false,
+          "dimensoes": false
         }
       },
       "lines": {
@@ -157,7 +158,10 @@
           "a": 3,
           "c": 5,
           "focos": false,
-          "prender_na_curva": true
+          "prender_na_curva": true,
+          "mostrar": {
+            "dimensoes": false
+          }
         }
       },
       "options": [

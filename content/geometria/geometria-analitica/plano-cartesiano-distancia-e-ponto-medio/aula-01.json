@@ -82,7 +82,8 @@
         "mostrar": {
           "quadrados": false,
           "medio": false,
-          "degraus": true
+          "degraus": true,
+          "distancia": false
         }
       },
       "controls": [],
@@ -188,10 +189,15 @@
             "a",
             "b"
           ],
+          "rotulos": [
+            "O",
+            "P"
+          ],
           "mostrar": {
             "quadrados": false,
             "medio": false,
-            "degraus": true
+            "degraus": true,
+            "distancia": false
           }
         }
       },

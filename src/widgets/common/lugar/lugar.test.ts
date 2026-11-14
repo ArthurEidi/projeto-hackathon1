@@ -45,4 +45,12 @@ describe("lugares geométricos", () => {
     expect(dimensoes(Lugar.parse({ modo: "elipse", a: 3, c: 4 })).valido).toBe(false);
     expect(dimensoes(Lugar.parse({ modo: "parabola", p: 0 })).valido).toBe(false);
   });
+  it("mostrar.dimensoes e mostrar.equacao têm padrão true e podem ser desativados", () => {
+    const e = Lugar.parse({ modo: "elipse" });
+    expect(e.mostrar.dimensoes).toBe(true);
+    expect(e.mostrar.equacao).toBe(true);
+    const fig = LugarFigura.parse({ modo: "parabola", p: 2, mostrar: { dimensoes: false, equacao: false } });
+    expect(fig.mostrar.dimensoes).toBe(false);
+    expect(fig.mostrar.equacao).toBe(false);
+  });
 });

@@ -4,6 +4,19 @@ import { criarVista, etiqueta, espessura, fmt, malha, nota, pegador, segMundo, t
 import { resolver } from "../pontos/calc";
 import { intersecoes, posicao, relativas } from "./calc";
 import type { Circunferencia } from "./params";
+export function posicoesRotulosCP(pc: Pt, pq: Pt): { c: Pt; p: Pt } {
+  const cimaP = pq.y <= pc.y;
+  const perto = Math.hypot(pq.x - pc.x, pq.y - pc.y) < 36;
+  const dx = perto ? (pq.x >= pc.x ? 14 : -14) : 0;
+  return {
+    c: { x: pc.x - dx, y: pc.y + (cimaP ? 23 : -23) },
+    p: { x: pq.x + dx, y: pq.y + (cimaP ? -23 : 23) },
+  };
+}
+function termoCentro(v: string, k: number) {
+  if (k === 0) return `${v}²`;
+  return k > 0 ? `(${v} − ${fmt(k)})²` : `(${v} + ${fmt(-k)})²`;
+}
 export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: Circunferencia, ctl: Record<string, number>, c: Pt, q: Pt, rastro: Pt[]) {
   const r = avaliarExpr(p.raio, ctl), alcance = Math.max(7, Math.abs(c.x) + r + 1, Math.abs(c.y) + r + 1);
   const caixa = { x0: -alcance, x1: alcance, y0: -alcance, y1: alcance };
@@ -21,18 +34,22 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
   pegador(ctx, v.q(c), "c1"); pegador(ctx, v.q(q), pos.estado === "sobre" ? "c3" : pos.estado === "dentro" ? "c1" : "c4");
   if (p.centro_arrastavel) alvos.push({ id: "centro", c: v.q(c), raio: 18 });
   if (p.ponto_arrastavel) alvos.push({ id: "ponto", c: v.q(q), raio: 18 });
-  if (p.rotulos) { etiqueta(ctx, hits, { x: v.q(c).x, y: v.q(c).y - 23 }, "C", "c1"); etiqueta(ctx, hits, { x: v.q(q).x, y: v.q(q).y + 23 }, "P", "c4"); }
+  if (p.rotulos) {
+    const posRot = posicoesRotulosCP(v.q(c), v.q(q));
+    etiqueta(ctx, hits, posRot.c, "C", "c1");
+    etiqueta(ctx, hits, posRot.p, "P", "c4");
+  }
   let adicional = "";
   if (p.reta_y !== undefined) {
     const k = avaliarExpr(p.reta_y, ctl), pontos = intersecoes(c, r, k);
     segMundo(ctx, v, { x: -alcance, y: k }, { x: alcance, y: k }, tinta("c4"), 2);
     pontos.forEach(t => dot(ctx, v.q(t), 6, tinta("c3")));
-    adicional = `${pontos.length === 2 ? "Secante" : pontos.length === 1 ? "Tangente" : "Exterior"}: ${pontos.length} ponto(s)`;
+    adicional = pontos.length === 2 ? "Secante: 2 pontos" : pontos.length === 1 ? "Tangente: 1 ponto" : "Exterior: 0 pontos";
   }
   if (p.segunda) { const cc = resolver(p.segunda.centro, ctl), rr = avaliarExpr(p.segunda.raio, ctl); circulo(cc, rr, "c2"); adicional = relativas(c, r, cc, rr); }
   if (p.rotulos) {
     etiqueta(ctx, hits, { x: w / 2, y: h - 65 }, `d = ${fmt(pos.d)}; r = ${fmt(r)}: ${pos.estado}`, "c4");
-    nota(ctx, { x: w / 2, y: h - 39 }, `(x − (${fmt(c.x)}))² + (y − (${fmt(c.y)}))² = ${fmt(r * r)}`, "ink", 13);
+    nota(ctx, { x: w / 2, y: h - 39 }, `${termoCentro("x", c.x)} + ${termoCentro("y", c.y)} = ${fmt(r * r)}`, "ink", 13);
     if (adicional) nota(ctx, { x: w / 2, y: h - 14 }, adicional, "c3", 14);
   }
   return { vista: v, alvos };

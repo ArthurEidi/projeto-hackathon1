@@ -36,7 +36,10 @@
         "modo": "parabola",
         "p": 1,
         "prender_no_eixo": true,
-        "curva_oculta": true
+        "curva_oculta": true,
+        "mostrar": {
+          "equacao": false
+        }
       },
       "lines": {
         "intro": "O foco está em (0; 1) e a diretriz é y = −1. Que ponto do eixo y fica à mesma distância dos dois?",
@@ -59,7 +62,10 @@
       "params": {
         "modo": "parabola",
         "p": 1,
-        "curva_oculta": true
+        "curva_oculta": true,
+        "mostrar": {
+          "equacao": false
+        }
       },
       "lines": {
         "intro": "Procure outros pontos à mesma distância do foco e da diretriz. Teste (2; 1): quanto mede cada distância?",
@@ -76,7 +82,10 @@
       "widget": "lugar_geometrico",
       "params": {
         "modo": "parabola",
-        "p": 1
+        "p": 1,
+        "mostrar": {
+          "equacao": false
+        }
       },
       "lines": {
         "intro": "Escreva as duas distâncias de um ponto qualquer (x; y). O que sobra quando você iguala?",

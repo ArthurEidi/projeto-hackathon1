@@ -12,7 +12,7 @@ const base = {
   focos: z.boolean().default(true),
   zoom: Expr.default(1),
   fantasma: z.object({ p: z.number().optional(), a: z.number().optional(), c: z.number().optional() }).optional(),
-  mostrar: z.object({ retangulo: z.boolean().default(false), assintotas: z.boolean().default(false), triangulo: z.boolean().default(false) }).default({ retangulo: false, assintotas: false, triangulo: false }),
+  mostrar: z.object({ retangulo: z.boolean().default(false), assintotas: z.boolean().default(false), triangulo: z.boolean().default(false), dimensoes: z.boolean().default(true), equacao: z.boolean().default(true) }).default({ retangulo: false, assintotas: false, triangulo: false, dimensoes: true, equacao: true }),
   highlight: z.array(Marca).default([]),
 };
 export const Lugar = z.discriminatedUnion("modo", [

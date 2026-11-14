@@ -29,17 +29,22 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
   if (p.fantasma) curva({ ...p, ...p.fantasma } as Lugar, "muted");
   if (!p.curva_oculta || s.igualou) curva(p, "c3");
   const q = s.ponto ?? projetar(p, ctl, { x: p.ponto[0], y: p.ponto[1] });
-  const ponto = (q0: Pt, rotulo: string, cor: "c1" | "c2" | "c3") => {
-    dot(ctx, v.q(q0), 4, tinta(cor)); etiqueta(ctx, hits, { x: v.q(q0).x, y: v.q(q0).y + 22 }, rotulo, cor);
-  };
   if (p.focos) {
     if (p.modo === "parabola") {
-      ponto({ x: 0, y: d.p }, "F", "c1");
+      const pf = v.q({ x: 0, y: d.p });
+      dot(ctx, pf, 4, tinta("c1"));
+      etiqueta(ctx, hits, { x: pf.x + (q.x > 0 ? -22 : 22), y: pf.y }, "F", "c1");
       segMundo(ctx, v, { x: -alcance, y: -d.p }, { x: alcance, y: -d.p }, tinta("c2"), espessura(p.highlight, "c2"));
       segMundo(ctx, v, q, { x: 0, y: d.p }, tinta("c4"));
       segMundo(ctx, v, q, { x: q.x, y: -d.p }, tinta("c4"));
     } else {
-      for (const sinal of [-1, 1]) { ponto({ x: sinal * d.c, y: 0 }, sinal < 0 ? "F₁" : "F₂", "c3"); segMundo(ctx, v, q, { x: sinal * d.c, y: 0 }, tinta("c4")); }
+      const perto = v.q({ x: d.c, y: 0 }).x - v.q({ x: -d.c, y: 0 }).x < 56;
+      for (const sinal of [-1, 1]) {
+        const pf = v.q({ x: sinal * d.c, y: 0 });
+        dot(ctx, pf, 4, tinta("c3"));
+        etiqueta(ctx, hits, { x: pf.x + (perto ? sinal * 16 : 0), y: pf.y + 22 }, sinal < 0 ? "F₁" : "F₂", "c3");
+        segMundo(ctx, v, q, { x: sinal * d.c, y: 0 }, tinta("c4"));
+      }
     }
   }
   if (p.modo === "elipse") { const topo = v.p(0, d.b); alvos.push({ id: "topo", c: topo, raio: 18 }); dot(ctx, topo, 5, tinta("c2")); }
@@ -55,10 +60,16 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
   }
   if (p.modo === "hiperbole" && p.mostrar.assintotas && d.a > 0) for (const sinal of [-1, 1]) segMundo(ctx, v, { x: -alcance * d.a / d.c, y: -sinal * alcance * d.b / d.c }, { x: alcance * d.a / d.c, y: sinal * alcance * d.b / d.c }, tinta("c2"), 2, [5, 5]);
   s.sobre.forEach(q0 => dot(ctx, v.q(q0), 3, tinta("c3")));
-  pegador(ctx, v.q(q), "c4"); alvos.unshift({ id: "p", c: v.q(q), raio: 20 });
-  const dist = distancias(p, ctl, q);
-  etiqueta(ctx, hits, { x: w / 2, y: h - 72 }, `PF₁ = ${fmt(dist.d1)}; ${p.modo === "parabola" ? "Pd" : "PF₂"} = ${fmt(dist.d2)}`, "c4");
-  nota(ctx, { x: w / 2, y: h - 47 }, p.modo === "elipse" ? `Soma = ${fmt(dist.valor)}; 2a = ${fmt(2 * d.a)}` : `Diferença = ${fmt(dist.valor)}`, "c4", 14);
-  nota(ctx, { x: w / 2, y: h - 22 }, p.modo === "parabola" ? `x² = ${fmt(4 * d.p)}y` : `a = ${fmt(d.a)}; b = ${fmt(d.b)}; c = ${fmt(d.c)}`, "ink", 14);
+  if (p.focos) {
+    pegador(ctx, v.q(q), "c4"); alvos.unshift({ id: "p", c: v.q(q), raio: 20 });
+    const dist = distancias(p, ctl, q);
+    etiqueta(ctx, hits, { x: w / 2, y: h - 72 }, p.modo === "parabola" ? `PF = ${fmt(dist.d1)}; Pd = ${fmt(dist.d2)}` : `PF₁ = ${fmt(dist.d1)}; PF₂ = ${fmt(dist.d2)}`, "c4");
+    nota(ctx, { x: w / 2, y: h - 47 }, p.modo === "elipse" ? `Soma = ${fmt(dist.valor)}; 2a = ${fmt(2 * d.a)}` : `Diferença = ${fmt(dist.valor)}`, "c4", 14);
+  }
+  if (p.modo === "parabola") {
+    if (p.mostrar.equacao || s.igualou) nota(ctx, { x: w / 2, y: h - 22 }, `x² = ${fmt(4 * d.p)}y`, "ink", 14);
+  } else if (p.mostrar.dimensoes) {
+    nota(ctx, { x: w / 2, y: h - 22 }, `a = ${fmt(d.a)}; b = ${fmt(d.b)}; c = ${fmt(d.c)}`, "ink", 14);
+  }
   return { vista: v, alvos };
 }
