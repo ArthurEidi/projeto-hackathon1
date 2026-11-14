@@ -267,8 +267,35 @@
           "correct": false,
           "feedback": "Concorrentes precisam de m diferentes. Aqui ambos são 2: paralelas.",
           "figure": {
+            "curvas": [
+              {
+                "tipo": "afim",
+                "a": 2,
+                "b": 1,
+                "cor": "c1",
+                "rotulo": "y = 2x + 1"
+              },
+              {
+                "tipo": "afim",
+                "a": -1,
+                "b": 4,
+                "cor": "c3",
+                "rotulo": "y = −x + 4"
+              },
+              {
+                "tipo": "afim",
+                "a": 2,
+                "b": -3,
+                "cor": "c2",
+                "fantasma": true,
+                "rotulo": "y = 2x − 3"
+              }
+            ],
             "marcar": {
               "encontro": true
+            },
+            "cores": {
+              "encontro": "c3"
             }
           }
         },
@@ -278,7 +305,33 @@
           "correct": false,
           "feedback": "Os cortes são 1 e −3, então não são a mesma reta. Paralelas.",
           "figure": {
-            "highlight": ["c2"]
+            "curvas": [
+              {
+                "tipo": "afim",
+                "a": 2,
+                "b": 1,
+                "cor": "c1",
+                "rotulo": "y = 2x + 1"
+              },
+              {
+                "tipo": "afim",
+                "a": 2,
+                "b": 1,
+                "cor": "c2",
+                "rotulo": "mesma reta"
+              },
+              {
+                "tipo": "afim",
+                "a": 2,
+                "b": -3,
+                "cor": "c2",
+                "fantasma": true,
+                "rotulo": "y = 2x − 3"
+              }
+            ],
+            "marcar": {
+              "angulo": true
+            }
           }
         },
         {
@@ -287,6 +340,30 @@
           "correct": false,
           "feedback": "2 · 2 = 4, não −1. Com o mesmo m, são paralelas.",
           "figure": {
+            "curvas": [
+              {
+                "tipo": "afim",
+                "a": 2,
+                "b": 1,
+                "cor": "c1",
+                "rotulo": "y = 2x + 1"
+              },
+              {
+                "tipo": "afim",
+                "a": -0.5,
+                "b": 3.5,
+                "cor": "c4",
+                "rotulo": "y = −0,5x + 3,5"
+              },
+              {
+                "tipo": "afim",
+                "a": 2,
+                "b": -3,
+                "cor": "c2",
+                "fantasma": true,
+                "rotulo": "y = 2x − 3"
+              }
+            ],
             "marcar": {
               "angulo": true
             },

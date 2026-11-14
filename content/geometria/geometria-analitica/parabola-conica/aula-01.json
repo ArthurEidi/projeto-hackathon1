@@ -155,7 +155,7 @@
           "feedback": "Isso. 4p = 8, logo p = 2 e o foco fica em (0; 2).",
           "figure": {
             "focos": true,
-            "ponto": [0, 2],
+            "ponto": [4, 2],
             "highlight": ["c1"]
           }
         },
@@ -166,6 +166,7 @@
           "feedback": "8 é 4p. O foco fica na altura p = 8/4 = 2: (0; 2).",
           "figure": {
             "focos": true,
+            "zoom": 1.7,
             "ponto": [0, 8],
             "highlight": ["c1"]
           }

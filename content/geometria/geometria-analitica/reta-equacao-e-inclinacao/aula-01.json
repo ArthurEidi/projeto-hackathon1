@@ -96,6 +96,14 @@
       "type": "interactive_canvas",
       "widget": "plano_cartesiano",
       "params": {
+        "x": [
+          -5,
+          5
+        ],
+        "y": [
+          -5,
+          7
+        ],
         "curvas": [
           {
             "tipo": "afim",
@@ -276,6 +284,14 @@
       "figure": {
         "widget": "plano_figura",
         "params": {
+          "x": [
+            -5,
+            5
+          ],
+          "y": [
+            -5,
+            7
+          ],
           "curvas": [
             {
               "tipo": "afim",

@@ -220,6 +220,26 @@
           "correct": false,
           "feedback": "Isso multiplica componentes. A soma é (2 + 4; 3 − 1) = (6; 2).",
           "figure": {
+            "vetores": [
+              {
+                "id": "u",
+                "cauda": [0, 0],
+                "comp": [2, 3],
+                "arrastavel": "nenhum"
+              },
+              {
+                "id": "v",
+                "cauda": [0, 0],
+                "comp": [4, -1],
+                "arrastavel": "nenhum"
+              },
+              {
+                "id": "p",
+                "cauda": [0, 0],
+                "comp": [8, -3],
+                "arrastavel": "nenhum"
+              }
+            ],
             "highlight": ["c1", "c2"]
           }
         },
@@ -258,6 +278,26 @@
           "correct": false,
           "feedback": "O −1 de v desce. 3 + (−1) = 2: (6; 2).",
           "figure": {
+            "vetores": [
+              {
+                "id": "u",
+                "cauda": [0, 0],
+                "comp": [2, 3],
+                "arrastavel": "nenhum"
+              },
+              {
+                "id": "v",
+                "cauda": [0, 0],
+                "comp": [4, -1],
+                "arrastavel": "nenhum"
+              },
+              {
+                "id": "e",
+                "cauda": [0, 0],
+                "comp": [6, 4],
+                "arrastavel": "nenhum"
+              }
+            ],
             "highlight": ["c2"]
           }
         }

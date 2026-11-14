@@ -209,3 +209,9 @@ Mesmo método (vite 5191 + Chrome headless, 400 × 860). Só os passos e desafio
 | hiperbole | 1, 3, 4, 6 | ok | P sobre a curva (diferença 0 no passo 1, 6 nos demais); retângulo escondido até o botão no passo 3. |
 | hiperbole | 5 `desafio-focos` | ok, com ressalva | "(±√7; 0)" mostra retângulo e triângulo; "(±3; 0)" põe P no vértice (8 − 2 = 6); "(±4; 0)" destaca o triângulo. "c = 5" ainda na tela (widget). |
 | hiperbole | 6 `fechamento` (fórmula) | ok | Cabe. |
+| reta-equacao-e-inclinacao | 3 `corte-no-eixo-y` e 6 `fechamento` (reconferência B2) | ok | Janela ampliada para `x: [-5, 5], y: [-5, 7]`; o rótulo "y = 2x + 1" fica no topo (y = 6..7), separado do degrau (y = 3..5) e dos chips "+2" e "1". |
+| posicoes-relativas-de-retas | 5 `desafio-posicao` (reconferência B2) | ok | Cada errada desenha o caso imaginado: Concorrentes (`y = −x + 4` cruzando em `(1; 3)` com `marcar.encontro`), Coincidentes (`mesma reta` tracejada sobre `y = 2x + 1`), Perpendiculares (`y = −0,5x + 3,5` com `90°`), mantendo `y = 2x − 3` como fantasma. Grade 2×2 já resolvida em lista única na UI. |
+| circunferencia-equacao-e-posicoes | 5 `desafio-ler-equacao` (reconferência B2) | ok | Cada errada desenha o centro/raio que afirma: `(−2; 1) e 3`, `(2; −1) e 9` (r = 9), `(2; 1) e 3`; chips C e P separados. |
+| circunferencia-equacao-e-posicoes | 6 `fechamento` (reconferência B2) | ok | Tokens `(x−a)²` e `(y−b)²` sem espaços internos cabem em uma única linha em 400 px. |
+| vetores-no-plano | 5 `desafio-soma` (reconferência B2) | ok | `(8; −3)` e `(6; 4)` agora desenham o vetor correspondente (`p = (8; −3)` e `e = (6; 4)`) junto com `u` e `v`. |
+| parabola-conica | 5 `desafio-foco` (reconferência B2) | ok | Base com `focos: false` oculta P e chips; certa põe P em `(4; 2)` sobre a curva (`PF = 4; Pd = 4; Diferença = 0`); `(0; 8)` usa `zoom: 1.7` e fica inteiro dentro da janela (`PF = 6; Pd = 10`). |

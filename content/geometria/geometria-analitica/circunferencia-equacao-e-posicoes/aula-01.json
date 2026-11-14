@@ -212,6 +212,14 @@
           "correct": false,
           "feedback": "Os sinais saem trocados: x − 2 dá a = 2 e y + 1 dá b = −1.",
           "figure": {
+            "centro": [
+              -2,
+              1
+            ],
+            "ponto": [
+              -2,
+              4
+            ],
             "rotulos": true,
             "highlight": [
               "c1"
@@ -224,6 +232,15 @@
           "correct": false,
           "feedback": "9 é r². O raio é 3.",
           "figure": {
+            "centro": [
+              2,
+              -1
+            ],
+            "raio": 9,
+            "ponto": [
+              2,
+              8
+            ],
             "rotulos": true,
             "highlight": [
               "c2"
@@ -236,6 +253,14 @@
           "correct": false,
           "feedback": "y + 1 = y − (−1): b = −1, não 1.",
           "figure": {
+            "centro": [
+              2,
+              1
+            ],
+            "ponto": [
+              2,
+              4
+            ],
             "rotulos": true,
             "highlight": [
               "c1"
@@ -264,14 +289,14 @@
       },
       "formula": [
         {
-          "text": "(x − a)²",
+          "text": "(x−a)²",
           "ref": "c1"
         },
         {
           "text": "+"
         },
         {
-          "text": "(y − b)²",
+          "text": "(y−b)²",
           "ref": "c1"
         },
         {

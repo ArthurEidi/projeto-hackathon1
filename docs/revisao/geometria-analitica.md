@@ -45,6 +45,15 @@ Conferência em `docs/visual/geometria.md` (apenas itens de tipo `conteúdo`):
 - `hiperbole` · passo 5 `desafio-focos`: adicionadas `figure` às 4 opções (`focos: true` + `highlight` / `mostrar.retangulo` / `ponto`).
 - `hiperbole` · passo 6 `fechamento`: fórmula encurtada para 5 tokens `x²/a² − y²/b² = 1` (`c1`, `c2`), mantendo `c² = a² + b²` na definição.
 
+### Segunda passada B2 (14/11)
+
+- `reta-equacao-e-inclinacao` · passos 3 `corte-no-eixo-y` e 6 `fechamento`: janela definida como `x: [-5, 5], y: [-5, 7]` para separar o rótulo `"y = 2x + 1"` do degrau e do chip `"+2"`.
+- `posicoes-relativas-de-retas` · passo 5 `desafio-posicao`: `figure` das erradas refeitas com `curvas` explícitas (mantendo `y = 2x − 3` como `fantasma: true`): Concorrentes desenha `y = −x + 4` com `marcar.encontro` em `(1; 3)`; Coincidentes desenha `mesma reta` (`y = 2x + 1`) com `marcar.angulo` (tracejado coincidente); Perpendiculares desenha `y = −0,5x + 3,5` com `marcar.angulo` (`90°`).
+- `circunferencia-equacao-e-posicoes` · passo 5 `desafio-ler-equacao`: `figure` das erradas ajustadas com `centro` e `raio` correspondentes (`[-2, 1]`, `raio: 9` com `ponto: [2, 8]`, e `[2, 1]`).
+- `circunferencia-equacao-e-posicoes` · passo 6 `fechamento`: tokens `"(x−a)²"` e `"(y−b)²"` sem espaços internos para não quebrar dentro do botão em 400 px.
+- `vetores-no-plano` · passo 5 `desafio-soma`: adicionados vetores `p = (8; −3)` e `e = (6; 4)` nas respectivas alternativas erradas.
+- `parabola-conica` · passo 5 `desafio-foco`: na certa (`f02`), `ponto` movido para `[4, 2]` sobre a curva (`PF = Pd = 4`); em `(0; 8)` (`f08`), adicionado `zoom: 1.7` para manter `(0; 8)` dentro da janela.
+
 
 ## Auditoria do maestro (Claude, Máquina B, 13/11)
 
