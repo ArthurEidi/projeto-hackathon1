@@ -12,19 +12,19 @@
   "glossario": {
     "c1": {
       "nome": "Razão linear (k)",
-      "resumo": "Proporção das alturas e raios: k = h_menor / H_total = r / R."
+      "resumo": "Proporção das alturas e raios: k = h' / H = r / R."
     },
     "c2": {
       "nome": "Razão de áreas (k²)",
-      "resumo": "Proporção entre a área do corte e a base: A_menor / A_maior = k²."
+      "resumo": "Proporção entre a área do corte e a base: Am / AM = k²."
     },
     "c3": {
       "nome": "Volume do topo (k³)",
-      "resumo": "Fração do volume que fica na ponta cortada: V_menor = k³ · V_total."
+      "resumo": "Fração do volume na ponta cortada: Vm = k³ · Vt."
     },
     "c4": {
       "nome": "Tronco",
-      "resumo": "Parte inferior que sobra após retirar a ponta: V_total − V_menor."
+      "resumo": "Parte inferior que sobra após retirar a ponta: Vt − Vm."
     }
   },
   "steps": [
@@ -112,8 +112,8 @@
         "modo": "tronco",
         "solido": "cone",
         "R": 6,
-        "H": 10,
-        "corte": 5,
+        "H": 4.5,
+        "corte": 1.5,
         "meridiano": true,
         "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
       },
@@ -129,8 +129,8 @@
         }
       ],
       "lines": {
-        "intro": "No corte vertical do tronco de cone com R = 6, r = 2 e altura h_t = 3, quanto mede a geratriz inclinada g_t?",
-        "done": "Mede 5! O cateto horizontal vale R − r = 4 e a altura é 3: por Pitágoras, g_t² = 3² + 4² = 25, logo g_t = 5."
+        "intro": "No corte vertical do tronco de cone com R = 6, r = 2 e altura 3, quanto mede a geratriz inclinada g?",
+        "done": "Mede 5! O cateto horizontal vale R − r = 4 e a altura é 3: por Pitágoras, g² = 3² + 4² = 25, logo g = 5."
       },
       "duvida": {
         "quando": "fim",
@@ -187,6 +187,7 @@
             "R": 4,
             "H": 12,
             "corte": 6,
+            "meridiano": true,
             "highlight": ["c1"]
           }
         },
@@ -201,6 +202,7 @@
             "R": 4,
             "H": 12,
             "corte": 6,
+            "meridiano": true,
             "highlight": ["c2"]
           }
         },
@@ -215,6 +217,7 @@
             "R": 4,
             "H": 12,
             "corte": 6,
+            "separar": 1,
             "highlight": ["c4"]
           }
         }
@@ -236,21 +239,11 @@
         }
       },
       "formula": [
-        { "text": "k", "ref": "c1" },
+        { "text": "V" },
         { "text": "=" },
-        { "text": "h'/H" },
-        { "text": ";" },
-        { "text": "A_m", "ref": "c2" },
-        { "text": "=" },
-        { "text": "k²·A_M" },
-        { "text": ";" },
-        { "text": "V_m", "ref": "c3" },
-        { "text": "=" },
-        { "text": "k³·V_t" },
-        { "text": ";" },
-        { "text": "V_tronco", "ref": "c4" },
-        { "text": "=" },
-        { "text": "V_t − V_m" }
+        { "text": "k³", "ref": "c3" },
+        { "text": "·" },
+        { "text": "Vt", "ref": "c4" }
       ],
       "definitions": [
         {
@@ -259,11 +252,11 @@
         },
         {
           "term": "Volume do tronco",
-          "text": "Diferença entre o sólido total e o sólido menor do topo: V_tronco = V_total − V_menor."
+          "text": "Diferença entre o sólido total e o sólido menor do topo: V tronco = Vt − Vm."
         },
         {
           "term": "Geratriz do tronco",
-          "text": "Pitágoras no trapézio meridiano: g_t² = h_t² + (R − r)²."
+          "text": "Pitágoras no trapézio meridiano: g² = h² + (R − r)²."
         }
       ],
       "lines": {

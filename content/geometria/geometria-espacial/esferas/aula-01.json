@@ -86,7 +86,7 @@
       ],
       "lines": {
         "intro": "A sombra plana da esfera de raio 3 tem área πR² = 9π. Quantos círculos máximos cobrem a casca inteira?",
-        "done": "A casca inteira mede 4πR² = 36π: exatamente 4 círculos máximos, a mesma área lateral do cilindro!"
+        "done": "A casca da esfera mede 4πR² = 36π, exatamente igual à área lateral do cilindro circunscrito!"
       },
       "duvida": {
         "quando": "fim",
@@ -168,6 +168,7 @@
           "figure": {
             "modo": "esfera",
             "R": 3,
+            "corte": 1.5,
             "highlight": ["c1"]
           }
         },
@@ -179,6 +180,7 @@
           "figure": {
             "modo": "esfera",
             "R": 3,
+            "no_cilindro": true,
             "highlight": ["c4"]
           }
         },
@@ -208,19 +210,11 @@
         }
       },
       "formula": [
-        { "text": "r", "sup": "2", "ref": "c3" },
+        { "text": "r²", "ref": "c3" },
         { "text": "+" },
-        { "text": "d", "sup": "2", "ref": "c2" },
-        { "text": "=" },
-        { "text": "R", "sup": "2", "ref": "c1" },
-        { "text": ";" },
-        { "text": "A", "ref": "c4" },
-        { "text": "=" },
-        { "text": "4πR²" },
-        { "text": ";" },
-        { "text": "V", "ref": "c4" },
-        { "text": "=" },
-        { "text": "(4/3)πR³" }
+        { "text": "d²", "ref": "c2" },
+        { "text": "= R²", "ref": "c1" },
+        { "text": "; A = 4πR²", "ref": "c4" }
       ],
       "definitions": [
         {
@@ -323,7 +317,7 @@
       },
       {
         "id": "esfera-no-cilindro-arquimedes",
-        "prompt": "Uma esfera de raio R está inscrita num cilindro (raio R, altura 2R). A razão V_esfera / V_cilindro é:",
+        "prompt": "Uma esfera de raio R está inscrita num cilindro (raio R, altura 2R). A razão V(esfera) / V(cilindro) é:",
         "options": [
           {
             "id": "dois_tercos",
@@ -478,7 +472,7 @@
             "id": "v30",
             "label": "30 cm³",
             "correct": true,
-            "feedback": "Exato. Pela relação de Arquimedes, a esfera ocupa 2/3 do cilindro; logo V_cil = 20 · (3/2) = 30 cm³."
+            "feedback": "Exato. Pela relação de Arquimedes, a esfera ocupa 2/3 do cilindro; logo V(cilindro) = 20 · (3/2) = 30 cm³."
           },
           {
             "id": "v40",

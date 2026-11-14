@@ -11,7 +11,7 @@
   "outro": "Você dominou o empilhamento de camadas, a planificação das paredes e a diagonal espacial dos prismas.",
   "glossario": {
     "c1": {
-      "nome": "Área da base (A_b)",
+      "nome": "Área da base (Ab)",
       "resumo": "Quantidade de quadrados unitários no piso do prisma."
     },
     "c2": {
@@ -19,7 +19,7 @@
       "resumo": "Distância vertical entre as duas bases paralelas."
     },
     "c3": {
-      "nome": "Área lateral (A_l)",
+      "nome": "Área lateral (Al)",
       "resumo": "Soma dos retângulos que formam as paredes verticais."
     },
     "c4": {
@@ -184,9 +184,9 @@
             "base": "retangulo",
             "a": 5,
             "b": 2,
-            "h": 1,
-            "camadas": true,
-            "highlight": ["c1"]
+            "h": 6,
+            "camadas": false,
+            "highlight": ["c1", "c2"]
           }
         },
         {
@@ -211,11 +211,12 @@
           "feedback": "Você dividiu por 2 como se fosse triângulo. No bloco retangular, 5·2·6 = 60 cm³.",
           "figure": {
             "modo": "prisma",
-            "base": "retangulo",
+            "base": "triangulo",
             "a": 5,
             "b": 2,
-            "h": 3,
-            "camadas": true
+            "h": 6,
+            "camadas": true,
+            "highlight": ["c1"]
           }
         }
       ]
@@ -239,22 +240,18 @@
       "formula": [
         { "text": "V" },
         { "text": "=" },
-        { "text": "A_b", "ref": "c1" },
+        { "text": "Ab", "ref": "c1" },
         { "text": "·" },
-        { "text": "h", "ref": "c2" },
-        { "text": ";" },
-        { "text": "D", "ref": "c4" },
-        { "text": "=" },
-        { "text": "√(a² + b² + c²)" }
+        { "text": "h", "ref": "c2" }
       ],
       "definitions": [
         {
           "term": "Volume do prisma",
-          "text": "Área da base multiplicada pela altura (V = A_b · h)."
+          "text": "Área da base multiplicada pela altura (V = Ab · h)."
         },
         {
           "term": "Área total",
-          "text": "Soma da área lateral com as duas bases (A_t = A_l + 2·A_b)."
+          "text": "Soma da área lateral com as duas bases (At = Al + 2·Ab)."
         },
         {
           "term": "Diagonal do bloco",

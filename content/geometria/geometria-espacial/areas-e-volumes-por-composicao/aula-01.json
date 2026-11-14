@@ -79,7 +79,7 @@
       ],
       "lines": {
         "intro": "Se cavarmos um buraco em forma de cone no topo do cilindro, o volume diminui. E a área total da peça: diminui ou aumenta?",
-        "done": "A área aumenta! Tiramos a tampa plana de 9π, mas abrimos uma parede inclinada maior (15π) lá dentro."
+        "done": "A área aumenta! A tampa plana do cone sai, mas a parede inclinada do funil interno tem área maior que ela."
       },
       "duvida": {
         "quando": "fim",
@@ -119,21 +119,21 @@
           "label": "72π m³",
           "correct": false,
           "feedback": "Você esqueceu de dividir o volume do cone por 3. O certo é 45π + 9π = 54π m³.",
-          "figure": { "highlight": ["c2"] }
+          "figure": { "hc": 9, "highlight": ["c2"] }
         },
         {
           "id": "v45p",
           "label": "45π m³",
           "correct": false,
           "feedback": "45π m³ é só a parte cilíndrica. Somando o cone de 9π m³, dá 54π m³.",
-          "figure": { "highlight": ["c1"] }
+          "figure": { "modo": "cilindro", "r": 3, "h": 5, "highlight": ["c1"] }
         },
         {
           "id": "v36p",
           "label": "36π m³",
           "correct": false,
           "feedback": "Você subtraiu em vez de somar. Como o cone está em cima, soma-se: 54π m³.",
-          "figure": { "highlight": ["c3"] }
+          "figure": { "montagem": "cavidade", "highlight": ["c3"] }
         }
       ]
     },
@@ -154,13 +154,10 @@
       "formula": [
         { "text": "V", "ref": "c1" },
         { "text": "=" },
-        { "text": "V1", "ref": "c1" },
-        { "text": "±" },
-        { "text": "V2", "ref": "c2" },
-        { "text": "e" },
-        { "text": "Área", "ref": "c4" },
-        { "text": "descarta" },
-        { "text": "tampas", "ref": "c3" }
+        { "text": "V₁ ± V₂", "ref": "c2" },
+        { "text": ";" },
+        { "text": "A:", "ref": "c4" },
+        { "text": "casca", "ref": "c3" }
       ],
       "definitions": [
         { "term": "Volume por composição", "text": "Soma os sólidos colados e subtrai as cavidades escavadas." },

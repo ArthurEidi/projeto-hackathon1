@@ -142,7 +142,7 @@
           "label": "Coincidentes",
           "correct": false,
           "feedback": "São arestas distintas e separadas pela largura do cubo: reversas.",
-          "figure": { "highlight": ["c4"] }
+          "figure": { "planos": ["piso", "teto"], "highlight": ["c1", "c2"] }
         }
       ]
     },
@@ -162,7 +162,7 @@
         }
       },
       "formula": [
-        { "text": "r ∩ s = ∅" },
+        { "text": "r∩s=∅" },
         { "text": "⇒" },
         { "text": "paralelas", "ref": "c1" },
         { "text": "ou" },

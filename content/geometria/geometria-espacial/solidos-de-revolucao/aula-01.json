@@ -93,12 +93,12 @@
       "figure": {
         "widget": "solido_3d_figura",
         "params": {
-          "modo": "revolucao",
-          "perfil": "trapezio",
+          "modo": "composicao",
+          "montagem": "silo",
           "r": 2,
-          "r2": 1,
-          "h": 5,
-          "giro": 360
+          "h": 2,
+          "hc": 3,
+          "juntar": 1
         }
       },
       "prompt": "Um retângulo (r = 2, h = 2) colado a um triângulo (r = 2, h = 3) gira no eixo comum. Que sólido nasce e qual seu volume?",
@@ -111,21 +111,21 @@
           "label": "Cilindro + cone (12π)",
           "correct": true,
           "feedback": "Exato! O retângulo gera cilindro (8π) e o triângulo gera cone (4π): total 12π.",
-          "figure": { "highlight": ["c4"] }
+          "figure": { "juntar": 1, "highlight": ["c4"] }
         },
         {
           "id": "cc20",
           "label": "Dois cilindros (20π)",
           "correct": false,
           "feedback": "O triângulo no topo afunila e gera um cone (4π, não 12π). Total: 8π + 4π = 12π.",
-          "figure": { "highlight": ["c2"] }
+          "figure": { "juntar": 0, "highlight": ["c2"] }
         },
         {
           "id": "co4",
           "label": "Só um cone (4π)",
           "correct": false,
           "feedback": "4π é só o topo cônico; somando a base cilíndrica de 8π, temos 12π.",
-          "figure": { "highlight": ["c3"] }
+          "figure": { "juntar": 0, "highlight": ["c1"] }
         }
       ]
     },
@@ -143,11 +143,11 @@
         }
       },
       "formula": [
-        { "text": "Retângulo → Cilindro", "ref": "c2" },
-        { "text": "," },
-        { "text": "Triângulo → Cone", "ref": "c3" },
-        { "text": "," },
-        { "text": "Afastado → Furo", "ref": "c4" }
+        { "text": "Perfil", "ref": "c2" },
+        { "text": "+" },
+        { "text": "giro", "ref": "c1" },
+        { "text": "⇒" },
+        { "text": "sólido", "ref": "c4" }
       ],
       "definitions": [
         { "term": "Lado no eixo", "text": "Permanece parado e vira a altura h do sólido de revolução." },

@@ -174,7 +174,8 @@
           "correct": false,
           "feedback": "15π seria (45π)/3. O cilindro não divide por 3 como o cone: V = πr²h = 45π cm³.",
           "figure": {
-            "modo": "cilindro",
+            "modo": "revolucao",
+            "perfil": "triangulo",
             "r": 3,
             "h": 5,
             "highlight": ["c2"]
@@ -189,6 +190,7 @@
             "modo": "cilindro",
             "r": 3,
             "h": 5,
+            "desenrolar": 1,
             "highlight": ["c3"]
           }
         },
@@ -200,7 +202,7 @@
           "figure": {
             "modo": "cilindro",
             "r": 3,
-            "h": 2
+            "h": 25
           }
         }
       ]
@@ -218,23 +220,16 @@
         }
       },
       "formula": [
-        { "text": "A_l", "ref": "c3" },
-        { "text": "=" },
-        { "text": "2" },
-        { "text": "π" },
+        { "text": "Al", "ref": "c3" },
+        { "text": "= 2π" },
         { "text": "r", "ref": "c1" },
         { "text": "h", "ref": "c2" },
-        { "text": ";" },
-        { "text": "V", "ref": "c4" },
-        { "text": "=" },
-        { "text": "π" },
-        { "text": "r", "sup": "2", "ref": "c1" },
-        { "text": "h", "ref": "c2" }
+        { "text": "; V = πr²h", "ref": "c4" }
       ],
       "definitions": [
         {
           "term": "Área lateral",
-          "text": "Retângulo desenrolado de base 2πr e altura h: A_l = 2πrh."
+          "text": "Retângulo desenrolado de base 2πr e altura h: Al = 2πrh."
         },
         {
           "term": "Volume do cilindro",
@@ -364,7 +359,7 @@
             "id": "al30p",
             "label": "30π cm²",
             "correct": true,
-            "feedback": "Correto. A_l = 2πrh = 2 · π · 3 · 5 = 30π cm²."
+            "feedback": "Correto. Al = 2πrh = 2 · π · 3 · 5 = 30π cm²."
           },
           {
             "id": "al15p",
@@ -418,7 +413,7 @@
             "id": "h18",
             "label": "18 m",
             "correct": false,
-            "feedback": "Você dividiu por 2 em vez de 2² = 4. Como A_b = 4π, h = 36π / 4π = 9 m."
+            "feedback": "Você dividiu por 2 em vez de 2² = 4. Como Ab = 4π, h = 36π / 4π = 9 m."
           },
           {
             "id": "h6",

@@ -108,21 +108,21 @@
           "label": "4",
           "correct": false,
           "feedback": "Você fez 12 − 8 = 4 e esqueceu de somar 2 da fórmula: V = 6.",
-          "figure": { "highlight": ["c2"] }
+          "figure": { "solidos": ["tetraedro"], "highlight": ["c1", "c2"] }
         },
         {
           "id": "v18",
           "label": "18",
           "correct": false,
           "feedback": "Você somou 12 + 8 − 2. Na relação V − A + F = 2, temos V = 6.",
-          "figure": { "highlight": ["c3"] }
+          "figure": { "soltar": 1, "highlight": ["c3"] }
         },
         {
           "id": "v22",
           "label": "22",
           "correct": false,
           "feedback": "22 é 12 + 8 + 2. Como F soma com V, temos V = 2 + 12 − 8 = 6.",
-          "figure": { "highlight": ["c4"] }
+          "figure": { "solidos": ["dodecaedro"], "highlight": ["c4"] }
         }
       ]
     },

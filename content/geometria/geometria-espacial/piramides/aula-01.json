@@ -19,12 +19,12 @@
       "resumo": "Distância do centro da base até o meio de um lado."
     },
     "c3": {
-      "nome": "Apótema da pirâmide (a_p)",
-      "resumo": "Altura inclinada da face lateral: a_p² = h² + m²."
+      "nome": "Apótema da pirâmide (ap)",
+      "resumo": "Altura inclinada da face lateral: ap² = h² + m²."
     },
     "c4": {
       "nome": "Volume (V)",
-      "resumo": "Um terço do prisma de mesma base e altura: A_b · h / 3."
+      "resumo": "Um terço do prisma de mesma base e altura: Ab · h / 3."
     }
   },
   "steps": [
@@ -57,7 +57,7 @@
       "duvida": {
         "quando": "fim",
         "pergunta": "Essa altura inclinada da parede tem nome?",
-        "resposta": "Sim: é o apótema da pirâmide (a_p). É a altura da face triangular da parede e hipotenusa de h e m."
+        "resposta": "Sim: é o apótema da pirâmide (ap). É a altura da face triangular da parede e hipotenusa de h e m."
       },
       "complete_when": {
         "metric": "h",
@@ -89,12 +89,12 @@
       ],
       "lines": {
         "intro": "Ao abrir as 4 faces triangulares no chão em volta da base 6 × 6, qual é a altura de cada triângulo?",
-        "done": "Cada triângulo tem base 6 e altura 5 (o apótema a_p). A área lateral é 4 · (6 · 5)/2 = 60."
+        "done": "Cada triângulo tem base 6 e altura 5 (o apótema ap). A área lateral é 4 · (6 · 5)/2 = 60."
       },
       "duvida": {
         "quando": "fim",
         "pergunta": "Por que não usamos a altura h = 4 na área da face?",
-        "resposta": "Porque h passa pelo ar no centro da pirâmide; quem sobe pela superfície da face é o apótema a_p = 5."
+        "resposta": "Porque h passa pelo ar no centro da pirâmide; quem sobe pela superfície da face é o apótema ap = 5."
       },
       "complete_when": {
         "metric": "abrir",
@@ -172,6 +172,7 @@
             "modo": "piramide",
             "L": 6,
             "h": 4,
+            "dividir": 1,
             "highlight": ["c1"]
           }
         },
@@ -179,11 +180,12 @@
           "id": "v60",
           "label": "60 cm³",
           "correct": false,
-          "feedback": "60 é a área lateral (4 faces triangulares). O volume é A_b · h / 3 = 48 cm³.",
+          "feedback": "60 é a área lateral (4 faces triangulares). O volume é Ab · h / 3 = 48 cm³.",
           "figure": {
             "modo": "piramide",
             "L": 6,
             "h": 4,
+            "abrir": 1,
             "highlight": ["c3"]
           }
         },
@@ -191,7 +193,7 @@
           "id": "v24",
           "label": "24 cm³",
           "correct": false,
-          "feedback": "Você fez 6 · 4, sem a área da base nem o /3. Use A_b = 36: 36·4/3 = 48 cm³.",
+          "feedback": "Você fez 6 · 4, sem a área da base nem o /3. Use Ab = 36: 36·4/3 = 48 cm³.",
           "figure": {
             "modo": "piramide",
             "L": 6,
@@ -214,24 +216,20 @@
         }
       },
       "formula": [
-        { "text": "a_p", "sup": "2", "ref": "c3" },
+        { "text": "ap²", "ref": "c3" },
         { "text": "=" },
-        { "text": "h", "sup": "2", "ref": "c1" },
-        { "text": "+" },
-        { "text": "m", "sup": "2", "ref": "c2" },
-        { "text": ";" },
-        { "text": "V", "ref": "c4" },
-        { "text": "=" },
-        { "text": "(A_b · h) / 3" }
+        { "text": "h²", "ref": "c1" },
+        { "text": "+ m²", "ref": "c2" },
+        { "text": "; V = Ab·h/3", "ref": "c4" }
       ],
       "definitions": [
         {
           "term": "Apótema da pirâmide",
-          "text": "Altura inclinada da face triangular, a_p² = h² + m²."
+          "text": "Altura inclinada da face triangular, ap² = h² + m²."
         },
         {
           "term": "Volume da pirâmide",
-          "text": "Terça parte do prisma de mesma base e altura: V = A_b·h / 3."
+          "text": "Terça parte do prisma de mesma base e altura: V = Ab·h / 3."
         },
         {
           "term": "Área total",
@@ -239,13 +237,13 @@
         }
       ],
       "lines": {
-        "intro": "O apótema a_p governa as faces inclinadas e o fator 1/3 governa o volume.",
+        "intro": "O apótema ap governa as faces inclinadas e o fator 1/3 governa o volume.",
         "hint": "Toque nas letras coloridas para destacar cada elemento."
       },
       "duvida": {
         "quando": "inicio",
         "pergunta": "Por que o apótema da pirâmide é sempre maior que a altura?",
-        "resposta": "Porque a_p é a hipotenusa do triângulo retângulo interno formado por h e m."
+        "resposta": "Porque ap é a hipotenusa do triângulo retângulo interno formado por h e m."
       }
     }
   ],
@@ -295,7 +293,7 @@
             "id": "v_quarto",
             "label": "1/4 do volume do prisma",
             "correct": false,
-            "feedback": "O fator correto em 3 dimensões é 1/3: V = (A_b · h) / 3."
+            "feedback": "O fator correto em 3 dimensões é 1/3: V = (Ab · h) / 3."
           }
         ]
       },
@@ -307,19 +305,19 @@
             "id": "a_apotema",
             "label": "O apótema da pirâmide (a_p)",
             "correct": true,
-            "feedback": "Correto. O apótema a_p é o segmento que sobe inclinado pelo meio da face triangular."
+            "feedback": "Correto. O apótema ap é o segmento que sobe inclinado pelo meio da face triangular."
           },
           {
             "id": "a_altura_h",
             "label": "A altura vertical h",
             "correct": false,
-            "feedback": "A altura h passa pelo meio do sólido no ar. Na face inclinada, a altura do triângulo é a_p."
+            "feedback": "A altura h passa pelo meio do sólido no ar. Na face inclinada, a altura do triângulo é ap."
           },
           {
             "id": "a_aresta_l",
             "label": "A aresta lateral l",
             "correct": false,
-            "feedback": "A aresta lateral l é um dos lados do triângulo; a altura relativa à base é o apótema a_p."
+            "feedback": "A aresta lateral l é um dos lados do triângulo; a altura relativa à base é o apótema ap."
           }
         ]
       },
@@ -328,10 +326,10 @@
         "prompt": "No triângulo retângulo interno da pirâmide regular, a hipotenusa é:",
         "options": [
           {
-            "id": "h_apotema_p",
+            "id": "h_apotemap",
             "label": "O apótema da pirâmide (a_p)",
             "correct": true,
-            "feedback": "Exato. Os catetos são a altura h e o apótema da base m; a hipotenusa é a_p: a_p² = h² + m²."
+            "feedback": "Exato. Os catetos são a altura h e o apótema da base m; a hipotenusa é ap: ap² = h² + m²."
           },
           {
             "id": "h_altura",
@@ -343,7 +341,7 @@
             "id": "h_apotema_b",
             "label": "O apótema da base m",
             "correct": false,
-            "feedback": "O apótema da base m está no chão e é cateto; a hipotenusa inclinada é o apótema a_p."
+            "feedback": "O apótema da base m está no chão e é cateto; a hipotenusa inclinada é o apótema ap."
           }
         ]
       }
@@ -351,31 +349,31 @@
     "medias": [
       {
         "id": "calculo-apotema-345",
-        "prompt": "Uma pirâmide regular de base quadrada tem apótema da base m = 3 cm e altura h = 4 cm. Quanto mede a_p?",
+        "prompt": "Uma pirâmide regular de base quadrada tem apótema da base m = 3 cm e altura h = 4 cm. Quanto mede ap?",
         "options": [
           {
             "id": "ap5",
             "label": "5 cm",
             "correct": true,
-            "feedback": "Exato. Pela terna 3-4-5, a_p = √(3² + 4²) = √(9 + 16) = √25 = 5 cm."
+            "feedback": "Exato. Pela terna 3-4-5, ap = √(3² + 4²) = √(9 + 16) = √25 = 5 cm."
           },
           {
             "id": "ap7",
             "label": "7 cm",
             "correct": false,
-            "feedback": "Não some 3 + 4. Aplique Pitágoras: a_p = √(3² + 4²) = √25 = 5 cm."
+            "feedback": "Não some 3 + 4. Aplique Pitágoras: ap = √(3² + 4²) = √25 = 5 cm."
           },
           {
             "id": "ap25",
             "label": "25 cm",
             "correct": false,
-            "feedback": "25 é a_p²; tirando a raiz quadrada, temos a_p = 5 cm."
+            "feedback": "25 é ap²; tirando a raiz quadrada, temos ap = 5 cm."
           }
         ]
       },
       {
         "id": "achar-altura-por-pitagoras",
-        "prompt": "Numa pirâmide regular de base quadrada, temos m = 6 cm e apótema a_p = 10 cm. Qual é a altura vertical h?",
+        "prompt": "Numa pirâmide regular de base quadrada, temos m = 6 cm e apótema ap = 10 cm. Qual é a altura vertical h?",
         "options": [
           {
             "id": "h8",
@@ -399,7 +397,7 @@
       },
       {
         "id": "volume-pelo-apotema",
-        "prompt": "Na pirâmide de base quadrada de lado 6 cm (m = 3 cm) e apótema a_p = 5 cm, qual é o seu volume?",
+        "prompt": "Na pirâmide de base quadrada de lado 6 cm (m = 3 cm) e apótema ap = 5 cm, qual é o seu volume?",
         "options": [
           {
             "id": "v48",
@@ -411,7 +409,7 @@
             "id": "v60",
             "label": "60 cm³",
             "correct": false,
-            "feedback": "Você usou a_p = 5 no lugar da altura h = 4. O certo é (36 · 4) / 3 = 48 cm³."
+            "feedback": "Você usou ap = 5 no lugar da altura h = 4. O certo é (36 · 4) / 3 = 48 cm³."
           },
           {
             "id": "v144",
@@ -426,13 +424,13 @@
       {
         "id": "area-total-pelos-dados-base-h",
         "prompt": "Uma pirâmide regular tem base quadrada de lado 6 cm e altura 4 cm. Qual é a sua área total?",
-        "fala": "Ache primeiro a_p por Pitágoras (3-4-5) para calcular as 4 faces!",
+        "fala": "Ache primeiro ap por Pitágoras (3-4-5) para calcular as 4 faces!",
         "options": [
           {
             "id": "a96",
             "label": "96 cm²",
             "correct": true,
-            "feedback": "Exato. Com a_p = 5, as 4 faces somam 60 cm² e a base tem 36 cm²: 60 + 36 = 96 cm²."
+            "feedback": "Exato. Com ap = 5, as 4 faces somam 60 cm² e a base tem 36 cm²: 60 + 36 = 96 cm²."
           },
           {
             "id": "a60",
@@ -444,19 +442,19 @@
             "id": "a84",
             "label": "84 cm²",
             "correct": false,
-            "feedback": "Você usou h = 4 nas faces em vez de a_p = 5. Com a_p = 5, A_t = 36 + 60 = 96 cm²."
+            "feedback": "Você usou h = 4 nas faces em vez de ap = 5. Com ap = 5, At = 36 + 60 = 96 cm²."
           }
         ]
       },
       {
         "id": "aresta-lateral-piramide",
-        "prompt": "Numa pirâmide de base quadrada de lado 6 cm e apótema a_p = 4 cm, quanto mede a aresta lateral l?",
+        "prompt": "Numa pirâmide de base quadrada de lado 6 cm e apótema ap = 4 cm, quanto mede a aresta lateral l?",
         "options": [
           {
             "id": "l5",
             "label": "5 cm",
             "correct": true,
-            "feedback": "Certo. Na face triangular, a_p = 4 e metade da base (3) formam 90°: l = √(4² + 3²) = 5 cm."
+            "feedback": "Certo. Na face triangular, ap = 4 e metade da base (3) formam 90°: l = √(4² + 3²) = 5 cm."
           },
           {
             "id": "l4",
