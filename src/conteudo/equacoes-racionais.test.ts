@@ -139,7 +139,13 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-equacoes-racionais")).toBe("1,5");
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular confere gabarito ENEM por conta", () => {
+    // 2009/175: (NV/NF + NA/NV)/2 = 0,6 e (NV/(2NF) + NA/NV)/2 = 0,5
+    const tc = (0.6 * 2 - 0.5 * 2) * 2;
+    const ta = 0.6 * 2 - tc;
+    const nv = 3600 / (1 + ta);
+    const nf = nv / tc;
+    expect(Math.round(nf)).toBe(5000);
+    expect(certa("enem-2009-cadunico")).toBe("5.000");
   });
 });

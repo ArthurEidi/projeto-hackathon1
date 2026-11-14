@@ -98,7 +98,19 @@ describe("gabaritos do treino", () => {
     expect(r[0] * r[1]).toBe(3); // distrator: o produto
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular confere gabaritos ENEM por conta", () => {
+    // 2022/150: y = -x^2/6 - 7x/3 + 12, piso + 1,5 m
+    const a = -1 / 6;
+    const b = -7 / 3;
+    const c = 12;
+    const hMax = -(b * b - 4 * a * c) / (4 * a) + 1.5;
+    expect(hMax).toBeCloseTo(21.6667, 3);
+    expect([17, 18, 19, 21, 40].filter((t) => hMax > t)).toEqual([17, 18, 19, 21]);
+    expect(certa("enem-2022-saque-volei")).toBe("Nos I, II, III e IV (até 21 m)");
+
+    // 2009/155: V(x) = (10000 + 100x)(1,50 - 0,01x) = 15000 + 50x - x^2
+    const x = 10;
+    expect((10000 + 100 * x) * (1.5 - 0.01 * x)).toBeCloseTo(15000 + 50 * x - x * x, 6);
+    expect(certa("enem-2009-alcool")).toBe("V = 15.000 + 50x − x²");
   });
 });

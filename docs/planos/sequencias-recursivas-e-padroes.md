@@ -236,35 +236,22 @@ Declare todos os termos iniciais necessários. Uma regra de dois termos requer a
 
 ### Vestibular
 
-> PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
+#### V1 — `enem-2012-paciencia`
+- **Enunciado (resumido):** Num baralho de 52 cartas, montam-se 7 colunas com 1, 2, 3, ..., 7 cartas, e o restante forma o monte. Quantas cartas há no monte?
+- **Fala do Paco:** "Some a sequência 1 + 2 + 3 + 4 + 5 + 6 + 7 e subtraia de 52."
+- **Fonte:** ENEM 2012 — Questão 150 (`https://api.enem.dev/v1/exams/2012/questions/150`).
+- **Adaptação:** enunciado resumido mantendo baralho de 52 cartas, 7 colunas e opções.
+- **Conta de conferência:** 52 − (1 + 2 + 3 + 4 + 5 + 6 + 7) = 52 − 28 = 24 (gabarito B).
 
-#### V1 — `pendente-fonte-sequencias-recursivas-e-padroes-v1`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V2 — `enem-2013-ciclo-solar`
+- **Enunciado (resumido):** O ciclo solar dura 11 anos; o 1º ciclo começou em 1755 (1755–1765). Em 2101, em qual ciclo o Sol estará?
+- **Fala do Paco:** "Divida a diferença 2101 − 1755 por 11; o quociente são ciclos completos e o resto indica o próximo."
+- **Fonte:** ENEM 2013 — Questão 173 (`https://api.enem.dev/v1/exams/2013/questions/173`).
+- **Adaptação:** enunciado resumido mantendo período, início e opções.
+- **Conta de conferência:** 2101 − 1755 = 346 = 31·11 + 5 ⇒ 32º ciclo (gabarito A).
 
-#### V2 — `pendente-fonte-sequencias-recursivas-e-padroes-v2`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
-
-#### V3 — `pendente-fonte-sequencias-recursivas-e-padroes-v3`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
-
-#### V4 — `pendente-fonte-sequencias-recursivas-e-padroes-v4`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V3 e V4
+- **Estado:** **PENDENTE-FONTE** (2 questões ENEM inseridas).
 
 ---
 

@@ -137,7 +137,27 @@ describe("treino: gabaritos conferidos por conta", () => {
   });
 
   it("D5 d5-inequacoes-primeiro-grau: 3 + 2x <= 8 -> x <= 2.5 e x >= 0", () => {
+    // D5: 3 + 2x <= 8 -> x <= 2.5 e x >= 0
     expect((8 - 3) / 2).toBe(2.5);
     expect(certa("d5-inequacoes-primeiro-grau")).toBe("[0; 2,5]");
+  });
+
+  it("vestibular confere gabaritos ENEM por conta", () => {
+    // 2011/180: 5q - (2q + 12) >= 0 => q >= 4
+    expect(Math.ceil(12 / (5 - 2))).toBe(4);
+    expect(certa("enem-2011-lucro")).toBe("4");
+
+    // 2022/163: 60*10000 + 40*12000*(1 + x/100) <= 100*12240 => x <= 30
+    const xMax = ((100 * 12240 - 60 * 10000) / (40 * 12000) - 1) * 100;
+    expect(xMax).toBeCloseTo(30, 6);
+    expect(certa("enem-2022-reajuste")).toBe("30,0%");
+
+    // 2021/173: 35n >= 300 => n >= 9
+    expect(Math.ceil(300 / 35)).toBe(9);
+    expect(certa("enem-2021-lava-rapido")).toBe("9");
+
+    // 2010/155: 500 + floor((1000 - 500*1,45)/0,65) = 923
+    expect(500 + Math.floor((1000 - 500 * 1.45) / 0.65)).toBe(923);
+    expect(certa("enem-2010-selos")).toBe("923");
   });
 });

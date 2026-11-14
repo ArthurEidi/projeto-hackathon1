@@ -249,49 +249,33 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-inequacoes-primeiro-grau`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema inequações do primeiro grau e intervalos-solução.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2011-lucro`
+- **Enunciado (resumido):** Faturamento é FT(q) = 5q e custo é CT(q) = 2q + 12. Qual a quantidade mínima q para o lucro LT = FT − CT não dar prejuízo?
+- **Fala do Paco:** "Não ter prejuízo significa LT(q) ≥ 0, isto é, 5q − (2q + 12) ≥ 0."
+- **Fonte:** ENEM 2011 — Questão 180 (`https://api.enem.dev/v1/exams/2011/questions/180`).
+- **Adaptação:** texto condensado mantendo as funções FT(q), CT(q) e alternativas.
+- **Conta de conferência:** 5q − (2q + 12) = 3q − 12 ≥ 0 ⇒ q ≥ 4 (gabarito D).
 
-#### V2 — `v2-inequacoes-primeiro-grau`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema inequações do primeiro grau e intervalos-solução.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2022-reajuste`
+- **Enunciado (resumido):** 60 mestres (R$ 8 mil) têm aumento de 25% e 40 doutores (R$ 12 mil) têm x%. Para média ≤ R$ 12.240, qual o x máximo?
+- **Fala do Paco:** "Compare a folha total após os aumentos com o teto 100 · 12.240 = 1.224.000."
+- **Fonte:** ENEM 2022 — Questão 163 (`https://api.enem.dev/v1/exams/2022/questions/163`).
+- **Adaptação:** texto resumido mantendo os salários, quantidades e percentuais.
+- **Conta de conferência:** 60·10.000 + 40·12.000(1 + x/100) ≤ 100·12.240 ⇒ 1 + x/100 ≤ 1,30 ⇒ x ≤ 30,0% (gabarito D).
 
-#### V3 — `v3-inequacoes-primeiro-grau`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema inequações do primeiro grau e intervalos-solução.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2021-lava-rapido`
+- **Enunciado (resumido):** Um lava-rápido cobra R$ 20 (simples) e R$ 35 (completa) e precisa de receita mínima de R$ 300,00. Qual o menor número de lavagens?
+- **Fala do Paco:** "Para minimizar o total n de lavagens, suponha todas do tipo mais caro (R$ 35)."
+- **Fonte:** ENEM 2021 — Questão 173 (`https://api.enem.dev/v1/exams/2021/questions/173`).
+- **Adaptação:** enunciado condensado mantendo preços, meta e alternativas.
+- **Conta de conferência:** 35n ≥ 300 ⇒ n ≥ 300/35 ≈ 8,57 ⇒ n = 9 (gabarito C).
 
-#### V4 — `v4-inequacoes-primeiro-grau`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema inequações do primeiro grau e intervalos-solução.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V4 — `enem-2010-selos`
+- **Enunciado (resumido):** Com R$ 1.000, compram-se 500 conjuntos de R$ 1,45 (1 selo de R$ 0,65 cada) e o máximo de selos extras de R$ 0,65. Quantos de R$ 0,65 há?
+- **Fala do Paco:** "Desconte 500·1,45 dos R$ 1.000 e divida a sobra por 0,65 (parte inteira), depois some 500."
+- **Fonte:** ENEM 2010 — Questão 155 (`https://api.enem.dev/v1/exams/2010/questions/155`).
+- **Adaptação:** texto resumido mantendo valores dos selos e orçamento.
+- **Conta de conferência:** 1.000 − 500·1,45 = 275; 275/0,65 = 423,07 ⇒ 423 + 500 = 923 (gabarito C).
 
 ---
 

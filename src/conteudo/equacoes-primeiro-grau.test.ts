@@ -136,7 +136,21 @@ describe("gabaritos do treino", () => {
     expect(Number(certa("d5-equacoes-primeiro-grau"))).toBe(3);
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular confere gabaritos ENEM por conta", () => {
+    // 2011/159: 100n + 350 = 120n + 150
+    const nIguais = (350 - 150) / (120 - 100);
+    expect(100 * nIguais + 350).toBe(120 * nIguais + 150);
+    expect(certa("enem-2011-rodovia")).toBe("100n + 350 = 120n + 150");
+
+    // 2010/169: S1 + (S1 - 1,2) + (S1 - 2,7) = 17,4 => 3*S1 = 21,3 => S1 = 7,1
+    const s1 = (17.4 + 1.2 + 2.7) / 3;
+    expect(s1).toBeCloseTo(7.1, 6);
+    expect(s1 > 7 && s1 < 8).toBe(true);
+    expect(certa("enem-2010-salto-triplo")).toBe("7,0 m e 8,0 m");
+
+    // 2009/151: 50(c - 7) + 510 = 55c => 5c = 160 => c = 32
+    const c = (510 - 50 * 7) / (55 - 50);
+    expect(c).toBe(32);
+    expect(certa("enem-2009-festa")).toBe("R$ 32,00");
   });
 });

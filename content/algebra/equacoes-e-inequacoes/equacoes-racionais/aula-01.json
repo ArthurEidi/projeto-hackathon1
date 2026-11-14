@@ -631,6 +631,53 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2009-cadunico",
+        "prompt": "Média de NV/NF e NA/NV vale 0,6 e cai para 0,5 ao dobrar NF. Se NA + NV = 3.600, quanto vale NF?",
+        "fala": "Subtraia as duas médias para achar NV/NF primeiro, depois ache NA/NV.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 175: texto resumido mantendo a definição da média e os valores.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2009/questions/175"
+          ]
+        },
+        "options": [
+          {
+            "id": "nf10000",
+            "label": "10.000",
+            "correct": false,
+            "feedback": "10.000 é 2·NF (o dobro usado no 2º cenário). Como NV/NF = 0,4 e NV = 2.000, NF = 2.000/0,4 = 5.000."
+          },
+          {
+            "id": "nf7500",
+            "label": "7.500",
+            "correct": false,
+            "feedback": "7.500 = 3.000/0,4 tomou NV = 3.600/1,2 = 3.000. Como NA = 0,8·NV, 1,8·NV = 3.600 dá NV = 2.000 e NF = 5.000."
+          },
+          {
+            "id": "nf5000",
+            "label": "5.000",
+            "correct": true,
+            "feedback": "Exato: NV/(2·NF) = 0,2 ⇒ NV/NF = 0,4 e NA/NV = 0,8. Logo 1,8·NV = 3.600 ⇒ NV = 2.000 e NF = 5.000."
+          },
+          {
+            "id": "nf4500",
+            "label": "4.500",
+            "correct": false,
+            "feedback": "4.500 = 3.600/0,8 divide a soma NA + NV por NA/NV. O certo é NV = 2.000 e NF = 2.000/0,4 = 5.000."
+          },
+          {
+            "id": "nf3000",
+            "label": "3.000",
+            "correct": false,
+            "feedback": "3.000 = 3.600/1,2 divide NA + NV pela soma das taxas. Com NV/NF = 0,4 e NV = 2.000, NF = 5.000."
+          }
+        ]
+      }
+    ]
   }
 }

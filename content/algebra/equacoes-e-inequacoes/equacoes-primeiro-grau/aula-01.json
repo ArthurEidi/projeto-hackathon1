@@ -639,6 +639,145 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2011-rodovia",
+        "prompt": "Empresa 1 cobra R$ 100 mil/km + R$ 350 mil fixo; empresa 2 cobra R$ 120 mil/km + R$ 150 mil fixo. Qual equação iguala os custos em n km?",
+        "fala": "Escreva o custo de cada empresa em milhares de reais para n km e iguale os dois lados.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2011,
+          "adaptada": true,
+          "adaptacao": "Questão 159: enunciado condensado para caber em 140 caracteres mantendo dados e alternativas.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2011/questions/159"
+          ]
+        },
+        "options": [
+          {
+            "id": "eq1",
+            "label": "100n + 350 = 120n + 150",
+            "correct": true,
+            "feedback": "Certo: custo por km vezes n mais a taxa fixa em milhares dá 100n + 350 = 120n + 150."
+          },
+          {
+            "id": "eq2",
+            "label": "100n + 150 = 120n + 350",
+            "correct": false,
+            "feedback": "Trocou as taxas fixas entre as empresas. O certo é 100n + 350 = 120n + 150."
+          },
+          {
+            "id": "eq3",
+            "label": "100(n + 350) = 120(n + 150)",
+            "correct": false,
+            "feedback": "Multiplicou a taxa fixa por 100 e 120, mas ela é somada uma vez: 100n + 350 = 120n + 150."
+          },
+          {
+            "id": "eq4",
+            "label": "100(n + 350 000) = 120(n + 150 000)",
+            "correct": false,
+            "feedback": "Misturou milhares com reais e multiplicou o fixo pela taxa/km. O certo é 100n + 350 = 120n + 150."
+          },
+          {
+            "id": "eq5",
+            "label": "350(n + 100 000) = 150(n + 120 000)",
+            "correct": false,
+            "feedback": "Inverteu taxa fixa com preço por km. Igualando os custos em milhares: 100n + 350 = 120n + 150."
+          }
+        ]
+      },
+      {
+        "id": "enem-2010-salto-triplo",
+        "prompt": "No salto triplo, o 2º salto cai 1,2 m em relação ao 1º, e o 3º cai 1,5 m em relação ao 2º. Para somar 17,4 m, onde fica o 1º salto?",
+        "fala": "Escreva os 3 saltos em função do primeiro x: x, x − 1,2 e x − 2,7.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2010,
+          "adaptada": true,
+          "adaptacao": "Questão 169: texto resumido mantendo os descontos sucessivos, a meta e os intervalos.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2010/questions/169"
+          ]
+        },
+        "options": [
+          {
+            "id": "s4_5",
+            "label": "4,0 m e 5,0 m",
+            "correct": false,
+            "feedback": "4,6 = 17,4/3 − 1,2 desconta 1,2 m da média. Somando x, x − 1,2 e x − 2,7: 3x − 3,9 = 17,4 ⇒ x = 7,1 m."
+          },
+          {
+            "id": "s5_6",
+            "label": "5,0 m e 6,0 m",
+            "correct": false,
+            "feedback": "17,4/3 = 5,8 é a média dos três saltos, não o 1º. De 3x − 3,9 = 17,4 vem x = 7,1 m (7,0 m e 8,0 m)."
+          },
+          {
+            "id": "s6_7",
+            "label": "6,0 m e 7,0 m",
+            "correct": false,
+            "feedback": "Se o 3º caísse 1,5 m do 1º (não do 2º), daria 3x − 2,7 = 17,4 ⇒ 6,7 m. O certo é 3x − 3,9 = 17,4 ⇒ 7,1 m (7,0 m e 8,0 m)."
+          },
+          {
+            "id": "s7_8",
+            "label": "7,0 m e 8,0 m",
+            "correct": true,
+            "feedback": "Exato: x + (x − 1,2) + (x − 2,7) = 17,4 ⇒ 3x = 21,3 ⇒ x = 7,1 m, entre 7,0 m e 8,0 m."
+          },
+          {
+            "id": "s8_9",
+            "label": "8,0 m e 9,0 m",
+            "correct": false,
+            "feedback": "Com x ≥ 8, os saltos somam 3x − 3,9 ≥ 20,1 m, acima de 17,4 m. De 3x − 3,9 = 17,4 vem x = 7,1 m."
+          }
+        ]
+      },
+      {
+        "id": "enem-2009-festa",
+        "prompt": "Um rateio de 50 pessoas tinha déficit de R$ 510,00; entraram 5 e as 50 iniciais pagaram mais R$ 7,00. Qual a cota final das 55?",
+        "fala": "Se c é a cota final de cada uma das 55 pessoas, os 50 iniciais já tinham pago c − 7.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 151: enunciado resumido mantendo números e opções.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2009/questions/151"
+          ]
+        },
+        "options": [
+          {
+            "id": "r14",
+            "label": "R$ 14,00",
+            "correct": false,
+            "feedback": "Com R$ 14, os 5 novos pagam 70 e os 50 cobrem 350 a mais: 420, não 510. De 5c + 350 = 510 vem c = R$ 32,00."
+          },
+          {
+            "id": "r17",
+            "label": "R$ 17,00",
+            "correct": false,
+            "feedback": "Com R$ 17, os 5 novos pagam 85 e os 50 cobrem 350 a mais: 435, não 510. De 5c + 350 = 510 vem c = R$ 32,00."
+          },
+          {
+            "id": "r22",
+            "label": "R$ 22,00",
+            "correct": false,
+            "feedback": "Com R$ 22, os 5 novos pagam 110 e os 50 cobrem 350 a mais: 460, não 510. De 5c + 350 = 510 vem c = R$ 32,00."
+          },
+          {
+            "id": "r32",
+            "label": "R$ 32,00",
+            "correct": true,
+            "feedback": "Certo: 50(c − 7) + 510 = 55c ⇒ 5c = 160 ⇒ c = R$ 32,00."
+          },
+          {
+            "id": "r57",
+            "label": "R$ 57,00",
+            "correct": false,
+            "feedback": "Com R$ 57, os 5 novos pagam 285 e os 50 cobrem 350 a mais: 635, passa dos 510. De 5c + 350 = 510 vem c = R$ 32,00."
+          }
+        ]
+      }
+    ]
   }
 }

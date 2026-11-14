@@ -237,36 +237,29 @@ Percorremos x de −2 a 2: em x², ambos chegam a 4. Se o domínio vira [0; 2], 
 
 ### Vestibular
 
-> Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
+#### V1 — `enem-2023-concreto`
+- **Enunciado (resumido):** Uma construtora cobra R$ 500,00 de taxa fixa de bombeamento mais R$ 250,00 por m³ de concreto x. Qual é a expressão do preço y?
+- **Fala do Paco:** "Separe o valor que multiplica o volume x da taxa fixa cobrada uma única vez."
+- **Fonte:** ENEM 2023 — Questão 162 (`https://api.enem.dev/v1/exams/2023/questions/162`).
+- **Adaptação:** enunciado resumido mantendo valores e alternativas.
+- **Conta de conferência:** y = 250x + 500 (gabarito D).
 
-#### V1 — `pendente-fonte-introducao-a-funcoes-1`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V2 — `pendente-fonte-introducao-a-funcoes-2`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V3 — `pendente-fonte-introducao-a-funcoes-3`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V2 — `enem-2021-hospedagem`
+- **Enunciado (resumido):** Um aplicativo cobra diária d por n diárias, taxa fixa de limpeza L e taxa de serviço s sobre o total das diárias. Qual é o preço P?
+- **Fala do Paco:** "O total das diárias é d·n, e a taxa percentual s incide sobre d·n (não sobre L)."
+- **Fonte:** ENEM 2021 — Questão 141 (`https://api.enem.dev/v1/exams/2021/questions/141`).
+- **Adaptação:** enunciado condensado mantendo variáveis e alternativas.
+- **Conta de conferência:** P = d·n + L + d·n·s (gabarito A).
+
+#### V3 — `enem-2011-varejo`
+- **Enunciado (resumido):** Em fevereiro (x = 2), o varejo somou 880.605 vagas após aumento de 4.300 sobre janeiro (x = 1). Qual função relaciona y e x?
+- **Fala do Paco:** "Se a taxa é +4.300 por mês e em x = 2 vale 880.605, ache o valor inicial b = y − 4.300x."
+- **Fonte:** ENEM 2011 — Questão 156 (`https://api.enem.dev/v1/exams/2011/questions/156`).
+- **Adaptação:** enunciado resumido mantendo os números e expressões.
+- **Conta de conferência:** b = 880.605 − 2·4.300 = 872.005 ⇒ y = 872.005 + 4.300x (gabarito C).
+
 #### V4 — `pendente-fonte-introducao-a-funcoes-4`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+- **Estado:** **PENDENTE-FONTE** (3 questões ENEM inseridas).
 
 ---
 

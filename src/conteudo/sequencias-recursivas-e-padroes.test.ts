@@ -1,6 +1,6 @@
 // Sequências Recursivas e Padrões · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("algebra/sequencias/sequencias-recursivas-e-padroes/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -76,5 +76,14 @@ describe("gabaritos do treino", () => {
     expect(dobra.indexOf(16) + 1).toBe(num(certa("sequencias-recursivas-e-padroes-d5")));
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular confere gabaritos ENEM por conta", () => {
+    // 2012/150: 52 - (1 + 2 + ... + 7) = 52 - 28 = 24
+    const colunas = [1, 2, 3, 4, 5, 6, 7].reduce((a, b) => a + b, 0);
+    expect(52 - colunas).toBe(24);
+    expect(certa("enem-2012-paciencia")).toBe("24");
+
+    // 2013/173: floor((2101 - 1755)/11) + 1 = 31 + 1 = 32
+    expect(Math.floor((2101 - 1755) / 11) + 1).toBe(32);
+    expect(certa("enem-2013-ciclo-solar")).toBe("32");
+  });
 });

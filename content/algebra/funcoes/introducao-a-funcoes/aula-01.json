@@ -533,6 +533,145 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2023-concreto",
+        "prompt": "Uma construtora cobra R$ 500,00 de taxa fixa de bombeamento mais R$ 250,00 por m³ de concreto x. Qual é a expressão do preço y?",
+        "fala": "Separe o valor que multiplica o volume x da taxa fixa cobrada uma única vez.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "Questão 162: enunciado resumido mantendo valores e alternativas.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2023/questions/162"
+          ]
+        },
+        "options": [
+          {
+            "id": "c1",
+            "label": "y = 250x",
+            "correct": false,
+            "feedback": "Esqueceu a taxa fixa de bombeamento de R$ 500,00. O certo é y = 250x + 500."
+          },
+          {
+            "id": "c2",
+            "label": "y = 500x",
+            "correct": false,
+            "feedback": "Multiplicou a taxa fixa por x e omitiu R$ 250/m³. O certo é y = 250x + 500."
+          },
+          {
+            "id": "c3",
+            "label": "y = 750x",
+            "correct": false,
+            "feedback": "Somou R$ 500 + R$ 250 como se ambas dependessem de x. O certo é y = 250x + 500."
+          },
+          {
+            "id": "c4",
+            "label": "y = 250x + 500",
+            "correct": true,
+            "feedback": "Certo: R$ 250 por m³ vezes x mais a taxa fixa de R$ 500 dá y = 250x + 500."
+          },
+          {
+            "id": "c5",
+            "label": "y = 500x + 250",
+            "correct": false,
+            "feedback": "Trocou o coeficiente angular (250) com o termo fixo (500). O certo é y = 250x + 500."
+          }
+        ]
+      },
+      {
+        "id": "enem-2021-hospedagem",
+        "prompt": "Um aplicativo cobra diária d por n diárias, taxa fixa de limpeza L e taxa de serviço s sobre o total das diárias. Qual é o preço P?",
+        "fala": "O total das diárias é d·n, e a taxa percentual s incide sobre d·n (não sobre L).",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 141: enunciado condensado mantendo variáveis e alternativas.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2021/questions/141"
+          ]
+        },
+        "options": [
+          {
+            "id": "h1",
+            "label": "P = d·n + L + d·n·s",
+            "correct": true,
+            "feedback": "Exato: diárias (d·n) + limpeza (L) + serviço sobre as diárias (d·n·s) = d·n + L + d·n·s."
+          },
+          {
+            "id": "h2",
+            "label": "P = d·n + L + d·s",
+            "correct": false,
+            "feedback": "Calculou a taxa s apenas sobre 1 diária (d·s) em vez das n diárias. O certo é P = d·n + L + d·n·s."
+          },
+          {
+            "id": "h3",
+            "label": "P = d + L + s",
+            "correct": false,
+            "feedback": "Somou 1 diária, limpeza e s como valor fixo sem multiplicar por n. O certo é P = d·n + L + d·n·s."
+          },
+          {
+            "id": "h4",
+            "label": "P = d·n·s + L",
+            "correct": false,
+            "feedback": "Cobrou apenas o serviço d·n·s + L e esqueceu o valor das diárias d·n. O certo é P = d·n + L + d·n·s."
+          },
+          {
+            "id": "h5",
+            "label": "P = d·n + L + s",
+            "correct": false,
+            "feedback": "Somou s sem multiplicar por d·n, mas s é percentual das diárias. O certo é P = d·n + L + d·n·s."
+          }
+        ]
+      },
+      {
+        "id": "enem-2011-varejo",
+        "prompt": "Em fevereiro (x = 2), o varejo somou 880.605 vagas após aumento de 4.300 sobre janeiro (x = 1). Qual função relaciona y e x?",
+        "fala": "Se a taxa é +4.300 por mês e em x = 2 vale 880.605, ache o valor inicial b = y − 4.300x.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2011,
+          "adaptada": true,
+          "adaptacao": "Questão 156: enunciado resumido mantendo os números e expressões.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2011/questions/156"
+          ]
+        },
+        "options": [
+          {
+            "id": "r1",
+            "label": "y = 4.300x",
+            "correct": false,
+            "feedback": "Ignorou a base inicial de trabalhadores (b = 0 daria 8.600 em fev). O certo é y = 872.005 + 4.300x."
+          },
+          {
+            "id": "r2",
+            "label": "y = 884.905x",
+            "correct": false,
+            "feedback": "Multiplicou o total de março por x em vez de usar taxa constante. O certo é y = 872.005 + 4.300x."
+          },
+          {
+            "id": "r3",
+            "label": "y = 872.005 + 4.300x",
+            "correct": true,
+            "feedback": "Certo: b = 880.605 − 2·4.300 = 872.005, logo y = 872.005 + 4.300x."
+          },
+          {
+            "id": "r4",
+            "label": "y = 876.305 + 4.300x",
+            "correct": false,
+            "feedback": "876.305 é o valor de janeiro (x = 1); para x = 1 daria 880.605 (fevereiro). O certo é y = 872.005 + 4.300x."
+          },
+          {
+            "id": "r5",
+            "label": "y = 880.605 + 4.300x",
+            "correct": false,
+            "feedback": "Usou fevereiro (880.605) como x = 0 em vez de x = 2. Subtraindo 2·4.300 dá y = 872.005 + 4.300x."
+          }
+        ]
+      }
+    ]
   }
 }

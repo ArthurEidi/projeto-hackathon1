@@ -663,6 +663,99 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2012-paciencia",
+        "prompt": "Num baralho de 52 cartas, montam-se 7 colunas com 1, 2, 3, ..., 7 cartas, e o restante forma o monte. Quantas cartas há no monte?",
+        "fala": "Some a sequência 1 + 2 + 3 + 4 + 5 + 6 + 7 e subtraia de 52.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Questão 150: enunciado resumido mantendo baralho de 52 cartas, 7 colunas e opções.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2012/questions/150"
+          ]
+        },
+        "options": [
+          {
+            "id": "m21",
+            "label": "21",
+            "correct": false,
+            "feedback": "21 = 1 + 2 + 3 + 4 + 5 + 6 é a soma de 6 colunas (ou 52 − 31). As 7 colunas somam 28, logo 52 − 28 = 24."
+          },
+          {
+            "id": "m24",
+            "label": "24",
+            "correct": true,
+            "feedback": "Certo: 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28 cartas nas colunas; monte = 52 − 28 = 24."
+          },
+          {
+            "id": "m26",
+            "label": "26",
+            "correct": false,
+            "feedback": "26 = 52/2 divide o baralho ao meio sem somar as colunas. Com soma 28, 52 − 28 = 24."
+          },
+          {
+            "id": "m28",
+            "label": "28",
+            "correct": false,
+            "feedback": "28 é a soma das cartas nas 7 colunas (1 + ... + 7), não o monte que sobra: 52 − 28 = 24."
+          },
+          {
+            "id": "m31",
+            "label": "31",
+            "correct": false,
+            "feedback": "31 = 52 − 21 subtraiu apenas 6 colunas (1 a 6 = 21) esquecendo a 7ª. Com 7 colunas (28), 52 − 28 = 24."
+          }
+        ]
+      },
+      {
+        "id": "enem-2013-ciclo-solar",
+        "prompt": "O ciclo solar dura 11 anos; o 1º ciclo começou em 1755 (1755–1765). Em 2101, em qual ciclo o Sol estará?",
+        "fala": "Divida a diferença 2101 − 1755 por 11; o quociente são ciclos completos e o resto indica o próximo.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2013,
+          "adaptada": true,
+          "adaptacao": "Questão 173: enunciado resumido mantendo período, início e opções.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2013/questions/173"
+          ]
+        },
+        "options": [
+          {
+            "id": "c32",
+            "label": "32",
+            "correct": true,
+            "feedback": "Exato: 2101 − 1755 = 346 = 31·11 + 5; passaram 31 ciclos completos e 2101 está no 32º."
+          },
+          {
+            "id": "c34",
+            "label": "34",
+            "correct": false,
+            "feedback": "34 corresponde a 33·11 = 363 anos completos. Como 346 = 31·11 + 5, 2101 está no 32º ciclo."
+          },
+          {
+            "id": "c33",
+            "label": "33",
+            "correct": false,
+            "feedback": "33 somaria +2 ao quociente 31 (em vez de +1). Como 346 = 31·11 + 5, 2101 está no 32º ciclo."
+          },
+          {
+            "id": "c35",
+            "label": "35",
+            "correct": false,
+            "feedback": "35 corresponde a mais de 374 anos após 1755. De 346 = 31·11 + 5 vem o 32º ciclo."
+          },
+          {
+            "id": "c31",
+            "label": "31",
+            "correct": false,
+            "feedback": "31 é apenas o número de ciclos completos (31·11 = 341 anos, até 2095). Com +5 anos, é o 32º."
+          }
+        ]
+      }
+    ]
   }
 }

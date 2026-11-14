@@ -249,49 +249,29 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-equacoes-primeiro-grau`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações do primeiro grau.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2011-rodovia`
+- **Enunciado (resumido):** Empresa 1 cobra R$ 100 mil/km + R$ 350 mil fixo; empresa 2 cobra R$ 120 mil/km + R$ 150 mil fixo. Qual equação iguala os custos em n km?
+- **Fala do Paco:** "Escreva o custo de cada empresa em milhares de reais para n km e iguale os dois lados."
+- **Fonte:** ENEM 2011 — Questão 159 (`https://api.enem.dev/v1/exams/2011/questions/159`).
+- **Adaptação:** enunciado condensado para caber em 140 caracteres mantendo dados e alternativas.
+- **Conta de conferência:** Custo 1 = 100n + 350; custo 2 = 120n + 150; igualando: 100n + 350 = 120n + 150 (gabarito A).
 
-#### V2 — `v2-equacoes-primeiro-grau`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema equações do primeiro grau.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2010-salto-triplo`
+- **Enunciado (resumido):** No salto triplo, o 2º salto cai 1,2 m em relação ao 1º, e o 3º cai 1,5 m em relação ao 2º. Para somar 17,4 m, onde fica o 1º salto?
+- **Fala do Paco:** "Escreva os 3 saltos em função do primeiro x: x, x − 1,2 e x − 2,7."
+- **Fonte:** ENEM 2010 — Questão 169 (`https://api.enem.dev/v1/exams/2010/questions/169`).
+- **Adaptação:** texto resumido mantendo os descontos sucessivos, a meta e os intervalos.
+- **Conta de conferência:** x + (x − 1,2) + (x − 2,7) = 17,4 ⇒ 3x = 21,3 ⇒ x = 7,1 m, entre 7,0 m e 8,0 m (gabarito D).
 
-#### V3 — `v3-equacoes-primeiro-grau`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema equações do primeiro grau.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2009-festa`
+- **Enunciado (resumido):** Um rateio de 50 pessoas tinha déficit de R$ 510,00. Entraram 5 pessoas e os 50 iniciais pagaram mais R$ 7,00. Qual a cota final das 55?
+- **Fala do Paco:** "Se c é a cota final de cada uma das 55 pessoas, os 50 iniciais já tinham pago c − 7."
+- **Fonte:** ENEM 2009 — Questão 151 (`https://api.enem.dev/v1/exams/2009/questions/151`).
+- **Adaptação:** enunciado resumido mantendo números e opções.
+- **Conta de conferência:** 50(c − 7) + 510 = 55c ⇒ 5c = 160 ⇒ c = R$ 32,00 (gabarito D).
 
 #### V4 — `v4-equacoes-primeiro-grau`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema equações do primeiro grau.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+- **Estado:** **PENDENTE-FONTE** (sem 4ª questão ENEM selecionada no cache para este capítulo).
 
 ---
 

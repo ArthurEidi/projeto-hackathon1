@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
-import { certaDe, fechamentoOk, semVestibular } from "./util";
+import { certaDe, fechamentoOk } from "./util";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -91,7 +91,18 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-introducao-a-funcoes")).toBe(String((7 - 1) / 2));
   });
 
-  it("vestibular pendente de fontes reais", () => {
-    semVestibular(L);
+  it("vestibular confere gabaritos ENEM por conta", () => {
+    // 2023/162: y(3) = 250*3 + 500 = 1250
+    expect(250 * 3 + 500).toBe(1250);
+    expect(certa("enem-2023-concreto")).toBe("y = 250x + 500");
+
+    // 2021/141: d=100, n=3, L=50, s=0,1 => 300 + 50 + 30 = 380
+    const [d, n, lim, s] = [100, 3, 50, 0.1];
+    expect(d * n + lim + d * n * s).toBe(380);
+    expect(certa("enem-2021-hospedagem")).toBe("P = d·n + L + d·n·s");
+
+    // 2011/156: b = 880605 - 2*4300 = 872005
+    expect(880605 - 2 * 4300).toBe(872005);
+    expect(certa("enem-2011-varejo")).toBe("y = 872.005 + 4.300x");
   });
 });

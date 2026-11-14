@@ -237,36 +237,22 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 
 ### Vestibular
 
-> Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
+#### V1 — `enem-2022-saque-volei`
+- **Enunciado (resumido):** Saque a 1,5 m do piso segue y = −x²/6 − 7x/3 + 12. Com tetos de 17, 18, 19, 21 e 40 m (I a V), onde a bola bate?
+- **Fala do Paco:** "Calcule y_v = −Δ/(4a) da parábola e some os 1,5 m da altura inicial em relação ao piso."
+- **Fonte:** ENEM 2022 — Questão 150 (`https://api.enem.dev/v1/exams/2022/questions/150`).
+- **Adaptação:** equação transcrita para texto e rótulos explicitando as alturas dos ginásios I a V.
+- **Conta de conferência:** Δ = 49/9 + 8 = 121/9; y_v = 121/6 ≈ 20,17 m; 20,17 + 1,5 = 21,67 m > 21 m (I a IV, gabarito D).
 
-#### V1 — `pendente-fonte-funcao-quadratica-1`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V2 — `pendente-fonte-funcao-quadratica-2`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V3 — `pendente-fonte-funcao-quadratica-3`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V4 — `pendente-fonte-funcao-quadratica-4`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V2 — `enem-2009-alcool`
+- **Enunciado (resumido):** Um posto vende 10.000 L a R$ 1,50/L; cada R$ 0,01 de desconto (x centavos) soma 100 L nas vendas. Qual é a receita V(x)?
+- **Fala do Paco:** "Multiplique a nova quantidade (10.000 + 100x) pelo novo preço em reais (1,50 − 0,01x)."
+- **Fonte:** ENEM 2009 — Questão 155 (`https://api.enem.dev/v1/exams/2009/questions/155`).
+- **Adaptação:** enunciado condensado mantendo os dados e as 5 expressões.
+- **Conta de conferência:** V(x) = (10.000 + 100x)(1,50 − 0,01x) = 15.000 + 50x − x² (gabarito D).
+
+#### V3 e V4
+- **Estado:** **PENDENTE-FONTE** (candidatas UNESP 2017 e ENEM sem ano ficaram fora por não constarem no cache ENEM).
 
 ---
 
