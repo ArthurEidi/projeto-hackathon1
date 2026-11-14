@@ -578,22 +578,22 @@
         ]
       },
       {
-        "id": "enem-2022-geladeira",
-        "prompt": "Geladeira de R$ 1 000 tem preço normal +10% e -2% no cartão; qual a diferença para quem somou +8% direto sobre R$ 1 000?",
-        "fala": "Aplique −2% sobre R$ 1 100 e compare com R$ 1 080.",
+        "id": "enem-2017-celular",
+        "prompt": "Dois motoristas na mesma velocidade digitam olhando o celular; X leva 25% do tempo de Y. Qual a razão das distâncias às cegas de X e Y?",
+        "fala": "Com velocidade constante, d = v · t torna a razão das distâncias igual à razão dos tempos: 25% = 1/4.",
         "fonte": {
           "banca": "ENEM",
-          "ano": 2022,
+          "ano": 2017,
           "adaptada": true,
-          "adaptacao": "Questão 167: enunciado resumido; alternativas e gabarito (R$ 2,00 menor) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2022/questions/167"]
+          "adaptacao": "Questão 164: enunciado resumido; alternativas e gabarito (1/4) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2017/questions/164"]
         },
         "options": [
-          { "id": "a2m", "label": "R$ 2,00 menor", "correct": true, "feedback": "Isso. 1 100 × 0,98 = R$ 1 078,00, que é R$ 2,00 menor que R$ 1 080,00." },
-          { "id": "a100m", "label": "R$ 100,00 menor", "correct": false, "feedback": "100 é 10% de 1 000; o preço no cartão é 1 078, R$ 2,00 menor que 1 080." },
-          { "id": "a200m", "label": "R$ 200,00 menor", "correct": false, "feedback": "Não há queda de 20%; 1 078 comparado a 1 080 é R$ 2,00 menor." },
-          { "id": "a42M", "label": "R$ 42,00 maior", "correct": false, "feedback": "O preço real (1 078) fica abaixo de 1 080: é R$ 2,00 menor." },
-          { "id": "a80M", "label": "R$ 80,00 maior", "correct": false, "feedback": "80 é o acréscimo de 8%; entre 1 078 e 1 080 a diferença é R$ 2,00 menor." }
+          { "id": "a5-4", "label": "5/4", "correct": false, "feedback": "5/4 = 1 + 0,25 soma 25% ao inteiro em vez de tomar 25%. Como d = v·t, d_X/d_Y = 25/100 = 1/4." },
+          { "id": "a1-4", "label": "1/4", "correct": true, "feedback": "Exato. Como a velocidade é igual, d_X/d_Y = t_X/t_Y = 25% = 1/4." },
+          { "id": "a4-3", "label": "4/3", "correct": false, "feedback": "4/3 = 1/(1 − 0,25) divide pelo complementar (75%). A razão direta é 25% = 1/4." },
+          { "id": "a4-1", "label": "4/1", "correct": false, "feedback": "4/1 = t_Y/t_X inverte a razão pedida (de X para Y). De X para Y vale 25% = 1/4." },
+          { "id": "a3-4", "label": "3/4", "correct": false, "feedback": "3/4 = 1 − 25% calcula o complementar (75%), não os 25%. A razão certa é 1/4." }
         ]
       },
       {

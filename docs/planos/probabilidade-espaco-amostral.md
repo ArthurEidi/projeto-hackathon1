@@ -248,17 +248,17 @@ A razão só vale com resultados igualmente prováveis: "cara-coroa" listado com
 
 ### Vestibular
 
-#### V1 — `enem-2023-urnas`
-- **Enunciado:** "Urna A tem 20% de chance de bola preta e B tem 4 pretas em 16; quantas brancas pôr em B para P(duas pretas) <= 1%?"
-- **Fala do Paco:** "Escreva 0,20 × 4/(16 + x) <= 0,01 e resolva para o mínimo x inteiro."
-- **Fonte:** ENEM 2023 (adaptada); Questão 138: enunciado resumido; alternativas e gabarito (64) mantidos; https://api.enem.dev/v1/exams/2023/questions/138
-- **Conta de conferência:** 0,20 · 4/(16 + x) <= 0,01 => 16 + x >= 80 => x = 64.
+#### V1 — `enem-2012-dados`
+- **Enunciado:** "Dois dados são lançados: José aposta na soma 7, Paulo na soma 4 e Antônio na soma 8. Quem tem mais chance de vencer e por quê?"
+- **Fala do Paco:** "Liste os pares (a; b) com 1 ≤ a, b ≤ 6 para somas 7, 8 e 4 e conte quantos há em cada caso."
+- **Fonte:** ENEM 2012 (adaptada); Questão 178: enunciado resumido; alternativas e gabarito (José: 6, 5 e 3) mantidos; https://api.enem.dev/v1/exams/2012/questions/178
+- **Conta de conferência:** soma 7 => 6 pares; soma 8 => 5 pares; soma 4 => 3 pares (troca da repetida ENEM 2023/138).
 
-#### V2 — `enem-2021-dardos`
-- **Enunciado:** "Com chance 1/2 de acertar cada dardo, qual o mínimo de dardos por rodada para acertar pelo menos um com chance >= 9/10?"
-- **Fala do Paco:** "Use o evento complementar: errar todos os n dardos tem chance (1/2)ⁿ <= 1/10."
-- **Fonte:** ENEM 2021 (adaptada); Questão 142: enunciado resumido; alternativas e gabarito (4) mantidos; https://api.enem.dev/v1/exams/2021/questions/142
-- **Conta de conferência:** 1 − (1/2)ⁿ >= 9/10 => 2ⁿ >= 10 => n = 4.
+#### V2 — `enem-2011-bolas`
+- **Enunciado:** "De 15 bolas (1 a 15) tiram-se 2 sem repor: Arthur aposta na soma 12, Bernardo na 17 e Caio na 22. Quem tem maior chance?"
+- **Fala do Paco:** "Conte os pares distintos {a; b} com 1 ≤ a < b ≤ 15 que dão soma 12, soma 17 e soma 22."
+- **Fonte:** ENEM 2011 (adaptada); Questão 168: enunciado resumido; alternativas e gabarito (Bernardo: 7, 5 e 4) mantidos; https://api.enem.dev/v1/exams/2011/questions/168
+- **Conta de conferência:** soma 17 => 7 pares (2+15..8+9); soma 12 => 5 pares (1+11..5+7); soma 22 => 4 pares (7+15..10+12) (troca da repetida ENEM 2021/142).
 
 #### V3 — `enem-2018-cartoes`
 - **Enunciado:** "Uma urna tem 20 perguntas, sendo 25% fáceis; quantas fáceis acrescentar para que a chance de sortear uma fácil seja 75%?"

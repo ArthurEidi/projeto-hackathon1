@@ -62,8 +62,8 @@ describe("gabaritos do treino", () => {
   });
 
   it("vestibular: conta e fonte conferidas", () => {
-    expect(1250 * 1.072 * 1.1).toBeCloseTo(1474, 10);
-    expect(certa("enem-2019-ibge")).toBe("R$ 1.474,00");
+    expect(3800 / (1 - 0.3 + 0.2 * 0.3)).toBeCloseTo(5000, 10);
+    expect(certa("enem-2011-aplicacao")).toBe("R$ 5 000,00");
     for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
   });
 });

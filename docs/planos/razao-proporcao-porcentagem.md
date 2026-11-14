@@ -253,11 +253,11 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Fonte:** ENEM 2023 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito ((5,0 ; 5,5)) mantidos; https://api.enem.dev/v1/exams/2023/questions/167
 - **Conta de conferência:** 1 150 × 5 = 5 750 => 58 pacotes × R$ 4 = R$ 232; (232 − 220)/232 ≈ 5,17%.
 
-#### V2 — `enem-2022-geladeira`
-- **Enunciado:** "Geladeira de R$ 1 000 tem preço normal +10% e -2% no cartão; qual a diferença para quem somou +8% direto sobre R$ 1 000?"
-- **Fala do Paco:** "Aplique −2% sobre R$ 1 100 e compare com R$ 1 080."
-- **Fonte:** ENEM 2022 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito (R$ 2,00 menor) mantidos; https://api.enem.dev/v1/exams/2022/questions/167
-- **Conta de conferência:** 1 100 × 0,98 = 1 078 vs 1 080 => R$ 2,00 menor.
+#### V2 — `enem-2017-celular`
+- **Enunciado:** "Dois motoristas na mesma velocidade digitam olhando o celular; X leva 25% do tempo de Y. Qual a razão das distâncias às cegas de X e Y?"
+- **Fala do Paco:** "Com velocidade constante, d = v · t torna a razão das distâncias igual à razão dos tempos: 25% = 1/4."
+- **Fonte:** ENEM 2017 (adaptada); Questão 164: enunciado resumido; alternativas e gabarito (1/4) mantidos; https://api.enem.dev/v1/exams/2017/questions/164
+- **Conta de conferência:** d_X / d_Y = (v · t_X)/(v · t_Y) = 25% = 1/4 (troca da repetida ENEM 2022/167).
 
 #### V3 — `enem-2022-caged`
 - **Enunciado:** "Em janeiro de 2013 foram criadas 28 900 vagas, uma queda de 75% ante 2012; quantas vagas foram criadas em 2012?"

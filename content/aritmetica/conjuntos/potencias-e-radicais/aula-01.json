@@ -696,6 +696,45 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2010-petroleo",
+        "prompt": "Se 10 litros de óleo contaminam 10⁷ litros de água, quantos litros serão contaminados por 1 000 litros de óleo?",
+        "fala": "Escreva 1 000 como 100 × 10 = 10² × 10 e multiplique 10⁷ por 10² somando os expoentes.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2010,
+          "adaptada": true,
+          "adaptacao": "Questão 177: enunciado resumido; alternativas e gabarito (10⁹) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2010/questions/177"]
+        },
+        "options": [
+          { "id": "a10-2", "label": "10⁻²", "correct": false, "feedback": "10⁻² = 10/1 000 inverte a razão entre os volumes de óleo. A razão é 1 000/10 = 10², e 10² × 10⁷ = 10⁹." },
+          { "id": "a103", "label": "10³", "correct": false, "feedback": "10³ é apenas o volume de óleo (1 000 L), não a água contaminada. 10² × 10⁷ = 10⁹." },
+          { "id": "a104", "label": "10⁴", "correct": false, "feedback": "10⁴ divide 10⁷ por 10³ em vez de ampliar por 100. Com 10² × 10⁷, o total é 10⁹." },
+          { "id": "a106", "label": "10⁶", "correct": false, "feedback": "10⁶ = 10⁷ ÷ 10 reduz a contaminação em vez de multiplicar por 100. O certo é 10² × 10⁷ = 10⁹." },
+          { "id": "a109", "label": "10⁹", "correct": true, "feedback": "Exato. 1 000 = 100 × 10, logo contamina 10² × 10⁷ = 10⁹ litros de água." }
+        ]
+      },
+      {
+        "id": "enem-2012-mamiferos",
+        "prompt": "Na lei A = k · m^(2/3), se a massa m de um animal fica 8 vezes maior, por qual fator a área A multiplica?",
+        "fala": "Substitua m por 8m: o fator é 8^(2/3) = (∛8)².",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Questão 168: enunciado resumido; alternativas e gabarito (4) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2012/questions/168"]
+        },
+        "options": [
+          { "id": "a3r16", "label": "∛16", "correct": false, "feedback": "∛16 = 2^(4/3) usa 4^(2/3) em vez de 8^(2/3). Como ∛8 = 2, temos 2² = 4." },
+          { "id": "a4", "label": "4", "correct": true, "feedback": "Exato. 8^(2/3) = (∛8)² = 2² = 4." },
+          { "id": "ar24", "label": "√24", "correct": false, "feedback": "√24 multiplica 8 por 3 dentro da raiz quadrada. Em 8^(2/3), o 3 é índice da raiz cúbica: 2² = 4." },
+          { "id": "a8", "label": "8", "correct": false, "feedback": "8 supõe relação linear (expoente 1), ignorando o 2/3. Como 8^(2/3) = (∛8)² = 4." },
+          { "id": "a64", "label": "64", "correct": false, "feedback": "64 = 8² aplica o expoente 2 sem tirar a raiz cúbica. Em 8^(2/3) = (∛8)² = 4." }
+        ]
+      }
+    ]
   }
 }

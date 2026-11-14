@@ -249,49 +249,17 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-potencias-e-radicais`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema potenciação, propriedades e radicais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2010-petroleo`
+- **Enunciado:** "Se 10 litros de óleo contaminam 10⁷ litros de água, quantos litros serão contaminados por 1 000 litros de óleo?"
+- **Fala do Paco:** "Escreva 1 000 como 100 × 10 = 10² × 10 e multiplique 10⁷ por 10² somando os expoentes."
+- **Fonte:** ENEM 2010 (adaptada); Questão 177: enunciado resumido; alternativas e gabarito (10⁹) mantidos; https://api.enem.dev/v1/exams/2010/questions/177
+- **Conta de conferência:** (1 000 / 10) · 10⁷ = 10² · 10⁷ = 10⁹.
 
-#### V2 — `v2-potencias-e-radicais`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema potenciação, propriedades e radicais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V3 — `v3-potencias-e-radicais`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema potenciação, propriedades e radicais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-potencias-e-radicais`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema potenciação, propriedades e radicais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2012-mamiferos`
+- **Enunciado:** "Na lei A = k · m^(2/3), se a massa m de um animal fica 8 vezes maior, por qual fator a área A multiplica?"
+- **Fala do Paco:** "Substitua m por 8m: o fator é 8^(2/3) = (∛8)²."
+- **Fonte:** ENEM 2012 (adaptada); Questão 168: enunciado resumido; alternativas e gabarito (4) mantidos; https://api.enem.dev/v1/exams/2012/questions/168
+- **Conta de conferência:** 8^(2/3) = (∛8)² = 2² = 4.
 
 ---
 

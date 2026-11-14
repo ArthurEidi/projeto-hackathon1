@@ -247,49 +247,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-conjuntos-e-intervalos`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema conjuntos, operações e intervalos.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2020-amostras`
+- **Enunciado:** "Num grupo de 200 amostras, 100 têm característica A, 110 têm B e 20 não têm nenhuma. Quantas têm apenas a característica A?"
+- **Fala do Paco:** "Ache a interseção com (100 + 110) − (200 − 20) = 30 e subtraia de 100."
+- **Fonte:** ENEM 2020 (adaptada); Questão 169: enunciado resumido; alternativas e gabarito (70) mantidos; https://api.enem.dev/v1/exams/2020/questions/169
+- **Conta de conferência:** (100 + 110) − (200 − 20) = 30 => apenas A = 100 − 30 = 70.
 
-#### V2 — `v2-conjuntos-e-intervalos`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema conjuntos, operações e intervalos.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2018-pena`
+- **Enunciado:** "Pena de 5 a 15 anos terá redução de 1/6 a 2/3. Qual é o intervalo possível para a nova pena?"
+- **Fala do Paco:** "O mínimo reduz o menor valor em 2/3 (sobra 1/3 de 5) e o máximo reduz o maior em 1/6 (sobra 5/6 de 15)."
+- **Fonte:** ENEM 2018 (adaptada); Questão 163: enunciado resumido; alternativas e gabarito (1 ano e 8 meses a 12 anos e 6 meses) mantidos; https://api.enem.dev/v1/exams/2018/questions/163
+- **Conta de conferência:** 5 · (1 − 2/3) = 5/3 = 1 ano e 8 meses; 15 · (1 − 1/6) = 12,5 = 12 anos e 6 meses.
 
-#### V3 — `v3-conjuntos-e-intervalos`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema conjuntos, operações e intervalos.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-conjuntos-e-intervalos`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema conjuntos, operações e intervalos.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2018-escala`
+- **Enunciado:** "Na escala 1 : X, 15 m ficam entre 0,5 cm e 1 cm, e 90 m superam 4 cm. Qual intervalo X satisfaz?"
+- **Fala do Paco:** "Converta 15 m = 1 500 cm e 90 m = 9 000 cm; resolva 0,5 < 1 500/X < 1 e 9 000/X > 4."
+- **Fonte:** ENEM 2018 (adaptada); Questão 169: enunciado resumido; alternativas e gabarito (1 500 < X < 2 250) mantidos; https://api.enem.dev/v1/exams/2018/questions/169
+- **Conta de conferência:** 1 500 < X < 3 000 e X < 9 000/4 = 2 250 => 1 500 < X < 2 250.
 
 ---
 

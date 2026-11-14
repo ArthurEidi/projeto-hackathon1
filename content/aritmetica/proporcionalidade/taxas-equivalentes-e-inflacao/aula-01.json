@@ -653,22 +653,22 @@
     ],
     "vestibular": [
       {
-        "id": "enem-2019-ibge",
-        "prompt": "Um rendimento de R$ 1.250,00 cresce 7,2% numa década e mais 10% na seguinte; qual o valor final após as taxas acumuladas?",
-        "fala": "Taxas acumuladas multiplicam os fatores: 1,072 × 1,10 = 1,1792.",
+        "id": "enem-2011-aplicacao",
+        "prompt": "Um capital perdeu 30% no 1º mês e recuperou 20% do que perdeu no 2º mês, restando R$ 3 800,00. Qual era o capital inicial?",
+        "fala": "Perdeu 0,30C e ganhou 0,20 · 0,30C = 0,06C; sobrou 0,76C = 3 800.",
         "fonte": {
           "banca": "ENEM",
-          "ano": 2019,
+          "ano": 2011,
           "adaptada": true,
-          "adaptacao": "Questão 153: enunciado resumido; alternativas e gabarito (R$ 1.474,00) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2019/questions/153"]
+          "adaptacao": "Questão 160: enunciado resumido; alternativas limpas e gabarito (R$ 5 000,00) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2011/questions/160"]
         },
         "options": [
-          { "id": "a1340", "label": "R$ 1.340,00", "correct": false, "feedback": "1.340,00 é só a primeira década (+7,2%); falta multiplicar por 1,10 para chegar a R$ 1.474,00." },
-          { "id": "a1349", "label": "R$ 1.349,00", "correct": false, "feedback": "1.349,00 não sai de nenhuma das taxas. Depois de +7,2% são R$ 1.340,00, e 1 340 × 1,10 = R$ 1.474,00." },
-          { "id": "a1375", "label": "R$ 1.375,00", "correct": false, "feedback": "1.375,00 aplica só +10% sobre 1 250; acumulando 1,072 × 1,10 dá R$ 1.474,00." },
-          { "id": "a1465", "label": "R$ 1.465,00", "correct": false, "feedback": "1.465,00 soma as taxas (17,2%) em 1 250; juros compostos acumulam 17,92%, dando R$ 1.474,00." },
-          { "id": "a1474", "label": "R$ 1.474,00", "correct": true, "feedback": "Isso. 1 250 × 1,072 × 1,10 = 1 250 × 1,1792 = R$ 1.474,00." }
+          { "id": "a4222", "label": "R$ 4 222,22", "correct": false, "feedback": "4 222,22 = 3 800 ÷ 0,90 reduz só 10% (30% − 20%). O ganho foi 20% de 30% = 6%, logo 3 800 ÷ 0,76 = R$ 5 000,00." },
+          { "id": "a4523", "label": "R$ 4 523,80", "correct": false, "feedback": "4 523,80 = 3 800 ÷ 0,84 faz 0,70 · 1,20 = 0,84 (+20% sobre 0,70C). Mas recuperou 20% de 30%: 3 800 ÷ 0,76 = R$ 5 000,00." },
+          { "id": "a5000", "label": "R$ 5 000,00", "correct": true, "feedback": "Exato. 1 − 0,30 + 0,20 · 0,30 = 0,76, e 3 800 ÷ 0,76 = R$ 5 000,00." },
+          { "id": "a13300", "label": "R$ 13 300,00", "correct": false, "feedback": "Com R$ 13 300, sobrariam 0,76 · 13 300 = R$ 10 108, não R$ 3 800. De 0,76C = 3 800 vem C = R$ 5 000,00." },
+          { "id": "a17100", "label": "R$ 17 100,00", "correct": false, "feedback": "Com R$ 17 100, sobrariam 0,76 · 17 100 = R$ 12 996, não R$ 3 800. De 0,76C = 3 800 vem C = R$ 5 000,00." }
         ]
       }
     ]

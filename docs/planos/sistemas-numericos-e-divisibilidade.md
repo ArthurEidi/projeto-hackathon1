@@ -260,49 +260,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-sistemas-numericos-e-divisibilidade`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema conjuntos numéricos, divisibilidade e fatoração prima.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `enem-2021-romano`
+- **Enunciado:** "Um monumento traz a inscrição MCDLXIX (ano de inauguração). Quantos anos ele completará em 2050?"
+- **Fala do Paco:** "Converta por blocos: M = 1 000, CD = 400, LX = 60 e IX = 9; depois faça 2050 − ano."
+- **Fonte:** ENEM 2021 (adaptada); Questão 176: enunciado resumido; alternativas e gabarito (581) mantidos; https://api.enem.dev/v1/exams/2021/questions/176
+- **Conta de conferência:** 1 000 + 400 + 60 + 9 = 1 469; 2 050 − 1 469 = 581.
 
-#### V2 — `v2-sistemas-numericos-e-divisibilidade`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema conjuntos numéricos, divisibilidade e fatoração prima.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V2 — `enem-2012-ordens`
+- **Enunciado:** "Um registro tem 8 algarismos: 1 3 _ 9 8 2 0 7, com o terceiro algarismo apagado. Qual ordem esse algarismo ocupa?"
+- **Fala do Paco:** "Conte as ordens da direita para a esquerda: unidade, dezena, centena, unidade de milhar, dezena de milhar e centena de milhar."
+- **Fonte:** ENEM 2012 (adaptada); Questão 161: enunciado resumido; alternativas e gabarito (Centena de milhar) mantidos; https://api.enem.dev/v1/exams/2012/questions/161
+- **Conta de conferência:** 6ª ordem da direita para a esquerda em número de 8 algarismos = centena de milhar.
 
-#### V3 — `v3-sistemas-numericos-e-divisibilidade`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema conjuntos numéricos, divisibilidade e fatoração prima.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-sistemas-numericos-e-divisibilidade`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema conjuntos numéricos, divisibilidade e fatoração prima.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V3 — `enem-2009-cpf`
+- **Enunciado:** "CPF: multiplique 123.456.789 por 10..2 e ache o resto r por 11 (r<2 ⇒ 0, senão 11−r) para d₁; repita em 23456789d₁ para d₂."
+- **Fala do Paco:** "S₁ = 10·1 + 9·2 + … + 2·9 = 210 (resto 1 ⇒ d₁ = 0); depois S₂ = 10·2 + … + 3·9 + 2·0 = 244."
+- **Fonte:** ENEM 2009 (adaptada); Questão 156: enunciado resumido; alternativas e gabarito (0 e 9) mantidos; https://api.enem.dev/v1/exams/2009/questions/156
+- **Conta de conferência:** S₁ = 210 => 210 mod 11 = 1 => d₁ = 0; S₂ = 244 => 244 mod 11 = 2 => d₂ = 11 − 2 = 9.
 
 ---
 

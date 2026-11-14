@@ -112,8 +112,17 @@ describe("gabaritos do treino", () => {
   });
 
   it("vestibular", () => {
-    eq(80 - 16, "enem-2023-urnas");
-    eq(4, "enem-2021-dardos");
+    const paresDados = (s: number) =>
+      [1, 2, 3, 4, 5, 6].filter((a) => s - a >= 1 && s - a <= 6).length;
+    expect([paresDados(7), paresDados(8), paresDados(4)]).toEqual([6, 5, 3]);
+    expect(certa("enem-2012-dados")).toMatch(/^José, já que há 6 possibilidades/);
+    const paresBolas = (s: number) => {
+      let c = 0;
+      for (let a = 1; a <= 15; a++) for (let b = a + 1; b <= 15; b++) if (a + b === s) c++;
+      return c;
+    };
+    expect([paresBolas(17), paresBolas(12), paresBolas(22)]).toEqual([7, 5, 4]);
+    expect(certa("enem-2011-bolas")).toMatch(/^Bernardo, pois há 7 possibilidades.*5 possibilidades para a escolha de Arthur/);
     eq(40, "enem-2018-cartoes");
     for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
   });

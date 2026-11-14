@@ -255,11 +255,11 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Fonte:** ENEM 2022 (adaptada); Questão 139: enunciado resumido; alternativas e gabarito (1,80 e 0,60) mantidos; https://api.enem.dev/v1/exams/2022/questions/139
 - **Conta de conferência:** 3,8 · 50 − 10 = 180 cm = 1,80 m; 1,6 · 50 − 20 = 60 cm = 0,60 m.
 
-#### V2 — `enem-2021-loteamento`
-- **Enunciado:** "De 3 ha (1 ha = 10 000 m²), 0,9 ha vai para ruas e o resto vira lotes de 300 m²; 20 a R$ 20 mil e os demais a R$ 30 mil; qual o total?"
-- **Fala do Paco:** "Converta os 2,1 ha restantes para m² multiplicando por 10 000 antes de dividir por 300 m²."
-- **Fonte:** ENEM 2021 (adaptada); Questão 178: enunciado resumido; alternativas e gabarito (1 900 000) mantidos; https://api.enem.dev/v1/exams/2021/questions/178
-- **Conta de conferência:** 21 000 / 300 = 70 lotes; 20 · 20 000 + 50 · 30 000 = 1 900 000.
+#### V2 — `enem-2019-cisterna`
+- **Enunciado:** "Na escala 1 : 200, uma cisterna tem 45 cm³ na maquete. Se o consumo é 30 000 L/dia, quantos dias de água ela armazena?"
+- **Fala do Paco:** "Volume real cresce pelo cubo da escala: 45 × 200³ cm³, depois passe de cm³ para litros (÷ 1 000) e divida por 30 000."
+- **Fonte:** ENEM 2019 (adaptada); Questão 158: enunciado resumido; alternativas e gabarito (12) mantidos; https://api.enem.dev/v1/exams/2019/questions/158
+- **Conta de conferência:** (45 · 200³) / 1 000 = 360 000 L; 360 000 / 30 000 = 12 dias (troca da repetida ENEM 2021/178).
 
 #### V3 — `enem-2020-maquete`
 - **Enunciado:** "Uma caixa-d'água de 28 080 L (1 dm³ = 1 L) mede 2 cm × 3,51 cm × 4 cm na maquete; qual foi a escala linear usada?"

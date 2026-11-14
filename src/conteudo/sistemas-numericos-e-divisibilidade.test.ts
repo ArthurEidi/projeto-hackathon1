@@ -101,3 +101,20 @@ describe("gabaritos dos desafios", () => {
     expect(certa("d5-sistemas-numericos-e-divisibilidade")).toBe("12");
   });
 });
+
+describe("gabaritos do vestibular", () => {
+  it("ENEM 2021/176, 2012/161 e 2009/156", () => {
+    expect(2050 - (1000 + 400 + 60 + 9)).toBe(581);
+    expect(certa("enem-2021-romano")).toBe("581");
+    expect(certa("enem-2012-ordens")).toBe("Centena de milhar");
+    const cpf = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const s1 = cpf.reduce((acc, d, i) => acc + d * (10 - i), 0);
+    const r1 = s1 % 11;
+    const d1 = r1 < 2 ? 0 : 11 - r1;
+    const s2 = [...cpf.slice(1), d1].reduce((acc, d, i) => acc + d * (10 - i), 0);
+    const r2 = s2 % 11;
+    const d2 = r2 < 2 ? 0 : 11 - r2;
+    expect([d1, d2]).toEqual([0, 9]);
+    expect(certa("enem-2009-cpf")).toBe("0 e 9");
+  });
+});

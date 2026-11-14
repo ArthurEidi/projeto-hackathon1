@@ -617,7 +617,65 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2021-romano",
+        "prompt": "Um monumento traz a inscrição MCDLXIX (ano de inauguração). Quantos anos ele completará em 2050?",
+        "fala": "Converta por blocos: M = 1 000, CD = 400, LX = 60 e IX = 9; depois faça 2050 − ano.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 176: enunciado resumido; alternativas e gabarito (581) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2021/questions/176"]
+        },
+        "options": [
+          { "id": "a379", "label": "379", "correct": false, "feedback": "379 = 2050 − 1 671 lê CD como 600 e IX como 11. Como CD = 400 e IX = 9, o ano é 1 469 e 2050 − 1 469 = 581." },
+          { "id": "a381", "label": "381", "correct": false, "feedback": "381 lê CD como DC (600), achando 1 669: 2050 − 1 669 = 381. Como CD = 400, 2050 − 1 469 = 581." },
+          { "id": "a579", "label": "579", "correct": false, "feedback": "579 lê IX como XI (11), achando 1 471: 2050 − 1 471 = 579. Como IX = 9, 2050 − 1 469 = 581." },
+          { "id": "a581", "label": "581", "correct": true, "feedback": "Exato. MCDLXIX = 1 000 + 400 + 60 + 9 = 1 469; em 2050: 2 050 − 1 469 = 581 anos." },
+          { "id": "a601", "label": "601", "correct": false, "feedback": "601 lê LX como XL (40), achando 1 449: 2050 − 1 449 = 601. Como LX = 60, 2050 − 1 469 = 581." }
+        ]
+      },
+      {
+        "id": "enem-2012-ordens",
+        "prompt": "Um registro tem 8 algarismos: 1 3 _ 9 8 2 0 7, com o terceiro algarismo apagado. Qual ordem esse algarismo ocupa?",
+        "fala": "Conte as ordens da direita para a esquerda: unidade, dezena, centena, unidade de milhar, dezena de milhar e centena de milhar.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Questão 161: enunciado resumido; alternativas e gabarito (Centena de milhar) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2012/questions/161"]
+        },
+        "options": [
+          { "id": "centena", "label": "Centena", "correct": false, "feedback": "Centena é o 3º da direita (o dígito 2). Da direita, o 6º lugar é a centena de milhar." },
+          { "id": "dez-milhar", "label": "Dezena de milhar", "correct": false, "feedback": "Dezena de milhar é o 5º da direita (o dígito 9). O dígito apagado é o 6º: centena de milhar." },
+          { "id": "cen-milhar", "label": "Centena de milhar", "correct": true, "feedback": "Exato. Na 6ª ordem da direita para a esquerda (3ª da classe dos milhares) fica a centena de milhar." },
+          { "id": "milhao", "label": "Milhão", "correct": false, "feedback": "Unidade de milhão é o 7º da direita (o dígito 3). O apagado é o 6º: centena de milhar." },
+          { "id": "cen-milhao", "label": "Centena de milhão", "correct": false, "feedback": "Centena de milhão seria o 9º da direita, mas o número tem 8 algarismos. O 6º é centena de milhar." }
+        ]
+      },
+      {
+        "id": "enem-2009-cpf",
+        "prompt": "CPF: multiplique 123.456.789 por 10..2 e ache o resto r por 11 (r<2 ⇒ 0, senão 11−r) para d₁; repita em 23456789d₁ para d₂.",
+        "fala": "S₁ = 10·1 + 9·2 + … + 2·9 = 210 (resto 1 ⇒ d₁ = 0); depois S₂ = 10·2 + … + 3·9 + 2·0 = 244.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 156: enunciado resumido; alternativas e gabarito (0 e 9) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2009/questions/156"]
+        },
+        "options": [
+          { "id": "a0-9", "label": "0 e 9", "correct": true, "feedback": "Exato. S₁ = 210 = 19·11 + 1 ⇒ r = 1 ⇒ d₁ = 0; S₂ = 244 = 22·11 + 2 ⇒ d₂ = 11 − 2 = 9." },
+          { "id": "a1-4", "label": "1 e 4", "correct": false, "feedback": "Usou o resto como dígito: d₁ = 1 e, com ele, S₂ = 246, resto 4. Pela regra, r = 1 < 2 dá d₁ = 0, e d₂ = 11 − 2 = 9." },
+          { "id": "a1-7", "label": "1 e 7", "correct": false, "feedback": "Tomou d₁ = r = 1; com ele, S₂ = 246, resto 4, e d₂ = 11 − 4 = 7. Como r = 1 < 2, d₁ = 0, e S₂ = 244 dá d₂ = 9." },
+          { "id": "a9-1", "label": "9 e 1", "correct": false, "feedback": "Inverte d₁ e d₂ e usa r = 1 em vez de 11 − 2. Na ordem certa: d₁ = 0 e d₂ = 9." },
+          { "id": "a0-1", "label": "0 e 1", "correct": false, "feedback": "d₁ = 0 está certo, mas d₂ = 1 não sai da regra: S₂ = 244 deixa resto 2, e 11 − 2 = 9." }
+        ]
+      }
+    ]
   },
   "outro": "Você comparou o caso neutro, testou as fronteiras e ligou o desenho à regra."
 }

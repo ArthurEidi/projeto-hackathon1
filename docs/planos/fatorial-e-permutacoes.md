@@ -254,18 +254,20 @@ n! cresce muito rápido: 5! = 120, 6! = 720. A fila vazia tem um único arranjo,
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** anagramas de uma palavra sem letras repetidas (n!).
-- **Onde procurar:** provas da Fuvest, Unicamp ou ENEM com "anagramas"; conferir banca, ano e gabarito no caderno oficial.
+#### V1 — `enem-2011-digitos`
+- **Enunciado:** "Com os dígitos 1, 3, 5, 7 e 9 sem repetir, formam-se senhas de 5 dígitos em ordem crescente. Qual a posição de 75 913?"
+- **Fala do Paco:** "Conte os números menores que 75 913 fixando os prefixos maiores: começando por 1, 3, 5, depois 71, 73, depois 751, 753."
+- **Fonte:** ENEM 2011 (adaptada); Questão 174: enunciado resumido; alternativas e gabarito (89) mantidos; https://api.enem.dev/v1/exams/2011/questions/174
+- **Conta de conferência:** 3·4! + 2·3! + 2·2! + 1 = 72 + 12 + 4 + 1 = 89.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** anagramas com letras repetidas (n! / a! b!).
-- **Onde procurar:** questões de "anagramas da palavra" em UFRGS, Mackenzie, PUC.
+#### V2 — `enem-2012-enredo`
+- **Enunciado:** "Cada um de 280 alunos escolhe 1 objeto (de 5), 1 personagem (de 6) e 1 cômico (de 9). Comparando alunos e combinações, há:"
+- **Fala do Paco:** "Pelo princípio multiplicativo há 5 · 6 · 9 = 270 trios distintos; compare com 280 alunos."
+- **Fonte:** ENEM 2012 (adaptada); Questão 144: enunciado resumido; alternativas e gabarito (10 alunos a mais) mantidos; https://api.enem.dev/v1/exams/2012/questions/144
+- **Conta de conferência:** 5 · 6 · 9 = 270; 280 − 270 = 10 alunos a mais.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** pessoas que devem ficar juntas numa fila (bloco).
-- **Onde procurar:** ENEM ou vestibulares com "fila" e "lado a lado".
-
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** anagramas com restrição de início/fim.
-- **Onde procurar:** Fuvest, UFSCar, Unesp: "começam e terminam por vogal".
+#### V3 — `enem-2009-copa`
+- **Enunciado:** "De 12 cidades, 4 são sorteadas (sem ordem) para um torneio e depois 2 delas viram mandante e visitante. Que contagens são?"
+- **Fala do Paco:** "Veja se a ordem importa: o grupo de 4 cidades é sem ordem; escolher mandante e visitante tem ordem."
+- **Fonte:** ENEM 2009 (adaptada); Questão 165: enunciado resumido; alternativas e gabarito (Uma combinação e um arranjo, respectivamente) mantidos; https://api.enem.dev/v1/exams/2009/questions/165
+- **Conta de conferência:** C(12; 4) (sem ordem) e A(4; 2) (com ordem).

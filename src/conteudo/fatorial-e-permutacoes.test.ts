@@ -102,6 +102,10 @@ describe("gabaritos do treino", () => {
   });
 
   it("vestibular", () => {
-    expect(L.treino.vestibular).toEqual([]);
+    eq(3 * f(4) + 2 * f(3) + 2 * f(2) + 1, "enem-2011-digitos");
+    expect(280 - 5 * 6 * 9).toBe(10);
+    expect(certa("enem-2012-enredo")).toBe("10 alunos a mais do que possíveis respostas distintas");
+    expect(certa("enem-2009-copa")).toBe("Uma combinação e um arranjo, respectivamente");
+    for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
   });
 });

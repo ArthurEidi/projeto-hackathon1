@@ -683,41 +683,41 @@
     ],
     "vestibular": [
       {
-        "id": "enem-2023-urnas",
-        "prompt": "Urna A tem 20% de chance de bola preta e B tem 4 pretas em 16; quantas brancas pôr em B para P(duas pretas) <= 1%?",
-        "fala": "Escreva 0,20 × 4/(16 + x) <= 0,01 e resolva para o mínimo x inteiro.",
+        "id": "enem-2012-dados",
+        "prompt": "Dois dados são lançados: José aposta na soma 7, Paulo na soma 4 e Antônio na soma 8. Quem tem mais chance de vencer e por quê?",
+        "fala": "Liste os pares (a; b) com 1 ≤ a, b ≤ 6 para somas 7, 8 e 4 e conte quantos há em cada caso.",
         "fonte": {
           "banca": "ENEM",
-          "ano": 2023,
+          "ano": 2012,
           "adaptada": true,
-          "adaptacao": "Questão 138: enunciado resumido; alternativas e gabarito (64) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2023/questions/138"]
+          "adaptacao": "Questão 178: enunciado resumido; alternativas e gabarito (José: 6, 5 e 3) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2012/questions/178"]
         },
         "options": [
-          { "id": "a20", "label": "20", "correct": false, "feedback": "Com 20 brancas extras, B teria 36 bolas e 0,20 × 4/36 ≈ 2,2% > 1%; exige 16 + x >= 80, logo 64." },
-          { "id": "a60", "label": "60", "correct": false, "feedback": "Com 60 brancas extras, B teria 76 bolas e 0,8/76 ≈ 1,05% > 1%; faltam 4 para 80: 64." },
-          { "id": "a64", "label": "64", "correct": true, "feedback": "Exato. 0,20 × 4/(16 + x) <= 0,01 dá 16 + x >= 80, logo x >= 64." },
-          { "id": "a68", "label": "68", "correct": false, "feedback": "68 = 80 − 12 desconta só as 12 brancas; as 4 pretas também já estão em B. De 16 para 80 bolas faltam 64." },
-          { "id": "a80", "label": "80", "correct": false, "feedback": "80 é o total final de bolas em B, não as adicionadas; tirando as 16 iniciais, são 64." }
+          { "id": "a-antonio", "label": "Antônio, já que sua soma é a maior de todas as escolhidas.", "correct": false, "feedback": "A soma 8 tem 5 pares (2+6 a 6+2), menos que a soma 7. José vence com 6 pares para soma 7." },
+          { "id": "b-ja6", "label": "José e Antônio, já que há 6 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 4 possibilidades para a escolha de Paulo.", "correct": false, "feedback": "Soma 8 tem 5 pares (não 6), e soma 4 tem 3 (não 4). José vence: 6 pares na soma 7, 5 na 8 e 3 na 4." },
+          { "id": "c-ja3", "label": "José e Antônio, já que há 3 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 2 possibilidades para a escolha de Paulo.", "correct": false, "feedback": "Ignora a ordem dos dados, contando {1;6} uma vez só. Com ordem: José tem 6 pares, Antônio 5 e Paulo 3." },
+          { "id": "d-jose", "label": "José, já que há 6 possibilidades para formar sua soma, 5 possibilidades para formar a soma de Antônio e apenas 3 possibilidades para formar a soma de Paulo.", "correct": true, "feedback": "Exato. Soma 7 tem 6 pares (1+6 a 6+1), soma 8 tem 5 (2+6 a 6+2) e soma 4 tem 3 (1+3, 2+2, 3+1)." },
+          { "id": "e-paulo", "label": "Paulo, já que sua soma é a menor de todas.", "correct": false, "feedback": "Soma 4 tem só 3 pares (1+3, 2+2, 3+1), a menor chance. José vence com 6 pares na soma 7." }
         ]
       },
       {
-        "id": "enem-2021-dardos",
-        "prompt": "Com chance 1/2 de acertar cada dardo, qual o mínimo de dardos por rodada para acertar pelo menos um com chance >= 9/10?",
-        "fala": "Use o evento complementar: errar todos os n dardos tem chance (1/2)ⁿ <= 1/10.",
+        "id": "enem-2011-bolas",
+        "prompt": "De 15 bolas (1 a 15) tiram-se 2 sem repor: Arthur aposta na soma 12, Bernardo na 17 e Caio na 22. Quem tem maior chance?",
+        "fala": "Conte os pares distintos {a; b} com 1 ≤ a < b ≤ 15 que dão soma 12, soma 17 e soma 22.",
         "fonte": {
           "banca": "ENEM",
-          "ano": 2021,
+          "ano": 2011,
           "adaptada": true,
-          "adaptacao": "Questão 142: enunciado resumido; alternativas e gabarito (4) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2021/questions/142"]
+          "adaptacao": "Questão 168: enunciado resumido; alternativas e gabarito (Bernardo: 7, 5 e 4) mantidos.",
+          "urls": ["https://api.enem.dev/v1/exams/2011/questions/168"]
         },
         "options": [
-          { "id": "a2", "label": "2", "correct": false, "feedback": "Com 2 dardos, 1 − 1/4 = 3/4 = 0,75 < 0,9; precisa 2ⁿ >= 10, logo n = 4." },
-          { "id": "a4", "label": "4", "correct": true, "feedback": "Isso. 1 − (1/2)⁴ = 15/16 = 0,9375 >= 0,9, e com 3 dardos daria apenas 7/8." },
-          { "id": "a6", "label": "6", "correct": false, "feedback": "Com 6 passa de 9/10, mas 4 já basta pois 2⁴ = 16 >= 10." },
-          { "id": "a9", "label": "9", "correct": false, "feedback": "9 vem do numerador de 9/10. O que se exige é errar todos com chance (1/2)ⁿ <= 1/10: 2⁴ = 16 >= 10, logo n = 4." },
-          { "id": "a10", "label": "10", "correct": false, "feedback": "10 confunde (1/2)ⁿ com 1/n; como 2⁴ = 16 >= 10, bastam 4 dardos." }
+          { "id": "a-arthur", "label": "Arthur, pois a soma que escolheu é a menor.", "correct": false, "feedback": "Soma 12 tem 5 pares (1+11 a 5+7). Bernardo vence com 7 pares para soma 17 (2+15 a 8+9)." },
+          { "id": "b-bernardo-4", "label": "Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 4 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio.", "correct": false, "feedback": "12 = 1+11..5+7 são 5 pares (não 4). Bernardo vence: 7 contra 5 de Arthur e 4 de Caio." },
+          { "id": "c-bernardo-5", "label": "Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio.", "correct": true, "feedback": "Exato. Soma 17 tem 7 pares (2+15 a 8+9), soma 12 tem 5 (1+11 a 5+7) e soma 22 tem 4 (7+15 a 10+12)." },
+          { "id": "d-caio-10", "label": "Caio, pois há 10 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 8 possibilidades para a escolha de Bernardo.", "correct": false, "feedback": "Extrapolou o teto 15 ou repetiu bola (11+11). Sem repor: Bernardo 7, Arthur 5 e Caio 4." },
+          { "id": "e-caio-maior", "label": "Caio, pois a soma que escolheu é a maior.", "correct": false, "feedback": "Soma 22 tem só 4 pares (7+15 a 10+12). Bernardo vence com 7 pares para soma 17." }
         ]
       },
       {

@@ -69,4 +69,18 @@ describe("gabaritos do treino", () => {
     expect(certa("d4-razao-proporcao-porcentagem")).toBe("10");
     expect(certa("d5-razao-proporcao-porcentagem")).toBe("12,5%");
   });
+
+  it("vestibular: ENEM 2023/167, 2017/164 e 2022/154", () => {
+    // 2023/167: 1150 * 5 = 5750 -> 58 pacotes * 4 = 232 -> desconto (232 - 220)/232 ≈ 5,17%
+    const desc = (232 - 220) / 232;
+    expect(desc).toBeGreaterThan(0.05);
+    expect(desc).toBeLessThan(0.055);
+    expect(certa("enem-2023-papel")).toBe("(5,0 ; 5,5)");
+    // 2017/164: tX = 0,25 tY => dX/dY = 1/4
+    expect(0.25).toBe(1 / 4);
+    expect(certa("enem-2017-celular")).toBe("1/4");
+    // 2022/154: 28900 / 0,25 = 115600
+    expect(28900 / 0.25).toBe(115600);
+    expect(certa("enem-2022-caged")).toBe("115 600");
+  });
 });

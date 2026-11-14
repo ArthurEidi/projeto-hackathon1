@@ -105,4 +105,18 @@ describe("gabaritos do treino", () => {
     // d5: complementar de [1; 3) no universo [0; 4] é [0; 1) união [3; 4]
     expect(certa("d5-conjuntos-e-intervalos")).toBe("[0; 1) ∪ [3; 4]");
   });
+
+  it("vestibular: ENEM 2020/169, 2018/163 e 2018/169", () => {
+    // 2020/169: A∩B = 100 + 110 - (200 - 20) = 30; apenas A = 100 - 30 = 70
+    const interAB = 100 + 110 - (200 - 20);
+    expect(certa("enem-2020-amostras")).toBe(String(100 - interAB));
+    // 2018/163: min = 5 * (1 - 2/3) = 5/3 anos = 1a8m; max = 15 * (1 - 1/6) = 12,5 anos = 12a6m
+    expect(5 * (1 - 2 / 3)).toBeCloseTo(1 + 8 / 12, 9);
+    expect(15 * (1 - 1 / 6)).toBeCloseTo(12 + 6 / 12, 9);
+    expect(certa("enem-2018-pena")).toBe("1 ano e 8 meses a 12 anos e 6 meses");
+    // 2018/169: 1500/1 < X < 1500/0.5 e X < 9000/4
+    expect(Math.max(1500 / 1, 0)).toBe(1500);
+    expect(Math.min(1500 / 0.5, 9000 / 4)).toBe(2250);
+    expect(certa("enem-2018-escala")).toBe("1 500 < X < 2 250");
+  });
 });

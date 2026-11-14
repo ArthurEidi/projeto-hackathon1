@@ -92,4 +92,11 @@ describe("gabaritos do treino", () => {
     expect(certa("d4-potencias-e-radicais")).toBe("1");
     expect(certa("d5-potencias-e-radicais")).toBe("2√2 e 4√2");
   });
+
+  it("vestibular: ENEM 2010/177 e 2012/168", () => {
+    expect((1000 / 10) * 10 ** 7).toBe(10 ** 9);
+    expect(certa("enem-2010-petroleo")).toBe("10⁹");
+    expect(Math.cbrt(8) ** 2).toBe(4);
+    expect(certa("enem-2012-mamiferos")).toBe("4");
+  });
 });

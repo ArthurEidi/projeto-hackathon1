@@ -101,3 +101,17 @@ describe("gabaritos dos desafios", () => {
     expect(certa("d5-unidades-conversoes-e-escalas")).toBe("6 m²");
   });
 });
+
+describe("gabaritos do vestibular", () => {
+  it("ENEM 2022/139, 2019/158 e 2020/138", () => {
+    expect((3.8 * 50 - 10) / 100).toBeCloseTo(1.8, 9);
+    expect((1.6 * 50 - 20) / 100).toBeCloseTo(0.6, 9);
+    expect(certa("enem-2022-refrigerador")).toBe("1,80 e 0,60");
+    expect((45 * 200 ** 3) / 1000 / 30000).toBe(12);
+    expect(certa("enem-2019-cisterna")).toBe("12");
+    const volMaquete = 2 * 3.51 * 4;
+    const volRealCm3 = 28080 * 1000;
+    expect(Math.round(Math.cbrt(volRealCm3 / volMaquete))).toBe(100);
+    expect(certa("enem-2020-maquete")).toBe("1 : 100");
+  });
+});
