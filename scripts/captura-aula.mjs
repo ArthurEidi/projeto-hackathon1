@@ -68,7 +68,13 @@ for (const a of alvos) {
   for (const n of passos) {
     await cdp("Page.navigate", { url: "about:blank" });
     await cdp("Page.navigate", { url: `http://localhost:${porta}/#/aula/${caminho}/aula-01?passo=${n}` });
-    await espera(n === passos[0] ? 3500 : 1800);
+    // Espera a aula aparecer (o vite pode estar recompilando) e mais um pouco para as animações.
+    for (let t = 0; t < 40; t++) {
+      await espera(250);
+      const r = await cdp("Runtime.evaluate", { expression: "document.body.innerText.length", returnByValue: true });
+      if ((r.result?.value ?? 0) > 20) break;
+    }
+    await espera(1500);
     const { data } = await cdp("Page.captureScreenshot", { format: "png" });
     const arq = join(saida, `${slug}-p${n}.png`);
     writeFileSync(arq, Buffer.from(data, "base64"));
