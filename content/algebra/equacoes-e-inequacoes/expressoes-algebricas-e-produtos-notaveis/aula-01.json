@@ -141,7 +141,10 @@
           "a": 2,
           "b": 1,
           "retirar": false,
-          "referencia": true
+          "referencia": true,
+          "mostrar": {
+            "total": false
+          }
         }
       },
       "lines": {
@@ -173,7 +176,10 @@
           "a": 2,
           "b": 1,
           "retirar": false,
-          "referencia": true
+          "referencia": true,
+          "mostrar": {
+            "total": false
+          }
         }
       },
       "formula": [

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { dentroDoTrecho, operarTrechos, resolverModoOperacao } from "./desenhoReta";
+import type { Hit } from "../canvas";
+import { aspectoReta, dentroDoTrecho, desenharReta, operarTrechos, resolverModoOperacao } from "./desenhoReta";
 import { RetaFigura, RetaNumerica, type Trecho } from "./params";
 
 const t = (de: number | null, ate: number | null, abreDe = false, abreAte = false): Trecho => ({
@@ -78,5 +79,26 @@ describe("reta_numerica: operacao de conjuntos", () => {
         ponto: { x: 1, centro: 2, vertice: true },
       }).success,
     ).toBe(true);
+  });
+
+  it("etiquetas de distância e pontos abaixo do eixo cabem no canvas sem recorte", () => {
+    const ctx = new Proxy({ measureText: (s: string) => ({ width: s.length * 9 }) }, {
+      get: (o, k) => (k in o ? Reflect.get(o, k) : () => {}),
+      set: (o, k, v) => Reflect.set(o, k, v),
+    }) as unknown as CanvasRenderingContext2D;
+    const p = RetaNumerica.parse({
+      intervalo: [-4, 4],
+      pontos: [{ x: 0, cor: "c4", rotulo: "0" }],
+      ponto: { x: 1, distanciaZero: true, cor: "ink", corDistancia: "c3" },
+    });
+    const w = 336;
+    const h = Math.round(w * aspectoReta(p));
+    const hits: Hit[] = [];
+    desenharReta(ctx, w, h, hits, p, 1);
+    expect(hits.length).toBeGreaterThanOrEqual(2);
+    for (const a of hits) {
+      expect(a.y).toBeGreaterThanOrEqual(0);
+      expect(a.y + a.h).toBeLessThanOrEqual(h);
+    }
   });
 });

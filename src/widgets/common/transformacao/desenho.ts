@@ -111,8 +111,18 @@ function desenharPainelUnico(
     const img = aplicar(A, entrada);
     setaMundo(ctx, v, { x: 0, y: 0 }, entrada, tinta("c1"), largura(p.highlight, "c1", 2.6));
     setaMundo(ctx, v, { x: 0, y: 0 }, img, tinta("c3"), largura(p.highlight, "c3", 2.8));
-    etiqueta(ctx, hits, v.q(entrada), `(${fmt(entrada.x)}; ${fmt(entrada.y)})`, "c1");
-    etiqueta(ctx, hits, { x: v.q(img).x, y: v.q(img).y - 18 }, `(${fmt(img.x)}; ${fmt(img.y)})`, "c3");
+    const posEnt = v.q(entrada);
+    const boxEnt = etiqueta(ctx, hits, posEnt, `(${fmt(entrada.x)}; ${fmt(entrada.y)})`, "c1");
+    if (p.mostrar.imagem) {
+      const posImg = { x: v.q(img).x, y: v.q(img).y - 18 };
+      const distX = Math.abs(posImg.x - posEnt.x);
+      const distY = Math.abs(posImg.y - posEnt.y);
+      const alturaMin = boxEnt.h + 4;
+      if (distX < boxEnt.w && distY < alturaMin) {
+        posImg.y = posEnt.y - alturaMin >= 14 ? posEnt.y - alturaMin : posEnt.y + alturaMin;
+      }
+      etiqueta(ctx, hits, posImg, `(${fmt(img.x)}; ${fmt(img.y)})`, "c3");
+    }
   }
 
   if (p.mostrar.det) {

@@ -76,8 +76,10 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
     etiqueta(ctx, hits, pos, q.texto, q.cor);
   });
   const corArea = p.modo === "produto" ? (p.retirar ? "c4" : "c3") : "c3";
-  etiqueta(ctx, hits, { x: w * 0.27, y: h - 57 }, `Lado = ${fmt(d.lado)}`, p.modo === "raiz" ? "c4" : "c1");
-  etiqueta(ctx, hits, { x: w * 0.73, y: h - 57 }, `Área = ${fmt(d.area)}`, corArea);
-  const formula = p.modo === "produto" ? `${fmt(d.a ** 2)} ${p.retirar ? "−" : "+"} ${fmt(d.a * d.b)} ${p.retirar ? "−" : "+"} ${fmt(d.a * d.b)} + ${fmt(d.b ** 2)} = ${fmt(d.area)}` : p.modo === "raiz" ? `√${fmt(d.area)} = ${fmt(d.lado)}; lado não negativo` : `Lado ×${fmt(d.k)}; área ×${fmt(d.razao_area)}`;
-  nota(ctx, { x: w / 2, y: h - 20 }, formula, "ink", 14);
+  etiqueta(ctx, hits, { x: p.mostrar.total ? w * 0.27 : w * 0.5, y: h - 57 }, `Lado = ${fmt(d.lado)}`, p.modo === "raiz" ? "c4" : "c1");
+  if (p.mostrar.total) {
+    etiqueta(ctx, hits, { x: w * 0.73, y: h - 57 }, `Área = ${fmt(d.area)}`, corArea);
+    const formula = p.modo === "produto" ? `${fmt(d.a ** 2)} ${p.retirar ? "−" : "+"} ${fmt(d.a * d.b)} ${p.retirar ? "−" : "+"} ${fmt(d.a * d.b)} + ${fmt(d.b ** 2)} = ${fmt(d.area)}` : p.modo === "raiz" ? `√${fmt(d.area)} = ${fmt(d.lado)}; lado não negativo` : `Lado ×${fmt(d.k)}; área ×${fmt(d.razao_area)}`;
+    nota(ctx, { x: w / 2, y: h - 20 }, formula, "ink", 14);
+  }
 }

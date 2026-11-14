@@ -47,3 +47,13 @@ it("chips não se sobrepõem em 400 px, inclusive em peças nulas ou estreitas",
     }
   }
 });
+
+it("mostrar.total=false esconde Área e soma, mantendo Lado e peças", () => {
+  const ctx = new Proxy({ measureText: (s: string) => ({ width: s.length * 9 }) }, {
+    get: (o, k) => (k in o ? Reflect.get(o, k) : () => {}),
+    set: (o, k, value) => Reflect.set(o, k, value),
+  }) as unknown as CanvasRenderingContext2D;
+  const hitsSemTotal: Hit[] = [];
+  desenhar(ctx, 400, 400, hitsSemTotal, Areas.parse({ modo: "produto", a: 2, b: 1, mostrar: { total: false } }), {});
+  expect(hitsSemTotal).toHaveLength(5);
+});

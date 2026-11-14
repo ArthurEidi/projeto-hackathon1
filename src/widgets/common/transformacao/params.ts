@@ -26,8 +26,9 @@ export const Transformacao = z.object({
       colunas: z.boolean().default(true),
       det: z.boolean().default(true),
       identidade: z.boolean().default(true),
+      imagem: z.boolean().default(true),
     })
-    .default({ malha: true, quadrado: true, colunas: true, det: true, identidade: true }),
+    .default({ malha: true, quadrado: true, colunas: true, det: true, identidade: true, imagem: true }),
   janela: z
     .tuple([z.number(), z.number()])
     .refine(([a, b]) => a < b, "janela precisa ter mínimo < máximo")

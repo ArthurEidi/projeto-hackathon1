@@ -9,7 +9,7 @@
 | equacoes-irracionais | p3 (rejeitar-sinal) | `ponto.curva: null` agrupa rótulos `0` e `1,41` perto da origem tocando `y = x` | widget | não |
 | equacoes-irracionais | p5 (fechamento) | `ponto` + `marcar.encontro` desenhava duas etiquetas roxas `(2; 2)` | conteúdo | sim |
 | equacoes-logaritmicas | p5 (fechamento) | `ponto` + `marcar.encontro` duplicava `(4; 2)` sobrepondo `y = 2`; subscrito cru `log_b` na fórmula e na fala | conteúdo | sim |
-| equacoes-modulares | p1 (caso-neutro) | `reta_numerica` recorta etiquetas de distância/ponto (`0` e `1`) na borda inferior do cartão | widget | não |
+| equacoes-modulares | p1 (caso-neutro) | `reta_numerica` recorta etiquetas de distância/ponto (`0` e `1`) na borda inferior do cartão | widget | sim |
 | equacoes-modulares | p3 (deslocar-centro) | Etiqueta `(−1; 2)` sobrepõe o rótulo cinza `y = |x|` | widget | não |
 | equacoes-modulares | p4 (conferir-previsao) | `marcar.encontro: true` exibia `(−1; 2)` e `(3; 2)`, entregando a resposta `−1 e 3` de `|x−1|=2` | conteúdo | sim |
 | equacoes-modulares | p5 (fechamento) | Token `"|x"` colocava `|` dentro da caixa de `x`, separando do `|` final | conteúdo | sim |
@@ -18,28 +18,28 @@
 | equacoes-quadraticas | p4 (deslocar-centro) | Etiqueta azul `(1; −1)` sobrepõe a etiqueta roxa da raiz `2` | widget | não |
 | equacoes-quadraticas | p6 (fechamento) | Fórmula `x = (−b ± √Δ)/(2a); Δ = b² − 4ac; raízes` cortada nas duas laterais em 400px | conteúdo | sim |
 | equacoes-racionais | p5 (fechamento) | `ponto` + `marcar.encontro` desenhava duas etiquetas roxas `(2; 1)` | conteúdo | sim |
-| expressoes-algebricas-e-produtos-notaveis | p4 (conferir-previsao) | `retangulo_areas_figura` exibe `Lado = 3`, `Área = 9` e `4 + 2 + 2 + 1 = 9`, entregando a resposta `9` | widget | não |
+| expressoes-algebricas-e-produtos-notaveis | p4 (conferir-previsao) | `retangulo_areas_figura` exibe `Lado = 3`, `Área = 9` e `4 + 2 + 2 + 1 = 9`, entregando a resposta `9` | widget | sim |
 | expressoes-algebricas-e-produtos-notaveis | p5 (fechamento) | Tokens `"(a"`, `"+b"`, `")² = a² + 2ab + b²"` agrupavam parênteses dentro das caixas | conteúdo | sim |
 | fatoracao-algebrica | p3 (fator-comum) | Etiqueta `(1; −1)` sobrepõe a etiqueta roxa da raiz `2` | widget | não |
 | fatoracao-algebrica | p4 (conferir-previsao) | `marcar.raizes: true` exibia `0` e `2` no gráfico, entregando a resposta `0 e 2` de `x(x−2)=0` | conteúdo | sim |
 | inequacoes-exponenciais-logaritmicas | p1, p2, p5 | Etiqueta `(0; 1)` sobrepõe o rótulo escuro `y = 1` | widget | não |
 | inequacoes-exponenciais-logaritmicas | p5 (fechamento) | Token `"b"` separado de `"ᵘ > bᵛ ⇔ "` soltava o expoente `ᵘ` fora da caixa | conteúdo | sim |
-| inequacoes-modulares | p1, p2 | `reta_numerica` recorta etiquetas de distância/ponto na borda inferior do cartão | widget | não |
+| inequacoes-modulares | p1, p2 | `reta_numerica` recorta etiquetas de distância/ponto na borda inferior do cartão | widget | sim |
 | inequacoes-modulares | p5 (fechamento) | Tokens `"|x"` e `"− c| < r"` prendiam barras de módulo dentro das caixas | conteúdo | sim |
 | inequacoes-primeiro-grau | — | sem achados (5 imagens) | — | — |
 | inequacoes-produto-quociente | p4 (conferir-previsao) | `trechos` (`x < −1`) e `pontos` (`−1` aberto) já exibiam que `x = −1` está fora da solução | conteúdo | sim |
 | inequacoes-quadraticas | p2 (entre-raizes) | Etiqueta `(−2; 3)` cortada na borda superior do cartão (`y` ajustado de `[-3, 3]` para `[-3, 4]`) | conteúdo | sim |
-| determinantes-e-matriz-inversa | p3 (colapso) | Em `transformacao_2d` com `A = I`, etiquetas `(1; 1)` e `(2; 1)` de entrada e saída se sobrepõem | widget | não |
+| determinantes-e-matriz-inversa | p3 (colapso) | Em `transformacao_2d` com `A = I`, etiquetas `(1; 1)` e `(2; 1)` de entrada e saída se sobrepõem | widget | sim |
 | determinantes-e-matriz-inversa | p5 (fechamento) | Token único `) · [[d, −b], [−c, a]]; ad − bc ≠ 0` cortado nas duas laterais em 400px | conteúdo | sim |
-| matrizes-determinantes-sistemas | p1, p2 | Em `transformacao_2d` com `A = I`, etiquetas `(0; 1)` e `(1; 1)` de entrada e saída se sobrepõem | widget | não |
+| matrizes-determinantes-sistemas | p1, p2 | Em `transformacao_2d` com `A = I`, etiquetas `(0; 1)` e `(1; 1)` de entrada e saída se sobrepõem | widget | sim |
 | matrizes-determinantes-sistemas | p4 (encontro-sistema) | `marcar.encontro: true` exibe `(2; 1)` antes de o aluno arrastar (exigido pela métrica `no_encontro`) | widget | não |
-| matrizes-determinantes-sistemas | p5 (conferir-previsao) | `transformacao_2d_figura` exibe `(2; 3)` no vetor imagem, entregando a resposta `(2;3)` | widget | não |
+| matrizes-determinantes-sistemas | p5 (conferir-previsao) | `transformacao_2d_figura` exibe `(2; 3)` no vetor imagem, entregando a resposta `(2;3)` | widget | sim |
 | sistemas-lineares-e-escalonamento | p1, p2 | Etiquetas de ponto `(0; 3)` e `(1; 2)` sobrepõem rótulos das retas (`2x + y = 4`, `x + y = 3`, `y = 2`) | widget | não |
 | sistemas-lineares-e-escalonamento | p6 (fechamento) | `ponto` + `marcar.encontro` desenhava duas etiquetas `(1; 2)` sobrepondo `x + y = 3` e `y = 2` | conteúdo | sim |
 
 ## Resumo
 
-- **Total:** 17 capítulos inspecionados (90 capturas iniciais + recapturas de verificação), **33 achados** no total: **17 de conteúdo** (todos corrigidos, revalidados com `vitest` + `npm run lint:content` e verificados visualmente) e **16 de widget** (registrados para ajuste nos componentes).
+- **Total:** 17 capítulos inspecionados (90 capturas iniciais + recapturas de verificação), **33 achados** no total: **17 de conteúdo** (todos corrigidos) e **16 de widget** (**6 corrigidos** em `reta_numerica`, `transformacao_plano`/`transformacao_figura` e `retangulo_areas`/`retangulo_areas_figura`; **10 pendentes** exclusivos de `plano_cartesiano`).
 
 ### Padrões recorrentes
 1. **Spoiler em `micro_challenge` (`conferir-previsao`):** `marcar.encontro: true`, `marcar.raizes: true` ou `trechos`/`pontos` abertos na figura inicial entregam a resposta antes de o aluno escolher (`equacoes-exponenciais`, `equacoes-modulares`, `equacoes-primeiro-grau`, `fatoracao-algebrica`, `inequacoes-produto-quociente`). Nos widgets `retangulo_areas_figura` e `transformacao_2d_figura`, o próprio widget exibe o valor final (`Área = 9`, `(2; 3)`).

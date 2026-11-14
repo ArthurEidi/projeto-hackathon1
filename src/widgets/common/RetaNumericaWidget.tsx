@@ -5,7 +5,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Dica } from "../../ui/Dica";
 import { useCanvas } from "../canvas";
 import type { WidgetProps } from "../types";
-import { dentroDoTrecho, desenharReta, operarTrechos, resolverModoOperacao, type VistaReta } from "./desenhoReta";
+import {
+  aspectoReta,
+  dentroDoTrecho,
+  desenharReta,
+  operarTrechos,
+  resolverModoOperacao,
+  type VistaReta,
+} from "./desenhoReta";
 import { RetaNumerica } from "./params";
 import { encaixar, resolver } from "./plot2d";
 
@@ -43,7 +50,7 @@ export function RetaNumericaWidget({ params, controls, onMetric, onInteract }: W
   }, [pontoX, p.trechos, resultadoOp, centro, pm?.distanciaZero, onMetric]);
   useEffect(() => onMetric("faixa_x", faixa ? faixa[1] - faixa[0] : 0), [faixa, onMetric]);
 
-  const { ref, size, hover } = useCanvas(0.42, (ctx, w, h, hits) => {
+  const { ref, size, hover } = useCanvas(aspectoReta(p), (ctx, w, h, hits) => {
     vista.current = desenharReta(ctx, w, h, hits, p, pontoX, { centro, modoOp });
   });
 
@@ -84,7 +91,7 @@ export function RetaFigura({ state }: { state: RetaNumerica }) {
   const pontoX = state.ponto ? resolver(state.ponto.x, {}) : undefined;
   const centro = state.ponto?.centro !== undefined ? resolver(state.ponto.centro, {}) : undefined;
   const modoOp = state.operacao ? resolverModoOperacao(state.operacao.modo, {}) : undefined;
-  const { ref, size, hover } = useCanvas(0.42, (ctx, w, h, hits) => {
+  const { ref, size, hover } = useCanvas(aspectoReta(state), (ctx, w, h, hits) => {
     desenharReta(ctx, w, h, hits, state, pontoX, { centro, modoOp });
   });
   return (

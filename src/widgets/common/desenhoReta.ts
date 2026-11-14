@@ -146,6 +146,12 @@ function desenharTrecho(
   if (t.rotulo) etiqueta(ctx, hits, (a + b) / 2, ty - 16, t.rotulo, t.cor);
 }
 
+export function aspectoReta(p: RetaNumerica): number {
+  const temAbaixo =
+    p.pontos.some((pt) => Boolean(pt.rotulo)) || Boolean(p.ponto?.distanciaZero) || p.ponto?.centro !== undefined;
+  return temAbaixo ? 0.56 : 0.42;
+}
+
 export function desenharReta(
   ctx: CanvasRenderingContext2D,
   w: number,
@@ -159,7 +165,9 @@ export function desenharReta(
   const pad = 28;
   const k = (w - 2 * pad) / (x1 - x0);
   const X = (x: number) => pad + (x - x0) * k;
-  const y = p.operacao ? h * 0.68 : h * 0.62;
+  const temPontosAbaixo = p.pontos.some((pt) => Boolean(pt.rotulo));
+  const temDist = Boolean(p.ponto?.distanciaZero) || opcoes?.centro !== undefined;
+  const y = p.operacao ? h * 0.68 : temPontosAbaixo || temDist ? h * 0.46 : h * 0.62;
   const hl = p.highlight;
 
   // Linha com setas nas duas pontas e marcas numeradas.
@@ -237,11 +245,11 @@ export function desenharReta(
       }
     } else if (pm.distanciaZero && pontoX !== 0) {
       const cor = corDoTraco(pm.corDistancia);
-      const yy = y + 34;
+      const yy = temPontosAbaixo ? y + 58 : y + 34;
       seg(ctx, { x: X(0), y: yy }, { x: px, y: yy }, cor.main, largura(pm.corDistancia, 4, hl));
       seg(ctx, { x: X(0), y: yy - 6 }, { x: X(0), y: yy + 6 }, cor.main, 3);
       seg(ctx, { x: px, y: yy - 6 }, { x: px, y: yy + 6 }, cor.main, 3);
-      etiqueta(ctx, hits, (X(0) + px) / 2, yy + 20, num(Math.abs(pontoX)), pm.corDistancia);
+      etiqueta(ctx, hits, (X(0) + px) / 2, yy + 18, num(Math.abs(pontoX)), pm.corDistancia);
     }
 
     const cor = corDoTraco(pm.cor);

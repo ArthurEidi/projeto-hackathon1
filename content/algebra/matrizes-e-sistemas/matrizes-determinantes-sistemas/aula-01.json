@@ -226,7 +226,8 @@
             "quadrado": true,
             "colunas": true,
             "det": true,
-            "identidade": true
+            "identidade": true,
+            "imagem": false
           }
         }
       },
@@ -272,7 +273,8 @@
             "quadrado": true,
             "colunas": true,
             "det": true,
-            "identidade": true
+            "identidade": true,
+            "imagem": false
           },
           "highlight": ["c1", "c2", "c3", "c4"]
         }

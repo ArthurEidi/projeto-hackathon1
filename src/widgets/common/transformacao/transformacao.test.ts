@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import type { Hit } from "../../canvas";
 import { aplicar, det2, metricasTransformacao, multiplicar, orientacao, resolverMatriz } from "./calc";
 import { desenharTransformacao } from "./desenho";
 import { Transformacao, TransformacaoFigura } from "./params";
@@ -80,5 +81,22 @@ describe("desenharTransformacao", () => {
       vetor: [1, 1],
     });
     desenharTransformacao(ctx, 400, 224, [], pComp, {});
+  });
+
+  it("afasta etiquetas quando A = I e esconde coordenada da imagem com mostrar.imagem=false", () => {
+    const pId = Transformacao.parse({ matriz: [[1, 0], [0, 1]], vetor: [1, 1] });
+    const hitsId: Hit[] = [];
+    desenharTransformacao(ctx, 336, 310, hitsId, pId, {});
+    const vHits = hitsId.filter((h) => h.key === "c1" || h.key === "c3");
+    expect(vHits).toHaveLength(2);
+    const [a, b] = vHits;
+    const intersecta = a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+    expect(intersecta).toBe(false);
+
+    const pSemImg = Transformacao.parse({ matriz: [[2, 0], [0, 1]], vetor: [1, 3], mostrar: { imagem: false } });
+    const hitsSemImg: Hit[] = [];
+    desenharTransformacao(ctx, 336, 310, hitsSemImg, pSemImg, {});
+    expect(hitsSemImg.some((h) => h.key === "c3")).toBe(false);
+    expect(hitsSemImg.some((h) => h.key === "c1")).toBe(true);
   });
 });

@@ -2,7 +2,12 @@ import { z } from "zod";
 import { Marca } from "../../../ui/marcas";
 import { Expr } from "../expr";
 import { temSlider } from "../geo/base";
-const base = { referencia: z.boolean().default(true), limite: z.number().positive().default(8), highlight: z.array(Marca).default([]) };
+const base = {
+  referencia: z.boolean().default(true),
+  limite: z.number().positive().default(8),
+  highlight: z.array(Marca).default([]),
+  mostrar: z.object({ total: z.boolean().default(true) }).default({ total: true }),
+};
 export const Areas = z.discriminatedUnion("modo", [
   z.object({ ...base, modo: z.literal("produto"), a: Expr.default(2), b: Expr.default(0), retirar: z.boolean().default(false) }),
   z.object({ ...base, modo: z.literal("raiz"), A: Expr.default(1) }),
