@@ -191,7 +191,7 @@
           "id": "a1-2",
           "label": "1/2",
           "correct": false,
-          "feedback": "Os 5 valores de k não têm a mesma chance. São 6 caminhos de 1/16: 3/8.",
+          "feedback": "Os 5 valores de k não têm a mesma chance. Conte quantos dos 16 caminhos têm 2 caras.",
           "figure": {
             "p": 50
           }
@@ -200,7 +200,7 @@
           "id": "a1-16",
           "label": "1/16",
           "correct": false,
-          "feedback": "1/16 é um caminho só. Há C(4, 2) = 6: 6/16 = 3/8.",
+          "feedback": "1/16 é a chance de 1 único caminho, como 4 caras. Quantos caminhos têm 2 caras?",
           "figure": {
             "k": 4
           }
@@ -219,7 +219,7 @@
           "id": "a1-4",
           "label": "1/4",
           "correct": false,
-          "feedback": "Faltou contar os caminhos certos: C(4, 2) = 6, e 6/16 = 3/8.",
+          "feedback": "1/4 seria para 1 cara (4 caminhos em 16). Para 2 caras há mais combinações.",
           "figure": {
             "k": 1
           }

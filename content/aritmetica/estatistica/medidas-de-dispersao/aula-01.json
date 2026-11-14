@@ -207,11 +207,11 @@
           "id": "o1",
           "label": "9",
           "correct": false,
-          "feedback": "9 é a variância, a área média. O desvio padrão é o lado: √9 = 3.",
+          "feedback": "9 é a variância (o quadrado dos desvios). O desvio padrão é a raiz quadrada da variância.",
           "figure": {
             "mostrar": {
               "desvios": true,
-              "quadrados": true
+              "quadrados": false
             }
           }
         },
@@ -234,10 +234,10 @@
           "id": "o3",
           "label": "6",
           "correct": false,
-          "feedback": "6 é a amplitude, 8 − 2. O desvio padrão é 3.",
+          "feedback": "6 é a amplitude total, de 2 até 8. O desvio padrão mede a distância em torno da média 5.",
           "figure": {
             "mostrar": {
-              "desvios": false
+              "conta_media": true
             }
           }
         },
@@ -245,7 +245,7 @@
           "id": "o4",
           "label": "0",
           "correct": false,
-          "feedback": "0 é a soma dos desvios, −3 + 3. Com quadrados: σ = 3.",
+          "feedback": "0 é a soma dos desvios (−3 + 3). Eleve os desvios ao quadrado antes de tirar a média.",
           "figure": {
             "mostrar": {
               "desvios": true,
@@ -693,14 +693,41 @@
           "ano": 2021,
           "adaptada": true,
           "adaptacao": "Questão 146: enunciado resumido; alternativas e gabarito (15,0) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2021/questions/146"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2021/questions/146"
+          ]
         },
         "options": [
-          { "id": "a50", "label": "5,0", "correct": false, "feedback": "Com média 5,0, CV = 1,5/5 = 0,30 > 0,10; para baixar de 0,10 exige média > 15,0." },
-          { "id": "a95", "label": "9,5", "correct": false, "feedback": "9,5 reduz menos ainda o denominador; 1,5/X < 0,1 exige X > 15,0." },
-          { "id": "a100", "label": "10,0", "correct": false, "feedback": "10,0 daria CV = 1,5/10 = 0,15 > 0,10; o desvio subiu 50%, então a média precisa passar de 15,0." },
-          { "id": "a105", "label": "10,5", "correct": false, "feedback": "10,5 soma apenas 0,5 em vez de manter a razão 1,5/X < 0,1; precisa X > 15,0." },
-          { "id": "a150", "label": "15,0", "correct": true, "feedback": "Exato. 1,5/X < 1/10 dá X > 15,0 kg." }
+          {
+            "id": "a50",
+            "label": "5,0",
+            "correct": false,
+            "feedback": "Com média 5,0, CV = 1,5/5 = 0,30 > 0,10; para baixar de 0,10 exige média > 15,0."
+          },
+          {
+            "id": "a95",
+            "label": "9,5",
+            "correct": false,
+            "feedback": "9,5 reduz menos ainda o denominador; 1,5/X < 0,1 exige X > 15,0."
+          },
+          {
+            "id": "a100",
+            "label": "10,0",
+            "correct": false,
+            "feedback": "10,0 daria CV = 1,5/10 = 0,15 > 0,10; o desvio subiu 50%, então a média precisa passar de 15,0."
+          },
+          {
+            "id": "a105",
+            "label": "10,5",
+            "correct": false,
+            "feedback": "10,5 soma apenas 0,5 em vez de manter a razão 1,5/X < 0,1; precisa X > 15,0."
+          },
+          {
+            "id": "a150",
+            "label": "15,0",
+            "correct": true,
+            "feedback": "Exato. 1,5/X < 1/10 dá X > 15,0 kg."
+          }
         ]
       }
     ]

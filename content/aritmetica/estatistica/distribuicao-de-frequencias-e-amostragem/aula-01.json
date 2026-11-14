@@ -237,7 +237,7 @@
           "id": "o2",
           "label": "10%",
           "correct": false,
-          "feedback": "10 é a frequência absoluta. Dividindo por 25: 40%.",
+          "feedback": "10 é a frequência absoluta de A, não a porcentagem. Divida 10 pelo total de 25 alunos.",
           "figure": {
             "acesas": [
               0
@@ -248,8 +248,13 @@
           "id": "o3",
           "label": "25%",
           "correct": false,
-          "feedback": "25 é o total. A relativa é 10 ÷ 25 = 40%.",
+          "feedback": "25 é o total da turma, soma das três barras. A relativa divide A pelo total.",
           "figure": {
+            "acesas": [
+              0,
+              1,
+              2
+            ],
             "highlight": [
               "c2"
             ]
@@ -259,9 +264,15 @@
           "id": "o4",
           "label": "2,5%",
           "correct": false,
-          "feedback": "Você dividiu 25 por 10. É 10 ÷ 25 = 40%.",
+          "feedback": "2,5 vem de dividir o total (25) por 10. Na frequência relativa, divida a parte pelo total.",
           "figure": {
-            "relativa": true,
+            "categorias": [
+              {
+                "nome": "25 ÷ 10",
+                "valor": 2.5
+              }
+            ],
+            "unidade": "%",
             "acesas": [
               0
             ]

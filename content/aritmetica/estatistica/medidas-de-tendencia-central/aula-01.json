@@ -202,7 +202,7 @@
           "id": "o1",
           "label": "7",
           "correct": false,
-          "feedback": "Com 7, a média seria 19 ÷ 3 ≈ 6,3. Para média 7 a soma tem de ser 21: falta 9.",
+          "feedback": "Com 7 a soma dá 19 e a média fica abaixo de 7. Desloque o terceiro peso mais para a direita.",
           "figure": {
             "valores": [
               5,
@@ -228,12 +228,16 @@
           "id": "o3",
           "label": "21",
           "correct": false,
-          "feedback": "21 é a soma necessária, não a nota. Faltam 21 − 12 = 9.",
+          "feedback": "21 é a soma das 3 notas para dar média 7, não a 3ª nota. Subtraia 5 + 7 dessa soma.",
           "figure": {
             "valores": [
               5,
               7,
-              9
+              21
+            ],
+            "regua": [
+              0,
+              25
             ],
             "highlight": [
               "c1"
@@ -244,7 +248,7 @@
           "id": "o4",
           "label": "8",
           "correct": false,
-          "feedback": "Com 8 a soma seria 20 e a média 6,7. Precisa de 9.",
+          "feedback": "Com 8 a soma dá 20 e a gangorra ainda pende para a esquerda. Falta um pouco mais.",
           "figure": {
             "valores": [
               5,
@@ -832,14 +836,41 @@
           "ano": 2020,
           "adaptada": true,
           "adaptacao": "Questão 165: enunciado resumido; alternativas e gabarito (2,06) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2020/questions/165"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2020/questions/165"
+          ]
         },
         "options": [
-          { "id": "a196", "label": "1,96", "correct": false, "feedback": "Com 1,96, os 4 novos somam 2,02 + 5,88 = 7,90 m, só 0,60 m a mais; a média vai a 1,97. Para 1,99 é preciso 2,06." },
-          { "id": "a198", "label": "1,98", "correct": false, "feedback": "1,98 não cobre o aumento de 0,90 m na soma; (8,20 − 2,02) ÷ 3 = 2,06 m." },
-          { "id": "a205", "label": "2,05", "correct": false, "feedback": "2,05 é a média dos 4 novos juntos (8,20 ÷ 4); tirando o de 2,02 m, os 3 têm média 2,06 m." },
-          { "id": "a206", "label": "2,06", "correct": true, "feedback": "Exato. Ganho = 15 × 0,06 = 0,90 m; 7,30 + 0,90 − 2,02 = 6,18 m, e 6,18 ÷ 3 = 2,06 m." },
-          { "id": "a208", "label": "2,08", "correct": false, "feedback": "2,08 erra a soma dos 4 baixos ou o desconto de 2,02 m; 6,18 ÷ 3 = 2,06 m." }
+          {
+            "id": "a196",
+            "label": "1,96",
+            "correct": false,
+            "feedback": "Com 1,96, os 4 novos somam 2,02 + 5,88 = 7,90 m, só 0,60 m a mais; a média vai a 1,97. Para 1,99 é preciso 2,06."
+          },
+          {
+            "id": "a198",
+            "label": "1,98",
+            "correct": false,
+            "feedback": "1,98 não cobre o aumento de 0,90 m na soma; (8,20 − 2,02) ÷ 3 = 2,06 m."
+          },
+          {
+            "id": "a205",
+            "label": "2,05",
+            "correct": false,
+            "feedback": "2,05 é a média dos 4 novos juntos (8,20 ÷ 4); tirando o de 2,02 m, os 3 têm média 2,06 m."
+          },
+          {
+            "id": "a206",
+            "label": "2,06",
+            "correct": true,
+            "feedback": "Exato. Ganho = 15 × 0,06 = 0,90 m; 7,30 + 0,90 − 2,02 = 6,18 m, e 6,18 ÷ 3 = 2,06 m."
+          },
+          {
+            "id": "a208",
+            "label": "2,08",
+            "correct": false,
+            "feedback": "2,08 erra a soma dos 4 baixos ou o desconto de 2,02 m; 6,18 ÷ 3 = 2,06 m."
+          }
         ]
       }
     ]

@@ -238,7 +238,7 @@
           "id": "o1",
           "label": "Abril",
           "correct": false,
-          "feedback": "Abril tem a maior barra, mas subiu só 3. Março subiu 10, de 15 para 25.",
+          "feedback": "Abril tem a maior barra (28), mas subiu só 3 desde março. Compare a subida de cada mês.",
           "figure": {
             "acesas": [
               3
@@ -260,11 +260,10 @@
           "id": "o3",
           "label": "Fevereiro",
           "correct": false,
-          "feedback": "Fevereiro subiu 5. Março subiu 10: foi o maior aumento.",
+          "feedback": "De janeiro para fevereiro subiu 5 (de 10 para 15). Veja se algum mês deu um salto maior.",
           "figure": {
             "acesas": [
-              1,
-              2
+              1
             ]
           }
         },
@@ -272,7 +271,7 @@
           "id": "o4",
           "label": "Janeiro",
           "correct": false,
-          "feedback": "Janeiro é o primeiro mês, sem anterior para comparar. O maior aumento foi março, +10.",
+          "feedback": "Janeiro é o primeiro mês, não há mês anterior para comparar. Olhe as subidas entre barras.",
           "figure": {
             "acesas": [
               0

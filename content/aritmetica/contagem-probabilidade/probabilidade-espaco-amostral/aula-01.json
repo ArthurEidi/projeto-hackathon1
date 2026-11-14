@@ -196,12 +196,13 @@
           "id": "a2-3",
           "label": "2/3",
           "correct": false,
-          "feedback": "2/3 compara vermelhas com azuis. O total são 5 bolas: 2/5.",
+          "feedback": "2/3 compara vermelhas só com as azuis. Na probabilidade, o denominador é o total de bolas.",
           "figure": {
             "acesas": [
               "V1",
               "V2"
             ],
+            "contador": false,
             "regua": false
           }
         },
@@ -209,7 +210,7 @@
           "id": "a1-2",
           "label": "1/2",
           "correct": false,
-          "feedback": "Há 2 cores, mas elas não têm a mesma chance. 2 de 5 casas: 2/5.",
+          "feedback": "1/2 trata as 2 cores como se tivessem a mesma chance. Há mais bolas azuis que vermelhas.",
           "figure": {
             "linhas": [
               "azul",
@@ -241,7 +242,7 @@
           "id": "a3-5",
           "label": "3/5",
           "correct": false,
-          "feedback": "3/5 é a chance de azul. Vermelha: 2/5.",
+          "feedback": "3/5 é a chance de tirar uma bola azul. O pedido é a chance de sair vermelha.",
           "figure": {
             "acesas": [
               "A1",
@@ -691,14 +692,41 @@
           "ano": 2012,
           "adaptada": true,
           "adaptacao": "Questão 178: enunciado resumido; alternativas e gabarito (José: 6, 5 e 3) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2012/questions/178"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2012/questions/178"
+          ]
         },
         "options": [
-          { "id": "a-antonio", "label": "Antônio, já que sua soma é a maior de todas as escolhidas.", "correct": false, "feedback": "A soma 8 tem 5 pares (2+6 a 6+2), menos que a soma 7. José vence com 6 pares para soma 7." },
-          { "id": "b-ja6", "label": "José e Antônio, já que há 6 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 4 possibilidades para a escolha de Paulo.", "correct": false, "feedback": "Soma 8 tem 5 pares (não 6), e soma 4 tem 3 (não 4). José vence: 6 pares na soma 7, 5 na 8 e 3 na 4." },
-          { "id": "c-ja3", "label": "José e Antônio, já que há 3 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 2 possibilidades para a escolha de Paulo.", "correct": false, "feedback": "Ignora a ordem dos dados, contando {1;6} uma vez só. Com ordem: José tem 6 pares, Antônio 5 e Paulo 3." },
-          { "id": "d-jose", "label": "José, já que há 6 possibilidades para formar sua soma, 5 possibilidades para formar a soma de Antônio e apenas 3 possibilidades para formar a soma de Paulo.", "correct": true, "feedback": "Exato. Soma 7 tem 6 pares (1+6 a 6+1), soma 8 tem 5 (2+6 a 6+2) e soma 4 tem 3 (1+3, 2+2, 3+1)." },
-          { "id": "e-paulo", "label": "Paulo, já que sua soma é a menor de todas.", "correct": false, "feedback": "Soma 4 tem só 3 pares (1+3, 2+2, 3+1), a menor chance. José vence com 6 pares na soma 7." }
+          {
+            "id": "a-antonio",
+            "label": "Antônio, já que sua soma é a maior de todas as escolhidas.",
+            "correct": false,
+            "feedback": "A soma 8 tem 5 pares (2+6 a 6+2), menos que a soma 7. José vence com 6 pares para soma 7."
+          },
+          {
+            "id": "b-ja6",
+            "label": "José e Antônio, já que há 6 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 4 possibilidades para a escolha de Paulo.",
+            "correct": false,
+            "feedback": "Soma 8 tem 5 pares (não 6), e soma 4 tem 3 (não 4). José vence: 6 pares na soma 7, 5 na 8 e 3 na 4."
+          },
+          {
+            "id": "c-ja3",
+            "label": "José e Antônio, já que há 3 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 2 possibilidades para a escolha de Paulo.",
+            "correct": false,
+            "feedback": "Ignora a ordem dos dados, contando {1;6} uma vez só. Com ordem: José tem 6 pares, Antônio 5 e Paulo 3."
+          },
+          {
+            "id": "d-jose",
+            "label": "José, já que há 6 possibilidades para formar sua soma, 5 possibilidades para formar a soma de Antônio e apenas 3 possibilidades para formar a soma de Paulo.",
+            "correct": true,
+            "feedback": "Exato. Soma 7 tem 6 pares (1+6 a 6+1), soma 8 tem 5 (2+6 a 6+2) e soma 4 tem 3 (1+3, 2+2, 3+1)."
+          },
+          {
+            "id": "e-paulo",
+            "label": "Paulo, já que sua soma é a menor de todas.",
+            "correct": false,
+            "feedback": "Soma 4 tem só 3 pares (1+3, 2+2, 3+1), a menor chance. José vence com 6 pares na soma 7."
+          }
         ]
       },
       {
@@ -710,14 +738,41 @@
           "ano": 2011,
           "adaptada": true,
           "adaptacao": "Questão 168: enunciado resumido; alternativas e gabarito (Bernardo: 7, 5 e 4) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2011/questions/168"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2011/questions/168"
+          ]
         },
         "options": [
-          { "id": "a-arthur", "label": "Arthur, pois a soma que escolheu é a menor.", "correct": false, "feedback": "Soma 12 tem 5 pares (1+11 a 5+7). Bernardo vence com 7 pares para soma 17 (2+15 a 8+9)." },
-          { "id": "b-bernardo-4", "label": "Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 4 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio.", "correct": false, "feedback": "12 = 1+11..5+7 são 5 pares (não 4). Bernardo vence: 7 contra 5 de Arthur e 4 de Caio." },
-          { "id": "c-bernardo-5", "label": "Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio.", "correct": true, "feedback": "Exato. Soma 17 tem 7 pares (2+15 a 8+9), soma 12 tem 5 (1+11 a 5+7) e soma 22 tem 4 (7+15 a 10+12)." },
-          { "id": "d-caio-10", "label": "Caio, pois há 10 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 8 possibilidades para a escolha de Bernardo.", "correct": false, "feedback": "Extrapolou o teto 15 ou repetiu bola (11+11). Sem repor: Bernardo 7, Arthur 5 e Caio 4." },
-          { "id": "e-caio-maior", "label": "Caio, pois a soma que escolheu é a maior.", "correct": false, "feedback": "Soma 22 tem só 4 pares (7+15 a 10+12). Bernardo vence com 7 pares para soma 17." }
+          {
+            "id": "a-arthur",
+            "label": "Arthur, pois a soma que escolheu é a menor.",
+            "correct": false,
+            "feedback": "Soma 12 tem 5 pares (1+11 a 5+7). Bernardo vence com 7 pares para soma 17 (2+15 a 8+9)."
+          },
+          {
+            "id": "b-bernardo-4",
+            "label": "Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 4 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio.",
+            "correct": false,
+            "feedback": "12 = 1+11..5+7 são 5 pares (não 4). Bernardo vence: 7 contra 5 de Arthur e 4 de Caio."
+          },
+          {
+            "id": "c-bernardo-5",
+            "label": "Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio.",
+            "correct": true,
+            "feedback": "Exato. Soma 17 tem 7 pares (2+15 a 8+9), soma 12 tem 5 (1+11 a 5+7) e soma 22 tem 4 (7+15 a 10+12)."
+          },
+          {
+            "id": "d-caio-10",
+            "label": "Caio, pois há 10 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 8 possibilidades para a escolha de Bernardo.",
+            "correct": false,
+            "feedback": "Extrapolou o teto 15 ou repetiu bola (11+11). Sem repor: Bernardo 7, Arthur 5 e Caio 4."
+          },
+          {
+            "id": "e-caio-maior",
+            "label": "Caio, pois a soma que escolheu é a maior.",
+            "correct": false,
+            "feedback": "Soma 22 tem só 4 pares (7+15 a 10+12). Bernardo vence com 7 pares para soma 17."
+          }
         ]
       },
       {
@@ -729,14 +784,41 @@
           "ano": 2018,
           "adaptada": true,
           "adaptacao": "Questão 167: enunciado resumido; alternativas e gabarito (40) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2018/questions/167"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2018/questions/167"
+          ]
         },
         "options": [
-          { "id": "a10", "label": "10", "correct": false, "feedback": "Com +10 fáceis ficaria 15/30 = 50%; para 75%, (5 + x)/(20 + x) = 3/4 dá x = 40." },
-          { "id": "a15", "label": "15", "correct": false, "feedback": "Com +15 ficaria 20/35 ≈ 57%; 15 não fáceis precisam ser 25% do total (60), logo +40." },
-          { "id": "a35", "label": "35", "correct": false, "feedback": "Com +35 ficaria 40/55 ≈ 72,7%; para 75% exatos, o total é 60, logo 40 novas." },
-          { "id": "a40", "label": "40", "correct": true, "feedback": "Exato. (5 + 40)/(20 + 40) = 45/60 = 75%." },
-          { "id": "a45", "label": "45", "correct": false, "feedback": "45 é o total final de fáceis (5 + 40); as acrescentadas são 40." }
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "Com +10 fáceis ficaria 15/30 = 50%; para 75%, (5 + x)/(20 + x) = 3/4 dá x = 40."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "Com +15 ficaria 20/35 ≈ 57%; 15 não fáceis precisam ser 25% do total (60), logo +40."
+          },
+          {
+            "id": "a35",
+            "label": "35",
+            "correct": false,
+            "feedback": "Com +35 ficaria 40/55 ≈ 72,7%; para 75% exatos, o total é 60, logo 40 novas."
+          },
+          {
+            "id": "a40",
+            "label": "40",
+            "correct": true,
+            "feedback": "Exato. (5 + 40)/(20 + 40) = 45/60 = 75%."
+          },
+          {
+            "id": "a45",
+            "label": "45",
+            "correct": false,
+            "feedback": "45 é o total final de fáceis (5 + 40); as acrescentadas são 40."
+          }
         ]
       }
     ]

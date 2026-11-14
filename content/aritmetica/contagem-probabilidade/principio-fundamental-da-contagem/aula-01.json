@@ -277,7 +277,7 @@
           "id": "a12",
           "label": "12",
           "correct": false,
-          "feedback": "12 é pão com recheio. Falta o molho: cada um dos 12 vira 2 lanches.",
+          "feedback": "12 combina só pão e recheio. Falta multiplicar pelo número de molhos.",
           "figure": {
             "contador": true,
             "colunas": [
@@ -319,7 +319,7 @@
           "id": "a14",
           "label": "14",
           "correct": false,
-          "feedback": "Somar o molho no fim não basta: ele se combina com cada um dos 12. Fica 24.",
+          "feedback": "14 soma os molhos em vez de multiplicar. Cada um dos 12 pares combina com os 2 molhos.",
           "figure": {
             "contador": true,
             "ou": true,

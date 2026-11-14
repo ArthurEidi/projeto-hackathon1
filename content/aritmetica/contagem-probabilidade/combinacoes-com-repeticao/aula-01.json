@@ -161,8 +161,10 @@
           "id": "a64",
           "label": "64",
           "correct": false,
-          "feedback": "64 = 4³ trataria as unidades como diferentes. Elas são iguais: C(6, 2) = 15.",
+          "feedback": "64 = 4³ trataria as bolinhas como numeradas. Como são iguais, só importa onde ficam as barras.",
           "figure": {
+            "numeradas": true,
+            "sequencia": "●●|●|●",
             "highlight": [
               "c2"
             ]
@@ -172,9 +174,9 @@
           "id": "a4",
           "label": "4",
           "correct": false,
-          "feedback": "4 é o total a distribuir. Fileira com 4 bolinhas e 2 barras: C(6, 2) = 15.",
+          "feedback": "4 é só a soma total das caixas. O total de soluções conta todas as posições das 2 barras.",
           "figure": {
-            "sequencia": "●●●●||"
+            "sequencia": "||●●●●"
           }
         },
         {
@@ -192,9 +194,9 @@
           "id": "a12",
           "label": "12",
           "correct": false,
-          "feedback": "12 esquece as soluções com zero. Com naturais, o zero vale: C(6, 2) = 15.",
+          "feedback": "12 deixa de fora as 3 soluções sem nenhum zero, como 1 + 2 + 1. Elas também contam: veja todas as posições das barras.",
           "figure": {
-            "sequencia": "||●●●●"
+            "sequencia": "●|●●|●"
           }
         }
       ]

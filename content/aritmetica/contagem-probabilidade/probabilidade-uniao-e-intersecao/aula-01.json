@@ -239,7 +239,7 @@
           "id": "a7-10",
           "label": "7/10",
           "correct": false,
-          "feedback": "10 + 4 = 14 conta 10 e 20 duas vezes. Descontando: 12/20 = 3/5.",
+          "feedback": "10 + 4 = 14 conta 10 e 20 duas vezes. Desconte a interseção uma vez do total de 20.",
           "figure": {
             "mostrar": {
               "uniao": true
@@ -262,11 +262,19 @@
           "id": "a1-2",
           "label": "1/2",
           "correct": false,
-          "feedback": "1/2 são só os pares. Os múltiplos de 5 ímpares (5 e 15) também contam: 3/5.",
+          "feedback": "1/2 conta apenas os 10 números pares. Os múltiplos de 5 ímpares também entram na união.",
           "figure": {
             "acesas": [
-              "5",
-              "15"
+              "2",
+              "4",
+              "6",
+              "8",
+              "10",
+              "12",
+              "14",
+              "16",
+              "18",
+              "20"
             ]
           }
         },
@@ -274,7 +282,7 @@
           "id": "a1-10",
           "label": "1/10",
           "correct": false,
-          "feedback": "1/10 é a interseção, 10 e 20. A união é 12/20 = 3/5.",
+          "feedback": "1/10 é só a interseção (10 e 20). O pedido é múltiplo de 2 OU de 5, a união.",
           "figure": {
             "mostrar": {
               "intersecao": true

@@ -207,7 +207,7 @@
           "id": "a20",
           "label": "20",
           "correct": false,
-          "feedback": "20 conta AB e BA separados. Numa dupla a ordem não importa: 20 / 2 = 10.",
+          "feedback": "20 conta AB e BA como duplas diferentes. Se a ordem não importa, cada par aparece quantas vezes?",
           "figure": {
             "repetir": false
           }
@@ -216,9 +216,16 @@
           "id": "a25",
           "label": "25",
           "correct": false,
-          "feedback": "25 inclui alguém com ele mesmo e as ordens trocadas. Sem isso: 10.",
+          "feedback": "25 inclui duplas com a mesma pessoa e ordens repetidas. Tire a diagonal e os pares espelhados.",
           "figure": {
             "repetir": true,
+            "acesas": [
+              "A,A",
+              "B,B",
+              "C,C",
+              "D,D",
+              "E,E"
+            ],
             "highlight": [
               "c4"
             ]
@@ -241,7 +248,7 @@
           "id": "a5",
           "label": "5",
           "correct": false,
-          "feedback": "5 é o número de alunos. As duplas são C(5, 2) = 10.",
+          "feedback": "5 é só o total de alunos, não de pares. Conte quantos pares diferentes saem dessa grade.",
           "figure": {
             "repetir": false,
             "acesas": [
@@ -729,7 +736,9 @@
           "ano": 2019,
           "adaptada": true,
           "adaptacao": "Questão 156: enunciado resumido; alternativas e gabarito (90) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2019/questions/156"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2019/questions/156"
+          ]
         },
         "options": [
           {

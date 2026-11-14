@@ -213,8 +213,14 @@
           "id": "o2",
           "label": "7",
           "correct": false,
-          "feedback": "7 é a mediana, Q2. Q1 é o meio da metade de baixo: 4.",
+          "feedback": "7 é a mediana (Q2), o meio da lista toda. O primeiro quartil corta só a metade de baixo.",
           "figure": {
+            "fixos": [
+              "q2"
+            ],
+            "cores": {
+              "q2": "c3"
+            },
             "highlight": [
               "c4"
             ]
@@ -224,21 +230,16 @@
           "id": "o3",
           "label": "2",
           "correct": false,
-          "feedback": "2 é o menor valor. Q1 é o meio de 2, 4, 5: 4.",
+          "feedback": "2 é o menor valor da lista, a ponta esquerda. Q1 é o meio da metade de baixo.",
           "figure": {
-            "caixa": true,
-            "fixos": [
-              "q1",
-              "q2",
-              "q3"
-            ]
+            "fixos": []
           }
         },
         {
           "id": "o4",
           "label": "10",
           "correct": false,
-          "feedback": "10 é Q3, da metade de cima. Q1 é 4.",
+          "feedback": "10 é Q3, o meio da metade de cima. Procure o meio da metade abaixo da mediana.",
           "figure": {
             "fixos": [
               "q2",

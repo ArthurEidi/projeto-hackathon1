@@ -214,9 +214,12 @@
           "id": "a1-36",
           "label": "1/36",
           "correct": false,
-          "feedback": "1/36 usa a grade toda. Com a pista, sobram 5 casas de soma 8, e uma tem o 3: 1/5.",
+          "feedback": "1/36 divide pela grade toda (36 casas). Mas já sabemos que a soma deu 8.",
           "figure": {
-            "pista": true,
+            "pista": false,
+            "acesas": [
+              "3,5"
+            ],
             "regua": false
           }
         },
@@ -224,7 +227,7 @@
           "id": "a1-6",
           "label": "1/6",
           "correct": false,
-          "feedback": "1/6 ignora a pista. Na soma 8 há 5 casas: 1/5.",
+          "feedback": "1/6 ignora a pista da soma 8. Conte apenas entre as casas que somam 8.",
           "figure": {
             "pista": false,
             "regua": true
@@ -247,12 +250,16 @@
           "id": "a5-36",
           "label": "5/36",
           "correct": false,
-          "feedback": "5/36 é a chance da soma 8 sem pista. Dentro dela: 1/5.",
+          "feedback": "5/36 é a chance de a soma dar 8 sem pista. A pergunta pede dado 3 dentro da soma 8.",
           "figure": {
             "pista": false,
-            "mostrar": {
-              "uniao": false
-            },
+            "acesas": [
+              "2,6",
+              "3,5",
+              "4,4",
+              "5,3",
+              "6,2"
+            ],
             "regua": false,
             "highlight": [
               "c2"

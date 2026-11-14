@@ -194,9 +194,9 @@
           "id": "a4",
           "label": "4",
           "correct": false,
-          "feedback": "4 é o expoente. x² sai escolhendo x em 2 dos 4 fatores: C(4, 2) = 6.",
+          "feedback": "4 é o expoente, ou os caminhos com só um x. Para x², quantos caminhos escolhem dois x?",
           "figure": {
-            "agrupar": true,
+            "agrupar": false,
             "acender_k": 1
           }
         },
@@ -204,9 +204,9 @@
           "id": "a2",
           "label": "2",
           "correct": false,
-          "feedback": "2 é o expoente do termo. Os caminhos com dois x são C(4, 2) = 6.",
+          "feedback": "2 é o expoente de x², não o número de caminhos. Quantos caminhos na árvore têm dois x?",
           "figure": {
-            "agrupar": true,
+            "agrupar": false,
             "acesas": [
               0,
               1
@@ -227,9 +227,9 @@
           "id": "a1",
           "label": "1",
           "correct": false,
-          "feedback": "1 é o coeficiente de x⁴. Para x² são C(4, 2) = 6 caminhos.",
+          "feedback": "1 é o coeficiente de x⁴, um caminho só. Conte os caminhos que escolhem dois x.",
           "figure": {
-            "agrupar": true,
+            "agrupar": false,
             "acender_k": 4
           }
         }

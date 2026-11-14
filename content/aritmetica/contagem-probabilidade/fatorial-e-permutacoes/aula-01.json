@@ -159,8 +159,11 @@
           "id": "a25",
           "label": "25",
           "correct": false,
-          "feedback": "25 é 5 · 5, como se todo lugar tivesse 5 livros. Cada livro usado sai: 5! = 120.",
+          "feedback": "25 é 5 × 5, para só 2 lugares com repetição. Aqui são 5 lugares sem repetir livro.",
           "figure": {
+            "n": 5,
+            "k": 2,
+            "iguais": true,
             "contador": true,
             "highlight": [
               "c2"
@@ -171,8 +174,9 @@
           "id": "a15",
           "label": "15",
           "correct": false,
-          "feedback": "15 soma 5 + 4 + 3 + 2 + 1. Os degraus se multiplicam: 120.",
+          "feedback": "15 soma os degraus (5 + 4 + 3 + 2 + 1). As escolhas sucessivas se multiplicam.",
           "figure": {
+            "operacao": "soma",
             "contador": true,
             "highlight": [
               "c1"
@@ -195,7 +199,7 @@
           "id": "a5",
           "label": "5",
           "correct": false,
-          "feedback": "5 é o número de livros. As ordens são 5! = 120.",
+          "feedback": "5 é só a escolha do 1º lugar. Multiplique pelas escolhas dos outros 4 lugares.",
           "figure": {
             "contador": true,
             "k": 1
@@ -636,14 +640,41 @@
           "ano": 2011,
           "adaptada": true,
           "adaptacao": "Questão 174: enunciado resumido; alternativas e gabarito (89) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2011/questions/174"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2011/questions/174"
+          ]
         },
         "options": [
-          { "id": "a24", "label": "24", "correct": false, "feedback": "24 = 4! conta só um dígito inicial (ex.: começando em 1). Para 75 913: 3·4! + 2·3! + 2·2! + 1 = 89." },
-          { "id": "a31", "label": "31", "correct": false, "feedback": "31 soma 4! + 3! + 1 sem multiplicar pelos prefixos menores. A posição é 3·4! + 2·3! + 2·2! + 1 = 89." },
-          { "id": "a32", "label": "32", "correct": false, "feedback": "32 = 4! + 3! + 2! não multiplica pelos dígitos menores. O certo é 3·4! + 2·3! + 2·2! + 1 = 89." },
-          { "id": "a88", "label": "88", "correct": false, "feedback": "88 = 3·4! + 2·3! + 2·2! conta quantos vêm antes de 75 913. A posição dele é 88 + 1 = 89." },
-          { "id": "a89", "label": "89", "correct": true, "feedback": "Exato. 3·4! + 2·3! + 2·2! = 72 + 12 + 4 = 88 números antes, logo 75 913 é o 89º." }
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 = 4! conta só um dígito inicial (ex.: começando em 1). Para 75 913: 3·4! + 2·3! + 2·2! + 1 = 89."
+          },
+          {
+            "id": "a31",
+            "label": "31",
+            "correct": false,
+            "feedback": "31 soma 4! + 3! + 1 sem multiplicar pelos prefixos menores. A posição é 3·4! + 2·3! + 2·2! + 1 = 89."
+          },
+          {
+            "id": "a32",
+            "label": "32",
+            "correct": false,
+            "feedback": "32 = 4! + 3! + 2! não multiplica pelos dígitos menores. O certo é 3·4! + 2·3! + 2·2! + 1 = 89."
+          },
+          {
+            "id": "a88",
+            "label": "88",
+            "correct": false,
+            "feedback": "88 = 3·4! + 2·3! + 2·2! conta quantos vêm antes de 75 913. A posição dele é 88 + 1 = 89."
+          },
+          {
+            "id": "a89",
+            "label": "89",
+            "correct": true,
+            "feedback": "Exato. 3·4! + 2·3! + 2·2! = 72 + 12 + 4 = 88 números antes, logo 75 913 é o 89º."
+          }
         ]
       },
       {
@@ -655,14 +686,41 @@
           "ano": 2012,
           "adaptada": true,
           "adaptacao": "Questão 144: enunciado resumido; alternativas e gabarito (10 alunos a mais) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2012/questions/144"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2012/questions/144"
+          ]
         },
         "options": [
-          { "id": "a10", "label": "10 alunos a mais do que possíveis respostas distintas", "correct": true, "feedback": "Exato. 5 · 6 · 9 = 270 respostas distintas, então 280 − 270 = 10 alunos a mais." },
-          { "id": "a20", "label": "20 alunos a mais do que possíveis respostas distintas", "correct": false, "feedback": "20 = 5 + 6 + 9 soma as opções e não compara com os 280 alunos. São 5 · 6 · 9 = 270 respostas: 10 alunos a mais." },
-          { "id": "a119", "label": "119 alunos a mais do que possíveis respostas distintas", "correct": false, "feedback": "119 alunos a mais exigiria só 161 respostas distintas, mas são 5 · 6 · 9 = 270. Logo 280 − 270 = 10 alunos a mais." },
-          { "id": "a260", "label": "260 alunos a mais do que possíveis respostas distintas", "correct": false, "feedback": "260 = 280 − (5 + 6 + 9) soma as opções em vez de multiplicar. Com 5 · 6 · 9 = 270, são 10 alunos a mais." },
-          { "id": "a270", "label": "270 alunos a mais do que possíveis respostas distintas", "correct": false, "feedback": "270 = 5 · 6 · 9 é o total de combinações, não a sobra. 280 − 270 = 10 alunos a mais." }
+          {
+            "id": "a10",
+            "label": "10 alunos a mais do que possíveis respostas distintas",
+            "correct": true,
+            "feedback": "Exato. 5 · 6 · 9 = 270 respostas distintas, então 280 − 270 = 10 alunos a mais."
+          },
+          {
+            "id": "a20",
+            "label": "20 alunos a mais do que possíveis respostas distintas",
+            "correct": false,
+            "feedback": "20 = 5 + 6 + 9 soma as opções e não compara com os 280 alunos. São 5 · 6 · 9 = 270 respostas: 10 alunos a mais."
+          },
+          {
+            "id": "a119",
+            "label": "119 alunos a mais do que possíveis respostas distintas",
+            "correct": false,
+            "feedback": "119 alunos a mais exigiria só 161 respostas distintas, mas são 5 · 6 · 9 = 270. Logo 280 − 270 = 10 alunos a mais."
+          },
+          {
+            "id": "a260",
+            "label": "260 alunos a mais do que possíveis respostas distintas",
+            "correct": false,
+            "feedback": "260 = 280 − (5 + 6 + 9) soma as opções em vez de multiplicar. Com 5 · 6 · 9 = 270, são 10 alunos a mais."
+          },
+          {
+            "id": "a270",
+            "label": "270 alunos a mais do que possíveis respostas distintas",
+            "correct": false,
+            "feedback": "270 = 5 · 6 · 9 é o total de combinações, não a sobra. 280 − 270 = 10 alunos a mais."
+          }
         ]
       },
       {
@@ -674,14 +732,41 @@
           "ano": 2009,
           "adaptada": true,
           "adaptacao": "Questão 165: enunciado resumido; alternativas e gabarito (Uma combinação e um arranjo, respectivamente) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2009/questions/165"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2009/questions/165"
+          ]
         },
         "options": [
-          { "id": "comb-arr", "label": "Uma combinação e um arranjo, respectivamente", "correct": true, "feedback": "Exato. O grupo de 4 é combinação C(12; 4), e mandante/visitante é arranjo A(4; 2)." },
-          { "id": "arr-comb", "label": "Um arranjo e uma combinação, respectivamente", "correct": false, "feedback": "Inverte a ordem: nas 4 cidades a ordem não importa (combinação), e mandante/visitante importa (arranjo)." },
-          { "id": "arr-perm", "label": "Um arranjo e uma permutação, respectivamente", "correct": false, "feedback": "Permutação usaria todas as 4 cidades, não só 2. O certo é uma combinação e um arranjo, respectivamente." },
-          { "id": "duas-comb", "label": "Duas combinações", "correct": false, "feedback": "Mandante e visitante trocam de papel se inverterem, logo a 2ª escolha é arranjo: combinação e arranjo." },
-          { "id": "dois-arr", "label": "Dois arranjos", "correct": false, "feedback": "Sortear as 4 cidades não distingue ordem (combinação); só a 2ª etapa é arranjo: combinação e arranjo." }
+          {
+            "id": "comb-arr",
+            "label": "Uma combinação e um arranjo, respectivamente",
+            "correct": true,
+            "feedback": "Exato. O grupo de 4 é combinação C(12; 4), e mandante/visitante é arranjo A(4; 2)."
+          },
+          {
+            "id": "arr-comb",
+            "label": "Um arranjo e uma combinação, respectivamente",
+            "correct": false,
+            "feedback": "Inverte a ordem: nas 4 cidades a ordem não importa (combinação), e mandante/visitante importa (arranjo)."
+          },
+          {
+            "id": "arr-perm",
+            "label": "Um arranjo e uma permutação, respectivamente",
+            "correct": false,
+            "feedback": "Permutação usaria todas as 4 cidades, não só 2. O certo é uma combinação e um arranjo, respectivamente."
+          },
+          {
+            "id": "duas-comb",
+            "label": "Duas combinações",
+            "correct": false,
+            "feedback": "Mandante e visitante trocam de papel se inverterem, logo a 2ª escolha é arranjo: combinação e arranjo."
+          },
+          {
+            "id": "dois-arr",
+            "label": "Dois arranjos",
+            "correct": false,
+            "feedback": "Sortear as 4 cidades não distingue ordem (combinação); só a 2ª etapa é arranjo: combinação e arranjo."
+          }
         ]
       }
     ]
