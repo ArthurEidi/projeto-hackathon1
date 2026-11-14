@@ -99,32 +99,32 @@
       },
       "options": [
         {
-          "id": "f3",
-          "label": "Face 3",
+          "id": "f6",
+          "label": "Face 6",
           "correct": true,
-          "feedback": "Exato. Na fita 1-2-3-4, a face 2 dobra 90° e a 3 fica paralela e oposta à 1.",
+          "feedback": "Exato. Na fita 2-1-5-6, a face 5 dobra 90° e a 6 fica no topo, paralela e oposta à 1.",
           "figure": { "fechar": 1 }
         },
         {
           "id": "f2",
           "label": "Face 2",
           "correct": false,
-          "feedback": "A face 2 é vizinha de aresta da 1 (faz 90°). Pulando a 2, a oposta é a 3.",
-          "figure": { "fechar": 0.3 }
+          "feedback": "A face 2 é vizinha direta da 1 (faz 90° na frente). Pulando a 5, a oposta à 1 é a 6.",
+          "figure": { "fechar": 0.5 }
         },
         {
-          "id": "f4",
-          "label": "Face 4",
+          "id": "f3",
+          "label": "Face 3",
           "correct": false,
-          "feedback": "A face 4 dá a volta e encosta na borda da 1. A oposta à 1 é a 3 (e a 4 é oposta à 2).",
-          "figure": { "fechar": 0.6 }
+          "feedback": "A face 3 é aba lateral vizinha da 1 (oposta à 4). Na fila 2-1-5-6, a oposta à 1 é a 6.",
+          "figure": { "fechar": 0.5 }
         },
         {
           "id": "f5",
           "label": "Face 5",
           "correct": false,
-          "feedback": "5 e 6 são as abas laterais opostas entre si. Na faixa vertical, a oposta à 1 é a 3.",
-          "figure": { "fechar": 0.8 }
+          "feedback": "A face 5 é vizinha de trás da 1 (oposta à 2). Pulando a 5, a oposta à 1 é a 6.",
+          "figure": { "fechar": 0.5 }
         }
       ]
     },
@@ -140,15 +140,11 @@
         }
       },
       "formula": [
-        { "text": "Sólido 3D" },
-        { "text": "⇔" },
         { "text": "vistas", "ref": "c1" },
         { "text": "+" },
         { "text": "cortes", "ref": "c2" },
         { "text": "+" },
-        { "text": "moldes", "ref": "c3" },
-        { "text": "e" },
-        { "text": "opostas", "ref": "c4" }
+        { "text": "moldes", "ref": "c3" }
       ],
       "definitions": [
         { "term": "Vista ortogonal", "text": "Sombra perpendicular do objeto projetada sem profundidade." },

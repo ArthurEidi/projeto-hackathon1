@@ -62,10 +62,10 @@ describe("passos da aula de projecoes cortes e planificacoes", () => {
     expect(fechado).toHaveLength(6);
   });
 
-  it("desafio-face-oposta: face 1 é oposta à face 3", () => {
+  it("desafio-face-oposta: face 1 é oposta à face 6 (6 presa à 5 no moldeDado)", () => {
     const s = step("desafio-face-oposta");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)?.label).toBe("Face 3");
+    expect(s.options.find((o) => o.correct)?.label).toBe("Face 6");
   });
 
   it("fechamento: referências existem no glossário", () => {
