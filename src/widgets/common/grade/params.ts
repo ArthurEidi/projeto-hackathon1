@@ -72,8 +72,15 @@ const Casas = z.object({
   acesas: z.array(z.string()).default([]),
   /** Figura: estado das chaves (unir, complemento, interseção). */
   mostrar: z
-    .object({ uniao: z.boolean().default(false), sem_repetidas: z.boolean().default(false), complemento: z.boolean().default(false), intersecao: z.boolean().default(false) })
-    .default({ uniao: false, sem_repetidas: false, complemento: false, intersecao: false }),
+    .object({
+      uniao: z.boolean().default(false),
+      sem_repetidas: z.boolean().default(false),
+      complemento: z.boolean().default(false),
+      intersecao: z.boolean().default(false),
+      /** Razão parte contra parte: "acesas : outras" (ex.: 2 : 3), sem o total. */
+      razao_partes: z.boolean().default(false),
+    })
+    .default({ uniao: false, sem_repetidas: false, complemento: false, intersecao: false, razao_partes: false }),
   cores: z
     .object({
       linhas: CorTraco.default("c1"),

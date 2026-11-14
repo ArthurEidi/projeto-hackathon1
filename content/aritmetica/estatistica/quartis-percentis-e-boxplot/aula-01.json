@@ -232,7 +232,8 @@
           "correct": false,
           "feedback": "2 é o menor valor da lista, a ponta esquerda. Q1 é o meio da metade de baixo.",
           "figure": {
-            "fixos": []
+            "fixos": [],
+            "extremos": ["min"]
           }
         },
         {

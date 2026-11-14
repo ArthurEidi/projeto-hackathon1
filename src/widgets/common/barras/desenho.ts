@@ -489,8 +489,8 @@ function desenharPontos(ctx: CanvasRenderingContext2D, w: number, h: number, hit
     retangulo(ctx, { x, y: yq, w: lm * kq, h: lm * kq }, corQ.tint, corQ.main, espessura(p.cores.quadrado, 3, hl));
     etiqueta(ctx, hits, { x: x + (lm * kq) / 2, y: yq + (lm * kq) / 2 }, num(v2, 2), p.cores.quadrado);
     const corL = p.cores.lado;
-    seg(ctx, { x, y: yq + lm * kq + 6 }, { x: x + lm * kq, y: yq + lm * kq + 6 }, corDoTraco(corL).main, 3);
-    if (yq + lm * kq + 24 < h) etiqueta(ctx, hits, { x: x + (lm * kq) / 2, y: Math.min(h - 14, yq + lm * kq + 22) }, `√${num(v2, 2)} = ${num(lm, 2)}`, corL);
+    if (mostrar.raiz) seg(ctx, { x, y: yq + lm * kq + 6 }, { x: x + lm * kq, y: yq + lm * kq + 6 }, corDoTraco(corL).main, 3);
+    if (mostrar.raiz && yq + lm * kq + 24 < h) etiqueta(ctx, hits, { x: x + (lm * kq) / 2, y: Math.min(h - 14, yq + lm * kq + 22) }, `√${num(v2, 2)} = ${num(lm, 2)}`, corL);
   }
 
   if (mostrar.fila) {
@@ -556,6 +556,11 @@ function desenharFila(ctx: CanvasRenderingContext2D, w: number, h: number, hits:
       seg(ctx, { x, y: yM[0] }, { x, y: yM[1] - 16 }, cor.main, espessura(p.cores[q], 4, hl));
       marcadoresVisiveis.push({ q, pos, x });
     }
+    // Mínimo e máximo: as pontas da fila ordenada.
+    for (const ex of p.extremos) {
+      const x = cxFicha(ex === "min" ? 0 : n - 1);
+      seg(ctx, { x, y: yM[0] }, { x, y: yM[1] - 16 }, corDoTraco(p.cores.extremo).main, espessura(p.cores.extremo, 4, hl));
+    }
   }
   const alvos: Rect[] = [];
   fila.forEach((v, i) => {
@@ -577,6 +582,11 @@ function desenharFila(ctx: CanvasRenderingContext2D, w: number, h: number, hits:
       const cor = corDoTraco(p.cores[q]);
       etiqueta(ctx, hits, { x, y: yM[1] }, q.toUpperCase(), p.cores[q]);
       text(ctx, { x, y: yM[1] + 24 }, num(valorNaPosicao(ordenar(base), pos), 1), cor.dark, 13);
+    }
+    for (const ex of p.extremos) {
+      const x = cxFicha(ex === "min" ? 0 : n - 1);
+      etiqueta(ctx, hits, { x, y: yM[1] }, ex === "min" ? "MÍN" : "MÁX", p.cores.extremo);
+      text(ctx, { x, y: yM[1] + 24 }, num(fila[ex === "min" ? 0 : n - 1], 1), corDoTraco(p.cores.extremo).dark, 13);
     }
   } else {
     text(ctx, { x: w / 2, y: yF + 58 }, "fora de ordem", c.muted, 13);

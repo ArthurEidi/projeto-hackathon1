@@ -352,6 +352,13 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
     etiqueta(ctx, hits, { x: w / 2, y: y + 6 }, txt, p.cores.casa);
     y += 36;
   }
+  if (p.mostrar.razao_partes) {
+    // Parte contra parte (acesas : as outras), sem o total: compara 2 vermelhas com 3 azuis.
+    const a = validas.filter((k) => acesas.has(k.chave)).length;
+    etiqueta(ctx, hits, { x: w / 2, y: y + 6 }, `${a} : ${N - a}`, p.cores.casa);
+    text(ctx, { x: w / 2, y: y + 30 }, "acesas : outras", c.muted, 12);
+    y += 52;
+  }
   if (temRegua) {
     const marcas: { v: number; s: string; cor: CorTraco; contorno?: boolean }[] = [];
     const conta = (f: (k: Casa) => boolean, base: Casa[]) => [base.filter(f).length, base.length] as const;

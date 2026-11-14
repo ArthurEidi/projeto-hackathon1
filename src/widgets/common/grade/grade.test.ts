@@ -274,3 +274,17 @@ describe("schemas e desenho", () => {
     expect(textos).not.toContain("1/3");
   });
 });
+
+describe("B13: razão parte contra parte", () => {
+  const textos: string[] = [];
+  const ctx = new Proxy({} as Record<string, unknown>, {
+    get: (_, k) => (k === "measureText" ? (s: string) => ({ width: String(s).length * 8 }) : k === "fillText" ? (s: string) => textos.push(s) : () => undefined),
+    set: () => true,
+  }) as unknown as CanvasRenderingContext2D;
+  it("3 azuis e 2 vermelhas acesas: '2 : 3', sem o total", () => {
+    const p = GradeFigura.parse({ modo: "casas", linhas: ["A1", "A2", "A3", "V1", "V2"], etapas: 1, acesas: ["V1", "V2"], contador: false, mostrar: { razao_partes: true } });
+    desenharGrade(ctx, 360, 300, [], p, {});
+    expect(textos).toContain("2 : 3");
+    expect(textos.some((s) => s.includes("5"))).toBe(false);
+  });
+});

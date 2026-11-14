@@ -211,7 +211,8 @@
           "figure": {
             "mostrar": {
               "desvios": true,
-              "quadrados": false
+              "quadrados": true,
+              "raiz": false
             }
           }
         },

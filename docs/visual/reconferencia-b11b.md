@@ -99,7 +99,7 @@ Edições aplicadas exclusivamente no passo `p5` (`micro_challenge`) dos 15 cap�
   - Figuras: `alt1` (`1/36`) mostrava `5 casas` da pista → `pista: false, acesas: ["3,5"], regua: false`; `alt4` (`5/36`) repetia a inicial → `pista: false, acesas: ["2,6", "3,5", "4,4", "5,3", "6,2"], regua: false`.
 - **probabilidade-espaco-amostral (`p5`)**:
   - Feedbacks `alt1`/`alt2`/`alt4`: entregavam `2/5` → reescritos sem o valor certo.
-  - Figura `alt1` (`2/3`): mostrava `5 casas` como a certa → `contador: false` (sem a régua `2/5` nem `5 casas`). *Limitação do widget:* o modo `casas` não possui razão parte-parte (`2:3`) sem incluir as 5 fichas.
+  - Figura `alt1` (`2/3`): mostrava `5 casas` como a certa → `contador: false` (sem a régua `2/5` nem `5 casas`). *Limitação do widget:* o modo `casas` não possui razão parte-parte (`2:3`) sem incluir as 5 fichas. **Corrigido: sim** (novo `mostrar.razao_partes` no `grade` modo `casas`; `alt1` agora mostra `2 : 3` (acesas : outras) sem o total; B13, 14/11, recapturado em 400 px depois de VERIFICAR).
 - **probabilidade-uniao-e-intersecao (`p5`)**:
   - Feedbacks `alt1`/`alt3`/`alt4`: entregavam `3/5` → reescritos sem o valor certo.
   - Figura `alt3` (`1/2`): destacava `5` e `15` em rosa → passou a acender os 10 pares (`2, 4, ..., 20`).
@@ -111,13 +111,13 @@ Edições aplicadas exclusivamente no passo `p5` (`micro_challenge`) dos 15 cap�
   - Figura `alt3` (`Fevereiro`): destacava `Fev` e `Mar` → `acesas: [1]` (só `Fev`).
 - **medidas-de-dispersao (`p5`)**:
   - Feedbacks `alt1`/`alt3`/`alt4`: entregavam `3` → reescritos sem o valor certo.
-  - Figuras: `alt1` (`9`) mostrava `√9 = 3` → `mostrar: {"desvios": true, "quadrados": false}` (*limitação do widget:* `quadrados: true` sempre exibe `√9 = 3`); `alt3` (`6`) repetia a inicial → `mostrar: {"conta_media": true}`.
+  - Figuras: `alt1` (`9`) mostrava `√9 = 3` → `mostrar: {"desvios": true, "quadrados": false}` (*limitação do widget:* `quadrados: true` sempre exibe `√9 = 3`; **corrigido: sim**: novo `mostrar.raiz` no `barras` modo `pontos`, e `alt1` usa `quadrados: true, raiz: false`, que mostra os quadrados 9 e a variância 9 sem `√9 = 3`; B13, 14/11, recapturado em 400 px depois de VERIFICAR); `alt3` (`6`) repetia a inicial → `mostrar: {"conta_media": true}`.
 - **medidas-de-tendencia-central (`p5`)**:
   - Feedbacks `alt1`/`alt3`/`alt4`: entregavam `9` → reescritos sem o valor certo.
   - Figura `alt3` (`21`): mostrava `?` em `9` (certa) → `valores: [5, 7, 21], regua: [0, 25]`.
 - **quartis-percentis-e-boxplot (`p5`)**:
   - Feedbacks `alt2`/`alt3`/`alt4`: entregavam `4` → reescritos sem o valor certo.
-  - Figuras: `alt2` (`7`) repetia a inicial → `fixos: ["q2"], cores: {"q2": "c3"}`; `alt3` (`2`) mostrava `Q1 = 4` no boxplot → `fixos: []` (*limitação do widget:* modo `fila` não possui marcador específico para o mínimo `2`).
+  - Figuras: `alt2` (`7`) repetia a inicial → `fixos: ["q2"], cores: {"q2": "c3"}`; `alt3` (`2`) mostrava `Q1 = 4` no boxplot → `fixos: []` (*limitação do widget:* modo `fila` não possui marcador específico para o mínimo `2`; **corrigido: sim**: novo `extremos: ["min", "max"]` no `barras` modo `fila`, e `alt3` usa `extremos: ["min"]`, que mostra o marcador `MÍN 2` na ponta da fila; B13, 14/11, recapturado em 400 px depois de VERIFICAR).
 
 ### Validações após a última edição
 

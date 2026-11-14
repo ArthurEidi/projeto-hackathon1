@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { Barras as BarrasSchema } from "./params";
 import { analisar, avaliarExpr, Expr } from "../expr";
 import {
   caixa,
@@ -219,5 +220,30 @@ describe("desenho não quebra em nenhum modo", () => {
     const primeiroRoundRect = ops.indexOf("roundRect");
     expect(primeiroStroke).toBeGreaterThanOrEqual(0);
     expect(primeiroStroke).toBeLessThan(primeiroRoundRect);
+  });
+});
+
+describe("B13: raiz oculta e extremos da fila", () => {
+  const textos: string[] = [];
+  const ctx = new Proxy({} as Record<string, unknown>, {
+    get: (_, k) => (k === "measureText" ? (s: string) => ({ width: String(s).length * 8 }) : k === "fillText" ? (s: string) => textos.push(s) : () => undefined),
+    set: () => true,
+  }) as unknown as CanvasRenderingContext2D;
+  const desenha = (raw: object) => {
+    textos.length = 0;
+    desenharBarras(ctx, 360, 360, [], BarrasSchema.parse(raw), {});
+    return [...textos];
+  };
+  it("quadrados com raiz: false mostram a variância 9 sem '√9 = 3'", () => {
+    const base = { modo: "pontos", valores: [2, 8], regua: [0, 10], apoio: 5 };
+    expect(desenha({ ...base, mostrar: { quadrados: true } })).toContain("√9 = 3");
+    const sem = desenha({ ...base, mostrar: { quadrados: true, raiz: false } });
+    expect(sem).toContain("9");
+    expect(sem.some((s) => s.includes("√"))).toBe(false);
+  });
+  it("extremos: ['min'] escreve MÍN e o menor valor; padrão, nada", () => {
+    const base = { modo: "fila", valores: [2, 4, 5, 7, 8, 10, 11], ordenada: true };
+    expect(desenha({ ...base, extremos: ["min"] })).toContain("MÍN");
+    expect(desenha(base)).not.toContain("MÍN");
   });
 });

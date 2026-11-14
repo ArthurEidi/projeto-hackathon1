@@ -203,7 +203,8 @@
               "V2"
             ],
             "contador": false,
-            "regua": false
+            "regua": false,
+            "mostrar": { "razao_partes": true }
           }
         },
         {

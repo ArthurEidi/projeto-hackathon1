@@ -86,8 +86,10 @@ const Pontos = z.object({
       soma_desvios: z.boolean().default(false),
       alerta_mediana: z.boolean().default(false),
       conta_media: z.boolean().default(false),
+      /** Com quadrados: escreve "√variância = desvio padrão". false mostra só a variância (figura de desafio). */
+      raiz: z.boolean().default(true),
     })
-    .default({ mediana: false, moda: false, desvios: false, quadrados: false, fila: false, soma_desvios: false, alerta_mediana: false, conta_media: false }),
+    .default({ mediana: false, moda: false, desvios: false, quadrados: false, fila: false, soma_desvios: false, alerta_mediana: false, conta_media: false, raiz: true }),
   /** Botões/chaves visíveis no widget. */
   chaves: z.array(z.enum(["desvios", "quadrados", "fila", "somar"])).default([]),
   /** Na fila, o aluno toca os dois do meio (métrica meios_tocados). */
@@ -111,6 +113,8 @@ const Fila = z.object({
   arrastaveis: z.array(Quartil).default([]),
   /** Marcadores já no lugar certo. */
   fixos: z.array(Quartil).default([]),
+  /** Marcadores do mínimo e/ou do máximo nas pontas da fila ordenada. */
+  extremos: z.array(z.enum(["min", "max"])).default([]),
   /** Boxplot já desenhado; senão, `chave_caixa` mostra o botão "desenhar caixa". */
   caixa: z.boolean().default(false),
   chave_caixa: z.boolean().default(false),
@@ -118,8 +122,8 @@ const Fila = z.object({
   maior_arrastavel: z.object({ ate: z.number(), passo: z.number().positive().default(1) }).optional(),
   regua: Faixa.optional(),
   cores: z
-    .object({ q1: CorTraco.default("c1"), q2: CorTraco.default("c4"), q3: CorTraco.default("c2"), caixa: CorTraco.default("c3") })
-    .default({ q1: "c1", q2: "c4", q3: "c2", caixa: "c3" }),
+    .object({ q1: CorTraco.default("c1"), q2: CorTraco.default("c4"), q3: CorTraco.default("c2"), caixa: CorTraco.default("c3"), extremo: CorTraco.default("c3") })
+    .default({ q1: "c1", q2: "c4", q3: "c2", caixa: "c3", extremo: "c3" }),
   highlight: Highlight,
 });
 
