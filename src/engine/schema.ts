@@ -172,9 +172,16 @@ const Fonte = z.object({
   urls: z.array(z.string().url()).min(1),
 });
 
-const QuestaoVestibular = QuestaoBase.extend({
+export const ImagemVestibular = z.object({
+  src: z.string().regex(/^\/vestibular\/(?!.*(?:\.\.|[\\?#%]))[^/]+(?:\/[^/]+)*$/, "use um arquivo em /vestibular/"),
+  alt: z.string().trim().min(1),
+}).strict();
+const OpcaoVestibular = QuestaoOpcao.extend({ imagem: ImagemVestibular.optional() }).strict();
+
+export const QuestaoVestibular = QuestaoBase.extend({
   fonte: Fonte,
-  options: z.array(QuestaoOpcao).min(2).max(5),
+  imagens: z.array(ImagemVestibular).min(1).max(3).optional(),
+  options: z.array(OpcaoVestibular).min(2).max(5),
 })
   .superRefine(opcoesValidas)
   .superRefine((q, ctx) => {
@@ -259,7 +266,11 @@ export type SliderControl = z.output<typeof SliderControl>;
 export type CompleteWhen = z.output<typeof CompleteWhen>;
 export type Duvida = z.output<typeof Duvida>;
 export type Treino = z.output<typeof Treino>;
-export type Questao = z.output<typeof Questao> & { fonte?: z.output<typeof Fonte> };
+export type Questao = Omit<z.output<typeof Questao>, "options"> & {
+  fonte?: z.output<typeof Fonte>;
+  imagens?: z.output<typeof ImagemVestibular>[];
+  options: z.output<typeof OpcaoVestibular>[];
+};
 
 /** Todas as falas visíveis ao aluno, com o caminho de cada uma, para o lint de texto. */
 export function collectLines(lesson: Lesson): { path: string; text: string }[] {

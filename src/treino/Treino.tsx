@@ -143,7 +143,7 @@ interface PerguntaProps {
 }
 
 /** Uma pergunta por vez. Sem segunda tentativa: errou, vê a resposta certa e segue em frente. */
-function Pergunta({ questao, contador, ultima, fala, onResponder, onProxima }: PerguntaProps) {
+export function Pergunta({ questao, contador, ultima, fala, onResponder, onProxima }: PerguntaProps) {
   const [selecionada, setSelecionada] = useState<string | null>(null);
   const [fase, setFase] = useState<Fase>("escolhendo");
   const escolhida = questao.options.find((o) => o.id === selecionada) ?? null;
@@ -152,7 +152,7 @@ function Pergunta({ questao, contador, ultima, fala, onResponder, onProxima }: P
     () => (questao.figure ? figureParams[questao.figure.widget].parse(questao.figure.params) : null),
     [questao.figure],
   );
-  const opcoesDeTexto = questao.options.some((o) => [...o.label].length > 4);
+  const opcoesDeTexto = questao.options.some((o) => o.imagem || [...o.label].length > 4);
   const fonte = rotuloFonte(questao);
 
   const verificar = () => {
@@ -205,7 +205,10 @@ function Pergunta({ questao, contador, ultima, fala, onResponder, onProxima }: P
         </div>
       )}
       <p className="prompt">{questao.prompt}</p>
-      <div className={`options${opcoesDeTexto ? " options--texto" : ""}`} role="group" aria-label="Alternativas">
+      {questao.imagens?.map((imagem, i) => (
+        <img key={i} className="treino__imagem" src={`${import.meta.env.BASE_URL}${imagem.src.slice(1)}`} alt={imagem.alt} />
+      ))}
+      <div className={`options${questao.options.some((o) => o.imagem) ? " options--imagens" : ""}${opcoesDeTexto ? " options--texto" : ""}`} role="group" aria-label="Alternativas">
         {questao.options.map((o) => (
           <TactileCard
             key={o.id}
@@ -214,6 +217,7 @@ function Pergunta({ questao, contador, ultima, fala, onResponder, onProxima }: P
             onClick={() => setSelecionada(o.id)}
           >
             {o.label}
+            {o.imagem && <img className="treino__imagem" src={`${import.meta.env.BASE_URL}${o.imagem.src.slice(1)}`} alt={o.imagem.alt} />}
           </TactileCard>
         ))}
       </div>

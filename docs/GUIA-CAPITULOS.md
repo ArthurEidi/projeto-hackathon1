@@ -209,6 +209,17 @@ Regras de redação das questões (extraídas do modelo; seguir à risca):
 6. Rótulos de até 4 caracteres ficam em grade 2×2; se algum for maior, as opções viram lista (`options--texto`).
 7. Gabaritos numéricos devem ser **conferidos por teste** (ver `engine.test.ts`, "gabaritos dos desafios e do vestibular").
 
+**Imagens de vestibular (B16).** `imagens` é opcional, com 1 a 3 imagens abaixo do enunciado; cada opção pode ter `imagem`. Ambos usam `{ src, alt }` estrito, com `alt` obrigatório e não vazio. O caminho começa com `/vestibular/`, sem segmentos `..`, e deve apontar para um arquivo existente em `public/vestibular/` (o lint acusa ausência). A interface resolve a base do site, preserva a proporção e exibe alternativas com imagens em lista. Mantenha `label` na opção, por exemplo a letra da alternativa.
+
+```jsonc
+"imagens": [{ "src": "/vestibular/enem-ANO-NUMERO-1.png", "alt": "Diagrama descrito no enunciado" }],
+"options": [
+  { "id": "a", "label": "A", "correct": true, "feedback": "Justificativa da alternativa.",
+    "imagem": { "src": "/vestibular/enem-ANO-NUMERO-alt-a.png", "alt": "Descrição da figura A" } }
+  // Complete com as demais alternativas verificadas na fonte.
+]
+```
+
 ### 2.4 Regras de texto (lint + teste, erro bloqueia `dev` e `build`)
 
 Aplicadas a **toda fala visível**: `outro`, `lines.*`, `duvida.*`, `prompt`, `feedback`, `fala`, `definitions` (como "termo: texto"), `glossario` (como "nome: resumo") e títulos/subtítulos da taxonomia. Atenção: "R$ 3,45 fixos. Táxi B..." conta como frases separadas — prompts longos de vestibular precisam caber em 2 frases (use ";"):

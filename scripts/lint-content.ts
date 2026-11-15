@@ -1,10 +1,24 @@
 // Valida conteúdo antes de dev/build: schema, hierarquia e regras de texto (140 caracteres,
 // 2 frases, sem emoji, sem termos da lista negra). Sai com código 1 se houver erro.
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { pathToFileURL } from "node:url";
 import { join, relative } from "node:path";
 import { collectLines, Lesson, Taxonomy } from "../src/engine/schema";
 import { checkLine, hasEmoji } from "../src/engine/textRules";
 
+export function errosImagensVestibular(lesson: Lesson, publicDir: string): string[] {
+  const erros: string[] = [];
+  for (const q of lesson.treino.vestibular) {
+    const imagens = [...(q.imagens ?? []), ...q.options.flatMap((o) => o.imagem ? [o.imagem] : [])];
+    for (const imagem of imagens) {
+      const arquivo = join(publicDir, imagem.src.slice(1));
+      if (!existsSync(arquivo) || !statSync(arquivo).isFile()) erros.push(`questão ${q.id}: imagem inexistente ${imagem.src}`);
+    }
+  }
+  return erros;
+}
+
+function main() {
 const root = join(import.meta.dirname, "..");
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -35,6 +49,7 @@ if (!tax.success) {
           }
           const L = parsed.data;
           const tag = `content/${a.arquivo}`;
+          errors.push(...errosImagensVestibular(L, join(root, "public")).map((e) => `${tag}: ${e}`));
           if (L.id !== a.id) errors.push(`${tag}: id "${L.id}" difere da taxonomia "${a.id}"`);
           if (L.caminho.pilar !== p.id || L.caminho.setor !== s.id || L.caminho.unidade !== u.id) {
             errors.push(`${tag}: caminho não bate com a taxonomia (${p.id}/${s.id}/${u.id})`);
@@ -73,3 +88,6 @@ if (errors.length) {
   process.exit(1);
 }
 console.log("conteúdo ok");
+
+}
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();

@@ -949,3 +949,8 @@ button {
   gap: 8px;
   max-width: 100%;
 }
+
+/* Imagens de vestibular mantêm a proporção e participam da rolagem do treino. */
+.treino__imagem { display: block; width: 100%; max-width: 100%; height: auto; object-fit: contain; }
+.options.options--imagens { grid-template-columns: 1fr; }
+.options--imagens .card { display: flex; flex-direction: column; height: auto; min-width: 0; white-space: normal; }
