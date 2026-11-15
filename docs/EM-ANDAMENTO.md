@@ -57,7 +57,7 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | B14c. ~~Desafios de 2 → 4 alternativas: álgebra, funções e matrizes (12 capítulos)~~ entregue 15/11, auditada | Claude Code #2 | 15/11 | `content/algebra/funcoes/**`, `content/algebra/matrizes-e-sistemas/**`, testes desses capítulos, `docs/revisao/desafios-4-alternativas-b14c.md` |
 | B14d. ~~Desafios de 2 → 4 alternativas: polinômios, complexos e sequências (8) e `solidos-de-revolucao` (3 → 4)~~ entregue 15/11, auditada (2 ajustes do maestro) | Antigravity | 15/11 | `content/algebra/polinomios-e-complexos/**`, `content/algebra/sequencias/**`, `content/geometria/geometria-espacial/solidos-de-revolucao/**`, testes desses capítulos, `docs/revisao/desafios-4-alternativas-b14d.md` |
 | B14e. Auditoria das 47 alternativas novas (conta, feedback, figura em 400 px depois de VERIFICAR) e publicação | maestro (Claude Code) | 15/11 | docs de coordenação, correções pontuais nos arquivos da B14 |
-| B15. Preparar a hospedagem (build estático, sem publicar) | maestro (Claude Code) | 15/11 | `vite.config.ts`, `package.json` (scripts), `docs/HOSPEDAGEM.md`, `.github/workflows/` (só disparo manual) |
+| B15. ~~Preparar a hospedagem (build estático, sem publicar)~~ concluída 15/11: base relativa, workflow manual, `docs/HOSPEDAGEM.md`; publicar depende do usuário | maestro (Claude Code) | 15/11 | `vite.config.ts`, `package.json` (scripts), `docs/HOSPEDAGEM.md`, `.github/workflows/` (só disparo manual) |
 
 ## Pedidos entre máquinas
 
