@@ -1,6 +1,6 @@
 # Próximos passos
 
-Atualizado em 14/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
+Atualizado em 15/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
 **Antes de pegar qualquer tarefa, leia `docs/EM-ANDAMENTO.md`**: é lá que cada máquina reserva a sua frente, para duas máquinas não mexerem nos mesmos arquivos.
 
 ## Estado
@@ -32,7 +32,15 @@ O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets qu
 - **Critério novo:** em desafio de 2 alternativas, o feedback da errada citar a certa não é defeito (só sobra a outra opção). Com 3 ou 4, o feedback explica o erro e dá pista sem o valor certo.
 - Validação ao fim: lint ok, 126 arquivos / 1996 testes, typecheck e build ok.
 
-**Decisões que esperam o usuário (próximo passo grande):** (a) hospedar o app (hoje só roda com `npm run dev`); (b) passar os desafios de álgebra de 2 para 3 ou 4 alternativas (34 de 35 têm só 2: metade se acerta no chute); (c) aula 02 de Cones e vídeos.
+**Feito em 15/11 (Máquina B; a Máquina A fica fora até terça, 17/11, e a B responde pelo projeto).**
+
+- **Decisões do usuário (15/11):** desafios com 2 ou 3 alternativas passam a ter 4; hospedagem só preparada, sem publicar.
+- **Desafios com 4 alternativas (B14):** 47 desafios tinham menos de 4 alternativas (34 de álgebra, 12 de aritmética, 1 de geometria). Feitos e publicados 33 (B14b aritmética, B14c funções e matrizes, B14d polinômios, sequências e `solidos-de-revolucao`): cada errada nova vem de um erro real, com a conta no teste do capítulo, feedback sem o valor certo e figura própria. A certa muda de posição entre os capítulos. Auditoria do maestro: contas refeitas, script que procura o valor certo nos feedbacks das erradas, foto em 400 px de cada alternativa depois de VERIFICAR (`ferramentas-b14/reconfere-b14.mjs`, fora do repositório). Corrigidas 9 figuras antigas que mostravam a certa ou eram iguais à inicial e 5 figuras novas fracas. Registros em `docs/revisao/desafios-4-alternativas-b14[b-d].md`. **Faltam 14 (B14a):** as 7 `equacoes-*` com o Claude Code #2; expressões, fatoração e as 5 `inequacoes-*` reservadas ao Codex.
+- **Layout do desafio:** com legenda acima de 10 caracteres as opções viram lista, e a 4ª ficava abaixo do rodapé em 400 × 860. Cartões da lista agora com 44 px (`src/ui/styles.css`). Ainda rola em `solidos-de-revolucao` (enunciado de 4 linhas e figura 3D alta).
+- **Hospedagem preparada (B15), não publicada:** build com base relativa (o `dist/` funciona em subcaminho), vídeos resolvidos pela base do site, workflow `.github/workflows/pages.yml` só com disparo manual e `docs/HOSPEDAGEM.md`. Testado servindo o `dist/` em `/projeto-hackathon1/`. **O repositório é privado:** GitHub Pages gratuito exige repositório público; alternativa é Netlify/Vercel.
+- **Agentes:** os dois Codex abrem com permissão "Workspace (granular)", que recusa todo comando; o maestro não pode mudar isso (o classificador bloqueia). O usuário precisa rodar `/permissions` neles.
+
+**Decisões que esperam o usuário:** (a) publicar o app (ver `docs/HOSPEDAGEM.md`: Pages exige repositório público ou Pro; Netlify não); (c) aula 02 de Cones e vídeos. A (b), desafios com 4 alternativas, foi decidida em 15/11 e está em andamento.
 
 **O que falta, em ordem de prioridade:**
 
