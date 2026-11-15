@@ -64,11 +64,12 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B16. Imagem nas questões de vestibular (schema, treino, lint, GUIA §2.3) | Codex "Ferrugem" | 15/11 | `src/engine/schema.ts`, `src/treino/**`, `src/ui/styles.css` (regras novas), `scripts/lint-content.ts`, testes, GUIA §2.3 |
-| B17a. Candidatas do ENEM com imagem: 20 capítulos de geometria sem vestibular | Antigravity | 15/11 | `docs/fontes-candidatas/<slug>.md` desses capítulos, `public/vestibular/` (novos), `docs/revisao/vestibular-b17a.md` |
+| B16. ~~Imagem nas questões de vestibular (schema, treino, lint, GUIA §2.3)~~ concluída 15/11 (006346a) | Codex (o Ferrugem pedia aprovação a cada edição) | 15/11 | `src/engine/schema.ts`, `src/treino/**`, `src/ui/styles.css` (regras novas), `scripts/lint-content.ts`, testes, GUIA §2.3 |
+| B17a. ~~Candidatas do ENEM com imagem: 20 capítulos de geometria sem vestibular~~ entregue 15/11: 13 questões em 8 capítulos; 12 seguem sem candidata | Antigravity | 15/11 | `docs/fontes-candidatas/<slug>.md` desses capítulos, `public/vestibular/` (novos), `docs/revisao/vestibular-b17a.md` |
 | B17b. Candidatas do ENEM com imagem: 25 capítulos de álgebra e aritmética sem vestibular | Antigravity #2 | 15/11 | idem, `docs/revisao/vestibular-b17b.md` |
-| B18. Vestibular nas aulas `equacoes-exponenciais`, `equacoes-logaritmicas`, `equacoes-quadraticas` (candidatas prontas) | Codex | 15/11 | essas 3 aulas, os 3 roteiros (seção de vestibular), `docs/revisao/vestibular-b18.md` |
+| B18. ~~Vestibular nas aulas `equacoes-exponenciais`, `equacoes-logaritmicas`, `equacoes-quadraticas`~~ concluída 15/11 (2243f4f): as 9 candidatas não são verificáveis no cache (sites ou ENEM sem texto); nada inserido | Codex | 15/11 | essas 3 aulas, os 3 roteiros (seção de vestibular), `docs/revisao/vestibular-b18.md` |
 | B19. Quais defeitos de widget continuam abertos (só relatório) | Antigravity #3 | 15/11 | `docs/visual/pendencias-b19.md` |
+| B20. Dividir o bundle: aulas carregadas sob demanda (briefing `C:/Users/mkf10/projetos/briefing-b20.md`) | Codex | 15/11 | `src/engine/content.ts`, `src/App.tsx`, `src/Home.tsx`, testes que chamam `loadLesson`, `docs/HOSPEDAGEM.md` |
 
 ## Pedidos entre máquinas
 
