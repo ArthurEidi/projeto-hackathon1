@@ -52,7 +52,7 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B14a1. Desafios de 2 → 4 alternativas: as 7 aulas `equacoes-*` de `content/algebra/equacoes-e-inequacoes/` | Claude Code #2 (o Codex segue sem permissão de comandos) | 15/11 | essas 7 pastas, os testes delas, `docs/revisao/desafios-4-alternativas-b14a1.md` |
+| B14a1. ~~Desafios de 2 → 4 alternativas: as 7 aulas `equacoes-*` de `content/algebra/equacoes-e-inequacoes/`~~ entregue 15/11, auditada | Claude Code #2 (o Codex segue sem permissão de comandos) | 15/11 | essas 7 pastas, os testes delas, `docs/revisao/desafios-4-alternativas-b14a1.md` |
 | B14a2. Desafios de 2 → 4 alternativas: `expressoes-algebricas-e-produtos-notaveis`, `fatoracao-algebrica` e as 5 `inequacoes-*` | Codex (aguarda o usuário liberar `/permissions`) | 15/11 | essas 7 pastas, os testes delas, `docs/revisao/desafios-4-alternativas-b14a2.md` |
 | B14b. ~~Desafios de 2 → 4 alternativas: aritmética, conjuntos e proporcionalidade (12 capítulos)~~ entregue 15/11, auditada | Claude Code #2 (o Codex #2 ficou sem permissão de rodar comandos) | 15/11 | `content/aritmetica/conjuntos/**`, `content/aritmetica/proporcionalidade/**`, testes desses capítulos, `docs/revisao/desafios-4-alternativas-b14b.md` |
 | B14c. ~~Desafios de 2 → 4 alternativas: álgebra, funções e matrizes (12 capítulos)~~ entregue 15/11, auditada | Claude Code #2 | 15/11 | `content/algebra/funcoes/**`, `content/algebra/matrizes-e-sistemas/**`, testes desses capítulos, `docs/revisao/desafios-4-alternativas-b14c.md` |
