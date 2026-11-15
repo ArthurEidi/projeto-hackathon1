@@ -246,7 +246,7 @@ O aluno testa A negativo (que espelha a onda verticalmente, mas mantém a amplit
 - **Habilidade-alvo:** determinar o período T = 2π/B ou o instante de ocorrência do máximo/mínimo numa função trigonométrica.
 - **Onde procurar:** ENEM, Unicamp, Vunesp.
 
-#### V3 — PENDENTE-FONTE
+#### V3 — ENEM 2021 — Questão 156
 - **Habilidade-alvo:** montar a expressão algébrica f(t) = D + A·sen(Bt + C) ou D + A·cos(Bt + C) a partir de um gráfico ou tabela periódica.
 - **Onde procurar:** ENEM, Fuvest, UFRGS, UFPR.
 

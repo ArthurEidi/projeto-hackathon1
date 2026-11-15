@@ -612,6 +612,53 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2009-rampa-hospital",
+        "prompt": "Uma rampa tem altura máxima de 2,2 m. Ao caminhar 3,2 m sobre ela, um paciente sobe 0,8 m; quanto ainda falta caminhar até o topo?",
+        "fala": "Monte a proporção entre distância na rampa e altura, depois subtraia os 3,2 m já percorridos.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 154: enunciado resumido mantendo os três valores numéricos; gabarito (D) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2009/questions/154"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "1,16 m",
+            "correct": false,
+            "feedback": "Não basta multiplicar 0,8 por 1,45: por semelhança, D = 2,2 · (3,2 / 0,8) = 8,8 m, faltam 8,8 - 3,2 = 5,6 m."
+          },
+          {
+            "id": "b",
+            "label": "3,0 m",
+            "correct": false,
+            "feedback": "Faltou aplicar a razão 3,2/0,8 = 4 ao total da rampa: 2,2 · 4 = 8,8 m, faltam 5,6 m."
+          },
+          {
+            "id": "c",
+            "label": "5,4 m",
+            "correct": false,
+            "feedback": "Confira a conta: 3,2 / 0,8 = 4, total = 4 · 2,2 = 8,8 m e 8,8 - 3,2 = 5,6 m."
+          },
+          {
+            "id": "d",
+            "label": "5,6 m",
+            "correct": true,
+            "feedback": "Certo: D / 2,2 = 3,2 / 0,8 = 4 dá D = 8,8 m; faltam 8,8 - 3,2 = 5,6 m."
+          },
+          {
+            "id": "e",
+            "label": "7,04 m",
+            "correct": false,
+            "feedback": "Você multiplicou 2,2 · 3,2 = 7,04 sem dividir por 0,8 nem subtrair 3,2. O correto é 5,6 m."
+          }
+        ]
+      }
+    ]
   }
 }

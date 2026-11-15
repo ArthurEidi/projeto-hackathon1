@@ -309,6 +309,59 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2021-mola-periodica",
+        "prompt": "Uma mola oscila segundo P(t) = A·cos(ωt) ou A·sen(ωt), com ω = 2π/T. Pelo gráfico da posição P(t), qual expressão descreve o movimento?",
+        "fala": "Leia no gráfico o valor máximo, o período T entre dois mínimos e a posição inicial P(0).",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2021-156-5.png",
+            "alt": "Gráfico cartesiano de P(t) variando de -3 a 3 com período pi e P(0) = -3"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 156: enunciado resumido mantendo a fórmula e o gráfico; gabarito (A) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2021/questions/156"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "-3 cos(2t)",
+            "correct": true,
+            "feedback": "Certo: amplitude 3, período T = π dá ω = 2π/π = 2, e P(0) = -3 confirma -3 cos(2t)."
+          },
+          {
+            "id": "b",
+            "label": "-3 sen(2t)",
+            "correct": false,
+            "feedback": "Em t = 0, -3 sen(0) = 0, mas o gráfico parte de P(0) = -3. A correta é -3 cos(2t)."
+          },
+          {
+            "id": "c",
+            "label": "3 cos(2t)",
+            "correct": false,
+            "feedback": "Sinal trocado: 3 cos(0) = +3, mas no gráfico P(0) = -3. A correta é -3 cos(2t)."
+          },
+          {
+            "id": "d",
+            "label": "-6 cos(2t)",
+            "correct": false,
+            "feedback": "Você usou a variação total 6 em vez da amplitude 3. A expressão correta é -3 cos(2t)."
+          },
+          {
+            "id": "e",
+            "label": "6 cos(2t)",
+            "correct": false,
+            "feedback": "Amplitude é 3 (não 6) e P(0) = -3 (não positivo). A expressão correta é -3 cos(2t)."
+          }
+        ]
+      }
+    ]
   }
 }

@@ -227,7 +227,7 @@ No triângulo `30°-60°-90°`, o maior lado é sempre a hipotenusa `L` (oposta 
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+#### V1 — ENEM 2018 — Questão 180
 - **Habilidade-alvo:** usar o triângulo notável `30°-60°-90°` ou `45°-45°-90°` para calcular alturas e distâncias sem calculadora.
 - **Onde procurar:** ENEM, Fuvest, Unicamp, Unesp.
 
@@ -235,10 +235,10 @@ No triângulo `30°-60°-90°`, o maior lado é sempre a hipotenusa `L` (oposta 
 - **Habilidade-alvo:** localizar um ponto equidistante de 3 vértices (mediatrizes / circuncentro) ou de 3 lados (bissetrizes / incentro) num mapa.
 - **Onde procurar:** ENEM, Unicamp, Unesp (questões de posicionar antena, hospital ou posto policial).
 
-#### V3 — PENDENTE-FONTE
+#### V3 — ENEM 2021 — Questão 169
 - **Habilidade-alvo:** calcular altura e área de triângulo equilátero (`L√3/2` e `L²√3/4`).
 - **Onde procurar:** ENEM, UFRGS, UFPR, UERJ.
 
-#### V4 — PENDENTE-FONTE
+#### V4 — ENEM 2018 — Questão 179
 - **Habilidade-alvo:** aplicar ternas pitagóricas (`3-4-5`, `5-12-13`) e diagonal do quadrado (`L√2`) em figuras compostas.
 - **Onde procurar:** ENEM, Fuvest, OBMEP.

@@ -227,11 +227,11 @@ Levar a razão da homotetia a `k = 0` mostra a fronteira de colapso: toda a figu
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+#### V1 — ENEM 2017 — Questão 150
 - **Habilidade-alvo:** identificar a figura resultante de uma sequência de reflexões, rotações e translações (logotipos, ladrilhos, faixas decorativas).
 - **Onde procurar:** ENEM (questões recorrentes de isometrias em artesanato, azulejos e cartões).
 
-#### V2 — PENDENTE-FONTE
+#### V2 — ENEM 2009 — Questão 147
 - **Habilidade-alvo:** contar eixos de simetria e ângulos de simetria rotacional de figuras planas.
 - **Onde procurar:** ENEM, OBMEP, Unesp, Unicamp.
 

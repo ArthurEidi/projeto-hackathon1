@@ -239,7 +239,7 @@ Girar a câmera mostra uma armadilha visual importante: vistas de frente, duas r
 - **Habilidade-alvo:** projeção ortogonal de trajetórias 3D sobre um plano.
 - **Onde procurar:** ENEM (questões clássicas de projeção ortogonal de globo/carrossel/pirâmide).
 
-#### V3 — PENDENTE-FONTE
+#### V3 — ENEM 2009 — Questão 153
 - **Habilidade-alvo:** proposições verdadeiro/falso sobre paralelismo e perpendicularidade entre retas e planos.
 - **Onde procurar:** UFPR, UFRGS, Unesp, Fuvest.
 

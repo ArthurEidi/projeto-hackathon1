@@ -127,7 +127,11 @@ describe("gabaritos do treino", () => {
     expect(certa("modelo-completo-com-fase")).toBe("30 mil litros e t = 12 h");
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: só questões do ENEM com fonte na api.enem.dev (B21)", () => {
+    expect(L.treino.vestibular.length).toBeGreaterThan(0);
+    for (const q of L.treino.vestibular) {
+      expect(q.fonte.banca).toBe("ENEM");
+      expect(q.fonte.urls.some((u) => u.startsWith("https://api.enem.dev/v1/exams/"))).toBe(true);
+    }
   });
 });

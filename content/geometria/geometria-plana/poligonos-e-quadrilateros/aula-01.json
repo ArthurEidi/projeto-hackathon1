@@ -519,6 +519,109 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2012-losango-perimetro",
+        "prompt": "Na Figura 1, um quadrado circunscreve círculo de raio r; na Figura 2, o lado cresce em r. Qual o aumento percentual do perímetro?",
+        "fala": "Compare o lado na Figura 1 (2r) com o lado ampliado na Figura 2 (3r) antes de calcular o perímetro.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2012-137-1.png",
+            "alt": "Figura 1: quadrado circunscrito a um círculo de raio r e lado 2r"
+          },
+          {
+            "src": "/vestibular/enem-2012-137-2.png",
+            "alt": "Figura 2: quadrado ampliado com setores de raio r nos cantos e lado 3r"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Questão 137: enunciado resumido mantendo as duas figuras e a razão dos raios; gabarito (E) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2012/questions/137"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "300%",
+            "correct": false,
+            "feedback": "O perímetro não quadruplicou: passou de 8r para 12r, aumento de 4r/8r = 50%."
+          },
+          {
+            "id": "b",
+            "label": "200%",
+            "correct": false,
+            "feedback": "O perímetro não triplicou: passou de 8r para 12r, aumento de 4r/8r = 50%."
+          },
+          {
+            "id": "c",
+            "label": "150%",
+            "correct": false,
+            "feedback": "12r é 150% de 8r, mas o aumento é a diferença: (12r - 8r)/8r = 50%."
+          },
+          {
+            "id": "d",
+            "label": "100%",
+            "correct": false,
+            "feedback": "O lado aumentou de 2r para 3r, não dobrou para 4r. O aumento é 4r/8r = 50%."
+          },
+          {
+            "id": "e",
+            "label": "50%",
+            "correct": true,
+            "feedback": "Certo: perímetro passa de 4·(2r) = 8r para 4·(3r) = 12r, aumento de 4r/8r = 50%."
+          }
+        ]
+      },
+      {
+        "id": "enem-2021-hastes-trapezios",
+        "prompt": "Um brinquedo de hastes metálicas liga um cubo interno a um cubo externo como na figura. Quantas figuras planas de cada tipo são formadas?",
+        "fala": "Conte primeiro as faces dos dois cubos e depois os quadriláteros que ligam as arestas paralelas.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2021-175-1.png",
+            "alt": "Estrutura em perspectiva com um cubo menor dentro de um cubo maior ligados por 12 hastes inclinadas"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 175: enunciado resumido mantendo as 4 alternativas do cache; gabarito (A) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2021/questions/175"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "12 trapézios isósceles e 12 quadrados",
+            "correct": true,
+            "feedback": "Certo: são 6 + 6 = 12 quadrados dos dois cubos e 12 trapézios isósceles ligando as 12 arestas."
+          },
+          {
+            "id": "b",
+            "label": "24 trapézios isósceles e 12 quadrados",
+            "correct": false,
+            "feedback": "Cada cubo tem 12 arestas, então há 12 pares ligados formando 12 trapézios isósceles, não 24."
+          },
+          {
+            "id": "c",
+            "label": "12 paralelogramos e 12 quadrados",
+            "correct": false,
+            "feedback": "As arestas correspondentes têm tamanhos diferentes, logo formam 12 trapézios isósceles."
+          },
+          {
+            "id": "d",
+            "label": "8 trapézios isósceles",
+            "correct": false,
+            "feedback": "Há 12 pares de arestas correspondentes (12 trapézios isósceles) além dos 12 quadrados dos cubos."
+          }
+        ]
+      }
+    ]
   }
 }

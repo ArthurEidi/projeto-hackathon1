@@ -301,6 +301,59 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2009-escultura-planos",
+        "prompt": "Na escultura, os prismas retos II e IV são paralelos; um plano paralelo à face α de I corta a peça em P. O que essa interseção contém?",
+        "fala": "Um plano paralelo à base de prismas paralelos gera seções transversais com a mesma forma da base.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2009-153-1.jpg",
+            "alt": "Escultura com prismas triangulares I, II, III e IV, indicando a face alfa em I e o ponto P em II"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 153: enunciado resumido mantendo a posição dos prismas e do plano; gabarito (A) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2009/questions/153"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "Dois triângulos congruentes com lados correspondentes paralelos",
+            "correct": true,
+            "feedback": "Certo: o plano paralelo a α corta os prismas triangulares paralelos II e IV gerando dois triângulos congruentes e paralelos."
+          },
+          {
+            "id": "b",
+            "label": "Dois retângulos congruentes e com lados correspondentes paralelos",
+            "correct": false,
+            "feedback": "O corte é paralelo às bases triangulares de II e IV, não às faces laterais. Forma dois triângulos congruentes."
+          },
+          {
+            "id": "c",
+            "label": "Dois trapézios congruentes com lados correspondentes perpendiculares",
+            "correct": false,
+            "feedback": "Seções paralelas à base de prismas triangulares são triângulos congruentes de lados paralelos."
+          },
+          {
+            "id": "d",
+            "label": "Dois paralelogramos congruentes com lados correspondentes paralelos",
+            "correct": false,
+            "feedback": "Os prismas II e IV têm base triangular; o corte paralelo à base gera dois triângulos congruentes."
+          },
+          {
+            "id": "e",
+            "label": "Dois quadriláteros congruentes com lados correspondentes perpendiculares",
+            "correct": false,
+            "feedback": "Prismas triangulares cortados paralelamente à base geram dois triângulos congruentes de lados paralelos."
+          }
+        ]
+      }
+    ]
   }
 }

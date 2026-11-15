@@ -227,7 +227,7 @@ Arrastar um vértice para dentro até passar de `180°` (polígono côncavo) mos
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+#### V1 — ENEM 2021 — Questão 175
 - **Habilidade-alvo:** calcular a soma dos ângulos internos ou número de lados de um polígono convexo.
 - **Onde procurar:** ENEM, Fuvest, Unesp, UERJ.
 
@@ -235,7 +235,7 @@ Arrastar um vértice para dentro até passar de `180°` (polígono côncavo) mos
 - **Habilidade-alvo:** contar diagonais de um polígono ou diagonais que passam pelo centro.
 - **Onde procurar:** ENEM, Unicamp, UFPR, UFRGS.
 
-#### V3 — PENDENTE-FONTE
+#### V3 — ENEM 2012 — Questão 137
 - **Habilidade-alvo:** usar propriedades de paralelogramos, losangos, retângulos e trapézios para achar ângulos ou lados.
 - **Onde procurar:** ENEM, Fuvest, OBMEP.
 

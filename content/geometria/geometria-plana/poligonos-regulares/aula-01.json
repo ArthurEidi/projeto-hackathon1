@@ -528,6 +528,59 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2020-azulejos-octogono",
+        "prompt": "Octógonos regulares deixam vãos no painel. Quais peças (1: triângulo retângulo isósceles; 2: equilátero; 3: quadrado) preenchem os vãos?",
+        "fala": "Calcule o ângulo interno do octógono regular (135°) e veja o que falta para 360° e 180°.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2020-171-1.png",
+            "alt": "Malha retangular com octógonos regulares cinza deixando espaços quadrados internos e triangulares nas bordas"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "Questão 171: enunciado resumido listando os três formatos; gabarito (D) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2020/questions/171"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "1",
+            "correct": false,
+            "feedback": "Faltam os espaços internos entre 4 octógonos: 360° - 2·135° = 90° dá quadrados (3). Logo, 1 e 3."
+          },
+          {
+            "id": "b",
+            "label": "3",
+            "correct": false,
+            "feedback": "Faltam os cantos das bordas: 180° - 135° = 45° dá triângulo retângulo isósceles (1). Logo, 1 e 3."
+          },
+          {
+            "id": "c",
+            "label": "1 e 2",
+            "correct": false,
+            "feedback": "Entre octógonos o ângulo é 360° - 270° = 90° (quadrado 3), não 60° (equilátero 2). Logo, 1 e 3."
+          },
+          {
+            "id": "d",
+            "label": "1 e 3",
+            "correct": true,
+            "feedback": "Certo: 360° - 2·135° = 90° forma quadrados (3) e 180° - 135° = 45° nas bordas forma triângulos retângulos isósceles (1)."
+          },
+          {
+            "id": "e",
+            "label": "2 e 3",
+            "correct": false,
+            "feedback": "Nas bordas o ângulo é 45° (triângulo retângulo isósceles 1), não 60° (equilátero 2). Logo, 1 e 3."
+          }
+        ]
+      }
+    ]
   }
 }

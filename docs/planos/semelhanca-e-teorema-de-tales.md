@@ -251,7 +251,7 @@ Quando k → 0, a paralela encosta no vértice do topo e o triângulo encolhe a 
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+#### V1 — ENEM 2009 — Questão 154
 - **Habilidade-alvo:** calcular altura inacessível (prédio, árvore, poste) por semelhança de triângulos com sombras.
 - **Onde procurar:** ENEM, Vunesp, UERJ, Unicamp.
 

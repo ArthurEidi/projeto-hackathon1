@@ -515,6 +515,203 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2021-triangulo-musical",
+        "prompt": "Uma barra forma um triângulo equilátero de altura h = 8 cm (use √3 ≈ 1,7). Qual é o comprimento aproximado da barra?",
+        "fala": "Use h = L√3/2 para achar o lado L e multiplique por 3 para obter o perímetro.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2021-169-1.png",
+            "alt": "Figura 1: triângulo musical e Figura 2: triângulo equilátero de altura h = 8 cm"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 169: enunciado resumido mantendo h = 8 cm e √3 ≈ 1,7; gabarito (D) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2021/questions/169"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "9,07 cm",
+            "correct": false,
+            "feedback": "9,07 cm é a medida de apenas um lado L ≈ 16·1,7/3; o perímetro é 3L ≈ 27,18 cm."
+          },
+          {
+            "id": "b",
+            "label": "13,60 cm",
+            "correct": false,
+            "feedback": "Confira: L = 16/√3 ≈ 9,06 cm, então o perímetro 3L é aproximadamente 27,18 cm."
+          },
+          {
+            "id": "c",
+            "label": "20,40 cm",
+            "correct": false,
+            "feedback": "O perímetro de 3 lados de ≈ 9,06 cm dá aproximadamente 27,18 cm, não 20,40 cm."
+          },
+          {
+            "id": "d",
+            "label": "27,18 cm",
+            "correct": true,
+            "feedback": "Certo: h = L√3/2 dá L = 16√3/3 ≈ 9,06 cm, logo o perímetro é 3·9,06 = 27,18 cm."
+          },
+          {
+            "id": "e",
+            "label": "36,24 cm",
+            "correct": false,
+            "feedback": "Você multiplicou L por 4 em vez de 3: para o triângulo, 3·9,06 = 27,18 cm."
+          }
+        ]
+      },
+      {
+        "id": "enem-2018-quebra-cabeca-isosceles",
+        "prompt": "Um quadrado é coberto por triângulos retângulos isósceles; o menor tem catetos de 2 cm. Quanto mede o lado do quadrado?",
+        "fala": "Suba do triângulo preto (catetos 2) calculando a hipotenusa de cada peça até atingir a diagonal.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2018-179-1.png",
+            "alt": "Quadrado dividido na diagonal por triângulos retângulos isósceles, com o menor preto no canto inferior direito"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 179: enunciado resumido mantendo catetos de 2 cm e figuras das opções; gabarito (A) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2018/questions/179"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "A",
+            "correct": true,
+            "feedback": "Certo: subindo do triângulo de catetos 2, a hipotenusa horizontal superior mede 8 cm a altura 6 cm na diagonal: L = 8 + 6 = 14.",
+            "imagem": {
+              "src": "/vestibular/enem-2018-179-alt-a.png",
+              "alt": "Alternativa A: 14"
+            }
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "correct": false,
+            "feedback": "Faltou somar os 2 cm do triângulo preto na base: a conta correta dá L = 14 (alternativa A).",
+            "imagem": {
+              "src": "/vestibular/enem-2018-179-alt-b.png",
+              "alt": "Alternativa B: 12"
+            }
+          },
+          {
+            "id": "c",
+            "label": "C",
+            "correct": false,
+            "feedback": "As hipotenusas horizontais medem 4 e 8 (racionais), somando L = 8 + 6 = 14 (alternativa A).",
+            "imagem": {
+              "src": "/vestibular/enem-2018-179-alt-c.png",
+              "alt": "Alternativa C: 7 raiz de 2"
+            }
+          },
+          {
+            "id": "d",
+            "label": "D",
+            "correct": false,
+            "feedback": "O lado do quadrado é racional: L = 8 + 6 = 14 cm (alternativa A).",
+            "imagem": {
+              "src": "/vestibular/enem-2018-179-alt-d.png",
+              "alt": "Alternativa D: 6 + 4 raiz de 2"
+            }
+          },
+          {
+            "id": "e",
+            "label": "E",
+            "correct": false,
+            "feedback": "O lado do quadrado não tem raiz de 2: L = 8 + 6 = 14 cm (alternativa A).",
+            "imagem": {
+              "src": "/vestibular/enem-2018-179-alt-e.png",
+              "alt": "Alternativa E: 6 + 2 raiz de 2"
+            }
+          }
+        ]
+      },
+      {
+        "id": "enem-2018-helice-cilindro",
+        "prompt": "Uma faixa retangular com diagonal a 30° é enrolada num cilindro de raio 6/π cm formando a hélice da figura. Qual é a altura do cilindro?",
+        "fala": "Conte quantas voltas completas a hélice dá na figura e multiplique pelo perímetro da base (2πr).",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2018-180-1.png",
+            "alt": "Cilindro circular reto e faixa retangular com diagonal a 30° enrolada em 6 voltas"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 180: enunciado resumido mantendo raio 6/pi, ângulo 30° e opções em imagem; gabarito (B) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2018/questions/180"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "A",
+            "correct": false,
+            "feedback": "Você usou tg(60°) ou 9 voltas: com 6 voltas de 12 cm e tg(30°) = √3/3, h = 72·√3/3 = 24√3 (B).",
+            "imagem": {
+              "src": "/vestibular/enem-2018-180-alt-a.png",
+              "alt": "Alternativa A: 36 raiz de 3"
+            }
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "correct": true,
+            "feedback": "Certo: C = 2π(6/π) = 12 cm; em 6 voltas, largura = 72 cm e h = 72·tg(30°) = 24√3 cm.",
+            "imagem": {
+              "src": "/vestibular/enem-2018-180-alt-b.png",
+              "alt": "Alternativa B: 24 raiz de 3"
+            }
+          },
+          {
+            "id": "c",
+            "label": "C",
+            "correct": false,
+            "feedback": "4√3 corresponde a apenas 1 volta (12·tg 30°), mas a hélice dá 6 voltas: h = 24√3 (B).",
+            "imagem": {
+              "src": "/vestibular/enem-2018-180-alt-c.png",
+              "alt": "Alternativa C: 4 raiz de 3"
+            }
+          },
+          {
+            "id": "d",
+            "label": "D",
+            "correct": false,
+            "feedback": "Faltou multiplicar por tg(30°) = √3/3: h = 72·√3/3 = 24√3 (alternativa B).",
+            "imagem": {
+              "src": "/vestibular/enem-2018-180-alt-d.png",
+              "alt": "Alternativa D: 36"
+            }
+          },
+          {
+            "id": "e",
+            "label": "E",
+            "correct": false,
+            "feedback": "72 cm é o comprimento horizontal das 6 voltas, não a altura: h = 72·tg(30°) = 24√3 (B).",
+            "imagem": {
+              "src": "/vestibular/enem-2018-180-alt-e.png",
+              "alt": "Alternativa E: 72"
+            }
+          }
+        ]
+      }
+    ]
   }
 }

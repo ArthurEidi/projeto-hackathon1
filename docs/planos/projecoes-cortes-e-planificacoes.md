@@ -228,11 +228,11 @@ Testar moldes inválidos mostra a fronteira geométrica: ter 6 quadrados **não 
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+#### V1 — ENEM 2021 — Questão 168
 - **Habilidade-alvo:** identificar a planificação correta de um dado/cubo ou poliedro com marcas nas faces.
 - **Onde procurar:** ENEM, OBMEP, Fuvest (questões de planificação de dado/caixa).
 
-#### V2 — PENDENTE-FONTE
+#### V2 — ENEM 2023 — Questão 163
 - **Habilidade-alvo:** reconhecer vistas ortogonais (frontal, superior, lateral) de objetos 3D ou pilhas de blocos.
 - **Onde procurar:** ENEM (projeções ortogonais de sólidos e edifícios).
 

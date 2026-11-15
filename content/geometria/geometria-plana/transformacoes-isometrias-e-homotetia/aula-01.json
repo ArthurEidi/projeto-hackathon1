@@ -511,6 +511,115 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2017-tela-peixe-giro",
+        "prompt": "A tela quadrada girou em torno de B até 45° abaixo da horizontal à esquerda. Qual menor giro (< 360°) a recoloca na posição original?",
+        "fala": "Compare a posição da borda direita (que apontava para cima a partir de B) antes e depois da queda.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2017-150-1.png",
+            "alt": "Quadro quadrado com peixe fixado em A e B e, abaixo, girado em torno de B a 45° abaixo da horizontal"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2017,
+          "adaptada": true,
+          "adaptacao": "Questão 150: enunciado resumido mantendo os pontos A, B e o ângulo de 45°; gabarito (B) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2017/questions/150"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "90° no sentido horário",
+            "correct": false,
+            "feedback": "90° horário levaria a borda de 225° apenas até 135°, não até os 90° verticais. O certo é 135° horário."
+          },
+          {
+            "id": "b",
+            "label": "135° no sentido horário",
+            "correct": true,
+            "feedback": "Certo: a tela girou 135° anti-horário (de 90° para 225°); logo volta girando 135° no sentido horário."
+          },
+          {
+            "id": "c",
+            "label": "180° no sentido anti-horário",
+            "correct": false,
+            "feedback": "Como a tela girou 135° anti-horário, girar mais 180° não a alinha na horizontal. O certo é 135° horário."
+          },
+          {
+            "id": "d",
+            "label": "270° no sentido anti-horário",
+            "correct": false,
+            "feedback": "270° anti-horário passaria da posição original (que está a 225° anti-horário). O menor giro é 135° horário."
+          },
+          {
+            "id": "e",
+            "label": "315° no sentido horário",
+            "correct": false,
+            "feedback": "315° horário daria uma volta quase completa além da posição original. O menor giro é 135° horário."
+          }
+        ]
+      },
+      {
+        "id": "enem-2009-quebra-cabeca-giro",
+        "prompt": "As peças quadradas de B completam o tabuleiro A. Qual peça de B e qual giro preenchem corretamente o espaço indicado pela seta em A?",
+        "fala": "A casa da seta fica na borda inferior de A, então o triângulo de baixo da peça deve ser liso.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2009-147-1.jpg",
+            "alt": "Figura A: tabuleiro 4x4 com seta apontando para a casa vazia na borda inferior"
+          },
+          {
+            "src": "/vestibular/enem-2009-147-2.jpg",
+            "alt": "Figura B: peças disponíveis destacando Peça 1 e Peça 2"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 147: enunciado resumido mantendo as duas figuras; gabarito (C) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2009/questions/147"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "Peça 1 após girá-la 90° no sentido horário",
+            "correct": false,
+            "feedback": "Girando a Peça 1 em 90° horário, o triângulo liso vai para cima, não para a borda inferior. Correta: C."
+          },
+          {
+            "id": "b",
+            "label": "Peça 1 após girá-la 180° no sentido anti-horário",
+            "correct": false,
+            "feedback": "Girando a Peça 1 em 180°, um triângulo com desenho fica na borda inferior. Correta: Peça 2, 90° anti-horário."
+          },
+          {
+            "id": "c",
+            "label": "Peça 2 após girá-la 90° no sentido anti-horário",
+            "correct": true,
+            "feedback": "Certo: 90° anti-horário leva o triângulo liso esquerdo da Peça 2 para a base e o cinza-claro para a direita."
+          },
+          {
+            "id": "d",
+            "label": "Peça 2 após girá-la 180° no sentido horário",
+            "correct": false,
+            "feedback": "Em 180° horário, o triângulo com desenho vai para a borda inferior. Correta: Peça 2, 90° anti-horário."
+          },
+          {
+            "id": "e",
+            "label": "Peça 2 após girá-la 270° no sentido anti-horário",
+            "correct": false,
+            "feedback": "270° anti-horário (90° horário) coloca desenho na borda inferior. Correta: Peça 2, 90° anti-horário."
+          }
+        ]
+      }
+    ]
   }
 }

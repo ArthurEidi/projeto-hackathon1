@@ -227,7 +227,7 @@ Aumentar `n` para `10, 20, 100` mostra que `a_e = 360° / n` se aproxima de `0°
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+#### V1 — ENEM 2020 — Questão 171
 - **Habilidade-alvo:** verificar quais polígonos regulares ou combinações ladrilham o plano (`∑ ângulos no vértice = 360°`).
 - **Onde procurar:** ENEM, Unicamp, Unesp, Fuvest (questões de calçamento/mosaico/ladrilhamento).
 
