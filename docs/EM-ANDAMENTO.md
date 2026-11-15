@@ -46,6 +46,19 @@ Por instrução do usuário (14/11, 17h), a Máquina A chegou ao limite e a **M�
 | ~~B13~~ concluída 14/11 (750a557): `barras` com `mostrar.raiz` e `extremos` na fila, `grade` com `mostrar.razao_partes`. Máquina B sem frente aberta | Claude Code #2 | 14/11 | — |
 | B6. Auditoria das 40 questões do ENEM de 14/11 (feita: 50dc335, 26 feedbacks corrigidos); revisão e integração de tudo; inserir o vestibular de geometria nas aulas depois da conferência | maestro (Claude Code) | 14/11 | `docs/revisao/auditoria-claude.md`, `treino.vestibular` das aulas, docs de coordenação |
 
+### 15/11 a 17/11: Máquina B responsável pelo projeto
+
+Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) e a **Máquina B (DESKTOP-M466PUL) responde pelo projeto inteiro**, inclusive os arquivos de dono fixo da A. Decisões do usuário em 15/11: (1) os desafios (`micro_challenge`) com 2 ou 3 alternativas passam a ter 4; (2) hospedagem: **só preparar o build e documentar, sem publicar**. Agentes da B: Codex, Codex #2 (novos), Claude Code #2, Antigravity (Gemini perto do limite: uso mínimo). Briefing: `C:\Users\mkf10\projetos\briefing-b14.md` (fora do repo).
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B14a. Desafios de 2 → 4 alternativas: álgebra, equações e inequações (14 capítulos) | Codex | 15/11 | `content/algebra/equacoes-e-inequacoes/**`, `src/conteudo/<slug desses capítulos>.test.ts`, `docs/revisao/desafios-4-alternativas-b14a.md` |
+| B14b. Desafios de 2 → 4 alternativas: aritmética, conjuntos e proporcionalidade (12 capítulos) | Codex #2 | 15/11 | `content/aritmetica/conjuntos/**`, `content/aritmetica/proporcionalidade/**`, testes desses capítulos, `docs/revisao/desafios-4-alternativas-b14b.md` |
+| B14c. Desafios de 2 → 4 alternativas: álgebra, funções e matrizes (12 capítulos) | Claude Code #2 | 15/11 | `content/algebra/funcoes/**`, `content/algebra/matrizes-e-sistemas/**`, testes desses capítulos, `docs/revisao/desafios-4-alternativas-b14c.md` |
+| B14d. Desafios de 2 → 4 alternativas: polinômios, complexos e sequências (8) e `solidos-de-revolucao` (3 → 4) | Antigravity | 15/11 | `content/algebra/polinomios-e-complexos/**`, `content/algebra/sequencias/**`, `content/geometria/geometria-espacial/solidos-de-revolucao/**`, testes desses capítulos, `docs/revisao/desafios-4-alternativas-b14d.md` |
+| B14e. Auditoria das 47 alternativas novas (conta, feedback, figura em 400 px depois de VERIFICAR) e publicação | maestro (Claude Code) | 15/11 | docs de coordenação, correções pontuais nos arquivos da B14 |
+| B15. Preparar a hospedagem (build estático, sem publicar) | maestro (Claude Code) | 15/11 | `vite.config.ts`, `package.json` (scripts), `docs/HOSPEDAGEM.md`, `.github/workflows/` (só disparo manual) |
+
 ## Pedidos entre máquinas
 
 Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo no passo 3 de `elipse`"). Formato: data, quem pede, para quem, o quê.
