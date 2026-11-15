@@ -86,6 +86,15 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("3");
     expect(s.options.find((o) => !o.correct)!.label).toBe("2");
+    expect(s.options).toHaveLength(4);
+    expect(Math.log2(3 - 1)).toBe(1); // x − 1 = 2¹ ⇒ x = 3
+    expect(1 + 1).toBe(2); // igualou x − 1 a 1, como se o log sumisse
+    expect(Math.log2(2 - 1)).toBe(0); // em x = 2 o log vale 0, não 1
+    expect(2 - 1).toBe(1); // isolou x com o sinal trocado: x = 2 − 1
+    expect(1 - 1).toBe(0); // em x = 1 o argumento é 0: log não existe
+    expect(Math.log2(4) - 1).toBe(1); // leu log₂x − 1 = 1 ⇒ x = 4
+    expect(Math.log2(4 - 1)).not.toBe(1); // na equação certa, x = 4 dá log₂3
+    expect(s.options.map((o) => o.label)).toEqual(["2", "1", "4", "3"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

@@ -83,6 +83,14 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("Nenhuma");
     expect(s.options.find((o) => !o.correct)!.label).toBe("Duas");
+    expect(s.options).toHaveLength(4);
+    const delta = (a: number, b: number, c: number) => b * b - 4 * a * c;
+    expect(delta(1, 0, 1)).toBe(-4); // Δ < 0: nenhuma raiz real
+    expect([1, -1].map((x) => avaliar(quadratica(1, 0, -1), x))).toEqual([0, 0]); // "Duas": ±1 resolve x² − 1 = 0
+    expect([1, -1].map((x) => avaliar(quadratica(1, 0, 1), x))).toEqual([2, 2]);
+    expect(delta(1, 0, 0)).toBe(0); // "Uma": esqueceu o c no Δ
+    // "Duas: ±i": i² = −1 resolve x² + 1 = 0, mas ±i não são reais
+    expect(s.options.map((o) => o.label)).toEqual(["Nenhuma", "Duas", "Uma", "Duas: ±i"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

@@ -93,6 +93,15 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("2");
     expect(s.options.find((o) => !o.correct)!.label).toBe("−1");
+    expect(s.options).toHaveLength(4);
+    // elevando ao quadrado: x + 2 = x² ⇒ x² − x − 2 = 0 ⇒ x = −1 ou x = 2 (candidatos)
+    for (const x of [-1, 2]) expect(x * x - x - 2).toBe(0);
+    expect(Math.sqrt(2 + 2)).toBe(2); // 2 serve
+    expect(Math.sqrt(-1 + 2)).not.toBe(-1); // −1 não serve: √1 = 1
+    // "−1 e 2": aceitou os dois candidatos sem testar na equação original
+    // "Nenhuma": elevou só a raiz, x + 2 = x ⇒ 2 = 0, impossível
+    for (const x of [-5, 0, 3]) expect(x + 2).not.toBe(x);
+    expect(s.options.map((o) => o.label)).toEqual(["2", "−1", "−1 e 2", "Nenhuma"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

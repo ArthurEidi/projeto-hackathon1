@@ -209,13 +209,21 @@
           "id": "micro-erro",
           "label": "4",
           "correct": false,
-          "feedback": "Você dividiu 8 por 2; exponenciação pede 2³=8, então x=3.",
+          "feedback": "Você dividiu 8 por 2, mas x é expoente: ele conta quantos fatores 2 se multiplicam. Vá dobrando a partir de 2 até chegar a 8.",
+          "figure": { "ponto": { "curva": 0, "x": 4, "cor": "c1" } }
+        },
+        {
+          "id": "trocou-base-expoente",
+          "label": "√8",
+          "correct": false,
+          "feedback": "Você resolveu x² = 8, trocando base e expoente. Em 2ˣ, o 2 é a base fixa e x conta quantas vezes ele se multiplica.",
           "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": 4,
-              "cor": "c1"
-            }
+            "curvas": [
+              { "tipo": "exponencial", "a": 1, "b": 2, "c": 0, "cor": "c3", "rotulo": "y = 2ˣ" },
+              { "tipo": "afim", "a": 0, "b": 8, "cor": "ink", "rotulo": "y = 8" },
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "cor": "c1", "rotulo": "y = x²" }
+            ],
+            "highlight": ["c1"]
           }
         },
         {
@@ -223,11 +231,14 @@
           "label": "3",
           "correct": true,
           "feedback": "Certo: 3; 2³=8.",
-          "figure": {
-            "highlight": [
-              "c4"
-            ]
-          }
+          "figure": { "highlight": ["c4"] }
+        },
+        {
+          "id": "potencia",
+          "label": "256",
+          "correct": false,
+          "feedback": "256 é 2⁸: você elevou 2 ao 8 em vez de procurar o expoente. A pergunta é qual potência de 2 dá 8.",
+          "figure": { "x": [-2, 9], "guias": { "verticais": [{ "v": 8, "rotulo": "x = 8", "cor": "c1" }] }, "highlight": ["c3"] }
         }
       ]
     },

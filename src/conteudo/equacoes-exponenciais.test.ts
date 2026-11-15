@@ -77,6 +77,14 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("3");
     expect(s.options.find((o) => !o.correct)!.label).toBe("4");
+    expect(s.options).toHaveLength(4);
+    expect(2 ** 3).toBe(8);
+    expect(8 / 2).toBe(4); // dividiu 8 pela base; 2⁴ = 16 ≠ 8
+    expect(Math.sqrt(8) ** 2).toBeCloseTo(8, 12); // resolveu x² = 8 (base e expoente trocados)
+    expect(2 ** Math.sqrt(8)).not.toBeCloseTo(8, 1); // 2^√8 ≈ 7,1 ≠ 8
+    expect(2 ** 8).toBe(256); // elevou 2 ao 8
+    for (const e of [4, 256]) expect(2 ** e).not.toBe(8);
+    expect(s.options.map((o) => o.label)).toEqual(["4", "√8", "3", "256"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

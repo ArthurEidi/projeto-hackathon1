@@ -200,24 +200,36 @@
           "id": "micro-erro",
           "label": "1 e 3",
           "correct": false,
-          "feedback": "1 é o centro, não solução; andando 2 para cada lado, as soluções são −1 e 3.",
-          "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": 1,
-              "cor": "c2"
-            }
-          }
+          "feedback": "1 é o centro, onde |x − 1| vale 0, não 2. A partir do centro, ande 2 para cada lado.",
+          "figure": { "ponto": { "curva": 0, "x": 1, "cor": "c2" } }
         },
         {
           "id": "micro-acerto",
           "label": "−1 e 3",
           "correct": true,
           "feedback": "Certo: −1 e 3; 1−2=−1 e 1+2=3.",
+          "figure": { "highlight": ["c4"] }
+        },
+        {
+          "id": "so-um-caso",
+          "label": "3",
+          "correct": false,
+          "feedback": "Você resolveu só x − 1 = 2 e perdeu o outro caso. Módulo igual a 2 vale também quando x − 1 = −2.",
+          "figure": { "ponto": { "curva": 0, "x": 3, "cor": "c1" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "centro-trocado",
+          "label": "−3 e 1",
+          "correct": false,
+          "feedback": "Você trocou o sinal do centro, como se fosse |x + 1|. O centro de |x − 1| é onde x − 1 = 0.",
           "figure": {
-            "highlight": [
-              "c4"
-            ]
+            "x": [-4, 5],
+            "curvas": [
+              { "tipo": "modular", "a": 1, "b": 1, "c": 0, "cor": "c3", "rotulo": "y = |x − 1|" },
+              { "tipo": "afim", "a": 0, "b": 2, "cor": "ink", "rotulo": "y = 2" },
+              { "tipo": "modular", "a": 1, "b": -1, "c": 0, "cor": "c1", "rotulo": "|x + 1|" }
+            ],
+            "highlight": ["c1"]
           }
         }
       ]

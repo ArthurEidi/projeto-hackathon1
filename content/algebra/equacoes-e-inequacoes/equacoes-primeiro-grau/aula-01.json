@@ -222,17 +222,21 @@
           "id": "micro-erro",
           "label": "−2",
           "correct": false,
-          "feedback": "O sinal mudou errado; 2x=4, então x=2.",
+          "feedback": "O sinal mudou errado: em x = −2 a reta vale −8, não 0. Passe o −4 para o outro lado trocando o sinal e depois divida.",
           "figure": {
             "x": [-3, 5],
-            "ponto": {
-              "curva": 0,
-              "x": -2,
-              "arrastavel": false,
-              "coordenadas": true,
-              "cor": "c4"
-            },
+            "ponto": { "curva": 0, "x": -2, "arrastavel": false, "coordenadas": true, "cor": "c4" },
             "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "esqueceu-dividir",
+          "label": "4",
+          "correct": false,
+          "feedback": "Você parou em 2x = 4 e esqueceu de dividir por 2. Em x = 4 a reta vale 4, não 0.",
+          "figure": {
+            "ponto": { "curva": 0, "x": 4, "arrastavel": false, "coordenadas": true, "cor": "c1" },
+            "highlight": ["c1"]
           }
         },
         {
@@ -240,11 +244,16 @@
           "label": "2",
           "correct": true,
           "feedback": "Certo: 2; 2x=4 dá x=2.",
+          "figure": { "marcar": { "encontro": true }, "highlight": ["c4"] }
+        },
+        {
+          "id": "divisao-invertida",
+          "label": "1/2",
+          "correct": false,
+          "feedback": "Você dividiu 2 por 4, de cabeça para baixo. Em 2x = 4, quem divide o outro lado é o coeficiente de x.",
           "figure": {
-            "marcar": {
-              "encontro": true
-            },
-            "highlight": ["c4"]
+            "ponto": { "curva": 0, "x": 0.5, "arrastavel": false, "coordenadas": true, "cor": "c2" },
+            "highlight": ["c2"]
           }
         }
       ]

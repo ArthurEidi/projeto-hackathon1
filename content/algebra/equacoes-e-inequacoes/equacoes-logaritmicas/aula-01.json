@@ -198,13 +198,40 @@
           "id": "micro-erro",
           "label": "2",
           "correct": false,
-          "feedback": "Você esqueceu o deslocamento; x−1=2, então x=3.",
+          "feedback": "Você igualou x − 1 a 1, como se o log sumisse. Log₂ igual a 1 pede que x − 1 seja a potência 2¹.",
+          "figure": { "ponto": { "curva": 0, "x": 2, "cor": "c1" } }
+        },
+        {
+          "id": "sinal-trocado",
+          "label": "1",
+          "correct": false,
+          "feedback": "O −1 trocou de lado com o sinal errado. Em x = 1 o argumento x − 1 vale 0, e log de 0 não existe.",
           "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": 2,
-              "cor": "c1"
-            }
+            "marcar": { "assintota": true },
+            "guias": { "verticais": [{ "v": 1, "rotulo": "x = 1", "cor": "c1" }] },
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "parenteses",
+          "label": "4",
+          "correct": false,
+          "feedback": "Você leu log₂(x − 1) como log₂x − 1. Os parênteses põem o −1 dentro do log: ache o argumento e depois isole x.",
+          "figure": {
+            "curvas": [
+              {
+                "tipo": "logaritmo",
+                "a": 1,
+                "b": 2,
+                "c": 0,
+                "transforma": { "a": 1, "b": 1, "h": 1, "k": 0 },
+                "cor": "c3",
+                "rotulo": "log₂(x−1)"
+              },
+              { "tipo": "afim", "a": 0, "b": 1, "cor": "ink", "rotulo": "y = 1" },
+              { "tipo": "logaritmo", "a": 1, "b": 2, "c": -1, "cor": "c1", "rotulo": "log₂x − 1" }
+            ],
+            "ponto": { "curva": 2, "x": 4, "cor": "c1" }
           }
         },
         {
@@ -212,16 +239,7 @@
           "label": "3",
           "correct": true,
           "feedback": "Certo: 3; x−1=2 dá x=3.",
-          "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": 3,
-              "cor": "c4"
-            },
-            "marcar": {
-              "encontro": true
-            }
-          }
+          "figure": { "ponto": { "curva": 0, "x": 3, "cor": "c4" } }
         }
       ]
     },

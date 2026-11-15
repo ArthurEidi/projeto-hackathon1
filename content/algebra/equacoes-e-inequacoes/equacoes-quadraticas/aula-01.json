@@ -267,61 +267,51 @@
       "prompt": "Quantas raízes reais distintas tem x²+1=0?",
       "options": [
         {
-          "id": "micro-erro",
-          "label": "Duas",
-          "correct": false,
-          "feedback": "Você tratou −1 como quadrado real; x²≥0, então não há raiz real.",
-          "figure": {
-            "y": [-2, 5],
-            "curvas": [
-              {
-                "tipo": "quadratica",
-                "a": 1,
-                "b": 0,
-                "c": 1,
-                "cor": "c3",
-                "fantasma": true,
-                "rotulo": "y = x² + 1"
-              },
-              {
-                "tipo": "quadratica",
-                "a": 1,
-                "b": 0,
-                "c": -1,
-                "cor": "c4",
-                "rotulo": "y = x² − 1"
-              }
-            ],
-            "marcar": {
-              "raizes": true
-            },
-            "highlight": [
-              "c4"
-            ]
-          }
-        },
-        {
           "id": "micro-acerto",
           "label": "Nenhuma",
           "correct": true,
           "feedback": "Certo: Nenhuma; x²+1≥1 para todo real.",
           "figure": {
-            "marcar": {
-              "vertice": true
-            },
-            "guias": {
-              "horizontais": [
-                {
-                  "v": 1,
-                  "rotulo": "mín = 1",
-                  "cor": "c4"
-                }
-              ]
-            },
-            "highlight": [
-              "c3"
-            ]
+            "marcar": { "vertice": true },
+            "guias": { "horizontais": [{ "v": 1, "rotulo": "mín = 1", "cor": "c4" }] },
+            "highlight": ["c3"]
           }
+        },
+        {
+          "id": "micro-erro",
+          "label": "Duas",
+          "correct": false,
+          "feedback": "±1 resolve x² = 1, não x² = −1. Pense: algum número real elevado ao quadrado dá negativo?",
+          "figure": {
+            "y": [-2, 5],
+            "curvas": [
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": 1, "cor": "c3", "fantasma": true, "rotulo": "y = x² + 1" },
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": -1, "cor": "c4", "rotulo": "y = x² − 1" }
+            ],
+            "marcar": { "raizes": true },
+            "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "delta-sem-c",
+          "label": "Uma",
+          "correct": false,
+          "feedback": "Você esqueceu o c no discriminante e achou Δ = 0. Refaça Δ = b² − 4ac com os três coeficientes, c = 1 incluído.",
+          "figure": {
+            "curvas": [
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": 1, "cor": "c3", "fantasma": true, "rotulo": "y = x² + 1" },
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "cor": "c1", "rotulo": "y = x²" }
+            ],
+            "marcar": { "raizes": true },
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "contou-complexas",
+          "label": "Duas: ±i",
+          "correct": false,
+          "feedback": "±i são raízes complexas, não reais. A pergunta conta só as raízes que a parábola marca no eixo x.",
+          "figure": { "guias": { "horizontais": [{ "v": 0, "rotulo": "raízes reais", "cor": "c1" }] }, "highlight": ["c1"] }
         }
       ]
     },

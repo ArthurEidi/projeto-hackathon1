@@ -75,6 +75,15 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("−1 e 3");
     expect(s.options.find((o) => !o.correct)!.label).toBe("1 e 3");
+    expect(s.options).toHaveLength(4);
+    const f = (x: number) => avaliar(modular(1, 1, 0), x);
+    expect([f(-1), f(3)]).toEqual([2, 2]);
+    expect(f(1)).toBe(0); // 1 é o centro: |1 − 1| = 0 ≠ 2
+    expect(1 + 2).toBe(3); // só o caso x − 1 = 2; faltou x − 1 = −2
+    const g = (x: number) => avaliar(modular(1, -1, 0), x); // centro trocado: |x + 1|
+    expect([g(-3), g(1)]).toEqual([2, 2]);
+    expect(f(-3)).not.toBe(2); // −3 não resolve |x − 1| = 2
+    expect(s.options.map((o) => o.label)).toEqual(["1 e 3", "−1 e 3", "3", "−3 e 1"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

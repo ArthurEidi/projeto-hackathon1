@@ -77,6 +77,14 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("2");
     expect(s.options.find((o) => !o.correct)!.label).toBe("−2");
+    expect(s.options).toHaveLength(4);
+    const r = (x: number) => avaliar(afim(2, -4), x);
+    expect(r(2)).toBe(0);
+    expect(r(-2)).toBe(-8); // sinal trocado: −4/2
+    expect(r(4)).toBe(4); // parou em 2x = 4, sem dividir por 2
+    expect(2 / 4).toBe(0.5); // dividiu 2 por 4, de cabeça para baixo
+    expect(r(0.5)).toBe(-3);
+    expect(s.options.map((o) => o.label)).toEqual(["−2", "4", "2", "1/2"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

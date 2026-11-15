@@ -85,6 +85,16 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("∅");
     expect(s.options.find((o) => !o.correct)!.label).toBe("{1}");
+    expect(s.options).toHaveLength(4);
+    const f = (x: number) => (x * x - 1) / (x - 1);
+    // simplificando, x + 1 = 2 ⇒ x = 1, mas x = 1 zera o denominador
+    expect(1 - 1).toBe(0);
+    expect(Number.isNaN(f(1))).toBe(true);
+    expect(f(2)).toBe(3); // "{2}": cortou o −1 (x²/x = x = 2), mas a fração vale 3 em x = 2
+    // "{±√3}": ignorou o denominador, x² − 1 = 2 ⇒ x = ±√3
+    expect(Math.sqrt(3) ** 2 - 1).toBeCloseTo(2, 12);
+    for (const x of [Math.sqrt(3), -Math.sqrt(3)]) expect(f(x)).not.toBeCloseTo(2, 3);
+    expect(s.options.map((o) => o.label)).toEqual(["{1}", "{2}", "{±√3}", "∅"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

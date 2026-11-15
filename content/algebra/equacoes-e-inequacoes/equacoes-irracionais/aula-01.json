@@ -186,30 +186,43 @@
       "prompt": "Qual solução de √(x+2)=x é válida?",
       "options": [
         {
-          "id": "micro-erro",
-          "label": "−1",
-          "correct": false,
-          "feedback": "O lado direito ficou negativo; √1=1≠−1, então só 2 é solução.",
-          "figure": {
-            "ponto": {
-              "curva": null,
-              "x": -1
-            }
-          }
-        },
-        {
           "id": "micro-acerto",
           "label": "2",
           "correct": true,
           "feedback": "Certo: 2; Em 2, √4=2; em −1, √1≠−1.",
+          "figure": { "ponto": { "curva": 0, "x": 2 }, "marcar": { "encontro": true } }
+        },
+        {
+          "id": "micro-erro",
+          "label": "−1",
+          "correct": false,
+          "feedback": "Ao elevar ao quadrado, −1 apareceu, mas não serve: √1 = 1, e o lado direito vale −1. Raiz quadrada nunca dá negativo.",
+          "figure": { "ponto": { "curva": null, "x": -1 } }
+        },
+        {
+          "id": "nao-testou",
+          "label": "−1 e 2",
+          "correct": false,
+          "feedback": "Elevar ao quadrado pode criar soluções falsas. Teste cada candidato na equação original: a raiz não pode dar número negativo.",
           "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": 2
-            },
-            "marcar": {
-              "encontro": true
-            }
+            "curvas": [
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "cor": "c1", "rotulo": "y = x²" },
+              { "tipo": "afim", "a": 1, "b": 2, "cor": "c2", "rotulo": "y = x + 2" }
+            ],
+            "marcar": { "encontro": true }
+          }
+        },
+        {
+          "id": "elevou-um-lado",
+          "label": "Nenhuma",
+          "correct": false,
+          "feedback": "Você elevou só o lado da raiz: ficou x + 2 = x, que não tem solução. Eleve os dois lados: o direito vira x².",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 2, "cor": "c1", "rotulo": "y = x + 2" },
+              { "tipo": "afim", "a": 1, "b": 0, "cor": "ink", "rotulo": "y = x" }
+            ],
+            "highlight": ["c1"]
           }
         }
       ]
