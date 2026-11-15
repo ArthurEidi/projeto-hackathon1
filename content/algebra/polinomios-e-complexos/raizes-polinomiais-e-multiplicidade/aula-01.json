@@ -200,10 +200,16 @@
       "prompt": "Em (x−1)²(x+2), qual raiz tem multiplicidade 2?",
       "options": [
         {
+          "id": "micro-acerto",
+          "label": "1",
+          "correct": true,
+          "feedback": "Certo: 1; O fator x−1 aparece duas vezes."
+        },
+        {
           "id": "micro-erro",
           "label": "−2",
           "correct": false,
-          "feedback": "Você confundiu o outro fator; (x−1)² repete a raiz 1 duas vezes.",
+          "feedback": "−2 vem do fator (x + 2), que tem expoente 1 e cruza o eixo. Procure a raiz do fator elevado ao quadrado.",
           "figure": {
             "ponto": {
               "curva": 0,
@@ -223,10 +229,50 @@
           }
         },
         {
-          "id": "micro-acerto",
-          "label": "1",
-          "correct": true,
-          "feedback": "Certo: 1; O fator x−1 aparece duas vezes."
+          "id": "sinal-trocado-fator",
+          "label": "−1",
+          "correct": false,
+          "feedback": "Você copiou o −1 direto de (x − 1)². Em x = −1, P(−1) = 4 ≠ 0; a raiz é o valor que zera o fator.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -1,
+              "coordenadas": true,
+              "cor": "c1"
+            },
+            "guias": {
+              "verticais": [
+                {
+                  "v": -1,
+                  "rotulo": "x = −1",
+                  "cor": "c1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "termo-positivo",
+          "label": "2",
+          "correct": false,
+          "feedback": "2 não zera nenhum fator; P(2) = 4. Para achar a raiz com expoente 2, iguale o fator repetido a zero.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 2,
+              "coordenadas": true,
+              "cor": "c1"
+            },
+            "guias": {
+              "verticais": [
+                {
+                  "v": 2,
+                  "rotulo": "x = 2",
+                  "cor": "c1"
+                }
+              ]
+            }
+          }
         }
       ]
     },

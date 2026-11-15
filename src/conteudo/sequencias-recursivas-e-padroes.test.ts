@@ -37,11 +37,26 @@ describe("passos da aula", () => {
     for (let i = 2; i < v.length; i++) expect(v[i]).toBe(v[i - 1] + v[i - 2]);
   });
 
-  it("desafio: a₅ = 2 + 3 = 5", () => {
-    expect(fibo(5)[4]).toBe(5);
+  it("desafio: a₅ = 2 + 3 = 5 e as erradas refletem erros reais", () => {
+    const f = fibo(5);
+    expect(f[4]).toBe(5);
     const s = passo(L, "micro-desafio");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)!.label).toBe("5");
+    expect(s.options).toHaveLength(4);
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("5");
+    // somou 1 ao último termo (a₄ + 1 = 4 ≠ 5)
+    expect(f[3] + 1).toBe(4);
+    expect(s.options.find((o) => o.id === "o2")!.label).toBe("4");
+    // somou todos os quatro termos anteriores: 1 + 1 + 2 + 3 = 7 ≠ 5
+    const somaTodos = f.slice(0, 4).reduce((acc, v) => acc + v, 0);
+    expect(somaTodos).toBe(7);
+    expect(s.options.find((o) => o.id === "soma-todos")!.label).toBe("7");
+    expect(String(somaTodos)).not.toBe(certaOpt.label);
+    // multiplicou os dois últimos termos: 2 * 3 = 6 ≠ 5
+    expect(f[2] * f[3]).toBe(6);
+    expect(s.options.find((o) => o.id === "multiplicou-ultimos")!.label).toBe("6");
+    expect(String(f[2] * f[3])).not.toBe(certaOpt.label);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => fechamentoOk(L));

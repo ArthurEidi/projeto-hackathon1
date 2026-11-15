@@ -73,8 +73,22 @@ describe("passos da aula de números complexos no plano", () => {
   it("conferir-previsao: |3+4i| = 5", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
+    expect(s.options).toHaveLength(4);
     expect(Math.hypot(3, 4)).toBe(5);
-    expect(s.options.find((o) => o.correct)?.label).toBe("5");
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("5");
+    // somou os catetos: 3 + 4 = 7 ≠ 5
+    expect(3 + 4).toBe(7);
+    expect(s.options.find((o) => o.id === "micro-erro")!.label).toBe("7");
+    // esqueceu a raiz: 3² + 4² = 25 ≠ 5
+    const quadSoma = 3 * 3 + 4 * 4;
+    expect(quadSoma).toBe(25);
+    expect(s.options.find((o) => o.id === "esqueceu-raiz")!.label).toBe("25");
+    expect(String(quadSoma)).not.toBe(certaOpt.label);
+    // subtraiu quadrados: 4² - 3² = 7 -> √7 ≠ 5
+    expect(4 * 4 - 3 * 3).toBe(7);
+    expect(s.options.find((o) => o.id === "subtraiu-quadrados")!.label).toBe("√7");
+    expect("√7").not.toBe(certaOpt.label);
   });
 
   it("fechamento: referências existem no glossário", () => {

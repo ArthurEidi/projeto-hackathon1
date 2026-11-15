@@ -36,11 +36,24 @@ describe("passos da aula", () => {
     expect(Math.abs(-1)).toBe(1); // q = −1 também não encolhe
   });
 
-  it("desafio: 8 + 4 + 2 + … = 16 e S₃ = 14", () => {
+  it("desafio: 8 + 4 + 2 + … = 16 e as erradas refletem erros reais", () => {
     expect([limite(8, 0.5), parcial(8, 0.5, 3)]).toEqual([16, 14]);
     const s = passo(L, "micro-desafio");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)!.label).toBe("16");
+    expect(s.options).toHaveLength(4);
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("16");
+    // soma parcial S₃ = 14 ≠ 16
+    expect(parcial(8, 0.5, 3)).toBe(14);
+    expect(s.options.find((o) => o.id === "o2")!.label).toBe("14");
+    // soma parcial S₂ = 8 + 4 = 12 ≠ 16
+    expect(parcial(8, 0.5, 2)).toBe(12);
+    expect(s.options.find((o) => o.id === "soma-dois-termos")!.label).toBe("12");
+    expect(String(parcial(8, 0.5, 2))).not.toBe(certaOpt.label);
+    // confundiu soma com a₂ = a₁ * q = 4 ≠ 16
+    expect(8 * 0.5).toBe(4);
+    expect(s.options.find((o) => o.id === "segundo-termo")!.label).toBe("4");
+    expect(String(8 * 0.5)).not.toBe(certaOpt.label);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => fechamentoOk(L));

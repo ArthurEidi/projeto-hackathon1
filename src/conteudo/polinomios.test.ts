@@ -77,8 +77,20 @@ describe("passos da aula", () => {
   it("desafio-micro: grau de 3x³ − 2x + 1 é 3", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)!.label).toBe("3");
-    expect(s.options.find((o) => !o.correct)!.label).toBe("6");
+    expect(s.options).toHaveLength(4);
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("3");
+    // soma dos coeficientes sem sinal: |3| + |-2| + |1| = 6
+    expect(Math.abs(3) + Math.abs(-2) + Math.abs(1)).toBe(6);
+    expect(s.options.find((o) => o.id === "micro-erro")!.label).toBe("6");
+    // soma dos expoentes: 3 + 1 = 4 ≠ 3
+    expect(3 + 1).toBe(4);
+    expect(s.options.find((o) => o.id === "soma-expoentes")!.label).toBe("4");
+    expect("4").not.toBe(certaOpt.label);
+    // menor expoente de x (em -2x¹) ou termo constante 1 ≠ 3
+    expect(1).not.toBe(3);
+    expect(s.options.find((o) => o.id === "termo-menor")!.label).toBe("1");
+    expect("1").not.toBe(certaOpt.label);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

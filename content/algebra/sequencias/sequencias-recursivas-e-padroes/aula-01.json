@@ -183,27 +183,60 @@
       },
       "options": [
         {
-          "id": "o1",
-          "label": "5",
-          "correct": true,
-          "feedback": "Certo. Os termos são 1, 1, 2, 3, 5.",
+          "id": "o2",
+          "label": "4",
+          "correct": false,
+          "feedback": "4 soma apenas 1 ao último termo, como se fosse uma PA de passo 1. A regra manda somar os dois últimos termos.",
           "figure": {
             "acesas": [
+              3
+            ],
+            "degraus": true
+          }
+        },
+        {
+          "id": "soma-todos",
+          "label": "7",
+          "correct": false,
+          "feedback": "7 soma todos os quatro termos anteriores (1 + 1 + 2 + 3). A regra usa apenas os dois últimos.",
+          "figure": {
+            "acesas": [
+              0,
+              1,
               2,
               3
             ]
           }
         },
         {
-          "id": "o2",
-          "label": "4",
+          "id": "o1",
+          "label": "5",
+          "correct": true,
+          "feedback": "Certo. Os termos são 1, 1, 2, 3, 5.",
+          "figure": {
+            "categorias": [
+              { "nome": "a₁", "valor": 1 },
+              { "nome": "a₂", "valor": 1 },
+              { "nome": "a₃", "valor": 2 },
+              { "nome": "a₄", "valor": 3 },
+              { "nome": "a₅", "valor": 5 }
+            ],
+            "acesas": [
+              4
+            ]
+          }
+        },
+        {
+          "id": "multiplicou-ultimos",
+          "label": "6",
           "correct": false,
-          "feedback": "4 não aplica a regra ao último par: a₅ = 2 + 3 = 5.",
+          "feedback": "6 vem de multiplicar os dois últimos termos (2 · 3) em vez de somá-los. A recorrência é aditiva.",
           "figure": {
             "acesas": [
               2,
               3
-            ]
+            ],
+            "degraus": true
           }
         }
       ]

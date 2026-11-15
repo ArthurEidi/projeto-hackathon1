@@ -108,6 +108,20 @@
       },
       "options": [
         {
+          "id": "cc20",
+          "label": "Dois cilindros (20π)",
+          "correct": false,
+          "feedback": "O retângulo gera um cilindro, mas o triângulo no topo afunila até o vértice. Que sólido nasce de um triângulo?",
+          "figure": { "juntar": 0, "cores": { "b": "muted" }, "highlight": ["c2"] }
+        },
+        {
+          "id": "co4",
+          "label": "Só um cone (4π)",
+          "correct": false,
+          "feedback": "4π é apenas o volume do topo cônico gerado pelo triângulo. Falta somar o volume da base cilíndrica.",
+          "figure": { "juntar": 0, "cores": { "a": "muted" }, "highlight": ["c1"] }
+        },
+        {
           "id": "cc12",
           "label": "Cilindro + cone (12π)",
           "correct": true,
@@ -115,18 +129,11 @@
           "figure": { "juntar": 1, "highlight": ["c4"] }
         },
         {
-          "id": "cc20",
-          "label": "Dois cilindros (20π)",
+          "id": "cc6",
+          "label": "Cilindro + cone (6π)",
           "correct": false,
-          "feedback": "O triângulo no topo afunila e gera um cone (4π, não 12π). Total: 8π + 4π = 12π.",
-          "figure": { "juntar": 0, "highlight": ["c2"] }
-        },
-        {
-          "id": "co4",
-          "label": "Só um cone (4π)",
-          "correct": false,
-          "feedback": "4π é só o topo cônico; somando a base cilíndrica de 8π, temos 12π.",
-          "figure": { "juntar": 0, "highlight": ["c1"] }
+          "feedback": "Você acertou os sólidos, mas usou r em vez de r² nas áreas das bases. Lembre que a área do círculo é π·r².",
+          "figure": { "juntar": 1, "r": 1.41, "highlight": ["c1", "c2"] }
         }
       ]
     },

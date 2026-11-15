@@ -171,6 +171,7 @@
           "correct": true,
           "feedback": "Certo. S₅ = 5·(2 + 14) ÷ 2 = 40.",
           "figure": {
+            "acumular": true,
             "n": 5
           }
         },
@@ -178,9 +179,34 @@
           "id": "o2",
           "label": "26",
           "correct": false,
-          "feedback": "26 omite o quinto termo: é S₄. Somando os cinco, S₅ = 40.",
+          "feedback": "26 é a soma apenas dos quatro primeiros termos (S₄). O quinto termo, 14, ainda precisa entrar na conta.",
           "figure": {
+            "acumular": true,
             "n": 4
+          }
+        },
+        {
+          "id": "esqueceu-dividir-dois",
+          "label": "80",
+          "correct": false,
+          "feedback": "80 é 5 · (2 + 14) sem dividir por 2. Cada par de extremos entra duas vezes nessa conta; falta a metade.",
+          "figure": {
+            "a1": 16,
+            "d": 0,
+            "acumular": true,
+            "n": 5
+          }
+        },
+        {
+          "id": "somou-extremos",
+          "label": "16",
+          "correct": false,
+          "feedback": "16 é apenas a soma dos extremos (2 + 14). Falta multiplicar pelo número de termos e dividir por 2.",
+          "figure": {
+            "acesos": [
+              1,
+              5
+            ]
           }
         }
       ]

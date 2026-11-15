@@ -85,8 +85,20 @@ describe("passos da aula: divisao-polinomial-e-teorema-do-resto", () => {
   it("conferir-previsao: micro_challenge acerta resto 3", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)!.label).toBe("3");
-    expect(s.options.find((o) => !o.correct)!.label).toBe("0");
+    expect(s.options).toHaveLength(4);
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("3");
+    expect(s.options.find((o) => o.id === "micro-erro")!.label).toBe("0");
+    // termo constante: P(0) = -1 ≠ 3
+    const p0 = avaliar(quad(1, 0, -1), 0);
+    expect(p0).toBe(-1);
+    expect(s.options.find((o) => o.id === "termo-constante")!.label).toBe("−1");
+    expect(String(p0)).not.toBe(certaOpt.label);
+    // sinal trocado do termo constante: 2² + 1 = 5 ≠ 3
+    const pErr = avaliar(quad(1, 0, 1), 2);
+    expect(pErr).toBe(5);
+    expect(s.options.find((o) => o.id === "sinal-constante")!.label).toBe("5");
+    expect(String(pErr)).not.toBe(certaOpt.label);
   });
 
   it("fechamento: referências da fórmula existem no glossário", () => {

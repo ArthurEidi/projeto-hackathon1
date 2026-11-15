@@ -162,25 +162,54 @@
       },
       "options": [
         {
+          "id": "o2",
+          "label": "−6",
+          "correct": false,
+          "feedback": "−6 conta cinco avanços de −2 a partir de a₁. De a₁ até a₅, quantos passos de −2 realmente existem?",
+          "figure": {
+            "termos": 6,
+            "acesos": [
+              6
+            ]
+          }
+        },
+        {
           "id": "o1",
           "label": "−4",
           "correct": true,
           "feedback": "Certo. Quatro passos dão 4 − 8 = −4.",
           "figure": {
+            "termos": 5,
             "acesos": [
               5
             ]
           }
         },
         {
-          "id": "o2",
-          "label": "−6",
+          "id": "sinal-trocado",
+          "label": "12",
           "correct": false,
-          "feedback": "Contou cinco avanços; são quatro, então a₅ = −4.",
+          "feedback": "12 vem de usar d = +2 em vez de −2. Como a razão é negativa, os termos diminuem a cada passo.",
           "figure": {
-            "termos": 6,
+            "d": 2,
+            "termos": 5,
             "acesos": [
-              6
+              5
+            ]
+          }
+        },
+        {
+          "id": "usou-pg",
+          "label": "64",
+          "correct": false,
+          "feedback": "64 vem de multiplicar por −2 quatro vezes, como numa PG. Aqui a regra é PA: soma-se −2 a cada passo.",
+          "figure": {
+            "regra": "pg",
+            "d": 0,
+            "q": -2,
+            "termos": 5,
+            "acesos": [
+              5
             ]
           }
         }

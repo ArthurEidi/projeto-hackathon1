@@ -36,11 +36,24 @@ describe("passos da aula", () => {
     expect(p.termos).toBe(6);
   });
 
-  it("desafio: a₅ da PA (4, −2) é −4 e a₆ seria −6", () => {
+  it("desafio: a₅ da PA (4, −2) é −4 e as erradas refletem erros reais", () => {
     expect([pa(4, -2, 5), pa(4, -2, 6)]).toEqual([-4, -6]);
     const s = passo(L, "micro-desafio");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)!.label).toBe("−4");
+    expect(s.options).toHaveLength(4);
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("−4");
+    // 5 avanços em vez de 4: a₆ = -6 ≠ -4
+    expect(pa(4, -2, 6)).toBe(-6);
+    expect(s.options.find((o) => o.id === "o2")!.label).toBe("−6");
+    // sinal de d trocado: pa(4, +2, 5) = 12 ≠ -4
+    expect(pa(4, 2, 5)).toBe(12);
+    expect(s.options.find((o) => o.id === "sinal-trocado")!.label).toBe("12");
+    expect("12").not.toBe(certaOpt.label);
+    // confundiu PA com PG: pg(4, -2, 5) = 64 ≠ -4
+    expect(pg(4, -2, 5)).toBe(64);
+    expect(s.options.find((o) => o.id === "usou-pg")!.label).toBe("64");
+    expect("64").not.toBe(certaOpt.label);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => fechamentoOk(L));

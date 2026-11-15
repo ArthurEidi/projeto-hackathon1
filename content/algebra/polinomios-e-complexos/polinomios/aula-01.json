@@ -202,7 +202,7 @@
           "id": "micro-erro",
           "label": "6",
           "correct": false,
-          "feedback": "Você somou expoentes; o maior expoente não nulo é 3, então o grau é 3.",
+          "feedback": "6 é a soma dos coeficientes sem sinal (3 + 2 + 1). O grau não depende dos coeficientes: olhe o maior expoente de x com coeficiente não nulo.",
           "figure": {
             "curvas": [
               {
@@ -222,6 +222,60 @@
                 "c": 0,
                 "cor": "c1",
                 "rotulo": "x⁶ (grau 6)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "soma-expoentes",
+          "label": "4",
+          "correct": false,
+          "feedback": "4 vem de somar os expoentes 3 + 1 de x³ e x. Na soma de termos, os expoentes não se somam; vale o maior deles.",
+          "figure": {
+            "curvas": [
+              {
+                "tipo": "cubica",
+                "a": 3,
+                "b": 0,
+                "c": -2,
+                "d": 1,
+                "cor": "c3",
+                "rotulo": "3x³ − 2x + 1"
+              },
+              {
+                "tipo": "potencia",
+                "a": 1,
+                "b": 0,
+                "n": 4,
+                "c": 0,
+                "cor": "c1",
+                "rotulo": "x⁴ (grau 4)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "termo-menor",
+          "label": "1",
+          "correct": false,
+          "feedback": "1 é o termo constante (ou o expoente de −2x). O grau é definido pelo termo de maior expoente com coeficiente não nulo.",
+          "figure": {
+            "curvas": [
+              {
+                "tipo": "cubica",
+                "a": 3,
+                "b": 0,
+                "c": -2,
+                "d": 1,
+                "cor": "c3",
+                "rotulo": "3x³ − 2x + 1"
+              },
+              {
+                "tipo": "afim",
+                "a": -2,
+                "b": 1,
+                "cor": "c1",
+                "rotulo": "−2x + 1 (grau 1)"
               }
             ]
           }

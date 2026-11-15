@@ -72,8 +72,19 @@ describe("passos da aula", () => {
   it("conferir-previsao: em (x − 1)²(x + 2), raiz 1 tem multiplicidade 2", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)!.label).toBe("1");
-    expect(s.options.find((o) => !o.correct)!.label).toBe("−2");
+    expect(s.options).toHaveLength(4);
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("1");
+    expect(s.options.find((o) => o.id === "micro-erro")!.label).toBe("−2");
+    // sinal trocado do fator (x - 1): P(-1) = (-2)²(1) = 4 ≠ 0
+    const p = cubica(1, 0, -3, 2);
+    expect(avaliar(p, -1)).toBe(4);
+    expect(s.options.find((o) => o.id === "sinal-trocado-fator")!.label).toBe("−1");
+    expect("−1").not.toBe(certaOpt.label);
+    // sinal trocado de (x + 2) / expoente 2: P(2) = (1)²(4) = 4 ≠ 0
+    expect(avaliar(p, 2)).toBe(4);
+    expect(s.options.find((o) => o.id === "termo-positivo")!.label).toBe("2");
+    expect("2").not.toBe(certaOpt.label);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

@@ -229,7 +229,7 @@
           "id": "micro-erro",
           "label": "0",
           "correct": false,
-          "feedback": "Você confundiu 2 com raiz; P(2)=4−1=3, então o resto é 3.",
+          "feedback": "Você tratou 2 como raiz da curva. Veja no gráfico que x = 2 não cruza o eixo; avalie P(2) para achar a altura.",
           "figure": {
             "marcar": {
               "raizes": true
@@ -253,6 +253,57 @@
           "label": "3",
           "correct": true,
           "feedback": "Certo: 3; P(2)=4−1=3."
+        },
+        {
+          "id": "termo-constante",
+          "label": "−1",
+          "correct": false,
+          "feedback": "−1 é P(0), o corte no eixo y. Para o resto por x − 2, avalie a curva na raiz do divisor, em x = 2.",
+          "figure": {
+            "marcar": {
+              "interceptoY": true
+            },
+            "cores": {
+              "interceptoY": "c4"
+            },
+            "ponto": {
+              "curva": 0,
+              "x": 0,
+              "cor": "c4"
+            }
+          }
+        },
+        {
+          "id": "sinal-constante",
+          "label": "5",
+          "correct": false,
+          "feedback": "5 vem de somar 1 em vez de subtrair 1 ao fazer 2² + 1. Mantenha o sinal de −1 em x² − 1 ao avaliar em 2.",
+          "figure": {
+            "curvas": [
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": 1,
+                "cor": "c3",
+                "rotulo": "x² + 1"
+              }
+            ],
+            "ponto": {
+              "curva": 0,
+              "x": 2,
+              "cor": "c4"
+            },
+            "guias": {
+              "verticais": [
+                {
+                  "v": 2,
+                  "rotulo": "x = 2",
+                  "cor": "c1"
+                }
+              ]
+            }
+          }
         }
       ]
     },

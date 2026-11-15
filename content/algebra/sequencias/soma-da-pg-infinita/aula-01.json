@@ -168,21 +168,44 @@
       },
       "options": [
         {
+          "id": "o2",
+          "label": "14",
+          "correct": false,
+          "feedback": "14 é a soma parcial S₃ (8 + 4 + 2). Ainda falta somar toda a cauda infinita 1 + 0,5 + ….",
+          "figure": {
+            "n": 3
+          }
+        },
+        {
+          "id": "soma-dois-termos",
+          "label": "12",
+          "correct": false,
+          "feedback": "12 é só a soma dos dois primeiros termos (8 + 4). A série continua infinitamente além do segundo termo.",
+          "figure": {
+            "n": 2
+          }
+        },
+        {
+          "id": "segundo-termo",
+          "label": "4",
+          "correct": false,
+          "feedback": "4 é apenas o segundo termo (8 · 0,5). A soma infinita acumula todos os termos com a₁ ÷ (1 − q).",
+          "figure": {
+            "n": 2,
+            "acumular": false,
+            "acesos": [
+              2
+            ]
+          }
+        },
+        {
           "id": "o1",
           "label": "16",
           "correct": true,
           "feedback": "Certo. S∞ = 8 ÷ (1 − 1/2) = 16.",
           "figure": {
-            "n": 6
-          }
-        },
-        {
-          "id": "o2",
-          "label": "14",
-          "correct": false,
-          "feedback": "14 é a soma até 2; a cauda soma mais 2, e o total é 16.",
-          "figure": {
-            "n": 3
+            "n": 6,
+            "limite": true
           }
         }
       ]

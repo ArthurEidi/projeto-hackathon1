@@ -34,12 +34,25 @@ describe("passos da aula", () => {
     expect(soma(termosPG(5, 0, 6))).toBe(5); // q = 0: só a₁
   });
 
-  it("desafio: S₅ = 40 e S₄ = 26", () => {
+  it("desafio: S₅ = 40 e as erradas refletem erros reais", () => {
     expect([sPA(2, 14, 5), soma(termosPA(2, 3, 5))]).toEqual([40, 40]);
     expect(soma(termosPA(2, 3, 4))).toBe(26);
     const s = passo(L, "micro-desafio");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)!.label).toBe("40");
+    expect(s.options).toHaveLength(4);
+    const certaOpt = s.options.find((o) => o.correct)!;
+    expect(certaOpt.label).toBe("40");
+    // omitiu o 5º termo: S₄ = 26 ≠ 40
+    expect(s.options.find((o) => o.id === "o2")!.label).toBe("26");
+    // esqueceu de dividir por 2: 5 * (2 + 14) = 80 ≠ 40
+    const semDividir = 5 * (2 + 14);
+    expect(semDividir).toBe(80);
+    expect(s.options.find((o) => o.id === "esqueceu-dividir-dois")!.label).toBe("80");
+    expect(String(semDividir)).not.toBe(certaOpt.label);
+    // somou apenas os extremos: 2 + 14 = 16 ≠ 40
+    expect(2 + 14).toBe(16);
+    expect(s.options.find((o) => o.id === "somou-extremos")!.label).toBe("16");
+    expect(String(2 + 14)).not.toBe(certaOpt.label);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => fechamentoOk(L));

@@ -190,9 +190,27 @@
           "id": "micro-erro",
           "label": "7",
           "correct": false,
-          "feedback": "Você somou os catetos; √(9+16)=5, então o módulo é 5.",
+          "feedback": "Você somou 3 + 4 como se as partes ficassem na mesma reta, como na figura. Os eixos são perpendiculares: o módulo é a hipotenusa.",
           "figure": {
-            "highlight": ["c1", "c2"]
+            "z": [7, 0],
+            "mostrar": {
+              "conjugado": false,
+              "modulo": false
+            },
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "esqueceu-raiz",
+          "label": "25",
+          "correct": false,
+          "feedback": "25 é |z|², a soma 3² + 4² antes da raiz. O módulo é a distância até a origem, então falta extrair a raiz quadrada.",
+          "figure": {
+            "mostrar": {
+              "conjugado": false,
+              "modulo": false
+            },
+            "highlight": ["c3"]
           }
         },
         {
@@ -201,7 +219,25 @@
           "correct": true,
           "feedback": "Certo: 5; √(3²+4²)=√25=5.",
           "figure": {
+            "mostrar": {
+              "conjugado": true,
+              "modulo": true
+            },
             "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "subtraiu-quadrados",
+          "label": "√7",
+          "correct": false,
+          "feedback": "√7 vem de 4² − 3²: assim o 4 vira a hipotenusa, como na figura. Em 3 + 4i, o 3 e o 4 são os catetos, e a hipotenusa soma os quadrados deles.",
+          "figure": {
+            "z": [3, 2.6457513],
+            "mostrar": {
+              "conjugado": false,
+              "modulo": true
+            },
+            "highlight": ["c1", "c2"]
           }
         }
       ]
