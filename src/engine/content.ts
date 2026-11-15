@@ -1,7 +1,7 @@
 import taxonomyRaw from "../../content/taxonomy.json";
 import { Lesson, Taxonomy } from "./schema";
 
-const modules = import.meta.glob("../../content/**/aula-*.json", { eager: true, import: "default" });
+const modules = import.meta.glob("../../content/**/aula-*.json", { import: "default" });
 const PREFIX = "../../content/";
 
 export const taxonomy: Taxonomy = Taxonomy.parse(taxonomyRaw);
@@ -38,9 +38,15 @@ export function listAulas(): AulaEntry[] {
 
 export type LoadResult = { ok: true; lesson: Lesson } | { ok: false; error: string };
 
-export function loadLesson(arquivo: string): LoadResult {
-  const raw = modules[PREFIX + arquivo];
-  if (!raw) return { ok: false, error: `Arquivo não encontrado: content/${arquivo}` };
+export async function loadLesson(arquivo: string): Promise<LoadResult> {
+  const importer = modules[PREFIX + arquivo];
+  if (!importer) return { ok: false, error: `Arquivo não encontrado: content/${arquivo}` };
+  let raw: unknown;
+  try {
+    raw = await importer();
+  } catch {
+    return { ok: false, error: `Não foi possível carregar content/${arquivo}. Tente abrir a aula novamente.` };
+  }
   const parsed = Lesson.safeParse(raw);
   if (!parsed.success) return { ok: false, error: parsed.error.message };
   return { ok: true, lesson: parsed.data };

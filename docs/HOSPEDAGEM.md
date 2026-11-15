@@ -36,6 +36,9 @@ Rodar `npm run build` e arrastar a pasta `dist/` para o painel "Deploy manually"
 
 ## Pendências conhecidas
 
-- **Tamanho:** um único JS de cerca de 2 MB (536 KB com gzip), porque todas as aulas entram no bundle (`import.meta.glob(..., { eager: true })` em `src/engine/content.ts`). Funciona, mas o primeiro carregamento em 3G é lento. Melhoria futura: carregar cada aula sob demanda (glob sem `eager`) e separar os widgets pesados.
+- **Tamanho (B20, 15/11/2026):** aulas carregadas sob demanda. Antes, maior JS e JS inicial: **2.072,17 kB / 538,39 kB gzip**; depois, **683,05 kB / 213,81 kB gzip** (redução de 67% sem compressão e 60% com gzip). São 104 chunks de aula, de 9,76 a 18,84 kB; nenhum é baixado na trilha. O app e os widgets ainda compõem o maior chunk, acima do aviso de 500 kB do Vite; separar widgets fica como otimização futura.
+- **Validação B20:** 128 arquivos / 2.003 testes aprovados e `npm run typecheck` aprovado. `npm run build` bloqueou no prebuild por `uv_os_get_passwd returned ENOMEM (not enough memory)` do tsx; as duas medições usaram `npm --ignore-scripts run build`, que executou TypeScript e Vite com sucesso, sem executar o lint. A validação completa do conteúdo continua pendente neste ambiente.
+- **Preview B20:** `npx vite preview --port 5310 --strictPort`, Chrome headless com viewport de 400 × 860 via CDP. Trilha sem requisições de chunks de aula; abrir `#/aula/algebra/funcoes/funcao-quadratica/aula-01` baixou somente um chunk de aula e exibiu o gráfico, sem exceções JavaScript. Capturas locais em `%TEMP%/b20-trilha.png` e `%TEMP%/b20-aula.png`. Rotas e atalho de desenvolvimento `?passo=N` preservados.
+
 - Sem favicon e sem manifesto de PWA (não instala como app no celular).
 - A fonte Nunito vem do Google Fonts (precisa de internet).
