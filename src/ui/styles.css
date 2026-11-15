@@ -407,11 +407,14 @@ button {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+/* Em lista, cartões baixos: as 4 alternativas cabem acima do rodapé em 400 × 860 (B14, 15/11). */
 .options--lista {
   grid-template-columns: 1fr;
+  gap: 8px;
 }
 .options--lista .card {
-  min-height: 56px;
+  min-height: 44px;
+  padding: 8px 12px;
 }
 
 /* ---------- Fechamento ---------- */
