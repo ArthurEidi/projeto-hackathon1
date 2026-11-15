@@ -5,6 +5,9 @@ import { TactileButton } from "../ui/Tactile";
 import { duvidaLiberada, StepLayout } from "./StepLayout";
 import type { StepProps } from "./types";
 
+/** "/videos/x.mp4" relativo à base do site (o app pode ser servido num subcaminho, ex.: GitHub Pages). */
+const publico = (caminho: string) => `${import.meta.env.BASE_URL}${caminho.replace(/^\//, "")}`;
+
 /** Container limpo: sem barra de busca, só reproduzir de novo depois do fim. */
 export function ManimVideo({ step, onNext }: StepProps<ManimVideoStep>) {
   const video = useRef<HTMLVideoElement>(null);
@@ -30,8 +33,8 @@ export function ManimVideo({ step, onNext }: StepProps<ManimVideoStep>) {
         ) : (
           <video
             ref={video}
-            src={step.src}
-            poster={step.poster}
+            src={publico(step.src)}
+            poster={step.poster && publico(step.poster)}
             autoPlay
             muted
             playsInline
