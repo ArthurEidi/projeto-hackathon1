@@ -60,6 +60,16 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | B14e. Auditoria das 47 alternativas novas (conta, feedback, figura em 400 px depois de VERIFICAR) e publicação | maestro (Claude Code) | 15/11 | docs de coordenação, correções pontuais nos arquivos da B14 |
 | B15. ~~Preparar a hospedagem (build estático, sem publicar)~~ concluída 15/11: base relativa, workflow manual, `docs/HOSPEDAGEM.md`; publicar depende do usuário | maestro (Claude Code) | 15/11 | `vite.config.ts`, `package.json` (scripts), `docs/HOSPEDAGEM.md`, `.github/workflows/` (só disparo manual) |
 
+15/11, noite: o usuário pediu para seguir nas próximas prioridades usando mais Codex e Antigravity (o limite do Claude chegou à metade). Briefing: `C:\Users\mkf10\projetos\briefing-b16.md`. O Codex #2 segue sem permissão de comandos; foi recrutado o Codex "Ferrugem".
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B16. Imagem nas questões de vestibular (schema, treino, lint, GUIA §2.3) | Codex "Ferrugem" | 15/11 | `src/engine/schema.ts`, `src/treino/**`, `src/ui/styles.css` (regras novas), `scripts/lint-content.ts`, testes, GUIA §2.3 |
+| B17a. Candidatas do ENEM com imagem: 20 capítulos de geometria sem vestibular | Antigravity | 15/11 | `docs/fontes-candidatas/<slug>.md` desses capítulos, `public/vestibular/` (novos), `docs/revisao/vestibular-b17a.md` |
+| B17b. Candidatas do ENEM com imagem: 25 capítulos de álgebra e aritmética sem vestibular | Antigravity #2 | 15/11 | idem, `docs/revisao/vestibular-b17b.md` |
+| B18. Vestibular nas aulas `equacoes-exponenciais`, `equacoes-logaritmicas`, `equacoes-quadraticas` (candidatas prontas) | Codex | 15/11 | essas 3 aulas, os 3 roteiros (seção de vestibular), `docs/revisao/vestibular-b18.md` |
+| B19. Quais defeitos de widget continuam abertos (só relatório) | Antigravity #3 | 15/11 | `docs/visual/pendencias-b19.md` |
+
 ## Pedidos entre máquinas
 
 Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo no passo 3 de `elipse`"). Formato: data, quem pede, para quem, o quê.
