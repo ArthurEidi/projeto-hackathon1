@@ -184,7 +184,7 @@
           "id": "micro-erro",
           "label": "diag(−2;−1)",
           "correct": false,
-          "feedback": "Você trocou sinais; desfazer a escala pede 2·0,5=1, então a inversa é diag(0,5;1).",
+          "feedback": "Trocar sinais espelha o plano em vez de desfazer a escala: o vetor não volta a (1; 1). Cada entrada da diagonal, vezes a da inversa, dá 1.",
           "figure": {
             "depois": [
               [-2, 0],
@@ -192,6 +192,32 @@
             ],
             "janela": [-3, 3],
             "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "esqueceu-det",
+          "label": "diag(1;2)",
+          "correct": false,
+          "feedback": "Você trocou a e d, como na fórmula da 2×2, mas esqueceu de dividir pelo determinante. Por isso o vetor dobra em vez de voltar a (1; 1).",
+          "figure": {
+            "depois": [
+              [1, 0],
+              [0, 2]
+            ],
+            "highlight": ["c3"]
+          }
+        },
+        {
+          "id": "nao-trocou-a-d",
+          "label": "diag(1;0,5)",
+          "correct": false,
+          "feedback": "Você dividiu pelo determinante, mas não trocou a e d de lugar. O x continua dobrado e o y encolhe: o vetor não volta a (1; 1).",
+          "figure": {
+            "depois": [
+              [1, 0],
+              [0, 0.5]
+            ],
+            "highlight": ["c1", "c3"]
           }
         },
         {

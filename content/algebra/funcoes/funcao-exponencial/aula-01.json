@@ -97,11 +97,38 @@
       },
       "options": [
         {
-          "id": "erro",
+          "id": "expoente-virou-sinal",
           "label": "−4",
           "correct": false,
-          "feedback": "O expoente negativo não deixa a saída negativa: voltar dois passos divide por 2 duas vezes. 2⁻² = 1/4.",
-          "figure": { "ponto": { "x": -2, "cor": "c1" }, "highlight": ["c1"] }
+          "feedback": "Expoente negativo não deixa a saída negativa: a curva de 2ˣ nunca desce abaixo do eixo x. Saia de x = 0 e ande para a esquerda, dividindo.",
+          "figure": {
+            "guias": {
+              "horizontais": [{ "v": -4, "rotulo": "y = −4", "cor": "c1" }],
+              "verticais": [{ "v": -2, "rotulo": "x = −2", "cor": "muted" }]
+            },
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "ignorou-sinal",
+          "label": "4",
+          "correct": false,
+          "feedback": "Você ignorou o sinal do expoente: 4 é 2², a saída em x = 2. Em x = −2 você anda para a esquerda, e cada passo divide por 2.",
+          "figure": {
+            "ponto": { "x": 2, "cor": "c1" },
+            "guias": { "verticais": [{ "v": -2, "rotulo": "x = −2", "cor": "muted" }] }
+          }
+        },
+        {
+          "id": "sinal-na-saida",
+          "label": "−1/4",
+          "correct": false,
+          "feedback": "Você levou o menos do expoente para a saída. A curva de 2ˣ fica toda acima da assíntota y = 0: nenhuma potência de base 2 é negativa.",
+          "figure": {
+            "marcar": { "assintota": true },
+            "guias": { "horizontais": [{ "v": -0.25, "rotulo": "y = −1/4", "cor": "c4" }] },
+            "highlight": ["c4"]
+          }
         },
         {
           "id": "certa",

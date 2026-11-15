@@ -237,29 +237,99 @@
       },
       "options": [
         {
-          "id": "erro",
-          "label": "(−1;−2)",
-          "correct": false,
-          "feedback": "Inverte os sentidos das translações; O vértice (0;0) vai 1 à direita e 2 para cima: (1;2).",
-          "figure": {
-            "ponto": {
-              "curva": null,
-              "x": -1,
-              "cor": "c1"
-            }
-          }
-        },
-        {
           "id": "certa",
           "label": "(1;2)",
           "correct": true,
           "feedback": "O vértice (0;0) vai 1 à direita e 2 para cima: (1;2).",
+          "figure": { "ponto": { "curva": 1, "x": 1, "cor": "c4" } }
+        },
+        {
+          "id": "sentidos-trocados",
+          "label": "(−1;−2)",
+          "correct": false,
+          "feedback": "Os dois sentidos saíram trocados. Lembre: f(x − h) anda h para a direita, e somar k fora sobe k.",
           "figure": {
-            "ponto": {
-              "curva": 1,
-              "x": 1,
-              "cor": "c4"
-            }
+            "y": [-5, 4],
+            "curvas": [
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "fantasma": true, "rotulo": "x²" },
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": 0,
+                "transforma": { "a": -1, "b": 1, "h": 1, "k": 2 },
+                "cor": "c3"
+              },
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": 0,
+                "transforma": { "a": -1, "b": 1, "h": -1, "k": -2 },
+                "cor": "c1",
+                "rotulo": "−(x+1)²−2"
+              }
+            ],
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "refletiu-o-k",
+          "label": "(1;−2)",
+          "correct": false,
+          "feedback": "Você deixou o menos da frente agir também sobre o termo de fora. Ele reflete só f(x − 1); o que vem somado depois não é refletido.",
+          "figure": {
+            "y": [-5, 4],
+            "curvas": [
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "fantasma": true, "rotulo": "x²" },
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": 0,
+                "transforma": { "a": -1, "b": 1, "h": 1, "k": 2 },
+                "cor": "c3"
+              },
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": 0,
+                "transforma": { "a": -1, "b": 1, "h": 1, "k": -2 },
+                "cor": "c4",
+                "rotulo": "−(x−1)²−2"
+              }
+            ],
+            "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "sinal-de-h",
+          "label": "(−1;2)",
+          "correct": false,
+          "feedback": "Você trocou o sentido horizontal: f(x − 1) não anda para a esquerda. Teste: qual x deixa x − 1 igual a 0?",
+          "figure": {
+            "curvas": [
+              { "tipo": "quadratica", "a": 1, "b": 0, "c": 0, "fantasma": true, "rotulo": "x²" },
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": 0,
+                "transforma": { "a": -1, "b": 1, "h": 1, "k": 2 },
+                "cor": "c3"
+              },
+              {
+                "tipo": "quadratica",
+                "a": 1,
+                "b": 0,
+                "c": 0,
+                "transforma": { "a": -1, "b": 1, "h": -1, "k": 2 },
+                "cor": "c1",
+                "rotulo": "−(x+1)²+2"
+              }
+            ],
+            "highlight": ["c1"]
           }
         }
       ]

@@ -213,10 +213,17 @@
       },
       "options": [
         {
-          "id": "erro",
+          "id": "certa",
+          "label": "−2",
+          "correct": true,
+          "feedback": "−2<0; usa f(x)=x, logo f(−2)=−2.",
+          "figure": { "ponto": { "curva": 0, "x": -2, "cor": "c4" } }
+        },
+        {
+          "id": "trecho-errado",
           "label": "−4",
           "correct": false,
-          "feedback": "Aplica o trecho de x≥0 a uma entrada negativa; −2<0; usa f(x)=x, logo f(−2)=−2.",
+          "feedback": "A regra 2x vale só para x ≥ 0, e −2 não está nesse trecho. Veja primeiro em qual condição a entrada cai e use só a regra dela.",
           "figure": {
             "y": [-5, 4],
             "curvas": [
@@ -224,42 +231,55 @@
                 "tipo": "afim",
                 "a": 1,
                 "b": 0,
-                "dominio": {
-                  "de": null,
-                  "ate": 0,
-                  "abreDe": false,
-                  "abreAte": true
-                },
+                "dominio": { "de": null, "ate": 0, "abreDe": false, "abreAte": true },
                 "cor": "c3",
                 "rotulo": "x"
+              },
+              { "tipo": "afim", "a": 2, "b": 0, "cor": "c2", "rotulo": "2x" }
+            ],
+            "ponto": { "curva": 1, "x": -2, "coordenadas": true, "cor": "c1" }
+          }
+        },
+        {
+          "id": "somou-regras",
+          "label": "−6",
+          "correct": false,
+          "feedback": "Você somou as duas regras, como se f(x) = x + 2x. Cada entrada usa uma regra só: a do trecho em que ela cai.",
+          "figure": {
+            "y": [-7, 4],
+            "curvas": [
+              {
+                "tipo": "afim",
+                "a": 1,
+                "b": 0,
+                "dominio": { "de": null, "ate": 0, "abreDe": false, "abreAte": true },
+                "cor": "c3",
+                "rotulo": "x",
+                "fantasma": true
               },
               {
                 "tipo": "afim",
                 "a": 2,
                 "b": 0,
+                "dominio": { "de": 0, "ate": null, "abreDe": false, "abreAte": false },
                 "cor": "c2",
-                "rotulo": "2x"
-              }
+                "rotulo": "2x",
+                "fantasma": true
+              },
+              { "tipo": "afim", "a": 3, "b": 0, "cor": "c1", "rotulo": "x + 2x" }
             ],
-            "ponto": {
-              "curva": 1,
-              "x": -2,
-              "coordenadas": true,
-              "cor": "c1"
-            }
+            "ponto": { "curva": 2, "x": -2, "coordenadas": true, "cor": "c1" },
+            "highlight": ["c1"]
           }
         },
         {
-          "id": "certa",
-          "label": "−2",
-          "correct": true,
-          "feedback": "−2<0; usa f(x)=x, logo f(−2)=−2.",
+          "id": "valor-na-fronteira",
+          "label": "0",
+          "correct": false,
+          "feedback": "0 é a saída na fronteira x = 0, onde as regras se emendam, não em x = −2. Substitua a própria entrada na regra do trecho dela.",
           "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": -2,
-              "cor": "c4"
-            }
+            "ponto": { "curva": 1, "x": 0, "coordenadas": true, "cor": "c1" },
+            "guias": { "verticais": [{ "v": 0, "rotulo": "fronteira", "cor": "c1" }] }
           }
         }
       ]

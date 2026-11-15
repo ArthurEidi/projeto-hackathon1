@@ -84,6 +84,15 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("−2");
     expect(s.options.find((o) => !o.correct)!.label).toBe("−4");
+    expect(s.options).toHaveLength(4);
+    const lab = (n: number) => String(n).replace("-", "−");
+    const x = -2;
+    expect(lab(x)).toBe("−2"); // −2 < 0: trecho f(x) = x
+    expect(lab(2 * x)).toBe("−4"); // usou a regra 2x, do trecho x ≥ 0
+    expect(lab(x + 2 * x)).toBe("−6"); // somou as duas regras: x + 2x
+    expect(lab(2 * 0)).toBe("0"); // saída na fronteira x = 0, não na entrada −2
+    expect(s.options.map((o) => o.label)).toEqual(["−2", "−4", "−6", "0"]);
+    expect(new Set(s.options.map((o) => o.label)).size).toBe(4);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

@@ -57,6 +57,13 @@ describe("passos da aula", () => {
     const s = step("desafio-fronteira");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe(String(Math.round(lg(2, 8))));
+    expect(s.options).toHaveLength(4);
+    expect(2 ** 3).toBe(8);
+    const errados = [8, 8 / 2, 2 ** 8]; // argumento como resposta; dividiu pela base; elevou 2 ao argumento
+    expect(errados).toEqual([8, 4, 256]);
+    for (const e of errados) expect(2 ** e).not.toBe(8);
+    expect(lg(2, 4)).toBeCloseTo(2); // figura de "4": ponto (4; 2) do log
+    expect(s.options.map((o) => o.label)).toEqual(["8", "3", "4", "256"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

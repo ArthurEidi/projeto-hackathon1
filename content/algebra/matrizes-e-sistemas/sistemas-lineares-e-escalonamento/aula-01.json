@@ -274,26 +274,27 @@
           "id": "micro-erro",
           "label": "Infinitas",
           "correct": false,
-          "feedback": "Você confundiu 0=1 com 0=0; a contradição dá nenhuma solução.",
+          "feedback": "Infinitas apareceria com 0 = 0, quando uma equação repete a outra. Pergunte: algum par (x; y) faz 0x + 0y dar 1?",
           "figure": {
             "curvas": [
-              {
-                "tipo": "afim",
-                "a": -1,
-                "b": 2,
-                "cor": "c3",
-                "rotulo": "x + y = 2"
-              },
-              {
-                "tipo": "afim",
-                "a": -1,
-                "b": 2,
-                "cor": "c4",
-                "fantasma": true,
-                "rotulo": "2x + 2y = 4"
-              }
+              { "tipo": "afim", "a": -1, "b": 2, "cor": "c3", "rotulo": "x + y = 2" },
+              { "tipo": "afim", "a": -1, "b": 2, "cor": "c4", "fantasma": true, "rotulo": "2x + 2y = 4" }
             ],
             "highlight": ["c4"]
+          }
+        },
+        {
+          "id": "contou-equacoes",
+          "label": "Uma",
+          "correct": false,
+          "feedback": "Duas equações e duas incógnitas não garantem uma solução. Substitua qualquer par em 0x + 0y e veja se dá 1.",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": -1, "b": 2, "cor": "c3", "rotulo": "x + y = 2" },
+              { "tipo": "afim", "a": -1, "b": 2.5, "cor": "c4", "rotulo": "2x + 2y = 5" }
+            ],
+            "ponto": { "curva": null, "x": 2, "coordenadas": true, "cor": "c1" },
+            "highlight": ["c1"]
           }
         },
         {
@@ -301,8 +302,20 @@
           "label": "Nenhuma",
           "correct": true,
           "feedback": "Certo: Nenhuma; Zero nunca é igual a 1.",
+          "figure": { "highlight": ["c3", "c4"] }
+        },
+        {
+          "id": "uma-por-reta",
+          "label": "Duas",
+          "correct": false,
+          "feedback": "Você contou uma solução para cada equação. Solução do sistema é um par que satisfaz as duas ao mesmo tempo.",
           "figure": {
-            "highlight": ["c3", "c4"]
+            "curvas": [
+              { "tipo": "afim", "a": -1, "b": 2, "cor": "c3", "rotulo": "x + y = 2" },
+              { "tipo": "afim", "a": -1, "b": 2.5, "cor": "c4", "rotulo": "2x + 2y = 5" }
+            ],
+            "ponto": { "curva": 0, "x": 1, "coordenadas": true, "cor": "c3" },
+            "highlight": ["c3"]
           }
         }
       ]

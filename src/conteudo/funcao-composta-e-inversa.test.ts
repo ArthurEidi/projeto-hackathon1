@@ -73,6 +73,30 @@ describe("passos da aula", () => {
     const s = step("desafio-fronteira");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("(x − 1)/2");
+    expect(s.options).toHaveLength(4);
+    const f = (x: number) => 2 * x + 1;
+    const inversa = (x: number) => (x - 1) / 2;
+    expect([-2, 0, 1, 5].map((x) => inversa(f(x)))).toEqual([-2, 0, 1, 5]);
+    // cada errada falha em levar f(1) = 3 de volta a 1
+    const soTrocouSinal = (x: number) => 2 * x - 1; // trocou só o sinal do 1
+    const reciproca = (x: number) => 1 / (2 * x + 1); // usou 1/f(x)
+    const ordemTrocada = (x: number) => x / 2 - 1; // dividiu por 2 antes de tirar o 1
+    expect(soTrocouSinal(f(1))).toBe(5);
+    expect(reciproca(f(1))).toBe(1 / 7);
+    expect(ordemTrocada(f(1))).toBe(0.5);
+    expect(s.options.map((o) => o.label)).toEqual(["2x − 1", "1/(2x + 1)", "(x − 1)/2", "x/2 − 1"]);
+    // a curva de cada figura é a função da legenda: 1/(2x + 1) = 0,5/(x + 0,5)
+    const ultima = (id: string) => {
+      const o = s.options.find((op) => op.id === id)!;
+      const cs = (o.figure as { curvas: Parameters<typeof resolverCurva>[0][] }).curvas;
+      return resolverCurva(PlanoCartesiano.parse({ curvas: [cs[cs.length - 1]] }).curvas[0], {});
+    };
+    for (const x of [0, 1, 3]) {
+      expect(avaliar(ultima("so-trocou-sinal"), x)).toBeCloseTo(soTrocouSinal(x));
+      expect(avaliar(ultima("reciproca"), x)).toBeCloseTo(reciproca(x));
+      expect(avaliar(ultima("ordem-trocada"), x)).toBeCloseTo(ordemTrocada(x));
+      expect(avaliar(ultima("certa"), x)).toBeCloseTo(inversa(x));
+    }
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

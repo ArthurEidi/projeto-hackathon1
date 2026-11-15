@@ -182,24 +182,37 @@
       },
       "options": [
         {
-          "id": "erro",
-          "label": "x=−2 e y=−1",
-          "correct": false,
-          "feedback": "Troca os sinais dos deslocamentos; x−2 zera em 2; +1 fixa y=1.",
-          "figure": {
-            "assintotas": {
-              "x": [-2],
-              "y": [-1]
-            }
-          }
-        },
-        {
           "id": "certa",
           "label": "x=2 e y=1",
           "correct": true,
           "feedback": "x−2 zera em 2; +1 fixa y=1.",
+          "figure": { "marcar": { "assintota": true }, "highlight": ["c4"] }
+        },
+        {
+          "id": "sinais-trocados",
+          "label": "x=−2 e y=−1",
+          "correct": false,
+          "feedback": "Os sinais dos deslocamentos saíram trocados. A vertical fica onde o denominador zera; a horizontal, no número somado fora da fração.",
+          "figure": { "x": [-3, 6], "assintotas": { "x": [-2], "y": [-1] } }
+        },
+        {
+          "id": "papeis-trocados",
+          "label": "x=1 e y=2",
+          "correct": false,
+          "feedback": "Você trocou os papéis: um número vem do denominador, o outro é somado fora da fração. Iguale o denominador a zero para achar a vertical.",
+          "figure": { "assintotas": { "x": [1], "y": [2] } }
+        },
+        {
+          "id": "esqueceu-deslocamento",
+          "label": "x=2 e y=0",
+          "correct": false,
+          "feedback": "y = 0 é a horizontal de 1/(x−2), sem o termo de fora. O número somado fora da fração sobe a curva inteira, assíntota junto.",
           "figure": {
-            "highlight": ["c4"]
+            "curvas": [
+              { "tipo": "racional", "a": 1, "b": 2, "c": 1, "cor": "c3", "rotulo": "1/(x−2)+1" },
+              { "tipo": "racional", "a": 1, "b": 2, "c": 0, "cor": "c1", "rotulo": "1/(x−2)" }
+            ],
+            "highlight": ["c1"]
           }
         }
       ]

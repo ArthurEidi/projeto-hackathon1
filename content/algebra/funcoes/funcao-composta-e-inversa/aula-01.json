@@ -116,6 +116,32 @@
       },
       "options": [
         {
+          "id": "so-trocou-sinal",
+          "label": "2x − 1",
+          "correct": false,
+          "feedback": "Trocar o sinal do 1 não desfaz o ×2: essa reta nem passa pelo reflexo (3; 1). Troque x e y em y = 2x + 1 e isole o novo y.",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 0, "fantasma": true },
+              { "tipo": "afim", "a": 2, "b": 1, "cor": "c3" },
+              { "tipo": "afim", "a": 2, "b": -1, "cor": "c4", "rotulo": "2x − 1" }
+            ]
+          }
+        },
+        {
+          "id": "reciproca",
+          "label": "1/(2x + 1)",
+          "correct": false,
+          "feedback": "Você calculou 1/f(x), o inverso multiplicativo, não a função inversa. A inversa desfaz f: como f(1) = 3, ela precisa levar 3 de volta a 1.",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 0, "fantasma": true },
+              { "tipo": "afim", "a": 2, "b": 1, "cor": "c3" },
+              { "tipo": "racional", "a": 0.5, "b": -0.5, "c": 0, "cor": "c1", "rotulo": "1/(2x + 1)" }
+            ]
+          }
+        },
+        {
           "id": "certa",
           "label": "(x − 1)/2",
           "correct": true,
@@ -129,16 +155,17 @@
           }
         },
         {
-          "id": "erro",
-          "label": "2x − 1",
+          "id": "ordem-trocada",
+          "label": "x/2 − 1",
           "correct": false,
-          "feedback": "Você só trocou o sinal de 1. É preciso isolar y após trocar x e y: f⁻¹(x) = (x − 1)/2.",
+          "feedback": "Você desfez na mesma ordem de f: dividiu por 2 antes de tirar o 1. Como f multiplica e depois soma, desfaça primeiro a soma.",
           "figure": {
             "curvas": [
               { "tipo": "afim", "a": 1, "b": 0, "fantasma": true },
               { "tipo": "afim", "a": 2, "b": 1, "cor": "c3" },
-              { "tipo": "afim", "a": 2, "b": -1, "cor": "c4", "rotulo": "2x − 1" }
-            ]
+              { "tipo": "afim", "a": 0.5, "b": -1, "cor": "c1", "rotulo": "x/2 − 1" }
+            ],
+            "highlight": ["c1"]
           }
         }
       ]

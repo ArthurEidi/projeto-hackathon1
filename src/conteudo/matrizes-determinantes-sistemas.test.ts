@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
 import { avaliar, type CurvaResolvida } from "../widgets/common/plot2d";
+import { aplicar } from "../widgets/common/transformacao/calc";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -80,6 +81,15 @@ describe("passos da aula: matrizes-determinantes-sistemas", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("(2;3)");
     expect(s.options.find((o) => !o.correct)!.label).toBe("(2;6)");
+    expect(s.options).toHaveLength(4);
+    const lab = ({ x, y }: { x: number; y: number }) => `(${x};${y})`;
+    expect(lab(aplicar([[2, 0], [0, 1]], { x: 1, y: 3 }))).toBe("(2;3)");
+    expect(lab(aplicar([[2, 0], [0, 2]], { x: 1, y: 3 }))).toBe("(2;6)"); // dobrou as duas coordenadas
+    expect(lab(aplicar([[1, 0], [0, 2]], { x: 1, y: 3 }))).toBe("(1;6)"); // o 2 foi para a direção y
+    expect(lab({ x: 1 * 2, y: 1 * 0 })).toBe("(2;0)"); // parou em 1·(coluna 1), sem somar 3·(coluna 2)
+    expect(lab(aplicar([[2, 0], [0, 0]], { x: 1, y: 3 }))).toBe("(2;0)"); // figura: matriz sem a 2ª coluna
+    expect(s.options.map((o) => o.label)).toEqual(["(2;6)", "(2;3)", "(1;6)", "(2;0)"]);
+    expect(new Set(s.options.map((o) => o.label)).size).toBe(4);
   });
 
   it("fechamento: referências da fórmula existem no glossário", () => {

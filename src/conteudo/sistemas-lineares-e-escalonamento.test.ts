@@ -83,6 +83,19 @@ describe("passos da aula: sistemas-lineares-e-escalonamento", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("Nenhuma");
     expect(s.options.find((o) => !o.correct)!.label).toBe("Infinitas");
+    expect(s.options).toHaveLength(4);
+    // x + y = 2 e 2x + 2y = 5: L₂ − 2L₁ dá 0x + 0y = 5 − 2·2 = 1
+    expect(5 - 2 * 2).toBe(1);
+    // "Infinitas" exigiria 0 = 0, isto é, 2x + 2y = 4 (4 − 2·2 = 0)
+    expect(4 - 2 * 2).toBe(0);
+    // "Uma": duas equações e duas incógnitas, mas o determinante 1·2 − 1·2 é 0, então não há solução única
+    expect(1 * 2 - 1 * 2).toBe(0);
+    // "Duas": contou uma solução por equação; (1; 1) cumpre L₁ (1 + 1 = 2), mas não L₂ (2 + 2 = 4 ≠ 5)
+    expect(1 + 1).toBe(2);
+    expect(2 * 1 + 2 * 1).not.toBe(5);
+    // as retas nunca se encontram: a distância vertical é sempre 0,5
+    for (const x of [-2, 0, 1, 2, 5]) expect(avaliar(afim(-1, 2.5), x) - avaliar(afim(-1, 2), x)).toBe(0.5);
+    expect(s.options.map((o) => o.label)).toEqual(["Infinitas", "Uma", "Nenhuma", "Duas"]);
   });
 
   it("fechamento: referências da fórmula existem no glossário", () => {

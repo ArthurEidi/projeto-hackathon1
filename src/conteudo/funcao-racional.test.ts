@@ -84,6 +84,15 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("x=2 e y=1");
     expect(s.options.find((o) => !o.correct)!.label).toBe("x=−2 e y=−1");
+    expect(s.options).toHaveLength(4);
+    const lab = (a: { x?: number; y?: number }) => `x=${a.x} e y=${a.y}`.replace(/-/g, "−");
+    const certaA = assintotas(rac(1, 2, 1));
+    expect(lab(certaA)).toBe("x=2 e y=1");
+    expect(lab(assintotas(rac(1, -2, -1)))).toBe("x=−2 e y=−1"); // sinais dos deslocamentos trocados
+    expect(lab({ x: certaA.y, y: certaA.x })).toBe("x=1 e y=2"); // papéis trocados: o +1 de fora virou a vertical
+    expect(lab(assintotas(rac(1, 2, 0)))).toBe("x=2 e y=0"); // esqueceu o +1: assíntotas de 1/(x − 2)
+    expect(s.options.map((o) => o.label)).toEqual(["x=2 e y=1", "x=−2 e y=−1", "x=1 e y=2", "x=2 e y=0"]);
+    expect(new Set(s.options.map((o) => o.label)).size).toBe(4);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

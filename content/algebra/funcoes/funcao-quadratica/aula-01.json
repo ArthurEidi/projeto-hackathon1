@@ -93,11 +93,18 @@
       },
       "options": [
         {
-          "id": "erro",
+          "id": "sinais-trocados",
           "label": "(−1; 1)",
           "correct": false,
-          "feedback": "Os sinais saíram trocados: em x = −1 a saída é 3, não 1. O quadrado zera em x = 1 e o mínimo é −1.",
+          "feedback": "Os dois sinais saíram trocados: em x = −1 a saída é 3, não 1. Ache o x que zera o quadrado (x − 1)² e leia a saída ali.",
           "figure": { "ponto": { "x": -1, "cor": "c4" }, "highlight": ["c4"] }
+        },
+        {
+          "id": "intercepto",
+          "label": "(0; 0)",
+          "correct": false,
+          "feedback": "(0; 0) é onde a parábola corta os eixos, não o ponto mais baixo. O vértice fica no meio das duas raízes.",
+          "figure": { "ponto": { "x": 0, "cor": "c1" }, "marcar": { "raizes": true }, "highlight": ["c1"] }
         },
         {
           "id": "certa",
@@ -105,6 +112,19 @@
           "correct": true,
           "feedback": "Isso. O quadrado zera em x = 1 e a saída mínima é −1: V = (1; −1).",
           "figure": { "ponto": { "x": 1, "cor": "c4" }, "highlight": ["c4"] }
+        },
+        {
+          "id": "sinal-de-h",
+          "label": "(−1; −1)",
+          "correct": false,
+          "feedback": "Você trocou o sinal de h: o quadrado (x − 1)² não zera em x = −1. O vértice desenhado é o de (x + 1)² − 1, outra parábola.",
+          "figure": {
+            "curvas": [
+              { "tipo": "quadratica", "a": 1, "b": -2, "c": 0, "cor": "c2", "rotulo": "f(x) = (x − 1)² − 1" },
+              { "tipo": "quadratica", "a": 1, "b": 2, "c": 0, "cor": "c1", "rotulo": "(x + 1)² − 1" }
+            ],
+            "highlight": ["c1"]
+          }
         }
       ]
     },

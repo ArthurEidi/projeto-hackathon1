@@ -61,6 +61,21 @@ describe("passos da aula", () => {
     const s = step("desafio-fronteira");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("Não é função");
+    expect(s.options).toHaveLength(4);
+    const pts = [
+      [1, 2],
+      [1, 4],
+    ];
+    const xs = pts.map((p) => p[0]);
+    const ys = pts.map((p) => p[1]);
+    // função: cada entrada com uma só saída; aqui x = 1 tem duas (teste da reta vertical falha)
+    expect(new Set(xs).size).toBeLessThan(pts.length);
+    // "É função injetora": testou as saídas (reta horizontal), e cada saída tem uma entrada só
+    expect(new Set(ys).size).toBe(pts.length);
+    // "É função constante": confundiu entrada repetida (x = 1) com saída repetida; as saídas diferem
+    expect(new Set(xs).size).toBe(1);
+    expect(new Set(ys).size).not.toBe(1);
+    expect(s.options.map((o) => o.label)).toEqual(["É função", "É função injetora", "É função constante", "Não é função"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

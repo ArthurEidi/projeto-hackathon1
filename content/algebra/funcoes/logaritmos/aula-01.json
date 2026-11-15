@@ -106,11 +106,11 @@
       },
       "options": [
         {
-          "id": "erro",
+          "id": "argumento",
           "label": "8",
           "correct": false,
-          "feedback": "8 é o argumento, não a resposta. O log procura o expoente: 2³ = 8, então log₂(8) = 3.",
-          "figure": { "ponto": { "curva": 1, "x": 8, "cor": "c1" }, "highlight": ["c1"] }
+          "feedback": "8 é o argumento, não a resposta: o log procura um expoente. Conte quantos fatores 2 é preciso multiplicar para chegar a 8.",
+          "figure": { "ponto": { "curva": 2, "x": 8, "cor": "c1" }, "highlight": ["c1"] }
         },
         {
           "id": "certa",
@@ -118,6 +118,20 @@
           "correct": true,
           "feedback": "Isso. 2³ = 8, então o expoente procurado é 3: log₂(8) = 3.",
           "figure": { "ponto": { "curva": 1, "x": 8, "cor": "c2" }, "highlight": ["c2"] }
+        },
+        {
+          "id": "dividiu-pela-base",
+          "label": "4",
+          "correct": false,
+          "feedback": "Você dividiu 8 pela base: 8 ÷ 2 = 4. O log não divide; ele conta quantos fatores 2 se multiplicam até chegar a 8.",
+          "figure": { "ponto": { "curva": 1, "x": 4, "cor": "c1" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "potencia",
+          "label": "256",
+          "correct": false,
+          "feedback": "256 é 2⁸: você elevou 2 ao argumento, fazendo a conta ao contrário. O log pergunta qual expoente leva 2 até 8.",
+          "figure": { "guias": { "verticais": [{ "v": 8, "rotulo": "x = 8", "cor": "c1" }] }, "highlight": ["c3"] }
         }
       ]
     },

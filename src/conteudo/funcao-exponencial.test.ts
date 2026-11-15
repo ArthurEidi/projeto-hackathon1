@@ -55,6 +55,14 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(avaliar(exp(2), -2)).toBe(0.25);
     expect(s.options.find((o) => o.correct)!.label).toBe("1/4");
+    expect(s.options).toHaveLength(4);
+    expect(-(2 ** 2)).toBe(-4); // o menos do expoente virou sinal da saída
+    expect(2 ** 2).toBe(4); // ignorou o sinal do expoente
+    expect(-(2 ** -2)).toBe(-0.25); // inverteu, mas levou o menos para a saída
+    for (const errado of [-4, 4, -0.25]) expect(errado).not.toBe(avaliar(exp(2), -2));
+    expect(s.options.map((o) => o.label)).toEqual(["−4", "4", "−1/4", "1/4"]);
+    // a figura de "4" marca o ponto (2; 4) da curva
+    expect(avaliar(exp(2), 2)).toBe(4);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

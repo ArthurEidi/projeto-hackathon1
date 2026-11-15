@@ -83,6 +83,17 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("(1;2)");
     expect(s.options.find((o) => !o.correct)!.label).toBe("(−1;−2)");
+    expect(s.options).toHaveLength(4);
+    const v = (h: number, k: number) => {
+      const p = vertice(quad(1, 0, 0, { a: -1, b: 1, h, k }))!;
+      return `(${p.x};${p.y})`.replace(/-/g, "−");
+    };
+    expect(v(1, 2)).toBe("(1;2)");
+    expect(v(-1, -2)).toBe("(−1;−2)"); // os dois sentidos trocados
+    expect(v(1, -2)).toBe("(1;−2)"); // refletiu também o +2: −(f(x − 1) + 2)
+    expect(v(-1, 2)).toBe("(−1;2)"); // x − 1 lido como 1 à esquerda
+    expect(s.options.map((o) => o.label)).toEqual(["(1;2)", "(−1;−2)", "(1;−2)", "(−1;2)"]);
+    expect(new Set(s.options.map((o) => o.label)).size).toBe(4);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

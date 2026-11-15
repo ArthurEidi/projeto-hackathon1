@@ -116,6 +116,51 @@
       },
       "options": [
         {
+          "id": "d-e",
+          "label": "É função",
+          "correct": false,
+          "feedback": "Você olhou os pontos separados, não as entradas. Pegue a entrada x = 1 e conte quantas saídas ela recebe.",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 1, "cor": "c3", "rotulo": "y = x + 1" },
+              { "tipo": "afim", "a": 1, "b": 3, "cor": "c4", "rotulo": "y = x + 3" }
+            ],
+            "ponto": { "curva": null, "x": 1, "coordenadas": true, "cor": "c1" },
+            "guias": { "verticais": [{ "v": 1, "rotulo": "x = 1", "cor": "c4" }] },
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "teste-horizontal",
+          "label": "É função injetora",
+          "correct": false,
+          "feedback": "Você usou a reta horizontal, que testa se a função é injetora. O teste de função é o da reta vertical: quantas alturas x = 1 recebe?",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 1, "cor": "c3", "rotulo": "y = x + 1" },
+              { "tipo": "afim", "a": 1, "b": 3, "cor": "c4", "rotulo": "y = x + 3" }
+            ],
+            "ponto": { "curva": null, "x": 1, "coordenadas": true, "cor": "c1" },
+            "guias": { "horizontais": [{ "v": 2, "rotulo": "y = 2", "cor": "c1" }, { "v": 4, "rotulo": "y = 4", "cor": "c1" }] },
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "confundiu-constante",
+          "label": "É função constante",
+          "correct": false,
+          "feedback": "Função constante repete a saída, e seu gráfico é horizontal. Aqui o que se repete é a entrada; veja quantas saídas ela tem.",
+          "figure": {
+            "curvas": [
+              { "tipo": "afim", "a": 1, "b": 1, "cor": "c3", "rotulo": "y = x + 1" },
+              { "tipo": "afim", "a": 1, "b": 3, "cor": "c4", "rotulo": "y = x + 3" },
+              { "tipo": "afim", "a": 0, "b": 2, "cor": "c2", "rotulo": "constante" }
+            ],
+            "ponto": { "curva": null, "x": 1, "coordenadas": true, "cor": "c1" },
+            "highlight": ["c2"]
+          }
+        },
+        {
           "id": "d-c",
           "label": "Não é função",
           "correct": true,
@@ -127,21 +172,6 @@
             ],
             "ponto": { "curva": null, "x": 1, "coordenadas": true, "cor": "c1" },
             "highlight": ["c4"]
-          }
-        },
-        {
-          "id": "d-e",
-          "label": "É função",
-          "correct": false,
-          "feedback": "Para ser função, cada entrada precisa ter uma única saída. Aqui x = 1 tem saídas 2 e 4.",
-          "figure": {
-            "curvas": [
-              { "tipo": "afim", "a": 1, "b": 1, "cor": "c3", "rotulo": "y = x + 1" },
-              { "tipo": "afim", "a": 1, "b": 3, "cor": "c4", "rotulo": "y = x + 3" }
-            ],
-            "ponto": { "curva": null, "x": 1, "coordenadas": true, "cor": "c1" },
-            "guias": { "verticais": [{ "v": 1, "rotulo": "x = 1", "cor": "c4" }] },
-            "highlight": ["c1"]
           }
         }
       ]

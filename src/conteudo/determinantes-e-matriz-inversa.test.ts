@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
 import { Transformacao } from "../widgets/common/transformacao/params";
-import { metricasTransformacao } from "../widgets/common/transformacao/calc";
+import { aplicar, det2, metricasTransformacao, multiplicar, type Mat2 } from "../widgets/common/transformacao/calc";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -67,6 +67,22 @@ describe("passos da aula: determinantes-e-matriz-inversa", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("diag(0,5;1)");
     expect(s.options.find((o) => !o.correct)!.label).toBe("diag(−2;−1)");
+    expect(s.options).toHaveLength(4);
+    const A: Mat2 = [
+      [2, 0],
+      [0, 1],
+    ];
+    expect(det2(A)).toBe(2);
+    expect(multiplicar([[0.5, 0], [0, 1]], A)).toEqual([[1, 0], [0, 1]]); // a certa desfaz A
+    // erradas: o produto com A não é a identidade, e (1; 1) não volta a (1; 1)
+    const negou: Mat2 = [[-2, 0], [0, -1]]; // trocou os sinais de A
+    const adjunta: Mat2 = [[1, 0], [0, 2]]; // trocou a e d, mas não dividiu por det = 2
+    const semTrocar: Mat2 = [[2 / 2, 0], [0, 1 / 2]]; // dividiu A por det = 2 sem trocar a e d
+    expect(multiplicar(negou, A)).toEqual([[-4, 0], [0, -1]]);
+    expect(multiplicar(adjunta, A)).toEqual([[2, 0], [0, 2]]);
+    expect(multiplicar(semTrocar, A)).toEqual([[2, 0], [0, 0.5]]);
+    for (const M of [negou, adjunta, semTrocar]) expect(aplicar(multiplicar(M, A), { x: 1, y: 1 })).not.toEqual({ x: 1, y: 1 });
+    expect(s.options.map((o) => o.label)).toEqual(["diag(−2;−1)", "diag(1;2)", "diag(1;0,5)", "diag(0,5;1)"]);
   });
 
   it("fechamento: referências da fórmula existem no glossário", () => {

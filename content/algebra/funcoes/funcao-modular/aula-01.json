@@ -93,10 +93,10 @@
       },
       "options": [
         {
-          "id": "erro",
+          "id": "sinais-trocados",
           "label": "(−1; −2)",
           "correct": false,
-          "feedback": "Os sinais de h e k saíram trocados: em x = −1 a saída é 0, não −2. A distância zera em x = 1, onde vale 2.",
+          "feedback": "Os dois sinais saíram trocados: em x = −1 a saída é 0, não −2. Ache o x que zera a distância |x − 1| e leia a saída ali.",
           "figure": { "ponto": { "x": -1, "cor": "c1" }, "highlight": ["c1"] }
         },
         {
@@ -105,6 +105,32 @@
           "correct": true,
           "feedback": "Isso. A distância zera em x = 1 e a saída ali é 2: V = (1; 2).",
           "figure": { "ponto": { "x": 1, "cor": "c4" }, "highlight": ["c4"] }
+        },
+        {
+          "id": "sinal-de-h",
+          "label": "(−1; 2)",
+          "correct": false,
+          "feedback": "Você trocou o sinal de h: |x − 1| não zera em x = −1. O V com esse vértice é o de −|x + 1| + 2, outra função.",
+          "figure": {
+            "curvas": [
+              { "tipo": "modular", "a": -1, "b": 1, "c": 2, "cor": "c2", "rotulo": "f(x) = −|x − 1| + 2" },
+              { "tipo": "modular", "a": -1, "b": -1, "c": 2, "cor": "c1", "rotulo": "−|x + 1| + 2" }
+            ],
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "sinal-de-k",
+          "label": "(1; −2)",
+          "correct": false,
+          "feedback": "O menos da frente só vira o V para baixo; ele não mexe no número somado fora do módulo. Leia k com o sinal que está na lei.",
+          "figure": {
+            "curvas": [
+              { "tipo": "modular", "a": -1, "b": 1, "c": 2, "cor": "c2", "rotulo": "f(x) = −|x − 1| + 2" },
+              { "tipo": "modular", "a": -1, "b": 1, "c": -2, "cor": "c3", "rotulo": "−|x − 1| − 2" }
+            ],
+            "highlight": ["c3"]
+          }
         }
       ]
     },

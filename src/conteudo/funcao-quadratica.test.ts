@@ -58,6 +58,15 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe(vertice(quad(1, -2, 0)));
     expect(avaliar(quad(1, -2, 0), -1)).toBe(3);
+    expect(s.options).toHaveLength(4);
+    expect(vertice(quad(1, 2, 2))).toBe("(−1; 1)"); // os dois sinais trocados: (x + 1)² + 1
+    expect(vertice(quad(1, 2, 0))).toBe("(−1; −1)"); // só o sinal de h trocado: (x + 1)² − 1 = x² + 2x
+    // (0; 0) é ponto da curva (raiz e intercepto), não o mínimo: as raízes são 0 e 2, o vértice fica no meio
+    expect(avaliar(quad(1, -2, 0), 0)).toBe(0);
+    expect(raizes(quad(1, -2, 0), -5, 5)).toEqual([0, 2]);
+    expect(avaliar(quad(1, -2, 0), 1)).toBeLessThan(avaliar(quad(1, -2, 0), 0));
+    expect(s.options.map((o) => o.label)).toEqual(["(−1; 1)", "(0; 0)", vertice(quad(1, -2, 0)), "(−1; −1)"]);
+    expect(new Set(s.options.map((o) => o.label)).size).toBe(4);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

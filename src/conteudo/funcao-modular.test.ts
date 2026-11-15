@@ -59,6 +59,14 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe(V(-1, 1, 2));
     expect(avaliar(mod(-1, 1, 2), -1)).toBe(0);
+    expect(s.options).toHaveLength(4);
+    const rotulos = s.options.map((o) => o.label);
+    expect(rotulos).toEqual([V(-1, -1, -2), V(-1, 1, 2), V(-1, -1, 2), V(-1, 1, -2)]);
+    expect(V(-1, -1, -2)).toBe("(−1; −2)"); // trocou os sinais de h e k
+    expect(V(-1, -1, 2)).toBe("(−1; 2)"); // trocou só o sinal de h: vértice de −|x + 1| + 2
+    expect(V(-1, 1, -2)).toBe("(1; −2)"); // levou o menos da frente para k: vértice de −|x − 1| − 2
+    expect(avaliar(mod(-1, 1, 2), 1)).not.toBe(-2);
+    expect(new Set(rotulos).size).toBe(4);
   });
 
   it("fechamento: 2|x − 1| − 1 tem vértice (1; −1) e raízes 0,5 e 1,5", () => {
