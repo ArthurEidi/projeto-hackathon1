@@ -69,7 +69,8 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | B17b. Candidatas do ENEM com imagem: 25 capítulos de álgebra e aritmética sem vestibular | Antigravity #2 | 15/11 | idem, `docs/revisao/vestibular-b17b.md` |
 | B18. ~~Vestibular nas aulas `equacoes-exponenciais`, `equacoes-logaritmicas`, `equacoes-quadraticas`~~ concluída 15/11 (2243f4f): as 9 candidatas não são verificáveis no cache (sites ou ENEM sem texto); nada inserido | Codex | 15/11 | essas 3 aulas, os 3 roteiros (seção de vestibular), `docs/revisao/vestibular-b18.md` |
 | B19. Quais defeitos de widget continuam abertos (só relatório) | Antigravity #3 | 15/11 | `docs/visual/pendencias-b19.md` |
-| B20. Dividir o bundle: aulas carregadas sob demanda (briefing `C:/Users/mkf10/projetos/briefing-b20.md`) | Codex | 15/11 | `src/engine/content.ts`, `src/App.tsx`, `src/Home.tsx`, testes que chamam `loadLesson`, `docs/HOSPEDAGEM.md` |
+| B20. ~~Dividir o bundle: aulas carregadas sob demanda~~ concluída 15/11 (73c1f9d): JS inicial de 538 para 214 KB com gzip | Codex | 15/11 | `src/engine/content.ts`, `src/App.tsx`, `src/Home.tsx`, testes que chamam `loadLesson`, `docs/HOSPEDAGEM.md` |
+| B21. Inserir as 13 questões da B17a (com imagem) em 8 aulas de geometria (briefing `C:/Users/mkf10/projetos/briefing-b21.md`) | Antigravity | 15/11 | `treino.vestibular` das 8 aulas, seção de vestibular dos 8 roteiros, `docs/revisao/vestibular-b21.md` |
 
 ## Pedidos entre máquinas
 
