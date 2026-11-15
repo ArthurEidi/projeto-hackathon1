@@ -113,18 +113,36 @@
           "id": "micro-erro",
           "label": "x > 1",
           "correct": false,
-          "feedback": "Faltou inverter a ordem ao dividir por −2; a solução correta é x < 1.",
-          "figure": {
-            "trechos": [{ "de": 1, "ate": null, "abreDe": true, "cor": "c4" }]
-          }
+          "feedback": "Ao dividir por −2, número negativo, a desigualdade precisa virar. Teste x = 2: −2·2 + 2 = −2, que não é maior que 0.",
+          "figure": { "trechos": [{ "de": 1, "ate": null, "abreDe": true, "cor": "c4" }] }
         },
         {
           "id": "micro-acerto",
           "label": "x < 1",
           "correct": true,
           "feedback": "Certo: x < 1. Dividir por −2 inverte o sinal da desigualdade.",
+          "figure": { "trechos": [{ "de": null, "ate": 1, "abreAte": true, "cor": "c4" }] }
+        },
+        {
+          "id": "sinal-do-2",
+          "label": "x < −1",
+          "correct": false,
+          "feedback": "Você passou o 2 para o outro lado sem trocar o sinal e ficou com −2x > 2. Teste x = 0: −2·0 + 2 = 2 > 0, e o 0 ficou de fora.",
           "figure": {
-            "trechos": [{ "de": null, "ate": 1, "abreAte": true, "cor": "c4" }]
+            "trechos": [{ "de": null, "ate": -1, "abreAte": true, "cor": "c1" }],
+            "pontos": [{ "x": -1, "cor": "c1", "rotulo": "−1", "aberto": true }, { "x": 0, "cor": "c2", "rotulo": "0" }],
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "extremo-fechado",
+          "label": "x ≤ 1",
+          "correct": false,
+          "feedback": "A desigualdade é estrita: em x = 1, −2·1 + 2 = 0, que não é maior que 0. Veja se o extremo entra.",
+          "figure": {
+            "trechos": [],
+            "pontos": [{ "x": 1, "cor": "c1", "rotulo": "−2·1 + 2 = 0", "aberto": false }],
+            "highlight": ["c1"]
           }
         }
       ]

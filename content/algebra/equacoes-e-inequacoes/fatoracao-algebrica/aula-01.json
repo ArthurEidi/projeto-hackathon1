@@ -221,32 +221,14 @@
           "id": "micro-erro",
           "label": "Só 2",
           "correct": false,
-          "feedback": "Você dividiu por x e perdeu zero; as raízes são 0 e 2.",
+          "feedback": "Você dividiu os dois lados por x e perdeu um fator. Um produto zera quando qualquer um dos fatores zera: teste cada um.",
           "figure": {
             "curvas": [
-              {
-                "tipo": "quadratica",
-                "a": 1,
-                "b": -2,
-                "c": 0,
-                "cor": "c3",
-                "fantasma": true,
-                "rotulo": "y = x² − 2x"
-              },
-              {
-                "tipo": "afim",
-                "a": 1,
-                "b": -2,
-                "cor": "c4",
-                "rotulo": "y = x − 2"
-              }
+              { "tipo": "quadratica", "a": 1, "b": -2, "c": 0, "cor": "c3", "fantasma": true, "rotulo": "y = x² − 2x" },
+              { "tipo": "afim", "a": 1, "b": -2, "cor": "c4", "rotulo": "y = x − 2" }
             ],
-            "marcar": {
-              "raizes": true
-            },
-            "highlight": [
-              "c4"
-            ]
+            "marcar": { "raizes": true },
+            "highlight": ["c4"]
           }
         },
         {
@@ -254,14 +236,28 @@
           "label": "0 e 2",
           "correct": true,
           "feedback": "Certo: 0 e 2; Um produto zera se um dos fatores zera.",
+          "figure": { "marcar": { "raizes": true }, "highlight": ["c4"] }
+        },
+        {
+          "id": "sinal-do-fator",
+          "label": "0 e −2",
+          "correct": false,
+          "feedback": "Você trocou o sinal no fator x − 2: ele zera em um x positivo. Iguale cada fator a zero e resolva.",
           "figure": {
-            "marcar": {
-              "raizes": true
-            },
-            "highlight": [
-              "c4"
-            ]
+            "curvas": [
+              { "tipo": "quadratica", "a": 1, "b": -2, "c": 0, "cor": "c3", "fantasma": true, "rotulo": "y = x² − 2x" },
+              { "tipo": "quadratica", "a": 1, "b": 2, "c": 0, "cor": "c1", "rotulo": "y = x² + 2x" }
+            ],
+            "marcar": { "raizes": true },
+            "highlight": ["c1"]
           }
+        },
+        {
+          "id": "vertice",
+          "label": "Só 1",
+          "correct": false,
+          "feedback": "x = 1 é o vértice, o ponto mais baixo: lá x(x − 2) = −1, não 0. Os zeros ficam onde a parábola corta o eixo x.",
+          "figure": { "ponto": { "x": 1, "cor": "c1" }, "highlight": ["c1"] }
         }
       ]
     },

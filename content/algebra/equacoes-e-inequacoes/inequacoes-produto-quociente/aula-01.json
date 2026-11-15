@@ -215,43 +215,37 @@
           "id": "micro-erro",
           "label": "Sim",
           "correct": false,
-          "feedback": "Igualdade não permite dividir por zero; −1 não é solução.",
+          "feedback": "O ≥ aceita a fração igual a 0, e isso pede numerador zero. Em x = −1 quem zera é outra parte: calcule o denominador.",
           "figure": {
             "pontos": [
-              {
-                "x": -1,
-                "cor": "c2",
-                "rotulo": "x=−1 não pode",
-                "aberto": true
-              },
-              {
-                "x": 1,
-                "cor": "c4",
-                "rotulo": "1",
-                "aberto": false
-              }
+              { "x": -1, "cor": "c2", "rotulo": "x + 1 = 0", "aberto": true },
+              { "x": 1, "cor": "c4", "rotulo": "1", "aberto": false }
             ]
           }
         },
         {
+          "id": "dividiu-por-zero",
+          "label": "Sim: dá 0",
+          "correct": false,
+          "feedback": "−2 ÷ 0 não é 0: divisão por zero não tem resultado. Veja o que acontece com a fração quando o denominador zera.",
+          "figure": { "pontos": [{ "x": -1, "cor": "c1", "rotulo": "−2 ÷ 0 = ?", "aberto": true }], "highlight": ["c1"] }
+        },
+        {
+          "id": "so-numerador",
+          "label": "Não: dá −2",
+          "correct": false,
+          "feedback": "−2 é só o numerador em x = −1; a fração tem também o denominador. Calcule x + 1 em x = −1 antes de concluir.",
+          "figure": { "pontos": [{ "x": -1, "cor": "c3", "rotulo": "x − 1 = −2" }], "highlight": ["c3"] }
+        },
+        {
           "id": "micro-acerto",
-          "label": "Não",
+          "label": "Não: não existe",
           "correct": true,
-          "feedback": "Certo: Não; O denominador x+1 zera em −1.",
+          "feedback": "Certo. Em x = −1 o denominador x + 1 zera: a fração não existe ali, então −1 fica fora.",
           "figure": {
             "pontos": [
-              {
-                "x": -1,
-                "cor": "c4",
-                "rotulo": "−1 (aberto)",
-                "aberto": true
-              },
-              {
-                "x": 1,
-                "cor": "c4",
-                "rotulo": "1 (fechado)",
-                "aberto": false
-              }
+              { "x": -1, "cor": "c4", "rotulo": "−1 (aberto)", "aberto": true },
+              { "x": 1, "cor": "c4", "rotulo": "1 (fechado)", "aberto": false }
             ]
           }
         }

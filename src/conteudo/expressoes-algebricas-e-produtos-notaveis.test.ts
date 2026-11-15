@@ -46,6 +46,15 @@ describe("passos da aula de expressões algébricas e produtos notáveis", () =>
     const certaOpt = s.options.find((o) => o.correct)!;
     // (2 + 1)² = 9
     expect(certaOpt.label).toBe("9");
+    expect(s.options).toHaveLength(4);
+    const [a, b] = [2, 1];
+    expect(a * a + 2 * a * b + b * b).toBe(9);
+    expect(a * a + b * b).toBe(5); // só os quadrados, sem as faixas ab
+    expect((a + b) * 2).toBe(6); // dobrou o lado em vez de elevar ao quadrado
+    expect(a * a + a * b + b * b).toBe(7); // uma faixa ab só
+    expect(Math.sqrt(6)).toBeCloseTo(2.45, 2); // figura: quadrado de área 6 tem lado ≈ 2,45 ≠ 3
+    expect(Math.sqrt(7)).not.toBe(3);
+    expect(s.options.map((o) => o.label)).toEqual(["5", "6", "7", "9"]);
   });
 });
 

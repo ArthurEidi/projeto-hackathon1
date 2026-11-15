@@ -156,22 +156,29 @@
           "id": "micro-erro",
           "label": "5",
           "correct": false,
-          "feedback": "Faltaram as duas faixas; 4+2+2+1 = 9.",
-          "figure": {
-            "highlight": ["c1", "c3"]
-          }
+          "feedback": "Você somou só os quadrados a² e b² e deixou de fora as duas faixas ab. Some todas as peças do quadrado grande.",
+          "figure": { "highlight": ["c1", "c3"] }
+        },
+        {
+          "id": "dobrou-o-lado",
+          "label": "6",
+          "correct": false,
+          "feedback": "Você multiplicou o lado 3 por 2 em vez de elevar ao quadrado. Um quadrado de área 6 teria lado de cerca de 2,45, não 3.",
+          "figure": { "modo": "raiz", "A": 6, "limite": 4, "mostrar": { "total": true } }
+        },
+        {
+          "id": "uma-faixa-so",
+          "label": "7",
+          "correct": false,
+          "feedback": "Você contou só uma faixa ab, mas (a + b)² tem duas. Conte de novo todas as peças da figura.",
+          "figure": { "modo": "raiz", "A": 7, "limite": 4, "mostrar": { "total": true } }
         },
         {
           "id": "micro-acerto",
           "label": "9",
           "correct": true,
           "feedback": "Certo: 9; 4+2+2+1=9.",
-          "figure": {
-            "highlight": ["c1", "c2", "c3"],
-            "mostrar": {
-              "total": true
-            }
-          }
+          "figure": { "highlight": ["c1", "c2", "c3"], "mostrar": { "total": true } }
         }
       ]
     },

@@ -69,6 +69,13 @@ describe("passos da aula de inequacoes quadraticas", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)?.label).toBe("[−1; 1]");
+    expect(s.options).toHaveLength(4);
+    const f = (x: number) => avaliar(quad(1, 0, -1), x);
+    expect(raizes(quad(1, 0, -1), -3, 3)).toEqual([-1, 1]);
+    expect(f(2)).toBe(3); // "Fora de [−1; 1]": lado positivo
+    expect(f(1)).toBe(0); // "(−1; 1)": deixou de fora as raízes, que satisfazem ≤ 0
+    expect(f(-2)).toBe(3); // "x ≤ 1": tirou a raiz sem o ±; −2 entra no conjunto e não resolve
+    expect(s.options.map((o) => o.label)).toEqual(["[−1; 1]", "Fora de [−1; 1]", "(−1; 1)", "x ≤ 1"]);
   });
 
   it("fechamento: referências existem no glossário", () => {

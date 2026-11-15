@@ -111,15 +111,24 @@
           "id": "micro-erro",
           "label": "[−2; 2]",
           "correct": false,
-          "feedback": "Você incluiu a igualdade; o certo é (−2; 2), com os extremos abertos.",
+          "feedback": "Você incluiu os extremos: em x = 2, |x| = 2, que não é menor que 2. Confira se os extremos entram ou ficam de fora.",
           "figure": {
-            "trechos": [
-              { "de": -2, "ate": 2, "abreDe": false, "abreAte": false, "cor": "c4" }
-            ],
+            "trechos": [{ "de": -2, "ate": 2, "abreDe": false, "abreAte": false, "cor": "c4" }],
             "pontos": [
               { "x": -2, "cor": "c4", "rotulo": "−2", "aberto": false },
               { "x": 2, "cor": "c4", "rotulo": "2", "aberto": false }
             ]
+          }
+        },
+        {
+          "id": "tirou-o-modulo",
+          "label": "(−∞; 2)",
+          "correct": false,
+          "feedback": "Você tirou o módulo e ficou com x < 2, esquecendo os negativos longe do zero. Em x = −3, |x| = 3, que não é menor que 2.",
+          "figure": {
+            "trechos": [{ "de": null, "ate": 2, "abreAte": true, "cor": "c1" }],
+            "pontos": [{ "x": -3, "cor": "c1", "rotulo": "|−3| = 3" }],
+            "highlight": ["c1"]
           }
         },
         {
@@ -128,13 +137,22 @@
           "correct": true,
           "feedback": "Certo: (−2; 2). A distância ao zero deve ser estritamente menor que 2.",
           "figure": {
-            "trechos": [
-              { "de": -2, "ate": 2, "abreDe": true, "abreAte": true, "cor": "c4" }
-            ],
+            "trechos": [{ "de": -2, "ate": 2, "abreDe": true, "abreAte": true, "cor": "c4" }],
             "pontos": [
               { "x": -2, "cor": "c4", "rotulo": "−2", "aberto": true },
               { "x": 2, "cor": "c4", "rotulo": "2", "aberto": true }
             ]
+          }
+        },
+        {
+          "id": "so-positivos",
+          "label": "[0; 2)",
+          "correct": false,
+          "feedback": "Você olhou só os positivos. Negativos perto do zero também têm distância pequena: |−1| = 1 < 2.",
+          "figure": {
+            "trechos": [{ "de": 0, "ate": 2, "abreAte": true, "cor": "c2" }],
+            "pontos": [{ "x": -1, "cor": "c2", "rotulo": "|−1| = 1" }],
+            "highlight": ["c2"]
           }
         }
       ]

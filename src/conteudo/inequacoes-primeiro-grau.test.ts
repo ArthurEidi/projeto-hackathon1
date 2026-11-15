@@ -72,6 +72,13 @@ describe("passos da aula de inequacoes do primeiro grau", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)?.label).toBe("x < 1");
+    expect(s.options).toHaveLength(4);
+    const f = (x: number) => -2 * x + 2;
+    expect(f(2)).toBe(-2); // "x > 1": não inverteu ao dividir por −2
+    expect(2 / -2).toBe(-1); // "x < −1": −2x > 2 (o 2 passou sem trocar de sinal) ⇒ x < 2/(−2)
+    expect(f(0)).toBe(2); // 0 resolve e ficou de fora de x < −1
+    expect(f(1)).toBe(0); // "x ≤ 1": em x = 1 o valor é 0, não > 0
+    expect(s.options.map((o) => o.label)).toEqual(["x > 1", "x < 1", "x < −1", "x ≤ 1"]);
   });
 
   it("fechamento: referências existem no glossário", () => {

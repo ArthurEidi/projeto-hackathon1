@@ -45,6 +45,14 @@ describe("passos da aula de fatoração e zeros de expressões", () => {
     if (s.type !== "micro_challenge") throw new Error("esperava micro_challenge");
     const certaOpt = s.options.find((o) => o.correct)!;
     expect(certaOpt.label).toBe("0 e 2");
+    expect(s.options).toHaveLength(4);
+    const p = (x: number) => x * (x - 2);
+    expect([p(0), p(2)].map(Math.abs)).toEqual([0, 0]);
+    // "Só 2": dividiu por x e perdeu a raiz 0
+    expect(p(-2)).toBe(8); // "0 e −2": sinal trocado no fator; −2 zera x(x + 2), não x(x − 2)
+    expect(Math.abs(-2 * (-2 + 2))).toBe(0);
+    expect(p(1)).toBe(-1); // "Só 1": é o vértice, x = −b/(2a) = 2/2, onde o valor é −1
+    expect(s.options.map((o) => o.label)).toEqual(["Só 2", "0 e 2", "0 e −2", "Só 1"]);
   });
 });
 

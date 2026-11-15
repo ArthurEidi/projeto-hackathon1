@@ -223,30 +223,35 @@
       },
       "options": [
         {
-          "id": "micro-erro",
-          "label": "x>0",
-          "correct": false,
-          "feedback": "Você manteve a ordem de uma base crescente; a solução é x<0.",
-          "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": 1,
-              "cor": "c1"
-            }
-          }
-        },
-        {
           "id": "micro-acerto",
           "label": "x<0",
           "correct": true,
           "feedback": "Certo: x<0; A base 0,5 é decrescente.",
+          "figure": { "ponto": { "curva": 0, "x": -1, "cor": "c1" } }
+        },
+        {
+          "id": "micro-erro",
+          "label": "x>0",
+          "correct": false,
+          "feedback": "Com base entre 0 e 1 a função decresce: x maior dá saída menor. Em x = 1 a saída é 0,5, abaixo de 1.",
+          "figure": { "ponto": { "curva": 0, "x": 1, "cor": "c1" } }
+        },
+        {
+          "id": "um-como-meio",
+          "label": "x<1",
+          "correct": false,
+          "feedback": "Você escreveu 1 como (0,5)¹, mas 1 = (0,5)⁰. Em x = 0,5, (0,5)ˣ ≈ 0,71, que não passa de 1.",
           "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": -1,
-              "cor": "c1"
-            }
+            "ponto": { "curva": 0, "x": 0.5, "cor": "c2" },
+            "guias": { "verticais": [{ "v": 1, "rotulo": "x = 1", "cor": "c2" }] }
           }
+        },
+        {
+          "id": "sempre-positiva",
+          "label": "x∈ℝ",
+          "correct": false,
+          "feedback": "(0,5)ˣ é sempre positiva, mas isso é > 0, não > 1. Em x = 2 a saída é 0,25, abaixo da reta y = 1.",
+          "figure": { "marcar": { "assintota": true }, "ponto": { "curva": 0, "x": 2, "cor": "c4" }, "highlight": ["c4"] }
         }
       ]
     },

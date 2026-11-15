@@ -72,7 +72,15 @@ describe("passos da aula de inequações-produto e inequações-quociente", () =
   it("conferir-previsao: x = -1 não é solução de (x-1)/(x+1) >= 0", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
-    expect(s.options.find((o) => o.correct)?.label).toBe("Não");
+    expect(s.options.find((o) => o.correct)?.label).toBe("Não: não existe");
+    expect(s.options).toHaveLength(4);
+    const x = -1;
+    expect(x + 1).toBe(0); // denominador zera: a fração não existe em −1
+    expect(x - 1).toBe(-2); // "Não: dá −2": olhou só o numerador
+    expect(Number.isFinite((x - 1) / (x + 1))).toBe(false); // "Sim: dá 0": −2 ÷ 0 não é 0
+    // "Sim": o ≥ aceita valor 0, que pede numerador zero (x = 1), não denominador zero
+    expect((1 - 1) / (1 + 1)).toBe(0);
+    expect(s.options.map((o) => o.label)).toEqual(["Sim", "Sim: dá 0", "Não: dá −2", "Não: não existe"]);
   });
 
   it("fechamento: referências existem no glossário", () => {

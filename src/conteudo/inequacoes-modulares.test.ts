@@ -73,6 +73,12 @@ describe("passos da aula de inequacoes modulares", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)?.label).toBe("(−2; 2)");
+    expect(s.options).toHaveLength(4);
+    const resolve = (x: number) => Math.abs(x) < 2;
+    expect(resolve(2)).toBe(false); // "[−2; 2]": o extremo 2 não serve, |2| = 2
+    expect(resolve(-3)).toBe(false); // "(−∞; 2)": tirou o módulo; −3 < 2, mas |−3| = 3
+    expect(resolve(-1)).toBe(true); // "[0; 2)": deixou de fora negativos como −1
+    expect(s.options.map((o) => o.label)).toEqual(["[−2; 2]", "(−∞; 2)", "(−2; 2)", "[0; 2)"]);
   });
 
   it("fechamento: referências existem no glossário", () => {

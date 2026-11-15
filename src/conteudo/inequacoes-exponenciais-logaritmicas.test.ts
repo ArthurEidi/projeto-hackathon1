@@ -66,6 +66,14 @@ describe("passos da aula de inequações exponenciais e logarítmicas", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)?.label).toBe("x<0");
+    expect(s.options).toHaveLength(4);
+    expect(0.5 ** -1).toBe(2); // x < 0 serve
+    expect(0.5 ** 1).toBe(0.5); // "x>0": manteve a ordem de base crescente; 0,5 < 1
+    expect(0.5 ** 1).not.toBe(1); // "x<1": escreveu 1 como (0,5)¹, mas 1 = (0,5)⁰
+    expect(0.5 ** 0).toBe(1);
+    expect(0.5 ** 0.5).toBeCloseTo(0.71, 2); // x = 0,5 está em x<1 e não resolve
+    expect(0.5 ** 2).toBe(0.25); // "x∈ℝ": positiva não é maior que 1
+    expect(s.options.map((o) => o.label)).toEqual(["x<0", "x>0", "x<1", "x∈ℝ"]);
   });
 
   it("fechamento: referências existem no glossário", () => {
