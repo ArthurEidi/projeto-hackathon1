@@ -249,6 +249,8 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**Auditoria B18 (15/11/2026):** nenhuma candidata integralmente verificável no cache ENEM obrigatório. Mantido PENDENTE-FONTE; contas e impedimentos em `docs/revisao/vestibular-b18.md`.
+
 #### V1 — `v1-equacoes-logaritmicas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações logarítmicas e condições de existência.
