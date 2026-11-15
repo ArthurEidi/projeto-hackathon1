@@ -198,19 +198,29 @@
           "id": "micro-erro",
           "label": "8",
           "correct": false,
-          "feedback": "Você dobrou só uma dimensão; (2·2)²=16.",
-          "figure": {
-            "k": 2
-          }
+          "feedback": "Você dobrou só uma dimensão e ficou com um retângulo 4 × 2. Na ampliação por k, a base e a altura crescem as duas.",
+          "figure": { "b": 4, "h": 2, "k": 1 }
+        },
+        {
+          "id": "esqueceu-ampliar",
+          "label": "4",
+          "correct": false,
+          "feedback": "4 é a área do quadrado antes de ampliar: 2 · 2. Falta aplicar k = 2 aos dois lados e calcular a área nova.",
+          "figure": { "mostrar": { "area": true, "perimetro": false, "alturas": true }, "highlight": ["c3", "c1"] }
+        },
+        {
+          "id": "usou-k-ao-cubo",
+          "label": "32",
+          "correct": false,
+          "feedback": "Você multiplicou a área por k³ = 8, que é a regra do volume. Área tem duas dimensões; dê a ampliação a cada uma delas.",
+          "figure": { "b": 8, "h": 4, "k": 1 }
         },
         {
           "id": "micro-acerto",
           "label": "16",
           "correct": true,
           "feedback": "Certo: 16; (2·2)²=16.",
-          "figure": {
-            "k": 2
-          }
+          "figure": { "k": 2 }
         }
       ]
     },

@@ -73,6 +73,13 @@ describe("passos da aula", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("3");
     expect(s.options.find((o) => !o.correct)!.label).toBe("12");
+    expect(s.options).toHaveLength(4);
+    expect(6 / 2).toBe(3);
+    expect(6 * 2).toBe(12); // proporção direta: y dobrou com x (2·12 = 24 ≠ 6)
+    expect(6 / 1).toBe(6); // não atualizou y: é o valor de x = 1 (2·6 = 12 ≠ 6)
+    expect(6 - 2).toBe(4); // manteve a soma x + y = 6 (2·4 = 8 ≠ 6)
+    for (const y of [12, 6, 4]) expect(2 * y).not.toBe(6);
+    expect(s.options.map((o) => o.label)).toEqual(["12", "6", "4", "3"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

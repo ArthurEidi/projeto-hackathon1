@@ -38,6 +38,12 @@ describe("passos da aula", () => {
     const s = passo(L, "micro-desafio");
     if (s.type !== "micro_challenge") throw new Error();
     expect(reais(s.options.find((o) => o.correct)!.label)).toBe(121);
+    expect(s.options).toHaveLength(4);
+    expect(composto(100, 0.1, 2)).toBeCloseTo(121, 10);
+    expect(100 + 2 * 0.1 * 100).toBe(120); // juro simples
+    expect(composto(100, 0.1, 1)).toBeCloseTo(110, 10); // parou no 1º período
+    expect(100 * (1 + 0.1 ** 2)).toBeCloseTo(101, 10); // elevou só a taxa ao quadrado
+    expect(s.options.map((o) => reais(o.label))).toEqual([121, 120, 110, 101]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => fechamentoOk(L));

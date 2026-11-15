@@ -164,11 +164,8 @@
           "id": "micro-erro",
           "label": "0,2",
           "correct": false,
-          "feedback": "Você leu o denominador como décimo; 1÷2=0,5.",
-          "figure": {
-            "pontos": [{ "x": 0.2, "cor": "c3", "rotulo": "0,2" }],
-            "trechos": [{ "de": 0, "ate": 0.2, "cor": "c3" }]
-          }
+          "feedback": "Você escreveu o denominador depois da vírgula, mas 0,2 é 2 décimos, menos que a metade. A fração 1/2 é a conta 1 ÷ 2.",
+          "figure": { "pontos": [{ "x": 0.2, "cor": "c3", "rotulo": "0,2" }], "trechos": [{ "de": 0, "ate": 0.2, "cor": "c3" }] }
         },
         {
           "id": "micro-acerto",
@@ -178,6 +175,30 @@
           "figure": {
             "pontos": [{ "x": 0.5, "cor": "c3", "rotulo": "0,5" }],
             "trechos": [{ "de": 0, "ate": 0.5, "cor": "c4", "rotulo": "1/2" }]
+          }
+        },
+        {
+          "id": "juntou-com-virgula",
+          "label": "1,2",
+          "correct": false,
+          "feedback": "Você juntou numerador e denominador com uma vírgula. 1,2 passa de 1, e 1/2 é menos que um inteiro: divida 1 por 2.",
+          "figure": {
+            "intervalo": [0, 2],
+            "pontos": [{ "x": 1.2, "cor": "c3", "rotulo": "1,2" }],
+            "trechos": [{ "de": 0, "ate": 0.5, "cor": "c4", "rotulo": "1/2" }],
+            "highlight": ["c3"]
+          }
+        },
+        {
+          "id": "divisao-invertida",
+          "label": "2",
+          "correct": false,
+          "feedback": "Você dividiu 2 por 1, na ordem inversa. A fração a/b é a ÷ b: o numerador é que se divide pelo denominador.",
+          "figure": {
+            "intervalo": [0, 2.5],
+            "pontos": [{ "x": 2, "cor": "c1", "rotulo": "2 ÷ 1" }],
+            "trechos": [{ "de": 0, "ate": 0.5, "cor": "c4", "rotulo": "1/2" }],
+            "highlight": ["c1"]
           }
         }
       ]

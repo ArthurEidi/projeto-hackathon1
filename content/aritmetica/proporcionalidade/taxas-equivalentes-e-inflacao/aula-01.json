@@ -173,54 +173,52 @@
       },
       "options": [
         {
+          "id": "o2",
+          "label": "5%",
+          "correct": false,
+          "feedback": "Subtrair as taxas dá só uma aproximação. O ganho real divide fatores: o do salário pelo dos preços, e só depois tira 1.",
+          "figure": { "degraus": true, "acesas": [0, 1] }
+        },
+        {
+          "id": "somou-taxas",
+          "label": "15%",
+          "correct": false,
+          "feedback": "Você somou as taxas, mas a inflação come parte do salário, não soma a ele. Compare os fatores: o do salário sobre o dos preços.",
+          "figure": {
+            "categorias": [
+              { "nome": "Salário (nominal)", "valor": 110 },
+              { "nome": "Preços", "valor": 105 },
+              { "nome": "10% + 5%", "valor": 115 }
+            ],
+            "acesas": [2]
+          }
+        },
+        {
           "id": "o1",
           "label": "≈ 4,76%",
           "correct": true,
           "feedback": "Certo. 1,10 ÷ 1,05 − 1 = 1/21 ≈ 4,76%.",
           "figure": {
             "categorias": [
-              {
-                "nome": "Salário (nominal)",
-                "valor": 110
-              },
-              {
-                "nome": "Preços",
-                "valor": 105
-              },
-              {
-                "nome": "Valor real",
-                "valor": 104.76
-              }
+              { "nome": "Salário (nominal)", "valor": 110 },
+              { "nome": "Preços", "valor": 105 },
+              { "nome": "Valor real", "valor": 104.76 }
             ],
-            "acesas": [
-              2
-            ]
+            "acesas": [2]
           }
         },
         {
-          "id": "o2",
-          "label": "5%",
+          "id": "divisao-invertida",
+          "label": "≈ −4,55%",
           "correct": false,
-          "feedback": "Subtrair dá só uma aproximação; o exato é 1,10 ÷ 1,05 − 1 ≈ 4,76%.",
+          "feedback": "Você dividiu preços por salário, na ordem inversa, e o ganho virou perda. O salário subiu mais que os preços, então o ganho é positivo.",
           "figure": {
             "categorias": [
-              {
-                "nome": "Salário (nominal)",
-                "valor": 110
-              },
-              {
-                "nome": "Preços",
-                "valor": 105
-              },
-              {
-                "nome": "Valor real",
-                "valor": 104.76
-              }
+              { "nome": "Salário (nominal)", "valor": 110 },
+              { "nome": "Preços", "valor": 105 },
+              { "nome": "Preços ÷ salário", "valor": 95.45 }
             ],
-            "acesas": [
-              0,
-              1
-            ]
+            "acesas": [2]
           }
         }
       ]

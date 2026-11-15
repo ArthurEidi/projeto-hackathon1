@@ -1,6 +1,6 @@
 // Descontos, Acréscimos e Índices · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passosConcluiveis } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("aritmetica/proporcionalidade/descontos-acrescimos-e-indices/aula-01.json");
 const certa = (id: string) => certaDe(L, "descontos-acrescimos-e-indices-" + id);
@@ -15,6 +15,16 @@ describe("passos da aula", () => {
     expect(100 * 1.1 * 0.9).toBeCloseTo(99, 10);
     expect(0.9 * 1.1).toBeCloseTo(1.1 * 0.9, 12);
     expect(132 / 120).toBeCloseTo(1.1, 12);
+  });
+  it("micro-desafio: +10% e −10% sobre R$ 100 dão R$ 99; 4 alternativas", () => {
+    const s = passo(L, "micro-desafio");
+    if (s.type !== "micro_challenge") throw new Error();
+    expect(s.options).toHaveLength(4);
+    expect(100 * 1.1 * 0.9).toBeCloseTo(num(s.options.find((o) => o.correct)!.label), 10);
+    expect(100 * 1.1 - 0.1 * 100).toBeCloseTo(100, 10); // tirou 10% de R$ 100, não de R$ 110
+    expect(100 * 1.1).toBeCloseTo(110, 10); // parou no aumento
+    expect(100 * 0.9).toBeCloseTo(90, 10); // esqueceu o aumento
+    expect(s.options.map((o) => o.label)).toEqual(["R$ 100", "R$ 110", "R$ 99", "R$ 90"]);
   });
   it("fechamento: cada letra tem significado no glossário", () => fechamentoOk(L));
 });

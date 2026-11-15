@@ -63,6 +63,13 @@ describe("passos da aula", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error("micro_challenge esperado");
     expect(s.options.find((o) => o.correct)!.label).toBe("0,5");
+    expect(s.options).toHaveLength(4);
+    expect(2 ** -1).toBe(0.5);
+    expect(-(2 ** 1)).toBe(-2); // o menos do expoente virou sinal do resultado
+    expect(2 ** 1).toBe(2); // ignorou o sinal do expoente
+    expect(-(2 ** -1)).toBe(-0.5); // inverteu, mas levou o menos para o resultado
+    expect(s.options.map((o) => o.label)).toEqual(["−2", "2", "−0,5", "0,5"]);
+    expect(new Set(s.options.map((o) => o.label)).size).toBe(4);
   });
 
   it("fechamento: letras do glossário", () => {

@@ -52,6 +52,14 @@ describe("passos da aula", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("0,5");
+    expect(s.options).toHaveLength(4);
+    const br = (n: number) => String(n).replace(".", ",");
+    expect(br(1 / 2)).toBe("0,5");
+    expect(br(Number("0." + 2))).toBe("0,2"); // escreveu o denominador depois da vírgula
+    expect(br(Number(1 + "." + 2))).toBe("1,2"); // juntou numerador e denominador com vírgula
+    expect(br(2 / 1)).toBe("2"); // dividiu na ordem inversa
+    for (const errado of [0.2, 1.2, 2]) expect(errado).not.toBe(1 / 2);
+    expect(s.options.map((o) => o.label)).toEqual(["0,2", "0,5", "1,2", "2"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

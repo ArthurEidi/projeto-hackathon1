@@ -42,6 +42,13 @@ describe("passos da aula", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("2");
+    expect(s.options).toHaveLength(4);
+    expect((25 / 100) * 8).toBe(2);
+    expect(8 / 2).toBe(4); // metade (50%), não um quarto
+    expect(8 * 4).toBe(32); // multiplicou por 4 em vez de dividir
+    expect(25 * 8).toBe(200); // esqueceu de dividir por 100
+    expect((25 / 100) * 800).toBe(200); // figura: 200 é 25% de 800
+    expect(s.options.map((o) => o.label)).toEqual(["4", "2", "32", "200"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

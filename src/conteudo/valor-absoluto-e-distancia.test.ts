@@ -40,6 +40,13 @@ describe("passos da aula de valor absoluto e distância", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe(String(Math.abs(-2 - 1)));
+    expect(s.options).toHaveLength(4);
+    const lab = (n: number) => String(n).replace("-", "−");
+    expect(lab(-2 - 1)).toBe("−3"); // deslocamento com sinal, sem o módulo
+    expect(lab(Math.abs(-2 + 1))).toBe("1"); // somou em vez de subtrair
+    const marcasEntre = [-1, 0].filter((m) => m > -2 && m < 1).length;
+    expect(lab(marcasEntre)).toBe("2"); // contou as marcas entre os pontos, não os passos
+    expect(s.options.map((o) => o.label)).toEqual(["−3", "3", "1", "2"]);
   });
 
   it("fechamento: termos referenciados existem no glossário", () => {

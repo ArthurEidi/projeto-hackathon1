@@ -45,6 +45,14 @@ describe("passos da aula de unidades, conversões, escala e erro de medida", () 
     if (s.type !== "micro_challenge") throw new Error("esperava micro_challenge");
     const certaOpt = s.options.find((o) => o.correct)!;
     expect(certaOpt.label).toBe("16");
+    expect(s.options).toHaveLength(4);
+    const lado = 2;
+    const k = 2;
+    expect((k * lado) ** 2).toBe(16);
+    expect(k * lado * lado).toBe(8); // ampliou só uma dimensão: 4 × 2
+    expect(lado * lado).toBe(4); // área antes de ampliar
+    expect(lado * lado * k ** 3).toBe(32); // usou k³, a regra do volume
+    expect(s.options.map((o) => o.label)).toEqual(["8", "4", "32", "16"]);
   });
 });
 

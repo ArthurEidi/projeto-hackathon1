@@ -176,14 +176,40 @@
           "id": "micro-erro",
           "label": "12",
           "correct": false,
-          "feedback": "Você aplicou proporcionalidade direta; o produto exige y = 6/2 = 3.",
+          "feedback": "Você dobrou y junto com x, como numa proporção direta. Aqui o produto x·y fica fixo: se x dobra, y precisa compensar.",
           "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": 2,
-              "retangulo": true,
-              "corRetangulo": "c4"
-            }
+            "y": [0, 13],
+            "curvas": [
+              { "tipo": "racional", "a": 6, "b": 0, "c": 0, "cor": "c3", "rotulo": "y = 6/x" },
+              { "tipo": "afim", "a": 6, "b": 0, "cor": "c1", "rotulo": "y = 6x" }
+            ],
+            "ponto": { "curva": 1, "x": 2, "retangulo": true, "corRetangulo": "c4" }
+          }
+        },
+        {
+          "id": "manteve-y",
+          "label": "6",
+          "correct": false,
+          "feedback": "6 é o y de quando x = 1; você não atualizou y. Com x = 2, o produto 2·y ainda tem de dar 6.",
+          "figure": {
+            "guias": {
+              "horizontais": [{ "v": 6, "rotulo": "y = 6", "cor": "c1" }],
+              "verticais": [{ "v": 2, "rotulo": "x = 2", "cor": "muted" }]
+            },
+            "highlight": ["c1"]
+          }
+        },
+        {
+          "id": "soma-fixa",
+          "label": "4",
+          "correct": false,
+          "feedback": "Você manteve a soma x + y = 6, mas o que fica fixo é o produto x·y. O retângulo de 2 por 4 tem área 8, não 6.",
+          "figure": {
+            "curvas": [
+              { "tipo": "racional", "a": 6, "b": 0, "c": 0, "cor": "c3", "rotulo": "y = 6/x" },
+              { "tipo": "afim", "a": -1, "b": 6, "cor": "c1", "rotulo": "x + y = 6" }
+            ],
+            "ponto": { "curva": 1, "x": 2, "retangulo": true, "corRetangulo": "c4" }
           }
         },
         {
@@ -191,14 +217,7 @@
           "label": "3",
           "correct": true,
           "feedback": "Certo: 3; 2 · 3 = 6.",
-          "figure": {
-            "ponto": {
-              "curva": 0,
-              "x": 2,
-              "retangulo": true,
-              "corRetangulo": "c4"
-            }
-          }
+          "figure": { "ponto": { "curva": 0, "x": 2, "retangulo": true, "corRetangulo": "c4" } }
         }
       ]
     },

@@ -168,54 +168,38 @@
       },
       "options": [
         {
+          "id": "o2",
+          "label": "R$ 100",
+          "correct": false,
+          "feedback": "Os 10% não se cancelam: o desconto incide sobre o valor já aumentado, não sobre R$ 100. Calcule 10% da segunda barra.",
+          "figure": {
+            "categorias": [{ "nome": "Início", "valor": 100 }, { "nome": "+10%", "valor": 110 }, { "nome": "−R$ 10", "valor": 100 }],
+            "acesas": [2]
+          }
+        },
+        {
+          "id": "parou-no-aumento",
+          "label": "R$ 110",
+          "correct": false,
+          "feedback": "R$ 110 é o valor depois do aumento só. Falta aplicar a queda de 10% sobre esse novo valor.",
+          "figure": { "acesas": [1] }
+        },
+        {
           "id": "o1",
           "label": "R$ 99",
           "correct": true,
           "feedback": "Certo. 100 · 1,1 · 0,9 = 99.",
           "figure": {
-            "categorias": [
-              {
-                "nome": "Início",
-                "valor": 100
-              },
-              {
-                "nome": "+10%",
-                "valor": 110
-              },
-              {
-                "nome": "−10%",
-                "valor": 99
-              }
-            ],
-            "acesas": [
-              2
-            ]
+            "categorias": [{ "nome": "Início", "valor": 100 }, { "nome": "+10%", "valor": 110 }, { "nome": "−10%", "valor": 99 }],
+            "acesas": [2]
           }
         },
         {
-          "id": "o2",
-          "label": "R$ 100",
+          "id": "esqueceu-aumento",
+          "label": "R$ 90",
           "correct": false,
-          "feedback": "As bases são diferentes e não se cancelam: o −10% incide em 110. O final é R$ 99.",
-          "figure": {
-            "categorias": [
-              {
-                "nome": "Início",
-                "valor": 100
-              },
-              {
-                "nome": "+10%",
-                "valor": 110
-              },
-              {
-                "nome": "−10%",
-                "valor": 99
-              }
-            ],
-            "acesas": [
-              1
-            ]
-          }
+          "feedback": "Você tirou 10% de R$ 100 e esqueceu o aumento. A queda vem depois da alta e age sobre o valor que a alta deixou.",
+          "figure": { "categorias": [{ "nome": "Início", "valor": 100 }, { "nome": "−10%", "valor": 90 }], "acesas": [1] }
         }
       ]
     },

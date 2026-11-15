@@ -193,18 +193,8 @@
           "figure": {
             "trechos": [],
             "operacao": {
-              "a": {
-                "de": 0,
-                "ate": 3,
-                "cor": "c1",
-                "rotulo": "A = [0; 3]"
-              },
-              "b": {
-                "de": 2,
-                "ate": 5,
-                "cor": "c2",
-                "rotulo": "B = [2; 5]"
-              },
+              "a": { "de": 0, "ate": 3, "cor": "c1", "rotulo": "A = [0; 3]" },
+              "b": { "de": 2, "ate": 5, "cor": "c2", "rotulo": "B = [2; 5]" },
               "modo": "intersecao"
             },
             "highlight": ["c4"]
@@ -218,21 +208,40 @@
           "figure": {
             "trechos": [],
             "operacao": {
-              "a": {
-                "de": 0,
-                "ate": 3,
-                "cor": "c1",
-                "rotulo": "A = [0; 3]"
-              },
-              "b": {
-                "de": 2,
-                "ate": 5,
-                "cor": "c2",
-                "rotulo": "B = [2; 5]"
-              },
+              "a": { "de": 0, "ate": 3, "cor": "c1", "rotulo": "A = [0; 3]" },
+              "b": { "de": 2, "ate": 5, "cor": "c2", "rotulo": "B = [2; 5]" },
               "modo": "uniao"
             },
             "highlight": ["c1", "c2"]
+          }
+        },
+        {
+          "id": "maior-fim",
+          "label": "[2; 5]",
+          "correct": false,
+          "feedback": "Você pegou o maior início e também o maior fim, e sobrou o próprio B. Teste o 4: ele está em B, mas não em A.",
+          "figure": {
+            "trechos": [
+              { "de": 0, "ate": 3, "cor": "c1", "rotulo": "A = [0; 3]" },
+              { "de": 2, "ate": 5, "cor": "c3", "rotulo": "[2; 5] = B" }
+            ],
+            "pontos": [{ "x": 4, "cor": "c3", "rotulo": "4 ∉ A" }],
+            "highlight": ["c3"]
+          }
+        },
+        {
+          "id": "diferenca",
+          "label": "[0; 2)",
+          "correct": false,
+          "feedback": "[0; 2) é a diferença A − B: o que está em A e fica fora de B. A interseção pede o trecho que está nos dois.",
+          "figure": {
+            "trechos": [],
+            "operacao": {
+              "a": { "de": 0, "ate": 3, "cor": "c1", "rotulo": "A = [0; 3]" },
+              "b": { "de": 2, "ate": 5, "cor": "c2", "rotulo": "B = [2; 5]" },
+              "modo": "diferenca"
+            },
+            "highlight": ["c4"]
           }
         }
       ]

@@ -183,26 +183,45 @@
       },
       "options": [
         {
-          "id": "micro-acerto",
-          "label": "2·10²",
-          "correct": true,
-          "feedback": "Certo: 2·10²; 200 = 2·10², com 1 ≤ 2 < 10.",
+          "id": "micro-erro",
+          "label": "20·10¹",
+          "correct": false,
+          "feedback": "O valor coincide, mas o coeficiente 20 não está normalizado. Ele precisa ficar entre 1 e 10: ande mais uma casa.",
+          "figure": { "rotulos": { "parte": "20·10¹", "todo": "200" } }
+        },
+        {
+          "id": "contou-algarismos",
+          "label": "2·10³",
+          "correct": false,
+          "feedback": "Você contou os 3 algarismos de 200, mas 2·10³ = 2000, dez vezes mais. O expoente conta as casas que a vírgula anda.",
           "figure": {
-            "rotulos": {
-              "parte": "2·10²"
-            },
+            "partes": 10,
+            "pintadas": 10,
+            "todo": 2000,
+            "referencia": { "partes": 10, "pintadas": 1 },
+            "rotulos": { "parte": "2·10³", "todo": "10 × 200" },
             "highlight": ["c1"]
           }
         },
         {
-          "id": "micro-erro",
-          "label": "20·10¹",
+          "id": "micro-acerto",
+          "label": "2·10²",
+          "correct": true,
+          "feedback": "Certo: 2·10²; 200 = 2·10², com 1 ≤ 2 < 10.",
+          "figure": { "rotulos": { "parte": "2·10²", "todo": "200" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "expoente-negativo",
+          "label": "2·10⁻²",
           "correct": false,
-          "feedback": "O valor coincide, mas o coeficiente 20 não está normalizado; use 2·10².",
+          "feedback": "Expoente negativo é para números menores que 1: 2·10⁻² = 0,02. Como 200 é grande, a vírgula anda para a esquerda e o expoente é positivo.",
           "figure": {
-            "rotulos": {
-              "parte": "20·10¹"
-            }
+            "partes": 100,
+            "pintadas": 1,
+            "todo": 2,
+            "referencia": { "partes": 100, "pintadas": 1 },
+            "rotulos": { "parte": "2·10⁻²", "todo": "2" },
+            "highlight": ["c1"]
           }
         }
       ]

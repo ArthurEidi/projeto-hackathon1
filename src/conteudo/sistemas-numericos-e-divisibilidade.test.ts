@@ -45,6 +45,13 @@ describe("passos da aula de conjuntos numéricos, divisibilidade e fatoração p
     if (s.type !== "micro_challenge") throw new Error("esperava micro_challenge");
     const certaOpt = s.options.find((o) => o.correct)!;
     expect(certaOpt.label).toBe("0");
+    expect(s.options).toHaveLength(4);
+    expect(6 % 3).toBe(0);
+    expect(Math.floor(6 / 3)).toBe(2); // quociente, não resto
+    expect(6 - 3).toBe(3); // parou no 1º grupo; ainda cabe outro grupo de 3
+    expect(6 - 3).toBeGreaterThanOrEqual(3);
+    expect(6).toBe(3 * 2 + 0); // 6 é o dividendo
+    expect(s.options.map((o) => o.label)).toEqual(["0", "2", "3", "6"]);
   });
 });
 

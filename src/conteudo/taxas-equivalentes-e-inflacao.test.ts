@@ -30,6 +30,12 @@ describe("passos da aula", () => {
     const s = passo(L, "micro-desafio");
     if (s.type !== "micro_challenge") throw new Error();
     expect(num(s.options.find((o) => o.correct)!.label)).toBeCloseTo(4.76, 2);
+    expect(s.options).toHaveLength(4);
+    expect((1.1 / 1.05 - 1) * 100).toBeCloseTo(4.76, 2);
+    expect(10 - 5).toBe(5); // subtraiu as taxas
+    expect(10 + 5).toBe(15); // somou as taxas
+    expect((1.05 / 1.1 - 1) * 100).toBeCloseTo(-4.55, 2); // dividiu preços por salário
+    expect(s.options.map((o) => num(o.label))).toEqual([5, 15, 4.76, -4.55]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => fechamentoOk(L));

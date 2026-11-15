@@ -46,6 +46,16 @@ describe("passos da aula de conjuntos e intervalos", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("[2; 3]");
+    expect(s.options).toHaveLength(4);
+    const [a0, a1, b0, b1] = [0, 3, 2, 5];
+    const iv = (de: number, ate: number, fechaAte = true) => `[${de}; ${ate}${fechaAte ? "]" : ")"}`;
+    expect(iv(Math.max(a0, b0), Math.min(a1, b1))).toBe("[2; 3]"); // interseção: maior início, menor fim
+    expect(iv(Math.min(a0, b0), Math.max(a1, b1))).toBe("[0; 5]"); // união
+    expect(iv(Math.max(a0, b0), Math.max(a1, b1))).toBe("[2; 5]"); // maior início e também maior fim (= B)
+    expect(4 >= b0 && 4 <= b1 && !(4 >= a0 && 4 <= a1)).toBe(true); // 4 está em [2; 5], mas não em A
+    expect(iv(a0, b0, false)).toBe("[0; 2)"); // diferença A − B
+    expect(s.options.map((o) => o.label)).toEqual(["[2; 3]", "[0; 5]", "[2; 5]", "[0; 2)"]);
+    expect(new Set(s.options.map((o) => o.label)).size).toBe(4);
   });
 
   it("fechamento: termos referenciados existem no glossário", () => {

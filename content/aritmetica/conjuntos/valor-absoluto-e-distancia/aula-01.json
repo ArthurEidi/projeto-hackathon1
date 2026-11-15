@@ -179,28 +179,49 @@
       },
       "options": [
         {
-          "id": "micro-acerto",
-          "label": "3",
-          "correct": true,
-          "feedback": "Certo: 3; ∣−2 − 1∣ = ∣−3∣ = 3.",
-          "figure": {
-            "mostrar": { "distancia": true },
-            "highlight": ["c4"]
-          }
-        },
-        {
           "id": "micro-erro",
           "label": "−3",
           "correct": false,
           "feedback": "−3 é o deslocamento com sinal; a distância mede comprimento e é sempre não negativa.",
           "figure": {
-            "trechos": [
-              {
-                "de": -2,
-                "ate": 1,
-                "cor": "c3",
-                "rotulo": "desloc. −3"
-              }
+            "trechos": [{ "de": -2, "ate": 1, "cor": "c3", "rotulo": "desloc. −3" }],
+            "mostrar": { "distancia": false },
+            "highlight": ["c3"]
+          }
+        },
+        {
+          "id": "micro-acerto",
+          "label": "3",
+          "correct": true,
+          "feedback": "Certo: 3; ∣−2 − 1∣ = ∣−3∣ = 3.",
+          "figure": { "mostrar": { "distancia": true }, "highlight": ["c4"] }
+        },
+        {
+          "id": "somou",
+          "label": "1",
+          "correct": false,
+          "feedback": "Você somou: ∣−2 + 1∣ = 1. A distância entre dois números é o módulo da diferença: subtraia um do outro.",
+          "figure": {
+            "pontos": [
+              { "x": -2, "cor": "c1", "rotulo": "−2" },
+              { "x": 1, "cor": "c2", "rotulo": "1" },
+              { "x": -1, "cor": "c3", "rotulo": "−2 + 1" }
+            ],
+            "mostrar": { "distancia": false },
+            "highlight": ["c3"]
+          }
+        },
+        {
+          "id": "contou-marcas",
+          "label": "2",
+          "correct": false,
+          "feedback": "Você contou as marcas entre os pontos (−1 e 0). Distância conta os passos de uma marca à seguinte, de −2 até 1.",
+          "figure": {
+            "pontos": [
+              { "x": -2, "cor": "c1", "rotulo": "−2" },
+              { "x": 1, "cor": "c2", "rotulo": "1" },
+              { "x": -1, "cor": "c3", "rotulo": "1ª" },
+              { "x": 0, "cor": "c3", "rotulo": "2ª" }
             ],
             "mostrar": { "distancia": false },
             "highlight": ["c3"]

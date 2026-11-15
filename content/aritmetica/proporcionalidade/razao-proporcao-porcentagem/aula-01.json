@@ -168,22 +168,34 @@
           "id": "micro-erro",
           "label": "4",
           "correct": false,
-          "feedback": "Você calculou metade; 25%=1/4, então 8/4=2.",
-          "figure": {
-            "pintadas": 2,
-            "partes": 4,
-            "todo": 8
-          }
+          "feedback": "4 é a metade de 8, e metade é 50%. 25% é a quarta parte: divida o todo em 4 partes iguais.",
+          "figure": { "pintadas": 2, "partes": 4, "todo": 8 }
         },
         {
           "id": "micro-acerto",
           "label": "2",
           "correct": true,
           "feedback": "Certo: 2; 25/100·8=2.",
+          "figure": { "pintadas": 1, "partes": 4, "todo": 8 }
+        },
+        {
+          "id": "multiplicou-por-4",
+          "label": "32",
+          "correct": false,
+          "feedback": "Você multiplicou 8 por 4. Uma parte de 25% é menor que o todo; ela vem de dividir o todo por 4.",
+          "figure": { "pintadas": 4, "partes": 4, "todo": 32, "rotulos": { "parte": "8 · 4", "todo": "T" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "esqueceu-100",
+          "label": "200",
+          "correct": false,
+          "feedback": "Você fez 25 · 8 e esqueceu de dividir por 100: 200 é 25% de 800, não de 8. Lembre que 25% = 25/100.",
           "figure": {
             "pintadas": 1,
             "partes": 4,
-            "todo": 8
+            "todo": 800,
+            "rotulos": { "parte": "25 · 8", "todo": "T" },
+            "highlight": ["c2"]
           }
         }
       ]

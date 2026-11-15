@@ -42,6 +42,12 @@ describe("passos da aula", () => {
     const s = step("conferir-previsao");
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options.find((o) => o.correct)!.label).toBe("2·10²");
+    expect(s.options).toHaveLength(4);
+    expect(2 * 10 ** 2).toBe(200);
+    expect(20 * 10 ** 1).toBe(200); // mesmo valor, mas 20 ≥ 10: não normalizado
+    expect(2 * 10 ** "200".length).toBe(2000); // contou os 3 algarismos: dez vezes mais
+    expect(2 * 10 ** -2).toBeCloseTo(0.02, 12); // expoente negativo: número menor que 1
+    expect(s.options.map((o) => o.label)).toEqual(["20·10¹", "2·10³", "2·10²", "2·10⁻²"]);
   });
 
   it("fechamento: cada letra tem significado no glossário", () => {

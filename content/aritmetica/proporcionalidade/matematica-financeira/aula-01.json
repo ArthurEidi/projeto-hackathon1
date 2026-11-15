@@ -179,24 +179,34 @@
           "label": "R$ 121",
           "correct": true,
           "feedback": "Certo. 100·1,1² = 121; o segundo juro incide em 110.",
-          "figure": {
-            "n": 3,
-            "acesos": [
-              3
-            ]
-          }
+          "figure": { "n": 3, "acesos": [3] }
         },
         {
           "id": "o2",
           "label": "R$ 120",
           "correct": false,
-          "feedback": "R$ 120 é simples; composto dá 100·1,1² = 121.",
+          "feedback": "R$ 120 é juro simples: os dois juros de R$ 10 saíram de R$ 100. No composto, o segundo juro incide sobre o saldo do 1º período.",
+          "figure": { "regra": "pa", "d": 10, "n": 3, "acesos": [3], "fantasma": { "regra": "pa", "a1": 100, "d": 10 } }
+        },
+        {
+          "id": "um-periodo",
+          "label": "R$ 110",
+          "correct": false,
+          "feedback": "R$ 110 é o montante depois de um período só. Falta o segundo período, com a taxa agindo sobre o novo saldo.",
+          "figure": { "n": 2, "acesos": [2] }
+        },
+        {
+          "id": "taxa-ao-quadrado",
+          "label": "R$ 101",
+          "correct": false,
+          "feedback": "Você elevou só a taxa ao quadrado: 0,1² = 0,01, ou 1%. Quem se repete a cada período é o fator 1,1.",
           "figure": {
-            "n": 3,
-            "acesos": [
-              2,
-              3
-            ]
+            "regra": "pa",
+            "d": 1,
+            "termos": 2,
+            "n": 2,
+            "acesos": [2],
+            "fantasma": { "regra": "pg", "a1": 100, "q": 1.1 }
           }
         }
       ]

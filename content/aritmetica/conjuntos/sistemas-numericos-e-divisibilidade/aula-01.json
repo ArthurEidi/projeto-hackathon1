@@ -222,29 +222,27 @@
       },
       "prompt": "Ao dividir 6 fichas em grupos de 3, qual é o resto?",
       "options": [
+        { "id": "micro-acerto", "label": "0", "correct": true, "feedback": "Certo: 0; 6=3·2+0." },
         {
           "id": "micro-erro",
           "label": "2",
           "correct": false,
-          "feedback": "Você confundiu quociente com resto; 6=3·2+0.",
-          "figure": {
-            "partes": 2,
-            "pintadas": 2,
-            "todo": 6,
-            "rotulos": {
-              "parte": "2×3",
-              "todo": "n"
-            },
-            "highlight": [
-              "c2"
-            ]
-          }
+          "feedback": "2 é o número de grupos, o quociente. O resto é o que sobra fora dos grupos: conte as fichas que ficaram sem grupo.",
+          "figure": { "partes": 2, "pintadas": 2, "todo": 6, "rotulos": { "parte": "2×3", "todo": "n" }, "highlight": ["c2"] }
         },
         {
-          "id": "micro-acerto",
-          "label": "0",
-          "correct": true,
-          "feedback": "Certo: 0; 6=3·2+0."
+          "id": "parou-no-1o-grupo",
+          "label": "3",
+          "correct": false,
+          "feedback": "Você formou um grupo só: 6 − 3 = 3. Mas com 3 fichas ainda cabe outro grupo de 3; continue até não caber mais.",
+          "figure": { "partes": 2, "pintadas": 1, "todo": 6, "rotulos": { "parte": "1 grupo", "todo": "n" }, "highlight": ["c1"] }
+        },
+        {
+          "id": "resto-e-dividendo",
+          "label": "6",
+          "correct": false,
+          "feedback": "6 é o total de fichas, o dividendo. O resto é o que sobra depois de formar todos os grupos de 3 possíveis.",
+          "figure": { "partes": 6, "pintadas": 6, "todo": 6, "rotulos": { "parte": "fichas", "todo": "n" }, "highlight": ["c2"] }
         }
       ]
     },

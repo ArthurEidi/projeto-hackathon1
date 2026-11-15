@@ -193,25 +193,35 @@
           "id": "micro-erro",
           "label": "−2",
           "correct": false,
-          "feedback": "Expoente negativo pede inverso, não troca de sinal; 2⁻¹=1/2.",
+          "feedback": "Expoente negativo pede inverso, não troca de sinal: a curva de 2ˣ nunca fica abaixo do eixo. Volte um passo a partir de 2⁰ = 1.",
           "figure": {
-            "y": [
-              -3,
-              9
-            ],
+            "y": [-3, 9],
             "guias": {
-              "horizontais": [
-                {
-                  "v": -2,
-                  "rotulo": "y = −2",
-                  "cor": "c3"
-                }
-              ]
-            },
-            "ponto": {
-              "x": -1,
-              "cor": "c3"
+              "horizontais": [{ "v": -2, "rotulo": "y = −2", "cor": "c3" }],
+              "verticais": [{ "v": -1, "rotulo": "x = −1", "cor": "muted" }]
             }
+          }
+        },
+        {
+          "id": "ignorou-sinal",
+          "label": "2",
+          "correct": false,
+          "feedback": "Você ignorou o sinal do expoente: 2 é 2¹, a saída em x = 1. Em x = −1 você volta um passo, e voltar divide por 2.",
+          "figure": {
+            "ponto": { "x": 1, "cor": "c3" },
+            "guias": { "verticais": [{ "v": -1, "rotulo": "x = −1", "cor": "muted" }] }
+          }
+        },
+        {
+          "id": "sinal-na-saida",
+          "label": "−0,5",
+          "correct": false,
+          "feedback": "Você levou o menos do expoente para o resultado. Toda potência de base 2 é positiva: a curva fica acima da assíntota y = 0.",
+          "figure": {
+            "y": [-3, 9],
+            "marcar": { "assintota": true },
+            "guias": { "horizontais": [{ "v": -0.5, "rotulo": "y = −0,5", "cor": "c4" }] },
+            "highlight": ["c4"]
           }
         },
         {
@@ -219,16 +229,7 @@
           "label": "0,5",
           "correct": true,
           "feedback": "Certo: 0,5; 2⁻¹=1/2.",
-          "figure": {
-            "ponto": {
-              "x": -1,
-              "cor": "c1",
-              "rotulo": "(−1; 0,5)"
-            },
-            "highlight": [
-              "c1"
-            ]
-          }
+          "figure": { "ponto": { "x": -1, "cor": "c1" }, "highlight": ["c1"] }
         }
       ]
     },
