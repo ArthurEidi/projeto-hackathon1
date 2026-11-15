@@ -1,3 +1,3 @@
 # Fontes candidatas — posicoes-relativas-de-retas
 
-Nenhuma candidata no ENEM (motivo: o cache ENEM 2009–2023 não traz questões sem imagem sobre paralelismo, perpendicularidade ou interseção de retas no plano cartesiano)
+Nenhuma candidata utilizável no cache do ENEM (mesmo aceitando questões com imagem); 2016/149 está incompleta no cache (falta o texto do enunciado definindo o objetivo).

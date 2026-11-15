@@ -1,3 +1,3 @@
 # Fontes candidatas — inequacoes-trigonometricas
 
-Nenhuma candidata no ENEM (motivo: não há no cache questão de inequações trigonométricas).
+Nenhuma candidata no cache do ENEM (mesmo aceitando questões com imagem).

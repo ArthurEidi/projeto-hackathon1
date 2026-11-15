@@ -1,3 +1,3 @@
 # Fontes candidatas — circunferencia-arcos-e-angulos
 
-Nenhuma candidata no ENEM (motivo: não há no cache questão sobre ângulo central, inscrito ou arcos na circunferência sem dependência de imagem).
+Nenhuma candidata específica de arcos e ângulos na circunferência no cache do ENEM (mesmo aceitando questões com imagem); 2017/156 trata de triângulo 30°-30°-120°/lei dos cossenos e 2013/145 trata de razão/porcentagem de setor.
