@@ -522,16 +522,16 @@
     "vestibular": [
       {
         "id": "enem-2012-losango-perimetro",
-        "prompt": "Na Figura 1, um quadrado circunscreve círculo de raio r; na Figura 2, o lado cresce em r. Qual o aumento percentual do perímetro?",
-        "fala": "Compare o lado na Figura 1 (2r) com o lado ampliado na Figura 2 (3r) antes de calcular o perímetro.",
+        "prompt": "Na Figura 1, o losango liga centros de 4 círculos tangentes de raio r; na Figura 2, dois dobram o raio. Qual o aumento do perímetro?",
+        "fala": "Na Figura 1 o lado do losango mede 2r; na Figura 2, com dois raios dobrados, o lado mede r + 2r = 3r.",
         "imagens": [
           {
             "src": "/vestibular/enem-2012-137-1.png",
-            "alt": "Figura 1: quadrado circunscrito a um círculo de raio r e lado 2r"
+            "alt": "Figura 1: losango com vértices nos centros de quatro circunferências tangentes de raio r"
           },
           {
             "src": "/vestibular/enem-2012-137-2.png",
-            "alt": "Figura 2: quadrado ampliado com setores de raio r nos cantos e lado 3r"
+            "alt": "Figura 2: losango ampliado com duas circunferências opostas de raio 2r"
           }
         ],
         "fonte": {
