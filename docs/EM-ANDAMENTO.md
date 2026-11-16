@@ -94,10 +94,11 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B27a. Conferência visual em 400 px das 10 questões de vestibular da B23 | Antigravity #2 | 16/11 | `treino.vestibular` (só `prompt`, `fala`, `alt`) das 5 aulas da B23, `docs/visual/vestibular-b23v.md` |
 | B27b. Defeitos que só aparecem movendo o slider (9 casos do fim de `pendencias-b19.md`) | Claude Code #2 | 16/11 | `src/widgets/common/**` das pastas envolvidas, GUIA §5 dessas seções, aulas e testes desses 9 capítulos, `docs/visual/pendencias-b27b.md` |
 | B27c. Figura que entrega a resposta: geometria (só relatório) | Antigravity #3 | 16/11 | `docs/visual/entrega-resposta-b27c.md` |
-| B27d. Figura que entrega a resposta: aritmética e álgebra (só relatório) | Antigravity #4 | 16/11 | `docs/visual/entrega-resposta-b27d.md` |
+| ~~B27a~~ concluída 16/11 (10c5ddd): 9 de 10 ok; ENEM 2022/137 com frações em texto | Antigravity #2 | 16/11 | — |
+| ~~B27d~~ concluída 16/11 (6b9fa20): 273 passos, 16 casos | Antigravity #4 | 16/11 | — |
+| B28a. Corrigir os 16 casos da B27d (esconder até o aluno chegar, ou reescrever a fala; nada em `src/`) | Antigravity #4 | 16/11 | aulas e testes dos capítulos de `entrega-resposta-b27d.md`, `docs/visual/correcoes-b28a.md` |
 
 ## Pedidos entre máquinas
 
