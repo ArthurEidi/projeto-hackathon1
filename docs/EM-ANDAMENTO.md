@@ -76,9 +76,13 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B17b (refeita). Candidatas do ENEM com imagem: 25 capítulos de álgebra e aritmética | Antigravity #2 | 16/11 | `docs/fontes-candidatas/<slug da lista>.md`, novos em `public/vestibular/`, `docs/revisao/vestibular-b17b.md` |
-| B19 (refeita). Defeitos de widget que continuam abertos (só relatório) | Antigravity #3 | 16/11 | `docs/visual/pendencias-b19.md` |
-| B22. Desafio de `solidos-de-revolucao` cabendo em 400 × 860; reavaliar ENEM 2022/143 e 2022/160 (descartadas na B17a por conta que não bateu) | Claude Code #2 | 16/11 | aula e teste de `solidos-de-revolucao`, `src/ui/styles.css` (só se inevitável), `docs/fontes-candidatas/projecoes-cortes-e-planificacoes.md` e `posicoes-relativas-no-espaco.md`, `public/vestibular/enem-2022-1{43,60}-*`, `docs/revisao/b22.md` |
+| ~~B17b (refeita)~~ concluída 16/11 (323dfbf): 9 candidatas em 4 capítulos; 21 seguem sem candidata no cache | Antigravity #2 | 16/11 | — |
+| ~~B19 (refeita)~~ concluída 16/11: `docs/visual/pendencias-b19.md`, 12 defeitos abertos (3 conferidos pelo maestro nas capturas) | Antigravity #3 | 16/11 | — |
+| ~~B22~~ concluída 16/11 (820e903): desafio de `solidos-de-revolucao` cabe em 400 × 860; ENEM 2022/160 aprovada; 2022/143 segue descartada (gabarito do cache diverge da dobra) | Claude Code #2 | 16/11 | — |
+| B23a. Vestibular com imagem nas aulas `matrizes-determinantes-sistemas` e `distribuicao-de-frequencias-e-amostragem` (briefing `C:\Users\mkf10\projetos\briefing-b23.md`) | Claude Code #2 | 16/11 | `treino.vestibular` dessas 2 aulas, seção de vestibular dos 2 roteiros, `docs/revisao/vestibular-b23a.md` |
+| B23b. Vestibular com imagem em `inequacoes-exponenciais-logaritmicas`, `experimentos-binomial-e-repetidos` e `projecoes-cortes-e-planificacoes` | Antigravity #2 | 16/11 | `treino.vestibular` dessas 3 aulas, seção de vestibular dos 3 roteiros, `docs/revisao/vestibular-b23b.md` |
+| B24a. Defeitos do `ciclo_trigonometrico` (B19): bolinha vazia em ≥, chips e barras sobrepostos, passo da tangente (briefing `C:\Users\mkf10\projetos\briefing-b24.md`) | Antigravity #3 | 16/11 | `src/widgets/common/ciclo/**`, GUIA §5 (ciclo), aulas e testes de `inequacoes-trigonometricas`, `formulas-de-adicao-e-arco-duplo`, `funcoes-trigonometricas`, `docs/visual/correcoes-b24a.md` |
+| B24b. Defeitos da B19 que se resolvem pelo conteúdo: `piramides` p2, `poligonos-e-quadrilateros` p2, `circunferencia-equacao-e-posicoes` p4, encostos leves | Antigravity #4 | 16/11 | aulas e testes de `piramides`, `poligonos-e-quadrilateros`, `circunferencia-equacao-e-posicoes`, `angulos-retas-paralelas`, `prismas-e-paralelepipedos`; `docs/visual/correcoes-b24b.md` |
 
 ## Pedidos entre máquinas
 
