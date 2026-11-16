@@ -666,6 +666,125 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2022-world-series",
+        "prompt": "Numa série de até 7 jogos, vence quem fizer 4 vitórias, com chance p por jogo. Qual a chance de o vencedor do 1º jogo ser campeão?",
+        "fala": "Como o 1º jogo já foi vencido, conte quantas vitórias faltam nos até 6 jogos restantes.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2022-137-1.png",
+            "alt": "Fração 1/2 indicando a probabilidade de vitória em cada partida"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 137: enunciado resumido mantendo a probabilidade p = 1/2 e as alternativas em imagem; gabarito (C) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2022/questions/137"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "A",
+            "correct": false,
+            "feedback": "35/64 = (20 + 15)/64 conta só 3 ou 4 vitórias nos 6 jogos restantes; faltam 5 e 6 vitórias (6 + 1). A correta é C (42/64).",
+            "imagem": {
+              "src": "/vestibular/enem-2022-137-alt-A.png",
+              "alt": "Fração 35/64"
+            }
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "correct": false,
+            "feedback": "40/64 não sai da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é C.",
+            "imagem": {
+              "src": "/vestibular/enem-2022-137-alt-B.png",
+              "alt": "Fração 40/64"
+            }
+          },
+          {
+            "id": "c",
+            "label": "C",
+            "correct": true,
+            "feedback": "Certo: faltam ao menos 3 vitórias nos 6 jogos restantes; (C(6,3)+C(6,4)+C(6,5)+C(6,6))/64 = 42/64.",
+            "imagem": {
+              "src": "/vestibular/enem-2022-137-alt-C.png",
+              "alt": "Fração 42/64"
+            }
+          },
+          {
+            "id": "d",
+            "label": "D",
+            "correct": false,
+            "feedback": "44/64 passa da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é C.",
+            "imagem": {
+              "src": "/vestibular/enem-2022-137-alt-D.png",
+              "alt": "Fração 44/64"
+            }
+          },
+          {
+            "id": "e",
+            "label": "E",
+            "correct": false,
+            "feedback": "52/64 passa da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é C.",
+            "imagem": {
+              "src": "/vestibular/enem-2022-137-alt-E.png",
+              "alt": "Fração 52/64"
+            }
+          }
+        ]
+      },
+      {
+        "id": "enem-2009-celulares-defeito",
+        "prompt": "Um aparelho tem 0,2% de chance de defeito. Vendidos 4 aparelhos, qual a chance de exatamente dois terem defeito?",
+        "fala": "Multiplique o número de escolhas C(4, 2) pelas chances de 2 defeitos e 2 perfeitos.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Questão 145: enunciado resumido mantendo os dados numéricos e alternativas; gabarito (C) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2009/questions/145"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "2 × (0,2%)⁴",
+            "correct": false,
+            "feedback": "Faltou o fator C(4, 2) = 6 e os 2 aparelhos sem defeito (99,8%)². A certa é 6 × (0,2%)² × (99,8%)²."
+          },
+          {
+            "id": "b",
+            "label": "4 × (0,2%)²",
+            "correct": false,
+            "feedback": "Há C(4, 2) = 6 caminhos, não 4, e faltou multiplicar por (99,8%)². A certa é 6 × (0,2%)² × (99,8%)²."
+          },
+          {
+            "id": "c",
+            "label": "6 × (0,2%)² × (99,8%)²",
+            "correct": true,
+            "feedback": "Certo: C(4, 2) = 6 caminhos com 2 defeitos (0,2%)² e 2 sem defeito (99,8%)²."
+          },
+          {
+            "id": "d",
+            "label": "4 × (0,2%)",
+            "correct": false,
+            "feedback": "4 × (0,2%) não multiplica as probabilidades independentes. A certa é 6 × (0,2%)² × (99,8%)²."
+          },
+          {
+            "id": "e",
+            "label": "6 × (0,2%) × (99,8%)",
+            "correct": false,
+            "feedback": "Faltou elevar 0,2% e 99,8% ao quadrado para 2 defeitos e 2 perfeitos. A certa é 6 × (0,2%)² × (99,8%)²."
+          }
+        ]
+      }
+    ]
   }
 }

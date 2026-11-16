@@ -656,6 +656,59 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2017-emprestimo-log",
+        "prompt": "Com prestação P(n)≤400 pela fórmula, log 1,013≈0,005, log 400≈2,602 e log 335≈2,525, qual o menor número de parcelas n?",
+        "fala": "Monte a inequação P ≤ 400, isole 1,013ⁿ e aplique logaritmo nos dois lados.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2017-137-1.png",
+            "alt": "Fórmula da prestação P igual a 5 000 vezes 1,013 elevado a n vezes 0,013, dividido por 1,013 elevado a n menos 1"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2017,
+          "adaptada": true,
+          "adaptacao": "Questão 137: enunciado resumido mantendo a fórmula em imagem e as aproximações de logaritmo; gabarito (D) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2017/questions/137"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 parcelas dão prestação acima de 400. De 335·1,013ⁿ ≥ 400, log dá n ≥ 15,4, logo n = 16."
+          },
+          {
+            "id": "b",
+            "label": "14",
+            "correct": false,
+            "feedback": "14 ainda fica abaixo de 15,4. Aplicando log em 1,013ⁿ ≥ 400/335, temos n ≥ 15,4, logo n = 16."
+          },
+          {
+            "id": "c",
+            "label": "15",
+            "correct": false,
+            "feedback": "15 é menor que 15,4, então P ainda passa de 400. O menor inteiro que satisfaz n ≥ 15,4 é 16."
+          },
+          {
+            "id": "d",
+            "label": "16",
+            "correct": true,
+            "feedback": "Certo: 335·1,013ⁿ ≥ 400 dá 0,005n ≥ 2,602 − 2,525 = 0,077, logo n ≥ 15,4 e o menor inteiro é 16."
+          },
+          {
+            "id": "e",
+            "label": "17",
+            "correct": false,
+            "feedback": "17 atende P ≤ 400, mas não é o menor número de parcelas. Como n ≥ 15,4, o menor inteiro é 16."
+          }
+        ]
+      }
+    ]
   }
 }

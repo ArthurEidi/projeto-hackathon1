@@ -249,16 +249,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-inequacoes-exponenciais-logaritmicas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema inequações exponenciais e logarítmicas.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — ENEM 2017 — Questão 137 (`enem-2017-emprestimo-log`)
+- **Estado:** inserida na aula (`https://api.enem.dev/v1/exams/2017/questions/137`, gabarito D: `n ≥ 15,4 ⇒ 16` parcelas).
+- **Recorte:** Inequação exponencial/logarítmica em contexto de empréstimo (`P(n) ≤ 400`).
 
 #### V2 — `v2-inequacoes-exponenciais-logaritmicas`
 - **Estado:** **PENDENTE-FONTE**

@@ -250,13 +250,11 @@ p = 0 e p = 1 concentram tudo num extremo. Somando P(k) para todo k dá 1 (é o 
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** exatamente k sucessos em n ensaios (moeda ou dado).
-- **Onde procurar:** ENEM, Fuvest, Unesp.
+#### V1 — ENEM 2022 — Questão 137 (`enem-2022-world-series`)
+- **Habilidade-alvo:** ensaios repetidos independentes com `p = 1/2` (série de até 7 jogos, faltando ao menos 3 vitórias em 6 jogos: `42/64`).
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** chute em prova de múltipla escolha.
-- **Onde procurar:** ENEM, UFRGS ("assinalou ao acaso").
+#### V2 — ENEM 2009 — Questão 145 (`enem-2009-celulares-defeito`)
+- **Habilidade-alvo:** fórmula binomial direta em 4 ensaios com `p = 0,2%` (`C(4,2) · (0,2%)² · (99,8%)²`).
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** pelo menos um sucesso pelo complemento.

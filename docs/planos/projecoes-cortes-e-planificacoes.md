@@ -236,9 +236,8 @@ Testar moldes inválidos mostra a fronteira geométrica: ter 6 quadrados **não 
 - **Habilidade-alvo:** reconhecer vistas ortogonais (frontal, superior, lateral) de objetos 3D ou pilhas de blocos.
 - **Onde procurar:** ENEM (projeções ortogonais de sólidos e edifícios).
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** determinar o polígono resultante da seção plana de um poliedro ou cilindro/cone.
-- **Onde procurar:** Unicamp, Unesp, ENEM.
+#### V3 — ENEM 2022 — Questão 160 (`enem-2022-robo-cubo-projecao`)
+- **Habilidade-alvo:** projeção ortogonal sobre a base de um trajeto fechado sobre as faces do cubo (`https://api.enem.dev/v1/exams/2022/questions/160`, gabarito A).
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** menor caminho na superfície de um sólido usando a planificação.

@@ -399,6 +399,78 @@
             }
           }
         ]
+      },
+      {
+        "id": "enem-2022-robo-cubo-projecao",
+        "prompt": "Um robô parte de P no topo do cubo, alternando esquerda e direita no centro de cada face até voltar a P. Qual a projeção na base?",
+        "fala": "Acompanhe as 6 faces visitadas e apague a altura (z) para projetar os segmentos na base.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2022-160-1.png",
+            "alt": "Cubo em perspectiva mostrando o início do trajeto do robô de P, no centro do topo, pela face direita até a base"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "Questão 160: enunciado resumido mantendo a figura do cubo e as projeções das alternativas; gabarito (A) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2022/questions/160"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "A",
+            "correct": true,
+            "feedback": "Certo: o trajeto fechado contorna apenas os quadrantes fundo-direita e frente-esquerda na base (A).",
+            "imagem": {
+              "src": "/vestibular/enem-2022-160-alt-a.png",
+              "alt": "Projeção A: contorno nos quadrantes fundo-direita e frente-esquerda da base"
+            }
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "correct": false,
+            "feedback": "B contorna os 4 quadrantes, mas o trajeto projetado fecha só dois opostos (fundo-direita e frente-esquerda). A correta é A.",
+            "imagem": {
+              "src": "/vestibular/enem-2022-160-alt-b.png",
+              "alt": "Projeção B: contorno em três quadrantes da base"
+            }
+          },
+          {
+            "id": "c",
+            "label": "C",
+            "correct": false,
+            "feedback": "Os dois quadrantes do contorno são diagonalmente opostos, não ambos à direita. A correta é A.",
+            "imagem": {
+              "src": "/vestibular/enem-2022-160-alt-c.png",
+              "alt": "Projeção C: contorno nos dois quadrantes da direita"
+            }
+          },
+          {
+            "id": "d",
+            "label": "D",
+            "correct": false,
+            "feedback": "Os dois quadrantes do trajeto ficam em diagonais opostas da base, não ambos ao fundo. A correta é A.",
+            "imagem": {
+              "src": "/vestibular/enem-2022-160-alt-d.png",
+              "alt": "Projeção D: contorno nos dois quadrantes do fundo"
+            }
+          },
+          {
+            "id": "e",
+            "label": "E",
+            "correct": false,
+            "feedback": "O trajeto fechado passa por apenas dois quadrantes opostos na base, não três. A correta é A.",
+            "imagem": {
+              "src": "/vestibular/enem-2022-160-alt-e.png",
+              "alt": "Projeção E: contorno em três quadrantes da base"
+            }
+          }
+        ]
       }
     ]
   }
