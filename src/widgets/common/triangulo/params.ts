@@ -47,6 +47,12 @@ const Razoes = z.object({
   k: Expr.default(1),
   /** Maior k que o slider alcança: fixa a janela para o triângulo crescer sem a vista mudar. */
   k_max: z.number().positive().default(3),
+  /**
+   * Janela com k em slider (16/11): "k_max" (padrão, como antes) fixa a vista no maior k, e o triângulo
+   * cresce dentro dela; "k" enquadra o triângulo atual, que ocupa a área em qualquer k, e a malha guarda
+   * a unidade da escala 1: o crescimento aparece nos quadradinhos por cateto (3,5 → 7,1 → 10,6 em 45°).
+   */
+  janela: z.enum(["k_max", "k"]).default("k_max"),
   malha: z.boolean().default(true),
   painel: z.boolean().default(true),
   /** Triângulo de referência em cinza (θ em graus, escala 1). */

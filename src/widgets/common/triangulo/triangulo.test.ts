@@ -309,3 +309,24 @@ describe("métricas emitidas e figura", () => {
     }
   });
 });
+
+describe("razoes: janela (B25a, 16/11)", () => {
+  const ctx = new Proxy({} as Record<string, unknown>, {
+    get: (_, k) => (k === "measureText" ? () => ({ width: 30 }) : () => undefined),
+    set: () => true,
+  }) as unknown as CanvasRenderingContext2D;
+  const vista = (o: object, k: number) => {
+    const p = tri({ modo: "razoes", angulo: 45, k: "$k", k_max: 3, hip: 5, ...o });
+    return desenharTriangulo(ctx, 400, 360, [], p, { k }, estadoInicial(p)).vista;
+  };
+  it("padrão k_max: a vista não muda com k (como antes)", () => {
+    expect(tri({ modo: "razoes" })).toMatchObject({ janela: "k_max" });
+    expect(vista({}, 1).k).toBe(vista({}, 3).k);
+  });
+  it("janela k: o triângulo ocupa o mesmo tamanho na tela em k = 1, 2 e 3, bem maior que em k_max com k = 1", () => {
+    const px = [1, 2, 3].map((k) => vista({ janela: "k" }, k).k * 5 * k); // hipotenusa em pixels
+    expect(px[1]).toBeCloseTo(px[0], 6);
+    expect(px[2]).toBeCloseTo(px[0], 6);
+    expect(vista({ janela: "k" }, 1).k).toBeGreaterThan(2 * vista({}, 1).k);
+  });
+});

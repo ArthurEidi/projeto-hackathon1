@@ -79,6 +79,7 @@
           }
         ],
         "mostrar_soma": true,
+        "componentes_de": "v",
         "passo": 1
       },
       "controls": [],

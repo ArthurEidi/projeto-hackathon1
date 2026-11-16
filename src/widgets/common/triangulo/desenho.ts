@@ -286,7 +286,7 @@ export function layoutRazoes(
 
 function dRazoes(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"razoes">, cl: Ctl): GeoTri {
   const g = razoes(p, cl);
-  const kDinamico = typeof p.k === "string";
+  const kDinamico = typeof p.k === "string" && p.janela === "k_max";
   const hipMax = Math.max(kDinamico ? avaliarMax(p) : g.hip, 0.5);
   const angFixo = typeof p.angulo === "number";
   const caMax = angFixo ? Math.max(hipMax * Math.cos((g.angulo * Math.PI) / 180), hipMax * 0.35) : hipMax * 0.92;
@@ -305,7 +305,9 @@ function dRazoes(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"razo
         y1: g.hip * (p.painel ? 1.05 : 0.92),
       };
   const v = criarVista(w, h, caixa, 22);
-  if (p.malha) malha(ctx, v, { x0: 0, x1: kDinamico ? caMax : hipMax, y0: 0, y1: kDinamico ? coMax : hipMax * 0.95 }, hipMax > 8 ? 2 : 1);
+  // janela "k" (16/11): a malha guarda a unidade da escala 1, então os quadradinhos por cateto crescem com k.
+  const passoMalha = (p.janela === "k" ? avaliarBase(p) : hipMax) > 8 ? 2 : 1;
+  if (p.malha) malha(ctx, v, { x0: 0, x1: kDinamico ? caMax : hipMax, y0: 0, y1: kDinamico ? coMax : hipMax * 0.95 }, passoMalha);
   const A = { x: 0, y: 0 };
   const Cc = { x: g.ca, y: 0 };
   const Bb = { x: g.ca, y: g.co };

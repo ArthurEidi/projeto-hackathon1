@@ -503,6 +503,7 @@ Inclui os modos `revolucao`, `prisma`, `piramide`, `cilindro`, `esfera`, `tronco
 
 - **Esconder a medida pedida no tronco:** `mostrar: { "g": false }` (modo `tronco`, com `meridiano: true`) troca `g = 5` por `g = ?` no painel do corte meridiano. Padrão: `true`.
 - **Destacar uma face do dado:** `face_destaque: 1..6` (modo `vistas`, `solido: "dado"`) pinta a face com a cor forte do par e a contorna; serve para a figura de cada alternativa apontar a face escolhida (ex.: `{ "fechar": 0.5, "face_destaque": 2 }`). Métrica `face_destaque`.
+- **Acréscimo de 16/11 (`prisma` com `diagonal: true`):** quando `base: "retangulo"` e `diagonal: true`, o número da área no centro da base é omitido (a área continua no placar `Ab = ...`) para não colidir com a diagonal da base e o chip `d = ...`.
 Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer perfil (retângulo → cilindro, semicírculo → esfera, trapézio → tronco) e acrescentar sólidos de faces planas; mesma câmera ortográfica e convenção de aresta oculta tracejada. Inclui planificação (Aula 02 de Cones já prevista na taxonomia).
 
 ### 5.8 Menores, mas úteis
@@ -524,7 +525,7 @@ Arquivos: `common/triangulo/params.ts` (schema por `modo`), `calc.ts` (geometria
 | `modo` | Campos principais | Métricas emitidas |
 |---|---|---|
 | `pitagoras` | `b`, `c` (catetos), `quadrados`, `malha`; `prova` + `deslizado` + chave `deslizar` (quadradão b + c com 4 triângulos: sobra a², depois b² e c²); `diagonal` + chave `diagonal` (quadrado de lado b, d = b√2) | `a`, `area_b2`, `area_c2`, `area_a2`, `deslizou_pecas`, `testou_diagonal` |
-| `razoes` | `angulo` (θ), `hip` (hipotenusa na escala 1), `k`, `k_max` (fixa a janela), `malha`, `painel`, `fantasma` (θ de referência, em graus) | `razao_sen`, `razao_cos`, `razao_tg`, `k`, `angulo`, `co`, `ca`, `hip` |
+| `razoes` | `angulo` (θ), `hip` (hipotenusa na escala 1), `k`, `k_max` (fixa a janela), `janela` (`k_max` ou `k`, 16/11), `malha`, `painel`, `fantasma` (θ de referência, em graus) | `razao_sen`, `razao_cos`, `razao_tg`, `k`, `angulo`, `co`, `ca`, `hip` |
 | `metricas` | `a`, `m` (n = a − m); ou `catetos: [b, c]` + `apoio` (0 apoia no cateto, 1 na hipotenusa); `comparar` (quadrado b² × retângulo a·m) | `a`, `m`, `n`, `h`, `b`, `area_b2`, `area_am`, `apoio` |
 | `cossenos` | `b`, `c`, `angulo` (A), `fantasma` (A = 90°) | `a`, `a2`, `termo_cos`, `ang_a` |
 | `senos` | `R`, `angulo` (A), `posicao` (desloca o vértice A pelo arco) | `a`, `razao_a_sen`, `dois_R`, `ang_a` |
@@ -538,6 +539,7 @@ Notas de uso:
 - No ângulo externo (`externo: true`) o prolongamento da base sai do vértice B: `e = α + γ` (as duas fatias são α, correspondente, e γ, alterno).
 - Nomes de slider são minúsculos (`ang_a`, `l`): é a regra do schema de aula e das expressões `"$id"`.
 - `razoes` com `k_max` (padrão 3) mantém a janela fixa: o triângulo cresce sem a vista mudar, e as razões ficam iguais.
+- **Acréscimo de 16/11 (`janela`):** com `k` em slider, `janela: "k_max"` (padrão) é o comportamento acima. `janela: "k"` enquadra o triângulo atual, que ocupa a área em qualquer k, e a malha guarda a unidade da escala 1: o crescimento aparece na contagem de quadradinhos por cateto (em 45° com `hip: 5`, 3,5 → 7,1 → 10,6). Use quando a escala 1 de `k_max` deixaria o triângulo minúsculo (`trigonometria-no-triangulo-retangulo` p1).
 
 Exemplos (`params`):
 ```jsonc
@@ -708,6 +710,8 @@ Métricas: `pontos_sobre` (distintos após toque/arraste), `estados_vistos` (den
 
 **Acréscimos de 14/11.** Rótulos C e P se afastam quando os pontos ficam próximos; a equação sai sem parênteses nem zeros sobrando (`x² + y² = 25`).
 
+**Acréscimos de 16/11.** `mostrar.ponto` (padrão `true`): `false` oculta o ponto `P`, o segmento `CP` e o chip `d = …` (usado em passos sobre reta secante/tangente).
+
 ### 5.17 `vetores_no_plano` + `vetores_figura`
 
 `common/vetores/`: união discriminada por `modo`, `vetores` (padrão) ou `complexo`. Pares numéricos aceitam expressões com sliders; figura só números; `highlight` e `passo` (1) comuns.
@@ -723,6 +727,8 @@ Métricas: `pontos_sobre` (distintos após toque/arraste), `estados_vistos` (den
 ```
 
 `z`, `w?` são pares Re/Im; `potencia_i` aplica giros inteiros de 90 graus (use slider inteiro). Mostra rastro dos giros e eixos Re/Im. Conjugado reflete a parte imaginária.
+**Acréscimos de 16/11.** `componentes_de` (só modo `vetores`, opcional): id do vetor cujos `x`/`y` (e o módulo e os degraus c1/c2) aparecem nos chips; sem ele, o primeiro vetor, como antes. Se não for o primeiro, os chips levam o nome (`v: x = 1`, `Módulo de v = …`); use quando o aluno arrasta outro vetor (`vetores-no-plano` p2). Com Módulo e Soma visíveis juntos, a faixa de baixo cresce 24 px (chips x/y, Módulo e Soma em linhas separadas); sem os dois juntos, nada muda.
+
 Métricas: `origens_vistas`, `<id>_comprimento` (inclui `v_comprimento`), `modulo_ligado`, `modulo`, `re`, `im`, `giros`. Contador de origens registra posições distintas após arraste da cauda. Cores: componentes c1/c2, vetor/resultante c3, módulo c4. Revisão visual em 400 px pendente pelo bloqueio de §5.14.
 
 ### 5.18 `retangulo_areas` + `retangulo_areas_figura`

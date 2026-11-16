@@ -34,10 +34,29 @@ export function alcanceVetores(p: Vetores, ctl: Record<string, number>, vs: Veto
   return Math.max(2, maior) + 1;
 }
 
+/** Vetor dos chips x/y e do módulo: `componentes_de` (16/11) ou, sem ele, o primeiro. */
+export function vetorDosChips(p: Vetores, vs: Vetor[]): { vetor: Vetor; prefixo: string } {
+  const id = p.modo === "vetores" ? p.componentes_de : undefined;
+  const i = id === undefined ? 0 : Math.max(0, vs.findIndex(q => q.id === id));
+  return { vetor: vs[i], prefixo: i === 0 ? "" : `${vs[i].id}: ` };
+}
+
+/**
+ * Faixa abaixo da malha: chips x/y, chip Módulo e nota Soma (centros em y).
+ * Com Módulo e Soma juntos (16/11) a faixa cresce 24 px para o chip não encostar na Soma;
+ * nos outros casos as posições são as de antes.
+ */
+export function rodapeVetores(h: number, modulo: boolean, soma: boolean) {
+  if (modulo && soma) return { reserva: 104, xy: h - 86, modulo: h - 54, soma: h - 16 };
+  return { reserva: 80, xy: h - 60, modulo: h - 34, soma: h - 11 };
+}
+
 export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hits: Hit[], p: Vetores, ctl: Record<string, number>, vs: Vetor[], modulo: boolean, faixas?: Faixas) {
   const soma = vs.reduce((s, v) => somar(s, v.comp), { x: 0, y: 0 });
   const alcance = alcanceVetores(p, ctl, vs, faixas);
-  const caixa = { x0: -alcance, x1: alcance, y0: -alcance, y1: alcance }, v = criarVista(w, h - 80, caixa, 24), alvos: Alvo[] = [];
+  const verSoma = p.mostrar.soma || (p.modo === "vetores" && p.mostrar_soma);
+  const rod = rodapeVetores(h, modulo, verSoma);
+  const caixa = { x0: -alcance, x1: alcance, y0: -alcance, y1: alcance }, v = criarVista(w, h - rod.reserva, caixa, 24), alvos: Alvo[] = [];
   malha(ctx, v, caixa, Math.max(1, Math.ceil(alcance / 8)));
   segMundo(ctx, v, { x: -alcance, y: 0 }, { x: alcance, y: 0 }, tinta("muted"), 1);
   segMundo(ctx, v, { x: 0, y: -alcance }, { x: 0, y: alcance }, tinta("muted"), 1);
@@ -57,7 +76,7 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
   // Rótulo do vetor além da ponta, na direção dele; se bater em outro rótulo (z e w com pontas
   // próximas, como z = 2 + i e w = −i encadeados), tenta os lados e acima/abaixo.
   const rotulos: Obstaculo[] = [];
-  const limites = { x: 4, y: 4, w: w - 8, h: h - 88 };
+  const limites = { x: 4, y: 4, w: w - 8, h: h - rod.reserva - 8 };
   vs.forEach((q, i) => {
     seta(q.cauda, q.ponta, i === 0 ? "c3" : "c2");
     if (q.arrastavel !== "nenhum") { const t = q.arrastavel === "cauda" ? q.cauda : q.ponta; pegador(ctx, v.q(t), "c3"); alvos.push({ id: q.id, c: v.q(t), raio: 20 }); }
@@ -78,11 +97,11 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
     rotulos.push({ caixa });
     etiqueta(ctx, hits, pos, q.id, i === 0 ? "c3" : "c2");
   });
-  const q = vs[0];
+  const { vetor: q, prefixo } = vetorDosChips(p, vs);
   if (modulo || p.modo === "complexo" || vs.length === 1) { const canto = { x: q.ponta.x, y: q.cauda.y }; segMundo(ctx, v, q.cauda, canto, tinta("c1"), espessura(p.highlight, "c1")); segMundo(ctx, v, canto, q.ponta, tinta("c2"), espessura(p.highlight, "c2")); }
-  if (p.mostrar.soma || (p.modo === "vetores" && p.mostrar_soma)) seta(q.cauda, somar(q.cauda, soma), "c3");
-  etiqueta(ctx, hits, { x: w / 4, y: h - 60 }, `x = ${fmt(q.comp.x)}`, "c1"); etiqueta(ctx, hits, { x: 3 * w / 4, y: h - 60 }, `y = ${fmt(q.comp.y)}`, "c2");
-  if (modulo) etiqueta(ctx, hits, { x: w / 2, y: h - 34 }, `Módulo = ${fmt(Math.hypot(q.comp.x, q.comp.y))}`, "c4");
-  if (p.mostrar.soma || (p.modo === "vetores" && p.mostrar_soma)) nota(ctx, { x: w / 2, y: h - 11 }, `Soma = (${fmt(soma.x)}; ${fmt(soma.y)})`, "c3", 14);
+  if (verSoma) seta(vs[0].cauda, somar(vs[0].cauda, soma), "c3");
+  etiqueta(ctx, hits, { x: w / 4, y: rod.xy }, `${prefixo}x = ${fmt(q.comp.x)}`, "c1"); etiqueta(ctx, hits, { x: 3 * w / 4, y: rod.xy }, `${prefixo}y = ${fmt(q.comp.y)}`, "c2");
+  if (modulo) etiqueta(ctx, hits, { x: w / 2, y: rod.modulo }, `Módulo${prefixo ? ` de ${q.id}` : ""} = ${fmt(Math.hypot(q.comp.x, q.comp.y))}`, "c4");
+  if (verSoma) nota(ctx, { x: w / 2, y: rod.soma }, `Soma = (${fmt(soma.x)}; ${fmt(soma.y)})`, "c3", 14);
   return { vista: v, alvos };
 }

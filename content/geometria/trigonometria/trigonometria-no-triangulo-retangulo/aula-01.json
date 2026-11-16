@@ -37,6 +37,7 @@
         "angulo": 45,
         "k": "$k",
         "k_max": 3,
+        "janela": "k",
         "hip": 5
       },
       "controls": [
