@@ -381,7 +381,10 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
   if (p.fantasma) segMundo(ctx, v, { x: 0, y: 1.3 }, { x: 0, y: -2.9 }, palette.lineDark, 2, [6, 5]);
   // Transversal t.
   segMundo(ctx, v, { x: g.X2.x - u.x * 1.1, y: g.X2.y - u.y * 1.1 }, { x: g.X1.x + u.x * 1.25, y: g.X1.y + u.y * 1.25 }, palette.ink, 3);
-  etiqueta(ctx, hits, v.p(g.X1.x + u.x * 1.15 + 0.32, g.X1.y + u.y * 1.15), "t", "ink");
+  const posT = p.foco
+    ? v.p(g.X2.x - u.x * 0.85 - 0.32, g.X2.y - u.y * 0.85)
+    : v.p(g.X1.x + u.x * 1.15 + 0.32, g.X1.y + u.y * 1.15);
+  etiqueta(ctx, hits, posT, "t", "ink");
   // Destaques.
   const par = {
     opostos: [["r-ne", "c1"], ["r-sw", "c1"], ["r-nw", "c2"], ["r-se", "c2"]],
@@ -416,7 +419,10 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
       if (ativo && !p.ocultar.includes(id)) {
         const m = ((a0 + a1) / 2) * (Math.PI / 180);
         const txt = p.rotulos[id] ?? `${fmt(cz.ang[k], 0)}°`;
-        etiqueta(ctx, hits, { x: X.x + Math.cos(m) * (raio + 18), y: X.y - Math.sin(m) * (raio + 18) }, txt, cor);
+        const dy90 = !p.foco && Math.abs(g.alfa - 90) < 15 && (id === "r-sw" || id === "r-se" || id === "s-nw" || id === "s-ne")
+          ? (cz.id === "r" ? -10 : 10)
+          : 0;
+        etiqueta(ctx, hits, { x: X.x + Math.cos(m) * (raio + 18), y: X.y - Math.sin(m) * (raio + 18) + dy90 }, txt, cor);
       }
     }
   }
