@@ -95,10 +95,12 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
 | B27b. Defeitos que só aparecem movendo o slider (9 casos do fim de `pendencias-b19.md`) | Claude Code #2 | 16/11 | `src/widgets/common/**` das pastas envolvidas, GUIA §5 dessas seções, aulas e testes desses 9 capítulos, `docs/visual/pendencias-b27b.md` |
-| B27c. Figura que entrega a resposta: geometria (só relatório) | Antigravity #3 | 16/11 | `docs/visual/entrega-resposta-b27c.md` |
+| ~~B27c~~ concluída 16/11 (9e04e1c): 182 passos, 9 casos | Antigravity #3 | 16/11 | — |
 | ~~B27a~~ concluída 16/11 (10c5ddd): 9 de 10 ok; ENEM 2022/137 com frações em texto | Antigravity #2 | 16/11 | — |
 | ~~B27d~~ concluída 16/11 (6b9fa20): 273 passos, 16 casos | Antigravity #4 | 16/11 | — |
-| B28a. Corrigir os 16 casos da B27d (esconder até o aluno chegar, ou reescrever a fala; nada em `src/`) | Antigravity #4 | 16/11 | aulas e testes dos capítulos de `entrega-resposta-b27d.md`, `docs/visual/correcoes-b28a.md` |
+| ~~B28a~~ recusada 16/11: as falas reescritas anunciavam a resposta; patch guardado fora do repositório. O maestro criou `antes_de_concluir` no passo interativo (6a61b64) | Antigravity #4 | 16/11 | — |
+| B29a. Aplicar `antes_de_concluir` nos 15 casos restantes da B27d (com prova do estado concluído) | Antigravity #4 | 16/11 | aulas e testes desses capítulos, `docs/visual/correcoes-b29a.md` |
+| B29b. Aplicar `antes_de_concluir` nos 9 casos da B27c (geometria) | Antigravity #3 | 16/11 | aulas e testes desses capítulos, `docs/visual/correcoes-b29b.md` |
 
 ## Pedidos entre máquinas
 
