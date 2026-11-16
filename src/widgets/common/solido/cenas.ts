@@ -236,7 +236,7 @@ function cenaPrisma(p: SolidoDe<"prisma">, ctl: Controles): Cena {
   const q0 = base[1];
   anotacoes.push({ tipo: "seg", a: [q0[0], 0, q0[1]], b: [q0[0], h, q0[1]], cor: p.cores.h, rotulo: `h = ${num(h)}`, lw: 4.5 });
   const cb = media3(base.map(([x, z]) => [x, 0, z] as Vec3));
-  anotacoes.push({ tipo: "texto", p: cb, s: `${num(Ab)}` });
+  if (!(p.diagonal && p.base === "retangulo")) anotacoes.push({ tipo: "texto", p: cb, s: `${num(Ab)}` });
   if (p.diagonal && p.base === "retangulo") {
     const O: Vec3 = [0, 0, 0];
     const F: Vec3 = [a, 0, -b];

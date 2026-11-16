@@ -85,8 +85,8 @@
         }
       ],
       "lines": {
-        "intro": "A sombra plana da esfera de raio 3 tem área πR² = 9π. Quantos círculos máximos cobrem a casca inteira?",
-        "done": "A casca da esfera mede 4πR² = 36π, exatamente igual à área lateral do cilindro circunscrito!"
+        "intro": "Compare a casca da esfera de raio 3 com a parede lateral do cilindro circunscrito. Quanto mede a área da casca?",
+        "done": "Mede 4πR² = 36π, igual à lateral do cilindro (2πR · 2R) — o equivalente a 4 círculos de área πR²!"
       },
       "duvida": {
         "quando": "fim",

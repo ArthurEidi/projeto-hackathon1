@@ -110,4 +110,11 @@ describe("ocultar e destacar (B1b)", () => {
     expect(montarCena(Solido3dFigura.parse({ modo: "vistas", solido: "dado" }), {}).anotacoes.filter((a) => a.tipo === "poligono")).toHaveLength(0);
     expect(Solido3dFigura.safeParse({ modo: "vistas", solido: "dado", face_destaque: 7 }).success).toBe(false);
   });
+  it("prisma com diagonal: true omite o texto da área no centro da base para não colidir com d", () => {
+    const semDiag = montarCena(Solido3d.parse({ modo: "prisma", base: "retangulo", a: 4, b: 3, h: 12, diagonal: false }), {});
+    expect(semDiag.anotacoes.some((a) => a.tipo === "texto" && a.s === "12")).toBe(true);
+    const comDiag = montarCena(Solido3d.parse({ modo: "prisma", base: "retangulo", a: 4, b: 3, h: 12, diagonal: true }), {});
+    expect(comDiag.anotacoes.some((a) => a.tipo === "texto")).toBe(false);
+    expect(comDiag.placar.some((pl) => pl.s === "Ab = 12")).toBe(true);
+  });
 });
