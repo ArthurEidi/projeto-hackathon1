@@ -68,18 +68,20 @@ describe("passos da aula de solidos de revolucao", () => {
     if (s.type !== "micro_challenge") throw new Error();
     expect(s.options).toHaveLength(4);
     const certaOpt = s.options.find((o) => o.correct)!;
-    expect(certaOpt.label).toBe("Cilindro + cone (12π)");
+    expect(certaOpt.label).toBe("12π");
     // dois cilindros (não dividiu o cone por 3): 8π + 12π = 20π ≠ 12π
     expect(2 ** 2 * 2 + 2 ** 2 * 3).toBe(20);
-    expect(s.options.find((o) => o.id === "cc20")!.label).toBe("Dois cilindros (20π)");
+    expect(s.options.find((o) => o.id === "cc20")!.label).toBe("20π");
     // só o cone: 4π ≠ 12π
     expect((2 ** 2 * 3) / 3).toBe(4);
-    expect(s.options.find((o) => o.id === "co4")!.label).toBe("Só um cone (4π)");
+    expect(s.options.find((o) => o.id === "co4")!.label).toBe("4π");
     // esqueceu de elevar r = 2 ao quadrado: 2*2 + (2*3)/3 = 6π ≠ 12π
     const semQuadrado = 2 * 2 + (2 * 3) / 3;
     expect(semQuadrado).toBe(6);
-    expect(s.options.find((o) => o.id === "cc6")!.label).toBe("Cilindro + cone (6π)");
+    expect(s.options.find((o) => o.id === "cc6")!.label).toBe("6π");
     expect(s.options.find((o) => o.id === "cc6")!.label).not.toBe(certaOpt.label);
+    // legendas de até 10 caracteres: as 4 alternativas ficam na grade de 2 colunas e cabem em 400 × 860 (B22)
+    for (const o of s.options) expect([...o.label].length).toBeLessThanOrEqual(10);
   });
 
   it("fechamento: referências existem no glossário", () => {

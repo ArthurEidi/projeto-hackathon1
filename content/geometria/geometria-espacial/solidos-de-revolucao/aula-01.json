@@ -102,35 +102,35 @@
           "placar": false
         }
       },
-      "prompt": "Um retângulo (r = 2, h = 2) colado a um triângulo (r = 2, h = 3) gira no eixo comum. Que sólido nasce e qual seu volume?",
+      "prompt": "Retângulo de altura 2 e triângulo de altura 3, ambos com raio 2, giram juntos no eixo. Qual o volume?",
       "lines": {
         "intro": "Separe a figura em um retângulo mais um triângulo girando juntos."
       },
       "options": [
         {
           "id": "cc20",
-          "label": "Dois cilindros (20π)",
+          "label": "20π",
           "correct": false,
-          "feedback": "O retângulo gera um cilindro, mas o triângulo no topo afunila até o vértice. Que sólido nasce de um triângulo?",
+          "feedback": "Você tratou o topo como um segundo cilindro (π·2²·3 = 12π). Mas o triângulo afunila até o vértice: que sólido nasce de um triângulo?",
           "figure": { "juntar": 0, "cores": { "b": "muted" }, "highlight": ["c2"] }
         },
         {
           "id": "co4",
-          "label": "Só um cone (4π)",
+          "label": "4π",
           "correct": false,
           "feedback": "4π é apenas o volume do topo cônico gerado pelo triângulo. Falta somar o volume da base cilíndrica.",
           "figure": { "juntar": 0, "cores": { "a": "muted" }, "highlight": ["c1"] }
         },
         {
           "id": "cc12",
-          "label": "Cilindro + cone (12π)",
+          "label": "12π",
           "correct": true,
           "feedback": "Exato! O retângulo gera cilindro (8π) e o triângulo gera cone (4π): total 12π.",
           "figure": { "juntar": 1, "highlight": ["c4"] }
         },
         {
           "id": "cc6",
-          "label": "Cilindro + cone (6π)",
+          "label": "6π",
           "correct": false,
           "feedback": "Você acertou os sólidos, mas usou r em vez de r² nas áreas das bases. Lembre que a área do círculo é π·r².",
           "figure": { "juntar": 1, "r": 1.41, "highlight": ["c1", "c2"] }

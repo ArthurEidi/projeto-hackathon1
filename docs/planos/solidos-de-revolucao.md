@@ -75,13 +75,14 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 - **Pilares:** 2, 6
 - **Figura:** WIDGET NOVO: `solido_3d_figura` — um quadrado `2 × 2` com um triângulo retângulo de base `2` e altura `3` em cima (formando um trapézio retângulo de altura lateral `2` e `5`, e base `2` no eixo).
 - **Paco (abertura):** "Separe a figura em um retângulo mais um triângulo girando juntos!"
-- **Enunciado:** "Um retângulo (r = 2, h = 2) colado a um triângulo (r = 2, h = 3) gira no eixo comum. Que sólido nasce e qual seu volume?"
+- **Enunciado:** "Retângulo de altura 2 e triângulo de altura 3, ambos com raio 2, giram juntos no eixo. Qual o volume?" (legendas curtas, até 10 caracteres, para as 4 opções caberem na grade 2 × 2 em 400 × 860; B22, 16/11)
 
 | id | Rótulo | Certa? | Feedback | A figura muda para… |
 |---|---|---|---|---|
-| `cc12` | Cilindro + cone (12π) | **sim** | "Exato! O retângulo gera cilindro (π·2²·2 = 8π) e o triângulo gera cone (π·2²·3/3 = 4π): 8π + 4π = 12π." | mostra o cilindro (8π) mais o chapéu cônico (4π) |
-| `cc20` | Dois cilindros (20π) | não | "O triângulo no topo afunila e gera um cone (4π, não 12π). Total: 8π + 4π = 12π." | destaca o topo cônico de 1/3 |
-| `co4` | Só um cone (4π) | não | "4π é só o topo cônico; somando a base cilíndrica de 8π, temos 12π." | ilumina o cilindro inferior de 8π |
+| `cc20` | 20π | não | "Você tratou o topo como um segundo cilindro (π·2²·3 = 12π). Mas o triângulo afunila até o vértice: que sólido nasce de um triângulo?" | destaca o topo como cilindro |
+| `co4` | 4π | não | "4π é apenas o volume do topo cônico gerado pelo triângulo. Falta somar o volume da base cilíndrica." | ilumina o cilindro inferior de 8π |
+| `cc12` | 12π | **sim** | "Exato! O retângulo gera cilindro (8π) e o triângulo gera cone (4π): total 12π." | mostra o cilindro (8π) mais o chapéu cônico (4π) |
+| `cc6` | 6π | não | "Você acertou os sólidos, mas usou r em vez de r² nas áreas das bases. Lembre que a área do círculo é π·r²." | sólido com raio menor (r ≈ 1,41) |
 
 ### Passo 5 — `fechamento`
 - **Tipo:** `concept_lock`
