@@ -28,16 +28,22 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
   const circulo = (o: Pt, raio: number, cor: "c3" | "c2") => { if (!(raio > 0)) return; const t = v.q(o); ctx.beginPath(); ctx.arc(t.x, t.y, raio * v.k, 0, 2 * Math.PI); ctx.strokeStyle = tinta(cor); ctx.lineWidth = espessura(p.highlight, cor); ctx.stroke(); };
   if (!p.curva_oculta) circulo(c, r, "c3");
   const pos = posicao(c, r, q);
-  segMundo(ctx, v, c, q, tinta("c4"), espessura(p.highlight, "c4"));
+  if (p.mostrar.ponto) segMundo(ctx, v, c, q, tinta("c4"), espessura(p.highlight, "c4"));
   segMundo(ctx, v, c, { x: c.x + r, y: c.y }, tinta("c2"), espessura(p.highlight, "c2"));
   rastro.forEach(t => dot(ctx, v.q(t), 4, tinta("c3")));
-  pegador(ctx, v.q(c), "c1"); pegador(ctx, v.q(q), pos.estado === "sobre" ? "c3" : pos.estado === "dentro" ? "c1" : "c4");
+  pegador(ctx, v.q(c), "c1");
+  if (p.mostrar.ponto) pegador(ctx, v.q(q), pos.estado === "sobre" ? "c3" : pos.estado === "dentro" ? "c1" : "c4");
   if (p.centro_arrastavel) alvos.push({ id: "centro", c: v.q(c), raio: 18 });
-  if (p.ponto_arrastavel) alvos.push({ id: "ponto", c: v.q(q), raio: 18 });
+  if (p.mostrar.ponto && p.ponto_arrastavel) alvos.push({ id: "ponto", c: v.q(q), raio: 18 });
   if (p.rotulos) {
-    const posRot = posicoesRotulosCP(v.q(c), v.q(q));
-    etiqueta(ctx, hits, posRot.c, "C", "c1");
-    etiqueta(ctx, hits, posRot.p, "P", "c4");
+    if (p.mostrar.ponto) {
+      const posRot = posicoesRotulosCP(v.q(c), v.q(q));
+      etiqueta(ctx, hits, posRot.c, "C", "c1");
+      etiqueta(ctx, hits, posRot.p, "P", "c4");
+    } else {
+      const pc = v.q(c);
+      etiqueta(ctx, hits, { x: pc.x, y: pc.y - 23 }, "C", "c1");
+    }
   }
   let adicional = "";
   if (p.reta_y !== undefined) {
@@ -48,7 +54,7 @@ export function desenhar(ctx: CanvasRenderingContext2D, w: number, h: number, hi
   }
   if (p.segunda) { const cc = resolver(p.segunda.centro, ctl), rr = avaliarExpr(p.segunda.raio, ctl); circulo(cc, rr, "c2"); adicional = relativas(c, r, cc, rr); }
   if (p.rotulos) {
-    etiqueta(ctx, hits, { x: w / 2, y: h - 65 }, `d = ${fmt(pos.d)}; r = ${fmt(r)}: ${pos.estado}`, "c4");
+    if (p.mostrar.ponto) etiqueta(ctx, hits, { x: w / 2, y: h - 65 }, `d = ${fmt(pos.d)}; r = ${fmt(r)}: ${pos.estado}`, "c4");
     nota(ctx, { x: w / 2, y: h - 39 }, `${termoCentro("x", c.x)} + ${termoCentro("y", c.y)} = ${fmt(r * r)}`, "ink", 13);
     if (adicional) nota(ctx, { x: w / 2, y: h - 14 }, adicional, "c3", 14);
   }

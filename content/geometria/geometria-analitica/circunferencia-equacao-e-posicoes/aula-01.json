@@ -142,6 +142,9 @@
         ],
         "curva_oculta": false,
         "ponto_arrastavel": false,
+        "mostrar": {
+          "ponto": false
+        },
         "reta_y": "$k",
         "passo": 1
       },
