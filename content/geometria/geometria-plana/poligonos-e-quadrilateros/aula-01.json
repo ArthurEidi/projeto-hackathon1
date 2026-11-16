@@ -69,6 +69,7 @@
       "params": {
         "modo": "poligono",
         "n": 5,
+        "diagonais": false,
         "externos": true,
         "encolher": "$encolher"
       },

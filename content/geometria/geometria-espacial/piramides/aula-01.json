@@ -73,6 +73,7 @@
         "L": 6,
         "h": 4,
         "abrir": "$abrir / 100",
+        "placar": false,
         "cores": { "h": "c1", "m": "c2", "ap": "c3", "volume": "c4" }
       },
       "controls": [
