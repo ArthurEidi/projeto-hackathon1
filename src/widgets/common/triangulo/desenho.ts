@@ -346,6 +346,36 @@ const avaliarMax = (p: TrianguloDe<"razoes">) => avaliarBase(p) * p.k_max;
 
 // ---------- Relações métricas ----------
 
+/**
+ * Posição do chip `h` (modo metricas, B27b 16/11): no meio da altura, como antes; se ali encostar no chip
+ * de `b` ou de `c` (lado curto quando m ou n é pequeno, ex. m = 8 de 10), desliza para o lado de dentro
+ * mais largo do triângulo, ao lado da altura tracejada. Sem colisão, a posição é a de sempre.
+ */
+export function posicaoChipAltura(alvo: Pt, txt: string, outros: { pos: Pt; txt: string }[], ladoLargo: 1 | -1, w: number): Pt {
+  const hw = caixaChip(alvo, txt).x1 - alvo.x;
+  const caixas = outros.map((o) => caixaChip(o.pos, o.txt));
+  const livre = (pos: Pt) => {
+    const b = caixaChip(pos, txt);
+    return b.x0 >= 2 && b.x1 <= w - 2 && caixas.every((c) => !sobrepoe(b, c));
+  };
+  const cands = [alvo, ...[1, 1.6, 2.2].flatMap((f) => [ladoLargo, -ladoLargo].map((s) => ({ x: alvo.x + s * (hw + 6) * f, y: alvo.y })))];
+  return cands.find(livre) ?? alvo;
+}
+
+export const LEGENDA_CORTE_TORTO = "Corte torto: ângulos mudam, não é semelhante.";
+
+/**
+ * Altura (no mundo) do chip "mediatriz" (B27b, 16/11): a de sempre (0,55 do raio da vista) quando fica
+ * longe do cruzamento de cima; senão, no meio entre AB e o cruzamento, ou logo acima dele (r = 4 com AB = 6
+ * punha o chip sobre o cruzamento). Folgas em pixels: meia altura do chip 12 + 9.
+ */
+export function alturaChipMediatriz(R: number, alturaCruz: number, k: number): number {
+  const folga = 21 / k;
+  const longeDoCruz = (y: number) => Math.abs(y - alturaCruz) >= folga;
+  const acimaDeAB = (y: number) => y >= (12 + 14) / k;
+  return [R * 0.55, alturaCruz / 2, alturaCruz + folga].find((y) => longeDoCruz(y) && acimaDeAB(y)) ?? R * 0.55;
+}
+
 function dMetricas(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"metricas">, cl: Ctl): GeoTri {
   const g = metricas(p, cl);
   const hip = !p.catetos || avaliarExpr(p.apoio, cl) >= 0.5;
@@ -371,9 +401,17 @@ function dMetricas(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"me
     if (!p.ocultar.includes("a")) etiqueta(ctx, hits, v.p(g.a / 2, -g.a * 0.07), `a = ${fmt(g.a)}`, "c1");
     if (g.m > 0 && !p.ocultar.includes("m")) etiqueta(ctx, hits, v.p(g.m / 2, g.a * 0.045 + 0), `m = ${fmt(g.m)}`, "c2");
     if (g.n > 0 && !p.ocultar.includes("n")) etiqueta(ctx, hits, v.p(g.m + g.n / 2, g.a * 0.045), `n = ${fmt(g.n)}`, "c2");
-    if (g.h > 0 && !p.ocultar.includes("h")) etiqueta(ctx, hits, v.p(g.m, g.h / 2), `h = ${fmt(g.h)}`, "c3");
-    if (g.m > 0 && g.h > 0 && !p.ocultar.includes("b")) lado(ctx, hits, v, A, C, Bp, `b = ${fmt(g.b)}`, "c4", 22);
-    if (g.n > 0 && g.h > 0 && !p.ocultar.includes("c")) lado(ctx, hits, v, C, Bp, A, `c = ${fmt(g.c)}`, "c4", 22);
+    const verB = g.m > 0 && g.h > 0 && !p.ocultar.includes("b");
+    const verC = g.n > 0 && g.h > 0 && !p.ocultar.includes("c");
+    const chipB = { pos: ladoFora(v.q(A), v.q(C), v.q(Bp), 22), txt: `b = ${fmt(g.b)}` };
+    const chipC = { pos: ladoFora(v.q(C), v.q(Bp), v.q(A), 22), txt: `c = ${fmt(g.c)}` };
+    if (g.h > 0 && !p.ocultar.includes("h")) {
+      const txt = `h = ${fmt(g.h)}`;
+      const outros = [...(verB ? [chipB] : []), ...(verC ? [chipC] : [])];
+      etiqueta(ctx, hits, posicaoChipAltura(v.p(g.m, g.h / 2), txt, outros, g.m >= g.n ? -1 : 1, w), txt, "c3");
+    }
+    if (verB) etiqueta(ctx, hits, chipB.pos, chipB.txt, "c4");
+    if (verC) etiqueta(ctx, hits, chipC.pos, chipC.txt, "c4");
     if (p.catetos) nota(ctx, { x: w / 2, y: topo - 12 }, `área = a · h / 2 = ${fmt((g.a * g.h) / 2)}`, "c3");
   } else {
     const [b, cc] = p.catetos!;
@@ -709,7 +747,7 @@ function dNotaveis(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"no
     dot(ctx, v.q(P), 5, tinta("c4"));
     dot(ctx, v.q(Q), 5, tinta("c4"));
     retoNoMundo(ctx, v, { x: 0, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 0 }, 10);
-    etiqueta(ctx, hits, v.p(0.0, R * 0.55), "mediatriz", "c4");
+    etiqueta(ctx, hits, { x: v.p(0, 0).x, y: v.p(0, alturaChipMediatriz(R, g.altura_compasso, v.k)).y }, "mediatriz", "c4");
   }
   dot(ctx, v.q(A), 6, palette.ink);
   dot(ctx, v.q(B), 6, palette.ink);
@@ -780,7 +818,8 @@ function dSemelhanca(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"
   segMundo(ctx, v, g.Q0, g.Q1, tinta("c1"), espessura(hl, "c1", 4));
   anguloMarcado(ctx, hits, v.q(P0), 0, g.angP0, 26, `${fmt(g.angP0, 0)}°`, "c3");
   anguloMarcado(ctx, hits, v.q(g.Q0), 0 + (g.giro % 360), dirGraus(g.Q0, P2), 22, `${fmt(g.angQ0, 0)}°`, "c3", false);
-  etiqueta(ctx, hits, v.p((P0.x + P1.x) / 2, -0.45), `k = ${fmt(g.k)}`, "c4");
-  nota(ctx, { x: w / 2, y: h - 18 }, g.paralelo ? `corte ${fmt(g.corte)} / base ${fmt(g.base)} = ${fmt(g.razao)}` : "Corte torto: os ângulos não coincidem, não é semelhante.", g.paralelo ? "c4" : "ink", 14);
+  // Corte torto (B27b, 16/11): sem semelhança não há razão k, e a legenda curta cabe em 400 px (a antiga cortava nas bordas).
+  if (g.paralelo) etiqueta(ctx, hits, v.p((P0.x + P1.x) / 2, -0.45), `k = ${fmt(g.k)}`, "c4");
+  nota(ctx, { x: w / 2, y: h - 18 }, g.paralelo ? `corte ${fmt(g.corte)} / base ${fmt(g.base)} = ${fmt(g.razao)}` : LEGENDA_CORTE_TORTO, g.paralelo ? "c4" : "ink", 14);
   return { alvos: [], vista: v };
 }

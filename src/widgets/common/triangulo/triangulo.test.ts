@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { angulos, anguloEm, cossenos, desigualdade, estadoInicial, metricas, metricasTriangulo, notaveis, pitagoras, provaPecas, razoes, semelhanca, senos, trianguloPorLados } from "./calc";
-import { desenharTriangulo, layoutRazoes } from "./desenho";
+import { alturaChipMediatriz, aspectoTriangulo, desenharTriangulo, layoutRazoes, LEGENDA_CORTE_TORTO, posicaoChipAltura } from "./desenho";
 import { criarVista } from "../geo/base";
 import { GeometriaTriangulo, GeometriaTrianguloFigura, type TrianguloDe } from "./params";
 
@@ -328,5 +328,61 @@ describe("razoes: janela (B25a, 16/11)", () => {
     expect(px[1]).toBeCloseTo(px[0], 6);
     expect(px[2]).toBeCloseTo(px[0], 6);
     expect(vista({ janela: "k" }, 1).k).toBeGreaterThan(2 * vista({}, 1).k);
+  });
+});
+
+/** Contexto falso que guarda cada texto escrito e a face do chip (26 px de altura; fonte 900 16px ≈ 8,5 px por caractere). */
+function espiao() {
+  const textos: { t: string; x: number; y: number }[] = [];
+  const larg = (t: string) => 8.5 * [...t].length;
+  const ctx = new Proxy({} as Record<string, unknown>, {
+    get: (_, k) => {
+      if (k === "measureText") return (t: string) => ({ width: larg(t) });
+      if (k === "fillText") return (t: string, x: number, y: number) => textos.push({ t: String(t), x, y });
+      return () => undefined;
+    },
+    set: () => true,
+  }) as unknown as CanvasRenderingContext2D;
+  const caixa = (q: { t: string; x: number; y: number }) => ({ x0: q.x - (larg(q.t) + 16) / 2, x1: q.x + (larg(q.t) + 16) / 2, y0: q.y - 13, y1: q.y + 13 });
+  // Tolerância de 2 px para a largura estimada do texto (a sombra de 3 px sob o chip não conta).
+  const cruzam = (a: ReturnType<typeof caixa>, b: ReturnType<typeof caixa>) => a.x0 + 2 < b.x1 && a.x1 - 2 > b.x0 && a.y0 + 2 < b.y1 && a.y1 - 2 > b.y0;
+  return { ctx, textos, caixa, cruzam };
+}
+
+describe("defeitos que só aparecem movendo o slider (B27b, 16/11)", () => {
+  const desenhar = (o: object, ctl: Record<string, number>) => {
+    const e = espiao();
+    const p = tri(o);
+    const w = 366;
+    desenharTriangulo(e.ctx, w, Math.round(w * aspectoTriangulo(p)), [], p, ctl, estadoInicial(p));
+    return e;
+  };
+  it("metricas: o chip h não cruza b nem c em m = 2, 5 e 8 (relacoes-metricas p1)", () => {
+    for (const m of [2, 5, 8]) {
+      const e = desenhar({ modo: "metricas", a: 10, m: "$m" }, { m });
+      const ach = (ini: string) => e.textos.find((q) => q.t.startsWith(ini))!;
+      const hh = e.caixa(ach("h = ")), bb = e.caixa(ach("b = ")), cc = e.caixa(ach("c = "));
+      expect(e.cruzam(hh, bb), `m = ${m}: h × b`).toBe(false);
+      expect(e.cruzam(hh, cc), `m = ${m}: h × c`).toBe(false);
+    }
+  });
+  it("posicaoChipAltura: sem colisão fica no meio da altura (como antes)", () => {
+    const alvo = { x: 200, y: 100 };
+    expect(posicaoChipAltura(alvo, "h = 5", [{ pos: { x: 60, y: 40 }, txt: "b = 7,07" }], -1, 400)).toEqual(alvo);
+  });
+  it("mediatriz: r = 5 mantém a altura de antes; r = 4 tira o chip de cima do cruzamento", () => {
+    const k = 24;
+    expect(alturaChipMediatriz(5.1, 4, k)).toBeCloseTo(5.1 * 0.55, 9);
+    const y4 = alturaChipMediatriz(5.1, Math.sqrt(16 - 9), k);
+    expect(Math.abs(y4 - Math.sqrt(7)) * k).toBeGreaterThanOrEqual(21);
+    expect(y4 * k).toBeGreaterThanOrEqual(26);
+  });
+  it("semelhança: corte torto não mostra k e a legenda é curta; paralelo segue com k", () => {
+    const torto = desenhar({ modo: "semelhanca", variante: "paralela", lados: [6, 8, 10], k: 0.6, giro: "$giro" }, { giro: 20 });
+    expect(torto.textos.some((q) => q.t.startsWith("k = "))).toBe(false);
+    expect(torto.textos.map((q) => q.t)).toContain(LEGENDA_CORTE_TORTO);
+    expect([...LEGENDA_CORTE_TORTO].length).toBeLessThanOrEqual(46); // ≈ 340 px em 14 px negrito: cabe em 366
+    const paralelo = desenhar({ modo: "semelhanca", variante: "paralela", lados: [6, 8, 10], k: 0.6, giro: "$giro" }, { giro: 0 });
+    expect(paralelo.textos.map((q) => q.t)).toContain("k = 0,6");
   });
 });

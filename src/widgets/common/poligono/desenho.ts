@@ -358,6 +358,14 @@ function cuboIso(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"isome
 
 // ---------- Paralelas ----------
 
+/**
+ * Com s inclinada (B27b, 16/11), os chips de cima do cruzamento de s (nw, ne) sobem em direção aos de baixo
+ * do cruzamento de r e encostavam (±15° a ±20°). Descem 0,7 px por grau de desvio; com desvio 0, nada muda.
+ */
+export function afastamentoChipsS(cruz: "r" | "s", k: "ne" | "nw" | "sw" | "se", desvio: number): number {
+  return cruz === "s" && (k === "nw" || k === "ne") ? Math.round(Math.abs(desvio) * 0.7) : 0;
+}
+
 function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"paralelas">, cl: Ctl, e: EstadoPol): GeoPol {
   const g = paralelas(p, cl, e);
   const hl = p.highlight;
@@ -376,7 +384,9 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
     const xRot = caixa.x1 - 0.45;
     etiqueta(ctx, hits, v.p(xRot, 0.38), "r", "ink");
     const tS = Math.abs(dirS.x) > 0.2 ? (xRot - g.X2.x) / dirS.x : 4.2;
-    etiqueta(ctx, hits, v.p(g.X2.x + tS * dirS.x, g.X2.y + tS * dirS.y - 0.38), "s", "ink");
+    const posS = v.p(g.X2.x + tS * dirS.x, g.X2.y + tS * dirS.y - 0.38);
+    // B27b (16/11): com s inclinada para baixo, o rótulo "s" não desce até a legenda do rodapé.
+    etiqueta(ctx, hits, { x: posS.x, y: Math.min(posS.y, h - banda(1) - 16) }, "s", "ink");
   }
   if (p.fantasma) segMundo(ctx, v, { x: 0, y: 1.3 }, { x: 0, y: -2.9 }, palette.lineDark, 2, [6, 5]);
   // Transversal t.
@@ -422,7 +432,8 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
         const dy90 = !p.foco && Math.abs(g.alfa - 90) < 15 && (id === "r-sw" || id === "r-se" || id === "s-nw" || id === "s-ne")
           ? (cz.id === "r" ? -10 : 10)
           : 0;
-        etiqueta(ctx, hits, { x: X.x + Math.cos(m) * (raio + 18), y: X.y - Math.sin(m) * (raio + 18) + dy90 }, txt, cor);
+        const dyDesvio = afastamentoChipsS(cz.id, k, g.desvio);
+        etiqueta(ctx, hits, { x: X.x + Math.cos(m) * (raio + 18), y: X.y - Math.sin(m) * (raio + 18) + dy90 + dyDesvio }, txt, cor);
       }
     }
   }

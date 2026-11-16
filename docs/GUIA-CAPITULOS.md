@@ -552,6 +552,7 @@ Notas de uso:
 - Nomes de slider são minúsculos (`ang_a`, `l`): é a regra do schema de aula e das expressões `"$id"`.
 - `razoes` com `k_max` (padrão 3) mantém a janela fixa: o triângulo cresce sem a vista mudar, e as razões ficam iguais.
 - **Acréscimo de 16/11 (`janela`):** com `k` em slider, `janela: "k_max"` (padrão) é o comportamento acima. `janela: "k"` enquadra o triângulo atual, que ocupa a área em qualquer k, e a malha guarda a unidade da escala 1: o crescimento aparece na contagem de quadradinhos por cateto (em 45° com `hip: 5`, 3,5 → 7,1 → 10,6). Use quando a escala 1 de `k_max` deixaria o triângulo minúsculo (`trigonometria-no-triangulo-retangulo` p1).
+- **Acréscimos de 16/11 (B27b, sem parâmetro novo; só mudam estados que estavam com defeito):** em `metricas`, o chip `h` sai do meio da altura e vai para o lado de dentro mais largo quando encostaria em `b` ou `c` (m = 2 ou 8 de 10); em `notaveis` `mediatriz`, o chip `mediatriz` só deixa a altura de sempre quando ela cairia sobre o cruzamento de cima (r = 4 com AB = 6); em `semelhanca` `paralela` com corte torto, some o chip `k` (não há razão de semelhança) e a legenda fica "Corte torto: ângulos mudam, não é semelhante.", que cabe em 400 px.
 
 Exemplos (`params`):
 ```jsonc
@@ -605,6 +606,8 @@ Exemplos (`params`):
 
 **Acréscimo de 16/11 (B26).** O chip `sen …` ganhou um último candidato antes do anel de reserva: 2º quadrante, meio raio mais longe do eixo. Na `soma` com α e β pequenos (α no 2º quadrante baixo e β acima de P), o chip deixa de cair sobre o marco `π`. Os casos que já achavam lugar não mudam.
 
+**Acréscimo de 16/11 (B27b).** Mais dois candidatos para o chip `sen …`, ainda antes do anel: acima/abaixo de P com folga de 32 px, e o mesmo 8 px para fora. Com o triângulo pitagórico no 2º e 3º quadrantes (`identidades-trigonometricas` p2) o chip saía da tela pela esquerda. Única outra tela que mudou: `formulas-de-adicao-e-arco-duplo` p1 em β = 0, onde o chip, antes no anel e quase sobre o `π`, passou para cima de P.
+
 **Acréscimos de 14/11.** Os rótulos de `marcos_rad` saem como fração de π quando o valor é múltiplo de π/12 (`π/6`, `π/2`, `π`, `2π`) e com até 2 casas nos demais (`0,5 rad`); não há mais arredondamento para inteiro.
 
 ### 5.12 `geometria_poligono` + `geometria_poligono_figura` — PRONTOS
@@ -636,6 +639,8 @@ Exemplos (`params`):
 { "modo": "paralelas", "alfa": "$alfa", "fantasma": true }
 { "modo": "paralelas", "alfa": 65, "destacar": "colaterais", "rotulos": { "s-ne": "x" } }
 ```
+
+**Acréscimo de 16/11 (B27b).** Com `desvio` ≠ 0 (reta s inclinada), os chips de cima do cruzamento de s (`s-nw`, `s-ne`) descem 0,7 px por grau de desvio, para não encostar nos de baixo do cruzamento de r (±5° a ±20° em `angulos-retas-paralelas` p4); o rótulo `s` não desce além da legenda do rodapé. Com `desvio` 0 nada muda.
 
 ### 5.13 `geometria_circulo` + `geometria_circulo_figura` — PRONTOS
 

@@ -224,3 +224,34 @@ describe("métricas emitidas e figura", () => {
     expect(fills.filter((c) => c === "#ffffff").length).toBe(0);
   });
 });
+
+/** Contexto falso que guarda cada texto escrito e a face do chip (26 px de altura; fonte 900 16px ≈ 8,5 px por caractere). */
+function espiao() {
+  const textos: { t: string; x: number; y: number }[] = [];
+  const larg = (t: string) => 8.5 * [...t].length;
+  const ctx = new Proxy({} as Record<string, unknown>, {
+    get: (_, k) => {
+      if (k === "measureText") return (t: string) => ({ width: larg(t) });
+      if (k === "fillText") return (t: string, x: number, y: number) => textos.push({ t: String(t), x, y });
+      return () => undefined;
+    },
+    set: () => true,
+  }) as unknown as CanvasRenderingContext2D;
+  const caixa = (q: { t: string; x: number; y: number }) => ({ x0: q.x - (larg(q.t) + 16) / 2, x1: q.x + (larg(q.t) + 16) / 2, y0: q.y - 13, y1: q.y + 13 });
+  // Tolerância de 2 px para a largura estimada do texto (a sombra de 3 px sob o chip não conta).
+  const cruzam = (a: ReturnType<typeof caixa>, b: ReturnType<typeof caixa>) => a.x0 + 2 < b.x1 && a.x1 - 2 > b.x0 && a.y0 + 2 < b.y1 && a.y1 - 2 > b.y0;
+  return { ctx, textos, caixa, cruzam };
+}
+
+describe("identidades p2: chip do seno dentro da tela em todos os quadrantes (B27b, 16/11)", () => {
+  it.each([1, 2, 3, 4])("quadrante %i", (quad) => {
+    const e = espiao();
+    const p = ciclo({ quadrante: "$quad", seno_fixo: 0.6, mostrar: { seno: true, cosseno: true, pitagorica: true, marcos: true } });
+    const w = 366;
+    desenharCiclo(e.ctx, w, Math.round(w * aspectoCiclo(p)), [], p, { quad }, estadoInicial(p));
+    const sen = e.textos.find((q) => q.t.startsWith("sen "))!;
+    const b = e.caixa(sen);
+    expect(b.x0).toBeGreaterThanOrEqual(0);
+    expect(b.x1).toBeLessThanOrEqual(w);
+  });
+});

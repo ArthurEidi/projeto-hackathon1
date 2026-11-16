@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { angulosInternos, areaPol, estadoInicial, isometria, LETRA_F, malha, metricasPoligono, paralelas, pecasLadrilho, perimetroPol, poligono, regular } from "./calc";
-import { desenharPoligono } from "./desenho";
+import { afastamentoChipsS, aspectoPoligono, desenharPoligono } from "./desenho";
 import { GeometriaPoligono, GeometriaPoligonoFigura, type PoligonoDe } from "./params";
 
 const pol = (o: object) => GeometriaPoligono.parse(o);
@@ -236,5 +236,41 @@ describe("figura e desenho", () => {
       desenharPoligono(capCtx, 400, 360, [], r, {}, estadoInicial(r));
       expect(textos.some((t) => /15|540°|135°|115°/.test(t))).toBe(false);
     }
+  });
+});
+
+/** Contexto falso que guarda cada texto escrito e a face do chip (26 px de altura; fonte 900 16px ≈ 8,5 px por caractere). */
+function espiao() {
+  const textos: { t: string; x: number; y: number }[] = [];
+  const larg = (t: string) => 8.5 * [...t].length;
+  const ctx = new Proxy({} as Record<string, unknown>, {
+    get: (_, k) => {
+      if (k === "measureText") return (t: string) => ({ width: larg(t) });
+      if (k === "fillText") return (t: string, x: number, y: number) => textos.push({ t: String(t), x, y });
+      return () => undefined;
+    },
+    set: () => true,
+  }) as unknown as CanvasRenderingContext2D;
+  const caixa = (q: { t: string; x: number; y: number }) => ({ x0: q.x - (larg(q.t) + 16) / 2, x1: q.x + (larg(q.t) + 16) / 2, y0: q.y - 13, y1: q.y + 13 });
+  // Tolerância de 2 px para a largura estimada do texto (a sombra de 3 px sob o chip não conta).
+  const cruzam = (a: ReturnType<typeof caixa>, b: ReturnType<typeof caixa>) => a.x0 + 2 < b.x1 && a.x1 - 2 > b.x0 && a.y0 + 2 < b.y1 && a.y1 - 2 > b.y0;
+  return { ctx, textos, caixa, cruzam };
+}
+
+describe("paralelas com s inclinada (angulos-retas-paralelas p4, B27b, 16/11)", () => {
+  it("desvio 0 não desloca nada (como antes)", () => {
+    for (const k of ["ne", "nw", "sw", "se"] as const) {
+      expect(afastamentoChipsS("s", k, 0)).toBe(0);
+      expect(afastamentoChipsS("r", k, 20)).toBe(0);
+    }
+  });
+  it.each([-20, -15, -10, -5, 5, 10, 15, 20])("desvio %i°: os 8 chips de ângulo não se cruzam", (desvio) => {
+    const e = espiao();
+    const p = pol({ modo: "paralelas", alfa: 70, desvio: "$desvio" });
+    const w = 366;
+    desenharPoligono(e.ctx, w, Math.round(w * aspectoPoligono(p)), [], p, { desvio }, estadoInicial(p));
+    const chips = e.textos.filter((q) => q.t.endsWith("°") && !q.t.startsWith("s girou")).map(e.caixa);
+    expect(chips).toHaveLength(8);
+    for (let i = 0; i < chips.length; i++) for (let j = i + 1; j < chips.length; j++) expect(e.cruzam(chips[i], chips[j]), `chips ${i} e ${j}`).toBe(false);
   });
 });

@@ -228,6 +228,11 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
           // B26 (16/11): 2º quadrante, meio raio mais longe do eixo. Vem antes do anel de reserva, que
           // punha o chip sobre o marco π quando α (2º quadrante baixo) e β (acima de P) já estavam ocupados.
           { x: O.x - R * 0.55, y: ys + (m.sen >= 0 ? -R * 0.5 : R * 0.5) },
+          // B27b (16/11): acima/abaixo de P com folga de 32 px (o de 26 px esbarra na reserva de P) e o mesmo
+          // 8 px para fora (escapa do marco 3π/2). Antes do anel, que com o triângulo pitagórico no 2º e 3º
+          // quadrantes (identidades p2) punha o chip fora da tela, à esquerda.
+          { x: Pq.x, y: Pq.y + (m.sen >= 0 ? -32 : 32) },
+          { x: Pq.x + fora * 8, y: Pq.y + (m.sen >= 0 ? -32 : 32) },
         ]),
       `sen ${fmt(m.sen)}`, cor.seno, 2);
   }
