@@ -66,11 +66,19 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 |---|---|---|---|
 | B16. ~~Imagem nas questões de vestibular (schema, treino, lint, GUIA §2.3)~~ concluída 15/11 (006346a) | Codex (o Ferrugem pedia aprovação a cada edição) | 15/11 | `src/engine/schema.ts`, `src/treino/**`, `src/ui/styles.css` (regras novas), `scripts/lint-content.ts`, testes, GUIA §2.3 |
 | B17a. ~~Candidatas do ENEM com imagem: 20 capítulos de geometria sem vestibular~~ entregue 15/11: 13 questões em 8 capítulos; 12 seguem sem candidata | Antigravity | 15/11 | `docs/fontes-candidatas/<slug>.md` desses capítulos, `public/vestibular/` (novos), `docs/revisao/vestibular-b17a.md` |
-| B17b. Candidatas do ENEM com imagem: 25 capítulos de álgebra e aritmética sem vestibular | Antigravity #2 | 15/11 | idem, `docs/revisao/vestibular-b17b.md` |
+| B17b. Candidatas do ENEM com imagem: 25 capítulos de álgebra e aritmética sem vestibular (sessão caiu sem entrega; refeita em 16/11, abaixo) | Antigravity #2 | 15/11 | idem, `docs/revisao/vestibular-b17b.md` |
 | B18. ~~Vestibular nas aulas `equacoes-exponenciais`, `equacoes-logaritmicas`, `equacoes-quadraticas`~~ concluída 15/11 (2243f4f): as 9 candidatas não são verificáveis no cache (sites ou ENEM sem texto); nada inserido | Codex | 15/11 | essas 3 aulas, os 3 roteiros (seção de vestibular), `docs/revisao/vestibular-b18.md` |
-| B19. Quais defeitos de widget continuam abertos (só relatório) | Antigravity #3 | 15/11 | `docs/visual/pendencias-b19.md` |
+| B19. Quais defeitos de widget continuam abertos (só relatório; sessão caiu sem entrega; refeita em 16/11, abaixo) | Antigravity #3 | 15/11 | `docs/visual/pendencias-b19.md` |
 | B20. ~~Dividir o bundle: aulas carregadas sob demanda~~ concluída 15/11 (73c1f9d): JS inicial de 538 para 214 KB com gzip | Codex | 15/11 | `src/engine/content.ts`, `src/App.tsx`, `src/Home.tsx`, testes que chamam `loadLesson`, `docs/HOSPEDAGEM.md` |
-| B21. Inserir as 13 questões da B17a (com imagem) em 8 aulas de geometria (briefing `C:/Users/mkf10/projetos/briefing-b21.md`) | Antigravity | 15/11 | `treino.vestibular` das 8 aulas, seção de vestibular dos 8 roteiros, `docs/revisao/vestibular-b21.md` |
+| ~~B21. Inserir as 13 questões da B17a~~ concluída 15/11 (20aa1d4, f927349) (com imagem) em 8 aulas de geometria (briefing `C:/Users/mkf10/projetos/briefing-b21.md`) | Antigravity | 15/11 | `treino.vestibular` das 8 aulas, seção de vestibular dos 8 roteiros, `docs/revisao/vestibular-b21.md` |
+
+16/11: os agentes de 15/11 caíram (PC reiniciado). B17b e B19 não deixaram entrega e recomeçam. As 39 imagens de `public/vestibular/` que não estavam no git eram sobras da B17a (candidatas descartadas e versões trocadas): foram para fora do repositório (`C:\Users\mkf10\projetos\sobras-b17a`). Briefing: `C:\Users\mkf10\projetos\briefing-b22.md`.
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B17b (refeita). Candidatas do ENEM com imagem: 25 capítulos de álgebra e aritmética | Antigravity #2 | 16/11 | `docs/fontes-candidatas/<slug da lista>.md`, novos em `public/vestibular/`, `docs/revisao/vestibular-b17b.md` |
+| B19 (refeita). Defeitos de widget que continuam abertos (só relatório) | Antigravity #3 | 16/11 | `docs/visual/pendencias-b19.md` |
+| B22. Desafio de `solidos-de-revolucao` cabendo em 400 × 860; reavaliar ENEM 2022/143 e 2022/160 (descartadas na B17a por conta que não bateu) | Claude Code #2 | 16/11 | aula e teste de `solidos-de-revolucao`, `src/ui/styles.css` (só se inevitável), `docs/fontes-candidatas/projecoes-cortes-e-planificacoes.md` e `posicoes-relativas-no-espaco.md`, `public/vestibular/enem-2022-1{43,60}-*`, `docs/revisao/b22.md` |
 
 ## Pedidos entre máquinas
 
