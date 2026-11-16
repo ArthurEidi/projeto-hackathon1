@@ -669,19 +669,13 @@
     "vestibular": [
       {
         "id": "enem-2022-world-series",
-        "prompt": "Numa série de até 7 jogos, vence quem fizer 4 vitórias, com chance p por jogo. Qual a chance de o vencedor do 1º jogo ser campeão?",
+        "prompt": "Série de até 7 jogos: leva quem fizer 4 vitórias; cada jogo é 1/2 para cada time. Qual a chance de quem venceu o 1º jogo ser campeão?",
         "fala": "Como o 1º jogo já foi vencido, conte quantas vitórias faltam nos até 6 jogos restantes.",
-        "imagens": [
-          {
-            "src": "/vestibular/enem-2022-137-1.png",
-            "alt": "Fração 1/2 indicando a probabilidade de vitória em cada partida"
-          }
-        ],
         "fonte": {
           "banca": "ENEM",
           "ano": 2022,
           "adaptada": true,
-          "adaptacao": "Questão 137: enunciado resumido mantendo a probabilidade p = 1/2 e as alternativas em imagem; gabarito (C) mantido.",
+          "adaptacao": "Questão 137: enunciado resumido; a probabilidade 1/2 e as alternativas, que no original são imagens de frações, viraram texto; gabarito (C, 42/64) mantido.",
           "urls": [
             "https://api.enem.dev/v1/exams/2022/questions/137"
           ]
@@ -689,53 +683,33 @@
         "options": [
           {
             "id": "a",
-            "label": "A",
+            "label": "35/64",
             "correct": false,
-            "feedback": "35/64 = (20 + 15)/64 conta só 3 ou 4 vitórias nos 6 jogos restantes; faltam 5 e 6 vitórias (6 + 1). A correta é C (42/64).",
-            "imagem": {
-              "src": "/vestibular/enem-2022-137-alt-A.png",
-              "alt": "Fração 35/64"
-            }
+            "feedback": "35/64 = (20 + 15)/64 conta só 3 ou 4 vitórias nos 6 jogos restantes; faltam 5 e 6 vitórias (6 + 1). A correta é 42/64."
           },
           {
             "id": "b",
-            "label": "B",
+            "label": "40/64",
             "correct": false,
-            "feedback": "40/64 não sai da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é C.",
-            "imagem": {
-              "src": "/vestibular/enem-2022-137-alt-B.png",
-              "alt": "Fração 40/64"
-            }
+            "feedback": "40/64 não sai da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é 42/64."
           },
           {
             "id": "c",
-            "label": "C",
+            "label": "42/64",
             "correct": true,
-            "feedback": "Certo: faltam ao menos 3 vitórias nos 6 jogos restantes; (C(6,3)+C(6,4)+C(6,5)+C(6,6))/64 = 42/64.",
-            "imagem": {
-              "src": "/vestibular/enem-2022-137-alt-C.png",
-              "alt": "Fração 42/64"
-            }
+            "feedback": "Certo: faltam ao menos 3 vitórias nos 6 jogos restantes; (C(6,3)+C(6,4)+C(6,5)+C(6,6))/64 = 42/64."
           },
           {
             "id": "d",
-            "label": "D",
+            "label": "44/64",
             "correct": false,
-            "feedback": "44/64 passa da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é C.",
-            "imagem": {
-              "src": "/vestibular/enem-2022-137-alt-D.png",
-              "alt": "Fração 44/64"
-            }
+            "feedback": "44/64 passa da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é 42/64."
           },
           {
             "id": "e",
-            "label": "E",
+            "label": "52/64",
             "correct": false,
-            "feedback": "52/64 passa da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é C.",
-            "imagem": {
-              "src": "/vestibular/enem-2022-137-alt-E.png",
-              "alt": "Fração 52/64"
-            }
+            "feedback": "52/64 passa da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é 42/64."
           }
         ]
       },

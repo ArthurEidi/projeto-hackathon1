@@ -119,7 +119,7 @@ describe("gabaritos do treino", () => {
   it("vestibular", () => {
     const pWorldSeries = [3, 4, 5, 6].reduce((s, k) => s + bin(6, k, 1 / 2), 0);
     expect(pWorldSeries).toBeCloseTo(42 / 64, 12);
-    expect(certa("enem-2022-world-series")).toBe("C");
+    expect(certa("enem-2022-world-series")).toBe("42/64");
 
     const pDefeito = bin(4, 2, 0.002);
     expect(pDefeito).toBeCloseTo(6 * 0.002 ** 2 * 0.998 ** 2, 12);
