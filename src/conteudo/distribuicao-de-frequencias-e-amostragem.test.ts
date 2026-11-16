@@ -1,6 +1,6 @@
 // Frequências e Amostragem · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("aritmetica/estatistica/distribuicao-de-frequencias-e-amostragem/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -65,5 +65,30 @@ describe("gabaritos do treino", () => {
     expect(certa("comparar-turmas")).toBe("Turma A");
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: gabaritos das 3 questões do ENEM conferidos por conta", () => {
+    expect(L.treino.vestibular).toHaveLength(3);
+    // ENEM 2018/145: (0·50 + 1·17 + 2·15 + 3·10 + 4·6 + 5·2) / 100 = 111/100
+    const acid = [50, 17, 15, 10, 6, 2];
+    expect(acid.reduce((s, n) => s + n, 0)).toBe(100);
+    expect(acid.reduce((s, n, k) => s + k * n, 0) / 100).toBe(1.11);
+    expect(certa("enem-2018-media-acidentes")).toBe("1,11");
+    // ENEM 2021/151: acumulado do histograma até 700 = 35 < 52,5 e até 800 = 55 ≥ 52,5
+    const precos = [5, 10, 5, 15, 20, 15, 15, 10, 5, 5];
+    expect(precos.reduce((s, n) => s + n, 0)).toBe(105);
+    const ate = (k: number) => precos.slice(0, k).reduce((s, n) => s + n, 0);
+    expect(ate(4)).toBeLessThan(105 / 2);
+    expect(ate(5)).toBeGreaterThanOrEqual(105 / 2);
+    expect(certa("enem-2021-histograma-precos")).toBe("800");
+    // ENEM 2023/140: viagens 1..7 com 10, 10, 55, 25, 0, 50, 10 motoristas
+    const viag = [10, 10, 55, 25, 0, 50, 10];
+    expect(viag.reduce((s, n) => s + n, 0)).toBe(160);
+    const media = viag.reduce((s, n, k) => s + (k + 1) * n, 0) / 160;
+    expect(media).toBeCloseTo(665 / 160, 12);
+    const ordenado = viag.flatMap((n, k) => Array<number>(n).fill(k + 1));
+    const mediana = (ordenado[79] + ordenado[80]) / 2;
+    const moda = viag.indexOf(Math.max(...viag)) + 1;
+    expect([moda, mediana]).toEqual([3, 4]);
+    expect(moda < mediana && mediana < media).toBe(true);
+    expect(certa("enem-2023-media-mediana-moda")).toBe("Moda < mediana < média");
+  });
 });

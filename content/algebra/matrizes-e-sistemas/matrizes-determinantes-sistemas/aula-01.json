@@ -710,6 +710,163 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2019-acertos-por-dia",
+        "prompt": "A matriz dá os acertos de 5 alunos (linhas) em testes de segunda a sexta (colunas). Em que dia o teste teve mais acertos?",
+        "fala": "Cada coluna é um dia da semana: junte os acertos dos 5 alunos naquele dia.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2019-144-1.png",
+            "alt": "Matriz 5 por 5 com os acertos de cada aluno (linha) em cada dia (coluna), valores de 0 a 4"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Questão 144: enunciado resumido mantendo a matriz; gabarito (A) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2019/questions/144"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "Segunda-feira",
+            "correct": true,
+            "feedback": "Certo: segunda soma 3 + 3 + 2 + 3 + 0 = 11; cada um dos outros dias soma 10."
+          },
+          {
+            "id": "b",
+            "label": "Terça-feira",
+            "correct": false,
+            "feedback": "Você somou linhas: a linha 2 (Bruno, 12) é um aluno, não a terça. Por colunas, a segunda soma 11 e a terça, 10."
+          },
+          {
+            "id": "c",
+            "label": "Quarta-feira",
+            "correct": false,
+            "feedback": "A quarta tem dois 4, mas também dois 0: 0 + 4 + 2 + 4 + 0 = 10. A segunda soma 11."
+          },
+          {
+            "id": "d",
+            "label": "Quinta-feira",
+            "correct": false,
+            "feedback": "Quinta: 1 + 1 + 3 + 1 + 4 = 10. A segunda soma 3 + 3 + 2 + 3 + 0 = 11."
+          },
+          {
+            "id": "e",
+            "label": "Sexta-feira",
+            "correct": false,
+            "feedback": "Sexta: 2 + 2 + 2 + 0 + 4 = 10. A segunda soma 3 + 3 + 2 + 3 + 0 = 11."
+          }
+        ]
+      },
+      {
+        "id": "enem-2021-regiao-destino",
+        "prompt": "Na matriz, aᵢⱼ é o número de famílias (em dezenas) que se mudaram da região i para a região j. Qual região mais recebeu famílias?",
+        "fala": "A linha diz de onde a família saiu e a coluna diz para onde foi.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2021-157-5.png",
+            "alt": "Matriz A de ordem 5 com as mudanças de famílias, em dezenas, entre as cinco regiões; diagonal nula"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 157: enunciado resumido (a construtora investe na região de destino do maior fluxo) mantendo a matriz; gabarito (E) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2021/questions/157"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "1",
+            "correct": false,
+            "feedback": "Você somou a linha 1 (13), que conta quem saiu da região 1. Quem chegou está na coluna: a 5 soma 12, a maior."
+          },
+          {
+            "id": "b",
+            "label": "2",
+            "correct": false,
+            "feedback": "A região 2 é a origem do maior elemento (a₂₃ = 6). O destino é a coluna: a 2 soma 8 e a 5 soma 12."
+          },
+          {
+            "id": "c",
+            "label": "3",
+            "correct": false,
+            "feedback": "O maior elemento isolado (a₂₃ = 6) vai para a região 3, mas a coluna 3 inteira soma 10. A coluna 5 soma 12."
+          },
+          {
+            "id": "d",
+            "label": "4",
+            "correct": false,
+            "feedback": "Quase: a coluna 4 soma 2 + 2 + 3 + 0 + 4 = 11. A coluna 5 soma 5 + 3 + 0 + 4 + 0 = 12."
+          },
+          {
+            "id": "e",
+            "label": "5",
+            "correct": true,
+            "feedback": "Certo: destino é coluna; as colunas somam 4, 8, 10, 11 e 12, e a 5 recebeu 12 dezenas."
+          }
+        ]
+      },
+      {
+        "id": "enem-2021-mala-camisetas",
+        "prompt": "A tabela mostra duas malas de 10 kg; itens do mesmo tipo têm a mesma massa. Com 2 calças e 1 sapato, quantas camisetas completam os 10 kg?",
+        "fala": "Compare as duas viagens: o que entrou numa ocupa o lugar do que saiu da outra.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2021-164-1.png",
+            "alt": "Tabela com camisetas, calças e sapatos levados nas viagens I e II"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 164: enunciado resumido (mala de 10 kg, mesmas massas por tipo, máximo de camisetas) mantendo a tabela; gabarito (B) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2021/questions/164"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "22",
+            "correct": false,
+            "feedback": "Com 22 a mala fica abaixo de 10 kg. Da viagem I para a II, 6 camisetas trocam 1 calça e 1 sapato; tirando mais um par da II: 24."
+          },
+          {
+            "id": "b",
+            "label": "24",
+            "correct": true,
+            "feedback": "Certo: 6 camisetas = 1 calça + 1 sapato; a viagem II (18, 3, 2) sem 1 calça e 1 sapato vira 24, 2, 1."
+          },
+          {
+            "id": "c",
+            "label": "26",
+            "correct": false,
+            "feedback": "26 passa dos 10 kg. Da I para a II, 6 camisetas trocam 1 calça e 1 sapato; a II sem mais um par dá 18 + 6 = 24."
+          },
+          {
+            "id": "d",
+            "label": "33",
+            "correct": false,
+            "feedback": "33 passa dos 10 kg. Da I para a II, 6 camisetas trocam 1 calça e 1 sapato; a II sem mais um par dá 18 + 6 = 24."
+          },
+          {
+            "id": "e",
+            "label": "39",
+            "correct": false,
+            "feedback": "39 passa dos 10 kg. Da I para a II, 6 camisetas trocam 1 calça e 1 sapato; a II sem mais um par dá 18 + 6 = 24."
+          }
+        ]
+      }
+    ]
   }
 }

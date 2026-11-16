@@ -710,6 +710,163 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "enem-2018-media-acidentes",
+        "prompt": "O quadro mostra o número de acidentes sofridos por 100 trabalhadores de uma empresa. Qual a média de acidentes por trabalhador?",
+        "fala": "Média ponderada: cada número de acidentes pesa pela quantidade de trabalhadores.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2018-145-1.png",
+            "alt": "Quadro com o número de acidentes (0 a 5) e o número de trabalhadores em cada caso"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Questão 145: enunciado resumido (pesquisa da CIPA com amostra de 100 funcionários) mantendo o quadro; gabarito (D) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2018/questions/145"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "0,15",
+            "correct": false,
+            "feedback": "Você somou só os valores 0 + 1 + 2 + 3 + 4 + 5 = 15 e dividiu por 100. Cada valor pesa pelos trabalhadores: 111/100 = 1,11."
+          },
+          {
+            "id": "b",
+            "label": "0,30",
+            "correct": false,
+            "feedback": "Você dividiu 15 (soma dos valores 0 a 5) por 50. Cada valor pesa pelos trabalhadores: 111/100 = 1,11."
+          },
+          {
+            "id": "c",
+            "label": "0,50",
+            "correct": false,
+            "feedback": "0,50 é a fração que não sofreu acidente (50 de 100), não a média. A média é 111/100 = 1,11."
+          },
+          {
+            "id": "d",
+            "label": "1,11",
+            "correct": true,
+            "feedback": "Certo: 0·50 + 1·17 + 2·15 + 3·10 + 4·6 + 5·2 = 111 acidentes em 100 trabalhadores, média 1,11."
+          },
+          {
+            "id": "e",
+            "label": "2,22",
+            "correct": false,
+            "feedback": "Você dividiu 111 só pelos 50 que sofreram acidente. A média é sobre a amostra toda: 111/100 = 1,11."
+          }
+        ]
+      },
+      {
+        "id": "enem-2021-histograma-precos",
+        "prompt": "O histograma mostra os preços de 105 apartamentos, em mil reais. Qual o menor preço p tal que pelo menos 50% custam menos que p?",
+        "fala": "Acumule as barras da esquerda para a direita até passar da metade de 105.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2021-151-1.png",
+            "alt": "Histograma do número de imóveis por faixa de preço de 100 mil reais, de 300 a 1 300 mil reais"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Questão 151: enunciado resumido (anúncio de 50% abaixo de 550 mil omitido) mantendo o histograma; gabarito (C) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2021/questions/151"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "600",
+            "correct": false,
+            "feedback": "Até 600 mil há só 5 + 10 + 5 = 20 imóveis, menos de 52,5. Acumulando até 800 mil chega a 55."
+          },
+          {
+            "id": "b",
+            "label": "700",
+            "correct": false,
+            "feedback": "Até 700 mil são 20 + 15 = 35 imóveis, um terço. Só até 800 mil passa da metade: 35 + 20 = 55."
+          },
+          {
+            "id": "c",
+            "label": "800",
+            "correct": true,
+            "feedback": "Certo: acumulado 5, 15, 20, 35 e 55; em 800 mil passa pela 1ª vez de 52,5 (metade de 105)."
+          },
+          {
+            "id": "d",
+            "label": "900",
+            "correct": false,
+            "feedback": "Até 900 mil há 70 imóveis, mas 800 já bastava (55 ≥ 52,5) e a questão pede o menor p."
+          },
+          {
+            "id": "e",
+            "label": "1000",
+            "correct": false,
+            "feedback": "Até 1 000 mil há 85 imóveis, mas 800 já bastava (55 ≥ 52,5) e a questão pede o menor p."
+          }
+        ]
+      },
+      {
+        "id": "enem-2023-media-mediana-moda",
+        "prompt": "O gráfico mostra quantas viagens fez cada um dos 160 motoristas de um aplicativo. Como se comparam média, mediana e moda dessas quantidades?",
+        "fala": "Moda é o valor mais frequente; a mediana fica entre o 80º e o 81º motorista em ordem.",
+        "imagens": [
+          {
+            "src": "/vestibular/enem-2023-140-1.png",
+            "alt": "Gráfico de barras horizontais: quantidade de viagens (1 a 7) e número de motoristas em cada uma"
+          }
+        ],
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "Questão 140: enunciado resumido (relatório da empresa de transporte) mantendo o gráfico; gabarito (E) mantido.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2023/questions/140"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "Mediana = média < moda",
+            "correct": false,
+            "feedback": "A moda é 3, o menor dos três. Mediana 4 e média 665/160 ≈ 4,16: moda < mediana < média."
+          },
+          {
+            "id": "b",
+            "label": "Mediana = moda < média",
+            "correct": false,
+            "feedback": "A mediana não é 3: até 3 viagens há só 75 motoristas, então o 80º e o 81º fizeram 4. Fica moda < mediana < média."
+          },
+          {
+            "id": "c",
+            "label": "Mediana < média < moda",
+            "correct": false,
+            "feedback": "Moda é o valor 3 (de 55 motoristas), não a frequência 55. Fica 3 < 4 < 4,16: moda < mediana < média."
+          },
+          {
+            "id": "d",
+            "label": "Moda < média < mediana",
+            "correct": false,
+            "feedback": "Os 60 que fizeram 6 ou 7 viagens puxam a média para 665/160 ≈ 4,16, acima da mediana 4."
+          },
+          {
+            "id": "e",
+            "label": "Moda < mediana < média",
+            "correct": true,
+            "feedback": "Certo: moda 3 (55 motoristas), mediana 4 (80º e 81º) e média 665/160 ≈ 4,16."
+          }
+        ]
+      }
+    ]
   }
 }

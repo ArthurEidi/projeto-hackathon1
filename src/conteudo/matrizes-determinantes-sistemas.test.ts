@@ -144,4 +144,40 @@ describe("gabaritos do treino: matrizes-determinantes-sistemas", () => {
     // D5: B(1;1)=(2;1), A(2;1)=(4;1)
     expect(certa("d5-matrizes-determinantes-sistemas")).toBe("(4;1)");
   });
+
+  it("vestibular: gabaritos das 3 questões do ENEM conferidos por conta", () => {
+    expect(L.treino.vestibular).toHaveLength(3);
+    const somaColunas = (m: number[][]) => m[0].map((_, j) => m.reduce((s, linha) => s + linha[j], 0));
+    // ENEM 2019/144: colunas = dias; segunda soma 11, os outros dias 10
+    const acertos = [
+      [3, 2, 0, 1, 2],
+      [3, 2, 4, 1, 2],
+      [2, 2, 2, 3, 2],
+      [3, 2, 4, 1, 0],
+      [0, 2, 0, 4, 4],
+    ];
+    expect(somaColunas(acertos)).toEqual([11, 10, 10, 10, 10]);
+    expect(certa("enem-2019-acertos-por-dia")).toBe("Segunda-feira");
+    // ENEM 2021/157: destino é a coluna j; a coluna 5 soma 12 (a linha 1, origem, soma 13)
+    const A = [
+      [0, 4, 2, 2, 5],
+      [0, 0, 6, 2, 3],
+      [2, 2, 0, 3, 0],
+      [1, 0, 2, 0, 4],
+      [1, 2, 0, 4, 0],
+    ];
+    expect(somaColunas(A)).toEqual([4, 8, 10, 11, 12]);
+    expect(A[0].reduce((s, x) => s + x, 0)).toBe(13);
+    expect(certa("enem-2021-regiao-destino")).toBe("5");
+    // ENEM 2021/164: 12c+4k+3s+m = 18c+3k+2s+m = 10 dá k+s = 6c; xc+2k+s+m = 10 com a viagem II: x = 18 + 6 = 24
+    // Conferência numérica: para quaisquer c, k (s = 6c − k, m = 10 − 30c − k) as duas viagens pesam 10 e x = 24 também.
+    for (const [c, k] of [[0.1, 0.5], [0.2, 0.9], [0.05, 0.25]]) {
+      const s = 6 * c - k;
+      const m = 10 - 30 * c - k;
+      expect(12 * c + 4 * k + 3 * s + m).toBeCloseTo(10, 12);
+      expect(18 * c + 3 * k + 2 * s + m).toBeCloseTo(10, 12);
+      expect(24 * c + 2 * k + s + m).toBeCloseTo(10, 12);
+    }
+    expect(certa("enem-2021-mala-camisetas")).toBe("24");
+  });
 });

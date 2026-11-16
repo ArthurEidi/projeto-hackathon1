@@ -261,27 +261,25 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-matrizes-determinantes-sistemas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema matrizes, determinantes e sistemas lineares 2×2.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+**B23a (16/11/2026):** V1, V2 e V4 preenchidas com questões do ENEM com imagem (B17b); V3 segue PENDENTE-FONTE. Contas em `docs/revisao/vestibular-b23a.md`.
 
-#### V2 — `v2-matrizes-determinantes-sistemas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema matrizes, determinantes e sistemas lineares 2×2.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — ENEM 2019 — Questão 144 (`enem-2019-acertos-por-dia`)
+- **Estado:** inserida na aula pela B23a (16/11/2026); imagem pela B16.
+- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema matrizes, determinantes e sistemas lineares 2×2 (ler linha e coluna de uma matriz).
+- **Enunciado (resumido):** "A matriz dá os acertos de 5 alunos (linhas) em testes de segunda a sexta (colunas). Em que dia o teste teve mais acertos?"
+- **Fala do Paco:** "Cada coluna é um dia da semana: junte os acertos dos 5 alunos naquele dia."
+- **Fonte:** ENEM 2019/144, https://api.enem.dev/v1/exams/2019/questions/144 (adaptada: enunciado resumido, gabarito mantido).
+- **Imagens:** `/vestibular/enem-2019-144-1.png`
+- **Conta de conferência:** somas das colunas 11, 10, 10, 10, 10: segunda-feira (A).
+
+#### V2 — ENEM 2021 — Questão 157 (`enem-2021-regiao-destino`)
+- **Estado:** inserida na aula pela B23a (16/11/2026); imagem pela B16.
+- **Recorte para seleção:** Aplicação direta em contexto, no tema matrizes, determinantes e sistemas lineares 2×2 (aᵢⱼ como fluxo de i para j).
+- **Enunciado (resumido):** "Na matriz, aᵢⱼ é o número de famílias (em dezenas) que se mudaram da região i para a região j. Qual região mais recebeu famílias?"
+- **Fala do Paco:** "A linha diz de onde a família saiu e a coluna diz para onde foi."
+- **Fonte:** ENEM 2021/157, https://api.enem.dev/v1/exams/2021/questions/157 (adaptada: enunciado resumido, gabarito mantido).
+- **Imagens:** `/vestibular/enem-2021-157-5.png`
+- **Conta de conferência:** destino = coluna; somas das colunas 4, 8, 10, 11, 12: região 5 (E). Somar linhas (origem) daria região 1 (13).
 
 #### V3 — `v3-matrizes-determinantes-sistemas`
 - **Estado:** **PENDENTE-FONTE**
@@ -294,16 +292,14 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V4 — `v4-matrizes-determinantes-sistemas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema matrizes, determinantes e sistemas lineares 2×2.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V4 — ENEM 2021 — Questão 164 (`enem-2021-mala-camisetas`)
+- **Estado:** inserida na aula pela B23a (16/11/2026); imagem pela B16.
+- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema matrizes, determinantes e sistemas lineares 2×2 (sistema com duas equações e uma combinação delas).
+- **Enunciado (resumido):** "A tabela mostra duas malas de 10 kg; itens do mesmo tipo têm a mesma massa. Com 2 calças e 1 sapato, quantas camisetas completam os 10 kg?"
+- **Fala do Paco:** "Compare as duas viagens: o que entrou numa ocupa o lugar do que saiu da outra."
+- **Fonte:** ENEM 2021/164, https://api.enem.dev/v1/exams/2021/questions/164 (adaptada: enunciado resumido, gabarito mantido).
+- **Imagens:** `/vestibular/enem-2021-164-1.png`
+- **Conta de conferência:** 12c + 4k + 3s + m = 18c + 3k + 2s + m = 10 dá k + s = 6c; a viagem II sem 1 calça e 1 sapato fica com 18 + 6 = 24 camisetas (B).
 
 ---
 

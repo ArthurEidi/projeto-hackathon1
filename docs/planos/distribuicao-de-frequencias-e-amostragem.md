@@ -247,21 +247,21 @@ Amostra viciada (pesquisa de esporte na porta do estádio) erra mesmo com n gran
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** frequência relativa a partir de tabela.
-- **Onde procurar:** ENEM (tabelas de pesquisa sem imagem).
+#### V1 — ENEM 2018 — Questão 145 (`enem-2018-media-acidentes`)
+- **Habilidade-alvo:** ler uma tabela de frequências e ponderar cada valor pela sua frequência (média de acidentes por trabalhador).
+- **Conta:** (0·50 + 1·17 + 2·15 + 3·10 + 4·6 + 5·2)/100 = 111/100 = 1,11 (D). Imagem `/vestibular/enem-2018-145-1.png`.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** amostra representativa ou viciada.
-- **Onde procurar:** ENEM, Unicamp ("amostra", "pesquisa").
+#### V2 — ENEM 2023 — Questão 140 (`enem-2023-media-mediana-moda`)
+- **Habilidade-alvo:** ler um gráfico de frequências e comparar média, mediana e moda. (A habilidade original, amostra representativa ou viciada, ficou sem candidata do ENEM no cache.)
+- **Conta:** frequências 10, 10, 55, 25, 0, 50, 10 (total 160); moda 3; 80º e 81º valores = 4; média 665/160 ≈ 4,16; moda < mediana < média (E). Imagem `/vestibular/enem-2023-140-1.png`.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** frequência acumulada por classes.
-- **Onde procurar:** UFRGS, UFPR, ENEM.
+#### V3 — ENEM 2021 — Questão 151 (`enem-2021-histograma-precos`)
+- **Habilidade-alvo:** frequência acumulada por classes num histograma.
+- **Conta:** acumulado 5, 15, 20, 35, 55 até 400, 500, 600, 700, 800 mil; metade de 105 = 52,5; menor p = 800 mil (C). Imagem `/vestibular/enem-2021-151-1.png`.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** total a partir de uma porcentagem.
 - **Onde procurar:** ENEM, Fuvest.
 
 ---
-**Notas da implementação (JSON):** `barras` modo `categorias` (coleta + chave relativa) e `amostragem` (vício como `vicio.populacao`). Passo 1 começa com as 4 frutas em zero (todo valor vem dos cliques). Vestibular `[]`. Sem correção de gabarito. A conferência visual do widget ainda falta: confirmar que a coleta com total 0 não divide por zero.
+**Notas da implementação (JSON):** `barras` modo `categorias` (coleta + chave relativa) e `amostragem` (vício como `vicio.populacao`). Passo 1 começa com as 4 frutas em zero (todo valor vem dos cliques). Vestibular: 3 questões do ENEM com imagem inseridas na B23a (V1, V2, V3); V4 segue PENDENTE-FONTE. Sem correção de gabarito. A conferência visual do widget ainda falta: confirmar que a coleta com total 0 não divide por zero.
