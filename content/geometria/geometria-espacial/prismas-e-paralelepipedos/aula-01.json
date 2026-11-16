@@ -112,6 +112,7 @@
         "b": 3,
         "h": 12,
         "diagonal": true,
+        "rotulo_diagonal": "$etapa_pitagoras - 1",
         "cores": { "base": "c1", "h": "c2", "lateral": "c3", "diagonal": "c4" }
       },
       "controls": [

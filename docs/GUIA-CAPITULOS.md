@@ -504,6 +504,7 @@ Inclui os modos `revolucao`, `prisma`, `piramide`, `cilindro`, `esfera`, `tronco
 - **Esconder a medida pedida no tronco:** `mostrar: { "g": false }` (modo `tronco`, com `meridiano: true`) troca `g = 5` por `g = ?` no painel do corte meridiano. Padrão: `true`.
 - **Destacar uma face do dado:** `face_destaque: 1..6` (modo `vistas`, `solido: "dado"`) pinta a face com a cor forte do par e a contorna; serve para a figura de cada alternativa apontar a face escolhida (ex.: `{ "fechar": 0.5, "face_destaque": 2 }`). Métrica `face_destaque`.
 - **Acréscimo de 16/11 (`prisma` com `diagonal: true`):** quando `base: "retangulo"` e `diagonal: true`, o número da área no centro da base é omitido (a área continua no placar `Ab = ...`) para não colidir com a diagonal da base e o chip `d = ...`.
+- **Acréscimo de 16/11 (`rotulo_diagonal`, B26):** expressão opcional (padrão `1`). O chip `D = …` da diagonal do bloco só aparece quando o valor é ≥ 1; o segmento, `d` e `h` seguem visíveis. Com slider, a medida pedida surge só no fim: `"rotulo_diagonal": "$etapa_pitagoras - 1"` com slider 1..2 (`prismas-e-paralelepipedos` p3).
 Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer perfil (retângulo → cilindro, semicírculo → esfera, trapézio → tronco) e acrescentar sólidos de faces planas; mesma câmera ortográfica e convenção de aresta oculta tracejada. Inclui planificação (Aula 02 de Cones já prevista na taxonomia).
 
 ### 5.8 Menores, mas úteis
@@ -590,6 +591,8 @@ Exemplos (`params`):
 { "angulo": "$angulo", "arco": { "de": 30, "ate": 150 }, "alvo": { "seno": 0.5 } }   // inequações: dentro (0/1)
 { "rad": "$x_rad*0.785398", "grafico": "sen" }                                       // ponto no ciclo traça y = sen x
 ```
+
+**Acréscimo de 16/11 (B26).** O chip `sen …` ganhou um último candidato antes do anel de reserva: 2º quadrante, meio raio mais longe do eixo. Na `soma` com α e β pequenos (α no 2º quadrante baixo e β acima de P), o chip deixa de cair sobre o marco `π`. Os casos que já achavam lugar não mudam.
 
 **Acréscimos de 14/11.** Os rótulos de `marcos_rad` saem como fração de π quando o valor é múltiplo de π/12 (`π/6`, `π/2`, `π`, `2π`) e com até 2 casas nos demais (`0,5 rad`); não há mais arredondamento para inteiro.
 

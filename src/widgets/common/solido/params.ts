@@ -48,6 +48,11 @@ const Prisma = z.object({
   /** 0..1: as paredes abrem numa faixa (planificação lateral) ao lado. */
   abrir: Expr.default(0),
   diagonal: z.boolean().default(false),
+  /**
+   * Chip `D = …` da diagonal do bloco (16/11): aparece quando o valor é ≥ 1 (padrão 1, como antes).
+   * Aceita slider, para a medida pedida só surgir no fim, ex.: "$etapa_pitagoras - 1".
+   */
+  rotulo_diagonal: Expr.default(1),
   /** Altura de um prisma fantasma (caso neutro de 1 camada). */
   fantasma_h: z.number().optional(),
   cores: z

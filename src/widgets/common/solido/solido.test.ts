@@ -96,6 +96,20 @@ describe("contas do solido_3d", () => {
   });
 });
 
+describe("rotulo_diagonal (B26, 16/11)", () => {
+  const rotulos = (o: object, ctl: Record<string, number>) =>
+    montarCena(Solido3d.parse({ modo: "prisma", base: "retangulo", a: 4, b: 3, h: 12, diagonal: true, ...o }), ctl).anotacoes.flatMap((x) => ("rotulo" in x && x.rotulo ? [x.rotulo] : []));
+  it("padrão: D = 13 aparece, como antes", () => {
+    expect(rotulos({}, {})).toContain("D = 13");
+  });
+  it("com slider: D só aparece no fim; d = 5 e h = 12 ficam sempre", () => {
+    const o = { rotulo_diagonal: "$etapa_pitagoras - 1" };
+    expect(rotulos(o, { etapa_pitagoras: 1 })).not.toContain("D = 13");
+    expect(rotulos(o, { etapa_pitagoras: 1 })).toEqual(expect.arrayContaining(["d = 5", "h = 12"]));
+    expect(rotulos(o, { etapa_pitagoras: 2 })).toContain("D = 13");
+  });
+});
+
 describe("ocultar e destacar (B1b)", () => {
   it("tronco: mostrar.g false leva o painel a escrever g = ?", () => {
     const c = montarCena(Solido3d.parse({ modo: "tronco", solido: "cone", R: 6, H: 4.5, corte: 1.5, meridiano: true, mostrar: { g: false } }), {});

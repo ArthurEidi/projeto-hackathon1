@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { estadoInicial, fracaoPi, metricasCiclo, modeloCiclo, mod, quadranteDe, rotuloMarcoRad } from "./calc";
-import { desenharCiclo } from "./desenho";
+import { aspectoCiclo, desenharCiclo } from "./desenho";
 import { CicloTrigonometrico, CicloTrigonometricoFigura } from "./params";
 
 const ciclo = (o: object = {}) => CicloTrigonometrico.parse(o);
@@ -181,6 +181,28 @@ describe("métricas emitidas e figura", () => {
     const semRotulo = CicloTrigonometricoFigura.parse({ angulo: 360, grafico: "cos", mostrar: { seno: false, cosseno: false, grafico_rotulo: false } });
     desenharCiclo(spyCtx, 400, 360, [], semRotulo, {}, estadoInicial(semRotulo));
     expect(texts).not.toContain("cos 1");
+  });
+  it("soma α = β = 15° (formulas-de-adicao p3): chip sen não cobre o marco π nem o α (B26)", () => {
+    const textos: { t: string; x: number; y: number }[] = [];
+    const larg = (t: string) => 8.5 * [...t].length;
+    const spyCtx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) => {
+        if (k === "measureText") return (t: string) => ({ width: larg(t) });
+        if (k === "fillText") return (t: string, x: number, y: number) => textos.push({ t: String(t), x, y });
+        return () => undefined;
+      },
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+    const p = ciclo({ soma: { alfa: 15, beta: 15 }, blocos: 1, unidade: "ambos" });
+    const w = 366;
+    desenharCiclo(spyCtx, w, Math.round(w * aspectoCiclo(p)), [], p, {}, estadoInicial(p));
+    const achar = (t: string) => textos.find((q) => q.t === t)!;
+    const sen = achar("sen 0,5"), pi = achar("π"), alfa = achar("α");
+    expect(sen && pi && alfa).toBeTruthy();
+    const meiaSen = (larg("sen 0,5") + 16) / 2;
+    const separados = (o: { x: number; y: number }, mw: number, mh: number) => Math.abs(sen.x - o.x) >= meiaSen + mw || Math.abs(sen.y - o.y) >= 14.5 + mh;
+    expect(separados(pi, 7, 8)).toBe(true);
+    expect(separados(alfa, 14, 14.5)).toBe(true);
   });
   it("arco fechado com alvo não desenha bolinha vazia por cima dos extremos", () => {
     const fills: string[] = [];

@@ -225,6 +225,9 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
           { x: Pq.x + fora * 38, y: ys + (m.sen >= 0 ? 22 : -22) },
           { x: O.x - R * 0.55, y: ys },
           { x: Pq.x, y: Pq.y + (m.sen >= 0 ? -26 : 26) },
+          // B26 (16/11): 2º quadrante, meio raio mais longe do eixo. Vem antes do anel de reserva, que
+          // punha o chip sobre o marco π quando α (2º quadrante baixo) e β (acima de P) já estavam ocupados.
+          { x: O.x - R * 0.55, y: ys + (m.sen >= 0 ? -R * 0.5 : R * 0.5) },
         ]),
       `sen ${fmt(m.sen)}`, cor.seno, 2);
   }

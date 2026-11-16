@@ -243,7 +243,8 @@ function cenaPrisma(p: SolidoDe<"prisma">, ctl: Controles): Cena {
     const T: Vec3 = [a, h, -b];
     anotacoes.push({ tipo: "seg", a: O, b: F, cor: p.cores.base, rotulo: `d = ${num(Math.hypot(a, b))}`, lw: 4 });
     anotacoes.push({ tipo: "seg", a: F, b: T, cor: p.cores.h, lw: 4 });
-    anotacoes.push({ tipo: "seg", a: O, b: T, cor: p.cores.diagonal, rotulo: `D = ${num(Math.hypot(a, b, h))}`, lw: 4.5 });
+    const verD = ex(p.rotulo_diagonal, ctl) >= 1;
+    anotacoes.push({ tipo: "seg", a: O, b: T, cor: p.cores.diagonal, rotulo: verD ? `D = ${num(Math.hypot(a, b, h))}` : undefined, lw: 4.5 });
     anotacoes.push({ tipo: "reto", o: F, a: O, b: T, cor: p.cores.diagonal });
   }
   const placar: Cena["placar"] = [
