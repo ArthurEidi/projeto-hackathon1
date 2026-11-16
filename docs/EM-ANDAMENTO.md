@@ -90,6 +90,15 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 16/11, noite: **a Máquina B está sem frente aberta.** Árvore limpa, tudo publicado até f9e3d84. A Máquina A volta em 17/11 e pode retomar suas reservas; os acréscimos de widget de 15–16/11 estão no GUIA §5 (blocos "Acréscimo de 16/11").
 
+16/11, noite (o usuário mandou prosseguir). Briefing: `C:\Users\mkf10\projetos\briefing-b27.md`.
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B27a. Conferência visual em 400 px das 10 questões de vestibular da B23 | Antigravity #2 | 16/11 | `treino.vestibular` (só `prompt`, `fala`, `alt`) das 5 aulas da B23, `docs/visual/vestibular-b23v.md` |
+| B27b. Defeitos que só aparecem movendo o slider (9 casos do fim de `pendencias-b19.md`) | Claude Code #2 | 16/11 | `src/widgets/common/**` das pastas envolvidas, GUIA §5 dessas seções, aulas e testes desses 9 capítulos, `docs/visual/pendencias-b27b.md` |
+| B27c. Figura que entrega a resposta: geometria (só relatório) | Antigravity #3 | 16/11 | `docs/visual/entrega-resposta-b27c.md` |
+| B27d. Figura que entrega a resposta: aritmética e álgebra (só relatório) | Antigravity #4 | 16/11 | `docs/visual/entrega-resposta-b27d.md` |
+
 ## Pedidos entre máquinas
 
 Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo no passo 3 de `elipse`"). Formato: data, quem pede, para quem, o quê.
