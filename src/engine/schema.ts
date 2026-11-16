@@ -49,6 +49,12 @@ const InteractiveCanvasStep = z
     type: z.literal("interactive_canvas"),
     widget: z.enum(widgetIds),
     params: z.record(z.string(), z.unknown()),
+    /**
+     * Chaves de `params` trocadas enquanto o passo não está concluído (mescla rasa, como `figure` no desafio).
+     * Serve para a figura não entregar o que a fala pergunta: ex. `{ "trechos": [] }` esconde a solução
+     * na reta até o aluno chegar; ao concluir, valem os `params` completos.
+     */
+    antes_de_concluir: z.record(z.string(), z.unknown()).optional(),
     controls: z.array(SliderControl).default([]),
     lines: z.object({ intro: Line, done: Line }),
     duvida: Duvida.optional(),
@@ -57,6 +63,14 @@ const InteractiveCanvasStep = z
   .superRefine((s, ctx) => {
     const r = widgetParams[s.widget].safeParse(s.params);
     if (!r.success) ctx.addIssue({ code: "custom", message: `params de ${s.widget}: ${r.error.message}` });
+    if (s.antes_de_concluir) {
+      const desconhecidas = Object.keys(s.antes_de_concluir).filter((k) => !(k in s.params) && !(k in (r.data ?? {})));
+      if (desconhecidas.length)
+        ctx.addIssue({ code: "custom", message: `antes_de_concluir troca chave que o widget não usa: ${desconhecidas.join(", ")}` });
+      const antes = widgetParams[s.widget].safeParse({ ...s.params, ...s.antes_de_concluir });
+      if (!antes.success)
+        ctx.addIssue({ code: "custom", message: `antes_de_concluir de ${s.widget}: ${antes.error.message}` });
+    }
   });
 
 const ManimVideoStep = z.object({

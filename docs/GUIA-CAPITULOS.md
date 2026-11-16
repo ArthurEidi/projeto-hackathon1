@@ -145,6 +145,17 @@ Campos comuns: `id`, `type`, `lines`, `duvida?`.
 ```
 Métricas disponíveis para `complete_when`: o valor de cada slider (pelo `id`) **e** qualquer métrica que o widget emitir com `onMetric(nome, valor)`. O passo, uma vez concluído, não "desconclui". O slider mostra o valor arredondado: use `step` inteiro. O valor `initial` não pode já cumprir a condição.
 
+**Figura que não entrega a resposta: `antes_de_concluir`** (16/11). Se a fala pergunta algo que a figura já mostra (o chip `D = 13` quando a fala pergunta "quanto mede D?", o trecho da solução na reta quando a fala pergunta "a fronteira entra?"), declare no passo as chaves de `params` que valem **enquanto o passo não foi concluído**. Mescla rasa, como `figure` no desafio: cada chave substitui a de `params` inteira (para esconder um item de `mostrar`, repita o objeto `mostrar` todo). Ao concluir, o widget passa a receber os `params` completos e mostra a resposta junto com `lines.done`.
+
+```jsonc
+"params": { "trechos": [{ "de": -2, "ate": 2, "rotulo": "|x| < 2" }], "pontos": [ ... ] },
+"antes_de_concluir": { "trechos": [] }   // a solução só aparece quando o aluno chega
+```
+
+O schema recusa chave que o widget não usa e valor inválido. Prefira isto a reescrever a fala anunciando a resposta: a pergunta da fala é o que faz o aluno agir.
+
+**Cuidado com a métrica de conclusão.** O widget calcula as métricas com os parâmetros que recebe; antes de concluir, recebe os trocados. Se `complete_when` usa uma métrica que depende da chave escondida, o passo nunca conclui (ex.: na `reta_numerica`, `dentro` depende de `trechos`; com `"trechos": []` use `ponto_x` com `gte`/`lte`). Prove arrastando até o fim e capturando o estado concluído (`inequacoes-modulares` p2 é o exemplo de referência).
+
 **`manim_video`**
 ```jsonc
 { "id": "corte-meridiano", "type": "manim_video",

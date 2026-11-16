@@ -7,6 +7,7 @@ import { isComplete } from "./completion";
 import { collectLines, Lesson } from "./schema";
 import { checkLine, countSentences } from "./textRules";
 import { FALA_PERGUNTA, todasAsFalasDoTreino } from "../treino/falas";
+import { paramsDoPasso } from "../steps/paramsDoPasso";
 
 const lessonRaw = JSON.parse(
   readFileSync(join(import.meta.dirname, "../../content/geometria/geometria-espacial/cones/aula-01.json"), "utf8"),
@@ -109,6 +110,24 @@ describe("treino pós-aula", () => {
     const desafio = bad.steps.find((s: { type: string }) => s.type === "micro_challenge");
     desafio.options[0].override = { highlight: ["c1"] };
     expect(Lesson.safeParse(bad).success).toBe(false);
+  });
+
+  it("antes_de_concluir: aceita troca de chave do widget, recusa chave desconhecida e valor inválido", () => {
+    const comAntes = (antes: Record<string, unknown>) => {
+      const l = structuredClone(lessonRaw);
+      l.steps[0].antes_de_concluir = antes;
+      return Lesson.safeParse(l);
+    };
+    expect(comAntes({ h: 5 }).success).toBe(true);
+    expect(comAntes({ inexistente: 1 }).success).toBe(false);
+    expect(comAntes({ h: "alto" }).success).toBe(false);
+  });
+
+  it("paramsDoPasso: troca as chaves só enquanto o passo não foi concluído", () => {
+    const params = { trechos: [{ de: 1 }], pontos: [2] };
+    expect(paramsDoPasso(params, { trechos: [] }, false)).toEqual({ trechos: [], pontos: [2] });
+    expect(paramsDoPasso(params, { trechos: [] }, true)).toBe(params);
+    expect(paramsDoPasso(params, undefined, false)).toBe(params);
   });
 
   it("schema recusa treino sem as 7 perguntas", () => {

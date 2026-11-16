@@ -6,6 +6,7 @@ import { corDoTraco } from "../ui/marcas";
 import { Slider } from "../ui/Slider";
 import { TactileButton } from "../ui/Tactile";
 import { widgets } from "../widgets/registry";
+import { paramsDoPasso } from "./paramsDoPasso";
 import { duvidaLiberada, StepLayout } from "./StepLayout";
 import type { StepProps } from "./types";
 
@@ -23,6 +24,10 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
     [step.controls],
   );
   const metrics = useMemo(() => ({ ...widgetMetrics, ...controls }), [widgetMetrics, controls]);
+  const params = useMemo(
+    () => paramsDoPasso(step.params, step.antes_de_concluir, done),
+    [step.params, step.antes_de_concluir, done],
+  );
 
   // Uma vez concluído, o passo continua concluído mesmo se o aluno voltar o controle.
   useEffect(() => {
@@ -52,7 +57,7 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
       }
     >
       <div className="stage">
-        <Widget params={step.params} controls={controls} faixas={faixas} onMetric={onMetric} onInteract={onInteract} done={done} />
+        <Widget params={params} controls={controls} faixas={faixas} onMetric={onMetric} onInteract={onInteract} done={done} />
       </div>
       {step.controls.map((c) => (
         <Slider

@@ -58,11 +58,12 @@
         ],
         "ponto": { "x": -3, "passo": 1, "arrastavel": true, "distanciaZero": true, "corDistancia": "c3" }
       },
+      "antes_de_concluir": { "trechos": [], "pontos": [] },
       "lines": {
         "intro": "Em |x| < 2, a fronteira 2 entra? Leve o ponto até 0.",
         "done": "Não; a distância deve ser menor que 2, por isso −2 < x < 2."
       },
-      "complete_when": { "metric": "dentro", "gte": 1 }
+      "complete_when": { "metric": "ponto_x", "gte": -1, "lte": 1 }
     },
     {
       "id": "trocar-para-exterior",
