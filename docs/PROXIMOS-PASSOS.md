@@ -1,6 +1,6 @@
 # Próximos passos
 
-Atualizado em 15/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
+Atualizado em 16/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
 **Antes de pegar qualquer tarefa, leia `docs/EM-ANDAMENTO.md`**: é lá que cada máquina reserva a sua frente, para duas máquinas não mexerem nos mesmos arquivos.
 
 ## Estado
@@ -39,6 +39,13 @@ O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets qu
 - **Layout do desafio:** com legenda acima de 10 caracteres as opções viram lista, e a 4ª ficava abaixo do rodapé em 400 × 860. Cartões da lista agora com 44 px (`src/ui/styles.css`). Ainda rola em `solidos-de-revolucao` (enunciado de 4 linhas e figura 3D alta).
 - **Hospedagem preparada (B15), não publicada:** build com base relativa (o `dist/` funciona em subcaminho), vídeos resolvidos pela base do site, workflow `.github/workflows/pages.yml` só com disparo manual e `docs/HOSPEDAGEM.md`. Testado servindo o `dist/` em `/projeto-hackathon1/`. **O repositório é privado:** GitHub Pages gratuito exige repositório público; alternativa é Netlify/Vercel.
 - **Agentes:** os dois Codex abrem com permissão "Workspace (granular)", que recusa todo comando; o maestro não pode mudar isso (o classificador bloqueia). O usuário precisa rodar `/permissions` neles.
+
+**Feito em 16/11 (Máquina B).** O PC reiniciou e os agentes de 15/11 caíram; B17b e B19 foram refeitas. As 39 imagens soltas em `public/vestibular/` eram sobras da B17a e foram para fora do repositório (`C:\Users\mkf10\projetos\sobras-b17a`).
+
+- **Vestibular com imagem:** B17b achou 9 candidatas do ENEM em 4 capítulos de álgebra e aritmética (21 seguem sem candidata no cache); B22 aprovou a 2022/160 (robô no cubo) e manteve a 2022/143 fora (a dobra da planificação dá D, o cache diz A). B23a/B23b puseram as 10 nas aulas: `matrizes-determinantes-sistemas`, `distribuicao-de-frequencias-e-amostragem`, `inequacoes-exponenciais-logaritmicas`, `experimentos-binomial-e-repetidos`, `projecoes-cortes-e-planificacoes`. Agora **68 das 104 aulas têm vestibular** (36 sem). O maestro conferiu cada imagem de alternativa e reescreveu 4 feedbacks que não correspondiam à figura ou ao valor.
+- **Layout:** o desafio de `solidos-de-revolucao` cabe em 400 × 860 (legendas curtas na grade 2 × 2; teste exige até 10 caracteres).
+- **Widgets (B19 → B24):** relatório `docs/visual/pendencias-b19.md` (12 abertos). Corrigidos: extremo fechado no `ciclo_trigonometrico` (`≥` com bolinha cheia), chip de seno sem cobrir α, valores das barras de soma sem sobreposição, fala do passo da tangente, `piramides` p2 e `poligonos-e-quadrilateros` p2. Pendência leve: em `formulas-de-adicao-e-arco-duplo` p3 o chip `sen 0,5` cobre a marca `π` do eixo. Em andamento: B25 (vetores, triângulo, circunferência, polígono, sólido).
+- Validação ao fim: lint ok, 128 arquivos / 2005 testes, typecheck e build ok.
 
 **Decisões que esperam o usuário:** (a) publicar o app (ver `docs/HOSPEDAGEM.md`: Pages exige repositório público ou Pro; Netlify não); (c) aula 02 de Cones e vídeos. A (b), desafios com 4 alternativas, foi decidida em 15/11 e está em andamento.
 
