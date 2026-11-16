@@ -105,6 +105,32 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
     const a = p.arco;
     const fim = a.ate > a.de ? a.ate : a.ate + 360;
     arco(ctx, O, R, a.de, fim, tinta(cor.arco), espessura(hl, cor.arco, 7));
+  }
+  const ehExtremoArco = (g: number) =>
+    !!p.arco && [p.arco.de, p.arco.ate].some((ex) => Math.abs((((ex - g) % 360) + 540) % 360 - 180) < 0.5);
+  const alvos: Alvo[] = [];
+  if (m.alvo) {
+    const k = m.alvo.k;
+    if (m.alvo.tipo === "seno") segMundo(ctx, v, { x: -1.45, y: k }, { x: 1.45, y: k }, tinta(cor.alvo), espessura(hl, cor.alvo, 3), [8, 5]);
+    else segMundo(ctx, v, { x: k, y: -1.45 }, { x: k, y: 1.45 }, tinta(cor.alvo), espessura(hl, cor.alvo, 3), [8, 5]);
+    etiqueta(ctx, hits, m.alvo.tipo === "seno" ? { x: v.p(0, k).x, y: v.p(0, k).y - 18 } : { x: v.p(k, 0).x + 26, y: v.p(k, 0).y + 40 }, `${m.alvo.tipo === "seno" ? "y" : "x"} = ${fmt(k)}`, cor.alvo);
+    m.alvo.solucoes.forEach((s, i) => {
+      const q = v.q(noCiclo(s));
+      const marcada = e.marcadas.has(i);
+      if (marcada || !ehExtremoArco(s)) {
+        dot(ctx, q, 9, marcada ? tinta(cor.solucao) : palette.bg);
+        ctx.beginPath();
+        ctx.arc(q.x, q.y, 9, 0, DOIS_PI);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = tintaEscura(cor.solucao);
+        ctx.stroke();
+      }
+      if (marcada) etiqueta(ctx, hits, { x: q.x + (Math.cos(rad(s)) >= 0 ? 36 : -36), y: q.y + (Math.sin(rad(s)) >= 0 ? -16 : 16) }, rotuloAng(s, p.unidade === "ambos" ? "radianos" : p.unidade), cor.solucao);
+      alvos.push({ id: `sol-${i}`, c: q, raio: 22 });
+    });
+  }
+  if (p.arco) {
+    const a = p.arco;
     for (const [g, aberto] of [[a.de, a.abreDe], [a.ate, a.abreAte]] as const) {
       const q = v.q(noCiclo(g));
       dot(ctx, q, 8, aberto ? palette.bg : tinta(cor.arco));
@@ -116,25 +142,6 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
         ctx.stroke();
       }
     }
-  }
-  const alvos: Alvo[] = [];
-  if (m.alvo) {
-    const k = m.alvo.k;
-    if (m.alvo.tipo === "seno") segMundo(ctx, v, { x: -1.45, y: k }, { x: 1.45, y: k }, tinta(cor.alvo), espessura(hl, cor.alvo, 3), [8, 5]);
-    else segMundo(ctx, v, { x: k, y: -1.45 }, { x: k, y: 1.45 }, tinta(cor.alvo), espessura(hl, cor.alvo, 3), [8, 5]);
-    etiqueta(ctx, hits, m.alvo.tipo === "seno" ? { x: v.p(0, k).x, y: v.p(0, k).y - 18 } : { x: v.p(k, 0).x + 26, y: v.p(k, 0).y + 40 }, `${m.alvo.tipo === "seno" ? "y" : "x"} = ${fmt(k)}`, cor.alvo);
-    m.alvo.solucoes.forEach((s, i) => {
-      const q = v.q(noCiclo(s));
-      const marcada = e.marcadas.has(i);
-      dot(ctx, q, 9, marcada ? tinta(cor.solucao) : palette.bg);
-      ctx.beginPath();
-      ctx.arc(q.x, q.y, 9, 0, DOIS_PI);
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = tintaEscura(cor.solucao);
-      ctx.stroke();
-      if (marcada) etiqueta(ctx, hits, { x: q.x + (Math.cos(rad(s)) >= 0 ? 36 : -36), y: q.y + (Math.sin(rad(s)) >= 0 ? -16 : 16) }, rotuloAng(s, p.unidade === "ambos" ? "radianos" : p.unidade), cor.solucao);
-      alvos.push({ id: `sol-${i}`, c: q, raio: 22 });
-    });
   }
 
   // Simétricos nos quatro quadrantes (em torno do fantasma, se houver, ou do ponto).
@@ -212,7 +219,13 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
   if (p.mostrar.seno && Math.abs(m.sen) > 0.04) {
     const ys = v.p(0, m.sen / 2).y, fora = P.x >= 0 ? 1 : -1;
     rot.agendar(
-      [38, -38, 62, -62].map((d) => ({ x: Pq.x + fora * d, y: ys })).concat([{ x: Pq.x + fora * 38, y: ys + (m.sen >= 0 ? 22 : -22) }]),
+      [38, -38, 62, -62]
+        .map((d) => ({ x: Pq.x + fora * d, y: ys }))
+        .concat([
+          { x: Pq.x + fora * 38, y: ys + (m.sen >= 0 ? 22 : -22) },
+          { x: O.x - R * 0.55, y: ys },
+          { x: Pq.x, y: Pq.y + (m.sen >= 0 ? -26 : 26) },
+        ]),
       `sen ${fmt(m.sen)}`, cor.seno, 2);
   }
   if (p.mostrar.cosseno && Math.abs(m.cos) > 0.04) {
@@ -274,7 +287,8 @@ function desenharBarras(ctx: G, v: Vista, hits: Hit[], p: Ciclo, m: Modelo, cor:
     ctx.strokeStyle = palette.ink;
     ctx.lineWidth = 2;
     ctx.strokeRect(Math.min(a0.x, a1.x), Math.min(a0.y, a1.y), Math.abs(a1.x - a0.x), Math.abs(a1.y - a0.y));
-    etiqueta(ctx, hits, { x: v.p(x + 0.2, y).x, y: v.p(x + 0.2, y).y - 16 }, rotulo, cc);
+    if (p.soma) nota(ctx, { x: v.p(x + 0.2, y).x, y: v.p(x + 0.2, y).y - 11 }, rotulo, cc, 12);
+    else etiqueta(ctx, hits, { x: v.p(x + 0.2, y).x, y: v.p(x + 0.2, y).y - 16 }, rotulo, cc);
   };
   if (p.mostrar.pitagorica) {
     barra(1.95, [{ v: m.sen * m.sen, c: cor.seno }, { v: m.cos * m.cos, c: cor.cosseno }], "1", "c3");

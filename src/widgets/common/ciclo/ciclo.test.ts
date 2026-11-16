@@ -182,4 +182,23 @@ describe("métricas emitidas e figura", () => {
     desenharCiclo(spyCtx, 400, 360, [], semRotulo, {}, estadoInicial(semRotulo));
     expect(texts).not.toContain("cos 1");
   });
+  it("arco fechado com alvo não desenha bolinha vazia por cima dos extremos", () => {
+    const fills: string[] = [];
+    let currentFill = "";
+    const spyCtx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) => {
+        if (k === "measureText") return () => ({ width: 30 });
+        if (k === "fill") return () => fills.push(currentFill);
+        return () => undefined;
+      },
+      set: (_, k, val) => {
+        if (k === "fillStyle") currentFill = String(val);
+        return true;
+      },
+    }) as unknown as CanvasRenderingContext2D;
+    const p = ciclo({ angulo: 0, alvo: { seno: 0.5 }, arco: { de: 30, ate: 150, abreDe: false, abreAte: false } });
+    desenharCiclo(spyCtx, 400, 360, [], p, {}, estadoInicial(p));
+    // Os dois extremos do arco fechado devem ser preenchidos com a cor do arco (c4), não com o fundo branco (#ffffff).
+    expect(fills.filter((c) => c === "#ffffff").length).toBe(0);
+  });
 });

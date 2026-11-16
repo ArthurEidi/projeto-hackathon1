@@ -128,8 +128,8 @@
         "gte": 180
       },
       "lines": {
-        "intro": "Na tangente, cos 90° = 0 cria uma barreira vertical em 90°. Avance até 180°: a altura na reta já começou a se repetir?",
-        "done": "Sim: a tangente se repete a cada 180° (π), metade do período do seno. Como sobe e desce sem fim, sua imagem é ℝ."
+        "intro": "Na reta tangente em x = 1, cos 90° = 0 cria uma barreira vertical em 90°. Avance até 180°: a altura na reta tangente volta ao zero?",
+        "done": "Volta: em 180° (π) a tangente zera outra vez e o ciclo se repete a cada 180°. Como cresce sem fim perto de 90°, sua imagem é ℝ."
       },
       "duvida": {
         "quando": "fim",
