@@ -182,7 +182,14 @@ const Composicao = z.object({
   hc: z.number().positive().default(4),
   /** 0..1: as peças se aproximam até colar (aceita "$j"). */
   juntar: Expr.default(1),
-  cores: z.object({ a: CorTraco.default("c1"), b: CorTraco.default("c2"), encontro: CorTraco.default("c3"), total: CorTraco.default("c4") }).default({ a: "c1", b: "c2", encontro: "c3", total: "c4" }),
+  /**
+   * Só em "cavidade" (B30, 16/11): chips de área. Com juntar = 0, a tampa plana (πr²) realçada e "área da tampa";
+   * com juntar > 0, também "área do funil" (πr·g); com juntar = 1, a conta da área total da peça. Padrão false.
+   */
+  areas: z.boolean().default(false),
+  cores: z
+    .object({ a: CorTraco.default("c1"), b: CorTraco.default("c2"), encontro: CorTraco.default("c3"), total: CorTraco.default("c4"), tampa: CorTraco.default("c3"), funil: CorTraco.default("c4") })
+    .default({ a: "c1", b: "c2", encontro: "c3", total: "c4", tampa: "c3", funil: "c4" }),
   ...Base,
 });
 

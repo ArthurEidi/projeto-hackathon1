@@ -516,6 +516,7 @@ Inclui os modos `revolucao`, `prisma`, `piramide`, `cilindro`, `esfera`, `tronco
 - **Destacar uma face do dado:** `face_destaque: 1..6` (modo `vistas`, `solido: "dado"`) pinta a face com a cor forte do par e a contorna; serve para a figura de cada alternativa apontar a face escolhida (ex.: `{ "fechar": 0.5, "face_destaque": 2 }`). Métrica `face_destaque`.
 - **Acréscimo de 16/11 (`prisma` com `diagonal: true`):** quando `base: "retangulo"` e `diagonal: true`, o número da área no centro da base é omitido (a área continua no placar `Ab = ...`) para não colidir com a diagonal da base e o chip `d = ...`.
 - **Acréscimo de 16/11 (`rotulo_diagonal`, B26):** expressão opcional (padrão `1`). O chip `D = …` da diagonal do bloco só aparece quando o valor é ≥ 1; o segmento, `d` e `h` seguem visíveis. Com slider, a medida pedida surge só no fim: `"rotulo_diagonal": "$etapa_pitagoras - 1"` com slider 1..2 (`prismas-e-paralelepipedos` p3).
+- **Acréscimo de 16/11 (`areas`, B30):** só em `composicao` `cavidade`, booleano opcional (padrão `false`, como antes). Com `juntar` = 0, borda da tampa realçada (`cores.tampa`, c3) e chip "área da tampa πr²"; com `juntar` > 0, também "área do funil πr·g" (`cores.funil`, c4); com `juntar` = 1, "área A − tampa + funil = total", e a conta do volume ganha o nome "volume". Métrica `area_pi`. Ex.: `{"modo":"composicao","montagem":"cavidade","r":3,"h":4,"hc":4,"juntar":"$cavar / 100","areas":true}` dá 42π − 9π + 15π = 48π (`areas-e-volumes-por-composicao` p3).
 Generalizar `coneScene.ts` + `math3d/revolve.ts` para revolução de qualquer perfil (retângulo → cilindro, semicírculo → esfera, trapézio → tronco) e acrescentar sólidos de faces planas; mesma câmera ortográfica e convenção de aresta oculta tracejada. Inclui planificação (Aula 02 de Cones já prevista na taxonomia).
 
 ### 5.8 Menores, mas úteis
@@ -583,7 +584,7 @@ Arquivos: `common/ciclo/params.ts`, `calc.ts` (ângulo, quadrantes, soma, alvo, 
 | `soma: { alfa, beta }` + `blocos` | giros α (c1) e β (c2); P vai para α + β; barras sen(α + β) × sen α + sen β e, com `blocos` ≥ 1, sen α cos β + cos α sen β. Arco duplo: `alfa` e `beta` com o mesmo `"$id"` |
 | `alvo: { seno: k }` ou `{ cosseno: k }` | reta y = k (ou x = k) e os dois encontros, que o aluno toca para marcar; `marcadas: [0, 1]` já os marca (figura) |
 | `arco: { de, ate, abreDe, abreAte }` | arco solução aceso; extremo aberto = bolinha vazia |
-| `grafico: "sen" \| "cos"` | curva traçada ao lado, de 0 a 2π, ligada a P por uma linha tracejada |
+| `grafico: "sen" \| "cos" \| "tg"` | curva traçada ao lado, de 0 a 2π, ligada a P (na tangente, ao ponto da reta x = 1) por uma linha tracejada |
 | `fantasma` (graus ou lista), `marcos_rad: [1, 2, 3]` | referências em cinza |
 | `quadrante` + `seno_fixo` | P no quadrante dado com \|sen\| = `seno_fixo` (o ângulo é calculado) |
 | `cores` | `seno` c1, `cosseno` c2, `tangente` c3, `arco`/`angulo`/`solucao`/`simetricos` c4, `alvo` c2, `fita` c2, `alfa` c1, `beta` c2, `soma` c3; `highlight: Marca[]` engrossa |
@@ -609,6 +610,8 @@ Exemplos (`params`):
 **Acréscimo de 16/11 (B27b).** Mais dois candidatos para o chip `sen …`, ainda antes do anel: acima/abaixo de P com folga de 32 px, e o mesmo 8 px para fora. Com o triângulo pitagórico no 2º e 3º quadrantes (`identidades-trigonometricas` p2) o chip saía da tela pela esquerda. Única outra tela que mudou: `formulas-de-adicao-e-arco-duplo` p1 em β = 0, onde o chip, antes no anel e quase sobre o `π`, passou para cima de P.
 
 **Acréscimos de 14/11.** Os rótulos de `marcos_rad` saem como fração de π quando o valor é múltiplo de π/12 (`π/6`, `π/2`, `π`, `2π`) e com até 2 casas nos demais (`0,5 rad`); não há mais arredondamento para inteiro.
+
+**Acréscimo de 16/11 (`grafico: "tg"`, B30).** Ramos de y = tg x cortados em |y| ≤ 1,3 (a curva nunca risca as assíntotas), assíntotas tracejadas em π/2 e 3π/2, marcos π/2, π, 3π/2 e 2π. O valor fica num chip junto ao ponto do gráfico (`mostrar.grafico_rotulo`), ligado ao ponto da reta tangente x = 1 por uma linha tracejada; o chip `tg …` do ciclo não aparece (seria repetido). Em 90° e 270°, a nota "não existe" fica no alto da assíntota. Sem `grafico: "tg"`, nada muda. Ex.: `{"angulo":"$theta","grafico":"tg","mostrar":{"seno":false,"cosseno":false,"tangente":true}}` (`funcoes-trigonometricas` p3).
 
 ### 5.12 `geometria_poligono` + `geometria_poligono_figura` — PRONTOS
 

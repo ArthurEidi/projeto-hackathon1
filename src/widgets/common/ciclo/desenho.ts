@@ -188,7 +188,8 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
       if (p.mostrar.tangente) {
         segMundo(ctx, v, { x: 1, y: 0 }, T, tinta(cor.tangente), espessura(hl, cor.tangente, 5));
         const Tq = v.q(T);
-        rot.agendar([{ x: Tq.x + 36, y: Tq.y }, { x: Tq.x + 36, y: Tq.y - 24 }, { x: Tq.x + 36, y: Tq.y + 24 }], `tg ${fmt(m.tg)}`, cor.tangente, 1);
+        // Com o gráfico da tangente (B30), o valor fica no ponto do gráfico, ligado a T pela linha tracejada.
+        if (p.grafico !== "tg") rot.agendar([{ x: Tq.x + 36, y: Tq.y }, { x: Tq.x + 36, y: Tq.y - 24 }, { x: Tq.x + 36, y: Tq.y + 24 }], `tg ${fmt(m.tg)}`, cor.tangente, 1);
       }
       if (p.mostrar.secante) {
         // Fora da linha O–T (o raio prolongado), de um lado ou do outro, ao longo dela.
@@ -201,7 +202,7 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
         });
         rot.agendar(cands, `sec ${fmt(m.sec)}`, "c4", 2);
       }
-    } else if (p.mostrar.tangente) {
+    } else if (p.mostrar.tangente && p.grafico !== "tg") {
       nota(ctx, v.p(1, m.tg > 0 ? 1.35 : -1.35), `tg ${Number.isFinite(m.tg) ? fmt(m.tg) : "não existe"}`, cor.tangente, 13);
     }
   }
@@ -248,7 +249,8 @@ export function desenharCiclo(ctx: G, w: number, h: number, hits: Hit[], p: Cicl
   }
 
   // Gráfico ao lado: desenhado antes dos chips, que usam a mesma fila (ciclo e gráfico não se cobrem).
-  if (p.grafico) desenharGrafico(ctx, v, hits, p, m, P, rot);
+  if (p.grafico === "tg") desenharGraficoTg(ctx, v, p, m, rot);
+  else if (p.grafico) desenharGrafico(ctx, v, hits, p, m, P, rot);
   // Coluna das barras laterais (desenhadas depois): nenhum chip do ciclo entra nela.
   if (temBarras) {
     const xb = v.p(p.soma ? 1.7 : 1.9, 0).x;
@@ -308,6 +310,80 @@ function desenharBarras(ctx: G, v: Vista, hits: Hit[], p: Ciclo, m: Modelo, cor:
     barra(1.75, [{ v: Math.max(s.senSoma, 0), c: cor.soma }], fmt(s.senSoma), cor.soma);
     barra(2.3, [{ v: Math.max(Math.sin(rad(s.alfa)), 0), c: cor.alfa }, { v: Math.max(Math.sin(rad(s.beta)), 0), c: cor.beta }], fmt(s.somaSenos), "ink");
     if (m.blocos) barra(2.85, [{ v: Math.max(s.bloco1, 0), c: cor.alfa }, { v: Math.max(s.bloco2, 0), c: cor.beta }], fmt(s.bloco1 + s.bloco2), cor.soma);
+  }
+}
+
+/** Altura máxima da curva da tangente no gráfico (a mesma dos eixos): os ramos são cortados aí. */
+export const TG_LIM = 1.3;
+
+/**
+ * Trechos de y = tg x em [0; ate] (radianos) com |tg| ≤ TG_LIM, um por ramo (centros 0, π e 2π).
+ * Cortar em TG_LIM afasta a curva das assíntotas x = π/2 e x = 3π/2, que ela nunca toca.
+ */
+export function ramosTangente(ate: number): [number, number][] {
+  const a = Math.atan(TG_LIM);
+  const fim = Math.min(DOIS_PI, ate);
+  return [0, Math.PI, DOIS_PI]
+    .map((c) => [Math.max(0, c - a), Math.min(DOIS_PI, c + a, fim)] as [number, number])
+    .filter(([i, f]) => f > i + 1e-9);
+}
+
+/** Gráfico de y = tg x ao lado do ciclo (B30, 16/11). */
+function desenharGraficoTg(ctx: G, v: Vista, p: Ciclo, m: Modelo, rot: FilaRotulos) {
+  const cor = p.cores.tangente;
+  const X = (t: number) => X_GRAF + t * ESC_GRAF;
+  segMundo(ctx, v, { x: X_GRAF - 0.1, y: 0 }, { x: X(DOIS_PI) + 0.15, y: 0 }, palette.lineDark, 1.5);
+  segMundo(ctx, v, { x: X_GRAF, y: -1.3 }, { x: X_GRAF, y: 1.3 }, palette.lineDark, 1.5);
+  for (const y of [-1, 1]) segMundo(ctx, v, { x: X_GRAF, y }, { x: X(DOIS_PI), y }, palette.line, 1.5, [4, 4]);
+  // Assíntotas: onde cos x = 0 a tangente não existe.
+  for (const t of [Math.PI / 2, (3 * Math.PI) / 2]) segMundo(ctx, v, { x: X(t), y: -1.4 }, { x: X(t), y: 1.4 }, palette.muted, 2, [6, 5]);
+  for (const [t, r] of [[Math.PI / 2, "π/2"], [Math.PI, "π"], [(3 * Math.PI) / 2, "3π/2"], [DOIS_PI, "2π"]] as const) {
+    const q = v.p(X(t) + (r.length > 2 ? 0.22 : 0), -0.2);
+    nota(ctx, q, r, "muted", 12);
+    rot.reservar(q, 8 * r.length + 6, 16);
+  }
+  const trecho = ([i, f]: [number, number]) => {
+    ctx.beginPath();
+    for (let k = 0; k <= 40; k++) {
+      const t = i + ((f - i) * k) / 40;
+      const q = v.p(X(t), Math.tan(t));
+      if (k === 0) ctx.moveTo(q.x, q.y);
+      else ctx.lineTo(q.x, q.y);
+    }
+  };
+  for (const r of ramosTangente(DOIS_PI)) {
+    trecho(r);
+    ctx.setLineDash([3, 5]);
+    ctx.strokeStyle = palette.lineDark;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  const t = Math.max(0, Math.min(DOIS_PI, m.rad));
+  for (const r of ramosTangente(t)) {
+    trecho(r);
+    ctx.strokeStyle = tinta(cor);
+    ctx.lineWidth = 4;
+    ctx.stroke();
+  }
+  const tg = Math.tan(t);
+  // Sobre a assíntota a tangente não existe: a nota fica no alto, logo à direita da linha tracejada (a "barreira"),
+  // entre ela e a ponta do ramo seguinte (cerca de 70 px adiante).
+  if (Math.abs(Math.cos(t)) <= 1e-9) {
+    const q = v.p(X(t), 1.42);
+    nota(ctx, { x: q.x + 32, y: q.y }, "não existe", cor, 12);
+  }
+  if (Math.abs(Math.cos(t)) > 1e-9 && Math.abs(tg) <= TG_LIM) {
+    const ponto = v.p(X(t), tg);
+    // A altura da reta tangente (x = 1) é levada para o gráfico.
+    segMundo(ctx, v, { x: 1, y: tg }, { x: X(t), y: tg }, palette.muted, 1.5, [4, 4]);
+    dot(ctx, ponto, 6, tintaEscura(cor));
+    rot.reservar(ponto, 14, 14);
+    if (p.mostrar.grafico_rotulo) {
+      const s0 = tg >= -1e-9 ? -1 : 1;
+      // Perto de x = 0 o lado esquerdo esbarra no ponto P do ciclo: tenta também à direita.
+      rot.agendar([0, 24, -24, 44, -44].map((dx) => ({ x: ponto.x + dx, y: ponto.y + s0 * 24 })).concat([{ x: ponto.x, y: ponto.y - s0 * 24 }]), `tg ${fmt(tg)}`, cor, 1);
+    }
   }
 }
 

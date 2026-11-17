@@ -63,6 +63,12 @@ describe("passos da aula de areas e volumes por composicao", () => {
     if (s.type !== "interactive_canvas") throw new Error();
     const c = montarCena(Solido3d.parse({ modo: "composicao", montagem: "cavidade", r: 3, h: 4, hc: 4, juntar: 1 }), {});
     expect(c.metricas.volume_pi).toBeCloseTo(24, 9);
+    // B30: a figura mostra as áreas citadas na conclusão (tampa 9π sai, funil πrg = π·3·5 = 15π entra)
+    expect(s.params).toMatchObject({ montagem: "cavidade", areas: true });
+    const fim = montarCena(Solido3d.parse({ ...s.params, juntar: 1 }), {});
+    expect(fim.placar.map((x) => x.s)).toContain("área 42π − 9π + 15π = 48π");
+    expect(s.lines.done).toContain("9π");
+    expect(s.lines.done).toContain("15π");
   });
 
   it("desafio-volume-silo: cilindro 45π + cone 9π = 54π", () => {

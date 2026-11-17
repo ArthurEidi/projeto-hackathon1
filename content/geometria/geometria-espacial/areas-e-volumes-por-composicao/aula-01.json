@@ -72,14 +72,15 @@
         "r": 3,
         "h": 4,
         "hc": 4,
-        "juntar": "$cavar / 100"
+        "juntar": "$cavar / 100",
+        "areas": true
       },
       "controls": [
         { "id": "cavar", "label": "Escavar cone no topo", "min": 0, "max": 100, "step": 50, "initial": 0, "unit": "%", "color": "c4" }
       ],
       "lines": {
         "intro": "Se cavarmos um buraco em forma de cone no topo do cilindro, o volume diminui. E a área total da peça: diminui ou aumenta?",
-        "done": "A área aumenta! A tampa plana do cone sai, mas a parede inclinada do funil interno tem área maior que ela."
+        "done": "A área aumenta! Tiramos a tampa plana de 9π, mas abrimos lá dentro uma parede inclinada maior (πrg = 15π)."
       },
       "duvida": {
         "quando": "fim",

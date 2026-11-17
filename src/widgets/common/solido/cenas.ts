@@ -665,6 +665,17 @@ function cenaVistas(p: SolidoDe<"vistas">, ctl: Controles, e: EstadoSolido): Cen
   };
 }
 
+/**
+ * Áreas do cilindro (r, h) com um cone (r, hc) cavado no topo (B30, 16/11): a tampa plana πr² sai e a parede do
+ * funil πr·g (g = √(r² + hc²)) entra. Com r = 3, h = 4, hc = 4: 42π − 9π + 15π = 48π, a área aumenta.
+ */
+export function areasCavidade(r: number, h: number, hc: number) {
+  const tampa = Math.PI * r * r;
+  const funil = Math.PI * r * Math.hypot(r, hc);
+  const antes = 2 * Math.PI * r * r + 2 * Math.PI * r * h;
+  return { tampa, funil, antes, depois: antes - tampa + funil };
+}
+
 function cenaComposicao(p: SolidoDe<"composicao">, ctl: Controles): Cena {
   const { r, h, hc } = p;
   const t = limitar(ex(p.juntar, ctl), 0, 1);
@@ -702,13 +713,26 @@ function cenaComposicao(p: SolidoDe<"composicao">, ctl: Controles): Cena {
     nomeB = "cone";
     Va = Math.PI * r * r * h;
   }
-  const s = p.montagem === "cavidade" ? `${pi(Va / Math.PI)} − ${pi(Vb / Math.PI)} = ${pi(total / Math.PI)}` : `${pi(Va / Math.PI)} + ${pi(Vb / Math.PI)} = ${pi(total / Math.PI)}`;
+  const s0 = p.montagem === "cavidade" ? `${pi(Va / Math.PI)} − ${pi(Vb / Math.PI)} = ${pi(total / Math.PI)}` : `${pi(Va / Math.PI)} + ${pi(Vb / Math.PI)} = ${pi(total / Math.PI)}`;
+  // Com as áreas na tela (B30), a conta do volume ganha o nome, para não se confundir com a da área.
+  const s = p.areas && p.montagem === "cavidade" ? `volume ${s0}` : s0;
+  const placar: Cena["placar"] = [{ s: `cilindro ${pi(Va / Math.PI)}`, cor: p.cores.a }, { s: `${nomeB} ${pi(Vb / Math.PI)}`, cor: p.cores.b }, ...(t >= 1 ? [{ s, cor: p.cores.total }] : [])];
+  const metricas: Cena["metricas"] = { volume_pi: total / Math.PI, volume: total, juntou: t >= 1 ? 1 : 0 };
+  if (p.areas && p.montagem === "cavidade") {
+    const a = areasCavidade(r, h, hc);
+    // Borda da tampa por cima das malhas (polígonos ficam por baixo e a face do cilindro os cobriria).
+    if (t < 1) disco(h).forEach((q, i, d) => anotacoes.push({ tipo: "seg", a: q, b: d[(i + 1) % d.length], cor: p.cores.tampa, lw: 3.5 }));
+    if (t < 1) placar.push({ s: `área da tampa ${pi(a.tampa / Math.PI)}`, cor: p.cores.tampa });
+    if (t > 0 && t < 1) placar.push({ s: `área do funil ${pi(a.funil / Math.PI)}`, cor: p.cores.funil });
+    if (t >= 1) placar.push({ s: `área ${pi(a.antes / Math.PI)} − ${pi(a.tampa / Math.PI)} + ${pi(a.funil / Math.PI)} = ${pi(a.depois / Math.PI)}`, cor: p.cores.funil });
+    metricas.area_pi = (t >= 1 ? a.depois : a.antes) / Math.PI;
+  }
   return {
     malhas,
     anotacoes,
     extras: [[0, h + hc + Math.max(h, r) * 0.6 * 1.6, 0], [0, -r - Math.max(h, r) * 0.6, 0]],
-    placar: [{ s: `cilindro ${pi(Va / Math.PI)}`, cor: p.cores.a }, { s: `${nomeB} ${pi(Vb / Math.PI)}`, cor: p.cores.b }, ...(t >= 1 ? [{ s, cor: p.cores.total }] : [])],
-    metricas: { volume_pi: total / Math.PI, volume: total, juntou: t >= 1 ? 1 : 0 },
+    placar,
+    metricas,
   };
 }
 

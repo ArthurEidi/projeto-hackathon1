@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { areaCentroide, casco, classificarSecaoCone, contar, montarCena, moldeDado, perfilDe, posicaoRetas, secao, verticesPoliedro } from "./cenas";
+import { areaCentroide, areasCavidade, casco, classificarSecaoCone, contar, montarCena, moldeDado, perfilDe, posicaoRetas, secao, verticesPoliedro } from "./cenas";
 import { desenharSolido } from "./desenho";
 import { prisma } from "./malha";
 import { Solido3d, Solido3dFigura } from "./params";
@@ -130,5 +130,23 @@ describe("ocultar e destacar (B1b)", () => {
     const comDiag = montarCena(Solido3d.parse({ modo: "prisma", base: "retangulo", a: 4, b: 3, h: 12, diagonal: true }), {});
     expect(comDiag.anotacoes.some((a) => a.tipo === "texto")).toBe(false);
     expect(comDiag.placar.some((pl) => pl.s === "Ab = 12")).toBe(true);
+  });
+});
+
+describe("composição cavidade com áreas (B30, 16/11)", () => {
+  const placar = (o: object, juntar: number) =>
+    montarCena(Solido3d.parse({ modo: "composicao", montagem: "cavidade", r: 3, h: 4, hc: 4, juntar, ...o }), {}).placar.map((x) => x.s);
+  it("contas do roteiro: 42π − 9π + 15π = 48π (a área aumenta)", () => {
+    const a = areasCavidade(3, 4, 4);
+    expect([a.antes, a.tampa, a.funil, a.depois].map((x) => x / Math.PI)).toEqual([42, 9, 15, 48].map((x) => expect.closeTo(x, 9)));
+  });
+  it("padrão (areas false): placar igual ao de antes", () => {
+    expect(placar({}, 0)).toEqual(["cilindro 36π", "cone 12π"]);
+    expect(placar({}, 1)).toEqual(["cilindro 36π", "cone 12π", "36π − 12π = 24π"]);
+  });
+  it("areas: tampa em 0, tampa e funil no meio, conta da área no fim", () => {
+    expect(placar({ areas: true }, 0)).toEqual(["cilindro 36π", "cone 12π", "área da tampa 9π"]);
+    expect(placar({ areas: true }, 0.5)).toEqual(["cilindro 36π", "cone 12π", "área da tampa 9π", "área do funil 15π"]);
+    expect(placar({ areas: true }, 1)).toEqual(["cilindro 36π", "cone 12π", "volume 36π − 12π = 24π", "área 42π − 9π + 15π = 48π"]);
   });
 });

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { estadoInicial, fracaoPi, metricasCiclo, modeloCiclo, mod, quadranteDe, rotuloMarcoRad } from "./calc";
-import { aspectoCiclo, desenharCiclo } from "./desenho";
+import { aspectoCiclo, desenharCiclo, ramosTangente, TG_LIM } from "./desenho";
 import { CicloTrigonometrico, CicloTrigonometricoFigura } from "./params";
 
 const ciclo = (o: object = {}) => CicloTrigonometrico.parse(o);
@@ -253,5 +253,43 @@ describe("identidades p2: chip do seno dentro da tela em todos os quadrantes (B2
     const b = e.caixa(sen);
     expect(b.x0).toBeGreaterThanOrEqual(0);
     expect(b.x1).toBeLessThanOrEqual(w);
+  });
+});
+
+describe("gráfico da tangente (B30, 16/11)", () => {
+  const textos = (o: object) => {
+    const e = espiao();
+    const p = ciclo(o);
+    const w = 366;
+    desenharCiclo(e.ctx, w, Math.round(w * aspectoCiclo(p)), [], p, {}, estadoInicial(p));
+    return e.textos.map((q) => q.t);
+  };
+  it("schema aceita grafico: \"tg\"; sen e cos seguem como antes", () => {
+    expect(ciclo({ grafico: "tg" }).grafico).toBe("tg");
+    expect(textos({ angulo: 120, grafico: "sen" })).toContain("sen 0,87");
+  });
+  it("ramos cortados em |tg| ≤ 1,3, longe das assíntotas π/2 e 3π/2", () => {
+    const r = ramosTangente(2 * Math.PI);
+    expect(r).toHaveLength(3);
+    for (const [i, f] of r) {
+      for (const t of [i, (i + f) / 2, f]) expect(Math.abs(Math.tan(t))).toBeLessThanOrEqual(TG_LIM + 1e-9);
+      for (const a of [Math.PI / 2, (3 * Math.PI) / 2]) expect(a > i && a < f).toBe(false);
+    }
+    // a altura se repete a cada π: o 2º ramo, [π − a; π + a], é o ramo de 0 deslocado de π
+    const a = r[0][1];
+    expect(r[1][0]).toBeCloseTo(Math.PI - a, 9);
+    expect(r[1][1]).toBeCloseTo(Math.PI + a, 9);
+    expect(Math.tan(r[1][1])).toBeCloseTo(Math.tan(a), 9);
+    expect(ramosTangente(Math.PI / 4)).toEqual([[0, Math.PI / 4]]);
+  });
+  it("valor só no ponto do gráfico (sem chip repetido no ciclo); em 90° a nota \"não existe\" na assíntota", () => {
+    const em45 = textos({ angulo: 45, grafico: "tg", mostrar: { seno: false, cosseno: false, tangente: true } });
+    expect(em45.filter((t) => t === "tg 1")).toHaveLength(1);
+    const em90 = textos({ angulo: 90, grafico: "tg", mostrar: { seno: false, cosseno: false, tangente: true } });
+    expect(em90).toContain("não existe");
+    expect(em90).not.toContain("tg não existe");
+    // sem o gráfico, o ciclo segue com o chip e a nota de antes
+    expect(textos({ angulo: 45, mostrar: { seno: false, cosseno: false, tangente: true } })).toContain("tg 1");
+    expect(textos({ angulo: 90, mostrar: { seno: false, cosseno: false, tangente: true } })).toContain("tg não existe");
   });
 });

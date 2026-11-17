@@ -39,6 +39,17 @@ describe("passos da aula de funções trigonométricas", () => {
     }
   });
 
+  it("grafico-tangente: gráfico de tg x e a pergunta do roteiro (repete a cada 180°) (B30)", () => {
+    const s = step("grafico-tangente");
+    if (s.type !== "interactive_canvas") throw new Error();
+    expect(s.params).toMatchObject({ grafico: "tg" });
+    // tg(0) = tg(180°) = 0: a altura volta a zero em π, o período da tangente
+    expect(Math.tan(0)).toBe(0);
+    expect(Math.abs(Math.tan(Math.PI))).toBeLessThan(1e-12);
+    expect(s.lines.intro).toMatch(/\?$/);
+    expect(s.lines.done).toContain("180°");
+  });
+
   it("desafio-identificar-curva: curva que parte de (0; 1) é f(x) = cos x", () => {
     const s = step("desafio-identificar-curva");
     if (s.type !== "micro_challenge") throw new Error();

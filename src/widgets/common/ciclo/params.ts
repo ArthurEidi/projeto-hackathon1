@@ -8,7 +8,7 @@
 //   soma        giros α e β, com as barras sen(α + β) × sen α + sen β (e os blocos que explicam a soma)
 //   alvo        reta y = k (ou x = k) com os pontos de encontro marcáveis
 //   arco        arco solução aceso, com extremos abertos ou fechados
-//   grafico     curva y = sen x (ou cos x) traçada ao lado pelo ponto
+//   grafico     curva y = sen x (ou cos x, ou tg x desde 16/11) traçada ao lado pelo ponto
 import { z } from "zod";
 import { CorTraco, Marca } from "../../../ui/marcas";
 import { temSlider } from "../geo/base";
@@ -70,7 +70,8 @@ export const Ciclo = z.object({
   /** Arco solução (graus); extremos abertos (bolinha vazia) ou fechados. */
   arco: z.object({ de: z.number(), ate: z.number(), abreDe: z.boolean().default(false), abreAte: z.boolean().default(false) }).optional(),
   /** Gráfico ao lado traçado até o ângulo atual. */
-  grafico: z.enum(["sen", "cos"]).optional(),
+  /** "tg" (16/11): ramos de y = tg x cortados em |y| ≤ 1,3, com assíntotas tracejadas em π/2 e 3π/2. */
+  grafico: z.enum(["sen", "cos", "tg"]).optional(),
   /** Pontos de referência em cinza: graus. */
   fantasma: z.union([z.number(), z.array(z.number())]).optional(),
   /** Marcas fantasma nos arcos de 1, 2, 3 radianos (lista de radianos). */
