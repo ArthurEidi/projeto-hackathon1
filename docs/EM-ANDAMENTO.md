@@ -94,7 +94,8 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B27b. Defeitos que só aparecem movendo o slider (9 casos do fim de `pendencias-b19.md`) | Claude Code #2 | 16/11 | `src/widgets/common/**` das pastas envolvidas, GUIA §5 dessas seções, aulas e testes desses 9 capítulos, `docs/visual/pendencias-b27b.md` |
+| ~~B27b~~ concluída 16/11 (c82e159): 5 defeitos com slider corrigidos (ciclo, polígono, triângulo), 4 já resolvidos | Claude Code #2 | 16/11 | — |
+| B30. Gráfico de `tg x` no `ciclo_trigonometrico` (`funcoes-trigonometricas` p3) e chips de área no `solido_3d` composto (`areas-e-volumes-por-composicao` p3) | Claude Code #2 | 16/11 | `src/widgets/common/ciclo/**`, `src/widgets/common/solido/**`, GUIA §5 dessas seções, aulas e testes desses 2 capítulos, `docs/visual/correcoes-b30.md` |
 | ~~B27c~~ concluída 16/11 (9e04e1c): 182 passos, 9 casos | Antigravity #3 | 16/11 | — |
 | ~~B27a~~ concluída 16/11 (10c5ddd): 9 de 10 ok; ENEM 2022/137 com frações em texto | Antigravity #2 | 16/11 | — |
 | ~~B27d~~ concluída 16/11 (6b9fa20): 273 passos, 16 casos | Antigravity #4 | 16/11 | — |
