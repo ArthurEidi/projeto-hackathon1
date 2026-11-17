@@ -112,9 +112,11 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 |---|---|---|---|
 | B33a. Widget `escala_decimal` em `notacao-cientifica-e-ordem-grandeza` (troca as adaptações) | Antigravity | 17/11 | `src/widgets/common/escala/**` (novo), registro em `src/widgets/common/index.ts`/`params.ts`, aula e teste do capítulo, `docs/visual/widget-b33a.md` |
 | B33b. Widget `grupos_inteiros` em `sistemas-numericos-e-divisibilidade` | Antigravity #2 | 17/11 | `src/widgets/common/grupos/**` (novo), registro, aula e teste do capítulo, `docs/visual/widget-b33b.md` |
-| B33c. Widget `divisao_polinomial` em `divisao-polinomial-e-teorema-do-resto` | Antigravity #3 | 17/11 | `src/widgets/common/divisao/**` (novo), registro, aula e teste do capítulo, `docs/visual/widget-b33c.md` |
+| B33c. Widget `divisao_polinomial` em `divisao-polinomial-e-teorema-do-resto` (entregue 17/11; voltou para correção: quociente parcial "1 + ?" na etapa 1) | Antigravity #3 | 17/11 | `src/widgets/common/divisao/**` (novo), registro, aula e teste do capítulo, `docs/visual/widget-b33c.md` |
 | B33d. Widget `sistema_escalonado` em `sistemas-lineares-e-escalonamento` | Claude Code #2 | 17/11 | `src/widgets/common/escalonado/**` (novo), registro, aula e teste do capítulo, `docs/visual/widget-b33d.md` |
 | B34. Lacunas de widget antigas: quais seguem abertas (só relatório) | Antigravity #4 | 17/11 | `docs/visual/lacunas-b34.md` |
+| B35. Revisão de código dos 4 widgets novos (só relatório) | Codex | 17/11 | `docs/revisao/codigo-b33-codex.md` |
+| B36. Auditoria dos feedbacks do vestibular de aritmética e álgebra (item 5 de PROXIMOS-PASSOS; só relatório) | Codex #2 | 17/11 | `docs/revisao/auditoria-vestibular-b36.md` |
 | GUIA §5 dos 4 widgets novos (o maestro cola as seções dos registros) | maestro | 17/11 | `docs/GUIA-CAPITULOS.md` §5, `docs/WIDGETS-PENDENTES.md` |
 
 ## Pedidos entre máquinas
