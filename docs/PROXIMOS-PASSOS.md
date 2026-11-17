@@ -1,15 +1,16 @@
 # Próximos passos
 
-Atualizado em 16/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
+Atualizado em 17/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
 **Antes de pegar qualquer tarefa, leia `docs/EM-ANDAMENTO.md`**: é lá que cada máquina reserva a sua frente, para duas máquinas não mexerem nos mesmos arquivos.
 
 ## Estado
 
 - **103 de 103 capítulos** têm aula no app (mais Cones, o capítulo-modelo). Cada um tem `aula-01.json` e teste próprio.
-- **Validações em 13/11:** `lint:content` ok, 124 arquivos de teste / 1913 testes passando, `typecheck` limpo, `build` ok.
+- **Validações em 17/11 (efbfe1e):** `lint:content` ok, 128 arquivos de teste / 2047 testes passando, `typecheck` limpo, `build` ok.
 - **Widgets** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `retangulo_areas`, `maquinas_funcao`, `transformacao_plano`.
 - **Roteiros:** 103 planos em `docs/planos/`; gabaritos conferidos às cegas (1359/1359).
-- **Vestibular:** 26 aulas têm questões reais (40 do ENEM entraram em 14/11); o restante segue `PENDENTE-FONTE` nos roteiros.
+- **Vestibular:** 68 das 104 aulas têm questões reais do ENEM (várias com imagem); as 36 restantes seguem `PENDENTE-FONTE` (o cache de 652 questões do ENEM se esgotou para elas).
+- **Desafios:** os 104 têm 4 alternativas (B14). **Figura que entrega a resposta:** os 25 casos achados em 16/11 resolvidos com `antes_de_concluir` (GUIA §2).
 
 O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets que foram substituídos por adaptações, fontes de vestibular.
 
@@ -50,6 +51,8 @@ O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets qu
 
 - **16/11, noite (usuário mandou prosseguir):** conferência visual das 10 questões da B23 (B27a; ENEM 2022/137 com frações em texto); 5 defeitos que só aparecem movendo o slider corrigidos (B27b); varredura "figura que entrega a resposta" em todas as aulas (B27c/d: 25 casos). Novo campo **`antes_de_concluir`** no passo interativo (GUIA §2): a figura esconde a resposta até o aluno concluir; aplicado em 23 dos 25 casos (B29a/b, B31a/b). Widgets novos: `grafico: "tg"` no ciclo, `areas` no sólido composto (B30), `valores: "ao_tocar"` nas barras, `legenda` no triângulo modo `senos`. Recusada a B28a (falas que anunciavam a resposta).
 - **Parou no meio (limite do Claude):** B32, `piramides` p2 (apótema 5) e `poliedros-e-relacao-de-euler` p1 (`V − A + F = 2`): chave nova no `solido_3d` + `antes_de_concluir`. Pode haver edição não commitada em `src/widgets/common/solido/**`, nessas 2 aulas e testes e no GUIA §5.7: revisar com `git diff` antes de seguir (prova do estado concluído obrigatória).
+
+**17/11 (Máquina B; a A volta hoje).** B32 terminada pelo maestro e publicada (efbfe1e): `solido_3d` com `rotulo_apotema` e `rotulo_euler`, fechando os 25 casos. Em curso a B33 (briefing fora do repositório `briefing-b33.md`): os 4 widgets de um capítulo só (`escala_decimal`, `grupos_inteiros`, `divisao_polinomial`, `sistema_escalonado`), cada um em pasta nova e ligado no seu capítulo no lugar da adaptação; e a B34, relatório das lacunas de widget antigas que continuam abertas.
 
 **Decisões que esperam o usuário:** (a) publicar o app (ver `docs/HOSPEDAGEM.md`: Pages exige repositório público ou Pro; Netlify não); (c) aula 02 de Cones e vídeos. A (b), desafios com 4 alternativas, foi decidida em 15/11 e está em andamento.
 
