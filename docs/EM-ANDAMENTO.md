@@ -106,6 +106,17 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | ~~B32~~ concluída 17/11 (interrompida em 16/11, terminada pelo maestro): `solido_3d` com `rotulo_apotema` e `rotulo_euler`; `piramides` p2 e `poliedros-e-relacao-de-euler` p1 com `antes_de_concluir`. **25 de 25 casos da B27c/d resolvidos** | Claude Code #2 / maestro | 16/11 | — |
 | ~~B29b~~ concluída 16/11 (73a26b6): 6 de 9 casos; `piramides` p2, `poliedros-e-relacao-de-euler` p1 e `lei-dos-senos-e-cossenos` p3 precisam de chave nova no widget (depois da B30, que está no `solido_3d`) | Antigravity #3 | 16/11 | — |
 
+17/11 (a Máquina A volta hoje; o usuário mandou a B prosseguir). Briefing: `C:\Users\mkf10\projetos\briefing-b33.md`. Máquina A: as pastas novas abaixo não colidem com nada existente; os únicos arquivos compartilhados são as linhas de registro em `src/widgets/common/index.ts` e `params.ts`.
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B33a. Widget `escala_decimal` em `notacao-cientifica-e-ordem-grandeza` (troca as adaptações) | Antigravity | 17/11 | `src/widgets/common/escala/**` (novo), registro em `src/widgets/common/index.ts`/`params.ts`, aula e teste do capítulo, `docs/visual/widget-b33a.md` |
+| B33b. Widget `grupos_inteiros` em `sistemas-numericos-e-divisibilidade` | Antigravity #2 | 17/11 | `src/widgets/common/grupos/**` (novo), registro, aula e teste do capítulo, `docs/visual/widget-b33b.md` |
+| B33c. Widget `divisao_polinomial` em `divisao-polinomial-e-teorema-do-resto` | Antigravity #3 | 17/11 | `src/widgets/common/divisao/**` (novo), registro, aula e teste do capítulo, `docs/visual/widget-b33c.md` |
+| B33d. Widget `sistema_escalonado` em `sistemas-lineares-e-escalonamento` | Claude Code #2 | 17/11 | `src/widgets/common/escalonado/**` (novo), registro, aula e teste do capítulo, `docs/visual/widget-b33d.md` |
+| B34. Lacunas de widget antigas: quais seguem abertas (só relatório) | Antigravity #4 | 17/11 | `docs/visual/lacunas-b34.md` |
+| GUIA §5 dos 4 widgets novos (o maestro cola as seções dos registros) | maestro | 17/11 | `docs/GUIA-CAPITULOS.md` §5, `docs/WIDGETS-PENDENTES.md` |
+
 ## Pedidos entre máquinas
 
 Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo no passo 3 de `elipse`"). Formato: data, quem pede, para quem, o quê.
