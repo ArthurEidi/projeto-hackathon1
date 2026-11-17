@@ -125,6 +125,7 @@
             "valor": 99
           }
         ],
+        "valores": "ao_tocar",
         "cor": "ink"
       },
       "lines": {

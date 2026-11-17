@@ -247,3 +247,50 @@ describe("B13: raiz oculta e extremos da fila", () => {
     expect(desenha(base)).not.toContain("MÍN");
   });
 });
+
+describe("B31a: valores ao tocar e mediana abaixo da fila", () => {
+  it("categorias com valores: 'ao_tocar' só escreve o valor das barras tocadas; padrão é 'sempre'", () => {
+    const textos: string[] = [];
+    const ctx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) => (k === "measureText" ? (s: string) => ({ width: String(s).length * 8 }) : k === "fillText" ? (s: string) => textos.push(s) : () => undefined),
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+    const base = { modo: "categorias", categorias: [{ nome: "Início", valor: 103 }, { nome: "+10%", valor: 110 }, { nome: "−10%", valor: 99 }] };
+    expect(Barras.parse(base).modo === "categorias" && (Barras.parse(base) as BarrasDe<"categorias">).valores).toBe("sempre");
+
+    textos.length = 0;
+    desenharBarras(ctx, 360, 260, [], Barras.parse(base), {}, {});
+    expect(textos).toContain("99");
+
+    textos.length = 0;
+    const aoTocar = Barras.parse({ ...base, valores: "ao_tocar" });
+    desenharBarras(ctx, 360, 260, [], aoTocar, {}, { tocadas: new Set() });
+    expect(textos).not.toContain("99");
+    expect(textos).not.toContain("103");
+    expect(textos).not.toContain("110");
+
+    textos.length = 0;
+    desenharBarras(ctx, 360, 260, [], aoTocar, {}, { tocadas: new Set([0, 2]) });
+    expect(textos).toContain("103");
+    expect(textos).not.toContain("110");
+    expect(textos).toContain("99");
+  });
+
+  it("pontos com fila: true mantém o chip mediana abaixo das fichas da fila (y >= 60)", () => {
+    let medianaY = -1;
+    const ctx = new Proxy({} as Record<string, unknown>, {
+      get: (_, k) =>
+        k === "measureText"
+          ? (s: string) => ({ width: String(s).length * 8 })
+          : k === "fillText"
+            ? (s: string, _x: number, y: number) => {
+                if (s.startsWith("mediana ")) medianaY = y;
+              }
+            : () => undefined,
+      set: () => true,
+    }) as unknown as CanvasRenderingContext2D;
+    const p = Barras.parse({ modo: "pontos", valores: [3, 5, 5, 7, 8, 10], regua: [0, 10], mostrar: { mediana: true, moda: true, fila: true } });
+    desenharBarras(ctx, 360, 280, [], p, {}, {});
+    expect(medianaY).toBeGreaterThanOrEqual(58);
+  });
+});

@@ -207,6 +207,7 @@ function desenharCategorias(ctx: CanvasRenderingContext2D, w: number, h: number,
       });
     }
     vals.forEach((v, i) => {
+      if (p.valores === "ao_tocar" && !tocadas.has(i)) return;
       const s = `${num(v, 1)}${unidade}`;
       if (tipo === "barras" || tipo === "linha") {
         const y = Math.max(area.y - 6, Y(Math.max(v, ini))) - 16;
@@ -332,7 +333,7 @@ function desenharPontos(ctx: CanvasRenderingContext2D, w: number, h: number, hit
   const contagens = new Map<number, number>();
   for (const v of vals) contagens.set(v, (contagens.get(v) ?? 0) + 1);
   const maxPilha = Math.max(1, ...contagens.values());
-  const yViga = p.grupo_b ? h * 0.36 : mostrar.fila ? h * 0.5 : temQuadrados ? h * 0.36 : maxPilha >= 4 ? h * 0.66 : h * 0.55;
+  const yViga = p.grupo_b ? h * 0.36 : mostrar.fila ? h * 0.56 : temQuadrados ? h * 0.36 : maxPilha >= 4 ? h * 0.66 : h * 0.55;
   const k = (w - 2 * pad) / (p.regua[1] - p.regua[0]);
   const X = (v: number) => pad + (v - p.regua[0]) * k;
   const xDe = (px: number) => p.regua[0] + (px - pad) / k;
@@ -409,21 +410,22 @@ function desenharPontos(ctx: CanvasRenderingContext2D, w: number, h: number, hit
     }
   }
 
+  const yMinFila = mostrar.fila ? 60 : 16;
   if (mostrar.mediana) {
     const md = mediana(vals);
     const cor = corDoTraco(p.cores.mediana);
     const xm = X(md);
     const maxNiv = Math.max(0, ...principal.niveis);
-    const yTopo = Math.max(24, Math.min(yViga - 96, yViga - (maxNiv + 1) * gapPeso - 8));
+    const yTopo = Math.max(mostrar.fila ? 58 : 24, Math.min(yViga - 96, yViga - (maxNiv + 1) * gapPeso - 8));
     seg(ctx, { x: xm, y: yViga - 8 }, { x: xm, y: yTopo }, cor.main, espessura(p.cores.mediana, 3, hl));
     poly(ctx, [{ x: xm, y: yTopo }, { x: xm + 18, y: yTopo + 7 }, { x: xm, y: yTopo + 14 }], cor.main);
     const xEtq = xm < w * 0.6 ? xm + 70 : xm - 70;
-    etiqueta(ctx, hits, { x: xEtq, y: Math.max(16, yTopo - 10) }, `mediana ${num(md, 2)}`, p.cores.mediana);
+    etiqueta(ctx, hits, { x: xEtq, y: Math.max(yMinFila, yTopo - 10) }, `mediana ${num(md, 2)}`, p.cores.mediana);
   }
   if (mostrar.moda) {
     for (const mo of modas(vals)) {
       const cnt = vals.reduce((mx, v, i) => (v === mo ? Math.max(mx, principal.niveis[i] + 1) : mx), 0);
-      chip(ctx, { x: X(mo), y: Math.max(16, yViga - cnt * gapPeso - 18) }, "moda", c.lineDark, c.muted, c.ink);
+      chip(ctx, { x: X(mo), y: Math.max(yMinFila, yViga - cnt * gapPeso - 18) }, "moda", c.lineDark, c.muted, c.ink);
     }
   }
 

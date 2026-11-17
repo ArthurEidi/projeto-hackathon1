@@ -471,7 +471,7 @@ Arquivos: `common/barras/params.ts` (schema por `modo`), `calc.ts` (estatística
 
 | `modo` | Campos principais | Métricas |
 |---|---|---|
-| `categorias` | `categorias: [{nome, valor}]`, `tipo` e `tipos` (chave barras/linha/setores), `eixo_inicio` (`"$eixo"`), `tabela`, `relativa` / `chave_relativa`, `coleta` (botões +1), `comparar: [i, j]` ("B parece X× A"), `degraus` (`+d` entre barras vizinhas, maior crescimento em `c3`), `acesas` (figura) | `barras_tocadas`, `tipo_linha`, `tipo_setores`, `regua_relativa`, `respostas` |
+| `categorias` | `categorias: [{nome, valor}]`, `tipo` e `tipos` (chave barras/linha/setores), `eixo_inicio` (`"$eixo"`), `tabela`, `relativa` / `chave_relativa`, `coleta` (botões +1), `comparar: [i, j]` ("B parece X× A"), `degraus` (`+d` entre barras vizinhas, maior crescimento em `c3`), `acesas` (figura), `valores: "sempre" \| "ao_tocar"` (16/11: `"ao_tocar"` só mostra o valor de cada barra depois que o aluno a toca; padrão `"sempre"`) | `barras_tocadas`, `tipo_linha`, `tipo_setores`, `regua_relativa`, `respostas` |
 | `amostragem` | `populacao: [{nome, pct}]`, `destaque`, `n` (`"$n"`), `vicio: {rotulo, populacao}`, `semente` | `amostra_pct`, `erro`, `vicio_ligado`, `amostras` |
 | `pontos` | `valores` (aceitam `"5-$s"`), `regua`, `passo`, `arrastaveis` (índices), `apoio: "media" \| "arrastavel" \| número`, `mostrar: {mediana, moda, desvios, quadrados, fila, soma_desvios, alerta_mediana, conta_media, raiz}` (`raiz: false` mostra os quadrados e a variância sem "√v = desvio padrão", para a figura de quem respondeu a variância), `chaves: ["desvios","quadrados","fila","somar"]`, `tocar_meios`, `grupo_b`, `incognita` | `arrastes`, `equilibrio`, `maior_valor`, `media`, `mediana`, `desvios_ligados`, `quadrados_ligados`, `somou`, `fila_ligada`, `meios_tocados` |
 | `fila` | `valores`, `ordenada` (senão botão "pôr em fila"), `arrastaveis` / `fixos` (`q1 q2 q3`), `extremos: ["min", "max"]` (marcadores MÍN/MÁX nas pontas da fila ordenada, cor `cores.extremo`), `caixa` / `chave_caixa`, `maior_arrastavel: {ate, passo}` | `ordenou`, `q1_certo`, `q2_certo`, `q3_certo`, `cortes_certos`, `caixa_desenhada`, `maior_valor`, `atipicos` |
@@ -611,9 +611,9 @@ Exemplos (`params`):
 
 **Acréscimo de 16/11 (B27b).** Mais dois candidatos para o chip `sen …`, ainda antes do anel: acima/abaixo de P com folga de 32 px, e o mesmo 8 px para fora. Com o triângulo pitagórico no 2º e 3º quadrantes (`identidades-trigonometricas` p2) o chip saía da tela pela esquerda. Única outra tela que mudou: `formulas-de-adicao-e-arco-duplo` p1 em β = 0, onde o chip, antes no anel e quase sobre o `π`, passou para cima de P.
 
-**Acréscimos de 14/11.** Os rótulos de `marcos_rad` saem como fração de π quando o valor é múltiplo de π/12 (`π/6`, `π/2`, `π`, `2π`) e com até 2 casas nos demais (`0,5 rad`); não há mais arredondamento para inteiro.
-
 **Acréscimo de 16/11 (`grafico: "tg"`, B30).** Ramos de y = tg x cortados em |y| ≤ 1,3 (a curva nunca risca as assíntotas), assíntotas tracejadas em π/2 e 3π/2, marcos π/2, π, 3π/2 e 2π. O valor fica num chip junto ao ponto do gráfico (`mostrar.grafico_rotulo`), ligado ao ponto da reta tangente x = 1 por uma linha tracejada; o chip `tg …` do ciclo não aparece (seria repetido). Em 90° e 270°, a nota "não existe" fica no alto da assíntota. Sem `grafico: "tg"`, nada muda. Ex.: `{"angulo":"$theta","grafico":"tg","mostrar":{"seno":false,"cosseno":false,"tangente":true}}` (`funcoes-trigonometricas` p3).
+
+**Acréscimos de 14/11.** Os rótulos de `marcos_rad` saem como fração de π quando o valor é múltiplo de π/12 (`π/6`, `π/2`, `π`, `2π`) e com até 2 casas nos demais (`0,5 rad`); não há mais arredondamento para inteiro.
 
 ### 5.12 `geometria_poligono` + `geometria_poligono_figura` — PRONTOS
 

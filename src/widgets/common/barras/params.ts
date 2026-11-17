@@ -45,6 +45,8 @@ const Categorias = z.object({
   degraus: z.boolean().default(false),
   /** Índices das barras acesas na figura (ex.: a barra que o erro leu). */
   acesas: z.array(z.number().int().min(0)).default([]),
+  /** "ao_tocar": o valor de cada barra só aparece depois que o aluno toca nela. */
+  valores: z.enum(["sempre", "ao_tocar"]).default("sempre"),
   highlight: Highlight,
 });
 
