@@ -4,6 +4,9 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
 import { certaDe, fechamentoOk, passosConcluiveis } from "./util";
+import { paramsDoPasso } from "../steps/paramsDoPasso";
+import { montarCena } from "../widgets/common/solido/cenas";
+import { Solido3d } from "../widgets/common/solido/params";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -39,6 +42,12 @@ describe("passos da aula", () => {
     const areaLateral = 4 * ((6 * 5) / 2);
     expect(areaLateral).toBe(60);
     expect(s.complete_when.gte).toBe(100);
+    // B32: a altura 5 pedida pela fala só aparece depois de concluir (antes_de_concluir esconde o rótulo do apótema)
+    const rotulos = (concluido: boolean, abrir: number) =>
+      montarCena(Solido3d.parse(paramsDoPasso(s.params, s.antes_de_concluir, concluido)), { abrir }).anotacoes.flatMap((x) => ("rotulo" in x && x.rotulo ? [x.rotulo] : []));
+    for (const abrir of [0, 50, 75]) expect(rotulos(false, abrir)).not.toContain("5");
+    expect(rotulos(false, 0)).toEqual(expect.arrayContaining(["h = 4", "3"]));
+    expect(rotulos(true, 100)).toContain("5");
   });
 
   it("tres-num-prisma: volume da pirâmide é 1/3 do prisma (144 / 3 = 48)", () => {

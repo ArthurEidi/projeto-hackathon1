@@ -96,6 +96,24 @@ describe("contas do solido_3d", () => {
   });
 });
 
+describe("rotulo_apotema e rotulo_euler (B32, 16/11)", () => {
+  const rotulos = (o: object, ctl: Record<string, number> = {}) =>
+    montarCena(Solido3d.parse(o), ctl).anotacoes.flatMap((x) => ("rotulo" in x && x.rotulo ? [x.rotulo] : []));
+  it("pirâmide: padrão mostra o apótema 5; rotulo_apotema false tira só ele, parada e abrindo", () => {
+    const base = { modo: "piramide", L: 6, h: 4, abrir: "$abrir / 100" };
+    expect(rotulos(base, { abrir: 0 })).toEqual(expect.arrayContaining(["h = 4", "3", "5"]));
+    expect(rotulos(base, { abrir: 50 })).toContain("5");
+    const sem = { ...base, rotulo_apotema: false };
+    expect(rotulos(sem, { abrir: 0 })).toEqual(expect.arrayContaining(["h = 4", "3"]));
+    for (const abrir of [0, 50, 100]) expect(rotulos(sem, { abrir })).not.toContain("5");
+  });
+  it("poliedro: padrão tem V, A, F e V − A + F; rotulo_euler false tira só a soma", () => {
+    const placar = (o: object) => montarCena(Solido3d.parse({ modo: "poliedro", solidos: ["tetraedro"], ...o }), {}).placar.map((x) => x.s);
+    expect(placar({})).toEqual(["V 4", "A 6", "F 4", "V − A + F = 2"]);
+    expect(placar({ rotulo_euler: false })).toEqual(["V 4", "A 6", "F 4"]);
+  });
+});
+
 describe("rotulo_diagonal (B26, 16/11)", () => {
   const rotulos = (o: object, ctl: Record<string, number>) =>
     montarCena(Solido3d.parse({ modo: "prisma", base: "retangulo", a: 4, b: 3, h: 12, diagonal: true, ...o }), ctl).anotacoes.flatMap((x) => ("rotulo" in x && x.rotulo ? [x.rotulo] : []));

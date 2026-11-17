@@ -76,6 +76,7 @@
         "placar": false,
         "cores": { "h": "c1", "m": "c2", "ap": "c3", "volume": "c4" }
       },
+      "antes_de_concluir": { "rotulo_apotema": false },
       "controls": [
         {
           "id": "abrir",

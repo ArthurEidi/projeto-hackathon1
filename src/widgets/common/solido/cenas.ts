@@ -304,7 +304,7 @@ function cenaPiramide(p: SolidoDe<"piramide">, ctl: Controles): Cena {
       const Q = soma(M, soma(mul(u, ap * Math.cos(alfa)), [0, ap * Math.sin(alfa), 0]));
       v.push(Q);
       f.push({ idx: [i, (i + 1) % 4, v.length - 1], grupo: -1, cor: tint(p.cores.ap), n: unit3(soma(mul(u, -Math.sin(alfa)), [0, Math.cos(alfa), 0])) });
-      if (i === 0) anotacoes.push({ tipo: "seg", a: M, b: Q, cor: p.cores.ap, rotulo: `${num(ap)}`, lw: 4.5 });
+      if (i === 0) anotacoes.push({ tipo: "seg", a: M, b: Q, cor: p.cores.ap, rotulo: p.rotulo_apotema ? `${num(ap)}` : undefined, lw: 4.5 });
     });
     malhas.push({ v, f });
   }
@@ -312,7 +312,7 @@ function cenaPiramide(p: SolidoDe<"piramide">, ctl: Controles): Cena {
     const M: Vec3 = [0, 0, m];
     anotacoes.push({ tipo: "seg", a: [0, 0, 0], b: apice, cor: p.cores.h, rotulo: `h = ${num(h)}`, lw: 4.5 });
     anotacoes.push({ tipo: "seg", a: [0, 0, 0], b: M, cor: p.cores.m, rotulo: `${num(m)}`, lw: 4.5 });
-    anotacoes.push({ tipo: "seg", a: apice, b: M, cor: p.cores.ap, rotulo: `${num(ap)}`, lw: 4.5 });
+    anotacoes.push({ tipo: "seg", a: apice, b: M, cor: p.cores.ap, rotulo: p.rotulo_apotema ? `${num(ap)}` : undefined, lw: 4.5 });
     if (h > 0) anotacoes.push({ tipo: "reto", o: [0, 0, 0], a: apice, b: M, cor: p.cores.h });
   }
   placar.push({ s: `V = ${num((L * L * h) / 3)}`, cor: p.cores.volume });
@@ -488,7 +488,7 @@ function cenaPoliedro(p: SolidoDe<"poliedro">, ctl: Controles, e: EstadoSolido):
           { s: `V ${V}`, cor: p.cores.V },
           { s: `A ${A}`, cor: p.cores.A },
           { s: `F ${F}`, cor: p.cores.F },
-          { s: `V − A + F = ${V - A + F}`, cor: p.cores.euler },
+          ...(p.rotulo_euler ? [{ s: `V − A + F = ${V - A + F}`, cor: p.cores.euler }] : []),
         ];
   return { malhas, anotacoes, extras: m.v.map((q) => mul(q, 1 + soltar * 0.8)), placar, metricas: { V, A, F, euler: V - A + F, indice: i, serrado: serrar > 0 ? 1 : 0, solto: soltar } };
 }

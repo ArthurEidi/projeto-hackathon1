@@ -25,6 +25,7 @@
         "solidos": ["tetraedro", "piramide_quadrada", "cubo", "octaedro"],
         "indice": 0
       },
+      "antes_de_concluir": { "rotulo_euler": false },
       "lines": {
         "intro": "No tetraedro, quanto dá 4 vértices menos 6 arestas mais 4 faces? Troque de sólido e veja se esse resultado muda.",
         "done": "4 − 6 + 4 = 2 no tetraedro, e 8 − 12 + 6 = 2 no cubo! Muda tudo, menos o saldo 2."

@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
 import { casco, contar, montarCena, verticesPoliedro } from "../widgets/common/solido/cenas";
 import { Solido3d } from "../widgets/common/solido/params";
+import { paramsDoPasso } from "../steps/paramsDoPasso";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -50,6 +51,10 @@ describe("passos da aula de poliedros e euler", () => {
     const c = contar(casco(verticesPoliedro("tetraedro")));
     expect(c).toEqual({ V: 4, A: 6, F: 4 });
     expect(c.V - c.A + c.F).toBe(2);
+    // B32: V, A e F são dados e ficam; o saldo pedido (V − A + F = 2) só aparece depois de concluir
+    const placar = (concluido: boolean) => montarCena(Solido3d.parse(paramsDoPasso(s.params, s.antes_de_concluir, concluido)), {}).placar.map((x) => x.s);
+    expect(placar(false)).toEqual(["V 4", "A 6", "F 4"]);
+    expect(placar(true)).toContain("V − A + F = 2");
   });
 
   it("cortar-quina: serrar uma quina do cubo dá V = 10, A = 15, F = 7", () => {

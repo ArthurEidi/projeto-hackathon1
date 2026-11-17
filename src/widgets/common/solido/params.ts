@@ -67,6 +67,8 @@ const Piramide = z.object({
   L: Expr.default(6),
   h: Expr.default(4),
   apotemas: z.boolean().default(true),
+  /** B32 (16/11): false tira só o número do apótema (o segmento fica), parado ou abrindo; use em `antes_de_concluir`. */
+  rotulo_apotema: z.boolean().default(true),
   /** 0..1: faces abrindo em estrela. */
   abrir: Expr.default(0),
   /** 0..1: prisma de mesma base e altura dividido em 3 pirâmides que se afastam. */
@@ -127,6 +129,8 @@ const Poliedro = z.object({
   serrar: Expr.default(0),
   /** 0..1: faces se soltam (cada aresta vira duas bordas). */
   soltar: Expr.default(0),
+  /** B32 (16/11): false tira só o chip "V − A + F = …" do placar (V, A e F ficam); use em `antes_de_concluir`. */
+  rotulo_euler: z.boolean().default(true),
   cores: z.object({ V: CorTraco.default("c1"), A: CorTraco.default("c2"), F: CorTraco.default("c3"), euler: CorTraco.default("c4") }).default({ V: "c1", A: "c2", F: "c3", euler: "c4" }),
   ...Base,
 });
