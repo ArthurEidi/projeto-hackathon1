@@ -48,6 +48,9 @@ O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets qu
 - Validação ao fim: lint ok, 128 arquivos / 2016 testes, typecheck e build ok (f9e3d84).
 - **Ainda abertos (precisam de recurso novo de widget):** gráfico de `tg x` no `ciclo_trigonometrico` (`funcoes-trigonometricas` p3), chips de área no `solido_3d` composto (`areas-e-volumes-por-composicao` p3), 4 círculos máximos na esfera (`esferas` p2). Leves: `t` meio atrás de um `90°` em `angulos-retas-paralelas` p1. Defeitos que só aparecem movendo o slider não foram reconferidos (lista no fim de `pendencias-b19.md`).
 
+- **16/11, noite (usuário mandou prosseguir):** conferência visual das 10 questões da B23 (B27a; ENEM 2022/137 com frações em texto); 5 defeitos que só aparecem movendo o slider corrigidos (B27b); varredura "figura que entrega a resposta" em todas as aulas (B27c/d: 25 casos). Novo campo **`antes_de_concluir`** no passo interativo (GUIA §2): a figura esconde a resposta até o aluno concluir; aplicado em 23 dos 25 casos (B29a/b, B31a/b). Widgets novos: `grafico: "tg"` no ciclo, `areas` no sólido composto (B30), `valores: "ao_tocar"` nas barras, `legenda` no triângulo modo `senos`. Recusada a B28a (falas que anunciavam a resposta).
+- **Parou no meio (limite do Claude):** B32, `piramides` p2 (apótema 5) e `poliedros-e-relacao-de-euler` p1 (`V − A + F = 2`): chave nova no `solido_3d` + `antes_de_concluir`. Pode haver edição não commitada em `src/widgets/common/solido/**`, nessas 2 aulas e testes e no GUIA §5.7: revisar com `git diff` antes de seguir (prova do estado concluído obrigatória).
+
 **Decisões que esperam o usuário:** (a) publicar o app (ver `docs/HOSPEDAGEM.md`: Pages exige repositório público ou Pro; Netlify não); (c) aula 02 de Cones e vídeos. A (b), desafios com 4 alternativas, foi decidida em 15/11 e está em andamento.
 
 **O que falta, em ordem de prioridade:**
