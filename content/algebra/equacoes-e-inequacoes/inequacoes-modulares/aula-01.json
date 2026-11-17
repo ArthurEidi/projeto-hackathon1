@@ -31,6 +31,7 @@
         ],
         "ponto": { "x": 1, "passo": 1, "arrastavel": true, "distanciaZero": true, "corDistancia": "c3" }
       },
+      "antes_de_concluir": { "trechos": [], "pontos": [] },
       "lines": {
         "intro": "No caso neutro |x| ≤ 0, o trecho tem largura? Arraste até a origem.",
         "done": "Não; só o zero tem distância menor ou igual a zero."
@@ -40,7 +41,7 @@
         "pergunta": "Esse assunto tem outras versões?",
         "resposta": "Distâncias podem ser menores ou maiores que um limite; aqui distinguimos interior, exterior e extremos."
       },
-      "complete_when": { "metric": "dentro", "gte": 1 }
+      "complete_when": { "metric": "ponto_x", "gte": 0, "lte": 0 }
     },
     {
       "id": "abrir-interior",
@@ -82,6 +83,7 @@
         ],
         "ponto": { "x": 0, "passo": 1, "arrastavel": true, "distanciaZero": true, "corDistancia": "c3" }
       },
+      "antes_de_concluir": { "trechos": [], "pontos": [] },
       "lines": {
         "intro": "Se pedirmos |x| ≥ 2, o centro ainda serve? Arraste até 2.",
         "done": "Não; serve o exterior, incluindo −2 e 2, porque a distância mínima pedida é 2."
@@ -91,7 +93,7 @@
         "pergunta": "Por que aparece ou no exterior?",
         "resposta": "Cada ponto pode estar à esquerda ou à direita; não precisa ocupar os dois lados ao mesmo tempo."
       },
-      "complete_when": { "metric": "dentro", "gte": 1 }
+      "complete_when": { "metric": "distancia", "gte": 2 }
     },
     {
       "id": "conferir-previsao",

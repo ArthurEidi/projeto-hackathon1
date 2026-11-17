@@ -93,6 +93,11 @@
           "corDistancia": "c3"
         }
       },
+      "antes_de_concluir": {
+        "pontos": [
+          { "x": 2, "cor": "c4", "rotulo": "2" }
+        ]
+      },
       "complete_when": {
         "metric": "ponto_x",
         "lte": -2

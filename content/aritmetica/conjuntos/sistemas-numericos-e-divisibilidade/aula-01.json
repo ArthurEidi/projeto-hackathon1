@@ -136,6 +136,12 @@
           "c1"
         ]
       },
+      "antes_de_concluir": {
+        "pontos": [
+          { "x": 4, "rotulo": "4", "cor": "muted" },
+          { "x": 6, "rotulo": "6", "cor": "muted" }
+        ]
+      },
       "controls": [
         {
           "id": "m",

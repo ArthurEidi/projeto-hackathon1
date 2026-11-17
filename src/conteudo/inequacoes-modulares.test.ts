@@ -38,7 +38,7 @@ describe("passos da aula de inequacoes modulares", () => {
         const alvo = (gte ?? lte)!;
         expect(((alvo - slider.min) / slider.step) % 1, `${s.id}: alvo fora do passo`).toBeCloseTo(0, 9);
       } else {
-        expect(["dentro", "ponto_x", "faixa_x"]).toContain(metric);
+        expect(["dentro", "ponto_x", "faixa_x", "distancia"]).toContain(metric);
       }
     }
   });

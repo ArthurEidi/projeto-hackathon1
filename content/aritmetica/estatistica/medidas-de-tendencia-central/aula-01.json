@@ -159,6 +159,7 @@
           "moda": true
         }
       },
+      "antes_de_concluir": { "mostrar": { "mediana": false, "moda": false } },
       "lines": {
         "intro": "Com seis notas, não há uma única do meio. Qual valor fica no centro da fila, e qual se repete mais?",
         "done": "A mediana é a média dos dois do meio: (5 + 7) ÷ 2 = 6. A moda é 5, o valor que mais aparece."

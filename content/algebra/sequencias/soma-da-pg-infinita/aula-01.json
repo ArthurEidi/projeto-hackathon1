@@ -44,6 +44,7 @@
         "acumular": true,
         "limite": true
       },
+      "antes_de_concluir": { "limite": false },
       "controls": [
         {
           "id": "n",

@@ -40,6 +40,7 @@
           "Caio"
         ]
       },
+      "antes_de_concluir": { "escada": false },
       "lines": {
         "intro": "Três amigos vão sentar em fila. Quantos podem ocupar a primeira cadeira, e quantos sobram para a segunda?",
         "done": "3, depois 2, depois 1: são 3 · 2 · 1 = 6 filas. Cada cadeira tem uma opção a menos que a anterior."
@@ -104,6 +105,7 @@
           2
         ]
       },
+      "antes_de_concluir": { "listar": false },
       "lines": {
         "intro": "OVO tem 3 letras. Se os dois O fossem diferentes, seriam 6 ordens; quantas sobram quando eles são iguais?",
         "done": "Sobram 3: trocar um O pelo outro não muda nada. Dividimos 3! = 6 pelas 2! = 2 trocas dos O."
