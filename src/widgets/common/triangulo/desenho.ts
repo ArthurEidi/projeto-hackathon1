@@ -501,7 +501,7 @@ function dSenos(ctx: G, w: number, h: number, hits: Hit[], p: TrianguloDe<"senos
   anguloMarcado(ctx, hits, v.q(A), Math.min(dirA, dirA2), Math.max(dirA, dirA2), 26, `${fmt(g.A, 0)}°`, "c3");
   lado(ctx, hits, v, B, C, A, `a = ${fmt(g.a)}`, "c1", 20);
   etiqueta(ctx, hits, v.p(R * 0.5, R * 0.1 + 0), `2R = ${fmt(g.dois_R)}`, "c4");
-  rodape(ctx, w, h, [{ t: `a / sen A = ${fmt(g.a)} / ${fmt(Math.sin((g.A * Math.PI) / 180), 3)} = ${fmt(g.razao)}` }, { t: `2R = ${fmt(g.dois_R)}`, c: "c4" }]);
+  if (p.legenda) rodape(ctx, w, h, [{ t: `a / sen A = ${fmt(g.a)} / ${fmt(Math.sin((g.A * Math.PI) / 180), 3)} = ${fmt(g.razao)}` }, { t: `2R = ${fmt(g.dois_R)}`, c: "c4" }]);
   return { alvos: [], vista: v };
 }
 

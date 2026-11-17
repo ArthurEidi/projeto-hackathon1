@@ -572,6 +572,8 @@ Exemplos (`params`):
 
 **Acréscimos de 14/11.** Em `angulos` com `externo: true`, o externo em B vale α + γ (os dois internos não adjacentes) e o rótulo mostra esse valor. Em `notaveis`, a diagonal aparece como `5√2 ≈ 7,07` (nunca `5 · 1,41 = 7,07`).
 
+**Acréscimos de 16/11 (B31b).** Em `senos`, `legenda` (padrão `true`) controla o rodapé `a / sen A = …` (usado com `antes_de_concluir: { "legenda": false }` em `lei-dos-senos-e-cossenos` p3).
+
 ### 5.11 `ciclo_trigonometrico` + `ciclo_trigonometrico_figura` — PRONTOS
 
 Arquivos: `common/ciclo/params.ts`, `calc.ts` (ângulo, quadrantes, soma, alvo, arco; testado), `desenho.ts`, `CicloTrigonometricoWidget.tsx`, `CicloTrigonometricoFigura.tsx`. Um só modo: circunferência de raio 1 com o ponto P(cos θ; sen θ); cada elemento liga por um campo. Valores numéricos aceitam `"$id"` (slider minúsculo); a figura só aceita números.

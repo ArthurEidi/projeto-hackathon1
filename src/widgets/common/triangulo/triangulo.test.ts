@@ -385,4 +385,12 @@ describe("defeitos que só aparecem movendo o slider (B27b, 16/11)", () => {
     const paralelo = desenhar({ modo: "semelhanca", variante: "paralela", lados: [6, 8, 10], k: 0.6, giro: "$giro" }, { giro: 0 });
     expect(paralelo.textos.map((q) => q.t)).toContain("k = 0,6");
   });
+  it("senos: legenda começa true e false oculta a divisão a / sen A no rodapé", () => {
+    expect((tri({ modo: "senos" }) as TrianguloDe<"senos">).legenda).toBe(true);
+    const com = desenhar({ modo: "senos", R: 5, angulo: 30 }, {});
+    expect(com.textos.some((q) => q.t.startsWith("a / sen A = "))).toBe(true);
+    const sem = desenhar({ modo: "senos", R: 5, angulo: 30, legenda: false }, {});
+    expect(sem.textos.some((q) => q.t.startsWith("a / sen A = "))).toBe(false);
+    expect(sem.textos.some((q) => q.t === "2R = 10")).toBe(true);
+  });
 });

@@ -104,6 +104,9 @@
         "R": 5,
         "angulo": "$ang_a"
       },
+      "antes_de_concluir": {
+        "legenda": false
+      },
       "controls": [
         {
           "id": "ang_a",

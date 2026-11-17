@@ -96,6 +96,8 @@ const Senos = z.object({
   angulo: Expr.default(30),
   /** Desloca o vértice A pelo arco (graus), mantendo o lado a. */
   posicao: Expr.default(0),
+  /** Mostra a legenda com a conta a / sen A = 2R no rodapé. */
+  legenda: z.boolean().default(true),
   highlight: Highlight,
 });
 
