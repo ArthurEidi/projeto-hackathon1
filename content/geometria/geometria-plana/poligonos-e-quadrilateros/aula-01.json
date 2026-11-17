@@ -73,6 +73,9 @@
         "externos": true,
         "encolher": "$encolher"
       },
+      "antes_de_concluir": {
+        "legenda": false
+      },
       "controls": [
         {
           "id": "encolher",

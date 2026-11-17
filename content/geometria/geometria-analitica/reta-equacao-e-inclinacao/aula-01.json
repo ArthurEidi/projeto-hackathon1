@@ -125,6 +125,16 @@
           "interceptoY": "c4"
         }
       },
+      "antes_de_concluir": {
+        "curvas": [
+          {
+            "tipo": "afim",
+            "a": 2,
+            "b": 1,
+            "cor": "c3"
+          }
+        ]
+      },
       "lines": {
         "intro": "A reta tem m = 2: anda 1, sobe 2. Toque no ponto em que ela corta o eixo y.",
         "done": "Corta em 1, então n = 1 e y = 2x + 1. É a mesma função afim, agora lida como reta no plano."

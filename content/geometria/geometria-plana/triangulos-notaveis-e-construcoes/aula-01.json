@@ -74,6 +74,9 @@
         "L": 6,
         "cortar": "$cortar"
       },
+      "antes_de_concluir": {
+        "legenda": false
+      },
       "controls": [
         {
           "id": "cortar",

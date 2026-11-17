@@ -51,6 +51,14 @@
           "degraus": true
         }
       },
+      "antes_de_concluir": {
+        "mostrar": {
+          "quadrados": false,
+          "medio": false,
+          "degraus": true,
+          "distancia": false
+        }
+      },
       "controls": [],
       "complete_when": {
         "metric": "dy",

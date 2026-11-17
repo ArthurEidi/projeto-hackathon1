@@ -73,6 +73,9 @@
         "no_cilindro": true,
         "cores": { "R": "c1", "d": "c2", "r": "c3", "area": "c4" }
       },
+      "antes_de_concluir": {
+        "placar": false
+      },
       "controls": [
         {
           "id": "comparar",

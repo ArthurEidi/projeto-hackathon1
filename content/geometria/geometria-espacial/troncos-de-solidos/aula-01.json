@@ -78,6 +78,9 @@
         "separar": "$separar / 100",
         "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
       },
+      "antes_de_concluir": {
+        "placar": false
+      },
       "controls": [
         {
           "id": "separar",
