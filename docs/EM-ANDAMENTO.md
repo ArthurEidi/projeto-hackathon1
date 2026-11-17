@@ -100,7 +100,9 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | ~~B27a~~ concluída 16/11 (10c5ddd): 9 de 10 ok; ENEM 2022/137 com frações em texto | Antigravity #2 | 16/11 | — |
 | ~~B27d~~ concluída 16/11 (6b9fa20): 273 passos, 16 casos | Antigravity #4 | 16/11 | — |
 | ~~B28a~~ recusada 16/11: as falas reescritas anunciavam a resposta; patch guardado fora do repositório. O maestro criou `antes_de_concluir` no passo interativo (6a61b64) | Antigravity #4 | 16/11 | — |
-| B29a. Aplicar `antes_de_concluir` nos 15 casos restantes da B27d (com prova do estado concluído) | Antigravity #4 | 16/11 | aulas e testes desses capítulos, `docs/visual/correcoes-b29a.md` |
+| ~~B29a~~ concluída 16/11 (50e6e4f): 14 de 15; `descontos-acrescimos-e-indices` p3 vai para a B31a | Antigravity #4 | 16/11 | — |
+| B31a. Widget `barras`: valor da barra só depois do toque (`descontos` p3) e chip da mediana atrás da fila (`medidas-de-tendencia-central` p4) | Antigravity #4 | 16/11 | `src/widgets/common/barras/**`, GUIA §5 (barras), aulas e testes desses 2 capítulos, `docs/visual/correcoes-b31a.md` |
+| B31b. Widget `triangulo`: legenda opcional no modo `senos` (`lei-dos-senos-e-cossenos` p3) | Antigravity #3 | 16/11 | `src/widgets/common/triangulo/**`, GUIA §5 (triângulo), aula e teste de `lei-dos-senos-e-cossenos`, `docs/visual/correcoes-b31b.md` |
 | ~~B29b~~ concluída 16/11 (73a26b6): 6 de 9 casos; `piramides` p2, `poliedros-e-relacao-de-euler` p1 e `lei-dos-senos-e-cossenos` p3 precisam de chave nova no widget (depois da B30, que está no `solido_3d`) | Antigravity #3 | 16/11 | — |
 
 ## Pedidos entre máquinas
