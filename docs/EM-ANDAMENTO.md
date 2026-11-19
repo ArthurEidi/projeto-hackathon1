@@ -119,6 +119,8 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | B36. Auditoria dos feedbacks do vestibular de aritmética e álgebra (item 5 de PROXIMOS-PASSOS; só relatório) | Codex #2 | 17/11 | `docs/revisao/auditoria-vestibular-b36.md` |
 | GUIA §5 dos 4 widgets novos (o maestro cola as seções dos registros) | maestro | 17/11 | `docs/GUIA-CAPITULOS.md` §5, `docs/WIDGETS-PENDENTES.md` |
 
+19/11: o PC da B caiu em 18/11 no meio da leva acima. O trabalho ficou no disco, sem commit (backup no branch remoto `wip-b33`, 71499d9; não é para mesclar). As mesmas frentes B33a–d, B34, B35 e B36 recomeçaram de onde pararam, com os mesmos agentes e arquivos (briefing `C:\Users\mkf10\projetos\briefing-b37.md`). O maestro corrigiu o quociente parcial da B33c ("1 + ?" virou "x + ?", `formatarQuocienteParcial` em `src/widgets/common/divisao/calc.ts`).
+
 ## Pedidos entre máquinas
 
 Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo no passo 3 de `elipse`"). Formato: data, quem pede, para quem, o quê.
