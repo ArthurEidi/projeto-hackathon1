@@ -3,6 +3,11 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
+import { paramsDoPasso } from "../steps/paramsDoPasso";
+import { dividirLonga, dividirPorConstante, metricasDivisao } from "../widgets/common/divisao/calc";
+import { aspectoDivisao, desenharDivisao } from "../widgets/common/divisao/desenho";
+import { gravadorCanvas } from "../widgets/common/divisao/gravadorCanvas";
+import { DivisaoPolinomial } from "../widgets/common/divisao/params";
 import { avaliar, type CurvaResolvida } from "../widgets/common/plot2d";
 
 const L = Lesson.parse(
@@ -47,10 +52,31 @@ describe("passos da aula: divisao-polinomial-e-teorema-do-resto", () => {
   it("caso-neutro: divisão de x²−1 por constante não gera resto polinomial", () => {
     const s = step("caso-neutro");
     if (s.type !== "interactive_canvas") throw new Error();
+    expect(s.widget).toBe("divisao_polinomial");
     expect(s.complete_when).toEqual({ metric: "d", gte: 2 });
-    const p = quad(1, 0, -1);
-    expect(avaliar(p, 1)).toBe(0);
-    expect(avaliar(p, 2)).toBe(3);
+    const d1 = dividirPorConstante([1, 0, -1], 1);
+    const d2 = dividirPorConstante([1, 0, -1], 2);
+    expect(d1.quociente).toEqual([1, 0, -1]);
+    expect(d1.resto).toBe(0);
+    expect(d2.quociente).toEqual([0.5, 0, -0.5]);
+    expect(d2.resto).toBe(0);
+  });
+
+  it("caso-neutro (revisão B35): em d = 1 a figura não responde a pergunta; o resto 0 só aparece ao concluir em d = 2", () => {
+    const s = step("caso-neutro");
+    if (s.type !== "interactive_canvas") throw new Error();
+    const desenhar = (params: Record<string, unknown>, d: number) => {
+      const g = gravadorCanvas();
+      const p = DivisaoPolinomial.parse(params);
+      desenharDivisao(g.ctx, 360, Math.round(360 * aspectoDivisao(p)), [], p, { d });
+      return g.textos.map((t) => t.s);
+    };
+    const antes = desenhar(paramsDoPasso(s.params, s.antes_de_concluir, false), 1);
+    expect(antes.filter((t) => /resto 0|Resto = 0|\+ 0$/.test(t))).toEqual([]);
+    const depois = desenhar(paramsDoPasso(s.params, s.antes_de_concluir, true), 2);
+    expect(depois).toContain("Resto = 0");
+    // a métrica de conclusão (d) não depende da chave trocada
+    expect(metricasDivisao(DivisaoPolinomial.parse(paramsDoPasso(s.params, s.antes_de_concluir, false)), { d: 2 }).d).toBe(2);
   });
 
   it("ler-resto: P(2) = 3 na curva x²−1", () => {
@@ -64,7 +90,11 @@ describe("passos da aula: divisao-polinomial-e-teorema-do-resto", () => {
   it("montar-quociente: identidade P(x) = (x−2)(x+2) + 3", () => {
     const s = step("montar-quociente");
     if (s.type !== "interactive_canvas") throw new Error();
+    expect(s.widget).toBe("divisao_polinomial");
     expect(s.complete_when).toEqual({ metric: "etapa", gte: 2 });
+    const res = dividirLonga([1, 0, -1], 2);
+    expect(res.quociente).toEqual([1, 2]);
+    expect(res.resto).toBe(3);
     const q = afim(1, 2);
     // (x-2)*Q(x) + 3 para x = 0, 1, 2, 3 coincide com x² - 1
     for (const x of [0, 1, 2, 3]) {

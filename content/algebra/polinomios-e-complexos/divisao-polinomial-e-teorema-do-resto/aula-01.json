@@ -31,7 +31,7 @@
     {
       "id": "caso-neutro",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "divisao_polinomial",
       "controls": [
         {
           "id": "d",
@@ -44,19 +44,12 @@
         }
       ],
       "params": {
-        "x": [-3, 3],
-        "y": [-2, 8],
-        "curvas": [
-          {
-            "tipo": "quadratica",
-            "a": 1,
-            "b": 0,
-            "c": -1,
-            "cor": "c3",
-            "rotulo": "P(x) = x² − 1"
-          }
-        ]
+        "modo": "constante",
+        "coeficientes": [1, 0, -1],
+        "d": "$d",
+        "fantasma": true
       },
+      "antes_de_concluir": { "mostrar_resto": false },
       "complete_when": {
         "metric": "d",
         "gte": 2
@@ -107,7 +100,7 @@
     {
       "id": "montar-quociente",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "divisao_polinomial",
       "controls": [
         {
           "id": "etapa",
@@ -120,44 +113,10 @@
         }
       ],
       "params": {
-        "x": [-3, 3],
-        "y": [-2, 9],
-        "curvas": [
-          {
-            "tipo": "quadratica",
-            "a": 1,
-            "b": 0,
-            "c": -1,
-            "cor": "c3",
-            "rotulo": "P(x) = x² − 1"
-          },
-          {
-            "tipo": "afim",
-            "a": 1,
-            "b": 2,
-            "cor": "c2",
-            "rotulo": "Q(x) = x + 2"
-          },
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 3,
-            "cor": "c4",
-            "rotulo": "R = 3"
-          }
-        ]
-      },
-      "antes_de_concluir": {
-        "curvas": [
-          {
-            "tipo": "quadratica",
-            "a": 1,
-            "b": 0,
-            "c": -1,
-            "cor": "c3",
-            "rotulo": "P(x) = x² − 1"
-          }
-        ]
+        "modo": "chave",
+        "coeficientes": [1, 0, -1],
+        "r": 2,
+        "etapa": "$etapa"
       },
       "complete_when": {
         "metric": "etapa",

@@ -268,6 +268,9 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 **Params:** `modo: "flechas" | "maquinas"`, `entradas`, `saidas`, `ligacoes`, `maquinas`, `x` (`"$id"`), `highlight`. **Métricas:** `entradas_com_uma_saida`, `entradas_testadas`, `ordens_testadas`, `inversa_testada`.
 
 ### 21. Widgets de um capítulo só
+
+**Prontos em 19/11 (B33 + correções B39): GUIA §5.21 a §5.24.** A especificação abaixo é a original; as métricas e parâmetros finais estão no GUIA.
+
 - **`escala_decimal`** (notacao-cientifica-e-ordem-grandeza): quadro de ordens e régua de potências de 10; a·10ⁿ com a (c1), n (c2), valor (c3); faixa 1 ≤ a < 10; régua logarítmica. Métricas `n`, `normalizado`.
 - **`divisao_polinomial`** (divisao-polinomial-e-teorema-do-resto): quadro da divisão por etapas (`etapa` por slider) com Q e R; o passo 1 usa `plano_cartesiano`. Métricas `etapa`, `resto`.
 - **`sistema_escalonado`** (sistemas-lineares-e-escalonamento): matriz aumentada com L₂ ← L₂ − k·L₁; pivôs (c4); retas do sistema 2×2 (originais fantasma). Métricas `k`, `zerou`, `t`.
@@ -297,6 +300,6 @@ Diagrama de flechas (o aluno liga entradas a saídas; aviso quando uma entrada r
 | 14 | `vetores_no_plano` + `complexo` (4 + 18) | 2 | implementado e testado (GUIA §5.17); revisão visual pendente |
 | 15 | `maquinas_funcao` (20) | 2 | **pronto** (GUIA §5.19) |
 | 16 | `circunferencia_no_plano` (5) | 1 | implementado e testado (GUIA §5.16); revisão visual pendente |
-| 17 | `escala_decimal`, `divisao_polinomial`, `sistema_escalonado`, `grupos_inteiros` (21) | 1 cada | pendente |
+| 17 | `escala_decimal`, `divisao_polinomial`, `sistema_escalonado`, `grupos_inteiros` (21) | 1 cada | **pronto** (19/11, B33/B39; GUIA §5.21 a §5.24) |
 
 Capítulos que já andam com `plano_cartesiano` / `reta_numerica`: funções afim, quadrática, exponencial, modular, logaritmos; equações e inequações de 1º e 2º grau, modulares, exponenciais e logarítmicas, produto-quociente; fatoração.

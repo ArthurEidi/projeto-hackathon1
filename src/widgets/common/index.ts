@@ -30,6 +30,14 @@ import { SolidoWidget } from "./solido/SolidoWidget";
 import { PlanoCartesianoWidget } from "./PlanoCartesianoWidget";
 import { PlanoFigura } from "./PlanoFigura";
 import { RetaFigura, RetaNumericaWidget } from "./RetaNumericaWidget";
+import { EscalaWidget } from "./escala/EscalaWidget";
+import { EscalaFigura } from "./escala/EscalaFigura";
+import { DivisaoWidget } from "./divisao/DivisaoWidget";
+import { DivisaoFigura } from "./divisao/DivisaoFigura";
+import { GruposWidget } from "./grupos/GruposWidget";
+import { GruposFigura } from "./grupos/GruposFigura";
+import { SistemaEscalonadoWidget } from "./escalonado/SistemaEscalonadoWidget";
+import { SistemaEscalonadoFigura } from "./escalonado/SistemaEscalonadoFigura";
 
 export const widgets = {
   maquinas_funcao: MaquinasWidget,
@@ -48,6 +56,10 @@ export const widgets = {
   ciclo_trigonometrico: CicloTrigonometricoWidget,
   geometria_poligono: GeometriaPoligonoWidget,
   geometria_circulo: GeometriaCirculoWidget,
+  escala_decimal: EscalaWidget,
+  divisao_polinomial: DivisaoWidget,
+  grupos_inteiros: GruposWidget,
+  sistema_escalonado: SistemaEscalonadoWidget,
 };
 
 export const figures = {
@@ -67,4 +79,8 @@ export const figures = {
   ciclo_trigonometrico_figura: CicloTrigonometricoFigura,
   geometria_poligono_figura: GeometriaPoligonoFigura,
   geometria_circulo_figura: GeometriaCirculoFigura,
+  escala_decimal_figura: EscalaFigura,
+  divisao_polinomial_figura: DivisaoFigura,
+  grupos_inteiros_figura: GruposFigura,
+  sistema_escalonado_figura: SistemaEscalonadoFigura,
 };

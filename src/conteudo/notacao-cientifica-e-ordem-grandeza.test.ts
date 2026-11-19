@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
+import { metricasEscala } from "../widgets/common/escala/calc";
+import { EscalaDecimal } from "../widgets/common/escala/params";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -36,6 +38,27 @@ describe("passos da aula", () => {
         expect(["ponto_x", "dentro", "faixa_x"]).toContain(metric);
       }
     }
+  });
+
+  it("escala_decimal: métricas dos passos interativos batem com a conta", () => {
+    const s1 = step("caso-neutro");
+    if (s1.type !== "interactive_canvas") throw new Error();
+    const p1 = EscalaDecimal.parse(s1.params);
+    expect(metricasEscala(p1, { n: 0 })).toMatchObject({ n: 0, valor: 2 });
+    expect(metricasEscala(p1, { n: 1 })).toMatchObject({ n: 1, valor: 20 });
+
+    const s2 = step("normalizar");
+    if (s2.type !== "interactive_canvas") throw new Error();
+    const p2 = EscalaDecimal.parse(s2.params);
+    expect(metricasEscala(p2, { n: 0 })).toMatchObject({ n: 0, a: 20, valor: 20, normalizado: 0 });
+    expect(metricasEscala(p2, { n: 1 })).toMatchObject({ n: 1, a: 2, valor: 20, normalizado: 1 });
+
+    const s3 = step("ordem-e-arredondamento");
+    if (s3.type !== "interactive_canvas") throw new Error();
+    const p3 = EscalaDecimal.parse(s3.params);
+    expect(metricasEscala(p3, { a: 2 })).toMatchObject({ a: 2, valor: 200, ordem_exp: 2 });
+    expect(metricasEscala(p3, { a: 3 })).toMatchObject({ a: 3, valor: 300, ordem_exp: 2 });
+    expect(metricasEscala(p3, { a: 4 })).toMatchObject({ a: 4, valor: 400, ordem_exp: 3 });
   });
 
   it("desafio: 2·10² é a notação científica de 200", () => {

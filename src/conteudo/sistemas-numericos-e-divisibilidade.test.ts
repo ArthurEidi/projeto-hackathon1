@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
+import { metricasGrupos } from "../widgets/common/grupos/calc";
+import { Grupos } from "../widgets/common/grupos/params";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -38,6 +40,27 @@ describe("passos da aula de conjuntos numéricos, divisibilidade e fatoração p
         expect(((alvo - slider.min) / slider.step) % 1, `${s.id}: alvo fora do passo`).toBeCloseTo(0, 9);
       }
     }
+  });
+
+  it("métricas do grupos_inteiros em agrupar-unidades, divisores-e-multiplos e fatorar-e-testar", () => {
+    const p2 = step("agrupar-unidades");
+    if (p2.type !== "interactive_canvas") throw new Error("esperava interactive_canvas");
+    const g2 = Grupos.parse(p2.params);
+    expect(metricasGrupos(g2, { d: 1 })).toMatchObject({ n: 6, d: 1, q: 6, resto: 0 });
+    expect(metricasGrupos(g2, { d: 3 })).toMatchObject({ n: 6, d: 3, q: 2, resto: 0 });
+
+    const p3 = step("divisores-e-multiplos");
+    if (p3.type !== "interactive_canvas") throw new Error("esperava interactive_canvas");
+    const g3 = Grupos.parse(p3.params);
+    expect(metricasGrupos(g3, { m: 4 })).toMatchObject({ m: 4, resto_a: 0, resto_b: 4, resto: 4 });
+    expect(metricasGrupos(g3, { m: 8 })).toMatchObject({ m: 8, resto_a: 0, resto_b: 2, resto: 2 });
+    expect(metricasGrupos(g3, { m: 12 })).toMatchObject({ m: 12, resto_a: 0, resto_b: 0, resto: 0 });
+
+    const p4 = step("fatorar-e-testar");
+    if (p4.type !== "interactive_canvas") throw new Error("esperava interactive_canvas");
+    const g4 = Grupos.parse(p4.params);
+    expect(metricasGrupos(g4, { d: 3 })).toMatchObject({ n: 12, d: 3, q: 4, resto: 0 });
+    expect(metricasGrupos(g4, { d: 5 })).toMatchObject({ n: 12, d: 5, q: 2, resto: 2 });
   });
 
   it("gabarito do micro-desafio confere com o resto de 6 dividido por 3 (resto 0)", () => {

@@ -15,6 +15,10 @@ import * as grade from "./grade/params";
 import * as poligono from "./poligono/params";
 import * as solido from "./solido/params";
 import * as triangulo from "./triangulo/params";
+import * as escala from "./escala/params";
+import * as divisao from "./divisao/params";
+import * as grupos from "./grupos/params";
+import * as escalonado from "./escalonado/params";
 
 /** Número fixo ou referência a um slider do passo: "$a" vale o slider de id "a". */
 export const Valor = z.union([z.number(), z.string().regex(/^\$[a-z0-9_]+$/, 'use um número ou "$id" de um slider')]);
@@ -293,6 +297,10 @@ export const widgetParams = {
   ...ciclo.widgetParams,
   ...poligono.widgetParams,
   ...circulo.widgetParams,
+  ...escala.widgetParams,
+  ...divisao.widgetParams,
+  ...grupos.widgetParams,
+  ...escalonado.widgetParams,
 } as const;
 
 export const figureParams = {
@@ -312,4 +320,8 @@ export const figureParams = {
   ...ciclo.figureParams,
   ...poligono.figureParams,
   ...circulo.figureParams,
+  ...escala.figureParams,
+  ...divisao.figureParams,
+  ...grupos.figureParams,
+  ...escalonado.figureParams,
 } as const;

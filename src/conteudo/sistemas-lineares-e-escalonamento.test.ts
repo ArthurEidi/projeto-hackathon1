@@ -4,6 +4,8 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
 import { avaliar, type CurvaResolvida } from "../widgets/common/plot2d";
+import { classificar, matrizAtual, metricasSistema, substituicao, testarPonto, textoEquacao } from "../widgets/common/escalonado/calc";
+import { SistemaEscalonado, SistemaEscalonadoFigura } from "../widgets/common/escalonado/params";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -27,6 +29,15 @@ const certa = (id: string) =>
 
 const step = (id: string) => L.steps.find((s) => s.id === id)!;
 
+/** Params do widget sistema_escalonado de um passo interativo. */
+const sistema = (id: string) => {
+  const s = step(id);
+  if (s.type !== "interactive_canvas" || s.widget !== "sistema_escalonado") throw new Error(id);
+  return SistemaEscalonado.parse(s.params);
+};
+/** Métricas do passo com os sliders dados, incluindo o valor dos próprios sliders (como no InteractiveCanvas). */
+const metricas = (id: string, ctl: Record<string, number>) => ({ ...metricasSistema(sistema(id), ctl), ...ctl });
+
 describe("passos da aula: sistemas-lineares-e-escalonamento", () => {
   it("cada interactive_canvas pode ser concluído", () => {
     for (const s of L.steps) {
@@ -38,7 +49,7 @@ describe("passos da aula: sistemas-lineares-e-escalonamento", () => {
         if (lte !== undefined) expect(slider.min, s.id).toBeLessThanOrEqual(lte);
         expect(slider.initial, `${s.id} não pode começar concluído`).not.toBe(gte ?? lte);
       } else {
-        expect(["ponto_x", "quadrantes", "na_raiz", "no_encontro", "faixa_x"]).toContain(metric);
+        expect(["no_encontro", "zerou", "impossivel"]).toContain(metric);
       }
     }
   });
@@ -53,29 +64,42 @@ describe("passos da aula: sistemas-lineares-e-escalonamento", () => {
     expect(s.complete_when).toEqual({ metric: "no_encontro", gte: 1 });
   });
 
-  it("eliminar-linha: L₂−2L₁ produz y=2, que também passa por (1;2)", () => {
+  it("eliminar-linha: L₂ − 2L₁ vira [0, −1; −2] (−y = −2); só k = 2 zera x e a solução (1; 2) não muda", () => {
     const s = step("eliminar-linha");
     if (s.type !== "interactive_canvas") throw new Error();
-    expect(s.complete_when).toEqual({ metric: "k", gte: 2 });
-    const rNova = afim(0, 2);
-    expect(avaliar(rNova, 1)).toBe(2);
+    expect(s.complete_when).toEqual({ metric: "zerou", gte: 1 });
+    expect([0, 1, 2].map((k) => metricas("eliminar-linha", { k }).zerou)).toEqual([0, 0, 1]);
+    const m = matrizAtual(sistema("eliminar-linha"), { k: 2 });
+    expect(m[1]).toEqual([0, -1, -2]);
+    expect(textoEquacao(m[1], ["x", "y"])).toBe("−y = −2");
+    for (const k of [0, 1, 2]) expect(classificar(matrizAtual(sistema("eliminar-linha"), { k })).solucao).toEqual([1, 2]);
+    // y = 2 passa por (1; 2)
+    expect(avaliar(afim(0, 2), 1)).toBe(2);
   });
 
-  it("subir-tres-linhas: z=1 gera y=1 e x=1", () => {
+  it("subir-tres-linhas: z = 1 gera y = 2 − 1 = 1 e x = 3 − 1 − 1 = 1", () => {
     const s = step("subir-tres-linhas");
     if (s.type !== "interactive_canvas") throw new Error();
     expect(s.complete_when).toEqual({ metric: "t", gte: 1 });
-    const z = 1;
-    const y = 2 - z;
-    const x = 3 - y - z;
-    expect(x).toBe(1);
-    expect(y).toBe(1);
+    const sub = (t: number) => substituicao(matrizAtual(sistema("subir-tres-linhas"), { t }), ["x", "y", "z"]);
+    expect(sub(0).map((l) => l.valor)).toEqual([1, 2, 0]);
+    expect(sub(1).map((l) => l.formula)).toEqual(["x = 3 − y − z", "y = 2 − z", "z = 1"]);
+    expect(sub(1).map((l) => l.valor)).toEqual([1, 1, 1]);
+    // dúvida: com 0 = 0 na última linha, z fica livre e x = 3 − (2 − z) − z = 1
+    expect(classificar([[1, 1, 1, 3], [0, 1, 1, 2], [0, 0, 0, 0]])).toMatchObject({ tipo: "infinitas", livres: 1 });
   });
 
-  it("classificar-linha: deslocamento gera sistema impossível", () => {
+  it("classificar-linha: t = 0 dá 0 = 0 (infinitas); t = 1 dá 0 = 1 (impossível)", () => {
     const s = step("classificar-linha");
     if (s.type !== "interactive_canvas") throw new Error();
-    expect(s.complete_when).toEqual({ metric: "t", gte: 1 });
+    expect(s.complete_when).toEqual({ metric: "impossivel", gte: 1 });
+    const m0 = matrizAtual(sistema("classificar-linha"), { t: 0 });
+    expect(textoEquacao(m0[1], ["x", "y"])).toBe("0 = 0");
+    expect(classificar(m0).tipo).toBe("infinitas");
+    expect(metricas("classificar-linha", { t: 0 }).impossivel).toBe(0);
+    const m1 = matrizAtual(sistema("classificar-linha"), { t: 1 });
+    expect(textoEquacao(m1[1], ["x", "y"])).toBe("0 = 1");
+    expect(metricas("classificar-linha", { t: 1 }).impossivel).toBe(1);
   });
 
   it("conferir-previsao: micro_challenge acerta nenhuma solução", () => {
@@ -95,6 +119,22 @@ describe("passos da aula: sistemas-lineares-e-escalonamento", () => {
     expect(2 * 1 + 2 * 1).not.toBe(5);
     // as retas nunca se encontram: a distância vertical é sempre 0,5
     for (const x of [-2, 0, 1, 2, 5]) expect(avaliar(afim(-1, 2.5), x) - avaliar(afim(-1, 2), x)).toBe(0.5);
+    // a figura (sistema_escalonado_figura) mostra a linha 0 = 1, mas a classificação só aparece no acerto
+    if (s.figure.widget !== "sistema_escalonado_figura") throw new Error();
+    const base = SistemaEscalonadoFigura.parse(s.figure.params);
+    expect(base.mostrar.classificacao).toBe(false);
+    const m = matrizAtual(base, {});
+    expect(textoEquacao(m[1], ["x", "y"])).toBe("0 = 1");
+    expect(classificar(m).tipo).toBe("impossivel");
+    const fig = (id: string) => SistemaEscalonadoFigura.parse({ ...s.figure.params, ...s.options.find((o) => o.id === id)!.figure });
+    expect(fig("micro-acerto").mostrar.classificacao).toBe(true);
+    // "Infinitas" mostra o caso 2x + 2y = 4: 0 = 0
+    expect(classificar(matrizAtual(fig("micro-erro"), {})).tipo).toBe("infinitas");
+    // "Uma" e "Duas": o ponto testado vale em L₁ e falha em 0 = 1
+    for (const id of ["contou-equacoes", "uma-por-reta"]) {
+      const f = fig(id);
+      expect(testarPonto(matrizAtual(f, {}), f.ponto!).map((t) => t.vale)).toEqual([id === "uma-por-reta", false]);
+    }
     expect(s.options.map((o) => o.label)).toEqual(["Infinitas", "Uma", "Nenhuma", "Duas"]);
   });
 
@@ -105,6 +145,12 @@ describe("passos da aula: sistemas-lineares-e-escalonamento", () => {
       if (t.ref) expect(L.glossario?.[t.ref], t.text).toBeDefined();
     }
     expect(s.definitions).toHaveLength(3);
+    // 0 = 0 é a linha nula (livre): o impossível exige c ≠ 0
+    expect(s.formula.map((t) => t.text).join("")).toContain("0 = c ≠ 0: impossível");
+    if (s.figure.widget !== "sistema_escalonado_figura") throw new Error();
+    const m = matrizAtual(SistemaEscalonadoFigura.parse(s.figure.params), {});
+    expect(m[1]).toEqual([0, -1, -2]);
+    expect(classificar(m).solucao).toEqual([1, 2]);
   });
 });
 

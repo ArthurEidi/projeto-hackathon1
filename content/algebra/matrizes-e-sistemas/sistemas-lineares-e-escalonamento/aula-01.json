@@ -81,7 +81,7 @@
     {
       "id": "eliminar-linha",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "sistema_escalonado",
       "controls": [
         {
           "id": "k",
@@ -94,41 +94,14 @@
         }
       ],
       "params": {
-        "x": [-2, 5],
-        "y": [-2, 6],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": -1,
-            "b": 3,
-            "cor": "c3",
-            "rotulo": "x + y = 3"
-          },
-          {
-            "tipo": "afim",
-            "a": -2,
-            "b": 4,
-            "fantasma": true,
-            "rotulo": "2x + y = 4"
-          },
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 2,
-            "cor": "c4",
-            "rotulo": "y = 2"
-          }
-        ],
-        "ponto": {
-          "curva": 0,
-          "x": 1,
-          "arrastavel": false,
-          "cor": "c1"
-        }
+        "modo": "eliminar",
+        "linhas": [[1, 1, 3], [2, 1, 4]],
+        "operacao": { "alvo": 1, "base": 0, "k": "$k" },
+        "plano": { "x": [-2, 5], "y": [-2, 6] }
       },
       "complete_when": {
-        "metric": "k",
-        "gte": 2
+        "metric": "zerou",
+        "gte": 1
       },
       "lines": {
         "intro": "Ao retirar duas vezes L₁ de L₂, x some sem mudar o encontro? Leve k a 2.",
@@ -138,7 +111,7 @@
     {
       "id": "subir-tres-linhas",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "sistema_escalonado",
       "controls": [
         {
           "id": "t",
@@ -151,30 +124,8 @@
         }
       ],
       "params": {
-        "x": [-1, 4],
-        "y": [-1, 4],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": -1,
-            "b": 2,
-            "cor": "c3",
-            "rotulo": "y + z = 2"
-          },
-          {
-            "tipo": "afim",
-            "a": 0,
-            "b": 1,
-            "cor": "c4",
-            "rotulo": "z = 1"
-          }
-        ],
-        "ponto": {
-          "curva": 0,
-          "x": 1,
-          "arrastavel": false,
-          "cor": "c1"
-        }
+        "modo": "substituir",
+        "linhas": [[1, 1, 1, 3], [0, 1, 1, 2], [0, 0, 1, "$t"]]
       },
       "complete_when": {
         "metric": "t",
@@ -193,7 +144,7 @@
     {
       "id": "classificar-linha",
       "type": "interactive_canvas",
-      "widget": "plano_cartesiano",
+      "widget": "sistema_escalonado",
       "controls": [
         {
           "id": "t",
@@ -206,27 +157,13 @@
         }
       ],
       "params": {
-        "x": [-2, 5],
-        "y": [-2, 6],
-        "curvas": [
-          {
-            "tipo": "afim",
-            "a": -1,
-            "b": 2,
-            "cor": "c3",
-            "rotulo": "x + y = 2"
-          },
-          {
-            "tipo": "afim",
-            "a": -1,
-            "b": 2.5,
-            "cor": "c4",
-            "rotulo": "2x + 2y = 5"
-          }
-        ]
+        "modo": "eliminar",
+        "linhas": [[1, 1, 2], [2, 2, "4+$t"]],
+        "operacao": { "alvo": 1, "base": 0, "k": 2 },
+        "plano": { "x": [-2, 5], "y": [-2, 6] }
       },
       "complete_when": {
-        "metric": "t",
+        "metric": "impossivel",
         "gte": 1
       },
       "lines": {
@@ -243,26 +180,13 @@
       "id": "conferir-previsao",
       "type": "micro_challenge",
       "figure": {
-        "widget": "plano_figura",
+        "widget": "sistema_escalonado_figura",
         "params": {
-          "x": [-2, 5],
-          "y": [-2, 6],
-          "curvas": [
-            {
-              "tipo": "afim",
-              "a": -1,
-              "b": 2,
-              "cor": "c3",
-              "rotulo": "x + y = 2"
-            },
-            {
-              "tipo": "afim",
-              "a": -1,
-              "b": 2.5,
-              "cor": "c4",
-              "rotulo": "2x + 2y = 5"
-            }
-          ]
+          "modo": "eliminar",
+          "linhas": [[1, 1, 2], [2, 2, 5]],
+          "operacao": { "alvo": 1, "base": 0, "k": 2 },
+          "plano": { "x": [-2, 5], "y": [-2, 6] },
+          "mostrar": { "pivos": true, "classificacao": false, "solucao": true, "equacoes": true }
         }
       },
       "lines": {
@@ -276,10 +200,8 @@
           "correct": false,
           "feedback": "Infinitas apareceria com 0 = 0, quando uma equação repete a outra. Pergunte: algum par (x; y) faz 0x + 0y dar 1?",
           "figure": {
-            "curvas": [
-              { "tipo": "afim", "a": -1, "b": 2, "cor": "c3", "rotulo": "x + y = 2" },
-              { "tipo": "afim", "a": -1, "b": 2, "cor": "c4", "fantasma": true, "rotulo": "2x + 2y = 4" }
-            ],
+            "linhas": [[1, 1, 2], [2, 2, 4]],
+            "mostrar": { "pivos": true, "classificacao": true, "solucao": true, "equacoes": true },
             "highlight": ["c4"]
           }
         },
@@ -289,11 +211,7 @@
           "correct": false,
           "feedback": "Duas equações e duas incógnitas não garantem uma solução. Substitua qualquer par em 0x + 0y e veja se dá 1.",
           "figure": {
-            "curvas": [
-              { "tipo": "afim", "a": -1, "b": 2, "cor": "c3", "rotulo": "x + y = 2" },
-              { "tipo": "afim", "a": -1, "b": 2.5, "cor": "c4", "rotulo": "2x + 2y = 5" }
-            ],
-            "ponto": { "curva": null, "x": 2, "coordenadas": true, "cor": "c1" },
+            "ponto": [3, 2],
             "highlight": ["c1"]
           }
         },
@@ -302,7 +220,7 @@
           "label": "Nenhuma",
           "correct": true,
           "feedback": "Certo: Nenhuma; Zero nunca é igual a 1.",
-          "figure": { "highlight": ["c3", "c4"] }
+          "figure": { "mostrar": { "pivos": true, "classificacao": true, "solucao": true, "equacoes": true }, "highlight": ["c3", "c4"] }
         },
         {
           "id": "uma-por-reta",
@@ -310,12 +228,8 @@
           "correct": false,
           "feedback": "Você contou uma solução para cada equação. Solução do sistema é um par que satisfaz as duas ao mesmo tempo.",
           "figure": {
-            "curvas": [
-              { "tipo": "afim", "a": -1, "b": 2, "cor": "c3", "rotulo": "x + y = 2" },
-              { "tipo": "afim", "a": -1, "b": 2.5, "cor": "c4", "rotulo": "2x + 2y = 5" }
-            ],
-            "ponto": { "curva": 0, "x": 1, "coordenadas": true, "cor": "c3" },
-            "highlight": ["c3"]
+            "ponto": [1, 1],
+            "highlight": ["c1"]
           }
         }
       ]
@@ -324,36 +238,12 @@
       "id": "fechamento",
       "type": "concept_lock",
       "figure": {
-        "widget": "plano_figura",
+        "widget": "sistema_escalonado_figura",
         "params": {
-          "x": [-2, 5],
-          "y": [-2, 6],
-          "curvas": [
-            {
-              "tipo": "afim",
-              "a": -1,
-              "b": 3,
-              "cor": "c3",
-              "rotulo": "x + y = 3"
-            },
-            {
-              "tipo": "afim",
-              "a": -2,
-              "b": 4,
-              "cor": "ink",
-              "rotulo": "2x + y = 4"
-            },
-            {
-              "tipo": "afim",
-              "a": 0,
-              "b": 2,
-              "cor": "c4",
-              "rotulo": "y = 2"
-            }
-          ],
-          "marcar": {
-            "encontro": true
-          }
+          "modo": "eliminar",
+          "linhas": [[1, 1, 3], [2, 1, 4]],
+          "operacao": { "alvo": 1, "base": 0, "k": 2 },
+          "plano": { "x": [-2, 5], "y": [-2, 6] }
         }
       },
       "formula": [
@@ -372,7 +262,7 @@
           "text": " · L₁; 0 = 0: livre; "
         },
         {
-          "text": "0 = c: impossível",
+          "text": "0 = c ≠ 0: impossível",
           "ref": "c4"
         }
       ],

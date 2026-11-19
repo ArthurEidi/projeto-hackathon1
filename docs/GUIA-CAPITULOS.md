@@ -804,3 +804,162 @@ Pasta `common/transformacao/`: transformações lineares 2×2 no plano cartesian
 
 Métricas: `det`, `area` (`|det|`), `orientacao` (`1` se `det > 0`, `-1` se `det < 0`, `0` se `det == 0`), `v_x`, `v_y`. Cores: original/vetor `c1`, malha deformada `c2`, imagem/colunas `c3`, determinante/área `c4`.
 
+### 5.21 `escala_decimal` + `escala_decimal_figura` — PRONTOS
+
+Quadro de ordens decimais (`C`, `D`, `U`, `d`, `c`, expandindo para `UM` / `m` quando necessário), régua igualmente espaçada de potências de 10, faixa de normalização `1 ≤ a < 10` e régua logarítmica com corte `√10` para ordem de grandeza. A figura estática (`escala_decimal_figura`) recusa `"$slider"`.
+
+- **Modos (`modo`):** `"potencia"` | `"normalizar"` | `"ordem"`.
+- **Parâmetro comum:**
+  - `highlight`: marcas `c1..c4` em destaque (padrão `[]`).
+- **Modo `"potencia"`:**
+  - `a`: coeficiente, número ou expressão com slider (padrão `2`).
+  - `n`: expoente de 10, número ou expressão com slider (padrão `0`).
+  - `n_ref`: expoente de referência em `muted` (`-6..6` ou `null`; padrão `0`).
+  - `faixa_n`: tupla `[nMin, nMax]` de inteiros em `-6..6` com `nMin < nMax` (padrão `[-2, 2]`).
+  - `mostrar_notacao`: booleano; quando `false`, oculta `a`, `n` e o ponto na régua para não entregar a resposta em desafios (padrão `true`).
+  - `mostrar_ordem`: booleano para exibir o chip `ordem: 10ᵏ` no rodapé (padrão `false`).
+- **Modo `"normalizar"`:**
+  - `valor`: número positivo fixo `N` (padrão `20`).
+  - `n`: expoente compensado, número ou expressão com slider (padrão `0`); calcula `a = valor · 10⁻ⁿ`.
+  - `n_ref`: expoente de referência em `muted` (`-6..6` ou `null`; padrão `0`).
+- **Modo `"ordem"`:**
+  - `a`: coeficiente, número ou expressão com slider (padrão `2`).
+  - `n`: expoente base inteiro em `-6..6` (padrão `2`); compara `a` com `√10` entre `10ⁿ` e `10ⁿ⁺¹` (empate sobe).
+- **Métricas emitidas:** `n`, `a`, `valor`, `normalizado` (`0` ou `1`), `ordem_exp`.
+- **Exemplo de JSON:**
+```jsonc
+{
+  "widget": "escala_decimal",
+  "controls": [
+    { "id": "n", "label": "Expoente de dez", "min": -2, "max": 2, "step": 1, "initial": 0, "color": "c2" }
+  ],
+  "params": {
+    "modo": "potencia",
+    "a": 2,
+    "n": "$n",
+    "n_ref": 0,
+    "faixa_n": [-2, 2]
+  },
+  "complete_when": { "metric": "n", "gte": 1 }
+}
+```
+```
+
+---
+
+(Registro completo, contas e capturas: `docs/visual/widget-b33a.md`.)
+
+### 5.22 `grupos_inteiros` + `grupos_inteiros_figura` — PRONTOS
+
+Organiza `n` fichas em grupos completos de tamanho `d` (quociente `q` e resto `r`), compara duas trilhas de múltiplos para MMC (`modo: "mmc"`), ou combina o agrupamento com a árvore de fatoração prima de `n` (`modo: "fatoracao"`). A figura estática (`grupos_inteiros_figura`) recusa `"$slider"`.
+
+- **Modos (`modo`):** `"divisao"` | `"mmc"` | `"fatoracao"`.
+- **Parâmetro comum:** `highlight`: lista de marcas `c1..c4` em destaque (padrão `[]`).
+- **Modo `"divisao"`:**
+  - `n`: número ou expressão (padrão `6`).
+  - `d`: número ou expressão (padrão `3`).
+  - `referencia_d`: inteiro `1..12` opcional para mostrar linha de referência em `muted`.
+  - `limite_grupos`: inteiro `0..30` opcional para limitar quantos grupos completos são formados (útil em `micro_challenge` para ilustrar erro de parar antes do fim).
+  - `mostrar_resto`: booleano para exibir `r` nos chips e na equação (padrão `true`).
+- **Modo `"mmc"`:**
+  - `m`: número ou expressão para o total comum nas duas trilhas (padrão `4`).
+  - `a`, `b`: inteiros `1..12` dos tamanhos dos grupos nas duas trilhas (padrão `4` e `6`).
+  - `mostrar_fatores`: booleano para exibir as fatorações primas de `a` e `b` (padrão `true`).
+  - `mostrar_mmc`: booleano para exibir o chip e a conclusão do MMC (padrão `true`; use `false` em `antes_de_concluir` para não revelar a resposta antes).
+- **Modo `"fatoracao"`:**
+  - `n`: número ou expressão (padrão `12`).
+  - `d`: número ou expressão (padrão `3`).
+  - `referencia_d`: inteiro `1..12` opcional para referência em `muted`.
+  - `mostrar_resto`: booleano (padrão `true`).
+- **Métricas emitidas:** `n`, `d`, `q`, `resto`, `m` (e no modo `"mmc"`, também `resto_a` e `resto_b`).
+- **Exemplo de JSON:**
+```jsonc
+{
+  "widget": "grupos_inteiros",
+  "controls": [
+    { "id": "d", "label": "Tamanho do grupo", "min": 1, "max": 3, "step": 1, "initial": 1, "color": "c2" }
+  ],
+  "params": {
+    "modo": "divisao",
+    "n": 6,
+    "d": "$d",
+    "referencia_d": 1,
+    "highlight": ["c2"]
+  },
+  "complete_when": { "metric": "d", "gte": 3 }
+}
+```
+```
+
+---
+
+(Registro completo, contas e capturas: `docs/visual/widget-b33b.md`.)
+
+### 5.23 `divisao_polinomial` + `divisao_polinomial_figura` — PRONTOS
+
+Quadro da divisão de polinômios em dois modos: divisão por constante `d ≠ 0` (com mini gráfico da curva fantasma `P(x)` e do quociente `Q(x) = P(x)/d`) e divisão longa por divisor linear `x − r` no método da chave passo a passo. A figura estática (`divisao_polinomial_figura`) recusa `"$slider"`.
+
+- **Modos (`modo`):** `"constante"` | `"chave"`.
+- **Parâmetros comuns:**
+  - `coeficientes`: lista de 2 a 4 números em ordem decrescente de grau, com `coeficientes[0] !== 0` (padrão `[1, 0, -1]`, isto é, `x² − 1`).
+  - `highlight`: marcas `c1..c4` em destaque (padrão `[]`).
+- **Modo `"constante"`:**
+  - `d`: número ou expressão com slider (padrão `1`; recusa só o zero exato: `0,000000000001` é divisor válido, no schema e na conta).
+  - `fantasma`: booleano para exibir `P(x)` original em traço tracejado (padrão `true`).
+  - `mostrar_resto`: booleano (padrão `true`). Com `false`, o chip vira "Resto = ?" (muted) e as frases do rodapé não dizem o resto ("Dividir por 1 mantém P(x)", identidade sem "+ 0"). Feito para `antes_de_concluir` (`divisao-polinomial-e-teorema-do-resto` p1).
+- **Modo `"chave"`:**
+  - `r`: número ou expressão com slider para a raiz do divisor `x − r` (padrão `2`).
+  - `etapa`: número ou expressão com slider de `0` até `grau(P)` (padrão `0`).
+- **Métricas emitidas:** `d`, `etapa`, `resultado` (1 quando Q e R estão na tela: divisor constante diferente de 0; na chave, `etapa` = grau de P) e `resto`, **só quando `resultado` = 1** (uma meta sobre o resto não conclui com divisor 0 nem na etapa 0 da chave). Para concluir pela leitura do resto, use `{ "metric": "resultado", "gte": 1 }` ou `etapa`.
+- **Textos longos:** dividendo, retiradas, restos parciais e identidade encolhem a fonte (até 9 px) para caber na coluna; o chip do divisor e do quociente vira texto sem fundo, encolhido, quando não cabe na coluna. Identidade com resto negativo: "x² − 5 = (x − 2)(x + 2) − 1".
+- **Exemplo de JSON:**
+```jsonc
+{
+  "widget": "divisao_polinomial",
+  "controls": [
+    { "id": "etapa", "label": "Parcela retirada", "min": 0, "max": 2, "step": 1, "initial": 0, "color": "ink" }
+  ],
+  "params": {
+    "modo": "chave",
+    "coeficientes": [1, 0, -1],
+    "r": 2,
+    "etapa": "$etapa"
+  },
+  "complete_when": { "metric": "etapa", "gte": 2 }
+}
+```
+```jsonc
+// p1: o resto só aparece quando o aluno chega a d = 2
+"params": { "modo": "constante", "coeficientes": [1, 0, -1], "d": "$d", "fantasma": true },
+"antes_de_concluir": { "mostrar_resto": false },
+"complete_when": { "metric": "d", "gte": 2 }
+```
+```
+
+---
+
+(Registro completo, contas e capturas: `docs/visual/widget-b33c.md`.)
+
+### 5.24 `sistema_escalonado` + `sistema_escalonado_figura`
+
+Pasta `common/escalonado/`: matriz aumentada de um sistema 2×2 ou 3×3 (2 ou 3 linhas; 2 ou 3 incógnitas), com chips Lᵢ, barra antes do termo independente e anel `c4` no pivô de cada linha. `sistema_escalonado_figura` exige números (recusa `"$slider"` em `linhas` e em `operacao`). Aceita `highlight`.
+
+- **Comuns:** `linhas` (2..3 linhas; cada uma com os coeficientes e, por último, o termo independente; números ou expressões com `$slider`, ex.: `"4+$t"`; todas do mesmo tamanho), `incognitas?` (padrão `x, y, z`), `cores` (cor do chip/reta de cada linha, padrão `["c3", "ink", "ink"]`), `mostrar: { pivos, classificacao, solucao, equacoes }` (todos `true` por padrão; para esconder um, repita o objeto inteiro), `ponto?` (coordenadas testadas: rodapé "Em (3; 2): L₁ dá 5 ≠ 2; L₂ dá 0 ≠ 1" e, com plano, um anel `c1`).
+- **`eliminar`**: aplica `Lalvo ← Lalvo − k·Lbase`. `operacao: { alvo (padrão 1), base (padrão 0), k (padrão 0; aceita "$k") }`, `cor_nova` (cor da linha nova, padrão `c4`), `plano?: { x: [mín, máx], y: [mín, máx] }` (só com 2 incógnitas; sem `plano`, só a matriz). No plano, a reta original vira fantasma tracejada "L₂ antes"; se a linha nova vira 0 = c (sem reta), a original é desenhada tracejada na própria cor. Rodapés: equações por extenso (`c3`), classificação ("Dois pivôs na coluna de x" em `muted` enquanto não está escalonada; depois chip `c4` "Um pivô por incógnita: única (1; 2)", "0 = 0: y livre, infinitas" ou "0 = 1: impossível"). Solução única em `c1` (chip e ponto); `mostrar.solucao: false` esconde os dois.
+- **`substituir`**: sistema já escalonado (com coeficientes numéricos, o schema recusa o que não está em escada; com slider num coeficiente que tire da escada, a tabela vira o aviso "Escalone antes de substituir"). Tabela de baixo para cima com a fórmula (`c3`, ex.: "y = 2 − z"), a conta com os valores achados (`muted`, "= 2 − 1") e o valor (chip `c1`, ou "y = ?" com `mostrar.solucao: false`). Incógnita sem pivô aparece como "z livre"; o que depende dela é propagado como expressão: com x + y + z = 3, y + z = 2 e 0 = 0, a tabela mostra "x = 3 − y − z = 3 − (2 − z) − z" e o chip "x = 1". Linha 0 = c aparece como "0 = 1". Sem plano 3D. A altura do canvas comporta todas as linhas da tabela (equações + livres).
+
+```json
+{"modo":"eliminar","linhas":[[1,1,3],[2,1,4]],"operacao":{"alvo":1,"base":0,"k":"$k"},"plano":{"x":[-2,5],"y":[-2,6]}}
+```
+```json
+{"modo":"substituir","linhas":[[1,1,1,3],[0,1,1,2],[0,0,1,"$t"]]}
+```
+
+Métricas: `k` (multiplicador em uso; 0 no `substituir`), `zerou` (1 se a linha alvo ficou com 0 na coluna do pivô da base), `escalonada` (1 se cada pivô está à direita do de cima e linhas nulas embaixo), `unica`, `impossivel` (0/1), `livres` (número de incógnitas sem pivô; 0 se impossível). O valor de outros sliders (`t`) vem do próprio controle. Cores: solução `c1`, multiplicador `c2` (chip `← L₂ − 2·L₁`), equações `c3`, pivôs e classificação `c4`.
+
+Usado em `sistemas-lineares-e-escalonamento` p2 (`complete_when: zerou ≥ 1`), p3 (`t ≥ 1`), p4 (`impossivel ≥ 1`), p5 e p6 (figura).
+````
+
+---
+
+(Registro completo, contas e capturas: `docs/visual/widget-b33d.md`.)
