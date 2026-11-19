@@ -126,8 +126,8 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
 | ~~B38a/b/c~~ concluídas 19/11 (a8585cc): `t` fora dos chips 90°, urna com bolas, unidades p1/p5 com `retangulo_areas` (p2 e p4 mantidos) | Antigravity #3, #2, #4 | 19/11 | — |
-| B39a. Achados da B35 em `escala` e `grupos` | Antigravity | 19/11 | `src/widgets/common/escala/**`, `src/widgets/common/grupos/**`, aulas/testes dos 2 capítulos, registros B33a/b |
-| B39b. Achados da B35 em `escalonado` e `divisao` | Claude Code #2 | 19/11 | `src/widgets/common/escalonado/**`, `src/widgets/common/divisao/**`, aulas/testes dos 2 capítulos, registros B33c/d |
+| ~~B33a–d, B35, B39a/b~~ concluídas 19/11 (268a0d2): 4 widgets de um capítulo só nas aulas, achados da revisão corrigidos, GUIA §5.21–5.24 | Antigravity ×3, Claude Code #2, Codex | 19/11 | — |
+| B39r. Revisão das correções da B39a (só relatório) e `docs/entregas/` dos 4 capítulos | Claude Code #2 | 19/11 | `docs/revisao/codigo-b39r.md`, `docs/entregas/<4 slugs>.md` |
 | B36 dividida: aritmética (Codex #2, `auditoria-vestibular-b36.md`) e álgebra (Codex, `auditoria-vestibular-b36-algebra.md`) | Codex #2 / Codex | 19/11 | só os relatórios |
 | B40a–d. Candidatas de vestibular em provas oficiais (Fuvest, Unicamp, Unesp, UERJ...) para as 37 aulas sem questão; só pesquisa, sem editar aulas (briefing `briefing-b40.md`) | Antigravity, #2, #3, #4 | 19/11 | `docs/fontes-candidatas/<slug>.md` dessas aulas (só acréscimo), `docs/revisao/vestibular-b40<letra>.md` |
 
