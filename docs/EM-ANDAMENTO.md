@@ -125,12 +125,11 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B38a. `t` atrás dos chips 90° (`angulos-retas-paralelas` p1) | Antigravity #3 | 19/11 | `src/widgets/common/poligono/**`, aula e teste de `angulos-retas-paralelas`, `docs/visual/correcoes-b38a.md` |
-| B38b. `desafio-urna` no modo `urna` (`probabilidade-espaco-amostral` p5) | Antigravity #2 | 19/11 | aula e teste de `probabilidade-espaco-amostral`, `docs/visual/correcoes-b38b.md` |
-| B38c. `unidades-conversoes-e-escalas` p1, p2, p4, p5 com `retangulo_areas` modo `escala` | Antigravity #4 | 19/11 | aula e teste de `unidades-conversoes-e-escalas`, `docs/visual/correcoes-b38c.md` |
+| ~~B38a/b/c~~ concluídas 19/11 (a8585cc): `t` fora dos chips 90°, urna com bolas, unidades p1/p5 com `retangulo_areas` (p2 e p4 mantidos) | Antigravity #3, #2, #4 | 19/11 | — |
 | B39a. Achados da B35 em `escala` e `grupos` | Antigravity | 19/11 | `src/widgets/common/escala/**`, `src/widgets/common/grupos/**`, aulas/testes dos 2 capítulos, registros B33a/b |
 | B39b. Achados da B35 em `escalonado` e `divisao` | Claude Code #2 | 19/11 | `src/widgets/common/escalonado/**`, `src/widgets/common/divisao/**`, aulas/testes dos 2 capítulos, registros B33c/d |
 | B36 dividida: aritmética (Codex #2, `auditoria-vestibular-b36.md`) e álgebra (Codex, `auditoria-vestibular-b36-algebra.md`) | Codex #2 / Codex | 19/11 | só os relatórios |
+| B40a–d. Candidatas de vestibular em provas oficiais (Fuvest, Unicamp, Unesp, UERJ...) para as 37 aulas sem questão; só pesquisa, sem editar aulas (briefing `briefing-b40.md`) | Antigravity, #2, #3, #4 | 19/11 | `docs/fontes-candidatas/<slug>.md` dessas aulas (só acréscimo), `docs/revisao/vestibular-b40<letra>.md` |
 
 ## Pedidos entre máquinas
 
