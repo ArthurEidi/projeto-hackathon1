@@ -650,7 +650,7 @@
     "vestibular": [
       {
         "id": "enem-2022-geladeira",
-        "prompt": "Sobre R$ 1 000,00 aplicam-se +10% e depois -2%; qual a diferença entre esse valor e um acréscimo direto de +8%?",
+        "prompt": "Sobre R$ 1 000,00 aplicam-se +10% e depois −2%; qual a diferença entre esse valor e um acréscimo direto de +8%?",
         "fala": "Calcule 1000 × 1,10 × 0,98 e compare com 1000 × 1,08.",
         "fonte": {
           "banca": "ENEM",
@@ -661,9 +661,9 @@
         },
         "options": [
           { "id": "a2men", "label": "R$ 2,00 menor", "correct": true, "feedback": "Exato. 1000 × 1,10 × 0,98 = 1078, que é R$ 2,00 menor que 1080." },
-          { "id": "a100men", "label": "R$ 100,00 menor", "correct": false, "feedback": "100 é 10% de 1000; após -2% sobre 1100 o valor é 1078, R$ 2,00 menor que 1080." },
+          { "id": "a100men", "label": "R$ 100,00 menor", "correct": false, "feedback": "100 é 10% de 1000; após −2% sobre 1100 o valor é 1078, R$ 2,00 menor que 1080." },
           { "id": "a200men", "label": "R$ 200,00 menor", "correct": false, "feedback": "Não há desconto de 20%; 1100 × 0,98 = 1078, que é R$ 2,00 menor que 1080." },
-          { "id": "a42mai", "label": "R$ 42,00 maior", "correct": false, "feedback": "42 confunde percentuais; o valor da loja é 1078, R$ 2,00 menor que 1080." },
+          { "id": "a42mai", "label": "R$ 42,00 maior", "correct": false, "feedback": "42 trata os 2% como acréscimo: 1 100 · 1,02 = 1 122, que passa 1 080 em 42. É desconto: 1 078, R$ 2,00 menor." },
           { "id": "a80mai", "label": "R$ 80,00 maior", "correct": false, "feedback": "80 é o acréscimo de 8% sobre 1000; o correto comparado é 1078 contra 1080: R$ 2,00 menor." }
         ]
       },
@@ -680,7 +680,7 @@
         },
         "options": [
           { "id": "a1340", "label": "R$ 1.340,00", "correct": false, "feedback": "1.340,00 é o valor após os 7,2%; falta aplicar +10%: 1340 × 1,10 = R$ 1.474,00." },
-          { "id": "a1349", "label": "R$ 1.349,00", "correct": false, "feedback": "1.349,00 não sai de nenhuma das taxas. Depois de +7,2% são R$ 1.340,00, e +10% sobre isso dá R$ 1.474,00." },
+          { "id": "a1349", "label": "R$ 1.349,00", "correct": false, "feedback": "1.349,00 aplica os 10% só sobre o aumento: 1 250 + 90 + 9. Os 10% incidem sobre 1 340: 1 340 × 1,10 = R$ 1.474,00." },
           { "id": "a1375", "label": "R$ 1.375,00", "correct": false, "feedback": "1.375,00 aplica só +10% em 1250; com +7,2% e +10%, dá R$ 1.474,00." },
           { "id": "a1465", "label": "R$ 1.465,00", "correct": false, "feedback": "1.465,00 soma as taxas (17,2%) em 1250; taxas sucessivas dão 1,072 × 1,10 = R$ 1.474,00." },
           { "id": "a1474", "label": "R$ 1.474,00", "correct": true, "feedback": "Isso. 1250 × 1,072 = 1340, e 1340 × 1,10 = R$ 1.474,00." }

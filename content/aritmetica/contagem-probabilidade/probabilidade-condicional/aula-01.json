@@ -711,7 +711,7 @@
             "id": "a5-8",
             "label": "5/8",
             "correct": false,
-            "feedback": "5/8 usa os 500 de espanhol, mas 200 deles falam inglês. Fora do inglês: 300/600 = 1/2."
+            "feedback": "5/8 supõe que ninguém fala os dois idiomas: 500 de espanhol em 500 + 300 = 800. Mas 200 falam ambos: 300/600 = 1/2."
           },
           {
             "id": "a1-4",
@@ -729,7 +729,7 @@
             "id": "a5-14",
             "label": "5/14",
             "correct": false,
-            "feedback": "O total da pista é 600, os que não falam inglês. Deles, 300 falam espanhol: 1/2."
+            "feedback": "5/14 = 500/1 400 divide pela soma 600 + 500 + 300, contando alunos repetidos. Fora do inglês são 600; 300 falam espanhol: 1/2."
           }
         ],
         "fonte": {
@@ -763,7 +763,7 @@
             "id": "a01125",
             "label": "0,1125",
             "correct": false,
-            "feedback": "As fraudes somam 0,05 + 0,05 = 0,10. Inconsistentes entre elas: 0,5."
+            "feedback": "0,1125 = 0,05 + 0,0625 não pesa a taxa das demais por 0,80. Fraudes: 0,05 + 0,80 · 0,0625 = 0,10; inconsistentes: 0,5."
           },
           {
             "id": "a03125",
@@ -797,7 +797,7 @@
             "id": "a156",
             "label": "15,6%",
             "correct": false,
-            "feedback": "M2 gera 0,30 · 0,03 = 0,009 de 0,032 defeituosas: 28,1%."
+            "feedback": "15,6% = 0,005 ÷ 0,032 é a parte de M1 (0,25 · 0,02). M2 gera 0,30 · 0,03 = 0,009 de 0,032: 28,1%."
           },
           {
             "id": "a281",
@@ -809,13 +809,13 @@
             "id": "a437",
             "label": "43,7%",
             "correct": false,
-            "feedback": "Divida o defeito de M2 pelo total de defeitos: 0,009 / 0,032 ≈ 28,1%."
+            "feedback": "43,7% = (0,005 + 0,009) ÷ 0,032 junta M1 e M2. Só M2: 0,009 ÷ 0,032 ≈ 28,1%."
           },
           {
             "id": "a562",
             "label": "56,2%",
             "correct": false,
-            "feedback": "A pista são as 0,032 defeituosas. M2 responde por 0,009: 28,1%."
+            "feedback": "56,2% = 0,018 ÷ 0,032 é a parte de M3 (0,45 · 0,04). M2 responde por 0,009: 28,1%."
           },
           {
             "id": "a718",
@@ -844,7 +844,7 @@
             "id": "a0075",
             "label": "0,075",
             "correct": false,
-            "feedback": "Faltou o caminho com chuva (0,15). Somando: 0,15 + 0,175 = 0,325."
+            "feedback": "0,075 = 0,3 · 0,25 cruza a chance de chuva com o atraso sem chuva. Com chuva: 0,3 · 0,5 = 0,15; sem: 0,7 · 0,25 = 0,175; total 0,325."
           },
           {
             "id": "a015",
@@ -862,7 +862,7 @@
             "id": "a06",
             "label": "0,600",
             "correct": false,
-            "feedback": "Não se somam as taxas 0,5 e 0,25 direto. Pesando pela chuva: 0,325."
+            "feedback": "0,600 não pesa os caminhos pela chance de chuva. Com chuva: 0,3 · 0,5 = 0,15; sem chuva: 0,7 · 0,25 = 0,175; total 0,325."
           },
           {
             "id": "a08",

@@ -709,7 +709,7 @@
             "id": "a95",
             "label": "9,5",
             "correct": false,
-            "feedback": "9,5 reduz menos ainda o denominador; 1,5/X < 0,1 exige X > 15,0."
+            "feedback": "9,5 = 10 − 0,5 desconta da média o aumento do desvio. CV é razão: 1,5/X < 1/10 exige X > 15,0."
           },
           {
             "id": "a100",

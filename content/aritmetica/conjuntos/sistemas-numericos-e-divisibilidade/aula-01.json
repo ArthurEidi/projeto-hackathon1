@@ -657,7 +657,7 @@
           { "id": "a0-9", "label": "0 e 9", "correct": true, "feedback": "Exato. S₁ = 210 = 19·11 + 1 ⇒ r = 1 ⇒ d₁ = 0; S₂ = 244 = 22·11 + 2 ⇒ d₂ = 11 − 2 = 9." },
           { "id": "a1-4", "label": "1 e 4", "correct": false, "feedback": "Usou o resto como dígito: d₁ = 1 e, com ele, S₂ = 246, resto 4. Pela regra, r = 1 < 2 dá d₁ = 0, e d₂ = 11 − 2 = 9." },
           { "id": "a1-7", "label": "1 e 7", "correct": false, "feedback": "Tomou d₁ = r = 1; com ele, S₂ = 246, resto 4, e d₂ = 11 − 4 = 7. Como r = 1 < 2, d₁ = 0, e S₂ = 244 dá d₂ = 9." },
-          { "id": "a9-1", "label": "9 e 1", "correct": false, "feedback": "Inverte d₁ e d₂ e usa r = 1 em vez de 11 − 2. Na ordem certa: d₁ = 0 e d₂ = 9." },
+          { "id": "a9-1", "label": "9 e 1", "correct": false, "feedback": "9 e 1 põe d₂ = 9 na frente e, no lugar de d₁ = 0, escreve o resto r = 1. Na ordem certa: d₁ = 0 e d₂ = 9." },
           { "id": "a0-1", "label": "0 e 1", "correct": false, "feedback": "d₁ = 0 está certo, mas d₂ = 1 não sai da regra: S₂ = 244 deixa resto 2, e 11 − 2 = 9." }
         ]
       }

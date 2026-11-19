@@ -809,13 +809,13 @@
             "id": "a99",
             "label": "99",
             "correct": false,
-            "feedback": "99 trata como linear; com 2ⁿ > 100, bastam 7 placas ao todo, ou 6 novas."
+            "feedback": "Com 99 novas a chance passa de 99%, mas não é o mínimo: (1/2)⁷ < 1/100, então 7 placas no total bastam, 6 novas."
           },
           {
             "id": "a51",
             "label": "51",
             "correct": false,
-            "feedback": "51 supõe que as chances de cada placa se somam. Multiplica-se a de não ver nenhuma: (1/2)⁷ < 1/100 com 7 placas, 6 novas."
+            "feedback": "Com 51 novas também passa de 99%, mas sobra placa: (1/2)⁷ = 1/128 < 1/100 já com 7 no total, ou 6 novas."
           },
           {
             "id": "a50",

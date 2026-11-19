@@ -716,10 +716,10 @@
           "urls": ["https://api.enem.dev/v1/exams/2019/questions/150"]
         },
         "options": [
-          { "id": "a398", "label": "398,02", "correct": false, "feedback": "398,02 fica abaixo do valor certo. Trazendo cada parcela ao dia da compra: 202 ÷ 1,01 = 200 e 204,02 ÷ 1,01² = 200; total 400,00." },
+          { "id": "a398", "label": "398,02", "correct": false, "feedback": "398,02 desconta a 1ª parcela por dois meses: 202 ÷ 1,01² = 198,02. Ela vence em 1 mês: 202 ÷ 1,01 = 200; total 400,00." },
           { "id": "a400", "label": "400,00", "correct": true, "feedback": "Isso. 202 ÷ 1,01 = 200 e 204,02 ÷ 1,01² = 200; somando, 400,00." },
-          { "id": "a401", "label": "401,94", "correct": false, "feedback": "401,94 não desconta a segunda parcela por 1,01². 204,02 ÷ 1,0201 = 200 e 202 ÷ 1,01 = 200; à vista, 400,00." },
-          { "id": "a404", "label": "404,00", "correct": false, "feedback": "404,00 é 2 × 202, como se as duas parcelas valessem 202 no dia da compra. Descontando os juros, cada uma vale 200: 400,00." },
+          { "id": "a401", "label": "401,94", "correct": false, "feedback": "401,94 = 202 + 204,02 · 0,98: não descontou a 1ª e tirou 2% simples da 2ª. Com juros compostos: 200 + 200 = 400,00." },
+          { "id": "a404", "label": "404,00", "correct": false, "feedback": "404,00 traz as parcelas só ao 1º mês: 202 e 204,02 ÷ 1,01 = 202. Falta mais um mês: 200 + 200 = 400,00." },
           { "id": "a406", "label": "406,02", "correct": false, "feedback": "406,02 é a soma nominal das parcelas sem descontar os juros; à vista vale 400,00." }
         ]
       },
@@ -735,11 +735,11 @@
           "urls": ["https://api.enem.dev/v1/exams/2018/questions/175"]
         },
         "options": [
-          { "id": "a20", "label": "20", "correct": false, "feedback": "Com N = 20 o sistema não fecha o mesmo valor total; resolvendo 72N = 1728 vem N = 24." },
+          { "id": "a20", "label": "20", "correct": false, "feedback": "Com N = 20, P = 40 · 20 + 200 = 1 000 e o total é 20 000; mas 16 · 1 232 = 19 712. Não fecha: 72N = 1 728, N = 24." },
           { "id": "a24", "label": "24", "correct": true, "feedback": "Exato. P = 40N + 200 e 232N − 4P = 928 dão 72N = 1728, logo N = 24." },
           { "id": "a29", "label": "29", "correct": false, "feedback": "29 é 24 + 5 (o prazo alongado); a proposta inicial tem N = 24 parcelas." },
           { "id": "a40", "label": "40", "correct": false, "feedback": "40 é o coeficiente de P = 40N + 200; substituindo na segunda equação sai N = 24." },
-          { "id": "a58", "label": "58", "correct": false, "feedback": "58 vem de erro no sistema; 232N − 4(40N + 200) = 928 resulta em N = 24." }
+          { "id": "a58", "label": "58", "correct": false, "feedback": "58 é o coeficiente de P = 58N − 232, da 2ª equação. Igualando a 40N + 200: 18N = 432 e N = 24." }
         ]
       }
     ]

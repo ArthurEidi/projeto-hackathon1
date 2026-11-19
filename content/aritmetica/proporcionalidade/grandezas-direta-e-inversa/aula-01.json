@@ -614,7 +614,7 @@
         },
         "options": [
           { "id": "a13", "label": "13", "correct": false, "feedback": "13 esquece um trecho de 80 km (4 L); os 360 km exigem 18 L e resta 1 L: 18 − 1 = 17." },
-          { "id": "a14", "label": "14", "correct": false, "feedback": "14 L cobre 280 km (80 até o destino + 200 lá), sem a volta de 80 km ao posto. São 360 km, 18 L, menos 1 L que sobrou: 17." },
+          { "id": "a14", "label": "14", "correct": false, "feedback": "14 L é o gasto de 280 km: esqueceu a volta ao posto e não descontou o 1 L que sobrou. São 360 km, 18 L: 18 − 1 = 17." },
           { "id": "a17", "label": "17", "correct": true, "feedback": "Exato. Até o posto gasta 21 L (sobra 1 L); para 360 km precisa 18 L, logo põe 17 L." },
           { "id": "a18", "label": "18", "correct": false, "feedback": "18 L é o total necessário para 360 km, mas ainda havia 1 L no tanque: 18 − 1 = 17 L." },
           { "id": "a21", "label": "21", "correct": false, "feedback": "21 L é quanto gastou na ida até o posto; para seguir e voltar ao posto bastam 17 L." }
@@ -622,7 +622,7 @@
       },
       {
         "id": "enem-2021-boxes",
-        "prompt": "Três pessoas trocam um pneu em 4 s (tempo inversamente proporcional à equipe); com um grupo reduzido a 2 pessoas, qual é o tempo total?",
+        "prompt": "4 grupos de 3 trocam os 4 pneus juntos em 4 s; o tempo é inversamente proporcional ao grupo. Se um grupo fica com 2, quanto dura a troca?",
         "fala": "O produto pessoas × tempo é constante para trocar um pneu: 3 × 4 = 12.",
         "fonte": {
           "banca": "ENEM",
@@ -635,8 +635,8 @@
           { "id": "a60", "label": "6,0", "correct": true, "feedback": "Isso. 3 × 4 = 2 × t dá t = 6,0 s, que determina o tempo total da parada." },
           { "id": "a57", "label": "5,7", "correct": false, "feedback": "5,7 não conserva o produto 3 × 4 = 12; com 2 pessoas fica 12 ÷ 2 = 6,0 s." },
           { "id": "a50", "label": "5,0", "correct": false, "feedback": "5,0 soma 1 s em vez de manter 3 × 4 = 12 constante; 12 ÷ 2 = 6,0 s." },
-          { "id": "a45", "label": "4,5", "correct": false, "feedback": "Os pneus são trocados em paralelo, mas o mais lento com 2 pessoas leva 12 ÷ 2 = 6,0 s." },
-          { "id": "a44", "label": "4,4", "correct": false, "feedback": "A equipe de 2 pessoas limita a parada toda e leva 3 × 4 ÷ 2 = 6,0 s." }
+          { "id": "a45", "label": "4,5", "correct": false, "feedback": "4,5 é a média dos grupos, (6 + 4 + 4 + 4) ÷ 4. Eles trabalham juntos: a troca acaba com o mais lento, 12 ÷ 2 = 6,0 s." },
+          { "id": "a44", "label": "4,4", "correct": false, "feedback": "4,4 ≈ 4 · 12/11 trata as 11 pessoas como uma equipe só. Cada grupo troca o seu pneu: o de 2 leva 12 ÷ 2 = 6,0 s." }
         ]
       },
       {

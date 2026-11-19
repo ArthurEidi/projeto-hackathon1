@@ -586,7 +586,7 @@
           { "id": "a80", "label": "(8,0 ; 8,5)", "correct": false, "feedback": "8% usaria o valor antigo de 60 pacotes (R$ 240); para 58 pacotes (R$ 232) o desconto é 5,17%." },
           { "id": "a115", "label": "(11,5 ; 12,5)", "correct": false, "feedback": "12 é o desconto em reais (232 − 220), não em porcentagem; 12/232 ≈ 5,17%." },
           { "id": "a195", "label": "(19,5 ; 20,5)", "correct": false, "feedback": "20% seria R$ 46,40 de desconto; aqui faltam só R$ 12 em R$ 232, cerca de 5,17%." },
-          { "id": "a35", "label": "(3,5 ; 4,0)", "correct": false, "feedback": "3,5% a 4% subestima 12/232; dividindo 12 por 232 dá cerca de 5,17%." }
+          { "id": "a35", "label": "(3,5 ; 4,0)", "correct": false, "feedback": "3,5% arredonda 57,5 pacotes para baixo: 57 · 4 = 228 e 8/228 ≈ 3,5%. Faltariam folhas: são 58 pacotes, 12/232 ≈ 5,17%." }
         ]
       },
       {
@@ -610,7 +610,7 @@
       },
       {
         "id": "enem-2022-caged",
-        "prompt": "Em janeiro de 2013 foram criadas 28 900 vagas, uma queda de 75% ante 2012; quantas vagas foram criadas em 2012?",
+        "prompt": "Jan./2013: 1 794 272 admissões e 1 765 372 desligamentos, ou 28 900 vagas criadas, 75% menos que em jan./2012. Quantas vagas em jan./2012?",
         "fala": "Se caiu 75%, o valor de 2013 representa apenas 25% (1/4) do total de 2012.",
         "fonte": {
           "banca": "ENEM",

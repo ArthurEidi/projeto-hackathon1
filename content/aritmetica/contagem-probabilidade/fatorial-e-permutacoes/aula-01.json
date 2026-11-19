@@ -635,7 +635,7 @@
     "vestibular": [
       {
         "id": "enem-2011-digitos",
-        "prompt": "Com os dígitos 1, 3, 5, 7 e 9 sem repetir, formam-se senhas de 5 dígitos em ordem crescente. Qual a posição de 75 913?",
+        "prompt": "Com 1, 3, 5, 7 e 9 sem repetir, formam-se números de 5 algarismos, listados em ordem crescente. Qual a posição de 75 913?",
         "fala": "Conte os números menores que 75 913 fixando os prefixos maiores: começando por 1, 3, 5, depois 71, 73, depois 751, 753.",
         "fonte": {
           "banca": "ENEM",
@@ -681,7 +681,7 @@
       },
       {
         "id": "enem-2012-enredo",
-        "prompt": "Cada um de 280 alunos escolhe 1 objeto (de 5), 1 personagem (de 6) e 1 cômico (de 9). Comparando alunos e combinações, há:",
+        "prompt": "280 alunos dão respostas distintas: 1 objeto (de 5), 1 personagem (de 6) e 1 cômodo (de 9). Comparando alunos e respostas possíveis, há:",
         "fala": "Pelo princípio multiplicativo há 5 · 6 · 9 = 270 trios distintos; compare com 280 alunos.",
         "fonte": {
           "banca": "ENEM",

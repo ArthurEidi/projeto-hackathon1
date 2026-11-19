@@ -747,7 +747,7 @@
             "id": "a20",
             "label": "20",
             "correct": false,
-            "feedback": "20 desconta demais. 25 múltiplos de 4 + 10 terminados em 4 − 5 comuns = 30."
+            "feedback": "20 = 25 − 5 tira os comuns dos múltiplos de 4 e esquece os 10 terminados em 4. Somando e descontando: 25 + 10 − 5 = 30."
           },
           {
             "id": "a28",

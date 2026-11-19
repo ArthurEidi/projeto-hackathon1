@@ -708,7 +708,7 @@
             "id": "a128",
             "label": "128",
             "correct": false,
-            "feedback": "128 é 2⁷. O certo é escolher 4 de 8: C(8, 4) = 70."
+            "feedback": "128 = 2⁸ ÷ 2 manda cada matéria a um dia sem exigir 4 por dia e divide pela troca de dias. O certo: C(8, 4) = 70."
           },
           {
             "id": "a70",
@@ -745,7 +745,7 @@
             "id": "a69",
             "label": "69",
             "correct": false,
-            "feedback": "69 erra a contagem das duplas restantes; os canhotos têm 6 × 5 opções e os 4 destros formam 3 pares: 90."
+            "feedback": "69 não sai da contagem por etapas: cada canhoto pega um destro (6 × 5) e os 4 destros que sobram formam 3 pares: 90."
           },
           {
             "id": "a70",

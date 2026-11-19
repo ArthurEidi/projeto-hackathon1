@@ -94,4 +94,104 @@ Critério 1: nas 33 questões, a alternativa `correct` é a do gabarito. Conferi
 
 ## Aritmética
 
-(em andamento)
+Como o relatório do Codex #2 era parcial (ele mesmo diz que "a comparação integral dos quatro critérios em todas as 59 permanece incompleta" e que nem todas as contas das erradas estão feitas), **auditei as 59 questões e as 295 alternativas do zero**, pelos critérios 1, 2 e 4.
+
+Critério 1: em todas as 59 a alternativa `correct` confere com a conta. Contra o original, conferi 52:
+- 47 pelo cache, por ano e número da `fonte`;
+- 5 identificadas pelo texto, também no cache: 2012/144 ("enem-2025-respostas"), 2022/142 ("enem-2025-montadora"), 2020/141 ("enem-2025-placas-do-2"), 2019/173 ("enem-2025-declaracoes") e 2013/150 ("enem-2013-idiomas", sem número na `fonte`).
+
+As imagens de 2018/145, 2021/151 e 2023/140 foram abertas e conferem com os feedbacks:
+- 2018/145: 50, 17, 15, 10, 6 e 2 trabalhadores, 111 acidentes;
+- 2021/151: acumulado 5, 15, 20, 35, 55, 70, 85 de 105;
+- 2023/140: moda 3, mediana 4, média 665/160.
+
+Sete não têm original local (UEG 2005, ENEM 2019 PPL das chaves, ENEM 2021 PPL das máquinas, ENEM 2017 da chuva, ENEM 2020 digital do GOL, UFT 2013 e EsSA 2012). Nelas conferi só a conta: o gabarito marcado sai dos dados do enunciado.
+
+### Corrigidos (45 textos em 28 questões e 14 aulas: 40 feedbacks e 5 enunciados)
+
+| aula | questão | alternativa | origem / procede? | antes → depois (resumo) | conta |
+|---|---|---|---|---|---|
+| fracoes-e-decimais | ENEM 2022/164 | 4,800 | B36, sim | "esquece as 24 horas" → a conta inteira | 60 · 60 = 3.600 min; 3.600/48 = 75 jatos; 360/75 = 4,8 |
+| fracoes-e-decimais | ENEM 2021/178 | 1 600 000 | minha, sim (vago) | "erra os 50 lotes" → "paga só 40 lotes a R$ 30 mil (60 no total)" | 400.000 + 40 · 30.000 = 1.600.000 |
+| sistemas-numericos-e-divisibilidade | ENEM 2009/156 | 9 e 1 | B36, sim | texto confuso → "põe d₂ = 9 na frente e, no lugar de d₁ = 0, escreve o resto r = 1" | S₁ = 210 = 19 · 11 + 1; S₂ = 244 = 22 · 11 + 2 |
+| arranjos-e-combinacoes | UEG 2005 | 128 | minha, sim | "128 é 2⁷" → "2⁸ ÷ 2: cada matéria a um dia, sem exigir 4 por dia, e divide pela troca de dias" | 256/2 = 128 |
+| arranjos-e-combinacoes | ENEM 2019/156 | 69 | minha, sim (atribuía erro inexistente) | "erra a contagem das duplas restantes" → "não sai da contagem por etapas…" | 6 · 5 · 3 = 90; 105 − 15 = 90 |
+| eventos-independentes | ENEM 2019/159 | 99 | minha, sim (vago) | "trata como linear" → "passa de 99%, mas não é o mínimo" | (1/2)⁷ = 1/128 < 1/100 |
+| eventos-independentes | ENEM 2019/159 | 51 | B36, sim | "supõe que as chances se somam" (51 · 1/2 ≠ 99%) → "também passa, mas sobra placa" | idem |
+| fatorial-e-permutacoes | ENEM 2011/174 | enunciado | minha, sim (crit. 4) | "senhas de 5 dígitos em ordem crescente" (lê-se como algarismos crescentes) → "números de 5 algarismos, listados em ordem crescente" | 3 · 4! + 2 · 3! + 2 · 2! = 88 antes; posição 89 |
+| fatorial-e-permutacoes | ENEM 2012/144 | enunciado | B36, sim (crit. 4) | "1 **cômico** (de 9)", "cada aluno escolhe" → "280 alunos dão respostas distintas: … 1 **cômodo** (de 9)" | 5 · 6 · 9 = 270; 280 − 270 = 10 |
+| principio-fundamental-da-contagem | ENEM 2019 PPL | 12 | minha, sim (texto dizia "soma", que dá 8) | → "12 = 4 · 3 conta pares ordenados de chaves" | 2⁴ = 16 |
+| principio-fundamental-da-contagem | ENEM 2012/144 (registrada 2025) | 20 | minha, sim (genérico) | → "20 = 5 + 6 + 9 soma as opções" | |
+| principio-fundamental-da-contagem | idem | 119 | minha, sim ("parece vir de somas parciais") | → "119 a mais exigiria só 161 respostas" | 280 − 119 = 161 |
+| principio-fundamental-da-contagem | ENEM 2020/141 (registrada 2025) | 157 | minha, sim (atribuía erro que dá 138, não 157) | "Não desconte repetições" → contagem por casa | 100 + 30 + 30 = 160; quartos com algum 2 = 138 |
+| probabilidade-condicional | ENEM 2013/150 | 5/8 | B36, sim | → "supõe que ninguém fala os dois idiomas: 500 em 500 + 300 = 800" | 600 + 500 − 900 = 200 falam os dois |
+| probabilidade-condicional | ENEM 2013/150 | 5/14 | minha, sim (genérico) | → "500/1 400 divide pela soma 600 + 500 + 300" | |
+| probabilidade-condicional | ENEM 2019/173 (registrada 2025) | 0,1125 | minha, sim (genérico) | → "0,05 + 0,0625 não pesa a taxa das demais por 0,80" | 0,8 · 0,0625 = 0,05 |
+| probabilidade-condicional | ENEM 2021 PPL | 15,6% | minha, sim (genérico) | → "0,005 ÷ 0,032 é a parte de M1" | 0,25 · 0,02 = 0,005; 0,005/0,032 = 15,6% |
+| probabilidade-condicional | ENEM 2021 PPL | 43,7% | minha, sim (genérico) | → "(0,005 + 0,009) ÷ 0,032 junta M1 e M2" | 0,014/0,032 = 43,75% |
+| probabilidade-condicional | ENEM 2021 PPL | 56,2% | minha, sim (genérico) | → "0,018 ÷ 0,032 é a parte de M3" | 0,45 · 0,04 = 0,018 |
+| probabilidade-condicional | ENEM 2017 (chuva) | 0,075 | B36, sim | "Faltou o caminho com chuva" (daria 0,175) → "0,3 · 0,25 cruza a chance de chuva com o atraso sem chuva" | 0,3 · 0,25 = 0,075 |
+| probabilidade-condicional | ENEM 2017 (chuva) | 0,600 | B36, sim | "Não se somam 0,5 e 0,25" (daria 0,75) → "não pesa os caminhos pela chance de chuva" + conta | 0,15 + 0,175 = 0,325 |
+| probabilidade-uniao-e-intersecao | ENEM 2020 digital | 20 | minha, sim ("desconta demais") | → "25 − 5 tira os comuns e esquece os 10 terminados em 4" | 25 + 10 − 5 = 30 |
+| medidas-de-dispersao | ENEM 2021/146 | 9,5 | minha, sim (vago) | → "10 − 0,5 desconta da média o aumento do desvio" | 1,5/X < 0,1 ⇒ X > 15 |
+| medidas-de-tendencia-central | UFT 2013 | 1,46 | minha, sim (genérico) | → teste: "somariam 21,9 m e o grupo 55,9 m, não 57,75 m" | 15 · 1,46 = 21,9 |
+| medidas-de-tendencia-central | UFT 2013 | 1,55 | minha, sim ("não por 20 ou 35" dá 1,19 e 0,68) | → teste: 23,25 e 57,25 | 15 · 1,55 = 23,25 |
+| medidas-de-tendencia-central | UFT 2013 | 1,60 | minha, sim (genérico) | → "faz a média das médias: (1,70 + x)/2 = 1,65" | x = 1,60 |
+| medidas-de-tendencia-central | EsSA 2012 | 20%, 25%, 30% | minha, sim (genéricos) | → teste de cada: médias 8,2, 8,3 e 8,4, não 9,0 | 0,2 · 9,8 + 0,8 · 7,8 = 8,2 etc. |
+| medidas-de-tendencia-central | ENEM 2020/165 | 2,08 | minha, sim ("erra a soma… ou o desconto") | → "conta 16 atletas: 16 × 0,06 = 0,96 m" | (7,30 + 0,96 − 2,02)/3 = 2,08 |
+| descontos-acrescimos-e-indices | ENEM 2022/167 | enunciado e 100,00 | minha, sim (sinal) | "-2%" com hífen → "−2%" (regra 5 do briefing B16) | |
+| descontos-acrescimos-e-indices | ENEM 2022/167 | 42,00 maior | minha, sim ("confunde percentuais") | → "trata os 2% como acréscimo: 1 100 · 1,02 = 1 122, que passa 1 080 em 42" | 1.122 − 1.080 = 42 |
+| descontos-acrescimos-e-indices | ENEM 2019/153 | 1.349,00 | minha, sim ("não sai de nenhuma das taxas") | → "aplica os 10% só sobre o aumento: 1 250 + 90 + 9" | 1.250 · 0,072 = 90 |
+| grandezas-direta-e-inversa | ENEM 2020/160 | 14 | B36, sim | → "gasto de 280 km: esqueceu a volta e não descontou o 1 L" | 280 · 5/100 = 14 |
+| grandezas-direta-e-inversa | ENEM 2021/159 | enunciado | minha, sim (crit. 4) | "Três pessoas trocam um pneu… com um grupo reduzido" → "4 grupos de 3 trocam os 4 pneus juntos em 4 s… Se um grupo fica com 2…" | O original tem 4 grupos em paralelo; sem isso, os distratores 4,5 e 4,4 não fazem sentido |
+| grandezas-direta-e-inversa | ENEM 2021/159 | 4,5 | minha, sim | → "média dos grupos, (6 + 4 + 4 + 4) ÷ 4" | |
+| grandezas-direta-e-inversa | ENEM 2021/159 | 4,4 | minha, sim | → "4 · 12/11 trata as 11 pessoas como uma equipe só" | 48/11 = 4,36 |
+| matematica-financeira | ENEM 2019/150 | 398,02 | B36, sim | "fica abaixo do valor certo" → "desconta a 1ª por dois meses: 202 ÷ 1,01² = 198,02" | 198,02 + 200 = 398,02 |
+| matematica-financeira | ENEM 2019/150 | 401,94 | B36, sim | "não desconta a 2ª por 1,01²" (daria 402) → "202 + 204,02 · 0,98" | 202 + 199,94 = 401,94 |
+| matematica-financeira | ENEM 2019/150 | 404,00 | B36, sim | → "traz as parcelas só ao 1º mês: 202 e 204,02 ÷ 1,01 = 202" | |
+| matematica-financeira | ENEM 2018/175 | 20 | minha, sim (genérico) | → teste: "P = 1 000, total 20 000; 16 · 1 232 = 19 712" | |
+| matematica-financeira | ENEM 2018/175 | 58 | minha, sim ("vem de erro no sistema") | → "58 é o coeficiente de P = 58N − 232, da 2ª equação" | 58N − 232 = 40N + 200 ⇒ N = 24 |
+| razao-proporcao-porcentagem | ENEM 2023/167 | (3,5 ; 4,0) | minha, sim ("subestima") | → "arredonda 57,5 pacotes para baixo: 57 · 4 = 228 e 8/228 ≈ 3,5%" | 1.150 · 5 = 5.750 folhas |
+| razao-proporcao-porcentagem | ENEM 2022/154 | enunciado | B36, sim (crit. 4) | "foram criadas 28 900 vagas … em 2012?" → "Jan./2013: 1 794 272 admissões e 1 765 372 desligamentos, ou 28 900 vagas criadas, 75% menos que em jan./2012. Quantas vagas em jan./2012?" | Os feedbacks de 441 343 e 448 568 citavam dados que o enunciado omitia; o original compara janeiro com janeiro |
+
+### Destaques para o maestro (não editei, porque a regra da B41 proíbe mexer em `fonte`)
+
+- **Ano errado na `fonte` (aparece "ENEM 2025 (adaptada)" para o aluno)**, conferido no cache:
+  - `principio-fundamental-da-contagem/enem-2025-respostas` = ENEM 2012/144;
+  - `enem-2025-montadora` = ENEM 2022/142;
+  - `enem-2025-placas-do-2` = ENEM 2020/141;
+  - `probabilidade-condicional/enem-2025-declaracoes` = ENEM 2019/173.
+
+  Também é preciso trocar a URL pela do api.enem.dev.
+- **Questão repetida:** ENEM 2012/144 está em `fatorial-e-permutacoes` (enem-2012-enredo) e em `principio-fundamental-da-contagem` (enem-2025-respostas).
+
+### Recusados (achado da B36 que não procede, ou alternativa que conferi e mantive)
+
+| aula | questão | alternativa | motivo |
+|---|---|---|---|
+| fracoes-e-decimais | ENEM 2022/164 | 12,000 | O texto já reconstrói o erro: 360 ÷ 30 jatos diários = 12 |
+| sistemas-numericos-e-divisibilidade | ENEM 2009/156 | 0 e 1 | Nenhum erro dá d₂ = 1. O texto é honesto: "não sai da regra; S₂ = 244, resto 2, 11 − 2 = 9" |
+| sistemas-numericos-e-divisibilidade | ENEM 2021/176 | enunciado | "Monumento" no lugar de "cidade fundada" muda o contexto, mas preserva os dados (MCDLXIX, 2050) e a conta (2050 − 1469 = 581) |
+| distribuicao-de-frequencias-e-amostragem | ENEM 2021/151 | enunciado (800) | A pergunta resumida é a do original ("menor preço p para o qual pelo menos 50% … inferior a p"). A ambiguidade de faixa é da prova |
+| eventos-independentes, experimentos-binomial | ENEM 2021/142, 2019/159, 2009/145 | enunciado (independência) | Os originais também não explicitam a independência; acrescentá-la mudaria a questão em relação à prova |
+| demais alternativas | 59 questões | — | Conferi cada conta. Onde não há erro exato que leve ao valor, o teste numérico atual está certo e ficou. Por exemplo: 2016/154 (as 5 frações); 2019/158 (30, 15, 6, 3 dias); 2011/160 (13.300 e 17.100: 0,76C ≠ 3.800); 2022/137 (40, 44, 52/64); 2020/138 (1 : 100.000) |
+
+Achados da B36 em aritmética:
+- **59 linhas** de "revela ou identifica a resposta correta" (critério 3, descartado). Nenhuma mudou por esse motivo.
+- **18 linhas** de "outros achados":
+  - 12 procedem e foram corrigidos: 2013/150 5/8; 2017 0,075 e 0,600; 2022/164 4,800; 2009/156 9 e 1; 2019/159 51; 2020/160 14; 2019/150 404, 398,02 e 401,94; 2012/144 enunciado; 2022/154 enunciado.
+  - 4 procedem, mas são de `fonte` (ano errado) e foram para o destaque acima.
+  - 6 não procedem: 2022/164 12,000; 2009/156 0 e 1; 2021/176 enunciado; 2021/151 formulação; e as duas linhas de independência.
+
+### Totais de aritmética
+
+- Conferidas por mim: **59 questões e 295 alternativas**; o `correct` confere nas 59.
+- Corrigidas: **45 textos em 28 questões e 14 aulas** (40 feedbacks e 5 enunciados). Doze vieram dos achados da B36; os outros 33 saíram da minha auditoria.
+- Validação: `npm run lint:content` ok; `npx vitest run` dos 14 capítulos alterados, todos passando.
+
+## Totais da B41
+
+- **Conferidas:** 92 questões e 458 alternativas (33 e 163 em álgebra; 59 e 295 em aritmética).
+- **Corrigidas:** 78 textos em 48 questões e 26 aulas (66 feedbacks, 11 enunciados, 1 fala).
+- **Achados da B36 recusados:** 31 em álgebra (critério 2), mais 6 linhas em aritmética. Os 130 + 59 do critério 3 foram descartados por regra (GUIA §2 regra 1).
+- **`correct` errado:** nenhum. Destaques: ENEM 2017/137 (gabarito oficial depende das aproximações); 4 fontes com ano 2025 errado; uma questão repetida (ENEM 2012/144); o cache 2011/180 sem a opção 0.

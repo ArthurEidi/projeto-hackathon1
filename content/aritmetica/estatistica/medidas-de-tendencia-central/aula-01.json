@@ -754,13 +754,13 @@
             "id": "o1",
             "label": "1,46",
             "correct": false,
-            "feedback": "Somas: 57,75 − 34 = 23,75 para 15 mulheres. Média ≈ 1,58."
+            "feedback": "Com 1,46, as 15 mulheres somariam 21,9 m e o grupo, 55,9 m, não 57,75 m. Somas: (57,75 − 34) ÷ 15 ≈ 1,58."
           },
           {
             "id": "o2",
             "label": "1,55",
             "correct": false,
-            "feedback": "Divida 23,75 por 15, não por 20 ou 35. Dá ≈ 1,58."
+            "feedback": "Com 1,55, as 15 mulheres somariam 23,25 m e o grupo, 57,25 m, não 57,75 m. Somas: 23,75 ÷ 15 ≈ 1,58."
           },
           {
             "id": "o3",
@@ -772,7 +772,7 @@
             "id": "o4",
             "label": "1,60",
             "correct": false,
-            "feedback": "A conta pelas somas dá 23,75 ÷ 15 ≈ 1,58."
+            "feedback": "1,60 faz a média das médias: (1,70 + x)/2 = 1,65. Os grupos têm tamanhos diferentes: 23,75 ÷ 15 ≈ 1,58."
           },
           {
             "id": "o5",
@@ -800,19 +800,19 @@
             "id": "o1",
             "label": "20%",
             "correct": false,
-            "feedback": "Equilíbrio: 0,8 · A = 1,2 · E, então A = 1,5 E. Aprovados: 60%."
+            "feedback": "Com 20% aprovados, a média seria 0,2 · 9,8 + 0,8 · 7,8 = 8,2, não 9,0. Equilíbrio: 0,8A = 1,2E, então 60%."
           },
           {
             "id": "o2",
             "label": "25%",
             "correct": false,
-            "feedback": "Os aprovados estão mais perto da média geral, então são maioria: 60%."
+            "feedback": "Com 25%, a média seria 0,25 · 9,8 + 0,75 · 7,8 = 8,3, não 9,0. Equilíbrio: 0,8A = 1,2E, então 60%."
           },
           {
             "id": "o3",
             "label": "30%",
             "correct": false,
-            "feedback": "A distância 0,8 dos aprovados contra 1,2 dos eliminados dá A = 1,5 E: 60%."
+            "feedback": "Com 30%, a média seria 0,3 · 9,8 + 0,7 · 7,8 = 8,4, não 9,0. Equilíbrio: 0,8A = 1,2E, então 60%."
           },
           {
             "id": "o4",
@@ -870,7 +870,7 @@
             "id": "a208",
             "label": "2,08",
             "correct": false,
-            "feedback": "2,08 erra a soma dos 4 baixos ou o desconto de 2,02 m; 6,18 ÷ 3 = 2,06 m."
+            "feedback": "2,08 conta 16 atletas: 16 × 0,06 = 0,96 m e (7,30 + 0,96 − 2,02) ÷ 3 = 2,08. São 15: ganho de 0,90 m e 2,06 m."
           }
         ]
       }

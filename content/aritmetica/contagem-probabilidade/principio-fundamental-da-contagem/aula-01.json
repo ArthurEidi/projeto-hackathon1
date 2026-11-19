@@ -813,7 +813,7 @@
             "id": "a12",
             "label": "12",
             "correct": false,
-            "feedback": "Cada chave multiplica por 2, não soma. 2 · 2 · 2 · 2 = 16."
+            "feedback": "12 = 4 · 3 conta pares ordenados de chaves. Cada chave tem 2 posições e as escolhas se multiplicam: 2⁴ = 16."
           },
           {
             "id": "a16",
@@ -854,13 +854,13 @@
             "id": "a20",
             "label": "20",
             "correct": false,
-            "feedback": "As respostas são 5 · 6 · 9 = 270. Sobram 280 − 270 = 10 alunos."
+            "feedback": "20 = 5 + 6 + 9 soma as opções. As respostas são 5 · 6 · 9 = 270: sobram 280 − 270 = 10 alunos."
           },
           {
             "id": "a119",
             "label": "119",
             "correct": false,
-            "feedback": "Parece vir de somas parciais. Multiplique: 270 respostas, 10 alunos a mais."
+            "feedback": "119 a mais exigiria só 161 respostas, mas são 5 · 6 · 9 = 270. Sobram 280 − 270 = 10 alunos."
           },
           {
             "id": "a260",
@@ -946,7 +946,7 @@
             "id": "a157",
             "label": "157",
             "correct": false,
-            "feedback": "Não desconte repetições: 222 usa três placas de 2. Total 100 + 30 + 30 = 160."
+            "feedback": "157 fica 3 abaixo da contagem por casa: o 2 aparece 100 vezes na centena, 30 na dezena e 30 na unidade, total 160."
           },
           {
             "id": "a130",
