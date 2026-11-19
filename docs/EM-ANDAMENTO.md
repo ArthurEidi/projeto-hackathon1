@@ -121,6 +121,17 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 19/11: o PC da B caiu em 18/11 no meio da leva acima. O trabalho ficou no disco, sem commit (backup no branch remoto `wip-b33`, 71499d9; não é para mesclar). As mesmas frentes B33a–d, B34, B35 e B36 recomeçaram de onde pararam, com os mesmos agentes e arquivos (briefing `C:\Users\mkf10\projetos\briefing-b37.md`). O maestro corrigiu o quociente parcial da B33c ("1 + ?" virou "x + ?", `formatarQuocienteParcial` em `src/widgets/common/divisao/calc.ts`).
 
+19/11, tarde: B33a–d auditadas pelo maestro nas capturas (aprovadas); B34 entregue (`docs/visual/lacunas-b34.md`); B35 entregue (2 achados altos e ~10 médios). Briefings `C:\Users\mkf10\projetos\briefing-b38.md` e `briefing-b39.md`.
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B38a. `t` atrás dos chips 90° (`angulos-retas-paralelas` p1) | Antigravity #3 | 19/11 | `src/widgets/common/poligono/**`, aula e teste de `angulos-retas-paralelas`, `docs/visual/correcoes-b38a.md` |
+| B38b. `desafio-urna` no modo `urna` (`probabilidade-espaco-amostral` p5) | Antigravity #2 | 19/11 | aula e teste de `probabilidade-espaco-amostral`, `docs/visual/correcoes-b38b.md` |
+| B38c. `unidades-conversoes-e-escalas` p1, p2, p4, p5 com `retangulo_areas` modo `escala` | Antigravity #4 | 19/11 | aula e teste de `unidades-conversoes-e-escalas`, `docs/visual/correcoes-b38c.md` |
+| B39a. Achados da B35 em `escala` e `grupos` | Antigravity | 19/11 | `src/widgets/common/escala/**`, `src/widgets/common/grupos/**`, aulas/testes dos 2 capítulos, registros B33a/b |
+| B39b. Achados da B35 em `escalonado` e `divisao` | Claude Code #2 | 19/11 | `src/widgets/common/escalonado/**`, `src/widgets/common/divisao/**`, aulas/testes dos 2 capítulos, registros B33c/d |
+| B36 dividida: aritmética (Codex #2, `auditoria-vestibular-b36.md`) e álgebra (Codex, `auditoria-vestibular-b36-algebra.md`) | Codex #2 / Codex | 19/11 | só os relatórios |
+
 ## Pedidos entre máquinas
 
 Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo no passo 3 de `elipse`"). Formato: data, quem pede, para quem, o quê.
