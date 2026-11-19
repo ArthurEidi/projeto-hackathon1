@@ -136,7 +136,8 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
 | ~~B41~~ concluída 19/11 (75391f1, 87a216b): 92 questões e 458 alternativas auditadas, 78 textos corrigidos em 26 aulas, nenhum `correct` errado; critério "feedback revela o gabarito" descartado no treino (GUIA §2 regra 1) | Claude Code #2 | 19/11 | — |
-| B42. Fontes "ENEM 2025" erradas e questões repetidas; auditar as 28 candidatas da B40 (PDF oficial, conta, nível) e inserir as aprovadas (briefing `briefing-b42.md`, fora do repositório) | Claude Code #2 | 19/11 | `treino.vestibular` das aulas afetadas, seção de vestibular dos roteiros, testes desses capítulos, `docs/revisao/vestibular-b42.md` |
+| ~~B42~~ concluída 19/11 (77cce36, b5c8864): fontes "ENEM 2025" corrigidas, 0 questões repetidas; 27 candidatas da B40 auditadas no PDF oficial (17 aprovadas, 10 recusadas: 8 ITA por nível), 16 inseridas em 12 aulas. Vestibular em 79 de 104 aulas | Claude Code #2 | 19/11 | — |
+| B43. Busca em provas oficiais e inserção para as 25 aulas ainda sem vestibular, em levas de ~8 aulas (briefing `briefing-b43.md`, fora do repositório) | Claude Code #2 | 19/11 | `treino.vestibular` dessas aulas, seção de vestibular dos roteiros, testes desses capítulos, `docs/fontes-candidatas/<slug>.md`, `docs/revisao/vestibular-b43.md` |
 
 ## Pedidos entre máquinas
 
