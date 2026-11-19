@@ -173,23 +173,24 @@
       "figure": {
         "widget": "grade_figura",
         "params": {
-          "modo": "casas",
-          "linhas": [
-            "A1",
-            "A2",
-            "A3",
-            "V1",
-            "V2"
-          ],
-          "etapas": 1,
-          "titulos": {
-            "linhas": "Bolas"
-          }
+          "modo": "urna",
+          "bolas": [
+            {
+              "rotulo": "A",
+              "cor": "c1",
+              "quantidade": 3
+            },
+            {
+              "rotulo": "V",
+              "cor": "c3",
+              "quantidade": 2
+            }
+          ]
         }
       },
       "prompt": "Uma urna tem 3 bolas azuis e 2 vermelhas. Qual a probabilidade de tirar uma vermelha?",
       "lines": {
-        "intro": "Cada bola é uma casa da grade, com a mesma chance."
+        "intro": "Cada bola na urna tem a mesma chance de sair."
       },
       "options": [
         {
@@ -198,13 +199,8 @@
           "correct": false,
           "feedback": "2/3 compara vermelhas só com as azuis. Na probabilidade, o denominador é o total de bolas.",
           "figure": {
-            "acesas": [
-              "V1",
-              "V2"
-            ],
-            "contador": false,
-            "regua": false,
-            "mostrar": { "razao_partes": true }
+            "retiradas": 2,
+            "destaque": 1
           }
         },
         {
@@ -213,29 +209,30 @@
           "correct": false,
           "feedback": "1/2 trata as 2 cores como se tivessem a mesma chance. Há mais bolas azuis que vermelhas.",
           "figure": {
-            "linhas": [
-              "azul",
-              "vermelha"
+            "bolas": [
+              {
+                "rotulo": "A",
+                "cor": "c1",
+                "quantidade": 1
+              },
+              {
+                "rotulo": "V",
+                "cor": "c3",
+                "quantidade": 1
+              }
             ],
-            "acesas": [
-              "vermelha"
-            ],
-            "regua": true
+            "destaque": 1
           }
         },
         {
           "id": "a2-5",
           "label": "2/5",
           "correct": true,
-          "feedback": "Isso. 2 casas favoráveis de 5 possíveis.",
+          "feedback": "Isso. 2 bolas favoráveis de 5 possíveis.",
           "figure": {
-            "acesas": [
-              "V1",
-              "V2"
-            ],
-            "regua": true,
+            "destaque": 1,
             "highlight": [
-              "c1"
+              "c3"
             ]
           }
         },
@@ -245,12 +242,10 @@
           "correct": false,
           "feedback": "3/5 é a chance de tirar uma bola azul. O pedido é a chance de sair vermelha.",
           "figure": {
-            "acesas": [
-              "A1",
-              "A2",
-              "A3"
-            ],
-            "regua": true
+            "destaque": 0,
+            "highlight": [
+              "c1"
+            ]
           }
         }
       ]

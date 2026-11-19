@@ -1,7 +1,7 @@
 // Probabilidade: espaço amostral · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
 import { arranjo, comb, distribuicoes, fatorial, pertence } from "../widgets/common/grade/calc";
-import { criterio, distribuicoesCaixas, modeloArvore, modeloCasas } from "../widgets/common/grade/desenho";
+import { criterio, distribuicoesCaixas, modeloArvore, modeloCasas, totalUrna } from "../widgets/common/grade/desenho";
 import { GradeResultados, type GradeDe } from "../widgets/common/grade/params";
 import { carregar, certaDe, fechamentoOk, passo } from "./util";
 
@@ -81,8 +81,11 @@ describe("passos da aula", () => {
   it("desafio-urna: 2 vermelhas em 5 bolas = 2/5", () => {
     const s = passo(L, "desafio-urna");
     if (s.type !== "micro_challenge") throw new Error();
-    const p = GradeResultados.parse(s.figure.params) as GradeDe<"casas">;
-    expect(modeloCasas(p, {}, {}).casas).toHaveLength(5);
+    const p = GradeResultados.parse(s.figure.params) as GradeDe<"urna">;
+    expect(p.modo).toBe("urna");
+    expect(p.destaque).toBeUndefined();
+    expect(totalUrna(p, {})).toEqual({ inicial: 5, retiradas: 0, restante: 5 });
+    expect(p.bolas.map((b) => b.quantidade)).toEqual([3, 2]);
     expect(s.options.find((o) => o.correct)!.label).toBe("2/5");
   });
 

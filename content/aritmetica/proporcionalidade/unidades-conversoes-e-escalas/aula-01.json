@@ -35,17 +35,11 @@
     {
       "id": "caso-neutro",
       "type": "interactive_canvas",
-      "widget": "geometria_poligono",
+      "widget": "retangulo_areas",
       "params": {
-        "modo": "malha",
-        "forma": "retangulo",
-        "b": 2,
-        "h": 2,
+        "modo": "escala",
+        "L": 2,
         "k": "$k",
-        "fantasma": [
-          2,
-          2
-        ],
         "highlight": [
           "c2"
         ]
@@ -228,19 +222,12 @@
       "id": "fechamento",
       "type": "concept_lock",
       "figure": {
-        "widget": "geometria_poligono_figura",
+        "widget": "retangulo_areas_figura",
         "params": {
-          "modo": "malha",
-          "forma": "retangulo",
-          "b": 2,
-          "h": 2,
+          "modo": "escala",
+          "L": 2,
           "k": 2,
-          "fantasma": [
-            2,
-            2
-          ],
           "highlight": [
-            "c2",
             "c3"
           ]
         }

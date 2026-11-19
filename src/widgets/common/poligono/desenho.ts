@@ -371,7 +371,7 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
   const hl = p.highlight;
   const midX = (g.X1.x + g.X2.x) / 2;
   const spanX = Math.max(4.6, Math.abs(g.X2.x - g.X1.x) / 2 + 2.8);
-  const caixa = { x0: midX - spanX, x1: midX + spanX, y0: -3.6, y1: 1.5 };
+  const caixa = { x0: midX - spanX, x1: midX + spanX, y0: -3.6, y1: 2.0 };
   const v = criarVista(w, h - banda(1), caixa, 10);
   const u = g.u;
   // Retas r e s (s pode estar girada por `desvio`).
@@ -390,11 +390,7 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
   }
   if (p.fantasma) segMundo(ctx, v, { x: 0, y: 1.3 }, { x: 0, y: -2.9 }, palette.lineDark, 2, [6, 5]);
   // Transversal t.
-  segMundo(ctx, v, { x: g.X2.x - u.x * 1.1, y: g.X2.y - u.y * 1.1 }, { x: g.X1.x + u.x * 1.25, y: g.X1.y + u.y * 1.25 }, palette.ink, 3);
-  const posT = p.foco
-    ? v.p(g.X2.x - u.x * 0.85 - 0.32, g.X2.y - u.y * 0.85)
-    : v.p(g.X1.x + u.x * 1.15 + 0.32, g.X1.y + u.y * 1.15);
-  etiqueta(ctx, hits, posT, "t", "ink");
+  segMundo(ctx, v, { x: g.X2.x - u.x * 1.1, y: g.X2.y - u.y * 1.1 }, { x: g.X1.x + u.x * 1.65, y: g.X1.y + u.y * 1.65 }, palette.ink, 3);
   // Destaques.
   const par = {
     opostos: [["r-ne", "c1"], ["r-sw", "c1"], ["r-nw", "c2"], ["r-se", "c2"]],
@@ -429,7 +425,7 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
       if (ativo && !p.ocultar.includes(id)) {
         const m = ((a0 + a1) / 2) * (Math.PI / 180);
         const txt = p.rotulos[id] ?? `${fmt(cz.ang[k], 0)}°`;
-        const dy90 = !p.foco && Math.abs(g.alfa - 90) < 15 && (id === "r-sw" || id === "r-se" || id === "s-nw" || id === "s-ne")
+        const dy90 = !p.foco && Math.abs(g.alfa - 90) <= 35 && (id === "r-sw" || id === "r-se" || id === "s-nw" || id === "s-ne")
           ? (cz.id === "r" ? -10 : 10)
           : 0;
         const dyDesvio = afastamentoChipsS(cz.id, k, g.desvio);
@@ -467,6 +463,16 @@ function dParalelas(ctx: G, w: number, h: number, hits: Hit[], p: PoligonoDe<"pa
     arco(ctx, Q, 18, 0, g.alfa, tinta("c3"), 3, tintaClara("c3"));
     dot(ctx, Q, 4, tinta("c3"));
   }
+  // Rótulo t desenhado por último para nunca ficar atrás dos chips de ângulo, e fora da faixa dos chips.
+  const posT = p.foco
+    ? v.p(g.X2.x - u.x * 0.85 - 0.32, g.X2.y - u.y * 0.85)
+    : (() => {
+        const ponta = v.p(g.X1.x + u.x * 1.65, g.X1.y + u.y * 1.65);
+        // Desloca 14 px perpendicularmente à transversal para cima (longe de r-ne quando α ≤ 90° e longe de r-nw quando α > 90°).
+        const sgn = u.x >= 0 ? -1 : 1;
+        return { x: ponta.x + sgn * u.y * 14, y: Math.max(16, ponta.y + sgn * u.x * 14) };
+      })();
+  etiqueta(ctx, hits, posT, "t", "ink");
   if (p.legenda) {
     rodape(ctx, w, h, [
       {

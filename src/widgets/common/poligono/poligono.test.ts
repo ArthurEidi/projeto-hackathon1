@@ -274,3 +274,28 @@ describe("paralelas com s inclinada (angulos-retas-paralelas p4, B27b, 16/11)", 
     for (let i = 0; i < chips.length; i++) for (let j = i + 1; j < chips.length; j++) expect(e.cruzam(chips[i], chips[j]), `chips ${i} e ${j}`).toBe(false);
   });
 });
+
+describe("paralelas: rótulo t fora dos chips e sem colisão entre chips (B38a)", () => {
+  it.each([30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150])("α = %i°: t fora dos chips e 8 chips sem colisão", (alfa) => {
+    const e = espiao();
+    const p = pol({ modo: "paralelas", alfa: "$alfa", fantasma: true });
+    const w = 366;
+    desenharPoligono(e.ctx, w, Math.round(w * aspectoPoligono(p)), [], p, { alfa }, estadoInicial(p));
+    const rotT = e.textos.find((q) => q.t === "t");
+    expect(rotT).toBeDefined();
+    // O rótulo t deve ser desenhado por último entre as etiquetas (por cima de tudo).
+    const idxT = e.textos.findIndex((q) => q.t === "t");
+    const ultimoChip = e.textos.reduce((acc, q, idx) => (q.t.endsWith("°") && !q.t.startsWith("α =") ? Math.max(acc, idx) : acc), -1);
+    expect(idxT).toBeGreaterThan(ultimoChip);
+
+    const chips = e.textos.filter((q) => q.t.endsWith("°") && !q.t.startsWith("α =")).map(e.caixa);
+    expect(chips).toHaveLength(8);
+    const caixaT = e.caixa(rotT!);
+    for (let i = 0; i < chips.length; i++) {
+      expect(e.cruzam(caixaT, chips[i]), `t cruza chip ${i} em α=${alfa}°`).toBe(false);
+      for (let j = i + 1; j < chips.length; j++) {
+        expect(e.cruzam(chips[i], chips[j]), `chips ${i} e ${j} cruzam em α=${alfa}°`).toBe(false);
+      }
+    }
+  });
+});
