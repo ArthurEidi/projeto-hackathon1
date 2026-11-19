@@ -692,7 +692,7 @@
           "urls": ["https://api.enem.dev/v1/exams/2018/questions/141"]
         },
         "options": [
-          { "id": "a512", "label": "R$ 512 000,00", "correct": false, "feedback": "512 000 usa 64 postes em vez de 66. De 80 a 1 380 de 20 em 20 são 66 postes: R$ 528 000,00." },
+          { "id": "a512", "label": "R$ 512 000,00", "correct": false, "feedback": "512 000 usa 64 postes: contou só os de dentro dos 65 intervalos. Com as duas pontas são 66: R$ 528 000,00." },
           { "id": "a520", "label": "R$ 520 000,00", "correct": false, "feedback": "520 000 usa 65 postes, esquecendo o primeiro poste em 80 m. São 66 postes: R$ 528 000,00." },
           { "id": "a528", "label": "R$ 528 000,00", "correct": true, "feedback": "Isso. 1 380 = 80 + (n − 1)·20 dá n = 66 postes, e 66 · 8 000 = R$ 528 000,00." },
           { "id": "a552", "label": "R$ 552 000,00", "correct": false, "feedback": "552 000 divide 1 380 ÷ 20 = 69 postes sem descontar os 80 m iniciais. O certo é R$ 528 000,00." },
@@ -711,8 +711,8 @@
           "urls": ["https://api.enem.dev/v1/exams/2019/questions/155"]
         },
         "options": [
-          { "id": "rol", "label": "Rolamento", "correct": false, "feedback": "Rolamento (1) é a 5ª posição do bloco, mas 2 015 = 8·251 + 7 aponta a 7ª: Caixa de direção." },
-          { "id": "cat", "label": "Catalisador", "correct": false, "feedback": "Catalisador (4) é a 2ª ou 8ª posição do bloco. O resto 7 de 2 015 ÷ 8 dá 3: Caixa de direção." },
+          { "id": "rol", "label": "Rolamento", "correct": false, "feedback": "Usou bloco de 5 (códigos 1 a 5): 2 015 = 5 · 403 cai no 5º termo, 1. O bloco tem 8: 2 015 = 8 · 251 + 7, termo 3, Caixa de direção." },
+          { "id": "cat", "label": "Catalisador", "correct": false, "feedback": "Arredondou 2 015 ÷ 8 ≈ 251,9 para 252 blocos e caiu no último termo, 4. São 251 blocos e resto 7: termo 3, Caixa de direção." },
           { "id": "amo", "label": "Amortecedor", "correct": false, "feedback": "Amortecedor (5) é a 1ª posição do bloco. Com resto 7 de 2 015 ÷ 8, o 7º termo é Caixa de direção." },
           { "id": "pas", "label": "Pastilha de freio", "correct": false, "feedback": "Pastilha (2) é a 4ª ou 6ª posição do bloco. Na 7ª posição (resto 7) está 3: Caixa de direção." },
           { "id": "dir", "label": "Caixa de direção", "correct": true, "feedback": "Certo. 2 015 = 8 · 251 + 7, e o 7º termo de (5,4,3,2,1,2,3,4) é 3: Caixa de direção." }

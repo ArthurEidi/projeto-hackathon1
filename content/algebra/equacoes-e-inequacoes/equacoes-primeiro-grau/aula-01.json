@@ -708,7 +708,7 @@
             "id": "eq5",
             "label": "350(n + 100 000) = 150(n + 120 000)",
             "correct": false,
-            "feedback": "Inverteu taxa fixa com preço por km. Igualando os custos em milhares: 100n + 350 = 120n + 150."
+            "feedback": "Pôs os fixos (350 e 150) multiplicando e somou a n o preço por km em reais. O certo é 100n + 350 = 120n + 150."
           }
         ]
       },
@@ -754,7 +754,7 @@
             "id": "s8_9",
             "label": "8,0 m e 9,0 m",
             "correct": false,
-            "feedback": "Com x ≥ 8, os saltos somam 3x − 3,9 ≥ 20,1 m, acima de 17,4 m. De 3x − 3,9 = 17,4 vem x = 7,1 m."
+            "feedback": "Tomou a média 5,8 como o 3º salto e somou 2,7: 8,5 m. Mas 3x − 3,9 = 17,4 dá x = 7,1 m (entre 7,0 m e 8,0 m)."
           }
         ]
       },

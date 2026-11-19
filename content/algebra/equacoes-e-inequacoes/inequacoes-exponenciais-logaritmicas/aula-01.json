@@ -659,7 +659,7 @@
     "vestibular": [
       {
         "id": "enem-2017-emprestimo-log",
-        "prompt": "Com prestação P(n)≤400 pela fórmula, log 1,013≈0,005, log 400≈2,602 e log 335≈2,525, qual o menor número de parcelas n?",
+        "prompt": "Use log 1,013 ≈ 0,005, log 400 ≈ 2,602 e log 335 ≈ 2,525: com essas aproximações, qual o menor n com P(n) ≤ 400 pela fórmula?",
         "fala": "Monte a inequação P ≤ 400, isole 1,013ⁿ e aplique logaritmo nos dois lados.",
         "imagens": [
           {
@@ -687,13 +687,13 @@
             "id": "b",
             "label": "14",
             "correct": false,
-            "feedback": "14 ainda fica abaixo de 15,4. Aplicando log em 1,013ⁿ ≥ 400/335, temos n ≥ 15,4, logo n = 16."
+            "feedback": "Com as aproximações dadas, 14 · 0,005 = 0,070 < 0,077: não basta. De 0,005n ≥ 0,077 vem n ≥ 15,4, logo n = 16."
           },
           {
             "id": "c",
             "label": "15",
             "correct": false,
-            "feedback": "15 é menor que 15,4, então P ainda passa de 400. O menor inteiro que satisfaz n ≥ 15,4 é 16."
+            "feedback": "15 trunca 15,4: com as aproximações, 15 · 0,005 = 0,075 ainda é menor que 0,077. O menor inteiro com n ≥ 15,4 é 16."
           },
           {
             "id": "d",

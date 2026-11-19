@@ -301,7 +301,7 @@
     "vestibular": [
       {
         "id": "enem-2023-larvas",
-        "prompt": "Uma população de 100 larvas multiplica-se por 10 a cada 3 dias. Com 5 L de produto (1 L por 200 000 larvas), em quantos dias aplicar?",
+        "prompt": "100 larvas multiplicam-se por 10 a cada 3 dias. Os 5 L de produto (1 L por 200 000 larvas) vão de uma vez, na dose exata: em quantos dias?",
         "fala": "Calcule o limite de larvas para 5 L e escreva 100 · 10^(t/3) = 10⁶.",
         "fonte": {
           "banca": "ENEM",

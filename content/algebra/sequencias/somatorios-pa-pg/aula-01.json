@@ -684,7 +684,7 @@
         },
         "options": [
           { "id": "a", "label": "2 · 128", "correct": false, "feedback": "2 · 128 = 256 multiplica o total de tenistas em vez de dividir aos pares. O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." },
-          { "id": "b", "label": "64 + 32 + 16 + 8 + 4 + 2", "correct": false, "feedback": "Falta o + 1 da partida final entre os 2 semifinalistas. O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." },
+          { "id": "b", "label": "64 + 32 + 16 + 8 + 4 + 2", "correct": false, "feedback": "Para nos 2 finalistas: falta o + 1 da partida final. O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." },
           { "id": "c", "label": "128 + 64 + 32 + 16 + 8 + 4 + 2 + 1", "correct": false, "feedback": "128 são os tenistas, não os jogos da 1ª fase (128 ÷ 2 = 64). O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." },
           { "id": "d", "label": "128 + 64 + 32 + 16 + 8 + 4 + 2", "correct": false, "feedback": "Começa em 128 (tenistas, não jogos) e ainda esquece a final (+ 1). O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." },
           { "id": "e", "label": "64 + 32 + 16 + 8 + 4 + 2 + 1", "correct": true, "feedback": "Isso. Cada fase reduz pela metade: 64 + 32 + 16 + 8 + 4 + 2 + 1 = 127 partidas." }

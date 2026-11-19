@@ -660,7 +660,7 @@
       },
       {
         "id": "enem-2011-varejo",
-        "prompt": "Em fevereiro (x = 2), o varejo somou 880.605 vagas após aumento de 4.300 sobre janeiro (x = 1). Qual função relaciona y e x?",
+        "prompt": "Em fevereiro (x = 2), o varejo tinha 880.605 trabalhadores, 4.300 a mais que em janeiro (x = 1). Qual função dá os trabalhadores y?",
         "fala": "Se a taxa é +4.300 por mês e em x = 2 vale 880.605, ache o valor inicial b = y − 4.300x.",
         "fonte": {
           "banca": "ENEM",

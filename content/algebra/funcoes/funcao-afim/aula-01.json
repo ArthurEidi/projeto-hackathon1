@@ -368,7 +368,7 @@
     "vestibular": [
       {
         "id": "enem-2014-taxi",
-        "prompt": "Táxi A: R$ 3,45 fixos + R$ 2,05 por km; táxi B: R$ 3,60 + R$ 1,90 por km. Em 6 km, qual a diferença entre os custos médios por km?",
+        "prompt": "Táxi A: R$ 3,45 + R$ 2,05/km; táxi B: R$ 3,60 + R$ 1,90/km. Em 6 km, que valor mais se aproxima da diferença dos custos médios por km?",
         "fala": "Custo médio por km é o total da corrida dividido pelos km rodados.",
         "fonte": {
           "banca": "ENEM",
@@ -380,9 +380,9 @@
         },
         "options": [
           { "id": "a075", "label": "0,75", "correct": false, "feedback": "0,75 é a diferença dos totais, 15,75 − 15,00. Por km divide-se por 6: 2,625 − 2,50 ≈ 0,13." },
-          { "id": "a045", "label": "0,45", "correct": false, "feedback": "Os custos médios são 15,75 ÷ 6 = 2,625 e 15,00 ÷ 6 = 2,50. A diferença é cerca de 0,13." },
-          { "id": "a038", "label": "0,38", "correct": false, "feedback": "Confira os totais: A dá 15,75 e B dá 15,00. Por km: 2,625 − 2,50 ≈ 0,13." },
-          { "id": "a033", "label": "0,33", "correct": false, "feedback": "A diferença por km é a dos totais dividida por 6: 0,75 ÷ 6 ≈ 0,13." },
+          { "id": "a045", "label": "0,45", "correct": false, "feedback": "0,45 por km daria 6 · 0,45 = 2,70 entre as corridas, mas elas diferem 15,75 − 15,00 = 0,75. Por km: 0,75 ÷ 6 ≈ 0,13." },
+          { "id": "a038", "label": "0,38", "correct": false, "feedback": "0,38 ≈ 0,75 ÷ 2: dividiu a diferença pelos dois táxis, não pelos 6 km. Por km: 0,75 ÷ 6 = 0,125 ≈ 0,13." },
+          { "id": "a033", "label": "0,33", "correct": false, "feedback": "0,33 por km daria 6 · 0,33 = 1,98 entre as corridas, mas elas diferem 0,75. Por km: 0,75 ÷ 6 = 0,125 ≈ 0,13." },
           { "id": "a013", "label": "0,13", "correct": true, "feedback": "Exato. A custa 15,75 e B 15,00; por km, 2,625 − 2,50 = 0,125 ≈ 0,13." }
         ]
       },
@@ -398,8 +398,8 @@
           "urls": ["https://www.todamateria.com.br/exercicios-de-funcao-afim/"]
         },
         "options": [
-          { "id": "a14", "label": "14", "correct": false, "feedback": "As 10 corridas pagam 50 de parte fixa; sobram 360, que são 180 km. Em média, 18 km." },
-          { "id": "a16", "label": "16", "correct": false, "feedback": "Tire os 10 × 5 = 50 fixos: 360 ÷ 2 = 180 km no total, ou 18 km por corrida." },
+          { "id": "a14", "label": "14", "correct": false, "feedback": "Com média 14, seriam 10 · 5 + 2 · 140 = 330 reais, não 410. Tirando os 50 fixos: 360 ÷ 2 = 180 km, 18 por corrida." },
+          { "id": "a16", "label": "16", "correct": false, "feedback": "Com média 16, seriam 10 · 5 + 2 · 160 = 370 reais, não 410. Tirando os 50 fixos: 360 ÷ 2 = 180 km, 18 por corrida." },
           { "id": "a18", "label": "18", "correct": true, "feedback": "Isso. 410 − 50 = 360, que dá 180 km em 10 corridas: 18 km cada." },
           { "id": "a20", "label": "20", "correct": false, "feedback": "Perto de 20 sai quando se ignora a parte fixa. Sem os 50 fixos, são 18 km por corrida." }
         ]
@@ -418,8 +418,8 @@
         "options": [
           { "id": "a5", "label": "5", "correct": false, "feedback": "Com P = 5, a oferta é 0 e a demanda é 36. Igualando: 6P = 66, P = 11." },
           { "id": "a11", "label": "11", "correct": true, "feedback": "Exato. 6P = 66 dá P = 11, e as duas quantidades valem 24: é onde as retas se cruzam." },
-          { "id": "a13", "label": "13", "correct": false, "feedback": "Com P = 13, a oferta (32) passa a demanda (20). Igualando: 6P = 66, P = 11." },
-          { "id": "a23", "label": "23", "correct": false, "feedback": "Igualando −20 + 4P = 46 − 2P sai 6P = 66, P = 11. Nesse preço as duas quantidades valem 24." },
+          { "id": "a13", "label": "13", "correct": false, "feedback": "13 vem de 4P − 2P = 46 − 20: os termos mudaram de lado sem trocar o sinal. Certo: 6P = 66, P = 11." },
+          { "id": "a23", "label": "23", "correct": false, "feedback": "23 zera só a demanda (46 − 2 · 23 = 0), e a oferta seria 72. Igualando −20 + 4P = 46 − 2P: 6P = 66, P = 11." },
           { "id": "a33", "label": "33", "correct": false, "feedback": "33 é 66 ÷ 2, esquecendo o 4P. Juntando 4P + 2P = 6P, fica P = 11." }
         ]
       },
@@ -435,9 +435,9 @@
           "urls": ["https://www.todamateria.com.br/exercicios-de-funcao-afim/"]
         },
         "options": [
-          { "id": "a5", "label": "5", "correct": false, "feedback": "Não precisa achar a e b: f(3) + f(5) = 8a + 2b = 2·f(4) = 4, e f(4) = 2." },
+          { "id": "a5", "label": "5", "correct": false, "feedback": "5 é só um dos números dentro de f. Como f(3) + f(5) = 8a + 2b = 2 · f(4) = 4, a resposta é f(4) = 2." },
           { "id": "a4", "label": "4", "correct": false, "feedback": "4 é f(3) + f(5), que vale 2·f(4). Falta aplicar f: f(4) = 2." },
-          { "id": "a3", "label": "3", "correct": false, "feedback": "f(3) + f(5) = 8a + 2b = 2·(4a + b) = 4. Então a resposta é f(4) = 2." },
+          { "id": "a3", "label": "3", "correct": false, "feedback": "3 também é só um argumento. Primeiro some f(3) + f(5) = 2 · f(4) = 4; depois aplique f: f(4) = 2." },
           { "id": "a2", "label": "2", "correct": true, "feedback": "Isso. 3 e 5 ficam à mesma distância de 4, então f(3) + f(5) = 2·f(4) = 4, e f(4) = 2." }
         ]
       }

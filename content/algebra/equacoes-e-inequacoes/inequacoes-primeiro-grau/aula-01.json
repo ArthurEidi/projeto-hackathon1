@@ -347,7 +347,7 @@
             "id": "q3",
             "label": "3",
             "correct": false,
-            "feedback": "Para q = 3, LT(3) = 15 − 18 = −3 (prejuízo). Resolvendo 3q − 12 ≥ 0 obtemos q ≥ 4."
+            "feedback": "3 é a margem por unidade (5 − 2), não a quantidade: com q = 3, LT = −3. De 3q − 12 ≥ 0 vem q ≥ 4."
           },
           {
             "id": "q4",
@@ -359,7 +359,7 @@
             "id": "q5",
             "label": "5",
             "correct": false,
-            "feedback": "Com q = 5 o lucro já é 3, mas 4 já zera o prejuízo: 3q − 12 ≥ 0 ⇒ q ≥ 4."
+            "feedback": "5 exige lucro positivo (3q − 12 > 0). Não ter prejuízo admite lucro zero: 3q − 12 ≥ 0 dá q ≥ 4."
           }
         ]
       },
@@ -427,7 +427,7 @@
             "id": "l6",
             "label": "6",
             "correct": false,
-            "feedback": "6 lavagens completas dão 6·35 = R$ 210 < 300. De 35n ≥ 300 vem n ≥ 8,57 ⇒ 9."
+            "feedback": "6 é 300 ÷ 55 ≈ 5,5 arredondado: somou os dois preços como uma lavagem só. Só completas: 35n ≥ 300 dá n ≥ 8,57, logo 9."
           },
           {
             "id": "l8",
@@ -473,7 +473,7 @@
             "id": "s476",
             "label": "476",
             "correct": false,
-            "feedback": "Só os 500 folhetos do 2º tipo já usam 500 selos de R$ 0,65. A sobra 1.000 − 725 = 275 compra mais 423: 923."
+            "feedback": "476 = 1.000 ÷ 2,10 supõe o mesmo número de folhetos dos dois tipos. São 500 do 2º; a sobra de 275 compra 423: 923."
           },
           {
             "id": "s675",
@@ -485,7 +485,7 @@
             "id": "s923",
             "label": "923",
             "correct": true,
-            "feedback": "Exato: 500·1,45 = 725; sobra 275; 275/0,65 = 423 extras; total = 500 + 423 = 923."
+            "feedback": "Exato: 500 · 1,45 = 725; sobra 275; 275/0,65 ≈ 423,1, ou seja, 423 extras; total = 500 + 423 = 923."
           },
           {
             "id": "s965",

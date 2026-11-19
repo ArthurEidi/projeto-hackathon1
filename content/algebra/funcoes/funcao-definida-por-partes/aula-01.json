@@ -727,7 +727,7 @@
       },
       {
         "id": "enem-2023-pescador",
-        "prompt": "Peixe a R$ 5/kg: com 1 ajudante pesca 300 kg, e +100 kg por extra; custo R$ 900 + 250n + 4% da venda. Quantos n dão lucro ≥ R$ 800?",
+        "prompt": "Peixe a R$ 5/kg: 1 ajudante dá 300 kg e cada extra +100 kg; custo R$ 900 + 250n + 4% da venda. Menor n (até 5) com lucro ≥ R$ 800?",
         "fala": "Para n ≥ 1, a pesca é 300 + 100(n − 1) kg e sobram 96% da venda.",
         "fonte": {
           "banca": "ENEM",

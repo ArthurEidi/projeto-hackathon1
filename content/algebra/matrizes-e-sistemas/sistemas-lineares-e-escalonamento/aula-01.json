@@ -635,11 +635,11 @@
           "urls": ["https://api.enem.dev/v1/exams/2023/questions/175"]
         },
         "options": [
-          { "id": "a468", "label": "4,68", "correct": false, "feedback": "4,68 dá R$ 0,52 por tíquete, mas 2(2v + 0,05) + v = 3,60 dá v = 0,70. A cartela custa 9 · 0,70 = 6,30." },
+          { "id": "a468", "label": "4,68", "correct": false, "feedback": "4,68 vem de ler cinco centavos como 0,50: 5v + 1 = 3,60 dá v = 0,52. Com 0,05: 5v = 3,50, v = 0,70 e 9v = 6,30." },
           { "id": "a630", "label": "6,30", "correct": true, "feedback": "Isso. 2a + v = 3,60 e a = 2v + 0,05 dão 5v = 3,50, v = 0,70 e 9v = 6,30." },
           { "id": "a930", "label": "9,30", "correct": false, "feedback": "9,30 dá v ≈ 1,03, que não fecha 2a + v = 3,60. Resolvendo: 5v = 3,50, v = 0,70 e 9v = 6,30." },
           { "id": "a1050", "label": "10,50", "correct": false, "feedback": "10,50 vem de usar a − v = 0,05 (3v = 3,50) em vez de a = 2v + 0,05. O certo é 6,30." },
-          { "id": "a1065", "label": "10,65", "correct": false, "feedback": "10,65 dá v ≈ 1,18 e a = 2v + 0,05 ≈ 2,42, mas 2a + v ≈ 6,02, não 3,60. Resolvendo: 5v = 3,50, v = 0,70 e 9v = 6,30." }
+          { "id": "a1065", "label": "10,65", "correct": false, "feedback": "10,65 vem de trocar as cartelas (a + 2v = 3,60) e usar a = v + 0,05: 3v = 3,55. Com 2a + v e a = 2v + 0,05 sai 6,30." }
         ]
       },
       {
@@ -674,7 +674,7 @@
         },
         "options": [
           { "id": "a34", "label": "34", "correct": false, "feedback": "34 é y, quem comprou 3 bilhetes. Substituindo em 4x − y = 158, sai 4x = 192 e x = 48." },
-          { "id": "a42", "label": "42", "correct": false, "feedback": "42 daria B = 210, que não fecha o sistema. Subtraindo 4x − 3y = 90 de 4x − y = 158, x = 48." },
+          { "id": "a42", "label": "42", "correct": false, "feedback": "Com x = 42, B = 210 e 4x − y = 158 dá y = 10; mas as vendas seriam 42 + 90 + 30 = 162. O sistema dá x = 48." },
           { "id": "a47", "label": "47", "correct": false, "feedback": "Com x = 47, 4x − y = 158 dá y = 30, mas então 4x − 3y = 98, não 90. As duas equações juntas dão 2y = 68, y = 34 e x = 48." },
           { "id": "a48", "label": "48", "correct": true, "feedback": "Isso. 4x − 3y = 90 e 4x − y = 158 dão 2y = 68, y = 34 e 4x = 192, logo x = 48." },
           { "id": "a79", "label": "79", "correct": false, "feedback": "79 é 158 ÷ 2, como se a equação fosse 2x = 158. Ela é 4x − y = 158; com y = 34, 4x = 192 e x = 48." }

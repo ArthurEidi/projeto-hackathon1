@@ -293,8 +293,8 @@
     "vestibular": [
       {
         "id": "enem-2022-saque-volei",
-        "prompt": "Saque a 1,5 m do piso segue y = −x²/6 − 7x/3 + 12. Com tetos de 17, 18, 19, 21 e 40 m (I a V), onde a bola bate?",
-        "fala": "Calcule y_v = −Δ/(4a) da parábola e some os 1,5 m da altura inicial em relação ao piso.",
+        "prompt": "Na parábola y = −x²/6 − 7x/3 + 12, y é medido de um eixo 1,5 m acima do piso. Tetos: 17, 18, 19, 21 e 40 m (I a V); onde a bola bate?",
+        "fala": "Calcule y_v = −Δ/(4a) da parábola e some os 1,5 m entre o eixo e o piso.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2022,
