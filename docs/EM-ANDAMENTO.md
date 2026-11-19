@@ -135,8 +135,8 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B41. Corrigir nas aulas os feedbacks do vestibular apontados pela B36 (confirmando cada achado) e terminar a auditoria de aritmética (briefing `C:\Users\mkf10\projetos\briefing-b41.md`) | Claude Code #2 | 19/11 | `treino.vestibular` das aulas de `content/aritmetica/**` e `content/algebra/**`, `docs/revisao/correcoes-b41.md` |
-| B42 (depois da B41). Auditar as candidatas da B40 (PDF oficial, conta, nível da aula) e inserir as aprovadas | Claude Code #2 | — | a definir |
+| ~~B41~~ concluída 19/11 (75391f1, 87a216b): 92 questões e 458 alternativas auditadas, 78 textos corrigidos em 26 aulas, nenhum `correct` errado; critério "feedback revela o gabarito" descartado no treino (GUIA §2 regra 1) | Claude Code #2 | 19/11 | — |
+| B42. Fontes "ENEM 2025" erradas e questões repetidas; auditar as 28 candidatas da B40 (PDF oficial, conta, nível) e inserir as aprovadas (briefing `briefing-b42.md`, fora do repositório) | Claude Code #2 | 19/11 | `treino.vestibular` das aulas afetadas, seção de vestibular dos roteiros, testes desses capítulos, `docs/revisao/vestibular-b42.md` |
 
 ## Pedidos entre máquinas
 
