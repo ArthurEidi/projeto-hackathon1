@@ -58,3 +58,62 @@
   Um gráfico (A no eixo x, B no eixo y) marca 9 horas de 9h a 17h. Em quantos instantes o valor de A é maior que o de B?
 - **Conta que confirma o gabarito:**
   Pontos (A, B) lidos no gráfico: 9h (3; 0,5) A>B; 10h (2; 2) A=B; 11h (4; 4) A=B; 12h (5,5; 3) A>B; 13h (6; 1,5) A>B; 14h (3,5; 2) A>B; 15h (2,5; 4) A<B; 16h (1; 5) A<B; 17h (0,5; 3,5) A<B. Total: 4 instantes.
+
+
+## Candidatas B40 (provas oficiais)
+
+### Candidata 1 — UFRGS 2022, 1º Dia, Questão 59
+- **Banca / Ano / Fase:** UFRGS (COPERSE) / 2022 / 1º Dia (Matemática)
+- **Número:** Questão 59
+- **Página do PDF:** 32
+- **Caminho local do PDF:** `C:\Users\mkf10\projetos\provas-oficiais\ufrgs-2022-1dia\prova.pdf`
+- **Caminho local do gabarito:** `C:\Users\mkf10\projetos\provas-oficiais\ufrgs-2022-1dia\gabarito.html`
+- **URL oficial (prova):** `https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf`
+- **URL oficial (gabarito):** `https://vestibular.ufrgs.br/cv2022/gabaritos/`
+- **Depende de figura:** não (tabela simples reproduzível em texto)
+- **Enunciado:**
+  A tabela a seguir mostra o tempo de uso diário de um dispositivo eletrônico por um aluno, durante cinco dias da semana com aulas a distância, em sua escola, no ano de 2021.
+  | Dia da semana | Tempo (em minutos) |
+  |---|---|
+  | Segunda-feira | 240 |
+  | Terça-feira | 180 |
+  | Quarta-feira | 180 |
+  | Quinta-feira | 240 |
+  | Sexta-feira | 120 |
+  Nessas condições, o tempo médio diário de uso do dispositivo eletrônico por esse aluno é
+- **Alternativas:**
+  - A) superior a três horas.
+  - B) superior a quatro horas.
+  - C) superior a cinco horas.
+  - D) inferior a duas horas.
+  - E) inferior a três horas.
+- **Gabarito oficial:** A
+- **Resolução:**
+  Soma dos tempos nos cinco dias: `240 + 180 + 180 + 240 + 120 = 960` minutos.
+  Tempo médio diário: `960 / 5 = 192` minutos `= 3 h 12 min`, que é superior a três horas (`180` minutos) e inferior a quatro horas (`240` minutos). Confere com o gabarito oficial **A**.
+
+### Candidata 2 — UFRGS 2025, 1º Dia, Questão 73
+- **Banca / Ano / Fase:** UFRGS (COPERSE) / 2025 / 1º Dia (Matemática)
+- **Número:** Questão 73
+- **Página do PDF:** 39
+- **Caminho local do PDF:** `C:\Users\mkf10\projetos\provas-oficiais\ufrgs-2025-1dia\prova.pdf`
+- **Caminho local do gabarito:** `C:\Users\mkf10\projetos\provas-oficiais\ufrgs-2025-1dia\gabarito.html`
+- **URL oficial (prova):** `https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf`
+- **URL oficial (gabarito):** `https://vestibular.ufrgs.br/cv2025/gabaritos/`
+- **Depende de figura:** sim (infográfico na página 39)
+- **Enunciado:**
+  O infográfico abaixo apresenta o número de medalhas de ouro, prata e bronze, como indicadas pelos numerais 1, 2 e 3, para os três esportes (Vela, Judô e Atletismo), em que o Brasil mais recebeu medalhas, desde 1920, quando participou de sua primeira Olimpíada.
+  Com base nos dados representados no infográfico, considere as seguintes afirmações.
+  I. O número total de medalhas conquistadas no Judô corresponde a mais de 20% do número total de medalhas conquistadas pelo Brasil nesses três esportes.
+  II. O número total de medalhas de ouro conquistadas na Vela corresponde a menos de 50% do número total de medalhas de ouro conquistadas pelo Brasil nesses três esportes.
+  III. O número total de medalhas de prata conquistadas nos três esportes corresponde a 25% do número total de medalhas de bronze conquistadas nos três esportes.
+  Quais estão corretas?
+- **Alternativas:**
+  - A) Apenas I.
+  - B) Apenas II.
+  - C) Apenas III.
+  - D) Apenas II e III.
+  - E) I, II e III.
+- **Gabarito oficial:** E
+- **Resolução:**
+  Questão depende da leitura direta dos números do infográfico (página 39 do PDF oficial); gabarito oficial publicado é **E** (`I, II e III`).
