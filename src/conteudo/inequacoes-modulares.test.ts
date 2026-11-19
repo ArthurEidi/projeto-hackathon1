@@ -141,3 +141,15 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(certa("d5-inequacoes-modulares")).toBe("[1,5; 2,5]");
   });
 });
+
+describe("vestibular (B42, provas oficiais)", () => {
+  it("Unicamp 2025 Q52 (c): 0 ≤ x ≤ 4 e 2 ≤ y ≤ 4 dão x + y ≤ 8", () => {
+    for (const x of [0, 1, 2, 3, 4]) for (const y of [2, 2.5, 3, 4]) {
+      expect(Math.abs(x - 2)).toBeLessThanOrEqual(2);
+      expect(Math.abs(y - 3)).toBeLessThanOrEqual(1);
+      expect(x + y).toBeLessThanOrEqual(8);
+    }
+    expect(4 ** 2 + 4 ** 2).toBeLessThan(36);
+    expect(certa("unicamp-2025-modulos")).toBe("x + y ≤ 8");
+  });
+});

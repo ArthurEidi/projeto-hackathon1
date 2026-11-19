@@ -249,6 +249,15 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `unicamp-2025-composta` — Unicamp 2025
+- **Enunciado:** "Com f(x) = x − 2 e g(x) = x² − 4x, quantos inteiros x satisfazem g(f(x)) < 0?"
+- **Fala do Paco:** "g(f(x)) = (x − 2)² − 4(x − 2) = (x − 2)(x − 6). Leia o sinal entre as raízes."
+- **Fonte:** Unicamp 2025 (adaptada); 1ª fase, Questão 54: enunciado reescrito como pergunta; alternativas e gabarito oficial (b) mantidos. https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf
+- **Alternativas:** 2 · **3** · 4 · 5
+- **Conta de conferência:** g(f(x)) = (x − 2)(x − 6) < 0 ⇒ 2 < x < 6 ⇒ 3, 4, 5 (b).
+
 #### V1 — `v1-inequacoes-quadraticas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema inequações quadráticas.

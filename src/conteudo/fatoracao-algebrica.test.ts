@@ -109,3 +109,18 @@ describe("gabaritos dos desafios", () => {
     expect(certa("d5-fatoracao-algebrica")).toBe("3");
   });
 });
+
+describe("vestibular (B42, provas oficiais)", () => {
+  it("UFRGS 2022 Q48 (B): a + b = 6 e ab = 3", () => {
+    const [soma, produto] = [6, 3];
+    expect((1 / (soma / produto)) ** -2).toBeCloseTo(4, 12);
+    expect(certa("ufrgs-2022-inverso-raizes")).toBe("4");
+  });
+
+  it("UFPR 2023 Q10 (e): c = 4 e 15 triplas", () => {
+    let n = 0;
+    for (let c = 1; c <= 20; c++) for (let a = 1; a <= 20; a++) if (c * c - a >= 1 && a + (c * c - a) + c === 20) n++;
+    expect(n).toBe(15);
+    expect(certa("ufpr-2023-triplas")).toBe("15");
+  });
+});

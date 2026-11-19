@@ -167,7 +167,10 @@ describe("gabaritos do treino", () => {
     expect(Number(certa("d5-equacoes-logaritmicas"))).toBe(4);
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: UFRGS 2022 Q49 (gabarito oficial A)", () => {
+    // u = log₂x: u² + u − 12 = 0 ⇒ u = 3 ou u = −4
+    for (const u of [3, -4]) expect(u * u + u - 12).toBe(0);
+    for (const x of [8, 1 / 16]) expect(Math.log2(x) + Math.log2(x) ** 2).toBeCloseTo(12, 10);
+    expect(certa("ufrgs-2022-log2")).toBe("8 ou 1/16");
   });
 });

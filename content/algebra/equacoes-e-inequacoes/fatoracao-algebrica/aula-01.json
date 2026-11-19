@@ -682,7 +682,101 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2022-inverso-raizes",
+        "prompt": "Se a e b são as raízes de x² − 6x + 3 = 0, quanto vale (1/(1/a + 1/b))⁻²?",
+        "fala": "Se x² − 6x + 3 = (x − a)(x − b), então a + b = 6 e ab = 3. Some 1/a + 1/b com denominador ab.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 48: enunciado reescrito como pergunta; alternativas e gabarito oficial (B) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2022/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é 1/a + 1/b = (a + b)/ab = 6/3; falta o expoente. (1/2)⁻² = 2² = 4."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Isso. Comparando com (x − a)(x − b): a + b = 6 e ab = 3, então 1/a + 1/b = 6/3 = 2 e (1/2)⁻² = 4."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "6 é a soma a + b, lida do −6x. Com ab = 3: 1/a + 1/b = 6/3 = 2 e (1/2)⁻² = 4."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 seria 2³. O expoente é −2 sobre 1/2: (1/2)⁻² = 2² = 4."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 não sai da conta: 1/a + 1/b = (a + b)/ab = 2, e (1/2)⁻² = 2² = 4."
+          }
+        ]
+      },
+      {
+        "id": "ufpr-2023-triplas",
+        "prompt": "Quantas triplas (a, b, c) de inteiros positivos satisfazem a + b = c² e a + b + c = 20?",
+        "fala": "Troque a + b por c²: c² + c − 20 = 0. Fatore e depois conte os pares (a, b) com a + b fixo.",
+        "fonte": {
+          "banca": "UFPR",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 10: enunciado reescrito como pergunta; alternativas e gabarito oficial (e) mantidos.",
+          "urls": [
+            "https://servicos.nc.ufpr.br/documentos/ps2023/provas/Geral.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a11",
+            "label": "11",
+            "correct": false,
+            "feedback": "Com c = 4, a + b = 16 e a pode ser 1, 2, …, 15, cada um com seu b: são 15 triplas, não 11."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "Com c = 4, a + b = 16 e a pode ser 1, 2, …, 15, cada um com seu b: são 15 triplas, não 12."
+          },
+          {
+            "id": "a13",
+            "label": "13",
+            "correct": false,
+            "feedback": "Com c = 4, a + b = 16 e a pode ser 1, 2, …, 15, cada um com seu b: são 15 triplas, não 13."
+          },
+          {
+            "id": "a14",
+            "label": "14",
+            "correct": false,
+            "feedback": "14 descarta a = b = 8, mas (8, 8, 4) vale: 8 + 8 = 16 = 4². Com a de 1 a 15, são 15 triplas."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": true,
+            "feedback": "Isso. c² + c − 20 = (c + 5)(c − 4) = 0 dá c = 4 (positivo); a + b = 16 com a = 1, …, 15: 15 triplas."
+          }
+        ]
+      }
+    ]
   },
   "outro": "Você trocou soma por produto sem perder raízes e leu os zeros em cada fator."
 }

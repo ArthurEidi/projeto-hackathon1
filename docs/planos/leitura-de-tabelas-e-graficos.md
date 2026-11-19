@@ -248,6 +248,15 @@ Truncar o eixo exagera diferenças; ampliar demais o eixo esconde mudanças. Set
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ufrgs-2022-tempo-medio` — UFRGS 2022
+- **Enunciado:** "Um aluno usou um dispositivo por 240, 180, 180, 240 e 120 minutos de segunda a sexta. O tempo médio diário de uso é:"
+- **Fala do Paco:** "Some os cinco tempos, divida por 5 e passe de minutos para horas: 1 h = 60 min."
+- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 59: tabela de tempos transcrita no enunciado; alternativas e gabarito oficial (A) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
+- **Alternativas:** **superior a três horas** · superior a quatro horas · superior a cinco horas · inferior a duas horas · inferior a três horas
+- **Conta de conferência:** 960 ÷ 5 = 192 min = 3 h 12 min ⇒ superior a três horas (A).
+
 #### V1 — PENDENTE-FONTE
 - **Habilidade-alvo:** ler e comparar valores em gráfico de barras ou tabela.
 - **Onde procurar:** ENEM (presente em quase todas as edições; questões sem imagem são raras).

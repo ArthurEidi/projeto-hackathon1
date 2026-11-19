@@ -652,6 +652,53 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufpr-2024-bolo",
+        "prompt": "Um bolo esfria segundo T(t) = 30 + 150a^(−0,05t), a > 1, t em min; com logₐ2 = 0,7 e logₐ5 = 1,6, quando T chega à metade de T(0)?",
+        "fala": "logₐ2 = 0,7 quer dizer a^0,7 = 2. Escreva 5/2 como potência de a e iguale os expoentes.",
+        "fonte": {
+          "banca": "UFPR",
+          "ano": 2024,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 08: enunciado resumido; alternativas e gabarito oficial (D) mantidos.",
+          "urls": [
+            "https://servicos.nc.ufpr.br/documentos/ps2024/provas/Geral.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a10",
+            "label": "10 minutos",
+            "correct": false,
+            "feedback": "Com t = 10, 0,05t = 0,5, e a^0,5 não dá 5/2. De 150a^(−0,05t) = 60 vem a^(0,05t) = 5/2 = a^0,9: t = 18 min."
+          },
+          {
+            "id": "a12",
+            "label": "12 minutos",
+            "correct": false,
+            "feedback": "Com t = 12, 0,05t = 0,6. Mas 5/2 = a^1,6 ÷ a^0,7 = a^0,9, então 0,05t = 0,9 e t = 18 min."
+          },
+          {
+            "id": "a16",
+            "label": "16 minutos",
+            "correct": false,
+            "feedback": "Com t = 16, 0,05t = 0,8. Mas 5/2 = a^1,6 ÷ a^0,7 = a^0,9, então 0,05t = 0,9 e t = 18 min."
+          },
+          {
+            "id": "a18",
+            "label": "18 minutos",
+            "correct": true,
+            "feedback": "Isso. T(0) = 180 e T = 90 dão a^(0,05t) = 150/60 = 5/2 = a^1,6 ÷ a^0,7 = a^0,9; 0,05t = 0,9 e t = 18."
+          },
+          {
+            "id": "a22",
+            "label": "22 minutos",
+            "correct": false,
+            "feedback": "Com t = 22, 0,05t = 1,1. Mas 5/2 = a^1,6 ÷ a^0,7 = a^0,9, então 0,05t = 0,9 e t = 18 min."
+          }
+        ]
+      }
+    ]
   }
 }

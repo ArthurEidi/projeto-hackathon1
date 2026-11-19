@@ -105,7 +105,11 @@ describe("gabaritos do treino", () => {
     eq(C(2, 0), "zero-balas");
   });
 
-  it("vestibular", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: ITA 2021 Q53 (gabarito oficial B)", () => {
+    // B = D = k ≥ 3; A + C = 48 − 2k com A, C ≥ 3
+    let n = 0;
+    for (let k = 3; 2 * k <= 48; k++) for (let a = 3; a <= 48; a++) if (48 - 2 * k - a >= 3) n++;
+    expect(n).toBe(361);
+    expect(certa("ita-2021-balas")).toBe("361");
   });
 });

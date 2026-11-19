@@ -151,7 +151,15 @@ describe("gabaritos do treino", () => {
     expect(Number(certa("d5-equacoes-quadraticas"))).toBe(2);
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: UFPR 2025 Q05 (A) e UFRGS 2024 Q48 (D), gabaritos oficiais", () => {
+    // (x + 1)(x − 3) = x² − 2x − 3
+    const b = -(-1 + 3);
+    const c = -1 * 3;
+    expect(b + c).toBe(-5);
+    expect(certa("ufpr-2025-b-mais-c")).toBe("−5");
+    // x² + 2x − 15 = (x + 5)(x − 3): ab = −15 e a + b = −2
+    for (const r of [3, -5]) expect(r * r + 2 * r - 15).toBe(0);
+    expect((3 * -5) ** (3 + -5)).toBeCloseTo(1 / 225, 12);
+    expect(certa("ufrgs-2024-potencia-raizes")).toBe("1/225");
   });
 });

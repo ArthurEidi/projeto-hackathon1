@@ -249,6 +249,15 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ufrgs-2022-area-modulos` — UFRGS 2022
+- **Enunciado:** "Qual é a área da região entre os gráficos de f(x) = |x − 2| + 1 e g(x) = −|x| + 5?"
+- **Fala do Paco:** "Os gráficos se cruzam onde |x − 2| + |x| = 4: a soma das distâncias até 2 e até 0 vale 4."
+- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 57: enunciado reescrito como pergunta; alternativas e gabarito oficial (B) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
+- **Alternativas:** 4 · **6** · 10 · 15 · 20
+- **Conta de conferência:** |x − 2| + |x| = 4 ⇒ x = −1 ou 3; vértices (−1; 4), (0; 5), (3; 2), (2; 1); retângulo √2 × 3√2 = 6 (B).
+
 #### V1 — `v1-equacoes-modulares`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações modulares.

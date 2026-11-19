@@ -249,6 +249,22 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ufrgs-2022-inverso-raizes` — UFRGS 2022
+- **Enunciado:** "Se a e b são as raízes de x² − 6x + 3 = 0, quanto vale (1/(1/a + 1/b))⁻²?"
+- **Fala do Paco:** "Se x² − 6x + 3 = (x − a)(x − b), então a + b = 6 e ab = 3. Some 1/a + 1/b com denominador ab."
+- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 48: enunciado reescrito como pergunta; alternativas e gabarito oficial (B) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
+- **Alternativas:** 2 · **4** · 6 · 8 · 10
+- **Conta de conferência:** a + b = 6, ab = 3 ⇒ 1/a + 1/b = 2 ⇒ (1/2)⁻² = 4 (B).
+
+#### `ufpr-2023-triplas` — UFPR 2023
+- **Enunciado:** "Quantas triplas (a, b, c) de inteiros positivos satisfazem a + b = c² e a + b + c = 20?"
+- **Fala do Paco:** "Troque a + b por c²: c² + c − 20 = 0. Fatore e depois conte os pares (a, b) com a + b fixo."
+- **Fonte:** UFPR 2023 (adaptada); 1ª fase, Questão 10: enunciado reescrito como pergunta; alternativas e gabarito oficial (e) mantidos. https://servicos.nc.ufpr.br/documentos/ps2023/provas/Geral.pdf
+- **Alternativas:** 11 · 12 · 13 · 14 · **15**
+- **Conta de conferência:** c² + c − 20 = (c + 5)(c − 4) ⇒ c = 4; a + b = 16 com a = 1, …, 15 ⇒ 15 (e).
+
 #### V1 — `v1-fatoracao-algebrica`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema fatoração e zeros de expressões.

@@ -670,6 +670,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2022-log2",
+        "prompt": "Se log₂x + (log₂x)² = 12, quanto vale x?",
+        "fala": "Chame log₂x de u: u + u² = 12. Depois volte para x com x = 2^u.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 49: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2022/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "8 ou 1/16",
+            "correct": true,
+            "feedback": "Isso. Com u = log₂x, u² + u − 12 = 0 dá u = 3 ou u = −4; então x = 2³ = 8 ou x = 2⁻⁴ = 1/16."
+          },
+          {
+            "id": "b",
+            "label": "1/8 ou 16",
+            "correct": false,
+            "feedback": "1/8 e 16 vêm de u = −3 e u = 4, raízes com sinal trocado. De (u − 3)(u + 4) = 0: u = 3 ou −4, x = 8 ou 1/16."
+          },
+          {
+            "id": "c",
+            "label": "−4 ou 3",
+            "correct": false,
+            "feedback": "−4 e 3 são os valores de u = log₂x; falta voltar para x: x = 2⁻⁴ = 1/16 ou x = 2³ = 8."
+          },
+          {
+            "id": "d",
+            "label": "4 ou −3",
+            "correct": false,
+            "feedback": "4 e −3 são raízes de u² − u − 12 = 0, com sinal trocado, e ainda são u. Certo: u = 3 ou −4, x = 8 ou 1/16."
+          },
+          {
+            "id": "e",
+            "label": "2¹²",
+            "correct": false,
+            "feedback": "2¹² trata a soma como log₂x = 12. Com u = log₂x: u² + u − 12 = 0, u = 3 ou −4, e x = 8 ou 1/16."
+          }
+        ]
+      }
+    ]
   }
 }

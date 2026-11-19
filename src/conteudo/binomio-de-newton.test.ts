@@ -107,7 +107,13 @@ describe("gabaritos do treino", () => {
     eq(11 ** 3, "onze-ao-cubo");
   });
 
-  it("vestibular", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: ITA 2025 Q3 (C) e ITA 2018 Q3 (B), gabaritos oficiais", () => {
+    // (x + 1/x)⁶ (x − 2/x)⁵: expoente (6 − 2i) + (5 − 2j) é sempre ímpar
+    for (let i = 0; i <= 6; i++) for (let j = 0; j <= 5; j++) expect(Math.abs(11 - 2 * (i + j)) % 2).toBe(1);
+    expect(certa("ita-2025-termo-independente")).toBe("0");
+    // (ax − b/√x)¹²: expoente 12 − k − k/2 = 0 em k = 8; com a = 2 e b = a/2 = 1
+    expect(12 - 8 - 8 / 2).toBe(0);
+    expect(comb(12, 8) * 2 ** 4 * 1 ** 8).toBe(7920);
+    expect(certa("ita-2018-pg-binomio")).toBe("3");
   });
 });

@@ -111,3 +111,19 @@ describe("gabaritos dos desafios", () => {
     expect(certa("d5-expressoes-algebricas-e-produtos-notaveis")).toBe("5");
   });
 });
+
+describe("vestibular (B42, provas oficiais)", () => {
+  it("Fuvest 2020 Q20 (A): a = 1 e b = 2 reproduzem 3x² − 9x + 7", () => {
+    const [a, b] = [1, 2];
+    for (const x of [-2, 0, 1, 3.5]) expect((x - a) ** 3 - (x - b) ** 3).toBeCloseTo(3 * x * x - 9 * x + 7, 10);
+    expect(a + b).toBe(3);
+    expect(certa("fuvest-2020-cubos")).toBe("3");
+  });
+
+  it("UFRGS 2022 Q47 (B): só a III é verdadeira", () => {
+    expect(Math.sqrt(3 ** 2 + 4 ** 2)).not.toBe(3 + 4);
+    expect(Math.sqrt((-2) ** 2)).not.toBe(-2);
+    for (const [a, b] of [[4, 1], [9, 4], [2, 1.5]]) expect(Math.sqrt(a * b)).toBeLessThanOrEqual((a + b) / 2);
+    expect(certa("ufrgs-2022-afirmacoes-raizes")).toBe("Apenas III");
+  });
+});

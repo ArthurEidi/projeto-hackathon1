@@ -249,6 +249,15 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ufpr-2024-bolo` — UFPR 2024
+- **Enunciado:** "Um bolo esfria segundo T(t) = 30 + 150a^(−0,05t), a > 1, t em min; com logₐ2 = 0,7 e logₐ5 = 1,6, quando T chega à metade de T(0)?"
+- **Fala do Paco:** "logₐ2 = 0,7 quer dizer a^0,7 = 2. Escreva 5/2 como potência de a e iguale os expoentes."
+- **Fonte:** UFPR 2024 (adaptada); 1ª fase, Questão 08: enunciado resumido; alternativas e gabarito oficial (D) mantidos. https://servicos.nc.ufpr.br/documentos/ps2024/provas/Geral.pdf
+- **Alternativas:** 10 minutos · 12 minutos · 16 minutos · **18 minutos** · 22 minutos
+- **Conta de conferência:** T(0) = 180; T = 90 ⇒ a^(0,05t) = 150/60 = 5/2 = a^1,6 ÷ a^0,7 = a^0,9 ⇒ t = 0,9/0,05 = 18 (D).
+
 **Auditoria B18 (15/11/2026):** nenhuma candidata integralmente verificável no cache ENEM obrigatório. Mantido PENDENTE-FONTE; contas e impedimentos em `docs/revisao/vestibular-b18.md`.
 
 #### V1 — `v1-equacoes-exponenciais`

@@ -601,6 +601,101 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "fuvest-2020-cubos",
+        "prompt": "Se 3x² − 9x + 7 = (x − a)³ − (x − b)³ para todo x real, quanto vale a + b?",
+        "fala": "(x − a)³ = x³ − 3ax² + 3a²x − a³. Subtraia as duas expansões e compare os coeficientes.",
+        "fonte": {
+          "banca": "Fuvest",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "1ª fase, prova V, Questão 20: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos.",
+          "urls": [
+            "https://www.fuvest.br/wp-content/uploads/fuvest_2020_primeira_fase_prova_V.pdf",
+            "https://www.fuvest.br/wp-content/uploads/fuvest_2020_primeira_fase_gabaritos.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. A diferença é 3(b − a)x² + 3(a² − b²)x + b³ − a³: b − a = 1 e a² − b² = −3, logo a + b = 3."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "Com b − a = 1, o termo em x é 3(a − b)(a + b) = −3(a + b); com 5 daria −15, não −9. Logo a + b = 3."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "Com b − a = 1, o termo em x é 3(a − b)(a + b) = −3(a + b); com 6 daria −18, não −9. Logo a + b = 3."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 esquece o fator 3: o termo em x é 3(a² − b²) = −9, logo a² − b² = −3. Com b − a = 1, a + b = 3."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "Com b − a = 1, o termo em x é 3(a − b)(a + b) = −3(a + b); com 12 daria −36, não −9. Logo a + b = 3."
+          }
+        ]
+      },
+      {
+        "id": "ufrgs-2022-afirmacoes-raizes",
+        "prompt": "Para reais a e b: (I) √(a² + b²) = a + b; (II) √(a²) = a; (III) se 0 < b < a, √(ab) ≤ (a + b)/2. Quais estão corretas?",
+        "fala": "Teste números: a = 3 e b = 4 em (I), a = −2 em (II). Para (III), expanda (√a − √b)² ≥ 0.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 47: afirmações numeradas entre parênteses; alternativas e gabarito oficial (B) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2022/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "so-i",
+            "label": "Apenas I",
+            "correct": false,
+            "feedback": "(I) falha: com a = 3 e b = 4, √(9 + 16) = 5, não 7; falta o 2ab de (a + b)². Só (III) vale, de (√a − √b)² ≥ 0."
+          },
+          {
+            "id": "so-iii",
+            "label": "Apenas III",
+            "correct": true,
+            "feedback": "Isso. (I) falha (√25 ≠ 7) e (II) falha para a < 0, pois √(a²) = |a|; (III) vem de (√a − √b)² = a − 2√(ab) + b ≥ 0."
+          },
+          {
+            "id": "i-ii",
+            "label": "Apenas I e II",
+            "correct": false,
+            "feedback": "(I) e (II) falham: √(9 + 16) = 5 ≠ 3 + 4 e √((−2)²) = 2 ≠ −2, pois √(a²) = |a|. Só (III) vale."
+          },
+          {
+            "id": "ii-iii",
+            "label": "Apenas II e III",
+            "correct": false,
+            "feedback": "(II) falha para a negativo: √((−2)²) = 2, não −2, porque √(a²) = |a|. Só (III) vale."
+          },
+          {
+            "id": "todas",
+            "label": "I, II e III",
+            "correct": false,
+            "feedback": "(I) e (II) falham: √(9 + 16) = 5 ≠ 7 e √((−2)²) = 2 ≠ −2. Só (III) vale, de (√a − √b)² ≥ 0."
+          }
+        ]
+      }
+    ]
   }
 }

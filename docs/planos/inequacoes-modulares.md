@@ -249,6 +249,15 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `unicamp-2025-modulos` — Unicamp 2025
+- **Enunciado:** "Os reais x e y satisfazem |x − 2| ≤ 2 e |y − 3| ≤ 1. O que se pode concluir com certeza?"
+- **Fala do Paco:** "|x − 2| ≤ 2 põe x a no máximo 2 de distância do 2; o mesmo vale para y em volta do 3, com distância 1."
+- **Fonte:** Unicamp 2025 (adaptada); 1ª fase, Questão 52: enunciado resumido; alternativas e gabarito oficial (c) mantidos. https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf
+- **Alternativas:** x² + y² ≤ 1 · x + y ≥ 10 · **x + y ≤ 8** · x² + y² ≥ 36
+- **Conta de conferência:** 0 ≤ x ≤ 4 e 2 ≤ y ≤ 4 ⇒ x + y ≤ 8 (c).
+
 #### V1 — `v1-inequacoes-modulares`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema inequações modulares.

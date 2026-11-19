@@ -295,6 +295,47 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "unicamp-2025-composta",
+        "prompt": "Com f(x) = x − 2 e g(x) = x² − 4x, quantos inteiros x satisfazem g(f(x)) < 0?",
+        "fala": "g(f(x)) = (x − 2)² − 4(x − 2) = (x − 2)(x − 6). Leia o sinal entre as raízes.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 54: enunciado reescrito como pergunta; alternativas e gabarito oficial (b) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "Entre as raízes 2 e 6, sem incluí-las, ficam 3, 4 e 5: três inteiros, não dois."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. (x − 2)(x − 6) < 0 para 2 < x < 6; os inteiros são 3, 4 e 5."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 inclui um extremo, mas em 2 e 6 o produto vale 0 e a desigualdade é estrita: ficam 3, 4 e 5."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 conta de 2 a 6, como se fosse ≤ 0. Com < 0 os extremos saem: 3, 4 e 5."
+          }
+        ]
+      }
+    ]
   }
 }

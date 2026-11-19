@@ -711,6 +711,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2022-tempo-medio",
+        "prompt": "Um aluno usou um dispositivo por 240, 180, 180, 240 e 120 minutos de segunda a sexta. O tempo médio diário de uso é:",
+        "fala": "Some os cinco tempos, divida por 5 e passe de minutos para horas: 1 h = 60 min.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 59: tabela de tempos transcrita no enunciado; alternativas e gabarito oficial (A) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2022/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "superior a três horas",
+            "correct": true,
+            "feedback": "Isso. (240 + 180 + 180 + 240 + 120) ÷ 5 = 960 ÷ 5 = 192 min = 3 h 12 min, mais que três horas."
+          },
+          {
+            "id": "b",
+            "label": "superior a quatro horas",
+            "correct": false,
+            "feedback": "Quatro horas são 240 min, o máximo de um dia, não a média. A média é 960 ÷ 5 = 192 min = 3 h 12 min."
+          },
+          {
+            "id": "c",
+            "label": "superior a cinco horas",
+            "correct": false,
+            "feedback": "Cinco horas são 300 min, mais que qualquer dia. A média é 960 ÷ 5 = 192 min = 3 h 12 min."
+          },
+          {
+            "id": "d",
+            "label": "inferior a duas horas",
+            "correct": false,
+            "feedback": "Duas horas são 120 min, o menor dia. A média é 960 ÷ 5 = 192 min = 3 h 12 min, superior a três horas."
+          },
+          {
+            "id": "e",
+            "label": "inferior a três horas",
+            "correct": false,
+            "feedback": "Lê 192 min como 1,92 h, mas 1 h tem 60 min: 192 min = 3 h 12 min, superior a três horas."
+          }
+        ]
+      }
+    ]
   }
 }

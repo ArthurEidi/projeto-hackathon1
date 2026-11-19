@@ -248,6 +248,15 @@ Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o pl
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ita-2009-parabola` — ITA 2009
+- **Enunciado:** "Qual é a distância entre o vértice e o foco da parábola 2x² − 4x − 4y + 3 = 0?"
+- **Fala do Paco:** "Complete o quadrado: (x − 1)² = 2(y − 1/4). Compare com x² = 4py: a distância vértice-foco é |p|."
+- **Fonte:** ITA 2009 (adaptada); Matemática, Questão 16: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos. https://www.vestibular.ita.br/provas/matematica_2009.pdf · https://www.vestibular.ita.br/provas/gabarito_2009.pdf
+- **Alternativas:** 2 · 3/2 · 1 · 3/4 · **1/2**
+- **Conta de conferência:** (x − 1)² = 2(y − 1/4) ⇒ 4p = 2 ⇒ p = 1/2 (E).
+
 #### V1 — PENDENTE-FONTE
 - **Habilidade-alvo:** foco e diretriz a partir da equação.
 - **Onde procurar:** UFRGS, PUC-RJ, Unicamp.

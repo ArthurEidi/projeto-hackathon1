@@ -260,6 +260,22 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ufpr-2025-b-mais-c` — UFPR 2025
+- **Enunciado:** "O gráfico de f(x) = x² + bx + c corta o eixo x em x = −1 e x = 3. Quanto vale b + c?"
+- **Fala do Paco:** "Com raízes −1 e 3, f(x) = (x + 1)(x − 3). Expanda e leia b e c."
+- **Fonte:** UFPR 2025 (adaptada); 1ª fase, Questão 05: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. https://servicos.nc.ufpr.br/documentos/ps2025/provas/Geral.pdf
+- **Alternativas:** **−5** · −4 · −1 · 2 · 5
+- **Conta de conferência:** (x + 1)(x − 3) = x² − 2x − 3 ⇒ b + c = −5 (A).
+
+#### `ufrgs-2024-potencia-raizes` — UFRGS 2024
+- **Enunciado:** "Se a e b são as raízes de x² + 2x − 15 = 0, quanto vale (ab)^(a + b)?"
+- **Fala do Paco:** "Fatore: x² + 2x − 15 = (x + 5)(x − 3). Ache ab e a + b antes de montar a potência."
+- **Fonte:** UFRGS 2024 (adaptada); 1º dia, Questão 48: enunciado reescrito como pergunta; alternativas e gabarito oficial (D) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2023/12/1o-DIA-PROVA-2024.pdf · https://vestibular.ufrgs.br/cv2024/gabaritos/
+- **Alternativas:** −225 · −1/225 · −30 · **1/225** · 225
+- **Conta de conferência:** (x + 5)(x − 3): ab = −15, a + b = −2 ⇒ (−15)⁻² = 1/225 (D).
+
 **Auditoria B18 (15/11/2026):** nenhuma candidata integralmente verificável no cache ENEM obrigatório. Mantido PENDENTE-FONTE; contas e impedimentos em `docs/revisao/vestibular-b18.md`.
 
 #### V1 — `v1-equacoes-quadraticas`

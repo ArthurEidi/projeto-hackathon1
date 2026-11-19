@@ -249,6 +249,22 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `fuvest-2020-cubos` — Fuvest 2020
+- **Enunciado:** "Se 3x² − 9x + 7 = (x − a)³ − (x − b)³ para todo x real, quanto vale a + b?"
+- **Fala do Paco:** "(x − a)³ = x³ − 3ax² + 3a²x − a³. Subtraia as duas expansões e compare os coeficientes."
+- **Fonte:** Fuvest 2020 (adaptada); 1ª fase, prova V, Questão 20: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. https://www.fuvest.br/wp-content/uploads/fuvest_2020_primeira_fase_prova_V.pdf · https://www.fuvest.br/wp-content/uploads/fuvest_2020_primeira_fase_gabaritos.pdf
+- **Alternativas:** **3** · 5 · 6 · 9 · 12
+- **Conta de conferência:** 3(b − a)x² + 3(a² − b²)x + b³ − a³ ⇒ b − a = 1, a² − b² = −3 ⇒ a = 1, b = 2, a + b = 3 (A).
+
+#### `ufrgs-2022-afirmacoes-raizes` — UFRGS 2022
+- **Enunciado:** "Para reais a e b: (I) √(a² + b²) = a + b; (II) √(a²) = a; (III) se 0 < b < a, √(ab) ≤ (a + b)/2. Quais estão corretas?"
+- **Fala do Paco:** "Teste números: a = 3 e b = 4 em (I), a = −2 em (II). Para (III), expanda (√a − √b)² ≥ 0."
+- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 47: afirmações numeradas entre parênteses; alternativas e gabarito oficial (B) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
+- **Alternativas:** Apenas I · **Apenas III** · Apenas I e II · Apenas II e III · I, II e III
+- **Conta de conferência:** (I) √25 ≠ 7; (II) √(a²) = |a|; (III) (√a − √b)² ≥ 0 ⇒ apenas III (B).
+
 #### V1 — `v1-expressoes-algebricas-e-produtos-notaveis`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema expressões algébricas e produtos notáveis.

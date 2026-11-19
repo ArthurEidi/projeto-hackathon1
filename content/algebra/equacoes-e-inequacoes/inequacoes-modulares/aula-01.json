@@ -325,6 +325,47 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "unicamp-2025-modulos",
+        "prompt": "Os reais x e y satisfazem |x − 2| ≤ 2 e |y − 3| ≤ 1. O que se pode concluir com certeza?",
+        "fala": "|x − 2| ≤ 2 põe x a no máximo 2 de distância do 2; o mesmo vale para y em volta do 3, com distância 1.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 52: enunciado resumido; alternativas e gabarito oficial (c) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "x² + y² ≤ 1",
+            "correct": false,
+            "feedback": "y está entre 2 e 4, então y² ≥ 4 e x² + y² ≥ 4 > 1. Como x ≤ 4 e y ≤ 4, o certo é x + y ≤ 8."
+          },
+          {
+            "id": "b",
+            "label": "x + y ≥ 10",
+            "correct": false,
+            "feedback": "x + y vale no máximo 4 + 4 = 8, nunca 10. Com x em [0, 4] e y em [2, 4]: x + y ≤ 8."
+          },
+          {
+            "id": "c",
+            "label": "x + y ≤ 8",
+            "correct": true,
+            "feedback": "Isso. |x − 2| ≤ 2 dá 0 ≤ x ≤ 4 e |y − 3| ≤ 1 dá 2 ≤ y ≤ 4; somando os máximos, x + y ≤ 8."
+          },
+          {
+            "id": "d",
+            "label": "x² + y² ≥ 36",
+            "correct": false,
+            "feedback": "x² + y² vale no máximo 16 + 16 = 32 < 36. De x ≤ 4 e y ≤ 4 sai x + y ≤ 8."
+          }
+        ]
+      }
+    ]
   }
 }

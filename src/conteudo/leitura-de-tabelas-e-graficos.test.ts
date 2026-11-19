@@ -1,6 +1,6 @@
 // Leitura de Tabelas e Gráficos · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("aritmetica/estatistica/leitura-de-tabelas-e-graficos/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -67,5 +67,10 @@ describe("gabaritos do treino", () => {
     expect((40 + 60) / 2).toBe(Number(certa("ponto-do-meio")));
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: UFRGS 2022 Q59 (gabarito oficial A)", () => {
+    const media = (240 + 180 + 180 + 240 + 120) / 5;
+    expect(media).toBe(192);
+    expect(media).toBeGreaterThan(3 * 60);
+    expect(certa("ufrgs-2022-tempo-medio")).toBe("superior a três horas");
+  });
 });

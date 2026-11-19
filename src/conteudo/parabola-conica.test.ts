@@ -142,3 +142,14 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(certa("mais-aberta")).toBe("x² = 12y");
   });
 });
+
+describe("vestibular (B42, provas oficiais)", () => {
+  it("ITA 2009 Q16 (E): (x − 1)² = 2(y − 1/4), então p = 1/2", () => {
+    for (const x of [-1, 0, 2, 3.5]) {
+      const y = (2 * x * x - 4 * x + 3) / 4;
+      expect((x - 1) ** 2).toBeCloseTo(2 * (y - 1 / 4), 12);
+    }
+    expect(2 / 4).toBe(0.5);
+    expect(certa("ita-2009-parabola")).toBe("1/2");
+  });
+});

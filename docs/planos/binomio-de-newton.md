@@ -251,6 +251,22 @@ São n + 1 termos, não n. Os coeficientes são simétricos (C(n, k) = C(n, n �
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ita-2025-termo-independente` — ITA 2025
+- **Enunciado:** "Qual é o termo independente de x na expansão de (x + 1/x)⁶ · (x − 2/x)⁵?"
+- **Fala do Paco:** "Em (x + 1/x)⁶ os expoentes de x são pares; em (x − 2/x)⁵, ímpares. Que expoente sai do produto?"
+- **Fonte:** ITA 2025 (adaptada); 1ª fase, Questão 3: enunciado reescrito como pergunta; alternativas e gabarito oficial (C) mantidos. https://www.vestibular.ita.br/provas/2025_fase1.pdf · https://www.vestibular.ita.br/provas/gabarito_2025.pdf
+- **Alternativas:** −18 · −12 · **0** · 12 · 18
+- **Conta de conferência:** expoente (6 − 2i) + (5 − 2j) = 11 − 2(i + j), sempre ímpar ⇒ termo independente 0 (C).
+
+#### `ita-2018-pg-binomio` — ITA 2018
+- **Enunciado:** "a e b são inteiros positivos, termos seguidos de uma PG de razão 1/2. Se o termo independente de (ax − b/√x)¹² é 7920, quanto vale a + b?"
+- **Fala do Paco:** "No termo geral, o expoente de x é (12 − k) − k/2. Ache k que o zera, use b = a/2 e resolva para a."
+- **Fonte:** ITA 2018 (adaptada); Matemática, Questão 3: enunciado resumido; alternativas e gabarito oficial (B) mantidos. https://www.vestibular.ita.br/provas/matematica_2018.pdf · https://www.vestibular.ita.br/provas/gabarito_2018.pdf
+- **Alternativas:** 2 · **3** · 4 · 5 · 6
+- **Conta de conferência:** b = a/2; 12 − 3k/2 = 0 ⇒ k = 8; 495a⁴b⁸ = 7920 ⇒ a¹² = 2¹² ⇒ a = 2, b = 1, a + b = 3 (B).
+
 #### V1 — PENDENTE-FONTE
 - **Habilidade-alvo:** coeficiente de um termo específico de (x + a)ⁿ.
 - **Onde procurar:** Fuvest, Unesp, UFRGS ("coeficiente de x").

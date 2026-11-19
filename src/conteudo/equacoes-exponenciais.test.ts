@@ -146,7 +146,11 @@ describe("gabaritos do treino", () => {
     expect(Number(certa("d5-equacoes-exponenciais"))).toBe(3);
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: UFPR 2024 Q08 (gabarito oficial D)", () => {
+    // T(0) = 180; T = 90 ⇒ 150a^(−0,05t) = 60 ⇒ a^(0,05t) = 5/2 = a^(1,6 − 0,7)
+    expect(30 + 150).toBe(180);
+    expect(150 / 60).toBe(2.5);
+    expect((1.6 - 0.7) / 0.05).toBeCloseTo(18, 10);
+    expect(certa("ufpr-2024-bolo")).toBe("18 minutos");
   });
 });

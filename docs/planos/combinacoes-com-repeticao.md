@@ -248,6 +248,15 @@ Com 0 itens há 1 jeito (todas vazias). Exigir pelo menos um por caixa só é po
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ita-2021-balas` — ITA 2021
+- **Enunciado:** "De quantos modos se distribuem 48 balas iguais nas tigelas A, B, C e D, com pelo menos 3 em cada e B com tantas quanto D?"
+- **Fala do Paco:** "Fixe B = D = k e conte os modos de completar A + C = 48 − 2k com pelo menos 3 em cada. Depois some em k."
+- **Fonte:** ITA 2021 (adaptada); 1ª fase, Questão 53: enunciado resumido (balas iguais explicitado); alternativas e gabarito oficial (B) mantidos. https://www.vestibular.ita.br/provas/2021_fase1.pdf · https://www.vestibular.ita.br/provas/gabarito_2021.pdf
+- **Alternativas:** 190 · **361** · 722 · 1083 · 1444
+- **Conta de conferência:** B = D = k (3 a 21); A + C = 48 − 2k com A, C ≥ 3: 43 − 2k modos; 37 + 35 + … + 1 = 361 (B).
+
 #### V1 — PENDENTE-FONTE
 - **Habilidade-alvo:** soluções naturais de x + y + z = k.
 - **Onde procurar:** Fuvest, ITA, Unicamp ("soluções inteiras não negativas").

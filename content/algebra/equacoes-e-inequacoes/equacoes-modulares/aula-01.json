@@ -687,6 +687,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2022-area-modulos",
+        "prompt": "Qual é a área da região entre os gráficos de f(x) = |x − 2| + 1 e g(x) = −|x| + 5?",
+        "fala": "Os gráficos se cruzam onde |x − 2| + |x| = 4: a soma das distâncias até 2 e até 0 vale 4.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 57: enunciado reescrito como pergunta; alternativas e gabarito oficial (B) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2022/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é a distância entre os cruzamentos x = −1 e x = 3, não a área. A região é um retângulo de lados √2 e 3√2: área 6."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": true,
+            "feedback": "Isso. Os cruzamentos são x = −1 e x = 3; a região tem vértices (−1; 4), (0; 5), (3; 2) e (2; 1): retângulo √2 por 3√2, área 6."
+          },
+          {
+            "id": "a10",
+            "label": "10",
+            "correct": false,
+            "feedback": "10 trata a região como triângulo de base 4 (de −1 a 3) e altura 5. É um retângulo de lados √2 e 3√2: área 6."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "Os vértices são (−1; 4), (0; 5), (3; 2) e (2; 1), e os lados medem √2 e 3√2. A área é √2 · 3√2 = 6."
+          },
+          {
+            "id": "a20",
+            "label": "20",
+            "correct": false,
+            "feedback": "20 = 4 · 5 multiplica a largura entre os cruzamentos pela altura do topo. É um retângulo inclinado de lados √2 e 3√2: área 6."
+          }
+        ]
+      }
+    ]
   }
 }

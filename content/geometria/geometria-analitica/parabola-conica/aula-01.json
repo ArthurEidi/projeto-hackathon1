@@ -612,6 +612,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ita-2009-parabola",
+        "prompt": "Qual é a distância entre o vértice e o foco da parábola 2x² − 4x − 4y + 3 = 0?",
+        "fala": "Complete o quadrado: (x − 1)² = 2(y − 1/4). Compare com x² = 4py: a distância vértice-foco é |p|.",
+        "fonte": {
+          "banca": "ITA",
+          "ano": 2009,
+          "adaptada": true,
+          "adaptacao": "Matemática, Questão 16: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos.",
+          "urls": [
+            "https://www.vestibular.ita.br/provas/matematica_2009.pdf",
+            "https://www.vestibular.ita.br/provas/gabarito_2009.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é o valor de 4p em (x − 1)² = 2(y − 1/4). A distância vértice-foco é p = 2/4 = 1/2."
+          },
+          {
+            "id": "a3-2",
+            "label": "3/2",
+            "correct": false,
+            "feedback": "3/2 é o termo constante de x² − 2x + 3/2 = 2y. Completando: (x − 1)² = 2(y − 1/4), 4p = 2 e p = 1/2."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 é 2p. Em (x − 1)² = 2(y − 1/4), 4p = 2 e a distância vértice-foco é p = 1/2."
+          },
+          {
+            "id": "a3-4",
+            "label": "3/4",
+            "correct": false,
+            "feedback": "3/4 é o termo constante de y = x²/2 − x + 3/4. Completando: (x − 1)² = 2(y − 1/4), 4p = 2 e p = 1/2."
+          },
+          {
+            "id": "a1-2",
+            "label": "1/2",
+            "correct": true,
+            "feedback": "Isso. 2x² − 4x + 3 = 4y vira (x − 1)² = 2(y − 1/4): é x² = 4py deslocada, com 4p = 2, então p = 1/2."
+          }
+        ]
+      }
+    ]
   }
 }

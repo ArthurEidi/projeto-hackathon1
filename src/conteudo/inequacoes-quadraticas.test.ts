@@ -140,3 +140,14 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(certa("d5-inequacoes-quadraticas")).toBe("[0; 2]");
   });
 });
+
+describe("vestibular (B42, provas oficiais)", () => {
+  it("Unicamp 2025 Q54 (b): g(f(x)) < 0 só para 3, 4 e 5", () => {
+    const f = (x: number) => x - 2;
+    const g = (x: number) => x * x - 4 * x;
+    const sol: number[] = [];
+    for (let x = -20; x <= 20; x++) if (g(f(x)) < 0) sol.push(x);
+    expect(sol).toEqual([3, 4, 5]);
+    expect(certa("unicamp-2025-composta")).toBe("3");
+  });
+});

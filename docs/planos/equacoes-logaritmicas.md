@@ -249,6 +249,15 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+**B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
+
+#### `ufrgs-2022-log2` — UFRGS 2022
+- **Enunciado:** "Se log₂x + (log₂x)² = 12, quanto vale x?"
+- **Fala do Paco:** "Chame log₂x de u: u + u² = 12. Depois volte para x com x = 2^u."
+- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 49: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
+- **Alternativas:** **8 ou 1/16** · 1/8 ou 16 · −4 ou 3 · 4 ou −3 · 2¹²
+- **Conta de conferência:** u = log₂x: u² + u − 12 = 0 ⇒ u = 3 ou −4 ⇒ x = 8 ou 1/16 (A).
+
 **Auditoria B18 (15/11/2026):** nenhuma candidata integralmente verificável no cache ENEM obrigatório. Mantido PENDENTE-FONTE; contas e impedimentos em `docs/revisao/vestibular-b18.md`.
 
 #### V1 — `v1-equacoes-logaritmicas`

@@ -146,7 +146,15 @@ describe("gabaritos do treino", () => {
     expect(Number(certa("d5-equacoes-modulares"))).toBe(5);
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: UFRGS 2022 Q57 (gabarito oficial B)", () => {
+    const f = (x: number) => Math.abs(x - 2) + 1;
+    const g = (x: number) => -Math.abs(x) + 5;
+    for (const x of [-1, 3]) expect(f(x)).toBe(g(x));
+    // região: (−1; 4), (0; 5), (3; 2), (2; 1); área pela fórmula do laço
+    const P = [[-1, 4], [0, 5], [3, 2], [2, 1]];
+    let s = 0;
+    for (let i = 0; i < 4; i++) s += P[i][0] * P[(i + 1) % 4][1] - P[(i + 1) % 4][0] * P[i][1];
+    expect(Math.abs(s) / 2).toBe(6);
+    expect(certa("ufrgs-2022-area-modulos")).toBe("6");
   });
 });

@@ -669,6 +669,101 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ita-2025-termo-independente",
+        "prompt": "Qual é o termo independente de x na expansão de (x + 1/x)⁶ · (x − 2/x)⁵?",
+        "fala": "Em (x + 1/x)⁶ os expoentes de x são pares; em (x − 2/x)⁵, ímpares. Que expoente sai do produto?",
+        "fonte": {
+          "banca": "ITA",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 3: enunciado reescrito como pergunta; alternativas e gabarito oficial (C) mantidos.",
+          "urls": [
+            "https://www.vestibular.ita.br/provas/2025_fase1.pdf",
+            "https://www.vestibular.ita.br/provas/gabarito_2025.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "am18",
+            "label": "−18",
+            "correct": false,
+            "feedback": "−18 supõe um termo em x⁰, mas os expoentes do produto são (6 − 2i) + (5 − 2j) = 11 − 2(i + j), sempre ímpares: o termo é 0."
+          },
+          {
+            "id": "am12",
+            "label": "−12",
+            "correct": false,
+            "feedback": "−12 supõe um termo em x⁰, mas os expoentes do produto são 11 − 2(i + j), sempre ímpares. O termo independente é 0."
+          },
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": true,
+            "feedback": "Isso. Um termo do produto tem expoente (6 − 2i) + (5 − 2j) = 11 − 2(i + j), sempre ímpar: x⁰ não aparece, e vale 0."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 supõe um termo em x⁰, mas os expoentes do produto são 11 − 2(i + j), sempre ímpares. O termo independente é 0."
+          },
+          {
+            "id": "a18",
+            "label": "18",
+            "correct": false,
+            "feedback": "18 supõe um termo em x⁰, mas os expoentes do produto são 11 − 2(i + j), sempre ímpares. O termo independente é 0."
+          }
+        ]
+      },
+      {
+        "id": "ita-2018-pg-binomio",
+        "prompt": "a e b são inteiros positivos, termos seguidos de uma PG de razão 1/2. Se o termo independente de (ax − b/√x)¹² é 7920, quanto vale a + b?",
+        "fala": "No termo geral, o expoente de x é (12 − k) − k/2. Ache k que o zera, use b = a/2 e resolva para a.",
+        "fonte": {
+          "banca": "ITA",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Matemática, Questão 3: enunciado resumido; alternativas e gabarito oficial (B) mantidos.",
+          "urls": [
+            "https://www.vestibular.ita.br/provas/matematica_2018.pdf",
+            "https://www.vestibular.ita.br/provas/gabarito_2018.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 é o valor de a; falta somar b = a/2 = 1. Então a + b = 3."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. 12 − 3k/2 = 0 dá k = 8: 495a⁴b⁸ = 7920, a⁴b⁸ = 16; com b = a/2, a¹² = 2¹², a = 2, b = 1 e a + b = 3."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "Com b = a/2, a + b = 1,5a; a + b = 4 daria a = 8/3, que não é inteiro. De a⁴b⁸ = 16 sai a = 2, b = 1: a + b = 3."
+          },
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "Com b = a/2, a + b = 1,5a; a + b = 5 daria a = 10/3, que não é inteiro. De a⁴b⁸ = 16 sai a = 2, b = 1: a + b = 3."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "a + b = 6 com b = a/2 dá a = 4 e b = 2, e a⁴b⁸ = 65 536, não 16. Com a = 2 e b = 1: a + b = 3."
+          }
+        ]
+      }
+    ]
   }
 }
