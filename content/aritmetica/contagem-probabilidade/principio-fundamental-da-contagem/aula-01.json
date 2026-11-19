@@ -877,11 +877,11 @@
         ],
         "fonte": {
           "banca": "ENEM",
-          "ano": 2025,
+          "ano": 2012,
           "adaptada": true,
-          "adaptacao": "enunciado resumido; alternativas e gabarito (10) mantidos.",
+          "adaptacao": "Questão 144: enunciado resumido; alternativas e gabarito (10) mantidos.",
           "urls": [
-            "https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php"
+            "https://api.enem.dev/v1/exams/2012/questions/144"
           ]
         }
       },
@@ -923,11 +923,11 @@
         ],
         "fonte": {
           "banca": "ENEM",
-          "ano": 2025,
+          "ano": 2022,
           "adaptada": true,
-          "adaptacao": "enunciado resumido; alternativas e gabarito (9) mantidos.",
+          "adaptacao": "Questão 142: enunciado resumido; alternativas e gabarito (9) mantidos.",
           "urls": [
-            "https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php"
+            "https://api.enem.dev/v1/exams/2022/questions/142"
           ]
         }
       },
@@ -969,11 +969,11 @@
         ],
         "fonte": {
           "banca": "ENEM",
-          "ano": 2025,
+          "ano": 2020,
           "adaptada": true,
-          "adaptacao": "enunciado resumido; alternativas e gabarito (160) mantidos.",
+          "adaptacao": "Questão 141: enunciado resumido; alternativas e gabarito (160) mantidos.",
           "urls": [
-            "https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php"
+            "https://api.enem.dev/v1/exams/2020/questions/141"
           ]
         }
       }

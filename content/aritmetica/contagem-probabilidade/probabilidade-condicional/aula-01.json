@@ -780,11 +780,11 @@
         ],
         "fonte": {
           "banca": "ENEM",
-          "ano": 2025,
+          "ano": 2019,
           "adaptada": true,
-          "adaptacao": "enunciado resumido; alternativas e gabarito (0,5000) mantidos.",
+          "adaptacao": "Questão 173: enunciado resumido; alternativas e gabarito (0,5000) mantidos.",
           "urls": [
-            "https://projetoagathaedu.com.br/questoes-enem/matematica-3/probabilidade/probabilidade-condicional.php"
+            "https://api.enem.dev/v1/exams/2019/questions/173"
           ]
         }
       },
@@ -875,9 +875,9 @@
           "banca": "ENEM",
           "ano": 2017,
           "adaptada": true,
-          "adaptacao": "enunciado resumido; alternativas e gabarito (0,325) mantidos.",
+          "adaptacao": "Questão 179: enunciado resumido; alternativas e gabarito (0,325) mantidos.",
           "urls": [
-            "https://projetoagathaedu.com.br/questoes-enem/matematica-3/probabilidade/teorema-da-probabilidade-total.php"
+            "https://api.enem.dev/v1/exams/2017/questions/179"
           ]
         }
       }

@@ -268,7 +268,7 @@ Zerar uma etapa apaga a grade inteira: sem bermuda, não há look completo. Proi
 #### V2 — `enem-2025-respostas`
 - **Enunciado (resumido):** "Respostas: 1 de 5 objetos, 1 de 6 personagens e 1 de 9 cômodos. Quantos alunos a mais que respostas possíveis há numa turma de 280?"
 - **Fala do Paco:** "Primeiro conte as respostas diferentes que existem."
-- **Fonte:** ENEM 2025 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito (10) mantidos — **URL:** https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 144: enunciado resumido; alternativas e gabarito (10) mantidos — **URL:** https://api.enem.dev/v1/exams/2012/questions/144 (B42: ano e URL corrigidos; antes estava ENEM 2025)
 - **Conta de conferência:** 5 · 6 · 9 = 270; 280 − 270 = 10
 
 | id | Rótulo | Certa? | Feedback |
@@ -282,7 +282,7 @@ Zerar uma etapa apaga a grade inteira: sem bermuda, não há look completo. Proi
 #### V3 — `enem-2025-montadora`
 - **Enunciado (resumido):** "Uma montadora tem 7 modelos, 2 motores e 3 opcionais que podem entrar ou não. Quantas cores, no mínimo, para passar de 1000 configurações?"
 - **Fala do Paco:** "Cada opcional é uma etapa de sim ou não."
-- **Fonte:** ENEM 2025 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito (9) mantidos — **URL:** https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 142: enunciado resumido; alternativas e gabarito (9) mantidos — **URL:** https://api.enem.dev/v1/exams/2022/questions/142 (B42: ano e URL corrigidos; antes estava ENEM 2025)
 - **Conta de conferência:** 7 · 2 · 2³ = 112; 112 · 8 = 896 < 1000 < 1008 = 112 · 9
 
 | id | Rótulo | Certa? | Feedback |
@@ -296,7 +296,7 @@ Zerar uma etapa apaga a grade inteira: sem bermuda, não há look completo. Proi
 #### V4 — `enem-2025-placas-do-2`
 - **Enunciado (resumido):** "Um hotel numera os quartos de 100 a 399 com placas de um algarismo cada. Quantas placas com o algarismo 2 são necessárias?"
 - **Fala do Paco:** "Última. Conte o 2 em cada casa: centena, dezena e unidade."
-- **Fonte:** ENEM 2025 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito (160) mantidos — **URL:** https://www.projetoagathaedu.com.br/questoes-enem/matematica-3/analise-combinatoria/pfc.php
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 141: enunciado resumido; alternativas e gabarito (160) mantidos — **URL:** https://api.enem.dev/v1/exams/2020/questions/141 (B42: ano e URL corrigidos; antes estava ENEM 2025)
 - **Conta de conferência:** centena 100 (200–299) + dezena 3 · 10 + unidade 3 · 10 = 160
 
 | id | Rótulo | Certa? | Feedback |

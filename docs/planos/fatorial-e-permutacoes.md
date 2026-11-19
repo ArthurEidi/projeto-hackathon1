@@ -260,11 +260,12 @@ n! cresce muito rápido: 5! = 120, 6! = 720. A fila vazia tem um único arranjo,
 - **Fonte:** ENEM 2011 (adaptada); Questão 174: enunciado resumido; alternativas e gabarito (89) mantidos; https://api.enem.dev/v1/exams/2011/questions/174
 - **Conta de conferência:** 3·4! + 2·3! + 2·2! + 1 = 72 + 12 + 4 + 1 = 89.
 
-#### V2 — `enem-2012-enredo`
-- **Enunciado:** "Cada um de 280 alunos escolhe 1 objeto (de 5), 1 personagem (de 6) e 1 cômico (de 9). Comparando alunos e combinações, há:"
-- **Fala do Paco:** "Pelo princípio multiplicativo há 5 · 6 · 9 = 270 trios distintos; compare com 280 alunos."
-- **Fonte:** ENEM 2012 (adaptada); Questão 144: enunciado resumido; alternativas e gabarito (10 alunos a mais) mantidos; https://api.enem.dev/v1/exams/2012/questions/144
-- **Conta de conferência:** 5 · 6 · 9 = 270; 280 − 270 = 10 alunos a mais.
+#### V2 — `enem-2020-anagramas` (B42: substitui a ENEM 2012/144, que ficou só em `principio-fundamental-da-contagem`)
+- **Enunciado:** "Anagramas de I AM POTTER (9 letras, sem os espaços) com vogais e consoantes sempre intercaladas: quantos são?"
+- **Fala do Paco:** "São 5 consoantes e 4 vogais: a fila começa e termina em consoante. E o T aparece duas vezes."
+- **Fonte:** ENEM 2020 (adaptada); Questão 163: enunciado resumido, alternativas (imagens no original) transcritas; gabarito E; https://api.enem.dev/v1/exams/2020/questions/163
+- **Alternativas:** 9! · 4! · 5! · 2 · 4! · 5! · 9!/2 · **4! · 5!/2** (E).
+- **Conta de conferência:** consoantes M, P, T, T, R nas 5 casas ímpares: 5!/2! = 60; vogais I, A, O, E nas 4 pares: 4! = 24; 60 · 24 = 1 440 = 4! · 5!/2.
 
 #### V3 — `enem-2009-copa`
 - **Enunciado:** "De 12 cidades, 4 são sorteadas (sem ordem) para um torneio e depois 2 delas viram mandante e visitante. Que contagens são?"

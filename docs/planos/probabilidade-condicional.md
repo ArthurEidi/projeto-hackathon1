@@ -264,7 +264,7 @@ P(A | B) ≠ P(B | A) em geral: o total muda conforme a pista. A condicional nã
 #### V2 — `enem-2025-declaracoes`
 - **Enunciado (resumido):** "Declarações: 20% inconsistentes, 25% delas fraude; das demais, 6,25% fraude. Dada uma fraude, qual a chance de ser inconsistente?"
 - **Fala do Paco:** "A pista é ser fraude. Some as fraudes dos dois grupos."
-- **Fonte:** ENEM 2025 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito (0,5000) mantidos — **URL:** https://projetoagathaedu.com.br/questoes-enem/matematica-3/probabilidade/probabilidade-condicional.php
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 173: enunciado resumido; alternativas e gabarito (0,5000) mantidos — **URL:** https://api.enem.dev/v1/exams/2019/questions/173 (B42: ano e URL corrigidos; antes estava ENEM 2025)
 - **Conta de conferência:** 0,2 · 0,25 = 0,05; 0,8 · 0,0625 = 0,05; 0,05 / 0,10 = 0,5
 
 | id | Rótulo | Certa? | Feedback |
@@ -292,7 +292,7 @@ P(A | B) ≠ P(B | A) em geral: o total muda conforme a pista. A condicional nã
 #### V4 — `enem-2017-atraso`
 - **Enunciado (resumido):** "Com chuva, a chance de atraso é 50%; sem chuva, 25%; a previsão dá 30% de chuva. Qual a chance de atraso?"
 - **Fala do Paco:** "Última. Some o atraso dos dois caminhos: com e sem chuva."
-- **Fonte:** ENEM 2017 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito (0,325) mantidos — **URL:** https://projetoagathaedu.com.br/questoes-enem/matematica-3/probabilidade/teorema-da-probabilidade-total.php
+- **Fonte:** ENEM 2017 (adaptada) — **Adaptação:** Questão 179: enunciado resumido; alternativas e gabarito (0,325) mantidos — **URL:** https://api.enem.dev/v1/exams/2017/questions/179 (B42: número e URL identificados no cache)
 - **Conta de conferência:** 0,3 · 0,5 + 0,7 · 0,25 = 0,15 + 0,175 = 0,325
 
 | id | Rótulo | Certa? | Feedback |

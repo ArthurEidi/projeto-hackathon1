@@ -103,8 +103,9 @@ describe("gabaritos do treino", () => {
 
   it("vestibular", () => {
     eq(3 * f(4) + 2 * f(3) + 2 * f(2) + 1, "enem-2011-digitos");
-    expect(280 - 5 * 6 * 9).toBe(10);
-    expect(certa("enem-2012-enredo")).toBe("10 alunos a mais do que possíveis respostas distintas");
+    // ENEM 2020/163: I AM POTTER tem 5 consoantes (M, P, T, T, R) e 4 vogais; intercaladas, C V C V C V C V C
+    expect((f(5) / f(2)) * f(4)).toBe(1440);
+    expect(certa("enem-2020-anagramas")).toBe("4! · 5!/2");
     expect(certa("enem-2009-copa")).toBe("Uma combinação e um arranjo, respectivamente");
     for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
   });
