@@ -76,6 +76,9 @@ describe("motor genérico", () => {
   it("complete_when aceita gte, lte ou os dois", () => {
     expect(isComplete({ metric: "a", lte: -1 }, { a: 0 })).toBe(false);
     expect(isComplete({ metric: "a", lte: -1 }, { a: -1 })).toBe(true);
+    // NaN (divisor inválido em grupos_inteiros) não pode concluir nenhuma meta.
+    expect(isComplete({ metric: "resto", lte: 0 }, { resto: Number.NaN })).toBe(false);
+    expect(isComplete({ metric: "resto", gte: 0 }, { resto: Number.NaN })).toBe(false);
     expect(isComplete({ metric: "a", gte: 1, lte: 3 }, { a: 2 })).toBe(true);
     expect(isComplete({ metric: "a", gte: 1, lte: 3 }, { a: 4 })).toBe(false);
   });

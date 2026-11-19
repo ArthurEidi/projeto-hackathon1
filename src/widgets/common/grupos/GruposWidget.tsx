@@ -16,7 +16,7 @@ export function GruposWidget({ params, controls, onMetric }: WidgetProps) {
 
   useEffect(() => {
     const m = metricasGrupos(p, controls);
-    for (const [k, v] of Object.entries(m)) onMetric(k, Number.isFinite(v) ? v : 0);
+    for (const [k, v] of Object.entries(m)) onMetric(k, Number.isFinite(v) ? v : Number.NaN); // inválido não conclui (isComplete recusa NaN)
   }, [p, controls, onMetric]);
 
   return (
