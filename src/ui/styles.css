@@ -54,6 +54,21 @@ button {
   flex-direction: column;
   background: var(--bg);
 }
+/* Em telas largas, a coluna vira um cartão sobre o fundo cinza claro: a barra de rolagem da trilha
+   fica presa à borda da coluna em vez de flutuar sobre o branco. */
+@media (min-width: 520px) {
+  body {
+    background: var(--surface);
+  }
+  .app {
+    border-left: 2px solid var(--line);
+    border-right: 2px solid var(--line);
+  }
+  .home {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-dark) transparent;
+  }
+}
 
 /* ---------- Botão tátil ---------- */
 .btn {
@@ -631,21 +646,34 @@ button {
 .saudacao {
   margin-bottom: 14px;
 }
-/* Matérias: os botões são os próprios sprites (contorno e cor já vêm na imagem). */
+/* Matérias: os botões são os próprios sprites (contorno e cor já vêm na imagem). Ficam numa faixa
+   horizontal rolável, de borda a borda da coluna, para a trilha de Matemática (a única com conteúdo)
+   aparecer logo abaixo; a próxima matéria fica cortada na borda, sinal de que a faixa rola. */
 .materias {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px 8px;
-  margin-bottom: 18px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--gutter);
+  margin: 0 calc(-1 * var(--gutter)) 14px;
+  padding: 5px var(--gutter) 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-dark) transparent;
 }
-@media (min-width: 520px) {
+@media (hover: none) {
   .materias {
-    grid-template-columns: repeat(3, 1fr);
+    scrollbar-width: none;
+  }
+  .materias::-webkit-scrollbar {
+    display: none;
   }
 }
 .materia {
   appearance: none;
   display: block;
+  flex: 0 0 148px;
+  scroll-snap-align: start;
   padding: 0;
   border: 0;
   border-radius: 14px;
