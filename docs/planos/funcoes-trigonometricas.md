@@ -238,13 +238,21 @@ O aluno arrasta x de 0 a 4π para ver dois períodos completos da senoide e test
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2017-lago`
-- **Enunciado (resumido):** A intensidade luminosa em um lago é I(x) = k·sen(x), para 0° < x ≤ 90°. Quando x = 30°, a intensidade é qual percentual do valor máximo?
+- **Enunciado (resumido):** "A intensidade luminosa em um lago é I(x) = k·sen(x), para 0° < x ≤ 90°. Quando x = 30°, a intensidade é qual percentual do valor máximo?"
 - **Fala do Paco:** "Compare I(30°) = k·sen 30° com o valor máximo de sen(x) em (0°; 90°]."
-- **Fonte:** ENEM 2017, Questão 138 — `https://api.enem.dev/v1/exams/2017/questions/138`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`50%`) mantidos.
+- **Fonte:** ENEM 2017 (adaptada) — **Adaptação:** Questão 138: enunciado resumido; alternativas e gabarito (50%) mantidos. — **URL:** https://api.enem.dev/v1/exams/2017/questions/138
 - **Conta de conferência:** `I_max = I(90°) = k·1 = k`; `I(30°) = k·0,5 = 50%` de `k`.
-- **Opções e feedback:** `33%`, `50%` (correta), `57%`, `70%`, `86%`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `p33` | 33% | não | "33% faz 30°/90° = 1/3 como se I(x) fosse linear. Como sen 30° = 0,5 e o máximo é em 90° (sen 90° = 1), dá 50%." |
+| `p50` | 50% | **sim** | "Isso. O máximo é I(90°) = k, e I(30°) = k·sen 30° = 0,5k = 50% do máximo." |
+| `p57` | 57% | não | "57% ≈ 1/√3 = tg 30° usa tangente em vez de seno. Com sen 30° = 0,5, a razão é 50%." |
+| `p70` | 70% | não | "70% ≈ √2/2 = sen 45° calcula para 45° em vez de 30°. Para x = 30°, sen 30° = 0,5 = 50%." |
+| `p86` | 86% | não | "86% ≈ √3/2 = cos 30° usa cosseno em vez de seno. Com sen 30° = 0,5, dá 50%." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** determinar o número de soluções (interseções) de sen x = k ou sen x = cos x num intervalo dado.

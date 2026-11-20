@@ -239,13 +239,22 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 
 > Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2019-ph`
-- **Enunciado (resumido):** Sabendo que pH = −log₁₀(x) e a flor rosa mais valorizada exige 7 < pH < 8, em que intervalo deve estar x?
+- **Enunciado (resumido):** "Sabendo que pH = −log₁₀(x) e a flor rosa mais valorizada exige 7 < pH < 8, em que intervalo deve estar x?"
 - **Fala do Paco:** "Troque o sinal em 7 < −log₁₀(x) < 8 e aplique a base 10 nos dois extremos."
-- **Fonte:** ENEM 2019, Questão 137 — `https://api.enem.dev/v1/exams/2019/questions/137`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (entre 10⁻⁸ e 10⁻⁷) mantidos.
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 137: enunciado resumido; alternativas e gabarito (entre 10⁻⁸ e 10⁻⁷) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/137
 - **Conta de conferência:** `7 < −log₁₀(x) < 8 => −8 < log₁₀(x) < −7 => 10⁻⁸ < x < 10⁻⁷`.
-- **Opções e feedback:** Maiores que 10⁻⁸, Positivos menores que 10⁻⁷, Entre 7 e 8, Entre 70 e 80, Entre 10⁻⁸ e 10⁻⁷ (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | Maiores que 10⁻⁸ | não | "x > 10⁻⁸ só garante pH < 8; falta limitar x < 10⁻⁷ para pH > 7. O certo é entre 10⁻⁸ e 10⁻⁷." |
+| `b` | Positivos menores que 10⁻⁷ | não | "x < 10⁻⁷ só garante pH > 7; falta limitar x > 10⁻⁸ para pH < 8. O certo é entre 10⁻⁸ e 10⁻⁷." |
+| `c` | Entre 7 e 8 | não | "7 e 8 são os valores do pH, não de x; −log₁₀(x) está entre 7 e 8. O certo é entre 10⁻⁸ e 10⁻⁷." |
+| `d` | Entre 70 e 80 | não | "70 e 80 multiplica o pH por 10 em vez de usar potência 10^(−pH). O certo é entre 10⁻⁸ e 10⁻⁷." |
+| `e` | Entre 10⁻⁸ e 10⁻⁷ | **sim** | "Isso. 7 < −log₁₀(x) < 8 dá −8 < log₁₀(x) < −7, logo 10⁻⁸ < x < 10⁻⁷." |
+
 #### V2 — `pendente-fonte-logaritmos-2`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
@@ -253,6 +262,7 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 - **Adaptação:** nenhuma; questão não inserida.
 - **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
 - **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+
 #### V3 — `pendente-fonte-logaritmos-3`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
@@ -260,6 +270,7 @@ Domínio x>0; imagem R se b>0 e b≠1. Base 1 não serve, pois 1ʸ só dá 1. Pa
 - **Adaptação:** nenhuma; questão não inserida.
 - **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
 - **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+
 #### V4 — `pendente-fonte-logaritmos-4`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"

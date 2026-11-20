@@ -249,10 +249,12 @@ Arrastar B pelos quatro quadrantes troca os sinais de Δx e Δy, mas a distânci
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `etam-2011-distancia`
 - **Enunciado (resumido):** "Qual a distância entre os pontos (−1; −1) e (1; 1)?"
 - **Fala do Paco:** "Os degraus são de 2 em cada direção."
-- **Fonte:** ETAM 2011 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito (2√2) mantidos; texto lido em resumo da página, conferir no caderno antes de publicar — **URL:** https://www.todamateria.com.br/distancia-entre-dois-pontos-exercicios/
+- **Fonte:** ETAM 2011 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito mantidos — **URL:** https://www.todamateria.com.br/distancia-entre-dois-pontos-exercicios/
 - **Conta de conferência:** √(4 + 4) = √8 = 2√2
 
 | id | Rótulo | Certa? | Feedback |
@@ -265,7 +267,7 @@ Arrastar B pelos quatro quadrantes troca os sinais de Δx e Δy, mas a distânci
 #### V2 — `ufrr-2017-valor-de-y`
 - **Enunciado (resumido):** "A distância entre A(4; y) e B(1; 2) é 5. Quais os valores de y?"
 - **Fala do Paco:** "Δx já é 3. Que Δy completa a hipotenusa 5?"
-- **Fonte:** UFRR 2017 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito (6 e −2) mantidos; texto lido em resumo da página, conferir no caderno antes de publicar — **URL:** https://www.todamateria.com.br/distancia-entre-dois-pontos-exercicios/
+- **Fonte:** UFRR 2017 (adaptada) — **Adaptação:** enunciado resumido; alternativas e gabarito mantidos — **URL:** https://www.todamateria.com.br/distancia-entre-dois-pontos-exercicios/
 - **Conta de conferência:** 9 + (y − 2)² = 25 ⇒ y − 2 = ±4 ⇒ y = 6 ou −2
 
 | id | Rótulo | Certa? | Feedback |
@@ -276,14 +278,20 @@ Arrastar B pelos quatro quadrantes troca os sinais de Δx e Δy, mas a distânci
 | `a20` | 2 e 0 | não | "Com y = 2 a distância seria 3. Precisa Δy = ±4: 6 ou −2." |
 | `raiz6` | 4 + 2√6 e 4 − 2√6 | não | "O centro é y = 2, não 4. (y − 2)² = 16: 6 ou −2." |
 
-#### V3 — PENDENTE-FONTE
+#### V3 — `enem-2011-metro`
+- **Enunciado (resumido):** "Uma linha de metrô segue a reta y = x + 4 e há um hospital em P(−5; 5). Qual ponto da reta fica a no máximo 5 km do hospital?"
+- **Fala do Paco:** "Confira primeiro se o ponto pertence à reta y = x + 4 e depois calcule a distância até P(−5; 5)."
+- **Fonte:** ENEM 2011 (adaptada) — **Adaptação:** Questão 150: enunciado resumido; alternativas e gabarito ((–3, 1)) mantidos. — **URL:** https://api.enem.dev/v1/exams/2011/questions/150
+- **Conta de conferência:** `1 = −3 + 4` (na reta) e `d = √((−3+5)² + (1−5)²) = √20 < 5`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `pm50` | (–5, 0) | não | "(−5; 0) está a 5 km de P(−5; 5), mas não pertence à reta y = x + 4 (−5 + 4 = −1 ≠ 0). O certo é (–3, 1)." |
+| `pm31` | (–3, 1) | **sim** | "Isso. 1 = −3 + 4 (está na reta) e d = √((−3 + 5)² + (1 − 5)²) = √(4 + 16) = √20 < 5 km." |
+| `pm21` | (–2, 1) | não | "(−2; 1) fica a √25 = 5 km de P, mas não pertence à reta y = x + 4 (−2 + 4 = 2 ≠ 1). O certo é (–3, 1)." |
+| `p04` | (0, 4) | não | "(0; 4) pertence à reta, mas d = √((0 + 5)² + (4 − 5)²) = √26 > 5 km. O certo é (–3, 1)." |
+| `p26` | (2, 6) | não | "(2; 6) pertence à reta, mas d = √((2 + 5)² + (6 − 5)²) = √50 > 5 km. O certo é (–3, 1)." |
+
+#### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** ponto médio e simetria.
 - **Onde procurar:** UFRGS, PUC-RJ, UFES.
-
-#### V4 — `enem-2011-metro`
-- **Enunciado (resumido):** Uma linha de metrô segue a reta y = x + 4 e há um hospital em P(−5; 5). Qual ponto da reta fica a no máximo 5 km do hospital?
-- **Fala do Paco:** "Confira primeiro se o ponto pertence à reta y = x + 4 e depois calcule a distância até P(−5; 5)."
-- **Fonte:** ENEM 2011, Questão 150 — `https://api.enem.dev/v1/exams/2011/questions/150`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`(–3, 1)`) mantidos.
-- **Conta de conferência:** `1 = −3 + 4` (na reta) e `d = √((−3+5)² + (1−5)²) = √20 < 5`.
-- **Opções e feedback:** `(–5, 0)` (fora da reta), `(–3, 1)` (correta), `(–2, 1)` (fora da reta), `(0, 4)` (√26 > 5), `(2, 6)` (√50 > 5).

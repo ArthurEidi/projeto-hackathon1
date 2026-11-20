@@ -249,17 +249,41 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2010-petroleo`
-- **Enunciado:** "Se 10 litros de óleo contaminam 10⁷ litros de água, quantos litros serão contaminados por 1 000 litros de óleo?"
+- **Enunciado (resumido):** "Se 10 litros de óleo contaminam 10⁷ litros de água, quantos litros serão contaminados por 1 000 litros de óleo?"
 - **Fala do Paco:** "Quantas vezes 1 000 L de óleo é maior que 10 L? A água contaminada cresce na mesma proporção."
-- **Fonte:** ENEM 2010 (adaptada); Questão 177: enunciado resumido; alternativas e gabarito (10⁹) mantidos; https://api.enem.dev/v1/exams/2010/questions/177
+- **Fonte:** ENEM 2010 (adaptada) — **Adaptação:** Questão 177: enunciado resumido; alternativas e gabarito (10⁹) mantidos. — **URL:** https://api.enem.dev/v1/exams/2010/questions/177
 - **Conta de conferência:** (1 000 / 10) · 10⁷ = 10² · 10⁷ = 10⁹.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a10-2` | 10⁻² | não | "10⁻² = 10/1 000 inverte a razão entre os volumes de óleo. A razão é 1 000/10 = 10², e 10² × 10⁷ = 10⁹." |
+| `a103` | 10³ | não | "10³ é apenas o volume de óleo (1 000 L), não a água contaminada. 10² × 10⁷ = 10⁹." |
+| `a104` | 10⁴ | não | "10⁴ divide 10⁷ por 10³ em vez de ampliar por 100. Com 10² × 10⁷, o total é 10⁹." |
+| `a106` | 10⁶ | não | "10⁶ = 10⁷ ÷ 10 reduz a contaminação em vez de multiplicar por 100. O certo é 10² × 10⁷ = 10⁹." |
+| `a109` | 10⁹ | **sim** | "Exato. 1 000 = 100 × 10, logo contamina 10² × 10⁷ = 10⁹ litros de água." |
+
 #### V2 — `enem-2012-mamiferos`
-- **Enunciado:** "Na lei A = k · m^(2/3), se a massa m de um animal fica 8 vezes maior, por qual fator a área A multiplica?"
+- **Enunciado (resumido):** "Na lei A = k · m^(2/3), se a massa m de um animal fica 8 vezes maior, por qual fator a área A multiplica?"
 - **Fala do Paco:** "Troque m por 8m na lei e separe o fator que fica multiplicando k · m^(2/3)."
-- **Fonte:** ENEM 2012 (adaptada); Questão 168: enunciado resumido; alternativas e gabarito (4) mantidos; https://api.enem.dev/v1/exams/2012/questions/168
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 168: enunciado resumido; alternativas e gabarito (4) mantidos. — **URL:** https://api.enem.dev/v1/exams/2012/questions/168
 - **Conta de conferência:** 8^(2/3) = (∛8)² = 2² = 4.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a3r16` | ∛16 | não | "∛16 = 2^(4/3) usa 4^(2/3) em vez de 8^(2/3). Como ∛8 = 2, temos 2² = 4." |
+| `a4` | 4 | **sim** | "Exato. 8^(2/3) = (∛8)² = 2² = 4." |
+| `ar24` | √24 | não | "√24 multiplica 8 por 3 dentro da raiz quadrada. Em 8^(2/3), o 3 é índice da raiz cúbica: 2² = 4." |
+| `a8` | 8 | não | "8 supõe relação linear (expoente 1), ignorando o 2/3. Como 8^(2/3) = (∛8)² = 4." |
+| `a64` | 64 | não | "64 = 8² aplica o expoente 2 sem tirar a raiz cúbica. Em 8^(2/3) = (∛8)² = 4." |
+
+#### V3 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
+
+#### V4 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
 
 ---
 

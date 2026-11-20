@@ -254,21 +254,49 @@ n! cresce muito rápido: 5! = 120, 6! = 720. A fila vazia tem um único arranjo,
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2011-digitos`
-- **Enunciado:** "Com os dígitos 1, 3, 5, 7 e 9 sem repetir, formam-se senhas de 5 dígitos em ordem crescente. Qual a posição de 75 913?"
+- **Enunciado (resumido):** "Com 1, 3, 5, 7 e 9 sem repetir, formam-se números de 5 algarismos, listados em ordem crescente. Qual a posição de 75 913?"
 - **Fala do Paco:** "Conte os números menores que 75 913 fixando os prefixos maiores: começando por 1, 3, 5, depois 71, 73, depois 751, 753."
-- **Fonte:** ENEM 2011 (adaptada); Questão 174: enunciado resumido; alternativas e gabarito (89) mantidos; https://api.enem.dev/v1/exams/2011/questions/174
+- **Fonte:** ENEM 2011 (adaptada) — **Adaptação:** Questão 174: enunciado resumido; alternativas e gabarito (89) mantidos. — **URL:** https://api.enem.dev/v1/exams/2011/questions/174
 - **Conta de conferência:** 3·4! + 2·3! + 2·2! + 1 = 72 + 12 + 4 + 1 = 89.
 
-#### V2 — `enem-2020-anagramas` (B42: substitui a ENEM 2012/144, que ficou só em `principio-fundamental-da-contagem`)
-- **Enunciado:** "Anagramas de I AM POTTER (9 letras, sem os espaços) com vogais e consoantes sempre intercaladas: quantos são?"
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a24` | 24 | não | "24 = 4! conta só um dígito inicial (ex.: começando em 1). Para 75 913: 3·4! + 2·3! + 2·2! + 1 = 89." |
+| `a31` | 31 | não | "31 soma 4! + 3! + 1 sem multiplicar pelos prefixos menores. A posição é 3·4! + 2·3! + 2·2! + 1 = 89." |
+| `a32` | 32 | não | "32 = 4! + 3! + 2! não multiplica pelos dígitos menores. O certo é 3·4! + 2·3! + 2·2! + 1 = 89." |
+| `a88` | 88 | não | "88 = 3·4! + 2·3! + 2·2! conta quantos vêm antes de 75 913. A posição dele é 88 + 1 = 89." |
+| `a89` | 89 | **sim** | "Exato. 3·4! + 2·3! + 2·2! = 72 + 12 + 4 = 88 números antes, logo 75 913 é o 89º." |
+
+#### V2 — `enem-2020-anagramas`
+- **Enunciado (resumido):** "Anagramas de I AM POTTER (9 letras, sem os espaços) com vogais e consoantes sempre intercaladas: quantos são?"
 - **Fala do Paco:** "Conte vogais e consoantes e veja que casas cada grupo ocupa. Alguma letra se repete?"
-- **Fonte:** ENEM 2020 (adaptada); Questão 163: enunciado resumido, alternativas (imagens no original) transcritas; gabarito E; https://api.enem.dev/v1/exams/2020/questions/163
-- **Alternativas:** 9! · 4! · 5! · 2 · 4! · 5! · 9!/2 · **4! · 5!/2** (E).
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 163: enunciado resumido (contexto de Harry Potter omitido); alternativas, que no original são imagens, transcritas em texto; gabarito (E) mantido. — **URL:** https://api.enem.dev/v1/exams/2020/questions/163
 - **Conta de conferência:** consoantes M, P, T, T, R nas 5 casas ímpares: 5!/2! = 60; vogais I, A, O, E nas 4 pares: 4! = 24; 60 · 24 = 1 440 = 4! · 5!/2.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 9! | não | "9! ordena as 9 letras livremente: esquece a intercalação e o T repetido. Consoantes nas 5 casas ímpares e vogais nas 4 pares: 4! · 5!/2." |
+| `b` | 4! · 5! | não | "4! · 5! intercala certo, mas trata os dois T como letras diferentes. Trocar os T não cria anagrama novo: 4! · 5!/2." |
+| `c` | 2 · 4! · 5! | não | "O 2 deixa começar por vogal, mas com 5 consoantes e 4 vogais só cabe C V C V C V C V C. E os T são iguais: 4! · 5!/2." |
+| `d` | 9!/2 | não | "9!/2 desconta o T repetido, mas deixa vogais juntas. Intercaladas: consoantes nas ímpares (5!/2) e vogais nas pares (4!): 4! · 5!/2." |
+| `e` | 4! · 5!/2 | **sim** | "Isso. As consoantes M, P, T, T, R vão nas casas ímpares, 5!/2 = 60 modos; as 4 vogais nas pares, 4! = 24: 4! · 5!/2 = 1 440." |
+
 #### V3 — `enem-2009-copa`
-- **Enunciado:** "De 12 cidades, 4 são sorteadas (sem ordem) para um torneio e depois 2 delas viram mandante e visitante. Que contagens são?"
+- **Enunciado (resumido):** "De 12 cidades, 4 são sorteadas (sem ordem) para um torneio e depois 2 delas viram mandante e visitante. Que contagens são?"
 - **Fala do Paco:** "Em cada etapa, pergunte: trocar a ordem dos escolhidos muda o resultado?"
-- **Fonte:** ENEM 2009 (adaptada); Questão 165: enunciado resumido; alternativas e gabarito (Uma combinação e um arranjo, respectivamente) mantidos; https://api.enem.dev/v1/exams/2009/questions/165
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 165: enunciado resumido; alternativas e gabarito (Uma combinação e um arranjo, respectivamente) mantidos. — **URL:** https://api.enem.dev/v1/exams/2009/questions/165
 - **Conta de conferência:** C(12; 4) (sem ordem) e A(4; 2) (com ordem).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `comb-arr` | Uma combinação e um arranjo, respectivamente | **sim** | "Exato. O grupo de 4 é combinação C(12; 4), e mandante/visitante é arranjo A(4; 2)." |
+| `arr-comb` | Um arranjo e uma combinação, respectivamente | não | "Inverte a ordem: nas 4 cidades a ordem não importa (combinação), e mandante/visitante importa (arranjo)." |
+| `arr-perm` | Um arranjo e uma permutação, respectivamente | não | "Permutação usaria todas as 4 cidades, não só 2. O certo é uma combinação e um arranjo, respectivamente." |
+| `duas-comb` | Duas combinações | não | "Mandante e visitante trocam de papel se inverterem, logo a 2ª escolha é arranjo: combinação e arranjo." |
+| `dois-arr` | Dois arranjos | não | "Sortear as 4 cidades não distingue ordem (combinação); só a 2ª etapa é arranjo: combinação e arranjo." |
+
+#### V4 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.

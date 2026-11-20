@@ -227,13 +227,21 @@ Testar por que só existem **5 poliedros regulares (Platão)**: para fechar uma 
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2019-tetraedro-truncado`
-- **Enunciado (resumido):** Corta-se cada quina de um tetraedro regular removendo 1/3 das arestas em cada corte paralelo à face oposta. Quais faces terá o sólido?
+- **Enunciado (resumido):** "Corta-se cada quina de um tetraedro regular removendo 1/3 das arestas em cada corte paralelo à face oposta. Quais faces terá o sólido?"
 - **Fala do Paco:** "Conte quantos vértices foram cortados (novos triângulos) e quantos lados sobram em cada face antiga."
-- **Fonte:** ENEM 2019, Questão 157 — `https://api.enem.dev/v1/exams/2019/questions/157`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (4 hexágonos regulares e 4 triângulos equiláteros) mantidos.
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 157: enunciado resumido; alternativas e gabarito (4 hexágonos regulares e 4 triângulos equiláteros) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/157
 - **Conta de conferência:** 4 vértices cortados => 4 triângulos equiláteros; 4 faces originais perdem 3 cantos => 4 hexágonos regulares.
-- **Opções e feedback:** 4 hex + 4 tri eq (correta), 2 hex + 4 tri eq, 4 quad + 4 tri isósc, 3 quad + 4 tri isósc, 3 hex + 4 tri eq.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `h4t4` | 4 hexágonos regulares e 4 triângulos equiláteros | **sim** | "Exato. Os 4 vértices cortados geram 4 triângulos equiláteros, e as 4 faces originais perdem 3 cantos virando 4 hexágonos regulares." |
+| `h2t4` | 2 hexágonos regulares e 4 triângulos equiláteros | não | "Um tetraedro tem 4 faces originais (não 2), todas viram hexágonos ao perder 3 cantos. São 4 hexágonos regulares e 4 triângulos equiláteros." |
+| `q4t4` | 4 quadriláteros e 4 triângulos isósceles | não | "Cada face triangular perde 3 cantos e ganha 3 lados novos (hexágono regular), e os cortes geram triângulos equiláteros." |
+| `q3t4` | 3 quadriláteros e 4 triângulos isósceles | não | "Há 4 faces originais que viram hexágonos (6 lados, não quadriláteros) e 4 cortes equiláteros." |
+| `h3t4` | 3 hexágonos regulares e 4 triângulos equiláteros | não | "Todas as 4 faces do tetraedro são truncadas nos 3 cantos, formando 4 hexágonos regulares (não 3) e 4 triângulos equiláteros." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** calcular vértices e arestas de um poliedro truncado (ex.: icosaedro truncado / fulereno C60).

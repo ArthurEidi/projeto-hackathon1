@@ -229,29 +229,49 @@ Inclinar a pilha de fatias para o lado (prisma oblíquo / princípio de Cavalier
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2022-piscina`
-- **Enunciado (resumido):** Piscina sem tampa (90 m³), qual tem menor área: I (1,8×2×25), II (2×5×9), III (1×6×15), IV (1,5×15×4) ou V (2,5×3×12)?
+- **Enunciado (resumido):** "Piscina sem tampa, 90 m³ (altura × largura × comprimento): I 1,8×2×25; II 2×5×9; III 1×6×15; IV 1,5×15×4; V 2,5×3×12. Qual tem menor área?"
 - **Fala do Paco:** "Calcule L·C + 2·P·(L + C) para cada projeto, lembrando que não há tampa."
-- **Fonte:** ENEM 2022, Questão 172 — `https://api.enem.dev/v1/exams/2022/questions/172`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (II) mantidos.
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 172: enunciado resumido; alternativas e gabarito (II) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/172
 - **Conta de conferência:** `I: 147,2; II: 5·9 + 2·2·14 = 101 m²; III: 132; IV: 117; V: 111`.
-- **Opções e feedback:** I, II (correta), III, IV, V.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `i` | I | não | "O projeto I tem área 2·25 + 2·1,8·(2+25) = 147,2 m², a maior de todas. A menor é a do projeto II (101 m²)." |
+| `ii` | II | **sim** | "Isso. Fundo 5·9 = 45 m² e 4 paredes 2·2·(5+9) = 56 m² somam 101 m², a menor área entre os cinco." |
+| `iii` | III | não | "O projeto III tem área 6·15 + 2·1·(6+15) = 132 m², maior que os 101 m² do projeto II." |
+| `iv` | IV | não | "O projeto IV tem área 15·4 + 2·1,5·(15+4) = 117 m², maior que os 101 m² do projeto II." |
+| `v` | V | não | "O projeto V tem área 3·12 + 2·2,5·(3+12) = 111 m², maior que os 101 m² do projeto II." |
 
 #### V2 — `enem-2021-conteiner`
-- **Enunciado (resumido):** Em um contêiner retangular, dobram-se o comprimento e a largura mantendo a altura. Como mudam a área das 4 paredes e a do piso?
+- **Enunciado (resumido):** "Em um contêiner retangular, dobram-se o comprimento e a largura mantendo a altura. Como mudam a área das 4 paredes e a do piso?"
 - **Fala do Paco:** "Escreva a área das paredes e a do piso com comprimento, largura e altura; depois dobre comprimento e largura."
-- **Fonte:** ENEM 2021, Questão 166 — `https://api.enem.dev/v1/exams/2021/questions/166`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (II) mantidos.
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 166: enunciado resumido; as alternativas trazem a resposta de cada fornecedor (I a V); gabarito (fornecedor II) mantido. — **URL:** https://api.enem.dev/v1/exams/2021/questions/166
 - **Conta de conferência:** `paredes = 4H(C+L)` (dobra com 2C, 2L); `piso = C·L` (quadruplica com 2C, 2L).
-- **Opções e feedback:** I, II (correta), III, IV, V.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `i` | O dobro nas paredes e no piso | não | "As paredes dobram, mas o piso C · L vira 2C · 2L = 4 · C · L. O certo é o dobro nas paredes e 4 vezes no piso." |
+| `ii` | O dobro nas paredes e 4 vezes no piso | **sim** | "Exato. Com H fixa, as paredes medem 2H(C + L), que dobra; o piso C · L vira 2C · 2L = 4 · C · L." |
+| `iii` | 4 vezes nas paredes e no piso | não | "O piso quadruplica, mas as paredes 2H(C + L) só dobram, porque a altura H não mudou. O certo é o dobro nas paredes e 4 vezes no piso." |
+| `iv` | 4 vezes nas paredes e o dobro no piso | não | "Está invertido: com H fixa, as paredes 2H(C + L) dobram e o piso C · L quadruplica." |
+| `v` | 8 vezes nas paredes e 4 vezes no piso | não | "8 = 2³ seria o volume se as três medidas dobrassem. Aqui a altura fica fixa: as paredes dobram e o piso quadruplica." |
 
 #### V3 — `enem-2012-ceramica`
-- **Enunciado (resumido):** Uma travessa cúbica de argila de aresta a e volume V sofre contração linear de 20% no cozimento. Em quantos por cento diminui o volume?
+- **Enunciado (resumido):** "Uma travessa cúbica de argila de aresta a e volume V sofre contração linear de 20% no cozimento. Em quantos por cento diminui o volume?"
 - **Fala do Paco:** "Se cada aresta cai para 0,8a, eleve 0,8 ao cubo para achar o novo volume."
-- **Fonte:** ENEM 2012, Questão 180 — `https://api.enem.dev/v1/exams/2012/questions/180`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (C) mantidos.
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 180: enunciado resumido; alternativas e gabarito (C) mantidos. — **URL:** https://api.enem.dev/v1/exams/2012/questions/180
 - **Conta de conferência:** `(0,8a)³ = 0,512a³ => 1 - 0,512 = 0,488 = 48,8% menor que V`.
-- **Opções e feedback:** A (20%), B (36%), C (48,8%, correta), D (51,2%), E (60%).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a20` | 20% menor que V, uma vez que o volume do cubo é diretamente proporcional ao comprimento de seu lado | não | "20% é a redução linear da aresta. O volume cai com o cubo: (0,8a)³ = 0,512a³, logo diminui 48,8%." |
+| `a36` | 36% menor que V, porque a área da base diminui de a² para ((1 − 0,2)a)² | não | "36% (1 − 0,64) é a redução da área da base. No volume em 3D, (0,8)³ = 0,512, logo cai 48,8%." |
+| `a488` | 48,8% menor que V, porque o volume diminui de a³ para (0,8a)³ | **sim** | "Isso. A aresta passa a 0,8a e o volume a (0,8a)³ = 0,512V; a redução é 1 − 0,512 = 0,488 = 48,8%." |
+| `a512` | 51,2% menor que V, porque cada lado diminui para 80% do comprimento original | não | "51,2% (0,512V) é o volume que SOBRA, não o que diminuiu. A diminuição é 100% − 51,2% = 48,8%." |
+| `a60` | 60% menor que V, porque cada lado diminui 20% | não | "60% soma 3 · 20% em vez de multiplicar 0,8 · 0,8 · 0,8 = 0,512. O volume diminui 48,8%." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** variação do nível de líquido em prisma ao imergir objetos (princípio de Arquimedes).

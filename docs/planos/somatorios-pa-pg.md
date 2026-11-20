@@ -238,12 +238,21 @@ n é inteiro positivo. A fórmula da PG com 1−q exige q≠1; q=0 deixa apenas 
 
 > PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2018-tenis`
-- **Enunciado:** Em um torneio eliminatório simples com 128 tenistas, qual expressão dá o total de partidas até definir o campeão?
+- **Enunciado (resumido):** "Em um torneio eliminatório simples com 128 tenistas, qual expressão dá o total de partidas até definir o campeão?"
 - **Fala do Paco:** "Cada partida elimina um tenista. Quantos precisam ser eliminados até sobrar o campeão?"
-- **Fonte:** ENEM 2018, Questão 162 — `https://api.enem.dev/v1/exams/2018/questions/162`
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 162: enunciado resumido; alternativas e gabarito (64 + 32 + 16 + 8 + 4 + 2 + 1) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/162
 - **Conta de conferência:** `128 / 2 = 64`; fases seguintes `32 + 16 + 8 + 4 + 2 + 1`, total `64 + 32 + 16 + 8 + 4 + 2 + 1 = 127`.
-- **Alternativas e feedback:** 2 · 128, 64 + ... + 2, 128 + ... + 1, 128 + ... + 2, 64 + 32 + 16 + 8 + 4 + 2 + 1 (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 2 · 128 | não | "2 · 128 = 256 multiplica o total de tenistas em vez de dividir aos pares. O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." |
+| `b` | 64 + 32 + 16 + 8 + 4 + 2 | não | "Para nos 2 finalistas: falta o + 1 da partida final. O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." |
+| `c` | 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 | não | "128 são os tenistas, não os jogos da 1ª fase (128 ÷ 2 = 64). O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." |
+| `d` | 128 + 64 + 32 + 16 + 8 + 4 + 2 | não | "Começa em 128 (tenistas, não jogos) e ainda esquece a final (+ 1). O certo é 64 + 32 + 16 + 8 + 4 + 2 + 1." |
+| `e` | 64 + 32 + 16 + 8 + 4 + 2 + 1 | **sim** | "Isso. Cada fase reduz pela metade: 64 + 32 + 16 + 8 + 4 + 2 + 1 = 127 partidas." |
 
 #### V2 — `pendente-fonte-somatorios-pa-pg-v2`
 - **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.

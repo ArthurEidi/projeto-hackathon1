@@ -251,17 +251,25 @@ A hipotenusa (oposta a 90°) é sempre o maior lado (a > b e a > c), mas menor q
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2020-arvore`
+- **Enunciado (resumido):** "Vinte mangueiras iguais somam 100 m e vão do topo de um poste de 3 m até pontos de uma circunferência no chão. Qual é o raio dela?"
+- **Fala do Paco:** "Divida 100 m por 20 para achar a hipotenusa e aplique Pitágoras com a altura 3 m."
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 172: enunciado resumido; alternativas e gabarito (4,00) mantidos. — **URL:** https://api.enem.dev/v1/exams/2020/questions/172
+- **Conta de conferência:** `100/20 = 5 m`; `r = √(5² − 3²) = √16 = 4,00 m`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `r400` | 4,00 | **sim** | "Isso. Cada mangueira mede 100/20 = 5 m; com altura 3 m, r = √(5² − 3²) = 4,00 m." |
+| `r487` | 4,87 | não | "4,87 não fecha o triângulo retângulo de hipotenusa 5 m e cateto 3 m: r = √(25 − 9) = 4,00 m." |
+| `r500` | 5,00 | não | "5,00 = 100/20 é o comprimento de cada mangueira (a hipotenusa), não o raio no chão. O certo é 4,00 m." |
+| `r583` | 5,83 | não | "5,83 ≈ √(5² + 3²) = √34 somou os quadrados em vez de subtrair (tratou a mangueira de 5 m como cateto). Como 5 m é a hipotenusa, r = 4,00 m." |
+| `r626` | 6,26 | não | "6,26 supera até a própria mangueira de 5 m, o que é impossível para um cateto. O certo é √(5² − 3²) = 4,00 m." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** aplicar o teorema de Pitágoras para calcular distância em linha reta ("atalho") contra trajeto em esquina.
 - **Onde procurar:** ENEM, Vunesp, UERJ.
-
-#### V2 — `enem-2020-arvore`
-- **Enunciado (resumido):** Vinte mangueiras iguais somam 100 m e vão do topo de um poste de 3 m até pontos de uma circunferência no chão. Qual é o raio dela?
-- **Fala do Paco:** "Divida 100 m por 20 para achar a hipotenusa e aplique Pitágoras com a altura 3 m."
-- **Fonte:** ENEM 2020, Questão 172 — `https://api.enem.dev/v1/exams/2020/questions/172`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`4,00`) mantidos.
-- **Conta de conferência:** `100/20 = 5 m`; `r = √(5² − 3²) = √16 = 4,00 m`.
-- **Opções e feedback:** `4,00` (correta), `4,87`, `5,00`, `5,83`, `6,26`.
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** calcular lado ou diagonal de quadrado, retângulo ou losango usando Pitágoras.

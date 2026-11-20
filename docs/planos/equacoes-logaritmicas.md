@@ -251,16 +251,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ufrgs-2022-log2` — UFRGS 2022
-- **Enunciado:** "Se log₂x + (log₂x)² = 12, quanto vale x?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ufrgs-2022-log2`
+- **Enunciado (resumido):** "Se log₂x + (log₂x)² = 12, quanto vale x?"
 - **Fala do Paco:** "Chame log₂x de u: u + u² = 12. Depois volte para x com x = 2^u."
-- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 49: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
-- **Alternativas:** **8 ou 1/16** · 1/8 ou 16 · −4 ou 3 · 4 ou −3 · 2¹²
+- **Fonte:** UFRGS 2022 (adaptada) — **Adaptação:** 1º dia, Questão 49: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
 - **Conta de conferência:** u = log₂x: u² + u − 12 = 0 ⇒ u = 3 ou −4 ⇒ x = 8 ou 1/16 (A).
 
-**Auditoria B18 (15/11/2026):** nenhuma candidata integralmente verificável no cache ENEM obrigatório. Mantido PENDENTE-FONTE; contas e impedimentos em `docs/revisao/vestibular-b18.md`.
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 8 ou 1/16 | **sim** | "Isso. Com u = log₂x, u² + u − 12 = 0 dá u = 3 ou u = −4; então x = 2³ = 8 ou x = 2⁻⁴ = 1/16." |
+| `b` | 1/8 ou 16 | não | "1/8 e 16 vêm de u = −3 e u = 4, raízes com sinal trocado. De (u − 3)(u + 4) = 0: u = 3 ou −4, x = 8 ou 1/16." |
+| `c` | −4 ou 3 | não | "−4 e 3 são os valores de u = log₂x; falta voltar para x: x = 2⁻⁴ = 1/16 ou x = 2³ = 8." |
+| `d` | 4 ou −3 | não | "4 e −3 são raízes de u² − u − 12 = 0, com sinal trocado, e ainda são u. Certo: u = 3 ou −4, x = 8 ou 1/16." |
+| `e` | 2¹² | não | "2¹² trata a soma como log₂x = 12. Com u = log₂x: u² + u − 12 = 0, u = 3 ou −4, e x = 8 ou 1/16." |
 
-#### V1 — `v1-equacoes-logaritmicas`
+#### V2 — `v1-equacoes-logaritmicas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações logarítmicas e condições de existência.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -271,7 +278,7 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V2 — `v2-equacoes-logaritmicas`
+#### V3 — `v2-equacoes-logaritmicas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Aplicação direta em contexto, no tema equações logarítmicas e condições de existência.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -282,20 +289,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V3 — `v3-equacoes-logaritmicas`
+#### V4 — `v3-equacoes-logaritmicas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema equações logarítmicas e condições de existência.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-equacoes-logaritmicas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema equações logarítmicas e condições de existência.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
 - **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
 - **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.

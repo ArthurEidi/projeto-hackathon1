@@ -251,14 +251,22 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `unicamp-2025-modulos` — Unicamp 2025
-- **Enunciado:** "Os reais x e y satisfazem |x − 2| ≤ 2 e |y − 3| ≤ 1. O que se pode concluir com certeza?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `unicamp-2025-modulos`
+- **Enunciado (resumido):** "Os reais x e y satisfazem |x − 2| ≤ 2 e |y − 3| ≤ 1. O que se pode concluir com certeza?"
 - **Fala do Paco:** "|x − 2| ≤ 2 põe x a no máximo 2 de distância do 2; o mesmo vale para y em volta do 3, com distância 1."
-- **Fonte:** Unicamp 2025 (adaptada); 1ª fase, Questão 52: enunciado resumido; alternativas e gabarito oficial (c) mantidos. https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf
-- **Alternativas:** x² + y² ≤ 1 · x + y ≥ 10 · **x + y ≤ 8** · x² + y² ≥ 36
+- **Fonte:** Unicamp 2025 (adaptada) — **Adaptação:** 1ª fase, Questão 52: enunciado resumido; alternativas e gabarito oficial (c) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf
 - **Conta de conferência:** 0 ≤ x ≤ 4 e 2 ≤ y ≤ 4 ⇒ x + y ≤ 8 (c).
 
-#### V1 — `v1-inequacoes-modulares`
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | x² + y² ≤ 1 | não | "y está entre 2 e 4, então y² ≥ 4 e x² + y² ≥ 4 > 1. Como x ≤ 4 e y ≤ 4, o certo é x + y ≤ 8." |
+| `b` | x + y ≥ 10 | não | "x + y vale no máximo 4 + 4 = 8, nunca 10. Com x em [0, 4] e y em [2, 4]: x + y ≤ 8." |
+| `c` | x + y ≤ 8 | **sim** | "Isso. ∣x − 2∣ ≤ 2 dá 0 ≤ x ≤ 4 e ∣y − 3∣ ≤ 1 dá 2 ≤ y ≤ 4; somando os máximos, x + y ≤ 8." |
+| `d` | x² + y² ≥ 36 | não | "x² + y² vale no máximo 16 + 16 = 32 < 36. De x ≤ 4 e y ≤ 4 sai x + y ≤ 8." |
+
+#### V2 — `v1-inequacoes-modulares`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema inequações modulares.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -269,7 +277,7 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V2 — `v2-inequacoes-modulares`
+#### V3 — `v2-inequacoes-modulares`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Aplicação direta em contexto, no tema inequações modulares.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -280,20 +288,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V3 — `v3-inequacoes-modulares`
+#### V4 — `v3-inequacoes-modulares`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema inequações modulares.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-inequacoes-modulares`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema inequações modulares.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
 - **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
 - **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.

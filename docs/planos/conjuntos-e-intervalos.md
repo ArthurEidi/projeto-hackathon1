@@ -247,23 +247,52 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2020-amostras`
-- **Enunciado:** "Num grupo de 200 amostras, 100 têm característica A, 110 têm B e 20 não têm nenhuma. Quantas têm apenas a característica A?"
+- **Enunciado (resumido):** "Num grupo de 200 amostras, 100 têm característica A, 110 têm B e 20 não têm nenhuma. Quantas têm apenas a característica A?"
 - **Fala do Paco:** "Quem tem A ou B são 200 − 20. Use a união para achar quem tem as duas e tire esse grupo de A."
-- **Fonte:** ENEM 2020 (adaptada); Questão 169: enunciado resumido; alternativas e gabarito (70) mantidos; https://api.enem.dev/v1/exams/2020/questions/169
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 169: enunciado resumido; alternativas e gabarito (70) mantidos. — **URL:** https://api.enem.dev/v1/exams/2020/questions/169
 - **Conta de conferência:** (100 + 110) − (200 − 20) = 30 => apenas A = 100 − 30 = 70.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a30` | 30 | não | "30 é a interseção A∩B: 100 + 110 − 180 = 30. Apenas A é 100 − 30 = 70." |
+| `a60` | 60 | não | "60 = 200 − 110 − 30 subtrai B e A∩B do total. Apenas A é 100 − 30 = 70." |
+| `a70` | 70 | **sim** | "Exato. A∩B = 100 + 110 − 180 = 30, então apenas A é 100 − 30 = 70." |
+| `a90` | 90 | não | "90 = 200 − 110 inclui as 20 sem A nem B. Apenas A é 100 − 30 = 70." |
+| `a100` | 100 | não | "100 é todo o conjunto A, incluindo as 30 com B. Apenas A é 100 − 30 = 70." |
+
 #### V2 — `enem-2018-pena`
-- **Enunciado:** "Pena de 5 a 15 anos terá redução de 1/6 a 2/3. Qual é o intervalo possível para a nova pena?"
+- **Enunciado (resumido):** "Pena de 5 a 15 anos terá redução de 1/6 a 2/3. Qual é o intervalo possível para a nova pena?"
 - **Fala do Paco:** "Para cada extremo da nova pena, escolha a pena e a redução que o tornam o menor ou o maior possível."
-- **Fonte:** ENEM 2018 (adaptada); Questão 163: enunciado resumido; alternativas e gabarito (1 ano e 8 meses a 12 anos e 6 meses) mantidos; https://api.enem.dev/v1/exams/2018/questions/163
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 163: enunciado resumido; alternativas e gabarito (1 ano e 8 meses a 12 anos e 6 meses) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/163
 - **Conta de conferência:** 5 · (1 − 2/3) = 5/3 = 1 ano e 8 meses; 15 · (1 − 1/6) = 12,5 = 12 anos e 6 meses.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a1a8-12a6` | 1 ano e 8 meses a 12 anos e 6 meses | **sim** | "Exato. 5 · 1/3 = 5/3 = 1 ano e 8 meses; 15 · 5/6 = 12,5 = 12 anos e 6 meses." |
+| `a1a8-5a` | 1 ano e 8 meses a 5 anos | não | "5 anos = 15 · 1/3 aplica a redução máxima no teto. No teto vale 15 · 5/6 = 12 anos e 6 meses." |
+| `a3a4-10a` | 3 anos e 4 meses a 10 anos | não | "3 anos e 4 meses e 10 anos são 2/3 de 5 e de 15: a redução, não o que sobra. O certo é 5/3 a 12,5 anos." |
+| `a4a2-5a` | 4 anos e 2 meses a 5 anos | não | "4 anos e 2 meses = 5 · 5/6 e 5 anos = 15 · 1/3 trocam as reduções. O certo: 5 · 1/3 a 15 · 5/6, ou 5/3 a 12,5 anos." |
+| `a4a2-12a6` | 4 anos e 2 meses a 12 anos e 6 meses | não | "4 anos e 2 meses = 5 · 5/6 usa a redução mínima de 1/6 no piso. No piso vale 5 · 1/3 = 1 ano e 8 meses." |
+
 #### V3 — `enem-2018-escala`
-- **Enunciado:** "Na escala 1 : X, 15 m ficam entre 0,5 cm e 1 cm, e 90 m superam 4 cm. Qual intervalo X satisfaz?"
+- **Enunciado (resumido):** "Na escala 1 : X, 15 m ficam entre 0,5 cm e 1 cm, e 90 m superam 4 cm. Qual intervalo X satisfaz?"
 - **Fala do Paco:** "Converta 15 m = 1 500 cm e 90 m = 9 000 cm; resolva 0,5 < 1 500/X < 1 e 9 000/X > 4."
-- **Fonte:** ENEM 2018 (adaptada); Questão 169: enunciado resumido; alternativas e gabarito (1 500 < X < 2 250) mantidos; https://api.enem.dev/v1/exams/2018/questions/169
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 169: enunciado resumido; alternativas e gabarito (1 500 < X < 2 250) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/169
 - **Conta de conferência:** 1 500 < X < 3 000 e X < 9 000/4 = 2 250 => 1 500 < X < 2 250.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `x-gt-1500` | X > 1 500 | não | "X > 1 500 ignora o limite superior de 1 500/0,5 e 9 000/4. A interseção é 1 500 < X < 2 250." |
+| `x-lt-3000` | X < 3 000 | não | "X < 3 000 ignora X > 1 500 e 9 000/X > 4 (X < 2 250). O certo é 1 500 < X < 2 250." |
+| `1500-2250` | 1 500 < X < 2 250 | **sim** | "Exato. 1 500 < X < 3 000 e X < 9 000/4 = 2 250 dão 1 500 < X < 2 250." |
+| `1500-3000` | 1 500 < X < 3 000 | não | "1 500 < X < 3 000 usa só os 15 m e esquece 9 000/X > 4. O certo é 1 500 < X < 2 250." |
+| `2250-3000` | 2 250 < X < 3 000 | não | "2 250 < X < 3 000 inverte 9 000/X > 4 para X > 2 250. O certo é 1 500 < X < 2 250." |
+
+#### V4 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
 
 ---
 

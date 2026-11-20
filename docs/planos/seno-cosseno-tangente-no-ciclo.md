@@ -238,21 +238,29 @@ O aluno percorre os 4 quadrantes observando o sinal de x, y e y/x, compara os si
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2009-projecao`
+- **Enunciado (resumido):** "P sai de (r; 0) na circunferência de raio r e percorre um arco d ≤ r no sentido anti-horário. Quanto anda sua projeção Q no eixo x?"
+- **Fala do Paco:** "O ângulo central em radianos é θ = d/r. Calcule a variação da abscissa de Q desde x = r."
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 174: enunciado resumido explicitando a partida em (R; 0); alternativas e gabarito (R( 1 - cos d/r )) mantidos. — **URL:** https://api.enem.dev/v1/exams/2009/questions/174
+- **Conta de conferência:** `θ = d/R rad`; `x_Q` varia de `R` para `R·cos(d/R)` ⇒ distância `R(1 − cos(d/R))`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `sen` | r(1 − sen(d/r)) | não | "r · sen(d/r) é a altura y de P, não a abscissa de Q. Como x cai de r para r · cos(d/r), Q anda r(1 − cos(d/r))." |
+| `cos` | r(1 − cos(d/r)) | **sim** | "Isso. Com ângulo θ = d/r rad, Q vai de r até r · cos(d/r), andando r(1 − cos(d/r))." |
+| `tag` | r(1 − tg(d/r)) | não | "tg(d/r) não projeta P no eixo x. A projeção horizontal usa cosseno: r(1 − cos(d/r))." |
+| `rsen` | r · sen(r/d) | não | "Inverteu a razão para r/d (o ângulo é arco/raio = d/r) e usou seno. O certo é r(1 − cos(d/r))." |
+| `rcos` | r · cos(r/d) | não | "Além de inverter para r/d: r · cos(d/r) seria a posição final de Q, não o quanto ele andou desde x = r. O certo é r(1 − cos(d/r))." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** reduzir arcos do 2º, 3º e 4º quadrantes ao 1º quadrante para calcular seno, cosseno e tangente.
 - **Onde procurar:** Fuvest, Vunesp, UFRGS, UFPR.
 
-#### V2 — PENDENTE-FONTE
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** identificar o sinal de expressões trigonométricas a partir do quadrante do arco.
 - **Onde procurar:** Mackenzie, PUC, UERJ, UFRGS.
-
-#### V3 — `enem-2009-projecao`
-- **Enunciado (resumido):** Na circunferência de raio R, o ponto P parte de (R; 0) e percorre arco d ≤ R no sentido anti-horário. Quanto anda sua projeção Q no eixo x?
-- **Fala do Paco:** "O ângulo central em radianos é θ = d/R. Calcule a variação da abscissa de Q desde x = R."
-- **Fonte:** ENEM 2009, Questão 174 — `https://api.enem.dev/v1/exams/2009/questions/174`
-- **Adaptação:** enunciado resumido explicitando a partida em (R; 0); alternativas e gabarito (`R( 1 - cos d/r )`) mantidos.
-- **Conta de conferência:** `θ = d/R rad`; `x_Q` varia de `R` para `R·cos(d/R)` ⇒ distância `R(1 − cos(d/R))`.
-- **Opções e feedback:** `R( 1 - sen d/r )`, `R( 1 - cos d/r )` (correta), `R( 1 - tag d/r )`, `Rsen (r/d)`, `Rcos (r/d)`.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** resolver equação trigonométrica elementar (ex.: sen x = 1/2 ou cos x = −1/2) no intervalo [0; 2π].

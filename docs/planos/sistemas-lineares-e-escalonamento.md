@@ -261,29 +261,49 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2023-tiquetes`
-- **Enunciado (resumido):** 2 cartelas de 9 tíquetes azuis e 1 de 9 vermelhos custam R$ 32,40. Se azul − vermelho = vermelho + 0,05, quanto custa a cartela vermelha?
+- **Enunciado (resumido):** "2 cartelas de 9 tíquetes azuis e 1 de 9 vermelhos custam R$ 32,40. Se azul − vermelho = vermelho + 0,05, quanto custa a cartela vermelha?"
 - **Fala do Paco:** "Divida tudo por 9 para achar o preço unitário: 2a + v = 3,60."
-- **Fonte:** ENEM 2023, Questão 175 — `https://api.enem.dev/v1/exams/2023/questions/175`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (6,30) mantidos.
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 175: enunciado resumido; alternativas e gabarito (6,30) mantidos. — **URL:** https://api.enem.dev/v1/exams/2023/questions/175
 - **Conta de conferência:** `18a + 9v = 32,40 => 2a + v = 3,60`; `a = 2v + 0,05 => 5v = 3,50 => v = 0,70 => 9v = 6,30`.
-- **Opções e feedback:** 4,68, 6,30 (correta), 9,30, 10,50, 10,65.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a468` | 4,68 | não | "4,68 vem de ler cinco centavos como 0,50: 5v + 1 = 3,60 dá v = 0,52. Com 0,05: 5v = 3,50, v = 0,70 e 9v = 6,30." |
+| `a630` | 6,30 | **sim** | "Isso. 2a + v = 3,60 e a = 2v + 0,05 dão 5v = 3,50, v = 0,70 e 9v = 6,30." |
+| `a930` | 9,30 | não | "9,30 dá v ≈ 1,03, que não fecha 2a + v = 3,60. Resolvendo: 5v = 3,50, v = 0,70 e 9v = 6,30." |
+| `a1050` | 10,50 | não | "10,50 vem de usar a − v = 0,05 (3v = 3,50) em vez de a = 2v + 0,05. O certo é 6,30." |
+| `a1065` | 10,65 | não | "10,65 vem de trocar as cartelas (a + 2v = 3,60) e usar a = v + 0,05: 3v = 3,55. Com 2a + v e a = 2v + 0,05 sai 6,30." |
 
 #### V2 — `enem-2022-circuitos`
-- **Enunciado (resumido):** 3 voltas no circuito maior e 2 no menor dão 1 800 m; 2 maiores e 1 menor dão 1 100 m. Qual o maior total de voltas inteiras para 5 000 m?
+- **Enunciado (resumido):** "3 voltas no circuito maior e 2 no menor dão 1 800 m; 2 maiores e 1 menor dão 1 100 m. Qual o maior total de voltas inteiras para 5 000 m?"
 - **Fala do Paco:** "Ache M e m pelo sistema e maximize x + y em 400x + 300y = 5 000."
-- **Fonte:** ENEM 2022, Questão 146 — `https://api.enem.dev/v1/exams/2022/questions/146`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (16) mantidos.
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 146: enunciado resumido; alternativas e gabarito (16) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/146
 - **Conta de conferência:** `3M + 2m = 1 800` e `2M + m = 1 100 => M = 400, m = 300`; `4x + 3y = 50 => (x, y) = (2, 14) => 16`.
-- **Opções e feedback:** 10, 13, 14, 15, 16 (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a10` | 10 | não | "10 voltas no maior dão só 4 000 m. Com 4x + 3y = 50, o máximo é (2; 14), soma 16." |
+| `a13` | 13 | não | "13 = 11 + 2 é o menor total possível em 4x + 3y = 50. O maior é 2 + 14 = 16." |
+| `a14` | 14 | não | "14 = 8 + 6 é uma solução de 4x + 3y = 50, mas não a maior. O máximo é 2 + 14 = 16." |
+| `a15` | 15 | não | "15 = 5 + 10 não é o máximo: trocando mais voltas para o circuito menor chega a 2 + 14 = 16." |
+| `a16` | 16 | **sim** | "Certo. M = 400 m e m = 300 m; em 4x + 3y = 50, o maior y múltiplo dá (2; 14) e soma 16." |
 
 #### V3 — `enem-2018-rifa`
-- **Enunciado (resumido):** Numa rifa, 80 faltaram, 45 compraram 2 bilhetes, alguns 3 e x compraram 1. Se x = 20% dos bilhetes B e B = alunos + 33, quanto vale x?
+- **Enunciado (resumido):** "Numa rifa, 80 faltaram, 45 compraram 2 bilhetes, alguns 3 e x compraram 1. Se x = 20% dos bilhetes B e B = alunos + 33, quanto vale x?"
 - **Fala do Paco:** "Escreva B e o total de alunos em função de x e y (quem comprou 3)."
-- **Fonte:** ENEM 2018, Questão 178 — `https://api.enem.dev/v1/exams/2018/questions/178`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (48) mantidos.
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 178: enunciado resumido; alternativas e gabarito (48) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/178
 - **Conta de conferência:** `B = 5x = x + 90 + 3y => 4x − 3y = 90`; `5x = x + y + 125 + 33 => 4x − y = 158`; `2y = 68 => y = 34 => x = 48`.
-- **Opções e feedback:** 34, 42, 47, 48 (correta), 79.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a34` | 34 | não | "34 é y, quem comprou 3 bilhetes. Substituindo em 4x − y = 158, sai 4x = 192 e x = 48." |
+| `a42` | 42 | não | "Com x = 42, B = 210 e 4x − y = 158 dá y = 10; mas as vendas seriam 42 + 90 + 30 = 162. O sistema dá x = 48." |
+| `a47` | 47 | não | "Com x = 47, 4x − y = 158 dá y = 30, mas então 4x − 3y = 98, não 90. As duas equações juntas dão 2y = 68, y = 34 e x = 48." |
+| `a48` | 48 | **sim** | "Isso. 4x − 3y = 90 e 4x − y = 158 dão 2y = 68, y = 34 e 4x = 192, logo x = 48." |
+| `a79` | 79 | não | "79 é 158 ÷ 2, como se a equação fosse 2x = 158. Ela é 4x − y = 158; com y = 34, 4x = 192 e x = 48." |
 
 #### V4 — `v4-sistemas-lineares-e-escalonamento`
 - **Estado:** **PENDENTE-FONTE**

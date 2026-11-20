@@ -251,14 +251,22 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `unicamp-2025-composta` — Unicamp 2025
-- **Enunciado:** "Com f(x) = x − 2 e g(x) = x² − 4x, quantos inteiros x satisfazem g(f(x)) < 0?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `unicamp-2025-composta`
+- **Enunciado (resumido):** "Com f(x) = x − 2 e g(x) = x² − 4x, quantos inteiros x satisfazem g(f(x)) < 0?"
 - **Fala do Paco:** "g(f(x)) = (x − 2)² − 4(x − 2) = (x − 2)(x − 6). Leia o sinal entre as raízes."
-- **Fonte:** Unicamp 2025 (adaptada); 1ª fase, Questão 54: enunciado reescrito como pergunta; alternativas e gabarito oficial (b) mantidos. https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf
-- **Alternativas:** 2 · **3** · 4 · 5
+- **Fonte:** Unicamp 2025 (adaptada) — **Adaptação:** 1ª fase, Questão 54: enunciado reescrito como pergunta; alternativas e gabarito oficial (b) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf
 - **Conta de conferência:** g(f(x)) = (x − 2)(x − 6) < 0 ⇒ 2 < x < 6 ⇒ 3, 4, 5 (b).
 
-#### V1 — `v1-inequacoes-quadraticas`
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2` | 2 | não | "Entre as raízes 2 e 6, sem incluí-las, ficam 3, 4 e 5: três inteiros, não dois." |
+| `a3` | 3 | **sim** | "Isso. (x − 2)(x − 6) < 0 para 2 < x < 6; os inteiros são 3, 4 e 5." |
+| `a4` | 4 | não | "4 inclui um extremo, mas em 2 e 6 o produto vale 0 e a desigualdade é estrita: ficam 3, 4 e 5." |
+| `a5` | 5 | não | "5 conta de 2 a 6, como se fosse ≤ 0. Com < 0 os extremos saem: 3, 4 e 5." |
+
+#### V2 — `v1-inequacoes-quadraticas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema inequações quadráticas.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -269,7 +277,7 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V2 — `v2-inequacoes-quadraticas`
+#### V3 — `v2-inequacoes-quadraticas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Aplicação direta em contexto, no tema inequações quadráticas.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -280,20 +288,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V3 — `v3-inequacoes-quadraticas`
+#### V4 — `v3-inequacoes-quadraticas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema inequações quadráticas.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-inequacoes-quadraticas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema inequações quadráticas.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
 - **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
 - **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.

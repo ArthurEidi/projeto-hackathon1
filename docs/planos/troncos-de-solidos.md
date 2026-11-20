@@ -229,21 +229,35 @@ Arrastar `h'` de `0` a `H` mostra como `k³` cresce devagar no começo e dispara
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2020-kukulkan`
-- **Enunciado (resumido):** O Templo de Kukulkán tem formato de tronco reto de pirâmide de base quadrada. Quais figuras planas formam esse sólido?
+- **Enunciado (resumido):** "O Templo de Kukulkán tem formato de tronco reto de pirâmide de base quadrada. Quais figuras planas formam esse sólido?"
 - **Fala do Paco:** "Conte as duas tampas paralelas e as quatro paredes inclinadas laterais."
-- **Fonte:** ENEM 2020, Questão 151 — `https://api.enem.dev/v1/exams/2020/questions/151`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (2 quadrados e 4 trapézios isósceles) mantidos.
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 151: enunciado resumido; alternativas e gabarito (2 quadrados e 4 trapézios isósceles) mantidos. — **URL:** https://api.enem.dev/v1/exams/2020/questions/151
 - **Conta de conferência:** tronco reto de pirâmide quadrangular regular tem 2 bases quadradas e 4 faces laterais em trapézio isósceles.
-- **Opções e feedback:** 2 quad + 4 ret, 1 ret + 4 tri isósc, 2 quad + 4 trap isósc (correta), 1 quad + 3 ret + 2 trap ret, 2 ret + 2 quad + 2 trap ret.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `q2r4` | 2 quadrados e 4 retângulos | não | "Retângulos formam as laterais de um prisma reto, não de um tronco de pirâmide, cujas laterais afunilam em trapézios isósceles." |
+| `r1t4` | 1 retângulo e 4 triângulos isósceles | não | "Triângulos formam uma pirâmide inteira; ao cortar o topo nascem 2 quadrados e 4 trapézios isósceles." |
+| `q2ti4` | 2 quadrados e 4 trapézios isósceles | **sim** | "Exato. O tronco reto de base quadrada tem 2 bases quadradas paralelas e 4 faces laterais em trapézio isósceles." |
+| `q1r3t2` | 1 quadrado, 3 retângulos e 2 trapézios retângulos | não | "Por simetria da pirâmide reta de base quadrada, as 2 bases são quadradas e as 4 faces laterais são trapézios isósceles." |
+| `r2q2t2` | 2 retângulos, 2 quadrados e 2 trapézios retângulos | não | "Não há retângulos nem trapézios retângulos: o tronco reto de base quadrada tem 2 quadrados e 4 trapézios isósceles." |
 
 #### V2 — `enem-2009-vela`
-- **Enunciado (resumido):** Pirâmide (base 6 cm, altura 19 cm) tem 4 blocos iguais espaçados de 1 cm. Retirando a ponta (base 1,5 cm), qual o volume?
+- **Enunciado (resumido):** "Pirâmide (base 6 cm, altura 19 cm) tem 4 blocos iguais espaçados de 1 cm. Retirando a ponta (base 1,5 cm), qual o volume?"
 - **Fala do Paco:** "Desconte os 3 espaços de 1 cm para achar a altura útil (16 cm) e use semelhança k = 1,5 / 6 = 1/4."
-- **Fonte:** ENEM 2009, Questão 173 — `https://api.enem.dev/v1/exams/2009/questions/173`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (189 cm³) mantidos.
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 173: enunciado resumido; alternativas e gabarito (189 cm³) mantidos. — **URL:** https://api.enem.dev/v1/exams/2009/questions/173
 - **Conta de conferência:** `H_útil = 19 - 3 = 16 cm`; `V_total = (36·16)/3 = 192 cm³`; `k = 1,5/6 = 1/4 => V_ponta = (1/4)³·192 = 3 cm³`; `192 - 3 = 189 cm³`.
-- **Opções e feedback:** 156 cm³, 189 cm³ (correta), 192 cm³, 216 cm³, 540 cm³.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `v156` | 156 cm³ | não | "156 cm³ seria se a ponta retirada tivesse 36 cm³; com razão k = 1/4, a ponta tem (1/4)³·192 = 3 cm³, sobrando 192 − 3 = 189 cm³." |
+| `v189` | 189 cm³ | **sim** | "Exato. Altura útil = 19 − 3 = 16 cm; V_total = (36·16)/3 = 192 cm³; ponta = (1/4)³·192 = 3 cm³; 192 − 3 = 189 cm³." |
+| `v192` | 192 cm³ | não | "192 cm³ é o volume da pirâmide inteira antes de retirar a ponta superior de 3 cm³: 192 − 3 = 189 cm³." |
+| `v216` | 216 cm³ | não | "216 cm³ ((36·18)/3) desconta apenas 1 espaço de 1 cm em vez dos 3 espaços entre os 4 blocos. O certo é 189 cm³." |
+| `v540` | 540 cm³ | não | "540 cm³ = 36 · 15 esquece o 1/3 do volume da pirâmide. O volume da pirâmide é (36·16)/3 = 192 cm³ menos 3 cm³ = 189 cm³." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** relacionar área da seção transversal com altura do corte em pirâmides/cones.

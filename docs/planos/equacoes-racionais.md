@@ -249,15 +249,30 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2009-cadunico`
-- **Enunciado (resumido):** Média de NV/NF e NA/NV vale 0,6 e cai para 0,5 ao dobrar NF. Se NA + NV = 3.600, quanto vale NF?
+- **Enunciado (resumido):** "Média de NV/NF e NA/NV vale 0,6 e cai para 0,5 ao dobrar NF. Se NA + NV = 3.600, quanto vale NF?"
 - **Fala do Paco:** "Subtraia as duas médias para achar NV/NF primeiro, depois ache NA/NV."
-- **Fonte:** ENEM 2009 — Questão 175 (`https://api.enem.dev/v1/exams/2009/questions/175`).
-- **Adaptação:** texto resumido mantendo a definição da média e os valores.
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 175: texto resumido mantendo a definição da média e os valores. — **URL:** https://api.enem.dev/v1/exams/2009/questions/175
 - **Conta de conferência:** NV/NF + NA/NV = 1,2 e NV/(2·NF) + NA/NV = 1,0 ⇒ NV/NF = 0,4 e NA/NV = 0,8 ⇒ 1,8·NV = 3.600 ⇒ NV = 2.000 ⇒ NF = 5.000 (gabarito C).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `nf10000` | 10.000 | não | "10.000 é 2·NF (o dobro usado no 2º cenário). Como NV/NF = 0,4 e NV = 2.000, NF = 2.000/0,4 = 5.000." |
+| `nf7500` | 7.500 | não | "7.500 = 3.000/0,4 tomou NV = 3.600/1,2 = 3.000. Como NA = 0,8·NV, 1,8·NV = 3.600 dá NV = 2.000 e NF = 5.000." |
+| `nf5000` | 5.000 | **sim** | "Exato: NV/(2·NF) = 0,2 ⇒ NV/NF = 0,4 e NA/NV = 0,8. Logo 1,8·NV = 3.600 ⇒ NV = 2.000 e NF = 5.000." |
+| `nf4500` | 4.500 | não | "4.500 = 3.600/0,8 divide a soma NA + NV por NA/NV. O certo é NV = 2.000 e NF = 2.000/0,4 = 5.000." |
+| `nf3000` | 3.000 | não | "3.000 = 3.600/1,2 divide NA + NV pela soma das taxas. Com NV/NF = 0,4 e NV = 2.000, NF = 5.000." |
 
 #### V2 a V4
 - **Estado:** **PENDENTE-FONTE** (apenas 1 questão ENEM selecionada para este capítulo).
+
+#### V3 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
+
+#### V4 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
 
 ---
 

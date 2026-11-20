@@ -238,23 +238,49 @@ Percentuais incidem no valor corrente; índice compara uma base declarada. Troca
 
 > PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2022-geladeira`
-- **Enunciado:** "Sobre R$ 1 000,00 aplicam-se +10% e depois -2%; qual a diferença entre esse valor e um acréscimo direto de +8%?"
+- **Enunciado (resumido):** "Sobre R$ 1 000,00 aplicam-se +10% e depois −2%; qual a diferença entre esse valor e um acréscimo direto de +8%?"
 - **Fala do Paco:** "Calcule 1000 × 1,10 × 0,98 e compare com 1000 × 1,08."
-- **Fonte:** ENEM 2022 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito (R$ 2,00 menor) mantidos; https://api.enem.dev/v1/exams/2022/questions/167
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 167: enunciado resumido; alternativas e gabarito (R$ 2,00 menor) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/167
 - **Conta de conferência:** 1000 · 1,10 · 0,98 = 1078 vs 1000 · 1,08 = 1080 (R$ 2,00 menor).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2men` | R$ 2,00 menor | **sim** | "Exato. 1000 × 1,10 × 0,98 = 1078, que é R$ 2,00 menor que 1080." |
+| `a100men` | R$ 100,00 menor | não | "100 é 10% de 1000; após −2% sobre 1100 o valor é 1078, R$ 2,00 menor que 1080." |
+| `a200men` | R$ 200,00 menor | não | "Não há desconto de 20%; 1100 × 0,98 = 1078, que é R$ 2,00 menor que 1080." |
+| `a42mai` | R$ 42,00 maior | não | "42 trata os 2% como acréscimo: 1 100 · 1,02 = 1 122, que passa 1 080 em 42. É desconto: 1 078, R$ 2,00 menor." |
+| `a80mai` | R$ 80,00 maior | não | "80 é o acréscimo de 8% sobre 1000; o correto comparado é 1078 contra 1080: R$ 2,00 menor." |
+
 #### V2 — `enem-2019-ibge`
-- **Enunciado:** "Um rendimento de R$ 1.250,00 sobe 7,2% numa década e mais 10% na seguinte; qual é o valor final?"
+- **Enunciado (resumido):** "Um rendimento de R$ 1.250,00 sobe 7,2% numa década e mais 10% na seguinte; qual é o valor final?"
 - **Fala do Paco:** "Taxas sucessivas multiplicam os fatores: 1,072 × 1,10."
-- **Fonte:** ENEM 2019 (adaptada); Questão 153: enunciado resumido; alternativas e gabarito (R$ 1.474,00) mantidos; https://api.enem.dev/v1/exams/2019/questions/153
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 153: enunciado resumido; alternativas e gabarito (R$ 1.474,00) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/153
 - **Conta de conferência:** 1250 · 1,072 · 1,10 = 1474.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a1340` | R$ 1.340,00 | não | "1.340,00 é o valor após os 7,2%; falta aplicar +10%: 1340 × 1,10 = R$ 1.474,00." |
+| `a1349` | R$ 1.349,00 | não | "1.349,00 aplica os 10% só sobre o aumento: 1 250 + 90 + 9. Os 10% incidem sobre 1 340: 1 340 × 1,10 = R$ 1.474,00." |
+| `a1375` | R$ 1.375,00 | não | "1.375,00 aplica só +10% em 1250; com +7,2% e +10%, dá R$ 1.474,00." |
+| `a1465` | R$ 1.465,00 | não | "1.465,00 soma as taxas (17,2%) em 1250; taxas sucessivas dão 1,072 × 1,10 = R$ 1.474,00." |
+| `a1474` | R$ 1.474,00 | **sim** | "Isso. 1250 × 1,072 = 1340, e 1340 × 1,10 = R$ 1.474,00." |
+
 #### V3 — `enem-2019-piscina`
-- **Enunciado:** "Projeto (R$ 10 mil) cai 50%, obra (R$ 100 mil) sobe 25%; qual desconto nos R$ 40 mil fixos reduz o total de R$ 150 mil em 10%?"
+- **Enunciado (resumido):** "Projeto (R$ 10 mil) cai 50%, obra (R$ 100 mil) sobe 25%; qual desconto nos R$ 40 mil fixos reduz o total de R$ 150 mil em 10%?"
 - **Fala do Paco:** "Calcule a meta (90% de 150 mil) e subtraia o novo projeto e a nova obra."
-- **Fonte:** ENEM 2019 (adaptada); Questão 176: enunciado resumido; alternativas e gabarito (87,5%) mantidos; https://api.enem.dev/v1/exams/2019/questions/176
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 176: enunciado resumido; alternativas e gabarito (87,5%) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/176
 - **Conta de conferência:** 150 000 · 0,9 − (5 000 + 125 000) = 5 000; (40 000 − 5 000)/40 000 = 87,5%.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a233` | 23,3% | não | "23,3% divide pelo total de 150 mil em vez dos 40 mil fixos; 35 mil ÷ 40 mil = 87,5%." |
+| `a250` | 25,0% | não | "25% é o aumento do metro quadrado, não o desconto. A meta de 135 mil deixa R$ 5 mil para os fixos: 35 mil de 40 mil é 87,5%." |
+| `a500` | 50,0% | não | "50% é a redução do projeto; nos custos fixos de 40 mil é preciso cortar 35 mil: 87,5%." |
+| `a875` | 87,5% | **sim** | "Exato. Meta é 135 mil; projeto (5 mil) + obra (125 mil) deixam 5 mil de fixos, queda de 87,5%." |
+| `a1000` | 100,0% | não | "Não zera os fixos; ainda restam R$ 5 mil dos R$ 40 mil, dando desconto de 87,5%." |
 
 #### V4 — `pendente-fonte-descontos-acrescimos-e-indices-v4`
 - **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.

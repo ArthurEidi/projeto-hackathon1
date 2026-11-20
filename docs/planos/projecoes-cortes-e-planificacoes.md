@@ -228,16 +228,52 @@ Testar moldes inválidos mostra a fronteira geométrica: ter 6 quadrados **não 
 
 ### Vestibular
 
-#### V1 — ENEM 2021 — Questão 168
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2021-octaedro-planificacao`
+- **Enunciado (resumido):** "Um octaedro regular tem uma face cinza-escuro e quatro numeradas na planificação. Ao reconstruir o sólido, qual face fica oposta à cinza?"
+- **Fala do Paco:** "Observe que N e S são pólos opostos e A-B-C-D formam o quadrado equatorial."
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 168: enunciado resumido mantendo a planificação; gabarito (E) mantido. — **URL:** https://api.enem.dev/v1/exams/2021/questions/168
+- **Imagens:** `/vestibular/enem-2021-168-1.png` (Octaedro regular e planificação com face cinza-escuro e faces numeradas 1, 2, 3 e 4)
 - **Habilidade-alvo:** identificar a planificação correta de um dado/cubo ou poliedro com marcas nas faces.
-- **Onde procurar:** ENEM, OBMEP, Fuvest (questões de planificação de dado/caixa).
 
-#### V2 — ENEM 2023 — Questão 163
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 1, 2, 3 e 4 | não | "Num octaedro cada face tem apenas uma face oposta sem vértices em comum: a face 4." |
+| `b` | 1 e 3 | não | "As faces 1 e 3 compartilham vértices com a face cinza (C, D, S). A face oposta é a 4." |
+| `c` | 1 | não | "A face 1 compartilha o vértice S com a face cinza (C, D, S). A face oposta é a 4 (A, B, N)." |
+| `d` | 2 | não | "A face 2 compartilha o vértice C com a face cinza (C, D, S). A face oposta é a 4 (A, B, N)." |
+| `e` | 4 | **sim** | "Certo: a face cinza é (C, D, S) e sua oposta tem o pólo N e a aresta oposta (A, B), que é a face 4." |
+
+#### V2 — `enem-2023-patrulha-projecao`
+- **Enunciado (resumido):** "Um vigilante faz ronda de moto por 30 min e o gráfico mostra a distância até a base. Qual vista superior representa o trajeto?"
+- **Fala do Paco:** "Separe em 3 trechos: distância crescendo linearmente, constante (arco) e voltando a zero."
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 163: enunciado resumido mantendo o gráfico e as figuras das alternativas; gabarito (A) mantido. — **URL:** https://api.enem.dev/v1/exams/2023/questions/163
+- **Imagens:** `/vestibular/enem-2023-163-1.png` (Gráfico Distância (km) x Tempo (min): sobe de 0 a 3 km em 10 min, fica em 3 km até 20 min e volta a 0 em 30 min)
 - **Habilidade-alvo:** reconhecer vistas ortogonais (frontal, superior, lateral) de objetos 3D ou pilhas de blocos.
-- **Onde procurar:** ENEM (projeções ortogonais de sólidos e edifícios).
 
-#### V3 — ENEM 2022 — Questão 160 (`enem-2022-robo-cubo-projecao`)
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | A (imagem `/vestibular/enem-2023-163-alt-a.png`) | **sim** | "Certo: ida reta (0-10 min), arco a 3 km da base (10-20 min) e volta reta (20-30 min) formam um setor circular (A)." |
+| `b` | B (imagem `/vestibular/enem-2023-163-alt-b.png`) | não | "Entre 10 e 20 min a distância à base é constante (arco de círculo), não segmento reto. A correta é A." |
+| `c` | C (imagem `/vestibular/enem-2023-163-alt-c.png`) | não | "O gráfico mostra distância constante de 3 km entre 10 e 20 min, formando um arco circular. A correta é A." |
+| `d` | D (imagem `/vestibular/enem-2023-163-alt-d.png`) | não | "O trecho de 10 a 20 min mantém raio 3 km centrado na base, formando setor circular. A correta é A." |
+| `e` | E (imagem `/vestibular/enem-2023-163-alt-e.png`) | não | "De 0 a 10 e de 20 a 30 min o afastamento é radial em linha reta, com arco no meio. A correta é A." |
+
+#### V3 — `enem-2022-robo-cubo-projecao`
+- **Enunciado (resumido):** "Um robô parte de P no topo do cubo, alternando esquerda e direita no centro de cada face até voltar a P. Qual a projeção na base?"
+- **Fala do Paco:** "Acompanhe as 6 faces visitadas e apague a altura (z) para projetar os segmentos na base."
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 160: enunciado resumido mantendo a figura do cubo e as projeções das alternativas; gabarito (A) mantido. — **URL:** https://api.enem.dev/v1/exams/2022/questions/160
+- **Imagens:** `/vestibular/enem-2022-160-1.png` (Cubo em perspectiva mostrando o início do trajeto do robô de P, no centro do topo, pela face direita até a base)
 - **Habilidade-alvo:** projeção ortogonal sobre a base de um trajeto fechado sobre as faces do cubo (`https://api.enem.dev/v1/exams/2022/questions/160`, gabarito A).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | A (imagem `/vestibular/enem-2022-160-alt-a.png`) | **sim** | "Certo: o trajeto fechado contorna apenas os quadrantes fundo-direita e frente-esquerda na base (A)." |
+| `b` | B (imagem `/vestibular/enem-2022-160-alt-b.png`) | não | "B contorna os 4 quadrantes, mas o trajeto projetado fecha só dois opostos (fundo-direita e frente-esquerda). A correta é A." |
+| `c` | C (imagem `/vestibular/enem-2022-160-alt-c.png`) | não | "Os dois quadrantes do contorno são diagonalmente opostos, não ambos à direita. A correta é A." |
+| `d` | D (imagem `/vestibular/enem-2022-160-alt-d.png`) | não | "Os dois quadrantes do trajeto ficam em diagonais opostas da base, não ambos ao fundo. A correta é A." |
+| `e` | E (imagem `/vestibular/enem-2022-160-alt-e.png`) | não | "O trajeto fechado passa por apenas dois quadrantes opostos na base, não três. A correta é A." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** menor caminho na superfície de um sólido usando a planificação.

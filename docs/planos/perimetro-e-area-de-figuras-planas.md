@@ -249,29 +249,49 @@ Inclinar o paralelogramo mantendo b e h fixos estica os lados inclinados: o per�
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2023-calcada`
-- **Enunciado (resumido):** Uma piscina quadrada tem área de 400 m² e receberá ao redor uma calçada de 5 m de largura. Qual é a área da calçada?
+- **Enunciado (resumido):** "Uma piscina quadrada tem área de 400 m² e receberá ao redor uma calçada de 5 m de largura. Qual é a área da calçada?"
 - **Fala do Paco:** "Ache o lado da piscina, some 5 m de cada lado (10 m ao todo) para o quadrado externo e subtraia as áreas."
-- **Fonte:** ENEM 2023, Questão 155 — `https://api.enem.dev/v1/exams/2023/questions/155`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`500`) mantidos.
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 155: enunciado resumido; alternativas e gabarito (500) mantidos. — **URL:** https://api.enem.dev/v1/exams/2023/questions/155
 - **Conta de conferência:** `L = √400 = 20 m`; `(20 + 2·5)² − 400 = 900 − 400 = 500 m²`.
-- **Opções e feedback:** `1.000`, `900`, `600`, `500` (correta), `400`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a1000` | 1.000 | não | "1 000 = 600 + 400 soma sem descontar a piscina ou os cantos. Lado externo: 20 + 2·5 = 30 m, logo 30² − 400 = 500 m²." |
+| `a900` | 900 | não | "900 = 30² é a área total (piscina + calçada). Descontando os 400 m² da piscina, a calçada mede 500 m²." |
+| `a600` | 600 | não | "600 = 4 · (30 · 5) conta quatro faixas de 30 × 5 sem descontar os quatro cantos de 5 × 5 (100 m²) sobrepostos. O certo é 500 m²." |
+| `a500` | 500 | **sim** | "Isso. Lado da piscina = √400 = 20 m; lado externo = 20 + 2·5 = 30 m; calçada = 30² − 400 = 500 m²." |
+| `a400` | 400 | não | "400 = 4 · (20 · 5) conta só as quatro faixas junto às bordas e esquece os quatro cantos de 5 × 5 (100 m²). Total: 500 m²." |
 
 #### V2 — `enem-2013-placas`
-- **Enunciado (resumido):** Uma caixa com N placas quadradas de lado y cobre área S. Se o lado das placas triplicar, quantas placas cobrem a mesma área S?
+- **Enunciado (resumido):** "Uma caixa com N placas quadradas de lado y cobre área S. Se o lado das placas triplicar, quantas placas cobrem a mesma área S?"
 - **Fala do Paco:** "Se o lado multiplica por 3, por quanto multiplica a área de cada placa?"
-- **Fonte:** ENEM 2013, Questão 156 — `https://api.enem.dev/v1/exams/2013/questions/156`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`N/9`) mantidos.
+- **Fonte:** ENEM 2013 (adaptada) — **Adaptação:** Questão 156: enunciado resumido; alternativas e gabarito (N/9) mantidos. — **URL:** https://api.enem.dev/v1/exams/2013/questions/156
 - **Conta de conferência:** `S = N·y² = X·(3y)² = 9X·y² ⇒ X = N/9`.
-- **Opções e feedback:** `N/9` (correta), `N/6`, `N/3`, `3N`, `9N`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `n9` | N/9 | **sim** | "Isso. Com lado 3y, cada placa tem área (3y)² = 9y²; para manter S = N·y², bastam N/9 placas." |
+| `n6` | N/6 | não | "N/6 divide por 2·3 = 6 em vez de 3² = 9. Como a área escala com o quadrado do lado, dá N/9." |
+| `n3` | N/3 | não | "N/3 divide por 3 (escala linear) em vez de 3² = 9 (escala de área). O certo é N/9." |
+| `3n` | 3N | não | "3N multiplica por 3 em vez de dividir por 9 (placas maiores exigem menos unidades). O certo é N/9." |
+| `9n` | 9N | não | "9N multiplica por 9 em vez de dividir por 9. Como cada placa cobre 9 vezes mais, usa-se N/9." |
 
 #### V3 — `enem-2013-argila`
-- **Enunciado (resumido):** Uma base retangular de 30 cm por 15 cm teve seus lados reduzidos em 20% após o cozimento. Em quantos por cento a área reduziu?
+- **Enunciado (resumido):** "Uma base retangular de 30 cm por 15 cm teve seus lados reduzidos em 20% após o cozimento. Em quantos por cento a área reduziu?"
 - **Fala do Paco:** "Multiplique os dois fatores de redução (0,8 × 0,8) para achar quanto da área original restou."
-- **Fonte:** ENEM 2013, Questão 167 — `https://api.enem.dev/v1/exams/2013/questions/167`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`36%`) mantidos.
+- **Fonte:** ENEM 2013 (adaptada) — **Adaptação:** Questão 167: enunciado resumido; alternativas e gabarito (36%) mantidos. — **URL:** https://api.enem.dev/v1/exams/2013/questions/167
 - **Conta de conferência:** `24 · 12 = 288` de `450` (`0,8 · 0,8 = 0,64 ⇒ 1 − 0,64 = 36%`).
-- **Opções e feedback:** `4%`, `20%`, `36%` (correta), `64%`, `96%`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `p4` | 4% | não | "4% = 0,20 · 0,20 calcula apenas o produto das reduções sem somar as duas faixas (20% + 20% − 4% = 36%)." |
+| `p20` | 20% | não | "20% é a redução de cada lado isoladamente. Nos dois lados, resta 0,8 · 0,8 = 64% da área, redução de 36%." |
+| `p36` | 36% | **sim** | "Isso. 24 · 12 = 288 cm² contra 450 cm² (ou 0,8 · 0,8 = 0,64): a área reduziu 36%." |
+| `p64` | 64% | não | "64% = 0,8 · 0,8 é a porcentagem da área que restou após o cozimento, não a redução (100% − 64% = 36%)." |
+| `p96` | 96% | não | "96% = 100% − 4% toma 0,2² = 4% como o que restou. A redução real é 100% − 64% = 36%." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** efeito da escala k sobre a área (fator k²) em mapas e maquetes.

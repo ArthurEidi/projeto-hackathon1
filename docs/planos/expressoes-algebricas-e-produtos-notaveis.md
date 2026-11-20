@@ -251,21 +251,37 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `fuvest-2020-cubos` — Fuvest 2020
-- **Enunciado:** "Se 3x² − 9x + 7 = (x − a)³ − (x − b)³ para todo x real, quanto vale a + b?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `fuvest-2020-cubos`
+- **Enunciado (resumido):** "Se 3x² − 9x + 7 = (x − a)³ − (x − b)³ para todo x real, quanto vale a + b?"
 - **Fala do Paco:** "(x − a)³ = x³ − 3ax² + 3a²x − a³. Subtraia as duas expansões e compare os coeficientes."
-- **Fonte:** Fuvest 2020 (adaptada); 1ª fase, prova V, Questão 20: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. https://www.fuvest.br/wp-content/uploads/fuvest_2020_primeira_fase_prova_V.pdf · https://www.fuvest.br/wp-content/uploads/fuvest_2020_primeira_fase_gabaritos.pdf
-- **Alternativas:** **3** · 5 · 6 · 9 · 12
+- **Fonte:** Fuvest 2020 (adaptada) — **Adaptação:** 1ª fase, prova V, Questão 20: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. — **URL:** https://www.fuvest.br/wp-content/uploads/fuvest_2020_primeira_fase_prova_V.pdf · https://www.fuvest.br/wp-content/uploads/fuvest_2020_primeira_fase_gabaritos.pdf
 - **Conta de conferência:** 3(b − a)x² + 3(a² − b²)x + b³ − a³ ⇒ b − a = 1, a² − b² = −3 ⇒ a = 1, b = 2, a + b = 3 (A).
 
-#### `ufrgs-2022-afirmacoes-raizes` — UFRGS 2022
-- **Enunciado:** "Para reais a e b: (I) √(a² + b²) = a + b; (II) √(a²) = a; (III) se 0 < b < a, √(ab) ≤ (a + b)/2. Quais estão corretas?"
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a3` | 3 | **sim** | "Isso. A diferença é 3(b − a)x² + 3(a² − b²)x + b³ − a³: b − a = 1 e a² − b² = −3, logo a + b = 3." |
+| `a5` | 5 | não | "Com b − a = 1, o termo em x é 3(a − b)(a + b) = −3(a + b); com 5 daria −15, não −9. Logo a + b = 3." |
+| `a6` | 6 | não | "Com b − a = 1, o termo em x é 3(a − b)(a + b) = −3(a + b); com 6 daria −18, não −9. Logo a + b = 3." |
+| `a9` | 9 | não | "9 esquece o fator 3: o termo em x é 3(a² − b²) = −9, logo a² − b² = −3. Com b − a = 1, a + b = 3." |
+| `a12` | 12 | não | "Com b − a = 1, o termo em x é 3(a − b)(a + b) = −3(a + b); com 12 daria −36, não −9. Logo a + b = 3." |
+
+#### V2 — `ufrgs-2022-afirmacoes-raizes`
+- **Enunciado (resumido):** "Para reais a e b: (I) √(a² + b²) = a + b; (II) √(a²) = a; (III) se 0 < b < a, √(ab) ≤ (a + b)/2. Quais estão corretas?"
 - **Fala do Paco:** "Teste números: a = 3 e b = 4 em (I), a = −2 em (II). Para (III), expanda (√a − √b)² ≥ 0."
-- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 47: afirmações numeradas entre parênteses; alternativas e gabarito oficial (B) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
-- **Alternativas:** Apenas I · **Apenas III** · Apenas I e II · Apenas II e III · I, II e III
+- **Fonte:** UFRGS 2022 (adaptada) — **Adaptação:** 1º dia, Questão 47: afirmações numeradas entre parênteses; alternativas e gabarito oficial (B) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
 - **Conta de conferência:** (I) √25 ≠ 7; (II) √(a²) = |a|; (III) (√a − √b)² ≥ 0 ⇒ apenas III (B).
 
-#### V1 — `v1-expressoes-algebricas-e-produtos-notaveis`
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `so-i` | Apenas I | não | "(I) falha: com a = 3 e b = 4, √(9 + 16) = 5, não 7; falta o 2ab de (a + b)². Só (III) vale, de (√a − √b)² ≥ 0." |
+| `so-iii` | Apenas III | **sim** | "Isso. (I) falha (√25 ≠ 7) e (II) falha para a < 0, pois √(a²) = ∣a∣; (III) vem de (√a − √b)² = a − 2√(ab) + b ≥ 0." |
+| `i-ii` | Apenas I e II | não | "(I) e (II) falham: √(9 + 16) = 5 ≠ 3 + 4 e √((−2)²) = 2 ≠ −2, pois √(a²) = ∣a∣. Só (III) vale." |
+| `ii-iii` | Apenas II e III | não | "(II) falha para a negativo: √((−2)²) = 2, não −2, porque √(a²) = ∣a∣. Só (III) vale." |
+| `todas` | I, II e III | não | "(I) e (II) falham: √(9 + 16) = 5 ≠ 7 e √((−2)²) = 2 ≠ −2. Só (III) vale, de (√a − √b)² ≥ 0." |
+
+#### V3 — `v1-expressoes-algebricas-e-produtos-notaveis`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema expressões algébricas e produtos notáveis.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -276,31 +292,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V2 — `v2-expressoes-algebricas-e-produtos-notaveis`
+#### V4 — `v2-expressoes-algebricas-e-produtos-notaveis`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Aplicação direta em contexto, no tema expressões algébricas e produtos notáveis.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V3 — `v3-expressoes-algebricas-e-produtos-notaveis`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema expressões algébricas e produtos notáveis.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-expressoes-algebricas-e-produtos-notaveis`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema expressões algébricas e produtos notáveis.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
 - **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
 - **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.

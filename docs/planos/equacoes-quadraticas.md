@@ -262,23 +262,37 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ufpr-2025-b-mais-c` — UFPR 2025
-- **Enunciado:** "O gráfico de f(x) = x² + bx + c corta o eixo x em x = −1 e x = 3. Quanto vale b + c?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ufpr-2025-b-mais-c`
+- **Enunciado (resumido):** "O gráfico de f(x) = x² + bx + c corta o eixo x em x = −1 e x = 3. Quanto vale b + c?"
 - **Fala do Paco:** "Com raízes −1 e 3, f(x) = (x + 1)(x − 3). Expanda e leia b e c."
-- **Fonte:** UFPR 2025 (adaptada); 1ª fase, Questão 05: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. https://servicos.nc.ufpr.br/documentos/ps2025/provas/Geral.pdf
-- **Alternativas:** **−5** · −4 · −1 · 2 · 5
+- **Fonte:** UFPR 2025 (adaptada) — **Adaptação:** 1ª fase, Questão 05: enunciado reescrito como pergunta; alternativas e gabarito oficial (A) mantidos. — **URL:** https://servicos.nc.ufpr.br/documentos/ps2025/provas/Geral.pdf
 - **Conta de conferência:** (x + 1)(x − 3) = x² − 2x − 3 ⇒ b + c = −5 (A).
 
-#### `ufrgs-2024-potencia-raizes` — UFRGS 2024
-- **Enunciado:** "Se a e b são as raízes de x² + 2x − 15 = 0, quanto vale (ab)^(a + b)?"
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `am5` | −5 | **sim** | "Isso. (x + 1)(x − 3) = x² − 2x − 3, então b = −2, c = −3 e b + c = −5." |
+| `am4` | −4 | não | "−4 é f(1) = 1 + b + c = (1 + 1)(1 − 3); falta tirar o 1. De x² − 2x − 3: b + c = −5." |
+| `am1` | −1 | não | "−1 vem de (x − 1)(x + 3) = x² + 2x − 3: as raízes entraram com sinal trocado. Certo: x² − 2x − 3, b + c = −5." |
+| `a2` | 2 | não | "2 é a soma das raízes, −1 + 3, que vale −b; então b = −2. Com c = (−1) · 3 = −3, b + c = −5." |
+| `a5` | 5 | não | "5 = 2 + 3 troca os sinais de b e de c. Em (x + 1)(x − 3) = x² − 2x − 3, b = −2 e c = −3: b + c = −5." |
+
+#### V2 — `ufrgs-2024-potencia-raizes`
+- **Enunciado (resumido):** "Se a e b são as raízes de x² + 2x − 15 = 0, quanto vale (ab)^(a + b)?"
 - **Fala do Paco:** "Fatore: x² + 2x − 15 = (x + 5)(x − 3). Ache ab e a + b antes de montar a potência."
-- **Fonte:** UFRGS 2024 (adaptada); 1º dia, Questão 48: enunciado reescrito como pergunta; alternativas e gabarito oficial (D) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2023/12/1o-DIA-PROVA-2024.pdf · https://vestibular.ufrgs.br/cv2024/gabaritos/
-- **Alternativas:** −225 · −1/225 · −30 · **1/225** · 225
+- **Fonte:** UFRGS 2024 (adaptada) — **Adaptação:** 1º dia, Questão 48: enunciado reescrito como pergunta; alternativas e gabarito oficial (D) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2023/12/1o-DIA-PROVA-2024.pdf · https://vestibular.ufrgs.br/cv2024/gabaritos/
 - **Conta de conferência:** (x + 5)(x − 3): ab = −15, a + b = −2 ⇒ (−15)⁻² = 1/225 (D).
 
-**Auditoria B18 (15/11/2026):** nenhuma candidata integralmente verificável no cache ENEM obrigatório. Mantido PENDENTE-FONTE; contas e impedimentos em `docs/revisao/vestibular-b18.md`.
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `am225` | −225 | não | "−225 é −15² sem parênteses e com expoente 2. Aqui a + b = −2: (−15)⁻² = 1/(−15)² = 1/225." |
+| `am1-225` | −1/225 | não | "−1/225 calcula −(15⁻²): o sinal ficou fora do parêntese. A base é ab = −15, e (−15)⁻² = 1/225." |
+| `am30` | −30 | não | "−30 multiplica ab = −15 por 2 em vez de elevar. Com a + b = −2: (−15)⁻² = 1/225." |
+| `a1-225` | 1/225 | **sim** | "Isso. As raízes são 3 e −5: ab = −15 e a + b = −2, então (−15)⁻² = 1/225." |
+| `a225` | 225 | não | "225 = (−15)² usa expoente 2, mas a + b = −2. Expoente negativo inverte: (−15)⁻² = 1/225." |
 
-#### V1 — `v1-equacoes-quadraticas`
+#### V3 — `v1-equacoes-quadraticas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações quadráticas e interpretação das raízes.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -289,31 +303,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V2 — `v2-equacoes-quadraticas`
+#### V4 — `v2-equacoes-quadraticas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Aplicação direta em contexto, no tema equações quadráticas e interpretação das raízes.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V3 — `v3-equacoes-quadraticas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema equações quadráticas e interpretação das raízes.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-equacoes-quadraticas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema equações quadráticas e interpretação das raízes.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
 - **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
 - **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.

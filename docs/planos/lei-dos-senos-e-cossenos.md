@@ -238,22 +238,30 @@ O aluno abre A de 60° a 120° para ver o sinal de cos A inverter o ajuste em a�
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2023-pizzas`
+- **Enunciado (resumido):** "Diâmetros a, b, c de três pizzas formam um triângulo com ângulo α oposto a a. Para área(a) > área(b) + área(c), qual o intervalo de α?"
+- **Fala do Paco:** "A área é proporcional ao quadrado do diâmetro: escreva a² > b² + c² na lei dos cossenos."
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 172: enunciado resumido; alternativas e gabarito (90° < a < 180°) mantidos. — **URL:** https://api.enem.dev/v1/exams/2023/questions/172
+- **Conta de conferência:** `a² > b² + c² ⇒ b² + c² − 2bc·cos α > b² + c² ⇒ cos α < 0 ⇒ 90° < α < 180°`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `agudo` | 0° < α < 90° | não | "Para 0° < α < 90°, cos α > 0, então a² = b² + c² − 2bc·cos α < b² + c² (área menor). O certo é 90° < α < 180°." |
+| `reto` | α = 90° | não | "Com α = 90°, cos 90° = 0 e a² = b² + c² (áreas iguais). Para ser maior, 90° < α < 180°." |
+| `obtuso` | 90° < α < 180° | **sim** | "Isso. a² > b² + c² exige −2bc·cos α > 0, ou seja, cos α < 0: 90° < α < 180°." |
+| `raso` | α = 180° | não | "Com α = 180°, os segmentos ficam colineares (a = b + c) e não há triângulo. O intervalo é 90° < α < 180°." |
+| `reentrante` | 180° < α < 360° | não | "Nenhum ângulo interno de triângulo passa de 180°. Para cos α < 0 no triângulo: 90° < α < 180°." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** aplicar a lei dos cossenos para calcular a distância entre dois pontos conhecendo dois lados e o ângulo entre eles.
 - **Onde procurar:** ENEM, Fuvest, Unicamp.
 
-#### V2 — PENDENTE-FONTE
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** aplicar a lei dos senos para determinar um lado ou o raio da circunferência circunscrita.
 - **Onde procurar:** ENEM, Vunesp, UFRGS.
 
-#### V3 — PENDENTE-FONTE
+#### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** descobrir o cosseno de um ângulo a partir das medidas dos três lados do triângulo.
 - **Onde procurar:** Fuvest, Unicamp, UFPR.
-
-#### V4 — `enem-2023-pizzas`
-- **Enunciado (resumido):** Diâmetros a, b, c de três pizzas formam um triângulo com ângulo α oposto a a. Para área(a) > área(b) + área(c), qual o intervalo de α?
-- **Fala do Paco:** "A área é proporcional ao quadrado do diâmetro: escreva a² > b² + c² na lei dos cossenos."
-- **Fonte:** ENEM 2023, Questão 172 — `https://api.enem.dev/v1/exams/2023/questions/172`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`90° < a < 180°`) mantidos.
-- **Conta de conferência:** `a² > b² + c² ⇒ b² + c² − 2bc·cos α > b² + c² ⇒ cos α < 0 ⇒ 90° < α < 180°`.
-- **Opções e feedback:** `0° < a < 90°`, `A = 90°`, `90° < a < 180°` (correta), `A = 180°`, `180° < a < 360°`.

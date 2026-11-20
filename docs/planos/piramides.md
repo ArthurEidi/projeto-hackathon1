@@ -229,13 +229,21 @@ Testar o limite de validade do triângulo interno: como `a_p` é hipotenusa de `
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2009-piramide-pentagonal`
-- **Enunciado (resumido):** Um artesão corta uma pirâmide de base quadrada com um plano e obtém uma face pentagonal. Qual argumento justifica esse resultado?
+- **Enunciado (resumido):** "Um artesão corta uma pirâmide de base quadrada com um plano e obtém uma face pentagonal. Qual argumento justifica esse resultado?"
 - **Fala do Paco:** "Conte as faces da pirâmide e pense no que o plano deixa em cada face que atravessa."
-- **Fonte:** ENEM 2009, Questão 177 — `https://api.enem.dev/v1/exams/2009/questions/177`
-- **Adaptação:** enunciado resumido e rótulos das alternativas encurtados mantendo o sentido; gabarito (C) mantido.
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 177: enunciado resumido e rótulos das alternativas encurtados mantendo o sentido; gabarito (C) mantido. — **URL:** https://api.enem.dev/v1/exams/2009/questions/177
 - **Conta de conferência:** pirâmide de base quadrada tem 5 faces (1 base + 4 laterais); se o plano interceptar todas as 5 faces, a seção tem 5 lados.
-- **Opções e feedback:** A (4 arestas), B (4 faces), C (5 faces, correta), D (sempre 5), E (sempre 4).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a4a` | Tem 4 arestas laterais; o plano corta as 4 e forma um polígono de 4 lados | não | "Cortar só as 4 arestas laterais daria 4 lados, não 5. A pirâmide tem 5 faces; se o plano cortar todas, forma 5 lados." |
+| `a4f` | Tem 4 faces triangulares; o corte gera triângulo e trapézio (4 lados) | não | "Isso vale se cortar só as 4 faces laterais. Como a pirâmide tem 5 faces (com a base), cortar todas gera 5 lados." |
+| `a5f` | Tem 5 faces; se o plano interceptar todas, a interseção tem 5 lados | **sim** | "Isso. A pirâmide quadrangular tem 5 faces; cada face cortada gera 1 segmento, formando um pentágono." |
+| `a5s` | Qualquer corte em pirâmide de 5 faces sempre gera um polígono de 5 lados | não | "Nem todo corte atinge todas as faces: paralelo à base dá quadrado (4 lados), só quando corta as 5 faces dá pentágono." |
+| `a4s` | Qualquer corte sempre tem lados iguais às 4 arestas laterais (4 lados) | não | "O corte pode atingir 3, 4 ou 5 faces; como a pirâmide tem 5 faces, interceptar todas gera 5 lados." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** relacionar apótema da pirâmide, apótema da base e altura para achar área lateral/total.

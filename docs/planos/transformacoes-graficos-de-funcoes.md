@@ -237,15 +237,30 @@ Domínio e imagem dependem da família. b=0 colapsa entradas; b<0 reflete. Em lo
 
 ### Vestibular
 
-#### V1 — `ufrgs-2025-grafico-v` (UFRGS 2025, 1º dia, Questão 71)
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ufrgs-2025-grafico-v`
 - **Enunciado (resumido):** "f(x) forma V com vértice (0; 0) e pontas (±3; 3); g(x) forma V invertido com vértice (0; 3), raízes ±1 e pontas (±3; −6). Qual é g(x)?"
 - **Fala do Paco:** "Compare os vértices e a abertura dos dois gráficos. Depois, teste x = 0 e x = 1 nas opções."
-- **Fonte:** UFRGS 2025, 1º dia, Questão 71 (p. 37 de `Prova-1o-DIA.pdf`; gabarito oficial D em `https://vestibular.ufrgs.br/cv2025/gabaritos/`).
-- **Adaptação:** os dois gráficos originais foram descritos pelos vértices e pontos da grade; alternativas e gabarito oficial (D) mantidos.
+- **Fonte:** UFRGS 2025 (adaptada) — **Adaptação:** 1º dia, Questão 71: os dois gráficos originais foram descritos pelos vértices e pontos da grade; alternativas e gabarito oficial (D) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2025/gabaritos/
 - **Conta de conferência:** `f(x) = |x|` em `[−3, 3]`; `g(x) = −3f(x) + 3` dá `g(0) = 3`, `g(±1) = 0` e `g(±3) = −6`.
 
-#### V2–V4 — `pendente-fonte`
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | g(x) = 3f(x + 3) − 3 | não | "3f(x + 3) − 3 desloca o vértice para (−3; −3) e mantém o V voltado para cima. Em x = 0 dá 3·3 − 3 = 6, não 3; certa: g(x) = −3f(x) + 3." |
+| `b` | g(x) = −3f(x + 3) | não | "−3f(x + 3) desloca o vértice 3 unidades à esquerda, para (−3; 0), em vez de subir 3. Em x = 0 dá −9, não 3; certa: g(x) = −3f(x) + 3." |
+| `c` | g(x) = 3f(x − 3) | não | "3f(x − 3) desloca o vértice 3 à direita, para (3; 0), e não reflete no eixo x. Em x = 0 dá 9, não 3; certa: g(x) = −3f(x) + 3." |
+| `d` | g(x) = −3f(x) + 3 | **sim** | "Isso. −3f(x) reflete no eixo x e multiplica alturas por 3; +3 sobe o vértice para (0; 3), dando g(±1) = 0 e g(±3) = −6." |
+| `e` | g(x) = −3f(x) − 3 | não | "−3f(x) − 3 desce o vértice para (0; −3) em vez de subir para (0; 3). Em x = 0 dá −3, não 3; certa: g(x) = −3f(x) + 3." |
+
+#### V2 — PENDENTE-FONTE
 > Espaços reservados caso novas questões oficiais no recorte sejam encontradas.
+
+#### V3 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
+
+#### V4 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
 
 ---
 

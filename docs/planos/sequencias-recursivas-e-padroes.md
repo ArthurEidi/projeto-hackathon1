@@ -236,22 +236,41 @@ Declare todos os termos iniciais necessários. Uma regra de dois termos requer a
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2012-paciencia`
-- **Enunciado (resumido):** Num baralho de 52 cartas, montam-se 7 colunas com 1, 2, 3, ..., 7 cartas, e o restante forma o monte. Quantas cartas há no monte?
+- **Enunciado (resumido):** "Num baralho de 52 cartas, montam-se 7 colunas com 1, 2, 3, ..., 7 cartas, e o restante forma o monte. Quantas cartas há no monte?"
 - **Fala do Paco:** "Some a sequência 1 + 2 + 3 + 4 + 5 + 6 + 7 e subtraia de 52."
-- **Fonte:** ENEM 2012 — Questão 150 (`https://api.enem.dev/v1/exams/2012/questions/150`).
-- **Adaptação:** enunciado resumido mantendo baralho de 52 cartas, 7 colunas e opções.
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 150: enunciado resumido mantendo baralho de 52 cartas, 7 colunas e opções. — **URL:** https://api.enem.dev/v1/exams/2012/questions/150
 - **Conta de conferência:** 52 − (1 + 2 + 3 + 4 + 5 + 6 + 7) = 52 − 28 = 24 (gabarito B).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `m21` | 21 | não | "21 = 1 + 2 + 3 + 4 + 5 + 6 é a soma de 6 colunas (ou 52 − 31). As 7 colunas somam 28, logo 52 − 28 = 24." |
+| `m24` | 24 | **sim** | "Certo: 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28 cartas nas colunas; monte = 52 − 28 = 24." |
+| `m26` | 26 | não | "26 = 52/2 divide o baralho ao meio sem somar as colunas. Com soma 28, 52 − 28 = 24." |
+| `m28` | 28 | não | "28 é a soma das cartas nas 7 colunas (1 + ... + 7), não o monte que sobra: 52 − 28 = 24." |
+| `m31` | 31 | não | "31 = 52 − 21 subtraiu apenas 6 colunas (1 a 6 = 21) esquecendo a 7ª. Com 7 colunas (28), 52 − 28 = 24." |
+
 #### V2 — `enem-2013-ciclo-solar`
-- **Enunciado (resumido):** O ciclo solar dura 11 anos; o 1º ciclo começou em 1755 (1755–1765). Em 2101, em qual ciclo o Sol estará?
+- **Enunciado (resumido):** "O ciclo solar dura 11 anos; o 1º ciclo começou em 1755 (1755–1765). Em 2101, em qual ciclo o Sol estará?"
 - **Fala do Paco:** "Divida a diferença 2101 − 1755 por 11; o quociente são ciclos completos e o resto indica o próximo."
-- **Fonte:** ENEM 2013 — Questão 173 (`https://api.enem.dev/v1/exams/2013/questions/173`).
-- **Adaptação:** enunciado resumido mantendo período, início e opções.
+- **Fonte:** ENEM 2013 (adaptada) — **Adaptação:** Questão 173: enunciado resumido mantendo período, início e opções. — **URL:** https://api.enem.dev/v1/exams/2013/questions/173
 - **Conta de conferência:** 2101 − 1755 = 346 = 31·11 + 5 ⇒ 32º ciclo (gabarito A).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `c32` | 32 | **sim** | "Exato: 2101 − 1755 = 346 = 31·11 + 5; passaram 31 ciclos completos e 2101 está no 32º." |
+| `c34` | 34 | não | "34 corresponde a 33·11 = 363 anos completos. Como 346 = 31·11 + 5, 2101 está no 32º ciclo." |
+| `c33` | 33 | não | "33 somaria +2 ao quociente 31 (em vez de +1). Como 346 = 31·11 + 5, 2101 está no 32º ciclo." |
+| `c35` | 35 | não | "O ciclo 35 só começa em 1755 + 34 · 11 = 2129, depois de 2101. De 346 = 31 · 11 + 5 vem o 32º ciclo." |
+| `c31` | 31 | não | "31 é apenas o número de ciclos completos (31·11 = 341 anos, até 2095). Com +5 anos, é o 32º." |
 
 #### V3 e V4
 - **Estado:** **PENDENTE-FONTE** (2 questões ENEM inseridas).
+
+#### V4 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
 
 ---
 

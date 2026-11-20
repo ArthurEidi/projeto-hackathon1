@@ -245,23 +245,49 @@ Tirar sem reposição cria dependência: a segunda retirada vê uma urna diferen
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2023-urnas`
-- **Enunciado:** "P(preta em A) = 20%; B tem 4 pretas e 12 brancas (25%); quantas brancas pôr em B para P(duas pretas) <= 1%?"
+- **Enunciado (resumido):** "P(preta em A) = 20%; B tem 4 pretas e 12 brancas (25%); quantas brancas pôr em B para P(duas pretas) <= 1%?"
 - **Fala do Paco:** "Escreva P(A e B) = 0,20 × 4/(16 + x) <= 0,01 e isole x."
-- **Fonte:** ENEM 2023 (adaptada); Questão 138: enunciado resumido; alternativas e gabarito (64) mantidos; https://api.enem.dev/v1/exams/2023/questions/138
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 138: enunciado resumido; alternativas e gabarito (64) mantidos. — **URL:** https://api.enem.dev/v1/exams/2023/questions/138
 - **Conta de conferência:** 0,20 · 4 / (16 + x) <= 0,01 => 16 + x >= 80 => x >= 64.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a20` | 20 | não | "Com 20 brancas a mais, B teria 36 bolas e 0,20 × 4/36 ≈ 2,2% > 1%; precisa 16 + x >= 80, logo x = 64." |
+| `a60` | 60 | não | "Com 60, B teria 76 bolas e 0,8/76 ≈ 1,05% > 1%; faltam 4 para chegar a 80: 64." |
+| `a64` | 64 | **sim** | "Exato. 0,20 × 4/(16 + x) <= 0,01 dá 16 + x >= 80, logo x = 64." |
+| `a68` | 68 | não | "68 = 80 − 12 desconta só as 12 brancas; as 4 pretas também já estão em B. De 16 para 80 bolas faltam 64." |
+| `a80` | 80 | não | "80 é o total final de bolas em B, não as adicionadas; tirando as 16 iniciais, são 64." |
+
 #### V2 — `enem-2021-dardos`
-- **Enunciado:** "Cada dardo acerta o alvo com chance 1/2; quantos dardos lançar para acertar pelo menos um com chance >= 9/10?"
+- **Enunciado (resumido):** "Cada dardo acerta o alvo com chance 1/2; quantos dardos lançar para acertar pelo menos um com chance >= 9/10?"
 - **Fala do Paco:** "Use o complementar: a chance de errar todos os n dardos é (1/2)ⁿ <= 1/10."
-- **Fonte:** ENEM 2021 (adaptada); Questão 142: enunciado resumido; alternativas e gabarito (4) mantidos; https://api.enem.dev/v1/exams/2021/questions/142
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 142: enunciado resumido; alternativas e gabarito (4) mantidos. — **URL:** https://api.enem.dev/v1/exams/2021/questions/142
 - **Conta de conferência:** 1 − (1/2)ⁿ >= 9/10 => 2ⁿ >= 10 => n = 4.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2` | 2 | não | "Com 2 dardos, 1 − 1/4 = 3/4 = 0,75 < 0,9; precisa de 2ⁿ >= 10, logo n = 4." |
+| `a4` | 4 | **sim** | "Isso. 1 − (1/2)⁴ = 15/16 = 0,9375 >= 0,9, e com 3 dardos daria 7/8 = 0,875." |
+| `a6` | 6 | não | "Com 6 passa de 9/10, mas 4 já basta: 1 − 1/16 = 15/16 >= 9/10." |
+| `a9` | 9 | não | "9 vem do numerador de 9/10. O que se exige é errar todos com chance (1/2)ⁿ <= 1/10: 2⁴ = 16 >= 10, logo n = 4." |
+| `a10` | 10 | não | "10 vem de comparar 1/n <= 1/10; o decaimento é exponencial (1/2)ⁿ, então n = 4." |
+
 #### V3 — `enem-2019-placas`
-- **Enunciado:** "Cada placa é vista com chance 1/2 e já existe 1 placa; quantas novas instalar para ver ao menos uma com chance > 99/100?"
+- **Enunciado (resumido):** "Cada placa é vista com chance 1/2 e já existe 1 placa; quantas novas instalar para ver ao menos uma com chance > 99/100?"
 - **Fala do Paco:** "Ache o total n com (1/2)ⁿ < 1/100 e lembre de descontar a placa que já existe."
-- **Fonte:** ENEM 2019 (adaptada); Questão 159: enunciado resumido; alternativas e gabarito (6) mantidos; https://api.enem.dev/v1/exams/2019/questions/159
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 159: enunciado resumido; alternativas e gabarito (6) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/159
 - **Conta de conferência:** 1 − (1/2)ⁿ > 99/100 => 2ⁿ > 100 => n = 7; novas = 7 − 1 = 6.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a99` | 99 | não | "Com 99 novas a chance passa de 99%, mas não é o mínimo: (1/2)⁷ < 1/100, então 7 placas no total bastam, 6 novas." |
+| `a51` | 51 | não | "Com 51 novas também passa de 99%, mas sobra placa: (1/2)⁷ = 1/128 < 1/100 já com 7 no total, ou 6 novas." |
+| `a50` | 50 | não | "50 é 100 ÷ 2, como se cada placa somasse um pouco de chance. Não ver nenhuma tem chance (1/2)ⁿ; 2⁷ = 128 > 100: 7 placas, 6 novas." |
+| `a6` | 6 | **sim** | "Exato. 2⁷ = 128 > 100 exige 7 placas no total; descontando 1 existente, são 6 novas." |
+| `a1` | 1 | não | "Com 1 nova seriam 2 placas e chance 3/4 = 75%; para > 99% são 7 no total, 6 novas." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** decidir se dois eventos são independentes.

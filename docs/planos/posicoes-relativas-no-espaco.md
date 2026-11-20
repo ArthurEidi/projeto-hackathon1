@@ -231,17 +231,30 @@ Girar a câmera mostra uma armadilha visual importante: vistas de frente, duas r
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2009-escultura-planos`
+- **Enunciado (resumido):** "Na escultura, os prismas retos II e IV são paralelos; um plano paralelo à face α de I corta a peça em P. O que essa interseção contém?"
+- **Fala do Paco:** "Um plano paralelo à base de prismas paralelos gera seções transversais com a mesma forma da base."
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 153: enunciado resumido mantendo a posição dos prismas e do plano; gabarito (A) mantido. — **URL:** https://api.enem.dev/v1/exams/2009/questions/153
+- **Imagens:** `/vestibular/enem-2009-153-1.jpg` (Escultura com prismas triangulares I, II, III e IV, indicando a face alfa em I e o ponto P em II)
+- **Habilidade-alvo:** proposições verdadeiro/falso sobre paralelismo e perpendicularidade entre retas e planos.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | Dois triângulos congruentes com lados correspondentes paralelos | **sim** | "Certo: o plano paralelo a α corta os prismas triangulares paralelos II e IV gerando dois triângulos congruentes e paralelos." |
+| `b` | Dois retângulos congruentes e com lados correspondentes paralelos | não | "O corte é paralelo às bases triangulares de II e IV, não às faces laterais. Forma dois triângulos congruentes." |
+| `c` | Dois trapézios congruentes com lados correspondentes perpendiculares | não | "Seções paralelas à base de prismas triangulares são triângulos congruentes de lados paralelos." |
+| `d` | Dois paralelogramos congruentes com lados correspondentes paralelos | não | "Os prismas II e IV têm base triangular; o corte paralelo à base gera dois triângulos congruentes." |
+| `e` | Dois quadriláteros congruentes com lados correspondentes perpendiculares | não | "Prismas triangulares cortados paralelamente à base geram dois triângulos congruentes de lados paralelos." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** identificar retas paralelas, concorrentes e reversas nas arestas de um poliedro.
 - **Onde procurar:** ENEM, Fuvest, Unicamp ("retas reversas", "arestas de um cubo").
 
-#### V2 — PENDENTE-FONTE
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** projeção ortogonal de trajetórias 3D sobre um plano.
 - **Onde procurar:** ENEM (questões clássicas de projeção ortogonal de globo/carrossel/pirâmide).
-
-#### V3 — ENEM 2009 — Questão 153
-- **Habilidade-alvo:** proposições verdadeiro/falso sobre paralelismo e perpendicularidade entre retas e planos.
-- **Onde procurar:** UFPR, UFRGS, Unesp, Fuvest.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** distância e ângulo entre retas reversas em prismas ou cubos.

@@ -263,25 +263,57 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B23a (16/11/2026):** V1, V2 e V4 preenchidas com questões do ENEM com imagem (B17b); V3 segue PENDENTE-FONTE. Contas em `docs/revisao/vestibular-b23a.md`.
 
-#### V1 — ENEM 2019 — Questão 144 (`enem-2019-acertos-por-dia`)
-- **Estado:** inserida na aula pela B23a (16/11/2026); imagem pela B16.
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema matrizes, determinantes e sistemas lineares 2×2 (ler linha e coluna de uma matriz).
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2019-acertos-por-dia`
 - **Enunciado (resumido):** "A matriz dá os acertos de 5 alunos (linhas) em testes de segunda a sexta (colunas). Em que dia o teste teve mais acertos?"
 - **Fala do Paco:** "Cada coluna é um dia da semana: junte os acertos dos 5 alunos naquele dia."
-- **Fonte:** ENEM 2019/144, https://api.enem.dev/v1/exams/2019/questions/144 (adaptada: enunciado resumido, gabarito mantido).
-- **Imagens:** `/vestibular/enem-2019-144-1.png`
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 144: enunciado resumido mantendo a matriz; gabarito (A) mantido. — **URL:** https://api.enem.dev/v1/exams/2019/questions/144
+- **Imagens:** `/vestibular/enem-2019-144-1.png` (Matriz 5 por 5 com os acertos de cada aluno (linha) em cada dia (coluna), valores de 0 a 4)
 - **Conta de conferência:** somas das colunas 11, 10, 10, 10, 10: segunda-feira (A).
+- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema matrizes, determinantes e sistemas lineares 2×2 (ler linha e coluna de uma matriz).
 
-#### V2 — ENEM 2021 — Questão 157 (`enem-2021-regiao-destino`)
-- **Estado:** inserida na aula pela B23a (16/11/2026); imagem pela B16.
-- **Recorte para seleção:** Aplicação direta em contexto, no tema matrizes, determinantes e sistemas lineares 2×2 (aᵢⱼ como fluxo de i para j).
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | Segunda-feira | **sim** | "Certo: segunda soma 3 + 3 + 2 + 3 + 0 = 11; cada um dos outros dias soma 10." |
+| `b` | Terça-feira | não | "Você somou linhas: a linha 2 (Bruno, 12) é um aluno, não a terça. Por colunas, a segunda soma 11 e a terça, 10." |
+| `c` | Quarta-feira | não | "A quarta tem dois 4, mas também dois 0: 0 + 4 + 2 + 4 + 0 = 10. A segunda soma 11." |
+| `d` | Quinta-feira | não | "Quinta: 1 + 1 + 3 + 1 + 4 = 10. A segunda soma 3 + 3 + 2 + 3 + 0 = 11." |
+| `e` | Sexta-feira | não | "Sexta: 2 + 2 + 2 + 0 + 4 = 10. A segunda soma 3 + 3 + 2 + 3 + 0 = 11." |
+
+#### V2 — `enem-2021-regiao-destino`
 - **Enunciado (resumido):** "Na matriz, aᵢⱼ é o número de famílias (em dezenas) que se mudaram da região i para a região j. Qual região mais recebeu famílias?"
 - **Fala do Paco:** "A linha diz de onde a família saiu e a coluna diz para onde foi."
-- **Fonte:** ENEM 2021/157, https://api.enem.dev/v1/exams/2021/questions/157 (adaptada: enunciado resumido, gabarito mantido).
-- **Imagens:** `/vestibular/enem-2021-157-5.png`
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 157: enunciado resumido (a construtora investe na região de destino do maior fluxo) mantendo a matriz; gabarito (E) mantido. — **URL:** https://api.enem.dev/v1/exams/2021/questions/157
+- **Imagens:** `/vestibular/enem-2021-157-5.png` (Matriz A de ordem 5 com as mudanças de famílias, em dezenas, entre as cinco regiões; diagonal nula)
 - **Conta de conferência:** destino = coluna; somas das colunas 4, 8, 10, 11, 12: região 5 (E). Somar linhas (origem) daria região 1 (13).
+- **Recorte para seleção:** Aplicação direta em contexto, no tema matrizes, determinantes e sistemas lineares 2×2 (aᵢⱼ como fluxo de i para j).
 
-#### V3 — `v3-matrizes-determinantes-sistemas`
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 1 | não | "Você somou a linha 1 (13), que conta quem saiu da região 1. Quem chegou está na coluna: a 5 soma 12, a maior." |
+| `b` | 2 | não | "A região 2 é a origem do maior elemento (a₂₃ = 6). O destino é a coluna: a 2 soma 8 e a 5 soma 12." |
+| `c` | 3 | não | "O maior elemento isolado (a₂₃ = 6) vai para a região 3, mas a coluna 3 inteira soma 10. A coluna 5 soma 12." |
+| `d` | 4 | não | "Quase: a coluna 4 soma 2 + 2 + 3 + 0 + 4 = 11. A coluna 5 soma 5 + 3 + 0 + 4 + 0 = 12." |
+| `e` | 5 | **sim** | "Certo: destino é coluna; as colunas somam 4, 8, 10, 11 e 12, e a 5 recebeu 12 dezenas." |
+
+#### V3 — `enem-2021-mala-camisetas`
+- **Enunciado (resumido):** "A tabela mostra duas malas de 10 kg; itens do mesmo tipo têm a mesma massa. Com 2 calças e 1 sapato, quantas camisetas completam os 10 kg?"
+- **Fala do Paco:** "Compare as duas viagens: o que entrou numa ocupa o lugar do que saiu da outra."
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 164: enunciado resumido (mala de 10 kg, mesmas massas por tipo, máximo de camisetas) mantendo a tabela; gabarito (B) mantido. — **URL:** https://api.enem.dev/v1/exams/2021/questions/164
+- **Imagens:** `/vestibular/enem-2021-164-1.png` (Tabela com camisetas, calças e sapatos levados nas viagens I e II)
+- **Conta de conferência:** 12c + 4k + 3s + m = 18c + 3k + 2s + m = 10 dá k + s = 6c; a viagem II sem 1 calça e 1 sapato fica com 18 + 6 = 24 camisetas (B).
+- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema matrizes, determinantes e sistemas lineares 2×2 (sistema com duas equações e uma combinação delas).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 22 | não | "Com 22 a mala fica abaixo de 10 kg. Da viagem I para a II, 6 camisetas trocam 1 calça e 1 sapato; tirando mais um par da II: 24." |
+| `b` | 24 | **sim** | "Certo: 6 camisetas = 1 calça + 1 sapato; a viagem II (18, 3, 2) sem 1 calça e 1 sapato vira 24, 2, 1." |
+| `c` | 26 | não | "26 passa dos 10 kg. Da I para a II, 6 camisetas trocam 1 calça e 1 sapato; a II sem mais um par dá 18 + 6 = 24." |
+| `d` | 33 | não | "33 passa dos 10 kg. Da I para a II, 6 camisetas trocam 1 calça e 1 sapato; a II sem mais um par dá 18 + 6 = 24." |
+| `e` | 39 | não | "39 passa dos 10 kg. Da I para a II, 6 camisetas trocam 1 calça e 1 sapato; a II sem mais um par dá 18 + 6 = 24." |
+
+#### V4 — `v3-matrizes-determinantes-sistemas`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema matrizes, determinantes e sistemas lineares 2×2.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -291,15 +323,6 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Conta de conferência:** aguarda enunciado e gabarito oficial.
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — ENEM 2021 — Questão 164 (`enem-2021-mala-camisetas`)
-- **Estado:** inserida na aula pela B23a (16/11/2026); imagem pela B16.
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema matrizes, determinantes e sistemas lineares 2×2 (sistema com duas equações e uma combinação delas).
-- **Enunciado (resumido):** "A tabela mostra duas malas de 10 kg; itens do mesmo tipo têm a mesma massa. Com 2 calças e 1 sapato, quantas camisetas completam os 10 kg?"
-- **Fala do Paco:** "Compare as duas viagens: o que entrou numa ocupa o lugar do que saiu da outra."
-- **Fonte:** ENEM 2021/164, https://api.enem.dev/v1/exams/2021/questions/164 (adaptada: enunciado resumido, gabarito mantido).
-- **Imagens:** `/vestibular/enem-2021-164-1.png`
-- **Conta de conferência:** 12c + 4k + 3s + m = 18c + 3k + 2s + m = 10 dá k + s = 6c; a viagem II sem 1 calça e 1 sapato fica com 18 + 6 = 24 camisetas (B).
 
 ---
 

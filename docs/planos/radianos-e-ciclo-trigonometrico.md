@@ -238,21 +238,35 @@ O aluno gira P além de 360° (ex.: 420° = 60° + 360°) e no sentido horário 
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2018-camera`
-- **Enunciado (resumido):** Uma câmera aponta para Oeste (180°) e gira: 135° anti-horário, 60° horário e 45° anti-horário. Qual o menor giro até Noroeste (135°)?
+- **Enunciado (resumido):** "Uma câmera aponta para Oeste (180°) e gira: 135° anti-horário, 60° horário e 45° anti-horário. Qual o menor giro até Noroeste (135°)?"
 - **Fala do Paco:** "Some os giros anti-horários e subtraia o horário a partir de 180° para achar a posição final."
-- **Fonte:** ENEM 2018, Questão 171 — `https://api.enem.dev/v1/exams/2018/questions/171`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`165° no sentido horário`) mantidos.
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 171: enunciado resumido; alternativas e gabarito (165° no sentido horário) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/171
 - **Conta de conferência:** `180° + 135° − 60° + 45° = 300°`; menor giro até `135°`: `300° − 135° = 165°` no sentido horário.
-- **Opções e feedback:** `75° no sentido horário`, `105° no sentido anti-horário`, `120° no sentido anti-horário`, `135° no sentido anti-horário`, `165° no sentido horário` (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `h75` | 75° no sentido horário | não | "75° horário levaria de 300° para 225° (Sudoeste), não 135° (NO). De 300° até 135° são 165° no sentido horário." |
+| `ah105` | 105° no sentido anti-horário | não | "105° anti-horário levaria de 300° para 45° (Nordeste), não 135°. De 300° a 135° são 165° no sentido horário." |
+| `ah120` | 120° no sentido anti-horário | não | "120° é o giro líquido (135° − 60° + 45°), sem partir de Oeste (180°). Da posição 300° a 135° são 165° no sentido horário." |
+| `ah135` | 135° no sentido anti-horário | não | "135° anti-horário levaria de 300° para 75°, não 135° (NO). O menor giro é 165° no sentido horário." |
+| `h165` | 165° no sentido horário | **sim** | "Isso. 180° + 135° − 60° + 45° = 300°; girando 165° no sentido horário chega a 135° (NO)." |
 
 #### V2 — `enem-2012-vulcao`
-- **Enunciado (resumido):** Um vulcão está na longitude 124° 3' 0", sabendo que 1° = 60' e 1' = 60". Qual é essa medida em graus na forma decimal?
+- **Enunciado (resumido):** "Um vulcão está na longitude 124° 3' 0", sabendo que 1° = 60' e 1' = 60". Qual é essa medida em graus na forma decimal?"
 - **Fala do Paco:** "Divida os 3 minutos por 60 para converter em fração de grau."
-- **Fonte:** ENEM 2012, Questão 171 — `https://api.enem.dev/v1/exams/2012/questions/171`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`124,05°`) mantidos.
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 171: enunciado resumido; alternativas e gabarito (124,05°) mantidos. — **URL:** https://api.enem.dev/v1/exams/2012/questions/171
 - **Conta de conferência:** `3' = 3/60° = 0,05° ⇒ 124° + 0,05° = 124,05°`.
-- **Opções e feedback:** `124,02°`, `124,05°` (correta), `124,20°`, `124,30°`, `124,50°`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `g02` | 124,02° | não | "124,02° equivaleria a 0,02 · 60 = 1,2 minuto, não 3'. Como 3/60 = 0,05, dá 124,05°." |
+| `g05` | 124,05° | **sim** | "Isso. 3' = 3/60° = 0,05°, logo 124° 3' = 124,05°." |
+| `g20` | 124,20° | não | "124,20° equivaleria a 0,20 · 60 = 12' (ou inverter 60/3 = 20 na casa decimal). Dividindo 3 por 60: 124,05°." |
+| `g30` | 124,30° | não | "124,30° trata 1° como 10' (0,3 · 60 = 18'). Em base 60, 3/60 = 0,05: 124,05°." |
+| `g50` | 124,50° | não | "124,50° corresponde a 30' (meio grau), não 3'. O certo é 124,05°." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** calcular ângulo entre ponteiros de relógio ou giro de ponteiro em radianos.

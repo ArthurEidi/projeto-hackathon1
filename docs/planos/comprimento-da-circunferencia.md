@@ -249,21 +249,35 @@ Se o giro é α = 0°, a roda não sai do lugar e L = 0; em α = 360° fecha uma
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2010-rolos`
-- **Enunciado (resumido):** Um bloco apoia-se sobre rolos cilíndricos de raio R. Qual o deslocamento horizontal do bloco após um rolo dar 1 volta completa sem deslizar?
+- **Enunciado (resumido):** "Um bloco apoia-se sobre rolos cilíndricos de raio R. Qual o deslocamento horizontal do bloco após um rolo dar 1 volta completa sem deslizar?"
 - **Fala do Paco:** "Some o avanço do centro do rolo sobre o chão com o avanço do bloco sobre o topo do rolo."
-- **Fonte:** ENEM 2010, Questão 163 — `https://api.enem.dev/v1/exams/2010/questions/163`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`Y = 4πR`) mantidos.
+- **Fonte:** ENEM 2010 (adaptada) — **Adaptação:** Questão 163: enunciado resumido; alternativas e gabarito (Y = 4πR) mantidos. — **URL:** https://api.enem.dev/v1/exams/2010/questions/163
 - **Conta de conferência:** `2πR` (centro no chão) `+ 2πR` (bloco sobre o rolo) `= 4πR`.
-- **Opções e feedback:** `Y = R`, `Y = 2R`, `Y = πR`, `Y = 2πR`, `Y = 4πR` (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `yr` | Y = R | não | "R é apenas o raio do rolo. O centro anda 2πR no solo e o bloco mais 2πR sobre o rolo: Y = 4πR." |
+| `y2r` | Y = 2R | não | "2R é o diâmetro do rolo, não o comprimento da volta. Somando solo e topo: Y = 2πR + 2πR = 4πR." |
+| `ypir` | Y = πR | não | "πR é só meia circunferência. Uma volta completa soma 2πR do centro com 2πR do topo: Y = 4πR." |
+| `y2pir` | Y = 2πR | não | "2πR é apenas o avanço do centro do rolo no solo; o bloco ainda avança outros 2πR em relação ao centro. Total: Y = 4πR." |
+| `y4pir` | Y = 4πR | **sim** | "Isso. O centro avança 2πR no solo e o topo do rolo avança mais 2πR em relação ao centro: 4πR." |
 
 #### V2 — `enem-2019-catraca`
-- **Enunciado (resumido):** Uma bicicleta tem catraca de 7 cm de diâmetro. Para avançar 50% a mais por pedalada, qual deve ser o diâmetro da nova catraca?
+- **Enunciado (resumido):** "Uma bicicleta tem catraca de 7 cm de diâmetro. Para avançar 50% a mais por pedalada, qual deve ser o diâmetro da nova catraca?"
 - **Fala do Paco:** "Com o mesmo comprimento de corrente puxado, mais voltas (×1,5) exigem uma catraca menor na mesma razão."
-- **Fonte:** ENEM 2019, Questão 145 — `https://api.enem.dev/v1/exams/2019/questions/145`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`4,7`) mantidos.
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 145: enunciado resumido; alternativas e gabarito (4,7) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/145
 - **Conta de conferência:** `d = 7 / 1,5 = 4,666... ≈ 4,7 cm`.
-- **Opções e feedback:** `2,3`, `3,5`, `4,7` (correta), `5,3`, `10,5`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `d23` | 2,3 | não | "2,3 ≈ 7 / 3 dividiria por 3 (200% a mais de avanço) em vez de 1,5. Para 50% a mais: 7 / 1,5 ≈ 4,7 cm." |
+| `d35` | 3,5 | não | "3,5 = 7 / 2 dobraria o avanço (+100%), não +50%. Dividindo por 1,5: 7 / 1,5 ≈ 4,7 cm." |
+| `d47` | 4,7 | **sim** | "Isso. As voltas são inversamente proporcionais ao diâmetro: d = 7 / 1,5 ≈ 4,7 cm." |
+| `d53` | 5,3 | não | "5,3 ≈ 7 · 0,75 reduz o diâmetro em 25% em vez de dividir por 1,5. O certo é 7 / 1,5 ≈ 4,7 cm." |
+| `d105` | 10,5 | não | "10,5 = 7 · 1,5 multiplicou por 1,5 em vez de dividir (catraca maior dá menos voltas). O certo é 7 / 1,5 ≈ 4,7 cm." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** comprimento de arco a partir do ângulo central (ponteiros, pêndulos ou setores).

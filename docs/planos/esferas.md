@@ -227,21 +227,35 @@ Testar o limite de `d`: para `0 ≤ d < R` a interseção é um círculo; na fro
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2022-esferas-rolamento`
-- **Enunciado (resumido):** Um cilindro maciço de raio 4 cm e altura 50 cm é derretido para fazer esferas de diâmetro 1 cm. Quantas esferas serão obtidas?
+- **Enunciado (resumido):** "Um cilindro maciço de raio 4 cm e altura 50 cm é derretido para fazer esferas de diâmetro 1 cm. Quantas esferas serão obtidas?"
 - **Fala do Paco:** "Lembre que diâmetro 1 cm significa raio 0,5 cm = 1/2 cm."
-- **Fonte:** ENEM 2022, Questão 174 — `https://api.enem.dev/v1/exams/2022/questions/174`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (4800) mantidos.
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 174: enunciado resumido; alternativas e gabarito (4800) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/174
 - **Conta de conferência:** `V_cil = π·4²·50 = 800π cm³`; `V_esf = (4/3)π(1/2)³ = π/6 cm³`; `800π / (π/6) = 4800`.
-- **Opções e feedback:** 800, 1200, 2400, 4800 (correta), 6400.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a800` | 800 | não | "800 é apenas o coeficiente de π no cilindro (800π cm³). Dividindo pelo volume da esfera (π/6 cm³), dá 4800." |
+| `a1200` | 1200 | não | "1200 é um quarto do certo (800π / (2π/3)). Com r = 0,5 cm, cada esfera tem π/6 cm³, dando 800π / (π/6) = 4800." |
+| `a2400` | 2400 | não | "2400 divide 800π por π/3 (metade do certo). O volume da esfera de raio 1/2 cm é (4/3)π(1/8) = π/6, dando 4800." |
+| `a4800` | 4800 | **sim** | "Isso. V_cil = π·4²·50 = 800π cm³; V_esf = (4/3)π(1/2)³ = π/6 cm³; logo 800π / (π/6) = 4800." |
+| `a6400` | 6400 | não | "6400 (800 / (1/8)) eleva 1/2 ao cubo mas esquece o fator 4/3 da esfera. Com 4/3, dá 800 / (1/6) = 4800." |
 
 #### V2 — `enem-2022-docinhos`
-- **Enunciado (resumido):** Uma porção de massa rende 50 docinhos esféricos de diâmetro 2 cm. Quantas porções são necessárias para 150 docinhos de diâmetro 4 cm?
+- **Enunciado (resumido):** "Uma porção de massa rende 50 docinhos esféricos de diâmetro 2 cm. Quantas porções são necessárias para 150 docinhos de diâmetro 4 cm?"
 - **Fala do Paco:** "Compare o volume de um docinho grande com o de um pequeno; depois a massa total dos 150 com a dos 50."
-- **Fonte:** ENEM 2022, Questão 178 — `https://api.enem.dev/v1/exams/2022/questions/178`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (24) mantidos.
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 178: enunciado resumido; alternativas e gabarito (24) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/178
 - **Conta de conferência:** `(4/2)³ · (150/50) = 8 · 3 = 24 porções`.
-- **Opções e feedback:** 2, 3, 6, 12, 24 (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2` | 2 | não | "2 é só a razão dos diâmetros (4 / 2). O volume cresce com 2³ = 8, e ainda são 3 vezes mais docinhos: 3·8 = 24." |
+| `a3` | 3 | não | "3 é só a razão das quantidades (150 / 50), ignorando que dobrar o diâmetro multiplica o volume por 2³ = 8. Total: 24." |
+| `a6` | 6 | não | "6 multiplica 3 · 2 usando escala linear para o volume. Em 3D o fator é 2³ = 8, dando 3 · 8 = 24 porções." |
+| `a12` | 12 | não | "12 multiplica 3 · 2² usando escala de área. Para esferas (volume 3D), usa-se 2³ = 8: 3 · 8 = 24 porções." |
+| `a24` | 24 | **sim** | "Exato. Dobrar o diâmetro multiplica o volume por 2³ = 8, e 150 / 50 = 3 vezes a quantidade: 3 · 8 = 24 porções." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** cálculo de área e volume de semiesferas, fusos e cunhas esféricas.

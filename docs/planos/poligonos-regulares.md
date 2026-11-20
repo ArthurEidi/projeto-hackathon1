@@ -227,9 +227,22 @@ Aumentar `n` para `10, 20, 100` mostra que `a_e = 360° / n` se aproxima de `0°
 
 ### Vestibular
 
-#### V1 — ENEM 2020 — Questão 171
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2020-azulejos-octogono`
+- **Enunciado (resumido):** "Octógonos regulares deixam vãos no painel. Quais peças (1: triângulo retângulo isósceles; 2: equilátero; 3: quadrado) preenchem os vãos?"
+- **Fala do Paco:** "Calcule o ângulo interno do octógono regular (135°) e veja o que falta para 360° e 180°."
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 171: enunciado resumido listando os três formatos; gabarito (D) mantido. — **URL:** https://api.enem.dev/v1/exams/2020/questions/171
+- **Imagens:** `/vestibular/enem-2020-171-1.png` (Malha retangular com octógonos regulares cinza deixando espaços quadrados internos e triangulares nas bordas)
 - **Habilidade-alvo:** verificar quais polígonos regulares ou combinações ladrilham o plano (`∑ ângulos no vértice = 360°`).
-- **Onde procurar:** ENEM, Unicamp, Unesp, Fuvest (questões de calçamento/mosaico/ladrilhamento).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 1 | não | "Faltam os espaços internos entre 4 octógonos: 360° - 2·135° = 90° dá quadrados (3). Logo, 1 e 3." |
+| `b` | 3 | não | "Faltam os cantos das bordas: 180° - 135° = 45° dá triângulo retângulo isósceles (1). Logo, 1 e 3." |
+| `c` | 1 e 2 | não | "Entre octógonos o ângulo é 360° - 270° = 90° (quadrado 3), não 60° (equilátero 2). Logo, 1 e 3." |
+| `d` | 1 e 3 | **sim** | "Certo: 360° - 2·135° = 90° forma quadrados (3) e 180° - 135° = 45° nas bordas forma triângulos retângulos isósceles (1)." |
+| `e` | 2 e 3 | não | "Nas bordas o ângulo é 45° (triângulo retângulo isósceles 1), não 60° (equilátero 2). Logo, 1 e 3." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** usar a decomposição do hexágono regular em 6 triângulos equiláteros para calcular áreas ou distâncias.

@@ -251,9 +251,21 @@ Quando k → 0, a paralela encosta no vértice do topo e o triângulo encolhe a 
 
 ### Vestibular
 
-#### V1 — ENEM 2009 — Questão 154
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2009-rampa-hospital`
+- **Enunciado (resumido):** "Uma rampa tem altura máxima de 2,2 m. Ao caminhar 3,2 m sobre ela, um paciente sobe 0,8 m; quanto ainda falta caminhar até o topo?"
+- **Fala do Paco:** "Monte a proporção entre distância na rampa e altura, depois subtraia os 3,2 m já percorridos."
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 154: enunciado resumido mantendo os três valores numéricos; gabarito (D) mantido. — **URL:** https://api.enem.dev/v1/exams/2009/questions/154
 - **Habilidade-alvo:** calcular altura inacessível (prédio, árvore, poste) por semelhança de triângulos com sombras.
-- **Onde procurar:** ENEM, Vunesp, UERJ, Unicamp.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 1,16 m | não | "Não basta multiplicar 0,8 por 1,45: por semelhança, D = 2,2 · (3,2 / 0,8) = 8,8 m, faltam 8,8 - 3,2 = 5,6 m." |
+| `b` | 3,0 m | não | "Faltou aplicar a razão 3,2/0,8 = 4 ao total da rampa: 2,2 · 4 = 8,8 m, faltam 5,6 m." |
+| `c` | 5,4 m | não | "Confira a conta: 3,2 / 0,8 = 4, total = 4 · 2,2 = 8,8 m e 8,8 - 3,2 = 5,6 m." |
+| `d` | 5,6 m | **sim** | "Certo: D / 2,2 = 3,2 / 0,8 = 4 dá D = 8,8 m; faltam 8,8 - 3,2 = 5,6 m." |
+| `e` | 7,04 m | não | "Você multiplicou 2,2 · 3,2 = 7,04 sem dividir por 0,8 nem subtrair 3,2. O correto é 5,6 m." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** aplicar o teorema de Tales em loteamentos com ruas paralelas e avenidas transversais.

@@ -238,13 +238,21 @@ O aluno arrasta k para testar que o tamanho do triângulo não afeta as razões.
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2020-pergolado`
-- **Enunciado (resumido):** Vigas de pergolado têm vãos de 30 cm. Com sol a 30° da vertical, a sombra cobre metade do vão (15 cm). Qual a altura das vigas?
+- **Enunciado (resumido):** "Vigas de pergolado têm vãos de 30 cm; com sol a 30° da vertical, a sombra cobre metade do vão (15 cm). Qual a altura das vigas?"
 - **Fala do Paco:** "No triângulo retângulo da sombra, 15 cm é o cateto oposto a 30° e a altura h é o adjacente."
-- **Fonte:** ENEM 2020, Questão 173 — `https://api.enem.dev/v1/exams/2020/questions/173`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`26`) mantidos.
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 173: enunciado resumido; alternativas e gabarito (26) mantidos. — **URL:** https://api.enem.dev/v1/exams/2020/questions/173
 - **Conta de conferência:** `tg(30°) = 15/h ⇒ h = 15/(√3/3) = 15√3 ≈ 26 cm`.
-- **Opções e feedback:** `9`, `15`, `26` (correta), `52`, `60`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a9` | 9 | não | "9 ≈ 15 · (√3/3) = 8,66 vem de multiplicar 15 por tg(30°) em vez de dividir. Como tg(30°) = 15/h, h = 15√3 ≈ 26 cm." |
+| `a15` | 15 | não | "15 é a metade do vão (o cateto oposto a 30°). Com ângulo de 30°, h = 15/tg(30°) = 15√3 ≈ 26 cm." |
+| `a26` | 26 | **sim** | "Isso. tg(30°) = 15/h dá h = 15 / (√3/3) = 15√3 ≈ 26 cm." |
+| `a52` | 52 | não | "52 ≈ 30√3 usa o vão inteiro de 30 cm em vez da metade (15 cm). Com 15 cm, h ≈ 26 cm." |
+| `a60` | 60 | não | "60 = 30 / 0,5 usa o vão de 30 cm e sen(30°) = 0,5 em vez de tg(30°) com 15 cm. O certo é 26." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** aplicar tangente em problema com altura do observador ou sombra.

@@ -239,13 +239,22 @@ Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {
 
 > Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2023-larvas`
-- **Enunciado (resumido):** Uma população de 100 larvas multiplica-se por 10 a cada 3 dias. Com 5 L de produto (1 L por 200 000 larvas), em quantos dias aplicar?
+- **Enunciado (resumido):** "100 larvas multiplicam-se por 10 a cada 3 dias. Os 5 L de produto (1 L por 200 000 larvas) vão de uma vez, na dose exata: em quantos dias?"
 - **Fala do Paco:** "Calcule o limite de larvas para 5 L e escreva 100 · 10^(t/3) = 10⁶."
-- **Fonte:** ENEM 2023, Questão 159 — `https://api.enem.dev/v1/exams/2023/questions/159`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (12) mantidos.
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 159: enunciado resumido; alternativas e gabarito (12) mantidos. — **URL:** https://api.enem.dev/v1/exams/2023/questions/159
 - **Conta de conferência:** `5 · 200 000 = 10⁶`; `100 · 10^(t/3) = 10⁶ => 10^(t/3) = 10⁴ => t/3 = 4 => t = 12`.
-- **Opções e feedback:** 2, 4, 6, 12 (correta), 18.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2` | 2 | não | "2 faz 6 ÷ 3 em vez de multiplicar os 4 saltos por 3 dias. De 100 a 10⁶ são 4 saltos: 4 · 3 = 12." |
+| `a4` | 4 | não | "4 são os saltos de ×10 (de 100 a 1 000 000), sem multiplicar por 3 dias. O certo é 4 · 3 = 12." |
+| `a6` | 6 | não | "6 usa o expoente de 10⁶ sem descontar as 100 iniciais nem multiplicar por 3. O certo é 12." |
+| `a12` | 12 | **sim** | "Isso. 5 L atendem 10⁶ larvas; 100 · 10^(t/3) = 10⁶ dá t/3 = 4, logo t = 12 dias." |
+| `a18` | 18 | não | "18 multiplica 6 · 3 sem dividir 10⁶ pelas 100 larvas iniciais. O certo é 4 · 3 = 12." |
+
 #### V2 — `pendente-fonte-funcao-exponencial-2`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
@@ -253,6 +262,7 @@ Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {
 - **Adaptação:** nenhuma; questão não inserida.
 - **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
 - **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+
 #### V3 — `pendente-fonte-funcao-exponencial-3`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
@@ -260,6 +270,7 @@ Domínio R quando b>0. Se b≠1, imagem (0;∞), sem tocar y=0; se b=1, imagem {
 - **Adaptação:** nenhuma; questão não inserida.
 - **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
 - **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+
 #### V4 — `pendente-fonte-funcao-exponencial-4`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"

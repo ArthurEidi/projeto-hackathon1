@@ -249,26 +249,49 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2011-rodovia`
-- **Enunciado (resumido):** Empresa 1 cobra R$ 100 mil/km + R$ 350 mil fixo; empresa 2 cobra R$ 120 mil/km + R$ 150 mil fixo. Qual equação iguala os custos em n km?
+- **Enunciado (resumido):** "Empresa 1 cobra R$ 100 mil/km + R$ 350 mil fixo; empresa 2 cobra R$ 120 mil/km + R$ 150 mil fixo. Qual equação iguala os custos em n km?"
 - **Fala do Paco:** "Escreva o custo de cada empresa em milhares de reais para n km e iguale os dois lados."
-- **Fonte:** ENEM 2011 — Questão 159 (`https://api.enem.dev/v1/exams/2011/questions/159`).
-- **Adaptação:** enunciado condensado para caber em 140 caracteres mantendo dados e alternativas.
+- **Fonte:** ENEM 2011 (adaptada) — **Adaptação:** Questão 159: enunciado condensado para caber em 140 caracteres mantendo dados e alternativas. — **URL:** https://api.enem.dev/v1/exams/2011/questions/159
 - **Conta de conferência:** Custo 1 = 100n + 350; custo 2 = 120n + 150; igualando: 100n + 350 = 120n + 150 (gabarito A).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `eq1` | 100n + 350 = 120n + 150 | **sim** | "Certo: custo por km vezes n mais a taxa fixa em milhares dá 100n + 350 = 120n + 150." |
+| `eq2` | 100n + 150 = 120n + 350 | não | "Trocou as taxas fixas entre as empresas. O certo é 100n + 350 = 120n + 150." |
+| `eq3` | 100(n + 350) = 120(n + 150) | não | "Multiplicou a taxa fixa por 100 e 120, mas ela é somada uma vez: 100n + 350 = 120n + 150." |
+| `eq4` | 100(n + 350 000) = 120(n + 150 000) | não | "Misturou milhares com reais e multiplicou o fixo pela taxa/km. O certo é 100n + 350 = 120n + 150." |
+| `eq5` | 350(n + 100 000) = 150(n + 120 000) | não | "Pôs os fixos (350 e 150) multiplicando e somou a n o preço por km em reais. O certo é 100n + 350 = 120n + 150." |
+
 #### V2 — `enem-2010-salto-triplo`
-- **Enunciado (resumido):** No salto triplo, o 2º salto cai 1,2 m em relação ao 1º, e o 3º cai 1,5 m em relação ao 2º. Para somar 17,4 m, onde fica o 1º salto?
+- **Enunciado (resumido):** "No salto triplo, o 2º salto cai 1,2 m em relação ao 1º, e o 3º cai 1,5 m em relação ao 2º. Para somar 17,4 m, onde fica o 1º salto?"
 - **Fala do Paco:** "Escreva os 3 saltos em função do primeiro x: x, x − 1,2 e x − 2,7."
-- **Fonte:** ENEM 2010 — Questão 169 (`https://api.enem.dev/v1/exams/2010/questions/169`).
-- **Adaptação:** texto resumido mantendo os descontos sucessivos, a meta e os intervalos.
+- **Fonte:** ENEM 2010 (adaptada) — **Adaptação:** Questão 169: texto resumido mantendo os descontos sucessivos, a meta e os intervalos. — **URL:** https://api.enem.dev/v1/exams/2010/questions/169
 - **Conta de conferência:** x + (x − 1,2) + (x − 2,7) = 17,4 ⇒ 3x = 21,3 ⇒ x = 7,1 m, entre 7,0 m e 8,0 m (gabarito D).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `s4_5` | 4,0 m e 5,0 m | não | "4,6 = 17,4/3 − 1,2 desconta 1,2 m da média. Somando x, x − 1,2 e x − 2,7: 3x − 3,9 = 17,4 ⇒ x = 7,1 m." |
+| `s5_6` | 5,0 m e 6,0 m | não | "17,4/3 = 5,8 é a média dos três saltos, não o 1º. De 3x − 3,9 = 17,4 vem x = 7,1 m (7,0 m e 8,0 m)." |
+| `s6_7` | 6,0 m e 7,0 m | não | "Se o 3º caísse 1,5 m do 1º (não do 2º), daria 3x − 2,7 = 17,4 ⇒ 6,7 m. O certo é 3x − 3,9 = 17,4 ⇒ 7,1 m (7,0 m e 8,0 m)." |
+| `s7_8` | 7,0 m e 8,0 m | **sim** | "Exato: x + (x − 1,2) + (x − 2,7) = 17,4 ⇒ 3x = 21,3 ⇒ x = 7,1 m, entre 7,0 m e 8,0 m." |
+| `s8_9` | 8,0 m e 9,0 m | não | "Tomou a média 5,8 como o 3º salto e somou 2,7: 8,5 m. Mas 3x − 3,9 = 17,4 dá x = 7,1 m (entre 7,0 m e 8,0 m)." |
+
 #### V3 — `enem-2009-festa`
-- **Enunciado (resumido):** Um rateio de 50 pessoas tinha déficit de R$ 510,00. Entraram 5 pessoas e os 50 iniciais pagaram mais R$ 7,00. Qual a cota final das 55?
+- **Enunciado (resumido):** "Um rateio de 50 pessoas tinha déficit de R$ 510,00; entraram 5 e as 50 iniciais pagaram mais R$ 7,00. Qual a cota final das 55?"
 - **Fala do Paco:** "Se c é a cota final de cada uma das 55 pessoas, os 50 iniciais já tinham pago c − 7."
-- **Fonte:** ENEM 2009 — Questão 151 (`https://api.enem.dev/v1/exams/2009/questions/151`).
-- **Adaptação:** enunciado resumido mantendo números e opções.
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 151: enunciado resumido mantendo números e opções. — **URL:** https://api.enem.dev/v1/exams/2009/questions/151
 - **Conta de conferência:** 50(c − 7) + 510 = 55c ⇒ 5c = 160 ⇒ c = R$ 32,00 (gabarito D).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `r14` | R$ 14,00 | não | "Com R$ 14, os 5 novos pagam 70 e os 50 cobrem 350 a mais: 420, não 510. De 5c + 350 = 510 vem c = R$ 32,00." |
+| `r17` | R$ 17,00 | não | "Com R$ 17, os 5 novos pagam 85 e os 50 cobrem 350 a mais: 435, não 510. De 5c + 350 = 510 vem c = R$ 32,00." |
+| `r22` | R$ 22,00 | não | "Com R$ 22, os 5 novos pagam 110 e os 50 cobrem 350 a mais: 460, não 510. De 5c + 350 = 510 vem c = R$ 32,00." |
+| `r32` | R$ 32,00 | **sim** | "Certo: 50(c − 7) + 510 = 55c ⇒ 5c = 160 ⇒ c = R$ 32,00." |
+| `r57` | R$ 57,00 | não | "Com R$ 57, os 5 novos pagam 285 e os 50 cobrem 350 a mais: 635, passa dos 510. De 5c + 350 = 510 vem c = R$ 32,00." |
 
 #### V4 — `v4-equacoes-primeiro-grau`
 - **Estado:** **PENDENTE-FONTE** (sem 4ª questão ENEM selecionada no cache para este capítulo).

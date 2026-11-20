@@ -246,22 +246,30 @@ Raio zero reduz a curva a um ponto; r² negativo não desenha nada. Na forma ger
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2018-tiros`
+- **Enunciado (resumido):** "Por O(0; 0), cada alvo atingido vale 1 (reta) ou 2 (circunferência): A(0; 4), B(4; 4), C(4; 0), D(2; 2), E(0; 2). Por A, qual rende mais?"
+- **Fala do Paco:** "Teste O(0; 0) e A(0; 4) em cada equação e conte quantos dos outros pontos também pertencem a ela."
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 138: enunciado resumido; alternativas e gabarito ((x -2 )² + ( y - 2 )² = 8) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/138
+- **Conta de conferência:** `(0−2)²+(0−2)²=8`, `(0−2)²+(4−2)²=8`, `(4−2)²+(4−2)²=8`, `(4−2)²+(0−2)²=8` → atinge A, B, C além de O: `3 · 2 = 6` pontos.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `x0` | x = 0 | não | "x = 0 passa por O, A(0; 4) e E(0; 2): 2 pontos · 1 = 2 pontos. A circunferência (x − 2)² + (y − 2)² = 8 faz 6 pontos." |
+| `y0` | y = 0 | não | "y = 0 passa por O e C(4; 0), mas não passa por A(0; 4). A maior pontuação é 6 com (x − 2)² + (y − 2)² = 8." |
+| `c16` | x² + y² = 16 | não | "x² + y² = 16 passa por A(0; 4) e C(4; 0), mas não passa pela origem O(0; 0) (0 + 0 ≠ 16). A certa é (x − 2)² + (y − 2)² = 8." |
+| `c4` | x² + (y − 2)² = 4 | não | "x² + (y − 2)² = 4 passa por O, A(0; 4) e D(2; 2) (E(0; 2) é o centro, dá 0 ≠ 4): 2 · 2 = 4 pontos. Já (x − 2)² + (y − 2)² = 8 faz 6 pontos." |
+| `c8` | (x − 2)² + (y − 2)² = 8 | **sim** | "Isso. Passa por O(0; 0), A(0; 4), B(4; 4) e C(4; 0): 3 pontos · 2 = 6 pontos." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** centro e raio a partir da equação (com completar quadrado).
 - **Onde procurar:** UFRGS, Fuvest, UEL.
 
-#### V2 — PENDENTE-FONTE
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** posição de reta e circunferência (distância do centro à reta).
 - **Onde procurar:** UEL, Unesp, PUC-RJ.
 
-#### V3 — PENDENTE-FONTE
+#### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** posição relativa de duas circunferências.
 - **Onde procurar:** UFPR, Mackenzie.
-
-#### V4 — `enem-2018-tiros`
-- **Enunciado (resumido):** Num jogo, uma reta vale 1 ponto e uma circunferência vale 2 pontos por ponto eliminado além de O(0; 0). Restam A(0; 4), B(4; 4), C(4; 0), D(2; 2) e E(0; 2). Passando por O e A, qual equação dá mais pontos?
-- **Fala do Paco:** "Teste O(0; 0) e A(0; 4) em cada equação e conte quantos dos outros pontos também pertencem a ela."
-- **Fonte:** ENEM 2018, Questão 138 — `https://api.enem.dev/v1/exams/2018/questions/138`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`(x -2 )² + ( y - 2 )² = 8`) mantidos.
-- **Conta de conferência:** `(0−2)²+(0−2)²=8`, `(0−2)²+(4−2)²=8`, `(4−2)²+(4−2)²=8`, `(4−2)²+(0−2)²=8` → atinge A, B, C além de O: `3 · 2 = 6` pontos.
-- **Opções e feedback:** `X = 0` (2 pts), `Y = 0` (não passa por A), `X² + y² =16` (não passa por O), `X² + (y-2)² = 4` (4 pts), `(x -2 )² + ( y - 2 )² = 8` (correta).

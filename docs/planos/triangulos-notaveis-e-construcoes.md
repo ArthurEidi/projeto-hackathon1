@@ -227,18 +227,53 @@ No triângulo `30°-60°-90°`, o maior lado é sempre a hipotenusa `L` (oposta 
 
 ### Vestibular
 
-#### V1 — ENEM 2018 — Questão 180
-- **Habilidade-alvo:** usar o triângulo notável `30°-60°-90°` ou `45°-45°-90°` para calcular alturas e distâncias sem calculadora.
-- **Onde procurar:** ENEM, Fuvest, Unicamp, Unesp.
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
 
-#### V2 — PENDENTE-FONTE
+#### V1 — `enem-2021-triangulo-musical`
+- **Enunciado (resumido):** "Uma barra forma um triângulo equilátero de altura h = 8 cm (use √3 ≈ 1,7). Qual é o comprimento aproximado da barra?"
+- **Fala do Paco:** "Use h = L√3/2 para achar o lado L e multiplique por 3 para obter o perímetro."
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 169: enunciado resumido mantendo h = 8 cm e √3 ≈ 1,7; gabarito (D) mantido. — **URL:** https://api.enem.dev/v1/exams/2021/questions/169
+- **Imagens:** `/vestibular/enem-2021-169-1.png` (Figura 1: triângulo musical e Figura 2: triângulo equilátero de altura h = 8 cm)
+- **Habilidade-alvo:** calcular altura e área de triângulo equilátero (`L√3/2` e `L²√3/4`).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 9,07 cm | não | "9,07 cm é a medida de apenas um lado L ≈ 16·1,7/3; o perímetro é 3L ≈ 27,18 cm." |
+| `b` | 13,60 cm | não | "Confira: L = 16/√3 ≈ 9,06 cm, então o perímetro 3L é aproximadamente 27,18 cm." |
+| `c` | 20,40 cm | não | "O perímetro de 3 lados de ≈ 9,06 cm dá aproximadamente 27,18 cm, não 20,40 cm." |
+| `d` | 27,18 cm | **sim** | "Certo: h = L√3/2 dá L = 16√3/3 ≈ 9,06 cm, logo o perímetro é 3·9,06 = 27,18 cm." |
+| `e` | 36,24 cm | não | "Você multiplicou L por 4 em vez de 3: para o triângulo, 3·9,06 = 27,18 cm." |
+
+#### V2 — `enem-2018-quebra-cabeca-isosceles`
+- **Enunciado (resumido):** "Um quadrado é coberto por triângulos retângulos isósceles; o menor tem catetos de 2 cm. Quanto mede o lado do quadrado?"
+- **Fala do Paco:** "Suba do triângulo preto (catetos 2) calculando a hipotenusa de cada peça até atingir a diagonal."
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 179: enunciado resumido mantendo catetos de 2 cm e figuras das opções; gabarito (A) mantido. — **URL:** https://api.enem.dev/v1/exams/2018/questions/179
+- **Imagens:** `/vestibular/enem-2018-179-1.png` (Quadrado dividido na diagonal por triângulos retângulos isósceles, com o menor preto no canto inferior direito)
+- **Habilidade-alvo:** aplicar ternas pitagóricas (`3-4-5`, `5-12-13`) e diagonal do quadrado (`L√2`) em figuras compostas.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | A (imagem `/vestibular/enem-2018-179-alt-a.png`) | **sim** | "Certo: subindo do triângulo de catetos 2, a hipotenusa horizontal superior mede 8 cm a altura 6 cm na diagonal: L = 8 + 6 = 14." |
+| `b` | B (imagem `/vestibular/enem-2018-179-alt-b.png`) | não | "Faltou somar os 2 cm do triângulo preto na base: a conta correta dá L = 14 (alternativa A)." |
+| `c` | C (imagem `/vestibular/enem-2018-179-alt-c.png`) | não | "As hipotenusas horizontais medem 4 e 8 (racionais), somando L = 8 + 6 = 14 (alternativa A)." |
+| `d` | D (imagem `/vestibular/enem-2018-179-alt-d.png`) | não | "O lado do quadrado é racional: L = 8 + 6 = 14 cm (alternativa A)." |
+| `e` | E (imagem `/vestibular/enem-2018-179-alt-e.png`) | não | "O lado do quadrado não tem raiz de 2: L = 8 + 6 = 14 cm (alternativa A)." |
+
+#### V3 — `enem-2018-helice-cilindro`
+- **Enunciado (resumido):** "Uma faixa retangular com diagonal a 30° é enrolada num cilindro de raio 6/π cm formando a hélice da figura. Qual é a altura do cilindro?"
+- **Fala do Paco:** "Conte quantas voltas completas a hélice dá na figura e multiplique pelo perímetro da base (2πr)."
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 180: enunciado resumido mantendo raio 6/pi, ângulo 30° e opções em imagem; gabarito (B) mantido. — **URL:** https://api.enem.dev/v1/exams/2018/questions/180
+- **Imagens:** `/vestibular/enem-2018-180-1.png` (Cilindro circular reto e faixa retangular com diagonal a 30° enrolada em 6 voltas)
+- **Habilidade-alvo:** usar o triângulo notável `30°-60°-90°` ou `45°-45°-90°` para calcular alturas e distâncias sem calculadora.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | A (imagem `/vestibular/enem-2018-180-alt-a.png`) | não | "Você usou tg(60°) ou 9 voltas: com 6 voltas de 12 cm e tg(30°) = √3/3, h = 72·√3/3 = 24√3 (B)." |
+| `b` | B (imagem `/vestibular/enem-2018-180-alt-b.png`) | **sim** | "Certo: C = 2π(6/π) = 12 cm; em 6 voltas, largura = 72 cm e h = 72·tg(30°) = 24√3 cm." |
+| `c` | C (imagem `/vestibular/enem-2018-180-alt-c.png`) | não | "4√3 corresponde a apenas 1 volta (12·tg 30°), mas a hélice dá 6 voltas: h = 24√3 (B)." |
+| `d` | D (imagem `/vestibular/enem-2018-180-alt-d.png`) | não | "Faltou multiplicar por tg(30°) = √3/3: h = 72·√3/3 = 24√3 (alternativa B)." |
+| `e` | E (imagem `/vestibular/enem-2018-180-alt-e.png`) | não | "72 cm é o comprimento horizontal das 6 voltas, não a altura: h = 72·tg(30°) = 24√3 (B)." |
+
+#### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** localizar um ponto equidistante de 3 vértices (mediatrizes / circuncentro) ou de 3 lados (bissetrizes / incentro) num mapa.
 - **Onde procurar:** ENEM, Unicamp, Unesp (questões de posicionar antena, hospital ou posto policial).
-
-#### V3 — ENEM 2021 — Questão 169
-- **Habilidade-alvo:** calcular altura e área de triângulo equilátero (`L√3/2` e `L²√3/4`).
-- **Onde procurar:** ENEM, UFRGS, UFPR, UERJ.
-
-#### V4 — ENEM 2018 — Questão 179
-- **Habilidade-alvo:** aplicar ternas pitagóricas (`3-4-5`, `5-12-13`) e diagonal do quadrado (`L√2`) em figuras compostas.
-- **Onde procurar:** ENEM, Fuvest, OBMEP.

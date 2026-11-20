@@ -237,22 +237,41 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2022-saque-volei`
-- **Enunciado (resumido):** Saque a 1,5 m do piso segue y = −x²/6 − 7x/3 + 12. Com tetos de 17, 18, 19, 21 e 40 m (I a V), onde a bola bate?
-- **Fala do Paco:** "Calcule y_v = −Δ/(4a) da parábola e some os 1,5 m da altura inicial em relação ao piso."
-- **Fonte:** ENEM 2022 — Questão 150 (`https://api.enem.dev/v1/exams/2022/questions/150`).
-- **Adaptação:** equação transcrita para texto e rótulos explicitando as alturas dos ginásios I a V.
+- **Enunciado (resumido):** "Na parábola y = −x²/6 − 7x/3 + 12, y é medido de um eixo 1,5 m acima do piso. Tetos: 17, 18, 19, 21 e 40 m (I a V); onde a bola bate?"
+- **Fala do Paco:** "Calcule y_v = −Δ/(4a) da parábola e some os 1,5 m entre o eixo e o piso."
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 150: equação transcrita para texto e rótulos explicitando as alturas dos ginásios I a V. — **URL:** https://api.enem.dev/v1/exams/2022/questions/150
 - **Conta de conferência:** Δ = 49/9 + 8 = 121/9; y_v = 121/6 ≈ 20,17 m; 20,17 + 1,5 = 21,67 m > 21 m (I a IV, gabarito D).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `g1` | Apenas no I (17 m) | não | "17 m fica abaixo de 21,67 m, mas II, III e IV também ficam. Bate em I, II, III e IV (até 21 m)." |
+| `g12` | Nos I e II (até 18 m) | não | "Até 18 m ignora que 21,67 m supera 19 m e 21 m. Com y_v = 121/6 ≈ 20,17 m e +1,5 m, bate de I a IV (até 21 m)." |
+| `g123` | Nos I, II e III (até 19 m) | não | "Sem somar 1,5 m, 20,17 m pararia em 19 m. Somando 1,5 m dá 21,67 m: bate em I, II, III e IV (até 21 m)." |
+| `g1234` | Nos I, II, III e IV (até 21 m) | **sim** | "Certo: y_v = −(121/9)/(−4/6) = 121/6 ≈ 20,17 m. Mais 1,5 m dá 21,67 m, superando tetos até 21 m (I a IV)." |
+| `g12345` | Em todos (I a V, até 40 m) | não | "21,67 m não alcança os 40 m do ginásio V. A altura máxima bate apenas em I, II, III e IV (até 21 m)." |
+
 #### V2 — `enem-2009-alcool`
-- **Enunciado (resumido):** Um posto vende 10.000 L a R$ 1,50/L; cada R$ 0,01 de desconto (x centavos) soma 100 L nas vendas. Qual é a receita V(x)?
+- **Enunciado (resumido):** "Um posto vende 10.000 L a R$ 1,50/L; cada R$ 0,01 de desconto (x centavos) soma 100 L nas vendas. Qual é a receita V(x)?"
 - **Fala do Paco:** "Escreva a nova quantidade e o novo preço, em reais, em função de x; a receita é quantidade × preço."
-- **Fonte:** ENEM 2009 — Questão 155 (`https://api.enem.dev/v1/exams/2009/questions/155`).
-- **Adaptação:** enunciado condensado mantendo os dados e as 5 expressões.
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 155: enunciado condensado mantendo os dados e as 5 expressões. — **URL:** https://api.enem.dev/v1/exams/2009/questions/155
 - **Conta de conferência:** V(x) = (10.000 + 100x)(1,50 − 0,01x) = 15.000 + 50x − x² (gabarito D).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `v1` | V = 10.000 + 50x − x² | não | "Trocou a receita inicial 10.000·1,50 = 15.000 pelos litros 10.000. O certo é V = 15.000 + 50x − x²." |
+| `v2` | V = 10.000 + 50x + x² | não | "Usou 10.000 no termo fixo e somou +x² em vez de −100x·0,01x = −x². O certo é V = 15.000 + 50x − x²." |
+| `v3` | V = 15.000 − 50x − x² | não | "Fez 100x − 150x = −50x em vez de 150x − 100x = +50x. O certo é V = 15.000 + 50x − x²." |
+| `v4` | V = 15.000 + 50x − x² | **sim** | "Exato: (10.000 + 100x)(1,50 − 0,01x) = 15.000 − 100x + 150x − x² = 15.000 + 50x − x²." |
+| `v5` | V = 15.000 − 50x + x² | não | "Inverteu os sinais de +50x e −x² ao expandir (10.000 + 100x)(1,50 − 0,01x). O certo é V = 15.000 + 50x − x²." |
 
 #### V3 e V4
 - **Estado:** **PENDENTE-FONTE** (candidatas UNESP 2017 e ENEM sem ano ficaram fora por não constarem no cache ENEM).
+
+#### V4 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
 
 ---
 

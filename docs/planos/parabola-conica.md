@@ -250,25 +250,30 @@ Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o pl
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ita-2009-parabola` — ITA 2009
-- **Enunciado:** "Qual é a distância entre o vértice e o foco da parábola 2x² − 4x − 4y + 3 = 0?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ita-2009-parabola`
+- **Enunciado (resumido):** "Qual é a distância entre o vértice e o foco da parábola 2x² − 4x − 4y + 3 = 0?"
 - **Fala do Paco:** "Complete o quadrado em x e compare com (x − h)² = 4p(y − k): a distância vértice-foco é |p|."
-- **Fonte:** ITA 2009 (adaptada); Matemática, Questão 16: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos. https://www.vestibular.ita.br/provas/matematica_2009.pdf · https://www.vestibular.ita.br/provas/gabarito_2009.pdf
-- **Alternativas:** 2 · 3/2 · 1 · 3/4 · **1/2**
+- **Fonte:** ITA 2009 (adaptada) — **Adaptação:** Matemática, Questão 16: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos. — **URL:** https://www.vestibular.ita.br/provas/matematica_2009.pdf · https://www.vestibular.ita.br/provas/gabarito_2009.pdf
 - **Conta de conferência:** (x − 1)² = 2(y − 1/4) ⇒ 4p = 2 ⇒ p = 1/2 (E).
 
-#### V1 — PENDENTE-FONTE
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2` | 2 | não | "2 é o valor de 4p em (x − 1)² = 2(y − 1/4). A distância vértice-foco é p = 2/4 = 1/2." |
+| `a3-2` | 3/2 | não | "3/2 é o termo constante de x² − 2x + 3/2 = 2y. Completando: (x − 1)² = 2(y − 1/4), 4p = 2 e p = 1/2." |
+| `a1` | 1 | não | "1 é 2p. Em (x − 1)² = 2(y − 1/4), 4p = 2 e a distância vértice-foco é p = 1/2." |
+| `a3-4` | 3/4 | não | "3/4 é o termo constante de y = x²/2 − x + 3/4. Completando: (x − 1)² = 2(y − 1/4), 4p = 2 e p = 1/2." |
+| `a1-2` | 1/2 | **sim** | "Isso. 2x² − 4x + 3 = 4y vira (x − 1)² = 2(y − 1/4): é x² = 4py deslocada, com 4p = 2, então p = 1/2." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** foco e diretriz a partir da equação.
 - **Onde procurar:** UFRGS, PUC-RJ, Unicamp.
 
-#### V2 — PENDENTE-FONTE
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** parábola em contexto (antena, farol, ponte).
 - **Onde procurar:** ENEM ("antena parabólica").
 
-#### V3 — PENDENTE-FONTE
+#### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** reconhecer a cônica pela equação.
 - **Onde procurar:** UFAM, UFPI, PUC-Rio (lista de cônicas do Projeto Agatha; precisam de ano).
-
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** ligação entre função quadrática e parábola cônica.
-- **Onde procurar:** Fuvest, Unesp.

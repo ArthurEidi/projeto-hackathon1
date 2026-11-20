@@ -247,17 +247,55 @@ Amostra viciada (pesquisa de esporte na porta do estádio) erra mesmo com n gran
 
 ### Vestibular
 
-#### V1 — ENEM 2018 — Questão 145 (`enem-2018-media-acidentes`)
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2018-media-acidentes`
+- **Enunciado (resumido):** "O quadro mostra o número de acidentes sofridos por 100 trabalhadores de uma empresa. Qual a média de acidentes por trabalhador?"
+- **Fala do Paco:** "Média ponderada: cada número de acidentes pesa pela quantidade de trabalhadores."
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 145: enunciado resumido (pesquisa da CIPA com amostra de 100 funcionários) mantendo o quadro; gabarito (D) mantido. — **URL:** https://api.enem.dev/v1/exams/2018/questions/145
+- **Imagens:** `/vestibular/enem-2018-145-1.png` (Quadro com o número de acidentes (0 a 5) e o número de trabalhadores em cada caso)
+- **Conta de conferência:** (0·50 + 1·17 + 2·15 + 3·10 + 4·6 + 5·2)/100 = 111/100 = 1,11 (D). Imagem `/vestibular/enem-2018-145-1.png`.
 - **Habilidade-alvo:** ler uma tabela de frequências e ponderar cada valor pela sua frequência (média de acidentes por trabalhador).
-- **Conta:** (0·50 + 1·17 + 2·15 + 3·10 + 4·6 + 5·2)/100 = 111/100 = 1,11 (D). Imagem `/vestibular/enem-2018-145-1.png`.
 
-#### V2 — ENEM 2023 — Questão 140 (`enem-2023-media-mediana-moda`)
-- **Habilidade-alvo:** ler um gráfico de frequências e comparar média, mediana e moda. (A habilidade original, amostra representativa ou viciada, ficou sem candidata do ENEM no cache.)
-- **Conta:** frequências 10, 10, 55, 25, 0, 50, 10 (total 160); moda 3; 80º e 81º valores = 4; média 665/160 ≈ 4,16; moda < mediana < média (E). Imagem `/vestibular/enem-2023-140-1.png`.
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 0,15 | não | "Você somou só os valores 0 + 1 + 2 + 3 + 4 + 5 = 15 e dividiu por 100. Cada valor pesa pelos trabalhadores: 111/100 = 1,11." |
+| `b` | 0,30 | não | "Você dividiu 15 (soma dos valores 0 a 5) por 50. Cada valor pesa pelos trabalhadores: 111/100 = 1,11." |
+| `c` | 0,50 | não | "0,50 é a fração que não sofreu acidente (50 de 100), não a média. A média é 111/100 = 1,11." |
+| `d` | 1,11 | **sim** | "Certo: 0·50 + 1·17 + 2·15 + 3·10 + 4·6 + 5·2 = 111 acidentes em 100 trabalhadores, média 1,11." |
+| `e` | 2,22 | não | "Você dividiu 111 só pelos 50 que sofreram acidente. A média é sobre a amostra toda: 111/100 = 1,11." |
 
-#### V3 — ENEM 2021 — Questão 151 (`enem-2021-histograma-precos`)
+#### V2 — `enem-2021-histograma-precos`
+- **Enunciado (resumido):** "O histograma mostra os preços de 105 apartamentos, em mil reais. Qual o menor preço p tal que pelo menos 50% custam menos que p?"
+- **Fala do Paco:** "Acumule as barras da esquerda para a direita até passar da metade de 105."
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 151: enunciado resumido (anúncio de 50% abaixo de 550 mil omitido) mantendo o histograma; gabarito (C) mantido. — **URL:** https://api.enem.dev/v1/exams/2021/questions/151
+- **Imagens:** `/vestibular/enem-2021-151-1.png` (Histograma do número de imóveis por faixa de preço de 100 mil reais, de 300 a 1 300 mil reais)
+- **Conta de conferência:** acumulado 5, 15, 20, 35, 55 até 400, 500, 600, 700, 800 mil; metade de 105 = 52,5; menor p = 800 mil (C). Imagem `/vestibular/enem-2021-151-1.png`.
 - **Habilidade-alvo:** frequência acumulada por classes num histograma.
-- **Conta:** acumulado 5, 15, 20, 35, 55 até 400, 500, 600, 700, 800 mil; metade de 105 = 52,5; menor p = 800 mil (C). Imagem `/vestibular/enem-2021-151-1.png`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 600 | não | "Até 600 mil há só 5 + 10 + 5 = 20 imóveis, menos de 52,5. Acumulando até 800 mil chega a 55." |
+| `b` | 700 | não | "Até 700 mil são 20 + 15 = 35 imóveis, um terço. Só até 800 mil passa da metade: 35 + 20 = 55." |
+| `c` | 800 | **sim** | "Certo: acumulado 5, 15, 20, 35 e 55; em 800 mil passa pela 1ª vez de 52,5 (metade de 105)." |
+| `d` | 900 | não | "Até 900 mil há 70 imóveis, mas 800 já bastava (55 ≥ 52,5) e a questão pede o menor p." |
+| `e` | 1000 | não | "Até 1 000 mil há 85 imóveis, mas 800 já bastava (55 ≥ 52,5) e a questão pede o menor p." |
+
+#### V3 — `enem-2023-media-mediana-moda`
+- **Enunciado (resumido):** "O gráfico mostra quantas viagens fez cada um dos 160 motoristas de um aplicativo. Como se comparam média, mediana e moda dessas quantidades?"
+- **Fala do Paco:** "Moda é o valor mais frequente; a mediana fica entre o 80º e o 81º motorista em ordem."
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 140: enunciado resumido (relatório da empresa de transporte) mantendo o gráfico; gabarito (E) mantido. — **URL:** https://api.enem.dev/v1/exams/2023/questions/140
+- **Imagens:** `/vestibular/enem-2023-140-1.png` (Gráfico de barras horizontais: quantidade de viagens (1 a 7) e número de motoristas em cada uma)
+- **Conta de conferência:** frequências 10, 10, 55, 25, 0, 50, 10 (total 160); moda 3; 80º e 81º valores = 4; média 665/160 ≈ 4,16; moda < mediana < média (E). Imagem `/vestibular/enem-2023-140-1.png`.
+- **Habilidade-alvo:** ler um gráfico de frequências e comparar média, mediana e moda. (A habilidade original, amostra representativa ou viciada, ficou sem candidata do ENEM no cache.)
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | Mediana = média < moda | não | "A moda é 3, o menor dos três. Mediana 4 e média 665/160 ≈ 4,16: moda < mediana < média." |
+| `b` | Mediana = moda < média | não | "A mediana não é 3: até 3 viagens há só 75 motoristas, então o 80º e o 81º fizeram 4. Fica moda < mediana < média." |
+| `c` | Mediana < média < moda | não | "Moda é o valor 3 (de 55 motoristas), não a frequência 55. Fica 3 < 4 < 4,16: moda < mediana < média." |
+| `d` | Moda < média < mediana | não | "Os 60 que fizeram 6 ou 7 viagens puxam a média para 665/160 ≈ 4,16, acima da mediana 4." |
+| `e` | Moda < mediana < média | **sim** | "Certo: moda 3 (55 motoristas), mediana 4 (80º e 81º) e média 665/160 ≈ 4,16." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** total a partir de uma porcentagem.

@@ -251,10 +251,12 @@ k = 0 e k = n dão 1 grupo (o vazio e o completo). Os valores sobem até o meio 
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `ueg-2005-provas`
 - **Enunciado (resumido):** "Oito matérias serão divididas em duas provas de 4 matérias, uma em cada dia. De quantos modos isso pode ser feito?"
 - **Fala do Paco:** "Escolha as 4 do primeiro dia; as outras vão para o segundo."
-- **Fonte:** UEG 2005 (adaptada) — **Adaptação:** Processo Seletivo 2005/2; enunciado resumido (lista de matérias omitida), alternativas e gabarito (70) mantidos — **URL:** https://projetoagathaedu.com.br/questoes-vestibular/matematica/algebra/analise-combinatoria.php
+- **Fonte:** UEG 2005 (adaptada) — **Adaptação:** Processo Seletivo 2005/2; enunciado resumido (lista de matérias omitida), alternativas e gabarito (70) mantidos. — **URL:** https://projetoagathaedu.com.br/questoes-vestibular/matematica/algebra/analise-combinatoria.php
 - **Conta de conferência:** C(8, 4) = 70
 
 | id | Rótulo | Certa? | Feedback |
@@ -262,14 +264,22 @@ k = 0 e k = n dão 1 grupo (o vazio e o completo). Os valores sobem até o meio 
 | `a1680` | 1680 | não | "1680 é 8 · 7 · 6 · 5, com ordem dentro da prova. Sem ordem: 1680 / 4! = 70." |
 | `a256` | 256 | não | "256 é 2⁸, sem garantir 4 por dia. Escolhendo as 4 do 1º dia: C(8, 4) = 70." |
 | `a140` | 140 | não | "Os dias são distintos, mas escolher o 1º dia já define o 2º. Não dobre: 70." |
-| `a128` | 128 | não | "128 é 2⁷. O certo é escolher 4 de 8: C(8, 4) = 70." |
+| `a128` | 128 | não | "128 = 2⁸ ÷ 2 manda cada matéria a um dia sem exigir 4 por dia e divide pela troca de dias. O certo: C(8, 4) = 70." |
 | `a70` | 70 | **sim** | "Isso. C(8, 4) = 70, e o resto vai para o outro dia." |
 
 #### V2 — `enem-2019-duplas`
 - **Enunciado (resumido):** "Oito amigos, sendo dois canhotos, vão formar 4 duplas de vôlei sem juntar os dois canhotos na mesma dupla; de quantos modos?"
 - **Fala do Paco:** "Cada canhoto escolhe um destro; depois conte os pares entre os 4 destros que sobram."
-- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 156: enunciado resumido; alternativas e gabarito (90) mantidos — **URL:** https://api.enem.dev/v1/exams/2019/questions/156
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 156: enunciado resumido; alternativas e gabarito (90) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/156
 - **Conta de conferência:** 6 · 5 · C(4, 2) / 2! = 6 · 5 · 3 = 90 (ou 105 − 15 = 90).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a69` | 69 | não | "69 não sai da contagem por etapas: cada canhoto pega um destro (6 × 5) e os 4 destros que sobram formam 3 pares: 90." |
+| `a70` | 70 | não | "70 é C(8, 4), divisão em dois grupos de 4; em 4 duplas sem canhotos juntos são 6 × 5 × 3 = 90." |
+| `a90` | 90 | **sim** | "Isso. Os canhotos escolhem 6 e 5 destros; os 4 restantes formam 3 pares, dando 6 × 5 × 3 = 90." |
+| `a104` | 104 | não | "104 subtrai apenas 1 caso de 105; com os canhotos juntos há 5 × 3 = 15 casos, restando 105 − 15 = 90." |
+| `a105` | 105 | não | "105 é o total de partições em 4 duplas sem restrição; tirando os 15 casos com canhotos juntos, sobram 90." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** combinação com restrição "pelo menos um" (complemento).

@@ -249,17 +249,35 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2019-virus`
-- **Enunciado:** "O vírus influenza tem diâmetro interno de 0,00011 mm; como escrever essa medida em notação científica?"
-- **Fala do Paco:** "Conte quantas casas a vírgula anda para a direita até ficar entre o 1 e o 1."
-- **Fonte:** ENEM 2019 (adaptada); Questão 140: enunciado resumido; alternativas e gabarito (1,1 × 10⁻⁴) mantidos; https://api.enem.dev/v1/exams/2019/questions/140
+- **Enunciado (resumido):** "O vírus influenza tem diâmetro interno de 0,00011 mm; como escrever essa medida em notação científica?"
+- **Fala do Paco:** "Conte quantas casas a vírgula anda para a direita até ficar logo depois do 1."
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 140: enunciado resumido; alternativas e gabarito (1,1 × 10⁻⁴) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/140
 - **Conta de conferência:** 0,00011 = 1,1 · 10⁻⁴.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a1` | 1,1 × 10⁻¹ | não | "10⁻¹ desloca apenas 1 casa (0,11); até 0,00011 são 4 casas: 1,1 × 10⁻⁴." |
+| `a2` | 1,1 × 10⁻² | não | "10⁻² dá 0,011; contando os 4 deslocamentos até 1,1 dá 1,1 × 10⁻⁴." |
+| `a3` | 1,1 × 10⁻³ | não | "10⁻³ dá 0,0011 (três zeros antes do 1); aqui há 4 zeros, logo 1,1 × 10⁻⁴." |
+| `a4` | 1,1 × 10⁻⁴ | **sim** | "Isso. A vírgula anda 4 casas para a direita até 1,1, logo o expoente é −4." |
+| `a5` | 1,1 × 10⁻⁵ | não | "10⁻⁵ seria 0,000011; de 0,00011 até 1,1 são 4 casas, logo 1,1 × 10⁻⁴." |
+
 #### V2 — `enem-2022-bilhao`
-- **Enunciado:** "Um filme arrecadou R$ 1,35 bilhão em bilheteria; como escrever essa quantia com todos os seus algarismos?"
+- **Enunciado (resumido):** "Um filme arrecadou R$ 1,35 bilhão em bilheteria; como escrever essa quantia com todos os seus algarismos?"
 - **Fala do Paco:** "1 bilhão vale 10⁹ (um 1 seguido de 9 zeros)."
-- **Fonte:** ENEM 2022 (adaptada); Questão 175: enunciado resumido; alternativas e gabarito (1 350 000 000,00) mantidos; https://api.enem.dev/v1/exams/2022/questions/175
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 175: enunciado resumido; alternativas e gabarito (1 350 000 000,00) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/175
 - **Conta de conferência:** 1,35 · 10⁹ = 1 350 000 000,00.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a135k` | 135 000,00 | não | "135 000 é 135 mil; 1,35 bilhão tem 9 casas após o 1: 1 350 000 000,00." |
+| `a135m` | 1 350 000,00 | não | "1 350 000 é 1,35 milhão (10⁶); bilhão é 10⁹, logo 1 350 000 000,00." |
+| `a13m` | 13 500 000,00 | não | "13 500 000 é 13,5 milhões; 1,35 × 10⁹ é 1 350 000 000,00." |
+| `a135mi` | 135 000 000,00 | não | "135 milhões é 1,35 × 10⁸; falta um zero para 10⁹: 1 350 000 000,00." |
+| `a135bi` | 1 350 000 000,00 | **sim** | "Exato. 1,35 × 10⁹ desloca a vírgula 9 casas: 1 350 000 000,00." |
 
 #### V3 — `v3-notacao-cientifica-e-ordem-grandeza`
 - **Estado:** **PENDENTE-FONTE**

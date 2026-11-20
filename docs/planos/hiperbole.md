@@ -249,20 +249,21 @@ Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o pl
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2017-hill`
-- **Enunciado (resumido):** "A equação de Hill é (p + a)(v + b) = K, com a, b e K constantes positivas. Que gráfico descreve v em função de p?"
+- **Enunciado (resumido):** "A equação de Hill é (p + a)(v + b) = K, com a, b e K positivos. Que gráfico descreve v em função de p?"
 - **Fala do Paco:** "Um fator vezes o outro dá constante, como y = 1/x deslocada."
-- **Fonte:** ENEM 2017, Questão 162 — `https://api.enem.dev/v1/exams/2017/questions/162`
-- **Adaptação:** enunciado resumido (contexto da contração muscular omitido); alternativas e gabarito (ramo de hipérbole) mantidos.
+- **Fonte:** ENEM 2017 (adaptada) — **Adaptação:** Questão 162: enunciado resumido sem contexto biológico; alternativas e gabarito (Ramo de hipérbole) mantidos. — **URL:** https://api.enem.dev/v1/exams/2017/questions/162
 - **Conta de conferência:** v = K/(p + a) − b: hipérbole deslocada, com p restrito a um lado da assíntota
 
 | id | Rótulo | Certa? | Feedback |
 |---|---|---|---|
+| `hiperbole` | Ramo de hipérbole | **sim** | "Isso. É y = k/x deslocada, e só um ramo tem sentido físico." |
 | `obliqua` | Semirreta oblíqua | não | "Produto constante não dá reta: v = K/(p + a) − b é ramo de hipérbole." |
 | `horizontal` | Semirreta horizontal | não | "v muda com p. A relação produto = K desenha um ramo de hipérbole." |
 | `parabola` | Ramo de parábola | não | "Parábola teria um termo ao quadrado. Produto constante: hipérbole." |
 | `circ` | Arco de circunferência | não | "Circunferência soma quadrados. Aqui é produto constante: hipérbole." |
-| `hiperbole` | Ramo de hipérbole | **sim** | "Isso. É y = k/x deslocada, e só um ramo tem sentido físico." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** focos e assíntotas a partir da equação.

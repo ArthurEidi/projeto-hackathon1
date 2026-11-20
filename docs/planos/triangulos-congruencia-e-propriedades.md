@@ -250,13 +250,21 @@ Quando a soma de dois lados empata com o terceiro (b + c = a), o triângulo acha
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2018-remos`
-- **Enunciado (resumido):** Dois remos de mesmo tamanho encontram-se no ponto A e formam um triângulo ABC com ângulo A = 170°. Como se classifica esse triângulo?
+- **Enunciado (resumido):** "Dois remos de mesmo tamanho encontram-se no ponto A e formam um triângulo ABC com ângulo A = 170°. Como se classifica esse triângulo?"
 - **Fala do Paco:** "Classifique o triângulo duas vezes: pelos lados e pelo maior ângulo."
-- **Fonte:** ENEM 2018, Questão 155 — `https://api.enem.dev/v1/exams/2018/questions/155`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`Obtusângulo isósceles`) mantidos.
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 155: enunciado resumido; alternativas e gabarito (Obtusângulo isósceles) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/155
 - **Conta de conferência:** `AB = AC` (isósceles) e `A = 170° > 90°` (obtusângulo).
-- **Opções e feedback:** `Retângulo escaleno`, `Acutângulo escaleno`, `Acutângulo isósceles`, `Obtusângulo escaleno`, `Obtusângulo isósceles` (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `ret-esc` | Retângulo escaleno | não | "Retângulo exigiria ângulo de 90° (aqui A = 170°) e escaleno exigiria lados distintos (os remos são iguais). É obtusângulo isósceles." |
+| `acu-esc` | Acutângulo escaleno | não | "Acutângulo exige todos os ângulos < 90° (aqui A = 170°) e escaleno exige lados diferentes. É obtusângulo isósceles." |
+| `acu-iso` | Acutângulo isósceles | não | "É isósceles pelos dois remos iguais, mas A = 170° > 90° o torna obtusângulo, não acutângulo." |
+| `obt-esc` | Obtusângulo escaleno | não | "É obtusângulo (170° > 90°), mas os dois remos têm o mesmo comprimento, então é isósceles: obtusângulo isósceles." |
+| `obt-iso` | Obtusângulo isósceles | **sim** | "Isso. Dois remos iguais (AB = AC) dão triângulo isósceles, e A = 170° > 90° dá obtusângulo." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** usar o teorema do ângulo externo em cadeia de triângulos isósceles.

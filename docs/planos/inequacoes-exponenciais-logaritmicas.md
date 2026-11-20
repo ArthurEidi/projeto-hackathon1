@@ -249,9 +249,22 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — ENEM 2017 — Questão 137 (`enem-2017-emprestimo-log`)
-- **Estado:** inserida na aula (`https://api.enem.dev/v1/exams/2017/questions/137`, gabarito D: `n ≥ 15,4 ⇒ 16` parcelas).
-- **Recorte:** Inequação exponencial/logarítmica em contexto de empréstimo (`P(n) ≤ 400`).
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2017-emprestimo-log`
+- **Enunciado (resumido):** "Use log 1,013 ≈ 0,005, log 400 ≈ 2,602 e log 335 ≈ 2,525: com essas aproximações, qual o menor n com P(n) ≤ 400 pela fórmula?"
+- **Fala do Paco:** "Monte a inequação P ≤ 400, isole 1,013ⁿ e aplique logaritmo nos dois lados."
+- **Fonte:** ENEM 2017 (adaptada) — **Adaptação:** Questão 137: enunciado resumido mantendo a fórmula em imagem e as aproximações de logaritmo; gabarito (D) mantido. — **URL:** https://api.enem.dev/v1/exams/2017/questions/137
+- **Imagens:** `/vestibular/enem-2017-137-1.png` (Fórmula da prestação P igual a 5 000 vezes 1,013 elevado a n vezes 0,013, dividido por 1,013 elevado a n menos 1)
+- **Conta de conferência:** aguarda enunciado e gabarito oficial.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 12 | não | "12 parcelas dão prestação acima de 400. De 335·1,013ⁿ ≥ 400, log dá n ≥ 15,4, logo n = 16." |
+| `b` | 14 | não | "Com as aproximações dadas, 14 · 0,005 = 0,070 < 0,077: não basta. De 0,005n ≥ 0,077 vem n ≥ 15,4, logo n = 16." |
+| `c` | 15 | não | "15 trunca 15,4: com as aproximações, 15 · 0,005 = 0,075 ainda é menor que 0,077. O menor inteiro com n ≥ 15,4 é 16." |
+| `d` | 16 | **sim** | "Certo: 335·1,013ⁿ ≥ 400 dá 0,005n ≥ 2,602 − 2,525 = 0,077, logo n ≥ 15,4 e o menor inteiro é 16." |
+| `e` | 17 | não | "17 atende P ≤ 400, mas não é o menor número de parcelas. Como n ≥ 15,4, o menor inteiro é 16." |
 
 #### V2 — `v2-inequacoes-exponenciais-logaritmicas`
 - **Estado:** **PENDENTE-FONTE**

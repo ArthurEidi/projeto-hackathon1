@@ -227,29 +227,49 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2023-escultura`
-- **Enunciado (resumido):** De um cone (h = 36 cm, D = 18 cm) retira-se cone menor (d = 6 cm) e perfura-se cilindro central (d = 6 cm). A 0,6 g/cm³ e π = 3, qual a massa?
+- **Enunciado (resumido):** "De um cone (h=36 cm, D=18 cm) retira-se cone menor (d=6 cm) e perfura-se cilindro central (d=6 cm). A 0,6 g/cm³ e π=3, qual a massa?"
 - **Fala do Paco:** "Ache a altura do cone retirado por semelhança (d/D = 1/3) antes de subtrair o cilindro."
-- **Fonte:** ENEM 2023, Questão 136 — `https://api.enem.dev/v1/exams/2023/questions/136`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (1.296,0) mantidos.
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 136: enunciado resumido; alternativas e gabarito (1.296,0) mantidos. — **URL:** https://api.enem.dev/v1/exams/2023/questions/136
 - **Conta de conferência:** `r/R = 3/9 = 1/3 => h_menor = 12, h_tronco = 24`; `V = 2916 - 108 - 648 = 2160 cm³`; `2160 · 0,6 = 1.296,0 g`.
-- **Opções e feedback:** 1.198,8, 1.296,0 (correta), 1.360,8, 4.665,6, 4.860,0.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a1198` | 1.198,8 | não | "1.198,8 g corresponde a um volume de 1.998 cm³ (162 cm³ a menos). O volume restante é 2.160 cm³, dando 2.160 · 0,6 = 1.296,0 g." |
+| `a1296` | 1.296,0 | **sim** | "Isso. Cone maior 2.916 − cone menor 108 − cilindro 648 = 2.160 cm³; massa = 2.160 · 0,6 = 1.296,0 g." |
+| `a1360` | 1.360,8 | não | "1.360,8 g (2.268 cm³) esquece de subtrair o cone menor de 108 cm³ (2.916 − 648). Descontando 108 cm³, dá 1.296,0 g." |
+| `a4665` | 4.665,6 | não | "4.665,6 g (7.776 cm³) não dividiu o volume do cone por 3 (8.748 − 324 − 648). Com 1/3 no cone, a massa é 1.296,0 g." |
+| `a4860` | 4.860,0 | não | "4.860,0 g (8.100 cm³) não dividiu o cone por 3 nem tirou o cone menor (8.748 − 648). O certo é 1.296,0 g." |
 
 #### V2 — `enem-2019-reservatorios`
-- **Enunciado (resumido):** Cilindro central cheio (r = 2 m, h = 3,30 m) liga-se a 4 cilindros (r = 1,5 m, h = 1,5 m) por 4 canos (d = 0,10 m, L = 20 m). Qual a altura final?
+- **Enunciado (resumido):** "Cilindro central cheio (r=2 m, h=3,30 m) liga-se a 4 cilindros (r=1,5 m, h=1,5 m) por 4 canos (d=0,10 m, L=20 m). Qual a altura final?"
 - **Fala do Paco:** "Desconte o volume dos 4 canos e divida o restante pela soma das 5 áreas de base."
-- **Fonte:** ENEM 2019, Questão 175 — `https://api.enem.dev/v1/exams/2019/questions/175`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (1,00) mantidos.
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 175: enunciado resumido; alternativas e gabarito (1,00) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/175
 - **Conta de conferência:** `13,2π - 4·π·0,05²·20 = 13π m³`; `bases = 4π + 9π = 13π m² => h = 1,00 m`.
-- **Opções e feedback:** 1,44, 1,16, 1,10, 1,00 (correta), 0,95.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a144` | 1,44 | não | "1,44 (13π / 9π) divide o volume só pelas 4 bases auxiliares, esquecendo o cilindro central (4π). Com os 5: 13π / 13π = 1,00 m." |
+| `a116` | 1,16 | não | "Com 1,16 m nos 5 reservatórios seriam 1,16 · 13π = 15,08π m³, acima dos 13,2π m³ iniciais. A altura correta é 1,00 m." |
+| `a110` | 1,10 | não | "Com 1,10 m nos 5 reservatórios seriam 1,10 · 13π = 14,3π m³, acima dos 13,2π m³ disponíveis. O certo é 1,00 m." |
+| `a100` | 1,00 | **sim** | "Exato. 13,2π − 4·π·0,05²·20 = 13π m³; dividindo pela soma das 5 bases (4π + 9π = 13π m²), resulta em 1,00 m." |
+| `a095` | 0,95 | não | "0,95 (12,4π / 13π) usa o diâmetro 0,10 m do cano como raio (0,8π nos canos em vez de 0,2π). Com r = 0,05 m, dá 1,00 m." |
 
 #### V3 — `enem-2010-perfuracao`
-- **Enunciado (resumido):** Um prisma reto de base triangular 6 cm, 8 cm e 10 cm e altura 10 cm tem perfuração cilíndrica tangente às faces laterais. Qual o raio?
+- **Enunciado (resumido):** "Um prisma reto de base triangular 6 cm, 8 cm e 10 cm e altura 10 cm tem perfuração cilíndrica tangente às faces laterais. Qual o raio?"
 - **Fala do Paco:** "A base é um triângulo retângulo 6-8-10; o raio do círculo inscrito vale A / p."
-- **Fonte:** ENEM 2010, Questão 164 — `https://api.enem.dev/v1/exams/2010/questions/164`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (2 cm) mantidos.
+- **Fonte:** ENEM 2010 (adaptada) — **Adaptação:** Questão 164: enunciado resumido; alternativas e gabarito (2 cm) mantidos. — **URL:** https://api.enem.dev/v1/exams/2010/questions/164
 - **Conta de conferência:** `A = (6·8)/2 = 24 cm²`, `p = (6+8+10)/2 = 12 cm => r = 24 / 12 = 2 cm`.
-- **Opções e feedback:** 1 cm, 2 cm (correta), 3 cm, 4 cm, 5 cm.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a1` | 1 cm | não | "1 cm divide a área (24 cm²) pelo perímetro inteiro (24 cm) em vez do semiperímetro (12 cm). O certo é r = 24 / 12 = 2 cm." |
+| `a2` | 2 cm | **sim** | "Isso. Base retangular (6² + 8² = 10²) tem área 24 cm² e semiperímetro 12 cm; logo r = 24 / 12 = 2 cm." |
+| `a3` | 3 cm | não | "3 cm é a metade do menor cateto (6 / 2); um círculo desse raio não fica tangente às três faces. O raio inscrito é (6 + 8 − 10) / 2 = 2 cm." |
+| `a4` | 4 cm | não | "4 cm é 6 + 8 − 10 sem dividir por 2 (ou metade do cateto 8). O raio do círculo inscrito vale (6 + 8 − 10) / 2 = 2 cm." |
+| `a5` | 5 cm | não | "5 cm é o raio da circunferência circunscrita (metade da hipotenusa 10). O raio inscrito é r = 24 / 12 = 2 cm." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** conservação de volume ao derreter ou transferir líquidos entre sólidos de formatos diferentes.

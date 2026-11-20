@@ -249,23 +249,49 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2022-refrigerador`
-- **Enunciado:** "Na escala 1:50, o vão mede 3,8 cm por 1,6 cm; tirando 10 cm no topo e 10 cm de cada lado, quais as medidas máximas em m?"
+- **Enunciado (resumido):** "Na escala 1:50, o vão mede 3,8 cm por 1,6 cm; tirando 10 cm no topo e 10 cm de cada lado, quais as medidas máximas em m?"
 - **Fala do Paco:** "Multiplique por 50 para ir a cm reais, desconte as folgas (10 cm no topo e 20 cm na largura) e passe para metros."
-- **Fonte:** ENEM 2022 (adaptada); Questão 139: enunciado resumido; alternativas e gabarito (1,80 e 0,60) mantidos; https://api.enem.dev/v1/exams/2022/questions/139
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 139: enunciado resumido; alternativas e gabarito (1,80 e 0,60) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/139
 - **Conta de conferência:** 3,8 · 50 − 10 = 180 cm = 1,80 m; 1,6 · 50 − 20 = 60 cm = 0,60 m.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a180_060` | 1,80 e 0,60 | **sim** | "Exato. 190 − 10 = 180 cm (1,80 m) e 80 − 20 = 60 cm (0,60 m)." |
+| `a180_070` | 1,80 e 0,70 | não | "0,70 desconta 10 cm de um lado só; são 10 cm em cada lateral (80 − 20 = 60 cm = 0,60 m)." |
+| `a190_080` | 1,90 e 0,80 | não | "1,90 e 0,80 são as medidas do vão sem descontar as folgas; com as folgas dá 1,80 e 0,60." |
+| `a200_090` | 2,00 e 0,90 | não | "2,00 e 0,90 somam 10 cm em vez de subtrair; o máximo é 1,80 e 0,60." |
+| `a200_100` | 2,00 e 1,00 | não | "2,00 e 1,00 somam as folgas em vez de descontar; o correto é 1,80 e 0,60." |
+
 #### V2 — `enem-2019-cisterna`
-- **Enunciado:** "Na escala 1 : 200, uma cisterna tem 45 cm³ na maquete. Se o consumo é 30 000 L/dia, quantos dias de água ela armazena?"
+- **Enunciado (resumido):** "Na escala 1 : 200, uma cisterna tem 45 cm³ na maquete. Se o consumo é 30 000 L/dia, quantos dias de água ela armazena?"
 - **Fala do Paco:** "Volume real cresce pelo cubo da escala: 45 × 200³ cm³, depois passe de cm³ para litros (÷ 1 000) e divida por 30 000."
-- **Fonte:** ENEM 2019 (adaptada); Questão 158: enunciado resumido; alternativas e gabarito (12) mantidos; https://api.enem.dev/v1/exams/2019/questions/158
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 158: enunciado resumido; alternativas e gabarito (12) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/158
 - **Conta de conferência:** (45 · 200³) / 1 000 = 360 000 L; 360 000 / 30 000 = 12 dias (troca da repetida ENEM 2021/178).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a30` | 30 | não | "30 dias pediriam 30 · 30 000 = 900 000 L. O real é 45 · 200³ cm³ = 360 000 L, e 360 000 ÷ 30 000 = 12 dias." |
+| `a15` | 15 | não | "15 dias pediriam 450 000 L. O real é 45 · 200³ cm³ = 360 000 L, e 360 000 ÷ 30 000 = 12 dias." |
+| `a12` | 12 | **sim** | "Exato. 45 · 200³ = 360 000 000 cm³ = 360 000 L; 360 000 ÷ 30 000 = 12 dias." |
+| `a6` | 6 | não | "6 dias gastam só 180 000 L, metade da cisterna. Como 45 · 200³ cm³ = 360 000 L, são 360 000 ÷ 30 000 = 12 dias." |
+| `a3` | 3 | não | "3 dias gastam só 90 000 L, um quarto da cisterna. Com 45 · 200³ cm³ = 360 000 L, são 12 dias." |
+
 #### V3 — `enem-2020-maquete`
-- **Enunciado:** "Uma caixa-d'água de 28 080 L (1 dm³ = 1 L) mede 2 cm × 3,51 cm × 4 cm na maquete; qual foi a escala linear usada?"
+- **Enunciado (resumido):** "Uma caixa-d'água de 28 080 L (1 dm³ = 1 L) mede 2 cm × 3,51 cm × 4 cm na maquete; qual foi a escala linear usada?"
 - **Fala do Paco:** "Passe 28 080 dm³ para cm³ (× 1 000) e tire a raiz cúbica da razão entre os volumes."
-- **Fonte:** ENEM 2020 (adaptada); Questão 138: enunciado resumido; alternativas e gabarito (1 : 100) mantidos; https://api.enem.dev/v1/exams/2020/questions/138
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 138: enunciado resumido; alternativas e gabarito (1 : 100) mantidos. — **URL:** https://api.enem.dev/v1/exams/2020/questions/138
 - **Conta de conferência:** 28,08 / 28 080 000 = 1 / 1 000 000 = (1/100)³ => 1 : 100.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a10` | 1 : 10 | não | "1 : 10 daria razão volumétrica 1 : 1 000; aqui 28,08 ÷ 28 080 000 = 1 : 1 000 000, logo 1 : 100." |
+| `a100` | 1 : 100 | **sim** | "Exato. 28,08 cm³ / 28 080 000 cm³ = 1 / 10⁶ = (1 / 100)³, escala 1 : 100." |
+| `a1000` | 1 : 1 000 | não | "1 : 1 000 compara cm³ com dm³ sem converter ou esquece a raiz cúbica; o certo é 1 : 100." |
+| `a10000` | 1 : 10 000 | não | "1 : 10 000 daria razão de volumes 1 : 10¹²; tirando a raiz cúbica de 10⁻⁶ vem 1 : 100." |
+| `a100000` | 1 : 100 000 | não | "1 : 100 000 exagera a escala; a raiz cúbica de 1 000 000 é 100, logo 1 : 100." |
 
 #### V4 — `v4-unidades-conversoes-e-escalas`
 - **Estado:** **PENDENTE-FONTE**

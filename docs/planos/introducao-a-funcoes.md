@@ -237,26 +237,49 @@ Percorremos x de −2 a 2: em x², ambos chegam a 4. Se o domínio vira [0; 2], 
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2023-concreto`
-- **Enunciado (resumido):** Uma construtora cobra R$ 500,00 de taxa fixa de bombeamento mais R$ 250,00 por m³ de concreto x. Qual é a expressão do preço y?
+- **Enunciado (resumido):** "Uma construtora cobra R$ 500,00 de taxa fixa de bombeamento mais R$ 250,00 por m³ de concreto x. Qual é a expressão do preço y?"
 - **Fala do Paco:** "Separe o valor que multiplica o volume x da taxa fixa cobrada uma única vez."
-- **Fonte:** ENEM 2023 — Questão 162 (`https://api.enem.dev/v1/exams/2023/questions/162`).
-- **Adaptação:** enunciado resumido mantendo valores e alternativas.
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 162: enunciado resumido mantendo valores e alternativas. — **URL:** https://api.enem.dev/v1/exams/2023/questions/162
 - **Conta de conferência:** y = 250x + 500 (gabarito D).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `c1` | y = 250x | não | "Esqueceu a taxa fixa de bombeamento de R$ 500,00. O certo é y = 250x + 500." |
+| `c2` | y = 500x | não | "Multiplicou a taxa fixa por x e omitiu R$ 250/m³. O certo é y = 250x + 500." |
+| `c3` | y = 750x | não | "Somou R$ 500 + R$ 250 como se ambas dependessem de x. O certo é y = 250x + 500." |
+| `c4` | y = 250x + 500 | **sim** | "Certo: R$ 250 por m³ vezes x mais a taxa fixa de R$ 500 dá y = 250x + 500." |
+| `c5` | y = 500x + 250 | não | "Trocou o coeficiente angular (250) com o termo fixo (500). O certo é y = 250x + 500." |
+
 #### V2 — `enem-2021-hospedagem`
-- **Enunciado (resumido):** Um aplicativo cobra diária d por n diárias, taxa fixa de limpeza L e taxa de serviço s sobre o total das diárias. Qual é o preço P?
+- **Enunciado (resumido):** "Um aplicativo cobra diária d por n diárias, taxa fixa de limpeza L e taxa de serviço s sobre o total das diárias. Qual é o preço P?"
 - **Fala do Paco:** "Separe as parcelas do preço: diárias, limpeza e serviço. Sobre qual valor a taxa s é calculada?"
-- **Fonte:** ENEM 2021 — Questão 141 (`https://api.enem.dev/v1/exams/2021/questions/141`).
-- **Adaptação:** enunciado condensado mantendo variáveis e alternativas.
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 141: enunciado condensado mantendo variáveis e alternativas. — **URL:** https://api.enem.dev/v1/exams/2021/questions/141
 - **Conta de conferência:** P = d·n + L + d·n·s (gabarito A).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `h1` | P = d·n + L + d·n·s | **sim** | "Exato: diárias (d·n) + limpeza (L) + serviço sobre as diárias (d·n·s) = d·n + L + d·n·s." |
+| `h2` | P = d·n + L + d·s | não | "Calculou a taxa s apenas sobre 1 diária (d·s) em vez das n diárias. O certo é P = d·n + L + d·n·s." |
+| `h3` | P = d + L + s | não | "Somou 1 diária, limpeza e s como valor fixo sem multiplicar por n. O certo é P = d·n + L + d·n·s." |
+| `h4` | P = d·n·s + L | não | "Cobrou apenas o serviço d·n·s + L e esqueceu o valor das diárias d·n. O certo é P = d·n + L + d·n·s." |
+| `h5` | P = d·n + L + s | não | "Somou s sem multiplicar por d·n, mas s é percentual das diárias. O certo é P = d·n + L + d·n·s." |
+
 #### V3 — `enem-2011-varejo`
-- **Enunciado (resumido):** Em fevereiro (x = 2), o varejo somou 880.605 vagas após aumento de 4.300 sobre janeiro (x = 1). Qual função relaciona y e x?
+- **Enunciado (resumido):** "Em fevereiro (x = 2), o varejo tinha 880.605 trabalhadores, 4.300 a mais que em janeiro (x = 1). Qual função dá os trabalhadores y?"
 - **Fala do Paco:** "Se a taxa é +4.300 por mês e em x = 2 vale 880.605, ache o valor inicial b = y − 4.300x."
-- **Fonte:** ENEM 2011 — Questão 156 (`https://api.enem.dev/v1/exams/2011/questions/156`).
-- **Adaptação:** enunciado resumido mantendo os números e expressões.
+- **Fonte:** ENEM 2011 (adaptada) — **Adaptação:** Questão 156: enunciado resumido mantendo os números e expressões. — **URL:** https://api.enem.dev/v1/exams/2011/questions/156
 - **Conta de conferência:** b = 880.605 − 2·4.300 = 872.005 ⇒ y = 872.005 + 4.300x (gabarito C).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `r1` | y = 4.300x | não | "Ignorou a base inicial de trabalhadores (b = 0 daria 8.600 em fev). O certo é y = 872.005 + 4.300x." |
+| `r2` | y = 884.905x | não | "Multiplicou o total de março por x em vez de usar taxa constante. O certo é y = 872.005 + 4.300x." |
+| `r3` | y = 872.005 + 4.300x | **sim** | "Certo: b = 880.605 − 2·4.300 = 872.005, logo y = 872.005 + 4.300x." |
+| `r4` | y = 876.305 + 4.300x | não | "876.305 é o valor de janeiro (x = 1); para x = 1 daria 880.605 (fevereiro). O certo é y = 872.005 + 4.300x." |
+| `r5` | y = 880.605 + 4.300x | não | "Usou fevereiro (880.605) como x = 0 em vez de x = 2. Subtraindo 2·4.300 dá y = 872.005 + 4.300x." |
 
 #### V4 — `pendente-fonte-introducao-a-funcoes-4`
 - **Estado:** **PENDENTE-FONTE** (3 questões ENEM inseridas).

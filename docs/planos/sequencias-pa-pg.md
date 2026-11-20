@@ -238,19 +238,35 @@ n é inteiro positivo. Teste d=0, q=1, q=0, q<0 e a₁=0; com a₁=0, toda PG fi
 
 > PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2018-postes`
-- **Enunciado:** Postes são colocados em PA a partir de 80 m, de 20 em 20 m, até 1 380 m. A R$ 8 000 por poste, qual o gasto máximo?
+- **Enunciado (resumido):** "Postes são colocados em PA a partir de 80 m, de 20 em 20 m, até 1 380 m. A R$ 8 000 por poste, qual o gasto máximo?"
 - **Fala do Paco:** "Conte os postes com 1 380 = 80 + (n − 1) · 20 e multiplique por R$ 8 000."
-- **Fonte:** ENEM 2018, Questão 141 — `https://api.enem.dev/v1/exams/2018/questions/141`
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 141: enunciado resumido; alternativas e gabarito (R$ 528 000,00) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/141
 - **Conta de conferência:** `1 380 = 80 + (n − 1)·20 => n = 66`; `66 · 8 000 = R$ 528 000,00`.
-- **Alternativas e feedback:** R$ 512 000,00, R$ 520 000,00, R$ 528 000,00 (correta), R$ 552 000,00, R$ 584 000,00.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a512` | R$ 512 000,00 | não | "512 000 usa 64 postes: contou só os de dentro dos 65 intervalos. Com as duas pontas são 66: R$ 528 000,00." |
+| `a520` | R$ 520 000,00 | não | "520 000 usa 65 postes, esquecendo o primeiro poste em 80 m. São 66 postes: R$ 528 000,00." |
+| `a528` | R$ 528 000,00 | **sim** | "Isso. 1 380 = 80 + (n − 1)·20 dá n = 66 postes, e 66 · 8 000 = R$ 528 000,00." |
+| `a552` | R$ 552 000,00 | não | "552 000 divide 1 380 ÷ 20 = 69 postes sem descontar os 80 m iniciais. O certo é R$ 528 000,00." |
+| `a584` | R$ 584 000,00 | não | "584 000 usa 73 postes ((1 380 + 80) ÷ 20), somando 80 m em vez de subtrair. O certo é R$ 528 000,00." |
 
 #### V2 — `enem-2019-autopecas`
-- **Enunciado:** Bloco (5,4,3,2,1,2,3,4) repete com 1:rolamento, 2:pastilha, 3:direção, 4:catalisador, 5:amortecedor. Qual é o 2 015º item?
+- **Enunciado (resumido):** "Bloco (5,4,3,2,1,2,3,4) repete com 1:rolamento, 2:pastilha, 3:direção, 4:catalisador, 5:amortecedor. Qual é o 2 015º item?"
 - **Fala do Paco:** "Divida 2 015 pelo tamanho do bloco (8) e use o resto para achar a posição."
-- **Fonte:** ENEM 2019, Questão 155 — `https://api.enem.dev/v1/exams/2019/questions/155`
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 155: enunciado resumido; alternativas e gabarito (Caixa de direção) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/155
 - **Conta de conferência:** `2 015 = 8 · 251 + 7`; 7º termo do bloco `(5,4,3,2,1,2,3,4)` é `3` (Caixa de direção).
-- **Alternativas e feedback:** Rolamento, Catalisador, Amortecedor, Pastilha de freio, Caixa de direção (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `rol` | Rolamento | não | "Usou bloco de 5 (códigos 1 a 5): 2 015 = 5 · 403 cai no 5º termo, 1. O bloco tem 8: 2 015 = 8 · 251 + 7, termo 3, Caixa de direção." |
+| `cat` | Catalisador | não | "Arredondou 2 015 ÷ 8 ≈ 251,9 para 252 blocos e caiu no último termo, 4. São 251 blocos e resto 7: termo 3, Caixa de direção." |
+| `amo` | Amortecedor | não | "Amortecedor (5) é a 1ª posição do bloco. Com resto 7 de 2 015 ÷ 8, o 7º termo é Caixa de direção." |
+| `pas` | Pastilha de freio | não | "Pastilha (2) é a 4ª ou 6ª posição do bloco. Na 7ª posição (resto 7) está 3: Caixa de direção." |
+| `dir` | Caixa de direção | **sim** | "Certo. 2 015 = 8 · 251 + 7, e o 7º termo de (5,4,3,2,1,2,3,4) é 3: Caixa de direção." |
 
 #### V3 — `pendente-fonte-sequencias-pa-pg-v3`
 - **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.

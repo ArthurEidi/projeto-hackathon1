@@ -251,21 +251,37 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ufrgs-2022-inverso-raizes` — UFRGS 2022
-- **Enunciado:** "Se a e b são as raízes de x² − 6x + 3 = 0, quanto vale (1/(1/a + 1/b))⁻²?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ufrgs-2022-inverso-raizes`
+- **Enunciado (resumido):** "Se a e b são as raízes de x² − 6x + 3 = 0, quanto vale (1/(1/a + 1/b))⁻²?"
 - **Fala do Paco:** "Se x² − 6x + 3 = (x − a)(x − b), então a + b = 6 e ab = 3. Some 1/a + 1/b com denominador ab."
-- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 48: enunciado reescrito como pergunta; alternativas e gabarito oficial (B) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
-- **Alternativas:** 2 · **4** · 6 · 8 · 10
+- **Fonte:** UFRGS 2022 (adaptada) — **Adaptação:** 1º dia, Questão 48: enunciado reescrito como pergunta; alternativas e gabarito oficial (B) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
 - **Conta de conferência:** a + b = 6, ab = 3 ⇒ 1/a + 1/b = 2 ⇒ (1/2)⁻² = 4 (B).
 
-#### `ufpr-2023-triplas` — UFPR 2023
-- **Enunciado:** "Quantas triplas (a, b, c) de inteiros positivos satisfazem a + b = c² e a + b + c = 20?"
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2` | 2 | não | "2 é 1/a + 1/b = (a + b)/ab = 6/3; falta o expoente. (1/2)⁻² = 2² = 4." |
+| `a4` | 4 | **sim** | "Isso. Comparando com (x − a)(x − b): a + b = 6 e ab = 3, então 1/a + 1/b = 6/3 = 2 e (1/2)⁻² = 4." |
+| `a6` | 6 | não | "6 é a soma a + b, lida do −6x. Com ab = 3: 1/a + 1/b = 6/3 = 2 e (1/2)⁻² = 4." |
+| `a8` | 8 | não | "8 seria 2³. O expoente é −2 sobre 1/2: (1/2)⁻² = 2² = 4." |
+| `a10` | 10 | não | "10 não sai da conta: 1/a + 1/b = (a + b)/ab = 2, e (1/2)⁻² = 2² = 4." |
+
+#### V2 — `ufpr-2023-triplas`
+- **Enunciado (resumido):** "Quantas triplas (a, b, c) de inteiros positivos satisfazem a + b = c² e a + b + c = 20?"
 - **Fala do Paco:** "Troque a + b por c²: c² + c − 20 = 0. Fatore e depois conte os pares (a, b) com a + b fixo."
-- **Fonte:** UFPR 2023 (adaptada); 1ª fase, Questão 10: enunciado reescrito como pergunta; alternativas e gabarito oficial (e) mantidos. https://servicos.nc.ufpr.br/documentos/ps2023/provas/Geral.pdf
-- **Alternativas:** 11 · 12 · 13 · 14 · **15**
+- **Fonte:** UFPR 2023 (adaptada) — **Adaptação:** 1ª fase, Questão 10: enunciado reescrito como pergunta; alternativas e gabarito oficial (e) mantidos. — **URL:** https://servicos.nc.ufpr.br/documentos/ps2023/provas/Geral.pdf
 - **Conta de conferência:** c² + c − 20 = (c + 5)(c − 4) ⇒ c = 4; a + b = 16 com a = 1, …, 15 ⇒ 15 (e).
 
-#### V1 — `v1-fatoracao-algebrica`
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a11` | 11 | não | "Com c = 4, a + b = 16 e a pode ser 1, 2, …, 15, cada um com seu b: são 15 triplas, não 11." |
+| `a12` | 12 | não | "Com c = 4, a + b = 16 e a pode ser 1, 2, …, 15, cada um com seu b: são 15 triplas, não 12." |
+| `a13` | 13 | não | "Com c = 4, a + b = 16 e a pode ser 1, 2, …, 15, cada um com seu b: são 15 triplas, não 13." |
+| `a14` | 14 | não | "14 descarta a = b = 8, mas (8, 8, 4) vale: 8 + 8 = 16 = 4². Com a de 1 a 15, são 15 triplas." |
+| `a15` | 15 | **sim** | "Isso. c² + c − 20 = (c + 5)(c − 4) = 0 dá c = 4 (positivo); a + b = 16 com a = 1, …, 15: 15 triplas." |
+
+#### V3 — `v1-fatoracao-algebrica`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema fatoração e zeros de expressões.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -276,31 +292,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V2 — `v2-fatoracao-algebrica`
+#### V4 — `v2-fatoracao-algebrica`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Aplicação direta em contexto, no tema fatoração e zeros de expressões.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V3 — `v3-fatoracao-algebrica`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema fatoração e zeros de expressões.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-fatoracao-algebrica`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema fatoração e zeros de expressões.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
 - **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
 - **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.

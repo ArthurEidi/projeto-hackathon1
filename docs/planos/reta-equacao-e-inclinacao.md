@@ -248,17 +248,25 @@ m negativo: a reta desce para a direita. Pontos na mesma vertical: Δx = 0, a di
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2018-rampa`
+- **Enunciado (resumido):** "Rampa de garagem tem 8 m na horizontal e desce 2 m. Para respeitar inclinação máxima de 20% mantendo os 8 m, como ajustar o nível?"
+- **Fala do Paco:** "Calcule 20% de 8 m para achar o desnível máximo permitido e compare com os 2 m atuais."
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 149: enunciado resumido; alternativas e gabarito (Elevado em 40 cm) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/149
+- **Conta de conferência:** `0,20 · 8 m = 1,60 m = 160 cm`; `200 − 160 = 40 cm`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `e40` | Elevado em 40 cm | **sim** | "Isso. 20% de 8 m é 1,60 m = 160 cm; como estava 200 cm abaixo, sobe 200 − 160 = 40 cm." |
+| `e50` | Elevado em 50 cm | não | "Subir 50 cm deixaria o desnível em 150 cm (18,75%), além do necessário. Para 20% em 8 m o desnível é 160 cm: elevado em 40 cm." |
+| `m0` | Mantido no mesmo nível | não | "Com 2 m em 8 m, a inclinação é 200 cm / 8 m = 25%, acima dos 20%. Deve ser elevado em 40 cm." |
+| `r40` | Rebaixado em 40 cm | não | "Rebaixar 40 cm aumentaria o desnível para 240 cm (30%). Para cair de 200 cm para 160 cm, deve ser elevado em 40 cm." |
+| `r50` | Rebaixado em 50 cm | não | "Rebaixar 50 cm levaria o desnível a 250 cm (31,25%). O certo é elevado em 40 cm." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** equação da reta por dois pontos. (Questão UEA 2018 encontrada depende de gráficos em imagem; não usar sem o caderno.)
 - **Onde procurar:** UFRGS, PUC-RJ, Unesp.
-
-#### V2 — `enem-2018-rampa`
-- **Enunciado (resumido):** Uma rampa de garagem tem 8 m na horizontal e desce 2 m. Para respeitar inclinação máxima de 20% mantendo os 8 m, como ajustar o nível da garagem?
-- **Fala do Paco:** "Calcule 20% de 8 m para achar o desnível máximo permitido e compare com os 2 m atuais."
-- **Fonte:** ENEM 2018, Questão 149 — `https://api.enem.dev/v1/exams/2018/questions/149`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (`Elevado em 40 cm`) mantidos.
-- **Conta de conferência:** `0,20 · 8 m = 1,60 m = 160 cm`; `200 − 160 = 40 cm`.
-- **Opções e feedback:** `Elevado em 40 cm` (correta), `Elevado em 50 cm`, `Mantido no mesmo nível`, `Rebaixado em 40 cm`, `Rebaixado em 50 cm`.
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** condição de alinhamento de três pontos.

@@ -227,17 +227,40 @@ Arrastar um vértice para dentro até passar de `180°` (polígono côncavo) mos
 
 ### Vestibular
 
-#### V1 — ENEM 2021 — Questão 175
-- **Habilidade-alvo:** calcular a soma dos ângulos internos ou número de lados de um polígono convexo.
-- **Onde procurar:** ENEM, Fuvest, Unesp, UERJ.
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
 
-#### V2 — PENDENTE-FONTE
+#### V1 — `enem-2012-losango-perimetro`
+- **Enunciado (resumido):** "Na Figura 1, o losango liga centros de 4 círculos tangentes de raio r; na Figura 2, dois dobram o raio. Qual o aumento do perímetro?"
+- **Fala do Paco:** "Em cada figura, o lado do losango é a soma de dois raios. Compare os perímetros."
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 137: enunciado resumido mantendo as duas figuras e a razão dos raios; gabarito (E) mantido. — **URL:** https://api.enem.dev/v1/exams/2012/questions/137
+- **Imagens:** `/vestibular/enem-2012-137-1.png` (Figura 1: losango com vértices nos centros de quatro circunferências tangentes de raio r); `/vestibular/enem-2012-137-2.png` (Figura 2: losango ampliado com duas circunferências opostas de raio 2r)
+- **Habilidade-alvo:** usar propriedades de paralelogramos, losangos, retângulos e trapézios para achar ângulos ou lados.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 300% | não | "O perímetro não quadruplicou: passou de 8r para 12r, aumento de 4r/8r = 50%." |
+| `b` | 200% | não | "O perímetro não triplicou: passou de 8r para 12r, aumento de 4r/8r = 50%." |
+| `c` | 150% | não | "12r é 150% de 8r, mas o aumento é a diferença: (12r - 8r)/8r = 50%." |
+| `d` | 100% | não | "O lado aumentou de 2r para 3r, não dobrou para 4r. O aumento é 4r/8r = 50%." |
+| `e` | 50% | **sim** | "Certo: perímetro passa de 4·(2r) = 8r para 4·(3r) = 12r, aumento de 4r/8r = 50%." |
+
+#### V2 — `enem-2021-hastes-trapezios`
+- **Enunciado (resumido):** "Um brinquedo de hastes metálicas liga um cubo interno a um cubo externo como na figura. Quantas figuras planas de cada tipo são formadas?"
+- **Fala do Paco:** "Conte primeiro as faces dos dois cubos e depois os quadriláteros que ligam as arestas paralelas."
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 175: enunciado resumido mantendo as 4 alternativas do cache; gabarito (A) mantido. — **URL:** https://api.enem.dev/v1/exams/2021/questions/175
+- **Imagens:** `/vestibular/enem-2021-175-1.png` (Estrutura em perspectiva com um cubo menor dentro de um cubo maior ligados por 12 hastes inclinadas)
+- **Habilidade-alvo:** calcular a soma dos ângulos internos ou número de lados de um polígono convexo.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 12 trapézios isósceles e 12 quadrados | **sim** | "Certo: são 6 + 6 = 12 quadrados dos dois cubos e 12 trapézios isósceles ligando as 12 arestas." |
+| `b` | 24 trapézios isósceles e 12 quadrados | não | "Cada cubo tem 12 arestas, então há 12 pares ligados formando 12 trapézios isósceles, não 24." |
+| `c` | 12 paralelogramos e 12 quadrados | não | "As arestas correspondentes têm tamanhos diferentes, logo formam 12 trapézios isósceles." |
+| `d` | 8 trapézios isósceles | não | "Há 12 pares de arestas correspondentes (12 trapézios isósceles) além dos 12 quadrados dos cubos." |
+
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** contar diagonais de um polígono ou diagonais que passam pelo centro.
 - **Onde procurar:** ENEM, Unicamp, UFPR, UFRGS.
-
-#### V3 — ENEM 2012 — Questão 137
-- **Habilidade-alvo:** usar propriedades de paralelogramos, losangos, retângulos e trapézios para achar ângulos ou lados.
-- **Onde procurar:** ENEM, Fuvest, OBMEP.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** soma dos ângulos externos (`360°`) aplicada a trajetórias poligonais fechadas.

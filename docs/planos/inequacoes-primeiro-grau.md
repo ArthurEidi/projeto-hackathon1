@@ -249,33 +249,63 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2011-lucro`
-- **Enunciado (resumido):** Faturamento é FT(q) = 5q e custo é CT(q) = 2q + 12. Qual a quantidade mínima q para o lucro LT = FT − CT não dar prejuízo?
+- **Enunciado (resumido):** "Faturamento é FT(q) = 5q e custo é CT(q) = 2q + 12. Qual a quantidade mínima q para o lucro LT = FT − CT não dar prejuízo?"
 - **Fala do Paco:** "Não ter prejuízo significa LT(q) ≥ 0, isto é, 5q − (2q + 12) ≥ 0."
-- **Fonte:** ENEM 2011 — Questão 180 (`https://api.enem.dev/v1/exams/2011/questions/180`).
-- **Adaptação:** texto condensado mantendo as funções FT(q), CT(q) e alternativas.
+- **Fonte:** ENEM 2011 (adaptada) — **Adaptação:** Questão 180: texto condensado mantendo as funções FT(q), CT(q) e alternativas. — **URL:** https://api.enem.dev/v1/exams/2011/questions/180
 - **Conta de conferência:** 5q − (2q + 12) = 3q − 12 ≥ 0 ⇒ q ≥ 4 (gabarito D).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `q0` | 0 | não | "Para q = 0 há custo fixo 12: LT(0) = 0 − 12 = −12 (prejuízo). De 3q − 12 ≥ 0 vem q ≥ 4." |
+| `q1` | 1 | não | "Para q = 1, LT(1) = 5 − 14 = −9 (prejuízo). Resolvendo 3q − 12 ≥ 0 obtemos q ≥ 4." |
+| `q3` | 3 | não | "3 é a margem por unidade (5 − 2), não a quantidade: com q = 3, LT = −3. De 3q − 12 ≥ 0 vem q ≥ 4." |
+| `q4` | 4 | **sim** | "Certo: LT(q) = 5q − (2q + 12) = 3q − 12 ≥ 0 ⇒ 3q ≥ 12 ⇒ q ≥ 4." |
+| `q5` | 5 | não | "5 exige lucro positivo (3q − 12 > 0). Não ter prejuízo admite lucro zero: 3q − 12 ≥ 0 dá q ≥ 4." |
+
 #### V2 — `enem-2022-reajuste`
-- **Enunciado (resumido):** 60 mestres (R$ 8 mil) têm aumento de 25% e 40 doutores (R$ 12 mil) têm x%. Para média ≤ R$ 12.240, qual o x máximo?
+- **Enunciado (resumido):** "60 mestres (R$ 8 mil) têm aumento de 25% e 40 doutores (R$ 12 mil) têm x%. Para média ≤ R$ 12.240, qual o x máximo?"
 - **Fala do Paco:** "Compare a folha total após os aumentos com o teto 100 · 12.240 = 1.224.000."
-- **Fonte:** ENEM 2022 — Questão 163 (`https://api.enem.dev/v1/exams/2022/questions/163`).
-- **Adaptação:** texto resumido mantendo os salários, quantidades e percentuais.
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 163: texto resumido mantendo os salários, quantidades e percentuais. — **URL:** https://api.enem.dev/v1/exams/2022/questions/163
 - **Conta de conferência:** 60·10.000 + 40·12.000(1 + x/100) ≤ 100·12.240 ⇒ 1 + x/100 ≤ 1,30 ⇒ x ≤ 30,0% (gabarito D).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `x14_4` | 14,4% | não | "14,4% troca as quantidades: 40·10.000 + 60·12.000·(1 + x) ≤ 1.224.000. Com 60 mestres e 40 doutores, sai 30,0%." |
+| `x20_7` | 20,7% | não | "20,7% usa a média simples: (10.000 + 12.000·(1 + x))/2 ≤ 12.240. Com os pesos 60 e 40, sai 30,0%." |
+| `x22_0` | 22,0% | não | "Com 22,0%, a folha fica 600.000 + 480.000·1,22 = 1.185.600, abaixo do teto de 1.224.000: cabe até 30,0%." |
+| `x30_0` | 30,0% | **sim** | "Exato: 600.000 + 480.000(1 + x/100) ≤ 1.224.000 ⇒ 1 + x/100 ≤ 624/480 = 1,30 ⇒ 30,0%." |
+| `x37_5` | 37,5% | não | "Com 37,5%, a folha fica 600.000 + 480.000·1,375 = 1.260.000, acima do teto de 1.224.000. O máximo é 30,0%." |
+
 #### V3 — `enem-2021-lava-rapido`
-- **Enunciado (resumido):** Um lava-rápido cobra R$ 20 (simples) e R$ 35 (completa) e precisa de receita mínima de R$ 300,00. Qual o menor número de lavagens?
+- **Enunciado (resumido):** "Um lava-rápido cobra R$ 20 (simples) e R$ 35 (completa) e precisa de receita mínima de R$ 300,00. Qual o menor número de lavagens?"
 - **Fala do Paco:** "Para minimizar o total n de lavagens, suponha todas do tipo mais caro (R$ 35)."
-- **Fonte:** ENEM 2021 — Questão 173 (`https://api.enem.dev/v1/exams/2021/questions/173`).
-- **Adaptação:** enunciado condensado mantendo preços, meta e alternativas.
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 173: enunciado condensado mantendo preços, meta e alternativas. — **URL:** https://api.enem.dev/v1/exams/2021/questions/173
 - **Conta de conferência:** 35n ≥ 300 ⇒ n ≥ 300/35 ≈ 8,57 ⇒ n = 9 (gabarito C).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `l6` | 6 | não | "6 é 300 ÷ 55 ≈ 5,5 arredondado: somou os dois preços como uma lavagem só. Só completas: 35n ≥ 300 dá n ≥ 8,57, logo 9." |
+| `l8` | 8 | não | "8 lavagens completas dão 8·35 = R$ 280 < 300 (arredondou para baixo). O mínimo é 9 (9·35 = R$ 315)." |
+| `l9` | 9 | **sim** | "Certo: 35n ≥ 300 ⇒ n ≥ 300/35 ≈ 8,57, logo o menor inteiro é 9 (R$ 315 ≥ 300)." |
+| `l15` | 15 | não | "15 = 300/20 usa apenas lavagens simples (R$ 20). Usando completas (R$ 35), 35n ≥ 300 dá 9." |
+| `l20` | 20 | não | "20 é o preço em reais da lavagem simples, não a quantidade mínima. De 35n ≥ 300 vem 9." |
+
 #### V4 — `enem-2010-selos`
-- **Enunciado (resumido):** Com R$ 1.000, compram-se 500 conjuntos de R$ 1,45 (1 selo de R$ 0,65 cada) e o máximo de selos extras de R$ 0,65. Quantos de R$ 0,65 há?
+- **Enunciado (resumido):** "Com R$ 1.000, compram-se 500 conjuntos de R$ 1,45 (1 selo de R$ 0,65 cada) e o máximo de selos extras de R$ 0,65. Quantos de R$ 0,65 há?"
 - **Fala do Paco:** "Desconte 500·1,45 dos R$ 1.000 e divida a sobra por 0,65 (parte inteira), depois some 500."
-- **Fonte:** ENEM 2010 — Questão 155 (`https://api.enem.dev/v1/exams/2010/questions/155`).
-- **Adaptação:** texto resumido mantendo valores dos selos e orçamento.
+- **Fonte:** ENEM 2010 (adaptada) — **Adaptação:** Questão 155: texto resumido mantendo valores dos selos e orçamento. — **URL:** https://api.enem.dev/v1/exams/2010/questions/155
 - **Conta de conferência:** 1.000 − 500·1,45 = 275; 275/0,65 = 423,07 ⇒ 423 + 500 = 923 (gabarito C).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `s476` | 476 | não | "476 = 1.000 ÷ 2,10 supõe o mesmo número de folhetos dos dois tipos. São 500 do 2º; a sobra de 275 compra 423: 923." |
+| `s675` | 675 | não | "675 = 1.000 − 500·0,65 subtraiu reais de 1.000. O certo é 500 + 423 = 923." |
+| `s923` | 923 | **sim** | "Exato: 500 · 1,45 = 725; sobra 275; 275/0,65 ≈ 423,1, ou seja, 423 extras; total = 500 + 423 = 923." |
+| `s965` | 965 | não | "965 estoura a verba: 965·0,65 + 500·0,80 = 1.027,25 > 1.000. A sobra de 275 compra 423: 500 + 423 = 923." |
+| `s1538` | 1.538 | não | "1.538 = 1.000/0,65 ignora os 500 pacotes de R$ 1,45. Com a sobra de R$ 275, são 500 + 423 = 923." |
 
 ---
 

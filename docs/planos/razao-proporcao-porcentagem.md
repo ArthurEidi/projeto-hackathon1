@@ -247,23 +247,49 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2023-papel`
-- **Enunciado:** "Escola comprava 6 000 folhas para 1 200 alunos e agora tem 1 150, a R$ 4 por 100; para gastar R$ 220, qual o desconto (%)?"
+- **Enunciado (resumido):** "Escola comprava 6 000 folhas para 1 200 alunos e agora tem 1 150, a R$ 4 por 100; para gastar R$ 220, qual o desconto (%)?"
 - **Fala do Paco:** "Ache o total de folhas por aluno, arredonde para pacotes inteiros de 100 e calcule o desconto sobre o valor cheio."
-- **Fonte:** ENEM 2023 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito ((5,0 ; 5,5)) mantidos; https://api.enem.dev/v1/exams/2023/questions/167
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 167: enunciado resumido; alternativas e gabarito ((5,0 ; 5,5)) mantidos. — **URL:** https://api.enem.dev/v1/exams/2023/questions/167
 - **Conta de conferência:** 1 150 × 5 = 5 750 => 58 pacotes × R$ 4 = R$ 232; (232 − 220)/232 ≈ 5,17%.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a50` | (5,0 ; 5,5) | **sim** | "Exato. 1 150 × 5 = 5 750 folhas exigem 58 pacotes (R$ 232); 12/232 ≈ 5,17%." |
+| `a80` | (8,0 ; 8,5) | não | "8% usaria o valor antigo de 60 pacotes (R$ 240); para 58 pacotes (R$ 232) o desconto é 5,17%." |
+| `a115` | (11,5 ; 12,5) | não | "12 é o desconto em reais (232 − 220), não em porcentagem; 12/232 ≈ 5,17%." |
+| `a195` | (19,5 ; 20,5) | não | "20% seria R$ 46,40 de desconto; aqui faltam só R$ 12 em R$ 232, cerca de 5,17%." |
+| `a35` | (3,5 ; 4,0) | não | "3,5% arredonda 57,5 pacotes para baixo: 57 · 4 = 228 e 8/228 ≈ 3,5%. Faltariam folhas: são 58 pacotes, 12/232 ≈ 5,17%." |
+
 #### V2 — `enem-2017-celular`
-- **Enunciado:** "Dois motoristas na mesma velocidade digitam olhando o celular; X leva 25% do tempo de Y. Qual a razão das distâncias às cegas de X e Y?"
+- **Enunciado (resumido):** "Dois motoristas na mesma velocidade digitam olhando o celular; X leva 25% do tempo de Y. Qual a razão das distâncias às cegas de X e Y?"
 - **Fala do Paco:** "Com a mesma velocidade, d = v · t: como a razão dos tempos passa para a razão das distâncias?"
-- **Fonte:** ENEM 2017 (adaptada); Questão 164: enunciado resumido; alternativas e gabarito (1/4) mantidos; https://api.enem.dev/v1/exams/2017/questions/164
+- **Fonte:** ENEM 2017 (adaptada) — **Adaptação:** Questão 164: enunciado resumido; alternativas e gabarito (1/4) mantidos. — **URL:** https://api.enem.dev/v1/exams/2017/questions/164
 - **Conta de conferência:** d_X / d_Y = (v · t_X)/(v · t_Y) = 25% = 1/4 (troca da repetida ENEM 2022/167).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a5-4` | 5/4 | não | "5/4 = 1 + 0,25 soma 25% ao inteiro em vez de tomar 25%. Como d = v·t, d_X/d_Y = 25/100 = 1/4." |
+| `a1-4` | 1/4 | **sim** | "Exato. Como a velocidade é igual, d_X/d_Y = t_X/t_Y = 25% = 1/4." |
+| `a4-3` | 4/3 | não | "4/3 = 1/(1 − 0,25) divide pelo complementar (75%). A razão direta é 25% = 1/4." |
+| `a4-1` | 4/1 | não | "4/1 = t_Y/t_X inverte a razão pedida (de X para Y). De X para Y vale 25% = 1/4." |
+| `a3-4` | 3/4 | não | "3/4 = 1 − 25% calcula o complementar (75%), não os 25%. A razão certa é 1/4." |
+
 #### V3 — `enem-2022-caged`
-- **Enunciado:** "Em janeiro de 2013 foram criadas 28 900 vagas, uma queda de 75% ante 2012; quantas vagas foram criadas em 2012?"
+- **Enunciado (resumido):** "Jan./2013: 1 794 272 admissões e 1 765 372 desligamentos, ou 28 900 vagas criadas, 75% menos que em jan./2012. Quantas vagas em jan./2012?"
 - **Fala do Paco:** "Se caiu 75%, que fração do valor de 2012 sobrou em 2013?"
-- **Fonte:** ENEM 2022 (adaptada); Questão 154: enunciado resumido; alternativas e gabarito (115 600) mantidos; https://api.enem.dev/v1/exams/2022/questions/154
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 154: enunciado resumido; alternativas e gabarito (115 600) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/154
 - **Conta de conferência:** 28 900 / 0,25 = 115 600.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a16514` | 16 514 | não | "16 514 divide por 1,75 (como se tivesse subido 75%); queda de 75% divide por 0,25: 115 600." |
+| `a86700` | 86 700 | não | "86 700 é 3 × 28 900 (a queda); o total de 2012 é 4 × 28 900 = 115 600." |
+| `a115600` | 115 600 | **sim** | "Exato. 28 900 = 0,25 × total de 2012, logo 28 900 × 4 = 115 600." |
+| `a441343` | 441 343 | não | "441 343 aplica a queda aos desligamentos do mês (1 765 372 × 0,25). A queda é das vagas criadas: 28 900 ÷ 0,25 = 115 600." |
+| `a448568` | 448 568 | não | "448 568 aplica a queda às admissões do mês (1 794 272 × 0,25). A queda é das vagas criadas: 28 900 ÷ 0,25 = 115 600." |
 
 #### V4 — `v4-razao-proporcao-porcentagem`
 - **Estado:** **PENDENTE-FONTE**

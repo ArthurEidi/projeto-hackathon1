@@ -239,20 +239,36 @@ O domínio reúne os intervalos declarados. Testamos abaixo, na fronteira e acim
 
 > Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2016-cotas`
-- **Enunciado (resumido):** A lei exige cota por faixa (5% acima de 1 000 empregados). Com 1 200 funcionários e 10 cotistas, quantos cotistas contratar no mínimo?
+- **Enunciado (resumido):** "A lei exige cota por faixa (5% acima de 1 000 empregados). Com 1 200 funcionários e 10 cotistas, quantos cotistas contratar no mínimo?"
 - **Fala do Paco:** "Os novos contratados aumentam também o total da empresa: 1 200 + x."
-- **Fonte:** ENEM 2016, Questão 145 — `https://api.enem.dev/v1/exams/2016/questions/145`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (53) mantidos.
+- **Fonte:** ENEM 2016 (adaptada) — **Adaptação:** Questão 145: enunciado resumido; alternativas e gabarito (53) mantidos. — **URL:** https://api.enem.dev/v1/exams/2016/questions/145
 - **Conta de conferência:** `10 + x >= 0,05(1 200 + x) => 0,95x >= 50 => x >= 52,63`, logo mínimo `53`.
-- **Opções e feedback:** 74, 70, 64, 60, 53 (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a74` | 74 | não | "74 soma 64 com 10 em vez de descontar os cotistas atuais. O certo é 53: 10 + x ≥ 0,05(1 200 + x)." |
+| `a70` | 70 | não | "70 soma 10 a 5% de 1 200 (60 + 10) em vez de abater os 10 cotistas. O certo é 53." |
+| `a64` | 64 | não | "64 resolve x ≥ 0,05(1 200 + x) sem descontar os 10 cotistas atuais. O certo é 53." |
+| `a60` | 60 | não | "60 é só 5% de 1 200, ignorando os 10 cotistas e a alta do total. O certo é 53." |
+| `a53` | 53 | **sim** | "Isso. 10 + x ≥ 0,05(1 200 + x) dá 0,95x ≥ 50, logo x ≥ 52,63; mínimo 53." |
+
 #### V2 — `enem-2023-pescador`
-- **Enunciado (resumido):** Peixe a R$ 5/kg: com 1 ajudante pesca 300 kg, e +100 kg por extra; custo R$ 900 + 250n + 4% da venda. Quantos n dão lucro ≥ R$ 800?
+- **Enunciado (resumido):** "Peixe a R$ 5/kg: 1 ajudante dá 300 kg e cada extra +100 kg; custo R$ 900 + 250n + 4% da venda. Menor n (até 5) com lucro ≥ R$ 800?"
 - **Fala do Paco:** "Para n ≥ 1, a pesca é 300 + 100(n − 1) kg e sobram 96% da venda."
-- **Fonte:** ENEM 2023, Questão 158 — `https://api.enem.dev/v1/exams/2023/questions/158`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (4) mantidos.
+- **Fonte:** ENEM 2023 (adaptada) — **Adaptação:** Questão 158: enunciado resumido; alternativas e gabarito (4) mantidos. — **URL:** https://api.enem.dev/v1/exams/2023/questions/158
 - **Conta de conferência:** `n = 3: 0,96·2 500 − 900 − 750 = 750 < 800`; `n = 4: 0,96·3 000 − 900 − 1 000 = 980 >= 800`, logo `4`.
-- **Opções e feedback:** 1, 2, 3, 4 (correta), 5.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a1` | 1 | não | "Com n = 1, venda é 1 500 e lucro 0,96·1 500 − 900 − 250 = 290 < 800. O certo é 4." |
+| `a2` | 2 | não | "Com n = 2, venda é 2 000 e lucro 0,96·2 000 − 900 − 500 = 520 < 800. O certo é 4." |
+| `a3` | 3 | não | "Com n = 3, venda é 2 500 e lucro 0,96·2 500 − 900 − 750 = 750 < 800. O certo é 4." |
+| `a4` | 4 | **sim** | "Certo. Com n = 4, pesca 600 kg (R$ 3 000) e lucro 2 880 − 900 − 1 000 = 980 ≥ 800." |
+| `a5` | 5 | não | "Com n = 5 o lucro é 1 210 ≥ 800, mas n = 4 já dá 980 e é o mínimo. O certo é 4." |
+
 #### V3 — `pendente-fonte-funcao-definida-por-partes-3`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
@@ -260,6 +276,7 @@ O domínio reúne os intervalos declarados. Testamos abaixo, na fronteira e acim
 - **Adaptação:** nenhuma; questão não inserida.
 - **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
 - **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+
 #### V4 — `pendente-fonte-funcao-definida-por-partes-4`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"

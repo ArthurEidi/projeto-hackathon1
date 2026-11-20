@@ -250,28 +250,33 @@ Truncar o eixo exagera diferenças; ampliar demais o eixo esconde mudanças. Set
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ufrgs-2022-tempo-medio` — UFRGS 2022
-- **Enunciado:** "Um aluno usou um dispositivo por 240, 180, 180, 240 e 120 minutos de segunda a sexta. O tempo médio diário de uso é:"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ufrgs-2022-tempo-medio`
+- **Enunciado (resumido):** "Um aluno usou um dispositivo por 240, 180, 180, 240 e 120 minutos de segunda a sexta. O tempo médio diário de uso é:"
 - **Fala do Paco:** "Some os cinco tempos, divida por 5 e passe de minutos para horas: 1 h = 60 min."
-- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 59: tabela de tempos transcrita no enunciado; alternativas e gabarito oficial (A) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
-- **Alternativas:** **superior a três horas** · superior a quatro horas · superior a cinco horas · inferior a duas horas · inferior a três horas
+- **Fonte:** UFRGS 2022 (adaptada) — **Adaptação:** 1º dia, Questão 59: tabela de tempos transcrita no enunciado; alternativas e gabarito oficial (A) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
 - **Conta de conferência:** 960 ÷ 5 = 192 min = 3 h 12 min ⇒ superior a três horas (A).
 
-#### V1 — PENDENTE-FONTE
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | superior a três horas | **sim** | "Isso. (240 + 180 + 180 + 240 + 120) ÷ 5 = 960 ÷ 5 = 192 min = 3 h 12 min, mais que três horas." |
+| `b` | superior a quatro horas | não | "Quatro horas são 240 min, o máximo de um dia, não a média. A média é 960 ÷ 5 = 192 min = 3 h 12 min." |
+| `c` | superior a cinco horas | não | "Cinco horas são 300 min, mais que qualquer dia. A média é 960 ÷ 5 = 192 min = 3 h 12 min." |
+| `d` | inferior a duas horas | não | "Duas horas são 120 min, o menor dia. A média é 960 ÷ 5 = 192 min = 3 h 12 min, superior a três horas." |
+| `e` | inferior a três horas | não | "Lê 192 min como 1,92 h, mas 1 h tem 60 min: 192 min = 3 h 12 min, superior a três horas." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** ler e comparar valores em gráfico de barras ou tabela.
 - **Onde procurar:** ENEM (presente em quase todas as edições; questões sem imagem são raras).
 
-#### V2 — PENDENTE-FONTE
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** porcentagem e ângulo em gráfico de setores.
 - **Onde procurar:** ENEM, UERJ, Unicamp.
 
-#### V3 — PENDENTE-FONTE
+#### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** maior variação num gráfico de linha.
 - **Onde procurar:** ENEM ("maior aumento", "período").
-
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** escala do eixo e gráfico enganoso.
-- **Onde procurar:** ENEM, Unicamp.
 
 ---
 **Notas da implementação (JSON):** widget canônico `barras`/`barras_figura` modo `categorias`; barras em `ink` (c1 é "Porcentagem" no glossário); passo 2 com `eixo_fim` 60 e `comparar [0,1]`. Vestibular `[]`. Lacuna: `categorias` não desenha os degraus +5/+10/+3 entre barras (o plano pedia no desafio): usei `acesas` para acender a(s) barra(s) lida(s) por cada opção. Unidade nova na taxonomia (setor estatistica).

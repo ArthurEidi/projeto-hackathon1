@@ -227,13 +227,37 @@ Levar a razão da homotetia a `k = 0` mostra a fronteira de colapso: toda a figu
 
 ### Vestibular
 
-#### V1 — ENEM 2017 — Questão 150
-- **Habilidade-alvo:** identificar a figura resultante de uma sequência de reflexões, rotações e translações (logotipos, ladrilhos, faixas decorativas).
-- **Onde procurar:** ENEM (questões recorrentes de isometrias em artesanato, azulejos e cartões).
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
 
-#### V2 — ENEM 2009 — Questão 147
+#### V1 — `enem-2017-tela-peixe-giro`
+- **Enunciado (resumido):** "A tela quadrada girou em torno de B até 45° abaixo da horizontal à esquerda. Qual menor giro (< 360°) a recoloca na posição original?"
+- **Fala do Paco:** "Compare a posição da borda direita (que apontava para cima a partir de B) antes e depois da queda."
+- **Fonte:** ENEM 2017 (adaptada) — **Adaptação:** Questão 150: enunciado resumido mantendo os pontos A, B e o ângulo de 45°; gabarito (B) mantido. — **URL:** https://api.enem.dev/v1/exams/2017/questions/150
+- **Imagens:** `/vestibular/enem-2017-150-1.png` (Quadro quadrado com peixe fixado em A e B e, abaixo, girado em torno de B a 45° abaixo da horizontal)
+- **Habilidade-alvo:** identificar a figura resultante de uma sequência de reflexões, rotações e translações (logotipos, ladrilhos, faixas decorativas).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 90° no sentido horário | não | "90° horário levaria a borda de 225° apenas até 135°, não até os 90° verticais. O certo é 135° horário." |
+| `b` | 135° no sentido horário | **sim** | "Certo: a tela girou 135° anti-horário (de 90° para 225°); logo volta girando 135° no sentido horário." |
+| `c` | 180° no sentido anti-horário | não | "Como a tela girou 135° anti-horário, girar mais 180° não a alinha na horizontal. O certo é 135° horário." |
+| `d` | 270° no sentido anti-horário | não | "270° anti-horário passaria da posição original (que está a 225° anti-horário). O menor giro é 135° horário." |
+| `e` | 315° no sentido horário | não | "315° horário daria uma volta quase completa além da posição original. O menor giro é 135° horário." |
+
+#### V2 — `enem-2009-quebra-cabeca-giro`
+- **Enunciado (resumido):** "As peças quadradas de B completam o tabuleiro A. Qual peça de B e qual giro preenchem corretamente o espaço indicado pela seta em A?"
+- **Fala do Paco:** "A casa da seta fica na borda inferior de A, então o triângulo de baixo da peça deve ser liso."
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 147: enunciado resumido mantendo as duas figuras; gabarito (C) mantido. — **URL:** https://api.enem.dev/v1/exams/2009/questions/147
+- **Imagens:** `/vestibular/enem-2009-147-1.jpg` (Figura A: tabuleiro 4x4 com seta apontando para a casa vazia na borda inferior); `/vestibular/enem-2009-147-2.jpg` (Figura B: peças disponíveis destacando Peça 1 e Peça 2)
 - **Habilidade-alvo:** contar eixos de simetria e ângulos de simetria rotacional de figuras planas.
-- **Onde procurar:** ENEM, OBMEP, Unesp, Unicamp.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | Peça 1 após girá-la 90° no sentido horário | não | "Girando a Peça 1 em 90° horário, o triângulo liso vai para cima, não para a borda inferior. Correta: C." |
+| `b` | Peça 1 após girá-la 180° no sentido anti-horário | não | "Girando a Peça 1 em 180°, um triângulo com desenho fica na borda inferior. Correta: Peça 2, 90° anti-horário." |
+| `c` | Peça 2 após girá-la 90° no sentido anti-horário | **sim** | "Certo: 90° anti-horário leva o triângulo liso esquerdo da Peça 2 para a base e o cinza-claro para a direita." |
+| `d` | Peça 2 após girá-la 180° no sentido horário | não | "Em 180° horário, o triângulo com desenho vai para a borda inferior. Correta: Peça 2, 90° anti-horário." |
+| `e` | Peça 2 após girá-la 270° no sentido anti-horário | não | "270° anti-horário (90° horário) coloca desenho na borda inferior. Correta: Peça 2, 90° anti-horário." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** aplicar homotetia / escala para relacionar comprimentos (`k`) e áreas (`k²`).

@@ -238,17 +238,30 @@ O aluno testa A negativo (que espelha a onda verticalmente, mas mantém a amplit
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2021-mola-periodica`
+- **Enunciado (resumido):** "Uma mola oscila segundo P(t) = A·cos(ωt) ou A·sen(ωt), com ω = 2π/T. Pelo gráfico da posição P(t), qual expressão descreve o movimento?"
+- **Fala do Paco:** "Leia no gráfico o valor máximo, o período T entre dois mínimos e a posição inicial P(0)."
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 156: enunciado resumido mantendo a fórmula e o gráfico; gabarito (A) mantido. — **URL:** https://api.enem.dev/v1/exams/2021/questions/156
+- **Imagens:** `/vestibular/enem-2021-156-5.png` (Gráfico cartesiano de P(t) variando de -3 a 3 com período pi e P(0) = -3)
+- **Habilidade-alvo:** montar a expressão algébrica f(t) = D + A·sen(Bt + C) ou D + A·cos(Bt + C) a partir de um gráfico ou tabela periódica.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | -3 cos(2t) | **sim** | "Certo: amplitude 3, período T = π dá ω = 2π/π = 2, e P(0) = -3 confirma -3 cos(2t)." |
+| `b` | -3 sen(2t) | não | "Em t = 0, -3 sen(0) = 0, mas o gráfico parte de P(0) = -3. A correta é -3 cos(2t)." |
+| `c` | 3 cos(2t) | não | "Sinal trocado: 3 cos(0) = +3, mas no gráfico P(0) = -3. A correta é -3 cos(2t)." |
+| `d` | -6 cos(2t) | não | "Você usou a variação total 6 em vez da amplitude 3. A expressão correta é -3 cos(2t)." |
+| `e` | 6 cos(2t) | não | "Amplitude é 3 (não 6) e P(0) = -3 (não positivo). A expressão correta é -3 cos(2t)." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** calcular os valores máximo e mínimo de um fenômeno modelado por f(t) = D + A·sen(Bt + C).
 - **Onde procurar:** ENEM (questões clássicas de maré, pistão, pressão arterial ou temperatura).
 
-#### V2 — PENDENTE-FONTE
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** determinar o período T = 2π/B ou o instante de ocorrência do máximo/mínimo numa função trigonométrica.
 - **Onde procurar:** ENEM, Unicamp, Vunesp.
-
-#### V3 — ENEM 2021 — Questão 156
-- **Habilidade-alvo:** montar a expressão algébrica f(t) = D + A·sen(Bt + C) ou D + A·cos(Bt + C) a partir de um gráfico ou tabela periódica.
-- **Onde procurar:** ENEM, Fuvest, UFRGS, UFPR.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** interpretar os parâmetros geométricos de uma roda-gigante (altura do centro D, raio A e tempo de volta T) na função trigonométrica.

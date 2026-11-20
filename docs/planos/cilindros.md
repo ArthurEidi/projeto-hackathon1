@@ -227,29 +227,49 @@ Comparar duas folhas retangulares iguais `A × B` enroladas de dois jeitos difer
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2022-caixas`
-- **Enunciado (resumido):** Cilindro I tem altura P, área A_b e raio r. Qual tem maior volume: II (2P, A_b/2), III (2P, r/2), IV (P/2, 2A_b) ou V (P/2, 2r)?
+- **Enunciado (resumido):** "Cilindro I tem altura P, área A_b e raio r. Qual tem maior volume: II (2P, A_b/2), III (2P, r/2), IV (P/2, 2A_b) ou V (P/2, 2r)?"
 - **Fala do Paco:** "Escreva o volume de cada modelo em função de V_I = πr²P."
-- **Fonte:** ENEM 2022, Questão 169 — `https://api.enem.dev/v1/exams/2022/questions/169`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (V) mantidos.
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 169: enunciado resumido; alternativas e gabarito (V) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/169
 - **Conta de conferência:** `V_I = πr²P`; `V_II = V_I`; `V_III = V_I/2`; `V_IV = V_I`; `V_V = π(2r)²(P/2) = 2V_I`.
-- **Opções e feedback:** I, II, III, IV, V (correta).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `i` | I | não | "O modelo I tem volume V_I = πr²P, enquanto o modelo V alcança 2·V_I." |
+| `ii` | II | não | "O modelo II tem (A_b/2)·(2P) = V_I, igual ao I; o modelo V tem o dobro (2·V_I)." |
+| `iii` | III | não | "O modelo III tem π(r/2)²·(2P) = V_I/2, metade do I; o maior é o modelo V (2·V_I)." |
+| `iv` | IV | não | "O modelo IV tem (2A_b)·(P/2) = V_I, igual ao I; o modelo V alcança 2·V_I." |
+| `v` | V | **sim** | "Isso. Dobrar o raio multiplica a área da base por 4, e dividir a altura por 2 deixa o volume em 4 · (1/2) = 2 vezes o de I." |
 
 #### V2 — `enem-2010-manilha`
-- **Enunciado (resumido):** Um cilindro de 2 m de diâmetro e 4 m de altura recebe camada de concreto de 20 cm. A R$ 10/m³ e π = 3,1, quanto custa a manilha?
+- **Enunciado (resumido):** "Um cilindro de 2 m de diâmetro e 4 m de altura recebe camada de concreto de 20 cm. A R$ 10/m³ e π = 3,1, quanto custa a manilha?"
 - **Fala do Paco:** "Calcule o volume da casca subtraindo o cilindro interno (r = 1 m) do externo (R = 1,2 m)."
-- **Fonte:** ENEM 2010, Questão 157 — `https://api.enem.dev/v1/exams/2010/questions/157`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (R$ 54,56) mantidos.
+- **Fonte:** ENEM 2010 (adaptada) — **Adaptação:** Questão 157: enunciado resumido; alternativas e gabarito (R$ 54,56) mantidos. — **URL:** https://api.enem.dev/v1/exams/2010/questions/157
 - **Conta de conferência:** `r = 1 m, R = 1,2 m, h = 4 m => V = 3,1·(1,44 - 1)·4 = 5,456 m³`; `5,456 · 10 = R$ 54,56`.
-- **Opções e feedback:** R$ 230,40, R$ 124,00, R$ 104,16, R$ 54,56 (correta), R$ 49,60.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a230` | R$ 230,40 | não | "R$ 230,40 corresponde a 23,04 m³ de concreto; na casca cilíndrica, 3,1·(1,2² − 1²)·4 = 5,456 m³, custando R$ 54,56." |
+| `a124` | R$ 124,00 | não | "R$ 124,00 (3,1·1²·4·10) calcula o volume oco interno em vez da camada externa de 20 cm. O certo é R$ 54,56." |
+| `a104` | R$ 104,16 | não | "R$ 104,16 (3,1·(2,2² − 2²)·4·10) usa o diâmetro 2 m como raio interno em vez de 1 m. Com r = 1 m, custa R$ 54,56." |
+| `a54` | R$ 54,56 | **sim** | "Exato. r = 1 m e R = 1,2 m dão V = 3,1·(1,44 − 1)·4 = 5,456 m³; vezes R$ 10,00 dá R$ 54,56." |
+| `a49` | R$ 49,60 | não | "R$ 49,60 (2·3,1·1·0,2·4·10) usa a área lateral interna vezes 0,2 m, desprezando o ganho de raio da casca. O certo é R$ 54,56." |
 
 #### V3 — `enem-2021-reservatorio`
-- **Enunciado (resumido):** Reservatório cilíndrico de 5 m de diâmetro atende 100 pessoas por 7 dias a 120 L/dia por pessoa. Com π = 3, qual a altura mínima em m?
+- **Enunciado (resumido):** "Reservatório cilíndrico de 5 m de diâmetro atende 100 pessoas por 7 dias a 120 L/dia por pessoa. Com π = 3, qual a altura mínima em m?"
 - **Fala do Paco:** "Converta os litros totais para m³ (1.000 L = 1 m³) e use r = 2,5 m."
-- **Fonte:** ENEM 2021, Questão 167 — `https://api.enem.dev/v1/exams/2021/questions/167`
-- **Adaptação:** enunciado resumido; alternativas e gabarito (4,48) mantidos.
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 167: enunciado resumido; alternativas e gabarito (4,48) mantidos. — **URL:** https://api.enem.dev/v1/exams/2021/questions/167
 - **Conta de conferência:** `100·120·7 = 84 000 L = 84 m³`; `3·2,5²·h = 18,75h = 84 => h = 4,48 m`.
-- **Opções e feedback:** 1,12, 3,10, 4,35, 4,48 (correta), 5,60.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a112` | 1,12 | não | "1,12 m (84 / (3·5²)) usa o diâmetro 5 m como raio em vez de 2,5 m. Com r = 2,5 m, h = 84 / 18,75 = 4,48 m." |
+| `a310` | 3,10 | não | "Com 3,10 m o volume seria 3·2,5²·3,10 = 58,125 m³, insuficiente para os 84 m³ necessários. O certo é 4,48 m." |
+| `a435` | 4,35 | não | "Com 4,35 m o volume seria 3·2,5²·4,35 = 81,5625 m³, abaixo dos 84 m³ necessários. O certo é 4,48 m." |
+| `a448` | 4,48 | **sim** | "Isso. 100·120·7 = 84 000 L = 84 m³; 3·2,5²·h = 18,75h = 84 dá h = 4,48 m." |
+| `a560` | 5,60 | não | "5,60 m (84 / (3·5)) esquece de elevar o raio ao quadrado (divide por 3·5 em vez de 3·2,5²). O certo é 4,48 m." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** cilindro equilátero e transferência de líquido entre cilindros de raios diferentes.

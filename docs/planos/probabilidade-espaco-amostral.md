@@ -248,23 +248,49 @@ A razão só vale com resultados igualmente prováveis: "cara-coroa" listado com
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2012-dados`
-- **Enunciado:** "Dois dados são lançados: José aposta na soma 7, Paulo na soma 4 e Antônio na soma 8. Quem tem mais chance de vencer e por quê?"
+- **Enunciado (resumido):** "Dois dados são lançados: José aposta na soma 7, Paulo na soma 4 e Antônio na soma 8. Quem tem mais chance de vencer e por quê?"
 - **Fala do Paco:** "Liste os pares (a; b) com 1 ≤ a, b ≤ 6 para somas 7, 8 e 4 e conte quantos há em cada caso."
-- **Fonte:** ENEM 2012 (adaptada); Questão 178: enunciado resumido; alternativas e gabarito (José: 6, 5 e 3) mantidos; https://api.enem.dev/v1/exams/2012/questions/178
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 178: enunciado resumido; alternativas e gabarito (José: 6, 5 e 3) mantidos. — **URL:** https://api.enem.dev/v1/exams/2012/questions/178
 - **Conta de conferência:** soma 7 => 6 pares; soma 8 => 5 pares; soma 4 => 3 pares (troca da repetida ENEM 2023/138).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a-antonio` | Antônio, já que sua soma é a maior de todas as escolhidas. | não | "A soma 8 tem 5 pares (2+6 a 6+2), menos que a soma 7. José vence com 6 pares para soma 7." |
+| `b-ja6` | José e Antônio, já que há 6 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 4 possibilidades para a escolha de Paulo. | não | "Soma 8 tem 5 pares (não 6), e soma 4 tem 3 (não 4). José vence: 6 pares na soma 7, 5 na 8 e 3 na 4." |
+| `c-ja3` | José e Antônio, já que há 3 possibilidades tanto para a escolha de José quanto para a escolha de Antônio, e há apenas 2 possibilidades para a escolha de Paulo. | não | "Ignora a ordem dos dados, contando {1;6} uma vez só. Com ordem: José tem 6 pares, Antônio 5 e Paulo 3." |
+| `d-jose` | José, já que há 6 possibilidades para formar sua soma, 5 possibilidades para formar a soma de Antônio e apenas 3 possibilidades para formar a soma de Paulo. | **sim** | "Exato. Soma 7 tem 6 pares (1+6 a 6+1), soma 8 tem 5 (2+6 a 6+2) e soma 4 tem 3 (1+3, 2+2, 3+1)." |
+| `e-paulo` | Paulo, já que sua soma é a menor de todas. | não | "Soma 4 tem só 3 pares (1+3, 2+2, 3+1), a menor chance. José vence com 6 pares na soma 7." |
+
 #### V2 — `enem-2011-bolas`
-- **Enunciado:** "De 15 bolas (1 a 15) tiram-se 2 sem repor: Arthur aposta na soma 12, Bernardo na 17 e Caio na 22. Quem tem maior chance?"
+- **Enunciado (resumido):** "De 15 bolas (1 a 15) tiram-se 2 sem repor: Arthur aposta na soma 12, Bernardo na 17 e Caio na 22. Quem tem maior chance?"
 - **Fala do Paco:** "Conte os pares distintos {a; b} com 1 ≤ a < b ≤ 15 que dão soma 12, soma 17 e soma 22."
-- **Fonte:** ENEM 2011 (adaptada); Questão 168: enunciado resumido; alternativas e gabarito (Bernardo: 7, 5 e 4) mantidos; https://api.enem.dev/v1/exams/2011/questions/168
+- **Fonte:** ENEM 2011 (adaptada) — **Adaptação:** Questão 168: enunciado resumido; alternativas e gabarito (Bernardo: 7, 5 e 4) mantidos. — **URL:** https://api.enem.dev/v1/exams/2011/questions/168
 - **Conta de conferência:** soma 17 => 7 pares (2+15..8+9); soma 12 => 5 pares (1+11..5+7); soma 22 => 4 pares (7+15..10+12) (troca da repetida ENEM 2021/142).
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a-arthur` | Arthur, pois a soma que escolheu é a menor. | não | "Soma 12 tem 5 pares (1+11 a 5+7). Bernardo vence com 7 pares para soma 17 (2+15 a 8+9)." |
+| `b-bernardo-4` | Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 4 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio. | não | "12 = 1+11..5+7 são 5 pares (não 4). Bernardo vence: 7 contra 5 de Arthur e 4 de Caio." |
+| `c-bernardo-5` | Bernardo, pois há 7 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 4 possibilidades para a escolha de Caio. | **sim** | "Exato. Soma 17 tem 7 pares (2+15 a 8+9), soma 12 tem 5 (1+11 a 5+7) e soma 22 tem 4 (7+15 a 10+12)." |
+| `d-caio-10` | Caio, pois há 10 possibilidades de compor a soma escolhida por ele, contra 5 possibilidades para a escolha de Arthur e 8 possibilidades para a escolha de Bernardo. | não | "Extrapolou o teto 15 ou repetiu bola (11+11). Sem repor: Bernardo 7, Arthur 5 e Caio 4." |
+| `e-caio-maior` | Caio, pois a soma que escolheu é a maior. | não | "Soma 22 tem só 4 pares (7+15 a 10+12). Bernardo vence com 7 pares para soma 17." |
+
 #### V3 — `enem-2018-cartoes`
-- **Enunciado:** "Uma urna tem 20 perguntas, sendo 25% fáceis; quantas fáceis acrescentar para que a chance de sortear uma fácil seja 75%?"
+- **Enunciado (resumido):** "Uma urna tem 20 perguntas, sendo 25% fáceis; quantas fáceis acrescentar para que a chance de sortear uma fácil seja 75%?"
 - **Fala do Paco:** "Comece com 5 fáceis em 20 e resolva (5 + x)/(20 + x) = 3/4."
-- **Fonte:** ENEM 2018 (adaptada); Questão 167: enunciado resumido; alternativas e gabarito (40) mantidos; https://api.enem.dev/v1/exams/2018/questions/167
+- **Fonte:** ENEM 2018 (adaptada) — **Adaptação:** Questão 167: enunciado resumido; alternativas e gabarito (40) mantidos. — **URL:** https://api.enem.dev/v1/exams/2018/questions/167
 - **Conta de conferência:** (5 + x)/(20 + x) = 3/4 => 20 + 4x = 60 + 3x => x = 40.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a10` | 10 | não | "Com +10 fáceis ficaria 15/30 = 50%; para 75%, (5 + x)/(20 + x) = 3/4 dá x = 40." |
+| `a15` | 15 | não | "Com +15 ficaria 20/35 ≈ 57%; 15 não fáceis precisam ser 25% do total (60), logo +40." |
+| `a35` | 35 | não | "Com +35 ficaria 40/55 ≈ 72,7%; para 75% exatos, o total é 60, logo 40 novas." |
+| `a40` | 40 | **sim** | "Exato. (5 + 40)/(20 + 40) = 45/60 = 75%." |
+| `a45` | 45 | não | "45 é o total final de fáceis (5 + 40); as acrescentadas são 40." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** probabilidade lida em tabela ou gráfico.

@@ -260,23 +260,52 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2021-romano`
-- **Enunciado:** "Um monumento traz a inscrição MCDLXIX (ano de inauguração). Quantos anos ele completará em 2050?"
+- **Enunciado (resumido):** "Um monumento traz a inscrição MCDLXIX (ano de inauguração). Quantos anos ele completará em 2050?"
 - **Fala do Paco:** "Leia o número em blocos: letra menor antes de uma maior subtrai, como em IV. Depois faça 2050 menos o ano."
-- **Fonte:** ENEM 2021 (adaptada); Questão 176: enunciado resumido; alternativas e gabarito (581) mantidos; https://api.enem.dev/v1/exams/2021/questions/176
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 176: enunciado resumido; alternativas e gabarito (581) mantidos. — **URL:** https://api.enem.dev/v1/exams/2021/questions/176
 - **Conta de conferência:** 1 000 + 400 + 60 + 9 = 1 469; 2 050 − 1 469 = 581.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a379` | 379 | não | "379 = 2050 − 1 671 lê CD como 600 e IX como 11. Como CD = 400 e IX = 9, o ano é 1 469 e 2050 − 1 469 = 581." |
+| `a381` | 381 | não | "381 lê CD como DC (600), achando 1 669: 2050 − 1 669 = 381. Como CD = 400, 2050 − 1 469 = 581." |
+| `a579` | 579 | não | "579 lê IX como XI (11), achando 1 471: 2050 − 1 471 = 579. Como IX = 9, 2050 − 1 469 = 581." |
+| `a581` | 581 | **sim** | "Exato. MCDLXIX = 1 000 + 400 + 60 + 9 = 1 469; em 2050: 2 050 − 1 469 = 581 anos." |
+| `a601` | 601 | não | "601 lê LX como XL (40), achando 1 449: 2050 − 1 449 = 601. Como LX = 60, 2050 − 1 469 = 581." |
+
 #### V2 — `enem-2012-ordens`
-- **Enunciado:** "Um registro tem 8 algarismos: 1 3 _ 9 8 2 0 7, com o terceiro algarismo apagado. Qual ordem esse algarismo ocupa?"
+- **Enunciado (resumido):** "Um registro tem 8 algarismos: 1 3 _ 9 8 2 0 7, com o terceiro algarismo apagado. Qual ordem esse algarismo ocupa?"
 - **Fala do Paco:** "Conte as ordens da direita para a esquerda, em grupos de três: unidades, milhares, milhões."
-- **Fonte:** ENEM 2012 (adaptada); Questão 161: enunciado resumido; alternativas e gabarito (Centena de milhar) mantidos; https://api.enem.dev/v1/exams/2012/questions/161
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 161: enunciado resumido; alternativas e gabarito (Centena de milhar) mantidos. — **URL:** https://api.enem.dev/v1/exams/2012/questions/161
 - **Conta de conferência:** 6ª ordem da direita para a esquerda em número de 8 algarismos = centena de milhar.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `centena` | Centena | não | "Centena é o 3º da direita (o dígito 2). Da direita, o 6º lugar é a centena de milhar." |
+| `dez-milhar` | Dezena de milhar | não | "Dezena de milhar é o 5º da direita (o dígito 9). O dígito apagado é o 6º: centena de milhar." |
+| `cen-milhar` | Centena de milhar | **sim** | "Exato. Na 6ª ordem da direita para a esquerda (3ª da classe dos milhares) fica a centena de milhar." |
+| `milhao` | Milhão | não | "Unidade de milhão é o 7º da direita (o dígito 3). O apagado é o 6º: centena de milhar." |
+| `cen-milhao` | Centena de milhão | não | "Centena de milhão seria o 9º da direita, mas o número tem 8 algarismos. O 6º é centena de milhar." |
+
 #### V3 — `enem-2009-cpf`
-- **Enunciado:** "CPF: multiplique 123.456.789 por 10..2 e ache o resto r por 11 (r<2 ⇒ 0, senão 11−r) para d₁; repita em 23456789d₁ para d₂."
+- **Enunciado (resumido):** "CPF: multiplique 123.456.789 por 10..2 e ache o resto r por 11 (r<2 ⇒ 0, senão 11−r) para d₁; repita em 23456789d₁ para d₂."
 - **Fala do Paco:** "Some cada algarismo vezes o seu peso, ache o resto por 11 e aplique a regra; repita para d₂ com d₁ já no fim."
-- **Fonte:** ENEM 2009 (adaptada); Questão 156: enunciado resumido; alternativas e gabarito (0 e 9) mantidos; https://api.enem.dev/v1/exams/2009/questions/156
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 156: enunciado resumido; alternativas e gabarito (0 e 9) mantidos. — **URL:** https://api.enem.dev/v1/exams/2009/questions/156
 - **Conta de conferência:** S₁ = 210 => 210 mod 11 = 1 => d₁ = 0; S₂ = 244 => 244 mod 11 = 2 => d₂ = 11 − 2 = 9.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a0-9` | 0 e 9 | **sim** | "Exato. S₁ = 210 = 19·11 + 1 ⇒ r = 1 ⇒ d₁ = 0; S₂ = 244 = 22·11 + 2 ⇒ d₂ = 11 − 2 = 9." |
+| `a1-4` | 1 e 4 | não | "Usou o resto como dígito: d₁ = 1 e, com ele, S₂ = 246, resto 4. Pela regra, r = 1 < 2 dá d₁ = 0, e d₂ = 11 − 2 = 9." |
+| `a1-7` | 1 e 7 | não | "Tomou d₁ = r = 1; com ele, S₂ = 246, resto 4, e d₂ = 11 − 4 = 7. Como r = 1 < 2, d₁ = 0, e S₂ = 244 dá d₂ = 9." |
+| `a9-1` | 9 e 1 | não | "9 e 1 põe d₂ = 9 na frente e, no lugar de d₁ = 0, escreve o resto r = 1. Na ordem certa: d₁ = 0 e d₂ = 9." |
+| `a0-1` | 0 e 1 | não | "d₁ = 0 está certo, mas d₂ = 1 não sai da regra: S₂ = 244 deixa resto 2, e 11 − 2 = 9." |
+
+#### V4 — PENDENTE-FONTE
+- **Estado:** vaga aberta; nenhuma questão real conferida ainda.
 
 ---
 

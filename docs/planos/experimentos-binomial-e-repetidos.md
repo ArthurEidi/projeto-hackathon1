@@ -250,11 +250,35 @@ p = 0 e p = 1 concentram tudo num extremo. Somando P(k) para todo k dá 1 (é o 
 
 ### Vestibular
 
-#### V1 — ENEM 2022 — Questão 137 (`enem-2022-world-series`)
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `enem-2022-world-series`
+- **Enunciado (resumido):** "Série de até 7 jogos: leva quem fizer 4 vitórias; cada jogo é 1/2 para cada time. Qual a chance de quem venceu o 1º jogo ser campeão?"
+- **Fala do Paco:** "Como o 1º jogo já foi vencido, conte quantas vitórias faltam nos até 6 jogos restantes."
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 137: enunciado resumido; a probabilidade 1/2 e as alternativas, que no original são imagens de frações, viraram texto; gabarito (C, 42/64) mantido. — **URL:** https://api.enem.dev/v1/exams/2022/questions/137
 - **Habilidade-alvo:** ensaios repetidos independentes com `p = 1/2` (série de até 7 jogos, faltando ao menos 3 vitórias em 6 jogos: `42/64`).
 
-#### V2 — ENEM 2009 — Questão 145 (`enem-2009-celulares-defeito`)
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 35/64 | não | "35/64 = (20 + 15)/64 conta só 3 ou 4 vitórias nos 6 jogos restantes; faltam 5 e 6 vitórias (6 + 1). A correta é 42/64." |
+| `b` | 40/64 | não | "40/64 não sai da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é 42/64." |
+| `c` | 42/64 | **sim** | "Certo: faltam ao menos 3 vitórias nos 6 jogos restantes; (C(6,3)+C(6,4)+C(6,5)+C(6,6))/64 = 42/64." |
+| `d` | 44/64 | não | "44/64 passa da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é 42/64." |
+| `e` | 52/64 | não | "52/64 passa da contagem: nos 6 jogos restantes, 3, 4, 5 ou 6 vitórias dão 20 + 15 + 6 + 1 = 42 de 64 resultados. A correta é 42/64." |
+
+#### V2 — `enem-2009-celulares-defeito`
+- **Enunciado (resumido):** "Um aparelho tem 0,2% de chance de defeito. Vendidos 4 aparelhos, qual a chance de exatamente dois terem defeito?"
+- **Fala do Paco:** "Quantas ordens diferentes têm exatamente 2 defeituosos? E qual a chance de uma dessas ordens?"
+- **Fonte:** ENEM 2009 (adaptada) — **Adaptação:** Questão 145: enunciado resumido mantendo os dados numéricos e alternativas; gabarito (C) mantido. — **URL:** https://api.enem.dev/v1/exams/2009/questions/145
 - **Habilidade-alvo:** fórmula binomial direta em 4 ensaios com `p = 0,2%` (`C(4,2) · (0,2%)² · (99,8%)²`).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 2 × (0,2%)⁴ | não | "Faltou o fator C(4, 2) = 6 e os 2 aparelhos sem defeito (99,8%)². A certa é 6 × (0,2%)² × (99,8%)²." |
+| `b` | 4 × (0,2%)² | não | "Há C(4, 2) = 6 caminhos, não 4, e faltou multiplicar por (99,8%)². A certa é 6 × (0,2%)² × (99,8%)²." |
+| `c` | 6 × (0,2%)² × (99,8%)² | **sim** | "Certo: C(4, 2) = 6 caminhos com 2 defeitos (0,2%)² e 2 sem defeito (99,8%)²." |
+| `d` | 4 × (0,2%) | não | "4 × (0,2%) não multiplica as probabilidades independentes. A certa é 6 × (0,2%)² × (99,8%)²." |
+| `e` | 6 × (0,2%) × (99,8%) | não | "Faltou elevar 0,2% e 99,8% ao quadrado para 2 defeitos e 2 perfeitos. A certa é 6 × (0,2%)² × (99,8%)²." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** pelo menos um sucesso pelo complemento.

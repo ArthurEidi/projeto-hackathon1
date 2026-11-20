@@ -253,32 +253,40 @@ São n + 1 termos, não n. Os coeficientes são simétricos (C(n, k) = C(n, n �
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ita-2025-termo-independente` — ITA 2025
-- **Enunciado:** "Qual é o termo independente de x na expansão de (x + 1/x)⁶ · (x − 2/x)⁵?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ita-2025-termo-independente`
+- **Enunciado (resumido):** "Qual é o termo independente de x na expansão de (x + 1/x)⁶ · (x − 2/x)⁵?"
 - **Fala do Paco:** "Em (x + 1/x)⁶ os expoentes de x são pares; em (x − 2/x)⁵, ímpares. Que expoente sai do produto?"
-- **Fonte:** ITA 2025 (adaptada); 1ª fase, Questão 3: enunciado reescrito como pergunta; alternativas e gabarito oficial (C) mantidos. https://www.vestibular.ita.br/provas/2025_fase1.pdf · https://www.vestibular.ita.br/provas/gabarito_2025.pdf
-- **Alternativas:** −18 · −12 · **0** · 12 · 18
+- **Fonte:** ITA 2025 (adaptada) — **Adaptação:** 1ª fase, Questão 3: enunciado reescrito como pergunta; alternativas e gabarito oficial (C) mantidos. — **URL:** https://www.vestibular.ita.br/provas/2025_fase1.pdf · https://www.vestibular.ita.br/provas/gabarito_2025.pdf
 - **Conta de conferência:** expoente (6 − 2i) + (5 − 2j) = 11 − 2(i + j), sempre ímpar ⇒ termo independente 0 (C).
 
-#### `ita-2018-pg-binomio` — ITA 2018
-- **Enunciado:** "a e b são inteiros positivos, termos seguidos de uma PG de razão 1/2. Se o termo independente de (ax − b/√x)¹² é 7920, quanto vale a + b?"
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `am18` | −18 | não | "−18 supõe um termo em x⁰, mas os expoentes do produto são (6 − 2i) + (5 − 2j) = 11 − 2(i + j), sempre ímpares: o termo é 0." |
+| `am12` | −12 | não | "−12 supõe um termo em x⁰, mas os expoentes do produto são 11 − 2(i + j), sempre ímpares. O termo independente é 0." |
+| `a0` | 0 | **sim** | "Isso. Um termo do produto tem expoente (6 − 2i) + (5 − 2j) = 11 − 2(i + j), sempre ímpar: x⁰ não aparece, e vale 0." |
+| `a12` | 12 | não | "12 supõe um termo em x⁰, mas os expoentes do produto são 11 − 2(i + j), sempre ímpares. O termo independente é 0." |
+| `a18` | 18 | não | "18 supõe um termo em x⁰, mas os expoentes do produto são 11 − 2(i + j), sempre ímpares. O termo independente é 0." |
+
+#### V2 — `ita-2018-pg-binomio`
+- **Enunciado (resumido):** "a e b são inteiros positivos, termos seguidos de uma PG de razão 1/2. Se o termo independente de (ax − b/√x)¹² é 7920, quanto vale a + b?"
 - **Fala do Paco:** "No termo geral, o expoente de x é (12 − k) − k/2. Ache k que o zera, use b = a/2 e resolva para a."
-- **Fonte:** ITA 2018 (adaptada); Matemática, Questão 3: enunciado resumido; alternativas e gabarito oficial (B) mantidos. https://www.vestibular.ita.br/provas/matematica_2018.pdf · https://www.vestibular.ita.br/provas/gabarito_2018.pdf
-- **Alternativas:** 2 · **3** · 4 · 5 · 6
+- **Fonte:** ITA 2018 (adaptada) — **Adaptação:** Matemática, Questão 3: enunciado resumido; alternativas e gabarito oficial (B) mantidos. — **URL:** https://www.vestibular.ita.br/provas/matematica_2018.pdf · https://www.vestibular.ita.br/provas/gabarito_2018.pdf
 - **Conta de conferência:** b = a/2; 12 − 3k/2 = 0 ⇒ k = 8; 495a⁴b⁸ = 7920 ⇒ a¹² = 2¹² ⇒ a = 2, b = 1, a + b = 3 (B).
 
-#### V1 — PENDENTE-FONTE
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2` | 2 | não | "2 é o valor de a; falta somar b = a/2 = 1. Então a + b = 3." |
+| `a3` | 3 | **sim** | "Isso. 12 − 3k/2 = 0 dá k = 8: 495a⁴b⁸ = 7920, a⁴b⁸ = 16; com b = a/2, a¹² = 2¹², a = 2, b = 1 e a + b = 3." |
+| `a4` | 4 | não | "Com b = a/2, a + b = 1,5a; a + b = 4 daria a = 8/3, que não é inteiro. De a⁴b⁸ = 16 sai a = 2, b = 1: a + b = 3." |
+| `a5` | 5 | não | "Com b = a/2, a + b = 1,5a; a + b = 5 daria a = 10/3, que não é inteiro. De a⁴b⁸ = 16 sai a = 2, b = 1: a + b = 3." |
+| `a6` | 6 | não | "a + b = 6 com b = a/2 dá a = 4 e b = 2, e a⁴b⁸ = 65 536, não 16. Com a = 2 e b = 1: a + b = 3." |
+
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** coeficiente de um termo específico de (x + a)ⁿ.
 - **Onde procurar:** Fuvest, Unesp, UFRGS ("coeficiente de x").
 
-#### V2 — PENDENTE-FONTE
+#### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** termo independente de (x + 1/x)ⁿ.
 - **Onde procurar:** Mackenzie, PUC-SP, ITA.
-
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** soma dos coeficientes (a = b = 1).
-- **Onde procurar:** UFPR, UEL, Cesgranrio.
-
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** propriedades do triângulo de Pascal.
-- **Onde procurar:** ENEM, UFSC (somatória).

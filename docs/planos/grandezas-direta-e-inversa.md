@@ -249,23 +249,49 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2020-moto`
-- **Enunciado:** "Moto faz 5 L/100 km (tanque 22 L) e sai cheia rumo a 500 km; no posto a 80 km do fim, quanto pôr para ir, rodar 200 km lá e voltar ao posto?"
+- **Enunciado (resumido):** "Moto faz 5 L/100 km (tanque 22 L) e sai cheia rumo a 500 km; no posto a 80 km do fim, quanto pôr para ir, rodar 200 km lá e voltar ao posto?"
 - **Fala do Paco:** "Calcule o que sobra no tanque após 420 km e compare com o gasto dos 360 km seguintes."
-- **Fonte:** ENEM 2020 (adaptada); Questão 160: enunciado resumido; alternativas e gabarito (17) mantidos; https://api.enem.dev/v1/exams/2020/questions/160
+- **Fonte:** ENEM 2020 (adaptada) — **Adaptação:** Questão 160: enunciado resumido; alternativas e gabarito (17) mantidos. — **URL:** https://api.enem.dev/v1/exams/2020/questions/160
 - **Conta de conferência:** 420 km -> 21 L (sobra 1 L); 360 km -> 18 L; abastecer 18 − 1 = 17 L.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a13` | 13 | não | "13 esquece um trecho de 80 km (4 L); os 360 km exigem 18 L e resta 1 L: 18 − 1 = 17." |
+| `a14` | 14 | não | "14 L é o gasto de 280 km: esqueceu a volta ao posto e não descontou o 1 L que sobrou. São 360 km, 18 L: 18 − 1 = 17." |
+| `a17` | 17 | **sim** | "Exato. Até o posto gasta 21 L (sobra 1 L); para 360 km precisa 18 L, logo põe 17 L." |
+| `a18` | 18 | não | "18 L é o total necessário para 360 km, mas ainda havia 1 L no tanque: 18 − 1 = 17 L." |
+| `a21` | 21 | não | "21 L é quanto gastou na ida até o posto; para seguir e voltar ao posto bastam 17 L." |
+
 #### V2 — `enem-2021-boxes`
-- **Enunciado:** "Três pessoas trocam um pneu em 4 s (tempo inversamente proporcional à equipe); com um grupo reduzido a 2 pessoas, qual é o tempo total?"
+- **Enunciado (resumido):** "4 grupos de 3 trocam os 4 pneus juntos em 4 s; o tempo é inversamente proporcional ao grupo. Se um grupo fica com 2, quanto dura a troca?"
 - **Fala do Paco:** "O produto pessoas × tempo é constante para trocar um pneu: 3 × 4 = 12."
-- **Fonte:** ENEM 2021 (adaptada); Questão 159: enunciado resumido; alternativas e gabarito (6,0) mantidos; https://api.enem.dev/v1/exams/2021/questions/159
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 159: enunciado resumido; alternativas e gabarito (6,0) mantidos. — **URL:** https://api.enem.dev/v1/exams/2021/questions/159
 - **Conta de conferência:** 3 · 4 = 2 · t => t = 6,0 s.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a60` | 6,0 | **sim** | "Isso. 3 × 4 = 2 × t dá t = 6,0 s, que determina o tempo total da parada." |
+| `a57` | 5,7 | não | "5,7 não conserva o produto 3 × 4 = 12; com 2 pessoas fica 12 ÷ 2 = 6,0 s." |
+| `a50` | 5,0 | não | "5,0 soma 1 s em vez de manter 3 × 4 = 12 constante; 12 ÷ 2 = 6,0 s." |
+| `a45` | 4,5 | não | "4,5 é a média dos grupos, (6 + 4 + 4 + 4) ÷ 4. Eles trabalham juntos: a troca acaba com o mais lento, 12 ÷ 2 = 6,0 s." |
+| `a44` | 4,4 | não | "4,4 ≈ 4 · 12/11 trata as 11 pessoas como uma equipe só. Cada grupo troca o seu pneu: o de 2 leva 12 ÷ 2 = 6,0 s." |
+
 #### V3 — `enem-2019-maquinas`
-- **Enunciado:** "R$ 31 000 serão divididos de forma inversamente proporcional às idades de 3 máquinas: 2, 3 e 5 anos; quanto recebe a de 5 anos?"
+- **Enunciado (resumido):** "R$ 31 000 serão divididos de forma inversamente proporcional às idades de 3 máquinas: 2, 3 e 5 anos; quanto recebe a de 5 anos?"
 - **Fala do Paco:** "Monte k/2 + k/3 + k/5 = 31 000 usando mmc(2, 3, 5) = 30."
-- **Fonte:** ENEM 2019 (adaptada); Questão 152: enunciado resumido; alternativas e gabarito (R$ 6.000,00) mantidos; https://api.enem.dev/v1/exams/2019/questions/152
+- **Fonte:** ENEM 2019 (adaptada) — **Adaptação:** Questão 152: enunciado resumido; alternativas e gabarito (R$ 6.000,00) mantidos. — **URL:** https://api.enem.dev/v1/exams/2019/questions/152
 - **Conta de conferência:** 31k/30 = 31 000 => k = 30 000; 30 000 / 5 = R$ 6.000,00.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a3100` | R$ 3.100,00 | não | "3.100 divide por 10 (soma direta); na inversa, 31k/30 = 31 000 dá k = 30 000 e 30 000 ÷ 5 = R$ 6.000,00." |
+| `a6000` | R$ 6.000,00 | **sim** | "Exato. 31k/30 = 31 000 dá k = 30 000, e a máquina de 5 anos recebe 30 000 ÷ 5 = R$ 6.000,00." |
+| `a6200` | R$ 6.200,00 | não | "6.200 é 31 000 · 2/10, a parte da máquina de 2 anos numa divisão direta. Na inversa, k = 30 000 e a de 5 anos recebe 30 000 ÷ 5 = 6.000." |
+| `a15000` | R$ 15.000,00 | não | "R$ 15.000,00 é a parte da máquina mais nova (2 anos: 30 000 ÷ 2); a de 5 anos recebe R$ 6.000,00." |
+| `a15500` | R$ 15.500,00 | não | "15.500 é metade de 31 000 (proporcional direta para 5/10); o correto para 5 anos é R$ 6.000,00." |
 
 #### V4 — `v4-grandezas-direta-e-inversa`
 - **Estado:** **PENDENTE-FONTE**

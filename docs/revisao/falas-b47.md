@@ -77,4 +77,52 @@ Nos casos limite, como "Os degraus são de 2 em cada direção", "Peso 2 é como
 
 **Validação da parte 1:** `lint:content` ok, `tsc --noEmit` ok, vitest completo 2 143/2 143.
 
-**Observação fora do escopo:** `docs/planos/taxas-equivalentes-e-inflacao.md` tem 127 linhas com texto corrompido (mojibake, como "NÃ£o", "â€œ"), desde o commit d9c8598 (B10a).
+**Observação:** o mojibake de `docs/planos/taxas-equivalentes-e-inflacao.md` foi tratado na parte 2.
+
+## Parte 2: roteiros no formato de vaga V e mojibake
+
+### Mojibake
+
+**Varredura:** procurei, por script, as sequências típicas de UTF-8 lido como cp1252 (U+00C3 ou U+00C2 seguidos de caractere de U+0080 a U+00BF, a dupla U+00E2 U+20AC e U+FFFD) em `docs/**/*.md`, `content/**/*.json` e `src/**/*.ts(x)`. Só `docs/planos/taxas-equivalentes-e-inflacao.md` tinha o problema: 160 linhas.
+
+**Origem:**
+
+- Em 8dcda28, o arquivo estava em UTF-8, com exceção da última linha ("Notas da implementação"), que fora acrescentada em cp1252.
+- Em d9c8598 (B10a), o arquivo inteiro foi lido como cp1252 e regravado em UTF-8. Isso corrompeu todas as linhas, menos a última, que por acaso ficou certa.
+- Os bytes que não existem no cp1252 (0x81, 0x8D, 0x8F, 0x90, 0x9D) viraram U+FFFD. Por isso "”" aparecia como U+00E2 U+20AC U+FFFD, e "Í" como U+00C3 U+FFFD.
+
+**Recuperação:** script `b47_mojibake.py`, no scratchpad. Cada trecho corrompido foi recodificado de cp1252 para bytes e decodificado como UTF-8. Onde havia U+FFFD, o script testou os 5 bytes possíveis e escolheu o que forma o texto presente na versão limpa (8dcda28).
+
+**Resultado:** 495 trechos recuperados, sem nenhum ambíguo, sem falha e sem resíduo. Comparado com 8dcda28, o arquivo agora só difere no que mudou de propósito depois:
+
+- a seção Vestibular com `enem-2011-aplicacao` (d9c8598);
+- a fala reescrita na parte 1 (637147f).
+
+Com os cabeçalhos legíveis de novo, os erros "Fáceis: 0 questões" e "Médias: 0 questões" do `lint-planos` sumiram.
+
+### Seção Vestibular dos roteiros
+
+**Quais roteiros:** o `npx tsx scripts/lint-planos.ts` acusava 72 roteiros fora do formato, fora das aulas da B45. A única aula da B45 com erro, `funcao-modular`, não foi tocada.
+
+**O normalizador** (`b47_norm.py`, no scratchpad) reconstrói a seção `### Vestibular` usando o **JSON da aula como fonte da verdade**:
+
+- Cada questão real de `treino.vestibular` ocupa uma vaga `#### Vn — \`id\``, com enunciado, fala, fonte "(adaptada)" com adaptação e URLs, imagens e a tabela de opções (id, rótulo, certa e feedback).
+- A conta de conferência e a habilidade-alvo vêm do bloco antigo da mesma questão. Nada foi inventado.
+- As vagas que sobram continuam **PENDENTE-FONTE**, aproveitando os blocos pendentes que já existiam, com a habilidade-alvo e o "onde procurar".
+- Onde faltavam vagas, entrou uma vaga aberta genérica.
+- Os blocos pendentes que excediam as 4 vagas saíram. Era o caso das aulas da B42, com 6 blocos. Saíram com eles as notas "Auditoria B18", que continuam em `docs/revisao/vestibular-b18.md`.
+- No roteiro, o "|" de rótulos e feedbacks virou "∣", porque o lint separa as colunas da tabela por "|". O JSON não muda.
+- `transformacoes-graficos-de-funcoes` tinha um bloco único "V2–V4"; ele virou as vagas V2, V3 e V4.
+
+**Conferência por script:** nenhuma questão real perdeu uma conta que já tinha. Dezesseis questões reais continuam sem conta no roteiro porque nunca tiveram uma; o lint só emite aviso para elas.
+
+**Resultado do `lint-planos`:** de "30 sem erro, 73 com erro" para **"102 sem erro, 1 com erro"**. O erro que resta é `funcao-modular`, da B45 em curso. Os roteiros contam agora 176 questões reais e 234 vagas PENDENTE-FONTE.
+
+**Validação da parte 2:**
+
+- `lint:content` ok;
+- `tsc --noEmit` ok;
+- vitest completo 2 143/2 143;
+- nova varredura de mojibake limpa.
+
+**Arquivos da parte 2:** os 72 `docs/planos/<slug>.md` e este registro.

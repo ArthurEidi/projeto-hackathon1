@@ -250,25 +250,30 @@ Com 0 itens há 1 jeito (todas vazias). Exigir pelo menos um por caixa só é po
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ita-2021-balas` — ITA 2021
-- **Enunciado:** "De quantos modos se distribuem 48 balas iguais nas tigelas A, B, C e D, com pelo menos 3 em cada e B com tantas quanto D?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ita-2021-balas`
+- **Enunciado (resumido):** "De quantos modos se distribuem 48 balas iguais nas tigelas A, B, C e D, com pelo menos 3 em cada e B com tantas quanto D?"
 - **Fala do Paco:** "Fixe B = D = k e conte os modos de completar A + C = 48 − 2k com pelo menos 3 em cada. Depois some em k."
-- **Fonte:** ITA 2021 (adaptada); 1ª fase, Questão 53: enunciado resumido (balas iguais explicitado); alternativas e gabarito oficial (B) mantidos. https://www.vestibular.ita.br/provas/2021_fase1.pdf · https://www.vestibular.ita.br/provas/gabarito_2021.pdf
-- **Alternativas:** 190 · **361** · 722 · 1083 · 1444
+- **Fonte:** ITA 2021 (adaptada) — **Adaptação:** 1ª fase, Questão 53: enunciado resumido (balas iguais explicitado); alternativas e gabarito oficial (B) mantidos. — **URL:** https://www.vestibular.ita.br/provas/2021_fase1.pdf · https://www.vestibular.ita.br/provas/gabarito_2021.pdf
 - **Conta de conferência:** B = D = k (3 a 21); A + C = 48 − 2k com A, C ≥ 3: 43 − 2k modos; 37 + 35 + … + 1 = 361 (B).
 
-#### V1 — PENDENTE-FONTE
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a190` | 190 | não | "190 não sai da contagem: para cada k de 3 a 21 há 43 − 2k modos de completar A + C, e 37 + 35 + … + 1 = 19² = 361." |
+| `a361` | 361 | **sim** | "Isso. Com B = D = k (3 a 21), A + C = 48 − 2k com A, C ≥ 3 tem 43 − 2k modos: 37 + 35 + … + 1 = 361." |
+| `a722` | 722 | não | "722 = 2 · 361 conta duas vezes cada distribuição, como se B e D pudessem trocar. B = D = k é uma escolha só: 361." |
+| `a1083` | 1083 | não | "1083 = 3 · 361 multiplica a contagem certa por 3. Fixados k e A, tudo está decidido: 37 + 35 + … + 1 = 361." |
+| `a1444` | 1444 | não | "Para cada k de 3 a 21 há 43 − 2k modos; somando, 37 + 35 + … + 1 = 19² = 361, não 1444 = 38²." |
+
+#### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** soluções naturais de x + y + z = k.
 - **Onde procurar:** Fuvest, ITA, Unicamp ("soluções inteiras não negativas").
 
-#### V2 — PENDENTE-FONTE
+#### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** compra com repetição de sabores ou tipos.
 - **Onde procurar:** UFRGS, PUC-SP ("tipos de salgados", "sorvete").
 
-#### V3 — PENDENTE-FONTE
+#### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** distribuição com "pelo menos um em cada".
 - **Onde procurar:** EsPCEx, Mackenzie, UERJ.
-
-#### V4 — PENDENTE-FONTE
-- **Habilidade-alvo:** distinguir combinação simples e com repetição.
-- **Onde procurar:** ENEM ou UFPR com escolha de itens repetíveis.

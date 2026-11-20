@@ -251,14 +251,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ufrgs-2022-area-modulos` — UFRGS 2022
-- **Enunciado:** "Qual é a área da região entre os gráficos de f(x) = |x − 2| + 1 e g(x) = −|x| + 5?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ufrgs-2022-area-modulos`
+- **Enunciado (resumido):** "Qual é a área da região entre os gráficos de f(x) = |x − 2| + 1 e g(x) = −|x| + 5?"
 - **Fala do Paco:** "Os gráficos se cruzam onde |x − 2| + |x| = 4: a soma das distâncias até 2 e até 0 vale 4."
-- **Fonte:** UFRGS 2022 (adaptada); 1º dia, Questão 57: enunciado reescrito como pergunta; alternativas e gabarito oficial (B) mantidos. https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
-- **Alternativas:** 4 · **6** · 10 · 15 · 20
+- **Fonte:** UFRGS 2022 (adaptada) — **Adaptação:** 1º dia, Questão 57: enunciado reescrito como pergunta; alternativas e gabarito oficial (B) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
 - **Conta de conferência:** |x − 2| + |x| = 4 ⇒ x = −1 ou 3; vértices (−1; 4), (0; 5), (3; 2), (2; 1); retângulo √2 × 3√2 = 6 (B).
 
-#### V1 — `v1-equacoes-modulares`
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a4` | 4 | não | "4 é a distância entre os cruzamentos x = −1 e x = 3, não a área. A região é um retângulo de lados √2 e 3√2: área 6." |
+| `a6` | 6 | **sim** | "Isso. Os cruzamentos são x = −1 e x = 3; a região tem vértices (−1; 4), (0; 5), (3; 2) e (2; 1): retângulo √2 por 3√2, área 6." |
+| `a10` | 10 | não | "10 trata a região como triângulo de base 4 (de −1 a 3) e altura 5. É um retângulo de lados √2 e 3√2: área 6." |
+| `a15` | 15 | não | "Os vértices são (−1; 4), (0; 5), (3; 2) e (2; 1), e os lados medem √2 e 3√2. A área é √2 · 3√2 = 6." |
+| `a20` | 20 | não | "20 = 4 · 5 multiplica a largura entre os cruzamentos pela altura do topo. É um retângulo inclinado de lados √2 e 3√2: área 6." |
+
+#### V2 — `v1-equacoes-modulares`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações modulares.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -269,7 +278,7 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V2 — `v2-equacoes-modulares`
+#### V3 — `v2-equacoes-modulares`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Aplicação direta em contexto, no tema equações modulares.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -280,20 +289,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V3 — `v3-equacoes-modulares`
+#### V4 — `v3-equacoes-modulares`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema equações modulares.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-equacoes-modulares`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema equações modulares.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
 - **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
 - **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.

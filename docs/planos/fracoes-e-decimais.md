@@ -260,23 +260,49 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
 #### V1 — `enem-2016-fibras`
-- **Enunciado:** "Fibras por pão: A 2/50, B 5/40, C 5/100, D 6/90 e E 7/70; qual marca tem a maior concentração de fibras?"
+- **Enunciado (resumido):** "Fibras por pão: A 2/50, B 5/40, C 5/100, D 6/90 e E 7/70; qual marca tem a maior concentração de fibras?"
 - **Fala do Paco:** "Converta cada fração para decimal ou compare com 1/10 = 0,10."
-- **Fonte:** ENEM 2016 (adaptada); Questão 154: enunciado resumido; alternativas e gabarito (B) mantidos; https://api.enem.dev/v1/exams/2016/questions/154
+- **Fonte:** ENEM 2016 (adaptada) — **Adaptação:** Questão 154: enunciado resumido; alternativas e gabarito (B) mantidos. — **URL:** https://api.enem.dev/v1/exams/2016/questions/154
 - **Conta de conferência:** A = 0,04; B = 0,125; C = 0,05; D ≈ 0,067; E = 0,10 -> B.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `aa` | A | não | "A dá 2/50 = 0,04; a maior é B, com 5/40 = 0,125." |
+| `ab` | B | **sim** | "Exato. 5/40 = 0,125 supera todas as outras (A=0,04; C=0,05; D≈0,067; E=0,10)." |
+| `ac` | C | não | "C dá 5/100 = 0,05; com o mesmo numerador 5, dividir por 40 (B) dá 0,125." |
+| `ad` | D | não | "D dá 6/90 ≈ 0,067, menor que 0,10; a maior é B, com 5/40 = 0,125." |
+| `ae` | E | não | "E dá 7/70 = 0,10; B tem 5/40 = 0,125, que é maior." |
+
 #### V2 — `enem-2022-borrifador`
-- **Enunciado:** "Um frasco de 360 mL dura 60 dias com 1 jato a cada 48 minutos; quantos mililitros saem por acionamento?"
+- **Enunciado (resumido):** "Um frasco de 360 mL dura 60 dias com 1 jato a cada 48 minutos; quantos mililitros saem por acionamento?"
 - **Fala do Paco:** "Converta 60 dias em minutos, divida por 48 e depois divida 360 mL pelo total de jatos."
-- **Fonte:** ENEM 2022 (adaptada); Questão 164: enunciado resumido; alternativas e gabarito (0,200) mantidos; https://api.enem.dev/v1/exams/2022/questions/164
+- **Fonte:** ENEM 2022 (adaptada) — **Adaptação:** Questão 164: enunciado resumido; alternativas e gabarito (0,200) mantidos. — **URL:** https://api.enem.dev/v1/exams/2022/questions/164
 - **Conta de conferência:** 360 / (60 · 24 · 60 / 48) = 360 / 1800 = 0,200 mL.
 
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a0125` | 0,125 | não | "0,125 lê 48 como jatos por dia: 360 ÷ (60 × 48). Mas 48 são minutos entre jatos: 86 400 ÷ 48 = 1 800 jatos e 360 ÷ 1 800 = 0,200." |
+| `a0200` | 0,200 | **sim** | "Isso. São 86 400 ÷ 48 = 1800 acionamentos, e 360 ÷ 1800 = 0,200 mL." |
+| `a4800` | 4,800 | não | "4,800 conta só 60 minutos por dia: 3 600 ÷ 48 = 75 jatos e 360 ÷ 75 = 4,8. Com 24 h: 86 400 ÷ 48 = 1 800 jatos e 0,200 mL." |
+| `a6000` | 6,000 | não | "6,000 é 360 ÷ 60 (mL por dia); em 30 jatos por dia dá 6 ÷ 30 = 0,200 mL." |
+| `a12000` | 12,000 | não | "12,000 divide por 30 jatos diários em vez de 1800 no total; o certo é 0,200 mL." |
+
 #### V3 — `enem-2021-loteamento`
-- **Enunciado:** "De 3 ha (30 000 m²), 0,9 ha vai para ruas e o resto vira lotes de 300 m²; 20 a R$ 20 mil e os demais a R$ 30 mil; qual o total?"
+- **Enunciado (resumido):** "De 3 ha (30 000 m²), 0,9 ha vai para ruas e o resto vira lotes de 300 m²; 20 a R$ 20 mil e os demais a R$ 30 mil; qual o total?"
 - **Fala do Paco:** "Subtraia 0,9 de 3 para achar a área útil em m² e divida por 300."
-- **Fonte:** ENEM 2021 (adaptada); Questão 178: enunciado resumido; alternativas e gabarito (1 900 000) mantidos; https://api.enem.dev/v1/exams/2021/questions/178
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 178: enunciado resumido; alternativas e gabarito (1 900 000) mantidos. — **URL:** https://api.enem.dev/v1/exams/2021/questions/178
 - **Conta de conferência:** (30 000 − 9 000) / 300 = 70 lotes; 20 · 20 000 + 50 · 30 000 = 1 900 000.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a700` | 700 000 | não | "700 000 loteia os 0,9 ha das ruas: 9 000 ÷ 300 = 30 lotes. Os lotes ficam nos 21 000 m² restantes: 70 lotes e 1 900 000." |
+| `a1600` | 1 600 000 | não | "1 600 000 paga só 40 lotes a R$ 30 mil (60 no total). São 21 000 ÷ 300 = 70 lotes: 20 · 20 000 + 50 · 30 000 = 1 900 000." |
+| `a1900` | 1 900 000 | **sim** | "Exato. 21 000 ÷ 300 = 70 lotes: 400 000 + 1 500 000 = 1 900 000." |
+| `a2200` | 2 200 000 | não | "2 200 000 seriam 80 lotes (20 a 20 mil e 60 a 30 mil). Com 21 000 m² úteis são 70 lotes: 400 000 + 1 500 000 = 1 900 000." |
+| `a2800` | 2 800 000 | não | "2 800 000 usou todos os 3 ha sem descontar ruas; o correto é 1 900 000." |
 
 #### V4 — `v4-fracoes-e-decimais`
 - **Estado:** **PENDENTE-FONTE**

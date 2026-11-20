@@ -251,16 +251,23 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 **B42 (19/11/2026): questões de provas oficiais conferidas no PDF e inseridas na aula** (registro em `docs/revisao/vestibular-b42.md`). Os espaços PENDENTE-FONTE abaixo continuam abertos para outras questões.
 
-#### `ufpr-2024-bolo` — UFPR 2024
-- **Enunciado:** "Um bolo esfria segundo T(t) = 30 + 150a^(−0,05t), a > 1, t em min; com logₐ2 = 0,7 e logₐ5 = 1,6, quando T chega à metade de T(0)?"
+> B47 (19/11/2026): seção normalizada a partir do JSON da aula; cada questão real ocupa uma vaga V no formato do `lint-planos`, e as vagas PENDENTE-FONTE seguem abertas (registro em `docs/revisao/falas-b47.md`).
+
+#### V1 — `ufpr-2024-bolo`
+- **Enunciado (resumido):** "Um bolo esfria segundo T(t) = 30 + 150a^(−0,05t), a > 1, t em min; com logₐ2 = 0,7 e logₐ5 = 1,6, quando T chega à metade de T(0)?"
 - **Fala do Paco:** "logₐ2 = 0,7 quer dizer a^0,7 = 2. Escreva 5/2 como potência de a e iguale os expoentes."
-- **Fonte:** UFPR 2024 (adaptada); 1ª fase, Questão 08: enunciado resumido; alternativas e gabarito oficial (D) mantidos. https://servicos.nc.ufpr.br/documentos/ps2024/provas/Geral.pdf
-- **Alternativas:** 10 minutos · 12 minutos · 16 minutos · **18 minutos** · 22 minutos
+- **Fonte:** UFPR 2024 (adaptada) — **Adaptação:** 1ª fase, Questão 08: enunciado resumido; alternativas e gabarito oficial (D) mantidos. — **URL:** https://servicos.nc.ufpr.br/documentos/ps2024/provas/Geral.pdf
 - **Conta de conferência:** T(0) = 180; T = 90 ⇒ a^(0,05t) = 150/60 = 5/2 = a^1,6 ÷ a^0,7 = a^0,9 ⇒ t = 0,9/0,05 = 18 (D).
 
-**Auditoria B18 (15/11/2026):** nenhuma candidata integralmente verificável no cache ENEM obrigatório. Mantido PENDENTE-FONTE; contas e impedimentos em `docs/revisao/vestibular-b18.md`.
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a10` | 10 minutos | não | "Com t = 10, 0,05t = 0,5, e a^0,5 não dá 5/2. De 150a^(−0,05t) = 60 vem a^(0,05t) = 5/2 = a^0,9: t = 18 min." |
+| `a12` | 12 minutos | não | "Com t = 12, 0,05t = 0,6. Mas 5/2 = a^1,6 ÷ a^0,7 = a^0,9, então 0,05t = 0,9 e t = 18 min." |
+| `a16` | 16 minutos | não | "Com t = 16, 0,05t = 0,8. Mas 5/2 = a^1,6 ÷ a^0,7 = a^0,9, então 0,05t = 0,9 e t = 18 min." |
+| `a18` | 18 minutos | **sim** | "Isso. T(0) = 180 e T = 90 dão a^(0,05t) = 150/60 = 5/2 = a^1,6 ÷ a^0,7 = a^0,9; 0,05t = 0,9 e t = 18." |
+| `a22` | 22 minutos | não | "Com t = 22, 0,05t = 1,1. Mas 5/2 = a^1,6 ÷ a^0,7 = a^0,9, então 0,05t = 0,9 e t = 18 min." |
 
-#### V1 — `v1-equacoes-exponenciais`
+#### V2 — `v1-equacoes-exponenciais`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações exponenciais.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -271,7 +278,7 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V2 — `v2-equacoes-exponenciais`
+#### V3 — `v2-equacoes-exponenciais`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Aplicação direta em contexto, no tema equações exponenciais.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
@@ -282,20 +289,9 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 - **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
 - **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
-#### V3 — `v3-equacoes-exponenciais`
+#### V4 — `v3-equacoes-exponenciais`
 - **Estado:** **PENDENTE-FONTE**
 - **Recorte para seleção:** Domínio, sinal ou caso de fronteira, no tema equações exponenciais.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
-
-#### V4 — `v4-equacoes-exponenciais`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema equações exponenciais.
 - **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
 - **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
 - **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
