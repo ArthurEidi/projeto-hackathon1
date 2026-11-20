@@ -108,4 +108,18 @@ describe("gabaritos do treino", () => {
     // d5: tg θ = √3 no 3º Q => sec θ = -2 e cos θ = -1/2
     expect(certa("cosseno-pela-tangente")).toBe("−2 e −1/2");
   });
+
+  it("vestibular (B45a): UNICAMP 2025 Q50 (sen(π/12) = √(2−√3)/2) e UFPR 2024 Q05 ([sen+cos]² = 1,6)", () => {
+    const cos2 = (1 + Math.cos(Math.PI / 6)) / 2;
+    const sen = Math.sqrt(1 - cos2);
+    expect(sen).toBeCloseTo(Math.sqrt(2 - Math.sqrt(3)) / 2, 10);
+    expect(sen).toBeCloseTo(Math.sin(Math.PI / 12), 10);
+    expect(certa("unicamp-2025-sen-pi12")).toBe("√(2 − √3)/2");
+
+    // x com sen(2x) = 3/5: (sen x + cos x)² = 1 + sen(2x) = 1,6; o distrator 0,8 é cos(2x)
+    const x = Math.asin(3 / 5) / 2;
+    expect((Math.sin(x) + Math.cos(x)) ** 2).toBeCloseTo(1.6, 10);
+    expect(Math.cos(2 * x)).toBeCloseTo(0.8, 10);
+    expect(certa("ufpr-2024-soma-quadrado")).toBe("1,6");
+  });
 });

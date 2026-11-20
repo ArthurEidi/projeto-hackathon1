@@ -249,27 +249,35 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-equacoes-trigonometricas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações trigonométricas.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+> B45a (Antigravity) com auditoria do Claude Code #2 (19/11/2026): as vagas preenchidas trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registros em `docs/revisao/vestibular-b45a.md` e `docs/revisao/auditoria-b45a.md`). As vagas PENDENTE-FONTE seguem abertas.
 
-#### V2 — `v2-equacoes-trigonometricas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema equações trigonométricas.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `ita-2017-sec-cossec`
+- **Enunciado (resumido):** "Com sec θ = 1/cos θ e cossec θ = 1/sen θ, quantas soluções tem (1 + sec θ)(1 + cossec θ) = 0 em [−π; π]?"
+- **Fala do Paco:** "Zere cada fator (cos θ = −1 ou sen θ = −1) e confira se o outro fator existe nesse ângulo."
+- **Fonte:** ITA 2017 (adaptada) — **Adaptação:** Matemática, Questão 2: enunciado reescrito como pergunta, com as definições de sec θ e cossec θ (a aula vem antes de identidades na trilha); alternativas e gabarito oficial (A) mantidos. — **URL:** https://www.vestibular.ita.br/provas/matematica_2017.pdf · https://www.vestibular.ita.br/provas/gabarito_2017.pdf
+- **Conta de conferência:** cos θ = −1 ⇒ θ = ±π, mas sen θ = 0 (cossec não existe); sen θ = −1 ⇒ θ = −π/2, mas cos θ = 0 (sec não existe) ⇒ 0 soluções (A).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 0 | **sim** | "Exato. cos θ = −1 dá ±π, onde sen θ = 0 e cossec θ não existe; sen θ = −1 dá −π/2, onde cos θ = 0 e sec θ não existe: 0 soluções." |
+| `b` | 1 | não | "1 aceita uma das raízes, −π/2 ou π, sem ver que nela o outro fator não existe (cos(−π/2) = 0, sen π = 0). São 0 soluções." |
+| `c` | 2 | não | "2 conta π e −π/2 sem checar o domínio: em ±π, sen θ = 0 e cossec θ não existe; em −π/2, cos θ = 0 e sec θ não existe. São 0." |
+| `d` | 3 | não | "3 soluções conta −π, π e −π/2 sem checar domínio; nos três, sen θ = 0 ou cos θ = 0. São 0." |
+| `e` | 4 | não | "4 conta ainda +π/2 (onde sen = +1, não −1) e ignora o domínio. A equação tem 0 soluções." |
+
+#### V2 — `ufpr-2020-mare`
+- **Enunciado (resumido):** "n(t) = 3·sen((t − 5)π/6) + 4 m, 0 ≤ t ≤ 24 h: (1) máximo 2 vezes; (2) mínimo às 11 h; (3) máximo às 5 h; (4) máx − mín = 3 m. Quais valem?"
+- **Fala do Paco:** "Resolva sen((t − 5)π/6) = 1 para o pico e = −1 para o mínimo, e teste t = 5 e t = 11."
+- **Fonte:** UFPR 2020 (adaptada) — **Adaptação:** 1ª fase, Conhecimentos Gerais, Questão 17: enunciado e opções resumidos; gabarito oficial (a) mantido. — **URL:** https://servicos.nc.ufpr.br/documentos/PS2020/provas1fase/ps2020_conhecimentos_gerais.pdf
+- **Conta de conferência:** máximo (seno = 1) em t = 8 e 20; n(5) = n(11) = 4; mínimo 1 m e máximo 7 m ⇒ diferença 6 m ⇒ só a 1 (a).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | Somente a 1 | **sim** | "Isso. Os máximos (seno = 1) são às 8 h e 20 h; às 5 h e 11 h o seno é 0 (n = 4 m); e máximo − mínimo = 7 − 1 = 6 m." |
+| `b` | Somente 1 e 4 | não | "3 m é a amplitude (de 4 a 7 m); do mínimo (1 m) ao máximo (7 m) a diferença é 6 m. Só a 1 vale." |
+| `c` | Somente 2 e 3 | não | "Lê t − 5 como máximo às 5 h e mínimo 6 h depois; mas em t = 5 e t = 11 o seno vale 0 (n = 4 m). Máximos às 8 h e 20 h: só a 1 vale." |
+| `d` | Somente 2, 3 e 4 | não | "2, 3 e 4 são falsas (seno 0 às 5 h e às 11 h; diferença de 6 m) e a 1 é verdadeira (máximos às 8 h e às 20 h)." |
+| `e` | 1, 2, 3 e 4 | não | "Às 5 h e às 11 h o seno vale 0 (n = 4 m), e máximo − mínimo = 6 m, não 3 m. Somente a 1 é verdadeira." |
 
 #### V3 — `v3-equacoes-trigonometricas`
 - **Estado:** **PENDENTE-FONTE**

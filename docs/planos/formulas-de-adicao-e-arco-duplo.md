@@ -238,13 +238,35 @@ O aluno testa α = 45° e β = 45° (onde o arco duplo bate em 90°: sen 90° = 
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular seno, cosseno ou tangente de ângulos como 15°, 75° ou 105° usando as fórmulas de adição/subtração.
-- **Onde procurar:** Fuvest, Vunesp, UFRGS, UFPR.
+> B45a (Antigravity) com auditoria do Claude Code #2 (19/11/2026): as vagas preenchidas trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registros em `docs/revisao/vestibular-b45a.md` e `docs/revisao/auditoria-b45a.md`). As vagas PENDENTE-FONTE seguem abertas.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** aplicar sen(2α) = 2·sen α·cos α ou cos(2α) = cos²α − sen²α em problemas geométricos ou algébricos.
-- **Onde procurar:** Unicamp, Fuvest, Unesp, UERJ.
+#### V1 — `ufpr-2025-cos-2x`
+- **Enunciado (resumido):** "Sabendo que sen x = 3/5, qual é o valor de cos(2x)?"
+- **Fala do Paco:** "Use cos(2x) = cos²x − sen²x com cos²x = 1 − sen²x, ou direto cos(2x) = 1 − 2·sen²x."
+- **Fonte:** UFPR 2025 (adaptada) — **Adaptação:** 1ª fase, Matemática, Questão 08: enunciado reescrito como pergunta; alternativas e gabarito oficial (C) mantidos. — **URL:** https://servicos.nc.ufpr.br/documentos/ps2025/provas/Geral.pdf · https://servicos.nc.ufpr.br/documentos/ps2025/provas/definitivo/Geral.pdf
+- **Conta de conferência:** cos(2x) = 1 − 2·sen²x = 1 − 2·(9/25) = 7/25 (C).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 2/25 | não | "2/25 não sai de nenhuma fórmula do arco duplo. Com sen²x = 9/25: cos(2x) = 1 − 2·sen²x = 1 − 18/25 = 7/25." |
+| `b` | 3/25 | não | "3/25 também não sai das fórmulas do arco duplo. Com cos²x = 16/25 e sen²x = 9/25: cos(2x) = cos²x − sen²x = 7/25." |
+| `c` | 7/25 | **sim** | "Isso. cos(2x) = 1 − 2·sen²x = 1 − 2·(9/25) = 1 − 18/25 = 7/25." |
+| `d` | 9/25 | não | "9/25 é apenas sen²x = (3/5)². Falta fazer cos(2x) = 1 − 2·sen²x = 1 − 18/25 = 7/25." |
+| `e` | 16/25 | não | "16/25 é cos²x = 1 − 9/25; falta subtrair sen²x: cos(2x) = cos²x − sen²x = 16/25 − 9/25 = 7/25." |
+
+#### V2 — `ufrgs-2022-sen-2a`
+- **Enunciado (resumido):** "Se α é um arco do primeiro quadrante tal que sen(α) = 3/5, quanto vale sen(2α)?"
+- **Fala do Paco:** "Ache cos(α) pela relação fundamental no 1º quadrante e aplique sen(2α) = 2·sen(α)·cos(α)."
+- **Fonte:** UFRGS 2022 (adaptada) — **Adaptação:** 1º dia, Matemática, Questão 51: enunciado reescrito como pergunta; alternativas e gabarito oficial (D) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2022/gabaritos/
+- **Conta de conferência:** 1º quadrante: cos α = 4/5 ⇒ sen(2α) = 2·(3/5)·(4/5) = 24/25 (D).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 3/5 | não | "3/5 é o próprio sen(α). Pelo arco duplo: sen(2α) = 2·(3/5)·(4/5) = 24/25." |
+| `b` | 4/5 | não | "4/5 é cos(α) = √(1 − 9/25), não sen(2α). Falta multiplicar: 2·(3/5)·(4/5) = 24/25." |
+| `c` | 6/5 | não | "6/5 = 2·sen(α) trata sen(2α) como 2·sen(α), e passa de 1, o que nenhum seno faz. Certo: 2·(3/5)·(4/5) = 24/25." |
+| `d` | 24/25 | **sim** | "Exato. No 1º Q, cos(α) = 4/5; logo sen(2α) = 2·(3/5)·(4/5) = 24/25." |
+| `e` | 25/24 | não | "25/24 inverte a fração certa e passa de 1, o que nenhum seno faz. Pelo arco duplo: sen(2α) = 2·(3/5)·(4/5) = 24/25." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** reduzir uma função com produto sen x · cos x ou cos²x − sen²x a uma única senoide para achar máximo, mínimo ou período.

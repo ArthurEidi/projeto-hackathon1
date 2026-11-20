@@ -144,4 +144,29 @@ describe("treino: gabaritos conferidos por conta", () => {
     }
     expect(certa("d5-equacoes-trigonometricas")).toBe("π/4, 3π/4, 5π/4 e 7π/4");
   });
+
+  it("vestibular (B45a): ITA 2017 Q2 (0 soluções) e UFPR 2020 Q17 (somente afirmativa 1)", () => {
+    // ITA 2017 Q2: candidatos a zerar 1+sec θ = 0 são ±π (sen = 0, cossec indefinida);
+    // candidato a zerar 1+cossec θ = 0 é -π/2 (cos = 0, sec indefinida).
+    for (const t of [-Math.PI, Math.PI]) expect(Math.abs(Math.sin(t))).toBeLessThan(1e-12);
+    expect(Math.abs(Math.cos(-Math.PI / 2))).toBeLessThan(1e-12);
+    // nenhum θ em [−π; π] zera um fator sem anular o seno ou o cosseno do outro
+    const zeros: number[] = [];
+    for (let k = -4; k <= 4; k++) {
+      const t = (k * Math.PI) / 4;
+      const s = Math.sin(t), c = Math.cos(t);
+      if (Math.abs(s) > 1e-9 && Math.abs(c) > 1e-9 && Math.abs((1 + 1 / c) * (1 + 1 / s)) < 1e-9) zeros.push(t);
+    }
+    expect(zeros).toEqual([]);
+    expect(certa("ita-2017-sec-cossec")).toBe("0");
+
+    // UFPR 2020 Q17: n(t) = 3*sen((t-5)*π/6) + 4 em [0, 24]
+    const n = (t: number) => 3 * Math.sin(((t - 5) * Math.PI) / 6) + 4;
+    expect(n(8)).toBeCloseTo(7, 10);
+    expect(n(20)).toBeCloseTo(7, 10);
+    expect(n(11)).toBeCloseTo(4, 10); // não é mínimo
+    expect(n(5)).toBeCloseTo(4, 10); // não é máximo
+    expect(n(8) - n(2)).toBeCloseTo(6, 10); // variação 6 m, não 3 m
+    expect(certa("ufpr-2020-mare")).toBe("Somente a 1");
+  });
 });

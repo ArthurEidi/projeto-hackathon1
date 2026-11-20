@@ -634,6 +634,101 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufpr-2025-cos-2x",
+        "prompt": "Sabendo que sen x = 3/5, qual é o valor de cos(2x)?",
+        "fala": "Use cos(2x) = cos²x − sen²x com cos²x = 1 − sen²x, ou direto cos(2x) = 1 − 2·sen²x.",
+        "fonte": {
+          "banca": "UFPR",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Matemática, Questão 08: enunciado reescrito como pergunta; alternativas e gabarito oficial (C) mantidos.",
+          "urls": [
+            "https://servicos.nc.ufpr.br/documentos/ps2025/provas/Geral.pdf",
+            "https://servicos.nc.ufpr.br/documentos/ps2025/provas/definitivo/Geral.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "2/25",
+            "correct": false,
+            "feedback": "2/25 não sai de nenhuma fórmula do arco duplo. Com sen²x = 9/25: cos(2x) = 1 − 2·sen²x = 1 − 18/25 = 7/25."
+          },
+          {
+            "id": "b",
+            "label": "3/25",
+            "correct": false,
+            "feedback": "3/25 também não sai das fórmulas do arco duplo. Com cos²x = 16/25 e sen²x = 9/25: cos(2x) = cos²x − sen²x = 7/25."
+          },
+          {
+            "id": "c",
+            "label": "7/25",
+            "correct": true,
+            "feedback": "Isso. cos(2x) = 1 − 2·sen²x = 1 − 2·(9/25) = 1 − 18/25 = 7/25."
+          },
+          {
+            "id": "d",
+            "label": "9/25",
+            "correct": false,
+            "feedback": "9/25 é apenas sen²x = (3/5)². Falta fazer cos(2x) = 1 − 2·sen²x = 1 − 18/25 = 7/25."
+          },
+          {
+            "id": "e",
+            "label": "16/25",
+            "correct": false,
+            "feedback": "16/25 é cos²x = 1 − 9/25; falta subtrair sen²x: cos(2x) = cos²x − sen²x = 16/25 − 9/25 = 7/25."
+          }
+        ]
+      },
+      {
+        "id": "ufrgs-2022-sen-2a",
+        "prompt": "Se α é um arco do primeiro quadrante tal que sen(α) = 3/5, quanto vale sen(2α)?",
+        "fala": "Ache cos(α) pela relação fundamental no 1º quadrante e aplique sen(2α) = 2·sen(α)·cos(α).",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1º dia, Matemática, Questão 51: enunciado reescrito como pergunta; alternativas e gabarito oficial (D) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2022/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "3/5",
+            "correct": false,
+            "feedback": "3/5 é o próprio sen(α). Pelo arco duplo: sen(2α) = 2·(3/5)·(4/5) = 24/25."
+          },
+          {
+            "id": "b",
+            "label": "4/5",
+            "correct": false,
+            "feedback": "4/5 é cos(α) = √(1 − 9/25), não sen(2α). Falta multiplicar: 2·(3/5)·(4/5) = 24/25."
+          },
+          {
+            "id": "c",
+            "label": "6/5",
+            "correct": false,
+            "feedback": "6/5 = 2·sen(α) trata sen(2α) como 2·sen(α), e passa de 1, o que nenhum seno faz. Certo: 2·(3/5)·(4/5) = 24/25."
+          },
+          {
+            "id": "d",
+            "label": "24/25",
+            "correct": true,
+            "feedback": "Exato. No 1º Q, cos(α) = 4/5; logo sen(2α) = 2·(3/5)·(4/5) = 24/25."
+          },
+          {
+            "id": "e",
+            "label": "25/24",
+            "correct": false,
+            "feedback": "25/24 inverte a fração certa e passa de 1, o que nenhum seno faz. Pelo arco duplo: sen(2α) = 2·(3/5)·(4/5) = 24/25."
+          }
+        ]
+      }
+    ]
   }
 }

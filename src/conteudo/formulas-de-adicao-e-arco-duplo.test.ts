@@ -130,4 +130,13 @@ describe("treino: gabaritos conferidos por conta", () => {
   it("D5 periodo-produto-seno-cosseno: 6*sen x*cos x = 3*sen(2x)", () => {
     expect(certa("periodo-produto-seno-cosseno")).toBe("f(x) = 3·sen(2x); Im = [−3; 3] e T = π");
   });
+
+  it("vestibular (B45a): UFPR 2025 Q08 (cos 2x = 7/25) e UFRGS 2022 Q51 (sen 2α = 24/25)", () => {
+    const sen = 3 / 5;
+    const cos = Math.sqrt(1 - sen * sen);
+    expect(1 - 2 * sen * sen).toBeCloseTo(7 / 25, 10);
+    expect(certa("ufpr-2025-cos-2x")).toBe("7/25");
+    expect(2 * sen * cos).toBeCloseTo(24 / 25, 10);
+    expect(certa("ufrgs-2022-sen-2a")).toBe("24/25");
+  });
 });

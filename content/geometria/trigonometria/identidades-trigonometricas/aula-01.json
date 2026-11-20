@@ -636,6 +636,93 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "unicamp-2025-sen-pi12",
+        "prompt": "Usando cos(x/2) = √((1 + cos x)/2) e a identidade fundamental, quanto vale sen(π/12)?",
+        "fala": "Faça x = π/6 para achar cos²(π/12) = (1 + cos(π/6))/2; depois use sen² + cos² = 1.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1ª fase (Prova Q), Questão 50: enunciado resumido; alternativas e gabarito oficial (a) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "√(2 − √3)/2",
+            "correct": true,
+            "feedback": "Isso. cos²(π/12) = (2 + √3)/4; por sen² + cos² = 1, sen(π/12) = √(2 − √3)/2."
+          },
+          {
+            "id": "b",
+            "label": "√(2 + √3)/2",
+            "correct": false,
+            "feedback": "√(2 + √3)/2 é cos(π/12), antes de subtrair de 1. Por sen² = 1 − cos², dá √(2 − √3)/2."
+          },
+          {
+            "id": "c",
+            "label": "√(3 − √3)/2",
+            "correct": false,
+            "feedback": "√(3 − √3)/2 não sai das contas: sen²(π/12) = 1 − (2 + √3)/4 = (2 − √3)/4, logo sen(π/12) = √(2 − √3)/2."
+          },
+          {
+            "id": "d",
+            "label": "√(3 + √3)/2",
+            "correct": false,
+            "feedback": "3 + √3 não sai de 1 − (2 + √3)/4 = (2 − √3)/4. O valor correto é √(2 − √3)/2."
+          }
+        ]
+      },
+      {
+        "id": "ufpr-2024-soma-quadrado",
+        "prompt": "Sabendo que sen(2x) = 3/5, qual é o valor de [sen(x) + cos(x)]²?",
+        "fala": "Expanda (sen x + cos x)² e use sen²x + cos²x = 1 com 2·sen x·cos x = sen(2x).",
+        "fonte": {
+          "banca": "UFPR",
+          "ano": 2024,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Matemática, Questão 05: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos.",
+          "urls": [
+            "https://servicos.nc.ufpr.br/documentos/ps2024/provas/Geral.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "0,8",
+            "correct": false,
+            "feedback": "0,8 = 4/5 é cos(2x), que vem de cos²x − sen²x. O quadrado da soma é sen²x + cos²x + 2·sen x·cos x = 1 + 0,6 = 1,6."
+          },
+          {
+            "id": "b",
+            "label": "1,0",
+            "correct": false,
+            "feedback": "1,0 = sen²x + cos²x esquece o termo 2·sen x·cos x = sen(2x). Certo: 1 + 0,6 = 1,6."
+          },
+          {
+            "id": "c",
+            "label": "1,2",
+            "correct": false,
+            "feedback": "1,2 = 2·(3/5) dobra sen(2x) em vez de somar 1. Certo: 1 + 0,6 = 1,6."
+          },
+          {
+            "id": "d",
+            "label": "1,4",
+            "correct": false,
+            "feedback": "1,4 não sai da expansão: (sen x + cos x)² = 1 + sen(2x) = 1 + 0,6 = 1,6, e (sen x − cos x)² daria 0,4."
+          },
+          {
+            "id": "e",
+            "label": "1,6",
+            "correct": true,
+            "feedback": "Certo. [sen(x) + cos(x)]² = sen²x + cos²x + sen(2x) = 1 + 3/5 = 1,6."
+          }
+        ]
+      }
+    ]
   }
 }

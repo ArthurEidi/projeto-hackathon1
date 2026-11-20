@@ -665,6 +665,100 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ita-2017-sec-cossec",
+        "prompt": "Com sec θ = 1/cos θ e cossec θ = 1/sen θ, quantas soluções tem (1 + sec θ)(1 + cossec θ) = 0 em [−π; π]?",
+        "fala": "Zere cada fator (cos θ = −1 ou sen θ = −1) e confira se o outro fator existe nesse ângulo.",
+        "fonte": {
+          "banca": "ITA",
+          "ano": 2017,
+          "adaptada": true,
+          "adaptacao": "Matemática, Questão 2: enunciado reescrito como pergunta, com as definições de sec θ e cossec θ (a aula vem antes de identidades na trilha); alternativas e gabarito oficial (A) mantidos.",
+          "urls": [
+            "https://www.vestibular.ita.br/provas/matematica_2017.pdf",
+            "https://www.vestibular.ita.br/provas/gabarito_2017.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "0",
+            "correct": true,
+            "feedback": "Exato. cos θ = −1 dá ±π, onde sen θ = 0 e cossec θ não existe; sen θ = −1 dá −π/2, onde cos θ = 0 e sec θ não existe: 0 soluções."
+          },
+          {
+            "id": "b",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 aceita uma das raízes, −π/2 ou π, sem ver que nela o outro fator não existe (cos(−π/2) = 0, sen π = 0). São 0 soluções."
+          },
+          {
+            "id": "c",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 conta π e −π/2 sem checar o domínio: em ±π, sen θ = 0 e cossec θ não existe; em −π/2, cos θ = 0 e sec θ não existe. São 0."
+          },
+          {
+            "id": "d",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 soluções conta −π, π e −π/2 sem checar domínio; nos três, sen θ = 0 ou cos θ = 0. São 0."
+          },
+          {
+            "id": "e",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 conta ainda +π/2 (onde sen = +1, não −1) e ignora o domínio. A equação tem 0 soluções."
+          }
+        ]
+      },
+      {
+        "id": "ufpr-2020-mare",
+        "prompt": "n(t) = 3·sen((t − 5)π/6) + 4 m, 0 ≤ t ≤ 24 h: (1) máximo 2 vezes; (2) mínimo às 11 h; (3) máximo às 5 h; (4) máx − mín = 3 m. Quais valem?",
+        "fala": "Resolva sen((t − 5)π/6) = 1 para o pico e = −1 para o mínimo, e teste t = 5 e t = 11.",
+        "fonte": {
+          "banca": "UFPR",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Conhecimentos Gerais, Questão 17: enunciado e opções resumidos; gabarito oficial (a) mantido.",
+          "urls": [
+            "https://servicos.nc.ufpr.br/documentos/PS2020/provas1fase/ps2020_conhecimentos_gerais.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "Somente a 1",
+            "correct": true,
+            "feedback": "Isso. Os máximos (seno = 1) são às 8 h e 20 h; às 5 h e 11 h o seno é 0 (n = 4 m); e máximo − mínimo = 7 − 1 = 6 m."
+          },
+          {
+            "id": "b",
+            "label": "Somente 1 e 4",
+            "correct": false,
+            "feedback": "3 m é a amplitude (de 4 a 7 m); do mínimo (1 m) ao máximo (7 m) a diferença é 6 m. Só a 1 vale."
+          },
+          {
+            "id": "c",
+            "label": "Somente 2 e 3",
+            "correct": false,
+            "feedback": "Lê t − 5 como máximo às 5 h e mínimo 6 h depois; mas em t = 5 e t = 11 o seno vale 0 (n = 4 m). Máximos às 8 h e 20 h: só a 1 vale."
+          },
+          {
+            "id": "d",
+            "label": "Somente 2, 3 e 4",
+            "correct": false,
+            "feedback": "2, 3 e 4 são falsas (seno 0 às 5 h e às 11 h; diferença de 6 m) e a 1 é verdadeira (máximos às 8 h e às 20 h)."
+          },
+          {
+            "id": "e",
+            "label": "1, 2, 3 e 4",
+            "correct": false,
+            "feedback": "Às 5 h e às 11 h o seno vale 0 (n = 4 m), e máximo − mínimo = 6 m, não 3 m. Somente a 1 é verdadeira."
+          }
+        ]
+      }
+    ]
   }
 }

@@ -238,13 +238,34 @@ O aluno gira θ para quadrantes onde seno ou cosseno é negativo, verificando qu
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** usar a relação fundamental sen²θ + cos²θ = 1 e o quadrante para achar cos θ ou tg θ a partir de sen θ.
-- **Onde procurar:** Fuvest, Vunesp, UFRGS, UFPR.
+> B45a (Antigravity) com auditoria do Claude Code #2 (19/11/2026): as vagas preenchidas trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registros em `docs/revisao/vestibular-b45a.md` e `docs/revisao/auditoria-b45a.md`). As vagas PENDENTE-FONTE seguem abertas.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** simplificar uma expressão trigonométrica usando identidades fundamentais (sen²θ + cos²θ = 1, tg θ = sen θ / cos θ, sec θ = 1 / cos θ).
-- **Onde procurar:** Mackenzie, PUC, UERJ, Unicamp.
+#### V1 — `unicamp-2025-sen-pi12`
+- **Enunciado (resumido):** "Usando cos(x/2) = √((1 + cos x)/2) e a identidade fundamental, quanto vale sen(π/12)?"
+- **Fala do Paco:** "Faça x = π/6 para achar cos²(π/12) = (1 + cos(π/6))/2; depois use sen² + cos² = 1."
+- **Fonte:** Unicamp 2025 (adaptada) — **Adaptação:** 1ª fase (Prova Q), Questão 50: enunciado resumido; alternativas e gabarito oficial (a) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2025/06/F1_2025.pdf
+- **Conta de conferência:** cos²(π/12) = (1 + √3/2)/2 = (2 + √3)/4 ⇒ sen²(π/12) = (2 − √3)/4 ⇒ sen(π/12) = √(2 − √3)/2 (a).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | √(2 − √3)/2 | **sim** | "Isso. cos²(π/12) = (2 + √3)/4; por sen² + cos² = 1, sen(π/12) = √(2 − √3)/2." |
+| `b` | √(2 + √3)/2 | não | "√(2 + √3)/2 é cos(π/12), antes de subtrair de 1. Por sen² = 1 − cos², dá √(2 − √3)/2." |
+| `c` | √(3 − √3)/2 | não | "√(3 − √3)/2 não sai das contas: sen²(π/12) = 1 − (2 + √3)/4 = (2 − √3)/4, logo sen(π/12) = √(2 − √3)/2." |
+| `d` | √(3 + √3)/2 | não | "3 + √3 não sai de 1 − (2 + √3)/4 = (2 − √3)/4. O valor correto é √(2 − √3)/2." |
+
+#### V2 — `ufpr-2024-soma-quadrado`
+- **Enunciado (resumido):** "Sabendo que sen(2x) = 3/5, qual é o valor de [sen(x) + cos(x)]²?"
+- **Fala do Paco:** "Expanda (sen x + cos x)² e use sen²x + cos²x = 1 com 2·sen x·cos x = sen(2x)."
+- **Fonte:** UFPR 2024 (adaptada) — **Adaptação:** 1ª fase, Matemática, Questão 05: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos. — **URL:** https://servicos.nc.ufpr.br/documentos/ps2024/provas/Geral.pdf
+- **Conta de conferência:** (sen x + cos x)² = sen²x + cos²x + 2·sen x·cos x = 1 + sen(2x) = 1 + 3/5 = 1,6 (E).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 0,8 | não | "0,8 = 4/5 é cos(2x), que vem de cos²x − sen²x. O quadrado da soma é sen²x + cos²x + 2·sen x·cos x = 1 + 0,6 = 1,6." |
+| `b` | 1,0 | não | "1,0 = sen²x + cos²x esquece o termo 2·sen x·cos x = sen(2x). Certo: 1 + 0,6 = 1,6." |
+| `c` | 1,2 | não | "1,2 = 2·(3/5) dobra sen(2x) em vez de somar 1. Certo: 1 + 0,6 = 1,6." |
+| `d` | 1,4 | não | "1,4 não sai da expansão: (sen x + cos x)² = 1 + sen(2x) = 1 + 0,6 = 1,6, e (sen x − cos x)² daria 0,4." |
+| `e` | 1,6 | **sim** | "Certo. [sen(x) + cos(x)]² = sen²x + cos²x + sen(2x) = 1 + 3/5 = 1,6." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** relacionar tangente e secante (1 + tg²θ = sec²θ) ou calcular (sen θ + cos θ)².
