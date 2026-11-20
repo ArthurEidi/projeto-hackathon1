@@ -180,3 +180,14 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 
 20/11 (madrugada): **parada pedida pelo usuário; nenhuma frente da B está ativa.** Tudo auditado está no main; o que estava pela metade está no branch `wip-20-11` (inequações trigonométricas não auditada, B46 parcial, B49 parte 1 parcial). B45b e B45d sem entrega. Reservas da B liberadas; para retomar, ler o bloco "Parada de 20/11" em `PROXIMOS-PASSOS.md`.
 
+20/11, 18h30: retomada (briefing `briefing-b50.md`, fora do repositório). Claude Code #2 no limite de uso até a noite; Ferrugem sem acesso à pasta.
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B49. Revisão de produto do app (parte 1 relatório; parte 2 correções depois do ok do maestro) | Antigravity (Neon) | 20/11 | `docs/visual/produto-b49.md`; depois `src/ui/**`, `src/App.tsx`, `src/Home.tsx`, `src/treino/**`, `src/steps/**`, `src/engine/LessonPlayer.tsx` |
+| B46. 4 achados da revisão da B44b (escala, grupos) | Codex | 20/11 | `src/widgets/common/escala/**`, `grupos/**`, GUIA §5.21/5.22, `docs/revisao/codigo-b44b-revisao.md` |
+| B45a-aud. Auditoria da UFU 2021-2 Q67 em `inequacoes-trigonometricas` | Codex #2 | 20/11 | essa aula, teste, roteiro, fontes, `docs/revisao/auditoria-b45a-inequacoes.md` |
+| B45b. Vestibular oficial: angulos-retas-paralelas, circunferencia-arcos-e-angulos, relacoes-metricas-triangulo-retangulo | Antigravity #2 | 20/11 | essas aulas (vestibular, roteiro, teste, fontes), `docs/revisao/vestibular-b45b.md` |
+| B45d1. Idem: solidos-de-revolucao, vetores-no-plano | Antigravity #3 | 20/11 | idem, `vestibular-b45d1.md` |
+| B45d2. Idem: quartis-percentis-e-boxplot, equacoes-irracionais | Antigravity #4 | 20/11 | idem, `vestibular-b45d2.md` |
+
