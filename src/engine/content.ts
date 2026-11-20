@@ -36,7 +36,8 @@ export function listAulas(): AulaEntry[] {
   return out;
 }
 
-export type LoadResult = { ok: true; lesson: Lesson } | { ok: false; error: string };
+/** `rede: true`: o download falhou (conexão); tentar de novo pode resolver. Sem ela, o conteúdo é inválido. */
+export type LoadResult = { ok: true; lesson: Lesson } | { ok: false; error: string; rede?: true };
 
 export async function loadLesson(arquivo: string): Promise<LoadResult> {
   const importer = modules[PREFIX + arquivo];
@@ -45,7 +46,7 @@ export async function loadLesson(arquivo: string): Promise<LoadResult> {
   try {
     raw = await importer();
   } catch {
-    return { ok: false, error: `Não foi possível carregar content/${arquivo}. Tente abrir a aula novamente.` };
+    return { ok: false, rede: true, error: "Não foi possível baixar a aula. Confira a conexão e tente de novo." };
   }
   const parsed = Lesson.safeParse(raw);
   if (!parsed.success) return { ok: false, error: parsed.error.message };

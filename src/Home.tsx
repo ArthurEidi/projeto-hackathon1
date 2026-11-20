@@ -93,6 +93,14 @@ function useAbertos(pilarInicial: string): [Set<string>, (key: string) => void] 
   return [abertos, alternar];
 }
 
+/**
+ * Traz o elemento inteiro (com o contorno de foco) para a área visível da faixa que o contém. O navegador não
+ * rola uma matéria parcialmente visível ao receber foco por Tab, e o nome dela ficava cortado na borda.
+ */
+export function mostrarInteiro(el: Pick<HTMLElement, "scrollIntoView">) {
+  el.scrollIntoView({ inline: "nearest", block: "nearest" });
+}
+
 // Rolagem da trilha no momento em que o aluno abriu uma aula, para restaurá-la quando ele voltar.
 let rolagemAoAbrir = 0;
 
@@ -144,6 +152,7 @@ export function Home({ onOpen, foco }: { onOpen: (key: string) => void; foco?: F
             className={`materia${m.id === materiaId ? " materia--current" : ""}`}
             aria-pressed={m.id === materiaId}
             onClick={() => setMateriaId(m.id)}
+            onFocus={(e) => mostrarInteiro(e.currentTarget)}
           >
             <img src={spriteMateria(m.id)} alt={m.titulo} draggable={false} />
           </button>

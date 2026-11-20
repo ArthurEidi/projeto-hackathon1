@@ -661,6 +661,35 @@ h1[tabindex="-1"]:focus {
   font-weight: 900;
 }
 
+/* ---------- Espera pela aula ---------- */
+.carregando {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px var(--gutter);
+}
+.carregando__texto {
+  margin: 0;
+}
+.carregando__texto:focus {
+  outline: none;
+}
+/* O botão existe desde o início (teclado e leitor de tela), mas só aparece se a espera passar de 0,6 s:
+   em rede boa, a aula abre sem piscar um botão na tela. */
+.carregando__voltar {
+  animation: carregando-aparece 200ms ease-out 600ms both;
+}
+@keyframes carregando-aparece {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* ---------- Trilha (home) ---------- */
 .home {
   flex: 1;
@@ -709,6 +738,11 @@ h1[tabindex="-1"]:focus {
   scrollbar-width: thin;
   scrollbar-color: var(--line-dark) transparent;
 }
+/* Com o foco dentro da faixa (Tab), o encaixe desliga: senão ele puxa a rolagem de volta para um ponto
+   que corta o botão focado (ver mostrarInteiro em Home.tsx). Deslizando com o dedo, o encaixe continua. */
+.materias:focus-within {
+  scroll-snap-type: none;
+}
 @media (hover: none) {
   .materias {
     scrollbar-width: none;
@@ -722,6 +756,8 @@ h1[tabindex="-1"]:focus {
   display: block;
   flex: 0 0 148px;
   scroll-snap-align: start;
+  /* Folga para o contorno de foco (3 px + 3 px de afastamento) quando o botão é trazido para a vista. */
+  scroll-margin-inline: 8px;
   padding: 0;
   border: 0;
   border-radius: 14px;
