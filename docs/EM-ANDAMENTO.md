@@ -196,3 +196,16 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 | B46 (cont.): 4º achado exige `src/steps/InteractiveCanvas.tsx` (autorizado pelo maestro) | Codex | 20/11 | + `src/steps/InteractiveCanvas.tsx` |
 | B54. Corrigir os 7 achados da B53 (localStorage protegido, dados inválidos, hash tolerante, foco, contraste) | Claude Code #2 | 20/11 | `src/App.tsx`, `src/Home.tsx`, `src/engine/**`, `src/ui/**`, `src/treino/**`, `docs/visual/produto-b54.md` |
 | B55. Revisão de código da B52 (só relatório) | Codex #2 | 20/11 | `docs/revisao/codigo-b52-revisao.md` |
+
+20/11, noite: concluídas e publicadas B54 (6921ce9), B45d1 (24157f1), B55 (revisão), B45b relações métricas (34776ca), B58 (14fecbb), B57/B59 README e DEMO (d2cd6c4). Sem vestibular depois de busca ampla: `funcao-racional`, `vetores-no-plano`, `quartis-percentis-e-boxplot`, `angulos-retas-paralelas`.
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B46b. Refazer a correção do 4º achado de forma genérica (função `metricas` opcional no registro de widgets; o motor não pode citar um widget pelo nome) | Codex | 20/11 | `src/steps/InteractiveCanvas.tsx`, `src/widgets/registry*`, `src/widgets/common/index.ts`, `escala/**`, `grupos/**`, GUIA §5.21/5.22 |
+| B45b2. Vestibular: `circunferencia-arcos-e-angulos` | Antigravity #3 | 20/11 | essa aula, `vestibular-b45b2.md` |
+| B45d3. Vestibular: `equacoes-irracionais` | Antigravity #4 | 20/11 | essa aula, `vestibular-b45d3.md` |
+| B60. 2ª questão de vestibular nas aulas de geometria que têm só 1 | Antigravity #2 | 20/11 | essas aulas, `vestibular-b60.md` |
+| B61. Idem, 18 aulas de álgebra | Claude Code #2 | 20/11 | essas aulas, `vestibular-b61.md` |
+| B62. Idem, 6 aulas de aritmética | Antigravity (Neon) | 20/11 | essas aulas, `vestibular-b62.md` |
+| B63. Revisão de código da B58; depois auditorias de vestibular | Codex #2 | 20/11 | `docs/revisao/codigo-b58-revisao.md`, `docs/revisao/auditoria-*.md` |
+
