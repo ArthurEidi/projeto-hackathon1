@@ -575,6 +575,94 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "unicamp-2023-inversa-mobius",
+        "prompt": "Para f(x) = (x + 1)/(x − 1), com x ≠ 1, o que é correto afirmar sobre a inversa f⁻¹?",
+        "fala": "Troque os papéis: em y = (x + 1)/(x − 1), isole x em função de y.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2023,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 51: texto de apoio resumido; alternativas e gabarito oficial (a) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2023/06/F1.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "igual",
+            "label": "f⁻¹(x) = f(x), para x ≠ 1",
+            "correct": true,
+            "feedback": "Isso. y(x − 1) = x + 1 dá x(y − 1) = y + 1 e x = (y + 1)/(y − 1): a mesma fórmula, então f é a própria inversa."
+          },
+          {
+            "id": "inverso",
+            "label": "f⁻¹(x) = 1/f(x), para x ≠ ±1",
+            "correct": false,
+            "feedback": "1/f(x) é o inverso multiplicativo, não a função inversa. Isolando x: x = (y + 1)/(y − 1), ou seja, f⁻¹ = f."
+          },
+          {
+            "id": "oposta",
+            "label": "f⁻¹(x) = −f(x), para x ≠ 1",
+            "correct": false,
+            "feedback": "Teste: f(2) = 3, então f⁻¹(3) = 2, mas −f(3) = −2. Isolando x em y = f(x): x = (y + 1)/(y − 1), e f⁻¹ = f."
+          },
+          {
+            "id": "espelho",
+            "label": "f⁻¹(x) = f(−x), para x ≠ 1",
+            "correct": false,
+            "feedback": "f(−x) = (x − 1)/(x + 1) = 1/f(x), e f(−3) = 1/2. Como f(2) = 3 e f(3) = 2, f⁻¹(3) = 2 = f(3): f⁻¹ = f."
+          }
+        ]
+      },
+      {
+        "id": "fuvest-2024-exp-inversa",
+        "prompt": "Para f(x) = bˣ (b > 0, b ≠ 1), (3; 27/125) está no gráfico de f e (9/25; k) no de f⁻¹. Quanto vale b + k?",
+        "fala": "Do 1º ponto, b³ = 27/125. Um ponto (9/25; k) em f⁻¹ é o ponto (k; 9/25) em f: bᵏ = 9/25.",
+        "fonte": {
+          "banca": "Fuvest",
+          "ano": 2024,
+          "adaptada": true,
+          "adaptacao": "1ª fase (prova V), Questão 59: a figura, que só destaca os dois pontos, foi descrita no enunciado; alternativas e gabarito oficial (D) mantidos.",
+          "urls": [
+            "https://www.fuvest.br/wp-content/uploads/fuvest2024_primeira_fase_prova_V.pdf",
+            "https://www.fuvest.br/wp-content/uploads/fuvest2024_gabarito_primeira_fase_retificado_2023-11-24.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a5-6",
+            "label": "5/6",
+            "correct": false,
+            "feedback": "5/6 não sai dos pontos: b³ = 27/125 dá b = 3/5, e (3/5)ᵏ = 9/25 dá k = 2. Então b + k = 3/5 + 2 = 13/5."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 seria b + k com k = 2/5. Mas (9/25; k) em f⁻¹ é (k; 9/25) em f: (3/5)ᵏ = 9/25 dá k = 2, e b + k = 13/5."
+          },
+          {
+            "id": "a6-5",
+            "label": "6/5",
+            "correct": false,
+            "feedback": "6/5 = (3/5) · 2 multiplica b por k; a pergunta pede a soma: b + k = 3/5 + 2 = 13/5."
+          },
+          {
+            "id": "a13-5",
+            "label": "13/5",
+            "correct": true,
+            "feedback": "Isso. b³ = 27/125 dá b = 3/5; (9/25; k) em f⁻¹ é (k; 9/25) em f, e (3/5)ᵏ = 9/25 dá k = 2, logo b + k = 13/5."
+          },
+          {
+            "id": "a18-5",
+            "label": "18/5",
+            "correct": false,
+            "feedback": "18/5 = 3/5 + 3 usa k = 3, a abscissa do 1º ponto. Em f⁻¹, (9/25; k) dá bᵏ = 9/25 = (3/5)², k = 2: b + k = 13/5."
+          }
+        ]
+      }
+    ]
   }
 }

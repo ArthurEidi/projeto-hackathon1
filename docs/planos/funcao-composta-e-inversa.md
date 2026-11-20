@@ -237,22 +237,35 @@ Composição exige que a saída da primeira regra pertença ao domínio da segun
 
 ### Vestibular
 
-> Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
 
-#### V1 — `pendente-fonte-funcao-composta-e-inversa-1`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V2 — `pendente-fonte-funcao-composta-e-inversa-2`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V1 — `unicamp-2023-inversa-mobius`
+- **Enunciado (resumido):** "Para f(x) = (x + 1)/(x − 1), com x ≠ 1, o que é correto afirmar sobre a inversa f⁻¹?"
+- **Fala do Paco:** "Troque os papéis: em y = (x + 1)/(x − 1), isole x em função de y."
+- **Fonte:** Unicamp 2023 (adaptada) — **Adaptação:** 1ª fase, Questão 51: texto de apoio resumido; alternativas e gabarito oficial (a) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2023/06/F1.pdf
+- **Conta de conferência:** y(x − 1) = x + 1 ⇒ x = (y + 1)/(y − 1) ⇒ f⁻¹ = f (a).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `igual` | f⁻¹(x) = f(x), para x ≠ 1 | **sim** | "Isso. y(x − 1) = x + 1 dá x(y − 1) = y + 1 e x = (y + 1)/(y − 1): a mesma fórmula, então f é a própria inversa." |
+| `inverso` | f⁻¹(x) = 1/f(x), para x ≠ ±1 | não | "1/f(x) é o inverso multiplicativo, não a função inversa. Isolando x: x = (y + 1)/(y − 1), ou seja, f⁻¹ = f." |
+| `oposta` | f⁻¹(x) = −f(x), para x ≠ 1 | não | "Teste: f(2) = 3, então f⁻¹(3) = 2, mas −f(3) = −2. Isolando x em y = f(x): x = (y + 1)/(y − 1), e f⁻¹ = f." |
+| `espelho` | f⁻¹(x) = f(−x), para x ≠ 1 | não | "f(−x) = (x − 1)/(x + 1) = 1/f(x), e f(−3) = 1/2. Como f(2) = 3 e f(3) = 2, f⁻¹(3) = 2 = f(3): f⁻¹ = f." |
+
+#### V2 — `fuvest-2024-exp-inversa`
+- **Enunciado (resumido):** "Para f(x) = bˣ (b > 0, b ≠ 1), (3; 27/125) está no gráfico de f e (9/25; k) no de f⁻¹. Quanto vale b + k?"
+- **Fala do Paco:** "Do 1º ponto, b³ = 27/125. Um ponto (9/25; k) em f⁻¹ é o ponto (k; 9/25) em f: bᵏ = 9/25."
+- **Fonte:** Fuvest 2024 (adaptada) — **Adaptação:** 1ª fase (prova V), Questão 59: a figura, que só destaca os dois pontos, foi descrita no enunciado; alternativas e gabarito oficial (D) mantidos. — **URL:** https://www.fuvest.br/wp-content/uploads/fuvest2024_primeira_fase_prova_V.pdf · https://www.fuvest.br/wp-content/uploads/fuvest2024_gabarito_primeira_fase_retificado_2023-11-24.pdf
+- **Conta de conferência:** b³ = 27/125 ⇒ b = 3/5; (3/5)ᵏ = 9/25 ⇒ k = 2 ⇒ b + k = 13/5 (D).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a5-6` | 5/6 | não | "5/6 não sai dos pontos: b³ = 27/125 dá b = 3/5, e (3/5)ᵏ = 9/25 dá k = 2. Então b + k = 3/5 + 2 = 13/5." |
+| `a1` | 1 | não | "1 seria b + k com k = 2/5. Mas (9/25; k) em f⁻¹ é (k; 9/25) em f: (3/5)ᵏ = 9/25 dá k = 2, e b + k = 13/5." |
+| `a6-5` | 6/5 | não | "6/5 = (3/5) · 2 multiplica b por k; a pergunta pede a soma: b + k = 3/5 + 2 = 13/5." |
+| `a13-5` | 13/5 | **sim** | "Isso. b³ = 27/125 dá b = 3/5; (9/25; k) em f⁻¹ é (k; 9/25) em f, e (3/5)ᵏ = 9/25 dá k = 2, logo b + k = 13/5." |
+| `a18-5` | 18/5 | não | "18/5 = 3/5 + 3 usa k = 3, a abscissa do 1º ponto. Em f⁻¹, (9/25; k) dá bᵏ = 9/25 = (3/5)², k = 2: b + k = 13/5." |
+
 #### V3 — `pendente-fonte-funcao-composta-e-inversa-3`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
@@ -260,6 +273,7 @@ Composição exige que a saída da primeira regra pertença ao domínio da segun
 - **Adaptação:** nenhuma; questão não inserida.
 - **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
 - **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+
 #### V4 — `pendente-fonte-funcao-composta-e-inversa-4`
 - **Enunciado (resumido):** PENDENTE-FONTE
 - **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"

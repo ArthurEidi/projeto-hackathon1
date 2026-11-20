@@ -260,27 +260,34 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-divisao-polinomial-e-teorema-do-resto`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema divisão de polinômios e teorema do resto.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
 
-#### V2 — `v2-divisao-polinomial-e-teorema-do-resto`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Aplicação direta em contexto, no tema divisão de polinômios e teorema do resto.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `ufrgs-2025-resto-xn`
+- **Enunciado (resumido):** "Se n > 1 é par, qual é o resto da divisão de xⁿ − x + 2 por x − 1?"
+- **Fala do Paco:** "Teorema do resto: o resto da divisão por x − 1 é o valor do polinômio em x = 1."
+- **Fonte:** UFRGS 2025 (adaptada) — **Adaptação:** 1º dia, Questão 64: enunciado reescrito como pergunta; alternativas e gabarito oficial (C) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf · https://vestibular.ufrgs.br/cv2025/gabaritos/
+- **Conta de conferência:** resto = p(1) = 1 − 1 + 2 = 2 (C).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a0` | 0 | não | "0 supõe que x − 1 divide o polinômio. Pelo teorema do resto, o resto é p(1) = 1ⁿ − 1 + 2 = 2." |
+| `a1` | 1 | não | "1 esquece o xⁿ e fica com −1 + 2. Com ele, p(1) = 1ⁿ − 1 + 2 = 1 − 1 + 2 = 2." |
+| `a2` | 2 | **sim** | "Isso. Pelo teorema do resto, o resto é p(1) = 1ⁿ − 1 + 2 = 2, qualquer que seja n." |
+| `a3` | 3 | não | "3 esquece o −x e fica com 1 + 2. Com ele, p(1) = 1 − 1 + 2 = 2." |
+| `a4` | 4 | não | "4 é p(−1) = (−1)ⁿ + 1 + 2 com n par. Para dividir por x − 1 use x = 1: p(1) = 1 − 1 + 2 = 2." |
+
+#### V2 — `unicamp-2022-divisivel`
+- **Enunciado (resumido):** "p(x) = 2x³ + ax² + bx + c é divisível por 2x² − x + 4. Qual é o valor de c + 2b − a?"
+- **Fala do Paco:** "Se é divisível, p(x) = (2x² − x + 4)(x + k). Expanda e escreva a, b e c em função de k."
+- **Fonte:** Unicamp 2022 (adaptada) — **Adaptação:** 1ª fase (provas Q e X), Questão 23: enunciado reescrito como pergunta; alternativas e gabarito oficial (a) mantidos. — **URL:** https://www.comvest.unicamp.br/vest2022/F1/f12022Q_X.pdf · https://www.comvest.unicamp.br/wp-content/uploads/2021/11/gabarito_2022_DIVULGA.pdf
+- **Conta de conferência:** p = (2x² − x + 4)(x + k) ⇒ a = 2k − 1, b = 4 − k, c = 4k ⇒ c + 2b − a = 9 (a).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a9` | 9 | **sim** | "Isso. p = (2x² − x + 4)(x + k) dá a = 2k − 1, b = 4 − k e c = 4k; c + 2b − a = 9, seja qual for k." |
+| `a15` | 15 | não | "15 não sai de nenhum quociente: com p = (2x² − x + 4)(x + k), a = 2k − 1, b = 4 − k, c = 4k e c + 2b − a = 9." |
+| `a21` | 21 | não | "Teste k = 0: p = 2x³ − x² + 4x, com a = −1, b = 4 e c = 0. Então c + 2b − a = 0 + 8 + 1 = 9, não 21." |
+| `a25` | 25 | não | "Expanda (2x² − x + 4)(x + k): a = 2k − 1, b = 4 − k, c = 4k. Então c + 2b − a = 4k + 8 − 2k − 2k + 1 = 9." |
 
 #### V3 — `v3-divisao-polinomial-e-teorema-do-resto`
 - **Estado:** **PENDENTE-FONTE**

@@ -184,3 +184,23 @@ describe("gabaritos do treino: divisao-polinomial-e-teorema-do-resto", () => {
     expect(certa("d5-divisao-polinomial-e-teorema-do-resto")).toBe("3 e 1");
   });
 });
+
+describe("vestibular (B43, provas oficiais)", () => {
+  it("UFRGS 2025 Q64 (C): o resto de xⁿ − x + 2 por x − 1 é p(1) = 2", () => {
+    for (const n of [2, 4, 6, 10]) {
+      const p = (x: number) => x ** n - x + 2;
+      expect(p(1)).toBe(2);
+      expect(p(-1)).toBe(4); // distrator: valor em x = −1
+    }
+    expect(certa("ufrgs-2025-resto-xn")).toBe("2");
+  });
+
+  it("Unicamp 2022 Q23 (a): c + 2b − a = 9 para qualquer quociente x + k", () => {
+    for (const k of [-3, 0, 1, 2.5, 7]) {
+      const [a, b, c] = [2 * k - 1, 4 - k, 4 * k];
+      for (const x of [-2, 0, 1, 3]) expect(2 * x ** 3 + a * x * x + b * x + c).toBeCloseTo((2 * x * x - x + 4) * (x + k), 10);
+      expect(c + 2 * b - a).toBe(9);
+    }
+    expect(certa("unicamp-2022-divisivel")).toBe("9");
+  });
+});

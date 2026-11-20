@@ -249,16 +249,21 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-raizes-polinomiais-e-multiplicidade`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema equações polinomiais, raízes e multiplicidade.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
+
+#### V1 — `fuvest-2022-raiz-dupla`
+- **Enunciado (resumido):** "p(x) = x³ + mx − 2, com m real, tem uma raiz real dupla a e uma raiz real simples b. Quanto vale m + a?"
+- **Fala do Paco:** "Escreva p(x) = (x − a)²(x − b) e compare: o termo em x² é zero e o termo constante é −2."
+- **Fonte:** Fuvest 2022 (adaptada) — **Adaptação:** 1ª fase (prova V), Questão 38: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos. — **URL:** https://www.fuvest.br/wp-content/uploads/fuvest_2022_primeira_fase_tipo_V.pdf · https://www.fuvest.br/wp-content/uploads/fuvest_2022_primeira_fase_gabarito_retificado.pdf
+- **Conta de conferência:** (x − a)²(x − b): 2a + b = 0 e a²b = 2 ⇒ a = −1, b = 2; m = a² + 2ab = −3 ⇒ m + a = −4 (E).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a0` | 0 | não | "0 supõe m = −a sem fazer a conta. Com 2a + b = 0 e a²b = 2: a = −1, b = 2, m = a² + 2ab = −3, e m + a = −4." |
+| `am1` | −1 | não | "−1 é só a raiz dupla a. Falta m: com b = 2, m = a² + 2ab = 1 − 4 = −3, e m + a = −4." |
+| `am2` | −2 | não | "−2 é o termo constante de p. De 2a + b = 0 e a²b = 2 saem a = −1 e b = 2; m = −3 e m + a = −4." |
+| `am3` | −3 | não | "−3 é m sozinho; falta somar a raiz dupla a = −1: m + a = −3 + (−1) = −4." |
+| `am4` | −4 | **sim** | "Isso. (x − a)²(x − b) sem x² dá b = −2a; a²b = 2 dá a = −1 e b = 2; m = a² + 2ab = −3, então m + a = −4." |
 
 #### V2 — `v2-raizes-polinomiais-e-multiplicidade`
 - **Estado:** **PENDENTE-FONTE**

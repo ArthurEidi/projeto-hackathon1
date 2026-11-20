@@ -142,7 +142,15 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-raizes-polinomiais-e-multiplicidade")).toBe("Cruza −2, toca 1; positivo");
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: Fuvest 2022 Q38 (gabarito oficial E)", () => {
+    // (x − a)²(x − b) = x³ − (2a + b)x² + (a² + 2ab)x − a²b, com a = −1 e b = 2
+    const [a, b] = [-1, 2];
+    expect(2 * a + b).toBe(0);
+    expect(a * a * b).toBe(2);
+    const m = a * a + 2 * a * b;
+    expect(m).toBe(-3);
+    for (const x of [-2, 0, 1.5, 3]) expect(x ** 3 + m * x - 2).toBeCloseTo((x - a) ** 2 * (x - b), 10);
+    expect(m + a).toBe(-4);
+    expect(certa("fuvest-2022-raiz-dupla")).toBe("−4");
   });
 });

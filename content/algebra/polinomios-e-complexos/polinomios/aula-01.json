@@ -701,6 +701,47 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "unicamp-2026-grau-diferenca",
+        "prompt": "Dois polinômios reais p e q: p + q tem grau 3 e p · q tem grau 8. Qual é o grau de p − q?",
+        "fala": "No produto, os graus se somam. Se p + q caiu para grau 3, o que aconteceu com os termos de maior grau?",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2026,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 45: enunciado reescrito como pergunta; alternativas e gabarito oficial (b) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "Graus 5 e 3 dariam p · q de grau 8, mas p + q de grau 5. Para a soma cair a 3, os dois têm grau 4 e líderes opostos: p − q tem grau 4."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": true,
+            "feedback": "Isso. Os graus somam 8 e a soma caiu para 3: p e q têm grau 4 com líderes opostos, que se cancelam em p + q e se somam em p − q."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 copia o grau de p + q. Os termos de grau 4 se cancelam na soma, mas na diferença eles se somam: p − q tem grau 4."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": false,
+            "feedback": "2 supõe que a diferença perde ainda mais grau. Os líderes opostos se cancelam em p + q e se somam em p − q: grau 4."
+          }
+        ]
+      }
+    ]
   }
 }

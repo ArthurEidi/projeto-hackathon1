@@ -675,6 +675,95 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2025-resto-xn",
+        "prompt": "Se n > 1 é par, qual é o resto da divisão de xⁿ − x + 2 por x − 1?",
+        "fala": "Teorema do resto: o resto da divisão por x − 1 é o valor do polinômio em x = 1.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 64: enunciado reescrito como pergunta; alternativas e gabarito oficial (C) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2025/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "0 supõe que x − 1 divide o polinômio. Pelo teorema do resto, o resto é p(1) = 1ⁿ − 1 + 2 = 2."
+          },
+          {
+            "id": "a1",
+            "label": "1",
+            "correct": false,
+            "feedback": "1 esquece o xⁿ e fica com −1 + 2. Com ele, p(1) = 1ⁿ − 1 + 2 = 1 − 1 + 2 = 2."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Isso. Pelo teorema do resto, o resto é p(1) = 1ⁿ − 1 + 2 = 2, qualquer que seja n."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "3 esquece o −x e fica com 1 + 2. Com ele, p(1) = 1 − 1 + 2 = 2."
+          },
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é p(−1) = (−1)ⁿ + 1 + 2 com n par. Para dividir por x − 1 use x = 1: p(1) = 1 − 1 + 2 = 2."
+          }
+        ]
+      },
+      {
+        "id": "unicamp-2022-divisivel",
+        "prompt": "p(x) = 2x³ + ax² + bx + c é divisível por 2x² − x + 4. Qual é o valor de c + 2b − a?",
+        "fala": "Se é divisível, p(x) = (2x² − x + 4)(x + k). Expanda e escreva a, b e c em função de k.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1ª fase (provas Q e X), Questão 23: enunciado reescrito como pergunta; alternativas e gabarito oficial (a) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/vest2022/F1/f12022Q_X.pdf",
+            "https://www.comvest.unicamp.br/wp-content/uploads/2021/11/gabarito_2022_DIVULGA.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": true,
+            "feedback": "Isso. p = (2x² − x + 4)(x + k) dá a = 2k − 1, b = 4 − k e c = 4k; c + 2b − a = 9, seja qual for k."
+          },
+          {
+            "id": "a15",
+            "label": "15",
+            "correct": false,
+            "feedback": "15 não sai de nenhum quociente: com p = (2x² − x + 4)(x + k), a = 2k − 1, b = 4 − k, c = 4k e c + 2b − a = 9."
+          },
+          {
+            "id": "a21",
+            "label": "21",
+            "correct": false,
+            "feedback": "Teste k = 0: p = 2x³ − x² + 4x, com a = −1, b = 4 e c = 0. Então c + 2b − a = 0 + 8 + 1 = 9, não 21."
+          },
+          {
+            "id": "a25",
+            "label": "25",
+            "correct": false,
+            "feedback": "Expanda (2x² − x + 4)(x + k): a = 2k − 1, b = 4 − k, c = 4k. Então c + 2b − a = 4k + 8 − 2k − 2k + 1 = 9."
+          }
+        ]
+      }
+    ]
   }
 }

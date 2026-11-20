@@ -621,6 +621,47 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "unicamp-2021-pg-1-2x",
+        "prompt": "Os três primeiros termos de uma PG infinita são 1, 2x e −3x + 1, e todos os termos são positivos. Qual é a soma de todos eles?",
+        "fala": "Numa PG a razão não muda: 2x/1 = (−3x + 1)/(2x). Fique com a raiz que deixa os termos positivos.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 30: enunciado reescrito como pergunta; alternativas e gabarito oficial (b) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2021/09/F1-Comentada-Conhec-Gerais-Exatas-Tecno-Humanas-Artes.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a3-2",
+            "label": "3/2",
+            "correct": false,
+            "feedback": "3/2 = 1 + 1/2 soma só os dois primeiros termos. A PG 1, 1/2, 1/4, … tem soma 1/(1 − 1/2) = 2."
+          },
+          {
+            "id": "a2",
+            "label": "2",
+            "correct": true,
+            "feedback": "Isso. 4x² = −3x + 1 dá x = 1/4 ou x = −1; termos positivos pedem x = 1/4, razão 1/2 e soma 1/(1 − 1/2) = 2."
+          },
+          {
+            "id": "a5-2",
+            "label": "5/2",
+            "correct": false,
+            "feedback": "5/2 passa do limite. Com x = 1/4 a razão é 1/2: 1 + 1/2 + 1/4 + … se aproxima de 1/(1 − 1/2) = 2."
+          },
+          {
+            "id": "a3",
+            "label": "3",
+            "correct": false,
+            "feedback": "Com x = 1/4 a razão é 1/2 e a soma é 1/(1 − 1/2) = 2. (x = −1 daria 1, −2, 4: termos negativos e sem soma finita.)"
+          }
+        ]
+      }
+    ]
   }
 }

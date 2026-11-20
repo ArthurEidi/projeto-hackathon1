@@ -259,16 +259,21 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-numeros-complexos`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema números complexos no plano.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
+
+#### V1 — `ufrgs-2024-afirmacoes-complexos`
+- **Enunciado (resumido):** "(I) |3 + 4i| = 5; (II) se u = 1 + i e v = 1 − i, |u · v| = |u| · |v|; (III) (x − 3) + (x + 4)i é real só se x = 3. Quais estão corretas?"
+- **Fala do Paco:** "Módulo é a distância à origem: √(a² + b²). Para o número ser real, a parte imaginária tem de ser zero."
+- **Fonte:** UFRGS 2024 (adaptada) — **Adaptação:** 1º dia, Questão 49: afirmações resumidas; alternativas e gabarito oficial (C) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2023/12/1o-DIA-PROVA-2024.pdf · https://vestibular.ufrgs.br/cv2024/gabaritos/
+- **Conta de conferência:** módulo de 3 + 4i = 5; (1 + i)(1 − i) = 2 = √2 · √2; real exige x + 4 = 0 ⇒ x = −4 ⇒ apenas I e II (C).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `so-i` | Apenas I | não | "A (I) está certa (√(9 + 16) = 5), mas a (II) também: u · v = 2, e u e v têm módulo √2, com √2 · √2 = 2. Corretas: I e II." |
+| `so-iii` | Apenas III | não | "A (III) olha a parte errada: o número é real quando a parte imaginária x + 4 é zero, isto é, x = −4. I e II estão certas." |
+| `i-ii` | Apenas I e II | **sim** | "Isso. O módulo de 3 + 4i é 5; (1 + i)(1 − i) = 2 e √2 · √2 = 2; real exige x + 4 = 0, isto é, x = −4, e não 3." |
+| `ii-iii` | Apenas II e III | não | "Com x = 3 sobra 0 + 7i, imaginário puro; real exige x = −4. E a (I) vale, pois √(9 + 16) = 5: corretas I e II." |
+| `todas` | I, II e III | não | "A (III) falha: com x = 3, o número é 0 + 7i, que não é real; real exige x + 4 = 0, x = −4. Corretas: apenas I e II." |
 
 #### V2 — `v2-numeros-complexos`
 - **Estado:** **PENDENTE-FONTE**

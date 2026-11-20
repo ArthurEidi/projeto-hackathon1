@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
 import { PlanoCartesiano } from "../widgets/common/params";
 import { avaliar, resolverCurva } from "../widgets/common/plot2d";
-import { certaDe, fechamentoOk, semVestibular } from "./util";
+import { certaDe, fechamentoOk } from "./util";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -126,7 +126,18 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-funcao-composta-e-inversa")).toBe(String((7 - 1) / 2));
   });
 
-  it("vestibular pendente de fontes reais", () => {
-    semVestibular(L);
+  it("vestibular: Unicamp 2023 Q51 (a) e Fuvest 2024 Q59 (D), gabaritos oficiais", () => {
+    // f(x) = (x + 1)/(x − 1) é a própria inversa: f(f(x)) = x
+    const f = (x: number) => (x + 1) / (x - 1);
+    for (const x of [-3, 0, 2, 5.5]) expect(f(f(x))).toBeCloseTo(x, 10);
+    expect(f(-3)).not.toBeCloseTo(2, 5); // f(−x) não é a inversa: f⁻¹(3) = 2
+    expect(certa("unicamp-2023-inversa-mobius")).toBe("f⁻¹(x) = f(x), para x ≠ 1");
+    // b³ = 27/125 ⇒ b = 3/5; (9/25; k) em f⁻¹ ⇔ b^k = 9/25 ⇒ k = 2
+    const b = 3 / 5;
+    expect(b ** 3).toBeCloseTo(27 / 125, 12);
+    const k = Math.log(9 / 25) / Math.log(b);
+    expect(k).toBeCloseTo(2, 12);
+    expect(b + k).toBeCloseTo(13 / 5, 12);
+    expect(certa("fuvest-2024-exp-inversa")).toBe("13/5");
   });
 });

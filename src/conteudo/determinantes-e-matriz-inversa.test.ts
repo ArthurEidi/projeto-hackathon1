@@ -138,3 +138,13 @@ describe("gabaritos do treino: determinantes-e-matriz-inversa", () => {
     expect(certa("d5-determinantes-e-matriz-inversa")).toBe("(1;2), área 1");
   });
 });
+
+describe("vestibular (B43, provas oficiais)", () => {
+  it("Unicamp 2021 Q29 (b): termos de PA dão D = −2r²", () => {
+    for (const [a, r] of [[0, 1], [1, 2], [-3, 0.5], [10, -4]]) {
+      const [b, c, d] = [a + r, a + 2 * r, a + 3 * r];
+      expect((a * d - b * c) / (r * r)).toBeCloseTo(-2, 12);
+    }
+    expect(certa("unicamp-2021-det-pa")).toBe("−2");
+  });
+});

@@ -247,16 +247,20 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-polinomios`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema polinômios: grau, termos e raízes.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
+
+#### V1 — `unicamp-2026-grau-diferenca`
+- **Enunciado (resumido):** "Dois polinômios reais p e q: p + q tem grau 3 e p · q tem grau 8. Qual é o grau de p − q?"
+- **Fala do Paco:** "No produto, os graus se somam. Se p + q caiu para grau 3, o que aconteceu com os termos de maior grau?"
+- **Fonte:** Unicamp 2026 (adaptada) — **Adaptação:** 1ª fase, Questão 45: enunciado reescrito como pergunta; alternativas e gabarito oficial (b) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf
+- **Conta de conferência:** graus n + m = 8 e grau(p + q) = 3 ⇒ n = m = 4 com líderes opostos ⇒ grau(p − q) = 4 (b).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a5` | 5 | não | "Graus 5 e 3 dariam p · q de grau 8, mas p + q de grau 5. Para a soma cair a 3, os dois têm grau 4 e líderes opostos: p − q tem grau 4." |
+| `a4` | 4 | **sim** | "Isso. Os graus somam 8 e a soma caiu para 3: p e q têm grau 4 com líderes opostos, que se cancelam em p + q e se somam em p − q." |
+| `a3` | 3 | não | "3 copia o grau de p + q. Os termos de grau 4 se cancelam na soma, mas na diferença eles se somam: p − q tem grau 4." |
+| `a2` | 2 | não | "2 supõe que a diferença perde ainda mais grau. Os líderes opostos se cancelam em p + q e se somam em p − q: grau 4." |
 
 #### V2 — `v2-polinomios`
 - **Estado:** **PENDENTE-FONTE**

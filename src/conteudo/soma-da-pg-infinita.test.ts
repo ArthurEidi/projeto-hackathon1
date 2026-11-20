@@ -1,6 +1,6 @@
 // Soma da PG Infinita · Aula 01: passos completáveis e gabaritos conferidos com conta.
 import { describe, expect, it } from "vitest";
-import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis, semVestibular } from "./util";
+import { carregar, certaDe, fechamentoOk, passo, passosConcluiveis } from "./util";
 
 const L = carregar("algebra/sequencias/soma-da-pg-infinita/aula-01.json");
 const certa = (id: string) => certaDe(L, id);
@@ -91,5 +91,14 @@ describe("gabaritos do treino", () => {
     expect(8 * 0.5 ** 3).toBe(1); // próxima parcela
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => semVestibular(L));
+  it("vestibular: Unicamp 2021 Q30 (gabarito oficial b)", () => {
+    // (2x)² = 1 · (−3x + 1) ⇒ 4x² + 3x − 1 = 0 ⇒ x = 1/4 ou x = −1
+    for (const x of [1 / 4, -1]) expect(4 * x * x + 3 * x - 1).toBeCloseTo(0, 12);
+    expect(-3 * -1 + 1).toBe(4); // x = −1: termos 1, −2, 4 (não positivos)
+    const r = 2 * (1 / 4);
+    expect(r).toBe(0.5);
+    expect(-3 * (1 / 4) + 1).toBeCloseTo(r * r, 12);
+    expect(1 / (1 - r)).toBe(2);
+    expect(certa("unicamp-2021-pg-1-2x")).toBe("2");
+  });
 });

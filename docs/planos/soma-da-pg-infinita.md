@@ -236,14 +236,20 @@ A fórmula exige |q|<1. q=1 repete parcelas; q=−1 alterna sem encolher; ambos 
 
 ### Vestibular
 
-> PENDENTE-FONTE: quatro questões reais não foram pesquisadas e conferidas para este capítulo; não foram inventados enunciados, bancas, anos, opções, gabaritos ou URLs.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
 
-#### V1 — `pendente-fonte-soma-da-pg-infinita-v1`
-- **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.
-- **Fala do Paco:** PENDENTE-FONTE; preencher após selecionar questão real conferida.
-- **Fonte:** PENDENTE-FONTE; banca, ano, URL de enunciado e gabarito oficial não verificados.
-- **Conta de conferência:** PENDENTE-FONTE.
-- **Alternativas e feedback:** PENDENTE-FONTE; não preencher sem questão e gabarito confirmados.
+#### V1 — `unicamp-2021-pg-1-2x`
+- **Enunciado (resumido):** "Os três primeiros termos de uma PG infinita são 1, 2x e −3x + 1, e todos os termos são positivos. Qual é a soma de todos eles?"
+- **Fala do Paco:** "Numa PG a razão não muda: 2x/1 = (−3x + 1)/(2x). Fique com a raiz que deixa os termos positivos."
+- **Fonte:** Unicamp 2021 (adaptada) — **Adaptação:** 1ª fase, Questão 30: enunciado reescrito como pergunta; alternativas e gabarito oficial (b) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2021/09/F1-Comentada-Conhec-Gerais-Exatas-Tecno-Humanas-Artes.pdf
+- **Conta de conferência:** 4x² + 3x − 1 = 0 ⇒ x = 1/4 (termos positivos) ⇒ razão 1/2 ⇒ soma 1/(1 − 1/2) = 2 (b).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a3-2` | 3/2 | não | "3/2 = 1 + 1/2 soma só os dois primeiros termos. A PG 1, 1/2, 1/4, … tem soma 1/(1 − 1/2) = 2." |
+| `a2` | 2 | **sim** | "Isso. 4x² = −3x + 1 dá x = 1/4 ou x = −1; termos positivos pedem x = 1/4, razão 1/2 e soma 1/(1 − 1/2) = 2." |
+| `a5-2` | 5/2 | não | "5/2 passa do limite. Com x = 1/4 a razão é 1/2: 1 + 1/2 + 1/4 + … se aproxima de 1/(1 − 1/2) = 2." |
+| `a3` | 3 | não | "Com x = 1/4 a razão é 1/2 e a soma é 1/(1 − 1/2) = 2. (x = −1 daria 1, −2, 4: termos negativos e sem soma finita.)" |
 
 #### V2 — `pendente-fonte-soma-da-pg-infinita-v2`
 - **Enunciado:** PENDENTE-FONTE; nenhuma questão fictícia criada.

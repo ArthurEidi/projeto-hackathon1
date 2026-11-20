@@ -659,6 +659,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "fuvest-2022-raiz-dupla",
+        "prompt": "p(x) = x³ + mx − 2, com m real, tem uma raiz real dupla a e uma raiz real simples b. Quanto vale m + a?",
+        "fala": "Escreva p(x) = (x − a)²(x − b) e compare: o termo em x² é zero e o termo constante é −2.",
+        "fonte": {
+          "banca": "Fuvest",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1ª fase (prova V), Questão 38: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos.",
+          "urls": [
+            "https://www.fuvest.br/wp-content/uploads/fuvest_2022_primeira_fase_tipo_V.pdf",
+            "https://www.fuvest.br/wp-content/uploads/fuvest_2022_primeira_fase_gabarito_retificado.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a0",
+            "label": "0",
+            "correct": false,
+            "feedback": "0 supõe m = −a sem fazer a conta. Com 2a + b = 0 e a²b = 2: a = −1, b = 2, m = a² + 2ab = −3, e m + a = −4."
+          },
+          {
+            "id": "am1",
+            "label": "−1",
+            "correct": false,
+            "feedback": "−1 é só a raiz dupla a. Falta m: com b = 2, m = a² + 2ab = 1 − 4 = −3, e m + a = −4."
+          },
+          {
+            "id": "am2",
+            "label": "−2",
+            "correct": false,
+            "feedback": "−2 é o termo constante de p. De 2a + b = 0 e a²b = 2 saem a = −1 e b = 2; m = −3 e m + a = −4."
+          },
+          {
+            "id": "am3",
+            "label": "−3",
+            "correct": false,
+            "feedback": "−3 é m sozinho; falta somar a raiz dupla a = −1: m + a = −3 + (−1) = −4."
+          },
+          {
+            "id": "am4",
+            "label": "−4",
+            "correct": true,
+            "feedback": "Isso. (x − a)²(x − b) sem x² dá b = −2a; a²b = 2 dá a = −1 e b = 2; m = a² + 2ab = −3, então m + a = −4."
+          }
+        ]
+      }
+    ]
   }
 }

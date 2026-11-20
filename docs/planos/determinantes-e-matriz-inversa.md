@@ -249,16 +249,20 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-determinantes-e-matriz-inversa`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema determinantes, área orientada e matriz inversa.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
+
+#### V1 — `unicamp-2021-det-pa`
+- **Enunciado (resumido):** "a, b, c, d são termos consecutivos de uma PA de razão r ≠ 0, e D = det [[a, b], [c, d]]. Quanto vale D/r²?"
+- **Fala do Paco:** "Escreva b = a + r, c = a + 2r e d = a + 3r, e calcule D = ad − bc."
+- **Fonte:** Unicamp 2021 (adaptada) — **Adaptação:** 1ª fase, Questão 29: enunciado reescrito como pergunta, com a matriz em linha; alternativas e gabarito oficial (b) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2021/09/F1-Comentada-Conhec-Gerais-Exatas-Tecno-Humanas-Artes.pdf
+- **Conta de conferência:** a(a + 3r) − (a + r)(a + 2r) = −2r² ⇒ D/r² = −2 (b).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `am1` | −1 | não | "−1 daria D = −r². Mas ad − bc = a² + 3ar − (a² + 3ar + 2r²) = −2r², então D/r² = −2." |
+| `am2` | −2 | **sim** | "Isso. ad − bc = a(a + 3r) − (a + r)(a + 2r) = a² + 3ar − a² − 3ar − 2r² = −2r², e D/r² = −2." |
+| `am3` | −3 | não | "Teste a PA 0, 1, 2, 3 (r = 1): D = 0 · 3 − 1 · 2 = −2, e D/r² = −2, não −3." |
+| `am4` | −4 | não | "Teste a PA 1, 3, 5, 7 (r = 2): D = 1 · 7 − 3 · 5 = −8 e r² = 4, então D/r² = −2, não −4." |
 
 #### V2 — `v2-determinantes-e-matriz-inversa`
 - **Estado:** **PENDENTE-FONTE**

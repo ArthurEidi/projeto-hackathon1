@@ -153,3 +153,17 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(certa("d5-numeros-complexos")).toBe("1");
   });
 });
+
+describe("vestibular (B43, provas oficiais)", () => {
+  it("UFRGS 2024 Q49 (C): só I e II são corretas", () => {
+    expect(Math.hypot(3, 4)).toBe(5); // I
+    // II: (1 + i)(1 − i) = 1 − i² = 2; |u| = |v| = √2
+    const [re, im] = [1 * 1 - 1 * -1, 1 * -1 + 1 * 1];
+    expect([re, im]).toEqual([2, 0]);
+    expect(Math.hypot(re, im)).toBeCloseTo(Math.hypot(1, 1) * Math.hypot(1, -1), 12);
+    // III: parte imaginária x + 4 = 0 ⇒ x = −4; com x = 3 sobra 7i
+    expect(3 + 4).toBe(7);
+    expect(-4 + 4).toBe(0);
+    expect(certa("ufrgs-2024-afirmacoes-complexos")).toBe("Apenas I e II");
+  });
+});

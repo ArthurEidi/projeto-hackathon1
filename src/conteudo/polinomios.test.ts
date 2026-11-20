@@ -155,7 +155,17 @@ describe("gabaritos do treino", () => {
     expect(Number(certa("d5-polinomios"))).toBe(9);
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: Unicamp 2026 Q45 (gabarito oficial b)", () => {
+    // graus n + m = 8: max(n, m) ≥ 4 > 3, então a soma só cai de grau se n = m e os líderes se cancelam
+    const pares: number[][] = [];
+    for (let n = 0; n <= 8; n++) if (Math.max(n, 8 - n) > 3 && n === 8 - n) pares.push([n, 8 - n]);
+    expect(pares).toEqual([[4, 4]]);
+    // exemplo: p = x⁴ + x³, q = −x⁴ + 1 ⇒ p + q = x³ + 1 (grau 3), p − q = 2x⁴ + x³ − 1 (grau 4)
+    const p = [0, 0, 0, 1, 1]; // coeficientes de x⁰ a x⁴
+    const q = [1, 0, 0, 0, -1];
+    const grau = (c: number[]) => c.reduce((g, v, i) => (v !== 0 ? i : g), -1);
+    expect(grau(p.map((v, i) => v + q[i]))).toBe(3);
+    expect(grau(p.map((v, i) => v - q[i]))).toBe(4);
+    expect(certa("unicamp-2026-grau-diferenca")).toBe("4");
   });
 });
