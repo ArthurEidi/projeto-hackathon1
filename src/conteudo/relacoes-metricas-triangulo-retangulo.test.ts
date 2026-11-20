@@ -137,4 +137,24 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(Math.sqrt(16 + 9)).toBe(5);
     expect(certa("soma-b2-c2-deduz-pitagoras")).toBe("5");
   });
+
+  it("V3 UFRGS 2025 Q72 conserva as alternativas oficiais e marca apenas C", () => {
+    const questao = L.treino.vestibular.find((q) => q.id === "ufrgs-2025-semicirculo-area");
+    expect(questao?.options.map(({ id, label, correct }) => [id, label, correct])).toEqual([
+      ["a20", "20√(20x − x²)", false],
+      ["b10", "10√(10x − x²)", false],
+      ["c10", "10√(20x − x²)", true],
+      ["d20", "20√(10 − x²)", false],
+      ["e10", "10√(20 − x²)", false],
+    ]);
+  });
+
+  it("V3 UFRGS 2025 Q72 confere a área pelo círculo no centro, nos extremos e em pontos simétricos", () => {
+    for (const [x, areaEsperada] of [[0, 0], [4, 80], [10, 100], [16, 80], [20, 0]]) {
+      const alturaPeloCirculo = Math.sqrt(10 ** 2 - (x - 10) ** 2);
+      const areaPelaRelacaoMetrica = 10 * Math.sqrt(x * (20 - x));
+      expect((20 * alturaPeloCirculo) / 2).toBeCloseTo(areaEsperada, 9);
+      expect(areaPelaRelacaoMetrica).toBeCloseTo(areaEsperada, 9);
+    }
+  });
 });

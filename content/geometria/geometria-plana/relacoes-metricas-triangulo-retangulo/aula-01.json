@@ -513,6 +513,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2025-semicirculo-area",
+        "prompt": "Num semicírculo de raio 10 e diâmetro BC, o triângulo inscrito ABC tem altura AD sobre BC. Se BD = x ∈ [0; 20], qual é a área de ABC?",
+        "fala": "O ângulo em A é reto porque BC é um diâmetro. Que relação liga a altura AD a BD e DC?",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 72. Figura descrita em texto e domínio escrito com ponto e vírgula. Alternativas e gabarito oficial (C) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2025/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a20",
+            "label": "20√(20x − x²)",
+            "correct": false,
+            "feedback": "20√(20x − x²) esquece de dividir por 2 na área (BC · AD)/2. Com BC = 20 e AD = √(20x − x²), a área é 10√(20x − x²)."
+          },
+          {
+            "id": "b10",
+            "label": "10√(10x − x²)",
+            "correct": false,
+            "feedback": "Se DC = 10 − x, surge AD² = 10x − x². O diâmetro é 20, então DC = 20 − x e a área é 10√(20x − x²)."
+          },
+          {
+            "id": "c10",
+            "label": "10√(20x − x²)",
+            "correct": true,
+            "feedback": "Com o ângulo reto em A, AD² = BD·DC = x(20 − x). A base BC vale 20, então A(x) = 20·AD/2 = 10√(20x − x²)."
+          },
+          {
+            "id": "d20",
+            "label": "20√(10 − x²)",
+            "correct": false,
+            "feedback": "Tomar DC = 10 − x, escrever x(10 − x) como 10 − x² e omitir a divisão por 2 dá 20√(10 − x²). O correto é 10√(20x − x²)."
+          },
+          {
+            "id": "e10",
+            "label": "10√(20 − x²)",
+            "correct": false,
+            "feedback": "Distribuir x só no segundo termo dá 20 − x². Como x(20 − x) = 20x − x², a área é 10√(20x − x²)."
+          }
+        ]
+      }
+    ]
   }
 }

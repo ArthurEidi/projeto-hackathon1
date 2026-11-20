@@ -235,9 +235,21 @@ Arrastar o vértice reto ao longo do semicírculo de diâmetro `a = 10` mostra q
 - **Habilidade-alvo:** calcular a distância de um vértice de retângulo até sua diagonal (`a · h = b · c`).
 - **Onde procurar:** Fuvest, UFRGS, UFPR, ENEM.
 
-#### V3 — PENDENTE-FONTE
-- **Habilidade-alvo:** usar a propriedade do triângulo retângulo inscrito em semicircunferência combinada com `h² = m · n`.
-- **Onde procurar:** Unicamp, UERJ, Unifesp.
+#### V3 — `ufrgs-2025-semicirculo-area`
+- **Estado:** **CONFERIDA** (B45b-relacoes)
+- **Enunciado:** "Num semicírculo de raio 10 e diâmetro BC, o triângulo inscrito ABC tem altura AD sobre BC. Se BD = x ∈ [0; 20], qual é a área de ABC?"
+- **Fala do Paco:** "O ângulo em A é reto porque BC é um diâmetro. Que relação liga a altura AD a BD e DC?"
+- **Fonte:** UFRGS 2025 (adaptada), 1º dia, Q72. [Caderno, p. 38](https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf#page=38) · [Gabarito oficial](https://vestibular.ufrgs.br/cv2025/gabaritos/#matematica)
+- **Adaptação:** O texto identifica BC como diâmetro e AD como altura sobre BC, com `BD = x` e `x ∈ [0; 20]`. Os rótulos preservam as cinco expressões na ordem original.
+- **Conta de conferência:** No interior do intervalo, A é o ângulo reto, `BC = 20` e `DC = 20 − x`. Logo `AD² = x(20 − x)` e `A(x) = 20·AD/2 = 10√(20x − x²)` (C). Nos dois extremos, a área vale zero.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a20` | `20√(20x − x²)` | não | "20√(20x − x²) esquece de dividir por 2 na área (BC · AD)/2. Com BC = 20 e AD = √(20x − x²), a área é 10√(20x − x²)." |
+| `b10` | `10√(10x − x²)` | não | "Se DC = 10 − x, surge AD² = 10x − x². O diâmetro é 20, então DC = 20 − x e a área é 10√(20x − x²)." |
+| `c10` | `10√(20x − x²)` | **sim** | "Com o ângulo reto em A, AD² = BD·DC = x(20 − x). A base BC vale 20, então A(x) = 20·AD/2 = 10√(20x − x²)." |
+| `d20` | `20√(10 − x²)` | não | "Tomar DC = 10 − x, escrever x(10 − x) como 10 − x² e omitir a divisão por 2 dá 20√(10 − x²). O correto é 10√(20x − x²)." |
+| `e10` | `10√(20 − x²)` | não | "Distribuir x só no segundo termo dá 20 − x². Como x(20 − x) = 20x − x², a área é 10√(20x − x²)." |
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** encadear duas relações métricas para encontrar perímetro ou área de um triângulo retângulo.
