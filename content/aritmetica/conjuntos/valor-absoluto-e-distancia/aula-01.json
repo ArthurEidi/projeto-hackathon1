@@ -594,6 +594,47 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "unicamp-2026-primos-distancia",
+        "prompt": "A = {x ∈ ℕ : |x − 5| ≥ 2 e |x − 11| ≤ 9}. Quantos números primos pertencem a A?",
+        "fala": "Leia |x − 5| ≥ 2 como distância até 5 de pelo menos 2, e |x − 11| ≤ 9 como distância até 11 de no máximo 9.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2026,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 51: enunciado mantido; alternativas e gabarito oficial (c) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a5",
+            "label": "5",
+            "correct": false,
+            "feedback": "5 ignora o módulo e perde o lado x ≤ 3. Pelas distâncias, A = {2, 3} ∪ {7, 8, …, 20}, com 7 primos: 2, 3, 7, 11, 13, 17 e 19."
+          },
+          {
+            "id": "a6",
+            "label": "6",
+            "correct": false,
+            "feedback": "Falta um primo: 2 e 3 distam 3 e 2 de 5, e no máximo 9 de 11, então entram. Os primos de A são 2, 3, 7, 11, 13, 17 e 19."
+          },
+          {
+            "id": "a7",
+            "label": "7",
+            "correct": true,
+            "feedback": "Isso. Distância até 5 de pelo menos 2 dá x ≤ 3 ou x ≥ 7; até 11 de no máximo 9 dá 2 ≤ x ≤ 20: primos 2, 3, 7, 11, 13, 17, 19."
+          },
+          {
+            "id": "a8",
+            "label": "8",
+            "correct": false,
+            "feedback": "8 conta todos os primos de 2 a 20, inclusive o 5. Mas o 5 está a distância 0 de 5, menos que 2, então sai de A e sobram 7 primos."
+          }
+        ]
+      }
+    ]
   }
 }

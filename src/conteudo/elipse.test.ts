@@ -145,3 +145,13 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(certa("orbita")).toBe("2");
   });
 });
+
+describe("vestibular (B43, provas oficiais)", () => {
+  it("UFRGS 2019 Q45 (C): cortes (±2; 0) e (0; ±3), losango de área 12", () => {
+    const naElipse = (x: number, y: number) => (x * x) / 4 + (y * y) / 9;
+    for (const [x, y] of [[0, 3], [2, 0], [0, -3], [-2, 0]]) expect(naElipse(x, y)).toBe(1);
+    const [d1, d2] = [2 * 2, 2 * 3];
+    expect((d1 * d2) / 2).toBe(12);
+    expect(certa("ufrgs-2019-losango-elipse")).toBe("12");
+  });
+});

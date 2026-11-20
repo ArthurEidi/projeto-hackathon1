@@ -249,9 +249,21 @@ Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o pl
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** focos e eixos a partir da equação.
-- **Onde procurar:** UFRGS, UEL, PUC-Rio (lista de cônicas do Projeto Agatha; precisam de ano).
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
+
+#### V1 — `ufrgs-2019-losango-elipse`
+- **Enunciado (resumido):** "A elipse x²/4 + y²/9 = 1 corta os eixos em A (em cima), B (à direita), C (embaixo) e D (à esquerda). Qual é a área de ABCD?"
+- **Fala do Paco:** "Faça x = 0 e depois y = 0 para achar os cortes. ABCD é um losango: a área é o produto das diagonais dividido por 2."
+- **Fonte:** UFRGS 2019 (adaptada) — **Adaptação:** Matemática, Questão 45: a figura, que só marca os cortes da elipse com os eixos, foi descrita no enunciado; alternativas e gabarito oficial (C) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2022/04/HIS-MAT.pdf · https://vestibular.ufrgs.br/cv2019/gabaritos/
+- **Conta de conferência:** cortes (0; ±3) e (±2; 0) ⇒ losango de diagonais 6 e 4 ⇒ área 6 · 4/2 = 12 (C).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a4` | 4 | não | "4 é o denominador de x², a² com a = 2. Os cortes são (±2; 0) e (0; ±3): losango de diagonais 4 e 6, área 4 · 6/2 = 12." |
+| `a9` | 9 | não | "9 é o denominador de y², b² com b = 3. As diagonais do losango medem 2a = 4 e 2b = 6, e a área é 4 · 6/2 = 12." |
+| `a12` | 12 | **sim** | "Isso. Os cortes são (±2; 0) e (0; ±3); ABCD é um losango de diagonais 4 e 6, com área 4 · 6/2 = 12." |
+| `a24` | 24 | não | "24 = 4 · 6 esquece a metade: a área do losango é o produto das diagonais dividido por 2, ou seja, 12." |
+| `a36` | 36 | não | "36 = 4 · 9 multiplica os denominadores. As diagonais medem 2 · 2 = 4 e 2 · 3 = 6, e a área é 4 · 6/2 = 12." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** equação a partir de focos e vértices.

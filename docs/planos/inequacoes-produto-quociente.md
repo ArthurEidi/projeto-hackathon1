@@ -249,16 +249,21 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-inequacoes-produto-quociente`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema inequações-produto e inequações-quociente.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
+
+#### V1 — `ufrgs-2018-cubo-raiz`
+- **Enunciado (resumido):** "Para f(x) = x³ e g(x) = ∛x, em que conjunto vale f(x) > g(x)?"
+- **Fala do Paco:** "Elevar ao cubo mantém a desigualdade: x⁹ > x, isto é, x(x − 1)(x + 1)(x² + 1)(x⁴ + 1) > 0. Só x, x − 1 e x + 1 mudam de sinal."
+- **Fonte:** UFRGS 2018 (adaptada) — **Adaptação:** Matemática, Questão 29: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos. — **URL:** https://www.ufrgs.br/coperse/wp-content/uploads/2022/04/HIS-MAT-1.pdf · https://vestibular.ufrgs.br/cv2018/gabaritos/
+- **Conta de conferência:** x³ > ∛x ⇔ x⁹ > x ⇔ x(x − 1)(x + 1)(x² + 1)(x⁴ + 1) > 0 ⇒ (−1; 0) ∪ (1; +∞) (E).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | (0; +∞) | não | "Em (0; 1) falha (x = 1/8 dá 1/512 < 1/2) e em (−1; 0) vale (x = −1/8 dá −1/512 > −1/2). Fica (−1; 0) ∪ (1; +∞)." |
+| `b` | (−∞; −1) ∪ (0; 1) | não | "Esse é o conjunto onde f(x) < g(x), com o sinal trocado. De x(x − 1)(x + 1) > 0 vem (−1; 0) ∪ (1; +∞)." |
+| `c` | (−1; 1) | não | "Em (0; 1) vale f < g: x = 1/8 dá 1/512 < 1/2. O quadro de sinais de x(x − 1)(x + 1) > 0 dá (−1; 0) ∪ (1; +∞)." |
+| `d` | (−∞; −1) ∪ (1; +∞) | não | "Esquece o fator x: com x = −8, f = −512 < g = −2. Com x(x − 1)(x + 1) > 0, a resposta é (−1; 0) ∪ (1; +∞)." |
+| `e` | (−1; 0) ∪ (1; +∞) | **sim** | "Isso. x³ > ∛x equivale a x⁹ > x, isto é, x(x − 1)(x + 1)(x² + 1)(x⁴ + 1) > 0, e o quadro de sinais dá (−1; 0) ∪ (1; +∞)." |
 
 #### V2 — `v2-inequacoes-produto-quociente`
 - **Estado:** **PENDENTE-FONTE**

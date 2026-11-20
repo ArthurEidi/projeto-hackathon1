@@ -802,6 +802,47 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "unicamp-2021-mediatriz",
+        "prompt": "A reta x + 2y = 4 corta os eixos coordenados em A e B. Qual é a equação da mediatriz do segmento AB?",
+        "fala": "A mediatriz passa pelo ponto médio de AB e é perpendicular à reta: o produto das inclinações vale −1.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 31: enunciado reescrito como pergunta; alternativas e gabarito oficial (a) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2021/09/F1-Comentada-Conhec-Gerais-Exatas-Tecno-Humanas-Artes.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "2x − y = 3",
+            "correct": true,
+            "feedback": "Isso. A = (4; 0), B = (0; 2) e o ponto médio é (2; 1); a perpendicular a −1/2 tem inclinação 2: y − 1 = 2(x − 2), ou 2x − y = 3."
+          },
+          {
+            "id": "b",
+            "label": "2x − y = 5",
+            "correct": false,
+            "feedback": "A inclinação 2 está certa, mas a mediatriz passa pelo ponto médio (2; 1), e 2 · 2 − 1 = 3, não 5. Fica 2x − y = 3."
+          },
+          {
+            "id": "c",
+            "label": "2x + y = 3",
+            "correct": false,
+            "feedback": "2x + y = 3 tem inclinação −2, e (−1/2) · (−2) = 1, não −1; nem passa por (2; 1). Certo: inclinação 2, 2x − y = 3."
+          },
+          {
+            "id": "d",
+            "label": "2x + y = 5",
+            "correct": false,
+            "feedback": "2x + y = 5 passa pelo ponto médio (2; 1), mas tem inclinação −2, e (−1/2) · (−2) = 1, não −1. Certo: 2x − y = 3."
+          }
+        ]
+      }
+    ]
   }
 }

@@ -166,3 +166,14 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(certa("d5-inequacoes-produto-quociente")).toBe("(−1;1)∪(1;+∞)");
   });
 });
+
+describe("vestibular (B43, provas oficiais)", () => {
+  it("UFRGS 2018 Q29 (E): x³ > ∛x só em (−1; 0) ∪ (1; +∞)", () => {
+    const vale = (x: number) => x ** 3 > Math.cbrt(x);
+    for (const x of [-0.9, -0.5, -0.125, 1.01, 2, 8]) expect(vale(x)).toBe(true);
+    for (const x of [-8, -2, -1, 0, 0.125, 0.5, 1]) expect(vale(x)).toBe(false);
+    // mesmo sinal que x(x − 1)(x + 1), pois x² + 1 e x⁴ + 1 são positivos
+    for (const x of [-3, -0.5, 0.5, 3]) expect(Math.sign(x ** 9 - x)).toBe(Math.sign(x * (x - 1) * (x + 1)));
+    expect(certa("ufrgs-2018-cubo-raiz")).toBe("(−1; 0) ∪ (1; +∞)");
+  });
+});

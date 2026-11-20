@@ -634,6 +634,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2019-losango-elipse",
+        "prompt": "A elipse x²/4 + y²/9 = 1 corta os eixos em A (em cima), B (à direita), C (embaixo) e D (à esquerda). Qual é a área de ABCD?",
+        "fala": "Faça x = 0 e depois y = 0 para achar os cortes. ABCD é um losango: a área é o produto das diagonais dividido por 2.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "Matemática, Questão 45: a figura, que só marca os cortes da elipse com os eixos, foi descrita no enunciado; alternativas e gabarito oficial (C) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/04/HIS-MAT.pdf",
+            "https://vestibular.ufrgs.br/cv2019/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a4",
+            "label": "4",
+            "correct": false,
+            "feedback": "4 é o denominador de x², a² com a = 2. Os cortes são (±2; 0) e (0; ±3): losango de diagonais 4 e 6, área 4 · 6/2 = 12."
+          },
+          {
+            "id": "a9",
+            "label": "9",
+            "correct": false,
+            "feedback": "9 é o denominador de y², b² com b = 3. As diagonais do losango medem 2a = 4 e 2b = 6, e a área é 4 · 6/2 = 12."
+          },
+          {
+            "id": "a12",
+            "label": "12",
+            "correct": true,
+            "feedback": "Isso. Os cortes são (±2; 0) e (0; ±3); ABCD é um losango de diagonais 4 e 6, com área 4 · 6/2 = 12."
+          },
+          {
+            "id": "a24",
+            "label": "24",
+            "correct": false,
+            "feedback": "24 = 4 · 6 esquece a metade: a área do losango é o produto das diagonais dividido por 2, ou seja, 12."
+          },
+          {
+            "id": "a36",
+            "label": "36",
+            "correct": false,
+            "feedback": "36 = 4 · 9 multiplica os denominadores. As diagonais medem 2 · 2 = 4 e 2 · 3 = 6, e a área é 4 · 6/2 = 12."
+          }
+        ]
+      }
+    ]
   }
 }

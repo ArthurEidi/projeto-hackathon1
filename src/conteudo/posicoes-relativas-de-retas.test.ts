@@ -148,7 +148,24 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-posicoes-relativas-de-retas")).toBe("Perpendiculares");
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular: Unicamp 2021 Q31 (gabarito oficial a)", () => {
+    // x + 2y = 4 corta os eixos em A = (4; 0) e B = (0; 2); ponto médio (2; 1)
+    const [A, B] = [[4, 0], [0, 2]];
+    for (const [x, y] of [A, B]) expect(x + 2 * y).toBe(4);
+    const M = [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2];
+    expect(M).toEqual([2, 1]);
+    // inclinação da reta: −1/2; da mediatriz 2x − y = 3: 2; produto −1
+    expect((-1 / 2) * 2).toBe(-1);
+    expect(2 * M[0] - M[1]).toBe(3);
+    // distratores: 2x − y = 5 não passa por M; 2x + y = 5 passa, mas não é perpendicular
+    expect(2 * M[0] - M[1]).not.toBe(5);
+    expect(2 * M[0] + M[1]).toBe(5);
+    expect((-1 / 2) * -2).toBe(1);
+    // todo ponto da mediatriz equidista de A e B
+    for (const x of [-1, 0, 3.5]) {
+      const y = 2 * x - 3;
+      expect(Math.hypot(x - A[0], y - A[1])).toBeCloseTo(Math.hypot(x - B[0], y - B[1]), 10);
+    }
+    expect(certa("unicamp-2021-mediatriz")).toBe("2x − y = 3");
   });
 });

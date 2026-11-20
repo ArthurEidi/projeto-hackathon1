@@ -116,3 +116,20 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-valor-absoluto-e-distancia")).toBe("4 e 2");
   });
 });
+
+describe("vestibular (B43, provas oficiais)", () => {
+  it("Unicamp 2026 Q51 (c): A = {2, 3} ∪ {7, …, 20} tem 7 primos", () => {
+    const primo = (n: number) => n > 1 && [...Array(n).keys()].slice(2).every((d) => n % d !== 0);
+    const A: number[] = [];
+    for (let x = 0; x <= 40; x++) if (Math.abs(x - 5) >= 2 && Math.abs(x - 11) <= 9) A.push(x);
+    expect(A[0]).toBe(2);
+    expect(A.at(-1)).toBe(20);
+    expect(A).not.toContain(5);
+    expect(A.filter(primo)).toEqual([2, 3, 7, 11, 13, 17, 19]);
+    // distrator a: sem módulo (x − 5 ≥ 2 e x − 11 ≤ 9) sobram 5 primos
+    const semModulo: number[] = [];
+    for (let x = 0; x <= 40; x++) if (x - 5 >= 2 && x - 11 <= 9 && primo(x)) semModulo.push(x);
+    expect(semModulo.length).toBe(5);
+    expect(certa("unicamp-2026-primos-distancia")).toBe("7");
+  });
+});

@@ -249,16 +249,20 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-valor-absoluto-e-distancia`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema valor absoluto como distância.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
+
+#### V1 — `unicamp-2026-primos-distancia`
+- **Enunciado (resumido):** "A = {x ∈ ℕ : |x − 5| ≥ 2 e |x − 11| ≤ 9}. Quantos números primos pertencem a A?"
+- **Fala do Paco:** "Leia |x − 5| ≥ 2 como distância até 5 de pelo menos 2, e |x − 11| ≤ 9 como distância até 11 de no máximo 9."
+- **Fonte:** Unicamp 2026 (adaptada) — **Adaptação:** 1ª fase, Questão 51: enunciado mantido; alternativas e gabarito oficial (c) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2026/06/F1_2026_Prova-Q.pdf
+- **Conta de conferência:** |x − 5| ≥ 2 ⇒ x ≤ 3 ou x ≥ 7; |x − 11| ≤ 9 ⇒ 2 ≤ x ≤ 20 ⇒ A = {2, 3} ∪ {7, …, 20} ⇒ primos 2, 3, 7, 11, 13, 17, 19: 7 (c).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a5` | 5 | não | "5 ignora o módulo e perde o lado x ≤ 3. Pelas distâncias, A = {2, 3} ∪ {7, 8, …, 20}, com 7 primos: 2, 3, 7, 11, 13, 17 e 19." |
+| `a6` | 6 | não | "Falta um primo: 2 e 3 distam 3 e 2 de 5, e no máximo 9 de 11, então entram. Os primos de A são 2, 3, 7, 11, 13, 17 e 19." |
+| `a7` | 7 | **sim** | "Isso. Distância até 5 de pelo menos 2 dá x ≤ 3 ou x ≥ 7; até 11 de no máximo 9 dá 2 ≤ x ≤ 20: primos 2, 3, 7, 11, 13, 17, 19." |
+| `a8` | 8 | não | "8 conta todos os primos de 2 a 20, inclusive o 5. Mas o 5 está a distância 0 de 5, menos que 2, então sai de A e sobram 7 primos." |
 
 #### V2 — `v2-valor-absoluto-e-distancia`
 - **Estado:** **PENDENTE-FONTE**

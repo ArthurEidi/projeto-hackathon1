@@ -250,9 +250,20 @@ A regra m₁ · m₂ = −1 não vale para o par horizontal–vertical (a vertic
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** ponto de interseção de duas retas em contexto.
-- **Onde procurar:** ENEM (oferta e demanda, planos de telefonia), Unicamp.
+> B43 (19/11/2026): as vagas preenchidas abaixo trazem questões de provas oficiais conferidas no PDF e no gabarito oficial (registro em `docs/revisao/vestibular-b43.md`). As vagas PENDENTE-FONTE seguem abertas; nada foi inventado.
+
+#### V1 — `unicamp-2021-mediatriz`
+- **Enunciado (resumido):** "A reta x + 2y = 4 corta os eixos coordenados em A e B. Qual é a equação da mediatriz do segmento AB?"
+- **Fala do Paco:** "A mediatriz passa pelo ponto médio de AB e é perpendicular à reta: o produto das inclinações vale −1."
+- **Fonte:** Unicamp 2021 (adaptada) — **Adaptação:** 1ª fase, Questão 31: enunciado reescrito como pergunta; alternativas e gabarito oficial (a) mantidos. — **URL:** https://www.comvest.unicamp.br/wp-content/uploads/2021/09/F1-Comentada-Conhec-Gerais-Exatas-Tecno-Humanas-Artes.pdf
+- **Conta de conferência:** A = (4; 0), B = (0; 2), ponto médio (2; 1); inclinação −1/2 ⇒ perpendicular 2 ⇒ y − 1 = 2(x − 2) ⇒ 2x − y = 3 (a).
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 2x − y = 3 | **sim** | "Isso. A = (4; 0), B = (0; 2) e o ponto médio é (2; 1); a perpendicular a −1/2 tem inclinação 2: y − 1 = 2(x − 2), ou 2x − y = 3." |
+| `b` | 2x − y = 5 | não | "A inclinação 2 está certa, mas a mediatriz passa pelo ponto médio (2; 1), e 2 · 2 − 1 = 3, não 5. Fica 2x − y = 3." |
+| `c` | 2x + y = 3 | não | "2x + y = 3 tem inclinação −2, e (−1/2) · (−2) = 1, não −1; nem passa por (2; 1). Certo: inclinação 2, 2x − y = 3." |
+| `d` | 2x + y = 5 | não | "2x + y = 5 passa pelo ponto médio (2; 1), mas tem inclinação −2, e (−1/2) · (−2) = 1, não −1. Certo: 2x − y = 3." |
 
 #### V2 — PENDENTE-FONTE
 - **Habilidade-alvo:** condição de perpendicularidade.

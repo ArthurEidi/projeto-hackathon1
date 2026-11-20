@@ -51,6 +51,36 @@ Na Unicamp 2022 Q23, duas alternativas erradas (15 e 21) não correspondem a um 
 - vitest dos 7 capítulos: 83 testes passando. `tsc --noEmit`: ok.
 - vitest completo: 2 133 de 2 134. A falha é em `transformacoes-graficos-de-funcoes` ("todas as falas respeitam as regras de texto"). Ela vem de trabalho da B45 ainda não publicado (arquivos dos Gemini modificados na árvore), fora desta frente.
 
-## Leva 2 (próxima)
+## Leva 2: 4 questões em 4 aulas (inseridas)
 
-`valor-absoluto-e-distancia`, `elipse`, `posicoes-relativas-de-retas` e `inequacoes-produto-quociente`.
+**Onde procurei:** as 50 provas locais, mais estas, baixadas nesta leva para `provas-oficiais/`:
+
+- Unicamp 2016, 2017 e 2018: provas comentadas de matemática da 1ª fase, `comvest.unicamp.br/vest_anteriores/<ano>/download/comentadas/F1_matematica.pdf`;
+- UFRGS 2016 a 2020: caderno de matemática, das páginas `ufrgs.br/coperse/cv-<ano>/`, com os gabaritos de `vestibular.ufrgs.br/cv<ano>/gabaritos/`.
+
+No total foram 6 bancas: Fuvest, Unicamp, UFRGS, UFPR, ITA e IME.
+
+| aula | questão (id) | página e gabarito oficial | conta refeita | veredito |
+|---|---|---|---|---|
+| valor-absoluto-e-distancia | Unicamp 2026 Q51 (`unicamp-2026-primos-distancia`) | p. 51 da prova comentada; c (7) | \|x − 5\| ≥ 2 ⇒ x ≤ 3 ou x ≥ 7; \|x − 11\| ≤ 9 ⇒ 2 ≤ x ≤ 20; primos 2, 3, 7, 11, 13, 17, 19. A alternativa a (5) ignora o módulo, erro citado pela Comvest; d (8) inclui o 5 | inserida |
+| elipse | UFRGS 2019 Q45 (`ufrgs-2019-losango-elipse`) | p. 21 do caderno de matemática; gabarito C (12) | x²/4 + y²/9 = 1 corta os eixos em (±2; 0) e (0; ±3): losango de diagonais 4 e 6, área 12. A figura só marca os quatro cortes e foi descrita no enunciado | inserida |
+| posicoes-relativas-de-retas | Unicamp 2021 Q31 (`unicamp-2021-mediatriz`) | p. 42–43 da prova comentada; a (2x − y = 3) | A = (4; 0), B = (0; 2), ponto médio (2; 1); a perpendicular a −1/2 tem inclinação 2 ⇒ 2x − y = 3. b tem a inclinação certa, mas não passa pelo ponto médio; d passa pelo ponto médio, mas não é perpendicular | inserida |
+| inequacoes-produto-quociente | UFRGS 2018 Q29 (`ufrgs-2018-cubo-raiz`) | p. 13 do caderno de matemática; gabarito E | x³ > ∛x ⇔ x⁹ > x ⇔ x(x − 1)(x + 1)(x² + 1)(x⁴ + 1) > 0 ⇒ (−1; 0) ∪ (1; +∞). B é o conjunto com o sinal trocado; D esquece o fator x | inserida |
+
+**Candidatas conferidas e não inseridas:**
+
+- **UFRGS 2017 Q40** (posições relativas): as retas y = ax e y = −x + b se cortam num ponto de coordenadas negativas ⇒ a > 0 e b < 0 (D). A conta confere com o gabarito, mas a página oficial `vestibular.ufrgs.br/cv2017/gabaritos/` hoje dá 404. O gabarito só aparece numa cópia do Internet Archive, http://web.archive.org/web/20171219210439/http://vestibular.ufrgs.br:80/cv2017/gabaritos/, onde Matemática 40 = D. Fica de **reserva**: a regra pede URL oficial no ar. Se o maestro aceitar a cópia arquivada, ela entra como segunda questão da aula.
+- **Unicamp 2017 Q23** (elipse): (2x + yi)(y + 2xi) = (4x² + y²)i = i ⇒ 4x² + y² = 1, uma elipse (a). Fica de reserva: o caminho até a elipse é um produto de números complexos, técnica de outra aula.
+- **UFRGS 2017 Q37** (inequações): x² + 1 > x vale para todo x real (E). Recusada pelo tema: é uma inequação quadrática, não de produto ou quociente.
+- **UFRGS 2016 Q47** (valor absoluto): \|x − 5\| ≤ 2 e \|y − 4\| ≤ 1 no plano. Recusada: as alternativas são regiões desenhadas, e a figura é a própria tarefa.
+
+### Validação da leva 2
+
+- `lint:content`: ok. Dois feedbacks da Q51 foram reescritos sem a barra de módulo, que quebrava a tabela do roteiro.
+- `lint:planos`: as 4 aulas passam para "1 reais, 3 pend.", status ok.
+- vitest dos 4 capítulos: 57 testes passando. `tsc --noEmit`: ok. vitest completo: 2 143 de 2 143.
+- O `lint:planos` acusa 3 erros em `transformacoes-graficos-de-funcoes`, que vêm do trabalho da B45 ainda não publicado.
+
+## Fechamento da B43
+
+As 11 aulas da B43 receberam 13 questões oficiais: 9 na leva 1 e 4 na leva 2. Ficaram de reserva a UFRGS 2017 Q40 (gabarito só arquivado) e a Unicamp 2017 Q23 (técnica de outra aula).

@@ -693,6 +693,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2018-cubo-raiz",
+        "prompt": "Para f(x) = x³ e g(x) = ∛x, em que conjunto vale f(x) > g(x)?",
+        "fala": "Elevar ao cubo mantém a desigualdade: x⁹ > x, isto é, x(x − 1)(x + 1)(x² + 1)(x⁴ + 1) > 0. Só x, x − 1 e x + 1 mudam de sinal.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2018,
+          "adaptada": true,
+          "adaptacao": "Matemática, Questão 29: enunciado reescrito como pergunta; alternativas e gabarito oficial (E) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/04/HIS-MAT-1.pdf",
+            "https://vestibular.ufrgs.br/cv2018/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "(0; +∞)",
+            "correct": false,
+            "feedback": "Em (0; 1) falha (x = 1/8 dá 1/512 < 1/2) e em (−1; 0) vale (x = −1/8 dá −1/512 > −1/2). Fica (−1; 0) ∪ (1; +∞)."
+          },
+          {
+            "id": "b",
+            "label": "(−∞; −1) ∪ (0; 1)",
+            "correct": false,
+            "feedback": "Esse é o conjunto onde f(x) < g(x), com o sinal trocado. De x(x − 1)(x + 1) > 0 vem (−1; 0) ∪ (1; +∞)."
+          },
+          {
+            "id": "c",
+            "label": "(−1; 1)",
+            "correct": false,
+            "feedback": "Em (0; 1) vale f < g: x = 1/8 dá 1/512 < 1/2. O quadro de sinais de x(x − 1)(x + 1) > 0 dá (−1; 0) ∪ (1; +∞)."
+          },
+          {
+            "id": "d",
+            "label": "(−∞; −1) ∪ (1; +∞)",
+            "correct": false,
+            "feedback": "Esquece o fator x: com x = −8, f = −512 < g = −2. Com x(x − 1)(x + 1) > 0, a resposta é (−1; 0) ∪ (1; +∞)."
+          },
+          {
+            "id": "e",
+            "label": "(−1; 0) ∪ (1; +∞)",
+            "correct": true,
+            "feedback": "Isso. x³ > ∛x equivale a x⁹ > x, isto é, x(x − 1)(x + 1)(x² + 1)(x⁴ + 1) > 0, e o quadro de sinais dá (−1; 0) ∪ (1; +∞)."
+          }
+        ]
+      }
+    ]
   }
 }
