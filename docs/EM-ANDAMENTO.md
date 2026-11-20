@@ -209,3 +209,4 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 | B62. Idem, 6 aulas de aritmética | Antigravity (Neon) | 20/11 | essas aulas, `vestibular-b62.md` |
 | B63. Revisão de código da B58; depois auditorias de vestibular | Codex #2 | 20/11 | `docs/revisao/codigo-b58-revisao.md`, `docs/revisao/auditoria-*.md` |
 
+20/11, noite: **parada (limite do Gemini; usuário pediu para frear todos). Nenhuma frente da B ativa.** Auditado está no main; o resto no branch `wip-20-11-noite` (B46b, B60–B62 parciais, B45b2/B45d3). Ver "Parada de 20/11, noite" em `PROXIMOS-PASSOS.md`.
