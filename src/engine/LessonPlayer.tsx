@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { preloadSprites, spritesDaAula } from "../characters/sprites";
 import { ConviteTreino, Treino } from "../treino/Treino";
 import { GlossarioProvider } from "../ui/GlossarioContext";
@@ -24,6 +24,11 @@ export function LessonPlayer({ lesson, aulaKey, passoInicial = 0, onExit }: Less
 
   useEffect(() => preloadSprites(spritesDaAula()), []);
 
+  // Ao entrar na aula, o foco vai para o título da aula (só para leitor de tela, entre o cabeçalho e o passo):
+  // o leitor anuncia a aula, o próximo Tab chega ao primeiro controle do passo e Shift+Tab, a "Sair da aula".
+  const inicio = useRef<HTMLHeadingElement>(null);
+  useEffect(() => inicio.current?.focus({ preventScroll: true }), []);
+
   const next = () => {
     const n = index + 1;
     if (n >= lesson.steps.length) markComplete(aulaKey);
@@ -48,6 +53,9 @@ export function LessonPlayer({ lesson, aulaKey, passoInicial = 0, onExit }: Less
         </button>
         <ProgressBar value={index / lesson.steps.length} />
       </header>
+      <h1 ref={inicio} tabIndex={-1} className="sr-only">
+        Aula: {lesson.titulo}
+      </h1>
       {finished ? (
         <ConviteTreino
           outro={lesson.outro}

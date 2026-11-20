@@ -44,6 +44,23 @@ button {
   color: inherit;
 }
 
+/* Só para leitor de tela (ex.: título da aula que recebe o foco ao entrar). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* Títulos que recebem foco por programa (volta à trilha, rota inválida) não são controles: sem anel. */
+h1[tabindex="-1"]:focus {
+  outline: none;
+}
+
 /* Coluna de app: mobile-first, centralizada em telas largas. */
 .app {
   max-width: 480px;
@@ -155,6 +172,13 @@ button {
 .btn--c4 {
   --c: var(--c4);
   --c-dark: var(--c4-dark);
+}
+/* Chaves dos widgets (botão .btn sem variante, com aria-pressed; as cores vêm por estilo inline do widget).
+   Ligadas, o texto branco sobre azul ou laranja da marca fica abaixo de 4,5:1 em 14 px (3,61 e 2,46).
+   O fundo escurece para 70% do tom (azul 6,5:1, laranja 4,7:1), mantendo o matiz da figura. */
+.btn:not([class*="btn--"])[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--c) 70%, #000);
+  border-color: color-mix(in srgb, var(--c-dark) 70%, #000);
 }
 
 /* ---------- Card tátil (opções) ---------- */
@@ -483,7 +507,7 @@ button {
   --c: var(--bg);
 }
 .formula .btn--h.btn--off {
-  --c-text: var(--h);
+  --c-text: var(--h-dark);
 }
 .formula .btn--r.btn--off {
   --c-text: var(--ui-orange-text);
@@ -492,7 +516,7 @@ button {
   --c-text: var(--g);
 }
 .formula .btn--c1.btn--off {
-  --c-text: var(--c1);
+  --c-text: var(--c1-dark);
 }
 .formula .btn--c2.btn--off {
   --c-text: var(--ui-orange-text);
@@ -501,6 +525,13 @@ button {
 .formula .btn--c2:not(.btn--off) {
   --c: var(--ui-orange-text);
   --c-dark: #7d4500;
+}
+/* O expoente (sup, ~15 px) não é texto grande: o azul precisa de 4,5:1, ligado (branco sobre azul) e
+   desligado (azul sobre branco). O tom escuro da marca dá 5,7:1 nos dois casos. */
+.formula .btn--h:not(.btn--off),
+.formula .btn--c1:not(.btn--off) {
+  --c: var(--h-dark);
+  --c-dark: #0e5082;
 }
 .formula .btn--c3.btn--off {
   --c-text: var(--c3);
@@ -576,7 +607,17 @@ button {
 .dica__nome {
   font-size: 14px;
   font-weight: 900;
-  color: var(--dica-cor);
+  color: var(--dica-texto, var(--dica-cor));
+}
+/* Azul e laranja das marcas não chegam a 4,5:1 sobre branco em texto de 14 px (3,61 e 2,46):
+   o nome usa o tom escuro; a borda da dica mantém a cor da marca. */
+.dica--h,
+.dica--c1 {
+  --dica-texto: var(--h-dark);
+}
+.dica--r,
+.dica--c2 {
+  --dica-texto: var(--ui-orange-text);
 }
 .dica__resumo {
   font-weight: 700;
@@ -625,6 +666,13 @@ button {
   flex: 1;
   overflow-y: auto;
   padding: 16px var(--gutter) 32px;
+  /* Foco por Tab ou volta da aula: o botão rola para a vista com o contorno de foco inteiro. */
+  scroll-padding-block: 16px;
+}
+.trilha-dica {
+  margin: -8px 0 14px;
+  font-size: 15px;
+  color: var(--ui-muted);
 }
 .home__title {
   font-size: 26px;
@@ -834,6 +882,9 @@ button {
 .node__btn.btn--done {
   --c: var(--yellow);
   --c-dark: var(--yellow-dark);
+}
+.node__btn {
+  scroll-margin-block: 16px;
 }
 .node__text {
   display: flex;

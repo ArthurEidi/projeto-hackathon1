@@ -1,96 +1,140 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BoasVindas, jaViuBoasVindas, SaudacaoPaco } from "./characters/BoasVindas";
-import { listAulas, taxonomy } from "./engine/content";
+import { armazenamento, lerChave, lerJson, type Leitor } from "./engine/armazenamento";
+import { listAulas, taxonomy, type AulaEntry } from "./engine/content";
 import { MATERIA_COM_CONTEUDO, MATERIAS, spriteMateria } from "./engine/materias";
-import { getProgress } from "./engine/progress";
+import { getProgress, type Progress } from "./engine/progress";
 import { IconCheck, IconLock, IconSeta, IconUnidade } from "./ui/Icons";
+import { palette } from "./ui/palette";
 import { TactileButton } from "./ui/Tactile";
 
 const contar = (n: number, um: string, varios: string) => `${n} ${n === 1 ? um : varios}`;
 
-// Na primeira visita, o primeiro setor e a primeira unidade do pilar inicial abrem para expor a Aula 01;
-// depois, o que o aluno abre e o último pilar escolhido ficam lembrados entre visitas.
+// Na primeira visita, o setor e a unidade da primeira aula publicada do pilar ativo abrem para expor a Aula 01;
+// depois, o que o aluno abre e o último pilar escolhido ficam lembrados entre visitas (ver engine/armazenamento:
+// sem localStorage, valem só para esta visita). Dados gravados inválidos ou obsoletos contam como ausentes.
 const KEY_ABERTOS = "mat:trilha-aberta:v1";
 const KEY_PILAR = "mat:pilar-ativo:v1";
 
-export function chavesPrimeiraAula(): string[] {
-  const pilar = taxonomy.pilares[0];
-  const setor = pilar?.setores[0];
-  const unidade = setor?.unidades[0];
-  if (!pilar || !setor) return [];
+/** Para onde vai o foco ao montar a trilha: `undefined` não mexe; `null` vai ao título; uma chave, ao botão da aula. */
+export type FocoTrilha = string | null | undefined;
+
+/** Chaves de acordeão ("s:pilar/setor" e "u:pilar/setor/unidade") que expõem a primeira aula publicada do pilar. */
+export function chavesPrimeiraAula(pilarId: string | undefined = taxonomy.pilares[0]?.id): string[] {
+  const pilar = taxonomy.pilares.find((p) => p.id === pilarId) ?? taxonomy.pilares[0];
+  if (!pilar) return [];
+  for (const s of pilar.setores)
+    for (const u of s.unidades)
+      if (u.aulas.some((a) => a.arquivo)) return [`s:${pilar.id}/${s.id}`, `u:${pilar.id}/${s.id}/${u.id}`];
+  const setor = pilar.setores[0];
+  if (!setor) return [];
   const chaves = [`s:${pilar.id}/${setor.id}`];
-  if (unidade) chaves.push(`u:${pilar.id}/${setor.id}/${unidade.id}`);
+  if (setor.unidades[0]) chaves.push(`u:${pilar.id}/${setor.id}/${setor.unidades[0].id}`);
   return chaves;
 }
 
-export function lerPilarInicial(storage: Pick<Storage, "getItem"> | null = typeof localStorage !== "undefined" ? localStorage : null): string {
-  const padrao = taxonomy.pilares[0]?.id ?? "aritmetica";
-  try {
-    const salvo = storage?.getItem(KEY_PILAR);
-    if (salvo && taxonomy.pilares.some((p) => p.id === salvo)) return salvo;
-  } catch {
-    /* sem armazenamento */
-  }
-  return padrao;
+/** Todas as chaves de acordeão que existem na taxonomia atual. */
+function chavesDaTaxonomia(): Set<string> {
+  const chaves = new Set<string>();
+  for (const p of taxonomy.pilares)
+    for (const s of p.setores) {
+      chaves.add(`s:${p.id}/${s.id}`);
+      for (const u of s.unidades) chaves.add(`u:${p.id}/${s.id}/${u.id}`);
+    }
+  return chaves;
 }
 
-export function lerAbertos(storage: Pick<Storage, "getItem"> | null = typeof localStorage !== "undefined" ? localStorage : null): Set<string> {
-  try {
-    const raw = storage?.getItem(KEY_ABERTOS);
-    if (raw === null || raw === undefined) return new Set(chavesPrimeiraAula());
-    const lista: unknown = JSON.parse(raw);
-    return new Set(Array.isArray(lista) ? lista.filter((x): x is string => typeof x === "string") : []);
-  } catch {
-    return new Set(chavesPrimeiraAula());
+/** Pilar salvo, se ainda existir; senão, o primeiro. `storage` omitido usa o armazenamento do app. */
+export function lerPilarInicial(storage?: Leitor | null): string {
+  const padrao = taxonomy.pilares[0]?.id ?? "aritmetica";
+  const salvo = lerChave(KEY_PILAR, storage);
+  return salvo && taxonomy.pilares.some((p) => p.id === salvo) ? salvo : padrao;
+}
+
+/**
+ * Acordeões abertos. `[]` gravado é escolha do aluno (fechou tudo) e é respeitado. Chaves de setores ou
+ * unidades que saíram da taxonomia são descartadas; se nada válido sobrar, ou se o dado for nulo,
+ * malformado ou não for uma lista, abre o caminho da primeira aula publicada do pilar ativo.
+ */
+export function lerAbertos(storage?: Leitor | null, pilarId: string = lerPilarInicial(storage)): Set<string> {
+  const valor = lerJson(lerChave(KEY_ABERTOS, storage));
+  if (Array.isArray(valor)) {
+    if (valor.length === 0) return new Set();
+    const existentes = chavesDaTaxonomia();
+    const validas = valor.filter((x): x is string => typeof x === "string" && existentes.has(x));
+    if (validas.length > 0) return new Set(validas);
   }
+  return new Set(chavesPrimeiraAula(pilarId));
+}
+
+/** Há conclusão gravada em alguma aula ainda publicada? (Conclusões de aulas removidas não contam.) */
+export function temProgressoPublicado(progress: Progress, aulas: AulaEntry[] = listAulas()): boolean {
+  return aulas.some((a) => a.arquivo !== null && Object.hasOwn(progress, a.key));
 }
 
 function usePilar(): [string, (id: string) => void] {
   const [pilarId, setPilarId] = useState(() => lerPilarInicial());
   const escolher = (id: string) => {
     setPilarId(id);
-    try {
-      localStorage.setItem(KEY_PILAR, id);
-    } catch {
-      /* sem armazenamento: o estado vale só para esta visita */
-    }
+    armazenamento.gravar(KEY_PILAR, id);
   };
   return [pilarId, escolher];
 }
 
-function useAbertos(): [Set<string>, (key: string) => void] {
-  const [abertos, setAbertos] = useState(() => lerAbertos());
-  const alternar = (key: string) =>
-    setAbertos((atual) => {
-      const novo = new Set(atual);
-      if (!novo.delete(key)) novo.add(key);
-      try {
-        localStorage.setItem(KEY_ABERTOS, JSON.stringify([...novo]));
-      } catch {
-        /* sem armazenamento: o estado vale só para esta visita */
-      }
-      return novo;
-    });
+function useAbertos(pilarInicial: string): [Set<string>, (key: string) => void] {
+  const [abertos, setAbertos] = useState(() => lerAbertos(undefined, pilarInicial));
+  // A gravação fica fora do updater do React, que precisa ser puro.
+  const alternar = (key: string) => {
+    const novo = new Set(abertos);
+    if (!novo.delete(key)) novo.add(key);
+    setAbertos(novo);
+    armazenamento.gravar(KEY_ABERTOS, JSON.stringify([...novo]));
+  };
   return [abertos, alternar];
 }
 
+// Rolagem da trilha no momento em que o aluno abriu uma aula, para restaurá-la quando ele voltar.
+let rolagemAoAbrir = 0;
+
 /** Trilha: Pilar > Setor > Unidade > Aula. Setores e unidades em acordeão. */
-export function Home({ onOpen }: { onOpen: (key: string) => void }) {
+export function Home({ onOpen, foco }: { onOpen: (key: string) => void; foco?: FocoTrilha }) {
   const [materiaId, setMateriaId] = useState(MATERIA_COM_CONTEUDO);
   const [pilarId, setPilarId] = usePilar();
   const progress = getProgress();
   const aulas = listAulas();
   const pilar = taxonomy.pilares.find((p) => p.id === pilarId)!;
   const [boasVindas, setBoasVindas] = useState(() => !jaViuBoasVindas());
-  const [abertos, alternar] = useAbertos();
+  const [abertos, alternar] = useAbertos(pilarId);
+  const mainRef = useRef<HTMLElement>(null);
+  const tituloRef = useRef<HTMLHeadingElement>(null);
+
+  // Volta de uma aula: restaura a rolagem e devolve o foco ao botão da aula (ou ao título, se ele não existir
+  // mais ou se a aula não veio da trilha). Roda só na montagem: a trilha remonta a cada volta.
+  useEffect(() => {
+    if (foco === undefined) return;
+    const main = mainRef.current;
+    const alvo = foco === null ? null : main?.querySelector<HTMLButtonElement>(`[data-aula="${CSS.escape(foco)}"]`);
+    if (alvo && !alvo.disabled) {
+      if (main) main.scrollTop = rolagemAoAbrir;
+      alvo.focus({ preventScroll: true });
+      alvo.scrollIntoView({ block: "nearest" });
+    } else {
+      tituloRef.current?.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const algumSetorAberto = pilar.setores.some((s) => abertos.has(`s:${pilar.id}/${s.id}`));
 
   return (
-    <main className="home">
-      <h1 className="home__title">Trilha</h1>
+    <main className="home" ref={mainRef}>
+      <h1 ref={tituloRef} tabIndex={-1} className="home__title">
+        Trilha
+      </h1>
       {boasVindas ? (
         <BoasVindas onFechar={() => setBoasVindas(false)} />
       ) : (
-        <SaudacaoPaco temProgresso={Object.keys(progress).length > 0} />
+        <SaudacaoPaco temProgresso={temProgressoPublicado(progress, aulas)} />
       )}
       <nav className="materias" aria-label="Matérias">
         {MATERIAS.map((m) => (
@@ -128,6 +172,9 @@ export function Home({ onOpen }: { onOpen: (key: string) => void }) {
           </nav>
 
           {pilar.setores.length === 0 && <div className="empty">Nenhuma unidade publicada neste pilar ainda.</div>}
+          {pilar.setores.length > 0 && !algumSetorAberto && (
+            <p className="trilha-dica">Toque num setor para ver as unidades e as aulas.</p>
+          )}
 
           {pilar.setores.map((s) => {
             const sKey = `s:${pilar.id}/${s.id}`;
@@ -192,11 +239,15 @@ export function Home({ onOpen }: { onOpen: (key: string) => void }) {
                                       variant={unlocked ? "primary" : "secondary"}
                                       className={`node__btn${done ? " btn--done" : ""}`}
                                       disabled={!unlocked}
-                                      aria-label={`Aula ${a.numero}: ${a.titulo}`}
-                                      onClick={() => onOpen(key)}
+                                      aria-label={`Aula ${a.numero}: ${a.titulo}${done ? " (concluída)" : ""}`}
+                                      data-aula={key}
+                                      onClick={() => {
+                                        rolagemAoAbrir = mainRef.current?.scrollTop ?? 0;
+                                        onOpen(key);
+                                      }}
                                     >
                                       {done ? (
-                                        <IconCheck color="#FFFFFF" />
+                                        <IconCheck color={palette.ink} />
                                       ) : unlocked ? (
                                         <IconUnidade icone={u.icone} color="#FFFFFF" />
                                       ) : (
