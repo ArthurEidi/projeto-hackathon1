@@ -137,7 +137,7 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 |---|---|---|---|
 | ~~B41~~ concluída 19/11 (75391f1, 87a216b): 92 questões e 458 alternativas auditadas, 78 textos corrigidos em 26 aulas, nenhum `correct` errado; critério "feedback revela o gabarito" descartado no treino (GUIA §2 regra 1) | Claude Code #2 | 19/11 | — |
 | ~~B42~~ concluída 19/11 (77cce36, b5c8864): fontes "ENEM 2025" corrigidas, 0 questões repetidas; 27 candidatas da B40 auditadas no PDF oficial (17 aprovadas, 10 recusadas: 8 ITA por nível), 16 inseridas em 12 aulas. Vestibular em 79 de 104 aulas | Claude Code #2 | 19/11 | — |
-| B43. Vestibular de provas oficiais, agora só para 11 aulas: polinomios, raizes-polinomiais-e-multiplicidade, divisao-polinomial-e-teorema-do-resto, numeros-complexos, funcao-composta-e-inversa, determinantes-e-matriz-inversa, soma-da-pg-infinita, valor-absoluto-e-distancia, elipse, posicoes-relativas-de-retas, inequacoes-produto-quociente | Claude Code #2 | 19/11 | `treino.vestibular`, roteiro e teste dessas aulas, `docs/revisao/vestibular-b43.md` |
+| ~~B43~~ concluída 19/11 (6fa6314, 72ab93d): 13 questões oficiais em 11 aulas | Claude Code #2 | 19/11 | — |
 
 ## Pedidos entre máquinas
 
@@ -171,8 +171,9 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B45a. Vestibular oficial: equacoes-trigonometricas, identidades-trigonometricas, formulas-de-adicao-e-arco-duplo, inequacoes-trigonometricas | Antigravity (Neon) | 19/11 | `treino.vestibular`, roteiro e teste dessas aulas, `docs/fontes-candidatas/<slug>.md`, `docs/revisao/vestibular-b45a.md` |
+| ~~B45a~~ 3 de 4 aulas publicadas 19/11 (5c391f6, auditoria do Claude Code #2); `inequacoes-trigonometricas` em busca em mais bancas | Antigravity (Neon) | 19/11 | essa aula, `docs/revisao/vestibular-b45a.md` |
 | B45b. Idem: angulos-retas-paralelas, circunferencia-arcos-e-angulos, relacoes-metricas-triangulo-retangulo | Antigravity #2 | 19/11 | idem, `vestibular-b45b.md` |
-| B45c. Idem: funcao-modular, funcao-racional, transformacoes-graficos-de-funcoes | Antigravity #3 | 19/11 | idem, `vestibular-b45c.md` |
+| ~~B45c~~ `transformacoes-graficos-de-funcoes` publicada 19/11 (8711dc8, auditoria do Codex #2); `funcao-modular` e `funcao-racional` em busca em mais bancas | Antigravity #3 | 19/11 | essas 2 aulas, `docs/revisao/vestibular-b45c.md` |
 | B45d. Idem: solidos-de-revolucao, vetores-no-plano, quartis-percentis-e-boxplot, equacoes-irracionais | Antigravity #4 | 19/11 | idem, `vestibular-b45d.md` |
-| B45r. Revisão cruzada da B44 (Codex: B44b; Codex #2: B44a com defeitos injetados); depois auditoria das B45 | Codex / Codex #2 | 19/11 | `docs/revisao/codigo-b44b-revisao.md`, `docs/revisao/codigo-b44a-revisao.md` |
+| ~~B45r~~ concluída 19/11 (910cf77). Em curso B46 (Codex: 4 achados da revisão em escala e grupos) e auditorias das B45 | Codex / Codex #2 | 19/11 | `src/widgets/common/escala/**`, `grupos/**`, relatórios |
+| B47. Falas do treino que entregam a resposta antes de Verificar (varredura das ~170 questões de vestibular) e normalização da seção de vestibular dos roteiros | Claude Code #2 | 19/11 | `fala` em `treino` das aulas (exceto as 10 da B45 em curso), `docs/planos/*.md` (seção de vestibular), `docs/revisao/falas-b47.md` |
