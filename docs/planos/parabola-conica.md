@@ -266,9 +266,10 @@ Panorama visual opcional (WIDGET NOVO `solido_3d`, corte do cone): inclinar o pl
 | `a3-4` | 3/4 | não | "3/4 é o termo constante de y = x²/2 − x + 3/4. Completando: (x − 1)² = 2(y − 1/4), 4p = 2 e p = 1/2." |
 | `a1-2` | 1/2 | **sim** | "Isso. 2x² − 4x + 3 = 4y vira (x − 1)² = 2(y − 1/4): é x² = 4py deslocada, com 4p = 2, então p = 1/2." |
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** foco e diretriz a partir da equação.
-- **Onde procurar:** UFRGS, PUC-RJ, Unicamp.
+#### V2 — Unicamp 2019 (1ª fase, Q69) · `unicamp-2019-parabola-circunferencia`
+- **Habilidade-alvo:** interseção de parábola e circunferência a partir da equação.
+- **Fonte:** Unicamp 2019, 1ª fase, Matemática, Q69 (`https://www.comvest.unicamp.br/wp-content/uploads/2019/08/Matematica2019F1_final.pdf`).
+- **Gabarito:** `três pontos` (alternativa c). Substituindo `x² = (y − 1)/3` em `x² + y² − 4y + 3 = 0` vem `3y² − 11y + 8 = 0`, com `y = 1` (`x = 0`, 1 ponto) e `y = 8/3` (`x = ±√5/3`, 2 pontos), totalizando 3 interseções.
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** parábola em contexto (antena, farol, ponte).

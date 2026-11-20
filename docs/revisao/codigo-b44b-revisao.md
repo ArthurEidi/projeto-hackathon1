@@ -35,3 +35,30 @@ Foram abertas as 18 imagens de 400 × 860 px. Elas foram geradas com uma cópia 
 A comparação do texto, das posições, das fichas e das áreas de toque antes e depois também cobriu os valores configurados de slider, figuras de resposta e destaques do fechamento. Foram comparados 20 estados de escala, 22 de grupos e 7 de divisão. Em quatro estados da divisão, o texto de `notaQueCabe` para `ink` passou de `#4B4B4B` a `#1B1B1B`. A geometria e o texto permaneceram iguais nos estados comparados. [Cor usada na divisão](../../src/widgets/common/divisao/desenho.ts#L45)
 
 `npm run typecheck`, os 136 testes focados e a suíte completa do Vitest (2.130 testes em 132 arquivos) passaram. `npm run lint:content` passou com um preload temporário para contornar a falha de `os.userInfo()` neste ambiente Windows.
+
+## Correções B46
+
+| Achado | Reprodução antes da correção | Correção e verificação |
+| --- | --- | --- |
+| Notação oculta | O teste com `a = 2`, `n = −3` e `mostrar_notacao: false` recebia «N = 2·10⁻³». | O chip usa representação decimal nessa modalidade. O teste passou com «N = 0,002». |
+| Sobreposição do chip de `N` | Com `a = 1,234567891` e `n = 20`, o alvo de `N` avançava sobre o alvo do expoente. | O cabeçalho mede as etiquetas, preserva as posições que cabem e redistribui as demais com espaço entre elas. O teste passou com os alvos separados e dentro do canvas. |
+| Graduações da régua | O teste com faixa `[−6, 6]`, `n = 2` e `n_ref = 0` encontrava oito marcas, mas deixava 0 e 2 de fora. | A régua mantém as graduações obrigatórias e preenche as maiores lacunas até oito marcas. O teste passou com −6, 0, 2 e 6 entre oito posições distintas. |
+| Conclusão de MMC | O teste do `InteractiveCanvas` e o Chrome reproduziram o botão Continuar habilitado com `m = 11,5` e `gte: 11`. Com `eh_mmc`, o caso fracionário já ficava bloqueado. | No modo MMC, o passo calcula as métricas com a mesma função do widget e os parâmetros e controles atuais. Essas métricas prevalecem sobre controles com o mesmo nome. Assim, `NaN` bloqueia a conclusão mesmo antes de o widget emitir métricas para a nova posição do slider. |
+
+Os três testes de escala falharam contra uma cópia temporária do desenho no `HEAD` e passaram com a correção. A comparação do desenho e dos alvos a 364 px de canvas preservou os 20 estados da aula de notação científica.
+
+O teste de regressão em `src/widgets/common/grupos/grupos-conclusao.test.tsx` falhou antes da correção com `m = 11,5` e passou depois. No Chrome, esse total ficou bloqueado pelas regras sobre `m`, `eh_mmc` e `resto`. O total 12 concluiu pelas três regras e 24 ficou bloqueado pela regra sobre `eh_mmc`. No passo atual de divisibilidade, 4 e 8 mantiveram Continuar bloqueado, 12 o liberou e voltar a 8 preservou a conclusão. A composição de métricas dos outros widgets e modos preserva a precedência anterior.
+
+O typecheck, os 38 testes focados de grupos e escala e os 2.154 testes da suíte completa passaram. O lint de conteúdo passou com um preload temporário para contornar a falha de `os.userInfo()` no Windows.
+
+A varredura completa com `node scripts/varre-aulas.mjs 5246` verificou 104 aulas, 560 passos e 104 treinos. Todos os treinos abriram e houve zero problemas. O relatório gerado pela varredura ficou em uma pasta temporária para preservar o arquivo da revisão visual no repositório.
+
+### B46b
+
+O registro aceita uma função pura opcional `metricas(params, controls)`. O `InteractiveCanvas` usa essa função durante a renderização, com os parâmetros efetivos do passo. As métricas calculadas prevalecem sobre controles de mesmo nome. Widgets sem a função continuam emitindo métricas por `onMetric`, com a mesma precedência de antes.
+
+Grupos, escala, divisão polinomial e sistema escalonado delegam às funções de cálculo existentes. O registro valida os parâmetros com os schemas existentes e preserva o tratamento de valores não finitos de cada widget. O teste de grupos usa o registro real. O teste do passo com um widget falso cobre a precedência nos dois sentidos e o caso sem função.
+
+A comparação dos 31 estados de controle nos 11 passos afetados confirmou os mesmos resultados de conclusão. A suíte completa passou com 2.186 testes em 137 arquivos. O typecheck e o lint de conteúdo passaram.
+
+**Estado na parada da B46b.** Refatoração genérica e testes gravados nos arquivos do registro, em `src/steps/InteractiveCanvas.tsx`, `src/steps/InteractiveCanvas.test.tsx` e no teste de conclusão de grupos. A varredura final informou 104 aulas, 560 passos e 104 treinos abertos, com zero problemas. A execução foi interrompida no encerramento, após um aviso sobre a limpeza do perfil temporário do Chrome. Nenhuma correção técnica está pendente. O marcador `PRONTO B46b` ficou pendente devido ao pedido de parada.

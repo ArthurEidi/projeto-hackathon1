@@ -11,7 +11,7 @@ import { duvidaLiberada, StepLayout } from "./StepLayout";
 import type { StepProps } from "./types";
 
 export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasStep>) {
-  const Widget = widgets[step.widget];
+  const { Widget, metricas } = widgets[step.widget];
   const [controls, setControls] = useState<Record<string, number>>(() =>
     Object.fromEntries(step.controls.map((c) => [c.id, c.initial])),
   );
@@ -23,10 +23,15 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
     () => Object.fromEntries(step.controls.map((c) => [c.id, { min: c.min, max: c.max }])),
     [step.controls],
   );
-  const metrics = useMemo(() => ({ ...widgetMetrics, ...controls }), [widgetMetrics, controls]);
   const params = useMemo(
     () => paramsDoPasso(step.params, step.antes_de_concluir, done),
     [step.params, step.antes_de_concluir, done],
+  );
+  const metrics = useMemo(
+    () => metricas
+      ? { ...controls, ...metricas(params, controls) }
+      : { ...widgetMetrics, ...controls },
+    [metricas, params, controls, widgetMetrics],
   );
 
   // Uma vez concluído, o passo continua concluído mesmo se o aluno voltar o controle.
@@ -38,8 +43,8 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
   }, [metrics, done, step.complete_when]);
 
   const onMetric = useCallback((name: string, value: number) => {
-    setWidgetMetrics((m) => (m[name] === value ? m : { ...m, [name]: value }));
-  }, []);
+    if (!metricas) setWidgetMetrics((m) => (m[name] === value ? m : { ...m, [name]: value }));
+  }, [metricas]);
   const onInteract = useCallback(() => setInteracted(true), []);
 
   const paco: PacoHumor = done ? "happy" : interacted ? "thinking" : "idle";

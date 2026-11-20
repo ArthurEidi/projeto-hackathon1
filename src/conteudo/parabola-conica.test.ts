@@ -152,4 +152,17 @@ describe("vestibular (B42, provas oficiais)", () => {
     expect(2 / 4).toBe(0.5);
     expect(certa("ita-2009-parabola")).toBe("1/2");
   });
+
+  it("V2 Unicamp 2019 Q69 (c): 3x² − y + 1 = 0 e x² + y² − 4y + 3 = 0 têm 3 interseções", () => {
+    const pts: [number, number][] = [
+      [0, 1],
+      [Math.sqrt(5) / 3, 8 / 3],
+      [-Math.sqrt(5) / 3, 8 / 3],
+    ];
+    for (const [x, y] of pts) {
+      expect(3 * x * x - y + 1).toBeCloseTo(0, 12);
+      expect(x * x + y * y - 4 * y + 3).toBeCloseTo(0, 12);
+    }
+    expect(certa("unicamp-2019-parabola-circunferencia")).toBe("três pontos");
+  });
 });

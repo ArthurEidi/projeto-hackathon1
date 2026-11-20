@@ -39,28 +39,61 @@ import { GruposFigura } from "./grupos/GruposFigura";
 import { SistemaEscalonadoWidget } from "./escalonado/SistemaEscalonadoWidget";
 import { SistemaEscalonadoFigura } from "./escalonado/SistemaEscalonadoFigura";
 
+import type { RegistroWidget } from "../registry";
+import { metricasEscala } from "./escala/calc";
+import { EscalaDecimal } from "./escala/params";
+import { metricasDivisao } from "./divisao/calc";
+import { DivisaoPolinomial } from "./divisao/params";
+import { metricasGrupos } from "./grupos/calc";
+import { Grupos } from "./grupos/params";
+import { metricasSistema } from "./escalonado/calc";
+import { SistemaEscalonado } from "./escalonado/params";
+
+function metricasComSchema<P>(
+  schema: { parse: (params: unknown) => P },
+  calcular: (params: P, controls: Record<string, number>) => Record<string, number>,
+  invalida = 0,
+): NonNullable<RegistroWidget["metricas"]> {
+  return (params, controls) => Object.fromEntries(
+    Object.entries(calcular(schema.parse(params), controls)).map(([nome, valor]) =>
+      [nome, Number.isFinite(valor) ? valor : invalida]),
+  );
+}
+
 export const widgets = {
-  maquinas_funcao: MaquinasWidget,
-  transformacao_plano: TransformacaoWidget,
-  retangulo_areas: AreasWidget,
-  vetores_no_plano: VetoresWidget,
-  circunferencia_no_plano: CircunferenciaWidget,
-  pontos_no_plano: PontosWidget,
-  lugar_geometrico: LugarWidget,
-  plano_cartesiano: PlanoCartesianoWidget,
-  reta_numerica: RetaNumericaWidget,
-  barras: BarrasWidget,
-  grade_resultados: GradeWidget,
-  solido_3d: SolidoWidget,
-  geometria_triangulo: GeometriaTrianguloWidget,
-  ciclo_trigonometrico: CicloTrigonometricoWidget,
-  geometria_poligono: GeometriaPoligonoWidget,
-  geometria_circulo: GeometriaCirculoWidget,
-  escala_decimal: EscalaWidget,
-  divisao_polinomial: DivisaoWidget,
-  grupos_inteiros: GruposWidget,
-  sistema_escalonado: SistemaEscalonadoWidget,
-};
+  maquinas_funcao: { Widget: MaquinasWidget },
+  transformacao_plano: { Widget: TransformacaoWidget },
+  retangulo_areas: { Widget: AreasWidget },
+  vetores_no_plano: { Widget: VetoresWidget },
+  circunferencia_no_plano: { Widget: CircunferenciaWidget },
+  pontos_no_plano: { Widget: PontosWidget },
+  lugar_geometrico: { Widget: LugarWidget },
+  plano_cartesiano: { Widget: PlanoCartesianoWidget },
+  reta_numerica: { Widget: RetaNumericaWidget },
+  barras: { Widget: BarrasWidget },
+  grade_resultados: { Widget: GradeWidget },
+  solido_3d: { Widget: SolidoWidget },
+  geometria_triangulo: { Widget: GeometriaTrianguloWidget },
+  ciclo_trigonometrico: { Widget: CicloTrigonometricoWidget },
+  geometria_poligono: { Widget: GeometriaPoligonoWidget },
+  geometria_circulo: { Widget: GeometriaCirculoWidget },
+  escala_decimal: {
+    Widget: EscalaWidget,
+    metricas: metricasComSchema(EscalaDecimal, metricasEscala),
+  },
+  divisao_polinomial: {
+    Widget: DivisaoWidget,
+    metricas: metricasComSchema(DivisaoPolinomial, metricasDivisao),
+  },
+  grupos_inteiros: {
+    Widget: GruposWidget,
+    metricas: metricasComSchema(Grupos, metricasGrupos, NaN),
+  },
+  sistema_escalonado: {
+    Widget: SistemaEscalonadoWidget,
+    metricas: metricasComSchema(SistemaEscalonado, metricasSistema),
+  },
+} satisfies Record<string, RegistroWidget>;
 
 export const figures = {
   maquinas_figura: MaquinasFigura,

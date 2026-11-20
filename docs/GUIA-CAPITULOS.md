@@ -825,7 +825,7 @@ Quadro de ordens decimais (`C`, `D`, `U`, `d`, `c`, expandindo para `UM` / `m` q
 - **Modo `"ordem"`:**
   - `a`: coeficiente, número ou expressão com slider (padrão `2`).
   - `n`: expoente base inteiro em `-6..6` (padrão `2`); compara `a` com `√10` entre `10ⁿ` e `10ⁿ⁺¹` (empate sobe).
-- O quadro exibe até nove colunas, incluindo `…` onde há ordens omitidas. A régua de potências mantém até oito marcas rotuladas e inclui os extremos da faixa. O chip de `N` usa notação científica quando o valor decimal é pequeno demais para a precisão padrão ou quando o texto excede o espaço disponível.
+- O quadro exibe até nove colunas, incluindo `…` onde há ordens omitidas. A régua de potências mantém até oito marcas rotuladas. Ela inclui os extremos e, quando visíveis, as graduações do expoente ativo e da referência dentro da faixa. O cabeçalho ajusta a posição e a largura dos chips ao espaço disponível. Com `mostrar_notacao: false`, o chip de `N` usa a representação decimal, inclusive para valores pequenos. Nos demais casos, pode usar notação científica se o formato decimal padrão arredondar um valor não nulo para zero ou exceder o espaço disponível.
 - **Métricas emitidas:** `n`, `a`, `valor`, `normalizado` (`0` ou `1`), `ordem_exp`.
 - **Exemplo de JSON:**
 ```jsonc
@@ -873,7 +873,7 @@ Organiza `n` fichas em grupos completos de tamanho `d` (quociente `q` e resto `r
   - `referencia_d`: inteiro `1..12` opcional para referência em `muted`.
   - `mostrar_resto`: booleano (padrão `true`).
 - Ao atingir a altura disponível, o desenho de grupos indica as fichas omitidas com `+ k fichas`. As métricas usam as quantidades completas.
-- **Métricas emitidas:** `n`, `d`, `q`, `resto`, `m` (no modo `"mmc"`, `m`, `d`, `q`, `resto`, `resto_a`, `resto_b` e `eh_mmc`). Para pedir o menor múltiplo comum, use `{ "metric": "eh_mmc", "gte": 1 }`. `eh_mmc` vale `1` quando `m = mmc(a, b)` e `0` para os demais totais válidos. Se o `m` avaliado for inválido, o widget mostra a mensagem de erro e as métricas ficam indisponíveis para conclusão.
+- **Métricas emitidas:** `n`, `d`, `q`, `resto`, `m` (no modo `"mmc"`, `m`, `d`, `q`, `resto`, `resto_a`, `resto_b` e `eh_mmc`). Para pedir o menor múltiplo comum, use `{ "metric": "eh_mmc", "gte": 1 }`. `eh_mmc` vale `1` quando `m = mmc(a, b)` e `0` para os demais totais válidos. O passo usa o `m` avaliado pelo widget mesmo quando um controle também se chama `m`. Se o total avaliado for inválido, o widget mostra a mensagem de erro e as métricas de MMC ficam indisponíveis para conclusão.
 - **Exemplo de JSON:**
 ```jsonc
 {

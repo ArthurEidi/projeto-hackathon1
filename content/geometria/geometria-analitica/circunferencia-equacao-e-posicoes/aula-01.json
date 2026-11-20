@@ -700,6 +700,46 @@
           { "id": "c4", "label": "x² + (y − 2)² = 4", "correct": false, "feedback": "x² + (y − 2)² = 4 passa por O, A(0; 4) e D(2; 2) (E(0; 2) é o centro, dá 0 ≠ 4): 2 · 2 = 4 pontos. Já (x − 2)² + (y − 2)² = 8 faz 6 pontos." },
           { "id": "c8", "label": "(x − 2)² + (y − 2)² = 8", "correct": true, "feedback": "Isso. Passa por O(0; 0), A(0; 4), B(4; 4) e C(4; 0): 3 pontos · 2 = 6 pontos." }
         ]
+      },
+      {
+        "id": "unicamp-2020-circunferencia-c",
+        "prompt": "No plano cartesiano, considere a circunferência de equação x² + y² = 2cx, com c > 0, e a reta x + 2y = 3. Se o centro da circunferência pertence à reta, quanto vale c?",
+        "fala": "Complete o quadrado em x para achar as coordenadas do centro em função de c e substitua na equação da reta.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2020,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Questão 43: enunciado reescrito em formato direto; alternativas e gabarito oficial (d) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2020/10/prova_comentada_F1_2020.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "√2",
+            "correct": false,
+            "feedback": "Em x² − 2cx + y² = 0, completar o quadrado dá (x − c)² + y² = c², com centro (c; 0). Na reta x + 2y = 3, vem c + 0 = 3, não √2."
+          },
+          {
+            "id": "b",
+            "label": "√3",
+            "correct": false,
+            "feedback": "Você tirou a raiz de 3 como se c² = 3, mas o centro é (c; 0) (não c²). Substituindo (c; 0) em x + 2y = 3, obtemos c = 3."
+          },
+          {
+            "id": "c",
+            "label": "2",
+            "correct": false,
+            "feedback": "Em (x − c)² + y² = c², o centro é (c; 0). Ao substituir y = 0 em x + 2y = 3, resta c = 3, não 2."
+          },
+          {
+            "id": "d",
+            "label": "3",
+            "correct": true,
+            "feedback": "Isso. Completando o quadrado, (x − c)² + y² = c² tem centro (c; 0). Como o centro pertence à reta x + 2y = 3, temos c + 2 · 0 = 3, logo c = 3."
+          }
+        ]
       }
     ]
   }

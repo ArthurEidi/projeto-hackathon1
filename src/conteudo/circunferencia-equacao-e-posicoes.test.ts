@@ -151,4 +151,10 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(naCirc(0, 0) && naCirc(0, 4) && naCirc(4, 4) && naCirc(4, 0)).toBe(true);
     expect(certa("enem-2018-tiros")).toBe("(x − 2)² + (y − 2)² = 8");
   });
+
+  it("V2 unicamp-2020-circunferencia-c: centro (c, 0) na reta x + 2y = 3 dá c = 3", () => {
+    const c = 3;
+    expect(c + 2 * 0).toBe(3);
+    expect(certa("unicamp-2020-circunferencia-c")).toBe("3");
+  });
 });

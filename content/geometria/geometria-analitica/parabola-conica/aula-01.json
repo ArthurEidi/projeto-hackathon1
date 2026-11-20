@@ -659,6 +659,46 @@
             "feedback": "Isso. 2x² − 4x + 3 = 4y vira (x − 1)² = 2(y − 1/4): é x² = 4py deslocada, com 4p = 2, então p = 1/2."
           }
         ]
+      },
+      {
+        "id": "unicamp-2019-parabola-circunferencia",
+        "prompt": "No plano cartesiano, considere a circunferência x² + y² − 4y + 3 = 0 e a parábola 3x² − y + 1 = 0. Em quantos pontos essas duas curvas se interceptam?",
+        "fala": "Isole x² na equação da parábola, substitua na equação da circunferência e conte quantos valores reais de x cada raiz de y produz.",
+        "fonte": {
+          "banca": "Unicamp",
+          "ano": 2019,
+          "adaptada": true,
+          "adaptacao": "1ª fase, Matemática, Questão 69: enunciado reescrito em formato de pergunta; alternativas e gabarito oficial (c) mantidos.",
+          "urls": [
+            "https://www.comvest.unicamp.br/wp-content/uploads/2019/08/Matematica2019F1_final.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "um ponto",
+            "correct": false,
+            "feedback": "Substituindo x² = (y − 1)/3 na circunferência, obtemos 3y² − 11y + 8 = 0, com y = 1 (x = 0, 1 ponto) e y = 8/3 (x = ±√5/3, 2 pontos): ao todo 3 pontos, não 1."
+          },
+          {
+            "id": "b",
+            "label": "dois pontos",
+            "correct": false,
+            "feedback": "3y² − 11y + 8 = 0 dá dois valores de y (1 e 8/3), mas cada y > 1 gera dois x simétricos: y = 8/3 dá 2 pontos e o vértice (0; 1) tangencia a circunferência, somando 3 pontos."
+          },
+          {
+            "id": "c",
+            "label": "três pontos",
+            "correct": true,
+            "feedback": "Isso. Com x² = (y − 1)/3 na circunferência vem 3y² − 11y + 8 = 0: y = 1 dá x = 0 (o ponto (0; 1)) e y = 8/3 dá x² = 5/9 (dois pontos (±√5/3; 8/3)), totalizando 3 pontos."
+          },
+          {
+            "id": "d",
+            "label": "quatro pontos",
+            "correct": false,
+            "feedback": "Se ambos os valores de y dessem dois x distintos, seriam 4 pontos; mas para y = 1 temos x² = (1 − 1)/3 = 0, que dá só um ponto (0; 1). Total: 3 pontos."
+          }
+        ]
       }
     ]
   }

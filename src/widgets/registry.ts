@@ -1,19 +1,25 @@
 import type { ComponentType } from "react";
+import type { z } from "zod";
 import * as common from "./common";
 import { ConeFigure } from "./ConeFigure";
 import { GeneratrixWidget } from "./GeneratrixWidget";
 import type { FigureId, WidgetId, figureParams } from "./params";
 import { RevolutionWidget } from "./RevolutionWidget";
 import type { WidgetProps } from "./types";
-import type { z } from "zod";
+
+export type RegistroWidget = {
+  Widget: ComponentType<WidgetProps>;
+  /** Métricas síncronas usadas para concluir o passo com os parâmetros e controles atuais. */
+  metricas?: (params: WidgetProps["params"], controls: WidgetProps["controls"]) => Record<string, number>;
+};
 
 // Para registrar um capítulo: crie src/widgets/<unidade>/index.ts exportando { widgets, figures }
 // e espalhe aqui (...capitulo.widgets / ...capitulo.figures). Os schemas vão em params.ts.
 
 /** Widgets interativos do passo interactive_canvas, referenciados pelo campo "widget" do JSON. */
-export const widgets: Record<WidgetId, ComponentType<WidgetProps>> = {
-  revolution: RevolutionWidget,
-  generatrix: GeneratrixWidget,
+export const widgets: Record<WidgetId, RegistroWidget> = {
+  revolution: { Widget: RevolutionWidget },
+  generatrix: { Widget: GeneratrixWidget },
   ...common.widgets,
 };
 

@@ -730,6 +730,52 @@
             "feedback": "Exato. 1,5/X < 1/10 dá X > 15,0 kg."
           }
         ]
+      },
+      {
+        "id": "enem-2012-cafe",
+        "prompt": "Em talhões de 30 000 m², o desvio padrão de café foi 90 kg/talhão. Em sacas de 60 kg por hectare (10 000 m²), qual é a variância?",
+        "fala": "Passe o desvio padrão para sacas por hectare (1 saca = 60 kg; 1 ha = 10 000 m²) e eleve ao quadrado para obter a variância.",
+        "fonte": {
+          "banca": "ENEM",
+          "ano": 2012,
+          "adaptada": true,
+          "adaptacao": "Questão 176: enunciado resumido; alternativas e gabarito oficial (0,25) mantidos.",
+          "urls": [
+            "https://api.enem.dev/v1/exams/2012/questions/176"
+          ]
+        },
+        "options": [
+          {
+            "id": "a2025",
+            "label": "20,25",
+            "correct": false,
+            "feedback": "20,25 = (1,5 × 3)² multiplica por 3 ha em vez de dividir. Dividindo por 3 ha dá 0,5 saca/ha e variância 0,5² = 0,25."
+          },
+          {
+            "id": "a450",
+            "label": "4,50",
+            "correct": false,
+            "feedback": "4,50 = 1,5 × 3 multiplica por 3 ha e não eleva ao quadrado. Por hectare fica 0,5 saca/ha e variância 0,5² = 0,25."
+          },
+          {
+            "id": "a071",
+            "label": "0,71",
+            "correct": false,
+            "feedback": "0,71 ≈ √0,5 tira a raiz em vez de elevar ao quadrado. A variância é o quadrado do desvio padrão: 0,5² = 0,25."
+          },
+          {
+            "id": "a050",
+            "label": "0,50",
+            "correct": false,
+            "feedback": "0,50 é o desvio padrão em sacas/hectare (90 / 60 / 3). Falta elevar ao quadrado: variância 0,50² = 0,25."
+          },
+          {
+            "id": "a025",
+            "label": "0,25",
+            "correct": true,
+            "feedback": "Exato. 90 kg = 1,5 saca em 3 ha dá desvio padrão 0,5 saca/ha, e a variância é 0,5² = 0,25."
+          }
+        ]
       }
     ]
   }

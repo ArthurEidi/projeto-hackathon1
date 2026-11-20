@@ -247,13 +247,33 @@ Somar uma constante a todos os valores desloca a régua inteira e não muda o de
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** comparar regularidade pelo desvio padrão.
-- **Onde procurar:** ENEM (questões de "mais regular", sem imagem).
+#### V1 — `enem-2021-racao`
+- **Enunciado (resumido):** "Ração atual tem média 10 kg e desvio padrão 1 kg; a nova tem desvio 1,5 kg; qual média torna menor o coeficiente CV = s/X?"
+- **Fala do Paco:** "Compare CV_nova = 1,5/X com CV_atual = 1/10 = 0,1."
+- **Fonte:** ENEM 2021 (adaptada) — **Adaptação:** Questão 146: enunciado resumido; alternativas e gabarito (15,0) mantidos. — **URL:** https://api.enem.dev/v1/exams/2021/questions/146
+- **Conta de conferência:** 1,5 / X < 1 / 10 ⇒ X > 15,0.
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** coeficiente de variação. (A questão ENEM 2021 de ração de coelhos foi encontrada só em resumo e com gabarito ambíguo; não usar sem conferir o caderno oficial.)
-- **Onde procurar:** ENEM 2021, caderno oficial do INEP.
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a50` | 5,0 | não | "Com média 5,0, CV = 1,5/5 = 0,30 > 0,10; para baixar de 0,10 exige média > 15,0." |
+| `a95` | 9,5 | não | "9,5 = 10 − 0,5 desconta da média o aumento do desvio. CV é razão: 1,5/X < 1/10 exige X > 15,0." |
+| `a100` | 10,0 | não | "10,0 daria CV = 1,5/10 = 0,15 > 0,10; o desvio subiu 50%, então a média precisa passar de 15,0." |
+| `a105` | 10,5 | não | "10,5 soma apenas 0,5 em vez de manter a razão 1,5/X < 0,1; precisa X > 15,0." |
+| `a150` | 15,0 | **sim** | "Exato. 1,5/X < 1/10 dá X > 15,0 kg." |
+
+#### V2 — `enem-2012-cafe`
+- **Enunciado (resumido):** "Em talhões de 30 000 m², o desvio padrão de café foi 90 kg/talhão. Em sacas de 60 kg por hectare (10 000 m²), qual é a variância?"
+- **Fala do Paco:** "Passe o desvio padrão para sacas por hectare (1 saca = 60 kg; 1 ha = 10 000 m²) e eleve ao quadrado para obter a variância."
+- **Fonte:** ENEM 2012 (adaptada) — **Adaptação:** Questão 176: enunciado resumido; alternativas e gabarito oficial (0,25) mantidos. — **URL:** https://api.enem.dev/v1/exams/2012/questions/176
+- **Conta de conferência:** 90 kg / 60 kg = 1,5 saca por talhão; 30 000 m² = 3 ha ⇒ desvio padrão = 1,5 / 3 = 0,5 saca/ha ⇒ variância = 0,5² = 0,25 (sacas/hectare)².
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a2025` | 20,25 | não | "20,25 = (1,5 × 3)² multiplica por 3 ha em vez de dividir. Dividindo por 3 ha dá 0,5 saca/ha e variância 0,5² = 0,25." |
+| `a450` | 4,50 | não | "4,50 = 1,5 × 3 multiplica por 3 ha e não eleva ao quadrado. Por hectare fica 0,5 saca/ha e variância 0,5² = 0,25." |
+| `a071` | 0,71 | não | "0,71 ≈ √0,5 tira a raiz em vez de elevar ao quadrado. A variância é o quadrado do desvio padrão: 0,5² = 0,25." |
+| `a050` | 0,50 | não | "0,50 é o desvio padrão em sacas/hectare (90 / 60 / 3). Falta elevar ao quadrado: variância 0,50² = 0,25." |
+| `a025` | 0,25 | **sim** | "Exato. 90 kg = 1,5 saca em 3 ha dá desvio padrão 0,5 saca/ha, e a variância é 0,5² = 0,25." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** calcular variância de uma lista curta.

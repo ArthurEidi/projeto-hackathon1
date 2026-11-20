@@ -168,4 +168,17 @@ describe("gabaritos do treino", () => {
     }
     expect(certa("unicamp-2021-mediatriz")).toBe("2x − y = 3");
   });
+
+  it("V3 ufpr-2022-reta-paralela-bc: D = (5, 0) e paralela a BC dá 3x + 2y = 15", () => {
+    const mAB = (6 - -4) / (8 - 3);
+    expect(mAB).toBe(2);
+    // y - (-4) = 2(x - 3) => 0 + 4 = 2(xD - 3) => xD = 5
+    const xD = 3 + 4 / mAB;
+    expect(xD).toBe(5);
+    const mBC = (2 - -4) / (-1 - 3);
+    expect(mBC).toBe(-1.5);
+    // 3x + 2y = 15 tem inclinação -3/2 e passa por (5, 0)
+    expect(3 * xD + 2 * 0).toBe(15);
+    expect(certa("ufpr-2022-reta-paralela-bc")).toBe("3x + 2y = 15");
+  });
 });

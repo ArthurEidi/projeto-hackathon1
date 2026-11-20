@@ -145,3 +145,35 @@ it.each([20, -20])("limita o quadro e a régua no expoente %i", (n) => {
   expect(valor.x).toBeGreaterThanOrEqual(0);
   expect(valor.x + valor.w).toBeLessThanOrEqual(w);
 });
+
+describe("correções B46 (escala)", () => {
+  it("exibe o decimal sem revelar a notação científica", () => {
+    const { ctx, textos } = gravarCanvas();
+    const p = EscalaDecimal.parse({ modo: "potencia", a: 2, n: -3, mostrar_notacao: false });
+    desenharEscala(ctx, 364, 284, [], p, {});
+    expect(textos.filter((t) => t.texto.startsWith("N = ")).map((t) => t.texto)).toEqual(["N = 0,002"]);
+  });
+
+  it("dá ao chip de N espaço próprio ao lado do expoente", () => {
+    const w = 364;
+    const { ctx } = gravarCanvas();
+    const hits: Parameters<typeof desenharEscala>[3] = [];
+    const p = EscalaDecimal.parse({ modo: "potencia", a: 1.234567891, n: 20 });
+    desenharEscala(ctx, w, 284, hits, p, {});
+    const expoente = hits.find((hit) => hit.key === "c2")!;
+    const valor = hits.find((hit) => hit.key === "c3")!;
+    expect(valor.x).toBeGreaterThanOrEqual(expoente.x + expoente.w + 8);
+    expect(valor.x + valor.w).toBeLessThanOrEqual(w - 5);
+  });
+
+  it("reserva graduações para os extremos, o ponto ativo e a referência", () => {
+    const { ctx, textos } = gravarCanvas();
+    const h = 284;
+    const p = EscalaDecimal.parse({ modo: "potencia", a: 2, n: 2, faixa_n: [-6, 6], n_ref: 0 });
+    desenharEscala(ctx, 364, h, [], p, {});
+    const marcas = textos.filter((t) => t.y === h - 28);
+    expect(marcas).toHaveLength(8);
+    expect(marcas.map((t) => t.texto)).toEqual(expect.arrayContaining(["10⁻⁶", "10⁰", "10²", "10⁶"]));
+    expect(new Set(marcas.map((t) => t.x)).size).toBe(8);
+  });
+});

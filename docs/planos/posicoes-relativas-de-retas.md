@@ -269,9 +269,10 @@ A regra m₁ · m₂ = −1 não vale para o par horizontal–vertical (a vertic
 - **Habilidade-alvo:** condição de perpendicularidade.
 - **Onde procurar:** UFRGS, PUC-RJ, UFES.
 
-#### V3 — PENDENTE-FONTE
+#### V3 — UFPR 2022 (1ª fase, Q13) · `ufpr-2022-reta-paralela-bc`
 - **Habilidade-alvo:** retas paralelas por um ponto dado.
-- **Onde procurar:** Unesp, Fuvest.
+- **Fonte:** UFPR 2022, 1ª fase, Conhecimentos Gerais, Q13 (`https://servicos.nc.ufpr.br/documentos/PS2022/provas/Geral.pdf`).
+- **Gabarito:** `3x + 2y = 15` (alternativa a). `AB` tem `m = 2`, cortando o eixo `x` em `D(5; 0)`; `BC` tem `m = −3/2`, logo `r` por `D` paralela a `BC` é `3x + 2y = 15`.
 
 #### V4 — PENDENTE-FONTE
 - **Habilidade-alvo:** classificar um sistema 2 × 2 pela posição das retas.

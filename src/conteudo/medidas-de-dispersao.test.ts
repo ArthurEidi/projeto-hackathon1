@@ -101,6 +101,10 @@ describe("gabaritos do treino", () => {
   it("vestibular: conta e fonte conferidas", () => {
     expect(1.5 / (1 / 10)).toBeCloseTo(15, 10);
     expect(num(certa("enem-2021-racao"))).toBe(15);
+    const dpSacasHa = 90 / 60 / (30_000 / 10_000);
+    expect(dpSacasHa).toBeCloseTo(0.5, 10);
+    expect(dpSacasHa * dpSacasHa).toBeCloseTo(0.25, 10);
+    expect(num(certa("enem-2012-cafe"))).toBe(0.25);
     for (const q of L.treino.vestibular) expect(q.fonte.urls.length).toBeGreaterThan(0);
   });
 });

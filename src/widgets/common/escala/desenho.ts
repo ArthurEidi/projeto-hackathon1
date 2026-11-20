@@ -128,17 +128,71 @@ function destacarChipSeAtivo(
   ctx.restore();
 }
 
-function etiquetaValor(ctx: CanvasRenderingContext2D, w: number, hits: Hit[], x: number, valor: number) {
+const decimal = new Intl.NumberFormat("pt-BR", { useGrouping: false, maximumSignificantDigits: 21 });
+const margemChips = 5;
+const espacoChips = 10;
+
+function larguraChip(ctx: CanvasRenderingContext2D, texto: string): number {
   ctx.font = "900 16px Nunito, system-ui, sans-serif";
-  const margem = 5;
-  let texto = `N = ${fmt(valor)}`;
-  const larguraChip = () => ctx.measureText(texto).width + 16;
-  if (larguraChip() > 2 * (Math.min(x, w - x) - margem) || (valor !== 0 && fmt(valor) === "0")) {
-    const [a, n] = valor.toExponential().split("e");
-    texto = `N = ${a.replace(".", ",").replace("-", "−")}·${potenciaLabel(Number(n))}`;
+  return Math.max(28, ctx.measureText(texto).width + 16);
+}
+
+function textoValor(ctx: CanvasRenderingContext2D, w: number, x: number, valor: number, mostrarNotacao = true) {
+  if (!mostrarNotacao) return `N = ${decimal.format(valor).replace("-", "−")}`;
+  const numero = fmt(valor);
+  const texto = `N = ${numero}`;
+  if (larguraChip(ctx, texto) <= 2 * (Math.min(x, w - x) - margemChips) && (valor === 0 || numero !== "0")) {
+    return texto;
   }
-  const meiaLargura = larguraChip() / 2 + margem;
-  etiqueta(ctx, hits, { x: Math.max(meiaLargura, Math.min(x, w - meiaLargura)), y: 20 }, texto, "c3");
+  const [a, n] = valor.toExponential().split("e");
+  return `N = ${a.replace(".", ",").replace("-", "−")}·${potenciaLabel(Number(n))}`;
+}
+
+function desenharChips(
+  ctx: CanvasRenderingContext2D, w: number, hits: Hit[],
+  chips: { x: number; texto: string; marca: Marca }[], highlight: readonly Marca[] = [],
+) {
+  const medidas = chips.map((c) => ({ ...c, largura: larguraChip(ctx, c.texto) }));
+  const cabe = medidas.every((c, i) => {
+    const anterior = medidas[i - 1];
+    const limiteEsq = anterior ? anterior.x + anterior.largura / 2 + espacoChips : margemChips;
+    return c.x - c.largura / 2 >= limiteEsq && c.x + c.largura / 2 <= w - margemChips;
+  });
+  const soma = medidas.reduce((total, c) => total + c.largura, 0);
+  const espacos = (chips.length - 1) * espacoChips;
+  const escala = cabe ? 1 : Math.min(1, (w - 2 * margemChips - espacos) / soma);
+  let esquerda = (w - (soma * escala + espacos)) / 2;
+  for (const c of medidas) {
+    const x = cabe ? c.x : esquerda + c.largura * escala / 2;
+    if (escala < 1) {
+      ctx.save();
+      ctx.translate(x, 0);
+      ctx.scale(escala, 1);
+      etiqueta(ctx, hits, { x: 0, y: 20 }, c.texto, c.marca);
+      ctx.restore();
+      const hit = hits[hits.length - 1];
+      hit.x = x + hit.x * escala;
+      hit.w *= escala;
+    } else {
+      etiqueta(ctx, hits, { x, y: 20 }, c.texto, c.marca);
+    }
+    destacarChipSeAtivo(ctx, hits, highlight, c.marca);
+    esquerda += c.largura * escala + espacoChips;
+  }
+}
+
+function graduacoes(inicio: number, fim: number, especiais: readonly number[]): number[] {
+  const intervalo = fim - inicio;
+  if (intervalo <= 7) return Array.from({ length: intervalo + 1 }, (_, i) => inicio + i);
+  const marcas = [...new Set([inicio, fim, ...especiais])].sort((a, b) => a - b);
+  // Divide a maior lacuna até completar a régua, preservando os pontos de interesse.
+  while (marcas.length < 8) {
+    const maior = marcas.slice(1).reduce((i, fim, j) =>
+      fim - marcas[j] > marcas[i + 1] - marcas[i] ? j : i, 0);
+    const meio = Math.round(marcas[maior] + (marcas[maior + 1] - marcas[maior]) / 2);
+    marcas.splice(maior + 1, 0, meio);
+  }
+  return marcas;
 }
 
 function desenharPotencia(
@@ -152,17 +206,13 @@ function desenharPotencia(
   const s = resolverEstado(p, ctl);
 
   // Chips do cabeçalho
-  if (p.mostrar_notacao) {
-    etiqueta(ctx, hits, { x: w * 0.2, y: 20 }, `a = ${fmt(s.a)}`, "c1");
-    destacarChipSeAtivo(ctx, hits, p.highlight, "c1");
-    etiqueta(ctx, hits, { x: w * 0.5, y: 20 }, `n = ${fmt(s.n)}`, "c2");
-    destacarChipSeAtivo(ctx, hits, p.highlight, "c2");
-    etiquetaValor(ctx, w, hits, w * 0.8, s.valor);
-    destacarChipSeAtivo(ctx, hits, p.highlight, "c3");
-  } else {
-    etiquetaValor(ctx, w, hits, w * 0.5, s.valor);
-    destacarChipSeAtivo(ctx, hits, p.highlight, "c3");
-  }
+  const xValor = w * (p.mostrar_notacao ? 0.8 : 0.5);
+  const valor = { x: xValor, texto: textoValor(ctx, w, xValor, s.valor, p.mostrar_notacao), marca: "c3" } as const;
+  desenharChips(ctx, w, hits, p.mostrar_notacao ? [
+    { x: w * 0.2, texto: `a = ${fmt(s.a)}`, marca: "c1" },
+    { x: w * 0.5, texto: `n = ${fmt(s.n)}`, marca: "c2" },
+    valor,
+  ] : [valor], p.highlight);
 
   // Quadro de ordens
   desenharQuadroOrdens(ctx, w, 46, s.valor, p.mostrar_notacao ? s.n : null, p.highlight);
@@ -177,9 +227,9 @@ function desenharPotencia(
 
   seg(ctx, { x: padX - 8, y: yAxis }, { x: w - padX + 8, y: yAxis }, palette.ink, 2);
 
-  const intervalos = Math.min(7, span);
-  for (let i = 0; i <= intervalos; i++) {
-    const k = nMin + Math.round((i / intervalos) * span);
+  const especiais = p.mostrar_notacao ? [s.n] : [];
+  if (p.mostrar_notacao && p.n_ref !== null && p.n_ref >= nMin && p.n_ref <= nMax) especiais.push(p.n_ref);
+  for (const k of graduacoes(nMin, nMax, especiais)) {
     const x = posX(k);
     const ativo = p.mostrar_notacao && k === s.n;
     const isRef = p.mostrar_notacao && p.n_ref !== null && k === p.n_ref;
@@ -223,9 +273,11 @@ function desenharNormalizar(
 ) {
   const s = resolverEstado(p, ctl);
 
-  etiqueta(ctx, hits, { x: w * 0.2, y: 20 }, `a = ${fmt(s.a)}`, "c1");
-  etiqueta(ctx, hits, { x: w * 0.5, y: 20 }, `n = ${fmt(s.n)}`, "c2");
-  etiquetaValor(ctx, w, hits, w * 0.8, s.valor);
+  desenharChips(ctx, w, hits, [
+    { x: w * 0.2, texto: `a = ${fmt(s.a)}`, marca: "c1" },
+    { x: w * 0.5, texto: `n = ${fmt(s.n)}`, marca: "c2" },
+    { x: w * 0.8, texto: textoValor(ctx, w, w * 0.8, s.valor), marca: "c3" },
+  ]);
 
   desenharQuadroOrdens(ctx, w, 46, s.valor, s.n, p.highlight);
 
@@ -295,9 +347,11 @@ function desenharOrdem(
   const expSup = p.n + 1;
   const acima = s.a >= Math.sqrt(10) - 1e-9;
 
-  etiqueta(ctx, hits, { x: w * 0.2, y: 20 }, `a = ${fmt(s.a)}`, "c1");
-  etiquetaValor(ctx, w, hits, w * 0.5, s.valor);
-  etiqueta(ctx, hits, { x: w * 0.8, y: 20 }, `ordem: ${potenciaLabel(s.ordemExp)}`, "c4");
+  desenharChips(ctx, w, hits, [
+    { x: w * 0.2, texto: `a = ${fmt(s.a)}`, marca: "c1" },
+    { x: w * 0.5, texto: textoValor(ctx, w, w * 0.5, s.valor), marca: "c3" },
+    { x: w * 0.8, texto: `ordem: ${potenciaLabel(s.ordemExp)}`, marca: "c4" },
+  ]);
 
   const padX = 32;
   const x0 = padX;

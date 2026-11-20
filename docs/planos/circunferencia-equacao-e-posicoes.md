@@ -262,9 +262,10 @@ Raio zero reduz a curva a um ponto; r² negativo não desenha nada. Na forma ger
 | `c4` | x² + (y − 2)² = 4 | não | "x² + (y − 2)² = 4 passa por O, A(0; 4) e D(2; 2) (E(0; 2) é o centro, dá 0 ≠ 4): 2 · 2 = 4 pontos. Já (x − 2)² + (y − 2)² = 8 faz 6 pontos." |
 | `c8` | (x − 2)² + (y − 2)² = 8 | **sim** | "Isso. Passa por O(0; 0), A(0; 4), B(4; 4) e C(4; 0): 3 pontos · 2 = 6 pontos." |
 
-#### V2 — PENDENTE-FONTE
+#### V2 — Unicamp 2020 (1ª fase, Q43) · `unicamp-2020-circunferencia-c`
 - **Habilidade-alvo:** centro e raio a partir da equação (com completar quadrado).
-- **Onde procurar:** UFRGS, Fuvest, UEL.
+- **Fonte:** Unicamp 2020, 1ª fase, Q43 (`https://www.comvest.unicamp.br/wp-content/uploads/2020/10/prova_comentada_F1_2020.pdf`).
+- **Gabarito:** `3` (alternativa d). Completando o quadrado em `x² − 2cx + y² = 0`, vem `(x − c)² + y² = c²`, centro `(c; 0)`. Substituindo na reta `x + 2y = 3`, resulta `c = 3`.
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** posição de reta e circunferência (distância do centro à reta).
