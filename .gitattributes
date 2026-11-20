@@ -1,0 +1,2 @@
+# Scripts do cmd.exe precisam de CRLF (com LF puro, goto e rótulos falham).
+*.cmd text eol=crlf

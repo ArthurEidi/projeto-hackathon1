@@ -18,6 +18,24 @@ npm run preview               # http://localhost:4173
 
 Teste feito em 15/11: `dist/` copiado para uma pasta `projeto-hackathon1/` e servido com `python -m http.server`, imitando o subcaminho do GitHub Pages. Trilha, sprites, aula `funcao-quadratica` e o vídeo de `cones` (`/projeto-hackathon1/videos/cones_aula01_corte.mp4`, 200) carregaram em 400 px, sem erro de JS. Única falha: `favicon.ico` (o app não tem ícone; inofensivo).
 
+## Abrir no próprio PC (atalho, B51)
+
+Dê dois cliques em `scripts/abrir-app.cmd` ou num atalho para ele. Na Máquina A, desde 20/11, há o atalho **"App de Matemática"** na Área de Trabalho do OneDrive, com o ícone do Paco e "Iniciar em" na raiz do repositório. O ícone fica fora do repositório, em `C:\Users\mkf10\projetos\atalho-app\app-matematica.ico`.
+
+O script:
+1. Vai para a raiz do repositório e põe o Node no PATH, se precisar (`%ProgramFiles%\nodejs` ou `%USERPROFILE%\tools\node`).
+2. Roda `npm install` só se faltar `node_modules/`.
+3. Chama `scripts/abrir-app.mjs`, que roda `npm run build` só se `dist/` faltar ou for mais velho que o último commit ou que algum arquivo de `src/`, `content/`, `public/` e da configuração. Se o build falhar e houver um `dist/` anterior, abre esse.
+4. Sobe `vite preview` em **http://localhost:4173/** (`--strictPort`) e abre o navegador padrão. A janela fica aberta: **fechar a janela desliga o app**.
+
+Se o app já estiver no ar nessa porta, o atalho só abre o navegador. Se outro programa ocupar a 4173, a janela avisa e espera uma tecla. Para criar o atalho em outro PC, aponte um atalho para `scripts\abrir-app.cmd`, com "Iniciar em" na pasta do repositório.
+
+Teste em 20/11 (capturas em `C:\Users\mkf10\projetos\capturas-b51`):
+- Atalho aberto com `dist/` em dia: a página respondeu 200 e abriu a trilha em 400 px.
+- Atalho aberto de novo com o app no ar: só abriu o navegador, sem subir um segundo servidor.
+- Com conteúdo mais novo que o `dist/`: refez o build e subiu.
+- Fechar a árvore da janela liberou a porta.
+
 ## Opção 1: GitHub Pages (preparada)
 
 O workflow `.github/workflows/pages.yml` só roda à mão. Para publicar:
