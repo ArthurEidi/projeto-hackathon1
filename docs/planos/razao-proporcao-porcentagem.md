@@ -255,13 +255,13 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 #### V2 — `enem-2017-celular`
 - **Enunciado:** "Dois motoristas na mesma velocidade digitam olhando o celular; X leva 25% do tempo de Y. Qual a razão das distâncias às cegas de X e Y?"
-- **Fala do Paco:** "Com velocidade constante, d = v · t torna a razão das distâncias igual à razão dos tempos: 25% = 1/4."
+- **Fala do Paco:** "Com a mesma velocidade, d = v · t: como a razão dos tempos passa para a razão das distâncias?"
 - **Fonte:** ENEM 2017 (adaptada); Questão 164: enunciado resumido; alternativas e gabarito (1/4) mantidos; https://api.enem.dev/v1/exams/2017/questions/164
 - **Conta de conferência:** d_X / d_Y = (v · t_X)/(v · t_Y) = 25% = 1/4 (troca da repetida ENEM 2022/167).
 
 #### V3 — `enem-2022-caged`
 - **Enunciado:** "Em janeiro de 2013 foram criadas 28 900 vagas, uma queda de 75% ante 2012; quantas vagas foram criadas em 2012?"
-- **Fala do Paco:** "Se caiu 75%, o valor de 2013 representa apenas 25% (1/4) do total de 2012."
+- **Fala do Paco:** "Se caiu 75%, que fração do valor de 2012 sobrou em 2013?"
 - **Fonte:** ENEM 2022 (adaptada); Questão 154: enunciado resumido; alternativas e gabarito (115 600) mantidos; https://api.enem.dev/v1/exams/2022/questions/154
 - **Conta de conferência:** 28 900 / 0,25 = 115 600.
 

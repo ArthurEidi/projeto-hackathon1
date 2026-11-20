@@ -652,7 +652,7 @@
       {
         "id": "completar-quadrado",
         "prompt": "Qual o centro de x² + y² − 6x = 0?",
-        "fala": "Última. x² − 6x é o começo de (x − 3)².",
+        "fala": "Última. Complete o quadrado nos termos em x e compare com (x − a)² + (y − b)² = r².",
         "options": [
           {
             "id": "c30",

@@ -231,7 +231,7 @@ Testar o limite de validade do triângulo interno: como `a_p` é hipotenusa de `
 
 #### V1 — `enem-2009-piramide-pentagonal`
 - **Enunciado (resumido):** Um artesão corta uma pirâmide de base quadrada com um plano e obtém uma face pentagonal. Qual argumento justifica esse resultado?
-- **Fala do Paco:** "A interseção do plano com cada face atingida gera um lado do polígono de corte."
+- **Fala do Paco:** "Conte as faces da pirâmide e pense no que o plano deixa em cada face que atravessa."
 - **Fonte:** ENEM 2009, Questão 177 — `https://api.enem.dev/v1/exams/2009/questions/177`
 - **Adaptação:** enunciado resumido e rótulos das alternativas encurtados mantendo o sentido; gabarito (C) mantido.
 - **Conta de conferência:** pirâmide de base quadrada tem 5 faces (1 base + 4 laterais); se o plano interceptar todas as 5 faces, a seção tem 5 lados.

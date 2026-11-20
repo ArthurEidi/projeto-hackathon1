@@ -595,7 +595,7 @@
       {
         "id": "enem-2020-amostras",
         "prompt": "Num grupo de 200 amostras, 100 têm característica A, 110 têm B e 20 não têm nenhuma. Quantas têm apenas a característica A?",
-        "fala": "Ache a interseção com (100 + 110) − (200 − 20) = 30 e subtraia de 100.",
+        "fala": "Quem tem A ou B são 200 − 20. Use a união para achar quem tem as duas e tire esse grupo de A.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2020,
@@ -614,7 +614,7 @@
       {
         "id": "enem-2018-pena",
         "prompt": "Pena de 5 a 15 anos terá redução de 1/6 a 2/3. Qual é o intervalo possível para a nova pena?",
-        "fala": "O mínimo reduz o menor valor em 2/3 (sobra 1/3 de 5) e o máximo reduz o maior em 1/6 (sobra 5/6 de 15).",
+        "fala": "Para cada extremo da nova pena, escolha a pena e a redução que o tornam o menor ou o maior possível.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2018,

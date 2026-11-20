@@ -674,7 +674,7 @@
       {
         "id": "enem-2018-tenis",
         "prompt": "Em um torneio eliminatório simples com 128 tenistas, qual expressão dá o total de partidas até definir o campeão?",
-        "fala": "Na 1ª fase, 128 tenistas formam 64 duplas (64 jogos); depois 32, 16 e assim por diante.",
+        "fala": "Cada partida elimina um tenista. Quantos precisam ser eliminados até sobrar o campeão?",
         "fonte": {
           "banca": "ENEM",
           "ano": 2018,

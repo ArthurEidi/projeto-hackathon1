@@ -246,7 +246,7 @@ Percorremos x de −2 a 2: em x², ambos chegam a 4. Se o domínio vira [0; 2], 
 
 #### V2 — `enem-2021-hospedagem`
 - **Enunciado (resumido):** Um aplicativo cobra diária d por n diárias, taxa fixa de limpeza L e taxa de serviço s sobre o total das diárias. Qual é o preço P?
-- **Fala do Paco:** "O total das diárias é d·n, e a taxa percentual s incide sobre d·n (não sobre L)."
+- **Fala do Paco:** "Separe as parcelas do preço: diárias, limpeza e serviço. Sobre qual valor a taxa s é calculada?"
 - **Fonte:** ENEM 2021 — Questão 141 (`https://api.enem.dev/v1/exams/2021/questions/141`).
 - **Adaptação:** enunciado condensado mantendo variáveis e alternativas.
 - **Conta de conferência:** P = d·n + L + d·n·s (gabarito A).

@@ -605,7 +605,7 @@
       {
         "id": "enem-2018-remos",
         "prompt": "Dois remos de mesmo tamanho encontram-se no ponto A e formam um triângulo ABC com ângulo A = 170°. Como se classifica esse triângulo?",
-        "fala": "Observe ao mesmo tempo os dois lados iguais (AB = AC) e o ângulo A = 170° > 90°.",
+        "fala": "Classifique o triângulo duas vezes: pelos lados e pelo maior ângulo.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2018,

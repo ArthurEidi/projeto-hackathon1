@@ -615,7 +615,7 @@
       {
         "id": "enem-2021-hospedagem",
         "prompt": "Um aplicativo cobra diária d por n diárias, taxa fixa de limpeza L e taxa de serviço s sobre o total das diárias. Qual é o preço P?",
-        "fala": "O total das diárias é d·n, e a taxa percentual s incide sobre d·n (não sobre L).",
+        "fala": "Separe as parcelas do preço: diárias, limpeza e serviço. Sobre qual valor a taxa s é calculada?",
         "fonte": {
           "banca": "ENEM",
           "ano": 2021,

@@ -551,7 +551,7 @@
       {
         "id": "enem-2009-piramide-pentagonal",
         "prompt": "Um artesão corta uma pirâmide de base quadrada com um plano e obtém uma face pentagonal. Qual argumento justifica esse resultado?",
-        "fala": "A interseção do plano com cada face atingida gera um lado do polígono de corte.",
+        "fala": "Conte as faces da pirâmide e pense no que o plano deixa em cada face que atravessa.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2009,

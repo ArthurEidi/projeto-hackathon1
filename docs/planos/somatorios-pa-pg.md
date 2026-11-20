@@ -240,7 +240,7 @@ n é inteiro positivo. A fórmula da PG com 1−q exige q≠1; q=0 deixa apenas 
 
 #### V1 — `enem-2018-tenis`
 - **Enunciado:** Em um torneio eliminatório simples com 128 tenistas, qual expressão dá o total de partidas até definir o campeão?
-- **Fala do Paco:** "Na 1ª fase, 128 tenistas formam 64 duplas (64 jogos); depois 32, 16 e assim por diante."
+- **Fala do Paco:** "Cada partida elimina um tenista. Quantos precisam ser eliminados até sobrar o campeão?"
 - **Fonte:** ENEM 2018, Questão 162 — `https://api.enem.dev/v1/exams/2018/questions/162`
 - **Conta de conferência:** `128 / 2 = 64`; fases seguintes `32 + 16 + 8 + 4 + 2 + 1`, total `64 + 32 + 16 + 8 + 4 + 2 + 1 = 127`.
 - **Alternativas e feedback:** 2 · 128, 64 + ... + 2, 128 + ... + 1, 128 + ... + 2, 64 + 32 + 16 + 8 + 4 + 2 + 1 (correta).

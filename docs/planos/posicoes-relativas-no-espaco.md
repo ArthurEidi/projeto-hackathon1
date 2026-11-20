@@ -219,7 +219,7 @@ Girar a câmera mostra uma armadilha visual importante: vistas de frente, duas r
 
 #### D5 — `soma-determinacao-planos`
 - **Enunciado:** "4 pontos não coplanares (como os vértices de uma pirâmide triangular) determinam quantos planos distintos?"
-- **Fala do Paco:** "Cada trio de vértices fecha uma face da pirâmide."
+- **Fala do Paco:** "Três pontos não alinhados determinam um plano. Quantos trios saem de 4 pontos?"
 - **Conta de conferência:** C(4, 3) = 4 planos (as 4 faces do tetraedro)
 
 | id | Rótulo | Certa? | Feedback |

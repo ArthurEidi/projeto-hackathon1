@@ -251,13 +251,13 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 #### V1 — `enem-2010-petroleo`
 - **Enunciado:** "Se 10 litros de óleo contaminam 10⁷ litros de água, quantos litros serão contaminados por 1 000 litros de óleo?"
-- **Fala do Paco:** "Escreva 1 000 como 100 × 10 = 10² × 10 e multiplique 10⁷ por 10² somando os expoentes."
+- **Fala do Paco:** "Quantas vezes 1 000 L de óleo é maior que 10 L? A água contaminada cresce na mesma proporção."
 - **Fonte:** ENEM 2010 (adaptada); Questão 177: enunciado resumido; alternativas e gabarito (10⁹) mantidos; https://api.enem.dev/v1/exams/2010/questions/177
 - **Conta de conferência:** (1 000 / 10) · 10⁷ = 10² · 10⁷ = 10⁹.
 
 #### V2 — `enem-2012-mamiferos`
 - **Enunciado:** "Na lei A = k · m^(2/3), se a massa m de um animal fica 8 vezes maior, por qual fator a área A multiplica?"
-- **Fala do Paco:** "Substitua m por 8m: o fator é 8^(2/3) = (∛8)²."
+- **Fala do Paco:** "Troque m por 8m na lei e separe o fator que fica multiplicando k · m^(2/3)."
 - **Fonte:** ENEM 2012 (adaptada); Questão 168: enunciado resumido; alternativas e gabarito (4) mantidos; https://api.enem.dev/v1/exams/2012/questions/168
 - **Conta de conferência:** 8^(2/3) = (∛8)² = 2² = 4.
 

@@ -235,7 +235,7 @@
       {
         "id": "geratriz-3-3",
         "prompt": "Num cone, a altura e o raio medem 3. Quanto mede a geratriz?",
-        "fala": "Nem sempre a resposta é um número inteiro.",
+        "fala": "A geratriz é a hipotenusa do triângulo de catetos altura e raio.",
         "options": [
           { "id": "a6", "label": "6", "correct": false, "feedback": "Você somou os lados. Somam-se os quadrados: 9 + 9 = 18, e g = √18 = 3√2." },
           { "id": "a3raiz2", "label": "3√2", "correct": true, "feedback": "Certo. g² = 9 + 9 = 18, e √18 = 3√2, um pouco mais que 4." },
@@ -329,7 +329,7 @@
       {
         "id": "enem-2022-cone",
         "prompt": "Um chocolate cônico tem diâmetro 8 cm e altura 10 cm. Mantendo a altura e reduzindo o volume em 19%, qual será o novo raio da base?",
-        "fala": "Com altura fixa, o volume varia com r²: 1 − 0,19 = 0,81 = (r_novo / R)².",
+        "fala": "Com a altura fixa, o volume é proporcional a r². Que fração do volume sobra, e que razão de raios dá essa fração?",
         "fonte": {
           "banca": "ENEM",
           "ano": 2022,

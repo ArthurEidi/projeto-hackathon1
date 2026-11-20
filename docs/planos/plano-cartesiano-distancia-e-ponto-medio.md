@@ -237,7 +237,7 @@ Arrastar B pelos quatro quadrantes troca os sinais de Δx e Δy, mas a distânci
 
 #### D5 — `diagonal-unitaria`
 - **Enunciado:** "Qual a distância entre (1; 1) e (2; 2)?"
-- **Fala do Paco:** "Última. Nem toda distância é inteira."
+- **Fala do Paco:** "Última. Use Pitágoras com os deslocamentos em x e em y."
 - **Conta de conferência:** √(1 + 1) = √2
 
 | id | Rótulo | Certa? | Feedback |

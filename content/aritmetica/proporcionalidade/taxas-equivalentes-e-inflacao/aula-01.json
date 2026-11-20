@@ -632,7 +632,7 @@
       {
         "id": "taxas-equivalentes-e-inflacao-d5",
         "prompt": "2% ao mês por 12 meses são exatamente 24% efetivos?",
-        "fala": "Última. Doze fatores de 1,02 se multiplicam.",
+        "fala": "Última. Pense em dois meses: 2% sobre um saldo que já rendeu 2% dá exatamente 4%?",
         "options": [
           {
             "id": "o1",
@@ -653,7 +653,7 @@
       {
         "id": "enem-2011-aplicacao",
         "prompt": "Um capital perdeu 30% no 1º mês e recuperou 20% do que perdeu no 2º mês, restando R$ 3 800,00. Qual era o capital inicial?",
-        "fala": "Perdeu 0,30C e ganhou 0,20 · 0,30C = 0,06C; sobrou 0,76C = 3 800.",
+        "fala": "Escreva a perda e a recuperação em função do capital C e iguale o que sobrou a R$ 3 800.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2011,

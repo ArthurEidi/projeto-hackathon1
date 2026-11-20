@@ -249,13 +249,13 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 #### V1 — `enem-2020-amostras`
 - **Enunciado:** "Num grupo de 200 amostras, 100 têm característica A, 110 têm B e 20 não têm nenhuma. Quantas têm apenas a característica A?"
-- **Fala do Paco:** "Ache a interseção com (100 + 110) − (200 − 20) = 30 e subtraia de 100."
+- **Fala do Paco:** "Quem tem A ou B são 200 − 20. Use a união para achar quem tem as duas e tire esse grupo de A."
 - **Fonte:** ENEM 2020 (adaptada); Questão 169: enunciado resumido; alternativas e gabarito (70) mantidos; https://api.enem.dev/v1/exams/2020/questions/169
 - **Conta de conferência:** (100 + 110) − (200 − 20) = 30 => apenas A = 100 − 30 = 70.
 
 #### V2 — `enem-2018-pena`
 - **Enunciado:** "Pena de 5 a 15 anos terá redução de 1/6 a 2/3. Qual é o intervalo possível para a nova pena?"
-- **Fala do Paco:** "O mínimo reduz o menor valor em 2/3 (sobra 1/3 de 5) e o máximo reduz o maior em 1/6 (sobra 5/6 de 15)."
+- **Fala do Paco:** "Para cada extremo da nova pena, escolha a pena e a redução que o tornam o menor ou o maior possível."
 - **Fonte:** ENEM 2018 (adaptada); Questão 163: enunciado resumido; alternativas e gabarito (1 ano e 8 meses a 12 anos e 6 meses) mantidos; https://api.enem.dev/v1/exams/2018/questions/163
 - **Conta de conferência:** 5 · (1 − 2/3) = 5/3 = 1 ano e 8 meses; 15 · (1 − 1/6) = 12,5 = 12 anos e 6 meses.
 

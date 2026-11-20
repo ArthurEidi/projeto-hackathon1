@@ -262,13 +262,13 @@ n! cresce muito rápido: 5! = 120, 6! = 720. A fila vazia tem um único arranjo,
 
 #### V2 — `enem-2020-anagramas` (B42: substitui a ENEM 2012/144, que ficou só em `principio-fundamental-da-contagem`)
 - **Enunciado:** "Anagramas de I AM POTTER (9 letras, sem os espaços) com vogais e consoantes sempre intercaladas: quantos são?"
-- **Fala do Paco:** "São 5 consoantes e 4 vogais: a fila começa e termina em consoante. E o T aparece duas vezes."
+- **Fala do Paco:** "Conte vogais e consoantes e veja que casas cada grupo ocupa. Alguma letra se repete?"
 - **Fonte:** ENEM 2020 (adaptada); Questão 163: enunciado resumido, alternativas (imagens no original) transcritas; gabarito E; https://api.enem.dev/v1/exams/2020/questions/163
 - **Alternativas:** 9! · 4! · 5! · 2 · 4! · 5! · 9!/2 · **4! · 5!/2** (E).
 - **Conta de conferência:** consoantes M, P, T, T, R nas 5 casas ímpares: 5!/2! = 60; vogais I, A, O, E nas 4 pares: 4! = 24; 60 · 24 = 1 440 = 4! · 5!/2.
 
 #### V3 — `enem-2009-copa`
 - **Enunciado:** "De 12 cidades, 4 são sorteadas (sem ordem) para um torneio e depois 2 delas viram mandante e visitante. Que contagens são?"
-- **Fala do Paco:** "Veja se a ordem importa: o grupo de 4 cidades é sem ordem; escolher mandante e visitante tem ordem."
+- **Fala do Paco:** "Em cada etapa, pergunte: trocar a ordem dos escolhidos muda o resultado?"
 - **Fonte:** ENEM 2009 (adaptada); Questão 165: enunciado resumido; alternativas e gabarito (Uma combinação e um arranjo, respectivamente) mantidos; https://api.enem.dev/v1/exams/2009/questions/165
 - **Conta de conferência:** C(12; 4) (sem ordem) e A(4; 2) (com ordem).

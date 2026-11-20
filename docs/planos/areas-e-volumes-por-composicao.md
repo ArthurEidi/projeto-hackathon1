@@ -216,7 +216,7 @@ Testar o limite de uma cápsula quando o corpo cilíndrico encolhe até `h = 0`:
 
 #### D5 — `lapis-cilindro-mais-cone`
 - **Enunciado:** "Ao apontar um lápis cilíndrico de raio 1 cm, os últimos 3 cm de comprimento viram um cone de altura 3 cm. Quanto volume saiu?"
-- **Fala do Paco:** "Na faixa de 3 cm da ponta, o cone guarda 1/3 e as aparas levam 2/3!"
+- **Fala do Paco:** "Compare o volume do cilindro de 3 cm com o do cone que ficou no lugar dele."
 - **Conta de conferência:** o trecho cilíndrico de 3 cm tinha V = π·1²·3 = 3π; o cone ficou com 1π, logo perdeu-se 3π − 1π = 2π cm³
 
 | id | Rótulo | Certa? | Feedback |

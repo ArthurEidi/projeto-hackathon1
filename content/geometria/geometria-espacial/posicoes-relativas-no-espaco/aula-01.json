@@ -292,7 +292,7 @@
       {
         "id": "soma-determinacao-planos",
         "prompt": "4 pontos não coplanares (como os vértices de uma pirâmide triangular) determinam quantos planos distintos?",
-        "fala": "Cada trio de vértices fecha uma face da pirâmide.",
+        "fala": "Três pontos não alinhados determinam um plano. Quantos trios saem de 4 pontos?",
         "options": [
           { "id": "p4", "label": "4", "correct": true, "feedback": "Exato. Cada grupo de 3 pontos forma 1 face do tetraedro: são 4 planos." },
           { "id": "p1", "label": "1", "correct": false, "feedback": "Eles não estão no mesmo plano. Cada trio forma um plano: são 4." },

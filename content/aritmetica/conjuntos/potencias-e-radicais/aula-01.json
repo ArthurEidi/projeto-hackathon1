@@ -701,7 +701,7 @@
       {
         "id": "enem-2010-petroleo",
         "prompt": "Se 10 litros de óleo contaminam 10⁷ litros de água, quantos litros serão contaminados por 1 000 litros de óleo?",
-        "fala": "Escreva 1 000 como 100 × 10 = 10² × 10 e multiplique 10⁷ por 10² somando os expoentes.",
+        "fala": "Quantas vezes 1 000 L de óleo é maior que 10 L? A água contaminada cresce na mesma proporção.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2010,
@@ -720,7 +720,7 @@
       {
         "id": "enem-2012-mamiferos",
         "prompt": "Na lei A = k · m^(2/3), se a massa m de um animal fica 8 vezes maior, por qual fator a área A multiplica?",
-        "fala": "Substitua m por 8m: o fator é 8^(2/3) = (∛8)².",
+        "fala": "Troque m por 8m na lei e separe o fator que fica multiplicando k · m^(2/3).",
         "fonte": {
           "banca": "ENEM",
           "ano": 2012,

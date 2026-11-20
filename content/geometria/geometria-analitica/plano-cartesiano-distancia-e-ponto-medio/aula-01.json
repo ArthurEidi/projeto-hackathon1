@@ -682,7 +682,7 @@
       {
         "id": "diagonal-unitaria",
         "prompt": "Qual a distância entre (1; 1) e (2; 2)?",
-        "fala": "Última. Nem toda distância é inteira.",
+        "fala": "Última. Use Pitágoras com os deslocamentos em x e em y.",
         "options": [
           {
             "id": "raiz2",

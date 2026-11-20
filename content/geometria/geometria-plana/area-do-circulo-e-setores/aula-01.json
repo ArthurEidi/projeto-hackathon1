@@ -448,7 +448,7 @@
       {
         "id": "pizza-dobro-do-diametro",
         "prompt": "Uma pizza pequena tem 20 cm de diâmetro e a grande tem 40 cm (o dobro). Quantas pequenas têm a mesma área de 1 grande?",
-        "fala": "Dobrar o raio ou o diâmetro multiplica a área por 2² = 4!",
+        "fala": "A área depende do raio ao quadrado. O que acontece com ela quando o raio dobra?",
         "options": [
           {
             "id": "p4",

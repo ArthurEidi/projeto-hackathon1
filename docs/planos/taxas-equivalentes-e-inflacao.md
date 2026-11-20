@@ -238,7 +238,7 @@ Taxas mensal e anual sÃ³ se comparam apÃ³s conversÃ£o Ã  mesma janela te
 
 #### V1 — `enem-2011-aplicacao`
 - **Enunciado:** "Um capital perdeu 30% no 1º mês e recuperou 20% do que perdeu no 2º mês, restando R$ 3 800,00. Qual era o capital inicial?"
-- **Fala do Paco:** "Perdeu 0,30C e ganhou 0,20 · 0,30C = 0,06C; sobrou 0,76C = 3 800."
+- **Fala do Paco:** "Escreva a perda e a recuperação em função do capital C e iguale o que sobrou a R$ 3 800."
 - **Fonte:** ENEM 2011 (adaptada); Questão 160: enunciado resumido; alternativas limpas e gabarito (R$ 5 000,00) mantidos; https://api.enem.dev/v1/exams/2011/questions/160
 - **Conta de conferência:** (1 − 0,30 + 0,20 · 0,30) · C = 0,76C = 3 800 => C = 5 000,00 (troca da repetida ENEM 2019/153).
 

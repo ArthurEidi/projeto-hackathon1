@@ -252,7 +252,7 @@ Quando a soma de dois lados empata com o terceiro (b + c = a), o triângulo acha
 
 #### V1 — `enem-2018-remos`
 - **Enunciado (resumido):** Dois remos de mesmo tamanho encontram-se no ponto A e formam um triângulo ABC com ângulo A = 170°. Como se classifica esse triângulo?
-- **Fala do Paco:** "Observe ao mesmo tempo os dois lados iguais (AB = AC) e o ângulo A = 170° > 90°."
+- **Fala do Paco:** "Classifique o triângulo duas vezes: pelos lados e pelo maior ângulo."
 - **Fonte:** ENEM 2018, Questão 155 — `https://api.enem.dev/v1/exams/2018/questions/155`
 - **Adaptação:** enunciado resumido; alternativas e gabarito (`Obtusângulo isósceles`) mantidos.
 - **Conta de conferência:** `AB = AC` (isósceles) e `A = 170° > 90°` (obtusângulo).

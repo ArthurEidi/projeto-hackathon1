@@ -429,7 +429,7 @@
       {
         "id": "dobrar-raio-metade-altura",
         "prompt": "Ao dobrar o raio da base (2r) e reduzir a altura à metade (h/2), o que acontece com o volume?",
-        "fala": "O raio entra ao quadrado (×4) e a altura entra simples (÷2)!",
+        "fala": "Veja como r e h entram em V = πr²h e aplique as duas mudanças ao mesmo tempo.",
         "options": [
           {
             "id": "dobra",

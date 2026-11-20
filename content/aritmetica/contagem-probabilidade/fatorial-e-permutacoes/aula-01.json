@@ -682,7 +682,7 @@
       {
         "id": "enem-2020-anagramas",
         "prompt": "Anagramas de I AM POTTER (9 letras, sem os espaços) com vogais e consoantes sempre intercaladas: quantos são?",
-        "fala": "São 5 consoantes e 4 vogais: a fila começa e termina em consoante. E o T aparece duas vezes.",
+        "fala": "Conte vogais e consoantes e veja que casas cada grupo ocupa. Alguma letra se repete?",
         "fonte": {
           "banca": "ENEM",
           "ano": 2020,
@@ -728,7 +728,7 @@
       {
         "id": "enem-2009-copa",
         "prompt": "De 12 cidades, 4 são sorteadas (sem ordem) para um torneio e depois 2 delas viram mandante e visitante. Que contagens são?",
-        "fala": "Veja se a ordem importa: o grupo de 4 cidades é sem ordem; escolher mandante e visitante tem ordem.",
+        "fala": "Em cada etapa, pergunte: trocar a ordem dos escolhidos muda o resultado?",
         "fonte": {
           "banca": "ENEM",
           "ano": 2009,

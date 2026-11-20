@@ -216,7 +216,7 @@ Testar o limite de `d`: para `0 ≤ d < R` a interseção é um círculo; na fro
 
 #### D5 — `esferas-no-cilindro-nivel`
 - **Enunciado:** "Três bolas de raio R = 3 cm cabem justas num tubo cilíndrico de raio 3 cm e altura 18 cm. Que volume do tubo fica VAZIO?"
-- **Fala do Paco:** "Em cada fatia de altura 2R, a esfera ocupa 2/3 e deixa 1/3 vazio!"
+- **Fala do Paco:** "Calcule o volume do tubo e o das três bolas, e subtraia."
 - **Conta de conferência:** V_tubo = π · 3² · 18 = 162π; 3 esferas = 3 · 36π = 108π; vazio = 162π − 108π = 54π cm³ (1/3 do tubo)
 
 | id | Rótulo | Certa? | Feedback |
@@ -237,7 +237,7 @@ Testar o limite de `d`: para `0 ≤ d < R` a interseção é um círculo; na fro
 
 #### V2 — `enem-2022-docinhos`
 - **Enunciado (resumido):** Uma porção de massa rende 50 docinhos esféricos de diâmetro 2 cm. Quantas porções são necessárias para 150 docinhos de diâmetro 4 cm?
-- **Fala do Paco:** "Compare a razão dos raios ao cubo (2³) e multiplique pela razão das quantidades (150 / 50)."
+- **Fala do Paco:** "Compare o volume de um docinho grande com o de um pequeno; depois a massa total dos 150 com a dos 50."
 - **Fonte:** ENEM 2022, Questão 178 — `https://api.enem.dev/v1/exams/2022/questions/178`
 - **Adaptação:** enunciado resumido; alternativas e gabarito (24) mantidos.
 - **Conta de conferência:** `(4/2)³ · (150/50) = 8 · 3 = 24 porções`.

@@ -238,7 +238,7 @@ p = 0 e p = 1 concentram tudo num extremo. Somando P(k) para todo k dá 1 (é o 
 
 #### D5 — `k-mais-provavel`
 - **Enunciado:** "Lançando 4 moedas, qual número de caras é o mais provável?"
-- **Fala do Paco:** "Última. Pense nas barras 1, 4, 6, 4, 1."
+- **Fala do Paco:** "Última. Conte quantas sequências de 4 moedas dão cada número de caras."
 - **Conta de conferência:** C(4, 2) = 6 é o maior
 
 | id | Rótulo | Certa? | Feedback |

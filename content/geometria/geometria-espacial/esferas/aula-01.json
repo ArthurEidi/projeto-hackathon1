@@ -518,7 +518,7 @@
       {
         "id": "esferas-no-cilindro-nivel",
         "prompt": "Três bolas de raio R = 3 cm cabem justas num tubo cilíndrico de altura 18 cm. Que volume fica vazio?",
-        "fala": "Em cada fatia de altura 2R, a esfera ocupa 2/3 e deixa 1/3 vazio!",
+        "fala": "Calcule o volume do tubo e o das três bolas, e subtraia.",
         "options": [
           {
             "id": "v54p",
@@ -564,7 +564,7 @@
       {
         "id": "enem-2022-docinhos",
         "prompt": "Uma porção de massa rende 50 docinhos esféricos de diâmetro 2 cm. Quantas porções são necessárias para 150 docinhos de diâmetro 4 cm?",
-        "fala": "Compare a razão dos raios ao cubo (2³) e multiplique pela razão das quantidades (150 / 50).",
+        "fala": "Compare o volume de um docinho grande com o de um pequeno; depois a massa total dos 150 com a dos 50.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2022,

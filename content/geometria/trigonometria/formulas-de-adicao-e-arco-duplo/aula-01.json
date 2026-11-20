@@ -605,7 +605,7 @@
       {
         "id": "periodo-produto-seno-cosseno",
         "prompt": "Reescreva a função f(x) = 6 · sen x · cos x usando o arco duplo e determine sua imagem e seu período.",
-        "fala": "Note que 6 · sen x · cos x = 3 · (2 · sen x · cos x).",
+        "fala": "Procure 2 · sen x · cos x dentro da expressão e troque pelo arco duplo.",
         "options": [
           {
             "id": "f3sp",

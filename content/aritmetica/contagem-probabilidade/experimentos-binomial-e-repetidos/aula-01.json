@@ -637,7 +637,7 @@
       {
         "id": "k-mais-provavel",
         "prompt": "Lançando 4 moedas, qual número de caras é o mais provável?",
-        "fala": "Última. Pense nas barras 1, 4, 6, 4, 1.",
+        "fala": "Última. Conte quantas sequências de 4 moedas dão cada número de caras.",
         "options": [
           {
             "id": "a2",
@@ -716,7 +716,7 @@
       {
         "id": "enem-2009-celulares-defeito",
         "prompt": "Um aparelho tem 0,2% de chance de defeito. Vendidos 4 aparelhos, qual a chance de exatamente dois terem defeito?",
-        "fala": "Multiplique o número de escolhas C(4, 2) pelas chances de 2 defeitos e 2 perfeitos.",
+        "fala": "Quantas ordens diferentes têm exatamente 2 defeituosos? E qual a chance de uma dessas ordens?",
         "fonte": {
           "banca": "ENEM",
           "ano": 2009,

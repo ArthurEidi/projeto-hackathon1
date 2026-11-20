@@ -175,7 +175,7 @@ Comparar duas folhas retangulares iguais `A × B` enroladas de dois jeitos difer
 
 #### D1 — `dobrar-raio-metade-altura`
 - **Enunciado:** "Se dobrarmos o raio da base de um cilindro (2r) e reduzirmos sua altura à metade (h/2), o que acontece com o volume?"
-- **Fala do Paco:** "O raio entra ao quadrado (×4) e a altura entra simples (÷2)!"
+- **Fala do Paco:** "Veja como r e h entram em V = πr²h e aplique as duas mudanças ao mesmo tempo."
 - **Conta de conferência:** V_novo = π · (2r)² · (h/2) = 4 · (1/2) · πr²h = 2 · V
 
 | id | Rótulo | Certa? | Feedback |

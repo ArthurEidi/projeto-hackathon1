@@ -527,7 +527,7 @@
       {
         "id": "enem-2012-losango-perimetro",
         "prompt": "Na Figura 1, o losango liga centros de 4 círculos tangentes de raio r; na Figura 2, dois dobram o raio. Qual o aumento do perímetro?",
-        "fala": "Na Figura 1 o lado do losango mede 2r; na Figura 2, com dois raios dobrados, o lado mede r + 2r = 3r.",
+        "fala": "Em cada figura, o lado do losango é a soma de dois raios. Compare os perímetros.",
         "imagens": [
           {
             "src": "/vestibular/enem-2012-137-1.png",

@@ -592,7 +592,7 @@
       {
         "id": "enem-2017-celular",
         "prompt": "Dois motoristas na mesma velocidade digitam olhando o celular; X leva 25% do tempo de Y. Qual a razão das distâncias às cegas de X e Y?",
-        "fala": "Com velocidade constante, d = v · t torna a razão das distâncias igual à razão dos tempos: 25% = 1/4.",
+        "fala": "Com a mesma velocidade, d = v · t: como a razão dos tempos passa para a razão das distâncias?",
         "fonte": {
           "banca": "ENEM",
           "ano": 2017,
@@ -611,7 +611,7 @@
       {
         "id": "enem-2022-caged",
         "prompt": "Jan./2013: 1 794 272 admissões e 1 765 372 desligamentos, ou 28 900 vagas criadas, 75% menos que em jan./2012. Quantas vagas em jan./2012?",
-        "fala": "Se caiu 75%, o valor de 2013 representa apenas 25% (1/4) do total de 2012.",
+        "fala": "Se caiu 75%, que fração do valor de 2012 sobrou em 2013?",
         "fonte": {
           "banca": "ENEM",
           "ano": 2022,

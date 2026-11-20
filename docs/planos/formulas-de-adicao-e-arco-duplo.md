@@ -226,7 +226,7 @@ O aluno testa α = 45° e β = 45° (onde o arco duplo bate em 90°: sen 90° = 
 
 #### D5 — `periodo-produto-seno-cosseno`
 - **Enunciado:** "Reescreva a função f(x) = 6 · sen x · cos x usando o arco duplo e determine sua imagem e seu período."
-- **Fala do Paco:** "Note que 6 · sen x · cos x = 3 · (2 · sen x · cos x)."
+- **Fala do Paco:** "Procure 2 · sen x · cos x dentro da expressão e troque pelo arco duplo."
 - **Conta de conferência:** f(x) = 3 · sen(2x) ⇒ imagem [−3; 3] e período T = 2π / 2 = π
 
 | id | Rótulo | Certa? | Feedback |

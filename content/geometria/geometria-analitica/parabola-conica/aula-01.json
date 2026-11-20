@@ -616,7 +616,7 @@
       {
         "id": "ita-2009-parabola",
         "prompt": "Qual é a distância entre o vértice e o foco da parábola 2x² − 4x − 4y + 3 = 0?",
-        "fala": "Complete o quadrado: (x − 1)² = 2(y − 1/4). Compare com x² = 4py: a distância vértice-foco é |p|.",
+        "fala": "Complete o quadrado em x e compare com (x − h)² = 4p(y − k): a distância vértice-foco é |p|.",
         "fonte": {
           "banca": "ITA",
           "ano": 2009,

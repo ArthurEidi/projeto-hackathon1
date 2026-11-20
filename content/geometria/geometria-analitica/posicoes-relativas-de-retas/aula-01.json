@@ -772,7 +772,7 @@
       },
       {
         "id": "d5-posicoes-relativas-de-retas",
-        "fala": "Última. Desenhe as duas: uma em pé, outra deitada.",
+        "fala": "Última. Desenhe as duas retas no plano cartesiano e compare as suas direções.",
         "prompt": "Como são as retas x = 2 e y = 3?",
         "options": [
           {

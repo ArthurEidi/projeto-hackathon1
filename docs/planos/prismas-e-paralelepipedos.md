@@ -239,7 +239,7 @@ Inclinar a pilha de fatias para o lado (prisma oblíquo / princípio de Cavalier
 
 #### V2 — `enem-2021-conteiner`
 - **Enunciado (resumido):** Em um contêiner retangular, dobram-se o comprimento e a largura mantendo a altura. Como mudam a área das 4 paredes e a do piso?
-- **Fala do Paco:** "As paredes têm perímetro × altura (1D × fixa), enquanto o piso é comprimento × largura (2D)."
+- **Fala do Paco:** "Escreva a área das paredes e a do piso com comprimento, largura e altura; depois dobre comprimento e largura."
 - **Fonte:** ENEM 2021, Questão 166 — `https://api.enem.dev/v1/exams/2021/questions/166`
 - **Adaptação:** enunciado resumido; alternativas e gabarito (II) mantidos.
 - **Conta de conferência:** `paredes = 4H(C+L)` (dobra com 2C, 2L); `piso = C·L` (quadruplica com 2C, 2L).

@@ -246,7 +246,7 @@ Domínio R. Se a>0, a imagem começa no y do vértice; se a<0, termina nele. Há
 
 #### V2 — `enem-2009-alcool`
 - **Enunciado (resumido):** Um posto vende 10.000 L a R$ 1,50/L; cada R$ 0,01 de desconto (x centavos) soma 100 L nas vendas. Qual é a receita V(x)?
-- **Fala do Paco:** "Multiplique a nova quantidade (10.000 + 100x) pelo novo preço em reais (1,50 − 0,01x)."
+- **Fala do Paco:** "Escreva a nova quantidade e o novo preço, em reais, em função de x; a receita é quantidade × preço."
 - **Fonte:** ENEM 2009 — Questão 155 (`https://api.enem.dev/v1/exams/2009/questions/155`).
 - **Adaptação:** enunciado condensado mantendo os dados e as 5 expressões.
 - **Conta de conferência:** V(x) = (10.000 + 100x)(1,50 − 0,01x) = 15.000 + 50x − x² (gabarito D).

@@ -607,7 +607,7 @@
       {
         "id": "enem-2021-romano",
         "prompt": "Um monumento traz a inscrição MCDLXIX (ano de inauguração). Quantos anos ele completará em 2050?",
-        "fala": "Converta por blocos: M = 1 000, CD = 400, LX = 60 e IX = 9; depois faça 2050 − ano.",
+        "fala": "Leia o número em blocos: letra menor antes de uma maior subtrai, como em IV. Depois faça 2050 menos o ano.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2021,
@@ -626,7 +626,7 @@
       {
         "id": "enem-2012-ordens",
         "prompt": "Um registro tem 8 algarismos: 1 3 _ 9 8 2 0 7, com o terceiro algarismo apagado. Qual ordem esse algarismo ocupa?",
-        "fala": "Conte as ordens da direita para a esquerda: unidade, dezena, centena, unidade de milhar, dezena de milhar e centena de milhar.",
+        "fala": "Conte as ordens da direita para a esquerda, em grupos de três: unidades, milhares, milhões.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2012,
@@ -645,7 +645,7 @@
       {
         "id": "enem-2009-cpf",
         "prompt": "CPF: multiplique 123.456.789 por 10..2 e ache o resto r por 11 (r<2 ⇒ 0, senão 11−r) para d₁; repita em 23456789d₁ para d₂.",
-        "fala": "S₁ = 10·1 + 9·2 + … + 2·9 = 210 (resto 1 ⇒ d₁ = 0); depois S₂ = 10·2 + … + 3·9 + 2·0 = 244.",
+        "fala": "Some cada algarismo vezes o seu peso, ache o resto por 11 e aplique a regra; repita para d₂ com d₁ já no fim.",
         "fonte": {
           "banca": "ENEM",
           "ano": 2009,

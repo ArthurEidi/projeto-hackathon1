@@ -238,7 +238,7 @@ A regra m₁ · m₂ = −1 não vale para o par horizontal–vertical (a vertic
 
 #### D5 — `vertical-horizontal`
 - **Enunciado:** "Como são as retas x = 2 e y = 3?"
-- **Fala do Paco:** "Última. Desenhe as duas: uma em pé, outra deitada."
+- **Fala do Paco:** "Última. Desenhe as duas retas no plano cartesiano e compare as suas direções."
 - **Conta de conferência:** cruzam em (2; 3) em ângulo reto; a vertical não tem m
 
 | id | Rótulo | Certa? | Feedback |

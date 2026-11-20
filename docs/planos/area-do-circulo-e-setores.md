@@ -175,7 +175,7 @@ Na coroa circular de raios `R` e `r`, quando `r → 0` recuperamos o disco cheio
 
 #### D1 — `pizza-dobro-do-diametro`
 - **Enunciado:** "Uma pizza pequena tem 20 cm de diâmetro e a grande tem 40 cm (o dobro). Quantas pequenas têm a mesma área de 1 grande?"
-- **Fala do Paco:** "Dobrar o raio ou o diâmetro multiplica a área por `2²`!"
+- **Fala do Paco:** "A área depende do raio ao quadrado. O que acontece com ela quando o raio dobra?"
 - **Conta de conferência:** razão linear k = 40/20 = 2 ⇒ razão das áreas = k² = 2² = 4 pizzas
 
 | id | Rótulo | Certa? | Feedback |

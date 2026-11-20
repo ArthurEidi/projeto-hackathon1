@@ -234,7 +234,7 @@ Raio zero reduz a curva a um ponto; r² negativo não desenha nada. Na forma ger
 
 #### D5 — `completar-quadrado`
 - **Enunciado:** "Qual o centro de x² + y² − 6x = 0?"
-- **Fala do Paco:** "Última. x² − 6x é o começo de (x − 3)²."
+- **Fala do Paco:** "Última. Complete o quadrado nos termos em x e compare com (x − a)² + (y − b)² = r²."
 - **Conta de conferência:** (x − 3)² + y² = 9: centro (3; 0), raio 3
 
 | id | Rótulo | Certa? | Feedback |

@@ -175,7 +175,7 @@ Levar a razão da homotetia a `k = 0` mostra a fronteira de colapso: toda a figu
 
 #### D1 — `duas-reflexoes-paralelas`
 - **Enunciado:** "Refletir uma figura num espelho vertical e depois noutro espelho paralelo ao primeiro equivale a qual transformação única?"
-- **Fala do Paco:** "O 1º espelho inverte o sentido e o 2º desinverte de volta!"
+- **Fala do Paco:** "Desenhe uma letra F e reflita duas vezes, em espelhos paralelos. Como ela termina?"
 - **Conta de conferência:** duas reflexões em retas paralelas compõem uma translação (pelo dobro da distância entre os espelhos)
 
 | id | Rótulo | Certa? | Feedback |
