@@ -762,6 +762,54 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2025-grafico-v",
+        "prompt": "f(x) forma V com vértice (0; 0) e pontas (±3; 3); g(x) forma V invertido com vértice (0; 3), raízes ±1 e pontas (±3; −6). Qual é g(x)?",
+        "fala": "Compare os vértices e a abertura dos dois gráficos. Depois, teste x = 0 e x = 1 nas opções.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 71: os dois gráficos originais foram descritos pelos vértices e pontos da grade; alternativas e gabarito oficial (D) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2025/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "g(x) = 3f(x + 3) − 3",
+            "correct": false,
+            "feedback": "3f(x + 3) − 3 desloca o vértice para (−3; −3) e mantém o V voltado para cima. Em x = 0 dá 3·3 − 3 = 6, não 3; certa: g(x) = −3f(x) + 3."
+          },
+          {
+            "id": "b",
+            "label": "g(x) = −3f(x + 3)",
+            "correct": false,
+            "feedback": "−3f(x + 3) desloca o vértice 3 unidades à esquerda, para (−3; 0), em vez de subir 3. Em x = 0 dá −9, não 3; certa: g(x) = −3f(x) + 3."
+          },
+          {
+            "id": "c",
+            "label": "g(x) = 3f(x − 3)",
+            "correct": false,
+            "feedback": "3f(x − 3) desloca o vértice 3 à direita, para (3; 0), e não reflete no eixo x. Em x = 0 dá 9, não 3; certa: g(x) = −3f(x) + 3."
+          },
+          {
+            "id": "d",
+            "label": "g(x) = −3f(x) + 3",
+            "correct": true,
+            "feedback": "Isso. −3f(x) reflete no eixo x e multiplica alturas por 3; +3 sobe o vértice para (0; 3), dando g(±1) = 0 e g(±3) = −6."
+          },
+          {
+            "id": "e",
+            "label": "g(x) = −3f(x) − 3",
+            "correct": false,
+            "feedback": "−3f(x) − 3 desce o vértice para (0; −3) em vez de subir para (0; 3). Em x = 0 dá −3, não 3; certa: g(x) = −3f(x) + 3."
+          }
+        ]
+      }
+    ]
   }
 }

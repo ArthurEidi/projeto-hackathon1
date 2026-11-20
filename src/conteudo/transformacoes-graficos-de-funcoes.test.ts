@@ -148,7 +148,13 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-transformacoes-graficos-de-funcoes")).toBe("(2;4), para baixo");
   });
 
-  it("vestibular pendente fica vazio", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular (B45c, prova oficial UFRGS 2025 Q71)", () => {
+    expect(L.treino.vestibular).toHaveLength(1);
+    expect(certa("ufrgs-2025-grafico-v")).toBe("g(x) = −3f(x) + 3");
+    const f = (x: number) => Math.abs(x);
+    const g = (x: number) => -3 * f(x) + 3;
+    expect(g(0)).toBe(3);
+    expect([g(-1), g(1)]).toEqual([0, 0]);
+    expect([g(-3), g(3)]).toEqual([-6, -6]);
   });
 });

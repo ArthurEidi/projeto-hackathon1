@@ -237,36 +237,15 @@ Domínio e imagem dependem da família. b=0 colapsa entradas; b<0 reflete. Em lo
 
 ### Vestibular
 
-> Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
+#### V1 — `ufrgs-2025-grafico-v` (UFRGS 2025, 1º dia, Questão 71)
+- **Enunciado (resumido):** "f(x) forma V com vértice (0; 0) e pontas (±3; 3); g(x) forma V invertido com vértice (0; 3), raízes ±1 e pontas (±3; −6). Qual é g(x)?"
+- **Fala do Paco:** "Compare os vértices e a abertura dos dois gráficos. Depois, teste x = 0 e x = 1 nas opções."
+- **Fonte:** UFRGS 2025, 1º dia, Questão 71 (p. 37 de `Prova-1o-DIA.pdf`; gabarito oficial D em `https://vestibular.ufrgs.br/cv2025/gabaritos/`).
+- **Adaptação:** os dois gráficos originais foram descritos pelos vértices e pontos da grade; alternativas e gabarito oficial (D) mantidos.
+- **Conta de conferência:** `f(x) = |x|` em `[−3, 3]`; `g(x) = −3f(x) + 3` dá `g(0) = 3`, `g(±1) = 0` e `g(±3) = −6`.
 
-#### V1 — `pendente-fonte-transformacoes-graficos-de-funcoes-1`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V2 — `pendente-fonte-transformacoes-graficos-de-funcoes-2`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V3 — `pendente-fonte-transformacoes-graficos-de-funcoes-3`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V4 — `pendente-fonte-transformacoes-graficos-de-funcoes-4`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+#### V2–V4 — `pendente-fonte`
+> Espaços reservados caso novas questões oficiais no recorte sejam encontradas.
 
 ---
 
