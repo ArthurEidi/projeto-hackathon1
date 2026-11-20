@@ -137,7 +137,7 @@ Por instrução do usuário (15/11), a Máquina A fica fora até terça (17/11) 
 |---|---|---|---|
 | ~~B41~~ concluída 19/11 (75391f1, 87a216b): 92 questões e 458 alternativas auditadas, 78 textos corrigidos em 26 aulas, nenhum `correct` errado; critério "feedback revela o gabarito" descartado no treino (GUIA §2 regra 1) | Claude Code #2 | 19/11 | — |
 | ~~B42~~ concluída 19/11 (77cce36, b5c8864): fontes "ENEM 2025" corrigidas, 0 questões repetidas; 27 candidatas da B40 auditadas no PDF oficial (17 aprovadas, 10 recusadas: 8 ITA por nível), 16 inseridas em 12 aulas. Vestibular em 79 de 104 aulas | Claude Code #2 | 19/11 | — |
-| B43. Busca em provas oficiais e inserção para as 25 aulas ainda sem vestibular, em levas de ~8 aulas (briefing `briefing-b43.md`, fora do repositório) | Claude Code #2 | 19/11 | `treino.vestibular` dessas aulas, seção de vestibular dos roteiros, testes desses capítulos, `docs/fontes-candidatas/<slug>.md`, `docs/revisao/vestibular-b43.md` |
+| B43. Vestibular de provas oficiais, agora só para 11 aulas: polinomios, raizes-polinomiais-e-multiplicidade, divisao-polinomial-e-teorema-do-resto, numeros-complexos, funcao-composta-e-inversa, determinantes-e-matriz-inversa, soma-da-pg-infinita, valor-absoluto-e-distancia, elipse, posicoes-relativas-de-retas, inequacoes-produto-quociente | Claude Code #2 | 19/11 | `treino.vestibular`, roteiro e teste dessas aulas, `docs/revisao/vestibular-b43.md` |
 
 ## Pedidos entre máquinas
 
@@ -164,5 +164,15 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B44a. Varredura automática das 104 aulas (`scripts/varre-aulas.mjs`) e relatório | Codex | 19/11 | `scripts/varre-aulas.mjs` (novo), `docs/visual/varredura-b44.md`, uma linha em `docs/PROXIMOS-PASSOS.md` |
-| B44b. Casos de borda dos widgets novos (escala, grupos, divisão) e grade 4 × 5 | Codex #2 | 19/11 | `src/widgets/common/escala/**`, `grupos/**`, `divisao/**`, `grade/**`, GUIA §5.4/5.21–5.23, `docs/revisao/correcoes-b44b.md` |
+| ~~B44a~~ concluída 19/11 (c99658d): `scripts/varre-aulas.mjs`; 104 aulas, 560 passos, 104 treinos, 0 problemas | Codex | 19/11 | — |
+| ~~B44b~~ concluída 19/11 (c99658d): bordas de escala, grupos (`eh_mmc`), divisão; grade de 20 casas em 4 × 5 | Codex #2 | 19/11 | — |
+
+19/11, noite: todos os agentes voltam a trabalhar (briefing `briefing-b45.md`, fora do repositório). As outras 14 aulas sem vestibular passam para os Gemini, com auditoria dos Codex.
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B45a. Vestibular oficial: equacoes-trigonometricas, identidades-trigonometricas, formulas-de-adicao-e-arco-duplo, inequacoes-trigonometricas | Antigravity (Neon) | 19/11 | `treino.vestibular`, roteiro e teste dessas aulas, `docs/fontes-candidatas/<slug>.md`, `docs/revisao/vestibular-b45a.md` |
+| B45b. Idem: angulos-retas-paralelas, circunferencia-arcos-e-angulos, relacoes-metricas-triangulo-retangulo | Antigravity #2 | 19/11 | idem, `vestibular-b45b.md` |
+| B45c. Idem: funcao-modular, funcao-racional, transformacoes-graficos-de-funcoes | Antigravity #3 | 19/11 | idem, `vestibular-b45c.md` |
+| B45d. Idem: solidos-de-revolucao, vetores-no-plano, quartis-percentis-e-boxplot, equacoes-irracionais | Antigravity #4 | 19/11 | idem, `vestibular-b45d.md` |
+| B45r. Revisão cruzada da B44 (Codex: B44b; Codex #2: B44a com defeitos injetados); depois auditoria das B45 | Codex / Codex #2 | 19/11 | `docs/revisao/codigo-b44b-revisao.md`, `docs/revisao/codigo-b44a-revisao.md` |
