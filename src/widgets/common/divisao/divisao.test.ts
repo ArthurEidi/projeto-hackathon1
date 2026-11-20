@@ -191,3 +191,19 @@ describe("revisão B35: divisao", () => {
     for (const t of tc) expect(t.esq, t.s).toBeGreaterThanOrEqual(0);
   });
 });
+
+it.each(["chave", "rodapé"] as const)("encaixa quatro coeficientes longos (%s)", (regiao) => {
+  const w = 400;
+  const h = 368;
+  const coeficientes = [12345678, -23456789, 34567890, -45678901];
+  const p = DivisaoPolinomial.parse({ modo: "chave", coeficientes, r: 2, etapa: "$etapa" });
+  const g = gravadorCanvas();
+  desenharDivisao(g.ctx, w, h, [], p, { etapa: 3 });
+
+  const dividendo = g.textos.find((t) => t.y === 32 && t.s.includes("12345678"))!;
+  const identidade = g.textos.find((t) => t.y === h - 18 && t.s.includes("12345678"))!;
+  const texto = regiao === "chave" ? dividendo : identidade;
+  expect(texto.s).toContain("45678901");
+  expect(texto.esq).toBeGreaterThanOrEqual(regiao === "chave" ? 22 : 8);
+  expect(texto.dir).toBeLessThanOrEqual(regiao === "chave" ? 218 : 392);
+});

@@ -4,7 +4,7 @@ import { palette } from "../../../ui/palette";
 import { seg, type Hit, type Pt } from "../../canvas";
 import { avaliarExpr, type Controles } from "../expr";
 import { etiqueta, fmt, nota, tinta, tintaClara, tintaEscura } from "../geo/base";
-import { arvoreFatoracao, dividirInteiros, fatorarPrimos, formatarFatoracao, mmc, validarDivisao } from "./calc";
+import { arvoreFatoracao, dividirInteiros, fatorarPrimos, formatarFatoracao, mmc, totalMmcValido, validarDivisao } from "./calc";
 import type { Grupos } from "./params";
 
 export function aspectoGrupos(p: Grupos): number {
@@ -92,45 +92,49 @@ function desenharGradeGrupos(
   const padBox = 7;
   const maxBoxW = Math.max(rTok * 2 + padBox * 2, area.w - 8);
   const colsPorGrupo = Math.max(1, Math.floor((maxBoxW - padBox * 2 + 5) / passo));
-  const colsGrupo = Math.min(d, colsPorGrupo);
-  const linhasPorGrupo = Math.max(1, Math.ceil(d / colsPorGrupo));
-  const boxW = Math.min(maxBoxW, colsGrupo * passo + padBox * 2 - 5);
-  const boxH = linhasPorGrupo * passo + padBox * 2 - 5;
+  const larguraCaixa = (fichas: number) => Math.min(fichas, colsPorGrupo) * passo + padBox * 2 - 5;
+  const alturaCaixa = (fichas: number) => Math.ceil(fichas / colsPorGrupo) * passo + padBox * 2 - 5;
   const gapX = 10;
   const gapY = 10;
 
-  // Organiza os q grupos em linhas centralizadas dentro da área disponível
-  const linhas: number[][] = [];
-  let linhaAtual: number[] = [];
-  let largLinha = 0;
-  for (let i = 0; i < q; i++) {
-    const proxLarg = linhaAtual.length === 0 ? boxW : largLinha + gapX + boxW;
-    if (linhaAtual.length > 0 && proxLarg > area.w) {
-      linhas.push(linhaAtual);
-      linhaAtual = [i];
-      largLinha = boxW;
-    } else {
-      linhaAtual.push(i);
-      largLinha = proxLarg;
-    }
+  const porLinha = Math.max(1, Math.floor((area.w + gapX) / (larguraCaixa(d) + gapX)));
+  const alturaGrupos = (grupos: number, boxH: number) =>
+    grupos > 0 ? Math.ceil(grupos / porLinha) * (boxH + gapY) - gapY : 0;
+  const alturaSobra = (fichas: number) => fichas > 0 ? alturaCaixa(fichas) + (mostrarResto ? 20 : 0) : 0;
+  const alturaTotal = alturaGrupos(q, alturaCaixa(d)) + (q > 0 && r > 0 ? gapY : 0) + alturaSobra(r);
+
+  let gruposVisiveis = q;
+  let fichasPorGrupo = d;
+  let sobraVisivel = r;
+  if (alturaTotal > area.h - 4) {
+    // Reserva uma linha para a contagem omitida e mantém a sobra separada.
+    const disponivel = Math.max(0, area.h - 24);
+    const capacidade = (altura: number) =>
+      Math.max(0, Math.floor((altura - padBox * 2 + 5) / passo)) * colsPorGrupo;
+    sobraVisivel = Math.min(r, capacidade(disponivel - (mostrarResto ? 20 : 0)));
+    const paraGrupos = disponivel - alturaSobra(sobraVisivel) - (sobraVisivel > 0 ? gapY : 0);
+    fichasPorGrupo = Math.min(d, capacidade(paraGrupos));
+    const linhasQueCabem = fichasPorGrupo === 0 ? 0 : Math.floor((paraGrupos + gapY) / (alturaCaixa(fichasPorGrupo) + gapY));
+    gruposVisiveis = Math.min(q, linhasQueCabem * porLinha);
   }
-  if (linhaAtual.length > 0) linhas.push(linhaAtual);
 
-  const temSobra = r > 0;
-  const colsSobra = temSobra ? Math.min(r, colsPorGrupo) : 0;
-  const linhasSobra = temSobra ? Math.ceil(r / colsPorGrupo) : 0;
-  const sobraW = temSobra ? Math.min(maxBoxW, colsSobra * passo + padBox * 2 - 5) : 0;
-  const sobraH = temSobra ? linhasSobra * passo + padBox * 2 - 5 : 0;
-  const alturaConteudo =
-    linhas.length * boxH +
-    Math.max(0, linhas.length - 1) * gapY +
-    (temSobra ? (linhas.length > 0 ? gapY : 0) + sobraH : 0);
-  let cy = area.y + Math.max(4, (area.h - alturaConteudo) / 2);
+  const boxW = larguraCaixa(fichasPorGrupo);
+  const boxH = alturaCaixa(fichasPorGrupo);
+  const linhasPorGrupo = Math.ceil(fichasPorGrupo / colsPorGrupo);
+  const temSobra = sobraVisivel > 0;
+  const linhasSobra = Math.ceil(sobraVisivel / colsPorGrupo);
+  const sobraW = larguraCaixa(sobraVisivel);
+  const sobraH = alturaCaixa(sobraVisivel);
+  const alturaConteudo = alturaGrupos(gruposVisiveis, boxH) +
+    (temSobra && gruposVisiveis > 0 ? gapY : 0) + (temSobra ? sobraH : 0);
+  const omitidas = q * d + r - gruposVisiveis * fichasPorGrupo - sobraVisivel;
+  let cy = area.y + (omitidas > 0 ? 4 : Math.max(4, (area.h - alturaConteudo) / 2));
 
-  for (const linha of linhas) {
-    const lw = linha.length * boxW + (linha.length - 1) * gapX;
+  for (let inicio = 0; inicio < gruposVisiveis; inicio += porLinha) {
+    const gruposNaLinha = Math.min(porLinha, gruposVisiveis - inicio);
+    const lw = gruposNaLinha * boxW + (gruposNaLinha - 1) * gapX;
     let cx = area.x + (area.w - lw) / 2;
-    for (let k = 0; k < linha.length; k++) {
+    for (let k = 0; k < gruposNaLinha; k++) {
       ctx.save();
       ctx.fillStyle = tintaClara("c3");
       ctx.strokeStyle = tinta("c3");
@@ -140,10 +144,10 @@ function desenharGradeGrupos(
       ctx.stroke();
       ctx.restore();
 
-      for (let j = 0; j < d; j++) {
+      for (let j = 0; j < fichasPorGrupo; j++) {
         const row = Math.floor(j / colsPorGrupo);
         const col = j % colsPorGrupo;
-        const itensLinha = row === linhasPorGrupo - 1 ? d - row * colsPorGrupo : colsPorGrupo;
+        const itensLinha = row === linhasPorGrupo - 1 ? fichasPorGrupo - row * colsPorGrupo : colsPorGrupo;
         const innerW = (itensLinha - 1) * passo;
         const startX = cx + (boxW - innerW) / 2;
         const fy = cy + padBox + rTok + row * passo;
@@ -166,10 +170,10 @@ function desenharGradeGrupos(
     ctx.stroke();
     ctx.restore();
 
-    for (let j = 0; j < r; j++) {
+    for (let j = 0; j < sobraVisivel; j++) {
       const row = Math.floor(j / colsPorGrupo);
       const col = j % colsPorGrupo;
-      const itensLinha = row === linhasSobra - 1 ? r - row * colsPorGrupo : colsPorGrupo;
+      const itensLinha = row === linhasSobra - 1 ? sobraVisivel - row * colsPorGrupo : colsPorGrupo;
       const innerW = (itensLinha - 1) * passo;
       const startX = sx + (sobraW - innerW) / 2;
       const fy = cy + padBox + rTok + row * passo;
@@ -178,6 +182,9 @@ function desenharGradeGrupos(
     if (mostrarResto) {
       nota(ctx, { x: sx + sobraW / 2, y: cy + sobraH + 13 }, `Sobra: r = ${r}`, "c4", 12);
     }
+  }
+  if (omitidas > 0) {
+    nota(ctx, { x: area.x + area.w / 2, y: area.y + area.h - 8 }, `+ ${omitidas} fichas`, "muted", 12);
   }
 }
 
@@ -329,7 +336,12 @@ function desenharMmc(
   p: Extract<Grupos, { modo: "mmc" }>,
   ctl: Controles,
 ) {
-  const m = Math.max(1, Math.round(avaliarExpr(p.m, ctl)));
+  const m = avaliarExpr(p.m, ctl);
+  if (!totalMmcValido(m)) {
+    desenharChipsTopo(ctx, w, 22, hits, [{ texto: `m = ${fmt(m, 10)}`, marca: "c1" }]);
+    nota(ctx, { x: w / 2, y: h / 2 }, "Total inválido: use inteiro ≥ 1", "c4", 13);
+    return;
+  }
   const rA = m % p.a;
   const rB = m % p.b;
   const comum = rA === 0 && rB === 0;

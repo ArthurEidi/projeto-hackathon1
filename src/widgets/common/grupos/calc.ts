@@ -119,19 +119,26 @@ export function mmc(aBruto: number, bBruto: number): number {
   return Math.floor((a * b) / mdc(a, b));
 }
 
+export function totalMmcValido(m: number): boolean {
+  return Number.isInteger(m) && m >= 1;
+}
+
 /** Métricas emitidas para complete_when. */
 export function metricasGrupos(p: Grupos, ctl: Controles): Record<string, number> {
   if (p.modo === "mmc") {
-    const m = Math.max(1, Math.round(avaliarExpr(p.m, ctl)));
+    const m = avaliarExpr(p.m, ctl);
+    const valido = totalMmcValido(m);
     const rA = m % p.a;
     const rB = m % p.b;
     return {
-      m,
-      d: p.a,
-      resto: rA + rB,
-      resto_a: rA,
-      resto_b: rB,
-      q: Math.floor(m / p.a),
+      // Sobrescreve também valores válidos emitidos antes da mudança do slider.
+      m: valido ? m : NaN,
+      d: valido ? p.a : NaN,
+      resto: valido ? rA + rB : NaN,
+      resto_a: valido ? rA : NaN,
+      resto_b: valido ? rB : NaN,
+      q: valido ? Math.floor(m / p.a) : NaN,
+      eh_mmc: valido ? Number(m === mmc(p.a, p.b)) : NaN,
     };
   }
   const n = avaliarExpr(p.n, ctl);

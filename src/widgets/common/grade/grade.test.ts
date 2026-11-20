@@ -251,7 +251,7 @@ describe("schemas e desenho", () => {
     expect(geoCx.alvos.filter((a) => a.tipo === "distribuicao")).toHaveLength(21);
   });
 
-  it("casas 20 itens quebra em 2 linhas e regua com evento sem acesas marca 0", () => {
+  it("casas de uma etapa dispõe 20 itens em quatro linhas de cinco e a régua sem acesas marca 0", () => {
     const textos: string[] = [];
     const spyCtx = new Proxy(
       {
@@ -266,7 +266,11 @@ describe("schemas e desenho", () => {
     const c20 = GradeFigura.parse({ modo: "casas", linhas: 20, etapas: 1 });
     const geo20 = desenharGrade(spyCtx, 360, 240, [], c20, {});
     const ys = new Set(geo20.alvos.map((a) => Math.round(a.r.y)));
-    expect(ys.size).toBe(2);
+    expect(ys.size).toBe(4);
+    for (const y of ys) {
+      const linha = geo20.alvos.filter((a) => Math.round(a.r.y) === y);
+      expect(new Set(linha.map((a) => a.r.x)).size).toBe(5);
+    }
 
     const cEv = GradeFigura.parse({ modo: "casas", linhas: 6, etapas: 1, evento: { casas: ["2", "4"] }, regua: true });
     desenharGrade(spyCtx, 360, 240, [], cEv, {});

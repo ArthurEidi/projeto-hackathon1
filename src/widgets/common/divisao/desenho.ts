@@ -3,7 +3,7 @@ import { seg, type Hit, type Pt } from "../../canvas";
 import type { CorTraco, Marca } from "../../../ui/marcas";
 import { palette } from "../../../ui/palette";
 import { avaliarExpr, type Controles } from "../expr";
-import { etiqueta, fmt, nota, notaEsq, quase, tinta } from "../geo/base";
+import { etiqueta, fmt, nota, quase, tinta, tintaEscura } from "../geo/base";
 import {
   avaliarPolinomio,
   dividirLonga,
@@ -29,14 +29,26 @@ function fonteQueCabe(ctx: CanvasRenderingContext2D, s: string, size: number, ma
   return t;
 }
 
+function textoQueCabe(
+  ctx: CanvasRenderingContext2D, p: Pt, s: string, cor: string, size: number, maxW: number,
+  alinhamento: CanvasTextAlign,
+) {
+  const tamanho = fonteQueCabe(ctx, s, size, maxW);
+  ctx.font = `900 ${tamanho}px Nunito, system-ui, sans-serif`;
+  ctx.fillStyle = cor;
+  ctx.textAlign = alinhamento;
+  ctx.textBaseline = "middle";
+  ctx.fillText(s, p.x, p.y, maxW);
+}
+
 /** Texto centrado que encolhe até caber em `maxW`. */
 function notaQueCabe(ctx: CanvasRenderingContext2D, p: Pt, s: string, c: CorTraco, size: number, maxW: number) {
-  nota(ctx, p, s, c, fonteQueCabe(ctx, s, size, maxW));
+  textoQueCabe(ctx, p, s, tintaEscura(c), size, maxW, "center");
 }
 
 /** Texto à esquerda que encolhe até caber em `maxW`. */
 function notaEsqQueCabe(ctx: CanvasRenderingContext2D, p: Pt, s: string, cor: string, size: number, maxW: number) {
-  notaEsq(ctx, p, s, cor, fonteQueCabe(ctx, s, size, maxW));
+  textoQueCabe(ctx, p, s, cor, size, maxW, "left");
 }
 
 /** Chip quando cabe em `maxW` (fonte do chip: 16 px); senão o mesmo texto sem fundo, encolhido, com a mesma dica. */
@@ -47,10 +59,8 @@ function etiquetaQueCabe(ctx: CanvasRenderingContext2D, hits: Hit[], p: Pt, s: s
     etiqueta(ctx, hits, p, s, c);
     return;
   }
-  const t = fonteQueCabe(ctx, s, 15, maxW);
-  nota(ctx, p, s, c, t);
-  ctx.font = `900 ${t}px Nunito, system-ui, sans-serif`;
-  const w = ctx.measureText(s).width;
+  notaQueCabe(ctx, p, s, c, 15, maxW);
+  const w = Math.min(ctx.measureText(s).width, maxW);
   hits.push({ key: c, x: p.x - w / 2, y: p.y - 12, w, h: 24 });
 }
 
@@ -274,7 +284,7 @@ export function desenharDivisao(
     const yRest = yTraco + 16;
     const ehUltima = i === maxEtapa - 1;
     if (ehUltima) {
-      etiqueta(ctx, hits, { x: colEsq + 42, y: yRest + 2 }, `R = ${fmt(res.resto)}`, "c4");
+      etiquetaQueCabe(ctx, hits, { x: colEsq + 42, y: yRest + 2 }, `R = ${fmt(res.resto)}`, "c4", 114);
     } else {
       notaEsqQueCabe(ctx, { x: colEsq + 14, y: yRest }, formatarPolinomio(et.restante, true), palette.ink2, 14, largEsq - 14);
     }

@@ -223,9 +223,9 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
   const alvos: Alvo[] = [];
   const temRegua = p.regua;
   const baixo = (temRegua ? 74 : 0) + (p.contador ? 36 : 0) + 6;
-  const emDuasLinhas = !m.colunas && m.casas.length > 10;
-  const nCols = m.colunas ? m.colunas.length : emDuasLinhas ? Math.ceil(m.casas.length / 2) : m.casas.length;
-  const nLins = m.colunas ? m.linhas.length : emDuasLinhas ? 2 : 1;
+  const gradeVinte = !m.colunas && m.casas.length === 20 && Math.round(avaliarExpr(p.etapas, ctl)) === 1;
+  const nLins = m.colunas ? m.linhas.length : gradeVinte ? 4 : m.casas.length > 10 ? 2 : 1;
+  const nCols = m.colunas?.length ?? Math.ceil(m.casas.length / nLins);
   const esq = m.colunas ? 40 : 12;
   const temInterBorda = mostrar.inter && m.colunas && p.a && p.b;
   const dir = temInterBorda ? 44 : 12;
@@ -259,8 +259,8 @@ function desenharCasas(ctx: CanvasRenderingContext2D, w: number, h: number, hits
 
   const listradas: { r: Rect; texto: string; tinta: string; y: number }[] = [];
   m.casas.forEach((k, idx) => {
-    const i = m.colunas ? k.i : emDuasLinhas ? Math.floor(idx / nCols) : 0;
-    const j = m.colunas ? k.j : emDuasLinhas ? idx % nCols : idx;
+    const i = m.colunas ? k.i : Math.floor(idx / nCols);
+    const j = m.colunas ? k.j : idx % nCols;
     const r = { x: gx + s * j + 2, y: gy + s * i + 2, w: s - 4, h: s - 4 };
     const valida = m.valida(k);
     const fora = m.fora(k);

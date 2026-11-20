@@ -154,3 +154,40 @@ describe("correções da revisão B35 (grupos)", () => {
     }
   });
 });
+
+it.each([[200, 200], [200, 7], [120, 1]])("contém as fichas de %i ÷ %i na área de desenho", (n, d) => {
+  const w = 368;
+  const h = 265;
+  const g = gravarCanvasGrupos();
+  desenharGrupos(g.ctx, w, h, [], Grupos.parse({ modo: "divisao", n, d }), {});
+  expect(g.arcos.length).toBeGreaterThan(0);
+  for (const { x, y, r } of g.arcos) {
+    expect(x - r).toBeGreaterThanOrEqual(0);
+    expect(x + r).toBeLessThanOrEqual(w);
+    expect(y - r).toBeGreaterThanOrEqual(46);
+    expect(y + r).toBeLessThanOrEqual(h - 48);
+  }
+  const omitidas = n - g.arcos.length;
+  if (omitidas > 0) expect(g.textos).toContain(`+ ${omitidas} fichas`);
+});
+
+it("mostra m fracionário como inválido e invalida as métricas de conclusão", () => {
+  const p = Grupos.parse({ modo: "mmc", a: 4, b: 6, m: "$m" });
+  const ctl = { m: 11.5 };
+  const g = gravarCanvasGrupos();
+  desenharGrupos(g.ctx, 368, 287, [], p, ctl);
+  expect(g.textos).toContain("m = 11,5");
+  expect(g.textos).toContain("Total inválido: use inteiro ≥ 1");
+  expect(g.arcos).toHaveLength(0);
+  const metricas = metricasGrupos(p, ctl);
+  for (const chave of Object.keys(metricasGrupos(p, { m: 12 }))) {
+    expect(metricas[chave]).toBeNaN();
+  }
+});
+
+it("eh_mmc distingue o MMC dos demais múltiplos comuns", () => {
+  const p = Grupos.parse({ modo: "mmc", a: 4, b: 6, m: "$m" });
+  expect(metricasGrupos(p, { m: 8 }).eh_mmc).toBe(0);
+  expect(metricasGrupos(p, { m: 12 }).eh_mmc).toBe(1);
+  expect(metricasGrupos(p, { m: 24 })).toMatchObject({ resto: 0, eh_mmc: 0 });
+});

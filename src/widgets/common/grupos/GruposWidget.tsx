@@ -1,4 +1,4 @@
-// Widget grupos_inteiros. Métricas: n, d, q, resto, m (e resto_a, resto_b no modo mmc).
+// Widget grupos_inteiros. Métricas: n, d, q, resto, m (e resto_a, resto_b, eh_mmc no modo mmc).
 import { useEffect, useMemo } from "react";
 import { Dica } from "../../../ui/Dica";
 import { useCanvas } from "../../canvas";

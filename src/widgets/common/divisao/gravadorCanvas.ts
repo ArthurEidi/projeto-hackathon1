@@ -28,8 +28,8 @@ export function gravadorCanvas(): Gravador {
       if (k in estado) return estado[k];
       if (k === "measureText") return (s: string) => ({ width: largura(s) });
       if (k === "fillText")
-        return (s: string, x: number, y: number) => {
-          const w = largura(s);
+        return (s: string, x: number, y: number, maxW = Infinity) => {
+          const w = Math.min(largura(s), maxW);
           const esq = estado.textAlign === "center" ? x - w / 2 : estado.textAlign === "right" ? x - w : x;
           textos.push({ s, esq, dir: esq + w, y, tamanho: tamanho() });
         };

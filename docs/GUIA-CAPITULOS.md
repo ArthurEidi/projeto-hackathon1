@@ -482,7 +482,7 @@ Cores por marca em `cor`/`cores` de cada modo (padrões: índice c1, termo c2, d
 
 ### 5.4 `grade_resultados` + `grade_figura` — PRONTOS
 
-Arquivos: `common/grade/params.ts`, `calc.ts` (fatorial, arranjo, C(n, k), Pascal, permutações, distribuições, binomial, conjuntos de casas; testado), `desenho.ts`, `GradeWidget.tsx`, `GradeFigura.tsx`. Valores com slider aceitam expressão (`"$k"`, `"$inicio_b+3"`).
+Arquivos: `common/grade/params.ts`, `calc.ts` (fatorial, arranjo, C(n, k), Pascal, permutações, distribuições, binomial, conjuntos de casas; testado), `desenho.ts`, `GradeWidget.tsx`, `GradeFigura.tsx`. Valores com slider aceitam expressão (`"$k"`, `"$inicio_b+3"`). Em `casas`, uma etapa com 20 casas dispõe os rótulos em quatro linhas de cinco, na ordem original.
 
 | `modo` | Campos principais | Métricas |
 |---|---|---|
@@ -825,6 +825,7 @@ Quadro de ordens decimais (`C`, `D`, `U`, `d`, `c`, expandindo para `UM` / `m` q
 - **Modo `"ordem"`:**
   - `a`: coeficiente, número ou expressão com slider (padrão `2`).
   - `n`: expoente base inteiro em `-6..6` (padrão `2`); compara `a` com `√10` entre `10ⁿ` e `10ⁿ⁺¹` (empate sobe).
+- O quadro exibe até nove colunas, incluindo `…` onde há ordens omitidas. A régua de potências mantém até oito marcas rotuladas e inclui os extremos da faixa. O chip de `N` usa notação científica quando o valor decimal é pequeno demais para a precisão padrão ou quando o texto excede o espaço disponível.
 - **Métricas emitidas:** `n`, `a`, `valor`, `normalizado` (`0` ou `1`), `ordem_exp`.
 - **Exemplo de JSON:**
 ```jsonc
@@ -871,7 +872,8 @@ Organiza `n` fichas em grupos completos de tamanho `d` (quociente `q` e resto `r
   - `d`: número ou expressão (padrão `3`).
   - `referencia_d`: inteiro `1..12` opcional para referência em `muted`.
   - `mostrar_resto`: booleano (padrão `true`).
-- **Métricas emitidas:** `n`, `d`, `q`, `resto`, `m` (e no modo `"mmc"`, também `resto_a` e `resto_b`).
+- Ao atingir a altura disponível, o desenho de grupos indica as fichas omitidas com `+ k fichas`. As métricas usam as quantidades completas.
+- **Métricas emitidas:** `n`, `d`, `q`, `resto`, `m` (no modo `"mmc"`, `m`, `d`, `q`, `resto`, `resto_a`, `resto_b` e `eh_mmc`). Para pedir o menor múltiplo comum, use `{ "metric": "eh_mmc", "gte": 1 }`. `eh_mmc` vale `1` quando `m = mmc(a, b)` e `0` para os demais totais válidos. Se o `m` avaliado for inválido, o widget mostra a mensagem de erro e as métricas ficam indisponíveis para conclusão.
 - **Exemplo de JSON:**
 ```jsonc
 {
@@ -911,7 +913,7 @@ Quadro da divisão de polinômios em dois modos: divisão por constante `d ≠ 0
   - `r`: número ou expressão com slider para a raiz do divisor `x − r` (padrão `2`).
   - `etapa`: número ou expressão com slider de `0` até `grau(P)` (padrão `0`).
 - **Métricas emitidas:** `d`, `etapa`, `resultado` (1 quando Q e R estão na tela: divisor constante diferente de 0; na chave, `etapa` = grau de P) e `resto`, **só quando `resultado` = 1** (uma meta sobre o resto não conclui com divisor 0 nem na etapa 0 da chave). Para concluir pela leitura do resto, use `{ "metric": "resultado", "gte": 1 }` ou `etapa`.
-- **Textos longos:** dividendo, retiradas, restos parciais e identidade encolhem a fonte (até 9 px) para caber na coluna; o chip do divisor e do quociente vira texto sem fundo, encolhido, quando não cabe na coluna. Identidade com resto negativo: "x² − 5 = (x − 2)(x + 2) − 1".
+- **Textos longos:** dividendo, retiradas, restos parciais e identidade reduzem a fonte até 9 px e se ajustam horizontalmente à largura disponível. Quando um chip da chave excede esse espaço, a expressão aparece como texto ajustado com a mesma dica. Identidade com resto negativo: "x² − 5 = (x − 2)(x + 2) − 1".
 - **Exemplo de JSON:**
 ```jsonc
 {

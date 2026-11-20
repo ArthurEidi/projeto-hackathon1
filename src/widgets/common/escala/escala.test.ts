@@ -125,3 +125,23 @@ describe("correções da revisão B35 (escala)", () => {
     expect(estaNormalizado(10)).toBe(false);
   });
 });
+
+it.each([20, -20])("limita o quadro e a régua no expoente %i", (n) => {
+  const w = 368;
+  const h = 287;
+  const { ctx, textos } = gravarCanvas();
+  const hits: Parameters<typeof desenharEscala>[3] = [];
+  desenharEscala(ctx, w, h, hits, EscalaDecimal.parse({ modo: "potencia", a: 2, n }), {});
+
+  const cabecalhos = textos.filter((t) => t.y === 58);
+  const marcas = textos.filter((t) => t.y === h - 28);
+  expect(cabecalhos.length).toBeLessThanOrEqual(9);
+  expect((n > 0 ? cabecalhos.at(-1) : cabecalhos[0])?.texto).toBe("…");
+  expect(textos.some((t) => t.y === 103 && t.texto === "2")).toBe(true);
+  expect(marcas.length).toBeLessThanOrEqual(8);
+  expect(marcas.map((t) => t.texto)).toContain(n > 0 ? "10²⁰" : "10⁻²⁰");
+
+  const valor = hits.find((hit) => hit.key === "c3")!;
+  expect(valor.x).toBeGreaterThanOrEqual(0);
+  expect(valor.x + valor.w).toBeLessThanOrEqual(w);
+});

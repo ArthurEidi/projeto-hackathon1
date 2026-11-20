@@ -47,10 +47,18 @@ function desenharQuadroOrdens(
   expDestaque: number | null,
   highlight: readonly Marca[],
 ) {
-  const cols = quadroOrdens(valor);
+  const ordens = quadroOrdens(valor);
+  const limite = 9;
+  const primeiroSignificativo = ordens.findIndex((col) => col.digito !== "" && col.digito !== "0");
+  const inicio = ordens.length > limite ? Math.max(0, primeiroSignificativo - 3) : 0;
+  const reticenciasAntes = inicio > 0;
+  const disponiveis = limite - Number(reticenciasAntes);
+  const reticenciasDepois = ordens.length - inicio > disponiveis;
+  const cols = ordens.slice(inicio, inicio + disponiveis - Number(reticenciasDepois));
+  const visiveis = [...(reticenciasAntes ? [null] : []), ...cols, ...(reticenciasDepois ? [null] : [])];
   const padX = 16;
   const tableW = w - 2 * padX;
-  const colW = tableW / cols.length;
+  const colW = tableW / visiveis.length;
   const headH = 34;
   const bodyH = 44;
 
@@ -62,10 +70,10 @@ function desenharQuadroOrdens(
   caixaArredondada(ctx, padX, yTop, tableW, headH + bodyH, 12);
   ctx.clip();
 
-  cols.forEach((col, i) => {
+  visiveis.forEach((col, i) => {
     const cx = padX + i * colW;
     const midX = cx + colW / 2;
-    const isDestaque = expDestaque !== null && col.exp === expDestaque;
+    const isDestaque = col !== null && col.exp === expDestaque;
 
     if (isDestaque) {
       ctx.fillStyle = tintaClara("c2");
@@ -76,6 +84,10 @@ function desenharQuadroOrdens(
       seg(ctx, { x: cx, y: yTop }, { x: cx, y: yTop + headH + bodyH }, palette.lineDark, 1);
     }
 
+    if (col === null) {
+      nota(ctx, { x: midX, y: yTop + 12 }, "…", "muted", 13);
+      return;
+    }
     nota(ctx, { x: midX, y: yTop + 12 }, col.label, isDestaque ? "c2" : "ink", 13);
     nota(ctx, { x: midX, y: yTop + 26 }, potenciaLabel(col.exp), isDestaque ? "c2" : "muted", 11);
 
@@ -116,6 +128,19 @@ function destacarChipSeAtivo(
   ctx.restore();
 }
 
+function etiquetaValor(ctx: CanvasRenderingContext2D, w: number, hits: Hit[], x: number, valor: number) {
+  ctx.font = "900 16px Nunito, system-ui, sans-serif";
+  const margem = 5;
+  let texto = `N = ${fmt(valor)}`;
+  const larguraChip = () => ctx.measureText(texto).width + 16;
+  if (larguraChip() > 2 * (Math.min(x, w - x) - margem) || (valor !== 0 && fmt(valor) === "0")) {
+    const [a, n] = valor.toExponential().split("e");
+    texto = `N = ${a.replace(".", ",").replace("-", "−")}·${potenciaLabel(Number(n))}`;
+  }
+  const meiaLargura = larguraChip() / 2 + margem;
+  etiqueta(ctx, hits, { x: Math.max(meiaLargura, Math.min(x, w - meiaLargura)), y: 20 }, texto, "c3");
+}
+
 function desenharPotencia(
   ctx: CanvasRenderingContext2D,
   w: number,
@@ -132,10 +157,10 @@ function desenharPotencia(
     destacarChipSeAtivo(ctx, hits, p.highlight, "c1");
     etiqueta(ctx, hits, { x: w * 0.5, y: 20 }, `n = ${fmt(s.n)}`, "c2");
     destacarChipSeAtivo(ctx, hits, p.highlight, "c2");
-    etiqueta(ctx, hits, { x: w * 0.8, y: 20 }, `N = ${fmt(s.valor)}`, "c3");
+    etiquetaValor(ctx, w, hits, w * 0.8, s.valor);
     destacarChipSeAtivo(ctx, hits, p.highlight, "c3");
   } else {
-    etiqueta(ctx, hits, { x: w * 0.5, y: 20 }, `N = ${fmt(s.valor)}`, "c3");
+    etiquetaValor(ctx, w, hits, w * 0.5, s.valor);
     destacarChipSeAtivo(ctx, hits, p.highlight, "c3");
   }
 
@@ -152,7 +177,9 @@ function desenharPotencia(
 
   seg(ctx, { x: padX - 8, y: yAxis }, { x: w - padX + 8, y: yAxis }, palette.ink, 2);
 
-  for (let k = nMin; k <= nMax; k++) {
+  const intervalos = Math.min(7, span);
+  for (let i = 0; i <= intervalos; i++) {
+    const k = nMin + Math.round((i / intervalos) * span);
     const x = posX(k);
     const ativo = p.mostrar_notacao && k === s.n;
     const isRef = p.mostrar_notacao && p.n_ref !== null && k === p.n_ref;
@@ -198,7 +225,7 @@ function desenharNormalizar(
 
   etiqueta(ctx, hits, { x: w * 0.2, y: 20 }, `a = ${fmt(s.a)}`, "c1");
   etiqueta(ctx, hits, { x: w * 0.5, y: 20 }, `n = ${fmt(s.n)}`, "c2");
-  etiqueta(ctx, hits, { x: w * 0.8, y: 20 }, `N = ${fmt(s.valor)}`, "c3");
+  etiquetaValor(ctx, w, hits, w * 0.8, s.valor);
 
   desenharQuadroOrdens(ctx, w, 46, s.valor, s.n, p.highlight);
 
@@ -269,7 +296,7 @@ function desenharOrdem(
   const acima = s.a >= Math.sqrt(10) - 1e-9;
 
   etiqueta(ctx, hits, { x: w * 0.2, y: 20 }, `a = ${fmt(s.a)}`, "c1");
-  etiqueta(ctx, hits, { x: w * 0.5, y: 20 }, `N = ${fmt(s.valor)}`, "c3");
+  etiquetaValor(ctx, w, hits, w * 0.5, s.valor);
   etiqueta(ctx, hits, { x: w * 0.8, y: 20 }, `ordem: ${potenciaLabel(s.ordemExp)}`, "c4");
 
   const padX = 32;
