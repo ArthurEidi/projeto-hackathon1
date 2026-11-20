@@ -184,10 +184,13 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 
 | Frente | Agente (B) | Desde | Arquivos |
 |---|---|---|---|
-| B49. Revisão de produto do app (parte 1 relatório; parte 2 correções depois do ok do maestro) | Antigravity (Neon) | 20/11 | `docs/visual/produto-b49.md`; depois `src/ui/**`, `src/App.tsx`, `src/Home.tsx`, `src/treino/**`, `src/steps/**`, `src/engine/LessonPlayer.tsx` |
+| ~~B49~~ concluída 20/11 (588720e, 82c7e08): 0 bloqueios; 6 achados corrigidos (primeira visita, pilar lembrado, convite com contagem real, aula não encontrada, contraste AA, foco/rótulos) | Antigravity (Neon) | 20/11 | — |
 | B46. 4 achados da revisão da B44b (escala, grupos) | Codex | 20/11 | `src/widgets/common/escala/**`, `grupos/**`, GUIA §5.21/5.22, `docs/revisao/codigo-b44b-revisao.md` |
-| B45a-aud. Auditoria da UFU 2021-2 Q67 em `inequacoes-trigonometricas` | Codex #2 | 20/11 | essa aula, teste, roteiro, fontes, `docs/revisao/auditoria-b45a-inequacoes.md` |
+| ~~B45a-aud~~ concluída 20/11 (e82e971): UFU 2021-2 Q67 em inequações trigonométricas | Codex #2 | 20/11 | — |
 | B45b. Vestibular oficial: angulos-retas-paralelas, circunferencia-arcos-e-angulos, relacoes-metricas-triangulo-retangulo | Antigravity #2 | 20/11 | essas aulas (vestibular, roteiro, teste, fontes), `docs/revisao/vestibular-b45b.md` |
 | B45d1. Idem: solidos-de-revolucao, vetores-no-plano | Antigravity #3 | 20/11 | idem, `vestibular-b45d1.md` |
 | B45d2. Idem: quartis-percentis-e-boxplot, equacoes-irracionais | Antigravity #4 | 20/11 | idem, `vestibular-b45d2.md` |
-
+| ~~B51~~ concluída 20/11 (87c5070): atalho "App de Matemática" na Área de Trabalho (`scripts/abrir-app.cmd`) | Claude Code #2 | 20/11 | — |
+| B52. Detalhes D1–D3 da B49 (grade de matérias no celular, rolagem no desktop, chunk de 711 kB) | Claude Code #2 | 20/11 | `src/ui/**`, `src/Home.tsx`, `src/App.tsx`, `vite.config.ts`, `src/widgets/common/index.ts` (só lazy), `docs/visual/produto-b52.md` |
+| B53. Revisão de código da B49 parte 2 (só relatório); depois auditoria das B45b/B45d | Codex #2 | 20/11 | `docs/revisao/codigo-b49-revisao.md` |
+| B46 (cont.): 4º achado exige `src/steps/InteractiveCanvas.tsx` (autorizado pelo maestro) | Codex | 20/11 | + `src/steps/InteractiveCanvas.tsx` |
