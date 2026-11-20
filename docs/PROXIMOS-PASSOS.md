@@ -1,6 +1,6 @@
 # Próximos passos
 
-Atualizado em 19/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
+Atualizado em 20/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
 **Antes de pegar qualquer tarefa, leia `docs/EM-ANDAMENTO.md`**: é lá que cada máquina reserva a sua frente, para duas máquinas não mexerem nos mesmos arquivos.
 
 ## Estado
@@ -9,10 +9,10 @@ Atualizado em 19/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim
 - **Validações em 19/11 (b5c8864):** `lint:content` ok, 132 arquivos de teste / 2121 testes passando, `typecheck` limpo, `build` ok.
 - **Widgets** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `retangulo_areas`, `maquinas_funcao`, `transformacao_plano`, e os 4 de um capítulo só (`escala_decimal`, `grupos_inteiros`, `divisao_polinomial`, `sistema_escalonado`, GUIA §5.21–5.24, 19/11). Nenhum capítulo depende mais de adaptação por falta de widget.
 - **Roteiros:** 103 planos em `docs/planos/`; gabaritos conferidos às cegas (1359/1359).
-- **Vestibular:** 79 das 104 aulas têm questões reais (ENEM e, desde 19/11, provas oficiais de ITA, UFRGS, Fuvest etc. conferidas no PDF), 163 questões, nenhuma repetida. Os feedbacks das 92 de aritmética e álgebra foram auditados e corrigidos (B41). As 25 restantes estão na B43.
+- **Vestibular:** 95 das 104 aulas têm questões reais no main (ENEM e provas oficiais de Fuvest, Unicamp, UFRGS, UFPR, ITA, UERJ etc., cada uma conferida na página do PDF oficial e auditada). Sem questão: `funcao-racional` (17 bancas consultadas, nenhuma adequada) e as 8 da B45b/B45d (geometria plana, sólidos de revolução, vetores, quartis, equações irracionais), cuja busca não deixou entrega; `inequacoes-trigonometricas` tem questão no branch `wip-20-11`, falta auditar.
 - **Desafios:** os 104 têm 4 alternativas (B14). **Figura que entrega a resposta:** os 25 casos achados em 16/11 resolvidos com `antes_de_concluir` (GUIA §2).
 
-**Progresso estimado do protótipo (19/11): cerca de 88%.** Conteúdo (104 aulas, roteiros, desafios com 4 alternativas): 100%. Widgets: 100% (20 + 4). Revisão de texto, feedbacks e conferência visual: ~95% (falta uma varredura automática completa, B44a). Vestibular: 79/104 aulas (76%; B43 em curso). Publicação do app: preparada, não publicada (decisão do usuário). Extras fora do mínimo: aula 02 de Cones, vídeos.
+**Progresso estimado do protótipo (20/11): cerca de 92%.** Conteúdo, widgets, roteiros (103/103 sem erro no lint-planos): 100%. Revisão de texto, feedbacks e falas do treino: ~98% (B41, B47). Conferência visual: varredura automática das 104 aulas sem defeito (B44a, provada com defeitos injetados) e das 37 questões novas de vestibular (B48). Vestibular: 95/104 aulas. Falta: revisão de produto do app como um todo (B49, começada), publicar o app (decisão do usuário), opcionais (aula 02 de Cones, vídeos).
 
 O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets que foram substituídos por adaptações, fontes de vestibular.
 
@@ -63,6 +63,10 @@ O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets qu
 - **Lacunas antigas de widget** (B34 relatório, B38, a8585cc): `t` fora dos chips 90° em paralelas; urna com bolas no desafio de `probabilidade-espaco-amostral`; `unidades-conversoes-e-escalas` p1/p5 com `retangulo_areas` modo `escala`.
 - **Vestibular:** auditoria completa dos feedbacks de aritmética e álgebra (B36 + B41, 75391f1 e 87a216b): 92 questões, 458 alternativas, 78 textos corrigidos, nenhum gabarito errado. **Critério:** no treino, o feedback da errada dá a resposta certa (GUIA §2 regra 1); "não revelar o valor certo" vale só para desafios. Fontes "ENEM 2025" erradas corrigidas e 0 repetidas (77cce36). Candidatas de provas oficiais (B40, Gemini) auditadas no PDF pelo Claude Code #2: 17 aprovadas, 10 recusadas (8 do ITA por nível); 16 inseridas em 12 aulas (B42, b5c8864).
 - **Em curso:** B43 (Claude Code #2, vestibular para as 25 aulas restantes), B44a (Codex, `scripts/varre-aulas.mjs`: varredura automática das 104 aulas), B44b (Codex #2, casos de borda dos widgets novos e grade 4 × 5). Briefings fora do repositório: `C:\Users\mkf10\projetos\briefing-b4x.md`.
+
+**Feito em 19–20/11, noite (Máquina B; todos os agentes).** B43 (13 questões oficiais em 11 aulas), B45a (7 em 4 aulas de trigonometria; a de inequações ainda no `wip-20-11`), B45c (transformações e função modular), B44 (varredura automática + bordas dos widgets) com revisões cruzadas (B45r), B47 (36 falas do treino que entregavam a resposta antes de Verificar; seção de vestibular de 72 roteiros normalizada; mojibake de `taxas-equivalentes-e-inflacao.md` recuperado), B48 (37 questões novas vistas em 400 px: 0 problemas). Último commit no main: ver `git log`.
+
+**Parada de 20/11 (pedido do usuário).** Trabalho não auditado ou pela metade está no branch remoto **`wip-20-11`** (não mesclar sem revisar): (1) `inequacoes-trigonometricas` com UFU 2021-2 Q67 (B45a, falta auditoria nos moldes da B42); (2) B46 parcial (Codex: 4 achados de `docs/revisao/codigo-b44b-revisao.md` em `escala`; terminar, com teste que falha antes); (3) B49 parte 1 parcial (`docs/visual/produto-b49.md`, revisão de produto do app pelo Claude Code #2). B45b (Antigravity #2: geometria plana) e B45d (Antigravity #4: sólidos de revolução, vetores, quartis, equações irracionais) não deixaram entrega: recomeçar. Briefings fora do repositório: `C:\Users\mkf10\projetos\briefing-b45.md` e anteriores.
 
 **O que falta para fechar o protótipo:** (1) B43 terminar o vestibular (as aulas sem questão oficial adequada ficam vazias, nunca com fonte inventada); (2) rodar a varredura B44a e corrigir o que ela achar; (3) decidir e publicar o app (`docs/HOSPEDAGEM.md`); (4) opcionais: aula 02 de Cones, vídeos.
 

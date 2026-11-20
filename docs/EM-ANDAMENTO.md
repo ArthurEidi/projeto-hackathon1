@@ -177,3 +177,6 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 | B45d. Idem: solidos-de-revolucao, vetores-no-plano, quartis-percentis-e-boxplot, equacoes-irracionais | Antigravity #4 | 19/11 | idem, `vestibular-b45d.md` |
 | ~~B45r~~ concluída 19/11 (910cf77). Em curso B46 (Codex: 4 achados da revisão em escala e grupos) e auditorias das B45 | Codex / Codex #2 | 19/11 | `src/widgets/common/escala/**`, `grupos/**`, relatórios |
 | B47. Falas do treino que entregam a resposta antes de Verificar (varredura das ~170 questões de vestibular) e normalização da seção de vestibular dos roteiros | Claude Code #2 | 19/11 | `fala` em `treino` das aulas (exceto as 10 da B45 em curso), `docs/planos/*.md` (seção de vestibular), `docs/revisao/falas-b47.md` |
+
+20/11 (madrugada): **parada pedida pelo usuário; nenhuma frente da B está ativa.** Tudo auditado está no main; o que estava pela metade está no branch `wip-20-11` (inequações trigonométricas não auditada, B46 parcial, B49 parte 1 parcial). B45b e B45d sem entrega. Reservas da B liberadas; para retomar, ler o bloco "Parada de 20/11" em `PROXIMOS-PASSOS.md`.
+
