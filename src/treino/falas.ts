@@ -7,18 +7,35 @@ export type Etapa = "basico" | "desafio" | "vestibular";
 export const ETAPAS: Etapa[] = ["basico", "desafio", "vestibular"];
 
 /** Convite gentil logo depois da comemoração do fim de aula (Paco casual). */
-export const CONVITE: Fala[] = [
-  {
-    quem: "paco",
-    humor: "happy",
-    texto: "Que tal um treino rápido para fixar o que você viu? São 7 perguntas, sem pressa.",
-  },
-];
+export function conviteBasico(total: number): Fala[] {
+  const quantas = total === 1 ? "É 1 pergunta, sem pressa." : `São ${total} perguntas, sem pressa.`;
+  return [
+    {
+      quem: "paco",
+      humor: "happy",
+      texto: `Que tal um treino rápido para fixar o que você viu? ${quantas}`,
+    },
+  ];
+}
 
-/** Convite para a etapa seguinte, mostrado no resultado da etapa anterior. */
+export const CONVITE: Fala[] = conviteBasico(7);
+
+/** Convite para a etapa seguinte usando a contagem real de questões (null se não houver questões). */
+export function conviteProxima(etapa: Exclude<Etapa, "basico">, total: number): string | null {
+  if (total <= 0) return null;
+  if (etapa === "desafio") {
+    return total === 1
+      ? "Se quiser ir um pouco além, preparei mais 1 pergunta. É mais puxada, e você vai no seu ritmo."
+      : `Se quiser ir um pouco além, preparei mais ${total} perguntas. São mais puxadas, e você vai no seu ritmo.`;
+  }
+  return total === 1
+    ? "Quer ver como isso aparece em vestibular? Separei 1 questão que já caiu em prova."
+    : `Quer ver como isso aparece em vestibular? Separei ${total} questões que já caíram em provas.`;
+}
+
 export const CONVITE_PROXIMA: Record<Exclude<Etapa, "basico">, string> = {
-  desafio: "Se quiser ir um pouco além, preparei mais 5 perguntas. São mais puxadas, e você vai no seu ritmo.",
-  vestibular: "Quer ver como isso aparece em vestibular? Separei 4 questões que já caíram em provas.",
+  desafio: conviteProxima("desafio", 5)!,
+  vestibular: conviteProxima("vestibular", 4)!,
 };
 
 export const BOTAO_PROXIMA: Record<Exclude<Etapa, "basico">, string> = {

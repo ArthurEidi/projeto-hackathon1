@@ -49,7 +49,12 @@ export function LessonPlayer({ lesson, aulaKey, passoInicial = 0, onExit }: Less
         <ProgressBar value={index / lesson.steps.length} />
       </header>
       {finished ? (
-        <ConviteTreino outro={lesson.outro} onTreinar={() => setTreinando(true)} onSair={onExit} />
+        <ConviteTreino
+          outro={lesson.outro}
+          totalBasico={lesson.treino.faceis.length + lesson.treino.medias.length}
+          onTreinar={() => setTreinando(true)}
+          onSair={onExit}
+        />
       ) : (
         <StepRenderer key={step.id} step={step} onNext={next} />
       )}

@@ -1,6 +1,6 @@
 # B49 — Revisão de produto (primeira viagem do usuário)
 
-**Status:** Parte 1 concluída (capturas + relatório com gravidade). Aguardando aprovação do maestro para a Parte 2 (correções em `src/`).
+**Status:** Parte 1 e Parte 2 concluídas (correções A1–A6 aplicadas, testadas e reconferidas em capturas antes/depois).
 **Agente:** Antigravity (Neon), continuando a partir do levantamento inicial do Claude Code #2.
 **Capturas salvas em:** `C:\Users\mkf10\projetos\capturas-b49\` (25 PNGs em `400 × 860` e `1280 × 800`, mais `auditoria-completa.json`).
 **Fluxo percorrido via Chrome headless (CDP) sobre Vite (`http://127.0.0.1:5299`):**
@@ -98,3 +98,25 @@ Nenhum achado bloqueante. Um usuário de primeira viagem consegue abrir o app, p
 - **Acentuação:** 0 textos visíveis sem acento em `src/` (fora `widgets/`) e `content/taxonomy.json`.
 - **Overflow lateral:** 0 px de rolagem horizontal em todas as 25 capturas (`400 × 860` e `1280 × 800`).
 - **Persistência de progresso:** `mat:progress:v1` grava a conclusão ao finalizar o último passo e mantém a aula marcada após recarregar a página (`14-pos-reload-progresso-1280.png`).
+
+---
+
+## Parte 2 — Correções aplicadas (A1–A6)
+
+Todas as correções de gravidade **atrapalha** foram aplicadas respeitando os limites do briefing (`src/ui/palette.ts` e cores `c1..c4` dos canvases dos widgets não foram alterados; nenhuma pasta de aula ou widget foi tocada):
+
+| Achado | Arquivos editados | O que mudou | Prova visual (`capturas-b49/`) |
+|---|---|---|---|
+| **A1 / A2** | `src/Home.tsx` | Primeira visita abre no 1º pilar (`aritmetica`) com o 1º setor e a 1ª unidade abertos (`chavesPrimeiraAula`), levando direto à Aula 01. O pilar ativo passa a ser salvo em `localStorage` (`mat:pilar-ativo:v1`) e preservado ao sair de uma aula ou recarregar; fechar tudo explicitamente (`"[]"`) continua sendo respeitado. | Antes: `02-home-apos-boas-vindas-400.png`, `13-volta-trilha-400.png` → Depois: `depois/A1-A2-home-primeira-visita-400.png`, `depois/A1-A2-home-primeira-visita-1280.png`, `depois/A1-volta-trilha-algebra-400.png` |
+| **A3** | `src/treino/falas.ts`, `src/treino/Treino.tsx`, `src/engine/LessonPlayer.tsx` | Criadas `conviteBasico(total)` e `conviteProxima(etapa, total)` com singular/plural e retorno `null` quando `total <= 0`. `ConviteTreino` e `Resultado` passam o número real de questões da etapa seguinte (ex.: *"Separei 3 questões que já caíram em provas."* em aula com 3 questões de vestibular). | Antes: `10-treino-resultado-desafio-400.png` ("4 questões") → Depois: `depois/A3-convite-vestibular-3-questoes-400.png` ("3 questões") |
+| **A4** | `src/App.tsx` | Substituído o `<pre class="error-box">` cru pelo componente `AulaNaoEncontrada` no estilo `.finish` do app (Paco acenando, `<h1>Aula não encontrada</h1>`, texto amigável e `TactileButton` "Voltar à trilha"). | Antes: `15-rota-inexistente-400.png` → Depois: `depois/A4-rota-inexistente-400.png`, `depois/A4-rota-inexistente-1280.png` |
+| **A5** | `src/ui/styles.css` | Criados tokens apenas de interface em `:root` (`--ui-muted: #666666`, `--ui-green: #2e7d0a`, `--ui-green-dark: #215c06`, `--ui-red: #c82327`, `--ui-red-dark: #9b1b1e`, `--ui-yellow-text: #8c6200`, `--ui-orange-text: #a85e00`) e ajustado contraste de botões desabilitados (`#595959`) e cartões inativos (`#707070`). **`src/ui/palette.ts` permaneceu intacto.** Todas as 10 telas "depois" registraram **`lowContrast = 0`** na medição WCAG AA. | Antes: `05-aula-fechamento-400.png`, `06-convite-treino-400.png`, `08b-treino-feedback-certa-400.png` → Depois: `depois/A5-aula-fechamento-400.png`, `depois/A5-convite-treino-400.png`, `depois/A5-feedback-certa-400.png` |
+| **A6** | `src/ui/Tactile.tsx`, `src/treino/Treino.tsx`, `src/ui/styles.css` | `ProgressBar` recebeu `aria-label` (`"Progresso da aula"` por padrão e `"Progresso do treino"` no treino) e `.icon-btn` ganhou `:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }`. Todas as telas "depois" registraram **`semRotulo = 0`**. | Antes: `04b-foco-tab-sair-400.png` → Depois: `depois/A6-foco-tab-sair-400.png` |
+
+### Testes e validações da Parte 2
+- **Novos testes unitários:** `src/ui/produto-b49.test.tsx` (4 testes cobrindo A1/A2, A3, A4 e A6).
+- **`npm run typecheck`:** passou (`tsc --noEmit`).
+- **`npm run lint:content`:** passou (`conteúdo ok`).
+- **`npx vitest run`:** **133/133 arquivos**, **2149/2149 testes** passando.
+- **`npm run build`:** passou (`✓ built in 2.21s`).
+- **`node scripts/varre-aulas.mjs 5299`:** 104 aulas, 560 passos e 104 treinos verificados (**104 abriram**, **0 registro(s) de problema**).

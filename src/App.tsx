@@ -1,7 +1,28 @@
 import { useEffect, useState } from "react";
+import { CORPO, spriteUrl } from "./characters/sprites";
 import { listAulas, loadLesson, type LoadResult } from "./engine/content";
 import { LessonPlayer } from "./engine/LessonPlayer";
 import { Home } from "./Home";
+import { TactileButton } from "./ui/Tactile";
+
+export function AulaNaoEncontrada({ erro, onVoltar }: { erro?: string; onVoltar: () => void }) {
+  return (
+    <main className="finish">
+      <div className="dupla">
+        <img className="corpo" src={spriteUrl(CORPO.pacoAcenando)} alt="Paco acenando" draggable={false} />
+      </div>
+      <h1 className="finish__title">{erro ? "Não foi possível abrir a aula" : "Aula não encontrada"}</h1>
+      <p className={erro ? "finish__text error-box" : "finish__text"}>
+        {erro ?? "Esse endereço não existe na trilha. Volte para escolher uma aula."}
+      </p>
+      <div className="finish__acoes">
+        <TactileButton block onClick={onVoltar}>
+          Voltar à trilha
+        </TactileButton>
+      </div>
+    </main>
+  );
+}
 
 // Rotas por hash: "#/" trilha, "#/aula/<pilar>/<setor>/<unidade>/<aula>" aula.
 // Só em desenvolvimento: "?passo=N" no fim abre a aula direto no passo N (1 = primeiro), para conferência visual.
@@ -55,14 +76,7 @@ export function App() {
       ) : loaded?.ok ? (
         <LessonPlayer key={`${route.aula}#${route.passo}`} lesson={loaded.lesson} aulaKey={route.aula} passoInicial={route.passo} onExit={() => go("#/")} />
       ) : (
-        <>
-          <pre className="error-box">{loaded ? loaded.error : `Aula não encontrada: ${route.aula}`}</pre>
-          <div style={{ padding: "0 16px" }}>
-            <button type="button" className="btn btn--block" onClick={() => go("#/")}>
-              Voltar à trilha
-            </button>
-          </div>
-        </>
+        <AulaNaoEncontrada erro={loaded ? loaded.error : undefined} onVoltar={() => go("#/")} />
       )}
     </div>
   );

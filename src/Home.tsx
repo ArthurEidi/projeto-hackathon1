@@ -8,21 +8,58 @@ import { TactileButton } from "./ui/Tactile";
 
 const contar = (n: number, um: string, varios: string) => `${n} ${n === 1 ? um : varios}`;
 
-// Setores e unidades começam contraídos; o que o aluno abre fica lembrado entre visitas.
+// Na primeira visita, o primeiro setor e a primeira unidade do pilar inicial abrem para expor a Aula 01;
+// depois, o que o aluno abre e o último pilar escolhido ficam lembrados entre visitas.
 const KEY_ABERTOS = "mat:trilha-aberta:v1";
+const KEY_PILAR = "mat:pilar-ativo:v1";
 
-function lerAbertos(): Set<string> {
+export function chavesPrimeiraAula(): string[] {
+  const pilar = taxonomy.pilares[0];
+  const setor = pilar?.setores[0];
+  const unidade = setor?.unidades[0];
+  if (!pilar || !setor) return [];
+  const chaves = [`s:${pilar.id}/${setor.id}`];
+  if (unidade) chaves.push(`u:${pilar.id}/${setor.id}/${unidade.id}`);
+  return chaves;
+}
+
+export function lerPilarInicial(storage: Pick<Storage, "getItem"> | null = typeof localStorage !== "undefined" ? localStorage : null): string {
+  const padrao = taxonomy.pilares[0]?.id ?? "aritmetica";
   try {
-    const raw = localStorage.getItem(KEY_ABERTOS);
-    const lista: unknown = raw ? JSON.parse(raw) : [];
+    const salvo = storage?.getItem(KEY_PILAR);
+    if (salvo && taxonomy.pilares.some((p) => p.id === salvo)) return salvo;
+  } catch {
+    /* sem armazenamento */
+  }
+  return padrao;
+}
+
+export function lerAbertos(storage: Pick<Storage, "getItem"> | null = typeof localStorage !== "undefined" ? localStorage : null): Set<string> {
+  try {
+    const raw = storage?.getItem(KEY_ABERTOS);
+    if (raw === null || raw === undefined) return new Set(chavesPrimeiraAula());
+    const lista: unknown = JSON.parse(raw);
     return new Set(Array.isArray(lista) ? lista.filter((x): x is string => typeof x === "string") : []);
   } catch {
-    return new Set();
+    return new Set(chavesPrimeiraAula());
   }
 }
 
+function usePilar(): [string, (id: string) => void] {
+  const [pilarId, setPilarId] = useState(() => lerPilarInicial());
+  const escolher = (id: string) => {
+    setPilarId(id);
+    try {
+      localStorage.setItem(KEY_PILAR, id);
+    } catch {
+      /* sem armazenamento: o estado vale só para esta visita */
+    }
+  };
+  return [pilarId, escolher];
+}
+
 function useAbertos(): [Set<string>, (key: string) => void] {
-  const [abertos, setAbertos] = useState(lerAbertos);
+  const [abertos, setAbertos] = useState(() => lerAbertos());
   const alternar = (key: string) =>
     setAbertos((atual) => {
       const novo = new Set(atual);
@@ -40,7 +77,7 @@ function useAbertos(): [Set<string>, (key: string) => void] {
 /** Trilha: Pilar > Setor > Unidade > Aula. Setores e unidades em acordeão. */
 export function Home({ onOpen }: { onOpen: (key: string) => void }) {
   const [materiaId, setMateriaId] = useState(MATERIA_COM_CONTEUDO);
-  const [pilarId, setPilarId] = useState("geometria");
+  const [pilarId, setPilarId] = usePilar();
   const progress = getProgress();
   const aulas = listAulas();
   const pilar = taxonomy.pilares.find((p) => p.id === pilarId)!;

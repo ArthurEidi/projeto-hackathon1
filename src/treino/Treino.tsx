@@ -12,17 +12,27 @@ import { figures } from "../widgets/registry";
 import {
   BOTAO_PROXIMA,
   CONTADOR,
-  CONVITE,
-  CONVITE_PROXIMA,
   ETAPAS,
   FALA_PERGUNTA,
   SUBTITULO_RESULTADO,
+  conviteBasico,
+  conviteProxima,
   falasResultado,
   type Etapa,
 } from "./falas";
 
 /** Fim de aula: comemoração casual e o convite para treinar. "Agora não" volta para a trilha. */
-export function ConviteTreino({ outro, onTreinar, onSair }: { outro: string; onTreinar: () => void; onSair: () => void }) {
+export function ConviteTreino({
+  outro,
+  totalBasico = 7,
+  onTreinar,
+  onSair,
+}: {
+  outro: string;
+  totalBasico?: number;
+  onTreinar: () => void;
+  onSair: () => void;
+}) {
   return (
     <div className="finish">
       <div className="dupla dupla--festa">
@@ -32,7 +42,7 @@ export function ConviteTreino({ outro, onTreinar, onSair }: { outro: string; onT
       <h1 className="finish__title">Aula concluída</h1>
       <p className="finish__text">{outro}</p>
       <div className="finish__conversa">
-        <Conversa falas={CONVITE} roupa="casual" />
+        <Conversa falas={conviteBasico(totalBasico)} roupa="casual" />
       </div>
       <div className="finish__acoes">
         <TactileButton block onClick={onTreinar}>
@@ -103,7 +113,7 @@ export function Treino({ treino, onSair }: TreinoProps) {
         <button type="button" className="icon-btn" aria-label="Sair do treino" onClick={onSair}>
           <IconClose />
         </button>
-        <ProgressBar value={fim ? 1 : progresso} />
+        <ProgressBar value={fim ? 1 : progresso} label="Progresso do treino" />
       </header>
       {fim ? (
         <Resultado
@@ -112,6 +122,7 @@ export function Treino({ treino, onSair }: TreinoProps) {
           acertos={acertos}
           total={questoes.length}
           proxima={proximaEtapa}
+          totalProxima={proximaEtapa ? questoesDaEtapa(treino, proximaEtapa).length : 0}
           onProxima={() => proximaEtapa && iniciar(proximaEtapa)}
           onSair={onSair}
           onRefazer={() => iniciar(etapa)}
@@ -230,16 +241,18 @@ interface ResultadoProps {
   acertos: number;
   total: number;
   proxima?: Exclude<Etapa, "basico">;
+  totalProxima?: number;
   onProxima: () => void;
   onSair: () => void;
   onRefazer: () => void;
 }
 
-function Resultado({ etapa, acertos, total, proxima, onProxima, onSair, onRefazer }: ResultadoProps) {
+function Resultado({ etapa, acertos, total, proxima, totalProxima = 0, onProxima, onSair, onRefazer }: ResultadoProps) {
   const tudo = acertos === total;
   // O convite para a próxima etapa vem depois do comentário sobre o resultado, na mesma conversa.
   const falas: Fala[] = [...falasResultado(etapa, acertos, total)];
-  if (proxima) falas.push({ quem: "paco", humor: "encouraging", texto: CONVITE_PROXIMA[proxima] });
+  const textoConvite = proxima ? conviteProxima(proxima, totalProxima) : null;
+  if (textoConvite) falas.push({ quem: "paco", humor: "encouraging", texto: textoConvite });
   const [um, varios] = SUBTITULO_RESULTADO[etapa];
 
   return (
