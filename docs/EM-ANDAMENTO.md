@@ -189,8 +189,10 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 | ~~B45a-aud~~ concluída 20/11 (e82e971): UFU 2021-2 Q67 em inequações trigonométricas | Codex #2 | 20/11 | — |
 | B45b. Vestibular oficial: angulos-retas-paralelas, circunferencia-arcos-e-angulos, relacoes-metricas-triangulo-retangulo | Antigravity #2 | 20/11 | essas aulas (vestibular, roteiro, teste, fontes), `docs/revisao/vestibular-b45b.md` |
 | B45d1. Idem: solidos-de-revolucao, vetores-no-plano | Antigravity #3 | 20/11 | idem, `vestibular-b45d1.md` |
-| B45d2. Idem: quartis-percentis-e-boxplot, equacoes-irracionais | Antigravity #4 | 20/11 | idem, `vestibular-b45d2.md` |
+| B45d2. Idem: quartis-percentis-e-boxplot, equacoes-irracionais (reatribuída: o Antigravity #4 caiu com erro 401 de autenticação, precisa de novo login do usuário) | Antigravity (Neon) | 20/11 | essas aulas, `docs/revisao/vestibular-b45d2.md` |
 | ~~B51~~ concluída 20/11 (87c5070): atalho "App de Matemática" na Área de Trabalho (`scripts/abrir-app.cmd`) | Claude Code #2 | 20/11 | — |
-| B52. Detalhes D1–D3 da B49 (grade de matérias no celular, rolagem no desktop, chunk de 711 kB) | Claude Code #2 | 20/11 | `src/ui/**`, `src/Home.tsx`, `src/App.tsx`, `vite.config.ts`, `src/widgets/common/index.ts` (só lazy), `docs/visual/produto-b52.md` |
-| B53. Revisão de código da B49 parte 2 (só relatório); depois auditoria das B45b/B45d | Codex #2 | 20/11 | `docs/revisao/codigo-b49-revisao.md` |
+| ~~B52~~ concluída 20/11 (ee0716d): matérias em faixa rolável, coluna no desktop, player sob demanda (JS inicial 711 → 423 kB) | Claude Code #2 | 20/11 | — |
+| ~~B53~~ concluída 20/11 (f110fa5): 3 telas em branco possíveis e 4 "atrapalha" na B49 | Codex #2 | 20/11 | — |
 | B46 (cont.): 4º achado exige `src/steps/InteractiveCanvas.tsx` (autorizado pelo maestro) | Codex | 20/11 | + `src/steps/InteractiveCanvas.tsx` |
+| B54. Corrigir os 7 achados da B53 (localStorage protegido, dados inválidos, hash tolerante, foco, contraste) | Claude Code #2 | 20/11 | `src/App.tsx`, `src/Home.tsx`, `src/engine/**`, `src/ui/**`, `src/treino/**`, `docs/visual/produto-b54.md` |
+| B55. Revisão de código da B52 (só relatório) | Codex #2 | 20/11 | `docs/revisao/codigo-b52-revisao.md` |
