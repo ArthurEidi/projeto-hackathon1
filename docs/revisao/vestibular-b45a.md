@@ -38,4 +38,28 @@ Todas as candidatas foram verificadas visualmente nas páginas dos PDFs oficiais
 - `formulas-de-adicao-e-arco-duplo`: `ufpr-2025-cos-2x` (UFPR 2025 Q08) e `ufrgs-2022-sen-2a` (UFRGS 2022 Q51).
 - `identidades-trigonometricas`: `unicamp-2025-sen-pi12` (UNICAMP 2025 Q50) e `ufpr-2024-soma-quadrado` (UFPR 2024 Q05).
 - `equacoes-trigonometricas`: `ita-2017-sec-cossec` (ITA 2017 Q2) e `ufpr-2020-mare` (UFPR 2020 Q17).
-- `inequacoes-trigonometricas`: mantida vazia (documentado em `docs/fontes-candidatas/inequacoes-trigonometricas.md`).
+- `inequacoes-trigonometricas`: `ufu-2021-cos2x-ineq` (UFU 2021-2 Medicina Q67, inserida na continuação abaixo).
+
+---
+
+## Continuação B45a — `inequacoes-trigonometricas` (ampliação de bancas)
+
+### Candidata avaliada e aprovada
+
+| Aula | Candidata (banca/ano/nº, página) | Gabarito | Sua conta | Nível ok? | Veredito |
+|---|---|---|---|---|---|
+| `inequacoes-trigonometricas` | UFU 2021-2, Medicina, 1º dia, Tipo 1, Q67 (p. 37) | A (`[2π/3; 4π/3]`) | `cos(2x) + 3·cos x + 2 = (2·cos²x − 1) + 3·cos x + 2 = (2·cos x + 1)(cos x + 1) ≤ 0`; como `cos x + 1 ≥ 0`, equivale a `cos x ≤ −1/2 ⇒ x ∈ [2π/3; 4π/3]` | sim (arco duplo da aula anterior + leitura de `cos x ≤ −1/2` no ciclo) | **aprovada, inserida** (`ufu-2021-cos2x-ineq`) |
+
+### URLs oficiais testadas (HTTP 200 e tamanho exato da cópia local)
+
+| Arquivo local (`provas-oficiais/`) | URL oficial | HTTP | Bytes (local = remoto) |
+|---|---|---|---|
+| `ufu-2021-2-medicina/prova.pdf` | `https://www.portalselecao.ufu.br/servicos/arquivo_administrativo/download/96752f0608aff8b3436a1b5a5099c0ce` | 200 | `1802309` |
+| `ufu-2021-2-medicina/gabarito.pdf` | `https://www.portalselecao.ufu.br/servicos/arquivo_administrativo/download/06d86297d6e28d4637d60c86c2a2f5b6` | 200 | `120050` |
+
+### Onde mais foi procurado nesta continuação
+
+- **Baixadas e varridas em PDF oficial (`C:\Users\mkf10\projetos\provas-oficiais\`):** UFU (2019, 2020, 2021-2 Medicina, 2023–2026 — 7 provas), UERJ (Exames de Qualificação 2010–2027 + simulado 2019 — 31 provas), UEL (1ª fase 2012–2026 — 15 provas), PUC-RS (2021–2023 — 37 provas), UEM (2022–2025 — 7 provas, somatória), além de FUVEST 2017, UFRGS 2016–2020/2023 e UNICAMP 2016–2018.
+- **Bancas verificadas sem PDF oficial público acessível nesta rodada:** Vunesp (Unesp, Famerp, Einstein — HTTP 403), Fatec (HTTP 403), UFSC (HTTP 502; somatória), UnB/Cebraspe (SPA sem PDFs estáticos; C/E), UFMG (sem vestibular recente), Mackenzie e PUC-SP (sem acervo público de PDFs antigos nos sites oficiais).
+
+**Resumo atualizado da frente B45a:** **4 de 4 aulas preenchidas** com **7 questões oficiais** (UFPR 2025, UFRGS 2022, UNICAMP 2025, UFPR 2024, ITA 2017, UFPR 2020 e UFU 2021-2).

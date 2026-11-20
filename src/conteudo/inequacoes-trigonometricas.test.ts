@@ -128,4 +128,32 @@ describe("treino: gabaritos conferidos por conta", () => {
   it("D5 d5-inequacoes-trigonometricas: sen(2θ) > 0 => (0; π/2) ∪ (π; 3π/2)", () => {
     expect(certa("d5-inequacoes-trigonometricas")).toBe("(0; π/2) ∪ (π; 3π/2)");
   });
+
+  it("V1 UFU 2021-2 Medicina Q67 preserva as alternativas e o gabarito do Tipo 1", () => {
+    const questao = L.treino.vestibular.find((q) => q.id === "ufu-2021-cos2x-ineq");
+    expect(questao?.options.map(({ id, label, correct }) => [id, label, correct])).toEqual([
+      ["a", "[2π/3; 4π/3]", true],
+      ["b", "[2π/3; π]", false],
+      ["c", "[π/3; 5π/3]", false],
+      ["d", "[0; π/3] ∪ [5π/3; 2π]", false],
+    ]);
+  });
+
+  it("V1 UFU 2021-2 Medicina Q67 inclui as três raízes e muda de sinal nos extremos do arco", () => {
+    const f = (x: number) => Math.cos(2 * x) + 3 * Math.cos(x) + 2;
+    const inicio = (2 * Math.PI) / 3;
+    const fim = (4 * Math.PI) / 3;
+    const delta = 0.01;
+    expect(f(inicio)).toBeCloseTo(0, 9);
+    expect(f(Math.PI)).toBeCloseTo(0, 9);
+    expect(f(fim)).toBeCloseTo(0, 9);
+    expect(f(inicio - delta)).toBeGreaterThan(0);
+    expect(f(inicio + delta)).toBeLessThan(0);
+    expect(f(Math.PI - delta)).toBeLessThan(0);
+    expect(f(Math.PI + delta)).toBeLessThan(0);
+    expect(f(fim - delta)).toBeLessThan(0);
+    expect(f(fim + delta)).toBeGreaterThan(0);
+    expect(f(0)).toBeGreaterThan(0);
+    expect(f(2 * Math.PI)).toBeGreaterThan(0);
+  });
 });

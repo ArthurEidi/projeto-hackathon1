@@ -691,6 +691,48 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufu-2021-cos2x-ineq",
+        "prompt": "Qual é o conjunto solução de cos(2x) + 3·cos(x) + 2 ≤ 0 no intervalo [0; 2π]?",
+        "fala": "Use cos(2x) = 2·cos²(x) − 1 e trate cos(x) como a incógnita.",
+        "fonte": {
+          "banca": "UFU",
+          "ano": 2021,
+          "adaptada": true,
+          "adaptacao": "Processo Seletivo 2021-2, Medicina, 1º dia, Tipo 1, Questão 67. Enunciado resumido e notação dos intervalos ajustada. Gabarito definitivo retificado: A.",
+          "urls": [
+            "https://www.portalselecao.ufu.br/servicos/arquivo_administrativo/download/96752f0608aff8b3436a1b5a5099c0ce",
+            "https://www.portalselecao.ufu.br/servicos/arquivo_administrativo/download/04c7f37f2420f0532d7f0e062ff2d5b5"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "[2π/3; 4π/3]",
+            "correct": true,
+            "feedback": "Com t = cos(x), (2t + 1)(t + 1) zera em t = −1. Para t > −1, ele é ≤ 0 se t ≤ −1/2, o que completa o arco [2π/3; 4π/3]."
+          },
+          {
+            "id": "b",
+            "label": "[2π/3; π]",
+            "correct": false,
+            "feedback": "Ler só até π dá [2π/3; π]. Como cos(x) ≤ −1/2 também vale de π a 4π/3, a solução é [2π/3; 4π/3]."
+          },
+          {
+            "id": "c",
+            "label": "[π/3; 5π/3]",
+            "correct": false,
+            "feedback": "Usar cos(x) ≤ 1/2 dá [π/3; 5π/3]. A raiz de 2·cos(x) + 1 = 0 é −1/2, e cos(x) ≤ −1/2 dá [2π/3; 4π/3]."
+          },
+          {
+            "id": "d",
+            "label": "[0; π/3] ∪ [5π/3; 2π]",
+            "correct": false,
+            "feedback": "Usar cos(x) ≥ 1/2 dá [0; π/3] ∪ [5π/3; 2π]. O lado esquerdo a partir de −1/2, com cos(x) ≤ −1/2, dá [2π/3; 4π/3]."
+          }
+        ]
+      }
+    ]
   }
 }

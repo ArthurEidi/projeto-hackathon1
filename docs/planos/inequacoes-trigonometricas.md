@@ -114,7 +114,7 @@ Nos widgets novos, a figura homônima é a versão estática, com os mesmos par�
 
 ## i) Treino pós-aula
 
-As 12 questões autorais estão prontas para tradução; os quatro espaços de vestibular seguem a exceção de fonte do modelo.
+O treino reúne 12 questões autorais e uma de vestibular conferida. Os três espaços restantes de vestibular aguardam fonte.
 
 ### Fáceis
 
@@ -249,16 +249,21 @@ As 12 questões autorais estão prontas para tradução; os quatro espaços de v
 
 ### Vestibular
 
-#### V1 — `v1-inequacoes-trigonometricas`
-- **Estado:** **PENDENTE-FONTE**
-- **Recorte para seleção:** Reconhecimento visual e caso-base, no tema inequações trigonométricas.
-- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
-- **Fala do Paco:** "Quais dados a questão relaciona, e quais valores o contexto permite? Separe isso antes da conta."
-- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
-- **Adaptação:** após conferência, resumir a até 140 caracteres e exibir “Banca Ano (adaptada)”; documentar qualquer mudança.
-- **Conta de conferência:** aguarda enunciado e gabarito oficial.
-- **Opções e feedback:** aguardam alternativas originais verificadas; cada erro deve informar a resposta certa e a conta.
-- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+#### V1 — `ufu-2021-cos2x-ineq`
+- **Estado:** **CONFERIDA** (auditoria B45a-aud)
+- **Recorte para seleção:** Inequação trigonométrica no ciclo `[0; 2π]` com redução via arco duplo (`cos(2x) = 2·cos²x − 1`).
+- **Enunciado (resumido):** "Qual é o conjunto solução de cos(2x) + 3·cos(x) + 2 ≤ 0 no intervalo [0; 2π]?"
+- **Fala do Paco:** "Use cos(2x) = 2·cos²(x) − 1 e trate cos(x) como a incógnita."
+- **Fonte:** UFU 2021 (adaptada), Medicina, 1º dia, Tipo 1, Q67. O gabarito definitivo retificado em 13/10/2021 confirma A. [Caderno, p. 37](https://www.portalselecao.ufu.br/servicos/arquivo_administrativo/download/96752f0608aff8b3436a1b5a5099c0ce#page=37) · [Gabarito retificado, p. 2](https://www.portalselecao.ufu.br/servicos/arquivo_administrativo/download/04c7f37f2420f0532d7f0e062ff2d5b5#page=2)
+- **Adaptação:** Enunciado resumido, produto explícito com `·` e intervalos escritos com ponto e vírgula e frações em linha. As quatro alternativas mantêm a ordem do caderno.
+- **Conta de conferência:** Para `t = cos(x)`, a expressão vira `2t² + 3t + 1 = (2t + 1)(t + 1)`, com `−1 ≤ t ≤ 1`. Em `t = −1`, o produto zera. Para `t > −1`, `t + 1 > 0`, então a condição é `2t + 1 ≤ 0`. Assim, `−1 ≤ cos(x) ≤ −1/2`, o arco fechado `[2π/3; 4π/3]`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | `[2π/3; 4π/3]` | **sim** | "Com t = cos(x), (2t + 1)(t + 1) zera em t = −1. Para t > −1, ele é ≤ 0 se t ≤ −1/2, o que completa o arco [2π/3; 4π/3]." |
+| `b` | `[2π/3; π]` | não | "Ler só até π dá [2π/3; π]. Como cos(x) ≤ −1/2 também vale de π a 4π/3, a solução é [2π/3; 4π/3]." |
+| `c` | `[π/3; 5π/3]` | não | "Usar cos(x) ≤ 1/2 dá [π/3; 5π/3]. A raiz de 2·cos(x) + 1 = 0 é −1/2, e cos(x) ≤ −1/2 dá [2π/3; 4π/3]." |
+| `d` | `[0; π/3] ∪ [5π/3; 2π]` | não | "Usar cos(x) ≥ 1/2 dá [0; π/3] ∪ [5π/3; 2π]. O lado esquerdo a partir de −1/2, com cos(x) ≤ −1/2, dá [2π/3; 4π/3]." |
 
 #### V2 — `v2-inequacoes-trigonometricas`
 - **Estado:** **PENDENTE-FONTE**
