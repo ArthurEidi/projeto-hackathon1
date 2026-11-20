@@ -152,4 +152,39 @@ describe("treino: gabaritos conferidos por conta", () => {
     expect(4 * (2 * 5)).toBe(40);
     expect(certa("pappus-guldin-anel-quadrado")).toBe("40π cm³");
   });
+
+  it("V1 UFRGS 2025 Q70 conserva as cinco alternativas e confirma B pela soma dos cones", () => {
+    const lado = 3;
+    const meiaDiagonal = Math.hypot(lado, lado) / 2;
+    const volume = (2 * Math.PI * meiaDiagonal ** 3) / 3;
+    expect(volume).toBeCloseTo((lado ** 3 * Math.PI * Math.SQRT2) / 6, 9);
+
+    const questao = L.treino.vestibular.find((q) => q.id === "ufrgs-2025-quadrado-diagonal");
+    expect(questao?.options.map(({ id, label, correct }) => [id, label, correct])).toEqual([
+      ["a", "a³π√2 / 12", false],
+      ["b", "a³π√2 / 6", true],
+      ["c", "a³π√2 / 4", false],
+      ["d", "a³π√2 / 3", false],
+      ["e", "a³π√2 / 2", false],
+    ]);
+  });
+
+  it("V2 UFRGS 2022 Q55 conserva as cinco alternativas e confirma E por subtração e por Pappus", () => {
+    const raio = Math.sqrt(1 - (1 / 2) ** 2);
+    const cilindro = Math.PI * raio ** 2;
+    const cavidades = (2 * Math.PI * raio ** 2 * (1 / 2)) / 3;
+    expect(cilindro - cavidades).toBeCloseTo(Math.PI / 2, 9);
+    const area = raio / 2;
+    const distanciaCentroide = (2 * raio) / 3;
+    expect(area * 2 * Math.PI * distanciaCentroide).toBeCloseTo(Math.PI / 2, 9);
+
+    const questao = L.treino.vestibular.find((q) => q.id === "ufrgs-2022-triangulo-paralela");
+    expect(questao?.options.map(({ id, label, correct }) => [id, label, correct])).toEqual([
+      ["a", "2π", false],
+      ["b", "3π/2", false],
+      ["c", "π/4", false],
+      ["d", "π/3", false],
+      ["e", "π/2", true],
+    ]);
+  });
 });

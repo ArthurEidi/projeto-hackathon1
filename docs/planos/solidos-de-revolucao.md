@@ -227,13 +227,37 @@ Testar o afastamento `d` da figura ao eixo: enquanto `d = 0` o sólido é maciç
 
 ### Vestibular
 
-#### V1 — PENDENTE-FONTE
-- **Habilidade-alvo:** identificar visualmente o sólido de revolução gerado pela rotação de um polígono/curva em torno de um eixo.
-- **Onde procurar:** ENEM (questões de cerâmica/vaso/peça de torno mecânico a partir do perfil 2D).
+#### V1 — `ufrgs-2025-quadrado-diagonal`
+- **Estado:** **CONFERIDA** (B45d1-aud)
+- **Enunciado:** "Um quadrado de lado a gira 360° em torno de uma de suas diagonais. Qual é o volume do sólido gerado?"
+- **Fala do Paco:** "Trace as duas diagonais e observe as distâncias dos vértices ao eixo durante o giro."
+- **Fonte:** UFRGS 2025 (adaptada), 1º dia, Q70. [Caderno, p. 37](https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf#page=37) · [Gabarito oficial](https://vestibular.ufrgs.br/cv2025/gabaritos/#matematica)
+- **Adaptação:** Enunciado resumido com volta de 360° explícita e frações em linha. As cinco alternativas mantêm a ordem do caderno.
+- **Conta de conferência:** Quatro vértices, duas diagonais de comprimento `a√2` e ponto médio comum. O giro forma dois cones de raio e altura `a√2/2`. Somando, `2·(π/3)·(a√2/2)³ = a³π√2 / 6` (B).
 
-#### V2 — PENDENTE-FONTE
-- **Habilidade-alvo:** calcular o volume gerado pela rotação de um triângulo ou trapézio no plano cartesiano.
-- **Onde procurar:** Fuvest, Unicamp, Unesp, UFRGS.
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | `a³π√2 / 12` | não | "Calcular só um cone dá a³π√2 / 12. O quadrado gera dois cones iguais, então o volume é a³π√2 / 6." |
+| `b` | `a³π√2 / 6` | **sim** | "As duas meias diagonais dão o raio e a altura a√2/2. Os dois cones somam V = 2·(π/3)·(a√2/2)³ = a³π√2 / 6." |
+| `c` | `a³π√2 / 4` | não | "Usar πr²h/2 em cada cone dá a³π√2 / 4. Com a fórmula πr²h/3, os dois cones somam a³π√2 / 6." |
+| `d` | `a³π√2 / 3` | não | "Usar raio a com altura a√2/2 em cada cone dá a³π√2 / 3. Com raio a√2/2, os dois cones somam a³π√2 / 6." |
+| `e` | `a³π√2 / 2` | não | "Omitir o fator 1/3 nos dois cones dá a³π√2 / 2, o volume do cilindro que os envolve. O volume dos cones é a³π√2 / 6." |
+
+#### V2 — `ufrgs-2022-triangulo-paralela`
+- **Estado:** **CONFERIDA** (B45d1-aud)
+- **Enunciado:** "Um triângulo equilátero ABC de lado 1 gira 360° em torno da reta r que passa por A e é paralela a BC. Qual é o volume gerado?"
+- **Fala do Paco:** "Gire mentalmente o lado BC e observe o que acontece com o espaço entre os lados inclinados e o eixo."
+- **Fonte:** UFRGS 2022 (adaptada), 1º dia, Q55. [Caderno, p. 29](https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf#page=29) · [Gabarito oficial](https://vestibular.ufrgs.br/cv2022/gabaritos/#matematica)
+- **Adaptação:** Figura descrita em texto com o eixo em A paralelo a BC. A volta de 360° foi explicitada e as cinco alternativas mantêm a ordem do caderno.
+- **Conta de conferência:** O raio externo é a altura do triângulo, `√(1 − (1/2)²) = √3/2`. Do cilindro de altura 1 (`3π/4`), subtraem-se dois cones de altura `1/2` (total `π/4`), obtendo `π/2` (E). Por Pappus, `(√3/4)·2π·(√3/3) = π/2`.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | `2π` | não | "Usar raio √3 no cilindro e nos cones quadruplica o volume, dando 2π. Com raio √3/2, o volume é 3π/4 − π/4 = π/2." |
+| `b` | `3π/2` | não | "Quadrar só o numerador de √3/2 dá 3π/2 para o cilindro. Com r² = 3/4 e os cones descontados, resta 3π/4 − π/4 = π/2." |
+| `c` | `π/4` | não | "π/4 é o volume dos dois cones que ficam fora do sólido. Subtraia esse volume do cilindro para obter 3π/4 − π/4 = π/2." |
+| `d` | `π/3` | não | "Usar r² = 1 − 1/2 nas peças dá π/3. O cateto de 1/2 entra ao quadrado, então r² = 3/4 e o volume é 3π/4 − π/4 = π/2." |
+| `e` | `π/2` | **sim** | "Com raio √3/2, o cilindro de altura 1 tem volume 3π/4. As duas cavidades cônicas somam π/4, então sobram 3π/4 − π/4 = π/2." |
 
 #### V3 — PENDENTE-FONTE
 - **Habilidade-alvo:** rotação de triângulo em torno da hipotenusa ou de figura afastada do eixo.

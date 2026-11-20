@@ -285,6 +285,101 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "ufrgs-2025-quadrado-diagonal",
+        "prompt": "Um quadrado de lado a gira 360° em torno de uma de suas diagonais. Qual é o volume do sólido gerado?",
+        "fala": "Trace as duas diagonais e observe as distâncias dos vértices ao eixo durante o giro.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 70: enunciado resumido; alternativas e gabarito oficial (B) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2024/12/Prova-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2025/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "a³π√2 / 12",
+            "correct": false,
+            "feedback": "Calcular só um cone dá a³π√2 / 12. O quadrado gera dois cones iguais, então o volume é a³π√2 / 6."
+          },
+          {
+            "id": "b",
+            "label": "a³π√2 / 6",
+            "correct": true,
+            "feedback": "As duas meias diagonais dão o raio e a altura a√2/2. Os dois cones somam V = 2·(π/3)·(a√2/2)³ = a³π√2 / 6."
+          },
+          {
+            "id": "c",
+            "label": "a³π√2 / 4",
+            "correct": false,
+            "feedback": "Usar πr²h/2 em cada cone dá a³π√2 / 4. Com a fórmula πr²h/3, os dois cones somam a³π√2 / 6."
+          },
+          {
+            "id": "d",
+            "label": "a³π√2 / 3",
+            "correct": false,
+            "feedback": "Usar raio a com altura a√2/2 em cada cone dá a³π√2 / 3. Com raio a√2/2, os dois cones somam a³π√2 / 6."
+          },
+          {
+            "id": "e",
+            "label": "a³π√2 / 2",
+            "correct": false,
+            "feedback": "Omitir o fator 1/3 nos dois cones dá a³π√2 / 2, o volume do cilindro que os envolve. O volume dos cones é a³π√2 / 6."
+          }
+        ]
+      },
+      {
+        "id": "ufrgs-2022-triangulo-paralela",
+        "prompt": "Um triângulo equilátero ABC de lado 1 gira 360° em torno da reta r que passa por A e é paralela a BC. Qual é o volume gerado?",
+        "fala": "Gire mentalmente o lado BC e observe o que acontece com o espaço entre os lados inclinados e o eixo.",
+        "fonte": {
+          "banca": "UFRGS",
+          "ano": 2022,
+          "adaptada": true,
+          "adaptacao": "1º dia, Questão 55. Figura descrita em texto e rotação de 360° explicitada. Alternativas e gabarito oficial (E) mantidos.",
+          "urls": [
+            "https://www.ufrgs.br/coperse/wp-content/uploads/2022/03/PROVAS-1o-DIA.pdf",
+            "https://vestibular.ufrgs.br/cv2022/gabaritos/"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "2π",
+            "correct": false,
+            "feedback": "Usar raio √3 no cilindro e nos cones quadruplica o volume, dando 2π. Com raio √3/2, o volume é 3π/4 − π/4 = π/2."
+          },
+          {
+            "id": "b",
+            "label": "3π/2",
+            "correct": false,
+            "feedback": "Quadrar só o numerador de √3/2 dá 3π/2 para o cilindro. Com r² = 3/4 e os cones descontados, resta 3π/4 − π/4 = π/2."
+          },
+          {
+            "id": "c",
+            "label": "π/4",
+            "correct": false,
+            "feedback": "π/4 é o volume dos dois cones que ficam fora do sólido. Subtraia esse volume do cilindro para obter 3π/4 − π/4 = π/2."
+          },
+          {
+            "id": "d",
+            "label": "π/3",
+            "correct": false,
+            "feedback": "Usar r² = 1 − 1/2 nas peças dá π/3. O cateto de 1/2 entra ao quadrado, então r² = 3/4 e o volume é 3π/4 − π/4 = π/2."
+          },
+          {
+            "id": "e",
+            "label": "π/2",
+            "correct": true,
+            "feedback": "Com raio √3/2, o cilindro de altura 1 tem volume 3π/4. As duas cavidades cônicas somam π/4, então sobram 3π/4 − π/4 = π/2."
+          }
+        ]
+      }
+    ]
   }
 }
