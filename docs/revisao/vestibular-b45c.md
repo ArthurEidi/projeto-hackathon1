@@ -28,3 +28,16 @@
 - `npm run lint:content`
 - `npm run typecheck`
 - `npx vitest run`
+
+
+## Continuação B45c (busca ampliada em PUCRS e UERJ)
+
+- **Novas bancas consultadas:** PUCRS (Medicina Verão 2022 e 2023) e UERJ / Revista Eletrônica do Vestibular (`arquivos/pdf/questao/` 2015–2026, incluindo ABMDPII/CBMERJ 2025). (Unesp/Vunesp e Fatec retornaram HTTP 403; UFSC retornou 502.)
+- **`funcao-modular`:** encontrada, aprovada e inserida **UERJ / ABMDPII-CBMERJ 2025, Q22** (`id: uerj-cbmerj-2025-modular`, p. 25–26 de `51.pdf`, gabarito oficial **B** = `8`).
+  - URL testada: `https://www.revista.vestibular.uerj.br/arquivos/pdf/questao/51.pdf` — HTTP 200, `3258771` bytes (igual ao arquivo local).
+  - Atualizados `content/algebra/funcoes/funcao-modular/aula-01.json`, `docs/planos/funcao-modular.md`, `src/conteudo/funcao-modular.test.ts` e `docs/fontes-candidatas/funcao-modular.md`.
+- **`funcao-racional`:** nenhuma questão objetiva encontrada nas 8 bancas consultadas; permanece vazia (`treino.vestibular: []`).
+
+### Encerramento B45c (`funcao-racional`)
+- Ampliada a busca para **UEM** (Inverno 2025 `P1.pdf` + `gabdef.pdf`, baixados e varridos — 0 questões de função racional) e verificados os portais oficiais de **UECE**, **UEL**, **UFG**, **UFU**, **UnB/Cebraspe**, **Mackenzie**, **UFMG**, **UFBA** e **UFPE/Covest** (sem caderno objetivo de Matemática acessível em PDF para o tema). Respeitados os bloqueios 403/502 de Vunesp, Fatec e UFSC.
+- `funcao-racional` encerrada vazia (`treino.vestibular: []`), com registro completo em `docs/fontes-candidatas/funcao-racional.md`.

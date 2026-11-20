@@ -110,7 +110,19 @@ describe("gabaritos do treino", () => {
     expect(certa("d5-funcao-modular")).toBe("−1 e 5");
   });
 
-  it("vestibular: nenhuma questão sem fonte conferida", () => {
-    expect(L.treino.vestibular).toEqual([]);
+  it("vestibular (B45c, prova oficial UERJ/CBMERJ 2025 Q22)", () => {
+    expect(L.treino.vestibular).toHaveLength(1);
+    const q22 = L.treino.vestibular.find((q) => q.id === "uerj-cbmerj-2025-modular")!;
+    expect(q22.options.map(({ id, label, correct }) => ({ id, label, correct }))).toEqual([
+      { id: "a", label: "4", correct: false },
+      { id: "b", label: "8", correct: true },
+      { id: "c", label: "2x + 4", correct: false },
+      { id: "d", label: "2x + 8", correct: false },
+    ]);
+    for (const x of [-4.99, -3, -1, -0.01]) {
+      expect(Math.abs(x - 3)).toBe(3 - x);
+      expect(Math.abs(x + 5)).toBe(x + 5);
+      expect(Math.abs(x - 3) + Math.abs(x + 5)).toBeCloseTo(8);
+    }
   });
 });

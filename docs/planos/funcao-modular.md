@@ -237,36 +237,17 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 
 ### Vestibular
 
-> Apenas questões reais conferidas podem substituir estes registros; não foram inventados enunciados, gabaritos, alternativas ou links.
+#### V1 — `uerj-cbmerj-2025-modular` (UERJ / ABMDPII-CBMERJ 2025, Questão 22)
+- **Enunciado (resumido):** "Para x real com −5 < x < 0, qual é o valor de y = |x − 3| + |x + 5|?"
+- **Fala do Paco:** "Para −5 < x < 0, veja o sinal de x − 3 e de x + 5 antes de tirar os módulos."
+- **Fonte:** UERJ / ABMDPII-CBMERJ 2025, Questão 22 (questão na p. 25 e gabarito B no comentário oficial da p. 26 de `51.pdf`, na Revista Eletrônica do Vestibular da UERJ).
+- **Adaptação:** enunciado resumido sem perder dados; alternativas e gabarito oficial (B) mantidos.
+- **Conta de conferência:** em `−5 < x < 0`, `x − 3 < 0 ⇒ |x − 3| = 3 − x` e `x + 5 > 0 ⇒ |x + 5| = x + 5`; logo `y = (3 − x) + (x + 5) = 8`.
 
-#### V1 — `pendente-fonte-funcao-modular-1`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V2 — `pendente-fonte-funcao-modular-2`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V3 — `pendente-fonte-funcao-modular-3`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
-#### V4 — `pendente-fonte-funcao-modular-4`
-- **Enunciado (resumido):** PENDENTE-FONTE
-- **Fala do Paco:** "Que questão oficial e conferida entrará neste espaço?"
-- **Fonte:** PENDENTE-FONTE — banca, ano, enunciado, alternativas, gabarito e URL ainda não conferidos.
-- **Adaptação:** nenhuma; questão não inserida.
-- **Conta de conferência:** PENDENTE-FONTE; não há questão nem conta inventada.
-- **Opções e feedback:** PENDENTE-FONTE; não criados sem fonte original.
+- **Distratores:** A (4) resulta de contar só o primeiro módulo em x = −1. C (2x + 4) resulta de retirar as barras e ainda calcular 5 − 3 como 4. D (2x + 8) resulta de trocar apenas o sinal de −3 no primeiro módulo, mantendo x.
+
+#### V2–V4 — `pendente-fonte`
+> Espaços reservados caso novas questões oficiais no recorte sejam encontradas.
 
 ---
 
@@ -290,12 +271,12 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 - [x] Widgets novos estão marcados com desenho, ação do aluno e métrica.
 
 **Treino**
-- [x] Exatamente 4 fáceis, 3 médias, 5 desafios e 4 registros vestibular; ids únicos em minúsculas com hífen.
-- [x] Cada questão respondível tem duas opções e exatamente uma certa; vestibular aguarda fonte.
+- [x] 4 fáceis, 3 médias, 5 desafios e 1 questão de vestibular com fonte oficial. IDs únicos em minúsculas com hífen.
+- [x] Cada questão de treino tem exatamente uma opção certa. A questão de vestibular tem as quatro alternativas do caderno.
 - [x] Todo feedback errado contém resposta certa e conta curta.
 - [x] Cada distrator corresponde a erro diagnosticado.
 - [x] Toda questão factual tem conta de conferência revisada.
-- [ ] Vestibular: 4 entradas PENDENTE-FONTE; banca, ano, enunciado, alternativas, gabarito e URL pendentes.
+- [ ] V2–V4 aguardam fonte oficial.
 
 **Texto**
 - [x] Falas, enunciados e feedback têm até 140 caracteres e duas frases; sem emoji ou termos proibidos.

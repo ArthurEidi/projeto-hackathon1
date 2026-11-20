@@ -301,6 +301,47 @@
         ]
       }
     ],
-    "vestibular": []
+    "vestibular": [
+      {
+        "id": "uerj-cbmerj-2025-modular",
+        "prompt": "Para x real com −5 < x < 0, qual é o valor de y = |x − 3| + |x + 5|?",
+        "fala": "Para −5 < x < 0, veja o sinal de x − 3 e de x + 5 antes de tirar os módulos.",
+        "fonte": {
+          "banca": "UERJ (ABMDPII/CBMERJ)",
+          "ano": 2025,
+          "adaptada": true,
+          "adaptacao": "Concurso Público ABMDPII/CBMERJ 2025 (DSEA/UERJ), Questão 22: enunciado resumido sem perder dados; alternativas e gabarito oficial (B) mantidos.",
+          "urls": [
+            "https://www.revista.vestibular.uerj.br/arquivos/pdf/questao/51.pdf"
+          ]
+        },
+        "options": [
+          {
+            "id": "a",
+            "label": "4",
+            "correct": false,
+            "feedback": "Com x = −1, contar só o primeiro módulo dá |−4| = 4. Somando os dois no intervalo, y = (3 − x) + (x + 5) = 8."
+          },
+          {
+            "id": "b",
+            "label": "8",
+            "correct": true,
+            "feedback": "Isso. Como −5 < x < 0, |x − 3| = 3 − x e |x + 5| = x + 5; somando, y = (3 − x) + (x + 5) = 8."
+          },
+          {
+            "id": "c",
+            "label": "2x + 4",
+            "correct": false,
+            "feedback": "Tirar as barras sem checar os sinais e calcular 5 − 3 como 4 dá 2x + 4. A soma correta é (3 − x) + (x + 5) = 8."
+          },
+          {
+            "id": "d",
+            "label": "2x + 8",
+            "correct": false,
+            "feedback": "2x + 8 vem de tirar os módulos como (x + 3) + (x + 5). Como x < 3, |x − 3| = 3 − x, dando y = 8."
+          }
+        ]
+      }
+    ]
   }
 }
