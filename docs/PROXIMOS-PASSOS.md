@@ -1,16 +1,18 @@
 # Próximos passos
 
-Atualizado em 17/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
+Atualizado em 19/11/2026. Quem trabalhar no projeto atualiza este arquivo ao fim da sessão.
 **Antes de pegar qualquer tarefa, leia `docs/EM-ANDAMENTO.md`**: é lá que cada máquina reserva a sua frente, para duas máquinas não mexerem nos mesmos arquivos.
 
 ## Estado
 
 - **103 de 103 capítulos** têm aula no app (mais Cones, o capítulo-modelo). Cada um tem `aula-01.json` e teste próprio.
-- **Validações em 17/11 (efbfe1e):** `lint:content` ok, 128 arquivos de teste / 2047 testes passando, `typecheck` limpo, `build` ok.
-- **Widgets** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `retangulo_areas`, `maquinas_funcao`, `transformacao_plano`.
+- **Validações em 19/11 (b5c8864):** `lint:content` ok, 132 arquivos de teste / 2121 testes passando, `typecheck` limpo, `build` ok.
+- **Widgets** (`src/widgets/common/`, documentação no GUIA §5): `plano_cartesiano`, `reta_numerica`, `barras`, `grade_resultados`, `solido_3d`, `geometria_triangulo`, `ciclo_trigonometrico`, `geometria_poligono`, `geometria_circulo`, `lugar_geometrico`, `pontos_no_plano`, `circunferencia_no_plano`, `vetores_no_plano`, `retangulo_areas`, `maquinas_funcao`, `transformacao_plano`, e os 4 de um capítulo só (`escala_decimal`, `grupos_inteiros`, `divisao_polinomial`, `sistema_escalonado`, GUIA §5.21–5.24, 19/11). Nenhum capítulo depende mais de adaptação por falta de widget.
 - **Roteiros:** 103 planos em `docs/planos/`; gabaritos conferidos às cegas (1359/1359).
-- **Vestibular:** 68 das 104 aulas têm questões reais do ENEM (várias com imagem); as 36 restantes seguem `PENDENTE-FONTE` (o cache de 652 questões do ENEM se esgotou para elas).
+- **Vestibular:** 79 das 104 aulas têm questões reais (ENEM e, desde 19/11, provas oficiais de ITA, UFRGS, Fuvest etc. conferidas no PDF), 163 questões, nenhuma repetida. Os feedbacks das 92 de aritmética e álgebra foram auditados e corrigidos (B41). As 25 restantes estão na B43.
 - **Desafios:** os 104 têm 4 alternativas (B14). **Figura que entrega a resposta:** os 25 casos achados em 16/11 resolvidos com `antes_de_concluir` (GUIA §2).
+
+**Progresso estimado do protótipo (19/11): cerca de 88%.** Conteúdo (104 aulas, roteiros, desafios com 4 alternativas): 100%. Widgets: 100% (20 + 4). Revisão de texto, feedbacks e conferência visual: ~95% (falta uma varredura automática completa, B44a). Vestibular: 79/104 aulas (76%; B43 em curso). Publicação do app: preparada, não publicada (decisão do usuário). Extras fora do mínimo: aula 02 de Cones, vídeos.
 
 O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets que foram substituídos por adaptações, fontes de vestibular.
 
@@ -53,6 +55,15 @@ O conteúdo existe; o trabalho agora é **qualidade**: texto, visual, widgets qu
 - **Parou no meio (limite do Claude):** B32, `piramides` p2 (apótema 5) e `poliedros-e-relacao-de-euler` p1 (`V − A + F = 2`): chave nova no `solido_3d` + `antes_de_concluir`. Pode haver edição não commitada em `src/widgets/common/solido/**`, nessas 2 aulas e testes e no GUIA §5.7: revisar com `git diff` antes de seguir (prova do estado concluído obrigatória).
 
 **17/11 (Máquina B; a A volta hoje).** B32 terminada pelo maestro e publicada (efbfe1e): `solido_3d` com `rotulo_apotema` e `rotulo_euler`, fechando os 25 casos. Em curso a B33 (briefing fora do repositório `briefing-b33.md`): os 4 widgets de um capítulo só (`escala_decimal`, `grupos_inteiros`, `divisao_polinomial`, `sistema_escalonado`), cada um em pasta nova e ligado no seu capítulo no lugar da adaptação; e a B34, relatório das lacunas de widget antigas que continuam abertas.
+
+**Feito em 18–19/11 (Máquina B).** O PC caiu em 18/11 no meio da leva B33–B36; nada se perdeu (backup em branch remoto, já apagado).
+
+- **4 widgets de um capítulo só** (B33, 268a0d2): adaptações trocadas em `notacao-cientifica-e-ordem-grandeza`, `sistemas-numericos-e-divisibilidade`, `divisao-polinomial-e-teorema-do-resto`, `sistemas-lineares-e-escalonamento`. Revisão de código pelo Codex (B35: 2 achados altos, ~12 médios), todos corrigidos com teste que falhava antes (B39), revisão cruzada (B39r, 0158c88). `isComplete` passou a recusar métrica NaN (antes NaN concluía o passo).
+- **Lacunas antigas de widget** (B34 relatório, B38, a8585cc): `t` fora dos chips 90° em paralelas; urna com bolas no desafio de `probabilidade-espaco-amostral`; `unidades-conversoes-e-escalas` p1/p5 com `retangulo_areas` modo `escala`.
+- **Vestibular:** auditoria completa dos feedbacks de aritmética e álgebra (B36 + B41, 75391f1 e 87a216b): 92 questões, 458 alternativas, 78 textos corrigidos, nenhum gabarito errado. **Critério:** no treino, o feedback da errada dá a resposta certa (GUIA §2 regra 1); "não revelar o valor certo" vale só para desafios. Fontes "ENEM 2025" erradas corrigidas e 0 repetidas (77cce36). Candidatas de provas oficiais (B40, Gemini) auditadas no PDF pelo Claude Code #2: 17 aprovadas, 10 recusadas (8 do ITA por nível); 16 inseridas em 12 aulas (B42, b5c8864).
+- **Em curso:** B43 (Claude Code #2, vestibular para as 25 aulas restantes), B44a (Codex, `scripts/varre-aulas.mjs`: varredura automática das 104 aulas), B44b (Codex #2, casos de borda dos widgets novos e grade 4 × 5). Briefings fora do repositório: `C:\Users\mkf10\projetos\briefing-b4x.md`.
+
+**O que falta para fechar o protótipo:** (1) B43 terminar o vestibular (as aulas sem questão oficial adequada ficam vazias, nunca com fonte inventada); (2) rodar a varredura B44a e corrigir o que ela achar; (3) decidir e publicar o app (`docs/HOSPEDAGEM.md`); (4) opcionais: aula 02 de Cones, vídeos.
 
 **Decisões que esperam o usuário:** (a) publicar o app (ver `docs/HOSPEDAGEM.md`: Pages exige repositório público ou Pro; Netlify não); (c) aula 02 de Cones e vídeos. A (b), desafios com 4 alternativas, foi decidida em 15/11 e está em andamento.
 

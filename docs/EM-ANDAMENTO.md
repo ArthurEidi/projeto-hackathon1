@@ -159,3 +159,10 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 - 13/11, Shell #2 (Codex): reserva exclusiva de src/widgets/common/** para a pendência visual 1, por instrução do usuário. Sem commit/push/build; registros incrementais em docs/visual/widgets.md.
 
 - 13/11, Shell #2: unidade parcial de retangulo_areas gravada; typecheck e 332 testes passaram. Sem imagens, lint bloqueado por ENOMEM e CLI Maestri ausente. Retomada detalhada em docs/visual/widgets.md; os seis widgets seguintes não foram iniciados.
+
+19/11, noite: o usuário trocou os Codex para GPT-6.2-Sol e pediu que ajudem no código. Briefing `briefing-b44.md` (fora do repositório).
+
+| Frente | Agente (B) | Desde | Arquivos |
+|---|---|---|---|
+| B44a. Varredura automática das 104 aulas (`scripts/varre-aulas.mjs`) e relatório | Codex | 19/11 | `scripts/varre-aulas.mjs` (novo), `docs/visual/varredura-b44.md`, uma linha em `docs/PROXIMOS-PASSOS.md` |
+| B44b. Casos de borda dos widgets novos (escala, grupos, divisão) e grade 4 × 5 | Codex #2 | 19/11 | `src/widgets/common/escala/**`, `grupos/**`, `divisao/**`, `grade/**`, GUIA §5.4/5.21–5.23, `docs/revisao/correcoes-b44b.md` |
