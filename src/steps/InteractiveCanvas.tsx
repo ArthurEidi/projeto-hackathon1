@@ -55,10 +55,15 @@ export function InteractiveCanvas({ step, onNext }: StepProps<InteractiveCanvasS
           Continuar
         </TactileButton>
       }
+      figura={
+        <div className={`stage${done ? " stage--concluido" : ""}`}>
+          <Widget params={params} controls={controls} faixas={faixas} onMetric={onMetric} onInteract={onInteract} done={done} />
+        </div>
+      }
     >
-      <div className="stage">
-        <Widget params={params} controls={controls} faixas={faixas} onMetric={onMetric} onInteract={onInteract} done={done} />
-      </div>
+      <p className={`step__status${done ? " step__status--ok" : ""}`} role="status">
+        {done ? "Etapa concluída. Continue quando quiser." : interacted ? "Continue explorando a figura." : "Use os controles ou arraste na figura."}
+      </p>
       {step.controls.map((c) => (
         <Slider
           key={c.id}

@@ -1,0 +1,688 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Cor da Concentração",
+  "subtitulo": "Massa, volume e diluição",
+  "caminho": {
+    "pilar": "quimica",
+    "setor": "solucoes",
+    "unidade": "concentracao-comum"
+  },
+  "outro": "Concentração é uma razão: C = m/V. Diluir muda o volume, não a massa de soluto, e por isso C₁·V₁ = C₂·V₂.",
+  "glossario": {
+    "c1": {
+      "nome": "Massa de soluto (m)",
+      "resumo": "quantos gramas de soluto estão dissolvidos na solução."
+    },
+    "c2": {
+      "nome": "Volume (V)",
+      "resumo": "volume da solução, em litros na conta de C."
+    },
+    "c3": {
+      "nome": "Concentração (C)",
+      "resumo": "massa de soluto por litro de solução, em g/L."
+    }
+  },
+  "steps": [
+    {
+      "id": "mais-soluto",
+      "type": "interactive_canvas",
+      "widget": "solucao_concentracao",
+      "params": {
+        "massa": "$massa",
+        "volume": 500,
+        "soluto": {
+          "nome": "sulfato de cobre",
+          "formula": "CuSO₄",
+          "massa_molar": 159.5
+        },
+        "capacidade": 1000,
+        "por_particula": 1
+      },
+      "controls": [
+        {
+          "id": "massa",
+          "label": "Massa de CuSO₄",
+          "min": 0,
+          "max": 60,
+          "step": 5,
+          "initial": 5,
+          "unit": " g",
+          "color": "c1"
+        }
+      ],
+      "lines": {
+        "intro": "O béquer tem 500 mL de solução. Aumente a massa de sulfato de cobre e observe a cor e as partículas.",
+        "done": "Mesmo volume, mais soluto: mais partículas por litro e cor mais intensa. C = m/V cresceu junto com m."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Cada bolinha é uma molécula?",
+        "resposta": "Não: cada bolinha representa 1 g de soluto. Uma molécula é pequena demais para ver."
+      },
+      "complete_when": {
+        "metric": "concentracao",
+        "gte": 80
+      }
+    },
+    {
+      "id": "diluir",
+      "type": "interactive_canvas",
+      "widget": "solucao_concentracao",
+      "params": {
+        "massa": 20,
+        "volume": "$volume",
+        "soluto": {
+          "nome": "sulfato de cobre",
+          "formula": "CuSO₄",
+          "massa_molar": 159.5
+        },
+        "capacidade": 1000,
+        "por_particula": 0.5,
+        "referencia": {
+          "massa": 20,
+          "volume": 200,
+          "rotulo": "antes"
+        }
+      },
+      "controls": [
+        {
+          "id": "volume",
+          "label": "Volume da solução",
+          "min": 200,
+          "max": 1000,
+          "step": 100,
+          "initial": 200,
+          "unit": " mL",
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Agora só entra água: os 20 g de soluto não mudam. Leve o volume de 200 mL até exatamente 800 mL.",
+        "done": "O volume ficou 4 vezes maior e C caiu de 100 g/L para 25 g/L: as mesmas partículas se espalharam."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "A massa de soluto diminuiu?",
+        "resposta": "Não, continua 20 g. Só o volume mudou, por isso C₁·V₁ = C₂·V₂: 100 · 0,2 = 25 · 0,8."
+      },
+      "complete_when": {
+        "metric": "volume",
+        "gte": 800,
+        "lte": 800
+      }
+    },
+    {
+      "id": "atingir-alvo",
+      "type": "interactive_canvas",
+      "widget": "solucao_concentracao",
+      "params": {
+        "massa": "$massa",
+        "volume": "$volume",
+        "soluto": {
+          "nome": "sulfato de cobre",
+          "formula": "CuSO₄",
+          "massa_molar": 159.5
+        },
+        "capacidade": 1000,
+        "por_particula": 1,
+        "alvo": 40,
+        "mostrar": {
+          "particulas": true,
+          "mol": true,
+          "concentracao": true
+        }
+      },
+      "controls": [
+        {
+          "id": "massa",
+          "label": "Massa de CuSO₄",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "initial": 10,
+          "unit": " g",
+          "color": "c1"
+        },
+        {
+          "id": "volume",
+          "label": "Volume da solução",
+          "min": 300,
+          "max": 1000,
+          "step": 100,
+          "initial": 1000,
+          "unit": " mL",
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Prepare uma solução de 40 g/L combinando massa e volume. O medidor mostra a meta.",
+        "done": "Qualquer par com m/V = 40 g/L serve, como 20 g em 0,5 L ou 40 g em 1 L: o que importa é a razão."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "E o valor em mol/L, de onde vem?",
+        "resposta": "n = m/M, com M = 159,5 g/mol para o CuSO₄. Depois divide pelo volume: 40 / 159,5 ≈ 0,251 mol/L."
+      },
+      "complete_when": {
+        "metric": "concentracao",
+        "gte": 40,
+        "lte": 40
+      }
+    },
+    {
+      "id": "desafio-diluicao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "solucao_figura",
+        "params": {
+          "bequeres": [
+            {
+              "massa": 12,
+              "volume": 200,
+              "rotulo": "antes"
+            }
+          ],
+          "soluto": {
+            "nome": "sulfato de cobre",
+            "formula": "CuSO₄",
+            "massa_molar": 159.5
+          },
+          "capacidade": 1000,
+          "por_particula": 0.5
+        }
+      },
+      "prompt": "200 mL de solução a 60 g/L recebem água até 600 mL. Qual é a nova concentração?",
+      "options": [
+        {
+          "id": "c20",
+          "label": "20 g/L",
+          "correct": true,
+          "feedback": "Certo: a massa, 12 g, não muda. C₂ = 12 g / 0,6 L = 20 g/L, ou 60 · 200 = C₂ · 600.",
+          "figure": {
+            "bequeres": [
+              {
+                "massa": 12,
+                "volume": 200,
+                "rotulo": "antes"
+              },
+              {
+                "massa": 12,
+                "volume": 600,
+                "rotulo": "depois"
+              }
+            ]
+          }
+        },
+        {
+          "id": "c30",
+          "label": "30 g/L",
+          "correct": false,
+          "feedback": "Você dividiu pela água adicionada, 400 mL. O soluto fica espalhado no volume final da solução.",
+          "figure": {
+            "bequeres": [
+              {
+                "massa": 12,
+                "volume": 200,
+                "rotulo": "antes"
+              },
+              {
+                "massa": 12,
+                "volume": 400,
+                "rotulo": "só 400 mL"
+              }
+            ]
+          }
+        },
+        {
+          "id": "c60",
+          "label": "60 g/L",
+          "correct": false,
+          "feedback": "Para ficar em 60 g/L com 600 mL, o béquer precisaria de 36 g de soluto. Só entrou água.",
+          "figure": {
+            "bequeres": [
+              {
+                "massa": 12,
+                "volume": 200,
+                "rotulo": "antes"
+              },
+              {
+                "massa": 36,
+                "volume": 600,
+                "rotulo": "com 36 g"
+              }
+            ]
+          }
+        },
+        {
+          "id": "c180",
+          "label": "180 g/L",
+          "correct": false,
+          "feedback": "Você multiplicou pela razão dos volumes. Mesma massa em mais volume deixa a solução menos concentrada.",
+          "figure": {
+            "bequeres": [
+              {
+                "massa": 12,
+                "volume": 200,
+                "rotulo": "antes"
+              },
+              {
+                "massa": 36,
+                "volume": 200,
+                "rotulo": "180 g/L"
+              }
+            ]
+          }
+        }
+      ],
+      "lines": {
+        "intro": "Pense no que muda e no que fica igual quando só entra água."
+      }
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "solucao_figura",
+        "params": {
+          "bequeres": [
+            {
+              "massa": 20,
+              "volume": 500
+            }
+          ],
+          "soluto": {
+            "nome": "sulfato de cobre",
+            "formula": "CuSO₄",
+            "massa_molar": 159.5
+          },
+          "capacidade": 1000,
+          "por_particula": 1
+        }
+      },
+      "formula": [
+        {
+          "text": "C",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "m",
+          "ref": "c1"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "V",
+          "ref": "c2"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Diluição",
+          "text": "só entra solvente: m fica igual, V aumenta e C diminui, com C₁·V₁ = C₂·V₂."
+        },
+        {
+          "term": "Em mol/L",
+          "text": "divida m pela massa molar (CuSO₄: 159,5 g/mol) e depois pelo volume em litros."
+        },
+        {
+          "term": "Modelo",
+          "text": "volume da solução igual ao medido no béquer e todo o soluto dissolvido."
+        }
+      ],
+      "lines": {
+        "intro": "A concentração compara a massa de soluto com o volume da solução. Toque em C, m ou V.",
+        "hint": "Toque em C, m ou V para destacar no béquer."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "c-simples",
+        "prompt": "Uma solução tem 30 g de soluto em 2 L. Qual é a concentração comum?",
+        "options": [
+          {
+            "id": "15",
+            "label": "15 g/L",
+            "correct": true,
+            "feedback": "Certo: C = m/V = 30 g / 2 L = 15 g/L."
+          },
+          {
+            "id": "60",
+            "label": "60 g/L",
+            "correct": false,
+            "feedback": "Você multiplicou. A concentração divide a massa pelo volume: 30 / 2 = 15 g/L."
+          },
+          {
+            "id": "32",
+            "label": "32 g/L",
+            "correct": false,
+            "feedback": "Somar massa e volume não tem sentido físico. C = 30 / 2 = 15 g/L."
+          },
+          {
+            "id": "0067",
+            "label": "0,067 g/L",
+            "correct": false,
+            "feedback": "Você dividiu o volume pela massa. C = m/V = 30 / 2 = 15 g/L."
+          }
+        ]
+      },
+      {
+        "id": "agua-massa",
+        "prompt": "Ao acrescentar água a uma solução, o que acontece com a massa de soluto?",
+        "options": [
+          {
+            "id": "igual",
+            "label": "Não muda",
+            "correct": true,
+            "feedback": "Certo: só entrou solvente. A massa de soluto é a mesma; o volume é que aumentou."
+          },
+          {
+            "id": "aumenta",
+            "label": "Aumenta",
+            "correct": false,
+            "feedback": "Água não traz soluto. A massa de soluto continua a mesma."
+          },
+          {
+            "id": "diminui",
+            "label": "Diminui",
+            "correct": false,
+            "feedback": "O soluto não sai da solução quando entra água. A massa continua a mesma."
+          },
+          {
+            "id": "zera",
+            "label": "Vira zero",
+            "correct": false,
+            "feedback": "O soluto continua dissolvido, só mais espalhado. A massa não muda."
+          }
+        ]
+      },
+      {
+        "id": "ml-l",
+        "prompt": "Quanto vale 250 mL em litros?",
+        "options": [
+          {
+            "id": "025",
+            "label": "0,25 L",
+            "correct": true,
+            "feedback": "Certo: 1 L = 1000 mL, então 250 / 1000 = 0,25 L."
+          },
+          {
+            "id": "25",
+            "label": "2,5 L",
+            "correct": false,
+            "feedback": "Seria dividir por 100. Como 1 L = 1000 mL: 250 / 1000 = 0,25 L."
+          },
+          {
+            "id": "250",
+            "label": "25 L",
+            "correct": false,
+            "feedback": "Seria dividir por 10. Como 1 L = 1000 mL: 250 / 1000 = 0,25 L."
+          },
+          {
+            "id": "0025",
+            "label": "0,025 L",
+            "correct": false,
+            "feedback": "Seria dividir por 10 000. Como 1 L = 1000 mL: 250 / 1000 = 0,25 L."
+          }
+        ]
+      },
+      {
+        "id": "mais-concentrado",
+        "prompt": "Dois béqueres têm 10 g do mesmo soluto: um com 100 mL de solução, outro com 500 mL. Qual é mais concentrado?",
+        "options": [
+          {
+            "id": "100",
+            "label": "O de 100 mL",
+            "correct": true,
+            "feedback": "Certo: 10 g / 0,1 L = 100 g/L, contra 10 g / 0,5 L = 20 g/L."
+          },
+          {
+            "id": "500",
+            "label": "O de 500 mL",
+            "correct": false,
+            "feedback": "Mais volume com a mesma massa dilui. O de 100 mL tem 100 g/L; o de 500 mL, 20 g/L."
+          },
+          {
+            "id": "iguais",
+            "label": "Os dois iguais",
+            "correct": false,
+            "feedback": "A massa é igual, mas o volume não. O de 100 mL fica com 100 g/L, e o de 500 mL, com 20 g/L."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "massa-em-v",
+        "prompt": "Quantos gramas de soluto há em 400 mL de uma solução a 50 g/L?",
+        "options": [
+          {
+            "id": "20",
+            "label": "20 g",
+            "correct": true,
+            "feedback": "Certo: m = C · V = 50 g/L · 0,4 L = 20 g."
+          },
+          {
+            "id": "125",
+            "label": "125 g",
+            "correct": false,
+            "feedback": "Você dividiu C pelo volume. A massa é m = C · V = 50 · 0,4 = 20 g."
+          },
+          {
+            "id": "200",
+            "label": "200 g",
+            "correct": false,
+            "feedback": "Faltou passar 400 mL para 0,4 L com a divisão certa. m = 50 · 0,4 = 20 g."
+          },
+          {
+            "id": "2",
+            "label": "2 g",
+            "correct": false,
+            "feedback": "Você usou 0,04 L. Como 400 mL = 0,4 L, m = 50 · 0,4 = 20 g."
+          }
+        ]
+      },
+      {
+        "id": "diluicao-100",
+        "prompt": "100 mL de solução a 80 g/L são diluídos com água até 400 mL. Qual é a nova concentração?",
+        "options": [
+          {
+            "id": "20",
+            "label": "20 g/L",
+            "correct": true,
+            "feedback": "Certo: C₂ = C₁ · V₁ / V₂ = 80 · 100 / 400 = 20 g/L."
+          },
+          {
+            "id": "320",
+            "label": "320 g/L",
+            "correct": false,
+            "feedback": "Você multiplicou pela razão dos volumes. Diluir diminui C: 80 · 100 / 400 = 20 g/L."
+          },
+          {
+            "id": "267",
+            "label": "26,67 g/L",
+            "correct": false,
+            "feedback": "Você usou só a água adicionada, 300 mL. O volume final é 400 mL: 80 · 100 / 400 = 20 g/L."
+          },
+          {
+            "id": "80",
+            "label": "80 g/L",
+            "correct": false,
+            "feedback": "A água dilui a solução, então C muda. C₂ = 80 · 100 / 400 = 20 g/L."
+          }
+        ]
+      },
+      {
+        "id": "mol-l",
+        "prompt": "Uma solução de CuSO₄ (M = 159,5 g/mol) tem 31,9 g dissolvidos em 1 L. Qual é a concentração em mol/L?",
+        "options": [
+          {
+            "id": "02",
+            "label": "0,2 mol/L",
+            "correct": true,
+            "feedback": "Certo: n = 31,9 / 159,5 = 0,2 mol, em 1 L: 0,2 mol/L."
+          },
+          {
+            "id": "319",
+            "label": "31,9 mol/L",
+            "correct": false,
+            "feedback": "31,9 é a concentração em g/L. Em mol/L: 31,9 / 159,5 = 0,2 mol/L."
+          },
+          {
+            "id": "5",
+            "label": "5 mol/L",
+            "correct": false,
+            "feedback": "Você dividiu a massa molar pela massa. n = m/M = 31,9 / 159,5 = 0,2 mol, então 0,2 mol/L."
+          },
+          {
+            "id": "002",
+            "label": "0,02 mol/L",
+            "correct": false,
+            "feedback": "A divisão 31,9 / 159,5 dá 0,2, não 0,02. São 0,2 mol em 1 L: 0,2 mol/L."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "volume-final",
+        "prompt": "Que volume final se obtém ao diluir 50 mL de solução a 120 g/L até 30 g/L?",
+        "options": [
+          {
+            "id": "200",
+            "label": "200 mL",
+            "correct": true,
+            "feedback": "Certo: V₂ = C₁ · V₁ / C₂ = 120 · 50 / 30 = 200 mL."
+          },
+          {
+            "id": "150",
+            "label": "150 mL",
+            "correct": false,
+            "feedback": "150 mL é a água a acrescentar. O volume final é 120 · 50 / 30 = 200 mL."
+          },
+          {
+            "id": "125",
+            "label": "12,5 mL",
+            "correct": false,
+            "feedback": "Você inverteu as concentrações. V₂ = 120 · 50 / 30 = 200 mL."
+          }
+        ]
+      },
+      {
+        "id": "mistura-iguais",
+        "prompt": "Misturam-se 200 mL a 40 g/L com 300 mL a 40 g/L do mesmo soluto. Qual é a concentração da mistura?",
+        "options": [
+          {
+            "id": "40",
+            "label": "40 g/L",
+            "correct": true,
+            "feedback": "Certo: há 8 g + 12 g = 20 g em 0,5 L, ou seja, 40 g/L. Iguais misturadas não mudam."
+          },
+          {
+            "id": "80",
+            "label": "80 g/L",
+            "correct": false,
+            "feedback": "Concentrações não se somam. A mistura tem 20 g em 0,5 L: 40 g/L."
+          },
+          {
+            "id": "20",
+            "label": "20 g/L",
+            "correct": false,
+            "feedback": "Você dividiu por 2 sem motivo. A mistura tem 8 g + 12 g = 20 g em 0,5 L: 40 g/L."
+          }
+        ]
+      },
+      {
+        "id": "comparar-ab",
+        "prompt": "A solução A tem 10 g em 250 mL; a B tem 30 g em 1 L. Qual é mais concentrada?",
+        "options": [
+          {
+            "id": "a",
+            "label": "A",
+            "correct": true,
+            "feedback": "Certo: A tem 10 / 0,25 = 40 g/L; B tem 30 / 1 = 30 g/L."
+          },
+          {
+            "id": "b",
+            "label": "B",
+            "correct": false,
+            "feedback": "B tem mais massa, mas também mais volume. A tem 40 g/L e B, 30 g/L."
+          },
+          {
+            "id": "iguais",
+            "label": "As duas iguais",
+            "correct": false,
+            "feedback": "Calcule cada razão: A = 10 / 0,25 = 40 g/L e B = 30 / 1 = 30 g/L."
+          }
+        ]
+      },
+      {
+        "id": "preparo-mol",
+        "prompt": "Quantos gramas de CuSO₄ (M = 159,5 g/mol) são necessários para 500 mL de solução a 0,1 mol/L?",
+        "options": [
+          {
+            "id": "7975",
+            "label": "7,975 g",
+            "correct": true,
+            "feedback": "Certo: n = 0,1 · 0,5 = 0,05 mol e m = 0,05 · 159,5 = 7,975 g."
+          },
+          {
+            "id": "1595",
+            "label": "15,95 g",
+            "correct": false,
+            "feedback": "Esse valor é para 1 L. Com 0,5 L: n = 0,05 mol e m = 0,05 · 159,5 = 7,975 g."
+          },
+          {
+            "id": "7975b",
+            "label": "79,75 g",
+            "correct": false,
+            "feedback": "Você usou 5 L. Com 0,5 L: n = 0,05 mol e m = 0,05 · 159,5 = 7,975 g."
+          },
+          {
+            "id": "005",
+            "label": "0,05 g",
+            "correct": false,
+            "feedback": "0,05 é a quantidade em mol. Multiplique pela massa molar: 0,05 · 159,5 = 7,975 g."
+          }
+        ]
+      },
+      {
+        "id": "evaporar",
+        "prompt": "Metade do volume de uma solução evapora, e só água sai. O que acontece com a concentração?",
+        "options": [
+          {
+            "id": "dobra",
+            "label": "Dobra",
+            "correct": true,
+            "feedback": "Certo: a massa de soluto fica igual e o volume cai pela metade, então C = m/V dobra."
+          },
+          {
+            "id": "metade",
+            "label": "Cai pela metade",
+            "correct": false,
+            "feedback": "O soluto não evaporou. Mesma massa em metade do volume: a concentração dobra."
+          },
+          {
+            "id": "igual",
+            "label": "Não muda",
+            "correct": false,
+            "feedback": "O volume mudou e a massa não. Com metade do volume, C dobra."
+          },
+          {
+            "id": "x4",
+            "label": "Quadruplica",
+            "correct": false,
+            "feedback": "C é proporcional a 1/V. Volume pela metade dobra a concentração."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

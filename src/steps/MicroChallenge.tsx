@@ -75,10 +75,15 @@ export function MicroChallenge({ step, onNext }: StepProps<MicroChallengeStep>) 
       paco={paco}
       line={step.lines.intro}
       duvida={duvidaLiberada(step.duvida, phase === "correct")}
-      footer={footer} footerTone={phase === "choosing" ? "neutral" : phase}>
-      <div key={JSON.stringify(figState)} className="stage stage--pop">
-        <Figure state={figState} />
-      </div>
+      footer={footer}
+      footerTone={phase === "choosing" ? "neutral" : phase}
+      figura={
+        <div key={JSON.stringify(figState)} className={`stage stage--pop${phase === "wrong" ? " stage--erro" : phase === "correct" ? " stage--certo" : ""}`}>
+          <Figure state={figState} />
+        </div>
+      }
+    >
+      <p className="eyebrow">Desafio</p>
       <p className="prompt">{step.prompt}</p>
       <div
         className={`options${opcoesDeTexto ? " options--texto" : ""}${opcoesLongas ? " options--lista" : ""}`}

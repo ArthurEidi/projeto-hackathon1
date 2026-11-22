@@ -69,27 +69,33 @@
       "params": {
         "modo": "metricas",
         "a": 9,
-        "m": 4,
+        "m": "$m",
         "comparar": true
       },
       "controls": [
         {
-          "id": "destacar_cateto",
-          "label": "Comparar b² com a·m",
-          "min": 0,
-          "max": 1,
+          "id": "m",
+          "label": "Sombra m do cateto b",
+          "min": 1,
+          "max": 8,
           "step": 1,
-          "initial": 0,
-          "color": "c4"
+          "initial": 1,
+          "color": "c2"
         }
       ],
       "lines": {
-        "intro": "Se a hipotenusa toda mede a = 9 e a sombra debaixo do cateto b mede m = 4, quanto mede o cateto b?",
+        "intro": "Com a = 9, mova a sombra m e compare o quadrado b² com o retângulo a · m. Quanto mede b quando m = 4?",
         "done": "Mede 6! Pela semelhança entre o triângulo menor e o grande, b / m = a / b, logo b² = a · m = 9 · 4 = 36."
       },
       "complete_when": {
-        "metric": "destacar_cateto",
-        "gte": 1
+        "metric": "m",
+        "gte": 4,
+        "lte": 4
+      },
+      "antes_de_concluir": {
+        "ocultar": [
+          "b"
+        ]
       }
     },
     {
@@ -142,7 +148,12 @@
           "modo": "metricas",
           "a": 13,
           "m": 4,
-          "ocultar": ["a", "b", "c", "h"]
+          "ocultar": [
+            "a",
+            "b",
+            "c",
+            "h"
+          ]
         }
       },
       "options": [
@@ -151,28 +162,46 @@
           "label": "6 cm",
           "correct": true,
           "feedback": "Exato. Como h² = m · n = 4 · 9 = 36, temos h = √36 = 6 cm.",
-          "figure": { "highlight": ["c3"] }
+          "figure": {
+            "highlight": [
+              "c3"
+            ]
+          }
         },
         {
           "id": "h13",
           "label": "13 cm",
           "correct": false,
           "feedback": "13 cm é a hipotenusa a = 4 + 9. A altura é h = √(4 · 9) = 6 cm.",
-          "figure": { "highlight": ["c1"] }
+          "figure": {
+            "highlight": [
+              "c1"
+            ]
+          }
         },
         {
           "id": "h36",
           "label": "36 cm",
           "correct": false,
           "feedback": "36 é h² (4 · 9). Tirando a raiz quadrada, h = 6 cm.",
-          "figure": { "highlight": ["c2", "c3"] }
+          "figure": {
+            "highlight": [
+              "c2",
+              "c3"
+            ]
+          }
         },
         {
           "id": "h65",
           "label": "6,5 cm",
           "correct": false,
           "feedback": "6,5 é a metade da hipotenusa (média aritmética). A altura é √(4 · 9) = 6 cm.",
-          "figure": { "highlight": ["c1", "c2"] }
+          "figure": {
+            "highlight": [
+              "c1",
+              "c2"
+            ]
+          }
         }
       ]
     },
@@ -188,13 +217,31 @@
         }
       },
       "formula": [
-        { "text": "h²", "ref": "c3" },
-        { "text": "=" },
-        { "text": "m·n", "ref": "c2" },
-        { "text": ";" },
-        { "text": "b²", "ref": "c4" },
-        { "text": "=" },
-        { "text": "a·m", "ref": "c1" }
+        {
+          "text": "h²",
+          "ref": "c3"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "m·n",
+          "ref": "c2"
+        },
+        {
+          "text": ";"
+        },
+        {
+          "text": "b²",
+          "ref": "c4"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "a·m",
+          "ref": "c1"
+        }
       ],
       "definitions": [
         {

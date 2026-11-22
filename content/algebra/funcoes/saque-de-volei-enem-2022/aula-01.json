@@ -1,0 +1,968 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "Saque no Teto",
+  "subtitulo": "ENEM 2022: a parábola decide o ginásio",
+  "caminho": {
+    "pilar": "algebra",
+    "setor": "funcoes",
+    "unidade": "saque-de-volei-enem-2022"
+  },
+  "questao": {
+    "texto": [
+      "Em jogos de voleibol, um saque é invalidado se a bola atingir o teto do ginásio onde ocorre o jogo. Um jogador de uma equipe tem um saque que atinge uma grande altura. Seu recorde foi quando a batida do saque se iniciou a uma altura de 1,5 m do piso da quadra, e a trajetória da bola foi descrita pela parábola y = −x²/6 − 7x/3 + 12, em que y representa a altura da bola em relação ao eixo x (das abscissas) que está localizado a 1,5 m do piso da quadra, como representado na figura. Suponha que em todas as partidas algum saque desse jogador atinja a mesma altura do seu recorde.",
+      "A equipe desse jogador participou de um torneio de voleibol no qual jogou cinco partidas, cada uma delas em um ginásio diferente. As alturas dos tetos desses ginásios, em relação aos pisos das quadras, são: ginásio I: 17 m; ginásio II: 18 m; ginásio III: 19 m; ginásio IV: 21 m; ginásio V: 40 m.",
+      "O saque desse atleta foi invalidado"
+    ],
+    "dados": [
+      {
+        "rotulo": "Trajetória",
+        "valor": "y = −x²/6 − 7x/3 + 12"
+      },
+      {
+        "rotulo": "Eixo x",
+        "valor": "1,5 m acima do piso"
+      },
+      {
+        "rotulo": "Tetos",
+        "valor": "17, 18, 19, 21 e 40 m"
+      }
+    ],
+    "fonte": {
+      "banca": "ENEM",
+      "ano": 2022,
+      "edicao": "Questão 150",
+      "adaptada": true,
+      "adaptacao": "Equação da parábola transcrita da imagem da prova para texto; a figura original foi substituída pelo gráfico interativo e a lista de ginásios foi escrita em linha.",
+      "urls": [
+        "https://api.enem.dev/v1/exams/2022/questions/150"
+      ]
+    }
+  },
+  "outro": "A altura máxima veio do vértice da parábola mais a altura do eixo: 121/6 + 1,5 ≈ 21,67 m acima do piso.",
+  "glossario": {
+    "c1": {
+      "nome": "Parábola do saque",
+      "resumo": "y = −x²/6 − 7x/3 + 12, altura medida a partir do eixo x."
+    },
+    "c2": {
+      "nome": "Altura máxima (H)",
+      "resumo": "ponto mais alto da bola em relação ao piso da quadra."
+    },
+    "c3": {
+      "nome": "Altura do eixo",
+      "resumo": "o eixo x fica 1,5 m acima do piso, como diz o enunciado."
+    }
+  },
+  "steps": [
+    {
+      "id": "ler-trajetoria",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -19,
+          5
+        ],
+        "y": [
+          -2,
+          24
+        ],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": -0.16666666666666666,
+            "b": -2.3333333333333335,
+            "c": 12,
+            "cor": "c1",
+            "rotulo": "y = −x²/6 − 7x/3 + 12"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": -18,
+          "passo": 1
+        }
+      },
+      "lines": {
+        "intro": "Esta é a trajetória do enunciado, com y medido a partir do eixo, 1,5 m acima do piso. Arraste a bola pela curva.",
+        "done": "A bola sai em x = −18, sobe, para de subir e desce. A pergunta é: qual é a altura do ponto mais alto?"
+      },
+      "complete_when": {
+        "metric": "faixa_x",
+        "gte": 10
+      }
+    },
+    {
+      "id": "achar-vertice",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -19,
+          5
+        ],
+        "y": [
+          -2,
+          24
+        ],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": -0.16666666666666666,
+            "b": -2.3333333333333335,
+            "c": 12,
+            "cor": "c1",
+            "rotulo": "y = −x²/6 − 7x/3 + 12"
+          }
+        ],
+        "ponto": {
+          "curva": 0,
+          "x": -15,
+          "passo": 0.5
+        },
+        "marcar": {
+          "vertice": true,
+          "eixo": true
+        }
+      },
+      "antes_de_concluir": {
+        "marcar": {
+          "vertice": false,
+          "eixo": false
+        }
+      },
+      "lines": {
+        "intro": "Leve a bola ao ponto mais alto. O x do vértice é −b/(2a); confira se o gráfico concorda.",
+        "done": "No vértice, x = −7 e y ≈ 20,17 m acima do eixo. Isso ainda não é a altura em relação ao piso."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Dá para achar isso sem o gráfico?",
+        "resposta": "Sim: Δ = 49/9 + 8 = 121/9 e y = −Δ/(4a) = −(121/9)/(−2/3) = 121/6 ≈ 20,17 m."
+      },
+      "complete_when": {
+        "metric": "no_vertice",
+        "gte": 1
+      }
+    },
+    {
+      "id": "comparar-tetos",
+      "type": "interactive_canvas",
+      "widget": "plano_cartesiano",
+      "params": {
+        "x": [
+          -19,
+          5
+        ],
+        "y": [
+          0,
+          24
+        ],
+        "curvas": [
+          {
+            "tipo": "quadratica",
+            "a": -0.16666666666666666,
+            "b": -2.3333333333333335,
+            "c": 12,
+            "transforma": {
+              "k": 1.5
+            },
+            "cor": "c1",
+            "rotulo": "altura do piso = y + 1,5"
+          },
+          {
+            "tipo": "afim",
+            "a": 0,
+            "b": "$teto",
+            "cor": "c2",
+            "rotulo": "teto"
+          }
+        ],
+        "guias": {
+          "horizontais": [
+            {
+              "v": 17,
+              "rotulo": "I: 17 m",
+              "cor": "muted"
+            },
+            {
+              "v": 18,
+              "rotulo": "II: 18 m",
+              "cor": "muted"
+            },
+            {
+              "v": 19,
+              "rotulo": "III: 19 m",
+              "cor": "muted"
+            },
+            {
+              "v": 21,
+              "rotulo": "IV: 21 m",
+              "cor": "muted"
+            }
+          ]
+        },
+        "marcar": {
+          "encontro": true
+        }
+      },
+      "controls": [
+        {
+          "id": "teto",
+          "label": "Altura do teto",
+          "min": 17,
+          "max": 23,
+          "step": 1,
+          "initial": 17,
+          "unit": " m",
+          "color": "c2"
+        }
+      ],
+      "lines": {
+        "intro": "Agora o eixo x é o piso: a curva subiu 1,5 m. Suba o teto e veja até que altura a bola ainda o atinge.",
+        "done": "A bola chega a cerca de 21,67 m do piso. Tetos abaixo disso são atingidos; tetos acima, não."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que somar 1,5 m?",
+        "resposta": "Os tetos são medidos a partir do piso, e o y da parábola, a partir do eixo, que está 1,5 m acima."
+      },
+      "complete_when": {
+        "metric": "teto",
+        "gte": 22
+      }
+    },
+    {
+      "id": "altura-maxima",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -19,
+            5
+          ],
+          "y": [
+            0,
+            24
+          ],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": -0.16666666666666666,
+              "b": -2.3333333333333335,
+              "c": 12,
+              "transforma": {
+                "k": 1.5
+              },
+              "cor": "c1",
+              "rotulo": "altura do piso = y + 1,5"
+            }
+          ],
+          "guias": {
+            "horizontais": [
+              {
+                "v": 17,
+                "rotulo": "I: 17 m",
+                "cor": "muted"
+              },
+              {
+                "v": 18,
+                "rotulo": "II: 18 m",
+                "cor": "muted"
+              },
+              {
+                "v": 19,
+                "rotulo": "III: 19 m",
+                "cor": "muted"
+              },
+              {
+                "v": 21,
+                "rotulo": "IV: 21 m",
+                "cor": "muted"
+              }
+            ]
+          }
+        }
+      },
+      "prompt": "Qual é a altura máxima da bola em relação ao piso da quadra?",
+      "options": [
+        {
+          "id": "h2167",
+          "label": "21,67 m",
+          "correct": true,
+          "feedback": "Certo: 121/6 ≈ 20,17 m acima do eixo, mais 1,5 m do eixo até o piso.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -7
+            }
+          }
+        },
+        {
+          "id": "h2017",
+          "label": "20,17 m",
+          "correct": false,
+          "feedback": "Essa é a altura do vértice acima do eixo x. O enunciado pede em relação ao piso.",
+          "figure": {
+            "curvas": [
+              {
+                "tipo": "quadratica",
+                "a": -0.16666666666666666,
+                "b": -2.3333333333333335,
+                "c": 12,
+                "cor": "c1",
+                "rotulo": "y = −x²/6 − 7x/3 + 12"
+              }
+            ],
+            "y": [
+              -2,
+              24
+            ],
+            "ponto": {
+              "curva": 0,
+              "x": -7
+            }
+          }
+        },
+        {
+          "id": "h135",
+          "label": "13,5 m",
+          "correct": false,
+          "feedback": "Essa é a altura em x = 0, que não é o ponto mais alto. O vértice está em x = −7.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": 0
+            }
+          }
+        },
+        {
+          "id": "h7",
+          "label": "7 m",
+          "correct": false,
+          "feedback": "7 vem de −b/(2a) e é uma posição horizontal, não uma altura. Calcule y nesse x.",
+          "figure": {
+            "guias": {
+              "horizontais": [
+                {
+                  "v": 17,
+                  "rotulo": "I: 17 m",
+                  "cor": "muted"
+                },
+                {
+                  "v": 18,
+                  "rotulo": "II: 18 m",
+                  "cor": "muted"
+                },
+                {
+                  "v": 19,
+                  "rotulo": "III: 19 m",
+                  "cor": "muted"
+                },
+                {
+                  "v": 21,
+                  "rotulo": "IV: 21 m",
+                  "cor": "muted"
+                }
+              ],
+              "verticais": [
+                {
+                  "v": -7,
+                  "rotulo": "x = −7",
+                  "cor": "c3"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "lines": {
+        "intro": "Use o vértice e não esqueça de onde o y é medido."
+      }
+    },
+    {
+      "id": "responder-questao",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -19,
+            5
+          ],
+          "y": [
+            0,
+            42
+          ],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": -0.16666666666666666,
+              "b": -2.3333333333333335,
+              "c": 12,
+              "transforma": {
+                "k": 1.5
+              },
+              "cor": "c1",
+              "rotulo": "altura do piso = y + 1,5"
+            }
+          ],
+          "guias": {
+            "horizontais": [
+              {
+                "v": 17,
+                "rotulo": "I: 17 m",
+                "cor": "muted"
+              },
+              {
+                "v": 18,
+                "rotulo": "II: 18 m",
+                "cor": "muted"
+              },
+              {
+                "v": 19,
+                "rotulo": "III: 19 m",
+                "cor": "muted"
+              },
+              {
+                "v": 21,
+                "rotulo": "IV: 21 m",
+                "cor": "muted"
+              },
+              {
+                "v": 40,
+                "rotulo": "V: 40 m",
+                "cor": "muted"
+              }
+            ]
+          }
+        }
+      },
+      "prompt": "O saque desse atleta foi invalidado",
+      "options": [
+        {
+          "id": "a",
+          "label": "A) Apenas no ginásio I.",
+          "correct": false,
+          "feedback": "A bola sobe a cerca de 21,67 m do piso. Confira quais tetos ficam abaixo disso, não só o primeiro.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -7
+            }
+          }
+        },
+        {
+          "id": "b",
+          "label": "B) Apenas nos ginásios I e II.",
+          "correct": false,
+          "feedback": "18 m não é o limite: a bola sobe mais que isso. Compare cerca de 21,67 m com cada teto.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -7
+            }
+          }
+        },
+        {
+          "id": "c",
+          "label": "C) Apenas nos ginásios I, II e III.",
+          "correct": false,
+          "feedback": "Esse é o resultado sem os 1,5 m do eixo: 20,17 m pararia antes de 21 m. Some a altura do eixo.",
+          "figure": {
+            "curvas": [
+              {
+                "tipo": "quadratica",
+                "a": -0.16666666666666666,
+                "b": -2.3333333333333335,
+                "c": 12,
+                "cor": "c1",
+                "rotulo": "y = −x²/6 − 7x/3 + 12"
+              }
+            ],
+            "ponto": {
+              "curva": 0,
+              "x": -7
+            }
+          }
+        },
+        {
+          "id": "d",
+          "label": "D) Apenas nos ginásios I, II, III e IV.",
+          "correct": true,
+          "feedback": "Certo: o topo fica a cerca de 21,67 m, acima de 17, 18, 19 e 21 m e abaixo de 40 m.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -7
+            }
+          }
+        },
+        {
+          "id": "e",
+          "label": "E) Em todos os ginásios.",
+          "correct": false,
+          "feedback": "O teto de 40 m fica muito acima da altura máxima da bola. Confira o ginásio V.",
+          "figure": {
+            "ponto": {
+              "curva": 0,
+              "x": -7
+            }
+          }
+        }
+      ],
+      "lines": {
+        "intro": "Agora responda à questão do ENEM com o que você mediu."
+      }
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "plano_figura",
+        "params": {
+          "x": [
+            -19,
+            5
+          ],
+          "y": [
+            0,
+            24
+          ],
+          "curvas": [
+            {
+              "tipo": "quadratica",
+              "a": -0.16666666666666666,
+              "b": -2.3333333333333335,
+              "c": 12,
+              "transforma": {
+                "k": 1.5
+              },
+              "cor": "c1",
+              "rotulo": "altura do piso = y + 1,5"
+            }
+          ],
+          "guias": {
+            "horizontais": [
+              {
+                "v": 1.5,
+                "rotulo": "eixo: 1,5 m",
+                "cor": "c3"
+              },
+              {
+                "v": 21.67,
+                "rotulo": "H ≈ 21,67 m",
+                "cor": "c2"
+              }
+            ]
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "H",
+          "ref": "c2"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "−Δ/4a",
+          "ref": "c1"
+        },
+        {
+          "text": "+"
+        },
+        {
+          "text": "1,5",
+          "ref": "c3"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Vértice",
+          "text": "x = −b/2a = −7 e y = −Δ/4a = 121/6 ≈ 20,17 m acima do eixo."
+        },
+        {
+          "term": "Referência",
+          "text": "compare medidas no mesmo nível: tetos e bola, os dois a partir do piso."
+        }
+      ],
+      "lines": {
+        "intro": "A altura em relação ao piso soma a altura do vértice e os 1,5 m do eixo. Toque em cada parte.",
+        "hint": "Toque em H, −Δ/4a ou 1,5 para destacar no gráfico."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "sinal-a",
+        "prompt": "Em y = −x²/6 − 7x/3 + 12, o que o sinal de a indica?",
+        "options": [
+          {
+            "id": "baixo",
+            "label": "a < 0: concavidade para baixo",
+            "correct": true,
+            "feedback": "Certo: a = −1/6 é negativo, então a parábola abre para baixo e tem ponto máximo."
+          },
+          {
+            "id": "cima",
+            "label": "a > 0: concavidade para cima",
+            "correct": false,
+            "feedback": "a = −1/6 é negativo. A parábola abre para baixo e tem ponto máximo."
+          },
+          {
+            "id": "neg-cima",
+            "label": "a < 0: concavidade para cima",
+            "correct": false,
+            "feedback": "Com a negativo, a parábola abre para baixo, por isso tem ponto mais alto."
+          },
+          {
+            "id": "reta",
+            "label": "a = 0: é uma reta",
+            "correct": false,
+            "feedback": "a vale −1/6, não zero. É uma parábola aberta para baixo."
+          }
+        ]
+      },
+      {
+        "id": "y-em-0",
+        "prompt": "Quanto vale y em x = 0 nessa parábola?",
+        "options": [
+          {
+            "id": "12",
+            "label": "12",
+            "correct": true,
+            "feedback": "Certo: com x = 0, os termos em x somem e sobra c = 12."
+          },
+          {
+            "id": "0",
+            "label": "0",
+            "correct": false,
+            "feedback": "y só é zero nas raízes, x = −18 e x = 4. Em x = 0, y = c = 12."
+          },
+          {
+            "id": "m7",
+            "label": "−7",
+            "correct": false,
+            "feedback": "−7 é o x do vértice. Em x = 0, y = c = 12."
+          },
+          {
+            "id": "15",
+            "label": "1,5",
+            "correct": false,
+            "feedback": "1,5 m é a altura do eixo. Em x = 0, y = c = 12."
+          }
+        ]
+      },
+      {
+        "id": "y-para-piso",
+        "prompt": "O eixo x está 1,5 m acima do piso. Um ponto com y = 10 está a que altura do piso?",
+        "options": [
+          {
+            "id": "115",
+            "label": "11,5 m",
+            "correct": true,
+            "feedback": "Certo: altura do piso = y + 1,5 = 10 + 1,5 = 11,5 m."
+          },
+          {
+            "id": "85",
+            "label": "8,5 m",
+            "correct": false,
+            "feedback": "Você subtraiu. O piso está abaixo do eixo, então soma: 10 + 1,5 = 11,5 m."
+          },
+          {
+            "id": "10",
+            "label": "10 m",
+            "correct": false,
+            "feedback": "10 é a altura a partir do eixo. A partir do piso: 10 + 1,5 = 11,5 m."
+          },
+          {
+            "id": "15",
+            "label": "15 m",
+            "correct": false,
+            "feedback": "Some só 1,5 m: 10 + 1,5 = 11,5 m."
+          }
+        ]
+      },
+      {
+        "id": "x-vertice",
+        "prompt": "Em que x está o vértice de y = −x²/6 − 7x/3 + 12?",
+        "options": [
+          {
+            "id": "m7",
+            "label": "−7",
+            "correct": true,
+            "feedback": "Certo: x = −b/(2a) = (7/3) / (−1/3) = −7."
+          },
+          {
+            "id": "7",
+            "label": "7",
+            "correct": false,
+            "feedback": "O sinal se perdeu: −b/(2a) = (7/3) / (−1/3) = −7."
+          },
+          {
+            "id": "m14",
+            "label": "−14",
+            "correct": false,
+            "feedback": "Faltou o 2 do denominador: 2a = −1/3, e (7/3) / (−1/3) = −7."
+          },
+          {
+            "id": "12",
+            "label": "12",
+            "correct": false,
+            "feedback": "12 é o valor de c. O vértice está em x = −b/(2a) = −7."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "raizes",
+        "prompt": "Quais são as raízes de −x²/6 − 7x/3 + 12 = 0?",
+        "options": [
+          {
+            "id": "m18-4",
+            "label": "−18 e 4",
+            "correct": true,
+            "feedback": "Certo: multiplicando por −6, x² + 14x − 72 = 0, com raízes −18 e 4."
+          },
+          {
+            "id": "18-m4",
+            "label": "18 e −4",
+            "correct": false,
+            "feedback": "Os sinais trocaram. De x² + 14x − 72 = 0 saem −18 e 4."
+          },
+          {
+            "id": "m7-7",
+            "label": "−7 e 7",
+            "correct": false,
+            "feedback": "−7 é o x do vértice, não uma raiz. As raízes são −18 e 4."
+          },
+          {
+            "id": "0-m14",
+            "label": "0 e −14",
+            "correct": false,
+            "feedback": "x = 0 dá y = 12, não zero. As raízes são −18 e 4."
+          }
+        ]
+      },
+      {
+        "id": "delta",
+        "prompt": "Qual é o Δ de −x²/6 − 7x/3 + 12?",
+        "options": [
+          {
+            "id": "121-9",
+            "label": "121/9",
+            "correct": true,
+            "feedback": "Certo: Δ = b² − 4ac = 49/9 − 4 · (−1/6) · 12 = 49/9 + 8 = 121/9."
+          },
+          {
+            "id": "49-9",
+            "label": "49/9",
+            "correct": false,
+            "feedback": "Faltou o −4ac, que vale +8 aqui. Δ = 49/9 + 8 = 121/9."
+          },
+          {
+            "id": "m23-9",
+            "label": "−23/9",
+            "correct": false,
+            "feedback": "O sinal de −4ac está trocado: com a negativo, −4ac = +8. Δ = 121/9."
+          },
+          {
+            "id": "11-3",
+            "label": "11/3",
+            "correct": false,
+            "feedback": "11/3 é a raiz de Δ. O próprio Δ é 121/9."
+          }
+        ]
+      },
+      {
+        "id": "altura-saida",
+        "prompt": "A que altura do piso a bola está em x = −18?",
+        "options": [
+          {
+            "id": "15",
+            "label": "1,5 m",
+            "correct": true,
+            "feedback": "Certo: x = −18 é raiz, y = 0 no eixo, e o eixo está 1,5 m acima do piso."
+          },
+          {
+            "id": "0",
+            "label": "0 m",
+            "correct": false,
+            "feedback": "y = 0 significa estar no eixo, que fica 1,5 m acima do piso."
+          },
+          {
+            "id": "18",
+            "label": "18 m",
+            "correct": false,
+            "feedback": "18 é a distância horizontal, não altura. Em x = −18, y = 0: 1,5 m do piso."
+          },
+          {
+            "id": "12",
+            "label": "12 m",
+            "correct": false,
+            "feedback": "12 é y em x = 0. Em x = −18, y = 0, ou seja, 1,5 m do piso."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "teto-19",
+        "prompt": "Em quais valores de x a bola passa a 19 m do piso?",
+        "options": [
+          {
+            "id": "m11-m3",
+            "label": "−11 e −3",
+            "correct": true,
+            "feedback": "Certo: y = 17,5 dá x² + 14x + 33 = 0, com raízes −11 e −3."
+          },
+          {
+            "id": "m9-m5",
+            "label": "−9 e −5",
+            "correct": false,
+            "feedback": "Esses são os pontos a 21 m. Para 19 m, y = 17,5: x = −11 ou x = −3."
+          },
+          {
+            "id": "m18-4",
+            "label": "−18 e 4",
+            "correct": false,
+            "feedback": "Essas são as raízes, onde y = 0. Para 19 m do piso, x = −11 ou x = −3."
+          },
+          {
+            "id": "m7",
+            "label": "−7",
+            "correct": false,
+            "feedback": "Em x = −7 a bola está no topo, a cerca de 21,67 m. A 19 m: x = −11 ou x = −3."
+          }
+        ]
+      },
+      {
+        "id": "teto-21",
+        "prompt": "Em quais valores de x a bola passa a 21 m do piso?",
+        "options": [
+          {
+            "id": "m9-m5",
+            "label": "−9 e −5",
+            "correct": true,
+            "feedback": "Certo: y = 19,5 dá x² + 14x + 45 = 0, com raízes −9 e −5."
+          },
+          {
+            "id": "m11-m3",
+            "label": "−11 e −3",
+            "correct": false,
+            "feedback": "Esses são os pontos a 19 m. Para 21 m, y = 19,5: x = −9 ou x = −5."
+          },
+          {
+            "id": "nao",
+            "label": "Nunca passa",
+            "correct": false,
+            "feedback": "O topo fica a cerca de 21,67 m, acima de 21 m. Ela passa em x = −9 e x = −5."
+          },
+          {
+            "id": "m7",
+            "label": "−7",
+            "correct": false,
+            "feedback": "Em −7 está o topo, acima de 21 m. A 21 m: x = −9 ou x = −5."
+          }
+        ]
+      },
+      {
+        "id": "maior-teto",
+        "prompt": "Entre tetos de altura inteira, em metros, qual é o mais alto que a bola ainda atinge?",
+        "options": [
+          {
+            "id": "21",
+            "label": "21 m",
+            "correct": true,
+            "feedback": "Certo: o topo fica a cerca de 21,67 m, acima de 21 m e abaixo de 22 m."
+          },
+          {
+            "id": "22",
+            "label": "22 m",
+            "correct": false,
+            "feedback": "22 m fica acima do topo, que está a cerca de 21,67 m. O mais alto atingido é 21 m."
+          },
+          {
+            "id": "20",
+            "label": "20 m",
+            "correct": false,
+            "feedback": "A bola passa de 20 m. O topo fica a cerca de 21,67 m, então atinge até 21 m."
+          },
+          {
+            "id": "19",
+            "label": "19 m",
+            "correct": false,
+            "feedback": "Esse limite esquece os 1,5 m do eixo. Com eles, o topo é cerca de 21,67 m: até 21 m."
+          }
+        ]
+      },
+      {
+        "id": "eixo-25",
+        "prompt": "Se o eixo x estivesse 2,5 m acima do piso, com a mesma parábola, qual seria a altura máxima em relação ao piso?",
+        "options": [
+          {
+            "id": "2267",
+            "label": "22,67 m",
+            "correct": true,
+            "feedback": "Certo: 121/6 + 2,5 ≈ 20,17 + 2,5 = 22,67 m."
+          },
+          {
+            "id": "2167",
+            "label": "21,67 m",
+            "correct": false,
+            "feedback": "Essa conta usa o eixo a 1,5 m. Com 2,5 m: 20,17 + 2,5 ≈ 22,67 m."
+          },
+          {
+            "id": "2017",
+            "label": "20,17 m",
+            "correct": false,
+            "feedback": "Essa é a altura acima do eixo. Some 2,5 m: cerca de 22,67 m."
+          },
+          {
+            "id": "2417",
+            "label": "24,17 m",
+            "correct": false,
+            "feedback": "Você somou 4 m. Com o eixo a 2,5 m: 20,17 + 2,5 ≈ 22,67 m."
+          }
+        ]
+      },
+      {
+        "id": "por-que-vertice",
+        "prompt": "Por que o vértice dá a altura máxima nessa parábola?",
+        "options": [
+          {
+            "id": "a-neg",
+            "label": "Porque a < 0 e a curva abre para baixo",
+            "correct": true,
+            "feedback": "Certo: com a negativo, o vértice é o ponto mais alto da curva."
+          },
+          {
+            "id": "c",
+            "label": "Porque c = 12",
+            "correct": false,
+            "feedback": "c é só a altura em x = 0. O vértice é máximo porque a < 0."
+          },
+          {
+            "id": "delta",
+            "label": "Porque Δ > 0",
+            "correct": false,
+            "feedback": "Δ > 0 diz que há duas raízes. O vértice é máximo porque a < 0."
+          },
+          {
+            "id": "xv",
+            "label": "Porque o x do vértice é negativo",
+            "correct": false,
+            "feedback": "A posição do vértice não decide se ele é máximo. Quem decide é a < 0."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

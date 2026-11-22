@@ -3,6 +3,9 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { Lesson } from "../engine/schema";
+import { metricasTriangulo } from "../widgets/common/triangulo/calc";
+import { GeometriaTriangulo } from "../widgets/common/triangulo/params";
+import { paramsDoPasso } from "../steps/paramsDoPasso";
 
 const L = Lesson.parse(
   JSON.parse(
@@ -37,7 +40,7 @@ describe("passos da aula de relações métricas no triângulo retângulo", () =
         const alvo = (gte ?? lte)!;
         expect(((alvo - slider.min) / slider.step) % 1, `${s.id}: alvo fora do passo`).toBeCloseTo(0, 9);
       } else {
-        expect(["m", "destacar_cateto", "girar_base", "h", "b"]).toContain(metric);
+        expect(["m", "girar_base", "h", "b"]).toContain(metric);
       }
     }
   });
@@ -54,7 +57,34 @@ describe("passos da aula de relações métricas no triângulo retângulo", () =
     const s = step("cateto-e-sua-sombra");
     if (s.type !== "interactive_canvas") throw new Error();
     expect(Math.sqrt(9 * 4)).toBe(6);
-    expect(s.complete_when.metric).toBe("destacar_cateto");
+    expect(s.complete_when).toMatchObject({ metric: "m", gte: 4, lte: 4 });
+  });
+
+  // 21/11: o slider antes era um interruptor 0/1 que não mudava a figura ("destacar_cateto"). Agora ele é a
+  // projeção m: a figura e o painel b² × a·m acompanham cada valor, e o rótulo de b só aparece ao concluir.
+  it("cateto-e-sua-sombra: o slider m está ligado à figura e b² = a·m em toda a faixa", () => {
+    const s = step("cateto-e-sua-sombra");
+    if (s.type !== "interactive_canvas") throw new Error();
+    const slider = s.controls.find((c) => c.id === "m")!;
+    expect(s.params.m).toBe("$m");
+    expect(s.params.comparar).toBe(true);
+    const estado = { vertice: null, movidos: 0, chaves: new Set<string>(), vistos: new Set<string>() };
+    const p = GeometriaTriangulo.parse(s.params);
+    const vistos = new Set<string>();
+    for (let m = slider.min; m <= slider.max; m += slider.step) {
+      const r = metricasTriangulo(p, { m }, estado as never);
+      expect(r.m, `m = ${m}`).toBe(m);
+      expect(r.area_b2, `m = ${m}`).toBeCloseTo(r.area_am, 9);
+      expect(r.area_am, `m = ${m}`).toBeCloseTo(9 * m, 9);
+      vistos.add(r.b.toFixed(6));
+    }
+    // Cada posição do slider dá um cateto diferente: a figura muda a cada passo.
+    expect(vistos.size).toBe((slider.max - slider.min) / slider.step + 1);
+    expect(metricasTriangulo(p, { m: 4 }, estado as never).b).toBeCloseTo(6, 9);
+    // O rótulo de b fica escondido até concluir; depois, os params completos valem.
+    expect(paramsDoPasso(s.params, s.antes_de_concluir, false).ocultar).toEqual(["b"]);
+    expect(paramsDoPasso(s.params, s.antes_de_concluir, true).ocultar).toBeUndefined();
+    expect(slider.initial).not.toBe(4);
   });
 
   it("duas-formas-da-area: girar_base alterna apoio para hipotenusa", () => {

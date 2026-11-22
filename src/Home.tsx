@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { BoasVindas, jaViuBoasVindas, SaudacaoPaco } from "./characters/BoasVindas";
 import { armazenamento, lerChave, lerJson, type Leitor } from "./engine/armazenamento";
 import { listAulas, taxonomy, type AulaEntry } from "./engine/content";
-import { MATERIA_COM_CONTEUDO, MATERIAS, spriteMateria } from "./engine/materias";
+import { BarraTopo } from "./paginas/BarraTopo";
+import { IlustracaoMateria } from "./paginas/IconesMaterias";
 import { getProgress, type Progress } from "./engine/progress";
 import { IconCheck, IconLock, IconSeta, IconUnidade } from "./ui/Icons";
 import { palette } from "./ui/palette";
@@ -106,7 +107,6 @@ let rolagemAoAbrir = 0;
 
 /** Trilha: Pilar > Setor > Unidade > Aula. Setores e unidades em acordeão. */
 export function Home({ onOpen, foco }: { onOpen: (key: string) => void; foco?: FocoTrilha }) {
-  const [materiaId, setMateriaId] = useState(MATERIA_COM_CONTEUDO);
   const [pilarId, setPilarId] = usePilar();
   const progress = getProgress();
   const aulas = listAulas();
@@ -134,37 +134,34 @@ export function Home({ onOpen, foco }: { onOpen: (key: string) => void; foco?: F
 
   const algumSetorAberto = pilar.setores.some((s) => abertos.has(`s:${pilar.id}/${s.id}`));
 
+  const publicadas = aulas.filter((a) => a.materia === "matematica" && a.arquivo !== null);
+  const feitas = publicadas.filter((a) => progress[a.key]).length;
+
   return (
-    <main className="home" ref={mainRef}>
-      <h1 ref={tituloRef} tabIndex={-1} className="home__title">
-        Trilha
-      </h1>
+    <div className="pagina" data-area="matematica">
+      <BarraTopo atual="matematica" />
+    <main className="home pagina__conteudo" ref={mainRef}>
+      <section className="area-hero area-hero--matematica">
+        <div className="area-hero__texto">
+          <p className="eyebrow">MATEMÁTICA · {publicadas.length} AULAS PUBLICADAS</p>
+          <h1 ref={tituloRef} tabIndex={-1} className="home__title">
+            Matemática
+          </h1>
+          <p className="area-hero__sub">
+            Trilha do Ensino Médio em três pilares. Cada aula parte de um gráfico ou figura que você manipula antes de chegar à fórmula.
+          </p>
+          <p className="area-hero__progresso">
+            {feitas > 0 ? `${contar(feitas, "aula concluída", "aulas concluídas")} neste navegador` : "Nenhuma aula concluída ainda"}
+          </p>
+        </div>
+        <IlustracaoMateria id="matematica" className="area-hero__arte" />
+      </section>
       {boasVindas ? (
         <BoasVindas onFechar={() => setBoasVindas(false)} />
       ) : (
         <SaudacaoPaco temProgresso={temProgressoPublicado(progress, aulas)} />
       )}
-      <nav className="materias" aria-label="Matérias">
-        {MATERIAS.map((m) => (
-          <button
-            key={m.id}
-            type="button"
-            className={`materia${m.id === materiaId ? " materia--current" : ""}`}
-            aria-pressed={m.id === materiaId}
-            onClick={() => setMateriaId(m.id)}
-            onFocus={(e) => mostrarInteiro(e.currentTarget)}
-          >
-            <img src={spriteMateria(m.id)} alt={m.titulo} draggable={false} />
-          </button>
-        ))}
-      </nav>
-
-      {materiaId !== MATERIA_COM_CONTEUDO ? (
-        <div className="empty">
-          {MATERIAS.find((m) => m.id === materiaId)!.titulo} está em produção. Por enquanto, a trilha completa é de
-          Matemática.
-        </div>
-      ) : (
+      {(
         <>
           <nav className="pillars" aria-label="Pilares">
             {taxonomy.pilares.map((p) => (
@@ -287,5 +284,6 @@ export function Home({ onOpen, foco }: { onOpen: (key: string) => void; foco?: F
         </>
       )}
     </main>
+    </div>
   );
 }

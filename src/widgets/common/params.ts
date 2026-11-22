@@ -4,6 +4,8 @@ import * as lugar from "./lugar/params";
 import * as pontos from "./pontos/params";
 import * as circunferencia from "./circunferencia/params";
 import * as vetores from "./vetores/params";
+import * as lancamento from "./lancamento/params";
+import * as solucao from "./solucao/params";
 import * as areas from "./areas/params";
 import * as maquinas from "./maquinas/params";
 import * as transformacao from "./transformacao/params";
@@ -301,6 +303,8 @@ export const widgetParams = {
   ...divisao.widgetParams,
   ...grupos.widgetParams,
   ...escalonado.widgetParams,
+  ...lancamento.widgetParams,
+  ...solucao.widgetParams,
 } as const;
 
 export const figureParams = {
@@ -324,4 +328,6 @@ export const figureParams = {
   ...divisao.figureParams,
   ...grupos.figureParams,
   ...escalonado.figureParams,
+  ...lancamento.figureParams,
+  ...solucao.figureParams,
 } as const;

@@ -25,6 +25,14 @@ export function useCanvas(aspect: number, draw: DrawFn) {
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Informa a proporção à coluna visual da aula (layout de duas colunas): o CSS limita a largura do palco
+    // para o desenho caber na altura da tela. O desenho continua dimensionado pela largura, então
+    // coordenadas, rótulos e áreas de toque não mudam. Fica a maior proporção entre os canvas do palco.
+    const coluna = el.closest<HTMLElement>(".step__visual");
+    if (coluna) {
+      const atual = Number(coluna.style.getPropertyValue("--aspecto")) || 0;
+      if (aspect > atual) coluna.style.setProperty("--aspecto", String(aspect));
+    }
     const ro = new ResizeObserver(([entry]) => {
       const w = Math.round(entry.contentRect.width);
       setSize((s) => (s.w === w ? s : { w, h: Math.round(w * aspect) }));
@@ -163,7 +171,24 @@ export function dot(ctx: CanvasRenderingContext2D, p: Pt, r: number, fill: strin
   ctx.fill();
 }
 
-/** Etiqueta tátil: retângulo arredondado com borda inferior mais escura. Devolve a área ocupada. */
+/** Sombra curta das etiquetas e marcadores (a mesma do botão principal da landing page). */
+export const SOMBRA = "rgba(20, 33, 55, 0.16)";
+
+/**
+ * Marcador de ponto arrastável: sombra curta, preenchimento e contorno fino na tinta. O ponto neutro (sem cor
+ * de marca) usa o amarelo do "ponto atual" das ilustrações da landing. O raio é o mesmo de antes.
+ */
+export function marcador(ctx: CanvasRenderingContext2D, p: Pt, r: number, fill: string, neutro: boolean) {
+  dot(ctx, { x: p.x, y: p.y + 3 }, r, SOMBRA);
+  dot(ctx, p, r, neutro ? c.yellow : fill);
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, r - 1, 0, Math.PI * 2);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = c.ink;
+  ctx.stroke();
+}
+
+/** Etiqueta: retângulo arredondado com sombra curta. Devolve a área ocupada. */
 export function chip(ctx: CanvasRenderingContext2D, p: Pt, text: string, bg: string, dark: string, fg = "#FFFFFF"): Rect {
   ctx.font = `900 16px Nunito, system-ui, sans-serif`;
   const tw = ctx.measureText(text).width;
@@ -171,9 +196,12 @@ export function chip(ctx: CanvasRenderingContext2D, p: Pt, text: string, bg: str
   const h = 26;
   const x = p.x - w / 2;
   const y = p.y - h / 2;
+  // Sombra curta e suave (a do botão da landing, tinta a 16%) no lugar do antigo degrau sólido no tom escuro.
+  // Tamanho, posição e área devolvida não mudam: as dicas e os rótulos calibrados seguem no mesmo lugar.
+  void dark;
   ctx.beginPath();
   ctx.roundRect(x, y + 3, w, h, 9);
-  ctx.fillStyle = dark;
+  ctx.fillStyle = SOMBRA;
   ctx.fill();
   ctx.beginPath();
   ctx.roundRect(x, y, w, h, 9);

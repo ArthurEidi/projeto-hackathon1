@@ -97,7 +97,8 @@ const MicroChallengeStep = z
     type: z.literal("micro_challenge"),
     figure: Figure,
     prompt: Line,
-    options: z.array(ChallengeOption).min(2).max(4),
+    // Até 5 (21/11): a questão oficial de vestibular dentro de uma aula-questão tem alternativas A a E.
+    options: z.array(ChallengeOption).min(2).max(5),
     lines: z.object({ intro: Line }),
     duvida: Duvida.optional(),
   })
@@ -224,6 +225,21 @@ const Treino = z.object({
 /** Significado das marcas c1..c4 nesta aula (h, r, g já vêm do glossário padrão do cone). */
 const Glossario = z.partialRecord(Marca, z.object({ nome: z.string().min(1), resumo: Line }));
 
+/**
+ * Enunciado de uma questão real que a aula inteira ajuda a resolver (21/11). Fica visível em todos os
+ * passos. `texto` é a formulação da prova (parágrafos), `dados` são os valores que o aluno deve
+ * identificar, e `fonte` segue as mesmas regras do vestibular (nunca inventar).
+ */
+const QuestaoDaAula = z
+  .object({
+    texto: z.array(z.string().min(1)).min(1),
+    dados: z.array(z.object({ rotulo: z.string().min(1), valor: z.string().min(1) })).max(8).default([]),
+    fonte: Fonte,
+  })
+  .superRefine((q, ctx) => {
+    if (q.fonte.adaptada && !q.fonte.adaptacao) ctx.addIssue({ code: "custom", message: "questão da aula: descreva a adaptação" });
+  });
+
 export const Lesson = z
   .object({
     id: z.string(),
@@ -231,6 +247,7 @@ export const Lesson = z
     titulo: z.string(),
     subtitulo: z.string(),
     caminho: z.object({ pilar: z.string(), setor: z.string(), unidade: z.string() }),
+    questao: QuestaoDaAula.optional(),
     outro: Line,
     glossario: Glossario.optional(),
     steps: z.array(Step).min(1),
@@ -266,7 +283,19 @@ export const ICONES = [
 const Unidade = z.object({ id: Id, titulo: z.string(), icone: z.enum(ICONES).optional(), aulas: z.array(AulaRef) });
 const Setor = z.object({ id: Id, titulo: z.string(), unidades: z.array(Unidade) });
 const Pilar = z.object({ id: Id, titulo: z.string(), setores: z.array(Setor) });
-export const Taxonomy = z.object({ pilares: z.array(Pilar).length(3) });
+/**
+ * Física e Química (21/11): mesma estrutura de setores, unidades e aulas de um pilar. O id da disciplina
+ * ocupa a posição do pilar na chave da aula ("fisica/<setor>/<unidade>/<aula>") e em `caminho.pilar`.
+ * Matemática continua sendo os 3 pilares; `disciplinas` é opcional, e taxonomias antigas seguem válidas.
+ */
+export const DISCIPLINAS_EXTRAS = ["fisica", "quimica"] as const;
+const Disciplina = Pilar.extend({ id: z.enum(DISCIPLINAS_EXTRAS) });
+export const Taxonomy = z
+  .object({ pilares: z.array(Pilar).length(3), disciplinas: z.array(Disciplina).default([]) })
+  .superRefine((t, ctx) => {
+    const ids = t.disciplinas.map((d) => d.id);
+    if (new Set(ids).size !== ids.length) ctx.addIssue({ code: "custom", message: "disciplina repetida" });
+  });
 
 export type Step = z.output<typeof Step>;
 export type Lesson = z.output<typeof Lesson>;
@@ -317,3 +346,5 @@ export function collectLines(lesson: Lesson): { path: string; text: string }[] {
   }
   return out;
 }
+export type QuestaoDaAula = z.output<typeof QuestaoDaAula>;
+export type DisciplinaExtra = (typeof DISCIPLINAS_EXTRAS)[number];

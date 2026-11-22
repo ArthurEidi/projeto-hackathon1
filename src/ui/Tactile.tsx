@@ -37,18 +37,26 @@ export function TactileCard({ state = "idle", className = "", children, ...rest 
   );
 }
 
-export function ProgressBar({ value, label = "Progresso da aula" }: { value: number; label?: string }) {
+export function ProgressBar({ value, label = "Progresso da aula", etapas }: { value: number; label?: string; etapas?: number }) {
   const pct = Math.max(0, Math.min(1, value)) * 100;
+  // Com `etapas`, a barra vira uma fila de segmentos (um por passo): feitos cheios, o atual marcado.
+  const feitas = etapas ? Math.round((pct / 100) * etapas) : 0;
   return (
     <div
-      className="progress"
+      className={`progress${etapas ? " progress--etapas" : ""}`}
       role="progressbar"
       aria-label={label}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(pct)}
     >
-      <div className="progress__fill" style={{ width: `${pct}%` }} />
+      {etapas ? (
+        Array.from({ length: etapas }, (_, i) => (
+          <span key={i} className={`progress__etapa${i < feitas ? " progress__etapa--feita" : i === feitas ? " progress__etapa--atual" : ""}`} />
+        ))
+      ) : (
+        <div className="progress__fill" style={{ width: `${pct}%` }} />
+      )}
     </div>
   );
 }

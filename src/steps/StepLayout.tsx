@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 import { Conversa, type Fala } from "../characters/Conversa";
 import type { PacoHumor } from "../characters/sprites";
 import type { Duvida } from "../engine/schema";
@@ -9,6 +9,12 @@ interface StepLayoutProps {
   line: string;
   /** Dúvida da Tati já liberada para aparecer (o passo decide quando, conforme `duvida.quando`). */
   duvida?: Duvida | null;
+  /**
+   * Área visual do passo (widget, figura, vídeo). No celular fica logo abaixo da conversa; em telas largas
+   * vira a coluna da direita, com destaque, e o texto e os controles ficam na coluna da esquerda.
+   */
+  figura?: ReactNode;
+  /** Controles, enunciado da pergunta, alternativas, fórmula. */
   children: ReactNode;
   footer: ReactNode;
   footerTone?: "neutral" | "correct" | "wrong";
@@ -19,8 +25,12 @@ interface StepLayoutProps {
   reservar?: readonly string[];
 }
 
-/** Moldura comum dos 4 tipos de passo: conversa do Paco (de jaleco) e da Tati, palco e rodapé de ação. */
-export function StepLayout({ paco, line, duvida, children, footer, footerTone = "neutral", reservar = [] }: StepLayoutProps) {
+/** Conteúdo que acompanha todos os passos da aula (ex.: o enunciado de uma questão real). */
+export const TopoDoPasso = createContext<ReactNode>(null);
+
+/** Moldura comum dos tipos de passo: conversa do Paco (de jaleco) e da Tati, área visual e rodapé de ação. */
+export function StepLayout({ paco, line, duvida, figura, children, footer, footerTone = "neutral", reservar = [] }: StepLayoutProps) {
+  const topo = useContext(TopoDoPasso);
   const footerCls = `step__footer${footerTone !== "neutral" ? ` step__footer--${footerTone}` : ""}`;
   const falas: Fala[] = [{ quem: "paco", texto: line, humor: paco }];
   if (duvida) {
@@ -28,9 +38,10 @@ export function StepLayout({ paco, line, duvida, children, footer, footerTone = 
     falas.push({ quem: "paco", texto: duvida.resposta, humor: "answering" });
   }
   return (
-    <div className="step">
+    <div className={`step${figura ? " step--duo" : ""}`}>
       <div className="step__body">
-        <div className="conversa-reserva">
+        {topo && <div className="step__topo">{topo}</div>}
+        <div className="step__conversa conversa-reserva">
           <Conversa falas={falas} roupa="jaleco" />
           {reservar
             .filter((t) => t !== line)
@@ -40,9 +51,12 @@ export function StepLayout({ paco, line, duvida, children, footer, footerTone = 
               </div>
             ))}
         </div>
-        {children}
+        {figura && <div className="step__visual">{figura}</div>}
+        <div className="step__controles">{children}</div>
       </div>
-      <div className={footerCls}>{footer}</div>
+      <div className={footerCls}>
+        <div className="step__footer-inner">{footer}</div>
+      </div>
     </div>
   );
 }

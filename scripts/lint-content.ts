@@ -3,7 +3,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { join, relative } from "node:path";
-import { collectLines, Lesson, Taxonomy } from "../src/engine/schema";
+import { collectLines, Lesson, Taxonomy, type Taxonomy as TaxonomyT } from "../src/engine/schema";
 import { checkLine, hasEmoji } from "../src/engine/textRules";
 
 export function errosImagensVestibular(lesson: Lesson, publicDir: string): string[] {
@@ -29,7 +29,9 @@ const tax = Taxonomy.safeParse(readJson(join(root, "content/taxonomy.json")));
 if (!tax.success) {
   errors.push(`content/taxonomy.json: ${tax.error.message}`);
 } else {
-  for (const p of tax.data.pilares)
+  // Pilares de Matemática e disciplinas extras (Física, Química) têm a mesma forma.
+  const grupos: TaxonomyT["pilares"] = [...tax.data.pilares, ...tax.data.disciplinas];
+  for (const p of grupos)
     for (const s of p.setores)
       for (const u of s.unidades)
         for (const a of u.aulas) {

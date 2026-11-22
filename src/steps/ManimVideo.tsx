@@ -26,7 +26,7 @@ export function ManimVideo({ step, onNext }: StepProps<ManimVideoStep>) {
           Continuar
         </TactileButton>
       }
-    >
+      figura={
       <div className="stage">
         {failed ? (
           <div className="stage__error">Vídeo indisponível. Rode npm run manim para gerar a animação.</div>
@@ -62,6 +62,11 @@ export function ManimVideo({ step, onNext }: StepProps<ManimVideoStep>) {
           </div>
         )}
       </div>
+      }
+    >
+      <p className="step__status" role="status">
+        {done ? "Animação concluída. Toque no botão para ver de novo." : "Assista à animação até o fim."}
+      </p>
     </StepLayout>
   );
 }

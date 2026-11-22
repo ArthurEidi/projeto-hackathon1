@@ -1,8 +1,11 @@
-// Varre o estado inicial dos passos em 400 × 860 px e a abertura do treino.
+// Varre o estado inicial dos passos (padrão 400 × 860 px) e a abertura do treino.
 // Na raiz do repositório, rode npx vite --port <porta> --strictPort em outro terminal.
 // Uso: node scripts/varre-aulas.mjs <porta> [filtro-de-slug]
-// O filtro procura um trecho do slug. A execução completa grava docs/visual/varredura-b44.md;
+// O filtro procura um trecho do slug. A execução completa grava docs/visual/varredura-b44.md
+// (ou docs/visual/varredura-<largura>x<altura>.md quando o tamanho é definido por variável);
 // com filtro, o relatório sai no terminal. Requer Node com WebSocket global.
+// Tamanho da tela (21/11): VARREDURA_LARGURA e VARREDURA_ALTURA (ex.: 1440 e 900; 768 e 1024; 390 e 844).
+// Também entram as aulas de Física e Química (taxonomy.disciplinas).
 // Navegador: variável NAVEGADOR, ou Edge/Chrome nos caminhos padrão do Windows.
 // VARREDURA_SEM_SANDBOX=1 permite rodar onde o sandbox do navegador não inicializa.
 import { once } from "node:events";
@@ -18,8 +21,9 @@ if (!/^\d+$/.test(porta ?? "") || Number(porta) < 1 || Number(porta) > 65535 || 
   process.exit(1);
 }
 const base = "http://localhost:" + porta;
-const largura = 400;
-const altura = 860;
+const largura = Number(process.env.VARREDURA_LARGURA ?? 400);
+const altura = Number(process.env.VARREDURA_ALTURA ?? 860);
+const tamanhoPadrao = !process.env.VARREDURA_LARGURA && !process.env.VARREDURA_ALTURA;
 const navegador = [
   process.env.NAVEGADOR,
   "C:/Program Files/Google/Chrome/Application/chrome.exe",
@@ -30,7 +34,8 @@ if (!navegador) throw new Error("Navegador não encontrado; defina NAVEGADOR com
 
 const json = (arquivo) => JSON.parse(readFileSync(arquivo, "utf8"));
 const aulas = [];
-for (const p of json("content/taxonomy.json").pilares) {
+const tax = json("content/taxonomy.json");
+for (const p of [...tax.pilares, ...(tax.disciplinas ?? [])]) {
   for (const s of p.setores) {
     for (const u of s.unidades) {
       if (filtro && !u.id.includes(filtro)) continue;
@@ -93,7 +98,7 @@ function conectar(ws) {
 
   async function avaliar(fn, ...args) {
     const expression = "(" + fn.toString() + ")(..." + JSON.stringify(args) + ")";
-    const r = await cdp("Runtime.evaluate", { expression, returnByValue: true });
+    const r = await cdp("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true });
     if (r.exceptionDetails) throw new Error(r.exceptionDetails.exception?.description ?? r.exceptionDetails.text);
     return r.result.value;
   }
@@ -198,8 +203,70 @@ function medir(tipo, alternativas, largura, figuraTreino) {
       nome + (n > 1 ? " ×" + n : "") + " → " + right.toFixed(1) + " px").join("; ");
     problemas.push(["Elemento além da borda", detalhe]);
   }
+
+  // 21/11: ação principal, sobreposição, legibilidade, tamanho útil do gráfico e distância do controle.
+  const alturaTela = window.innerHeight;
+  const acao = [...document.querySelectorAll(".step__footer button")].find(visivel);
+  if (tipo !== "treino" || acao) {
+    const r = acao?.getBoundingClientRect();
+    if (!r) problemas.push(["Ação principal ausente", "Nenhum botão visível no rodapé do passo"]);
+    else if (r.top < 0 || r.bottom > alturaTela + 0.5) problemas.push(["Ação principal fora da tela", "Botão do rodapé em y = " + r.top.toFixed(0) + "–" + r.bottom.toFixed(0) + " px"]);
+    else if (r.height < 40) problemas.push(["Ação principal pequena", "Altura " + r.height.toFixed(0) + " px (mínimo 40)"]);
+  }
+  const visual = document.querySelector(".step__visual");
+  const controles = document.querySelector(".step__controles");
+  if (visivel(visual) && visivel(controles)) {
+    const a = visual.getBoundingClientRect();
+    const b = controles.getBoundingClientRect();
+    const w = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+    const h = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+    if (w > 2 && h > 2) problemas.push(["Sobreposição", "Figura e controles se cobrem em " + w.toFixed(0) + " × " + h.toFixed(0) + " px"]);
+    const slider = controles.querySelector(".slider");
+    if (slider && largura < 768) {
+      const distancia = slider.getBoundingClientRect().top - a.bottom;
+      if (distancia > alturaTela * 0.6) problemas.push(["Controle distante da figura", "Primeiro slider " + distancia.toFixed(0) + " px abaixo da figura"]);
+    }
+  }
+  const pequenos = new Map();
+  for (const el of document.querySelectorAll(".step .prompt, .step .bubble__text, .step .slider__head, .step .card, .step .def, .step .feedback__text, .questao__texto")) {
+    if (!visivel(el)) continue;
+    const tamanho = parseFloat(getComputedStyle(el).fontSize);
+    if (tamanho < 12) pequenos.set(descricao(el), tamanho);
+  }
+  if (pequenos.size) problemas.push(["Texto pequeno", [...pequenos].map(([n, t]) => n + " " + t + " px").join("; ")]);
+  for (const canvas of document.querySelectorAll(".step .stage canvas")) {
+    const { width } = canvas.getBoundingClientRect();
+    if (visivel(canvas) && width < Math.min(240, largura - 60)) problemas.push(["Gráfico pequeno", (canvas.ariaLabel || "canvas") + ": " + width.toFixed(0) + " px de largura"]);
+  }
   return problemas;
 }
+
+// Interação representativa: move o primeiro slider pelo teclado e confere se o desenho mudou.
+async function reagir() {
+  const canvas = document.querySelector(".step .stage canvas");
+  const trilho = document.querySelector(".step .slider__track");
+  if (!canvas || !trilho) return null;
+  const assinatura = () => {
+    const ctx = canvas.getContext("2d");
+    const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let h = 0;
+    for (let k = 0; k < data.length; k += 97) h = (h * 31 + data[k]) >>> 0;
+    return h;
+  };
+  const antes = assinatura();
+  const valor0 = trilho.getAttribute("aria-valuenow");
+  trilho.focus();
+  trilho.dispatchEvent(new KeyboardEvent("keydown", { key: "End", bubbles: true }));
+  await new Promise((r) => setTimeout(r, 150));
+  if (trilho.getAttribute("aria-valuenow") === valor0) {
+    trilho.dispatchEvent(new KeyboardEvent("keydown", { key: "Home", bubbles: true }));
+    await new Promise((r) => setTimeout(r, 150));
+  }
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  if (trilho.getAttribute("aria-valuenow") === valor0) return ["Slider não respondeu", "aria-valuenow continuou " + valor0];
+  return antes === assinatura() ? ["Figura não reagiu", "Desenho igual depois de mover o slider pelo teclado"] : "ok";
+}
+
 
 async function aguardar(avaliar, tempo, fn, ...args) {
   const limite = Date.now() + tempo;
@@ -214,12 +281,13 @@ async function aguardar(avaliar, tempo, fn, ...args) {
 async function varrer({ cdp, avaliar, eventos }) {
   await cdp("Page.enable");
   await cdp("Runtime.enable");
-  await cdp("Emulation.setDeviceMetricsOverride", { width: largura, height: altura, deviceScaleFactor: 1, mobile: true });
+  await cdp("Emulation.setDeviceMetricsOverride", { width: largura, height: altura, deviceScaleFactor: 1, mobile: largura < 768 });
   await cdp("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
   const achados = [];
   let passos = 0;
   let treinos = 0;
   let treinosAbertos = 0;
+  let reacoes = 0;
   for (const [i, aula] of aulas.entries()) {
     const url = base + "/#/aula/" + aula.rota;
     for (const [index, step] of aula.steps.entries()) {
@@ -236,6 +304,11 @@ async function varrer({ cdp, avaliar, eventos }) {
       await espera(100);
       const problemas = await avaliar(medir, step.type, step.options?.length ?? 0, largura, false);
       if (!estado) problemas.push(["Passo não renderizou", "O passo solicitado não ficou pronto em " + tempo / 1000 + " s"]);
+      if (estado && step.type === "interactive_canvas" && step.controls?.length) {
+        const r = await avaliar(reagir);
+        if (r === "ok") reacoes++;
+        else if (r) problemas.push(r);
+      }
       registrar(aula.rota, (index + 1) + " (" + step.type + ")", problemas);
       passos++;
     }
@@ -283,7 +356,7 @@ async function varrer({ cdp, avaliar, eventos }) {
     treinos++;
     console.error("[" + (i + 1) + "/" + aulas.length + "] " + aula.rota + " — " + aula.steps.length + " passos + treino");
   }
-  return { achados, passos, treinos, treinosAbertos };
+  return { achados, passos, treinos, treinosAbertos, reacoes };
 
   function registrar(aula, passo, problemas) {
     const vistos = new Set();
@@ -296,12 +369,12 @@ async function varrer({ cdp, avaliar, eventos }) {
   }
 }
 
-function relatorio({ achados, passos, treinos, treinosAbertos }) {
+function relatorio({ achados, passos, treinos, treinosAbertos, reacoes }) {
   const celula = (s) => s.replaceAll("|", "\\|").replace(/\s+/g, " ").trim();
   return [
     "# Varredura automática B44a",
     "",
-    "Viewport de 400 × 860 px em navegador headless e Vite em modo dev. " +
+    "Viewport de " + largura + " × " + altura + " px em navegador headless e Vite em modo dev. " +
       (filtro ? "Filtro de slug: " + filtro + "." : "Todas as aulas publicadas da taxonomia."),
     "",
     "Cada passo foi aberto pelo atalho de desenvolvimento e conferido no estado inicial. O treino foi acessado pelo convite após o último passo, até a primeira questão básica.",
@@ -314,7 +387,7 @@ function relatorio({ achados, passos, treinos, treinosAbertos }) {
     ...(achados.length ? [] : ["| — | — | — | Nenhum problema detectado. |"]),
     "",
     "**Total:** " + aulas.length + " aulas, " + passos + " passos e " + treinos + " treinos verificados (" +
-      treinosAbertos + " abriram). " + achados.length + " registro(s) de problema.",
+      treinosAbertos + " abriram). " + reacoes + " passos com slider reagiram ao teclado. " + achados.length + " registro(s) de problema.",
     "",
   ].join("\n");
 }
@@ -351,7 +424,7 @@ try {
     console.log(resultado);
   } else {
     mkdirSync("docs/visual", { recursive: true });
-    const arquivo = "docs/visual/varredura-b44.md";
+    const arquivo = tamanhoPadrao ? "docs/visual/varredura-b44.md" : "docs/visual/varredura-" + largura + "x" + altura + ".md";
     writeFileSync(arquivo, resultado, "utf8");
     console.log(arquivo);
     console.log(resultado.trimEnd().split("\n").at(-1));

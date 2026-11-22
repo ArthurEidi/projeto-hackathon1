@@ -27,20 +27,28 @@ export function ConviteTreino({
   totalBasico = 7,
   onTreinar,
   onSair,
+  proxima = null,
 }: {
   outro: string;
   totalBasico?: number;
   onTreinar: () => void;
   onSair: () => void;
+  /** Aula seguinte da trilha, se houver. */
+  proxima?: { titulo: string; onAbrir: () => void } | null;
 }) {
   return (
     <div className="finish">
+      <div className="finish__selo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M5 12.5l4.5 4.5L19 7.5" />
+        </svg>
+      </div>
+      <h1 className="finish__title">Aula concluída</h1>
+      <p className="finish__text">{outro}</p>
       <div className="dupla dupla--festa">
         <img className="corpo" src={spriteUrl(CORPO.pacoComemorando)} alt="Paco comemorando" draggable={false} />
         <img className="corpo" src={spriteUrl(CORPO.tatiComemorando)} alt="Tati comemorando" draggable={false} />
       </div>
-      <h1 className="finish__title">Aula concluída</h1>
-      <p className="finish__text">{outro}</p>
       <div className="finish__conversa">
         <Conversa falas={conviteBasico(totalBasico)} roupa="casual" />
       </div>
@@ -48,6 +56,11 @@ export function ConviteTreino({
         <TactileButton block onClick={onTreinar}>
           Quero treinar
         </TactileButton>
+        {proxima && (
+          <TactileButton block variant="secondary" onClick={proxima.onAbrir}>
+            Próxima aula: {proxima.titulo}
+          </TactileButton>
+        )}
         <TactileButton block variant="secondary" onClick={onSair}>
           Agora não
         </TactileButton>
@@ -205,16 +218,18 @@ export function Pergunta({ questao, contador, ultima, fala, onResponder, onProxi
       line={fala}
       footer={footer}
       footerTone={fase === "escolhendo" ? "neutral" : fase === "certa" ? "correct" : "wrong"}
+      figura={
+        Figure && figState ? (
+          <div className="stage">
+            <Figure state={figState} />
+          </div>
+        ) : undefined
+      }
     >
       <div className="treino__topo">
         <span className="treino__contador">{contador}</span>
         {fonte && <span className="treino__fonte">{fonte}</span>}
       </div>
-      {Figure && figState && (
-        <div className="stage">
-          <Figure state={figState} />
-        </div>
-      )}
       <p className="prompt">{questao.prompt}</p>
       {questao.imagens?.map((imagem, i) => (
         <img key={i} className="treino__imagem" src={`${import.meta.env.BASE_URL}${imagem.src.slice(1)}`} alt={imagem.alt} />

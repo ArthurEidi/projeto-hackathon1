@@ -1,7 +1,7 @@
 // Desenho do plano cartesiano em canvas, compartilhado pelo widget e pela figura estática.
 import { corDoTraco, ehMarca, type CorTraco } from "../../ui/marcas";
 import { palette as c } from "../../ui/palette";
-import { chip, dot, poly, polyline, seg, text, type Hit, type Pt } from "../canvas";
+import { chip, dot, marcador, poly, polyline, seg, text, type Hit, type Pt } from "../canvas";
 import type { PlanoCartesiano } from "./params";
 import {
   caixaDoCentro,
@@ -303,8 +303,9 @@ export function desenharPlano(
       draw: (pos) => text(ctx, pos, "y = x", c.muted, 12),
     });
   }
-  for (const g of p.guias.horizontais) guiaH(g.v, corDoTraco(g.cor).main, g.rotulo);
-  for (const g of p.guias.verticais) guiaV(g.v, corDoTraco(g.cor).main, g.rotulo);
+  // Guias com cor de marca acompanham o destaque da fórmula (engrossam ou afinam), como as curvas.
+  for (const g of p.guias.horizontais) guiaH(g.v, corDoTraco(g.cor).main, g.rotulo, espessura(g.cor, 2, hl));
+  for (const g of p.guias.verticais) guiaV(g.v, corDoTraco(g.cor).main, g.rotulo, espessura(g.cor, 2, hl));
   if (kp && p.marcar.faixa && (kp.tipo === "seno" || kp.tipo === "cosseno")) {
     const ta = kp.t?.a ?? 1;
     const media = ta * kp.c + (kp.t?.k ?? 0);
@@ -537,9 +538,8 @@ export function desenharPlano(
         registrarPonto({ x: px, y: py }, 7);
         agendarChip({ x: px, y: py }, { x: px + (px > A.x + A.w * 0.7 ? -34 : 34), y: py }, num(y), cv.cor, 0);
       });
-      dot(ctx, { x: px, y: eixoY + 3 }, 11, cor.dark);
-      dot(ctx, { x: px, y: eixoY }, 11, cor.main);
-      dot(ctx, { x: px, y: eixoY }, 5, c.bg);
+      marcador(ctx, { x: px, y: eixoY }, 11, cor.main, pt.cor === "ink");
+      dot(ctx, { x: px, y: eixoY }, 4.5, "#FFFFFF");
       registrarPonto({ x: px, y: eixoY }, 12);
       if (pt.coordenadas) {
         agendarChip({ x: px, y: eixoY }, { x: px, y: eixoY + 26 }, `x = ${num(x)}`, pt.cor, 0);
@@ -567,9 +567,8 @@ export function desenharPlano(
           registrarPonto(E, 10);
           agendarChip(E, { x: E.x + 46, y: E.y + 18 }, `(${num(y)}; ${num(x)})`, pt.cor, 0);
         }
-        dot(ctx, { x: P.x, y: P.y + 3 }, 11, cor.dark);
-        dot(ctx, P, 11, cor.main);
-        dot(ctx, P, 5, c.bg);
+        marcador(ctx, P, 11, cor.main, pt.cor === "ink");
+        dot(ctx, P, 4.5, "#FFFFFF");
         registrarPonto(P, 12);
         if (pt.coordenadas) {
           const s = `(${num(x)}; ${num(y)})`;

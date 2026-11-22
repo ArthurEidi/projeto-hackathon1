@@ -1,7 +1,7 @@
 // Desenho da reta numérica: trechos (intervalos) coloridos, pontos fixos e um ponto móvel.
 import { corDoTraco, ehMarca, type CorTraco } from "../../ui/marcas";
 import { palette as c } from "../../ui/palette";
-import { chip, dot, polyline, seg, text, type Hit } from "../canvas";
+import { chip, dot, marcador, polyline, seg, text, type Hit } from "../canvas";
 import type { ModoOperacao, RetaNumerica, Trecho } from "./params";
 import { marcas, num } from "./plot2d";
 
@@ -302,9 +302,8 @@ export function desenharReta(
     }
 
     const cor = corDoTraco(pm.cor);
-    dot(ctx, { x: px, y: y + 3 }, 11, cor.dark);
-    dot(ctx, { x: px, y }, 11, cor.main);
-    dot(ctx, { x: px, y }, 5, c.bg);
+    marcador(ctx, { x: px, y }, 11, cor.main, pm.cor === "ink");
+    dot(ctx, { x: px, y }, 4.5, "#FFFFFF");
     const topoUltimoChip = totalTrilhas > 0 ? baseY - (totalTrilhas - 1) * passoTrilha - 16 : baseY;
     const chipY = totalTrilhas > 0 ? Math.max(16, topoUltimoChip - 32) : Math.max(16, baseY - 8);
     etiqueta(ctx, hits, px, chipY, num(pontoX), pm.cor);

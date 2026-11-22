@@ -210,3 +210,15 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 | B63. Revisão de código da B58; depois auditorias de vestibular | Codex #2 | 20/11 | `docs/revisao/codigo-b58-revisao.md`, `docs/revisao/auditoria-*.md` |
 
 20/11, noite: **parada (limite do Gemini; usuário pediu para frear todos). Nenhuma frente da B ativa.** Auditado está no main; o resto no branch `wip-20-11-noite` (B46b, B60–B62 parciais, B45b2/B45d3). Ver "Parada de 20/11, noite" em `PROXIMOS-PASSOS.md`.
+
+21/11 (cópia local sem Git, `C:\projeto-hackathon1-main`): por pedido do usuário, sessão Claude Code de **modernização visual e três áreas** (Matemática, Física, Química). Sem commit, sem push. Detalhes em `docs/EVOLUCAO_VISUAL_E_DISCIPLINAS.md`.
+
+| Frente | Agente | Desde | Arquivos |
+|---|---|---|---|
+| ~~Evolução visual e disciplinas~~ concluída 21/11 (sem commit): design system, início, páginas de área, aula em duas colunas, widgets `lancamento_obliquo` e `solucao_concentracao`, aulas de Física, Química e a questão visual do ENEM 2022 (vôlei); 2227 testes ok | Claude Code | 21/11 | `src/engine/**`, `src/steps/**`, `src/ui/**`, `src/paginas/**` (novo), `src/widgets/common/{lancamento,solucao}/**` (novos), registro em `src/widgets/common/index.ts`/`params.ts`, `desenhoPlano.ts` (guias), `content/taxonomy.json`, 3 aulas novas, `scripts/lint-content.ts`, `index.html` |
+
+21/11, noite (cópia local sem Git): **alinhamento visual com a landing page** (`C:\HackBrasil\hackbrasil-landing`, só leitura). Sem commit. Detalhes em `docs/ALINHAMENTO_VISUAL_LANDING_APP.md`.
+
+| Frente | Agente | Desde | Arquivos |
+|---|---|---|---|
+| ~~Alinhamento visual landing → app~~ concluída 21/11 (sem commit): paleta e tipografia da landing, cabeçalho, início, aulas, Física e Química; varredura em 1440 × 900, 768 × 1024 e 390 × 844; 13 capturas reais | Claude Code | 21/11 | `src/ui/**`, `src/paginas/**`, `src/engine/{materias,LessonPlayer}.ts*`, `src/Home.tsx`, `src/characters/characters.css`, `src/widgets/common/{lancamento,solucao}/**`, `scripts/varre-aulas.mjs`, `scripts/captura-telas.mjs` (novo), `index.html`, `public/favicon.svg`, `docs/screenshots/**` |

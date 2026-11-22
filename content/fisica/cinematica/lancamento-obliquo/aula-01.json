@@ -1,0 +1,756 @@
+{
+  "id": "aula-01",
+  "numero": 1,
+  "titulo": "A Bola que Faz Parábola",
+  "subtitulo": "Ângulo, velocidade e alcance",
+  "caminho": {
+    "pilar": "fisica",
+    "setor": "cinematica",
+    "unidade": "lancamento-obliquo"
+  },
+  "outro": "Sem ar, o lançamento junta dois movimentos: uniforme na horizontal e acelerado pela gravidade na vertical.",
+  "glossario": {
+    "c1": {
+      "nome": "Alcance (A)",
+      "resumo": "distância horizontal entre o lançamento e a queda, no mesmo nível."
+    },
+    "c2": {
+      "nome": "Altura máxima (H)",
+      "resumo": "ponto mais alto da trajetória, onde a velocidade vertical é zero."
+    },
+    "c3": {
+      "nome": "Ângulo (θ)",
+      "resumo": "inclinação da velocidade inicial em relação ao chão."
+    },
+    "c4": {
+      "nome": "Velocidade inicial (v₀)",
+      "resumo": "rapidez da bola na saída; se divide em vx = v₀·cos θ e vy = v₀·sen θ."
+    }
+  },
+  "steps": [
+    {
+      "id": "primeiro-lancamento",
+      "type": "interactive_canvas",
+      "widget": "lancamento_obliquo",
+      "params": {
+        "angulo": "$angulo",
+        "v0": "$v0"
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Ângulo",
+          "min": 15,
+          "max": 75,
+          "step": 5,
+          "initial": 30,
+          "unit": "°",
+          "color": "c3"
+        },
+        {
+          "id": "v0",
+          "label": "Velocidade inicial",
+          "min": 10,
+          "max": 30,
+          "step": 2,
+          "initial": 20,
+          "unit": " m/s",
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Escolha um ângulo e uma velocidade e toque em Lançar. A curva tracejada é a trajetória que as equações preveem.",
+        "done": "A bola seguiu a curva prevista. Sem ar, ela avança sempre no mesmo ritmo e a gravidade a puxa para baixo."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que a trajetória é uma parábola?",
+        "resposta": "Na horizontal, x cresce com t; na vertical, y tem um termo em t². Juntando os dois, y depende de x²."
+      },
+      "complete_when": {
+        "metric": "lancamentos",
+        "gte": 1
+      }
+    },
+    {
+      "id": "comparar-angulos",
+      "type": "interactive_canvas",
+      "widget": "lancamento_obliquo",
+      "params": {
+        "angulo": "$angulo",
+        "v0": 20,
+        "rastros": 4,
+        "mostrar": {
+          "vetores": true,
+          "altura": true,
+          "alcance": true,
+          "tempo": true,
+          "formulas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Ângulo",
+          "min": 15,
+          "max": 75,
+          "step": 5,
+          "initial": 30,
+          "unit": "°",
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Com v₀ fixa em 20 m/s, lance com pelo menos três ângulos diferentes e compare os alcances no painel.",
+        "done": "Ângulos que somam 90°, como 30° e 60°, dão o mesmo alcance, 34,64 m. O maior alcance vem com 45°: 40 m."
+      },
+      "duvida": {
+        "quando": "fim",
+        "pergunta": "Por que 30° e 60° caem no mesmo lugar?",
+        "resposta": "O alcance depende de sen 2θ, e sen 60° = sen 120°. Um sobe mais e fica mais tempo no ar; o outro corre mais rápido."
+      },
+      "complete_when": {
+        "metric": "angulos_testados",
+        "gte": 3
+      }
+    },
+    {
+      "id": "dobrar-velocidade",
+      "type": "interactive_canvas",
+      "widget": "lancamento_obliquo",
+      "params": {
+        "angulo": 45,
+        "v0": "$v0",
+        "rastros": 4,
+        "mostrar": {
+          "vetores": true,
+          "altura": true,
+          "alcance": true,
+          "tempo": true,
+          "formulas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "v0",
+          "label": "Velocidade inicial",
+          "min": 10,
+          "max": 30,
+          "step": 5,
+          "initial": 10,
+          "unit": " m/s",
+          "color": "c4"
+        }
+      ],
+      "lines": {
+        "intro": "Agora o ângulo fica em 45°. Lance com 10 m/s e depois com 20 m/s e compare alcance e altura.",
+        "done": "Alcance e altura crescem com v₀²: dobrar a velocidade, de 10 m/s para 20 m/s, multiplica os dois por 4."
+      },
+      "complete_when": {
+        "metric": "velocidades_testadas",
+        "gte": 2
+      }
+    },
+    {
+      "id": "acertar-alvo",
+      "type": "interactive_canvas",
+      "widget": "lancamento_obliquo",
+      "params": {
+        "angulo": "$angulo",
+        "v0": 20,
+        "alvo": {
+          "x": 20,
+          "tolerancia": 0.5
+        },
+        "rastros": 4,
+        "mostrar": {
+          "vetores": true,
+          "altura": true,
+          "alcance": true,
+          "tempo": true,
+          "formulas": true
+        }
+      },
+      "antes_de_concluir": {
+        "mostrar": {
+          "vetores": true,
+          "altura": true,
+          "alcance": false,
+          "tempo": true,
+          "formulas": true
+        }
+      },
+      "controls": [
+        {
+          "id": "angulo",
+          "label": "Ângulo",
+          "min": 5,
+          "max": 85,
+          "step": 5,
+          "initial": 45,
+          "unit": "°",
+          "color": "c3"
+        }
+      ],
+      "lines": {
+        "intro": "Com v₀ = 20 m/s, acerte o alvo a 20 m. Use A = v₀² · sen 2θ / g para escolher o ângulo antes de lançar.",
+        "done": "Acertou: sen 2θ = 0,5 dá 2θ = 30° ou 150°. Por isso 15° e 75° caem no mesmo ponto, a 20 m."
+      },
+      "duvida": {
+        "quando": "inicio",
+        "pergunta": "Preciso adivinhar o ângulo?",
+        "resposta": "Não: 20 = 400 · sen 2θ / 10 dá sen 2θ = 0,5. Ache o ângulo e confirme lançando."
+      },
+      "complete_when": {
+        "metric": "acertou_alvo",
+        "gte": 1
+      }
+    },
+    {
+      "id": "desafio-alcance",
+      "type": "micro_challenge",
+      "figure": {
+        "widget": "lancamento_figura",
+        "params": {
+          "trajetorias": [
+            {
+              "angulo": 45,
+              "v0": 20,
+              "cor": "c1"
+            }
+          ],
+          "mostrar": {
+            "vetores": true,
+            "altura": false,
+            "alcance": false,
+            "tempo": false,
+            "formulas": false
+          }
+        }
+      },
+      "prompt": "Com v₀ = 20 m/s, θ = 45° e g = 10 m/s², qual é o alcance da bola?",
+      "options": [
+        {
+          "id": "a40",
+          "label": "40 m",
+          "correct": true,
+          "feedback": "Certo: A = 20² · sen 90° / 10 = 400 · 1 / 10 = 40 m.",
+          "figure": {
+            "mostrar": {
+              "vetores": true,
+              "altura": false,
+              "alcance": true,
+              "tempo": false,
+              "formulas": false
+            }
+          }
+        },
+        {
+          "id": "a10",
+          "label": "10 m",
+          "correct": false,
+          "feedback": "10 m é a altura máxima, H = v₀² · sen²θ / 2g. O alcance é a distância no chão até a queda.",
+          "figure": {
+            "mostrar": {
+              "vetores": true,
+              "altura": true,
+              "alcance": false,
+              "tempo": false,
+              "formulas": false
+            },
+            "highlight": [
+              "c2"
+            ]
+          }
+        },
+        {
+          "id": "a20",
+          "label": "20 m",
+          "correct": false,
+          "feedback": "20 m é v₀²/2g, que não usa o ângulo. A tracejada mostra um lançamento que cai a 20 m: bem mais perto.",
+          "figure": {
+            "trajetorias": [
+              {
+                "angulo": 45,
+                "v0": 20,
+                "cor": "c1"
+              },
+              {
+                "angulo": 15,
+                "v0": 20,
+                "cor": "muted",
+                "tracejada": true,
+                "rotulo": "A = 20 m"
+              }
+            ]
+          }
+        },
+        {
+          "id": "a28",
+          "label": "28,28 m",
+          "correct": false,
+          "feedback": "Esse valor usa sen 45° no lugar de sen 2θ. A tracejada mostra onde cairia uma bola com 28,28 m de alcance.",
+          "figure": {
+            "trajetorias": [
+              {
+                "angulo": 45,
+                "v0": 20,
+                "cor": "c1"
+              },
+              {
+                "angulo": 22.5,
+                "v0": 20,
+                "cor": "muted",
+                "tracejada": true,
+                "rotulo": "A = 28,28 m"
+              }
+            ]
+          }
+        }
+      ],
+      "lines": {
+        "intro": "Faça a conta antes de olhar a figura. Qual distância a fórmula do alcance dá?"
+      }
+    },
+    {
+      "id": "fechamento",
+      "type": "concept_lock",
+      "figure": {
+        "widget": "lancamento_figura",
+        "params": {
+          "trajetorias": [
+            {
+              "angulo": 30,
+              "v0": 20,
+              "cor": "c1"
+            }
+          ],
+          "mostrar": {
+            "vetores": true,
+            "altura": true,
+            "alcance": true,
+            "tempo": true,
+            "formulas": true
+          }
+        }
+      },
+      "formula": [
+        {
+          "text": "A",
+          "ref": "c1"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "v₀",
+          "sup": "2",
+          "ref": "c4"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "sen 2"
+        },
+        {
+          "text": "θ",
+          "ref": "c3"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "g"
+        }
+      ],
+      "definitions": [
+        {
+          "term": "Altura máxima",
+          "text": "H = v₀² · sen²θ / 2g, alcançada na metade do tempo de voo."
+        },
+        {
+          "term": "Tempo de voo",
+          "text": "T = 2 · v₀ · sen θ / g, o tempo para subir e descer até o mesmo nível."
+        },
+        {
+          "term": "Modelo",
+          "text": "sem resistência do ar, g constante de 10 m/s² e lançamento e queda no mesmo nível."
+        }
+      ],
+      "lines": {
+        "intro": "No mesmo nível e sem ar, o alcance depende só de v₀, θ e g. Toque nas letras para ver cada uma no desenho.",
+        "hint": "Toque em A, v₀ ou θ para destacar no desenho."
+      }
+    }
+  ],
+  "treino": {
+    "faceis": [
+      {
+        "id": "forma-trajetoria",
+        "prompt": "Sem resistência do ar, qual é a forma da trajetória de um lançamento oblíquo?",
+        "options": [
+          {
+            "id": "parabola",
+            "label": "Parábola",
+            "correct": true,
+            "feedback": "Certo: x cresce com t e y tem termo em t², então a curva é uma parábola."
+          },
+          {
+            "id": "reta",
+            "label": "Reta",
+            "correct": false,
+            "feedback": "A gravidade curva o caminho para baixo o tempo todo, então não é reta. A trajetória é uma parábola."
+          },
+          {
+            "id": "circulo",
+            "label": "Circunferência",
+            "correct": false,
+            "feedback": "Não há força apontando para um centro fixo. Com g constante, a curva é uma parábola."
+          },
+          {
+            "id": "espiral",
+            "label": "Espiral",
+            "correct": false,
+            "feedback": "Nada faz a bola girar em torno de um ponto. Com g constante, a curva é uma parábola."
+          }
+        ]
+      },
+      {
+        "id": "vy-topo",
+        "prompt": "No ponto mais alto da trajetória, quanto vale a componente vertical da velocidade?",
+        "options": [
+          {
+            "id": "zero",
+            "label": "Zero",
+            "correct": true,
+            "feedback": "Certo: ela para de subir e começa a descer, então vy passa por zero."
+          },
+          {
+            "id": "v0",
+            "label": "v₀",
+            "correct": false,
+            "feedback": "No topo a bola ainda anda na horizontal, mas não sobe nem desce: vy = 0."
+          },
+          {
+            "id": "g",
+            "label": "g",
+            "correct": false,
+            "feedback": "g é a aceleração, não a velocidade. No topo, a velocidade vertical é zero."
+          },
+          {
+            "id": "vx",
+            "label": "v₀ · cos θ",
+            "correct": false,
+            "feedback": "v₀ · cos θ é a componente horizontal, que não muda. A vertical, no topo, é zero."
+          }
+        ]
+      },
+      {
+        "id": "vx-constante",
+        "prompt": "Sem resistência do ar, o que acontece com a velocidade horizontal durante o voo?",
+        "options": [
+          {
+            "id": "constante",
+            "label": "Fica constante",
+            "correct": true,
+            "feedback": "Certo: nenhuma força age na horizontal, então vx = v₀ · cos θ o tempo todo."
+          },
+          {
+            "id": "aumenta",
+            "label": "Aumenta",
+            "correct": false,
+            "feedback": "Nada empurra a bola para a frente depois do lançamento. vx fica constante."
+          },
+          {
+            "id": "diminui",
+            "label": "Diminui",
+            "correct": false,
+            "feedback": "Sem ar, nada freia a bola na horizontal. vx fica constante."
+          },
+          {
+            "id": "zera",
+            "label": "Vira zero no topo",
+            "correct": false,
+            "feedback": "Quem zera no topo é vy. A componente horizontal fica constante."
+          }
+        ]
+      },
+      {
+        "id": "vy-saida",
+        "prompt": "Com v₀ = 20 m/s e θ = 30°, quanto vale vy na saída? Use sen 30° = 0,5.",
+        "options": [
+          {
+            "id": "10",
+            "label": "10 m/s",
+            "correct": true,
+            "feedback": "Certo: vy = v₀ · sen θ = 20 · 0,5 = 10 m/s."
+          },
+          {
+            "id": "20",
+            "label": "20 m/s",
+            "correct": false,
+            "feedback": "20 m/s é v₀ inteira. A parte vertical é v₀ · sen θ = 20 · 0,5 = 10 m/s."
+          },
+          {
+            "id": "173",
+            "label": "17,32 m/s",
+            "correct": false,
+            "feedback": "17,32 m/s é v₀ · cos 30°, a componente horizontal. A vertical é 20 · 0,5 = 10 m/s."
+          },
+          {
+            "id": "5",
+            "label": "5 m/s",
+            "correct": false,
+            "feedback": "Faltou multiplicar por 20: vy = 20 · 0,5 = 10 m/s."
+          }
+        ]
+      }
+    ],
+    "medias": [
+      {
+        "id": "tempo-voo",
+        "prompt": "v₀ = 20 m/s, θ = 30° e g = 10 m/s². Qual é o tempo de voo?",
+        "options": [
+          {
+            "id": "2",
+            "label": "2 s",
+            "correct": true,
+            "feedback": "Certo: T = 2 · v₀ · sen θ / g = 2 · 20 · 0,5 / 10 = 2 s."
+          },
+          {
+            "id": "1",
+            "label": "1 s",
+            "correct": false,
+            "feedback": "1 s é só a subida. A descida leva o mesmo tempo: T = 2 · 20 · 0,5 / 10 = 2 s."
+          },
+          {
+            "id": "4",
+            "label": "4 s",
+            "correct": false,
+            "feedback": "4 s seria com sen θ = 1 (lançamento vertical). Com 30°: T = 2 · 20 · 0,5 / 10 = 2 s."
+          },
+          {
+            "id": "346",
+            "label": "3,46 s",
+            "correct": false,
+            "feedback": "Você usou cos 30°. O tempo depende da parte vertical: T = 2 · 20 · 0,5 / 10 = 2 s."
+          }
+        ]
+      },
+      {
+        "id": "altura-30",
+        "prompt": "No mesmo lançamento (v₀ = 20 m/s, θ = 30°, g = 10 m/s²), qual é a altura máxima?",
+        "options": [
+          {
+            "id": "5",
+            "label": "5 m",
+            "correct": true,
+            "feedback": "Certo: H = 20² · 0,5² / (2 · 10) = 400 · 0,25 / 20 = 5 m."
+          },
+          {
+            "id": "10",
+            "label": "10 m",
+            "correct": false,
+            "feedback": "Faltou elevar sen θ ao quadrado: H = 400 · 0,25 / 20 = 5 m."
+          },
+          {
+            "id": "20",
+            "label": "20 m",
+            "correct": false,
+            "feedback": "20 m é v₀²/2g, que vale só para lançamento vertical. Com 30°: H = 400 · 0,25 / 20 = 5 m."
+          },
+          {
+            "id": "15",
+            "label": "15 m",
+            "correct": false,
+            "feedback": "15 m é a altura com 60°. Com 30°: H = 400 · 0,25 / 20 = 5 m."
+          }
+        ]
+      },
+      {
+        "id": "angulo-maximo",
+        "prompt": "Com a mesma v₀ e lançamento e queda no mesmo nível, qual ângulo dá o maior alcance?",
+        "options": [
+          {
+            "id": "45",
+            "label": "45°",
+            "correct": true,
+            "feedback": "Certo: o alcance é proporcional a sen 2θ, que vale 1 em 2θ = 90°, ou seja, θ = 45°."
+          },
+          {
+            "id": "30",
+            "label": "30°",
+            "correct": false,
+            "feedback": "Com 30°, sen 60° ≈ 0,87. O máximo, sen 2θ = 1, vem com θ = 45°."
+          },
+          {
+            "id": "60",
+            "label": "60°",
+            "correct": false,
+            "feedback": "60° dá o mesmo alcance que 30°. O máximo vem com θ = 45°, onde sen 2θ = 1."
+          },
+          {
+            "id": "90",
+            "label": "90°",
+            "correct": false,
+            "feedback": "A 90° a bola sobe e cai no mesmo lugar: alcance zero. O máximo é com 45°."
+          }
+        ]
+      }
+    ],
+    "desafios": [
+      {
+        "id": "complementar",
+        "prompt": "Uma bola lançada a 30° alcança 34,64 m. Com a mesma v₀, qual outro ângulo dá o mesmo alcance?",
+        "options": [
+          {
+            "id": "60",
+            "label": "60°",
+            "correct": true,
+            "feedback": "Certo: sen(2 · 60°) = sen 120° = sen 60°. Ângulos que somam 90° têm o mesmo alcance."
+          },
+          {
+            "id": "45",
+            "label": "45°",
+            "correct": false,
+            "feedback": "45° dá o alcance máximo, maior que 34,64 m. O par de 30° é 60°."
+          },
+          {
+            "id": "15",
+            "label": "15°",
+            "correct": false,
+            "feedback": "15° faz par com 75°, não com 30°. Ângulos que somam 90° empatam: 30° e 60°."
+          },
+          {
+            "id": "90",
+            "label": "90°",
+            "correct": false,
+            "feedback": "A 90° o alcance é zero. O ângulo que empata com 30° é 60°."
+          }
+        ]
+      },
+      {
+        "id": "dobro-v0",
+        "prompt": "Mantendo o ângulo, o que acontece com o alcance se a velocidade inicial dobra?",
+        "options": [
+          {
+            "id": "x4",
+            "label": "Fica 4 vezes maior",
+            "correct": true,
+            "feedback": "Certo: A depende de v₀², e 2² = 4."
+          },
+          {
+            "id": "x2",
+            "label": "Fica 2 vezes maior",
+            "correct": false,
+            "feedback": "O alcance não é proporcional a v₀, e sim a v₀². Dobrar v₀ multiplica A por 4."
+          },
+          {
+            "id": "igual",
+            "label": "Não muda",
+            "correct": false,
+            "feedback": "Mais velocidade leva a bola mais longe. Como A depende de v₀², fica 4 vezes maior."
+          },
+          {
+            "id": "x8",
+            "label": "Fica 8 vezes maior",
+            "correct": false,
+            "feedback": "Seria se A dependesse de v₀³. Com v₀², dobrar a velocidade multiplica A por 4."
+          }
+        ]
+      },
+      {
+        "id": "alcance-30ms",
+        "prompt": "v₀ = 30 m/s, θ = 45° e g = 10 m/s². Qual é o alcance?",
+        "options": [
+          {
+            "id": "90",
+            "label": "90 m",
+            "correct": true,
+            "feedback": "Certo: A = 30² · sen 90° / 10 = 900 / 10 = 90 m."
+          },
+          {
+            "id": "45",
+            "label": "45 m",
+            "correct": false,
+            "feedback": "Você dividiu por 2g. O alcance divide só por g: A = 900 · 1 / 10 = 90 m."
+          },
+          {
+            "id": "636",
+            "label": "63,64 m",
+            "correct": false,
+            "feedback": "Esse valor usa sen 45° no lugar de sen 90°. A = 900 · 1 / 10 = 90 m."
+          },
+          {
+            "id": "225",
+            "label": "22,5 m",
+            "correct": false,
+            "feedback": "22,5 m é a altura máxima. O alcance é A = 900 · 1 / 10 = 90 m."
+          }
+        ]
+      },
+      {
+        "id": "vertical",
+        "prompt": "Uma bola é lançada verticalmente para cima a 20 m/s, com g = 10 m/s². Quanto tempo ela fica no ar?",
+        "options": [
+          {
+            "id": "4",
+            "label": "4 s",
+            "correct": true,
+            "feedback": "Certo: sobe por 20/10 = 2 s e desce por mais 2 s, total de 4 s."
+          },
+          {
+            "id": "2",
+            "label": "2 s",
+            "correct": false,
+            "feedback": "2 s é só a subida. A descida até o mesmo nível leva mais 2 s: total de 4 s."
+          },
+          {
+            "id": "20",
+            "label": "20 s",
+            "correct": false,
+            "feedback": "Faltou dividir por g. T = 2 · 20 / 10 = 4 s."
+          },
+          {
+            "id": "8",
+            "label": "8 s",
+            "correct": false,
+            "feedback": "Você contou a subida duas vezes a mais. T = 2 · v₀ / g = 2 · 20 / 10 = 4 s."
+          }
+        ]
+      },
+      {
+        "id": "lua",
+        "prompt": "Na Lua, g ≈ 1,6 m/s². Com a mesma v₀ e o mesmo θ usados na Terra (g = 10 m/s²), o alcance fica:",
+        "options": [
+          {
+            "id": "maior",
+            "label": "6,25 vezes maior",
+            "correct": true,
+            "feedback": "Certo: A é proporcional a 1/g, e 10 / 1,6 = 6,25."
+          },
+          {
+            "id": "menor",
+            "label": "6,25 vezes menor",
+            "correct": false,
+            "feedback": "Gravidade menor puxa menos a bola, que fica mais tempo no ar. A cresce: 10 / 1,6 = 6,25 vezes."
+          },
+          {
+            "id": "igual",
+            "label": "Igual",
+            "correct": false,
+            "feedback": "O alcance depende de g: A = v₀² · sen 2θ / g. Com g menor, A fica 6,25 vezes maior."
+          },
+          {
+            "id": "16",
+            "label": "1,6 vezes maior",
+            "correct": false,
+            "feedback": "A razão é 10 / 1,6 = 6,25, não 1,6. O alcance fica 6,25 vezes maior."
+          }
+        ]
+      }
+    ],
+    "vestibular": []
+  }
+}

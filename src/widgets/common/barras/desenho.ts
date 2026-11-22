@@ -2,7 +2,7 @@
 // Cada modo devolve a geometria de toque (retângulos, mapeamentos) que o widget usa no arraste.
 import { corDoTraco, ehMarca, type CorTraco } from "../../../ui/marcas";
 import { palette as c } from "../../../ui/palette";
-import { chip, dot, poly, polyline, seg, text, type Hit, type Pt, type Rect } from "../../canvas";
+import { chip, dot, marcador, poly, polyline, seg, text, type Hit, type Pt, type Rect } from "../../canvas";
 import { avaliarExpr, type Controles } from "../expr";
 import { marcas, num, passoDeMarcas } from "../plot2d";
 import {
@@ -620,9 +620,8 @@ function desenharFila(ctx: CanvasRenderingContext2D, w: number, h: number, hits:
     etiqueta(ctx, hits, { x: (X(cx.q1) + X(cx.q3)) / 2, y: yc - 18 }, `AIQ ${num(cx.aiq, 2)}`, p.cores.caixa);
   }
   if (maior !== undefined) {
-    dot(ctx, { x: X(maior), y: yR + 3 }, 10, c.ink);
-    dot(ctx, { x: X(maior), y: yR }, 10, c.ink2);
-    dot(ctx, { x: X(maior), y: yR }, 4, c.bg);
+    marcador(ctx, { x: X(maior), y: yR }, 10, c.ink2, true);
+    dot(ctx, { x: X(maior), y: yR }, 4, "#FFFFFF");
   }
   return { alvos, posX, yMarcadores: yM, yRegua: yR, X, xDe };
 }

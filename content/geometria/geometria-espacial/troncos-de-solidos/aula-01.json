@@ -38,7 +38,12 @@
         "R": 3,
         "H": 8,
         "corte": "$h_menor",
-        "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
+        "cores": {
+          "k": "c1",
+          "secao": "c2",
+          "ponta": "c3",
+          "tronco": "c4"
+        }
       },
       "controls": [
         {
@@ -76,7 +81,12 @@
         "H": 10,
         "corte": 5,
         "separar": "$separar / 100",
-        "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
+        "cores": {
+          "k": "c1",
+          "secao": "c2",
+          "ponta": "c3",
+          "tronco": "c4"
+        }
       },
       "antes_de_concluir": {
         "placar": false
@@ -116,24 +126,31 @@
         "solido": "cone",
         "R": 6,
         "H": 4.5,
-        "corte": 1.5,
+        "corte": "$corte",
         "meridiano": true,
-        "mostrar": { "g": false },
-        "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
+        "mostrar": {
+          "g": true
+        },
+        "cores": {
+          "k": "c1",
+          "secao": "c2",
+          "ponta": "c3",
+          "tronco": "c4"
+        }
       },
       "controls": [
         {
-          "id": "rotacionar",
-          "label": "Girar visão",
-          "min": 0,
-          "max": 1,
-          "step": 1,
-          "initial": 0,
-          "color": "c4"
+          "id": "corte",
+          "label": "Corte (distância ao vértice)",
+          "min": 0.5,
+          "max": 4,
+          "step": 0.5,
+          "initial": 3,
+          "color": "c1"
         }
       ],
       "lines": {
-        "intro": "No corte vertical do tronco de cone com R = 6, r = 2 e altura 3, quanto mede a geratriz inclinada g?",
+        "intro": "Mova o corte até o painel mostrar R − r = 4 e altura 3. Quanto mede a geratriz g do tronco?",
         "done": "Mede 5! O cateto horizontal vale R − r = 4 e a altura é 3: por Pitágoras, g² = 3² + 4² = 25, logo g = 5."
       },
       "duvida": {
@@ -142,8 +159,14 @@
         "resposta": "O cateto R − r zeraria e a geratriz ficaria vertical (g_t = h_t): o tronco viraria um cilindro reto."
       },
       "complete_when": {
-        "metric": "rotacionar",
-        "gte": 1
+        "metric": "corte",
+        "gte": 1.5,
+        "lte": 1.5
+      },
+      "antes_de_concluir": {
+        "mostrar": {
+          "g": false
+        }
       }
     },
     {
@@ -159,7 +182,12 @@
           "H": 12,
           "corte": 6,
           "placar": false,
-          "cores": { "k": "c1", "secao": "c2", "ponta": "c3", "tronco": "c4" }
+          "cores": {
+            "k": "c1",
+            "secao": "c2",
+            "ponta": "c3",
+            "tronco": "c4"
+          }
         }
       },
       "lines": {
@@ -178,7 +206,10 @@
             "H": 12,
             "corte": 6,
             "separar": 1,
-            "highlight": ["c1", "c3"]
+            "highlight": [
+              "c1",
+              "c3"
+            ]
           }
         },
         {
@@ -193,7 +224,9 @@
             "H": 12,
             "corte": 6,
             "meridiano": true,
-            "highlight": ["c1"]
+            "highlight": [
+              "c1"
+            ]
           }
         },
         {
@@ -208,7 +241,9 @@
             "H": 12,
             "corte": 6,
             "meridiano": true,
-            "highlight": ["c2"]
+            "highlight": [
+              "c2"
+            ]
           }
         },
         {
@@ -223,7 +258,9 @@
             "H": 12,
             "corte": 6,
             "separar": 1,
-            "highlight": ["c4"]
+            "highlight": [
+              "c4"
+            ]
           }
         }
       ]
@@ -240,15 +277,32 @@
           "H": 8,
           "corte": 4,
           "meridiano": true,
-          "highlight": ["c1", "c2", "c3", "c4"]
+          "highlight": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
         }
       },
       "formula": [
-        { "text": "V" },
-        { "text": "=" },
-        { "text": "k³", "ref": "c3" },
-        { "text": "·" },
-        { "text": "Vt", "ref": "c4" }
+        {
+          "text": "V"
+        },
+        {
+          "text": "="
+        },
+        {
+          "text": "k³",
+          "ref": "c3"
+        },
+        {
+          "text": "·"
+        },
+        {
+          "text": "Vt",
+          "ref": "c4"
+        }
       ],
       "definitions": [
         {
@@ -588,14 +642,41 @@
           "ano": 2020,
           "adaptada": true,
           "adaptacao": "Questão 151: enunciado resumido; alternativas e gabarito (2 quadrados e 4 trapézios isósceles) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2020/questions/151"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2020/questions/151"
+          ]
         },
         "options": [
-          { "id": "q2r4", "label": "2 quadrados e 4 retângulos", "correct": false, "feedback": "Retângulos formam as laterais de um prisma reto, não de um tronco de pirâmide, cujas laterais afunilam em trapézios isósceles." },
-          { "id": "r1t4", "label": "1 retângulo e 4 triângulos isósceles", "correct": false, "feedback": "Triângulos formam uma pirâmide inteira; ao cortar o topo nascem 2 quadrados e 4 trapézios isósceles." },
-          { "id": "q2ti4", "label": "2 quadrados e 4 trapézios isósceles", "correct": true, "feedback": "Exato. O tronco reto de base quadrada tem 2 bases quadradas paralelas e 4 faces laterais em trapézio isósceles." },
-          { "id": "q1r3t2", "label": "1 quadrado, 3 retângulos e 2 trapézios retângulos", "correct": false, "feedback": "Por simetria da pirâmide reta de base quadrada, as 2 bases são quadradas e as 4 faces laterais são trapézios isósceles." },
-          { "id": "r2q2t2", "label": "2 retângulos, 2 quadrados e 2 trapézios retângulos", "correct": false, "feedback": "Não há retângulos nem trapézios retângulos: o tronco reto de base quadrada tem 2 quadrados e 4 trapézios isósceles." }
+          {
+            "id": "q2r4",
+            "label": "2 quadrados e 4 retângulos",
+            "correct": false,
+            "feedback": "Retângulos formam as laterais de um prisma reto, não de um tronco de pirâmide, cujas laterais afunilam em trapézios isósceles."
+          },
+          {
+            "id": "r1t4",
+            "label": "1 retângulo e 4 triângulos isósceles",
+            "correct": false,
+            "feedback": "Triângulos formam uma pirâmide inteira; ao cortar o topo nascem 2 quadrados e 4 trapézios isósceles."
+          },
+          {
+            "id": "q2ti4",
+            "label": "2 quadrados e 4 trapézios isósceles",
+            "correct": true,
+            "feedback": "Exato. O tronco reto de base quadrada tem 2 bases quadradas paralelas e 4 faces laterais em trapézio isósceles."
+          },
+          {
+            "id": "q1r3t2",
+            "label": "1 quadrado, 3 retângulos e 2 trapézios retângulos",
+            "correct": false,
+            "feedback": "Por simetria da pirâmide reta de base quadrada, as 2 bases são quadradas e as 4 faces laterais são trapézios isósceles."
+          },
+          {
+            "id": "r2q2t2",
+            "label": "2 retângulos, 2 quadrados e 2 trapézios retângulos",
+            "correct": false,
+            "feedback": "Não há retângulos nem trapézios retângulos: o tronco reto de base quadrada tem 2 quadrados e 4 trapézios isósceles."
+          }
         ]
       },
       {
@@ -607,14 +688,41 @@
           "ano": 2009,
           "adaptada": true,
           "adaptacao": "Questão 173: enunciado resumido; alternativas e gabarito (189 cm³) mantidos.",
-          "urls": ["https://api.enem.dev/v1/exams/2009/questions/173"]
+          "urls": [
+            "https://api.enem.dev/v1/exams/2009/questions/173"
+          ]
         },
         "options": [
-          { "id": "v156", "label": "156 cm³", "correct": false, "feedback": "156 cm³ seria se a ponta retirada tivesse 36 cm³; com razão k = 1/4, a ponta tem (1/4)³·192 = 3 cm³, sobrando 192 − 3 = 189 cm³." },
-          { "id": "v189", "label": "189 cm³", "correct": true, "feedback": "Exato. Altura útil = 19 − 3 = 16 cm; V_total = (36·16)/3 = 192 cm³; ponta = (1/4)³·192 = 3 cm³; 192 − 3 = 189 cm³." },
-          { "id": "v192", "label": "192 cm³", "correct": false, "feedback": "192 cm³ é o volume da pirâmide inteira antes de retirar a ponta superior de 3 cm³: 192 − 3 = 189 cm³." },
-          { "id": "v216", "label": "216 cm³", "correct": false, "feedback": "216 cm³ ((36·18)/3) desconta apenas 1 espaço de 1 cm em vez dos 3 espaços entre os 4 blocos. O certo é 189 cm³." },
-          { "id": "v540", "label": "540 cm³", "correct": false, "feedback": "540 cm³ = 36 · 15 esquece o 1/3 do volume da pirâmide. O volume da pirâmide é (36·16)/3 = 192 cm³ menos 3 cm³ = 189 cm³." }
+          {
+            "id": "v156",
+            "label": "156 cm³",
+            "correct": false,
+            "feedback": "156 cm³ seria se a ponta retirada tivesse 36 cm³; com razão k = 1/4, a ponta tem (1/4)³·192 = 3 cm³, sobrando 192 − 3 = 189 cm³."
+          },
+          {
+            "id": "v189",
+            "label": "189 cm³",
+            "correct": true,
+            "feedback": "Exato. Altura útil = 19 − 3 = 16 cm; V_total = (36·16)/3 = 192 cm³; ponta = (1/4)³·192 = 3 cm³; 192 − 3 = 189 cm³."
+          },
+          {
+            "id": "v192",
+            "label": "192 cm³",
+            "correct": false,
+            "feedback": "192 cm³ é o volume da pirâmide inteira antes de retirar a ponta superior de 3 cm³: 192 − 3 = 189 cm³."
+          },
+          {
+            "id": "v216",
+            "label": "216 cm³",
+            "correct": false,
+            "feedback": "216 cm³ ((36·18)/3) desconta apenas 1 espaço de 1 cm em vez dos 3 espaços entre os 4 blocos. O certo é 189 cm³."
+          },
+          {
+            "id": "v540",
+            "label": "540 cm³",
+            "correct": false,
+            "feedback": "540 cm³ = 36 · 15 esquece o 1/3 do volume da pirâmide. O volume da pirâmide é (36·16)/3 = 192 cm³ menos 3 cm³ = 189 cm³."
+          }
         ]
       }
     ]

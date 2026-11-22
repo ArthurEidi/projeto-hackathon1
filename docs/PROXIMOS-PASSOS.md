@@ -1,6 +1,11 @@
 # Próximos passos
 
-Atualizado em 20/11/2026 (noite).
+Atualizado em 21/11/2026 (noite).
+
+> **21/11, noite:** identidade visual alinhada à landing page (creme, tinta, pastéis por disciplina, Manrope/DM Sans/Georgia). Varredura das 107 aulas em 3 tamanhos: só 2 registros, defeitos de conteúdo preexistentes (sliders sem efeito visual em `relacoes-metricas-triangulo-retangulo` p2 e `troncos-de-solidos` p3). Capturas reais em `docs/screenshots/`. Ver `docs/ALINHAMENTO_VISUAL_LANDING_APP.md`.
+
+> **21/11:** o app passou a ter três áreas (Matemática, Física, Química), nova identidade visual, página inicial, aula em duas colunas no desktop, 1 aula de Física (lançamento oblíquo), 1 de Química (concentração e diluição) e a questão visual do ENEM 2022 (saque de vôlei). 2227 testes, lint, typecheck e build ok. Pendências e próximos passos em `docs/EVOLUCAO_VISUAL_E_DISCIPLINAS.md` §11–12 (varredura visual das 104 aulas no layout novo, roteiros das aulas novas, elegibilidade).
+
 **Antes de pegar qualquer tarefa, leia `docs/EM-ANDAMENTO.md`**: é lá que cada máquina reserva a sua frente, para duas máquinas não mexerem nos mesmos arquivos.
 
 ## Estado

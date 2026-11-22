@@ -1,8 +1,11 @@
 import { Component, useEffect, useRef, useState, type ReactNode } from "react";
 import { CORPO, spriteUrl } from "./characters/sprites";
 import { carregadorPlayer, iniciarAbertura, usePreCargaPlayer, type ModuloPlayer } from "./engine/abertura";
-import { listAulas, type LoadResult } from "./engine/content";
-import { lerRota, type Rota } from "./engine/rota";
+import { listAulas, proximaAula, type LoadResult } from "./engine/content";
+import type { MateriaId } from "./engine/materias";
+import { hashDaAula, hashDaMateria, lerRota, type Rota } from "./engine/rota";
+import { Inicio } from "./paginas/Inicio";
+import { PaginaDisciplina } from "./paginas/PaginaDisciplina";
 import { Home, type FocoTrilha } from "./Home";
 import { TactileButton } from "./ui/Tactile";
 
@@ -113,13 +116,14 @@ export function App() {
   const [focoTrilha, setFocoTrilha] = useState<FocoTrilha>(undefined);
   const rotaRef = useRef(route);
   const origemRef = useRef<string | null>(null);
-  usePreCargaPlayer(route.tipo === "trilha");
+  // Pré-carga do player nas páginas de navegação (início e áreas), nunca durante a aula.
+  usePreCargaPlayer(route.tipo !== "aula");
 
   useEffect(() => {
     const on = () => {
       const nova = rotaAtual();
       const anterior = rotaRef.current;
-      if (anterior.tipo === "aula" && nova.tipo === "trilha") {
+      if (anterior.tipo === "aula" && nova.tipo !== "aula") {
         setFocoTrilha(anterior.aula !== null && anterior.aula === origemRef.current ? origemRef.current : null);
         origemRef.current = null;
       }
@@ -157,21 +161,26 @@ export function App() {
   const go = (hash: string) => {
     location.hash = hash;
   };
-  const voltar = () => go("#/");
+  // Da aula, "voltar" leva à área da aula (Matemática, Física ou Química); sem área conhecida, ao início.
+  const materiaDaAula: MateriaId | null = entry?.materia ?? null;
+  const voltar = () => go(materiaDaAula ? hashDaMateria(materiaDaAula) : "#/");
   const tentarDeNovo = () => setTentativa((t) => t + 1);
+  const abrir = (key: string) => {
+    origemRef.current = key;
+    go(hashDaAula(key));
+  };
 
   let conteudo: ReactNode = null;
   let anuncio = "";
   if (route.tipo === "trilha") {
-    conteudo = (
-      <Home
-        foco={focoTrilha}
-        onOpen={(key) => {
-          origemRef.current = key;
-          go(`#/aula/${key}`);
-        }}
-      />
-    );
+    conteudo = <Inicio onOpen={abrir} />;
+  } else if (route.tipo === "materia") {
+    conteudo =
+      route.id === "matematica" ? (
+        <Home foco={focoTrilha} onOpen={abrir} />
+      ) : (
+        <PaginaDisciplina key={route.id} id={route.id} foco={focoTrilha} onOpen={abrir} />
+      );
   } else {
     const a = abertura && abertura.arquivo === arquivo && abertura.tentativa === tentativa ? abertura : null;
     if (!arquivo || aulaKey === null) {
@@ -186,9 +195,19 @@ export function App() {
       conteudo = <CarregandoAula onVoltar={voltar} />;
     } else if (a.dados.ok) {
       const { LessonPlayer } = a.player;
+      const prox = proximaAula(aulaKey);
       conteudo = (
         <BarreiraAula key={tentativa} onTentar={tentarDeNovo} onVoltar={voltar}>
-          <LessonPlayer key={`${aulaKey}#${route.passo}`} lesson={a.dados.lesson} aulaKey={aulaKey} passoInicial={route.passo} onExit={voltar} />
+          <LessonPlayer
+            key={`${aulaKey}#${route.passo}`}
+            lesson={a.dados.lesson}
+            aulaKey={aulaKey}
+            passoInicial={route.passo}
+            onExit={voltar}
+            materia={entry?.materia}
+            unidade={entry?.unidadeTitulo}
+            proxima={prox ? { titulo: prox.titulo, onAbrir: () => go(hashDaAula(prox.key)) } : null}
+          />
         </BarreiraAula>
       );
     }
@@ -197,7 +216,7 @@ export function App() {
   // A região de status fica montada em todas as telas (mesma posição na árvore): a mensagem muda dentro
   // dela, e leitores de tela anunciam a mudança.
   return (
-    <div className="app">
+    <div className={`app app--${route.tipo}`} data-materia={route.tipo === "materia" ? route.id : (entry?.materia ?? undefined)}>
       {conteudo}
       <p role="status" aria-live="polite" className="sr-only">
         {anuncio}

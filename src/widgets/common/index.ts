@@ -38,6 +38,10 @@ import { GruposWidget } from "./grupos/GruposWidget";
 import { GruposFigura } from "./grupos/GruposFigura";
 import { SistemaEscalonadoWidget } from "./escalonado/SistemaEscalonadoWidget";
 import { SistemaEscalonadoFigura } from "./escalonado/SistemaEscalonadoFigura";
+import { LancamentoWidget } from "./lancamento/LancamentoWidget";
+import { LancamentoFigura } from "./lancamento/LancamentoFigura";
+import { SolucaoWidget } from "./solucao/SolucaoWidget";
+import { SolucaoFigura } from "./solucao/SolucaoFigura";
 
 export const widgets = {
   maquinas_funcao: MaquinasWidget,
@@ -60,6 +64,8 @@ export const widgets = {
   divisao_polinomial: DivisaoWidget,
   grupos_inteiros: GruposWidget,
   sistema_escalonado: SistemaEscalonadoWidget,
+  lancamento_obliquo: LancamentoWidget,
+  solucao_concentracao: SolucaoWidget,
 };
 
 export const figures = {
@@ -83,4 +89,6 @@ export const figures = {
   divisao_polinomial_figura: DivisaoFigura,
   grupos_inteiros_figura: GruposFigura,
   sistema_escalonado_figura: SistemaEscalonadoFigura,
+  lancamento_figura: LancamentoFigura,
+  solucao_figura: SolucaoFigura,
 };

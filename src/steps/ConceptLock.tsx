@@ -102,10 +102,13 @@ export function ConceptLock({ step, onNext }: StepProps<ConceptLockStep>) {
           Concluir aula
         </TactileButton>
       }
+      figura={
+        <div className="stage">
+          <Figure state={figState} />
+        </div>
+      }
     >
-      <div className="stage">
-        <Figure state={figState} />
-      </div>
+      <p className="eyebrow">Fechamento</p>
       <div ref={formulaRef} className="formula" aria-label="Fórmula">
         {gruposFormula(step.formula).map((grupo, g) => (
           <span key={g} className="formula__grupo">
