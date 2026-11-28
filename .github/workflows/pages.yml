@@ -1,6 +1,6 @@
 # Publica o app no GitHub Pages. SÓ RODA À MÃO (aba Actions > "Publicar no GitHub Pages" > Run workflow).
 # Antes da primeira vez: Settings > Pages > Source = "GitHub Actions". Ver docs/HOSPEDAGEM.md.
-# Preparado em 15/11/2026 (Máquina B); o usuário ainda não decidiu publicar.
+# Preparado em 15/11/2026; conferido em 28/11/2026 com o main atual (build e subcaminho testados localmente).
 name: Publicar no GitHub Pages
 
 on:

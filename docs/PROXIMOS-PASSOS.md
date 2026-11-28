@@ -1,6 +1,8 @@
 # Próximos passos
 
-Atualizado em 21/11/2026 (noite).
+Atualizado em 28/11/2026.
+
+> **28/11:** preparação da entrega ao Hack Brasil 2026 (prazo 30/11, 23h59). README reescrito como "Aula Visual", roteiro de vídeo de até 3 min em `docs/DEMO.md`, checklist em `docs/ENTREGA_HACKBRASIL_2026.md`, passo a passo do GitHub Pages em `docs/HOSPEDAGEM.md`. `lint:planos` passa (103/103). Validação: lint ok, 141 arquivos / 2.229 testes, typecheck e build ok. **Falta (equipe):** ativar o Pages e testar o link, gravar o vídeo, confirmar o nome e o terceiro integrante, commit e push antes do prazo.
 
 > **21/11, noite:** identidade visual alinhada à landing page (creme, tinta, pastéis por disciplina, Manrope/DM Sans/Georgia). Varredura das 107 aulas em 3 tamanhos: só 2 registros, defeitos de conteúdo preexistentes (sliders sem efeito visual em `relacoes-metricas-triangulo-retangulo` p2 e `troncos-de-solidos` p3). Capturas reais em `docs/screenshots/`. Ver `docs/ALINHAMENTO_VISUAL_LANDING_APP.md`.
 

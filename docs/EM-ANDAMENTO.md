@@ -222,3 +222,9 @@ Use para pedir algo em arquivo que não é seu (ex.: "widget X corta o rótulo n
 | Frente | Agente | Desde | Arquivos |
 |---|---|---|---|
 | ~~Alinhamento visual landing → app~~ concluída 21/11 (sem commit): paleta e tipografia da landing, cabeçalho, início, aulas, Física e Química; varredura em 1440 × 900, 768 × 1024 e 390 × 844; 13 capturas reais | Claude Code | 21/11 | `src/ui/**`, `src/paginas/**`, `src/engine/{materias,LessonPlayer}.ts*`, `src/Home.tsx`, `src/characters/characters.css`, `src/widgets/common/{lancamento,solucao}/**`, `scripts/varre-aulas.mjs`, `scripts/captura-telas.mjs` (novo), `index.html`, `public/favicon.svg`, `docs/screenshots/**` |
+
+28/11 (cópia local idêntica ao `main` `1097745`; sem commit): **preparação da entrega ao Hack Brasil 2026**. Só documentação; nenhum código, conteúdo de aula ou gabarito alterado.
+
+| Frente | Agente | Desde | Arquivos |
+|---|---|---|---|
+| ~~Preparação da entrega~~ concluída 28/11 (sem commit): README novo ("Aula Visual"), roteiro de vídeo de até 3 min, checklist de entrega, conferência do workflow do Pages e do build em subcaminho, `lint:planos` corrigido (só a estrutura da seção Vestibular de `funcao-modular.md`) | Claude Code | 28/11 | `README.md`, `docs/DEMO.md`, `docs/ENTREGA_HACKBRASIL_2026.md` (novo), `docs/HOSPEDAGEM.md`, `docs/planos/funcao-modular.md`, `.github/workflows/pages.yml` (só comentário), `docs/EM-ANDAMENTO.md`, `docs/PROXIMOS-PASSOS.md` |

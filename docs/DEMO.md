@@ -1,98 +1,115 @@
-# Roteiro de Demonstração (3 a 5 minutos)
+# Roteiro do vídeo de demonstração (até 3 minutos)
 
-Guia prático para apresentar o **Matemática Interativa** ao júri do hackathon. Todo o fluxo roda localmente, sem backend e sem depender de internet.
+Roteiro do vídeo de submissão da **Aula Visual** ao Hack Brasil 2026. Duração-alvo: **2min40s a 2min50s**. O regulamento (item 7.2) aceita **no máximo 3 minutos**, e o vídeo precisa ser acessível sem login e mostrar o produto funcionando.
 
-## Preparação antes de começar (30 s)
+O vídeo é quase todo **gravação de tela do app real**. Só a abertura e o encerramento podem ter um título simples sobre a gravação.
 
-1. Abra o app com dois cliques em `scripts/abrir-app.cmd` (sobe o build em `http://localhost:4173/` e abre o navegador) — ou rode `npm run dev` e abra `http://localhost:5173`.
-2. Se quiser mostrar a experiência de **primeira viagem** (boas-vindas do Paco no topo da Trilha), abra em janela anônima ou limpe o `localStorage` no DevTools (`localStorage.clear()` e recarregue).
-3. Deixe a janela em formato vertical (`~400 px` de largura) ou em tela cheia (`1280 × 800`): o app enquadra a coluna central automaticamente no desktop.
+> Roteiro anterior (3 a 5 minutos, versão só de Matemática): está no histórico do Git deste arquivo.
 
 ---
 
-## Roteiro passo a passo (4 minutos)
+## Antes de gravar
 
-### 1. Abertura na Trilha (`0:00 – 0:30`)
-- **Cliques:**
-  1. No topo da Trilha, deixe aparecer a fala inicial do Paco (*"Oi, eu sou o Paco. Aqui você aprende matemática mexendo nas figuras, um passo de cada vez."*) e clique em **`Vamos lá`**.
-  2. Mostre os 3 pilares (**Aritmética**, **Álgebra**, **Geometria**) e aponte que a trilha já abre em **Aritmética** com a **Aula 01** (*Conjuntos numéricos, divisibilidade e fatoração prima*) pronta para clicar, sem esconder o começo.
-- **O que falar:**
-  > "Este é um app de Matemática do Ensino Médio inteiro — são 104 aulas publicadas em 3 pilares, rodando 100% local no navegador. Todo capítulo segue um método de 7 pilares focado em intuição visual: o aluno mexe na figura primeiro e só depois chega à fórmula. O Paco conduz a aula e a Tati acompanha a jornada."
-
----
-
-### 2. Aula-modelo: Cones — O Triângulo que Gira (`0:30 – 2:00`)
-*Caminho:* **Geometria** → **Geometria Espacial** → **Cones** → **Aula 01: O Triângulo que Gira**
-*Por que mostrar:* concentra o widget 3D vivo, o arraste direto na figura, o vídeo curto do corte, o micro-desafio que reage ao erro, a fórmula tocável e o treino com 4 questões reais de vestibular.
-
-- **Cliques:**
-  1. **Passo 1 (widget 3D `revolution`):** arraste o controle **Giro** de `0°` até `360°` para girar o triângulo retângulo e formar o cone. Clique em **`Continuar`**.
-  2. **Passo 2 (`generatrix`):** **arraste o ponto pela borda da base** (pelo menos meia volta) no próprio desenho — mostre o rótulo **`g = 5,0`** acompanhando o movimento sem mudar de tamanho. Clique em **`Continuar`**.
-  3. **Passo 3 (`manim_video`):** aguarde os poucos segundos da animação do **corte meridiano** revelando o triângulo retângulo por dentro do cone (o botão **`Continuar`** libera automaticamente ao fim do vídeo). Clique em **`Continuar`**.
-  4. **Passo 4 (`micro_challenge`):** na pergunta *"Um cone tem altura 4 e raio 3. Quanto mede a geratriz?"*, escolha **de propósito `7`** e clique em **`Verificar`** — mostre a figura se dividindo em cone + corte plano e explicando *aquele* erro (*"Você somou altura e raio..."*). Clique em **`Tentar de novo`**, marque **`5`**, clique em **`Verificar`** e em **`Continuar`**.
-  5. **Passo 5 (`concept_lock`):** toque nos botões coloridos **`g²`**, **`h²`** e **`r²`** da fórmula — cada letra acende o segmento correspondente no cone 3D e no corte plano. Clique em **`Concluir aula`**.
-  6. **Convite e Treino:** aparece a tela **Aula concluída** com Paco e Tati comemorando e o convite (*"São 7 perguntas, sem pressa."*). Clique em **`Quero treinar`** para mostrar a **Pergunta 1 de 7** com feedback imediato (e explique que o treino evolui em 3 etapas: básico, desafios e **vestibular** com 4 questões reais de Cefet-PR, UFSC 2004, UPE 2009 e ENEM 2022). Clique no **`×`** para sair do treino — mostre que a trilha lembra o pilar **Geometria** e marca **Aula 01: O Triângulo que Gira** como concluída.
-- **O que falar:**
-  > "Em vez de jogar `g² = h² + r²` no quadro, o aluno gira o triângulo e vê o cone nascer. No desafio, cada opção errada não diz só 'errou': a figura muda para mostrar o erro exato daquela conta. No fechamento, cada letra da fórmula está ligada por cor ao desenho. E ao terminar, o aluno passa para um treino em 3 níveis até questões reais de vestibular."
-
----
-
-### 3. Álgebra visual: Função Quadrática — A Reta que Dobra (`2:00 – 2:45`)
-*Caminho:* **Álgebra** → **Funções** → **Função Quadrática** → **Aula 01: A Reta que Dobra**
-*Por que mostrar:* demonstra o pilar 5 (progressão por contraste: reta fantasma × parábola viva e parábola fantasma × concavidade invertida no `plano_cartesiano`).
-
-- **Cliques:**
-  1. **Passo 1:** em `f(x) = x²`, **arraste o ponto sobre a curva** de `x = −2` até `x = 2` para mostrar que os dois lados dão saída `4`, com a reta fantasma `y = x` de referência. Clique em **`Continuar`**.
-  2. **Passo 2:** arraste o controle **Coeficiente quadrático** até **`−1`** para mostrar `f(x) = a·x²` virando a concavidade para baixo em contraste com a parábola fantasma `y = x²`.
-  3. Saia no **`×`** (a trilha volta direto em **Álgebra**).
-- **O que falar:**
-  > "Aqui dá para ver o método em ação em Álgebra: colocamos o gráfico que o aluno já conhece como referência fantasma e dobramos ou invertemos a curva ao vivo, conectando a regra de sinais à concavidade sem decoreba."
-
----
-
-### 4. Trigonometria no ciclo + Vestibular oficial (`2:45 – 3:30`)
-*Caminho:* **Geometria** → **Trigonometria** → **Equações trigonométricas** → **Aula 01: Equações trigonométricas**
-*Por que mostrar:* `ciclo_trigonometrico` vivo + questões auditadas de provas oficiais (**ITA 2017** e **UFPR 2020**).
-
-- **Cliques:**
-  1. **Passo 1:** arraste o controle **Giro em graus** até **`90`** para mostrar a altura chegando a `1`. Clique em **`Continuar`**.
-  2. **Passo 2:** arraste **Giro em graus** até **`150`** e aponte a linha pontilhada `y = 0,5` cortando o ciclo em dois pontos (`30°` e `150°` têm a mesma altura).
-  3. Saia no **`×`**.
-- **O que falar:**
-  > "Em Trigonometria, o ciclo é interativo: o aluno vê na linha horizontal `y = 0,5` por que uma equação tem duas soluções na primeira volta. Das 104 aulas, 98 já têm questões reais de vestibular — 188 questões de 17 bancas como ENEM, Fuvest, Unicamp, UFRGS, UFPR, UFU e ITA, todas conferidas em PDF e gabarito oficiais, nunca inventadas."
-
----
-
-### 5. Aritmética e Probabilidade: A Fração da Grade (`3:30 – 4:15`)
-*Caminho:* **Aritmética** → **Contagem e Probabilidade** → **Probabilidade, espaço amostral e eventos** → **Aula 01: A Fração da Grade**
-*Por que mostrar:* fecha a demonstração nos 3 pilares usando `grade_resultados` (faces do dado + régua de probabilidade de `0` a `1`, sem fórmula solta).
-
-- **Cliques:**
-  1. **Passo 1:** na fila de 6 faces do dado, **toque nas faces pares (`2`, `4` e `6`)** e mostre a régua de probabilidade embaixo deslizando de `0` até `1/2` (`3/6`).
-  2. Volte à trilha no **`×`** e recarregue a página (`F5`) — mostre que o Paco cumprimenta com *"Bom te ver de novo. Continue de onde parou."* e o progresso (incluindo Cones concluída) continua salvo localmente.
-- **O que falar:**
-  > "Com isso passamos pelos três pilares — Aritmética, Álgebra e Geometria — com 22 widgets interativos próprios. Por trás da interface, toda a qualidade é verificada por 2.174 testes automatizados, lints de conteúdo e uma varredura automática em Chrome headless que abre todas as 104 aulas e 560 passos sem nenhum erro."
-
----
-
-### Bônus opcional (se o júri pedir mais 30 s)
-- **Sistemas lineares, classificação e escalonamento** (`Álgebra` → `Matrizes e Sistemas` → `Sistemas lineares, classificação e escalonamento` → `Aula 01`): começa no `plano_cartesiano` (encontro de duas retas) e no **Passo 2** abre o widget sob medida `sistema_escalonado` (arraste **Múltiplo retirado k** até `2` para eliminar `x` de `L₂` visualmente), com 3 questões do ENEM (`2023`, `2022` e `2018`).
-
----
-
-## Como os números foram medidos
-
-Todos os números citados no `README.md` e neste roteiro foram obtidos diretamente do repositório em 20/11/2026 pelos comandos abaixo (sem estimativas):
-
-1. **Testes automatizados (`135 arquivos`, `2.174 testes`):**
+1. **Grave a versão publicada** (a demo no GitHub Pages), não o servidor de desenvolvimento. Se a demo ainda não estiver no ar, use o build de produção local:
    ```bash
-   npx vitest run
+   npm run build
+   npm run preview      # http://localhost:4173
    ```
-2. **Aulas (`104`), passos (`560`), questões autorais (`1.248`), questões de vestibular (`188` em `98` aulas, `17` bancas), roteiros (`104`) e widgets (`22` interativos, `21` figuras estáticas):**
-   ```bash
-   node -e "const fs=require('fs'),p=require('path');const t=JSON.parse(fs.readFileSync('content/taxonomy.json','utf8'));let set=0,un=0,au=0,pas=0,aut=0,av=0,qv=0,b=new Set();for(const pi of t.pilares)for(const s of pi.setores){set++;for(const u of s.unidades){un++;for(const a of u.aulas){if(!a.arquivo)continue;au++;const L=JSON.parse(fs.readFileSync(p.join('content',a.arquivo),'utf8'));pas+=L.steps.length;aut+=L.treino.faceis.length+L.treino.medias.length+L.treino.desafios.length;if(L.treino.vestibular.length){av++;qv+=L.treino.vestibular.length;L.treino.vestibular.forEach(q=>b.add(q.fonte.banca));}}}}console.log({pilares:t.pilares.length,setores:set,unidades:un,aulas:au,passos:pas,autorais:aut,aulasComVestibular:av,vestibular:qv,bancas:b.size,planos:fs.readdirSync('docs/planos').filter(f=>f.endsWith('.md')).length});"
-   ```
-3. **Varredura visual automática (`104 aulas`, `560 passos`, `104 treinos`, `0 problemas`):**
-   ```bash
-   node scripts/varre-aulas.mjs <porta>
-   ```
+   Não use o atalho `?passo=N`: ele só existe em desenvolvimento. Para chegar a um passo adiantado, conclua os anteriores fora da gravação e corte na edição.
+2. **Janela anônima** (ou `localStorage.clear()` no console e recarregar). Assim aparecem as boas-vindas do Paco e da Tati e nenhuma aula concluída.
+3. **Resolução:** navegador em 1920 × 1080 (ou 1440 × 900), zoom de 100%, barra de favoritos escondida. Para o trecho de celular, use o modo dispositivo do DevTools (390 × 844) ou grave um celular real.
+4. **Ensaio:** faça o caminho inteiro uma vez antes de gravar. Grave cada trecho em um arquivo separado; fica mais fácil cortar.
+5. **Áudio:** narração gravada à parte, em ambiente silencioso. Trilha sonora, se houver, só com direito de uso e baixa.
+6. **Edição permitida:** cortes, aceleração em trechos repetitivos (marcados como "corte" abaixo), zoom suave numa região e legendas. **Não permitido:** simular telas, editar valores ou mostrar algo que o app não faz.
+
+### O que não dizer
+
+- Não dizer que a plataforma usa IA ou que "interpreta questões": a questão do ENEM foi transformada em aula manualmente.
+- Não dizer que melhora notas ou aprendizagem: isso ainda não foi medido com estudantes.
+- Não dizer que Física e Química têm uma trilha completa: hoje são **uma aula cada**.
+
+---
+
+## Roteiro cronometrado
+
+| Tempo | Trecho |
+|---|---|
+| 0:00–0:20 | Problema e proposta |
+| 0:20–0:45 | Página inicial, disciplinas, Paco e Tati |
+| 0:45–1:30 | Matemática e questão visual do ENEM 2022 |
+| 1:30–1:55 | Física: lançamento oblíquo |
+| 1:55–2:20 | Química: soluções e concentração |
+| 2:20–2:40 | Diferencial, arquitetura e confiabilidade |
+| 2:40–2:50 | Encerramento |
+
+### 1. Problema e proposta (0:00–0:20)
+
+- **Tela:** página inicial (`#/`), parada no título "Entenda o que antes parecia impossível.". Opcional: nos 3 primeiros segundos, título sobreposto "Aula Visual".
+- **Interação:** nenhuma nos primeiros segundos; no fim do trecho, mover devagar o slider **Ângulo** da demonstração e mostrar a curva respondendo.
+- **Narração (~45 palavras):**
+  > "No Ensino Médio, parábolas, trajetórias e concentrações costumam chegar como fórmula pronta. O aluno decora a regra sem ver de onde ela vem. A Aula Visual inverte essa ordem: você muda um valor, vê o gráfico responder e só depois chega à fórmula."
+
+### 2. Página inicial, disciplinas, Paco e Tati (0:20–0:45)
+
+- **Tela e interação:**
+  1. Na demonstração da página inicial, clicar em **θ = 15°** e depois em **θ = 75°**: o quadro amarelo explica que ângulos complementares caem no mesmo lugar.
+  2. Rolar até os três cards: **Matemática**, **Física** e **Química**.
+  3. Clicar em **Matemática** (`#/materia/matematica`). Na janela anônima aparecem o Paco e a Tati com a fala de boas-vindas. Clicar em **Vamos lá**.
+- **Narração (~55 palavras):**
+  > "Logo na entrada, o aluno já experimenta: 15 e 75 graus têm o mesmo alcance, e o próprio app mostra o porquê. São três áreas: Matemática, com a trilha completa do Ensino Médio, e as primeiras experiências de Física e Química. O Paco conduz cada aula, e a Tati faz as perguntas que o aluno faria."
+
+### 3. Matemática e a questão visual do ENEM 2022 (0:45–1:30)
+
+- **Caminho:** voltar à página inicial e clicar em **Resolver uma questão do ENEM** (ou, na trilha: **Álgebra** → **Funções** → **Questão visual: saque de vôlei (ENEM 2022)**). Aula "Saque no Teto".
+- **Tela e interação:**
+  1. *(0:45)* Passo 1: mostrar o **enunciado oficial** à esquerda e **arrastar a bola** pela trajetória. Clicar em **Continuar**.
+  2. *(corte)* Passo 2: levar a bola ao **ponto mais alto**. **Continuar**.
+  3. *(1:00)* Passo 3: subir devagar o slider do **teto**, passando por 17, 18, 19 e 21 m, até 22 m. Os pontos onde a bola bate aparecem e somem. **Continuar**.
+  4. *(corte)* Passo 4: escolher **21,67 m** e **Verificar**. **Continuar**.
+  5. *(1:15)* Passo 5: escolher de propósito **C) Apenas nos ginásios I, II e III** e **Verificar**. Deixar 3 segundos na figura que mostra o erro (a curva sem os 1,5 m). **Tentar de novo**, escolher **D)** e **Verificar**.
+- **Narração (~85 palavras):**
+  > "Na Matemática, são 105 aulas com gráficos e figuras que o aluno manipula. Aqui, uma questão real do ENEM 2022 virou experiência visual. O enunciado oficial fica na tela. O aluno arrasta a bola, encontra o ponto mais alto e sobe o teto do ginásio para ver onde o saque bate. Se ele escolhe a alternativa C, o app não diz só 'errado': mostra no gráfico que ele esqueceu os 1,5 metros da altura do saque. Corrigindo, chega à D."
+
+### 4. Física: lançamento oblíquo (1:30–1:55)
+
+- **Caminho:** cabeçalho → **Física** → **A Bola que Faz Parábola** → **Começar**.
+- **Tela e interação:**
+  1. Passo 1: ajustar **Ângulo** e **Velocidade inicial**, clicar em **Lançar** e deixar a animação terminar. Mostrar altura máxima, alcance e tempo de voo no painel.
+  2. *(corte)* Passo 2: lançar a 30° e depois a 60° (v₀ = 20 m/s) e mostrar as duas trajetórias com o mesmo alcance.
+- **Narração (~50 palavras):**
+  > "Na Física, o aluno controla o ângulo e a velocidade, lança e acompanha a trajetória animada. Altura máxima, alcance e tempo de voo são calculados na hora. Lançamentos anteriores ficam na tela para comparar: 30 e 60 graus chegam ao mesmo ponto. O modelo é declarado: sem resistência do ar."
+
+### 5. Química: soluções e concentração (1:55–2:20)
+
+- **Caminho:** cabeçalho → **Química** → **A Cor da Concentração** → **Começar**.
+- **Tela e interação:**
+  1. Passo 1: subir o slider **Massa de CuSO₄**. A cor fica mais forte, as partículas aumentam, e o medidor de concentração sobe. **Continuar**.
+  2. *(corte)* Passo 2: aumentar o **volume** de 200 mL para 800 mL. As mesmas partículas se espalham e a cor clareia, com o béquer "antes" ao lado.
+- **Narração (~50 palavras):**
+  > "Na Química, o aluno prepara uma solução. Mais soluto no mesmo volume: mais partículas, cor mais intensa e concentração maior. Adicionando água, a massa não muda, mas a solução fica mais diluída, e dá para comparar com o béquer de antes. A conta C = m/V aparece ao lado do que ele vê."
+
+### 6. Diferencial, arquitetura e confiabilidade (2:20–2:40)
+
+- **Tela (escolher uma):**
+  - celular (390 × 844) com a simulação de Física ou a questão do vôlei, mostrando que a aula funciona no toque; **ou**
+  - o terminal rodando `npm test` até a linha "Tests 2229 passed" (gravação real, acelerada); **ou**
+  - a seção "Qualidade técnica" do README no GitHub.
+- **Narração (~50 palavras):**
+  > "Funciona no navegador e no celular, sem cadastro: o progresso fica no próprio aparelho. Cada aula é um arquivo de dados validado automaticamente, então criar uma aula nova não exige programar. São mais de 2.200 testes automatizados, e uma varredura abriu as 107 aulas em três tamanhos de tela."
+
+### 7. Encerramento (2:40–2:50)
+
+- **Tela:** página inicial (ou a tela "Aula concluída" com o Paco e a Tati), com título sobreposto: **Aula Visual**, o link da demo e "Hack Brasil 2026 · Acesso à educação".
+- **Narração (~20 palavras):**
+  > "Aula Visual: entender antes de decorar. O link está na descrição. Abra, mexa nos valores e veja a matemática acontecer."
+
+---
+
+## Depois de gravar
+
+- [ ] Duração final **menor que 3:00** (alvo: 2:40–2:50).
+- [ ] Nenhuma tela simulada nem valor editado. Toda interação aparece de verdade.
+- [ ] Nenhuma menção a IA no produto ou a resultados de aprendizagem.
+- [ ] Legendas conferidas (o júri pode assistir sem som).
+- [ ] Vídeo publicado como **público** ou **não listado** (YouTube, por exemplo) e aberto numa janela anônima para confirmar que **não pede login**.
+- [ ] Link do vídeo no formulário de submissão, no `README.md` e em `docs/ENTREGA_HACKBRASIL_2026.md`.

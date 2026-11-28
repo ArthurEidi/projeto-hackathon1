@@ -240,14 +240,41 @@ Domínio R. Se a>0, imagem [k;∞); se a<0, (−∞;k]; se a=0, {k}. |x−h|=r t
 #### V1 — `uerj-cbmerj-2025-modular` (UERJ / ABMDPII-CBMERJ 2025, Questão 22)
 - **Enunciado (resumido):** "Para x real com −5 < x < 0, qual é o valor de y = |x − 3| + |x + 5|?"
 - **Fala do Paco:** "Para −5 < x < 0, veja o sinal de x − 3 e de x + 5 antes de tirar os módulos."
-- **Fonte:** UERJ / ABMDPII-CBMERJ 2025, Questão 22 (questão na p. 25 e gabarito B no comentário oficial da p. 26 de `51.pdf`, na Revista Eletrônica do Vestibular da UERJ).
+- **Fonte:** UERJ / ABMDPII-CBMERJ 2025 (adaptada) — Questão 22 (questão na p. 25 e gabarito B no comentário oficial da p. 26 de `51.pdf`, na Revista Eletrônica do Vestibular da UERJ). — **URL:** https://www.revista.vestibular.uerj.br/arquivos/pdf/questao/51.pdf
 - **Adaptação:** enunciado resumido sem perder dados; alternativas e gabarito oficial (B) mantidos.
 - **Conta de conferência:** em `−5 < x < 0`, `x − 3 < 0 ⇒ |x − 3| = 3 − x` e `x + 5 > 0 ⇒ |x + 5| = x + 5`; logo `y = (3 − x) + (x + 5) = 8`.
 
 - **Distratores:** A (4) resulta de contar só o primeiro módulo em x = −1. C (2x + 4) resulta de retirar as barras e ainda calcular 5 − 3 como 4. D (2x + 8) resulta de trocar apenas o sinal de −3 no primeiro módulo, mantendo x.
 
-#### V2–V4 — `pendente-fonte`
-> Espaços reservados caso novas questões oficiais no recorte sejam encontradas.
+> Alternativas e feedbacks transcritos de `content/algebra/funcoes/funcao-modular/aula-01.json` (`treino.vestibular[0]`), auditados em `docs/revisao/auditoria-b45c-modular.md`. Só a estrutura do roteiro foi ajustada em 28/11/2026, para o `lint:planos`; a questão, o gabarito e a aula não mudaram.
+
+| id | Rótulo | Certa? | Feedback |
+|---|---|---|---|
+| `a` | 4 | não | "Com x = −1, contar só o primeiro módulo dá |−4| = 4. Somando os dois no intervalo, y = (3 − x) + (x + 5) = 8." |
+| `b` | 8 | **sim** | "Isso. Como −5 < x < 0, |x − 3| = 3 − x e |x + 5| = x + 5; somando, y = (3 − x) + (x + 5) = 8." |
+| `c` | 2x + 4 | não | "Tirar as barras sem checar os sinais e calcular 5 − 3 como 4 dá 2x + 4. A soma correta é (3 − x) + (x + 5) = 8." |
+| `d` | 2x + 8 | não | "2x + 8 vem de tirar os módulos como (x + 3) + (x + 5). Como x < 3, |x − 3| = 3 − x, dando y = 8." |
+
+#### V2 — `v2-funcao-modular`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Aplicação direta em contexto, no tema função modular.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+#### V3 — `v3-funcao-modular`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Gráfico, domínio ou caso de fronteira, no tema função modular.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
+
+#### V4 — `v4-funcao-modular`
+- **Estado:** **PENDENTE-FONTE**
+- **Recorte para seleção:** Combinação de duas relações e interpretação, no tema função modular.
+- **Enunciado (resumido):** não preenchido; aguarda questão real conferida.
+- **Fonte:** banca, ano e URL ainda não conferidos; não atribuir prova.
+- **Bloqueio editorial:** não publicar este espaço como questão até conferir enunciado, alternativas e gabarito na fonte.
 
 ---
 

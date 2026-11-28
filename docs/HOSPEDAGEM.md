@@ -1,6 +1,34 @@
 # Hospedagem do app
 
-Preparado em 15/11/2026 (Máquina B, frente B15). **Nada foi publicado**: por decisão do usuário, o build e o caminho de publicação ficam prontos, e a decisão de pôr o app na internet é dele.
+Preparado em 15/11/2026 (Máquina B, frente B15). As seções abaixo da primeira registram o histórico daquela data.
+
+## Situação em 28/11/2026 e passo a passo para publicar
+
+**Verificado em 28/11/2026:**
+
+| Item | Situação |
+|---|---|
+| Repositório `ArthurEidi/projeto-hackathon1` | **Público** (API do GitHub: `"visibility": "public"`), branch padrão `main`, último commit `1097745` |
+| GitHub Pages | **Ainda não ativado** (`has_pages: false`; `https://arthureidi.github.io/projeto-hackathon1/` responde 404) |
+| Workflow `.github/workflows/pages.yml` | Adequado ao `main` atual, sem mudança de infraestrutura: `npm ci` → `npm test` → `npm run build` → publica `dist/`. Node 26 no CI (o projeto funciona com Node ≥ 22.12; 24 e 26 testados) |
+| Base do Vite | `base: "./"` no build: os assets são relativos, então o `dist/` funciona no subcaminho `/projeto-hackathon1/` |
+| Rotas | Por hash (`#/`, `#/materia/<id>`, `#/aula/<...>`): o Pages não precisa de reescrita de URL nem de `404.html` |
+| Teste local do build | `npm run build` ok. `dist/` servido em `/projeto-hackathon1/` (como no Pages): página inicial, Matemática, Física, Química, questão do vôlei e aula de Cones carregaram. JS, CSS, personagens (`personagens/`), favicon e vídeo (`videos/cones_aula01_corte.mp4`) com HTTP 200, sem erro no console |
+| Fontes | DM Sans, Manrope e Nunito vêm do Google Fonts (precisa de internet; sem ela, o navegador usa uma fonte reserva) |
+
+**Para publicar (alguém com permissão de administrador no repositório):**
+
+1. No GitHub, abrir **Settings → Pages**. Em **Build and deployment → Source**, escolher **GitHub Actions**.
+2. Abrir **Actions → "Publicar no GitHub Pages" → Run workflow**, escolher a branch **`main`** e confirmar.
+3. Esperar os dois jobs (`build` e `deploy`) ficarem verdes, cerca de 2 a 3 minutos. Se `npm test` ou `npm run build` falharem, nada é publicado.
+4. Abrir `https://arthureidi.github.io/projeto-hackathon1/` numa **janela anônima** e conferir: página inicial, os três cards, uma aula de cada área e a questão do vôlei (`#/aula/algebra/funcoes/saque-de-volei-enem-2022/aula-01`).
+5. Só depois disso, colocar o link no `README.md`, em `docs/ENTREGA_HACKBRASIL_2026.md` e no formulário.
+
+**Se o workflow falhar por permissão:** em **Settings → Actions → General → Workflow permissions**, conferir se Actions estão permitidas no repositório. O próprio workflow já declara `pages: write` e `id-token: write`. O ambiente `github-pages` é criado sozinho na primeira publicação e aceita a branch padrão.
+
+**Plano B (sem configurar o repositório):** rodar `npm run build` e arrastar a pasta `dist/` em **Netlify → Add new site → Deploy manually**. O link gerado também serve como demo.
+
+**Atenção ao congelamento (regulamento, item 8.4):** depois de 30/11/2026, 23h59, não pode haver commits nos repositórios entregues (pelo menos para os finalistas) até a final. Publicar ou republicar a demo **a partir de um commit já existente** não cria commit, mas qualquer correção no código precisa entrar antes do prazo.
 
 ## O que o app precisa
 
